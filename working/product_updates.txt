@@ -1,0 +1,139 @@
+feature requests from vin.  these should be added to podio:
+
+
+
+
+Changes to Product Page:
+
+1. Discontinued Items: Eg. WRBU708 
+   For any item that has been checked  as “discontinued” under
+cross-selling, then: 
+   a. The display being used for Product Image 99 under custom should
+automatically display image: icons/ban_discontinued.jpg regardless of attribute
+configured in zoovy:prod_image99
+  b. Disable: Time in transit / Add to Cart icon / Do not display SOGs / Do not
+display Qty box
+  c. Display of Siblings: Do not show the items marked “discontinued” under
+cross-selling. Only show in-stock
+
+2. For Back-order items: eg. WRB9301
+   If today (system date) has passed OR equal to zoovy:prod_salesrank, then:
+   a. Replace the back-order icon with Add to Cart icon
+   b. Activate the time-transit display ie. assume the item is going to be
+shipped as normal.
+   c. Under Shipping Tab: Do not display beachmart:prod_shipping_msg
+   
+
+3. Time in Transit of Dropship Items. eg. PT750 , MMC800
+   It should calculate based on origin zip code defined under "Utilities »
+Supply Chain » PCTIME » Generic Shipping
+  *** The items being shipped our own warehouse "uses your store
+configuration"....works perfectly...
+
+
+
+Please add code to Product Header for Video Sitemap for Google/Bing Crawler
+
+Detailed Instructions on http://help.treepodia.com/node/24
+
+
+
+
+
+Below is the revised information from treepodia for product page:
+
+
+Video
+
+********Location: PRODUCT PAGE ********
+Dynamic Content:
+• {SKU} - Replace with the product SKU
+• {NAME} - Replace with the product name
+• {DESCRIPTION} - Replace with the product description
+• {IMAGE-URL} - Replace with the product main image URL
+• {PAGE-URL} - Replace with the product page URL
+
+
+<div id="video-location"></div>
+
+<!-- "noscript" object, hidden by default, for non-javascript users and the
+video sitemap -->
+<div id="video" itemprop="video" itemscope
+itemtype="http://schema.org/VideoObject"> 
+<meta itemprop="name" content="{NAME}" /> 
+<meta itemprop="description" content="{DESCRIPTION}" /> 
+<meta itemprop="thumbnailUrl" content="{IMAGE-URL}" /> 
+<meta itemprop="contentURL"
+content="http://api.treepodia.com/video/get/UA-4FE14D2D2713DC00/{SKU}" />
+<meta itemprop="embedURL"
+content="http://api.treepodia.com/video/get/UA-4FE14D2D2713DC00/{SKU}" />
+
+<noscript>
+<object type="application/x-shockwave-flash"
+data="http://api.treepodia.com/video/treepodia_player.swf" width="640px"
+height="400px" title="product video player" rel="media:video">
+<param name="src" value="http://api.treepodia.com/video/treepodia_player.swf"/>
+
+<param name="flashvars"
+value="video=http://api.treepodia.com/video/get/UA-4FE14D2D2713DC00/{SKU}"/>
+</object>
+</noscript>
+</div>
+
+
+
+
+
+****** MAIN SCRIPT FOR Location: Header (General or Product page)
+Dynamic Content:
+• {SKU} - Replace with the product SKU
+• {Video Title} - Dialog header, should be replaced with the product name or
+leave blank
+• {NAME} - Replace with the product name
+• {DESCRIPTION} - Replace with the product description
+• {IMAGE-URL} - Replace with the product main image URL
+• {PAGE-URL} - Replace with the product page URL
+• {WEBSITE-NAME} - Replace with the website name
+
+
+<script type="text/javascript">
+// Grab the product SKU / Code
+var trpdSKU = '{SKU}';
+
+var video; var product;
+function initTreepodia() { product =
+Treepodia.getProduct('UA-4FE14D2D2713DC00', trpdSKU);
+product.requestVideo(handleVideo); }
+function handleVideo(vid) { video = vid; if (vid.hasVideos()) {
+video.setPlayer("default"); video.setChromeless(false); 
+video.addShareItem("facebook"); video.addShareItem("twitter");
+video.setAllowFullScreen(true); video.setLoop(false); video.setAutoplay(false);
+video.setMute(true);   video.show('video-location'); } }
+</script>
+
+<script type="text/javascript">
+// Include Treepodia main Script
+document.write(unescape("%3Cscript src='" + document.location.protocol + "//dxa05szpct2ws.cloudfront.net/TreepodiaAsyncLoader.js'
+type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<link rel="image_src" href="{IMAGE-URL}" />
+<link rel="thumbnail" type="image/jpeg" href="{IMAGE-URL}" />	
+<link rel="video_src"
+href="http://api.treepodia.com/video/get/UA-4FE14D2D2713DC00/{SKU}" />
+
+<meta property="og:site_name" content="{WEBSITE-NAME}" />
+<meta property="og:title" content="{NAME}" />
+<meta property="og:description" content="{DESCRIPTION}" />
+<meta property="og:type" content="product" />
+<meta property="og:url" content="{PAGE-URL}" />
+<meta property="og:image" content="{IMAGE-URL}" />
+<meta property="og:video"
+content="http://api.treepodia.com/video/get/UA-4FE14D2D2713DC00/{SKU}" />
+<meta property="og:video:type" content="video/mp4" />
+<meta property="og:video:width" content="640" />
+<meta property="og:video:height" content="360" />
+
+<meta name="medium" content="video">
+<meta name="video_height" content="640">
+<meta name="video_width" content="360">
