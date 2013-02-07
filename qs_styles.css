@@ -145,6 +145,14 @@ and offMenu is toggle off, hiding the change button.
 
 
 
+/* app nav */
+
+#appNav {position:relative; height:1px; overflow:visible;}
+#appNav .prodDetailPrevItemButton	{position:absolute; top:20px; left:-10px;}
+#appNav .prodDetailNextItemButton	{position:absolute; top:20px; right:-10px;}
+
+
+
 /***************************************************
 
 LISTS (product list and/or subcategory list)
@@ -343,8 +351,7 @@ SEARCH RESULTS PAGE
 
 ***************************************************/
 
-#searchNav a	{padding:2px 6px;}
-#recentSearchesList	{border-top:0;}
+#mainContentArea_search	{position:relative;}
 
 
 
@@ -502,7 +509,7 @@ CHECKOUT
 #zCheckoutFrm fieldset input[type=text], #zCheckoutFrm fieldset input[type=tel], #zCheckoutFrm fieldset input[type=password], #zCheckoutFrm fieldset input[type=email]	{width:220px;}
 #zCheckoutFrm .checkbox	label	{text-align:left; width:240px;}
 #zCheckoutFrm .checkbox	{ padding-left:120px; clear:both;}
-
+#zCheckoutFrm .creditCardCVV	{width:50px !important;}
 
 #zCheckoutFrm fieldset li.paycon, #zCheckoutFrm fieldset li.shipcon	{margin-top:10px; }
 #zCheckoutFrm fieldset li.paycon label, #zCheckoutFrm fieldset li.shipcon label	{text-align:left; line-height:1.4em;}
