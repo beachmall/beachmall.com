@@ -20,7 +20,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"20130227204000",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"20130228112800",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"",
 	"httpsURL":"https://www-beachmall-com.app-hosted.com/",
@@ -72,7 +72,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 <div id='appPreView'>
 <table>
 <tr>
-	<td><div class='logo'>&nbsp;</div></td>
+	<td><div class='sprite logo'>&nbsp;</div></td>
 	<td>
 
 	<div id="loader">
@@ -96,35 +96,39 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 
 <div id='appView' class='displayNone'>
 <header>
-	<div class='logo' onClick="return showContent('category',{'navcat':'.'});">&nbsp;</div>
-	<div class='support'>
-		<!-- BEGIN ProvideSupport.com Text Chat Link Code -->
-		<div id="ciyXFh" style="z-index:100;position:absolute"></div>
-		<div id="scyXFh" style="display:inline"></div>
-		<div id="sdyXFh" style="display:none"></div>
-		<script type="text/javascript">var seyXFh=document.createElement("script");seyXFh.type="text/javascript";var seyXFhs=(location.protocol.indexOf("https")==0?"https":"http")+"://image.providesupport.com/js/1qaxuqjnvcj4w1csevb7u0l3tc/safe-textlink.js?ps_h=yXFh&ps_t="+new Date().getTime()+"&online-link-html=Live%20Chat%20Online&offline-link-html=Live%20Chat%20Offline";setTimeout("seyXFh.src=seyXFhs;document.getElementById('sdyXFh').appendChild(seyXFh)",1)</script>
-		<noscript><div style="display:inline"><a href="http://www.providesupport.com?messenger=1qaxuqjnvcj4w1csevb7u0l3tc">Customer Support Chat</a></div></noscript>
-		<!-- END ProvideSupport.com Text Chat Link Code -->
+	<div class='sprite logo pointer' onClick="return showContent('category',{'navcat':'.'});">&nbsp;</div>
+	<div class='headerBlockMid'>
+		<div class='support'>
+			<!-- BEGIN ProvideSupport.com Text Chat Link Code -->
+			<div id="ciyXFh" style="z-index:100;position:absolute"></div>
+			<div id="scyXFh" style="display:inline"></div>
+			<div id="sdyXFh" style="display:none"></div>
+			<script type="text/javascript">var seyXFh=document.createElement("script");seyXFh.type="text/javascript";var seyXFhs=(location.protocol.indexOf("https")==0?"https":"http")+"://image.providesupport.com/js/1qaxuqjnvcj4w1csevb7u0l3tc/safe-textlink.js?ps_h=yXFh&ps_t="+new Date().getTime()+"&online-link-html=Live%20Chat%20Online&offline-link-html=Live%20Chat%20Offline";setTimeout("seyXFh.src=seyXFhs;document.getElementById('sdyXFh').appendChild(seyXFh)",1)</script>
+			<noscript><div style="display:inline"><a href="http://www.providesupport.com?messenger=1qaxuqjnvcj4w1csevb7u0l3tc">Customer Support Chat</a></div></noscript>
+			<!-- END ProvideSupport.com Text Chat Link Code -->
+		</div>
+		<div class='phone'><i class='icon-phone'></i> 1-888-975-6555</div>
 	</div>
-	<div class='phone'><i class='icon-phone'></i> 1-888-975-6555</div>
-	<div class='hdrlinks'>
-		<a href='#' onClick="return showContent('cart',{});">Shopping Cart: <span class='cartItemCount'>0</span> item(s)</a>&nbsp;|&nbsp; 
-		Checkout&nbsp;|&nbsp;
-		<a href="#" onClick="return showContent('customer',{'show':'myaccount'});">Log In</a>&nbsp;|&nbsp;
-		<a href="#" onClick="return showContent('company',{'show':'contact'});">Contact Us</a>
-	</div>
-	<div class='hdrsearch'>
-		<form id="headerSearchFrm" name="headerSearchFrm" action="#" class="productSearchForm" method="get">
-			<input name="KEYWORDS" value="Search" class="productSearchKeyword handleDefault" type="search">
-			<input name="CATALOG" value="" class="productSearchCatalog" type="hidden">
-			<input class="search" id="headerSearchSubmit" value="SEARCH" type="submit">
-		</form>
+	<div class='headerBlockRt'>
+		<div class='hdrlinks'>
+			<a href='#' onClick="return showContent('cart',{});">Shopping Cart: <span class='cartItemCount'>0</span> item(s)</a>&nbsp;|&nbsp; 
+			Checkout&nbsp;|&nbsp;
+			<a href="#" onClick="return showContent('customer',{'show':'myaccount'});">Log In</a>&nbsp;|&nbsp;
+			<a href="#" onClick="return showContent('company',{'show':'contact'});">Contact Us</a>
+		</div>
+		<div class='hdrsearch'>
+			<form id="headerSearchFrm" name="headerSearchFrm" action="#" class="productSearchForm" method="get">
+				<input name="KEYWORDS" value="Search" class="productSearchKeyword handleDefault" type="search">
+				<input name="CATALOG" value="" class="productSearchCatalog" type="hidden">
+				<input class="search" id="headerSearchSubmit" value="SEARCH" type="submit">
+			</form>
+		</div>
 	</div>
 </header>
 <nav class="gradient">
 	<ul id='tier1categories'></ul>
 </nav>
-<section>	
+<section id='main'>	
 <div id='globalMessaging' class='appMessaging'></div><!-- DO NOT REMOVE - used for some high level error handling (usually appears below breadcrumb nav or top bar) -->
 
 <!-- These add specific functionality for the app. In most cases, you want to leave them alone. -->
@@ -137,9 +141,9 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 </section>
 <footer>
 	<div class='social'>
-		<a href="https://www.facebook.com/BeachMall"><i class='icon-facebook-sign'></i></a>
-		<a href="https://twitter.com/Beachmall"><i class='icon-twitter'></i></a>
-		<a href="https://plus.google.com/104451134911916367843/posts"><i class='icon-google-plus-sign'></i></a>
+		<a href="https://www.facebook.com/BeachMall"><i class='icon-facebook-sign icon-2x'></i></a>
+		<a href="https://twitter.com/Beachmall"><i class='icon-twitter icon-2x'></i></a>
+		<a href="https://plus.google.com/104451134911916367843/posts"><i class='icon-google-plus-sign icon-2x'></i></a>
 	</div>
 </footer>
 
@@ -168,7 +172,21 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 
 <div id='appTemplates' class='displayNone'>
 
+<!--
+######################
 
+APP-SPECIFIC TEMPLATES
+
+######################
+-->
+<ul>
+<li id='categoryListTemplateHome'>
+	<div onClick="showContent('category',{'navcat':$(this).parent().attr('data-catsafeid')});" class='pointer catName'>
+		<span data-bind='var: category(pretty); format:catText; extension: myRIA;'></span>
+		<div class='catShop'>Shop Now <i class="icon-circle-arrow-right"></i></div>
+	</div>
+</li>
+</ul>
 <!--
 
 ############################
@@ -189,13 +207,15 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 		<img src='images/blank.gif' width='712' height='400' data-bind="var: category(%page.banner_slideshow1); format: banner; extension:myRIA; editor:banner; wrap:<li>;" />
 	</ul>
 	
-	<ul data-bind="var: category(@subcategoryDetail); format: categoryList; extension: store_navcats; loadsTemplate: categoryListTemplate; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin categoryList'></ul>
+	<ul data-bind="var: category(@subcategoryDetail); format: categoryList; extension: store_navcats; loadsTemplate: categoryListTemplateHome; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin'></ul>
 
 	<ul data-bind="var: category(@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: productListTemplate; hide_summary:1; before:<h2>Featured Items</h2>; withReviews:1;" class='listStyleNone fluidList clearfix noPadOrMargin productList'></ul>
 	<p data-bind="var: category(%page.description); format:wiki; wikiFormats:myRIA; editor: textarea;"></p>
 
 <!-- a sample of how to format an elastic native search in a data-bind -->
 	<ul id='homeProdSearchBestSellers' data-bind='var: elastic-native({"size":"4","mode":"elastic-native","filter":{"term":{"tags":"IS_BESTSELLER"}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResults; before:<h2>Best Sellers</h2>;' class='listStyleNone fluidList clearfix noPadOrMargin productList'></ul>
+	
+	<ul id='homeProdSearchNewItems' data-bind='var: elastic-native({"size":"4","mode":"elastic-native","filter":{"term":{"tags":"IS_NEW"}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResults; before:<h2>New Products</h2>;' class='listStyleNone fluidList clearfix noPadOrMargin productList'></ul>
 
 <!-- a sample of how to get a 'list' src onto the page. -->
 	<ul data-bind="var: list($models.@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: productListTemplate; withReviews:1; items_per_page: 25;" class='listStyleNone fluidList clearfix noPadOrMargin productList'></ul>
@@ -253,10 +273,26 @@ don't modify the 'data-templateid' unless you are changing template names and up
 
 
 <li id='categoryListTemplateRootCats'>
+	<a data-bind='var: category(pretty); format:text;' href='#' onClick="showContent('category',{'navcat':$(this).parent().attr('data-catsafeid')}); return false"></a>
+	<div class='catMenu'>
+		<ul data-bind='var:category(@subcategoryDetail); format:subcategory2LevelList; extension:store_navcats;' class="child_menu">
+			
+		</ul>
+		<div class='catMenuImg'><img src='blank.gif' class='catThumb' data-bind='var: category(%meta.CAT_THUMB); format:imageURL;' height='155' width='155' /></div>
+		<div class='clearfix catMenuMenu'>
+			<a href="#" onClick="showContent('category',{'navcat':$(this).parent().attr('data-catsafeid')}); return false">All <span data-bind='var: category(pretty); format:text;'></span></a> | 
+			<a href="#">Best Sellers</a> | 
+			<a href="#">Clearance</a> | 
+			<a href="#">New <span data-bind='var: category(pretty); format:text;'></span></a>
+		</div>
+	</div>
+	
+<!--
 	<div onClick="showContent('category',{'navcat':$(this).parent().attr('data-catsafeid')});" class='pointer'>
 		<div class='thumbContainer'><img src='blank.gif' class='catThumb' data-bind='var: category(%meta.CAT_THUMB); format:imageURL;' width='35' height='35' /></div>
 		<div class='catName'><span data-bind='var: category(pretty); format:catText; extension: myRIA;'></span></div>
 	</div>
+-->	
 </li>
 
 </ul>

@@ -2,6 +2,26 @@
     width: device-width;
 }
 
+* {
+	margin:0;
+	padding:0;
+}
+
+header, footer, #main {
+		width:990px;
+		margin:0 auto;
+}
+
+@media (max-width: 1000px) {
+	header, footer, #main {
+		width:100%;
+		margin:0;
+	}
+	nav ul#tier1categories {
+		width:100%;
+	}
+}
+
 body {
 	font: 100%/1.5 Arial, Helvetica, sans-serif; /* 16px */  
 	color:#000000;
@@ -19,6 +39,30 @@ body {
 	float:left;
 }
 
+.headerBlockMid {
+	float:left;
+	width:240px;
+	padding:10px 100px;
+	height:69px;
+}
+.headerBlockRt {
+	float:right;
+}
+
+.phone {
+	font-size:110%;
+	font-weight:bold;
+	color:#58CCF5;
+}
+.hdrlinks {
+	font-size:0.8em;
+	padding-top:5px;
+	clear:both;
+}
+.hdrsearch {
+	float:right;
+}
+
 nav {
 	background: #fff85f; /* Old browsers */
 	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
@@ -34,8 +78,90 @@ nav {
 	color:#000000;
 	width:100%;
 	clear:both;
+	height:30px;
+}
+
+nav a {
+	text-decoration:none;
+}
+
+nav ul#tier1categories {
+/*	display:inline;*/
+	margin:0 auto;
+	width:990px;
+}
+
+nav ul li {
+	list-style:none;
+	float:left;
+}
+
+nav ul li a {
+	display:block;
+	padding:3px 35px;
+}
+
+nav ul li a:hover {
+	background-color:#FBF7AE;
+}
+
+nav .catMenu {
+	display:none;
+	background-color:#FBF7AE;
+	padding:15px;
+	z-index:10001;
+	margin-top:-1px;
+	position:absolute;
+}
+
+.catMenu ul {
+	float:left;
+	margin: 0 30px 0 0;
+}
+
+.catMenu ul li a {
+	padding:3px;
+}
+
+.catMenu .catMenuImg {
+	float:right;
+}
+
+.catMenuMenu  a{
+	font-size:0.85em;
+	font-weight:normal;
+	padding:0;
+	display:inline;
+}
+
+nav ul li ul.child_menu li {
+	float:none;
+}
+
+nav ul li:hover div.catMenu{
+	display:block !important;
 }
 
 .social a , .social a:link, .social a:visited, .social a:hover, .social a:active{
 	text-decoration:none;
+}
+
+/* HOMEPAGE STYLES */
+#homepageTemplate_ .catName {
+	display:block;
+	width:220px;
+	height:60px;
+	background-color:#2C97D6;
+	color:#FFFFFF;
+	text-align:center;
+	font-size:1.3em;
+	font-weight:bold;
+	padding:15px 15px 10px;
+}
+
+.catShop {
+	font-size:0.7em;
+	text-align:right;
+	clear:both;
+	margin-top:10px;
 }
