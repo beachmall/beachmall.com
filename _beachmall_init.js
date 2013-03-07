@@ -48,18 +48,82 @@ app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {
 app.rq.push(['script',0,(document.location.protocol == 'file:') ? app.vars.httpURL+'jquery/config.js' : app.vars.baseURL+'jquery/config.js']); //The config.js is dynamically generated.
 app.rq.push(['script',0,app.vars.baseURL+'model.js']); //'validator':function(){return (typeof zoovyModel == 'function') ? true : false;}}
 app.rq.push(['script',0,app.vars.baseURL+'includes.js']); //','validator':function(){return (typeof handlePogs == 'function') ? true : false;}})
-app.rq.push(['script',1,app.vars.baseURL+'jeditable.js']); //used for making text editable (customer address). non-essential. loaded late.
-app.rq.push(['script',1,app.vars.baseURL+'extensions/admin/resources/jquery.showloading-v1.0.jt.js']); //used for making text editable (customer address). non-essential. loaded late.
 app.rq.push(['script',0,app.vars.baseURL+'controller.js']);
 
-app.rq.push(['script',0,app.vars.baseURL+'anyplugins.js']); //in zero pass in case product page is first page.
 
-//sample of an onDeparts. executed any time a user leaves this page/template type.
-app.rq.push(['templateFunction','homepageTemplate','onDeparts',function(P) {app.u.dump("just left the homepage")}]);
+app.rq.push(['script',1,app.vars.baseURL+'resources/jquery.ui.jeditable.js']); //used for making text editable (customer address). non-essential. loaded late.
+app.rq.push(['script',1,app.vars.baseURL+'resources/jquery.showloading-v1.0.jt.js']); //used for making text editable (customer address). non-essential. loaded late.
+app.rq.push(['script',0,app.vars.baseURL+'resources/jquery.ui.anyplugins.js']); //in zero pass because it contains essential functions (anymessage & anycontent)
+
+app.rq.push(['script',1,app.vars.baseURL+'resources/jquery.touchSwipe-1.3.3.min.js']); //used w/ carouFedSel.
+app.rq.push(['script',1,app.vars.baseURL+'resources/jquery.carouFredSel-6.2.0.min.js']); //used on homepage.
 
 
 
 
+
+//make sure big rootcat thumbs are hidden. restore rollover location to below instead of over.
+app.rq.push(['templateFunction','homepageTemplate','onDeparts',function(P) {
+	app.u.dump("just left the homepage")
+	$('#tier1categories .rootCatThumb').slideUp('slow');
+	$('#tier1categories .catMenu').removeAttr('style'); /* revert rollover positioning to default */
+	}]);
+
+//make sure big thumbs for root categories are visible. adjust rollover location to position over big thumbs.
+app.rq.push(['templateFunction','homepageTemplate','onInits',function(P) {
+	app.u.dump("just left the homepage")
+	$('#tier1categories .rootCatThumb').slideDown('slow');
+	$('#tier1categories .catMenu').css('bottom','35px'); /* adjust rollover positioning to appear over category images */
+	}]);
+
+
+app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(P) {
+
+	var $target = $('#homeProdSearchNewArrivals');
+	if($target.data('isCarousel'))	{} //only make it a carousel once.
+	else	{
+		$target.data('isCarousel',true);
+//for whatever reason, caroufredsel needs to be executed after a moment.
+		setTimeout(function(){
+			$target.carouFredSel({
+				auto: false,
+				prev: '.newCarouselPrev',
+				next: '.newCarouselNext',
+				width: '100%',
+				scroll: 2,
+		//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
+				swipe: {
+					onMouse: true,
+					onTouch: true
+					}
+				});
+			},1000); 
+		}
+	}]);
+
+app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(P) {
+
+	var $target = $('#homeProdSearchBestSellers');
+	if($target.data('isCarousel'))	{} //only make it a carousel once.
+	else	{
+		$target.data('isCarousel',true);
+//for whatever reason, caroufredsel needs to be executed after a moment.
+		setTimeout(function(){
+			$target.carouFredSel({
+				auto: false,
+				prev: '.bestCarouselPrev',
+				next: '.bestCarouselNext',
+				width: '100%',
+				scroll: 2,
+		//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
+				swipe: {
+					onMouse: true,
+					onTouch: true
+					}
+				});
+			},1000); 
+		}
+	}]);
 
 
 //group any third party files together (regardless of pass) to make troubleshooting easier.

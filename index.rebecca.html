@@ -103,46 +103,38 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 
 
 <div id='appView' class='displayNone'>
-	
-
-<header class='clearfix topNav'>
-	<nav class='floatRight percent40'>
-		<a href='#' onClick="return showContent('cart',{});">Shopping Cart: <span class='cartItemCount'>0</span> item(s)</a> |  
-		<a href='#' onClick="return showContent('checkout',{});">Checkout</a> | 
-		<a href="#" onClick="return showContent('customer',{'show':'myaccount'});">Log In</a> | 
-		<a href="#" onClick="return showContent('company',{'show':'contact'});">Contact Us</a>
-		
-	</nav>
-	<div class='floatRight percent20 alignRight'>live help</div>
-	<div class='floatLeft guarantee'>100% Satisfaction Guarantee</div>
-</header>
-
-<div class='wrapper whiteBG'>
-
-
-<header class='clearfix'>
-	
-	<div class='floatLeft percent20'>
-		<div class='sprite logo pointer' onClick="return showContent('category',{'navcat':'.'});"></div>
+<header>
+	<div class='sprite logo pointer' onClick="return showContent('category',{'navcat':'.'});">&nbsp;</div>
+	<div class='headerBlockMid'>
+		<div class='support'>
+			<!-- BEGIN ProvideSupport.com Text Chat Link Code -->
+			<div id="ciyXFh" style="z-index:100;position:absolute"></div>
+			<div id="scyXFh" style="display:inline"></div>
+			<div id="sdyXFh" style="display:none"></div>
+			<script type="text/javascript">var seyXFh=document.createElement("script");seyXFh.type="text/javascript";var seyXFhs=(location.protocol.indexOf("https")==0?"https":"http")+"://image.providesupport.com/js/1qaxuqjnvcj4w1csevb7u0l3tc/safe-textlink.js?ps_h=yXFh&ps_t="+new Date().getTime()+"&online-link-html=Live%20Chat%20Online&offline-link-html=Live%20Chat%20Offline";setTimeout("seyXFh.src=seyXFhs;document.getElementById('sdyXFh').appendChild(seyXFh)",1)</script>
+			<noscript><div style="display:inline"><a href="http://www.providesupport.com?messenger=1qaxuqjnvcj4w1csevb7u0l3tc">Customer Support Chat</a></div></noscript>
+			<!-- END ProvideSupport.com Text Chat Link Code -->
+		</div>
+		<div class='phone'><i class='icon-phone'></i> 1-888-975-6555</div>
 	</div>
-	
-	<div class='floatLeft percent20 phone'>
-	<i class='icon-phone'></i> 1-888-975-6555
-	</div>
-	
-	<div class='floatRight percent40'>
-		<div class='marginBottom'>banner. banner. mcafee</div>
-		<div class='searchContainer'>
-		<form id="headerSearchFrm" name="headerSearchFrm" action="#" class="productSearchForm" method="get">
-			<input name="KEYWORDS" value="" placeholder='keyword search' class="productSearchKeyword handleDefault" type="search">
-			<input class="search searchButton" id="headerSearchSubmit" value="SEARCH" type="submit">
-		</form>
+	<div class='headerBlockRt'>
+		<div class='hdrlinks'>
+			<a href='#' onClick="return showContent('cart',{});">Shopping Cart: <span class='cartItemCount'>0</span> item(s)</a>&nbsp;|&nbsp; 
+			Checkout&nbsp;|&nbsp;
+			<a href="#" onClick="return showContent('customer',{'show':'myaccount'});">Log In</a>&nbsp;|&nbsp;
+			<a href="#" onClick="return showContent('company',{'show':'contact'});">Contact Us</a>
+		</div>
+		<div class='hdrsearch'>
+			<form id="headerSearchFrm" name="headerSearchFrm" action="#" class="productSearchForm" method="get">
+				<input name="KEYWORDS" value="Search" class="productSearchKeyword handleDefault" type="search">
+				<input name="CATALOG" value="" class="productSearchCatalog" type="hidden">
+				<input class="search" id="headerSearchSubmit" value="SEARCH" type="submit">
+			</form>
 		</div>
 	</div>
-	
 </header>
-<nav class="categoryNav clearfix">
-	<ul id='tier1categories' class='clearfix'></ul>
+<nav class="gradient">
+	<ul id='tier1categories'></ul>
 </nav>
 <section id='main'>	
 <div id='globalMessaging' class='appMessaging'></div><!-- DO NOT REMOVE - used for some high level error handling (usually appears below breadcrumb nav or top bar) -->
@@ -163,8 +155,13 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 	</div>
 </footer>
 
-	</div><!-- /.wrapper -->
-</div><!-- /#appView -->
+</div>
+
+
+
+
+
+
 
 
 
@@ -216,24 +213,25 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 -->
 <div id='homepageTemplate' class='homeTemplate'>
 	
-	<div class="list_carousel responsive clearfix marginBottom">
-		<a class="newCarouselPrev carouselButtonPrev" href="#">prev</a>
-		<a class="newCcarouselNext carouselButtonNext" href="#">next</a>
 
-		<ul id='homeProdSearchNewArrivals' data-bind='var: elastic-native({"size":"20","mode":"elastic-native","filter":{"term":{"tags":"IS_NEWARRIVAL"}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsNoPreview;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults'></ul>
+<ul id="wideSlideshow" class="pics slideshow">
+		<img src='images/blank.gif' width='712' height='400' data-bind="var: category(%page.banner_slideshow1); format: banner; extension:myRIA; editor:banner; wrap:<li>;" />
+	</ul>
+	
+	<ul data-bind="var: category(@subcategoryDetail); format: categoryList; extension: store_navcats; loadsTemplate: categoryListTemplateHome; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin'></ul>
 
-	</div>
-
-
-	<div class="list_carousel responsive clearfix marginBottom">
-		<a class="bestCarouselPrev carouselButtonPrev" href="#">prev</a>
-		<a class="bestCarouselNext carouselButtonNext" href="#">next</a>
-
-		<ul id='homeProdSearchBestSellers' data-bind='var: elastic-native({"size":"12","mode":"elastic-native","filter":{"term":{"tags":"IS_BESTSELLER"}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResults;' class='listStyleNone fluidList clearfix noPadOrMargin productList'></ul>
-
-	</div>
-
+	<ul data-bind="var: category(@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: productListTemplate; hide_summary:1; before:<h2>Featured Items</h2>; withReviews:1;" class='listStyleNone fluidList clearfix noPadOrMargin productList'></ul>
 	<p data-bind="var: category(%page.description); format:wiki; wikiFormats:myRIA; editor: textarea;"></p>
+
+<!-- a sample of how to format an elastic native search in a data-bind -->
+	<ul id='homeProdSearchBestSellers' data-bind='var: elastic-native({"size":"12","mode":"elastic-native","filter":{"term":{"tags":"IS_BESTSELLER"}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsNoPreview; before:<h2>Best Sellers</h2>;' class='listStyleNone fluidList clearfix noPadOrMargin productList'></ul>
+	
+	<!-- <a href="#" onClick="return showContent('search',{'elasticsearch':{'query':{'term':{'tags':'IS_BESTSELLER'}}}});">See all Best Sellers</a> -->
+
+	<ul id='homeProdSearchNewItems' data-bind='var: elastic-native({"size":"12","mode":"elastic-native","filter":{"term":{"tags":"IS_NEW"}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResults; before:<h2>New Products</h2>;' class='listStyleNone fluidList clearfix noPadOrMargin productList'></ul>
+<!-- a sample of how to get a 'list' src onto the page. -->
+<!--	<ul data-bind="var: list($models.@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: productListTemplate; withReviews:1; items_per_page: 25;" class='listStyleNone fluidList clearfix noPadOrMargin productList'></ul> -->
+
 
 </div>
 
@@ -286,17 +284,13 @@ don't modify the 'data-templateid' unless you are changing template names and up
 </li>
 
 
-
-
-
 <li id='categoryListTemplateRootCats'>
-	<div class='rootCatThumb'><img src='blank.gif' class='catThumb' data-bind='var: category(%meta.CAT_THUMB); format:imageURL;' height='300' width='300' /></div>
-	<a data-bind='var: category(pretty); format:text;' href='#' onClick="showContent('category',{'navcat':$(this).parent().attr('data-catsafeid')}); return false" class='rootCatHref'></a>
+	<a data-bind='var: category(pretty); format:text;' href='#' onClick="showContent('category',{'navcat':$(this).parent().attr('data-catsafeid')}); return false"></a>
 	<div class='catMenu'>
 		<ul data-bind='var:category(@subcategoryDetail); format:subcategory2LevelList; extension:store_navcats;' class="child_menu">
 			
 		</ul>
-		<div class='catMenuImg'><img src='blank.gif' class='catThumb' data-bind='var: category(%meta.CAT_THUMB); format:imageURL;' height='200' width='200' /></div>
+		<div class='catMenuImg'><img src='blank.gif' class='catThumb' data-bind='var: category(%meta.CAT_THUMB); format:imageURL;' height='155' width='155' /></div>
 		<div class='clearfix catMenuMenu'>
 			<a href="#" onClick="showContent('category',{'navcat':$(this).parent().attr('data-catsafeid')}); return false">All <span data-bind='var: category(pretty); format:text;'></span></a> | 
 			<a href="#">Best Sellers</a> | 

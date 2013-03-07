@@ -1,118 +1,112 @@
 @viewport, @-o-viewport, @-moz-viewport, @-webkit-viewport {
     width: device-width;
-}
+	}
 
 * {
 	margin:0;
 	padding:0;
-}
-
-header, footer, #main {
-		width:990px;
-		margin:0 auto;
-}
-
-@media (max-width: 1000px) {
-	header, footer, #main {
-		width:100%;
-		margin:0;
 	}
-	nav ul#tier1categories {
-		width:100%;
-	}
-}
+
+
 
 body {
 	font: 100%/1.5 Arial, Helvetica, sans-serif; /* 16px */  
 	color:#000000;
-	background-color:#FFFFFF;
-}
+	background-color:#eaf5fb;
+	margin:0;
+	padding:.2em 1em 1em 1em;
+	}
+
+a	{color:#2c99d4;}
+a:hover	{color:#7bcbc7;}
+
+#appPreView	{margin-top:10%;}
+#appPreView, .whiteBG	{padding:1.0em; background:#ffffff; border:1px solid #d2e9f6;}
+
+/*
+the design is basically a five column layout, so by sticking to these percentages for elements, we can ensure column integrety
+the padding is to compensate for the spacing between the main nav.
+ */
+.percent20	{width:20%; padding:.2em;}
+.percent40	{width:40%; padding:.2em;}
+
+#mainContentArea	{padding:.4em .2em;} /* side padding is compensating for margins on main nav */
+
+/* topNav is the container for the content above the white bg */
+.topNav	{font-size:.75em;} /* @REB - need a media query here to when this gets down to vertical pad size. @ phone size, hide items to make room */
+.topNav	.guarantee {} /* @REB - add guarantee bg here using sprite */
+.topNav nav	{text-align:right; color:#666666;}
+.topNav nav a	{text-decoration:none;}
+.topNav nav a:hover	{text-decoration:underline;}
 
 .sprite {
 	background-image: url('images/_beachmall_sprites.png');
-}
+	}
 
 .logo {
 	background-position: 0 0;
 	width:163px;
 	height:89px;
 	float:left;
-}
+	}
 
-.headerBlockMid {
-	float:left;
-	width:240px;
-	padding:10px 100px;
-	height:69px;
-}
-.headerBlockRt {
-	float:right;
-}
+.searchContainer	{border:1px solid #cce7f5;}
+.searchContainer .productSearchKeyword	{border:0; background:#ffffff; padding:0; margin:0; text-indent:.4em; width:85%;}
+.searchContainer .searchButton	{background:#ffffff; border:0; text-indent:-10000px;} /* @REB - apply the mag glass bg here using sprite */
+
 
 .phone {
 	font-size:110%;
 	font-weight:bold;
 	color:#58CCF5;
 }
-.hdrlinks {
-	font-size:0.8em;
-	padding-top:5px;
-	clear:both;
-}
-.hdrsearch {
-	float:right;
-}
 
-nav {
-	background: #fff85f; /* Old browsers */
-	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
-	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZjg1ZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmY2MyM2QiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
-	background: -moz-linear-gradient(top,  #fff85f 0%, #fcc23d 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fff85f), color-stop(100%,#fcc23d)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #fff85f 0%,#fcc23d 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #fff85f 0%,#fcc23d 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #fff85f 0%,#fcc23d 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  #fff85f 0%,#fcc23d 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fff85f', endColorstr='#fcc23d',GradientType=0 ); /* IE6-8 */
-	font-weight:bold;
-	color:#000000;
-	width:100%;
-	clear:both;
-	height:30px;
-}
 
-nav a {
-	text-decoration:none;
-}
-
-nav ul#tier1categories {
+.categoryNav	{position:relative;}
+.categoryNav ul#tier1categories {
 /*	display:inline;*/
 	margin:0 auto;
-	width:990px;
-}
-
-nav ul li {
+	
+	}
+.rootCatThumb	{width:100%; overflow:hidden; text-align:center; vertical-align:central; display:none;}
+.rootCatThumb img	{width:100%; height:100%}
+.categoryNav ul li {
 	list-style:none;
 	float:left;
 }
 
-nav ul li a {
-	display:block;
-	padding:3px 35px;
-}
+.categoryNav > ul > li	{
+	width:20%; background:#0285cd; border-right:.2em solid #ffffff; border-left:.2em solid #ffffff;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */	
+	}
 
-nav ul li a:hover {
+.categoryNav > ul > li:nth-child(2), .categoryNav > ul > li:nth-child(4)	{background:#00a9a4;}
+.categoryNav > ul > li:nth-child(3)	{background:#ffc50c;}
+
+
+
+.categoryNav > ul > li > a	{display:block; padding:.3em; border:.1.5em solid #ffffff; margin:.2em; color:#ffffff; text-decoration:none; text-align:center;}
+
+.categoryNav ul li li a {
+	display:block;
+	color:#000000;
+	}
+
+.categoryNav ul li a:hover {
 	background-color:#FBF7AE;
 }
 
-nav .catMenu {
+.categoryNav .catMenu {
 	display:none;
 	background-color:#FBF7AE;
-	padding:15px;
+	padding:.4em;
 	z-index:10001;
-	margin-top:-1px;
+	margin:-1px .2em; /* side margins is to compensate for cols between main nav */
 	position:absolute;
-}
+	left:0; right:0; height:260px; /* @REB - probably want a media query to adjust this height down as site scales down */
+	}
 
 .catMenu ul {
 	float:left;
@@ -134,11 +128,11 @@ nav .catMenu {
 	display:inline;
 }
 
-nav ul li ul.child_menu li {
+.categoryNav ul li ul.child_menu li {
 	float:none;
 }
 
-nav ul li:hover div.catMenu{
+.categoryNav ul li:hover div.catMenu{
 	display:block !important;
 }
 
@@ -146,22 +140,48 @@ nav ul li:hover div.catMenu{
 	text-decoration:none;
 }
 
-/* HOMEPAGE STYLES */
-#homepageTemplate_ .catName {
-	display:block;
-	width:220px;
-	height:60px;
-	background-color:#2C97D6;
-	color:#FFFFFF;
-	text-align:center;
-	font-size:1.3em;
-	font-weight:bold;
-	padding:15px 15px 10px;
-}
 
-.catShop {
-	font-size:0.7em;
-	text-align:right;
-	clear:both;
-	margin-top:10px;
-}
+
+
+/*
+HOMEPAGE
+*/
+
+
+/* for the carousel */
+.list_carousel {
+	background-color: #ccc;
+	position:relative;
+	margin: 0 0 12px 0px;
+	}
+.list_carousel ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: block;
+	}
+.list_carousel li {
+	text-align: center;
+	width: 120px;
+	height: 120px;
+	overflow:hidden;
+	padding: 0;
+	margin: 6px;
+	display: block;
+	float: left;
+	}
+.list_carousel.responsive {
+	width: auto;
+	margin-left: 0;
+	}
+
+.carouselButtonPrevt {
+	position:absolute;
+	left:-10px; top:20px; 
+	font-size:40px;
+	}
+.carouselButtonNext {
+	position:absolute;
+	right:-10px; top:20px; 
+	font-size:40px;
+	}
