@@ -57,8 +57,9 @@ the padding is to compensate for the spacing between the main nav.
 	height:28px;
 	}
 
-#mastHead .liveHelp	{background-position:0 -91px; height:19px; width:80px;}
-
+#mastHead .liveHelp	{height:19px; width:130px; font-size:0.75em;}
+#mastHead .liveHelp div.icon {background-position:0 -91px; width:25px; height:19px;float:left;}
+#mastHead .liveHelp a {text-decoration:none; font-weight:bold; color:#2c99d4;}
 #mastHead .bannerContainer	{position:absolute; bottom:0; left:20%; height:28px; width:350px;}
 #mastHead .bannerContainer .banner	{width:49%; display:inline-block; margin:0; padding:0;}
 #mastHead .freeShipping	{background-position:0 -127px; height:28px; width:118px; float:left; margin-left:.2em;}
@@ -272,6 +273,7 @@ global app styles
 */
 
 .productList li	{width:175px;}
+.productList h5, .categoryList h5 {height:5em;margin-bottom:0.5em;}
 .productListItem .zlink	{color:#FC410E;}
 .pogType_attribs	{display:none;}
 
