@@ -376,7 +376,7 @@ templateID - the template id used (from app.templates)
 //assumes that you have already gotten a 'max' detail for the safecat specified data.value.
 //shows the category, plus the first three subcategories.
 			subcategory2LevelList : function($tag,data)	{
-				app.u.dump("BEGIN store_navcats.renderFormats.subcategory2LevelList");
+//				app.u.dump("BEGIN store_navcats.renderFormats.subcategory2LevelList");
 				var catSafeID; //used in the loop for a short reference.
 				var subcatDetail = data.value;
 				var o = '';

@@ -768,6 +768,7 @@ fallback is to just output the value.
 //This is for use on a category or search results page.
 //changes the text on the button based on certain attributes.
 //app.ext.myRIA.u.handleAddToCart($(this),{'action':'modal'});
+//app.ext.myRIA.u.handleAddToCart($(this),{'action':'modal'});
 			addToCartButton : function($tag,data)	{
 //				app.u.dump("BEGIN store_product.renderFunctions.addToCartButton");
 
@@ -789,22 +790,27 @@ fallback is to just output the value.
 					}
 				else	{
 					var pData = data.value['%attribs']; //shortcut
-					price = pData['zoovy:base_price'];
-					if(pData['is:preorder'])	{
-						buttonText = 'Preorder'; className = 'preorder';
-						}
-					else if(pData['is:colorful'])	{
-						buttonText = 'Choose Color'; className = 'variational colorful';
-						}
-					else if(pData['is:sizeable'])	{
-						buttonText = 'Choose Size'; className = 'variational sizeable';
-						}
-//pdata is a shortcut to attribs.
-					else if(data.value['@variations']&& data.value['@variations'].length)	{
-						buttonText = 'Choose Options'; className = 'variational';
+					if(pData)	{
+						price = pData['zoovy:base_price'];
+						if(pData['is:preorder'])	{
+							buttonText = 'Preorder'; className = 'preorder';
+							}
+						else if(pData['is:colorful'])	{
+							buttonText = 'Choose Color'; className = 'variational colorful';
+							}
+						else if(pData['is:sizeable'])	{
+							buttonText = 'Choose Size'; className = 'variational sizeable';
+							}
+	//pdata is a shortcut to attribs.
+						else if(data.value['@variations'].length)	{
+							buttonText = 'Choose Options'; className = 'variational';
+							}
+						else	{
+							}
 						}
 					else	{
-						}
+						app.u.dump("In myRIA.renderFormats.addToCartButton, data.value.%attribs not set. be sure to pass in entire parent object.",'warn');
+						} //odd. why no product record?
 					
 					}
 

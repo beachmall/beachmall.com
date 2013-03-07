@@ -53,27 +53,81 @@ app.rq.push(['script',1,app.vars.baseURL+'resources/jquery.carouFredSel-6.2.0.mi
 app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {
 	var safePID = app.u.makeSafeHTMLId(P.pid); //can't use jqSelector because productTEmplate_pid still used makesafe. planned Q1-2013 update ###
 	var $tabContainer = $( ".tabbedProductContent",$('#productTemplate_'+safePID));
-		if($tabContainer.length)	{
-			if($tabContainer.data("widget") == 'anytabs'){} //tabs have already been instantiated. no need to be redundant.
-			else	{
-				$tabContainer.anytabs();
-				}
+	if($tabContainer.length)	{
+		if($tabContainer.data("widget") == 'anytabs'){} //tabs have already been instantiated. no need to be redundant.
+		else	{
+			$tabContainer.anytabs();
 			}
-		else	{} //couldn't find the tab to tabificate.
+		}
+	else	{} //couldn't find the tab to tabificate.
 	}]);
 
+
+app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {
+	
+	var $prodPage = $(app.u.jqSelector('#','productTemplate_'+app.u.makeSafeHTMLId(P.pid))),
+	$tabContainer = $(".imageAndVideoTabs",$prodPage);
+	
+	app.u.dump(" -> $prodPage: "+$prodPage.length);
+	app.u.dump(" -> $tabContainer.length: "+$tabContainer.length);
+	app.u.dump(" -> app.u.jqSelector('#','productTemplate_'+app.u.makeSafeHTMLId(P.pid)): "+app.u.jqSelector('#','productTemplate_'+app.u.makeSafeHTMLId(P.pid)));
+	if($tabContainer.length)	{
+		if($tabContainer.data("widget") == 'anytabs'){} //tabs have already been instantiated. no need to be redundant.
+		else	{
+			$tabContainer.anytabs();
+			}
+		}
+	else	{} //couldn't find the tab to tabificate.
+	}]);
+
+/*
+
+//puts thumbnails into carousel IF there are more than 5
+app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {
+	var $prodPage = $(app.u.jqSelector('#','productTemplate_'+app.u.makeSafeHTMLId(P.pid))),
+	$imageUL = $( ".prodPageImageThumbs ul",$prodPage);
+app.u.dump("$imageUL.children().length: "+$imageUL.children().length)	
+	if($imageUL.data('isCarousel'))	{} //already a carousel. Do nothing.
+	else if($imageUL.children().length > 5)	{
+		$imageUL.data('isCarousel',true);
+		var guid = app.u.guidGenerator();
+		$('.carouselButtonPrev',$prodPage).attr('id','carouselButtonPrev_'+guid);
+		$('.carouselButtonNext',$prodPage).attr('id','carouselButtonNext_'+guid);
+
+//for whatever reason, caroufredsel needs to be executed after a moment.
+	setTimeout(function(){
+		$imageUL.carouFredSel({
+			auto: false,
+			prev: '#carouselButtonPrev_'+guid,
+			next: '#carouselButtonNext_'+guid,
+			width: '100%',
+			scroll: 2,
+	//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
+			swipe: {
+				onMouse: true,
+				onTouch: true
+				}
+			});
+		},1000); 
+
+		}
+	else	{
+		$('.carouselButtonPrev',$prodPage).hide();
+		$('.carouselButtonNext',$prodPage).hide();		
+		} //doesn't need to be a carousel
+	}]);
+
+*/
 
 
 //make sure big rootcat thumbs are hidden. restore rollover location to below instead of over.
 app.rq.push(['templateFunction','homepageTemplate','onDeparts',function(P) {
-	app.u.dump("just left the homepage")
 	$('#tier1categories .rootCatThumb').slideUp('slow');
 	$('#tier1categories .catMenu').removeAttr('style'); /* revert rollover positioning to default */
 	}]);
 
 //make sure big thumbs for root categories are visible. adjust rollover location to position over big thumbs.
-app.rq.push(['templateFunction','homepageTemplate','onInits',function(P) {
-	app.u.dump("just left the homepage")
+app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(P) {
 	$('#tier1categories .rootCatThumb').slideDown('slow');
 	$('#tier1categories .catMenu').css('bottom','35px'); /* adjust rollover positioning to appear over category images */
 	}]);

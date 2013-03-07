@@ -81,7 +81,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 <div id='appPreView'>
 <table>
 <tr>
-	<td><div class='sprite logo'>&nbsp;</div></td>
+	<td><div class='logo'><img src='images/beachmall_logo-170x85.png' width='170' height='85' alt='beachmall.com' /></div></td>
 	<td>
 
 	<div id="loader">
@@ -107,44 +107,56 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 	
 
 <header class='clearfix topNav'>
-	<nav class='floatRight percent40'>
-		<a href='#' onClick="return showContent('cart',{});">Shopping Cart: <span class='cartItemCount'>0</span> item(s)</a> |  
-		<a href='#' onClick="return showContent('checkout',{});">Checkout</a> | 
+	<nav class='floatRight'>
+		<a href='#' onClick="return showContent('cart',{});"><span class='hideMed'>Shopping </span>Cart: <span class='cartItemCount'>0</span> item(s)</a> |  
+		<a href='#' onClick="return showContent('checkout',{});" class='hideSmall'>Checkout</a> | 
 		<a href="#" onClick="return showContent('customer',{'show':'myaccount'});">Log In</a> | 
 		<a href="#" onClick="return showContent('company',{'show':'contact'});">Contact Us</a>
 		
 	</nav>
-	<div class='floatRight percent20 alignRight'>live help</div>
-	<div class='floatLeft guarantee'>100% Satisfaction Guarantee</div>
+	<div class='floatLeft sprite satisfaction hideSmall'>100% Satisfaction Guarantee</div>
 </header>
 
 <div class='wrapper whiteBG'>
 
 
-<header class='clearfix'>
+<header class='clearfix marginBottom' id='mastHead'>
 	
 	<div class='floatLeft percent20'>
-		<div class='sprite logo pointer' onClick="return showContent('category',{'navcat':'.'});"></div>
+		<div class='floatLeft logo pointer' onClick="return showContent('category',{'navcat':'.'});"><img src='images/beachmall_logo-170x85.png' width='170' height='85' alt='beachmall.com' /></div>
 	</div>
 	
-	<div class='floatLeft percent20 phone'>
-	<i class='icon-phone'></i> 1-888-975-6555
-	</div>
-	
-	<div class='floatRight percent40'>
-		<div class='marginBottom'>banner. banner. mcafee</div>
-		<div class='searchContainer'>
+	<div class='searchContainer floatRight percent40 marginBottom'>
 		<form id="headerSearchFrm" name="headerSearchFrm" action="#" class="productSearchForm" method="get">
 			<input name="KEYWORDS" value="" placeholder='keyword search' class="productSearchKeyword handleDefault" type="search">
-			<input class="search searchButton" id="headerSearchSubmit" value="SEARCH" type="submit">
+			<input class="search searchButton sprite" id="headerSearchSubmit" value="SEARCH" type="submit">
 		</form>
-		</div>
+	</div>
+	
+	<div class='bannerContainer hideSmall'>
+		<div class='banner hideMed'><div class='sprite easyReturns hideMed'></div></div>
+		<div class='banner'><div class='sprite freeShipping'></div></div>
+	</div>
+	
+	<div class='floatRight percent40 marginTop'>
+		<div class='floatLeft phone sprite'></div>
+		<div class='floatRight marginLeft hideSmall'>mcafee</div>
+		<div class='floatRight sprite liveHelp marginRight hideMed'></div>
+	
 	</div>
 	
 </header>
+
+
+
+
 <nav class="categoryNav clearfix">
 	<ul id='tier1categories' class='clearfix'></ul>
 </nav>
+
+
+
+
 <section id='main'>	
 <div id='globalMessaging' class='appMessaging'></div><!-- DO NOT REMOVE - used for some high level error handling (usually appears below breadcrumb nav or top bar) -->
 
@@ -232,22 +244,23 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 -->
 <div id='homepageTemplate' class='homeTemplate'>
 	
-	<div class="list_carousel responsive clearfix marginBottom">
-		<h2 class='prodlistTitle'>New Arrivals</h2>
-		<a class="newCarouselPrev carouselButtonPrev" href="#">prev</a>
-		<a class="newCarouselNext carouselButtonNext" href="#">next</a>
+	<h2 class='prodlistTitle'>New Arrivals</h2>
+	<div class="list_carousel responsive clearfix">
+		
+		<a class="carouselButton newCarouselPrev carouselButtonPrev" href="#">prev</a>
+		<a class="carouselButton newCarouselNext carouselButtonNext" href="#">next</a>
 
 		<ul id='homeProdSearchNewArrivals' data-bind='var: elastic-native({"size":"20","mode":"elastic-native","filter":{"term":{"tags":"IS_NEWARRIVAL"}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsNoPreview;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults'></ul>
 
 	</div>
 
 
-	<div class="list_carousel responsive clearfix marginBottom">
-		<h2 class='prodlistTitle'>Best Sellers</h2>
-		<a class="bestCarouselPrev carouselButtonPrev" href="#">prev</a>
-		<a class="bestCarouselNext carouselButtonNext" href="#">next</a>
+	<h2 class='prodlistTitle'>Best Sellers</h2>
+	<div class="list_carousel responsive clearfix">
+		<a class="carouselButton bestCarouselPrev carouselButtonPrev" href="#">prev</a>
+		<a class="carouselButton bestCarouselNext carouselButtonNext" href="#">next</a>
 
-		<ul id='homeProdSearchBestSellers' data-bind='var: elastic-native({"size":"12","mode":"elastic-native","filter":{"term":{"tags":"IS_BESTSELLER"}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResults;' class='listStyleNone fluidList clearfix noPadOrMargin productList'></ul>
+		<ul id='homeProdSearchBestSellers' data-bind='var: elastic-native({"size":"20","mode":"elastic-native","filter":{"term":{"tags":"IS_BESTSELLER"}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsNoPreview;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults'></ul>
 
 	</div>
 
@@ -498,23 +511,27 @@ SANITY -> if you change the height and width of this image, change the .minimalM
 
 	<li id='productListTemplateThumb' class='loadingBG  ' >
 		<div class='prodThumbContainer pointer' onClick="showContent('product',{'pid':$(this).attr('data-pid')});" data-bind='var:product(pid);format:assignAttribute; attribute:data-pid;'>
-		<img src='%PROJECT_URL%/blank.gif' class='prodThumb' data-bind='var: product(zoovy:prod_image1); format:imageURL;' width='55' height='55' />
+		<img src='blank.gif' class='prodThumb' data-bind='var: product(zoovy:prod_image1); format:imageURL;' width='55' height='55' />
 		</div>
 	</li>
+
+
+
+
 
 
 	<li id='productListTemplateBundle' class='loadingBG ' >
 		
 <div class='prodThumbAndMT pointer' onMouseOver="myControl.ext.myRIA.util.handleProdlistMagicThumb($(this));">
-	<div class='mtClickToZoom'><a href='#' data-bind="var:product(zoovy:prod_image1); format:setHrefToImageUrl; extension:myRIA;" class='MagicThumb'><img src='%PROJECT_URL%/blank.gif' class='prodThumb' width='95' height='28' /></a></div>
-	<div class='prodThumbContainer' onClick="showContent('product',{'pid':$(this).attr('data-pid')});" data-bind='var:product(pid);format:assignAttribute; attribute:data-pid;'><img src='%PROJECT_URL%/blank.gif' class='prodThumb' data-bind='var: product(zoovy:prod_image1); format:imageURL;' width='120' height='100' /></div>
+	<div class='mtClickToZoom'><a href='#' data-bind="var:product(zoovy:prod_image1); format:setHrefToImageUrl; extension:beachmart;" class='MagicThumb'><img src='blank.gif' class='prodThumb' width='95' height='28' /></a></div>
+	<div class='prodThumbContainer' onClick="showContent('product',{'pid':$(this).attr('data-pid')});" data-bind='var:product(pid);format:assignAttribute; attribute:data-pid;'><img src='blank.gif' class='prodThumb' data-bind='var: product(zoovy:prod_image1); format:imageURL;' width='120' height='100' /></div>
 </div>
 
 <div class='prodContent pointer'  onClick="showContent('product',{'pid':$(this).attr('data-pid')});" data-bind='var:product(pid);format:assignAttribute; attribute:data-pid;'>		
 	<h5 data-bind='var: product(zoovy:prod_name); format:text;'></h5>
 
 	<div class='pr_snippet_category'>
-		<div data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews;'></div>
+		<div data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews_reviews;'></div>
 	</div>
 
 	<div class='ztable_row_small stid' data-bind='var: product(sku); format:text; pretext: Sku: ;'></div>
@@ -534,10 +551,6 @@ SANITY -> if you change the height and width of this image, change the .minimalM
 	</li>
 
 
-
-
-
-
 </ul>
 
 
@@ -548,7 +561,22 @@ SANITY -> if you change the height and width of this image, change the .minimalM
 
 
 
+
+
+
 <!--
+
+
+##############################################
+
+
+PRODUCT TEMPLATE
+
+
+##############################################
+
+
+
 form - the form id gets modified to be unique in case multiple viewers are open at the same time. _pid is appended to it.
 NOTE - currently, variations.js supports only 1 viewer at a time. this will change.
 2 fieldsets are present:
@@ -575,7 +603,7 @@ this will likely become more flexible in the future. ###
 
 
 
-<table id='prodViewerTable' class='prodViewerTable marginBottom'>
+<table class='prodViewerTable marginBottom'>
 <tr>
 	<td class='imageContainer'>
 
@@ -583,16 +611,16 @@ this will likely become more flexible in the future. ###
 
 <div>
 <!-- @JT -> need tabs here -->
-	<ul class='tabs'>
+	<ul class='imageAndVideoTabs'>
 		<li ><a href="#prodImages" class='ui-button-text-icon-primary' ><span><img src='images/bm12_cameraicon-25x21.png' width="25" height='21' alt='' /></span>Images</a></li>
 		<li class='displayNone' data-bind='var: product(youtube:videoid); defaultVar: product(zoovy:prod_url_video); format:showIfSet;'><a href="#prodVideo"><span><img src='images/bm12_videoicon-24x24.png' width="24" height='24' alt='' /></span>Video</a></li>
 	</ul>
 
 
 
-	<div id='prodImages'>
+	<div class='prodPageImages'  data-anytab-content='prodImages'>
 		
-		<img src='images/blank.gif' class='prodBigImage' id='prodBigImage' data-bind='var: product(zoovy:prod_image1); format: magicZoomPlus; extension: magicToolBox_mzp;' width='380' height='380' />
+		<img src='blank.gif' class='prodBigImage' name='prodBigImage' data-bind='var: product(zoovy:prod_image1); format: magicZoomPlus; extension: magicToolBox_mzp;' width='380' height='380' />
 		
 		<div class='zhint'>Mouse over main image to zoom in</div>
 		
@@ -600,14 +628,11 @@ this will likely become more flexible in the future. ###
 			
 
 
-<div class='slideshowContainer'>
-	<div class='next carouselNav carouselNavLgE displayNone'></div>
-	<div class='prev carouselNav carouselNavLgW displayNone'></div>
-	<div id='imageSlideshow'>
-		<ul data-bind='var: product(pid); format: productImages; extension: beachmart;'></ul>
-	</div>
+<div class='prodPageImageThumbs list_carousel responsive clearfix'>
+	<a class="carouselButtonPrev" href="#">prev</a>
+	<a class="carouselButtonNext" href="#">next</a>
+	<ul data-bind='var: product(pid); format: productImages; extension: beachmart;'></ul>
 </div>
-
 
 			
 		</div>
@@ -617,10 +642,10 @@ this will likely become more flexible in the future. ###
 	
 
 
-	<div id="prodVideo" data-bind='var: product(youtube:videoid); format:youtubeVideo; extension:myRIA;'>
+	<div data-anytab-content='prodVideo' >
 		<div id="mediaplayer"></div>
-		
-		<div data-bind="var:product(zoovy:prod_url_video); format:iframe; extension:myRIA;"></div>
+	Video goes here	
+<!--		<div data-bind='var: product(youtube:videoid); format:youtubeVideo; extension:beachmart;'></div> -->
 		
 	</div>
 
@@ -688,7 +713,7 @@ this will likely become more flexible in the future. ###
 
 	<div class='mainProdColumn marginBottom'>
 
-	<img src='images/blank.gif' data-bind='var: product(zoovy:prod_image99); format: magicThumb; extension: magicToolBox;' width='300' height='85' />
+	<img src='blank.gif' data-bind='var: product(zoovy:prod_image99); format: magicThumb; extension:  magicToolBox_mzp;' width='300' height='85' />
 
 	<div id="prodSiblings" class='clearfix marginBottom'>
 		<ul id='prodlistSiblings' class='productList listStyleNone noPadOrMargin fluidList clearfix' data-bind="var: product(user:grp_siblings); format:productList; extension:store_prodlist;loadsTemplate:productListTemplateThumb;hide_multipage:true;before:<b>Available Colors:</b> <span class='zhint'>(click image to select)</span> ; withInventory:1; withVariations:1;"></ul>
@@ -742,7 +767,7 @@ this will likely become more flexible in the future. ###
 	
 	<div class='rightProdColumn'>
 	
-	<div data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews;'></div>
+	<div data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews_reviews;'></div>
 	<br />
 	
 	<div class='txtBorderBox' data-bind='var: product(zoovy:prod_mfg); format:searchLink; extension:myRIA; pretext: &#187; View All ; posttext: Product;'></div>
@@ -788,7 +813,7 @@ this will likely become more flexible in the future. ###
 	</div>
 	
 	<div data-anytab-content="prodSizing">
-		<img src='images/blank.gif' data-bind='var: product(user:prod_sizing_img); format: magicThumb; extension: magicToolBox;' width='250' height='250' />
+		<img src='blank.gif' data-bind='var: product(user:prod_sizing_img); format: magicThumb; extension:  magicToolBox_mzp;' width='250' height='250' />
 		<div data-bind='var: product(user:prod_sizing_txt);  format:wiki; wikiFormats:myRIA; '></div>
 	</div>
 
@@ -865,7 +890,7 @@ this will likely become more flexible in the future. ###
 </table>
 
 <br />
-<div data-bind='var: product(pid); format:reviewEngine; extension:powerReviews;'></div>
+<div data-bind='var: product(pid); format:reviewEngine; extension:powerReviews_reviews;'></div>
 
 
 
@@ -1744,6 +1769,7 @@ The 'data-action' attribute is used to assign an onclick.
 <ul class='debugQuickLinks'>
 	<li>Store Links
 	<ul>
+		<li><a href='#product?pid=TEST' class='bindByAnchor'>test prod</a></li>
 		<li><a href='#' onClick="return showContent('homepage',{});">Homepage</a></li>
 		<li><a href='#' onClick="return showContent('customer',{'show':'orders'});">Orders</a></li>
 		<li><a href='#' onClick="return showContent('cart',{'show':'cart'});">Cart</a></li>
