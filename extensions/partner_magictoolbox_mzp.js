@@ -64,12 +64,11 @@ var magicToolBox_mzp = function() {
 				onSuccess : function(){
 					app.u.dump("BEGIN magictoolbox.callbacks.startExtension");
 					app.rq.push(['css',0,'examples/magictoolbox/magiczoomplus.css','mzpStylesheet']);
-					app.rq.push(['script',0,'examples/magictoolbox/magiczoomplus.js',function(){
-						MagicZoomPlus.start();
-						app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {app.u.dump("Refreshing MZP."); setTimeout(function(){MagicZoomPlus.refresh();},2000)}]);
-						}]);
 //						app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {app.u.dump("Refreshing MZP."); MagicZoomPlus.refresh();}]);
-					
+					app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {
+						app.u.dump("Refreshing MZP.");
+						setTimeout(function(){MagicZoomPlus.refresh();},2000)
+						}]);
 					},
 				onError : function(d){}
 				}
