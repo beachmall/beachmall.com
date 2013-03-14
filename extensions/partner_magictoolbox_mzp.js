@@ -62,13 +62,14 @@ var magicToolBox_mzp = function() {
 				},
 			startExtension : {
 				onSuccess : function(){
-//					app.u.dump("BEGIN magictoolbox.callbacks.startExtension");
+					app.u.dump("BEGIN magictoolbox.callbacks.startExtension");
 					app.rq.push(['css',0,'examples/magictoolbox/magiczoomplus.css','mzpStylesheet']);
-//						app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {app.u.dump("Refreshing MZP."); MagicZoomPlus.refresh();}]);
-					app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {
-						app.u.dump("Refreshing MZP.");
-						setTimeout(function(){MagicZoomPlus.refresh();},2000)
+					app.rq.push(['script',0,'examples/magictoolbox/magiczoomplus.js',function(){
+						MagicZoomPlus.start();
+						app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {app.u.dump("Refreshing MZP."); setTimeout(function(){MagicZoomPlus.refresh();},2000)}]);
 						}]);
+//						app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {app.u.dump("Refreshing MZP."); MagicZoomPlus.refresh();}]);
+					
 					},
 				onError : function(d){}
 				}
@@ -83,6 +84,7 @@ var magicToolBox_mzp = function() {
 		renderFormats : {
 
 			magicZoomPlus : function($tag,data)	{
+				app.u.dump('BEGIN myRIA.renderFormats.magicZoomPlus');
 				var bgcolor = data.bindData.bgcolor ? data.bindData.bgcolor : 'ffffff'
 				if(data.value)	{
 					var imgSrc = app.u.makeImage({'tag':0,'w':$tag.attr('width'),'h':$tag.attr('height'),'name':data.value,'b':bgcolor});
@@ -96,6 +98,7 @@ var magicToolBox_mzp = function() {
 				},
 
 			magicThumb : function($tag,data)	{
+				app.u.dump('BEGIN myRIA.renderFormats.magicThumb');
 				var bgcolor = data.bindData.bgcolor ? data.bindData.bgcolor : 'ffffff'
 				if(data.value)	{
 					var imgSrc = app.u.makeImage({'tag':0,'w':$tag.attr('width'),'h':$tag.attr('height'),'name':data.value,'b':bgcolor});
@@ -113,6 +116,7 @@ var magicToolBox_mzp = function() {
 // used to display product image 1 thru X where X is the last image. checks spot 1 - 50
 // product id should be used as var
 			productImages : function($tag,data)	{
+//				app.u.dump("BEGIN myRIA.renderFormats.productImages ["+data.value+"]");
 				var pdata = app.data['appProductGet|'+data.value]['%attribs']; //short cut to product object in memory.
 				var imgs = ''; //all the html for all the images. appended to $tag after loop.
 				var imgName; //recycled in loop.

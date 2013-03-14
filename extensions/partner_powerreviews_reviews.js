@@ -104,7 +104,7 @@ var powerReviews_reviews = function() {
 
 			startExtension : {
 				onSuccess : function(){
-//					app.u.dump("BEGIN powerReviews_reviews.callbacks.startExtension");
+					app.u.dump("BEGIN powerReviews_reviews.callbacks.startExtension");
 					app.rq.push(['script',0,'http://cdn.powerreviews.com/repos/'+app.ext.powerReviews_reviews.vars.merchantID+'/pr/pwr/engine/js/full.js']);
 					app.rq.push(['css',0,'http://cdn.powerreviews.com/repos/'+app.ext.powerReviews_reviews.vars.merchantID+'/pr/pwr/engine/pr_styles_review.css','prBaseStylesheet']);
 					app.rq.push(['css',0,'http://cdn.powerreviews.com/aux/'+app.ext.powerReviews_reviews.vars.merchantID+'/'+app.ext.powerReviews_reviews.vars.groupID+'/css/powerreviews_express.css','prMerchantOverrideStylesheet']);

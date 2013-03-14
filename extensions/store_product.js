@@ -393,7 +393,7 @@ addToCart : function (pid,$form){
 //				app.u.dump("BEGIN store_product.renderFormats.atcVariations");
 				var pid = data.value; 
 				var formID = $tag.closest('form').attr('id'); //move up the dom tree till the parent form is found
-
+				$tag.empty(); /* prodlist fix */
 //				app.u.dump(" -> pid: "+pid);
 //				app.u.dump(" -> formID: "+formID);
 				
@@ -402,7 +402,7 @@ addToCart : function (pid,$form){
 					if(!$.isEmptyObject(app.data['appProductGet|'+pid]['@variations']) && app.model.countProperties(app.data['appProductGet|'+pid]['@variations']) > 0)	{
 $("<div \/>").attr('id','JSONpogErrors_'+pid).addClass('zwarn').appendTo($tag);
 
-var $display = $("<div \/>").attr('id','JSONPogDisplay_'+pid); //holds all the pogs and is appended to at the end.
+var $display = $("<div \/>"); //holds all the pogs and is appended to at the end.
 
 pogs = new handlePogs(app.data['appProductGet|'+pid]['@variations'],{"formId":formID,"sku":pid});
 var pog;
@@ -527,23 +527,17 @@ it has no inventory AND inventory matters to merchant
 			getProductInventory : function(pid)	{
 //				app.u.dump("BEGIN store_product.u.getProductInventory ["+pid+"]");
 				var inv = false;
-//make sure data is available.
-				if(app.model.fetchData('appProductGet|'+pid))	{
 //if variations are NOT present, inventory count is readily available.
-					if(app.data['appProductGet|'+pid] && $.isEmptyObject(app.data['appProductGet|'+pid]['@variations']) && !$.isEmptyObject(app.data['appProductGet|'+pid]['@inventory']))	{
-						inv = Number(app.data['appProductGet|'+pid]['@inventory'][pid].inv);
-	//					app.u.dump(" -> item has no variations. inv = "+inv);
-						}
-	//if variations ARE present, inventory must be summed from each inventory-able variation.
-					else	{
-						for(var index in app.data['appProductGet|'+pid]['@inventory']) {
-							inv += Number(app.data['appProductGet|'+pid]['@inventory'][index].inv)
-							}
-	//					app.u.dump(" -> item HAS variations. inv = "+inv);
-						}
+				if($.isEmptyObject(app.data['appProductGet|'+pid]['@variations']) && !$.isEmptyObject(app.data['appProductGet|'+pid]['@inventory']))	{
+					inv = Number(app.data['appProductGet|'+pid]['@inventory'][pid].inv);
+//					app.u.dump(" -> item has no variations. inv = "+inv);
 					}
+//if variations ARE present, inventory must be summed from each inventory-able variation.
 				else	{
-					app.u.dump("WARNING! attempted to access inventory record of a product that is not in memory.");
+					for(var index in app.data['appProductGet|'+pid]['@inventory']) {
+						inv += Number(app.data['appProductGet|'+pid]['@inventory'][index].inv)
+						}
+//					app.u.dump(" -> item HAS variations. inv = "+inv);
 					}
 				return inv;
 				},
