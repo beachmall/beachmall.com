@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"20130307162400",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"20130314175100",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"",
 	"httpsURL":"https://www-beachmall-com.app-hosted.com/",
@@ -301,9 +301,9 @@ don't modify the 'data-templateid' unless you are changing template names and up
 
 	<img data-bind="var: category(%page.banner1); format: banner; editor: banner; height:250; width:750; extension: myRIA;" />
 
-	<h2 data-bind="var: category(%page.header); format: text; editor: text;"></h2>
+	<h2 class='blah5' data-bind="var: category(%page.header); format: text; editor: text;"></h2>
 
-	<p data-bind="var: category(%page.description); format:wiki; wikiFormats:myRIA; editor: textarea;"></p>
+	<p class='blah' data-bind="var: category(%page.description); format:wiki; wikiFormats:myRIA; editor: textarea;"></p>
 
 	<ul data-bind="var: category(@subcategoryDetail); format: categoryList; extension: store_navcats; loadsTemplate: categoryListTemplate; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin categoryList'></ul><!-- outputs a list of subcategories -->
 
@@ -623,7 +623,7 @@ this will likely become more flexible in the future. ###
 
 <!-- images and video tabs -->
 
-<div>
+<div class='prodTabs tabbedProductContent ui-tabs ui-widget ui-widget-content ui-corner-all'>
 <!-- @JT -> need tabs here -->
 	<ul class='imageAndVideoTabs'>
 		<li ><a href="#prodImages" class='ui-button-text-icon-primary' ><span><img src='images/bm12_cameraicon-25x21.png' width="25" height='21' alt='' /></span>Images</a></li>
@@ -700,7 +700,7 @@ this will likely become more flexible in the future. ###
 
 	</div>
 	
-	<div class='topBottomBorder marginBottom clearfix shippingInformation'>
+	<!-- <div class='topBottomBorder marginBottom clearfix shippingInformation'>
 		<div class='floatLeft'>
 			<div data-bind="var:product(is:shipfree); format:showIfSet; className:shipfree;"></div>
 
@@ -721,7 +721,7 @@ this will likely become more flexible in the future. ###
 
 		</div>
 	</div>
-
+	-->
 
 
 

@@ -227,7 +227,6 @@ PRODUCT PAGE
 */
 
 
-
 .prodViewerContainer .ui-tabs .ui-tabs-nav li a	{font-size:13px; font-family:Helvetica, Arial, sans-serif; padding:6px;}
 
 .prodViewerContainer .ui-widget-header	{padding:3px 3px 0 3px; margin:0; border-width:0; border-bottom-width:1px;}
@@ -320,7 +319,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6db3f2', end
 
 .imageContainer .ui-tabs .ui-tabs-panel	{padding:6px;}
 .imageContainer .zhint	{text-align:center; padding:6px 0;}
-.imageContainer	{width:320px; padding:0px;}
+.imageContainer	{width:320px; padding:0px 20px 0px 0px;}
 #prodImageVideoTabs	{margin-right:24px;}
 
 .prodPageImages	{width:380px;}
@@ -674,3 +673,8 @@ some shared styles, pulled from cat layout but that will impact, potentially, mo
 	}
 
 
+.blah {background-color: #ff0;}
+.blah2 {background-color: #C3F;}
+.blah3 {background-color:#F0F;}
+.blah4 {background-color: #0FF;}
+.blah5 {background-color: #3F0;}
