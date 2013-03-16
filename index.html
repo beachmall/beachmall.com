@@ -174,7 +174,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 <div id='globalMessaging' class='appMessaging'></div><!-- DO NOT REMOVE - used for some high level error handling (usually appears below breadcrumb nav or top bar) -->
 
 <!-- These add specific functionality for the app. In most cases, you want to leave them alone. -->
-<div id='appNav'>
+<div id='appNav clearfix'>
 	<button class='displayNone prodDetailNextItemButton' data-app-role='prodDetailNextItemButton'>Next</button>
 	<button class='displayNone prodDetailPrevItemButton' data-app-role='prodDetailPrevItemButton'>Previous</button>
 </div>
@@ -668,132 +668,107 @@ this will likely become more flexible in the future. ###
 </div>
 	
 	
-	</td><!-- product images and video -->
+</td><!-- product images and video -->
 
-	<td class='prodSummaryContainer marginBottom no_underline'>
+<td class='prodSummaryContainer marginBottom no_underline'>
 
+    <!-- qa taf and print buttons -->
+    <div class='rightProdColumn marginBottom'>
+        
+        <!-- reviews, similar items, mfg link, etc -->
+        <div data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews_reviews;'></div>
+        <br />
+        
+        <!-- Veiw all Brands -->        
+        <div class='txtBorderBox' data-bind='var: product(zoovy:prod_mfg); format:searchLink; extension:myRIA; pretext: &#187; View All ; posttext: Product;'></div>
+            %PROD_PRODCATS%
+        <div data-bind='var:product(zoovy:qty_price);format:quantityDiscounts; extension:store_product; pretext:Quantity Discounts:; className:marginBottom;'></div>	
+        <img src='images/bm12_p_toprtcol-180x89.jpg' alt='' width='180' height='89' usemap="#prodMap" />
+        
+        <!-- Guarantee and returns -->
+        <div class='displayNone zsmall alignRight' data-bind='var: product(user:prod_guarantee); format:showIfSet;'>
+            <a href='#' class='tipify'>Guarantee &amp; Returns</a>
+            <div class='toolTip' data-bind='var: product(user:prod_guarantee); format:wiki; wikiFormats:myRIA;'></div>
+        </div>
+        
+        <!-- list of siblings -->
+        <div id="prodSiblings" class='clearfix marginBottom'>
+            <ul id='prodlistSiblings' class='productList listStyleNone noPadOrMargin fluidList clearfix' data-bind="var: product(user:grp_siblings); format:productList; extension:store_prodlist;loadsTemplate:productListTemplateThumb;hide_multipage:true;before:<b>Available Colors:</b> <span class='zhint'>(click image to select)</span> ; withInventory:1; withVariations:1;"></ul>
+        </div>	
+        
 
-	<div class='mainProdColumn marginBottom'>
-	
-		<h1 data-bind='var: product(zoovy:prod_name); format:text;' class='prodName'></h1>
-		
-		<div class='prodStidAndMfg clearfix'>
-			<span data-bind='var: product(pid); format:text; pretext: Item No: ;'></span>
-			<span data-bind='var: product(zoovy:prod_mfg); format:searchLink; extension:myRIA; pretext: Manufacturer: ;'></span>
-		</div>
-		
-		<div class='priceContainer clearfix' data-bind="var: product(pid); format:priceRetailSavings; extension:beachmart;"></div>
+    </div>
 
-	</div>
+<!-- <div class='topBottomBorder marginBottom clearfix shippingInformation'>
+        <div class='floatLeft'>
+            <div data-bind="var:product(is:shipfree); format:showIfSet; className:shipfree;"></div>
 
-
-	<!-- qa taf and print buttons -->
-	<div class='rightProdColumn marginBottom'>
-		<img src='images/bm12_p_toprtcol-180x89.jpg' alt='' width='180' height='89' usemap="#prodMap" />
-		
-		<div class='displayNone zsmall alignRight' data-bind='var: product(user:prod_guarantee); format:showIfSet;'>
-		<a href='#' class='tipify'>Guarantee &amp; Returns</a>
-		<div class='toolTip' data-bind='var: product(user:prod_guarantee); format:wiki; wikiFormats:myRIA;'></div>
-		</div>
-		
-		
-
-	</div>
-	
-	<!-- <div class='topBottomBorder marginBottom clearfix shippingInformation'>
-		<div class='floatLeft'>
-			<div data-bind="var:product(is:shipfree); format:showIfSet; className:shipfree;"></div>
-
-			<div class='displayNone' data-bind='var:product(is:shipfree); format:showIfSet;'>
-				<div class='displayNone' data-bind='var:product(user:prod_shipping); format:showIfSet;'>
-					<a href='#' class='tipify'>Offer Details</a>
-					<div class='toolTip' data-bind='var: product(user:prod_shipping); format:wiki; wikiFormats:myRIA;'></div>
-				</div>
-			</div>
-
-
-		</div>
-		<div class='floatLeft'>
-			<div class='putLoadingHere loadingBG'>
-				<span class='loadingText'>Acquiring Shipping Estimates</span>
-				<div class='transitContainer'></div>
-			</div>
-
-		</div>
-	</div>
-	-->
+            <div class='displayNone' data-bind='var:product(is:shipfree); format:showIfSet;'>
+                <div class='displayNone' data-bind='var:product(user:prod_shipping); format:showIfSet;'>
+                    <a href='#' class='tipify'>Offer Details</a>
+                    <div class='toolTip' data-bind='var: product(user:prod_shipping); format:wiki; wikiFormats:myRIA;'></div>
+                </div>
+            </div>
 
 
+        </div>
+        <div class='floatLeft'>
+            <div class='putLoadingHere loadingBG'>
+                <span class='loadingText'>Acquiring Shipping Estimates</span>
+                <div class='transitContainer'></div>
+            </div>
 
-	<div class='mainProdColumn marginBottom'>
+        </div>
+    </div>
+-->
 
-	<img src='blank.gif' data-bind='var: product(zoovy:prod_image99); format: magicThumb; extension:  magicToolBox_mzp;' width='300' height='85' />
+    <div class='mainProdColumn marginBottom'>
+    
+        <h1 data-bind='var: product(zoovy:prod_name); format:text;' class='prodName'></h1>
+        <div class='prodStidAndMfg clearfix'>
+            <span data-bind='var: product(pid); format:text; pretext: Item No: ;'></span>
+            <span data-bind='var: product(zoovy:prod_mfg); format:searchLink; extension:myRIA; pretext: Manufacturer: ;'></span>
+        </div>
+        <div class='priceContainer clearfix' data-bind="var: product(pid); format:priceRetailSavings; extension:beachmart;"></div>
 
-	<div id="prodSiblings" class='clearfix marginBottom'>
-		<ul id='prodlistSiblings' class='productList listStyleNone noPadOrMargin fluidList clearfix' data-bind="var: product(user:grp_siblings); format:productList; extension:store_prodlist;loadsTemplate:productListTemplateThumb;hide_multipage:true;before:<b>Available Colors:</b> <span class='zhint'>(click image to select)</span> ; withInventory:1; withVariations:1;"></ul>
-	</div>
-	
-	
-	<form data-bind='var: product(pid); format:atcForm; extension:store_product;' class='prodViewerAddToCartForm clearfix' id='prodViewerAddToCartFrm' action='#' onSubmit="myControl.ext.myRIA.util.handleAddToCart(this.id,{'action':'modal'});  return false;">
-	
-		<fieldset data-bind='var: product(pid); format:atcVariations; extension:store_product;' class='borderNone clearfix'></fieldset>
+<!-- not sure about this img yet -->	
+        <img src='blank.gif' data-bind='var: product(zoovy:prod_image99); format: magicThumb; extension:  magicToolBox_mzp;' width='300' height='85' />
+        
+        <form data-bind='var: product(pid); format:atcForm; extension:store_product;' class='prodViewerAddToCartForm clearfix' id='prodViewerAddToCartFrm' action='#' onSubmit="myControl.ext.myRIA.util.handleAddToCart(this.id,{'action':'modal'});  return false;">
+    
+            <fieldset data-bind='var: product(pid); format:atcVariations; extension:store_product;' class='borderNone clearfix'></fieldset>
+    
+            <div class='clearfix marginBottom'>
+                <div class='floatLeft'><span id="buySAFE_Kicker" name="buySAFE_Kicker" type="Kicker Guaranteed Border 200x40" class='floatLeft'></span></div>
+                <div class='floatRight alignRight'>
+                    <fieldset data-bind='var: product(pid); format:atcQuantityInput; extension:store_product; pretext:Quantity: ;' class='borderNone' ></fieldset>
+                </div>
+            </div>
+                    
+            <div class='alignRight'>
+                <fieldset class='borderNone floatRight'>
+                    <input type='submit' value='Add to Cart' class='ui-button ui-button-text ui-corner-all ui-state-active addToCartButton displayNone' data-bind='var: product(pid); format:addToCartButton; extension:myRIA;' id='addToCartBtn' />
+                    <div class='displayNone zsmall alignRight' data-bind='var: product(user:prod_shipping); format:showIfSet;'><a href='#' onClick="myControl.ext.myRIA.action.showProdAttInDialog($(this).attr('data-pid'),'user:prod_shipping'); return false;" data-bind='var:product(pid);format:assignAttribute; attribute:data-pid;'>Shipping Surcharge May Apply</a></div>
+                </fieldset>
+                <!-- anchor is for tab container so tabs are still visible when page jumps down -->
+                <span class='floatRight sizingChartLink displayNone' data-bind='var:product(user:prod_sizing_txt); format:showIfSet;'><a href='#tabbedProductContentTD' onClick="$prodInfotabs.tabs('select', $('li',$('#tabbedProductContent .tabs')).index($('#sizingTab')));">Sizing Chart</a></span>   
+            </div>
+            
+        </form>
 
-		<div class='clearfix marginBottom'>
-			<div class='floatLeft'><span id="buySAFE_Kicker" name="buySAFE_Kicker" type="Kicker Guaranteed Border 200x40" class='floatLeft'></span></div>
-			<div class='floatRight alignRight'>
-				<fieldset data-bind='var: product(pid); format:atcQuantityInput; extension:store_product; pretext:Quantity: ;' class='borderNone' ></fieldset>
-			</div>
-		</div>
-				
-		<div class=' alignRight'>
-		
-		
-		<fieldset class='borderNone floatRight'>
-		
-		<input type='submit' value='Add to Cart' class='ui-button ui-button-text ui-corner-all ui-state-active addToCartButton displayNone' data-bind='var: product(pid); format:addToCartButton; extension:myRIA;' id='addToCartBtn' />
+        <div class='clearfix'><br /></div>
+    
+        <div class="addthis_toolbox addthis_default_style alignRight">
+            <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+            <a class="addthis_button_tweet"></a>
+            <a class="addthis_button_pinterest_pinit"></a>
+            <a class="addthis_counter addthis_pill_style"></a>
+        </div>
 
+    </div> <!-- END mainProdColumn -->
 
-		<div class='displayNone zsmall alignRight' data-bind='var: product(user:prod_shipping); format:showIfSet;'><a href='#' onClick="myControl.ext.myRIA.action.showProdAttInDialog($(this).attr('data-pid'),'user:prod_shipping'); return false;" data-bind='var:product(pid);format:assignAttribute; attribute:data-pid;'>Shipping Surcharge May Apply</a></div>
-		
-		</fieldset>
-		<!-- anchor is for tab container so tabs are still visible when page jumps down -->
-		<span class='floatRight sizingChartLink displayNone' data-bind='var:product(user:prod_sizing_txt); format:showIfSet;'><a href='#tabbedProductContentTD' onClick="$prodInfotabs.tabs('select', $('li',$('#tabbedProductContent .tabs')).index($('#sizingTab')));">Sizing Chart</a></span>
-				
-		</div>
-	</form>
-
-
-	<div class='clearfix'><br /></div>
-
-	<div class="addthis_toolbox addthis_default_style alignRight">
-<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-<a class="addthis_button_tweet"></a>
-<a class="addthis_button_pinterest_pinit"></a>
-<a class="addthis_counter addthis_pill_style"></a>
-	</div>
-	
-	
-	</div>
-	
-	
-	
-	<!-- reviews, similar items, mfg link, etc -->
-	
-	<div class='rightProdColumn'>
-	
-	<div data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews_reviews;'></div>
-	<br />
-	
-	<div class='txtBorderBox' data-bind='var: product(zoovy:prod_mfg); format:searchLink; extension:myRIA; pretext: &#187; View All ; posttext: Product;'></div>
-	%PROD_PRODCATS%
-	<div data-bind='var:product(zoovy:qty_price);format:quantityDiscounts; extension:store_product; pretext:Quantity Discounts:; className:marginBottom;'></div>
-	
-
-	</div>
-
-	
-	
-	</td>
+</td> <!-- END prodSummaryContainer -->
+    
 </tr>
 </table>
 <table class='prodViewerContainer'>
