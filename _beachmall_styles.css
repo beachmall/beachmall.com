@@ -227,10 +227,10 @@ PRODUCT PAGE
 */
 
 
-.prodViewerContainer .ui-tabs .ui-tabs-nav li a	{font-size:13px; font-family:Helvetica, Arial, sans-serif; padding:6px;}
+.prodTabViewContainer .ui-tabs .ui-tabs-nav li a	{font-size:13px; font-family:Helvetica, Arial, sans-serif; padding:6px;}
 
-.prodViewerContainer .ui-widget-header	{padding:3px 3px 0 3px; margin:0; border-width:0; border-bottom-width:1px;}
-.prodViewerContainer .ui-tabs	{padding:0;}
+.prodTabViewContainer .ui-widget-header	{padding:3px 3px 0 3px; margin:0; border-width:0; border-bottom-width:1px;}
+.prodTabViewContainer .ui-tabs	{padding:0;}
 .ui-tabs .ui-tabs-nav li	{margin-right:2px;}
 
 
@@ -319,7 +319,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6db3f2', end
 
 .imageContainer .ui-tabs .ui-tabs-panel	{padding:6px;}
 .imageContainer .zhint	{text-align:center; padding:6px 0;}
-.imageContainer	{width:320px; padding:0px 20px 0px 0px;}
+.imageContainer	{width:402px; padding:0px 20px 0px 0px; float:left;}
 #prodImageVideoTabs	{margin-right:24px;}
 
 .prodPageImages	{width:380px;}
@@ -327,6 +327,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6db3f2', end
 Top content area (price, add to cart, etc)
 */
 
+.prodSummaryContainer.marginBottom.no_underline {width:106%;}
+.leftProdColumn {width: 78%; float:left;}
 
 h1.prodName	{font-size:18px; margin:0; padding:0; margin-bottom:6px;}
 .prodStidAndMfg span	{padding-right:24px; font-size:12px;}
@@ -381,8 +383,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b7deed', end
 	}
 
 
-.mainProdColumn	{float:left; width:350px;}
-.rightProdColumn	{float:right; width:180px; position:relative;}
+.mainProdColumn	{float:left; width:500px;}
+.rightProdColumn	{float:right; width:249px; position:relative;}
 
 .priceContainer .basePrice	{float:left;}
 .priceContainer .savings	{padding-left:24px;}

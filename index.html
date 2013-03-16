@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"20130314175100",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"201303161421100",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"",
 	"httpsURL":"https://www-beachmall-com.app-hosted.com/",
@@ -615,62 +615,191 @@ this will likely become more flexible in the future. ###
 
 <ul class='clearfix noPadOrMargin fluidList breadcrumb' data-bind='var: session(session.recentCategories.0); format:breadcrumb; extension:store_navcats; loadsTemplate: breadcrumbTemplate;'></ul>
 
-
-
-<table class='prodViewerTable marginBottom'>
-<tr>
-	<td class='imageContainer'>
-
-<!-- images and video tabs -->
-
-<div class='prodTabs tabbedProductContent ui-tabs ui-widget ui-widget-content ui-corner-all'>
-<!-- @JT -> need tabs here -->
-	<ul class='imageAndVideoTabs'>
-		<li ><a href="#prodImages" class='ui-button-text-icon-primary' ><span><img src='images/bm12_cameraicon-25x21.png' width="25" height='21' alt='' /></span>Images</a></li>
-		<li class='displayNone' data-bind='var: product(youtube:videoid); defaultVar: product(zoovy:prod_url_video); format:showIfSet;'><a href="#prodVideo"><span><img src='images/bm12_videoicon-24x24.png' width="24" height='24' alt='' /></span>Video</a></li>
-	</ul>
-
-
-
-	<div class='prodPageImages'  data-anytab-content='prodImages'>
-		
-		<img src='blank.gif' class='prodBigImage' name='prodBigImage' data-bind='var: product(zoovy:prod_image1); format: magicZoomPlus; extension: magicToolBox_mzp;' width='380' height='380' />
-		
-		<div class='zhint'>Mouse over main image to zoom in</div>
-		
-		<div class='prodThumbnailCarouselContainer'>
-			
-
-
-<div class='prodPageImageThumbs list_carousel responsive clearfix'>
-	<a class="carouselButtonPrev" href="#">prev</a>
-	<a class="carouselButtonNext" href="#">next</a>
-	<ul data-bind='var: product(pid); format: productImages; extension: beachmart;'></ul>
-</div>
-
-			
-		</div>
-		
-		
-	</div>
-	
-
-
-	<div data-anytab-content='prodVideo' >
-		<div id="mediaplayer"></div>
-	Video goes here	
-<!--		<div data-bind='var: product(youtube:videoid); format:youtubeVideo; extension:beachmart;'></div> -->
-		
-	</div>
-
-
-
-</div>
-	
-	
-</td><!-- product images and video -->
-
-<td class='prodSummaryContainer marginBottom no_underline'>
+<div class='prodViewerContainer floatLeft marginBottom'>
+    <div class='leftProdColumn'>
+        <div class='imageContainer'>
+        <!-- images and video tabs -->
+            <div class='prodTabs tabbedProductContent ui-tabs ui-widget ui-widget-content ui-corner-all'>
+        <!-- @JT -> need tabs here -->
+                <ul class='imageAndVideoTabs'>
+                    <li ><a href="#prodImages" class='ui-button-text-icon-primary' ><span><img src='images/bm12_cameraicon-25x21.png' width="25" height='21' alt='' /></span>Images</a></li>
+                    <li class='displayNone' data-bind='var: product(youtube:videoid); defaultVar: product(zoovy:prod_url_video); format:showIfSet;'><a href="#prodVideo"><span><img src='images/bm12_videoicon-24x24.png' width="24" height='24' alt='' /></span>Video</a></li>
+                </ul>
+        
+                <div class='prodPageImages'  data-anytab-content='prodImages'>
+                    <img src='blank.gif' class='prodBigImage' name='prodBigImage' data-bind='var: product(zoovy:prod_image1); format: magicZoomPlus; extension: magicToolBox_mzp;' width='380' height='380' />
+                    <div class='zhint'>Mouse over main image to zoom in</div>
+                    <div class='prodThumbnailCarouselContainer'>
+                        <div class='prodPageImageThumbs list_carousel responsive clearfix'>
+                            <a class="carouselButtonPrev" href="#">prev</a>
+                            <a class="carouselButtonNext" href="#">next</a>
+                            <ul data-bind='var: product(pid); format: productImages; extension: beachmart;'></ul>
+                        </div>
+                    </div> 
+                </div> <!-- END prodPageImages -->
+        
+                <div data-anytab-content='prodVideo' >
+                    <div id="mediaplayer"></div>
+                    Video goes here	
+            <!--	<div data-bind='var: product(youtube:videoid); format:youtubeVideo; extension:beachmart;'></div> -->   
+                </div>
+        
+            </div> <!-- END prodTabs -->
+        
+        </div><!-- END imageContainer -->
+    
+        <div class='prodSummaryContainer marginBottom no_underline'>
+        
+        <!-- <div class='topBottomBorder marginBottom clearfix shippingInformation'>
+                <div class='floatLeft'>
+                    <div data-bind="var:product(is:shipfree); format:showIfSet; className:shipfree;"></div>
+        
+                    <div class='displayNone' data-bind='var:product(is:shipfree); format:showIfSet;'>
+                        <div class='displayNone' data-bind='var:product(user:prod_shipping); format:showIfSet;'>
+                            <a href='#' class='tipify'>Offer Details</a>
+                            <div class='toolTip' data-bind='var: product(user:prod_shipping); format:wiki; wikiFormats:myRIA;'></div>
+                        </div>
+                    </div>
+        
+        
+                </div>
+                <div class='floatLeft'>
+                    <div class='putLoadingHere loadingBG'>
+                        <span class='loadingText'>Acquiring Shipping Estimates</span>
+                        <div class='transitContainer'></div>
+                    </div>
+        
+                </div>
+            </div>
+        -->
+        
+            <div class='mainProdColumn marginBottom'>
+            
+                <h1 data-bind='var: product(zoovy:prod_name); format:text;' class='prodName'></h1>
+                <div class='prodStidAndMfg clearfix'>
+                    <span data-bind='var: product(pid); format:text; pretext: Item No: ;'></span>
+                    <span data-bind='var: product(zoovy:prod_mfg); format:searchLink; extension:myRIA; pretext: Manufacturer: ;'></span>
+                </div>
+                <div class='priceContainer clearfix' data-bind="var: product(pid); format:priceRetailSavings; extension:beachmart;"></div>
+        
+        <!-- not sure about this img yet -->	
+                <img src='blank.gif' data-bind='var: product(zoovy:prod_image99); format: magicThumb; extension:  magicToolBox_mzp;' width='300' height='85' />
+                
+                <form data-bind='var: product(pid); format:atcForm; extension:store_product;' class='prodViewerAddToCartForm clearfix' id='prodViewerAddToCartFrm' action='#' onSubmit="myControl.ext.myRIA.util.handleAddToCart(this.id,{'action':'modal'});  return false;">
+            
+                    <fieldset data-bind='var: product(pid); format:atcVariations; extension:store_product;' class='borderNone clearfix'></fieldset>
+            
+                    <div class='clearfix marginBottom'>
+                        <div class='floatLeft'><span id="buySAFE_Kicker" name="buySAFE_Kicker" type="Kicker Guaranteed Border 200x40" class='floatLeft'></span></div>
+                        <div class='floatRight alignRight'>
+                            <fieldset data-bind='var: product(pid); format:atcQuantityInput; extension:store_product; pretext:Quantity: ;' class='borderNone' ></fieldset>
+                        </div>
+                    </div>
+                            
+                    <div class='alignRight'>
+                        <fieldset class='borderNone floatRight'>
+                            <input type='submit' value='Add to Cart' class='ui-button ui-button-text ui-corner-all ui-state-active addToCartButton displayNone' data-bind='var: product(pid); format:addToCartButton; extension:myRIA;' id='addToCartBtn' />
+                            <div class='displayNone zsmall alignRight' data-bind='var: product(user:prod_shipping); format:showIfSet;'><a href='#' onClick="myControl.ext.myRIA.action.showProdAttInDialog($(this).attr('data-pid'),'user:prod_shipping'); return false;" data-bind='var:product(pid);format:assignAttribute; attribute:data-pid;'>Shipping Surcharge May Apply</a></div>
+                        </fieldset>
+                        <!-- anchor is for tab container so tabs are still visible when page jumps down -->
+                        <span class='floatRight sizingChartLink displayNone' data-bind='var:product(user:prod_sizing_txt); format:showIfSet;'><a href='#tabbedProductContentTD' onClick="$prodInfotabs.tabs('select', $('li',$('#tabbedProductContent .tabs')).index($('#sizingTab')));">Sizing Chart</a></span>   
+                    </div>
+                    
+                </form>
+        
+                <div class='clearfix'><br /></div>
+            
+                <div class="addthis_toolbox addthis_default_style alignRight">
+                    <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+                    <a class="addthis_button_tweet"></a>
+                    <a class="addthis_button_pinterest_pinit"></a>
+                    <a class="addthis_counter addthis_pill_style"></a>
+                </div>
+        
+            </div> <!-- END mainProdColumn -->
+        
+        </div> <!-- END prodSummaryContainer -->
+        
+    
+    
+        <div class='prodTabViewContainer clearfix'>
+        
+            <div id="tabbedProductContentTD" class='prodViewerTable'>
+        
+                <div class='prodTabs tabbedProductContent'>
+                    <ul class='tabs'>
+                        <li><a href="#prodDesc" >Description</a></li>
+                        <li class='displayNone' data-bind='var: product(zoovy:prod_detail); format:showIfSet;'><a href="#prodDetail">Specs</a></li>
+                        <li class='displayNone' data-bind='var: product(user:prod_guarantee); format:showIfSet;'><a href="#prodGuarantee">Guarantee &amp; Returns</a></li>
+                        <li class='displayNone' data-bind='var: product(user:prod_shipping); format:showIfSet;'><a href="#prodShipping">Shipping</a></li>
+                <!-- id below used to obtain index for opening tab from link -->
+                        <li id='sizingTab' class='displayNone' data-bind='var: product(user:prod_sizing_txt); defaultVar: product(user:prod_sizing_img); format:showIfSet;'><a href="#prodSizing">Sizing</a></li>
+                        <li class='displayNone' data-bind='var: product(zoovy:asm_bundle_products); format:showIfSet;'><a href="#prodBundle">Savings Bundle</a></li>
+                        <li class='displayNone' data-bind='var: product(user:prod_colors); format:showIfSet;'><a href="#prodColors">Colors</a></li>
+                        <li class='displayNone'><a href="#prodReviews">Reviews</a></li>
+                        <li><a href='#recentlyViewedItems'>Recently Viewed</a></li>
+                    </ul>
+                
+                <!-- tab content -->
+                    <div data-anytab-content='prodDesc' data-bind='var: product(zoovy:prod_desc); format:wiki; wikiFormats:myRIA;'></div>
+                    <div data-anytab-content="prodDetail" data-bind='var: product(zoovy:prod_detail);  format:wiki; wikiFormats:myRIA; '></div>
+                    <div data-anytab-content="prodGuarantee" data-bind='var: product(user:prod_guarantee);  format:wiki; wikiFormats:myRIA; '></div>
+                    <div data-anytab-content="prodShipping">
+                        <div data-bind='var: product(user:prod_shipping_msg);  format:text;'></div>
+                        <div data-bind='var: product(user:prod_shipping);  format:wiki; wikiFormats:myRIA; '></div>
+                    </div>
+                    <div data-anytab-content="prodSizing">
+                        <img src='blank.gif' data-bind='var: product(user:prod_sizing_img); format: magicThumb; extension:  magicToolBox_mzp;' width='250' height='250' />
+                        <div data-bind='var: product(user:prod_sizing_txt);  format:wiki; wikiFormats:myRIA; '></div>
+                    </div>
+                    <div data-anytab-content="prodBundle" class='tabbedProductList'>
+                        <ul id='prodlistBundles' class='productList listStyleNone noPadOrMargin fluidList clearfix bundleProdlist' data-bind="var: product(zoovy:asm_bundle_products); format:productList; extension:store_prodlist;loadsTemplate:productListTemplateBundle;hide_multipage:true; withInventory:1; withVariations:1;"></ul>
+                    </div>
+                    <div data-anytab-content="prodColors" class='tabbedProductList'>
+                        <ul id='prodlistColors' class='productList listStyleNone noPadOrMargin fluidList clearfix bundleProdlist' data-bind="var: product(user:prod_colors); format:productList; extension:store_prodlist;loadsTemplate:productListTemplateBundle;hide_multipage:true;"></ul>
+                    </div>
+               
+                </div>
+            
+                <div data-bind='var: product(zoovy:prod_desc2); format:wiki; wikiFormats:myRIA;'></div>
+        
+            </div> <!-- END tabbedProductContentTD -->
+            
+            <div class='tabbedProductListsTD'>
+        
+                <div id="tabbedProductLists">
+                    <ul class='tabs'>
+                        <li><a href="#prodlistRelatedContainer" >You may like</a></li>
+                        <li class='displayNone' data-bind='var: product(zoovy:accessory_products); format:showIfSet;'><a href="#prodlistAccessoriesContainer">Accessories</a></li>
+                    </ul>
+                
+                    <div id='prodlistAccessoriesContainer' class='jcarousel-skin-default'>
+                        <div class='slideshowContainerVertical prodlistSlideshow '>
+                            <div class='next carouselNav carouselNavLgS displayNone'></div>
+                            <div class='prev carouselNav carouselNavLgN displayNone'></div>
+                            <div id='accessoriesProdlistSlideshow'>
+                                <ul id='prodlistAccessories' data-bind="var: product(zoovy:accessory_products); format:productList; extension:store_prodlist;loadsTemplate:productListTemplate;hide_multipage:true; withInventory:1; withVariations:1;"></ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id='prodlistRelatedContainer' class='jcarousel-skin-default verticalProdlist'>
+                        <div class='slideshowContainerVertical prodlistSlideshow '>
+                            <div class='next carouselNav carouselNavLgS displayNone'></div>
+                            <div class='prev carouselNav carouselNavLgN displayNone'></div>
+                            <div id='relatedProdlistSlideshow'>		
+                                <ul id='prodlistRelated' data-bind="var: product(zoovy:related_products); format:productList; extension:store_prodlist;loadsTemplate:productListTemplate;hide_multipage:true; withInventory:1; withVariations:1;"></ul>
+                            </div>
+                        </div>	
+                    </div>
+                    
+                </div> <!-- END tabbedProductLists -->
+        
+            </div> <!-- END tabbedProductListsTD -->
+        
+        </div> <!-- END prodTabViewContainer -->
+        
+    </div> <!--- END LeftProdColumn -->
 
     <!-- qa taf and print buttons -->
     <div class='rightProdColumn marginBottom'>
@@ -696,199 +825,16 @@ this will likely become more flexible in the future. ###
             <ul id='prodlistSiblings' class='productList listStyleNone noPadOrMargin fluidList clearfix' data-bind="var: product(user:grp_siblings); format:productList; extension:store_prodlist;loadsTemplate:productListTemplateThumb;hide_multipage:true;before:<b>Available Colors:</b> <span class='zhint'>(click image to select)</span> ; withInventory:1; withVariations:1;"></ul>
         </div>	
         
-
-    </div>
-
-<!-- <div class='topBottomBorder marginBottom clearfix shippingInformation'>
-        <div class='floatLeft'>
-            <div data-bind="var:product(is:shipfree); format:showIfSet; className:shipfree;"></div>
-
-            <div class='displayNone' data-bind='var:product(is:shipfree); format:showIfSet;'>
-                <div class='displayNone' data-bind='var:product(user:prod_shipping); format:showIfSet;'>
-                    <a href='#' class='tipify'>Offer Details</a>
-                    <div class='toolTip' data-bind='var: product(user:prod_shipping); format:wiki; wikiFormats:myRIA;'></div>
-                </div>
-            </div>
-
-
-        </div>
-        <div class='floatLeft'>
-            <div class='putLoadingHere loadingBG'>
-                <span class='loadingText'>Acquiring Shipping Estimates</span>
-                <div class='transitContainer'></div>
-            </div>
-
-        </div>
-    </div>
--->
-
-    <div class='mainProdColumn marginBottom'>
+    </div> <!-- END rightProdColumn -->
     
-        <h1 data-bind='var: product(zoovy:prod_name); format:text;' class='prodName'></h1>
-        <div class='prodStidAndMfg clearfix'>
-            <span data-bind='var: product(pid); format:text; pretext: Item No: ;'></span>
-            <span data-bind='var: product(zoovy:prod_mfg); format:searchLink; extension:myRIA; pretext: Manufacturer: ;'></span>
-        </div>
-        <div class='priceContainer clearfix' data-bind="var: product(pid); format:priceRetailSavings; extension:beachmart;"></div>
-
-<!-- not sure about this img yet -->	
-        <img src='blank.gif' data-bind='var: product(zoovy:prod_image99); format: magicThumb; extension:  magicToolBox_mzp;' width='300' height='85' />
-        
-        <form data-bind='var: product(pid); format:atcForm; extension:store_product;' class='prodViewerAddToCartForm clearfix' id='prodViewerAddToCartFrm' action='#' onSubmit="myControl.ext.myRIA.util.handleAddToCart(this.id,{'action':'modal'});  return false;">
-    
-            <fieldset data-bind='var: product(pid); format:atcVariations; extension:store_product;' class='borderNone clearfix'></fieldset>
-    
-            <div class='clearfix marginBottom'>
-                <div class='floatLeft'><span id="buySAFE_Kicker" name="buySAFE_Kicker" type="Kicker Guaranteed Border 200x40" class='floatLeft'></span></div>
-                <div class='floatRight alignRight'>
-                    <fieldset data-bind='var: product(pid); format:atcQuantityInput; extension:store_product; pretext:Quantity: ;' class='borderNone' ></fieldset>
-                </div>
-            </div>
-                    
-            <div class='alignRight'>
-                <fieldset class='borderNone floatRight'>
-                    <input type='submit' value='Add to Cart' class='ui-button ui-button-text ui-corner-all ui-state-active addToCartButton displayNone' data-bind='var: product(pid); format:addToCartButton; extension:myRIA;' id='addToCartBtn' />
-                    <div class='displayNone zsmall alignRight' data-bind='var: product(user:prod_shipping); format:showIfSet;'><a href='#' onClick="myControl.ext.myRIA.action.showProdAttInDialog($(this).attr('data-pid'),'user:prod_shipping'); return false;" data-bind='var:product(pid);format:assignAttribute; attribute:data-pid;'>Shipping Surcharge May Apply</a></div>
-                </fieldset>
-                <!-- anchor is for tab container so tabs are still visible when page jumps down -->
-                <span class='floatRight sizingChartLink displayNone' data-bind='var:product(user:prod_sizing_txt); format:showIfSet;'><a href='#tabbedProductContentTD' onClick="$prodInfotabs.tabs('select', $('li',$('#tabbedProductContent .tabs')).index($('#sizingTab')));">Sizing Chart</a></span>   
-            </div>
-            
-        </form>
-
-        <div class='clearfix'><br /></div>
-    
-        <div class="addthis_toolbox addthis_default_style alignRight">
-            <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-            <a class="addthis_button_tweet"></a>
-            <a class="addthis_button_pinterest_pinit"></a>
-            <a class="addthis_counter addthis_pill_style"></a>
-        </div>
-
-    </div> <!-- END mainProdColumn -->
-
-</td> <!-- END prodSummaryContainer -->
-    
-</tr>
-</table>
-<table class='prodViewerContainer'>
-<tr>
-	<td id="tabbedProductContentTD" class='prodViewerTable'>
-
-<div class='prodTabs tabbedProductContent'>
-	<ul class='tabs'>
-		<li><a href="#prodDesc" >Description</a></li>
-		<li class='displayNone' data-bind='var: product(zoovy:prod_detail); format:showIfSet;'><a href="#prodDetail">Specs</a></li>
-		<li class='displayNone' data-bind='var: product(user:prod_guarantee); format:showIfSet;'><a href="#prodGuarantee">Guarantee &amp; Returns</a></li>
-		<li class='displayNone' data-bind='var: product(user:prod_shipping); format:showIfSet;'><a href="#prodShipping">Shipping</a></li>
-<!-- id below used to obtain index for opening tab from link -->
-		<li id='sizingTab' class='displayNone' data-bind='var: product(user:prod_sizing_txt); defaultVar: product(user:prod_sizing_img); format:showIfSet;'><a href="#prodSizing">Sizing</a></li>
-		<li class='displayNone' data-bind='var: product(zoovy:asm_bundle_products); format:showIfSet;'><a href="#prodBundle">Savings Bundle</a></li>
-		<li class='displayNone' data-bind='var: product(user:prod_colors); format:showIfSet;'><a href="#prodColors">Colors</a></li>
-		<li class='displayNone'><a href="#prodReviews">Reviews</a></li>
-		<li><a href='#recentlyViewedItems'>Recently Viewed</a></li>
-	</ul>
-
-<!-- tab content -->
-	<div data-anytab-content='prodDesc' data-bind='var: product(zoovy:prod_desc); format:wiki; wikiFormats:myRIA;'></div>
-	
-	<div data-anytab-content="prodDetail" data-bind='var: product(zoovy:prod_detail);  format:wiki; wikiFormats:myRIA; '></div>
-	
-	<div data-anytab-content="prodGuarantee" data-bind='var: product(user:prod_guarantee);  format:wiki; wikiFormats:myRIA; '></div>
-	
-	<div data-anytab-content="prodShipping">
-		<div data-bind='var: product(user:prod_shipping_msg);  format:text;'></div>
-		<div data-bind='var: product(user:prod_shipping);  format:wiki; wikiFormats:myRIA; '></div>
-	</div>
-	
-	<div data-anytab-content="prodSizing">
-		<img src='blank.gif' data-bind='var: product(user:prod_sizing_img); format: magicThumb; extension:  magicToolBox_mzp;' width='250' height='250' />
-		<div data-bind='var: product(user:prod_sizing_txt);  format:wiki; wikiFormats:myRIA; '></div>
-	</div>
-
-
-
-
-	
-	<div data-anytab-content="prodBundle" class='tabbedProductList'>
-		<ul id='prodlistBundles' class='productList listStyleNone noPadOrMargin fluidList clearfix bundleProdlist' data-bind="var: product(zoovy:asm_bundle_products); format:productList; extension:store_prodlist;loadsTemplate:productListTemplateBundle;hide_multipage:true; withInventory:1; withVariations:1;"></ul>
-	</div>
-	
-	<div data-anytab-content="prodColors" class='tabbedProductList'>
-		<ul id='prodlistColors' class='productList listStyleNone noPadOrMargin fluidList clearfix bundleProdlist' data-bind="var: product(user:prod_colors); format:productList; extension:store_prodlist;loadsTemplate:productListTemplateBundle;hide_multipage:true;"></ul>
-	</div>
-	
-
-
-	
-	
-</div>
-
-<div data-bind='var: product(zoovy:prod_desc2); format:wiki; wikiFormats:myRIA;'></div>
-	
-
-	</td>
-	<td class='tabbedProductListsTD'>
-
-
-<div id="tabbedProductLists">
-	<ul class='tabs'>
-		<li><a href="#prodlistRelatedContainer" >You may like</a></li>
-		<li class='displayNone' data-bind='var: product(zoovy:accessory_products); format:showIfSet;'><a href="#prodlistAccessoriesContainer">Accessories</a></li>
-	</ul>
-
-
-	<div id='prodlistAccessoriesContainer' class='jcarousel-skin-default'>
-	
-
-
-<div class='slideshowContainerVertical prodlistSlideshow '>
-	<div class='next carouselNav carouselNavLgS displayNone'></div>
-	<div class='prev carouselNav carouselNavLgN displayNone'></div>
-	<div id='accessoriesProdlistSlideshow'>
-		
-		<ul id='prodlistAccessories' data-bind="var: product(zoovy:accessory_products); format:productList; extension:store_prodlist;loadsTemplate:productListTemplate;hide_multipage:true; withInventory:1; withVariations:1;"></ul>
-	
-	</div>
-</div>
-		
-		
-	</div>
-	
-	<div id='prodlistRelatedContainer' class='jcarousel-skin-default verticalProdlist'>
-	
-<div class='slideshowContainerVertical prodlistSlideshow '>
-	<div class='next carouselNav carouselNavLgS displayNone'></div>
-	<div class='prev carouselNav carouselNavLgN displayNone'></div>
-	<div id='relatedProdlistSlideshow'>
-		
-		<ul id='prodlistRelated' data-bind="var: product(zoovy:related_products); format:productList; extension:store_prodlist;loadsTemplate:productListTemplate;hide_multipage:true; withInventory:1; withVariations:1;"></ul>
-	
-	</div>
-</div>	
-		
-		
-		
-
-	</div>
-	
-</div>
-
-	</td>
-</tr>
-</table>
+</div> <!-- END prodViewerContainer -->
 
 <br />
 <div data-bind='var: product(pid); format:reviewEngine; extension:powerReviews_reviews;'></div>
 
-
-
-
-
-
-
-
 </div><!-- productTemplate -->
+
+
 
 
 
