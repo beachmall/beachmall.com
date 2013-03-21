@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"201303161421100",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"20130320202400",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"",
 	"httpsURL":"https://www-beachmall-com.app-hosted.com/",
@@ -107,15 +107,20 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 	
 
 <header class='clearfix topNav'>
+	<div class='localizedBox floatLeft'></div>
+    <div class='phoneChatLive phone sprite floatLeft'></div>
 	<nav class='floatRight'>
-		<a href='#' onClick="return showContent('cart',{});"><span class='hideMed'>Shopping </span>Cart: <span class='cartItemCount'>0</span> item(s)</a> |  
-		<a href='#' onClick="return showContent('checkout',{});" class='hideSmall'>Checkout</a> | 
-		<a href="#" onClick="return showContent('customer',{'show':'myaccount'});">Log In</a> | 
-		<a href="#" onClick="return showContent('company',{'show':'contact'});">Contact Us</a>
-		
+        <div class='cartIcon'><a href='#' onClick="return showContent('cart',{});"><span class='cartItemCount'>0</span></a></div>
+		<!-- <a href='#' onClick="return showContent('cart',{});"><span class='hideMed'>Shopping </span>Cart: <span class='cartItemCount'>0</span> item(s)</a> | CHANGED -->
+		<!-- <a href='#' onClick="return showContent('checkout',{});" class='hideSmall'>Checkout</a> | NOT USED HERE-->
 	</nav>
-	<div class='floatLeft sprite satisfaction hideSmall'>100% Satisfaction Guarantee</div>
+    <nav class='topNavLinks floatRight'>
+		<a href="#" onClick="return showContent('company',{'show':'contact'});">Customer Care</a> |
+		<a href="#" onClick="return showContent('customer',{'show':'myaccount'});">My Account</a> 
+    </nav> 
+	<!-- <div class='floatLeft sprite satisfaction hideSmall'>100% Satisfaction Guarantee</div> NOT USED HERE-->
 </header>
+
 
 <div class='wrapper whiteBG'>
 
@@ -139,7 +144,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 	</div>
 	
 	<div class='floatRight percent40 marginTop'>
-		<div class='floatLeft phone sprite'></div>
+		<!-- <div class='floatLeft phone sprite'></div> MOVED-->
 		<div class='floatRight marginLeft hideSmall'>
 			<!-- START SCANALERT CODE -->
 			<a target="_blank" href="https://www.mcafeesecure.com/RatingVerify?ref=www.beachmall.com"><img width="115" height="30" border="0" src="https://images.scanalert.com/meter/www.beachmall.com/32.gif" alt="McAfee Secure sites help keep you safe from identity theft, credit card fraud, spyware, spam, viruses and online scams" oncontextmenu="alert('Copying Prohibited by Law - McAfee Secure is a Trademark of McAfee, Inc.'); return false;"></a>
