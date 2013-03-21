@@ -21,7 +21,7 @@ a	{color:#2c99d4;}
 a:hover	{color:#7bcbc7;}
 
 #appPreView	{margin-top:10%;}
-#appPreView, .whiteBG	{padding:1.0em; background:#ffffff; border:1px solid #d2e9f6;}
+#appPreView, .whiteBG	{padding:1.0em; background:blue; border:1px solid #d2e9f6;}
 
 #mastHead	{position:relative;} /* left/right padding to compensate for padding on main nav. helps w/ alignment */
 /*
@@ -49,9 +49,9 @@ the padding is to compensate for the spacing between the main nav.
 	background-image: url('images/sprites-500x500.png');
 	}
 
-.searchContainer	{border:1px solid #cce7f5; position:relative;}
-.searchContainer .productSearchKeyword	{border:0; background:#ffffff; padding:0; margin:0; text-indent:.4em; width:85%;}
-.searchContainer .searchButton	{background-color:#ffffff; border:0; text-indent:-10000px; background-position: -475px 0; width:25px; height:25px; cursor:pointer; position:absolute; top:2px; right:2px; z-index:1000;} /* @REB - apply the mag glass bg here using sprite */
+.searchContainer	{border: none; position:relative; width: 260px;}
+.searchContainer .productSearchKeyword	{border:0; background:#ffffff; text-indent:.4em; height:30px; width:170px;}
+.searchContainer .searchButton	{background-color:red; border:none; text-indent:-10000px; width:90px; height:30px; cursor:pointer; position:absolute; top:0px; right:0px; z-index:1000;} /* @REB - apply the mag glass bg here using sprite */
 
 
 .topNav .satisfaction	{background-position:0 -64px; height:14px; width:200px; text-indent:-10000em; margin-top:4px;}
@@ -65,10 +65,20 @@ the padding is to compensate for the spacing between the main nav.
 #mastHead .liveHelp	{height:19px; width:130px; font-size:0.75em;}
 #mastHead .liveHelp div.icon {background-position:0 -91px; width:25px; height:19px;float:left;}
 #mastHead .liveHelp a {text-decoration:none; font-weight:bold; color:#2c99d4;}
-#mastHead .bannerContainer	{position:absolute; bottom:0; left:20%; height:28px; width:350px;}
+#mastHead .headerRightContainer {height:150px; width:980px;}
+#mastHead .bannerContainer {height:28px; width:350px; margin:5px 0 0 197px}
 #mastHead .bannerContainer .banner	{width:49%; display:inline-block; margin:0; padding:0;}
 #mastHead .freeShipping	{background-position:0 -127px; height:28px; width:118px; float:left; margin-left:.2em;}
 #mastHead .easyReturns	{background-position:0 -174px; height:28px; width:114px; float:right; margin-right:.2em;}
+#mastHead .dropdownsContainer {height:100px; width:980px; background-color:#0F9;}
+#mastHead .singleDropdown {height:50px; width: 196px; background-color:#030;}
+
+.dropdown {height:0px; width:320px; margin:0px 0px 0px 20px; position:relative; top:50px; overflow:hidden; 
+			left:-25px; z-index:5;}
+.dropdown ul {margin: 0px; padding: 0px 0px 3px 35px;}
+.dropdown li {margin: 15px 10px 18px 10px;	font-variant: small-caps;}
+.dropdown li:hover {color: #fec611;	cursor: pointer;}
+
 
 
 

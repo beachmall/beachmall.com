@@ -108,7 +108,17 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 
 <header class='clearfix topNav'>
 	<div class='localizedBox floatLeft'></div>
-    <div class='phoneChatLive phone sprite floatLeft'></div>
+    <div class='phoneChatLive phone sprite floatLeft'>
+    	<div class='floatRight liveHelp marginRight hideMed'>
+    		<!-- BEGIN ProvideSupport.com Text Chat Link Code -->
+			<div id="ciyXFh" style="z-index:100;position:absolute"></div>
+			<div id="scyXFh" style="display:inline"></div>
+			<div id="sdyXFh" style="display:none"></div>
+			<script type="text/javascript">var seyXFh=document.createElement("script");seyXFh.type="text/javascript";var seyXFhs=(location.protocol.indexOf("https")==0?"https":"http")+"://image.providesupport.com/js/1qaxuqjnvcj4w1csevb7u0l3tc/safe-textlink.js?ps_h=yXFh&ps_t="+new Date().getTime()+"&online-link-html=Live%20Chat%20Online&offline-link-html=Live%20Chat%20Offline";setTimeout("seyXFh.src=seyXFhs;document.getElementById('sdyXFh').appendChild(seyXFh)",1)</script>
+			<noscript><div style="display:inline"><a href="http://www.providesupport.com?messenger=1qaxuqjnvcj4w1csevb7u0l3tc">Customer Support Chat</a></div></noscript>
+			<!-- END ProvideSupport.com Text Chat Link Code -->	
+        </div>	
+    </div>
 	<nav class='floatRight'>
         <div class='cartIcon'><a href='#' onClick="return showContent('cart',{});"><span class='cartItemCount'>0</span></a></div>
 		<!-- <a href='#' onClick="return showContent('cart',{});"><span class='hideMed'>Shopping </span>Cart: <span class='cartItemCount'>0</span> item(s)</a> | CHANGED -->
@@ -131,37 +141,72 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 		<div class='floatLeft logo pointer' onClick="return showContent('category',{'navcat':'.'});"><img src='images/beachmall_logo-170x85.png' width='170' height='85' alt='beachmall.com' /></div>
 	</div>
 	
-	<div class='searchContainer floatRight percent40 marginBottom'>
-		<form id="headerSearchFrm" name="headerSearchFrm" action="#" class="productSearchForm" method="get">
-			<input name="KEYWORDS" value="" placeholder='keyword search' class="productSearchKeyword handleDefault" type="search">
-			<input class="search searchButton sprite" id="headerSearchSubmit" value="SEARCH" type="submit">
-		</form>
-	</div>
+	<div class='headerRightContainer floatLeft'>    
+        <div class='searchContainer floatRight marginBottom'>
+            <form id="headerSearchFrm" name="headerSearchFrm" action="#" class="productSearchForm" method="get">
+                <input name="KEYWORDS" value="" placeholder='keyword search' class="productSearchKeyword handleDefault" type="search">
+                <input class="search searchButton" id="headerSearchSubmit" value="SEARCH" type="submit">
+            </form>
+        </div>
+        
+        <div class='bannerContainer hideSmall floatLeft'>
+            <div class='banner hideMed'><div class='sprite easyReturns hideMed'></div></div>
+            <div class='banner'><div class='sprite freeShipping'></div></div>
+        </div>
+        
+        <div class='dropdownsContainer floatLeft'>
+        
+        
+        
+            <div id='main'>
+                <!-- DROP DOWN SCRIPT -->
+                <script type="text/javascript">
+                    var showDropdown = function ($tag) {
+                        var $dropdown = $(".dropdown", $tag);
+                        var height = 320;
+                        $dropdown.children().each(function(){
+                            $(this).outerHeight(true);
+                        });
+                        $dropdown.stop().animate({"height":height+"px"}, 1000);
+                    }
+                    
+                    var hideDropdown = function ($tag) {
+                        $(".dropdown", $tag).stop().animate({"height":"0px"}, 1000);
+                    }
+                </script>
+                    
+                <div class='dropdownsContainer'>
+                    <div class='singleDropdown floatLeft' onMouseOver="showDropdown($(this))" onMouseOut="hideDropdown($(this))"><img src="images/SmallYellowRoundDownArrow.png">
+                        <div class='dropdown blackBackground'>
+                            <ul class='listStyleNone floatLeft'>
+                                <li>Limited Offer</li>
+                                <li>Special Deals</li>
+                                <li>Swarovski</li>
+                                <li>Baccarat</li>
+                                <li>Bake 'n Serve</li>
+                                <li>Lalique</li>
+                                <li>Llardro</li>
+                            </ul>
+                        </div>
+                    </div>
+					<div class='singleDropdown' onMouseOver="showDropdown($(this))" onMouseOut="hideDropdown($(this))"><img src="images/SmallYellowRoundDownArrow.png">
+                        <div class='dropdown floatLeft'>    
+                            <ul class='listStyleNone floatLeft'>
+                                <li>Vera Bradley</li>
+                                <li>Versache</li>
+                                <li>Sale Items</li>
+                                <li>New Arrivals</li>
+                                <li>Coming Soon</li>
+                                <li>Retiring 2013</li>
+                                <li>Clearance</li>
+                            </ul>
+                        </div>
+                    </div>	
+                </div>
+			</div>
+    	</div>
+    </div>
 	
-	<div class='bannerContainer hideSmall'>
-		<div class='banner hideMed'><div class='sprite easyReturns hideMed'></div></div>
-		<div class='banner'><div class='sprite freeShipping'></div></div>
-	</div>
-	
-	<div class='floatRight percent40 marginTop'>
-		<!-- <div class='floatLeft phone sprite'></div> MOVED-->
-		<div class='floatRight marginLeft hideSmall'>
-			<!-- START SCANALERT CODE -->
-			<a target="_blank" href="https://www.mcafeesecure.com/RatingVerify?ref=www.beachmall.com"><img width="115" height="30" border="0" src="https://images.scanalert.com/meter/www.beachmall.com/32.gif" alt="McAfee Secure sites help keep you safe from identity theft, credit card fraud, spyware, spam, viruses and online scams" oncontextmenu="alert('Copying Prohibited by Law - McAfee Secure is a Trademark of McAfee, Inc.'); return false;"></a>
-			<!-- END SCANALERT CODE -->
-		</div>
-		<div class='floatRight liveHelp marginRight hideMed'>
-			<div class='sprite icon'>&nbsp;</div>
-			<!-- BEGIN ProvideSupport.com Text Chat Link Code -->
-			<div id="ciyXFh" style="z-index:100;position:absolute"></div>
-			<div id="scyXFh" style="display:inline"></div>
-			<div id="sdyXFh" style="display:none"></div>
-			<script type="text/javascript">var seyXFh=document.createElement("script");seyXFh.type="text/javascript";var seyXFhs=(location.protocol.indexOf("https")==0?"https":"http")+"://image.providesupport.com/js/1qaxuqjnvcj4w1csevb7u0l3tc/safe-textlink.js?ps_h=yXFh&ps_t="+new Date().getTime()+"&online-link-html=Live%20Chat%20Online&offline-link-html=Live%20Chat%20Offline";setTimeout("seyXFh.src=seyXFhs;document.getElementById('sdyXFh').appendChild(seyXFh)",1)</script>
-			<noscript><div style="display:inline"><a href="http://www.providesupport.com?messenger=1qaxuqjnvcj4w1csevb7u0l3tc">Customer Support Chat</a></div></noscript>
-			<!-- END ProvideSupport.com Text Chat Link Code -->		
-		</div>
-	
-	</div>
 	
 </header>
 
@@ -200,6 +245,15 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 				
 			</form>
 		</div>
+        
+        <div class='floatRight percent40 marginTop'>
+            <div class='floatRight marginLeft hideSmall'>
+                <!-- START SCANALERT CODE -->
+                <a target="_blank" href="https://www.mcafeesecure.com/RatingVerify?ref=www.beachmall.com"><img width="115" height="30" border="0" src="https://images.scanalert.com/meter/www.beachmall.com/32.gif" alt="McAfee Secure sites help keep you safe from identity theft, credit card fraud, spyware, spam, viruses and online scams" oncontextmenu="alert('Copying Prohibited by Law - McAfee Secure is a Trademark of McAfee, Inc.'); return false;"></a>
+                <!-- END SCANALERT CODE -->
+			</div>
+		</div>
+        
 		<div class='social floatRight'>
 		<a href="https://www.facebook.com/BeachMall"><i class='icon-facebook-sign icon-2x'></i></a>
 		<a href="https://twitter.com/Beachmall"><i class='icon-twitter icon-2x'></i></a>
