@@ -12,10 +12,19 @@
 body {
 	font: 100%/1.5 Arial, Helvetica, sans-serif; /* 16px */  
 	color:#000000;
-	background-color:#eaf5fb;
+	background-color:#fff;
 	margin:0;
-	padding:.2em 1em 1em 1em;
 	}
+	
+.openSansFont {font-family: "Open Sans";}
+.oswaldFont {font-family: Oswald;}
+.oswaldFontBold {font-family: Oswald;font-weight: bold;}
+
+.fontTeal {color: #3bb3c3;}
+.fontYellow {color: #f8c301;}
+.fontLightYellow {color: #ffe680;}
+.fontRed {color: #e0463a;}
+.fontSand {color: #f5f1de;}
 
 a	{color:#2c99d4;}
 a:hover	{color:#7bcbc7;}
@@ -23,7 +32,7 @@ a:hover	{color:#7bcbc7;}
 #appPreView	{margin-top:10%;}
 #appPreView, .whiteBG	{padding:1.0em; background:blue; border:1px solid #d2e9f6;}
 
-#mastHead	{position:relative;} /* left/right padding to compensate for padding on main nav. helps w/ alignment */
+
 /*
 the design is basically a five column layout, so by sticking to these percentages for elements, we can ensure column integrety
 the padding is to compensate for the spacing between the main nav.
@@ -49,13 +58,14 @@ the padding is to compensate for the spacing between the main nav.
 	background-image: url('images/sprites-500x500.png');
 	}
 
-.searchContainer	{border: none; position:relative; width: 260px;}
-.searchContainer .productSearchKeyword	{border:0; background:#ffffff; text-indent:.4em; height:30px; width:170px;}
-.searchContainer .searchButton	{background-color:red; border:none; text-indent:-10000px; width:90px; height:30px; cursor:pointer; position:absolute; top:0px; right:0px; z-index:1000;} /* @REB - apply the mag glass bg here using sprite */
+.searchContainer	{border: none; position:relative; width: 260px; margin-bottom: 20px;}
+.searchContainer .productSearchKeyword	{border:0; background:#ffffff; text-indent:.4em; height:45px; width:170px;}
+.searchContainer .searchButton	{background-color:red; border:none; text-align:center; font-size: 14px; color:#fff; width:90px; height:45px; cursor:pointer; position:absolute; top:0px; right:0px; z-index:1000;} /* @REB - apply the mag glass bg here using sprite */
 
 
 .topNav .satisfaction	{background-position:0 -64px; height:14px; width:200px; text-indent:-10000em; margin-top:4px;}
 
+#mastHead	{height: 185px; padding: 0px 30px 0px 30px; position:relative; background-image: url(images/HeaderBackground.jpg); background-color: #f5f1de;} /* left/right padding to compensate for padding on main nav. helps w/ alignment */
 #mastHead .phone {
 	background-position:0 0;
 	width:155px;
@@ -65,13 +75,13 @@ the padding is to compensate for the spacing between the main nav.
 #mastHead .liveHelp	{height:19px; width:130px; font-size:0.75em;}
 #mastHead .liveHelp div.icon {background-position:0 -91px; width:25px; height:19px;float:left;}
 #mastHead .liveHelp a {text-decoration:none; font-weight:bold; color:#2c99d4;}
-#mastHead .headerRightContainer {height:150px; width:980px;}
-#mastHead .bannerContainer {height:28px; width:350px; margin:5px 0 0 197px}
+#mastHead .headerRightContainer {height:185px; width:980px; padding: 20px 0px 0px 0px;}
+#mastHead .bannerContainer {height:28px; width:350px; margin:10px 0 0 197px}
 #mastHead .bannerContainer .banner	{width:49%; display:inline-block; margin:0; padding:0;}
 #mastHead .freeShipping	{background-position:0 -127px; height:28px; width:118px; float:left; margin-left:.2em;}
 #mastHead .easyReturns	{background-position:0 -174px; height:28px; width:114px; float:right; margin-right:.2em;}
 #mastHead .dropdownsContainer {height:100px; width:980px; background-color:#0F9;}
-#mastHead .singleDropdown {height:50px; width: 196px; background-color:#030;}
+#mastHead .singleDropdown {height:100px; width: 196px; background-color:#030;}
 
 .dropdown {height:0px; width:320px; margin:0px 0px 0px 20px; position:relative; top:50px; overflow:hidden; 
 			left:-25px; z-index:5;}

@@ -58,6 +58,8 @@ css files should be included before any .js file to ensure they are downloaded i
 <link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/ui-lightness/jquery-ui.css" />
 <link rel="stylesheet" type="text/css" href="fonts/fontawesome.css" />
 <link rel="stylesheet" type="text/css" href="_beachmall_styles.css" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
@@ -132,8 +134,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 </header>
 
 
-<div class='wrapper whiteBG'>
-
+<div class='whiteBG'>
 
 <header class='clearfix marginBottom' id='mastHead'>
 	
@@ -141,11 +142,11 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 		<div class='floatLeft logo pointer' onClick="return showContent('category',{'navcat':'.'});"><img src='images/beachmall_logo-170x85.png' width='170' height='85' alt='beachmall.com' /></div>
 	</div>
 	
-	<div class='headerRightContainer floatLeft'>    
-        <div class='searchContainer floatRight marginBottom'>
+	<div class='headerRightContainer floatRight'>    
+        <div class='searchContainer floatRight'>
             <form id="headerSearchFrm" name="headerSearchFrm" action="#" class="productSearchForm" method="get">
-                <input name="KEYWORDS" value="" placeholder='keyword search' class="productSearchKeyword handleDefault" type="search">
-                <input class="search searchButton" id="headerSearchSubmit" value="SEARCH" type="submit">
+                <input name="KEYWORDS" value="" placeholder=' Find it here...' class="productSearchKeyword handleDefault" type="search">
+                <input class="search searchButton oswaldFontBold" id="headerSearchSubmit" value="SEARCH" type="submit">
             </form>
         </div>
         
@@ -177,7 +178,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                     
                 <div class='dropdownsContainer'>
                     <div class='singleDropdown floatLeft' onMouseOver="showDropdown($(this))" onMouseOut="hideDropdown($(this))"><img src="images/SmallYellowRoundDownArrow.png">
-                        <div class='dropdown blackBackground'>
+                        <div class='dropdown floatLeft'>
                             <ul class='listStyleNone floatLeft'>
                                 <li>Limited Offer</li>
                                 <li>Special Deals</li>
@@ -189,7 +190,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                             </ul>
                         </div>
                     </div>
-					<div class='singleDropdown' onMouseOver="showDropdown($(this))" onMouseOut="hideDropdown($(this))"><img src="images/SmallYellowRoundDownArrow.png">
+					<div class='singleDropdown floatLeft' onMouseOver="showDropdown($(this))" onMouseOut="hideDropdown($(this))"><img src="images/SmallYellowRoundDownArrow.png">
                         <div class='dropdown floatLeft'>    
                             <ul class='listStyleNone floatLeft'>
                                 <li>Vera Bradley</li>
@@ -201,11 +202,51 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                                 <li>Clearance</li>
                             </ul>
                         </div>
+                    </div>
+                    <div class='singleDropdown floatLeft' onMouseOver="showDropdown($(this))" onMouseOut="hideDropdown($(this))"><img src="images/SmallYellowRoundDownArrow.png">
+                        <div class='dropdown floatLeft'>
+                            <ul class='listStyleNone floatLeft'>
+                                <li>Limited Offer</li>
+                                <li>Special Deals</li>
+                                <li>Swarovski</li>
+                                <li>Baccarat</li>
+                                <li>Bake 'n Serve</li>
+                                <li>Lalique</li>
+                                <li>Llardro</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class='singleDropdown floatLeft' onMouseOver="showDropdown($(this))" onMouseOut="hideDropdown($(this))"><img src="images/SmallYellowRoundDownArrow.png">
+                        <div class='dropdown floatLeft'>
+                            <ul class='listStyleNone floatLeft'>
+                                <li>Limited Offer</li>
+                                <li>Special Deals</li>
+                                <li>Swarovski</li>
+                                <li>Baccarat</li>
+                                <li>Bake 'n Serve</li>
+                                <li>Lalique</li>
+                                <li>Llardro</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class='singleDropdown floatLeft' onMouseOver="showDropdown($(this))" onMouseOut="hideDropdown($(this))"><img src="images/SmallYellowRoundDownArrow.png">
+                        <div class='dropdown floatLeft'>
+                            <ul class='listStyleNone floatLeft'>
+                                <li>Limited Offer</li>
+                                <li>Special Deals</li>
+                                <li>Swarovski</li>
+                                <li>Baccarat</li>
+                                <li>Bake 'n Serve</li>
+                                <li>Lalique</li>
+                                <li>Llardro</li>
+                            </ul>
+                        </div>
                     </div>	
                 </div>
 			</div>
     	</div>
     </div>
+
 	
 	
 </header>
@@ -263,7 +304,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 	</section>
 </footer>
 
-	</div><!-- /.wrapper -->
+</div>
 </div><!-- /#appView -->
 
 
