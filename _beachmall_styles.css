@@ -17,14 +17,32 @@ body {
 	}
 	
 .openSansFont {font-family: "Open Sans";}
-.oswaldFont {font-family: Oswald;}
-.oswaldFontBold {font-family: Oswald;font-weight: bold;}
+.openSansFontBold {font-family: "Open Sans"; font-weight: bold;}
 
+.oswaldFont {font-family: Oswald;}
+.oswaldFontBold {font-family: Oswald; font-weight: bold;}
+
+.fontBlack {color: #000;}
 .fontTeal {color: #3bb3c3;}
 .fontYellow {color: #f8c301;}
 .fontLightYellow {color: #ffe680;}
 .fontRed {color: #e0463a;}
 .fontSand {color: #f5f1de;}
+
+.fontSize12 {font-size: 12px;}
+.fontSize14 {font-size: 14px;}
+.fontSize18 {font-size: 18px;}
+.fontSize24 {font-size: 24px;}
+
+.greyGradient {background: rgb(255,255,255); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(255,255,255,1) 1%, rgba(209,209,209,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,rgba(255,255,255,1)), color-stop(100%,rgba(209,209,209,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 1%,rgba(209,209,209,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(255,255,255,1) 1%,rgba(209,209,209,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(255,255,255,1) 1%,rgba(209,209,209,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(255,255,255,1) 1%,rgba(209,209,209,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#d1d1d1',GradientType=0 ); /* IE6-9 */
+}
 
 a	{color:#2c99d4;}
 a:hover	{color:#7bcbc7;}
@@ -43,38 +61,36 @@ the padding is to compensate for the spacing between the main nav.
 #mainContentArea	{padding:.4em .2em;} /* side padding is compensating for margins on main nav */
 
 /* topNav is the container for the content above the white bg */
-.topNav	{height: 50px; width: 100%; background-color: #777; font-size:.75em;} /* @REB - need a media query here to when this gets down to vertical pad size. @ phone size, hide items to make room */
+.topNav	{height: 50px; width: 100%; font-size:.75em;} /* @REB - need a media query here to when this gets down to vertical pad size. @ phone size, hide items to make room */
 .topNav	.guarantee {} /* @REB - add guarantee bg here using sprite */
 .topNav nav	{text-align:right; color:#000;}
 .topNav nav a	{text-decoration:none;}
 .topNav nav a:hover	{text-decoration:underline;}
-
-.localizedBox {height: 60px; width: 150px; background-color: #FC0; border: 1px solid #fff; margin: 0px 0px 0px 50px;}
-.phoneChatLive {height: 50px; width: 300px; background-color: #960; margin: 0px 0px 0px 300px;}
-.cartIcon {height: 40px; width: 30px; background-color: #00C; margin: 0px 50px 0px 0px; padding: 10px 25px 0px 0px;}
-.topNavLinks {height: 50px; width: 157px; background-color: #F00; margin: 0px 30px 0px 0px; line-height: 49x; padding-right: 5px;}
+.topNav .localizedBox {height:53px; width:216px; text-align:center; background-color:#f5f1de; border:2px solid #fff; margin:0px 0px 0px 50px; padding-top:5px;}
+.topNav .phoneChatLive {height:50px; width:353px; margin:0px 0px 0px 225px; font-family:Oswald; font-weight:bold; font-size: 18px; line-height: 51px;}
+.topNav .phoneIcon {height:50px; width:35px; background-position:0 10px;}
+.topNav .liveHelp	{height:19px; width:145px; font-size:0.75em;}
+.topNav .liveHelp div.icon {background-position:0 -91px; width:25px; height:19px;float:left;}
+.topNav .liveHelp a {text-decoration:none; font-family:Oswald; font-weight:bold; font-size:18px;color:#000;}
+.topNav .cartIcon {height:40px; width:30px; background-position:4px -45px; margin:0px 50px 0px 0px; padding: 10px 25px 0px 0px;}
+.topNav .cartIcon a {color:#fff;}
+.topNav .topNavLinks {height:50px; width:177px; margin:0px 30px 0px 0px; line-height:48px; padding-right:5px;}
+.topNav .topNavLinks a {text-decoration:none; color: #000;}
 
 .sprite {
-	background-image: url('images/sprites-500x500.png');
+	background-image: url(images/sprites-500x500.png);
 	}
 
 .searchContainer	{border: none; position:relative; width: 260px; margin-bottom: 20px;}
 .searchContainer .productSearchKeyword	{border:0; background:#ffffff; text-indent:.4em; height:45px; width:170px;}
 .searchContainer .searchButton	{background-color:red; border:none; text-align:center; font-size: 14px; color:#fff; width:90px; height:45px; cursor:pointer; position:absolute; top:0px; right:0px; z-index:1000;} /* @REB - apply the mag glass bg here using sprite */
 
-
-.topNav .satisfaction	{background-position:0 -64px; height:14px; width:200px; text-indent:-10000em; margin-top:4px;}
-
 #mastHead	{height: 185px; padding: 0px 30px 0px 30px; position:relative; background-image: url(images/HeaderBackground.jpg); background-color: #f5f1de;} /* left/right padding to compensate for padding on main nav. helps w/ alignment */
 #mastHead .phone {
 	background-position:0 0;
 	width:155px;
 	height:28px;
-	}
-
-#mastHead .liveHelp	{height:19px; width:130px; font-size:0.75em;}
-#mastHead .liveHelp div.icon {background-position:0 -91px; width:25px; height:19px;float:left;}
-#mastHead .liveHelp a {text-decoration:none; font-weight:bold; color:#2c99d4;}
+}
 #mastHead .headerRightContainer {height:185px; width:980px; padding: 20px 0px 0px 0px;}
 #mastHead .bannerContainer {height:28px; width:350px; margin:10px 0 0 197px}
 #mastHead .bannerContainer .banner	{width:49%; display:inline-block; margin:0; padding:0;}
