@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"20130320202400",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"20130322190100",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"",
 	"httpsURL":"https://www-beachmall-com.app-hosted.com/",
@@ -139,12 +139,12 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 </header>
 
 
-<div class='whiteBG'>
+
 
 <header class='clearfix marginBottom' id='mastHead'>
 	
 	<div class='floatLeft percent20'>
-		<div class='floatLeft logo pointer' onClick="return showContent('category',{'navcat':'.'});"><img src='images/beachmall_logo-170x85.png' width='170' height='85' alt='beachmall.com' /></div>
+		<div class='floatLeft logo pointer' onClick="return showContent('category',{'navcat':'.'});"><img src='images/beachmall_logo_transparent-164x85.png' width='170' height='85' alt='beachmall.com' /></div>
 	</div>
 	
 	<div class='headerRightContainer floatRight'>    
@@ -169,7 +169,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                 <script type="text/javascript">
                     var showDropdown = function ($tag) {
                         var $dropdown = $(".dropdown", $tag);
-                        var height = 320;
+                        var height = 535;
                         $dropdown.children().each(function(){
                             $(this).outerHeight(true);
                         });
@@ -180,70 +180,106 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                         $(".dropdown", $tag).stop().animate({"height":"0px"}, 1000);
                     }
                 </script>
+                
+                <!-- SECOND LEVEL DROPOUT SCRIPT -->
+                <script type="text/javascript">
+                    var showDropout = function ($tag) {
+                        var $dropout = $(".dropout", $tag);
+                        var width = 240;
+                        $dropout.children().each(function(){
+                            $(this).outerWidth(true);
+                        });
+                        $dropout.stop().animate({"width":width+"px"}, 1000);
+                    }
+                    
+                    var hideDropout = function ($tag) {
+                        $(".dropout", $tag).stop().animate({"width":"0px"}, 1000);
+                    }
+                </script>
                     
                 <div class='dropdownsContainer'>
-                    <div class='singleDropdown floatLeft' onMouseOver="showDropdown($(this))" onMouseOut="hideDropdown($(this))"><img src="images/SmallYellowRoundDownArrow.png">
-                        <div class='dropdown floatLeft'>
+                    <div class='singleDropdown floatLeft sprite' onMouseOver="showDropdown($(this))" onMouseOut="hideDropdown($(this))">BEACH ACCESSORIES
+                        <div class='beachAccessoriesDD dropdown twoLine floatLeft'>
                             <ul class='listStyleNone floatLeft'>
-                                <li>Limited Offer</li>
-                                <li>Special Deals</li>
-                                <li>Swarovski</li>
-                                <li>Baccarat</li>
-                                <li>Bake 'n Serve</li>
-                                <li>Lalique</li>
-                                <li>Llardro</li>
+                            	<li>BEACH<br>ACCESSORIES</li>
+                            	<li onMouseOver="showDropout($(this))" onMouseOut="hideDropout($(this))">Beach Bags & Totes
+                                	<div class='dropout out'>
+                                    	<ul>
+                                        	<li>Some Beach Bags</li>
+                                            <li>More Beach Bags</li>
+                                            <li>Still More Beach Bags</li>
+                                            <li>Some Customized Beach Bags</li>
+                                            <li>Some Beach Totes</li>
+                                            <li>Still Yet More Beach Totes</li>
+                                            <li>The Last of the Beach Bags & Totes</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>Beach Towels & Blankets</li>
+                                <li>Beach Carts</li>
+                                <li>Electronics</li>
+                                <li>Picnic Backpacks</li>
+                                <li>Picnic Baskets</li>
+                                <li>Coolers</li>
+                                <li>Tailgating</li>
                             </ul>
                         </div>
                     </div>
-					<div class='singleDropdown floatLeft' onMouseOver="showDropdown($(this))" onMouseOut="hideDropdown($(this))"><img src="images/SmallYellowRoundDownArrow.png">
-                        <div class='dropdown floatLeft'>    
+					<div class='singleDropdown floatLeft sprite' onMouseOver="showDropdown($(this))" onMouseOut="hideDropdown($(this))"><img src="images/SmallYellowRoundDownArrow.png">BEACH<br>CHAIRS
+                        <div class='beachChairsDD dropdown floatLeft'>    
                             <ul class='listStyleNone floatLeft'>
-                                <li>Vera Bradley</li>
-                                <li>Versache</li>
-                                <li>Sale Items</li>
-                                <li>New Arrivals</li>
-                                <li>Coming Soon</li>
-                                <li>Retiring 2013</li>
-                                <li>Clearance</li>
+                                <li>BEACH CHAIRS</li>
+                                <li>Adirondack</li>
+                                <li>Backpack Chairs</li>
+                                <li>Cup Holder Chairs</li>
+                                <li>Beach Chaises</li>
+                                <li>Hammocks</li>
+                                <li>Beach & Pool Lounges</li>
+                                <li>Canopy Beach Chairs</li>
+                                <li>Padded Beach Chairs</li>
+                                <li>High-back Beach Chairs</li>
+                                <li>Large Beach Chairs</li>
+                                <li>High Seat Beach Chairs</li>
+                                <li>Premium Chairs</li>
+                                <li>Low Seat Beach Chairs</li>
+                                <li>Lay Flat Beach Cahirs</li>
+                                <li>Wooden Beach Chairs</li>
                             </ul>
                         </div>
                     </div>
-                    <div class='singleDropdown floatLeft' onMouseOver="showDropdown($(this))" onMouseOut="hideDropdown($(this))"><img src="images/SmallYellowRoundDownArrow.png">
-                        <div class='dropdown floatLeft'>
+                    <div class='singleDropdown singleLineDD floatLeft sprite' onMouseOver="showDropdown($(this))" onMouseOut="hideDropdown($(this))"><img src="images/SmallYellowRoundDownArrow.png">
+						<span>RECREATION</span>
+                        <div class='recreationDD dropdown floatLeft'>
                             <ul class='listStyleNone floatLeft'>
-                                <li>Limited Offer</li>
-                                <li>Special Deals</li>
-                                <li>Swarovski</li>
-                                <li>Baccarat</li>
-                                <li>Bake 'n Serve</li>
-                                <li>Lalique</li>
-                                <li>Llardro</li>
+                            	<li>RECREATION</li>
+                                <li>Body Boards</li>
+                                <li>Inflatables</li>
+                                <li>Pool Floats</li>
+                                <li>Skimboards</li>
+                                <li>Water Towables</li>
                             </ul>
                         </div>
                     </div>
-                    <div class='singleDropdown floatLeft' onMouseOver="showDropdown($(this))" onMouseOut="hideDropdown($(this))"><img src="images/SmallYellowRoundDownArrow.png">
-                        <div class='dropdown floatLeft'>
+                    <div class='singleDropdown floatLeft sprite' onMouseOver="showDropdown($(this))" onMouseOut="hideDropdown($(this))"><img src="images/SmallYellowRoundDownArrow.png">UMBRELLAS<br>& SHELTER
+                        <div class='umbrellasShelterDD dropdown twoLine floatLeft'>
                             <ul class='listStyleNone floatLeft'>
-                                <li>Limited Offer</li>
-                                <li>Special Deals</li>
-                                <li>Swarovski</li>
-                                <li>Baccarat</li>
-                                <li>Bake 'n Serve</li>
-                                <li>Lalique</li>
-                                <li>Llardro</li>
+                            	<li>UMBRELLAS & SHELTERS</li>
+                                <li>Beach Cabanas</li>
+                                <li>Beach Tents & Shelters</li>
+                                <li>Beach Umbrellas</li>
+                                <li>Market & Patio Umbrellas</li>
+                                <li>Umbrella Accessories</li>
                             </ul>
                         </div>
                     </div>
-                    <div class='singleDropdown floatLeft' onMouseOver="showDropdown($(this))" onMouseOut="hideDropdown($(this))"><img src="images/SmallYellowRoundDownArrow.png">
-                        <div class='dropdown floatLeft'>
+                    <div class='singleDropdown floatLeft sprite' onMouseOver="showDropdown($(this))" onMouseOut="hideDropdown($(this))"><img src="images/SmallYellowRoundDownArrow.png">BEACH<br>WEAR
+                        <div class='beachWearDD dropdown floatLeft'>
                             <ul class='listStyleNone floatLeft'>
-                                <li>Limited Offer</li>
-                                <li>Special Deals</li>
-                                <li>Swarovski</li>
-                                <li>Baccarat</li>
-                                <li>Bake 'n Serve</li>
-                                <li>Lalique</li>
-                                <li>Llardro</li>
+                            	<li>BEACH WEAR</li>
+                                <li>Summer Hats</li>
+                                <li>Beach & Pool Apparels</li>
+                                <li>Women Sundresses</li>
+                                <li>Women Swimwear</li>
                             </ul>
                         </div>
                     </div>	
@@ -253,11 +289,11 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
     </div>
 
 	
-	
 </header>
 
 
 
+<div class='whiteBG'>
 
 <nav class="categoryNav clearfix">
 	<ul id='tier1categories' class='clearfix'></ul>
