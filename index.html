@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"20130323171900",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"20130324152700",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"",
 	"httpsURL":"https://www-beachmall-com.app-hosted.com/",
@@ -164,7 +164,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
         
         
         
-            <div id='main'>
+            <div id='mainDropdown'>
                 <!-- DROP DOWN SCRIPT -->
                 <script type="text/javascript">
                     var showDropdown = function ($tag) {
@@ -287,8 +287,8 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 			</div>
     	</div>
      	   
-        <div class='overhang'>
-        	<button class='overhangClose'></button>
+        <div class='overhang displayNone'>
+        	<button class='overhangClose sprite'></button>
             <span>SUMMER IS HERE!</span>
             <p>Insert small paragraph or snipper regarding a summer special 
             	or other featured deals or products for this overhanging ad.
@@ -306,9 +306,11 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 
 <div class='whiteBG'>
 
+
 <nav class="categoryNav clearfix">
 	<ul id='tier1categories' class='clearfix'></ul>
 </nav>
+
 
 
 
@@ -324,8 +326,33 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 
 <div id='mainContentArea'></div><!-- DO NOT REMOVE - this is where the specific page (ex: homepage, product, category) content is going to go -->
 </section>
-<footer>
-	<section class='clearfix'>
+
+<footer class='footerContainer clearfix'>
+	
+    <section class='footerInteractContainer'>
+    	<div class='footerSocialIcons'></div>
+        <div class='footerNewsletter'></div>
+    </section>
+
+	<section class='footerLinksContainer'>
+    	<ul>
+        	<li>links</li>
+        </ul>
+        <ul>
+        	<li>links</li>
+        </ul>
+        <ul>
+        	<li>links</li>
+        </ul>
+        <ul>
+        	<li>links</li>
+        </ul>
+        <div class='footerIcons'></div>
+    </section>
+    
+    
+
+	<!-- <section class='clearfix'>
 		<div class='floatLeft'>
 			<h3 class='floatLeft marginRight'>Sign Up and SAVE</h3>
 			<form action='#' id='subscribeFrmFooter' name='subscribeFrm' class='newsletterSubscriptionForm floatLeft' method="get">
@@ -342,9 +369,9 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
         <div class='floatRight percent40 marginTop'>
             <div class='floatRight marginLeft hideSmall'>
                 <!-- START SCANALERT CODE -->
-                <a target="_blank" href="https://www.mcafeesecure.com/RatingVerify?ref=www.beachmall.com"><img width="115" height="30" border="0" src="https://images.scanalert.com/meter/www.beachmall.com/32.gif" alt="McAfee Secure sites help keep you safe from identity theft, credit card fraud, spyware, spam, viruses and online scams" oncontextmenu="alert('Copying Prohibited by Law - McAfee Secure is a Trademark of McAfee, Inc.'); return false;"></a>
+           <!-- <a target="_blank" href="https://www.mcafeesecure.com/RatingVerify?ref=www.beachmall.com"><img width="115" height="30" border="0" src="https://images.scanalert.com/meter/www.beachmall.com/32.gif" alt="McAfee Secure sites help keep you safe from identity theft, credit card fraud, spyware, spam, viruses and online scams" oncontextmenu="alert('Copying Prohibited by Law - McAfee Secure is a Trademark of McAfee, Inc.'); return false;"></a>
                 <!-- END SCANALERT CODE -->
-			</div>
+	<!--	</div>
 		</div>
         
 		<div class='social floatRight'>
@@ -353,8 +380,9 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 		<a href="https://plus.google.com/104451134911916367843/posts"><i class='icon-google-plus-sign icon-2x'></i></a>
 		</div>
 
-	</section>
+	</section> -->
 </footer>
+<div class='copyright'><span>Beachmall</span> Copyright 2013. All Rights Reserved. E-commerce Solution by <span>Zoovy</span></div>
 
 </div>
 </div><!-- /#appView -->
