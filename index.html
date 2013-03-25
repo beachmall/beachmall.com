@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"20130324152700",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"20130323171900",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"",
 	"httpsURL":"https://www-beachmall-com.app-hosted.com/",
@@ -306,11 +306,11 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 
 <div class='whiteBG'>
 
-
+<!--
 <nav class="categoryNav clearfix">
 	<ul id='tier1categories' class='clearfix'></ul>
 </nav>
-
+-->
 
 
 
@@ -330,24 +330,59 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 <footer class='footerContainer clearfix'>
 	
     <section class='footerInteractContainer'>
-    	<div class='footerSocialIcons'></div>
+    	<div class='footerSocialIcons'>
+        	<div class='facebook sprite footerSocialIconContainers'></div>
+            <div class='twitter sprite footerSocialIconContainers'></div>
+            <div class='googlePlus sprite footerSocialIconContainers'></div>
+            <div class='pintrest sprite footerSocialIconContainers'></div>
+            <div class='email sprite footerSocialIconContainers'></div>
+        </div>
         <div class='footerNewsletter'></div>
     </section>
 
 	<section class='footerLinksContainer'>
     	<ul>
-        	<li>links</li>
+        	<li>CATEGORIES</li>
+            <li>Beach Accesories</li>
+            <li>Beach Chairs</li>
+            <li>Recreation</li>
+            <li>Umbrellas & Shelter</li>
+            <li>Beach Wear</li>
         </ul>
         <ul>
-        	<li>links</li>
+        	<li>ACCOUNT SERVICES</li>
+            <li>Log-in or Create Account</li>
+            <li>Log out</li>
+            <li>View Shopping Cart</li>
+            <li>Order Status</li>
         </ul>
         <ul>
-        	<li>links</li>
+        	<li>NAVIGATE</li>
+            <li>Home</li>
+            <li>About Us</li>
+            <li>Contact Us</li>
+            <li>Frequently Asked Questions</li>
+            <li>Site Map</li>
+            <li>Product Reviews</li>
+            <li>Returns & Exchanges</li>
+            <li>Privacy Policy</li>
         </ul>
         <ul>
-        	<li>links</li>
+        	<li>ADDITIONAL LINKS</li>
+            <li>Buying Guides</li>
+            <li>Wholesale</li>
+            <li>Affiliates</li>
+            <li>Facebook</li>
+            <li>Twitter</li>
+            <li>Google Plus</li>
+            <li>Pinterest</li>
         </ul>
-        <div class='footerIcons'></div>
+        <div class='footerIcons'>
+        	<div class='ccCards sprite'></div>
+            <div class='bbbBadge'>BBB Badge</div>
+            <div class='googleTrustedBadge'>Google Badge</div>
+            <div class='footerPhoneChat'>(888) 975-6555 <span>or</span> CHAT LIVE!</div>
+        </div>
     </section>
     
     
