@@ -337,7 +337,17 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
             <div class='pintrest sprite footerSocialIconContainers'></div>
             <div class='email sprite footerSocialIconContainers'></div>
         </div>
-        <div class='footerNewsletter'></div>
+        <div class='footerNewsletter'>
+        	<h3 class='floatLeft marginRight'>STAY UPDATED<br><span>SIGN UP FOR OUR NEWSLETTER</span></h3>
+			<form action='#' id='subscribeFrmFooter' name='subscribeFrm' class='newsletterSubscriptionForm floatLeft' method="get">
+                <fieldset >
+                    <input type='hidden' name='newsletter-1' value='1' />
+                    <input type="submit" class="joinButton submit floatRight " value="SIGN-UP" />
+                    <input required='required' type='email' value='E-mail Address' class='emailField floatRight newsSubscribeInput textbox email handleDefault'  maxlength='50' size='25' name='login' id='subscribeLoginFooter' />                 
+                	<input required='required' type='text'  value='Full Name' class='nameField floatRight newsSubscribeInput textbox fullname handleDefault' maxlength='50' size='25' name='fullname' id='subscribeFullnameFooter' />
+                </fieldset>
+			</form>
+        </div>
     </section>
 
 	<section class='footerLinksContainer'>

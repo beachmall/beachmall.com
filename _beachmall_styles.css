@@ -65,7 +65,7 @@ the padding is to compensate for the spacing between the main nav.
 .topNav nav	{text-align:right; color:#000;}
 .topNav nav a	{text-decoration:none;}
 .topNav nav a:hover	{text-decoration:underline;}
-.topNav .localizedBox {height:53px; width:216px; text-align:center; background-color:#f5f1de; border:2px solid #fff; margin:0px 0px 0px 50px; padding-top:5px;}
+.topNav .localizedBox {height:53px; width:216px; text-align:center; background-color:#f5f1de; border:2px solid #fff; margin:0px 0px 0px 50px; padding-top:5px;  box-shadow:0px 2px 2px #000000;}
 .topNav .phoneChatLive {height:50px; width:353px; margin:0px 0px 0px 225px; font-family:Oswald; font-weight:bold; font-size: 18px; line-height: 51px;}
 .topNav .phoneIcon {height:50px; width:35px; background-position:0 10px;}
 .topNav .liveHelp	{height:19px; width:145px; font-size:0.75em;}
@@ -94,9 +94,9 @@ the padding is to compensate for the spacing between the main nav.
 #mastHead .freeShipping	{background-position:-123px -150px; height:28px; width:118px; float:left; margin-left:.2em;}
 #mastHead .easyReturns	{background-position:0 -150px; height:28px; width:114px; float:right; margin-right:.2em;}
 
-#mastHead .searchContainer	{border: none; position:relative; width: 300px; margin-bottom: 20px;}
-#mastHead .searchContainer .productSearchKeyword	{border:0; background:#ffffff; text-indent:.4em; height:45px; width:200px;}
-#mastHead .searchContainer .searchButton	{background-color:#e0463a; border:none; text-align:center; font-size: 14px; color:#fff; width:100px; height:45px; cursor:pointer; position:absolute; top:0px; right:0px; z-index:1000;} /* @REB - apply the mag glass bg here using sprite */
+#mastHead .searchContainer {border: none; position:relative; width: 300px; margin-bottom: 20px;}
+#mastHead .searchContainer .productSearchKeyword {border:0; background:#ffffff; text-indent:.4em; height:45px; width:200px;  box-shadow:-2px 2px 2px #000000;}
+#mastHead .searchContainer .searchButton {background-color:#e0463a; border:none; text-align:center; font-size: 14px; color:#fff; width:100px; height:45px; cursor:pointer; float:Right; box-shadow:-2px 2px 2px #000000;}
 
 #mastHead .dropdownsContainer {height:100px; width:980px;}
 #mastHead .singleDropdown {height:80px; width:196px; background-position:-47px 99px; font-family:Oswald; font-weight:bold; font-size: 24px; color:#3bb3c3; text-align:center; line-height: 27px; padding-top: 25px;}
@@ -132,27 +132,33 @@ FOOTER
 *********************************************************************************/
 
 .footerContainer {height:685px; width:100%; background-image:url(images/FooterBackground.png);}
-.footerInteractContainer {height:115px; width:100%; position:relative; top:229px; left:0px; background-color:#009;}
-.footerSocialIcons {height:32px; width:250px; position:absolute; top:0px; right:300px; background-color:#F00;}
+.footerInteractContainer {height:115px; width:100%; position:relative; top:229px; left:0px;}
+.footerSocialIcons {height:32px; width:250px; position:absolute; top:0px; right:300px;}
 .footerSocialIconContainers {height:32px; width:32px; float:left; padding:0px 9px 0px 9px;}
 .footerSocialIcons .facebook {background-position:8px -182px;}
 .footerSocialIcons .twitter {background-position:-45px -182px;}
 .footerSocialIcons .googlePlus {background-position:-98px -182px;}
 .footerSocialIcons .pintrest {background-position:-151px -182px;}
 .footerSocialIcons .email {background-position:-204px -182px;}
-.footerNewsletter {height:60px; width:675px; position:absolute; top:55px; right:40px; background-color:#666;}
 
-.footerLinksContainer {height:275px; width:100%; background-color:#9F6; margin-top:295px;}
-.footerLinksContainer ul {height:auto; width:15%; padding:0% 5% 0% 5%; float:left; list-style:none; color:#3bb3c3; background-color:#F93;}
-.footerLinksContainer li:first-child {color:#666; font-family:Oswald; font-weight:bold; font-size:18px; cursor:text;}
-.footerLinksContainer li {color:#3bb3c3; font-family:"Open Sans"; font-size:14px; cursor:pointer;}
+.footerNewsletter {height:60px; width:675px; position:absolute; top:55px; right:196px; color:#000;}
+.footerNewsletter .nameField{border:0; background:#ffffff; font-family:"Open Sans"; text-indent:.4em; height:40px; width:220px; margin:0px 20px 0px 8px; box-shadow:-2px 2px 2px #000000;}
+.footerNewsletter .emailField{border:0; background:#ffffff; font-family:"Open Sans"; text-indent:.4em; height:40px; width:140px;  box-shadow:-2px 2px 2px #000000;}
+.footerNewsletter .joinButton {background-color:#e0463a; border:none; text-align:center; font-family:Oswald; font-weight:bold; font-size: 14px; color:#fff; width:80px; height:40px; cursor:pointer;  box-shadow:-2px 2px 2px #000000;}
+.footerNewsletter h3 {font-family:Oswald; font-size:18px; font-weight:bold; line-height:16px; margin-top:3px; text-align:right;}
+.footerNewsletter span {font-family:"Open Sans"; font-size:12px;}
+
+.footerLinksContainer {height:315px; width:100%; margin-top:255px;}
+.footerLinksContainer ul {height:auto; width:15%; padding:0% 5% 0% 5%; float:left; list-style:none; color:#3bb3c3;}
+.footerLinksContainer li:first-child {color:#666; font-family:Oswald; font-weight:bold; font-size:18px; line-height:50px; cursor:text;}
+.footerLinksContainer li {color:#3bb3c3; font-family:"Open Sans"; font-size:14px; line-height:27px; cursor:pointer;}
 .footerLinksContainer li:hover {color:#e0463a;}
 
-.footerIcons {height:107px; width:100%; position:relative; top:155px; left:0px; background-color:#FF0; z-index:5;}
+.footerIcons {height:107px; width:100%; position:relative; top:208px; left:0px; z-index:5;}
 .footerIcons .ccCards {height:23px; width:223px; background-position:-1px -120px; position:absolute; bottom:0px; left:67px;}
 .footerIcons .bbbBadge {height:43px; width:195px; background-color:#93F; position:absolute; bottom:0px; left:302px;}
-.footerIcons .googleTrustedBadge {height:58px; width:122px; background-color:#C09; position:absolute; top:0px; right:0px;}
-.footerIcons .footerPhoneChat {height:30px; width:230px; background-color:#F00; color:#3bb3c3; font-family:Oswald; font-weight:bold; font-size:18px; position:absolute; bottom:0px; right:281px;}
+.footerIcons .googleTrustedBadge {height:58px; width:122px; background-color:#C09; position:absolute; top:0px; right:0px;  box-shadow:-2px 2px 2px #000000;}
+.footerIcons .footerPhoneChat {height:30px; width:230px; color:#3bb3c3; font-family:Oswald; font-weight:bold; font-size:18px; position:absolute; bottom:0px; right:281px;}
 .footerIcons .footerPhoneChat span {color:#000; font-family:"Open Sans"; font-size:10px; font-weight:400;}
 
 .copyright {height: 54px; width: 100%px; padding-top: 33px; text-align: center; font-family:"Open Sans"; font-size:12px; color:#000; background-color:#fff; border-top:10px solid #3bb3c3;}
