@@ -7,7 +7,7 @@
 	padding:0;
 	}
 
-#appView {background:white; margin: 0px auto; width: 1020px;}
+#appView {background:white; margin: 0px auto; height:auto; width: 1020px;}
 #appPreView {margin-top:10%;}
 #appPreView, .whiteBG	{padding:1.0em; background:blue; border:1px solid #d2e9f6;}
 
@@ -108,6 +108,7 @@ the padding is to compensate for the spacing between the main nav.
 #mastHead .singleDropdown:hover {background-position:-248px -1px;}
 #mastHead .dropdown {height:0px; width:980px; margin:0px 0px 0px 20px; position:relative; top:21px; overflow:hidden; z-index:5; background-color:#e0463a;}
 #mastHead .dropdown.beachAccessoriesDD {left: -200px;}
+#mastHead .beachAccProduct {height:525px; width:740px; background-color:#ffe680; position:absolute; top:5px; left:240px;}
 #mastHead .dropdown.beachChairsDD {left:-356px;}
 #mastHead .dropdown.recreationDD {left:-512px;}
 #mastHead .dropdown.umbrellasShelterDD {left:-668px;}
@@ -277,9 +278,20 @@ HOMEPAGE
 
 .prodlistTitle	{margin:0; padding:0; color:#79ccc8; font-size:1.4em; line-height:1.2em;}
 
-.newArrivalsCarousel {height:300px; width:620px; background-color:#93F;}
+.newArrivalsContainer {height:300px; width:960px; margin:auto; padding-top:40px; background-color:#F00;}
+.newArrivalsCarouselLeft {height:300px; width:630px; margin-left: 5px; background-color:#0FF;}
+.newArrivalsCarouselRight {height:300px; width:300px; margin-left:15px; background-color:#666;}
 
+.homepageCategories {height:310px; width:940px; margin: 0px auto 0px auto; padding:10px 0px 10px 0px; background-color:#0F0;}
 
+.featuredProductsCarouselContainer {height:405px; width:1020px; border-bottom:5px solid #f8c301; background-color:#00C;}
+.carouselTitles {height:35px; width:100%;}
+.featuredCarousel {height:330px; width:1020px; background-color:#FF0;}
+.bestSellersCarouselContainer {height:745px; width:1020px; border-bottom:5px solid #3bb3c3; background-color:#C3F;}
+.bestSellersCarousel {height:660px; width:1020px; background-color:#F90;}
+.categoryDescriptionContainer {height:390px; width:1020px; background-color:#303;}
+
+    
 
 
 
@@ -335,6 +347,9 @@ PRODUCT PAGE
 */
 
 
+
+
+
 .prodTabViewContainer .ui-tabs .ui-tabs-nav li a	{font-size:13px; font-family:Helvetica, Arial, sans-serif; padding:6px;}
 
 .prodTabViewContainer .ui-widget-header	{padding:3px 3px 0 3px; margin:0; border-width:0; border-bottom-width:1px;}
@@ -386,7 +401,13 @@ global app styles
 .catName {background-color:#0285CD; color:#FFFFFF; padding:1.2em 0; text-align:center;width:150px;max-height:19px;}
 .categoryList li:nth-child(even) .catName {background-color:#00a9a4;}
 
-.productList li	{width:175px;}
+
+.productListTall li {float: left;  margin: 0px 5px 0px 5px;}
+.productList li	{height:300px; width:300px; float:left; margin:0px;}
+.productList li > div {width:300px;}
+.myProdThumb {padding-left:40px;  border:5px solid #3bb3c3;}
+.prodTextContainer {}
+.prodDesc {color:#000; font-family:"Open Sans"; font-size:14px; text-align:center;}
 .productList h5, .categoryList h5 {height:5em;margin-bottom:0.5em;}
 .productListItem .zlink	{color:#FC410E;}
 .pogType_attribs	{display:none;}
