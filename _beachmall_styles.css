@@ -7,7 +7,8 @@
 	padding:0;
 	}
 
-#appPreView	{margin-top:10%;}
+#appView {background:white; margin: 0px auto; width: 1020px;}
+#appPreView {margin-top:10%;}
 #appPreView, .whiteBG	{padding:1.0em; background:blue; border:1px solid #d2e9f6;}
 
 body {
@@ -59,21 +60,23 @@ the padding is to compensate for the spacing between the main nav.
 
 #mainContentArea	{padding:.4em .2em;} /* side padding is compensating for margins on main nav */
 
+.headerContainer {height:auto; width:1020px; margin:auto; position:relative;}
+
 /* topNav is the container for the content above the white bg */
 .topNav	{height: 50px; width: 100%; font-size:.75em;} /* @REB - need a media query here to when this gets down to vertical pad size. @ phone size, hide items to make room */
 .topNav	.guarantee {} /* @REB - add guarantee bg here using sprite */
 .topNav nav	{text-align:right; color:#000;}
 .topNav nav a	{text-decoration:none;}
 .topNav nav a:hover	{text-decoration:underline;}
-.topNav .localizedBox {height:53px; width:216px; text-align:center; background-color:#f5f1de; border:2px solid #fff; padding-top:5px; position:absolute; top:0px; left:50px; z-index:5; box-shadow:0px 2px 2px #000000;}
-.topNav .phoneChatLive {height:50px; width:353px; margin:0px 0px 0px 497px; font-family:Oswald; font-weight:bold; font-size: 18px; line-height: 51px;}
+.topNav .localizedBox {height:53px; width:216px; text-align:center; background-color:#f5f1de; border:2px solid #fff; padding-top:5px; position:absolute; top:0px; left:40px; z-index:5; box-shadow:0px 2px 2px #000000;}
+.topNav .phoneChatLive {height:50px; width:353px; margin:0px 0px 0px 351px; font-family:Oswald; font-weight:bold; font-size: 18px; line-height: 51px;}
 .topNav .phoneIcon {height:50px; width:35px; background-position:0 10px;}
 .topNav .liveHelp	{height:19px; width:145px; font-size:0.75em;}
 .topNav .liveHelp div.icon {background-position:0 -91px; width:25px; height:19px;float:left;}
 .topNav .liveHelp a {text-decoration:none; font-family:Oswald; font-weight:bold; font-size:18px;color:#000;}
-.topNav .cartIcon {height:40px; width:30px; background-position:4px -45px; margin:0px 50px 0px 0px; padding: 10px 25px 0px 0px;}
+.topNav .cartIcon {height:40px; width:30px; background-position:4px -45px; margin:0px 40px 0px 0px; padding: 10px 12px 0px 0px;}
 .topNav .cartIcon a {color:#fff;}
-.topNav .topNavLinks {height:50px; width:177px; margin:0px 30px 0px 0px; line-height:48px; padding-right:5px;}
+.topNav .topNavLinks {height:50px; width:177px; margin:0px 10px 0px 0px; line-height:48px; padding-right:5px;}
 .topNav .topNavLinks a {text-decoration:none; color: #000;}
 
 .sprite {
@@ -81,16 +84,16 @@ the padding is to compensate for the spacing between the main nav.
 }
 
 
-#mastHead	{height: 185px; padding: 0px 30px 0px 30px; position:relative; background-image: url(images/HeaderBackground.jpg); background-color: #f5f1de; border-bottom:5px solid #3bb3c3;} /* left/right padding to compensate for padding on main nav. helps w/ alignment */
+#mastHead	{height:185px; width:auto; padding:0px 40px 0px 40px; position:relative; background-image:url(images/HeaderBackground.jpg); background-color:#f5f1de; border-bottom:5px solid #3bb3c3;} /* left/right padding to compensate for padding on main nav. helps w/ alignment */
 #mastHead .phone {
 	background-position:0 0;
 	width:155px;
 	height:28px;
 }
 #mastHead .headerRightContainer {height:185px; width:980px; padding: 20px 0px 0px 0px;}
-#mastHead .bannerContainer {height:28px; width:241px; margin:10px 0 0 23%}
+#mastHead .bannerContainer {height:28px; width:241px; position:absolute; top:31px; left:38%;}
 #mastHead .bannerContainer .banner	{width:49%; display:inline-block; margin:0; padding:0;}
-#mastHead .logo {margin:40px 0px 0px 21px; position:absolute;}
+#mastHead .logo {margin:30px 0px 0px 0px; position:absolute;}
 #mastHead .freeShipping	{background-position:-123px -150px; height:28px; width:118px; float:left; margin-left:.2em;}
 #mastHead .easyReturns	{background-position:0 -150px; height:28px; width:114px; float:right; margin-right:.2em;}
 
@@ -98,26 +101,26 @@ the padding is to compensate for the spacing between the main nav.
 #mastHead .searchContainer .productSearchKeyword {border:0; background:#ffffff; text-indent:.4em; height:45px; width:200px;  box-shadow:-2px 2px 2px #000000;}
 #mastHead .searchContainer .searchButton {background-color:#e0463a; border:none; text-align:center; font-size: 14px; color:#fff; width:100px; height:45px; cursor:pointer; float:Right; box-shadow:-2px 2px 2px #000000;}
 
-#mastHead .dropdownsContainer {height:100px; width:980px;}
-#mastHead .singleDropdown {height:80px; width:196px; background-position:-47px 99px; font-family:Oswald; font-weight:bold; font-size: 24px; color:#3bb3c3; text-align:center; line-height: 27px; padding-top: 25px;}
+#mastHead .dropdownsContainer {height:100px; width:780px;}
+#mastHead .singleDropdown {height:80px; width:156px; background-position:-47px 99px; font-family:Oswald; font-weight:bold; font-size: 24px; color:#3bb3c3; text-align:center; line-height: 27px; padding-top: 25px;}
 #mastHead .singleDropdown.singleLineDD {padding-top:30px;}
 #mastHead .singleDropdown span {line-height:49px;}
 #mastHead .singleDropdown:hover {background-position:-248px -1px;}
-#mastHead .dropdown {height:0px; width:1275px; margin:0px 0px 0px 20px; position:relative; top:21px; overflow:hidden; z-index:5; background-color:#e0463a;}
-#mastHead .dropdown.beachAccessoriesDD {left: -318px;}
-#mastHead .dropdown.beachChairsDD {left:-514px;}
-#mastHead .dropdown.recreationDD {left:-710px;}
-#mastHead .dropdown.umbrellasShelterDD {left:-907px;}
-#mastHead .dropdown.beachWearDD {left:-1099px}
+#mastHead .dropdown {height:0px; width:980px; margin:0px 0px 0px 20px; position:relative; top:21px; overflow:hidden; z-index:5; background-color:#e0463a;}
+#mastHead .dropdown.beachAccessoriesDD {left: -200px;}
+#mastHead .dropdown.beachChairsDD {left:-356px;}
+#mastHead .dropdown.recreationDD {left:-512px;}
+#mastHead .dropdown.umbrellasShelterDD {left:-668px;}
+#mastHead .dropdown.beachWearDD {left:-824px}
 #mastHead .dropdown.singleLineDD {padding-top:30px;}
-#mastHead .dropdown ul {height: 522px; width:240px; margin: 5px 0px 5px 0px; padding: 0px 0px 3px 35px; background-color:#ffe680; font-weight: normal;}
+#mastHead .dropdown ul {height: 522px; width:220px; margin: 5px 0px 5px 0px; padding: 0px 0px 3px 20px; background-color:#ffe680; font-weight: normal;}
 #mastHead .dropdown li:first-child {height:27px; width:207px; font-family:Oswald; font-size:24px; font-weight: normal; color:#e0463a; text-align:left; margin: 20px 0px 16px 13px;}
 #mastHead .dropdown.twoLine li:first-child {height:54px;}
 #mastHead .dropdown li {height:27px; width:226px; font-family:"Open Sans"; font-size:14px; color:#000; text-align:left; margin: 3px 0px 3px 14px;}
-#mastHead .dropdown li:hover {color:#e0463a; cursor:pointer; background-image:url(images/DropoutArrow-207x27.png)}
+#mastHead .dropdown li:hover {color:#e0463a; cursor:pointer; background-image:url(images/DropoutArrow-207x27.png);}
 
 
-#mastHead .dropout.out {height:525px; width:0px; background-color:#f8c301; margin:0px 0px 0px 20px; position:relative; top:-117px; left: 206px; overflow:hidden; z-index:5;} 
+#mastHead .dropout.out {height:525px; width:0px; background-color:#f8c301; margin:0px 0px 0px 20px; position:relative; top:-117px; left:186px; overflow:hidden; z-index:5;} 
 #mastHead .dropout.out ul {height: 522px; width:205px; margin: 90px 0px 0px 0px; padding:0px 0px 0px 6px; background-color:#f8c301;}
 #mastHead .dropout.out li:first-child {height:27px; width:207px; font-family:"Open Sans"; font-size:14px; color:#000; text-align:left; margin: -5px 14px 3px 14px;}
 
@@ -131,9 +134,9 @@ the padding is to compensate for the spacing between the main nav.
 FOOTER
 *********************************************************************************/
 
-.footerContainer {height:685px; width:100%; background-image:url(images/FooterBackground.png);}
+.footerContainer {height:685px; width:100%; background-image:url(images/FooterBackground-1020x685.png);}
 .footerInteractContainer {height:115px; width:100%; position:relative; top:229px; left:0px;}
-.footerSocialIcons {height:32px; width:250px; position:absolute; top:0px; right:300px;}
+.footerSocialIcons {height:32px; width:250px; position:absolute; top:0px; right:148px;}
 .footerSocialIconContainers {height:32px; width:32px; float:left; padding:0px 9px 0px 9px;}
 .footerSocialIcons .facebook {background-position:8px -182px;}
 .footerSocialIcons .twitter {background-position:-45px -182px;}
@@ -141,7 +144,7 @@ FOOTER
 .footerSocialIcons .pintrest {background-position:-151px -182px;}
 .footerSocialIcons .email {background-position:-204px -182px;}
 
-.footerNewsletter {height:60px; width:675px; position:absolute; top:55px; right:196px; color:#000;}
+.footerNewsletter {height:60px; width:675px; position:absolute; top:55px; right:40px; color:#000;}
 .footerNewsletter .nameField{border:0; background:#ffffff; font-family:"Open Sans"; text-indent:.4em; height:40px; width:220px; margin:0px 20px 0px 8px; box-shadow:-2px 2px 2px #000000;}
 .footerNewsletter .emailField{border:0; background:#ffffff; font-family:"Open Sans"; text-indent:.4em; height:40px; width:140px;  box-shadow:-2px 2px 2px #000000;}
 .footerNewsletter .joinButton {background-color:#e0463a; border:none; text-align:center; font-family:Oswald; font-weight:bold; font-size: 14px; color:#fff; width:80px; height:40px; cursor:pointer;  box-shadow:-2px 2px 2px #000000;}
@@ -149,16 +152,16 @@ FOOTER
 .footerNewsletter span {font-family:"Open Sans"; font-size:12px;}
 
 .footerLinksContainer {height:315px; width:100%; margin-top:230px;}
-.footerLinksContainer ul {height:auto; width:15%; padding:0% 5% 0% 5%; float:left; list-style:none; color:#3bb3c3;}
+.footerLinksContainer ul {height:auto; width:17%; padding:0% 0% 0% 6.7%; float:left; list-style:none; color:#3bb3c3;}
 .footerLinksContainer li:first-child {color:#666; font-family:Oswald; font-weight:bold; font-size:18px; line-height:50px; cursor:text;}
 .footerLinksContainer li {color:#3bb3c3; font-family:"Open Sans"; font-size:14px; line-height:27px; cursor:pointer;}
 .footerLinksContainer li:hover {color:#e0463a;}
 
 .footerIcons {height:107px; width:100%; position:relative; top:208px; left:0px; z-index:5;}
-.footerIcons .ccCards {height:23px; width:223px; background-position:-1px -120px; position:absolute; bottom:0px; left:67px;}
-.footerIcons .bbbBadge {height:43px; width:195px; position:absolute; bottom:-1px; left:302px;}
+.footerIcons .ccCards {height:23px; width:223px; background-position:-1px -120px; position:absolute; bottom:0px; left:40px;}
+.footerIcons .bbbBadge {height:43px; width:195px; position:absolute; bottom:-1px; left:273px;}
 .footerIcons .googleTrustedBadge {height:58px; width:122px; background-color:#C09; position:absolute; top:0px; right:0px;  box-shadow:-2px 2px 2px #000000;}
-.footerIcons .footerPhoneChat {height:22px; width:230px; color:#3bb3c3; font-family:Oswald; font-weight:bold; font-size:18px; position:absolute; bottom:0px; right:281px;}
+.footerIcons .footerPhoneChat {height:22px; width:218px; color:#3bb3c3; font-family:Oswald; font-weight:bold; font-size:17px; position:absolute; bottom:0px; right:40px;}
 .footerIcons .footerPhoneChat span {color:#000; font-family:"Open Sans"; font-size:10px; font-weight:400;}
 
 .copyright {height: 54px; width: 100%px; padding-top: 33px; text-align: center; font-family:"Open Sans"; font-size:12px; color:#000; background-color:#fff; border-top:10px solid #3bb3c3;}
@@ -273,6 +276,12 @@ HOMEPAGE
 */
 
 .prodlistTitle	{margin:0; padding:0; color:#79ccc8; font-size:1.4em; line-height:1.2em;}
+
+.newArrivalsCarousel {height:300px; width:620px; background-color:#93F;}
+
+
+
+
 
 /* for the carousel */
 .list_carousel {
