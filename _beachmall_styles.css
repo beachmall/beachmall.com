@@ -9,7 +9,7 @@
 
 #appView {background:white; margin: 0px auto; height:auto; width: 1020px;}
 #appPreView {margin-top:10%;}
-#appPreView, .whiteBG	{padding:1.0em; background:blue; border:1px solid #d2e9f6;}
+#appPreView, .whiteBG	{padding:1.0em; border:1px solid #d2e9f6;}
 
 body {
 	font: 100%/1.5 Arial, Helvetica, sans-serif; /* 16px */  
@@ -288,12 +288,10 @@ HOMEPAGE
 .carouselTitles {height:35px; width:100%;}
 .featuredCarousel {height:330px; width:1020px; background-color:#FF0;}
 .bestSellersCarouselContainer {height:745px; width:1020px; border-bottom:5px solid #3bb3c3; background-color:#C3F;}
-.bestSellersCarousel {height:660px; width:1020px; background-color:#F90;}
+.bestSellersCarousel {height:660px; width:940px; padding:0px 40px 0px 40px; background-color:#F90;}
 .categoryDescriptionContainer {height:390px; width:1020px; background-color:#303;}
 
     
-
-
 
 /* for the carousel */
 .list_carousel {
@@ -393,6 +391,7 @@ PRODUCT PAGE
 /*
 global app styles 
 */
+.cents {font-size: 50%;	vertical-align: super;}
 
 .thumbContainer {width:100%;}
 .categoryList li {border:1px dotted #0285CD;}
@@ -403,11 +402,24 @@ global app styles
 
 
 .productListTall li {float: left;  margin: 0px 5px 0px 5px;}
-.productList li	{height:300px; width:300px; float:left; margin:0px;}
-.productList li > div {width:300px;}
-.myProdThumb {padding-left:40px;  border:5px solid #3bb3c3;}
-.prodTextContainer {}
-.prodDesc {color:#000; font-family:"Open Sans"; font-size:14px; text-align:center;}
+newArrivalsCarouselRight, .productList li {height:300px; width:300px; float:left; margin:0px;}
+newArrivalsCarouselRight, .productList li > div {width:300px;}
+newArrivalsCarouselRight, .myProdThumb {padding-left:40px;  border:5px solid #3bb3c3;}
+newArrivalsCarouselRight, .prodTextContainer {font-family:Oswald; font-size:24px;}
+newArrivalsCarouselRight, .prodDesc, .productList h5, .categoryList h5 {color:#000; font-family:"Open Sans"; font-size:13px; text-align:center; line-height:16px; padding:7px 10px 0px 7px;}
+newArrivalsCarouselRight, .prodPrice, .productList h6, .categoryList h6 {margin-left:15px;}
+newArrivalsCarouselRight, .moreDetails {height:30px; width:100px; color:#fff; font-size:14px; text-align:center; line-height:25px; background-color:#3bb3c3;}
+
+.productListSmall.productList li {height:220px; width:220px; float:left; margin:7.5px;}
+.productListSmall.productList li > div {width:220px;}
+.myProdThumbSmall {padding-left:30px;  border:5px solid #3bb3c3;}
+.prodTextContainerSmall {font-family:Oswald; font-size:24px;}
+.prodDescSmall, .productList h5, .categoryList h5 {color:#000; font-family:"Open Sans"; font-size:11px; text-align:center; line-height:13px; padding:7px 10px 0px 7px;}
+.prodPriceSmall, .productList h6, .categoryList h6 {margin-left:15px;}
+.moreDetailsSmall {height:30px; width:100px; color:#fff; font-size:14px; text-align:center; line-height:25px; background-color:#3bb3c3;}
+
+
+
 .productList h5, .categoryList h5 {height:5em;margin-bottom:0.5em;}
 .productListItem .zlink	{color:#FC410E;}
 .pogType_attribs	{display:none;}
