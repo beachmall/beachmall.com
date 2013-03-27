@@ -181,17 +181,17 @@ app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(P) {
 		setTimeout(function(){
 			$target.carouFredSel({
 				auto: {
-					items			: 6,
+					/*items			: 6,
 					duration		: 5000,
 					easing			: "linear",
-					timeoutDuration	: 0,
+					timeoutDuration	: 0,*/
 					pauseOnHover	: "immediate"
 				},
 				prev: '.newCarouselPrev',
 				next: '.newCarouselNext',
 				width: '100%',
-				//pagination: '#newArrivalsCarouselLeftPagination',
-				scroll: 2,
+				pagination: '#newArrivalsCarouselLeftPagination',
+				scroll: 6,
 		//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
 				swipe: {
 					onMouse: true,
