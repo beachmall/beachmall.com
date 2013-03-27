@@ -80,6 +80,44 @@ app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {
 	else	{} //couldn't find the tab to tabificate.
 	}]);
 
+
+//Filter Search:
+//sample of an onDeparts. executed any time a user leaves this page/template type.
+app.rq.push(['templateFunction','categoryTemplate','onCompletes',function(P) {
+	app.u.dump("BEGIN categoryTemplate onCompletes for filtering");
+	if(app.ext.store_filter.filterMap[P.navcat])	{
+		app.u.dump(" -> safe id DOES have a filter.");
+
+		var $page = $(app.u.jqSelector('#',P.parentID));
+		app.u.dump(" -> $page.length: "+$page.length);
+		if($page.data('filterAdded'))	{} //filter is already added, don't add again.
+		else	{
+			$page.data('filterAdded',true)
+			var $form = $("[name='"+app.ext.store_filter.filterMap[P.navcat].filter+"']",'#appFilters').clone().appendTo($('.filterContainer',$page));
+			$form.on('submit.filterSearch',function(event){
+				event.preventDefault()
+				app.u.dump(" -> Filter form submitted.");
+				app.ext.store_filter.a.execFilter($form,$page);
+				});
+
+			if(typeof app.ext.store_filter.filterMap[P.navcat].exec == 'function')	{
+				app.ext.store_filter.filterMap[P.navcat].exec($form,P)
+				}
+
+	//make all the checkboxes auto-submit the form.
+			$(":checkbox",$form).off('click.formSubmit').on('click.formSubmit',function() {
+				$form.submit();      
+				});
+			}
+		}
+
+	}]);
+
+
+
+
+
+
 /*
 
 //puts thumbnails into carousel IF there are more than 5
@@ -142,11 +180,42 @@ app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(P) {
 //for whatever reason, caroufredsel needs to be executed after a moment.
 		setTimeout(function(){
 			$target.carouFredSel({
-				auto: false,
+				auto: {
+					items			: 6,
+					duration		: 5000,
+					easing			: "linear",
+					timeoutDuration	: 0,
+					pauseOnHover	: "immediate"
+				},
 				prev: '.newCarouselPrev',
 				next: '.newCarouselNext',
 				width: '100%',
+				//pagination: '#newArrivalsCarouselLeftPagination',
 				scroll: 2,
+		//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
+				swipe: {
+					onMouse: true,
+					onTouch: true
+					}
+				});
+			},1000); 
+		}
+	}]);
+	
+app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(P) {
+
+	var $target = $('#homeProdSearchNewArrivals2');
+	if($target.data('isCarousel'))	{} //only make it a carousel once.
+	else	{
+		$target.data('isCarousel',true);
+//for whatever reason, caroufredsel needs to be executed after a moment.
+		setTimeout(function(){
+			$target.carouFredSel({
+				auto: false,
+				prev: '.new2CarouselPrev',
+				next: '.new2CarouselNext',
+				width: '100%',
+				scroll: 1,
 		//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
 				swipe: {
 					onMouse: true,
@@ -158,7 +227,6 @@ app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(P) {
 	}]);
 
 app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(P) {
-
 	var $target = $('#homeProdSearchBestSellers');
 	if($target.data('isCarousel'))	{} //only make it a carousel once.
 	else	{
