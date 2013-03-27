@@ -473,7 +473,7 @@ the homepageTemplate template is loaded into mainContentArea by default when the
             <div>
             <div id='newArrivalsCarouselLeftPagination' class='newArrivalsCarouselPagination'></div>
                 <!-- a sample of how to format an elastic native search in a data-bind -->
-           	<ul id='homeProdSearchNewArrivals' data-bind='var: elastic-native({"size":"20","mode":"elastic-native","filter":{"term":{"tags":"IS_NEWARRIVAL"}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomTall;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productListTall'></ul>
+           	<ul id='homeProdSearchNewArrivals' data-bind='var: elastic-native({"size":"20","mode":"elastic-native","filter":{"term":{"tags":"IS_NEWARRIVAL"}}}); format: productSearch; bgcolor: TTTTTT; extension: myRIA; loadsTemplate: productListTemplateResultsCustomTall;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productListTall'></ul>
             </div>
         </div>
 		<div class='newArrivalsCarouselRight floatLeft'>
@@ -506,6 +506,7 @@ the homepageTemplate template is loaded into mainContentArea by default when the
         	
         	<ul id='homeProdSearchBestSellers' data-bind='var: elastic-native({"size":"20","mode":"elastic-native","filter":{"term":{"tags":"IS_BESTSELLER"}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>
         </div>
+        <div id='bestCarPagenation' class='standardCarouselPagenation'></div>
     </div>
     <div class='categoryDescriptionContainer'></div>
     
@@ -803,7 +804,7 @@ SANITY -> if you change the height and width of this image, change the .minimalM
 <li id='productListTemplateResultsCustomSmaller' class='loadingBG searchResultsProduct ' >
 	<div onClick="return showContent('product', {'pid' : $(this).parent().attr('data-pid')});" class='pointer productListSmall'>
 		<div class='prodThumbContainer myProdThumbSmall'>
-		<img src='blank.gif' class='prodThumb' data-bind='var: product(images); format:imageURL;isElastic:1;bgcolor:ffffff;' width='150' height='150' />
+		<img src='blank.gif' class='prodThumb' data-bind='var: product(images); format:imageURL;isElastic:1;bgcolor:ffffff;' width='210' height='210' />
 		</div>
 		<div class='prodTextContainerSmall'>        
             <h6 class='hideInMinimalMode floatLeft prodPriceSmall' data-bind='var: product(base_price); format:money; isElastic:1; currencySign: $;  hideZero:true; className:price;'></h6>
