@@ -451,11 +451,11 @@ newArrivalsCarouselRight, .moreDetails {height:30px; width:100px; color:#fff; fo
 .productListSmall.productList li > div {width:220px;}
 .myProdThumbSmall {height:210px; border:5px solid #FFF;}
 .myProdThumbSmall:hover {border:5px solid #e0463a;}
-.prodTextContainerSmall {font-family:Oswald; font-size:24px;}
-.prodDescSmall, .productList h5, .categoryList h5 {color:#000; font-family:"Open Sans"; font-size:11px; text-align:center; line-height:13px; padding:7px 10px 0px 7px;}
+.prodTextContainerSmall {height:auto; width:215px; font-family:Oswald; font-size:24px; margin-top:5px;}
+.prodDescSmall, .productList h5, .categoryList h5 {color:#000; font-family:"Open Sans"; font-size:11px; text-align:center; line-height:13px; padding:7px 5px 0px 0px;}
 .prodPriceSmall, .productList h6, .categoryList h6 {margin-left:15px;}
 .moreDetailsSmall {height:30px; width:100px; color:#fff; font-size:14px; text-align:center; line-height:30px; background-color:#3bb3c3;}
-.moreDetailsSmall:hover {background-color:#e0463a;}
+.myProdThumbSmall:hover .moreDetailsSmall {background-color:#e0463a;}
 
 
 .productList h5, .categoryList h5 {height:5em;margin-bottom:0.5em;}

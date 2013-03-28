@@ -817,13 +817,13 @@ SANITY -> if you change the height and width of this image, change the .minimalM
 	<div onClick="return showContent('product', {'pid' : $(this).parent().attr('data-pid')});" class='pointer productListSmall'>
 		<div class='prodThumbContainer myProdThumbSmall'>
 		<img src='blank.gif' class='prodThumb' data-bind='var: product(images); format:imageURL;isElastic:1;bgcolor:ffffff;' width='210' height='210' />
-		</div>
-		<div class='prodTextContainerSmall'>        
-            <h6 class='hideInMinimalMode floatLeft prodPriceSmall' data-bind='var: product(base_price); format:money; isElastic:1; currencySign: $;  hideZero:true; className:price;'></h6>
-            <div class='hideInMinimalMode floatRight pointer moreDetailsSmall' onClick="showContent('product',{'pid':$(this).parent().attr('data-pid')});">DETAILS</div> 
-            <h5 class='hideInMinimalMode clearfix prodDescSmall' data-bind='var: product(prod_name); format:text;'></h5>
-		</div>
-        
+		
+            <div class='prodTextContainerSmall'>        
+                <h6 class='hideInMinimalMode floatLeft prodPriceSmall' data-bind='var: product(base_price); format:money; isElastic:1; currencySign: $;  hideZero:true; className:price;'></h6>
+                <div class='hideInMinimalMode floatRight pointer moreDetailsSmall' onClick="showContent('product',{'pid':$(this).parent().attr('data-pid')});">DETAILS</div> 
+                <h5 class='hideInMinimalMode clearfix prodDescSmall' data-bind='var: product(prod_name); format:text;'></h5>
+            </div>
+        </div>
     </div>  
     
 </li>
