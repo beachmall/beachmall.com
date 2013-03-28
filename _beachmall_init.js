@@ -190,7 +190,7 @@ app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(P) {
 				prev: '.newCarouselPrev',
 				next: '.newCarouselNext',
 				width: '100%',
-				pagination: '#newArrivalsCarouselLeftPagination',
+				pagination: '#featuredCarouselPagination',
 				scroll: 6,
 		//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
 				swipe: {
@@ -238,9 +238,9 @@ app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(P) {
 				prev: '.bestCarouselPrev',
 				next: '.bestCarouselNext',
 				height: 405,
-				width: '100%',
+				width: 960,
 				pagination: '#bestCarPagenation',
-				scroll: 2,
+				scroll: 4,
 		//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
 				swipe: {
 					onMouse: true,
@@ -250,6 +250,33 @@ app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(P) {
 			},1000); 
 		}
 	}]);
+
+app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(P) {
+	var $target = $('#homeProdSearchFeatured');
+	if($target.data('isCarousel'))	{} //only make it a carousel once.
+	else	{
+		$target.data('isCarousel',true);
+//for whatever reason, caroufredsel needs to be executed after a moment.
+		setTimeout(function(){
+			$target.carouFredSel({
+				auto: false,
+				prev: '.featCarouselPrev',
+				next: '.featCarouselNext',
+				height: 405,
+				width: 960,
+				pagination: '#featCarPagenation',
+				scroll: 4,
+		//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
+				swipe: {
+					onMouse: true,
+					onTouch: true
+					}
+				});
+			},1000); 
+		}
+	}]);
+
+
 
 
 //group any third party files together (regardless of pass) to make troubleshooting easier.
