@@ -295,9 +295,13 @@ HOMEPAGE
 .standardCarouselPagenation a.selected {background:url(images/sprites-500x500.png); background-position:-33px -216px;}
 .standardCarouselPagenation a span {display: none;}
 .featuredProductsCarouselContainer {height:405px; width:1020px; border-bottom:5px solid #f8c301; background-color:#00C;}
-.carouselTitles {height:35px; width:100%;}
+.carouselTitles {height:35px; width:100%; color:#fff;}
+.carouselTitleTextContainer {height:100%; width:150px; font-family:Oswald; font-weight:bold; font-size:24px; margin-left:40px;}
+.carouselArrowContainer {height:16px; width:16px; margin:9px 10px 0px 0px; padding-top:10px; background-position:-88px -218px;}
+.carouselLinkContainer {height:47; width:126px; font-family:"Open Sans"; font-weight:bold; font-size:14px; margin-right:40px; padding-top:7px;}
 .featuredCarousel {height:330px; width:1020px; background-color:#FF0;}
 .bestSellersCarouselContainer {height:405px; width:1020px; border-bottom:5px solid #3bb3c3; background-color:#C3F;}
+.bestSellersCarouselTitles {background-color:#3bb3c3;}
 .bestSellersCarousel {height:330px; width:940px; padding:0px 40px 0px 40px; background-color:#F90; position:relative;}
 .categoryDescriptionContainer {height:390px; width:1020px; background-color:#303;}
 
