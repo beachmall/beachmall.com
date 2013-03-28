@@ -12,16 +12,18 @@
 #appPreView, .whiteBG	{padding:1.0em; border:1px solid #d2e9f6;}
 
 body {
-	font: 100%/1.5 Arial, Helvetica, sans-serif; /* 16px */  
+	font-family: Oswald, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight:normal;
 	color:#000000;
 	background-color:#fff;
 	margin:0;
 	}
 	
-.openSansFont {font-family: "Open Sans";}
+.openSansFont {font-family: "Open Sans"; font-weight:normal;}
 .openSansFontBold {font-family: "Open Sans"; font-weight: bold;}
 
-.oswaldFont {font-family: Oswald;}
+.oswaldFont {font-family: Oswald; font-weight:normal;}
 .oswaldFontBold {font-family: Oswald; font-weight: bold;}
 
 .fontBlack {color: #000;}
@@ -286,7 +288,7 @@ HOMEPAGE
 .newArrivalsCarouselPagination a span {display: none;}
 .newArrivalsCarouselRight {height:300px; width:300px; margin-left:15px; overflow:hidden; background-color:#666; position:relative;}
 
-.homepageCategories {height:310px; width:940px; margin: 0px auto 0px auto; padding:10px 0px 10px 0px; background-color:#0F0;}
+.homepageCategories {height:330px; width:960px; margin: 0px auto 0px auto; padding:10px 0px 10px 0px; background-color:#0F0;}
 
 .standardCarouselPagenation {height:30px; width:100%; text-align:center; padding-top:10px;}
 .standardCarouselPagenation a {width:20px; height:20px; background:url(images/sprites-500x500.png); background-position:-63px -216px; margin:0 5.7px 1px 5.7px; display:inline-block;}
@@ -402,11 +404,12 @@ global app styles
 */
 .cents {font-size: 50%;	vertical-align: super;}
 
-.thumbContainer {width:100%;}
+.homepageCategories ul li {margin: 5px 10px 5px 10px;}
+.thumbContainer {width:290px; border:5px solid #3bb3c3}
 .categoryList li {border:1px dotted #0285CD;}
 .categoryList li:nth-child(even) {border:1px dotted #00a9a4;}
-.catThumb {margin:5px 0 0 5px;vertical-align:baseline;}
-.catName {background-color:#0285CD; color:#FFFFFF; padding:1.2em 0; text-align:center;width:150px;max-height:19px;}
+.catThumb {padding: 0px 92px 0px 92px;}
+.catName {width:300px; height:40px; background-color:#3bb3c3; color:#FFFFFF; font-size:24px; font-weight:bold; text-align:center; line-height:44px;}
 .categoryList li:nth-child(even) .catName {background-color:#00a9a4;}
 
 

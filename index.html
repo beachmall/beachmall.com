@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"20130326175100",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"20130327203200",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"",
 	"httpsURL":"https://www-beachmall-com.app-hosted.com/",
@@ -485,7 +485,7 @@ the homepageTemplate template is loaded into mainContentArea by default when the
     </div>
     
     <div class='homepageCategories'>
-    	
+    	<ul data-bind="var: category(@subcategoryDetail); format: categoryList; bgcolor: TTTTTT; extension: store_navcats; loadsTemplate: categoryListTemplate; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin'></ul>
     </div>
     
     <div class='featuredProductsCarouselContainer'>
@@ -582,9 +582,9 @@ don't modify the 'data-templateid' unless you are changing template names and up
 <!-- used to display a category within a 'list', usually in the body of a category or the homepage. -->
 <ul>
 <li id='categoryListTemplate'>
-	<div onClick="showContent('category',{'navcat':$(this).parent().attr('data-catsafeid')});" class='pointer'>
-		<div class='thumbContainer'><img src='blank.gif' class='catThumb' data-bind='var: category(%meta.CAT_THUMB); format:imageURL;' width='140' height='140' /></div>
+	<div onClick="showContent('category',{'navcat':$(this).parent().attr('data-catsafeid')});" class='catTemplateContainer pointer'>
 		<div class='catName white2LGray'><span data-bind='var: category(pretty); format:catText; extension: myRIA;'></span></div>
+        <div class='thumbContainer'><img src='blank.gif' class='catThumb' data-bind='var: category(%meta.CAT_THUMB); format:imageURL;' width='105' height='105' /></div>
 	</div>
 </li>
 
@@ -1995,6 +1995,80 @@ The 'data-action' attribute is used to assign an onclick.
 		<button class='ui-button-text ui-button ui-state-default ui-corner-all ' id='modalLoginContinueButton' onClick="$('#loginFormForModal').dialog('close');">Continue</button>
 	</div>
 </div>
+
+
+
+
+
+
+
+<!--
+#################################
+
+LAYERED SEARCH FILTERS
+
+put all filters into the appFilters container.
+
+#################################
+-->
+
+
+<!--
+<div id='appFilters' class='displayNone'>
+
+
+<form action='#' name='beachChairsForm' id='completeBeachChairsForm' class='layeredSearch'>
+
+<fieldset data-elastic-key="base_price" data-filtertype="slider">
+	<legend>Price</legend>
+	<input type="text"  class='sliderValue' />
+	<div class="slider-range"></div>
+</fieldset>
+
+<fieldset data-elastic-key="prod_type" data-filtertype="hidden">
+	<input type='hidden' name="prod_type" value="beach-chairs" /> <!-- this is root cat for this cat, don't know if this is correct 
+</fieldset>  
+
+<!-- STOPPED HERE 
+
+<fieldset data-elastic-key="prod_material" data-filtertype="checkboxes">
+	<legend>Material</legend>
+	<label class='break'><input class="woodPieces" type='checkbox' value='wood' />Wood</label>
+    <label class='break'><input type='checkbox' value='metal' />Metal</label>
+    <label class='break'><input type='checkbox' value='marble' />Marble</label>
+    <label class='break'><input type='checkbox' value='plastic' />Plastic</label>
+    <label class='break'><input type='checkbox' value='theme' />Theme</label>
+    <label class='break'><input type='checkbox' value='unfinished' />Unfinished Wood</label>
+    <label class='break'><input type='checkbox' value='jaques' />Jaques</label>
+    <label class='break'><input type='checkbox' value='bone' />Bone</label>
+    <label class='break'><input type='checkbox' value='unique' />Unique</label>
+    
+</fieldset>
+
+<div></div>
+
+<fieldset class="woodType" data-elastic-key="prod_wood_type" data-filtertype="checkboxes">
+	<legend>Wood Type</legend>
+	<label class='break'><input type='checkbox' value='africanpadauk' />African Padauk</label>
+	<label class='break'><input type='checkbox' value='ebony' />Ebony</label>
+	<label class='break'><input type='checkbox' value='ebonizedboxwood' />Ebonized Boxwood</label>
+	<label class='break'><input type='checkbox' value='goldenrosewood' />Golden Rosewood</label>
+	<label class='break'><input type='checkbox' value='redsandalwood' />Red Sandalwood</label>
+	<label class='break'><input type='checkbox' value='red' />Red</label>
+</fieldset>
+
+<fieldset class="kingHeight" data-elastic-key="prod_king_height" data-filtertype="checkboxes">
+	<legend>King Height</legend>
+	<label class='break'><input type='checkbox' value='3' />3</label>
+	<label class='break'><input type='checkbox' value='3.5' />3.5</label>
+	<label class='break'><input type='checkbox' value='4' />4</label>
+</fieldset>
+
+</form>
+
+</div> -->
+
+
 
 
 
