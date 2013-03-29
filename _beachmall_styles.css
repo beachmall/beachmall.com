@@ -188,9 +188,24 @@ CATEGORY PAGE
 /**************************************************************
 PRODUCT LIST
 **************************************************************/
-#categoryTemplate, .productList li {height:400px; width:235px; margin:10px; background-color:#FF0;}
 
+.products.product {height:400px; width:220px; margin:16.8px; background-color:#FF0;}
+.products.product > div {height:auto; width:220px; background-color:#0F0;}
 
+.prodViewerAddToCartForm {height:40px; width:100%; margin-bottom:10px;}
+.prodViewerAddToCartButton.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-only {
+	height:40px;
+	width:125px;
+	margin-left:43px;
+	color#fff;
+	font-family:Oswald;
+	font-size:14px;
+	background: #3bb3c3;
+	border:none;
+	border-radius: 0px 0px 0px 0px;
+}
+/*Overrides widget button text color*/
+.prodViewerAddToCartButton, .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {color:#fff;}
 
 
 
