@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"20130329151500",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"20130329164200",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"",
 	"httpsURL":"https://www-beachmall-com.app-hosted.com/",
@@ -247,7 +247,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                         </div>
                     </div>
                     <div class='singleDropdown singleLineDD floatLeft sprite' onMouseOver="showDropdown($(this))" onMouseOut="hideDropdown($(this))">
-						<a class='bindByAnchor' href='#!category?navcat=.beach-accessories'><span>RECREATION</span></a>
+						<a class='bindByAnchor' href='#!category?navcat=.beach-sports'><span>RECREATION</span></a>
                         <div class='recreationDD dropdown floatLeft'>
                             <ul class='listStyleNone floatLeft'>
                             	<li>RECREATION</li>
@@ -273,7 +273,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                         </div>
                     </div>
                     <div class='singleDropdown floatLeft sprite' onMouseOver="showDropdown($(this))" onMouseOut="hideDropdown($(this))">
-                    	<!-- <a class='bindByAnchor' href='#!category?navcat=.beach-wear'> --> BEACH<br>WEAR <!-- </a> -->
+                    	<a class='bindByAnchor' href='#!category?navcat=.beachwear'>BEACH<br>WEAR</a>
                         <div class='beachWearDD dropdown floatLeft'>
                             <ul class='listStyleNone floatLeft'>
                             	<li>BEACH WEAR</li>
@@ -350,42 +350,54 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 			</form>
         </div>
     </section>
+    
+    <!-- 	<a class="bindByAnchor" href="#!product?pid=XYZ">A Product Name</a>
+            <a onClick='return showContent('product',{'pid':'XYZ'});'>A Product Name</a>
+            
+            <!-- category example 
+            <a class="bindByAnchor" href="#!category?navcat=.path.to.category">Category Name</a>
+            <a onClick='return showContent('category',{'navcat':'.path.to.category'});'>Category Name</a>
+            
+            <!-- company/returns example 
+            <a class="bindByAnchor" href="#!company?show=return">Returns Policy</a>
+            <a onClick=' return showContent('company',{'show':'return'});'>Returns Policy</a>
+	-->
 
 	<section class='footerLinksContainer'>
     	<ul>
         	<li>CATEGORIES</li>
-            <li>Beach Accesories</li>
-            <li>Beach Chairs</li>
-            <li>Recreation</li>
-            <li>Umbrellas & Shelter</li>
-            <li>Beach Wear</li>
+            <li><a class='bindByAnchor' href='#!category?navcat=.beach-accessories'>Beach Accesories</a></li>
+            <li><a class='bindByAnchor' href='#!category?navcat=.beach-chairs'>Beach Chairs</a></li>
+            <li><a class='bindByAnchor' href='#!category?navcat=.beach-sports'>Recreation</a></li>
+            <li><a class='bindByAnchor' href='#!category?navcat=.beach-umbrellas-shelter'>Umbrellas & Shelter</a></li>
+            <li><a class='bindByAnchor' href='#!category?navcat=.beachwear'>Beach Wear</a></li>
         </ul>
         <ul>
         	<li>ACCOUNT SERVICES</li>
-            <li>Log-in or Create Account</li>
-            <li>Log out</li>
-            <li>View Shopping Cart</li>
-            <li>Order Status</li>
+            <li><a class='bindByAnchor' href='#!customer?show=myaccount'>Log-in or Create Account</a></li>
+            <li><a class='bindByAnchor' href='#!customer?show=logout'>Log out</a></li>
+            <li><a class='bindByAnchor' href='#!customer?show=cart'>View Shopping Cart</a></li>
+            <li><a class='bindByAnchor' href='#!customer?show=orders'>Order Status</a></li>
         </ul>
         <ul>
-        	<li>NAVIGATE</li>
-            <li>Home</li>
+       	  <li>NAVIGATE</li>
+            <li><a class='bindByAnchor' href='#!category?navcat=.'>Home</a></li>
             <li><a class="bindByAnchor" href="#!company?show=about">About Us</a></li>
-            <li>Contact Us</li>
-            <li>Frequently Asked Questions</li>
-            <li>Site Map</li>
+            <li><a class="bindByAnchor" href="#!company?show=contact">Contact Us</a></li>
+            <li><a class="bindByAnchor" href="#!company?show=faq">FAQ</a></li>
+            <li><a class='bindByAnchor' href='#!category?navcat=.sitemap'>Site Map</a></li>
             <li>Product Reviews</li>
-            <li>Returns & Exchanges</li>
-            <li>Privacy Policy</li>
+            <li><a class="bindByAnchor" href="#!company?show=return">Returns & Exchanges</a></li>
+            <li><a class="bindByAnchor" href="#!company?show=privacy">Privacy Policy</a></li>
         </ul>
         <ul>
         	<li>ADDITIONAL LINKS</li>
-            <li>Buying Guides</li>
-            <li>Wholesale</li>
-            <li>Affiliates</li>
-            <li>Facebook</li>
-            <li>Twitter</li>
-            <li>Google Plus</li>
+            <li><a class='bindByAnchor' href='#!category?navcat=.buyer_guides'>Buying Guides</a></li>
+            <li><a class="bindByAnchor" href="#!company?show=contact">Wholesale</a></li>
+            <li><a class='bindByAnchor' href='#!category?navcat=.affiliates'>Affiliates</a></li>
+            <li><a href="https://www.facebook.com/BeachMall" target="_blank">Facebook</a></li>
+            <li><a href="https://twitter.com/Beachmall" target="_blank">Twitter</a></li>
+            <li><a href="https://plus.google.com/104451134911916367843/posts" target="_blank">Google Plus</a></li>
             <li>Pinterest</li>
         </ul>
         <div class='footerIcons'>
