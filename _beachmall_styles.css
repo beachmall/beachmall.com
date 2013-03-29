@@ -181,6 +181,8 @@ CATEGORY PAGE
 **************************************************************/
 
 
+.categoryList {height:auto; width:980px; margin:auto;}
+.categoryList li {height:155px; width:300px;}
 
 
 
@@ -190,12 +192,11 @@ CATEGORY PAGE
 
 
 
-
-
+/*M
 .categoryNav	{position:relative;}
 .categoryNav ul#tier1categories {
 /*	display:inline;*/
-	margin:0 auto;
+/*M	margin:0 auto;
 	
 	}
 .rootCatThumb	{width:100%; overflow:hidden; text-align:center; vertical-align:central; display:none;}
@@ -207,16 +208,17 @@ CATEGORY PAGE
 
 .categoryNav > ul > li	{
 	width:20%; background:#0285cd; border-right:.2em solid #ffffff; border-left:.2em solid #ffffff;
-	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
-	box-sizing: border-box;         /* Opera/IE 8+ */	
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit 
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko 
+	box-sizing: border-box;         /* Opera/IE 8+ 	
 	}
 
 .categoryNav > ul > li:nth-child(2), .categoryNav > ul > li:nth-child(4)	{background:#00a9a4;}
+M*/
 /* .categoryNav > ul > li:nth-child(3)	{background:#ffc50c;} */
 
 
-
+/*M
 .categoryNav > ul > li > a	{display:block; padding:.3em; border:.15em solid #ffffff; margin:.2em; color:#ffffff; text-decoration:none; text-align:center; font-size:1em;}
 
 .categoryNav ul li li a {
@@ -234,9 +236,9 @@ CATEGORY PAGE
 	background-color:#FBF7AE;
 	padding:.4em;
 	z-index:10001;
-	margin:-1px .2em; /* side margins is to compensate for cols between main nav */
+	margin:-1px .2em; /* side margins is to compensate for cols between main nav 
 	position:absolute;
-	left:0; right:0; height:260px; /* @REB - probably want a media query to adjust this height down as site scales down */
+	left:0; right:0; height:260px; /* @REB - probably want a media query to adjust this height down as site scales down 
 	}
 
 .catMenu ul {
@@ -268,15 +270,15 @@ CATEGORY PAGE
 	font-weight:normal;
 	padding:0;
 	display:inline;
-}
+}M*/
 
 /*.categoryNav ul li ul.child_menu li {
 	float:none;
 }
 */
-.categoryNav ul li:hover div.catMenu{
+/*M.categoryNav ul li:hover div.catMenu{
 	display:block !important;
-}
+}M*/
 
 .social a , .social a:link, .social a:visited, .social a:hover, .social a:active{
 	text-decoration:none;
@@ -450,14 +452,14 @@ global app styles
 
 .homepageCategories ul li {margin: 5px 10px 5px 10px;}
 .thumbContainer {height:105px; width:290px; border:5px solid #3bb3c3;}
-.categoryList li {border:1px dotted #0285CD;}
+/*M.categoryList li {border:1px dotted #0285CD;}
 .categoryList li:nth-child(even) {border:1px dotted #00a9a4;}
+.categoryList li:nth-child(even) .catName {background-color:#00a9a4;}M*/
 .catThumb {padding: 0px 92px 0px 92px;}
 .catName {width:300px; height:40px; background-color:#3bb3c3; color:#FFFFFF; font-size:24px; font-weight:bold; text-align:center; line-height:44px;}
 .catListTemp:hover .catName {background-color:#e0463a;}
 .catListTemp:hover .thumbContainer {border:5px solid #e0463a;}
 .catListTemp:hover .moreDetailsSmall {background-color:#e0463a;}
-.categoryList li:nth-child(even) .catName {background-color:#00a9a4;}
 .moreDetailsSmall.catDetails {position:relative; bottom:30px; right:-190px; z-index:2;}
 
 .productListTall li {float: left;  margin: 0px 5px 0px 5px;}
