@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"20130328134600",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"20130328174900",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"",
 	"httpsURL":"https://www-beachmall-com.app-hosted.com/",
@@ -194,7 +194,8 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                 </script>
                     
                 <div class='dropdownsContainer'>
-                    <div class='singleDropdown floatLeft sprite' onMouseOver="showDropdown($(this))" onMouseOut="hideDropdown($(this))">BEACH ACCESSORIES
+                    <div class='singleDropdown floatLeft sprite' onMouseOver="showDropdown($(this))" onMouseOut="hideDropdown($(this))">
+                    	<a class='bindByAnchor' href='#!category?navcat=.beach-accessories'>BEACH ACCESSORIES</a>
                         <div class='beachAccessoriesDD dropdown twoLine floatLeft'>
                             <ul class='listStyleNone floatLeft'>
                             	<li>BEACH<br>ACCESSORIES</li>
@@ -222,7 +223,8 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                             <div class='beachAccProduct'></div>
                         </div>
                     </div>
-					<div class='singleDropdown floatLeft sprite' onMouseOver="showDropdown($(this))" onMouseOut="hideDropdown($(this))"><img src="images/SmallYellowRoundDownArrow.png">BEACH<br>CHAIRS
+					<div class='singleDropdown floatLeft sprite' onMouseOver="showDropdown($(this))" onMouseOut="hideDropdown($(this))">
+                    	<a class='bindByAnchor' href='#!category?navcat=.beach-chairs'>BEACH<br>CHAIRS</a>
                         <div class='beachChairsDD dropdown floatLeft'>    
                             <ul class='listStyleNone floatLeft'>
                                 <li>BEACH CHAIRS</li>
@@ -244,8 +246,8 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                             </ul>
                         </div>
                     </div>
-                    <div class='singleDropdown singleLineDD floatLeft sprite' onMouseOver="showDropdown($(this))" onMouseOut="hideDropdown($(this))"><img src="images/SmallYellowRoundDownArrow.png">
-						<span>RECREATION</span>
+                    <div class='singleDropdown singleLineDD floatLeft sprite' onMouseOver="showDropdown($(this))" onMouseOut="hideDropdown($(this))">
+						<a class='bindByAnchor' href='#!category?navcat=.beach-accessories'><span>RECREATION</span></a>
                         <div class='recreationDD dropdown floatLeft'>
                             <ul class='listStyleNone floatLeft'>
                             	<li>RECREATION</li>
@@ -257,7 +259,8 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                             </ul>
                         </div>
                     </div>
-                    <div class='singleDropdown floatLeft sprite' onMouseOver="showDropdown($(this))" onMouseOut="hideDropdown($(this))"><img src="images/SmallYellowRoundDownArrow.png">UMBRELLAS<br>& SHELTER
+                    <div class='singleDropdown floatLeft sprite' onMouseOver="showDropdown($(this))" onMouseOut="hideDropdown($(this))">
+                    	<a class='bindByAnchor' href='#!category?navcat=.beach-umbrellas-shelter'>UMBRELLAS<br>& SHELTERS</a>
                         <div class='umbrellasShelterDD dropdown twoLine floatLeft'>
                             <ul class='listStyleNone floatLeft'>
                             	<li>UMBRELLAS & SHELTERS</li>
@@ -269,7 +272,8 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                             </ul>
                         </div>
                     </div>
-                    <div class='singleDropdown floatLeft sprite' onMouseOver="showDropdown($(this))" onMouseOut="hideDropdown($(this))"><img src="images/SmallYellowRoundDownArrow.png">BEACH<br>WEAR
+                    <div class='singleDropdown floatLeft sprite' onMouseOver="showDropdown($(this))" onMouseOut="hideDropdown($(this))">
+                    	<a class='bindByAnchor' href='#!category?navcat=.beach-wear'>BEACH<br>WEAR</a>
                         <div class='beachWearDD dropdown floatLeft'>
                             <ul class='listStyleNone floatLeft'>
                             	<li>BEACH WEAR</li>
@@ -366,7 +370,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
         <ul>
         	<li>NAVIGATE</li>
             <li>Home</li>
-            <li>About Us</li>
+            <li><a class="bindByAnchor" href="#!company?show=about">About Us</a></li>
             <li>Contact Us</li>
             <li>Frequently Asked Questions</li>
             <li>Site Map</li>
@@ -487,7 +491,7 @@ the homepageTemplate template is loaded into mainContentArea by default when the
     </div>
     
     <div class='homepageCategories'>
-    	<ul data-bind="var: category(@subcategoryDetail); format: categoryList; bgcolor: TTTTTT; extension: store_navcats; loadsTemplate: categoryListTemplate; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin'></ul>
+    	<ul data-bind="var: category(@subcategoryDetail); format: categoryList; bgcolor: TTTTTT; extension: store_navcats; loadsTemplate: categoryListHomeTemplate; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin'></ul>
     </div>
     
     <div class='CarouselContainer featuredProductsCarouselContainer'>
@@ -518,7 +522,9 @@ the homepageTemplate template is loaded into mainContentArea by default when the
         </div>
         <div id='bestCarPagenation' class='standardCarouselPagenation'></div>
     </div>
-    <div class='categoryDescriptionContainer'></div>
+    <div class='categoryDescriptionContainer'>
+    
+    </div>
     
     
     
@@ -591,7 +597,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 
 <!-- used to display a category within a 'list', usually in the body of a category or the homepage. -->
 <ul>
-<li id='categoryListTemplate'>
+<li id='categoryListTemplate' class='catListTemp'>
 	<div onClick="showContent('category',{'navcat':$(this).parent().attr('data-catsafeid')});" class='catTemplateContainer pointer'>
 		<div class='catName white2LGray'><span data-bind='var: category(pretty); format:catText; extension: myRIA;'></span></div>
         <div class='thumbContainer'><img src='blank.gif' class='catThumb' data-bind='var: category(%meta.CAT_THUMB); format:imageURL;' width='105' height='105' />
@@ -600,6 +606,16 @@ don't modify the 'data-templateid' unless you are changing template names and up
 	</div>
 </li>
 
+
+
+<li id='categoryListHomeTemplate' class='catListTemp'>
+	<div onClick="showContent('category',{'navcat':$(this).parent().attr('data-catsafeid')});" class='catTemplateContainer pointer'>
+		<div class='catName white2LGray'><span data-bind='var: category(pretty); format:catText; extension: myRIA;'></span></div>
+        <div class='thumbContainer'><img src='blank.gif' class='catThumb' data-bind='var: category(%meta.CAT_THUMB); format:imageURL;' width='105' height='105' />
+        	<div class='moreDetailsSmall catDetails'>SHOP NOW</div>
+        </div>
+	</div>
+</li>
 
 
 
@@ -801,14 +817,13 @@ SANITY -> if you change the height and width of this image, change the .minimalM
 <li id='productListTemplateResultsCustom' class='loadingBG searchResultsProduct ' >
 	<div onClick="return showContent('product', {'pid' : $(this).parent().attr('data-pid')});" class='pointer'>
 		<div class='prodThumbContainer myProdThumb'>
-		<img src='blank.gif' class='prodThumb' data-bind='var: product(images); format:imageURL;isElastic:1;bgcolor:ffffff;' width='210' height='210' />
-		</div>
-		<div class='prodTextContainer'>        
-            <h6 class='hideInMinimalMode floatLeft prodPrice' data-bind='var: product(base_price); format:money; isElastic:1; currencySign: $;  hideZero:true; className:price;'></h6>
-            <div class='hideInMinimalMode floatRight pointer moreDetails' onClick="showContent('product',{'pid':$(this).parent().attr('data-pid')});">DETAILS</div> 
-            <h5 class='hideInMinimalMode clearfix prodDesc' data-bind='var: product(prod_name); format:text;'></h5>
-		</div>
-        
+			<img src='blank.gif' class='prodThumb push' data-bind='var: product(images); format:imageURL;isElastic:1;bgcolor:ffffff;' width='210' height='210' />
+            <div class='prodTextContainer'>        
+                <h6 class='hideInMinimalMode floatLeft prodPrice' data-bind='var: product(base_price); format:money; isElastic:1; currencySign: $;  hideZero:true; className:price;'></h6>
+                <div class='hideInMinimalMode floatRight pointer moreDetails' onClick="showContent('product',{'pid':$(this).parent().attr('data-pid')});">DETAILS</div> 
+                <h5 class='hideInMinimalMode clearfix prodDesc' data-bind='var: product(prod_name); format:text;'></h5>
+            </div>
+        </div>
     </div>  
     
 </li>
@@ -816,8 +831,7 @@ SANITY -> if you change the height and width of this image, change the .minimalM
 <li id='productListTemplateResultsCustomSmaller' class='loadingBG searchResultsProduct ' >
 	<div onClick="return showContent('product', {'pid' : $(this).parent().attr('data-pid')});" class='pointer productListSmall'>
 		<div class='prodThumbContainer myProdThumbSmall'>
-		<img src='blank.gif' class='prodThumb' data-bind='var: product(images); format:imageURL;isElastic:1;bgcolor:ffffff;' width='210' height='210' />
-		
+			<img src='blank.gif' class='prodThumb' data-bind='var: product(images); format:imageURL;isElastic:1;bgcolor:ffffff;' width='210' height='210' />
             <div class='prodTextContainerSmall'>        
                 <h6 class='hideInMinimalMode floatLeft prodPriceSmall' data-bind='var: product(base_price); format:money; isElastic:1; currencySign: $;  hideZero:true; className:price;'></h6>
                 <div class='hideInMinimalMode floatRight pointer moreDetailsSmall' onClick="showContent('product',{'pid':$(this).parent().attr('data-pid')});">DETAILS</div> 
