@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"20130329164200",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"2013033193800",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"",
 	"httpsURL":"https://www-beachmall-com.app-hosted.com/",
@@ -109,9 +109,14 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 	
 <div class='headerContainer'>
 <header class='clearfix topNav greyGradient'>
-	<div class='localizedBox fontBlack fontSize12 floatLeft'>
-    	<span class='oswaldFontBold  fontSize14'>LOCALIZED FOR </span><span class='oswaldFontBold fontTeal fontSize18'>32099</span><br>
+	<div class='localizedBox fontBlack fontSize12 floatLeft' onMouseOver="showGeoDropdown($(this))" onMouseOut="hideGeoDropdown($(this))">
+        <span class='oswaldFontBold  fontSize14'>LOCALIZED FOR </span><span class='oswaldFontBold fontTeal fontSize18'>32099</span><br>
         <span class='openSansFont'>Jacksonville, FL </span><span class='openSansFontBold'>(Change)</span>
+    	<div class='geoDropdown'>
+        	<ul class='floatLeft'>
+            	<li></li>
+            </ul>
+        </div>    
     </div>
     <div class='phoneChatLive phone floatLeft'>
     	<div class='phoneIcon sprite floatLeft'></div>
@@ -161,7 +166,24 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
         
         
             <div id='mainDropdown'>
-                <!-- DROP DOWN SCRIPT -->
+            
+            	<!-- GEO DROPDOWN SCRIPT -->
+				<script type="text/javascript">
+                    var showGeoDropdown = function ($tag) {
+                        var $geoDropdown = $(".geoDropdown", $tag);
+                        var height = 220;
+                        $geoDropdown.children().each(function(){
+                            $(this).outerHeight(true);
+                        });
+                        $geoDropdown.stop().animate({"height":height+"px"}, 1000);
+                    }
+                    
+                    var hideGeoDropdown = function ($tag) {
+                        $(".geoDropdown", $tag).stop().animate({"height":"0px"}, 1000);
+                    }
+                </script>
+            
+                <!-- DROPDOWN SCRIPT -->
                 <script type="text/javascript">
                     var showDropdown = function ($tag) {
                         var $dropdown = $(".dropdown", $tag);
