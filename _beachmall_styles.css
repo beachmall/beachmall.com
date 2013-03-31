@@ -73,7 +73,13 @@ the padding is to compensate for the spacing between the main nav.
 .topNav nav a	{text-decoration:none;}
 .topNav nav a:hover	{text-decoration:underline;}
 .topNav .localizedBox {height:53px; width:216px; text-align:center; background-color:#f5f1de; border:2px solid #fff; padding-top:5px; position:absolute; top:0px; left:40px; z-index:5; box-shadow:0px 2px 2px #000000;}
-.geoDropdown {height:0px; width:460px; background-color:#f8c301; position:relative; top:11px; left:-42px; z-index:5; overflow:hidden;}
+
+.geoDropdown {height:0px; width:460px; background-color:#f8c301; padding:0px 20px; line-height:31px; position:relative; top:11px; left:-42px; z-index:5; overflow:hidden; text-align:left; font-family:"Open Sans"; font-size:12px; color#000;}
+.geoDropdown h1 {font-family:Oswald; font-size:18px; color:#e0463a; padding-top:20px;}
+.geoDropdown span {font-weight:bold;}
+.geoDropdown form {height:40px; width:400px; background-color:#009;}
+.geoDropdown h2 {font-size:10px}
+
 .topNav .phoneChatLive {height:50px; width:353px; margin:0px 0px 0px 351px; font-family:Oswald; font-weight:bold; font-size: 18px; line-height: 51px;}
 .topNav .phoneIcon {height:50px; width:35px; background-position:0 10px;}
 .topNav .liveHelp	{height:19px; width:145px; font-size:0.75em;}
@@ -81,8 +87,12 @@ the padding is to compensate for the spacing between the main nav.
 .topNav .liveHelp a {text-decoration:none; font-family:Oswald; font-weight:bold; font-size:18px;color:#000;}
 .topNav .cartIcon {height:40px; width:30px; background-position:4px -45px; margin:0px 40px 0px 0px; padding: 10px 12px 0px 0px;}
 .topNav .cartIcon a {color:#fff;}
-.topNav .topNavLinks {height:50px; width:177px; margin:0px 10px 0px 0px; line-height:48px; padding-right:5px;}
+.topNav .topNavLinks {height:50px; width:97px; line-height:48px; text-align:left;}
 .topNav .topNavLinks a {text-decoration:none; color: #000;}
+.custCareDropdown {height:0px; width:220px; background-color:#f8c301; position:relative; top:2px; right:65px; z-index:5; overflow:hidden;}
+.myAcctDropdown {height:0px; width:220px; background-color:#f8c301; position:relative; top:2px; right:75px; z-index:5; overflow:hidden;}
+.topNavLinks > div li {margin:15px 0px 15px 20px; line-height:12px;}
+.topNavLinks > div a:hover {color:#e0463a; text-decoration:none;}
 
 .sprite {
 	background-image:url(images/sprites-500x500.png);

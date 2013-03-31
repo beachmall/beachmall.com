@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"2013033193800",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"20130331130900",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"",
 	"httpsURL":"https://www-beachmall-com.app-hosted.com/",
@@ -113,9 +113,13 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
         <span class='oswaldFontBold  fontSize14'>LOCALIZED FOR </span><span class='oswaldFontBold fontTeal fontSize18'>32099</span><br>
         <span class='openSansFont'>Jacksonville, FL </span><span class='openSansFontBold'>(Change)</span>
     	<div class='geoDropdown'>
-        	<ul class='floatLeft'>
-            	<li></li>
-            </ul>
+			<h1>WE JUST NEED YOUR ZIP CODE!</h1>
+            By providing your delivery ZIP code, you'll allow us to:<br>
+            <span>Show you special pricing</span> that may only be available in select areas.<br>
+            <span>See estimated delivery dates</span> without having to checkout.            
+            <form>
+            </form>
+            <h2>BeachMall.com respects your privacy and will not share this information with anyone.</h2>
         </div>    
     </div>
     <div class='phoneChatLive phone floatLeft'>
@@ -134,10 +138,28 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 	<nav class='floatRight'>
         <div class='cartIcon sprite'><a href='#' onClick="return showContent('cart',{});"><span class='cartItemCount'>0</span></a></div>
 	</nav>
-    <nav class='topNavLinks floatRight openSansFont fontSize12'>
-		<a href="#" onClick="return showContent('company',{'show':'contact'});">Customer Care</a> |
-		<a href="#" onClick="return showContent('customer',{'show':'myaccount'});" class='openSansFontBold'>My Account</a> 
+    <nav class='topNavLinks floatRight openSansFontBold fontSize12' onMouseOver="showMyAcctDropdown($(this))" onMouseOut="hideMyAcctDropdown($(this))">
+        <a href="#" onClick="return showContent('customer',{'show':'myaccount'});">My Account</a> 
+    	<div class='myAcctDropdown'>
+        	<ul class='listStyleNone'>
+            	<li><a>Sign In / Sign Out</a></li>
+                <li>Create An Account</li>
+                <li>Track Your Order</li>
+            </ul>
+        </div>
     </nav> 
+    <nav class='topNavLinks floatRight openSansFont fontSize12' onMouseOver="showCustCareDropdown($(this))" onMouseOut="hideCustCareDropdown($(this))">
+		<a href="#" onClick="return showContent('company',{'show':'contact'});">Customer Care</a> |
+        <div class='custCareDropdown'>
+        	<ul class='listStyleNone'>
+            	<li><a>Ordering & Cancelations</a></li>
+                <li>Shipping</li>
+                <li>Returns</li>
+                <li>Security & Privacy</li>
+                <li>Contact Us</li>
+            </ul>
+        </div>
+	</nav>
 	<!-- <div class='floatLeft sprite satisfaction hideSmall'>100% Satisfaction Guarantee</div> NOT USED HERE-->
 </header>
 
@@ -180,6 +202,38 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                     
                     var hideGeoDropdown = function ($tag) {
                         $(".geoDropdown", $tag).stop().animate({"height":"0px"}, 1000);
+                    }
+                </script>
+                
+                <!-- CUSTOMER CARE DROPDOWN SCRIPT -->
+				<script type="text/javascript">
+                    var showCustCareDropdown = function ($tag) {
+                        var $custCareDropdown = $(".custCareDropdown", $tag);
+                        var height = 150;
+                        $custCareDropdown.children().each(function(){
+                            $(this).outerHeight(true);
+                        });
+                        $custCareDropdown.stop().animate({"height":height+"px"}, 1000);
+                    }
+                    
+                    var hideCustCareDropdown = function ($tag) {
+                        $(".custCareDropdown", $tag).stop().animate({"height":"0px"}, 1000);
+                    }
+                </script>
+                
+                <!-- MY ACCOUNT DROPDOWN SCRIPT -->
+				<script type="text/javascript">
+                    var showMyAcctDropdown = function ($tag) {
+                        var $myAcctDropdown = $(".myAcctDropdown", $tag);
+                        var height = 100;
+                        $myAcctDropdown.children().each(function(){
+                            $(this).outerHeight(true);
+                        });
+                        $myAcctDropdown.stop().animate({"height":height+"px"}, 1000);
+                    }
+                    
+                    var hideMyAcctDropdown = function ($tag) {
+                        $(".myAcctDropdown", $tag).stop().animate({"height":"0px"}, 1000);
                     }
                 </script>
             
