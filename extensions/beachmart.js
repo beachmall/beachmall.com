@@ -84,6 +84,9 @@ var store_filter = function() {
 //the callback is auto-executed as part of the extensions loading process.
 		init : {
 			onSuccess : function()	{
+				
+				app.ext.store_filter.u.runCarousels();
+				
 //				app.u.dump('BEGIN app.ext.store_navcats.init.onSuccess ');
 				var r = true; //return false if extension won't load for some reason (account config, dependencies, etc).
 				return r;
@@ -91,8 +94,21 @@ var store_filter = function() {
 			onError : function()	{
 //errors will get reported for this callback as part of the extensions loading.  This is here for extra error handling purposes.
 				}
+			},
+			
+			startExtension : {
+				onSuccess : function() {
+					if(app.ext.myRIA && app.ext.myRIA.template){
+						app.u.dump("beachmart Extension Started");
+						
+					} else	{
+						setTimeout(function(){app.ext.beachmart.callbacks.startExtension.onSuccess()},250);
+					}
+				},
+				onError : function (){
+					app.u.dump('BEGIN app.ext._2bhip.callbacks.startExtension.onError');
+				}
 			}
-
 		}, //callbacks
 
 
@@ -183,7 +199,7 @@ else	{
 $('html, body').animate({scrollTop : 0},200); //new page content loading. scroll to top.
 
 
-				}//filter
+				},//filter
 
 			}, //actions
 
@@ -288,7 +304,119 @@ return filters;
 						}
 					});
 				$( ".sliderValue",$form ).val( "$" + $( ".slider-range" ).slider( "values", 0 ) + " - $" + $( ".slider-range" ).slider( "values", 1 ) );
-				} //renderSlider
+				}, //renderSlider
+
+			//CAROUSEL FUNCTIONS
+				runCarousels : function() {
+					
+					//HOMEPAGE FEATURED PRODUCTS TALL CAROUSEL					
+					app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(P) {
+						var $target = $('#homeProdSearchNewArrivals');
+						if($target.data('isCarousel'))	{} //only make it a carousel once.
+						else	{
+							$target.data('isCarousel',true);
+					//for whatever reason, caroufredsel needs to be executed after a moment.
+							setTimeout(function(){
+								$target.carouFredSel({
+									auto: {
+										/*items			: 6,
+										duration		: 5000,
+										easing			: "linear",
+										timeoutDuration	: 0,*/
+										pauseOnHover	: "immediate"
+									},
+									prev: '.newCarouselPrev',
+									next: '.newCarouselNext',
+									width: '100%',
+									pagination: '#featuredCarouselPagination',
+									scroll: 6,
+							//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
+									swipe: {
+										onMouse: true,
+										onTouch: true
+										}
+									});
+								},1000); 
+							}
+					}]);
+						
+					//HOMEPAGE FEATURED CAROUSEL	
+					app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(P) {
+						var $target = $('#homeProdSearchNewArrivals2');
+						if($target.data('isCarousel'))	{} //only make it a carousel once.
+						else	{
+							$target.data('isCarousel',true);
+					//for whatever reason, caroufredsel needs to be executed after a moment.
+							setTimeout(function(){
+								$target.carouFredSel({
+									auto: false,
+									prev: '.new2CarouselPrev',
+									next: '.new2CarouselNext',
+									width: '100%',
+									scroll: 1,
+							//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
+									swipe: {
+										onMouse: true,
+										onTouch: true
+										}
+									});
+								},1000); 
+							}
+					}]);
+					
+					//HOMEPAGE FEATURED PRODUCTS CAROUSEL
+					app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(P) {
+						var $target = $('#homeProdSearchFeatured');
+						if($target.data('isCarousel'))	{} //only make it a carousel once.
+						else	{
+							$target.data('isCarousel',true);
+					//for whatever reason, caroufredsel needs to be executed after a moment.
+							setTimeout(function(){
+								$target.carouFredSel({
+									auto: false,
+									prev: '.featCarouselPrev',
+									next: '.featCarouselNext',
+									height: 405,
+									width: 960,
+									pagination: '#featCarPagenation',
+									scroll: 4,
+							//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
+									swipe: {
+										onMouse: true,
+										onTouch: true
+										}
+									});
+								},1000); 
+							}
+					}]);
+
+					//HOMEPAGE BESTSELLERS PRODCUTS CAROUSEL
+					app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(P) {
+						var $target = $('#homeProdSearchBestSellers');
+						if($target.data('isCarousel'))	{} //only make it a carousel once.
+						else	{
+							$target.data('isCarousel',true);
+					//for whatever reason, caroufredsel needs to be executed after a moment.
+							setTimeout(function(){
+								$target.carouFredSel({
+									auto: false,
+									prev: '.bestCarouselPrev',
+									next: '.bestCarouselNext',
+									height: 405,
+									width: 960,
+									pagination: '#bestCarPagenation',
+									scroll: 4,
+							//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
+									swipe: {
+										onMouse: true,
+										onTouch: true
+										}
+									});
+								},1000); 
+							}
+						}]);
+					
+				}//END CAROUSEL FUNCTIONS
 
 			}, //u
 

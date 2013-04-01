@@ -21,6 +21,7 @@ app.rq.push(['extension',0,'store_cart','extensions/store_cart.js']);
 app.rq.push(['extension',0,'store_crm','extensions/store_crm.js']);
 app.rq.push(['extension',0,'myRIA','app-quickstart.js','startMyProgram']);
 app.rq.push(['extension',0,'beachmart','extensions/beachmart_custom.js']); // custom product page, built by JT based on old hybrid site
+app.rq.push(['extension',0,'store_filter','extensions/beachmart.js']); 
 
 //app.rq.push(['extension',1,'google_analytics','extensions/partner_google_analytics.js','startExtension']);
 //app.rq.push(['extension',0,'partner_addthis','extensions/partner_addthis.js','startExtension']);
@@ -171,110 +172,9 @@ app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(P) {
 	}]);
 
 
-app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(P) {
 
-	var $target = $('#homeProdSearchNewArrivals');
-	if($target.data('isCarousel'))	{} //only make it a carousel once.
-	else	{
-		$target.data('isCarousel',true);
-//for whatever reason, caroufredsel needs to be executed after a moment.
-		setTimeout(function(){
-			$target.carouFredSel({
-				auto: {
-					/*items			: 6,
-					duration		: 5000,
-					easing			: "linear",
-					timeoutDuration	: 0,*/
-					pauseOnHover	: "immediate"
-				},
-				prev: '.newCarouselPrev',
-				next: '.newCarouselNext',
-				width: '100%',
-				pagination: '#featuredCarouselPagination',
-				scroll: 6,
-		//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
-				swipe: {
-					onMouse: true,
-					onTouch: true
-					}
-				});
-			},1000); 
-		}
-	}]);
-	
-app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(P) {
 
-	var $target = $('#homeProdSearchNewArrivals2');
-	if($target.data('isCarousel'))	{} //only make it a carousel once.
-	else	{
-		$target.data('isCarousel',true);
-//for whatever reason, caroufredsel needs to be executed after a moment.
-		setTimeout(function(){
-			$target.carouFredSel({
-				auto: false,
-				prev: '.new2CarouselPrev',
-				next: '.new2CarouselNext',
-				width: '100%',
-				scroll: 1,
-		//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
-				swipe: {
-					onMouse: true,
-					onTouch: true
-					}
-				});
-			},1000); 
-		}
-	}]);
 
-app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(P) {
-	var $target = $('#homeProdSearchBestSellers');
-	if($target.data('isCarousel'))	{} //only make it a carousel once.
-	else	{
-		$target.data('isCarousel',true);
-//for whatever reason, caroufredsel needs to be executed after a moment.
-		setTimeout(function(){
-			$target.carouFredSel({
-				auto: false,
-				prev: '.bestCarouselPrev',
-				next: '.bestCarouselNext',
-				height: 405,
-				width: 960,
-				pagination: '#bestCarPagenation',
-				scroll: 4,
-		//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
-				swipe: {
-					onMouse: true,
-					onTouch: true
-					}
-				});
-			},1000); 
-		}
-	}]);
-
-app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(P) {
-	var $target = $('#homeProdSearchFeatured');
-	if($target.data('isCarousel'))	{} //only make it a carousel once.
-	else	{
-		$target.data('isCarousel',true);
-//for whatever reason, caroufredsel needs to be executed after a moment.
-		setTimeout(function(){
-			$target.carouFredSel({
-				auto: false,
-				prev: '.featCarouselPrev',
-				next: '.featCarouselNext',
-				height: 405,
-				width: 960,
-				pagination: '#featCarPagenation',
-				scroll: 4,
-		//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
-				swipe: {
-					onMouse: true,
-					onTouch: true
-					}
-				});
-			},1000); 
-		}
-	}]);
 
 
 

@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"20130331210400",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"20130401134000",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"",
 	"httpsURL":"https://www-beachmall-com.app-hosted.com/",
@@ -442,16 +442,6 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                 </div>
 			</div>
     	</div>
-     	   
-        <div class='overhang displayNone'>
-        	<button class='overhangClose sprite'></button>
-            <span>SUMMER IS HERE!</span>
-            <p>Insert small paragraph or snipper regarding a summer special 
-            	or other featured deals or products for this overhanging ad.
-            </p>
-            <button class='overhangSpecialOfferButton'>VIEW SPECIAL OFFER</button>
-        </div>
-     
     </div>
 
 	
@@ -637,12 +627,20 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 
 
 <div id='homepageTemplate' class='homeTemplate'>
-	
+
+	<div class='overhang'>
+        <button class='overhangClose sprite' onClick="$('.overhang').hide(); return false;"></button>
+        <span>SUMMER IS HERE!</span>
+        <p>Insert small paragraph or snipper regarding a summer special 
+            or other featured deals or products for this overhanging ad.
+        </p>
+        <button class='overhangSpecialOfferButton'>VIEW SPECIAL OFFER</button>
+    </div>	
 
     <div class='featuredContainer'>
         <div class='featuredCarousel floatLeft'>
 			<div class='featuredBannerText'>NEW<BR>ARRIVALS</div>
-            <button class='largeButton featuredBannerButton' onClick="">SHOP NOW</button>
+            <a class="bindByAnchor" href="#!search?TAG=IS_NEWARRIVAL"><button class='largeButton featuredBannerButton'>SHOP NOW</button></a>
             <div>
                 <div id='featuredCarouselPagination' class='featuredCarouselPagination'></div>
                     <!-- a sample of how to format an elastic native search in a data-bind -->
@@ -659,6 +657,7 @@ the homepageTemplate template is loaded into mainContentArea by default when the
     
     <div class='homepageCategories'>
     	<ul data-bind="var: category(@subcategoryDetail); format: categoryList; bgcolor: TTTTTT; extension: store_navcats; loadsTemplate: categoryListHomeTemplate; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin'></ul>
+    	<a class='bindByAnchor' href='#!category?navcat=.beach-chairs.beach-gear'><div class='shopByProdContainer'></div></a>
     </div>
     
     <div class='CarouselContainer featuredProductsCarouselContainer'>
@@ -678,8 +677,10 @@ the homepageTemplate template is loaded into mainContentArea by default when the
     <div class='CarouselContainer bestSellersCarouselContainer'>
     	<div class='carouselTitles'>
         	<div class='carouselTitleTextContainer floatLeft'>BEST SELLERS</div>
-            <div class='carouselLinkContainer floatRight'>View Best Sellers</div>
-            <div class='carouselArrowContainer floatRight sprite'></div>
+            <a class="bindByAnchor" href="#!search?TAG=IS_BESTSELLER">
+                <div class='carouselLinkContainer floatRight'>View Best Sellers</div>
+                <div class='carouselArrowContainer floatRight sprite'></div>
+            </a>
         </div>
         <div class='Carousel'>
         	<a class="carouselButtonWhite bestCarouselPrev carouselButtonWhitePrev" href="#">prev</a>
