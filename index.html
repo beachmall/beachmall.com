@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"20130331130900",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"20130331210400",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"",
 	"httpsURL":"https://www-beachmall-com.app-hosted.com/",
@@ -118,6 +118,8 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
             <span>Show you special pricing</span> that may only be available in select areas.<br>
             <span>See estimated delivery dates</span> without having to checkout.            
             <form>
+                <input name="ZIPCODE" value="" placeholder=' Enter your ZIP / Postal Code' class="geoZipInput handleDefault" type="number">
+                <input class="search searchButton oswaldFontBold" id="headerSearchSubmit" value="SEE DETAILS IN MY AREA" type="submit">
             </form>
             <h2>BeachMall.com respects your privacy and will not share this information with anyone.</h2>
         </div>    
@@ -142,9 +144,9 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
         <a href="#" onClick="return showContent('customer',{'show':'myaccount'});">My Account</a> 
     	<div class='myAcctDropdown'>
         	<ul class='listStyleNone'>
-            	<li><a>Sign In / Sign Out</a></li>
-                <li>Create An Account</li>
-                <li>Track Your Order</li>
+            	<li><a class='bindByAnchor' href='#!customer?show=myaccount'>Sign In</a> / <a class='bindByAnchor' href='#!customer?show=logout'>Sign Out</a></li>
+                <li><a class='bindByAnchor' href='#!customer?show=myaccount'>Create An Account</a></li>
+                <li><a class='bindByAnchor' href='#!customer?show=orders'>Track Your Order</a></li>
             </ul>
         </div>
     </nav> 
@@ -152,11 +154,11 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 		<a href="#" onClick="return showContent('company',{'show':'contact'});">Customer Care</a> |
         <div class='custCareDropdown'>
         	<ul class='listStyleNone'>
-            	<li><a>Ordering & Cancelations</a></li>
-                <li>Shipping</li>
-                <li>Returns</li>
-                <li>Security & Privacy</li>
-                <li>Contact Us</li>
+            	<li><a class='bindByAnchor' href='#!customer?show=orders'>Ordering & Cancelations</a></li>
+                <li><a class="bindByAnchor" href="#!company?show=shipping">Shipping</a></li>
+                <li><a class="bindByAnchor" href="#!company?show=return">Returns</a></li>
+                <li><a class="bindByAnchor" href="#!company?show=privacy">Security & Privacy</a></li>
+                <li><a class="bindByAnchor" href="#!company?show=contact">Contact Us</a></li>
             </ul>
         </div>
 	</nav>
@@ -274,7 +276,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                     	<a class='bindByAnchor' href='#!category?navcat=.beach-accessories'>BEACH ACCESSORIES</a>
                         <div class='beachAccessoriesDD dropdown twoLine floatLeft'>
                             <ul class='listStyleNone floatLeft'>
-                            	<li>BEACH<br>ACCESSORIES</li>
+                            	<li class='noArrow'>BEACH<br>ACCESSORIES</li>
                             	<li onMouseOver="showDropout($(this))" onMouseOut="hideDropout($(this))">Beach Bags & Totes
                                 	<div class='dropout out'>
                                     	<ul>
@@ -288,13 +290,90 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                                         </ul>
                                     </div>
                                 </li>
-                                <li>Beach Towels & Blankets</li>
-                                <li>Beach Carts</li>
-                                <li>Electronics</li>
-                                <li>Picnic Backpacks</li>
-                                <li>Picnic Baskets</li>
-                                <li>Coolers</li>
-                                <li>Tailgating</li>
+                                <li onMouseOver="showDropout($(this))" onMouseOut="hideDropout($(this))">Beach Towels & Blankets
+                                	<div class='dropout out'>
+                                        <ul>
+                                            <li>Content To Be Determined</li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li onMouseOver="showDropout($(this))" onMouseOut="hideDropout($(this))">Beach Carts
+                                	<div class='dropout out'>
+                                        <ul>
+                                            <li>Content To Be Determined</li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li onMouseOver="showDropout($(this))" onMouseOut="hideDropout($(this))">Electronics
+                                	<div class='dropout out'>
+                                        <ul>
+                                            <li>Content To Be Determined</li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li onMouseOver="showDropout($(this))" onMouseOut="hideDropout($(this))">Picnic Backpacks
+                                	<div class='dropout out'>
+                                        <ul>
+                                            <li>Content To Be Determined</li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li onMouseOver="showDropout($(this))" onMouseOut="hideDropout($(this))">Picnic Baskets
+                                	<div class='dropout out'>
+                                        <ul>
+                                            <li>Content To Be Determined</li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li onMouseOver="showDropout($(this))" onMouseOut="hideDropout($(this))">Coolers
+                                	<div class='dropout out'>
+                                        <ul>
+                                            <li>Content To Be Determined</li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                        </ul>
+									</div>
+                                </li>
+                                <li onMouseOver="showDropout($(this))" onMouseOut="hideDropout($(this))">Tailgating
+                                	<div class='dropout out'>
+                                        <ul>
+                                            <li>Content To Be Determined</li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                        </ul>
+                                	</div>
+                                </li>
                             </ul>
                             <div class='beachAccProduct'></div>
                         </div>
@@ -303,7 +382,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                     	<a class='bindByAnchor' href='#!category?navcat=.beach-chairs'>BEACH<br>CHAIRS</a>
                         <div class='beachChairsDD dropdown floatLeft'>    
                             <ul class='listStyleNone floatLeft'>
-                                <li>BEACH CHAIRS</li>
+                                <li class='noArrow'>BEACH CHAIRS</li>
                                 <li>Adirondack</li>
                                 <li>Backpack Chairs</li>
                                 <li>Cup Holder Chairs</li>
@@ -326,7 +405,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 						<a class='bindByAnchor' href='#!category?navcat=.beach-sports'><span>RECREATION</span></a>
                         <div class='recreationDD dropdown floatLeft'>
                             <ul class='listStyleNone floatLeft'>
-                            	<li>RECREATION</li>
+                            	<li class='noArrow'>RECREATION</li>
                                 <li>Body Boards</li>
                                 <li>Inflatables</li>
                                 <li>Pool Floats</li>
@@ -339,7 +418,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                     	<a class='bindByAnchor' href='#!category?navcat=.beach-umbrellas-shelter'>UMBRELLAS<br>& SHELTERS</a>
                         <div class='umbrellasShelterDD dropdown twoLine floatLeft'>
                             <ul class='listStyleNone floatLeft'>
-                            	<li>UMBRELLAS & SHELTERS</li>
+                            	<li class='noArrow'>UMBRELLAS & SHELTERS</li>
                                 <li>Beach Cabanas</li>
                                 <li>Beach Tents & Shelters</li>
                                 <li>Beach Umbrellas</li>
@@ -352,7 +431,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                     	<a class='bindByAnchor' href='#!category?navcat=.beachwear'>BEACH<br>WEAR</a>
                         <div class='beachWearDD dropdown floatLeft'>
                             <ul class='listStyleNone floatLeft'>
-                            	<li>BEACH WEAR</li>
+                            	<li class='noArrow'>BEACH WEAR</li>
                                 <li>Summer Hats</li>
                                 <li>Beach & Pool Apparels</li>
                                 <li>Women Sundresses</li>
