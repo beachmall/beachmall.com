@@ -206,7 +206,9 @@ label.break	{display:block; margin-bottom:2px;}
 .layeredSearch legend	{font-size:1.0em; font-weight:bold;}
 .layeredSearch fieldset	{margin-bottom:12px;}
 
-
+/* Joins thumbborder and shop now text box to both hover at same time*/
+.prodHoverContainer:hover .moreDetailsSmall {background-color:#e0463a;}
+.prodHoverContainer:hover .myProdThumbSmall {border:5px solid #e0463a;}
 
 
 
@@ -369,6 +371,9 @@ HOMEPAGE
 
 .homepageCategories {height:330px; width:960px; margin: 0px auto 0px auto; padding:10px 0px 10px 0px;}
 .shopByProdContainer {height:155px; width:300px; background:url(images/ShopbyBrandCatBkgrd-290x105.jpg); background-position:0 45px; position:relative; top:-160px; left:650px;}
+.shopByProdContainer:hover .catName {background-color:#e0463a;}
+.shopByProdContainer:hover .thumbContainer {border:5px solid #e0463a;}
+.shopByProdContainer:hover .thumbContainer .moreDetailsSmall {background-color:#e0463a;}
 .moreDetailsSmall.catDetails.prodDetails {bottom:-75px;}
 
 .CarouselContainer {height:405px; width:1020px; background:url(images/CarouselBackground-1020x370.jpg); margin-bottom:10px;}
