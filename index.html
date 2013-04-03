@@ -550,7 +550,55 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
             <a href="//www.bbb.org/north-east-florida/business-reviews/internet-shopping/ beachmall-com-in-jacksonville-fl-172745114/#bbbonlineclick" title="Beachmall.com BBB Business Review">
             	<div class='bbbBadge'><img src="http://seal-northeastflorida.bbb.org/seals/blue-seal-200-42-beachmall-com- 172745114.png" style="border: 0;" alt="Beachmall.com BBB Business Review"></div>
             </a>
-            <div class='googleTrustedBadge'>Google Badge</div>
+            <div class='googleTrustedBadge'>Google Badge
+
+<!-- BEGIN: Google Trusted Store -->
+				<script type="text/javascript">
+					var gts = gts || [];
+					gts.push(["id", "3253696"]);
+					gts.push(["google_base_offer_id", "%PRODUCT%"]);
+					gts.push(["google_base_subaccount_id", "3253696"]);
+					gts.push(["google_base_country", "US"]);
+					gts.push(["google_base_language", "EN"]);
+					(function() {
+						var scheme = (("https:" == document.location.protocol) ? "https://" : "http://");
+						var gts = document.createElement("script");
+						gts.type = "text/javascript";
+						gts.async = true;
+						gts.src = scheme + "www.googlecommerce.com/trustedstores/gtmp_compiled.js";
+						var s = document.getElementsByTagName("script")[0];
+						s.parentNode.insertBefore(gts, s);
+					})();
+                </script>
+                <!-- END: Google Trusted Store -->
+                
+                <!-- JavaScript Checkout Tracking Code (HTML): -->
+                <!-- START Trusted Stores Order -->
+                <div id="gts-order" style="display:none;">
+                <!-- start order and merchant information -->
+                  <span id="gts-o-id">%ORDERID%</span>
+                  <span id="gts-o-domain">%SDOMAIN%</span>
+                  <span id="gts-o-email">%BILLEMAIL%</span>
+                  <span id="gts-o-country">%BILLCOUNTRY%</span>
+                  <span id="gts-o-currency">USD</span>
+                  <span id="gts-o-total">%GRANDTOTAL%</span>
+                  <span id="gts-o-discounts">%TOTAL_DISCOUNTS%</span>
+                  <span id="gts-o-shipping-total">%SHIPPING%</span>
+                  <span id="gts-o-tax-total">%TOTALTAX%</span>
+                  <span id="gts-o-est-ship-date">%EST_SHIP_YYYY_MM_DD%</span>
+                  <span id="gts-o-has-preorder">%HAS_PREBACKDELAY_YN%</span>
+                  <span id="gts-o-has-digital">%HAS_DOWNLOAD_YN%</span>
+                <!-- end order and merchant information -->
+                
+                <!-- start repeated item specific information -->
+                <!-- item example: this area repeated for each item in the order -->
+                <!-- %GOOGLE_TRUSTED_STORES_ITEM_SPANS% -->
+                <!-- end repeated item specific information -->
+
+				</div>
+<!-- END Trusted Stores -->
+
+            </div>
             <div class='footerPhoneChat'>(888) 975-6555 <span>or</span> CHAT LIVE!
             	<div class='floatRight liveHelp marginRight hideMed'>
                 <!-- BEGIN ProvideSupport.com Text Chat Link Code -->
@@ -628,6 +676,14 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 
 <div id='homepageTemplate' class='homeTemplate'>
 
+	<div class='floatingBar'>
+    	<a href='#'><div class='backToTop'>&#187 BACK TO TOP</div></a>
+        <div class='recentlyViewed'><span>1,234</span><span> Recently Viewed Item(s)</span><span class='fontWhite'>&nbsp&nbsp&nbsp &#187 </span><span class='fontYellow'> VIEW ITEM(S)</span></div>
+        <div class='cartIcon sprite'><a href='#' onClick="return showContent('cart',{});"><span class='cartItemCount'>0</span><p><span class='fontWhite'>&#187 </span><span class='fontYellow'>SHOPPING CART</span></p></a></div>
+        <button class='checkoutButton'>CHECK OUT</button>
+        <button class='floatingBarClose sprite' onclick="$('.floatingBar').hide(); return false;"></button>
+    </div>
+
 	<div class='overhang'>
         <button class='overhangClose sprite' onClick="$('.overhang').hide(); return false;"></button>
         <span>SUMMER IS HERE!</span>
@@ -657,7 +713,14 @@ the homepageTemplate template is loaded into mainContentArea by default when the
     
     <div class='homepageCategories'>
     	<ul data-bind="var: category(@subcategoryDetail); format: categoryList; bgcolor: TTTTTT; extension: store_navcats; loadsTemplate: categoryListHomeTemplate; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin'></ul>
-    	<a class='bindByAnchor' href='#!category?navcat=.beach-chairs.beach-gear'><div class='shopByProdContainer'></div></a>
+    	<a class='bindByAnchor' href='#!category?navcat=.beach-chairs.beach-gear'>
+        	<div class='shopByProdContainer'>
+            	<div class='catName white2LGray'>Shop by Brand</div>
+                <div class='thumbContainer'>
+                	<div class='moreDetailsSmall catDetails prodDetails'>VIEW BRANDS</div>
+                </div>
+            </div>
+        </a>
     </div>
     
     <div class='CarouselContainer featuredProductsCarouselContainer'>
