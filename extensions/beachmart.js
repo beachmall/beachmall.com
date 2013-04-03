@@ -37,10 +37,10 @@ var store_filter = function() {
 //key is safe id. value is name of the filter form.
 	filterMap : {
 
-		".00010-wood-chess-sets":{
-			"filter": "chessPiecesForm",
+		".beach-umbrellas-shelter":{
+			"filter": "UmbrellasForm",
 			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
-			},
+			}/*,
 			".00027-metal-chess-pieces":{
 			"filter": "chessPiecesForm",
 			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
@@ -72,7 +72,7 @@ var store_filter = function() {
 			".000295-most-unique-chess-pieces":{
 			"filter": "chessPiecesForm",
 			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
-			},
+			},*/
 		},
 
 					////////////////////////////////////   CALLBACKS    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\

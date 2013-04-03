@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"20130401134000",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"20130402182200",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"",
 	"httpsURL":"https://www-beachmall-com.app-hosted.com/",
@@ -740,22 +740,29 @@ don't modify the 'data-templateid' unless you are changing template names and up
 -->
 <div id='categoryTemplate' class='loadingBG categoryTemplate'>
 
-	<ul class='breadcrumb clearfix noPadOrMargin fluidList' data-bind='var: category(id); format:breadcrumb; extension:store_navcats; loadsTemplate: breadcrumbTemplate;'></ul>
-
-	<img data-bind="var: category(%page.banner1); format: banner; editor: banner; height:250; width:750; extension: myRIA;" />
-
-	<h2 class='blah5' data-bind="var: category(%page.header); format: text; editor: text;"></h2>
-
-	<ul data-bind="var: category(@subcategoryDetail); format: categoryList; extension: store_navcats; loadsTemplate: categoryListTemplate; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin categoryList'></ul><!-- outputs a list of subcategories -->
-
-	<ul data-bind="var: category(@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: productListTemplate; withReviews:1; items_per_page: 24;" class='listStyleNone fluidList clearfix noPadOrMargin productList'>
-    	<div class='carouselTitles'></div>
-    </ul><!-- outputs the product list -->
-
-	<p class='blah' data-bind="var: category(%page.description); format:wiki; wikiFormats:myRIA; editor: textarea;"></p>
+	<div class='filterBox floatLeft'>
+    	<div class='filterContainer clearfix'></div>   
+        <div class='clear'></div> 
+    </div>
     
-    <p data-bind="var: category(%page.description2); format:wiki; wikiFormats:myRIA; editor: textarea;"></p>
-
+ 
+	<div class='categoryTemplateContainer floatRight' data-app-role='categoryPage'>
+        <ul class='breadcrumb clearfix noPadOrMargin fluidList' data-bind='var: category(id); format:breadcrumb; extension:store_navcats; loadsTemplate: breadcrumbTemplate;'></ul>
+    
+        <img data-bind="var: category(%page.banner1); format: banner; editor: banner; height:250; width:750; extension: myRIA;" />
+    
+        <h2 class='blah5' data-bind="var: category(%page.header); format: text; editor: text;"></h2>
+    
+        <ul data-bind="var: category(@subcategoryDetail); format: categoryList; extension: store_navcats; loadsTemplate: categoryListTemplate; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin categoryList' data-app-role='subcategoryList'></ul><!-- outputs a list of subcategories -->
+    
+        <ul data-bind="var: category(@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: productListTemplate; withReviews:1; items_per_page: 24;" class='listStyleNone fluidList clearfix noPadOrMargin productList'>
+            <div class='carouselTitles'></div>
+        </ul><!-- outputs the product list -->
+    
+        <p class='blah' data-bind="var: category(%page.description); format:wiki; wikiFormats:myRIA; editor: textarea;"></p>
+        
+        <p data-bind="var: category(%page.description2); format:wiki; wikiFormats:myRIA; editor: textarea;"></p>
+	</div>
 
 </div>
 
@@ -825,11 +832,11 @@ Used for the product in a product list (prodlist), usually in the body of a cate
 the loadingBG class is removed (must be that classname) when the template is translated.
 remember to NOT put the button inside the 'onclick' container or two events will occur onclick.
 -->
-<li id='productListTemplate' class='loadingBG  products product' onMouseOver="$('.quickView',$(this)).show();" onMouseOut="$('.quickView').hide();" >
+<li id='productListTemplate' class='loadingBG  products product floatLeft' onMouseOver="$('.quickView',$(this)).show();" onMouseOut="$('.quickView').hide();" >
 	 
 	<button class='floatRight pointer quickView displayNone' onClick="quickView('product',{'templateID':'productTemplateQuickView','pid':$(this).closest('[data-pid]').attr('data-pid')});">Quickview</button>
-
-	<div onClick="showContent('product',{'pid':$(this).attr('data-pid')})" data-bind='var:product(pid);format:assignAttribute; attribute:data-pid;' class='pointer productListSmall'>
+		
+    <div onClick="showContent('product',{'pid':$(this).attr('data-pid')})" data-bind='var:product(pid);format:assignAttribute; attribute:data-pid;' class='pointer productListSmall'>
 		<div class='prodThumbContainer myProdThumbSmall' data-bind='var:product(pid); format:addPicSlider; extension:myRIA;'>
 			<img src='blank.gif' class='prodThumb' data-bind='var: product(zoovy:prod_image1); format:imageURL;' width='210' height='210' />
             <div class='prodTextContainerSmall'>
@@ -2214,11 +2221,11 @@ put all filters into the appFilters container.
 -->
 
 
-<!--
+
 <div id='appFilters' class='displayNone'>
 
 
-<form action='#' name='beachChairsForm' id='completeBeachChairsForm' class='layeredSearch'>
+<form action='#' name='beachUmbrellasForm' id='UmbrellasForm' class='layeredSearch'>
 
 <fieldset data-elastic-key="base_price" data-filtertype="slider">
 	<legend>Price</legend>
@@ -2227,10 +2234,70 @@ put all filters into the appFilters container.
 </fieldset>
 
 <fieldset data-elastic-key="prod_type" data-filtertype="hidden">
-	<input type='hidden' name="prod_type" value="beach-chairs" /> <!-- this is root cat for this cat, don't know if this is correct 
+	<input type='hidden' name="prod_type" value="beach-umbrellas-shelter" /> <!-- this is root cat for this cat, don't know if this is correct -->
 </fieldset>  
 
-<!-- STOPPED HERE 
+<fieldset data-elastic-key="prod_material" data-filtertype="checkboxes">
+	<legend>Umbrellas</legend>
+	<label class='break'><input class="canopySize" type='checkbox' value='canopy' />Canopy Size</label>
+    <label class='break'><input class="" type='checkbox' value='style' />Style</label>
+    <label class='break'><input class="" type='checkbox' value='options' />Options</label>
+    <label class='break'><input class="" type='checkbox' value='uvprotection' />UV Protection</label>
+    <label class='break'><input class="" type='checkbox' value='polematerial' />Pole Material</label>
+    <label class='break'><input class="" type='checkbox' value='fabric' />fabric</label>
+</fieldset>
+
+<fieldset data-elastic-key="canopy_size" data-filtertype="checkboxes">
+	<legend>Canopy Size</legend>
+	<label class='break'><input class="" type='checkbox' value='6.0 Feet' />6.0 Feet</label>
+    <label class='break'><input type='checkbox' value='6.5 Feet' />6.5 Feet</label>
+    <label class='break'><input type='checkbox' value='7.0 - 7.5 Feet' />7.0 - 7.5 Feet</label>
+    <label class='break'><input type='checkbox' value='8.0 Feet $amp up' />8.0 Feet $amp up</label>   
+</fieldset>
+
+<div></div>
+
+<fieldset class="umbrellaStyle" data-elastic-key="prod_style" data-filtertype="checkboxes">
+	<legend>Style</legend>
+	<label class='break'><input type='checkbox' value='vented' />Vented</label>
+	<label class='break'><input type='checkbox' value='tiling' />Tiling</label>
+	<label class='break'><input type='checkbox' value='novent' />No Vent</label>
+</fieldset>
+
+<fieldset class="umbrellaOptions" data-elastic-key="prod_options" data-filtertype="checkboxes">
+	<legend>Options</legend>
+	<label class='break'><input type='checkbox' value='fiberglassribs' />Fiberglass Ribs</label>
+	<label class='break'><input type='checkbox' value='steelribs' />Steel Ribs</label>
+	<label class='break'><input type='checkbox' value='commercialgrade' />Commercial Grade</label>
+</fieldset>
+
+<fieldset class="umbrellaUvProtection" data-elastic-key="prod_uv_protection" data-filtertype="checkboxes">
+	<legend>Options</legend>
+	<label class='break'><input type='checkbox' value='35upf' />35 UPF</label>
+	<label class='break'><input type='checkbox' value='50upf' />50 UPF</label>
+	<label class='break'><input type='checkbox' value='100+upf' />100 + upf</label>
+</fieldset>
+
+<fieldset class="umbrellaPoleMaterial" data-elastic-key="prod_pole_material" data-filtertype="checkboxes">
+	<legend>Options</legend>
+	<label class='break'><input type='checkbox' value='wood' />Wood</label>
+	<label class='break'><input type='checkbox' value='aluminum' />Aluminum</label>
+	<label class='break'><input type='checkbox' value='steel' />Steel</label>
+</fieldset>
+
+<fieldset class="umbrellaFabric" data-elastic-key="prod_faberic" data-filtertype="checkboxes">
+	<legend>Options</legend>
+	<label class='break'><input type='checkbox' value='polyester' />Polyester</label>
+	<label class='break'><input type='checkbox' value='acrylic' />Acrylic</label>
+	<label class='break'><input type='checkbox' value='polycotton' />PolyCotton</label>
+	<label class='break'><input type='checkbox' value='nylon' />Nylon</label>
+	<label class='break'><input type='checkbox' value='vynil' />Vinyl</label>    
+	<label class='break'><input type='checkbox' value='sunbrella' />Sunbrella</label>
+</fieldset>
+
+
+
+<!-- ORIG FORM 
 
 <fieldset data-elastic-key="prod_material" data-filtertype="checkboxes">
 	<legend>Material</legend>
@@ -2264,6 +2331,10 @@ put all filters into the appFilters container.
 	<label class='break'><input type='checkbox' value='3.5' />3.5</label>
 	<label class='break'><input type='checkbox' value='4' />4</label>
 </fieldset>
+
+<!-- END ORIG FORM -->
+
+
 
 </form>
 

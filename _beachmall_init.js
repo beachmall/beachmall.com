@@ -85,6 +85,10 @@ app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {
 //Filter Search:
 //sample of an onDeparts. executed any time a user leaves this page/template type.
 app.rq.push(['templateFunction','categoryTemplate','onCompletes',function(P) {
+	
+	//context for reset button to reload page
+	var $context = $(app.u.jqSelector('#',P.parentID)); 
+	
 	app.u.dump("BEGIN categoryTemplate onCompletes for filtering");
 	if(app.ext.store_filter.filterMap[P.navcat])	{
 		app.u.dump(" -> safe id DOES have a filter.");
@@ -111,6 +115,12 @@ app.rq.push(['templateFunction','categoryTemplate','onCompletes',function(P) {
 				});
 			}
 		}
+		
+		//selector for reset button to reload page
+		$('.resetButton', $context).click(function(){
+  			$context.empty().remove();
+  			showContent('category',{'navcat':P.navcat});
+  		});
 
 	}]);
 
