@@ -201,10 +201,10 @@ PRODUCT LIST
 .productList {background-image:url(images/HeaderBackground.jpg)}
 
 /*Layered search styles*/
-.filterBox {height:400px; width:253px; background-color:#eee;}
+.filterBox {height:auto; width:auto; background-color:#eee;}
 .categoryTemplateContainer {height:auto; width:761px;}
 label.break	{display:block; margin-bottom:2px;}
-.layeredSearch	{color:#ffffff;}
+.layeredSearch	{height:auto; width:220px; margin:16.8px; color:#000;}
 .layeredSearch legend	{font-size:1.0em; font-weight:bold;}
 .layeredSearch fieldset	{margin-bottom:12px;}
 
@@ -214,6 +214,9 @@ label.break	{display:block; margin-bottom:2px;}
 /* Joins thumbborder and shop now text box to both hover at same time*/
 .prodHoverContainer:hover .moreDetailsSmall {background-color:#e0463a;}
 .prodHoverContainer:hover .myProdThumbSmall {border:5px solid #e0463a;}
+
+.starBurst {height:70px; width:47px; padding:12px 12px 0px 11px; background-position:-409px -1px; color:#fff; font-family:Oswald; font-size:13px; text-align:center; line-height:16px; position:absolute; top:140px; left:10px; z-index:100;}
+/* -moz-transform:rotate(-20deg); -webkit-transform:rotate(-20deg); -o-transform:rotate(-20deg); -ms-transform:rotate(-20deg); filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=-.2); */
 
 .productPriceContainer {height:50px; width:120px;}
 .prodPriceDesc {color:#e0463a; text-align:center; font-family:"Open Sans"; font-size:10px; font-weight:bold;}
@@ -235,11 +238,11 @@ label.break	{display:block; margin-bottom:2px;}
 
 .prodViewerAddToCartButton.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-only span {line-height:0px;}
 
-.regularPriceContainer {height:35px; width:90px; text-align:center; font-family:"Open Sans"; padding-top:5px}
+.regularPriceContainer {height:35px; width:83px; text-align:center; font-family:"Open Sans"; padding-top:5px}
 .regularPriceContainer .regularPrice {height:16px; width:100%; text-decoration:line-through; color:#999; font-size:14px; font-weight:bold;}
 .regularPriceContainer .regularPriceDesc {height:15px; width:100%; color:#000; font-size:10px;}
-.shipContainer {height:35px; width:115px; text-align:center; font-family:"Open Sans"; padding-top:5px}
-.shipContainer .shipCost {height:16px; width:100%; color:##e0463a; font-size:14px; font-weight:bold;}
+.shipContainer {height:35px; width:130px; text-align:center; font-family:"Open Sans"; padding-top:5px}
+.shipContainer .shipCost {height:16px; width:100%; color:#e0463a; font-size:14px; font-weight:bold;}
 .shipContainer .shipTime {height:15px; width:100%; color:#000; font-size:10px;}
 .prodNum {height:10px; width:100%; font-family:"Open Sans"; font-size:10px; text-align:center;}
 
@@ -558,8 +561,8 @@ newArrivalsCarouselRight, .myProdThumb:hover .moreDetails {background-color:#e04
 .productListSmall.productList li > div {width:220px;}
 .myProdThumbSmall {height:210px; border:5px solid #FFF;}
 .myProdThumbSmall:hover {border:5px solid #e0463a;}
-.prodTextContainerSmall {height:auto; width:215px; font-family:Oswald; font-size:24px; margin-top:5px;}
-.prodDescSmall, .productList h5, .categoryList h5 {color:#000; font-family:"Open Sans"; font-size:11px; text-align:center; line-height:13px; padding:7px 5px 0px 0px;}
+.prodTextContainerSmall {height:auto; width:220px; font-family:Oswald; font-size:24px; margin-top:5px;}
+.prodDescSmall, .productList h5, .categoryList h5 {color:#000; font-family:"Open Sans"; font-size:11px; text-align:center; line-height:13px; padding:7px 5px 0px 5px;}
 .prodPriceSmall, .productList h6, .categoryList h6 {margin-left:15px;}
 .moreDetailsSmall {height:30px; width:100px; color:#fff; font-size:14px; text-align:center; line-height:30px; background-color:#3bb3c3;}
 .myProdThumbSmall:hover .moreDetailsSmall {background-color:#e0463a;}

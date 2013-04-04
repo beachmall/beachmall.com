@@ -37,7 +37,7 @@ var store_filter = function() {
 //key is safe id. value is name of the filter form.
 	filterMap : {
 
-		".beach-umbrellas-shelter":{
+		".beach-umbrellas-shelter.beach-umbrella":{
 			"filter": "UmbrellasForm",
 			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
 			}/*,
