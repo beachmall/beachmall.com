@@ -95,7 +95,7 @@ app.rq.push(['templateFunction','categoryTemplate','onCompletes',function(P) {
 
 		var $page = $(app.u.jqSelector('#',P.parentID));
 		app.u.dump(" -> $page.length: "+$page.length);
-		if($page.data('filterAdded'))	{} //filter is already added, don't add again.
+		if($page.data('filterAdded'))	{app.u.dump("filter exists skipping form add");} //filter is already added, don't add again.
 		else	{
 			$page.data('filterAdded',true)
 			var $form = $("[name='"+app.ext.store_filter.filterMap[P.navcat].filter+"']",'#appFilters').clone().appendTo($('.filterContainer',$page));

@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"20130403170700",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"20130404112400",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"",
 	"httpsURL":"https://www-beachmall-com.app-hosted.com/",
@@ -802,6 +802,12 @@ each of the 'sections' are used to load another template. don't change the id.
 don't modify the 'data-templateid' unless you are changing template names and updating everywhere appropriate.
 -->
 <div id='categoryTemplate' class='loadingBG categoryTemplate'>
+	
+    	<div class='filterBox floatLeft'>
+            <div class='filterContainer clearfix'></div>   
+            <div class='clear'></div> 
+    	</div>
+
 
         <ul class='breadcrumb clearfix noPadOrMargin fluidList' data-bind='var: category(id); format:breadcrumb; extension:store_navcats; loadsTemplate: breadcrumbTemplate;'></ul>
     
@@ -2344,7 +2350,7 @@ put all filters into the appFilters container.
 <div id='appFilters' class='displayNone'>
 
 
-<form action='#' name='beachUmbrellasForm' id='UmbrellasForm' class='layeredSearch'>
+<form action='#' name='UmbrellasForm' id='UmbrellasForm' class='layeredSearch'>
 
 <fieldset data-elastic-key="base_price" data-filtertype="slider">
 	<legend>Price</legend>
