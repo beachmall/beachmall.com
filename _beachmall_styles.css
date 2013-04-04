@@ -198,6 +198,8 @@ CATEGORY PAGE
 PRODUCT LIST
 **************************************************************/
 
+.productList {background-image:url(images/HeaderBackground.jpg)}
+
 /*Layered search styles*/
 .filterBox {height:400px; width:253px; background-color:#eee;}
 .categoryTemplateContainer {height:auto; width:761px;}
@@ -206,20 +208,23 @@ label.break	{display:block; margin-bottom:2px;}
 .layeredSearch legend	{font-size:1.0em; font-weight:bold;}
 .layeredSearch fieldset	{margin-bottom:12px;}
 
+.products.product {height:450px; width:220px; margin:16.8px;}
+.products.product > div {height:auto; width:220px;}
+
 /* Joins thumbborder and shop now text box to both hover at same time*/
 .prodHoverContainer:hover .moreDetailsSmall {background-color:#e0463a;}
 .prodHoverContainer:hover .myProdThumbSmall {border:5px solid #e0463a;}
 
+.productPriceContainer {height:50px; width:120px;}
+.prodPriceDesc {color:#e0463a; text-align:center; font-family:"Open Sans"; font-size:10px; font-weight:bold;}
 
+.products.product .productListSmall .prodTextContainerSmall .prodPriceSmall, .productList h6, .categoryList h6 {heigth:25px; width:120px; text-align:center; margin:0px;}
 
-.products.product {height:400px; width:220px; margin:16.8px; background-color:#FF0;}
-.products.product > div {height:auto; width:220px; background-color:#0F0;}
-
-.prodViewerAddToCartForm {height:40px; width:100%; margin-bottom:10px;}
+.prodViewerAddToCartForm {height:30px; width:100%; margin-bottom:10px;}
 .prodViewerAddToCartButton.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-only {
-	height:40px;
-	width:125px;
-	margin-left:43px;
+	height:30px;
+	width:120px;
+	margin:6px 0px 0px 50px;
 	color#fff;
 	font-family:Oswald;
 	font-size:14px;
@@ -227,6 +232,18 @@ label.break	{display:block; margin-bottom:2px;}
 	border:none;
 	border-radius: 0px 0px 0px 0px;
 }
+
+.prodViewerAddToCartButton.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-only span {line-height:0px;}
+
+.regularPriceContainer {height:35px; width:90px; text-align:center; font-family:"Open Sans"; padding-top:5px}
+.regularPriceContainer .regularPrice {height:16px; width:100%; text-decoration:line-through; color:#999; font-size:14px; font-weight:bold;}
+.regularPriceContainer .regularPriceDesc {height:15px; width:100%; color:#000; font-size:10px;}
+.shipContainer {height:35px; width:115px; text-align:center; font-family:"Open Sans"; padding-top:5px}
+.shipContainer .shipCost {height:16px; width:100%; color:##e0463a; font-size:14px; font-weight:bold;}
+.shipContainer .shipTime {height:15px; width:100%; color:#000; font-size:10px;}
+.prodNum {height:10px; width:100%; font-family:"Open Sans"; font-size:10px; text-align:center;}
+
+
 /*Overrides widget button text color*/
 .prodViewerAddToCartButton, .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {color:#fff;}
 
@@ -944,7 +961,8 @@ some shared styles, pulled from cat layout but that will impact, potentially, mo
 	}
 
 
-.blah {background-color: #ff0;}
+.blah {background-color: #ff0; font-family:Oswald; font-size:24px; font-weight:bold; color:#3bb3c3;}
+.blah p {font-family:"Open Sans"; font-size:12px; font-weight:normal; color:#000;}
 .blah2 {background-color: #C3F;}
 .blah3 {background-color:#F0F;}
 .blah4 {background-color: #0FF;}

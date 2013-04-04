@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"20130402182200",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"20130403170700",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"",
 	"httpsURL":"https://www-beachmall-com.app-hosted.com/",
@@ -952,17 +952,26 @@ remember to NOT put the button inside the 'onclick' container or two events will
             <div class='floatRight pointer moreDetailsSmall' onClick="showContent('product',{'pid':$(this).parent().attr('data-pid')});">more details</div>
         </div>
         <div class='prodTextContainerSmall'>
-                <h6 class='floatLeft prodPriceSmall' data-bind='var: product(zoovy:base_price); format:money; currencySign: $;  hideZero:true; className:price; pretext: Our Price: ;'></h6>
+        		<div class='productPriceContainer'>
+	                <h6 class='floatLeft prodPriceSmall' data-bind='var: product(zoovy:base_price); format:money; currencySign: $;  hideZero:true; className:price;'></h6>
+    				<div class='prodPriceDesc'>DESC OF PRICE</div>
+                </div>
                 <h5 class='clearfix prodDescSmall' data-bind='var: product(zoovy:prod_name); format:text;'></h5>
                 <span data-bind='var: reviews(reviews.average); format:addClass; className:review_;' class='reviewSprite'></span>
                 <!-- Need Color Options here, will work w/ form to show product, or colors pop up -->
+                <div class='regularPriceContainer floatLeft'>
+                    <div class='regularPrice' data-bind='var: product(zoovy:prod_msrp); format:money; currencySign: $; hideZero:true;'> </div>
+                    <div class='regularPriceDesc'>Regular Price</div>
+				</div>
+                <div class='shipContainer floatLeft'>
+                    <div class='shipCost'></div>
+                    <div class='shipTime latency' data-bind='var: product(zoovy:ship_latency); format:text; pretext:SHIPS ; posttext: DAY;'></div>
+                </div>
                 <form data-bind='var: product(pid); format:atcForm; extension:store_product;' class='prodViewerAddToCartForm clearfix' action='#'>
                     <button class='prodViewerAddToCartButton' data-bind='format:addToCartButton; extension:myRIA; useParentData:true;'>more details</button>
                 </form>
-                <div class='regularPrice'></div>
-                <div class='shipping'></div>
-                <div class='prodNum'></div>
-        <!-- 	<span data-bind='var: reviews(reviews.total); format:text; pretext: from ;posttext: reviews; className:numReviews;'></span> -->
+                <div class='prodNum stid' data-bind='var: product(pid); format:text; pretext: ITEM &nbsp #: &nbsp ;'></div>
+	      <!-- 	<span data-bind='var: reviews(reviews.total); format:text; pretext: from ;posttext: reviews; className:numReviews;'></span> -->
         </div>  
     </div>
 	
