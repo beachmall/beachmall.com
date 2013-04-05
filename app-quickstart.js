@@ -2573,6 +2573,9 @@ buyer to 'take with them' as they move between  pages.
 					else if(catSafeID == zGlobals.appSettings.rootcat || infoObj.pageType == 'homepage')	{
 						infoObj.templateID = 'homepageTemplate'
 						}
+					else if(catSafeID == '.beach-chairs.beach-gear'){
+						infoObj.templateID='categoryTemplateBrands';
+						}
 					else	{
 						infoObj.templateID = 'categoryTemplate'
 						}

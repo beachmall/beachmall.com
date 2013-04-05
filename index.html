@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"20130404112400",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"20130404171400",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"",
 	"httpsURL":"https://www-beachmall-com.app-hosted.com/",
@@ -713,7 +713,7 @@ the homepageTemplate template is loaded into mainContentArea by default when the
     
     <div class='homepageCategories'>
     	<ul data-bind="var: category(@subcategoryDetail); format: categoryList; bgcolor: TTTTTT; extension: store_navcats; loadsTemplate: categoryListHomeTemplate; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin'></ul>
-    	<a class='bindByAnchor' href='#!category?navcat=.beach-chairs.beach-gear'>
+        <a class='bindByAnchor' href='#!category?navcat=.beach-chairs.beach-gear?templateID=categoryTemplateBrands'>
         	<div class='shopByProdContainer'>
             	<div class='catName white2LGray'>Shop by Brand</div>
                 <div class='thumbContainer'>
@@ -831,7 +831,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 
 
 <div id='categoryTemplateBrands' class='loadingBG categoryTemplate'>
-
+<h1>HELLO</h1>
         <ul class='breadcrumb clearfix noPadOrMargin fluidList' data-bind='var: category(id); format:breadcrumb; extension:store_navcats; loadsTemplate: breadcrumbTemplate;'></ul>
     
         <img data-bind="var: category(%page.banner1); format: banner; editor: banner; height:250; width:750; extension: myRIA;" />
@@ -1830,33 +1830,42 @@ onclicks are recursive, so only add it to the parent element.
 -->
 
 <div id='mpControlSpec' class='mpControlContainer'>
-	<div class='mpControls ui-widget ui-state-default ui-corner-top'>
 
-<span class="mpControlsPagination ui-state-active ui-corner-all floatRight paging pointer" data-role='next' title="next page">
-	<span class="ui-icon ui-icon-circle-triangle-e"></span>
-</span>
+	 <div class='mpControls'>
+        
+        <span class="mpControlsPagination ui-state-active floatRight paging pointer" data-role='next' title="next page">NEXT</span>
+        <div class='floatRight ddUlMenu mpControlsPagination'>
+            <ul>
+                <li>
+                <a href='#' onClick='return false;'>
+                <span class='playFontBold fontSize18PX' data-bind='var:prodlistmeta(page_in_focus); format:text;'></span>
+                <span>&nbsp OF &nbsp</span>
+                <span class='playFontBold fontSize18PX' data-bind='var:prodlistmeta(total_page_count); format:text;'></span></a>
+                <ul data-bind='var:prodlistmeta(total_page_count); format:mpPagesAsListItems; extension:store_prodlist;' class='playFontBold fontSize18PX ui-widget-content ui-corner-bottom'></ul>
+                </li>
+            </ul>
+        </div>
+        <span class="mpControlsPagination ui-state-active floatRight paging pointer" data-role='previous' title="previous page">PREV</span>
+        
+        <div class='mpFiltersContainer floatRight'>
+        	<div class='floatLeft'>
+            	In-Stock Items Only
+            	<div class='selectionBox borderGrey floatLeft'></div>    
+            </div>
+        </div>
 
-<div class='floatRight ddUlMenu mpControlsPagination'>
-<ul>
-	<li>
+        <span data-bind='var:prodlistmeta(page_product_count); format:text; pretext: <span class="fontLightTeal ofItems">Showing: </span>;'></span>
+        <!-- <span data-bind='var:prodlistmeta(page_end_point); format:text; pretext: - ;'></span> -->
+        <span class='ofItems'>&nbsp OF &nbsp </span>
+        <span data-bind='var:prodlistmeta(total_product_count); format:text;'></span>
+        <span class='ofItems mpMargin'>&nbsp ITEM(S) &nbsp </span>
 
-	<a href='#' onClick='return false;'>
-	<span data-bind='var:prodlistmeta(page_in_focus); format:text; pretext: page ;'></span>
-	<span data-bind='var:prodlistmeta(total_page_count); format:text; pretext: of ;'></span>	</a>
-	<ul data-bind='var:prodlistmeta(total_page_count); format:mpPagesAsListItems; extension:store_prodlist;' class='ui-widget-content ui-corner-bottom'></ul>
-	</li>
-</ul>
-</div>
-
-<span class="mpControlsPagination ui-state-active ui-corner-all floatRight paging pointer" data-role='previous' title="previous page">
-	<span class="ui-icon ui-icon-circle-triangle-w"></span>
-</span>
-
-
-<span data-bind='var:prodlistmeta(page_start_point); format:text; pretext:items ;'></span>
-<span data-bind='var:prodlistmeta(page_end_point); format:text; pretext: - ;'></span>
-<span data-bind='var:prodlistmeta(total_product_count); format:text; pretext: of ;'></span>
-
+		<div class='floatLeft mpMargin'>
+            	<img src="images/SmallBlackRoundDownArrow.png" class='floatLeft'>
+            	<span class='floatLeft' data-bind='var:prodlistmeta(page_product_count); format:text; pretext: <span class="fontLightTeal ofItems">YOUR RESULTS: </span>;'></span>
+        </div>
+        
+        <span class='playFont fontSize24PX' data-bind='var:prodlistmeta(page_product_count); format:text; posttext: <span class="fontLightTeal ofItems"> items per page </span>;'></span>
 	</div><!-- /.mpControls -->
 </div><!-- /#mpControlSpec -->
 

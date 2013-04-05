@@ -1,0 +1,12 @@
+1. Add second else if statement in app-quickstart.js. Whole block starts on line 2573 inside of showPage : function(infoObj) {
+
+
+	else if(catSafeID == zGlobals.appSettings.rootcat || infoObj.pageType == 'homepage')	{
+		infoObj.templateID = 'homepageTemplate'
+		}
+	else if(catSafeID == '.beach-chairs.beach-gear'){
+		infoObj.templateID='categoryTemplateBrands';
+		}
+	else	{
+		infoObj.templateID = 'categoryTemplate'
+		}

@@ -28,6 +28,7 @@ body {
 
 .fontWhite {color:#fff;}
 .fontBlack {color: #000;}
+.fontLightTeal {color:#a1d3ca;}
 .fontTeal {color: #3bb3c3;}
 .fontYellow {color: #f8c301;}
 .fontLightYellow {color: #ffe680;}
@@ -192,6 +193,91 @@ CATEGORY PAGE
 
 .categoryList {height:auto; width:980px; margin:auto;}
 .categoryList li {height:155px; width:300px;}
+
+
+/*************************************************************************************
+MP CONTROLS CONTAINER
+*************************************************************************************/
+
+
+.mpControls {
+	margin: 10px 0px 5px 0px;
+	padding: 0px 10px 0px 10px;
+	font-family:"Open Sans";
+	font-weight:bold;
+	font-size:12px;
+	color:#fff;
+	background-color:#3bb3c3;
+}
+
+.mpControlsPagination.ui-state-active.pointer {
+	border: none;
+	background-color: transparent;
+	background: none;
+	font-weight: 400;
+	color: #000;
+	line-height: 28px;
+}
+
+/*OVERRIDES OF CSS DROPDOWN MENU FROM QUICKSTART.CSS
+/* tier1 menu behavior */
+.ddUlMenu ul li {
+	margin:0;
+	padding:0;
+	list-style:none;
+	color: #fff;
+	font-size: 14px;
+	text-align: center;
+}
+
+.ddUlMenu ul li+li {margin: 7px 0px 5px 7px;}
+
+/* tier 1 menu link style (ok to change this). will affect tier2 also */
+.ddUlMenu ul li a {
+	float: left;
+	text-decoration:none;
+	padding:0 12px;
+	cursor: text;
+	color: #000;
+}
+
+.ddUlMenu li ul {
+	left: -999em;
+	margin: 24px 0px 0 -34px; /* top margin should = tier 1 line-height - 1px...ish */
+	position: absolute;
+	width: 160px;
+	z-index: 9999;
+	background-image: none;
+	background: #000;
+	border: none;
+}
+/*END CSS DROP DOWN MENU OVERRIDES
+
+
+/* sets text to vertical center of numbers on left side of mpControls*/
+.ofItems {line-height: 28px;}
+
+.mpMargin {margin-right:50px;}
+
+.mpFiltersContainer {margin: 8px 106px 0px 0px;}
+
+.mpFiltersContainer > div {margin: 0px 14px 0px 14px;}
+
+.mpFiltersContainer img {margin: -1px 11px 0px 0px;}
+
+.selectionBox {
+	height: 15px;
+	width: 15px;
+	background-color: #fff;
+	margin: -1px 11px 0px 0px;
+}
+
+.selectionBox:hover {background-color: #fec611;}
+
+
+/*************************************************************************************
+END MP CONTROLS CONTAINER
+*************************************************************************************/
 
 
 /**************************************************************

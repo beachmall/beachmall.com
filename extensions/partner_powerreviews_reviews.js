@@ -30,7 +30,7 @@ ex: app.rq.push(['extension',1,'powerReviews','extensions/reviews_powerreviews.j
 Snippet/summary: <div data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews;'></div>
 Engine/reviews: <div data-bind='var: product(pid); format:reviewEngine; extension:powerReviews;'></div>
 
-
+DON'T DO THIS STEP FOR BEACHMALL
 optional:
 A) remove templates below from appTemplates and from the templates list in the quickstart.js file
 reviewFrmTemplate
