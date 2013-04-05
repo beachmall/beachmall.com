@@ -28,6 +28,13 @@ var beachmart = function() {
 			init : {
 				onSuccess : function()	{
 					var r = true; //return false if extension won't load for some reason (account config, dependencies, etc).
+
+// load the google map api lib
+var script = document.createElement("script");
+script.type = "text/javascript";
+script.src = ((document.location.protocol == 'https:') ? 'https:' : 'http:') + "//maps.googleapis.com/maps/api/js?key=AIzaSyAW4uPPdoxArUsCy2SvCchNQmhX328T2oY&sensor=false&callback=app.ext.beachmart.util.instantiateGeoCoder";
+document.body.appendChild(script);
+
 					return r;
 					},
 				onError : function()	{
@@ -59,11 +66,7 @@ var beachmart = function() {
 							}
 							
 					
-// load the google map api lib
-var script = document.createElement("script");
-script.type = "text/javascript";
-script.src = ((document.location.protocol == 'https:') ? 'https:' : 'http:') + "//maps.googleapis.com/maps/api/js?key=AIzaSyAW4uPPdoxArUsCy2SvCchNQmhX328T2oY&sensor=false&callback=app.ext.beachmart.util.instantiateGeoCoder";
-document.body.appendChild(script);
+
 
 							
 						}
@@ -192,9 +195,7 @@ app.ext.beachmart.util.getShipQuotes(app.data[tagObj.datapointer].zip);
 						MagicZoomPlus.refresh();
 						}
 					
-					window.$prodInfotabs = $( "#tabbedProductContent" ).tabs();
-					$( "#prodImageVideoTabs" ).tabs()
-					$( "#tabbedProductLists" ).tabs()
+//					window.$prodInfotabs = $( "#tabbedProductContent" ).tabs();
 					app.ext.beachmart.util.handleToolTip();
 
 					if(typeof buySAFE == 'object'){

@@ -28,7 +28,7 @@ app.rq.push(['extension',0,'store_filter','extensions/beachmart.js']);
 //app.rq.push(['extension',1,'resellerratings_survey','extensions/partner_buysafe_guarantee.js','startExtension']); /// !!! needs testing.
 //app.rq.push(['extension',1,'buysafe_guarantee','extensions/partner_buysafe_guarantee.js','startExtension']);
 
-app.rq.push(['extension',1,'powerReviews_reviews','extensions/partner_powerreviews_reviews.js','startExtension']);
+app.rq.push(['extension',0,'powerReviews_reviews','extensions/partner_powerreviews_reviews.js','startExtension']);
 app.rq.push(['extension',0,'magicToolBox_mzp','extensions/partner_magictoolbox_mzp.js','startExtension']); // (not working yet - ticket in to MTB)
 
 
@@ -49,29 +49,55 @@ app.rq.push(['script',1,app.vars.baseURL+'resources/jquery.carouFredSel-6.2.0.mi
 
 
 
+
+//adds tabs to image/video IF video is set.
+app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {
+	app.u.dump("BEGIN templateFunction for images/video tabs");
+	if(app.data[P.datapointer] &&  app.data[P.datapointer]['%attribs'])	{
+		if(app.data[P.datapointer]['%attribs']['youtube:videoid'])	{
+		var $prodPage = $(app.u.jqSelector('#',P.parentID)),
+		$tabContainer = $(".imageAndVideoTabs",$prodPage);
+			$tabContainer.show();
+			if($tabContainer.data("widget") == 'anytabs'){} //tabs have already been instantiated. no need to be redundant.
+			else	{
+				$tabContainer.anytabs();
+				}
+			}
+		else	{
+			app.u.dump("youtube:videoid NOT set. no video.");
+			}
+		}
+	else	{
+		//video ID not set for this product.
+		app.u.dump("Issue w/ the product data. can't reach attribs.");
+		}
+	}]);
+
+
+
+
+
 //add tabs to product data.
 //tabs are handled this way because jquery UI tabs REALLY wants an id and this ensures unique id's between product
 app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {
-	var safePID = app.u.makeSafeHTMLId(P.pid); //can't use jqSelector because productTEmplate_pid still used makesafe. planned Q1-2013 update ###
-	var $tabContainer = $( ".tabbedProductContent",$('#productTemplate_'+safePID));
+	var $tabContainer = $("[data-app-role='xsellTabContainer']",$(app.u.jqSelector('#',P.parentID)));
 	if($tabContainer.length)	{
 		if($tabContainer.data("widget") == 'anytabs'){} //tabs have already been instantiated. no need to be redundant.
 		else	{
 			$tabContainer.anytabs();
 			}
 		}
-	else	{} //couldn't find the tab to tabificate.
+	else	{
+		app.u.dump("WARNING! could not find selector for xsell items");
+		} //couldn't find the tab to tabificate.
 	}]);
 
 
+
+
+//add tabs to product lists.
 app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {
-	
-	var $prodPage = $(app.u.jqSelector('#','productTemplate_'+app.u.makeSafeHTMLId(P.pid))),
-	$tabContainer = $(".imageAndVideoTabs",$prodPage);
-	
-	app.u.dump(" -> $prodPage: "+$prodPage.length);
-	app.u.dump(" -> $tabContainer.length: "+$tabContainer.length);
-	app.u.dump(" -> app.u.jqSelector('#','productTemplate_'+app.u.makeSafeHTMLId(P.pid)): "+app.u.jqSelector('#','productTemplate_'+app.u.makeSafeHTMLId(P.pid)));
+	var $tabContainer = $( ".tabbedProductContent",$(app.u.jqSelector('#',P.parentID)));
 	if($tabContainer.length)	{
 		if($tabContainer.data("widget") == 'anytabs'){} //tabs have already been instantiated. no need to be redundant.
 		else	{
@@ -80,6 +106,8 @@ app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {
 		}
 	else	{} //couldn't find the tab to tabificate.
 	}]);
+
+
 
 
 //Filter Search:
