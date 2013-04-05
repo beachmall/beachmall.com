@@ -1316,20 +1316,27 @@ this will likely become more flexible in the future. ###
 <!-- not sure about this img yet -->	
 	<img src='blank.gif' data-bind='var: product(zoovy:prod_image99); format: magicThumb; extension:  magicToolBox_mzp;' width='300' height='85' alt='' />
 	
-	<!-- OPEN ADD TO CART FORM HERE -->
+	<form data-bind='var: product(pid); format:atcForm; extension:store_product;' class='prodViewerAddToCartForm clearfix' action='#' onSubmit="app.ext.myRIA.u.handleAddToCart($(this),{'action':'modal'}); return false;">
 
-		<!-- VARIATIONS GO HERE -->
+		
+		
+
+		
+	
+
+
+		<fieldset data-bind='var: product(pid); format:atcVariations; extension:store_product;' class='borderNone'></fieldset>
 
 		<div class='clearfix marginBottom'>
 			<div class='floatLeft'><!-- BUYSAFE KICKER --></div>
 			<div class='floatRight alignRight'>
-				<!-- QUANTITY GOES HERE -->
+				<fieldset data-bind='var: product(pid); format:atcQuantityInput; extension:store_product; pretext:Quantity: ;' class='borderNone'></fieldset>
 			</div>
 		</div>
 				
 		<div class='alignRight'>
 			
-			<!-- ADD TO CART BUTTON GOES HERE -->
+			<input type='submit' value='Add to Cart' class='ui-button ui-button-text ui-corner-all ui-state-default addToCartButton displayNone' data-bind='var: product(pid); format:addToCartButton; extension:store_product;' id='addToCartBtn' />
 			<div class='displayNone zsmall alignRight' data-bind='var: product(user:prod_shipping); format:showIfSet;'><a href='#' onClick="app.ext.beachmart.a.showProdAttInDialog($(this).attr('data-pid'),'user:prod_shipping'); return false;" data-bind='var:product(pid);format:assignAttribute; attribute:data-pid;'>Shipping Surcharge May Apply</a></div>
 			
 			<!-- anchor is for tab container so tabs are still visible when page jumps down -->
@@ -1337,6 +1344,7 @@ this will likely become more flexible in the future. ###
 		</div>
 		
 	
+	</form>
 
 	<div class='clearfix'><br /></div>
 
@@ -1414,14 +1422,14 @@ this will likely become more flexible in the future. ###
 
 
 	<div class='tabbedProductListsTD marginLeft'>
-		<div class="tabbedProductLists">
+		<div class="tabbedProductLists" data-app-role='xsellTabContainer'>
 
-			<ul class='tabs' data-app-role='xsellTabContainer'>
+			<ul class='tabs'>
 				<li><a href="#prodlistRelated" >You may like</a></li>
-				<li><a href="#prodlistAccessories">Accessories</a></li><!--  class='displayNone' data-bind='var: product(zoovy:accessory_products); format:showIfSet;' -->
+				<li class='displayNone' data-bind='var: product(zoovy:accessory_products); format:showIfSet;'><a href="#prodlistAccessories">Accessories</a></li>
 			</ul>
 		
-			<div class='jcarousel-skin-default' data-anytab-content='prodlistRelated'>
+			<div class='jcarousel-skin-default' data-anytab-content='prodlistAccessories'>
 				<div class='slideshowContainerVertical prodlistSlideshow '>
 					<div class='next carouselNav carouselNavLgS displayNone'></div>
 					<div class='prev carouselNav carouselNavLgN displayNone'></div>
@@ -1429,7 +1437,7 @@ this will likely become more flexible in the future. ###
 				</div>
 			</div>
 
-			<div class='jcarousel-skin-default verticalProdlist' data-anytab-content='prodlistAccessories'>
+			<div class='jcarousel-skin-default verticalProdlist' data-anytab-content='prodlistRelated'>
 				<div class='slideshowContainerVertical prodlistSlideshow '>
 					<div class='next carouselNav carouselNavLgS displayNone'></div>
 					<div class='prev carouselNav carouselNavLgN displayNone'></div>

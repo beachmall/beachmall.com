@@ -48,10 +48,10 @@ app.rq.push(['script',1,app.vars.baseURL+'resources/jquery.carouFredSel-6.2.0.mi
 
 
 
-// initEstArrival
-app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {
-	app.ext.beachmart.u.initEstArrival(P);
-	}]);
+// get the estimate arrival code running. works passively.
+//app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {
+//	app.ext.beachmart.u.initEstArrival(P);
+//	}]);
 
 
 //adds tabs to image/video IF video is set.
@@ -81,8 +81,7 @@ app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {
 
 
 
-//add tabs to product data.
-//tabs are handled this way because jquery UI tabs REALLY wants an id and this ensures unique id's between product
+//add tabs to product lists.
 app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {
 	var $tabContainer = $("[data-app-role='xsellTabContainer']",$(app.u.jqSelector('#',P.parentID)));
 	if($tabContainer.length)	{
@@ -98,8 +97,7 @@ app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {
 
 
 
-
-//add tabs to product lists.
+//add tabs to product data.
 app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {
 	var $tabContainer = $( ".tabbedProductContent",$(app.u.jqSelector('#',P.parentID)));
 	if($tabContainer.length)	{

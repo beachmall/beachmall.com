@@ -64,11 +64,7 @@ document.body.appendChild(script);
 						if(typeof myAppIsLoaded == 'function')	{
 							myAppIsLoaded();
 							}
-							
-					
 
-
-							
 						}
 					else	{
 						//probably not a product page. do nothing for now.
@@ -794,8 +790,8 @@ uities
 app.u.dump("BEGIN beachmart.u.initEstArrival");
 
 var zip;
-if(app.data.cartDetail && app.data.cartDetail.ship && app.data.cartDetail.ship.zip)	{
-	zip = app.data.cartDetail.ship.zip
+if(app.data.cartDetail && app.data.cartDetail.ship && app.data.cartDetail.ship.postal)	{
+	zip = app.data.cartDetail.ship.postal;
 	}
 /*
 navigator.geolocation is crappily supported. appears there's no 'if user hits no' support to execute an alternative. at least in FF.
