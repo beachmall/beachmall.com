@@ -32,7 +32,7 @@ var beachmart = function() {
 // load the google map api lib
 var script = document.createElement("script");
 script.type = "text/javascript";
-script.src = ((document.location.protocol == 'https:') ? 'https:' : 'http:') + "//maps.googleapis.com/maps/api/js?key=AIzaSyAW4uPPdoxArUsCy2SvCchNQmhX328T2oY&sensor=false&callback=app.ext.beachmart.util.instantiateGeoCoder";
+script.src = ((document.location.protocol == 'https:') ? 'https:' : 'http:') + "//maps.googleapis.com/maps/api/js?key=AIzaSyAW4uPPdoxArUsCy2SvCchNQmhX328T2oY&sensor=false&callback=app.ext.beachmart.u.instantiateGeoCoder";
 document.body.appendChild(script);
 
 					return r;
@@ -82,23 +82,8 @@ document.body.appendChild(script);
 			checkForOrGetShipZip : {
 				
 				onSuccess : function(tagObj){
-app.u.dump("BEGIN beachmart.callbacks.checkForOrGetShipZip");
-var zip = app.data[tagObj.datapointer].cart['data.ship_zip'];
-//app.u.dump(" -> zip from cart: "+zip);
-/*
-navigator.geolocation is crappily supported. appears there's no 'if user hits no' support to execute an alternative. at least in FF.
-look at a pre-20120815 copy of this lib for geocoding
-*/
 
-if(app.u.isSet(zip))	{
-	app.u.dump(" -> zip code is present ["+zip+"]. Use it");
-	app.ext.beachmart.util.getShipQuotes(zip); //function also gets city/state from googleapi
-	}
-else	{
-	app.u.dump(" -> no zip code entered. request via whereAmI");
-	app.ext.store_crm.calls.whereAmI.init({'callback':'handleWhereAmI','extension':'beachmart'},'passive');
-	app.model.dispatchThis('passive');
-	}
+app.ext.beachmart.u.initEstArrival();
 
 					},
 				onError : function(responseData,uuid)	{
@@ -122,14 +107,14 @@ else	{
 					
 					if(!$.isEmptyObject(data['@Services']))	{
 						app.u.dump(" -> @Services is not empty");
-						var index = app.ext.beachmart.util.getShipMethodByID(data['@Services'],'UGND');
+						var index = app.ext.beachmart.u.getShipMethodByID(data['@Services'],'UGND');
 						if(!index)	{
-							index = app.ext.beachmart.util.getFastestShipMethod(data['@Services']);
+							index = app.ext.beachmart.u.getFastestShipMethod(data['@Services']);
 							}
 						app.u.dump(" -> index: "+index);
 //index could be false if no methods were available. or could be int starting w/ 0
 						if(index >= 0)	{
-							$('.transitContainer',$container).empty().append(app.ext.beachmart.util.getTransitInfo(SKU,data,index)); //empty first so when reset by zip change, no duplicate info is displayed.
+							$('.transitContainer',$container).empty().append(app.ext.beachmart.u.getTransitInfo(SKU,data,index)); //empty first so when reset by zip change, no duplicate info is displayed.
 							}
 						
 						}
@@ -154,25 +139,19 @@ else	{
 				onSuccess : function(tagObj){
 var data = app.data[tagObj.datapointer];
 if(data.city)	{
-	app.data.cartItemsList.cart['data.ship_city'] = data.city;
-	app.calls.cartSet.init({"data.ship_city":data.city},{},'passive');
+	app.data.cartDetailship.city = data.city;
+	app.calls.cartSet.init({"ship/city":data.city},{},'passive');
 	}
 if(data.state)	{
-	app.data.cartItemsList.cart['data.ship_state'] = data.state;
-	app.calls.cartSet.init({"data.ship_state":data.state},{},'passive');
+	app.data.cartDetail.ship.region = data.state;
+	app.calls.cartSet.init({"ship/region":data.state},{},'passive');
 	}
 if(data.city || data.state)	{
 	app.model.dispatchThis('passive');
 	}
-app.ext.beachmart.util.getShipQuotes(app.data[tagObj.datapointer].zip);
+app.ext.beachmart.u.getShipQuotes(app.data[tagObj.datapointer].zip);
 
-					},
-				onError : function(responseData,uuid)	{
-//error handling is a case where the response is delivered (unlike success where datapointers are used for recycling purposes)
-					app.u.handleErrors(responseData,uuid); //a default error handling function that will try to put error message in correct spot or into a globalMessaging element, if set. Failing that, goes to modal.
 					}
-				
-				
 				}, //checkForOrGetShipZip
 			
 			magicRefresh : {
@@ -186,7 +165,7 @@ app.ext.beachmart.util.getShipQuotes(app.data[tagObj.datapointer].zip);
 			translateAndGetCrossSell : {
 				onSuccess : function(tagObj)	{
 					app.renderFunctions.translateTemplate(app.data[tagObj.datapointer],"productContainer");
-					if(app.ext.beachmart.util.getCrossSellers({'pageType':'product','pid':SKU,'templateID':'productTemplate'}))	{
+					if(app.ext.beachmart.u.getCrossSellers({'pageType':'product','pid':SKU,'templateID':'productTemplate'}))	{
 						app.calls.ping.init({'callback':'magicRefresh','extension':'beachmart'})
 						app.model.dispatchThis();
 						
@@ -196,7 +175,7 @@ app.ext.beachmart.util.getShipQuotes(app.data[tagObj.datapointer].zip);
 						}
 					
 //					window.$prodInfotabs = $( "#tabbedProductContent" ).tabs();
-					app.ext.beachmart.util.handleToolTip();
+					app.ext.beachmart.u.handleToolTip();
 
 					if(typeof buySAFE == 'object'){
 						WriteBuySafeKickers();
@@ -264,7 +243,7 @@ var vertCarouselOptions = {
 			updateMCLineItems : 	{
 				onSuccess : function(tagObj)	{
 	//				app.u.dump("BEGIN beachmart.callbacks.updateMCLineItems");
-					app.ext.beachmart.util.handleMinicartUpdate(tagObj);
+					app.ext.beachmart.u.handleMinicartUpdate(tagObj);
 					$('.atcButton').removeClass('disabled').removeAttr('disabled');
 					},
 				onError : function(responseData,uuid)	{
@@ -276,9 +255,9 @@ var vertCarouselOptions = {
 			handleCart : 	{
 				onSuccess : function(tagObj)	{
 //					app.u.dump("BEGIN beachmart.callbacks.onSuccess.handleCart");
-					app.ext.beachmart.util.handleMinicartUpdate(tagObj);
+					app.ext.beachmart.u.handleMinicartUpdate(tagObj);
 					app.renderFunctions.translateTemplate(app.data[tagObj.datapointer].cart,tagObj.parentID);				
-					app.ext.beachmart.util.handleCartUpSell(tagObj.datapointer);
+					app.ext.beachmart.u.handleCartUpSell(tagObj.datapointer);
 					$('.atcButton').removeClass('disabled').removeAttr('disabled');
 					MagicZoomPlus.refresh();
 					$('#cartTemplateCostSummary').removeClass('loadingBG');
@@ -335,7 +314,7 @@ Action
 
 
 
-		action: {
+		a: {
 			
 //Data must already be in memory to execute this action.
 //added as a .click to the shipping method
@@ -489,16 +468,16 @@ Action
 						var zip = $('#shipDialogZip').val();
 						app.u.dump("BEGIN showZipDialog .click event. zip: '"+zip+"'");
 //reset these vars so getShipQuotes doesn't use them.
-						app.data.cartItemsList.cart['data.ship_city'] = null; 
-						app.data.cartItemsList.cart['data.ship_zip'] = null; 
-						app.data.cartItemsList.cart['data.ship_state'] = null;
-						app.calls.cartSet.init({"data.ship_zip":null},{},'passive');
-						app.calls.cartSet.init({"data.ship_city":null},{},'passive');
-						app.calls.cartSet.init({"data.ship_state":null},{},'passive');
+						app.data.cartDetail.ship.city = ""; 
+						app.data.cartDetail.ship.postal = ""; 
+						app.data.cartDetail.ship.region = "";
+						app.calls.cartSet.init({"ship/postal":""},{},'passive');
+						app.calls.cartSet.init({"ship/city":""},{},'passive');
+						app.calls.cartSet.init({"ship/region":""},{},'passive');
 
 						if(zip && zip.length >= 5 && !isNaN(zip))	{
 							var $container = $("#productContainer"); //using $container as second param in $ below targets better (lighter and leaves door open for multiple instances later)
-							app.ext.beachmart.util.getShipQuotes(zip);
+							app.ext.beachmart.u.getShipQuotes(zip);
 							//reset all the spans
 							$('.putLoadingHere',$container).addClass('loadingBG');
 							$('.loadingText',$container).hide();
@@ -545,7 +524,7 @@ RenderFormats
 
 			
 			ymd2Pretty : function($tag,data)	{
-				$tag.append(app.ext.beachmart.util.yyyymmdd2Pretty(data.value));
+				$tag.append(app.ext.beachmart.u.yyyymmdd2Pretty(data.value));
 				},
 
 			setHrefToImageUrl : function($tag,data){
@@ -573,7 +552,7 @@ RenderFormats
 //adding this as part of mouseenter means pics won't be downloaded till/unless needed.
 // no anonymous function in mouseenter. We'll need this fixed to ensure no double add (most likely) if template re-rendered.
 //							$tag.unbind('mouseenter.myslider'); // ensure event is only binded once.
-							$tag.bind('mouseenter.myslider',app.ext.beachmart.util.addPicSlider2UL).bind('mouseleave',function(){window.slider.kill()})
+							$tag.bind('mouseenter.myslider',app.ext.beachmart.u.addPicSlider2UL).bind('mouseleave',function(){window.slider.kill()})
 						}
 					}
 				},
@@ -672,7 +651,7 @@ RenderFormats
 					$tag.addClass('atcButton')
 					}
 				
-				if(app.ext.store_product.util.productIsPurchaseable(pid))	{
+				if(app.ext.store_product.u.productIsPurchaseable(pid))	{
 //product is purchaseable. make sure button is visible and enabled.
 					$tag.show().removeClass('displayNone').removeAttr('disabled');
 					}
@@ -801,18 +780,45 @@ $parentDiv.append($imagesDiv);
 /*
 #######################
 
-Utilities
+uities
 
 #######################
 */
 
 
-		util: {
+		u: {
+
+
+			initEstArrival : function(infoObj){
+
+app.u.dump("BEGIN beachmart.u.initEstArrival");
+
+var zip;
+if(app.data.cartDetail && app.data.cartDetail.ship && app.data.cartDetail.ship.zip)	{
+	zip = app.data.cartDetail.ship.zip
+	}
+/*
+navigator.geolocation is crappily supported. appears there's no 'if user hits no' support to execute an alternative. at least in FF.
+look at a pre-20120815 copy of this lib for geocoding
+*/
+
+if(zip)	{
+	app.u.dump(" -> zip code is cart ["+zip+"]. Use it");
+	app.ext.beachmart.u.getShipQuotes(zip); //function also gets city/state from googleapi
+	}
+else	{
+	app.u.dump(" -> no zip code entered. request via whereAmI");
+	app.ext.store_crm.calls.whereAmI.init({'callback':'handleWhereAmI','extension':'beachmart'},'passive');
+	app.model.dispatchThis('passive');
+	}
+
+				},
+
 
 //obj is going to be the container around the img. probably a div.
 //the internal img tag gets nuked in favor of an ordered list.
 			addPicSlider2UL : function(){
-//				app.u.dump("BEGIN beachmart.util.addPicSlider2UL");
+//				app.u.dump("BEGIN beachmart.u.addPicSlider2UL");
 				
 				var $obj = $(this);
 				if($obj.data('slider') == 'rendered')	{
@@ -850,10 +856,10 @@ Utilities
 				
 
 			getShipQuotes : function(zip)	{
-app.u.dump("BEGin beachmart.util.getShipQuotes");
+app.u.dump("BEGin beachmart.u.getShipQuotes");
 //here, inventory check is done instead of isProductPurchaseable, because is used specifically to determine whether or not to show shipping.
 // the purchaseable function takes into account considerations which have no relevance here (is parent, price, etc).
-if(app.ext.store_product.util.getProductInventory(SKU) <= 0){
+if(app.ext.store_product.u.getProductInventory(SKU) <= 0){
 	//no inventory. Item not purchaseable. Don't get shipping info
 	$('.shippingInformation .putLoadingHere').removeClass('loadingBG').hide();
 	app.u.dump("SANITY! ship times not displayed because inventory unavailable.");
@@ -865,16 +871,16 @@ else if(zip)	{
 //	app.u.dump(" -> zip: "+zip);
 //if the city or the state is already available, don't waste a call to get additional info.
 //this block is also executed for zip update, so allow reset.
-	if(app.data.cartItemsList.cart['data.ship_city'] || app.data.cartItemsList.cart['data.ship_state'])	{
-		app.ext.beachmart.util.fetchLocationInfoByZip(zip);
+	if(app.data.cartDetail.ship.city || app.data.cartDetail.ship.region)	{
+		app.ext.beachmart.u.fetchLocationInfoByZip(zip);
 		}
 	var prodArray = new Array();
 	prodArray.push(SKU);
-	app.data['cartItemsList'].cart['data.ship_zip'] = zip; //update local object so no request for full cart needs to be made for showTransitTimes to work right.
-	app.calls.cartSet.init({"data.ship_zip":zip},{},'passive');
+	app.data.cartDetail.ship.postal = zip; //update local object so no request for full cart needs to be made for showTransitTimes to work right.
+	app.calls.cartSet.init({"ship/postal":zip},{},'passive');
 	app.ext.beachmart.calls.time.init({},'passive');
 	app.ext.beachmart.calls.appShippingTransitEstimate.init({"@products":prodArray,"ship_postal":zip,"ship_country":"US"},{'callback':'showTransitTimes','extension':'beachmart'},'passive');
-//	app.data.cartItemsList.cart['data.ship_zip'] = app.data[tagObj.datapointer].zip; //need this local for getShipQuotes's callback.
+//	app.data.cartDetail['data.ship_zip'] = app.data[tagObj.datapointer].zip; //need this local for getShipQuotes's callback.
 
 	app.model.dispatchThis('passive'); //potentially a slow request that should interfere with the rest of the load.
 	
@@ -898,17 +904,17 @@ else	{
 
 			fetchLocationInfoByZip : function(zip,attempts)	{
 				attempts = Number(attempts) || 0;
-//				app.u.dump("BEGIN beachmart.util.app.ext.beachmart.util.fetchLocationInfoByZip("+zip+")");
+//				app.u.dump("BEGIN beachmart.u.app.ext.beachmart.u.fetchLocationInfoByZip("+zip+")");
 				if(zip && geocoder && typeof geocoder.geocode == 'function')	{
 					geocoder.geocode({ 'address': zip}, function(results, status) {
 						if(results.length > 0)	{
 //							app.u.dump(results[0].address_components);
-							var city = app.ext.beachmart.util.getCityFromAddressComponents(results[0].address_components);
-							var state = app.ext.beachmart.util.getStateFromAddressComponents(results[0].address_components);
+							var city = app.ext.beachmart.u.getCityFromAddressComponents(results[0].address_components);
+							var state = app.ext.beachmart.u.getStateFromAddressComponents(results[0].address_components);
 //update the local cart object right away, in addition to the server side cart, so that vars are available globally right away.
-							app.data.cartItemsList.cart['data.ship_city'] = city;
-							app.data.cartItemsList.cart['data.ship_state'] = state;
-							app.calls.cartSet.init({"data.ship_city":city,"data.ship_state":state},{},'passive');
+							app.data.cartDetail.ship.city = city;
+							app.data.cartDetail.ship.region = state;
+							app.calls.cartSet.init({"ship/city":city,"ship/state":state},{},'passive');
 							app.model.dispatchThis('passive');
 							}
 						else	{
@@ -917,13 +923,13 @@ else	{
 						});
 					}
 				else if(!zip)	{
-					app.u.dump("ERROR! zip not passed into beachmart.util.fetchLocationInfoByZip");
+					app.u.dump("ERROR! zip not passed into beachmart.u.fetchLocationInfoByZip");
 					}
 				else if(geocoder && typeof geocoder.geocode != 'function' && attempts < 30)	{
-					app.ext.beachmart.util.fetchLocationInfoByZip(zip,attempts+1); //perhaps the maps api hasn't loaded yet. try again.
+					app.ext.beachmart.u.fetchLocationInfoByZip(zip,attempts+1); //perhaps the maps api hasn't loaded yet. try again.
 					}
 				else	{
-					app.u.dump("WARNING! beachmart.util.fetchLocationInfoByZip could not execute. zip set, but geocoder not. attempts to load googleapi: "+attempts);
+					app.u.dump("WARNING! beachmart.u.fetchLocationInfoByZip could not execute. zip set, but geocoder not. attempts to load googleapi: "+attempts);
 					}
 				},
 //pass in the address_components array from the google api response
@@ -954,7 +960,7 @@ else	{
 
 
 			handlePreorderShipDate : function(){
-				app.u.dump("BEGIN beachmart.util.handlePreorderShipDate");
+				app.u.dump("BEGIN beachmart.u.handlePreorderShipDate");
 				app.u.dump("SANITY! this item is a preorder.");
 				var message;
 //if no date is set in salesrank, don't show any shipping info.
@@ -977,7 +983,7 @@ else	{
 
 //goes throught the product template and gets all skus in the PRODLIST attributes (that are used in the template).
 			getCrossSellers : function(P)	{
-//app.u.dump("BEGIN beachmart.util.buildQueriesFromTemplate");
+//app.u.dump("BEGIN beachmart.u.buildQueriesFromTemplate");
 //app.u.dump(P);
 
 var numRequests = 0; //will be incremented for # of requests needed. if zero, execute showPageContent directly instead of as part of ping. returned.
@@ -1011,9 +1017,9 @@ app.templates[P.templateID].find('[data-bind]').each(function()	{
 //				app.u.dump(" -> "+attribute+": "+app.data['appProductGet|'+P.pid]['%attribs'][attribute]);
 				if(app.u.isSet(app.data['appProductGet|'+P.pid]['%attribs'][attribute]))	{ 
 //bindData is passed into buildProdlist so that any supported prodlistvar can be set within the data-bind. (ex: withInventory = 1)
-					bindData.csv = app.ext.store_prodlist.util.handleAttributeProductList(app.data['appProductGet|'+P.pid]['%attribs'][attribute]);
+					bindData.csv = app.ext.store_prodlist.u.handleAttributeProductList(app.data['appProductGet|'+P.pid]['%attribs'][attribute]);
 //					app.u.dump("bindData: "); app.u.dump(bindData);
-					numRequests += app.ext.store_prodlist.util.buildProductList(bindData);
+					numRequests += app.ext.store_prodlist.u.buildProductList(bindData);
 					}
 				}
 
@@ -1025,7 +1031,7 @@ app.templates[P.templateID].find('[data-bind]').each(function()	{
 				}
 			}// /p.pid
 		else	{
-			app.u.dump("Uh oh! Product ID not passed into beachmart.util.getCrossSellers");
+			app.u.dump("Uh oh! Product ID not passed into beachmart.u.getCrossSellers");
 			}
 
 
@@ -1039,7 +1045,7 @@ app.templates[P.templateID].find('[data-bind]').each(function()	{
 
 
 				
-//app.ext.beachmart.util.handleMinicartUpdate();			
+//app.ext.beachmart.u.handleMinicartUpdate();			
 			handleMinicartUpdate : function(tagObj)	{
 
 				var itemCount = app.u.isSet(app.data[tagObj.datapointer].cart['data.item_count']) ? app.data[tagObj.datapointer].cart['data.item_count'] : app.data[tagObj.datapointer].cart['data.add_item_count']
@@ -1064,8 +1070,8 @@ app.templates[P.templateID].find('[data-bind]').each(function()	{
 //Adds all the  click events to the show and hide upsell buttons.
 //also adds the upsell (accessories) for the most recently added item in the cart that qualifies (has accessories)
 			handleCartUpSell : function()	{
-				app.u.dump("BEGIN beachmart.util.handleCartUpSell");
-				var stuff = app.data.cartItemsList.cart.stuff;
+				app.u.dump("BEGIN beachmart.u.handleCartUpSell");
+				var stuff = app.data.cartDetail.stuff;
 				var L = stuff.length;
 
 				app.u.dump(" -> L: "+L);
@@ -1111,7 +1117,7 @@ The bulk of the accessories display code is here so that this function can be ex
 
 */
 			showUpsellItemsInCart : function(stid,P)	{
-				app.u.dump("BEGIN beachmart.util.showUpsellItemsInCart");
+				app.u.dump("BEGIN beachmart.u.showUpsellItemsInCart");
 				app.u.dump(" -> stid: "+stid);
 				app.u.dump(P);
 				var prodArray = new Array(); //product array
@@ -1123,19 +1129,19 @@ The bulk of the accessories display code is here so that this function can be ex
 						}
 					else if(typeof P == 'undefined')	{
 						//stid was passed, not the csv. go get csv.
-						var stuffIndex = Number(app.ext.store_cart.util.getStuffIndexBySTID(stid));
+						var stuffIndex = Number(app.ext.store_cart.u.getStuffIndexBySTID(stid));
 //						app.u.dump(" -> stuffIndex: "+stuffIndex);
 //						app.u.dump(" -> accessories: ");
-//						app.u.dump(app.data.cartItemsList.cart.stuff[stuffIndex].full_product['zoovy:accessory_products']);
+//						app.u.dump(app.data.cartDetail.stuff[stuffIndex].full_product['zoovy:accessory_products']);
 						if(stuffIndex >= 0)	{
 //							app.u.dump("GOT HERE");
-							prodArray = app.data.cartItemsList.cart.stuff[stuffIndex].full_product['zoovy:accessory_products'].split(',');
+							prodArray = app.data.cartDetail.stuff[stuffIndex].full_product['zoovy:accessory_products'].split(',');
 //							app.u.dump(" -> prodArray:"); app.u.dump(prodArray);
 
 							}
 						}
 					else	{
-						app.u.dump("WARNING! unknown or empty parameter passed into beachmart.util.showUpsellItemsInCart. P follows:");
+						app.u.dump("WARNING! unknown or empty parameter passed into beachmart.u.showUpsellItemsInCart. P follows:");
 						app.u.dump(P);
 						}
 						
@@ -1143,18 +1149,18 @@ The bulk of the accessories display code is here so that this function can be ex
 						safeID = 'cartViewer_'+app.u.makeSafeHTMLId(stid);
 						this.handleAccessoryButtons();
 	
-						app.ext.store_prodlist.util.buildProductList({'csv':prodArray,'parentID':'upsellList','templateID':'productListTemplateBundle','hide_multipage':true});
+						app.ext.store_prodlist.u.buildProductList({'csv':prodArray,'parentID':'upsellList','templateID':'productListTemplateBundle','hide_multipage':true});
 						$('#'+safeID+' .hideAccessoriesBtn').show();
 						$('#'+safeID+' .showAccessoriesBtn').hide();
 						}
 					else	{
-						app.u.dump("WARNING! beachmart.util.showUpsellItemsInCart received input stid AND/OR p but could not generate a prodlist");
+						app.u.dump("WARNING! beachmart.u.showUpsellItemsInCart received input stid AND/OR p but could not generate a prodlist");
 						app.u.dump(" -> stid: "+stid);
 						app.u.dump(P);
 						}
 					}
 				else	{
-					app.u.dump("WARNING! CSV not defined in beachmart.util.showUpsellItemsInCart.");
+					app.u.dump("WARNING! CSV not defined in beachmart.u.showUpsellItemsInCart.");
 					}
 
 				},
@@ -1259,7 +1265,7 @@ else	{
 //this product call displays the messaging regardless, but the modal opens over it, so that's fine.
 		app.ext.store_product.calls.cartItemsAdd.init(formID,{'callback':'itemAddedToCart','extension':'beachmart'});
 		if(obj.action == 'modal')	{
-			app.ext.store_cart.util.showCartInModal('cartTemplate');
+			app.ext.store_cart.u.showCartInModal('cartTemplate');
 			app.calls.refreshCart.init({'callback':'handleCart','extension':'beachmart','parentID':'modalCartContents','templateID':'cartTemplate'},'immutable');
 			}
 		else	{
@@ -1283,7 +1289,7 @@ return r;
 // //if(prodAttribs['user:prod_shipping_msg'] == 'Ships Today by 12 Noon EST')
 
 			getTransitInfo : function(pid,data,index)	{
-			app.u.dump("BEGIN beachmart.util.getTransitInfo");
+			app.u.dump("BEGIN beachmart.u.getTransitInfo");
 
 var prodAttribs = app.data['appProductGet|'+pid]['%attribs'];
 
@@ -1317,13 +1323,13 @@ else	{
 	}
 
 
-$('.estimatedArrivalDate',$r).append(app.ext.beachmart.util.yyyymmdd2Pretty(data['@Services'][index]['arrival_yyyymmdd']));
+$('.estimatedArrivalDate',$r).append(app.ext.beachmart.u.yyyymmdd2Pretty(data['@Services'][index]['arrival_yyyymmdd']));
 
-if(app.data.cartItemsList.cart['data.ship_state'] || app.data.cartItemsList.cart['data.ship_city'])	{
-	$('.deliveryLocation',$r).append(" to "+app.data.cartItemsList.cart['data.ship_city']+" "+app.data.cartItemsList.cart['data.ship_state']+" (change)");
+if(app.data.cartDetail.ship.region || app.data.cartDetail.ship.city)	{
+	$('.deliveryLocation',$r).append(" to "+app.data.cartDetail.ship.city+" "+app.data.cartDetail.ship.region+" (change)");
 	}
-else if	(app.data.cartItemsList.cart['data.ship_zip'])	{
-	$('.deliveryLocation',$r).append(" to "+app.data.cartItemsList.cart['data.ship_zip']+" (change)")
+else if	(app.data.cartDetail.ship.postal)	{
+	$('.deliveryLocation',$r).append(" to "+app.data.cartDetail.ship.postal+" (change)")
 	}
 else{
 	$('.deliveryLocation',$r).append(" (enter zip) ")
@@ -1333,7 +1339,7 @@ $('.deliveryLocation',$r).click(function(){app.ext.beachmart.action.showZipDialo
 			}, //getTransitInfo
 			
 			handleToolTip : function()	{
-//				app.u.dump("BEGIN beachmart.util.handleToolTip.");
+//				app.u.dump("BEGIN beachmart.u.handleToolTip.");
 				$('.tipify',$('#appView')).each(function(){
 					var $this = $(this);
 					$this.parent().css('position','relative'); //this is what makes the tooltip appear next to the link instead of off in space.
@@ -1382,7 +1388,7 @@ $('.deliveryLocation',$r).click(function(){app.ext.beachmart.action.showZipDialo
 				return r;
 				},
 			getDOWFromDay : function(X)	{
-//				app.u.dump("BEGIN beachmart.util.getDOWFromDay ["+X+"]");
+//				app.u.dump("BEGIN beachmart.u.getDOWFromDay ["+X+"]");
 				var weekdays = new Array('Sun','Mon','Tue','Wed','Thu','Fri','Sat');
 				return weekdays[X];
 				},
@@ -1404,7 +1410,7 @@ $('.deliveryLocation',$r).click(function(){app.ext.beachmart.action.showZipDialo
 				return r;
 				} //yyyymmdd2Pretty 
 		
-			} //util
+			} //u
 
 		} //r object.
 	return r;

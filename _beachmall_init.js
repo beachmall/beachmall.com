@@ -48,6 +48,10 @@ app.rq.push(['script',1,app.vars.baseURL+'resources/jquery.carouFredSel-6.2.0.mi
 
 
 
+// initEstArrival
+app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {
+	app.ext.beachmart.u.initEstArrival(P);
+	}]);
 
 
 //adds tabs to image/video IF video is set.
