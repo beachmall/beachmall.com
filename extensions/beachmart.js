@@ -416,6 +416,32 @@ return filters;
 							}
 						}]);
 					
+					//PREVIOUSLY VIEWED ITEMS CAROUSEL
+					app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(P) {
+						var $target = $('#brandCatsPreviousViewed');
+						if($target.data('isCarousel'))	{} //only make it a carousel once.
+						else	{
+							$target.data('isCarousel',true);
+					//for whatever reason, caroufredsel needs to be executed after a moment.
+							setTimeout(function(){
+								$target.carouFredSel({
+									auto: false,
+									prev: '.brandsCatPrevViewedCarouselPrev',
+									next: '.brandsCatPrevViewedCarouselNext',
+									height: 405,
+									width: 960,
+									pagination: '#brandCatsPreviousViewedCarPagenation',
+									scroll: 4,
+							//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
+									swipe: {
+										onMouse: true,
+										onTouch: true
+										}
+									});
+								},1000); 
+							}
+						}]);
+					
 				}//END CAROUSEL FUNCTIONS
 
 			}, //u
