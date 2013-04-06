@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"20130404171400",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"20130406141600",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"",
 	"httpsURL":"https://www-beachmall-com.app-hosted.com/",
@@ -253,6 +253,10 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                     var hideDropdown = function ($tag) {
                         $(".dropdown", $tag).stop().animate({"height":"0px"}, 1000);
                     }
+					
+					var clickDropdown = function ($tag) {
+						$(".dropdown", $tag).stop().animate({"height":"0px"}, 0);
+					};	
                 </script>
                 
                 <!-- SECOND LEVEL DROPOUT SCRIPT -->
@@ -272,8 +276,10 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                 </script>
                     
                 <div class='dropdownsContainer'>
-                    <div class='singleDropdown floatLeft sprite' onMouseOver="showDropdown($(this))" onMouseOut="hideDropdown($(this))">
-                    	<a class='bindByAnchor' href='#!category?navcat=.beach-accessories'>BEACH ACCESSORIES</a>
+                    <div class='singleDropdown floatLeft sprite' onMouseOver="showDropdown($(this));" onMouseOut="hideDropdown($(this));">
+               <!-- <a href='#top' class='pointer' onClick="clickDropdown($(this)); return showContent('category',{'navcat':'.beach-accessories'});">BEACH ACCESSORIES</a> -->
+               <!-- <a class='bindByAnchor' href='#!category?navcat=.beach-accessories' onClick="clickDropdown($(this));">BEACH ACCESSORIES</a> -->
+               		<a class='bindByAnchor' href='#!category?navcat=.beach-accessories'>BEACH ACCESSORIES</a>    
                         <div class='beachAccessoriesDD dropdown twoLine floatLeft'>
                             <ul class='listStyleNone floatLeft'>
                             	<li class='noArrow'>BEACH<br>ACCESSORIES</li>
@@ -737,6 +743,7 @@ the homepageTemplate template is loaded into mainContentArea by default when the
         </div>
         <div id='featCarPagenation' class='standardCarouselPagenation'></div>
     </div>
+    
     <div class='CarouselContainer bestSellersCarouselContainer'>
     	<div class='carouselTitles'>
         	<div class='carouselTitleTextContainer floatLeft'>BEST SELLERS</div>
@@ -808,45 +815,45 @@ don't modify the 'data-templateid' unless you are changing template names and up
     	
         
         <img data-bind="var: category(%page.banner1); format: banner; editor: banner; height:250; width:750; extension: myRIA;" />
-    
-        <h2 class='blah5' data-bind="var: category(%page.header); format: text; editor: text;"></h2>
-    
-        <ul data-bind="var: category(@subcategoryDetail); format: categoryList; extension: store_navcats; loadsTemplate: categoryListTemplate; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin categoryList'></ul><!-- outputs a list of subcategories -->
-    
-        <ul data-bind="var: category(@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: productListTemplate; withReviews:1; items_per_page: 24;" class='listStyleNone fluidList clearfix noPadOrMargin productList'>
-            <div class='carouselTitles'></div>
-            <div class='filterBox floatLeft'>
-                <div class='filterContainer clearfix'></div>   
-                <div class='clear'>
-            </div> 
-    	</div>
-        </ul><!-- outputs the product list -->
-    
-        <p class='blah' data-bind="var: category(%page.description); format:wiki; wikiFormats:myRIA; editor: textarea;"></p>
+    	
+        <div class='catContainer'>
+            <h2 class='blah5' data-bind="var: category(%page.header); format: text; editor: text;"></h2>
         
-        <p data-bind="var: category(%page.description2); format:wiki; wikiFormats:myRIA; editor: textarea;"></p>
-
+            <ul data-bind="var: category(@subcategoryDetail); format: categoryList; extension: store_navcats; loadsTemplate: categoryListTemplate; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin categoryList'></ul><!-- outputs a list of subcategories -->
+        
+            <ul data-bind="var: category(@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: productListTemplate; withReviews:1; items_per_page: 24;" class='listStyleNone fluidList clearfix noPadOrMargin productList'>
+                <div class='filterBox floatLeft'>
+                    <div class='filterContainer clearfix'></div>   
+                    <div class='clear'>
+                </div> 
+            </div>
+            </ul><!-- outputs the product list -->
+        
+            <p class='blah' data-bind="var: category(%page.description); format:wiki; wikiFormats:myRIA; editor: textarea;"></p>
+            
+            <p data-bind="var: category(%page.description2); format:wiki; wikiFormats:myRIA; editor: textarea;"></p>
+		</div>
 </div>
 
 
 
 <div id='categoryTemplateBrands' class='loadingBG categoryTemplate'>
-<h1>HELLO</h1>
+
         <ul class='breadcrumb clearfix noPadOrMargin fluidList' data-bind='var: category(id); format:breadcrumb; extension:store_navcats; loadsTemplate: breadcrumbTemplate;'></ul>
     
         <img data-bind="var: category(%page.banner1); format: banner; editor: banner; height:250; width:750; extension: myRIA;" />
     
         <h2 class='blah5' data-bind="var: category(%page.header); format: text; editor: text;"></h2>
     
-        <ul data-bind="var: category(@subcategoryDetail); format: categoryList; extension: store_navcats; loadsTemplate: categoryListTemplate; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin categoryList'></ul><!-- outputs a list of subcategories -->
-    
-        <ul data-bind="var: category(@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: productListTemplate; withReviews:1; items_per_page: 24;" class='listStyleNone fluidList clearfix noPadOrMargin productList'>
-            <div class='carouselTitles'></div>
-        </ul><!-- outputs the product list -->
-    
-        <p class='blah' data-bind="var: category(%page.description); format:wiki; wikiFormats:myRIA; editor: textarea;"></p>
+		<div class='brandsCatContainer'>            
+            <ul data-bind="var: category(@subcategoryDetail); format: categoryList; extension: store_navcats; loadsTemplate: brandsCategoryListTemplate; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin categoryList'></ul><!-- outputs a list of subcategories -->
         
-        <p data-bind="var: category(%page.description2); format:wiki; wikiFormats:myRIA; editor: textarea;"></p>
+            <ul data-bind="var: category(@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: productListTemplate; withReviews:1; items_per_page: 24;" class='listStyleNone fluidList clearfix noPadOrMargin productList'></ul><!-- outputs the product list -->
+        
+            <p class='blah' data-bind="var: category(%page.description); format:wiki; wikiFormats:myRIA; editor: textarea;"></p>
+            
+            <p data-bind="var: category(%page.description2); format:wiki; wikiFormats:myRIA; editor: textarea;"></p>
+		</div>
 
 </div>
 
@@ -870,9 +877,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
     
         <ul data-bind="var: category(@subcategoryDetail); format: categoryList; extension: store_navcats; loadsTemplate: categoryListTemplate; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin categoryList' data-app-role='subcategoryList'></ul><!-- outputs a list of subcategories -->
     
-        <ul data-bind="var: category(@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: productListTemplate; withReviews:1; items_per_page: 24;" class='listStyleNone fluidList clearfix noPadOrMargin productList'>
-            <div class='carouselTitles'></div>
-        </ul><!-- outputs the product list -->
+        <ul data-bind="var: category(@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: productListTemplate; withReviews:1; items_per_page: 24;" class='listStyleNone fluidList clearfix noPadOrMargin productList'></ul><!-- outputs the product list -->
     
         <p class='blah' data-bind="var: category(%page.description); format:wiki; wikiFormats:myRIA; editor: textarea;"></p>
         
@@ -898,8 +903,6 @@ don't modify the 'data-templateid' unless you are changing template names and up
 	</div>
 </li>
 
-
-
 <li id='categoryListHomeTemplate' class='catListTemp'>
 	<div onClick="showContent('category',{'navcat':$(this).parent().attr('data-catsafeid')});" class='catTemplateContainer pointer'>
 		<div class='catName white2LGray'><span data-bind='var: category(pretty); format:catText; extension: myRIA;'></span></div>
@@ -909,8 +912,12 @@ don't modify the 'data-templateid' unless you are changing template names and up
 	</div>
 </li>
 
-
-
+<li id='brandsCategoryListTemplate' class='catListBrand'>
+	<div onClick="showContent('category',{'navcat':$(this).parent().attr('data-catsafeid')});" class='catTemplateContainer pointer'>
+        <div class='brandThumbContainer'><img src='blank.gif' class='brandCatThumb' data-bind='var: category(%meta.CAT_THUMB); format:imageURL;' width='152' height='152' /></div>
+		<div class='brandsCatName white2LGray'><span data-bind='var: category(pretty); format:catText; extension: myRIA;'></span></div>
+	</div>
+</li>
 
 <li id='categoryListTemplateRootCats'>
 	<div class='rootCatThumb'><img src='blank.gif' class='catThumb' data-bind='var: category(%meta.CAT_THUMB); format:imageURL;' height='300' width='300' /></div>
