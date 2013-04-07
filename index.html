@@ -856,21 +856,26 @@ don't modify the 'data-templateid' unless you are changing template names and up
 		</div>
         
         <div class='CarouselContainer previousViewedCarouselContainer'>
-                <div class='carouselTitles'>
-                    <div class='carouselTitleTextContainer floatLeft'>BEST SELLERS</div>
-                    <a class="bindByAnchor" href="#!search?TAG=IS_BESTSELLER">
-                        <div class='carouselLinkContainer floatRight'>View Best Sellers</div>
-                        <div class='carouselArrowContainer floatRight sprite'></div>
-                    </a>
-                </div>
-                <div class='Carousel'>
-                    <a class="carouselButtonWhite brandsCatPrevViewedCarouselPrev carouselButtonWhitePrev" href="#">prev</a>
-                    <a class="carouselButtonWhite brandsCatPrevViewedCarouselNext carouselButtonWhiteNext" href="#">next</a>
-                    
-                    <ul id='brandCatsPreviousViewed' data-bind='var: elastic-native({"size":"20","mode":"elastic-native","filter":{"term":{"tags":"IS_BESTSELLER"}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>
-                </div>
-                <div id='brandCatsPreviousViewedCarPagenation' class='standardCarouselPagenation'></div>
+            <div class='carouselTitles lightTealBkgrnd'>
+                <div class='carouselTitleTextContainer floatLeft'>BEST SELLERS</div>
+                <a class="bindByAnchor" href="#!search?TAG=IS_BESTSELLER">
+                    <div class='carouselLinkContainer brandCatsPrevViewedWidth floatRight'>View All Previously Viewed Products</div>
+                    <div class='carouselArrowContainer floatRight sprite'></div>
+                </a>
             </div>
+            <div class='Carousel'>
+                <a class="carouselButtonWhite brandsCatPrevViewedCarouselPrev carouselButtonWhitePrev" href="#">prev</a>
+                <a class="carouselButtonWhite brandsCatPrevViewedCarouselNext carouselButtonWhiteNext" href="#">next</a>
+                
+                <ul id='brandCatsPreviousViewed' data-bind='var: elastic-native({"size":"20","mode":"elastic-native","filter":{"term":{"tags":"IS_BESTSELLER"}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>
+            </div>
+            <div id='brandCatsPreviousViewedCarPagenation' class='standardCarouselPagenation'></div>
+        </div>
+            
+        <div id='recentlyViewedItemsContainer' class='displayNone'>
+            <h2>Recently Viewed Items</h2>
+            <ul data-bind="var: session(recentlyViewedItems); format: productList; extension: store_prodlist; loadsTemplate: productListTemplate; hide_summary:1; hide_pagination:1; withReviews:1;" class='listStyleNone fluidList clearfix noPadOrMargin productList'></ul>
+        </div>  
 
 </div>
 

@@ -53,6 +53,14 @@ app.rq.push(['script',1,app.vars.baseURL+'resources/jquery.carouFredSel-6.2.0.mi
 //	app.ext.beachmart.u.initEstArrival(P);
 //	}]);
 
+//add previously viwed items to the div 'recentlyViewedItemsContainer' if present
+app.rq.push(['templateFunction','productTemplate','onDeparts',function(P) {
+	var $container = $('#recentlyViewedItemsContainer');
+	$container.show();
+	$("ul",$container).empty(); //empty product list
+	$container.anycontent({data:app.ext.myRIA.vars.session}); //build product list
+	}]);
+
 
 //adds tabs to image/video IF video is set.
 app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {

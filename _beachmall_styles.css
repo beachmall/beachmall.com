@@ -205,6 +205,12 @@ BRANDS CATEGORY PAGE
 .brandThumbContainer {height:152px; width:152px; box-shadow:0px 0px 3px 2px #000000; padding:0px 34px;}
 .brandsCatName {height:25px; width:100%; color:#3BB3C3; font-family:"Open Sans"; font-size:14px; font-weight:bold; text-align:center; padding-top:5px;}
 
+/* BRAND CAT PAGE CAROUSEL */
+.previousViewedCarouselContainer {border-bottom:5px solid #a1d3ca;}
+.carouselTitles.lightTealBkgrnd {background-color:#a1d3ca;}
+.carouselTitles.lightTealBkgrnd a {color:#fff}
+.brandCatsPreviousViewedCarouselTitles a:hover {color:#fff}
+.carouselLinkContainer.brandCatsPrevViewedWidth {width:270px;}
 
 /*************************************************************************************
 MP CONTROLS CONTAINER
@@ -507,7 +513,8 @@ HOMEPAGE
 .carouselLinkContainer.featWidth {width:200px;}
 .bestSellersCarouselContainer {border-bottom:5px solid #3bb3c3;}
 .bestSellersCarouselTitles {background-color:#3bb3c3;}
-.previousViewedCarouselContainer {border-bottom:5px solid #3bb3c3;}
+
+
 
 .categoryDescriptionContainer {height:390px; width:1020px; background-color:#303;}
 

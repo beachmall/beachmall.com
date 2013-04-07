@@ -1,3 +1,6 @@
+app-quickstart.js:
+
+
 1. Add second else if statement in app-quickstart.js. Whole block starts on line 2573 inside of showPage : function(infoObj) {
 
 
@@ -10,3 +13,18 @@
 	else	{
 		infoObj.templateID = 'categoryTemplate'
 		}
+
+
+
+2. Add to vars : { "templates" : [
+
+'categoryTemplateBrands',
+
+--Add to line 2910 in createTemplateFunctions : function() { var pageTemplates = new Array('categoryTemplate',
+
+'categoryTemplateBrands', ...
+
+
+--Add to line 1542 in: handleSandHOTW : function(infoObj){
+
+else if(infoObj.pageType == 'category' && $old.data('templateid') == 'categoryTemplateBrands' && $old.data('catsafeid') == infoObj.navcat){r = false; app.u.dump("transition fail 7");}

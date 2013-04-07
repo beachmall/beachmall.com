@@ -417,7 +417,7 @@ return filters;
 						}]);
 					
 					//PREVIOUSLY VIEWED ITEMS CAROUSEL
-					app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(P) {
+					app.rq.push(['templateFunction','categoryTemplateBrands','onCompletes',function(P) {
 						var $target = $('#brandCatsPreviousViewed');
 						if($target.data('isCarousel'))	{} //only make it a carousel once.
 						else	{
@@ -426,6 +426,14 @@ return filters;
 							setTimeout(function(){
 								$target.carouFredSel({
 									auto: false,
+									/*prev : {
+										button : "#brandsCatPrevViewedCarouselPrev",
+										key    : "left"
+									},
+									next : {
+										button : "#brandsCatPrevViewedCarouselNext",
+										key	   : "right"
+									},*/
 									prev: '.brandsCatPrevViewedCarouselPrev',
 									next: '.brandsCatPrevViewedCarouselNext',
 									height: 405,

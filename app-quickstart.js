@@ -27,6 +27,7 @@ var myRIA = function() {
 //a list of the templates used by this extension.
 //if this is a custom extension and you are loading system extensions (prodlist, etc), then load ALL templates you'll need here.
 		"templates" : [
+			'categoryTemplateBrands',
 //the list of templates that are commonly edited (same order as they appear in appTemplates
 			'homepageTemplate',	'categoryTemplate',
 			'categoryListTemplate',
@@ -1538,6 +1539,7 @@ if(ps.indexOf('?') >= 1)	{
 				else if($old.data('templateid') == 'companyTemplate' && infoObj.pageType == 'company')	{r = false; app.u.dump("transition fail 4");}
 				else if($old.data('templateid') == 'customerTemplate' && infoObj.pageType == 'customer')	{r = false; app.u.dump("transition fail 5");}
 				else if($old.data('templateid') == 'searchTemplate' && infoObj.pageType == 'search')	{r = false; app.u.dump("transition fail 6");}
+				else if(infoObj.pageType == 'category' && $old.data('templateid') == 'categoryTemplateBrands' && $old.data('catsafeid') == infoObj.navcat){r = false; app.u.dump("transition fail 7");}
 				else if(!app.u.determineAuthentication() && this.thisArticleRequiresLogin(infoObj))	{
 					r = false; //if the login modal is displayed, don't animate or it may show up off screen.
 					}
@@ -2905,7 +2907,7 @@ else	{
 			createTemplateFunctions : function()	{
 
 				app.ext.myRIA.template = {};
-				var pageTemplates = new Array('categoryTemplate','productTemplate','companyTemplate','customerTemplate','homepageTemplate','searchTemplate','cartTemplate','checkoutTemplate','pageNotFoundTemplate');
+				var pageTemplates = new Array('categoryTemplate','categoryTemplateBrands','productTemplate','companyTemplate','customerTemplate','homepageTemplate','searchTemplate','cartTemplate','checkoutTemplate','pageNotFoundTemplate');
 				var L = pageTemplates.length;
 				for(var i = 0; i < L; i += 1)	{
 					app.ext.myRIA.template[pageTemplates[i]] = {"onCompletes":[],"onInits":[],"onDeparts":[]};
