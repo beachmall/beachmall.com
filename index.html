@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"20130406141600",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"20130406205100",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"",
 	"httpsURL":"https://www-beachmall-com.app-hosted.com/",
@@ -811,28 +811,26 @@ don't modify the 'data-templateid' unless you are changing template names and up
 <div id='categoryTemplate' class='loadingBG categoryTemplate'>
 	
         <ul class='breadcrumb clearfix noPadOrMargin fluidList' data-bind='var: category(id); format:breadcrumb; extension:store_navcats; loadsTemplate: breadcrumbTemplate;'></ul>
-    
-    	
-        
+
         <img data-bind="var: category(%page.banner1); format: banner; editor: banner; height:250; width:750; extension: myRIA;" />
-    	
+        
+        <h2 class='blah5' data-bind="var: category(%page.header); format: text; editor: text;"></h2>
+        
         <div class='catContainer'>
-            <h2 class='blah5' data-bind="var: category(%page.header); format: text; editor: text;"></h2>
-        
             <ul data-bind="var: category(@subcategoryDetail); format: categoryList; extension: store_navcats; loadsTemplate: categoryListTemplate; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin categoryList'></ul><!-- outputs a list of subcategories -->
+        </div>
         
-            <ul data-bind="var: category(@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: productListTemplate; withReviews:1; items_per_page: 24;" class='listStyleNone fluidList clearfix noPadOrMargin productList'>
-                <div class='filterBox floatLeft'>
-                    <div class='filterContainer clearfix'></div>   
-                    <div class='clear'>
-                </div> 
-            </div>
-            </ul><!-- outputs the product list -->
+        <ul data-bind="var: category(@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: productListTemplate; withReviews:1; items_per_page: 24;" class='listStyleNone fluidList clearfix noPadOrMargin productList'>
+            <div class='filterBox floatLeft'>
+                <div class='filterContainer clearfix'></div>   
+                <div class='clear'></div>
+       		</div>
+        </ul><!-- outputs the product list -->
+    
+        <p class='blah' data-bind="var: category(%page.description); format:wiki; wikiFormats:myRIA; editor: textarea;"></p>
         
-            <p class='blah' data-bind="var: category(%page.description); format:wiki; wikiFormats:myRIA; editor: textarea;"></p>
-            
-            <p data-bind="var: category(%page.description2); format:wiki; wikiFormats:myRIA; editor: textarea;"></p>
-		</div>
+        <p data-bind="var: category(%page.description2); format:wiki; wikiFormats:myRIA; editor: textarea;"></p>
+		
 </div>
 
 
@@ -855,9 +853,9 @@ don't modify the 'data-templateid' unless you are changing template names and up
             <p data-bind="var: category(%page.description2); format:wiki; wikiFormats:myRIA; editor: textarea;"></p>
 		</div>
         
-        <div class='CarouselContainer previousViewedCarouselContainer'>
+        <div id='recentlyViewedItemsContainer' class='CarouselContainer previousViewedCarouselContainer'>
             <div class='carouselTitles lightTealBkgrnd'>
-                <div class='carouselTitleTextContainer floatLeft'>BEST SELLERS</div>
+                <div class='carouselTitleTextContainer floatLeft'>PREVIOUSLY VIEWED PRODUCTS</div>
                 <a class="bindByAnchor" href="#!search?TAG=IS_BESTSELLER">
                     <div class='carouselLinkContainer brandCatsPrevViewedWidth floatRight'>View All Previously Viewed Products</div>
                     <div class='carouselArrowContainer floatRight sprite'></div>
@@ -867,16 +865,17 @@ don't modify the 'data-templateid' unless you are changing template names and up
                 <a class="carouselButtonWhite brandsCatPrevViewedCarouselPrev carouselButtonWhitePrev" href="#">prev</a>
                 <a class="carouselButtonWhite brandsCatPrevViewedCarouselNext carouselButtonWhiteNext" href="#">next</a>
                 
-                <ul id='brandCatsPreviousViewed' data-bind='var: elastic-native({"size":"20","mode":"elastic-native","filter":{"term":{"tags":"IS_BESTSELLER"}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>
+                <ul id='brandCatsPreviousViewed' data-bind="var: session(recentlyViewedItems); format: productList; extension: store_prodlist; loadsTemplate: productListTemplate; hide_summary:1; hide_pagination:1; withReviews:1;" class='listStyleNone fluidList clearfix noPadOrMargin productList'></ul>
+           <!-- <ul id='brandCatsPreviousViewed' data-bind='var: elastic-native({"size":"20","mode":"elastic-native","filter":{"term":{"tags":"IS_BESTSELLER"}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul> -->
             </div>
             <div id='brandCatsPreviousViewedCarPagenation' class='standardCarouselPagenation'></div>
         </div>
             
-        <div id='recentlyViewedItemsContainer' class='displayNone'>
+   <!--     <div id='recentlyViewedItemsContainer' class='displayNone'>
             <h2>Recently Viewed Items</h2>
             <ul data-bind="var: session(recentlyViewedItems); format: productList; extension: store_prodlist; loadsTemplate: productListTemplate; hide_summary:1; hide_pagination:1; withReviews:1;" class='listStyleNone fluidList clearfix noPadOrMargin productList'></ul>
         </div>  
-
+	-->
 </div>
 
 
@@ -936,9 +935,12 @@ don't modify the 'data-templateid' unless you are changing template names and up
 
 <li id='brandsCategoryListTemplate' class='catListBrand'>
 	<div onClick="showContent('category',{'navcat':$(this).parent().attr('data-catsafeid')});" class='catTemplateContainer pointer'>
+<!--<a class='catTemplateContainer pointer bindByAnchor' href='#!category?navcat=$(this).parent().attr('data-catsafeid')?templateID=categoryTemplateBrands'>
+ 	<div onClick="showContent('category',{'navcat':$(this).parent().attr('data-catsafeid')},templateID=categoryTemplateBrands);" class='catTemplateContainer pointer'> NEED TO LOAD DIFF TEMPLATE! -->
         <div class='brandThumbContainer'><img src='blank.gif' class='brandCatThumb' data-bind='var: category(%meta.CAT_THUMB); format:imageURL;' width='152' height='152' /></div>
 		<div class='brandsCatName white2LGray'><span data-bind='var: category(pretty); format:catText; extension: myRIA;'></span></div>
 	</div>
+<!--</a> -->
 </li>
 
 <li id='categoryListTemplateRootCats'>
@@ -2383,118 +2385,67 @@ put all filters into the appFilters container.
 <div id='appFilters' class='displayNone'>
 
 
-<form action='#' name='UmbrellasForm' id='UmbrellasForm' class='layeredSearch'>
-
-<fieldset data-elastic-key="base_price" data-filtertype="slider">
-	<legend>Price</legend>
-	<input type="text"  class='sliderValue' />
-	<div class="slider-range"></div>
-</fieldset>
-
-<fieldset data-elastic-key="prod_type" data-filtertype="hidden">
-	<input type='hidden' name="prod_type" value="beach-umbrellas-shelter" /> <!-- this is root cat for this cat, don't know if this is correct -->
-</fieldset>  
-
-<fieldset data-elastic-key="prod_material" data-filtertype="checkboxes">
-	<legend>Umbrellas</legend>
-	<label class='break'><input class="canopySize" type='checkbox' value='canopy' />Canopy Size</label>
-    <label class='break'><input class="" type='checkbox' value='style' />Style</label>
-    <label class='break'><input class="" type='checkbox' value='options' />Options</label>
-    <label class='break'><input class="" type='checkbox' value='uvprotection' />UV Protection</label>
-    <label class='break'><input class="" type='checkbox' value='polematerial' />Pole Material</label>
-    <label class='break'><input class="" type='checkbox' value='fabric' />fabric</label>
-</fieldset>
-
-<fieldset data-elastic-key="canopy_size" data-filtertype="checkboxes">
-	<legend>Canopy Size</legend>
-	<label class='break'><input class="" type='checkbox' value='6.0 Feet' />6.0 Feet</label>
-    <label class='break'><input type='checkbox' value='6.5 Feet' />6.5 Feet</label>
-    <label class='break'><input type='checkbox' value='7.0 - 7.5 Feet' />7.0 - 7.5 Feet</label>
-    <label class='break'><input type='checkbox' value='8.0 Feet $amp up' />8.0 Feet $amp up</label>   
-</fieldset>
-
-<div></div>
-
-<fieldset class="umbrellaStyle" data-elastic-key="prod_style" data-filtertype="checkboxes">
-	<legend>Style</legend>
-	<label class='break'><input type='checkbox' value='vented' />Vented</label>
-	<label class='break'><input type='checkbox' value='tiling' />Tiling</label>
-	<label class='break'><input type='checkbox' value='novent' />No Vent</label>
-</fieldset>
-
-<fieldset class="umbrellaOptions" data-elastic-key="prod_options" data-filtertype="checkboxes">
-	<legend>Options</legend>
-	<label class='break'><input type='checkbox' value='fiberglassribs' />Fiberglass Ribs</label>
-	<label class='break'><input type='checkbox' value='steelribs' />Steel Ribs</label>
-	<label class='break'><input type='checkbox' value='commercialgrade' />Commercial Grade</label>
-</fieldset>
-
-<fieldset class="umbrellaUvProtection" data-elastic-key="prod_uv_protection" data-filtertype="checkboxes">
-	<legend>Options</legend>
-	<label class='break'><input type='checkbox' value='35upf' />35 UPF</label>
-	<label class='break'><input type='checkbox' value='50upf' />50 UPF</label>
-	<label class='break'><input type='checkbox' value='100+upf' />100 + upf</label>
-</fieldset>
-
-<fieldset class="umbrellaPoleMaterial" data-elastic-key="prod_pole_material" data-filtertype="checkboxes">
-	<legend>Options</legend>
-	<label class='break'><input type='checkbox' value='wood' />Wood</label>
-	<label class='break'><input type='checkbox' value='aluminum' />Aluminum</label>
-	<label class='break'><input type='checkbox' value='steel' />Steel</label>
-</fieldset>
-
-<fieldset class="umbrellaFabric" data-elastic-key="prod_faberic" data-filtertype="checkboxes">
-	<legend>Options</legend>
-	<label class='break'><input type='checkbox' value='polyester' />Polyester</label>
-	<label class='break'><input type='checkbox' value='acrylic' />Acrylic</label>
-	<label class='break'><input type='checkbox' value='polycotton' />PolyCotton</label>
-	<label class='break'><input type='checkbox' value='nylon' />Nylon</label>
-	<label class='break'><input type='checkbox' value='vynil' />Vinyl</label>    
-	<label class='break'><input type='checkbox' value='sunbrella' />Sunbrella</label>
-</fieldset>
-
-
-
-<!-- ORIG FORM 
-
-<fieldset data-elastic-key="prod_material" data-filtertype="checkboxes">
-	<legend>Material</legend>
-	<label class='break'><input class="woodPieces" type='checkbox' value='wood' />Wood</label>
-    <label class='break'><input type='checkbox' value='metal' />Metal</label>
-    <label class='break'><input type='checkbox' value='marble' />Marble</label>
-    <label class='break'><input type='checkbox' value='plastic' />Plastic</label>
-    <label class='break'><input type='checkbox' value='theme' />Theme</label>
-    <label class='break'><input type='checkbox' value='unfinished' />Unfinished Wood</label>
-    <label class='break'><input type='checkbox' value='jaques' />Jaques</label>
-    <label class='break'><input type='checkbox' value='bone' />Bone</label>
-    <label class='break'><input type='checkbox' value='unique' />Unique</label>
+    <form action='#' name='UmbrellasForm' id='UmbrellasForm' class='layeredSearch'>
     
-</fieldset>
+        <fieldset data-elastic-key="base_price" data-filtertype="slider">
+            <legend>Price</legend>
+            <input type="text"  class='sliderValue' />
+            <div class="slider-range"></div>
+        </fieldset>
+        
+        <fieldset data-elastic-key="prod_type" data-filtertype="hidden">
+            <input type='hidden' name="prod_type" value="beach-umbrellas-shelter" /> <!-- this is root cat for this cat, don't know if this is correct -->
+        </fieldset>  
+        
+        <fieldset data-elastic-key="canopy_size" data-filtertype="checkboxes">
+            <legend>Canopy Size</legend>
+            <label class='break'><input class="" type='checkbox' value='6.0 Feet' />6.0 Feet</label>
+            <label class='break'><input type='checkbox' value='6.5 Feet' />6.5 Feet</label>
+            <label class='break'><input type='checkbox' value='7.0 - 7.5 Feet' />7.0 - 7.5 Feet</label>
+            <label class='break'><input type='checkbox' value='8.0 Feet $amp up' />8.0 Feet $amp up</label>   
+        </fieldset>
+        
+        <fieldset class="umbrellaStyle" data-elastic-key="prod_style" data-filtertype="checkboxes">
+            <legend>Style</legend>
+            <label class='break'><input type='checkbox' value='vented' />Vented</label>
+            <label class='break'><input type='checkbox' value='tiling' />Tiling</label>
+            <label class='break'><input type='checkbox' value='novent' />No Vent</label>
+        </fieldset>
+        
+        <fieldset class="umbrellaOptions" data-elastic-key="prod_options" data-filtertype="checkboxes">
+            <legend>Options</legend>
+            <label class='break'><input type='checkbox' value='fiberglassribs' />Fiberglass Ribs</label>
+            <label class='break'><input type='checkbox' value='steelribs' />Steel Ribs</label>
+            <label class='break'><input type='checkbox' value='commercialgrade' />Commercial Grade</label>
+        </fieldset>
+        
+        <fieldset class="umbrellaUvProtection" data-elastic-key="prod_uv_protection" data-filtertype="checkboxes">
+            <legend>UV Protection</legend>
+            <label class='break'><input type='checkbox' value='35upf' />35 UPF</label>
+            <label class='break'><input type='checkbox' value='50upf' />50 UPF</label>
+            <label class='break'><input type='checkbox' value='100+upf' />100 + upf</label>
+        </fieldset>
+        
+        <fieldset class="umbrellaPoleMaterial" data-elastic-key="prod_pole_material" data-filtertype="checkboxes">
+            <legend>Pole Material</legend>
+            <label class='break'><input type='checkbox' value='wood' />Wood</label>
+            <label class='break'><input type='checkbox' value='aluminum' />Aluminum</label>
+            <label class='break'><input type='checkbox' value='steel' />Steel</label>
+        </fieldset>
+        
+        <fieldset class="umbrellaFabric" data-elastic-key="prod_faberic" data-filtertype="checkboxes">
+            <legend>Fabric</legend>
+            <label class='break'><input type='checkbox' value='polyester' />Polyester</label>
+            <label class='break'><input type='checkbox' value='acrylic' />Acrylic</label>
+            <label class='break'><input type='checkbox' value='polycotton' />PolyCotton</label>
+            <label class='break'><input type='checkbox' value='nylon' />Nylon</label>
+            <label class='break'><input type='checkbox' value='vynil' />Vinyl</label>    
+            <label class='break'><input type='checkbox' value='sunbrella' />Sunbrella</label>
+        </fieldset>
+        
+        <button class='resetButton floatRight'>REMOVE ALL OPTIONS</button>
 
-<div></div>
-
-<fieldset class="woodType" data-elastic-key="prod_wood_type" data-filtertype="checkboxes">
-	<legend>Wood Type</legend>
-	<label class='break'><input type='checkbox' value='africanpadauk' />African Padauk</label>
-	<label class='break'><input type='checkbox' value='ebony' />Ebony</label>
-	<label class='break'><input type='checkbox' value='ebonizedboxwood' />Ebonized Boxwood</label>
-	<label class='break'><input type='checkbox' value='goldenrosewood' />Golden Rosewood</label>
-	<label class='break'><input type='checkbox' value='redsandalwood' />Red Sandalwood</label>
-	<label class='break'><input type='checkbox' value='red' />Red</label>
-</fieldset>
-
-<fieldset class="kingHeight" data-elastic-key="prod_king_height" data-filtertype="checkboxes">
-	<legend>King Height</legend>
-	<label class='break'><input type='checkbox' value='3' />3</label>
-	<label class='break'><input type='checkbox' value='3.5' />3.5</label>
-	<label class='break'><input type='checkbox' value='4' />4</label>
-</fieldset>
-
-<!-- END ORIG FORM -->
-
-
-
-</form>
+    </form>
 
 </div> -->
 

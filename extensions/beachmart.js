@@ -426,18 +426,10 @@ return filters;
 							setTimeout(function(){
 								$target.carouFredSel({
 									auto: false,
-									/*prev : {
-										button : "#brandsCatPrevViewedCarouselPrev",
-										key    : "left"
-									},
-									next : {
-										button : "#brandsCatPrevViewedCarouselNext",
-										key	   : "right"
-									},*/
 									prev: '.brandsCatPrevViewedCarouselPrev',
 									next: '.brandsCatPrevViewedCarouselNext',
 									height: 405,
-									width: 960,
+									width: variable,
 									pagination: '#brandCatsPreviousViewedCarPagenation',
 									scroll: 4,
 							//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)

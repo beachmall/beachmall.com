@@ -200,10 +200,10 @@ BRANDS CATEGORY PAGE
 
 
 .brandCategoryList {}
-.brandsCatContainer {height:auto; width:960px; padding:0px 30px; background-color:#CCC;}
-.categoryList > .catListBrand {background-color:#0F0; height:190px; width:220px; margin:10px;}
-.brandThumbContainer {height:152px; width:152px; box-shadow:0px 0px 3px 2px #000000; padding:0px 34px;}
-.brandsCatName {height:25px; width:100%; color:#3BB3C3; font-family:"Open Sans"; font-size:14px; font-weight:bold; text-align:center; padding-top:5px;}
+.brandsCatContainer {height:auto; width:960px; padding:0px 30px;}
+.categoryList > .catListBrand {height:190px; width:220px; margin:10px;}
+.brandThumbContainer {height:152px; width:152px; box-shadow:0px 0px 3px 2px #3bb3c3; padding:0px 34px;}
+.brandsCatName {height:25px; width:100%; color:#3BB3C3; font-family:"Open Sans"; font-size:14px; font-weight:bold; text-align:center; padding-top:10px;}
 
 /* BRAND CAT PAGE CAROUSEL */
 .previousViewedCarouselContainer {border-bottom:5px solid #a1d3ca;}
