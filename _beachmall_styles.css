@@ -318,6 +318,7 @@ label.break	{display:block; margin-bottom:2px;}
 .prodHoverContainer:hover .myProdThumbSmall {border:5px solid #e0463a;}
 
 .starBurst {height:70px; width:47px; padding:12px 12px 0px 11px; background-position:-409px -1px; color:#fff; font-family:Oswald; font-size:13px; text-align:center; line-height:16px; position:absolute; top:140px; left:10px; z-index:100;}
+/*.starBurst span.user_prod_promo {background-image:url(images/sprites-500x500.png);}*/
 /* -moz-transform:rotate(-20deg); -webkit-transform:rotate(-20deg); -o-transform:rotate(-20deg); -ms-transform:rotate(-20deg); filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=-.2); */
 
 .productPriceContainer {height:50px; width:120px;}
