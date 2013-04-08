@@ -15,8 +15,32 @@ app-quickstart.js:
 		}
 
 
+2. Modifier of above created to allow context for previously viewed items so it could use a class.
 
-2. Add to vars : { "templates" : [
+else if(catSafeID == zGlobals.appSettings.rootcat || infoObj.pageType == 'homepage')	{
+						infoObj.templateID = 'homepageTemplate'
+						}
+					//special page handling for brands category	
+					else if(catSafeID.indexOf('.beach-chairs.beach-gear') == 0)  {
+						infoObj.templateID='categoryTemplateBrands';
+						}
+					else	{
+						infoObj.templateID = 'categoryTemplate'
+						}
+					infoObj.state = 'onInits';
+					app.ext.myRIA.u.handleTemplateFunctions(infoObj);
+					var parentID = infoObj.parentID || infoObj.templateID+'_'+app.u.makeSafeHTMLId(catSafeID);
+					infoObj.parentID = parentID;
+					app.u.dump(" -> parentID: "+parentID);
+//only have to create the template instance once. showContent takes care of making it visible again. but the oncompletes are handled in the callback, so they get executed here.
+					if($('#'+parentID).length > 0){
+
+
+
+
+
+
+3. Add to vars : { "templates" : [
 
 'categoryTemplateBrands',
 
@@ -28,3 +52,6 @@ app-quickstart.js:
 --Add to line 1542 in: handleSandHOTW : function(infoObj){
 
 else if(infoObj.pageType == 'category' && $old.data('templateid') == 'categoryTemplateBrands' && $old.data('catsafeid') == infoObj.navcat){r = false; app.u.dump("transition fail 7");}
+
+
+

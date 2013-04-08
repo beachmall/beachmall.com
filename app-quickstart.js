@@ -28,6 +28,7 @@ var myRIA = function() {
 //if this is a custom extension and you are loading system extensions (prodlist, etc), then load ALL templates you'll need here.
 		"templates" : [
 			'categoryTemplateBrands',
+			'brandsProductListTemplate',
 //the list of templates that are commonly edited (same order as they appear in appTemplates
 			'homepageTemplate',	'categoryTemplate',
 			'categoryListTemplate',
@@ -2575,7 +2576,8 @@ buyer to 'take with them' as they move between  pages.
 					else if(catSafeID == zGlobals.appSettings.rootcat || infoObj.pageType == 'homepage')	{
 						infoObj.templateID = 'homepageTemplate'
 						}
-					else if(catSafeID == '.beach-chairs.beach-gear'){
+					//special page handling for brands category	
+					else if(catSafeID.indexOf('.beach-chairs.beach-gear') == 0)  {
 						infoObj.templateID='categoryTemplateBrands';
 						}
 					else	{
@@ -2584,6 +2586,7 @@ buyer to 'take with them' as they move between  pages.
 					infoObj.state = 'onInits';
 					app.ext.myRIA.u.handleTemplateFunctions(infoObj);
 					var parentID = infoObj.parentID || infoObj.templateID+'_'+app.u.makeSafeHTMLId(catSafeID);
+					infoObj.parentID = parentID;
 					app.u.dump(" -> parentID: "+parentID);
 //only have to create the template instance once. showContent takes care of making it visible again. but the oncompletes are handled in the callback, so they get executed here.
 					if($('#'+parentID).length > 0){

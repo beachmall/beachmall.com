@@ -212,6 +212,13 @@ BRANDS CATEGORY PAGE
 .brandCatsPreviousViewedCarouselTitles a:hover {color:#fff}
 .carouselLinkContainer.brandCatsPrevViewedWidth {width:270px;}
 
+
+/*************************************************************************************
+BRANDS PRODUCT LIST
+*************************************************************************************/
+
+#brandsProductListTemplate {background-color:#F00;}
+
 /*************************************************************************************
 MP CONTROLS CONTAINER
 *************************************************************************************/
@@ -306,11 +313,12 @@ PRODUCT LIST
 .filterBox {height:auto; width:auto; background-color:#eee;}
 .categoryTemplateContainer {height:auto; width:761px;}
 label.break	{display:block; margin-bottom:2px;}
-.layeredSearch	{height:auto; width:220px; margin:16.8px; color:#000;}
+.layeredSearch	{height:auto; width:200px; margin:16.8px; color:#000;}
 .layeredSearch legend	{font-size:1.0em; font-weight:bold;}
 .layeredSearch fieldset	{margin-bottom:12px;}
 
-.products.product {height:450px; width:220px; margin:16.8px;}
+.prodMargin {height:auto; width:960px; margin:auto;}
+.products.product {height:450px; width:220px; margin:20px 10px 7.5px;} /*margin:16.8px;  20px 10px 7.5px*/
 .products.product > div {height:auto; width:220px;}
 
 /* Joins thumbborder and shop now text box to both hover at same time*/
@@ -666,9 +674,9 @@ newArrivalsCarouselRight, .myProdThumb:hover .moreDetails {background-color:#e04
 .productListSmall.productList li > div {width:220px;}
 .myProdThumbSmall {height:210px; border:5px solid #FFF;}
 .myProdThumbSmall:hover {border:5px solid #e0463a;}
-.prodTextContainerSmall {height:auto; width:220px; font-family:Oswald; font-size:24px; margin-top:5px;}
+.prodTextContainerSmall {height:auto; width:220px; font-family:Oswald; font-size:24px;}
 .prodDescSmall, .productList h5, .categoryList h5 {color:#000; font-family:"Open Sans"; font-size:11px; text-align:center; line-height:13px; padding:7px 5px 0px 5px;}
-.prodPriceSmall, .productList h6, .categoryList h6 {margin-left:15px;}
+.prodPriceSmall, .productList h6, .categoryList h6 {margin-left:0px;}
 .moreDetailsSmall {height:30px; width:100px; color:#fff; font-size:14px; text-align:center; line-height:30px; background-color:#3bb3c3;}
 .myProdThumbSmall:hover .moreDetailsSmall {background-color:#e0463a;}
 

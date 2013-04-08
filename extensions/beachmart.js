@@ -417,20 +417,21 @@ return filters;
 						}]);
 					
 					//PREVIOUSLY VIEWED ITEMS CAROUSEL
-					app.rq.push(['templateFunction','categoryTemplateBrands','onCompletes',function(P) {
-						var $target = $('#brandCatsPreviousViewed');
-						if($target.data('isCarousel'))	{} //only make it a carousel once.
-						else	{
-							$target.data('isCarousel',true);
-					//for whatever reason, caroufredsel needs to be executed after a moment.
-							setTimeout(function(){
+		/*			app.rq.push(['templateFunction','categoryTemplateBrands','onCompletes',function(P) {
+						var $target = $('.brandCatsPreviousViewed');
+//						if($target.data('isCarousel'))	{} //only make it a carousel once.
+
+						var execCarousel = function(){ setTimeout(function(){
 								$target.carouFredSel({
 									auto: false,
 									prev: '.brandsCatPrevViewedCarouselPrev',
 									next: '.brandsCatPrevViewedCarouselNext',
 									height: 405,
-									width: variable,
-									pagination: '#brandCatsPreviousViewedCarPagenation',
+									width: 'variable',
+									items : {
+										visible : null
+									},
+									pagination: '.brandCatsPreviousViewedCarPagenation',
 									scroll: 4,
 							//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
 									swipe: {
@@ -438,9 +439,21 @@ return filters;
 										onTouch: true
 										}
 									});
-								},1000); 
+								},1000);}
+
+						if($target.children().length === 0)	{} //no kids, do nothing.
+						else if($target.data('isCarousel') == true)	{
+							$target.carouFredSel('destroy');
+							execCarousel();
 							}
-						}]);
+						else	{
+							$target.data('isCarousel',true);
+							execCarousel();
+							app.u.dump(" -> !!! children: "+$target.children().length);
+					//for whatever reason, caroufredsel needs to be executed after a moment.
+ 
+							}
+						}]);		*/
 					
 				}//END CAROUSEL FUNCTIONS
 

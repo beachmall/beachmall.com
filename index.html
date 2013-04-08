@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"20130406205100",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"20130408163300",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"",
 	"httpsURL":"https://www-beachmall-com.app-hosted.com/",
@@ -719,14 +719,14 @@ the homepageTemplate template is loaded into mainContentArea by default when the
     
     <div class='homepageCategories'>
     	<ul data-bind="var: category(@subcategoryDetail); format: categoryList; bgcolor: TTTTTT; extension: store_navcats; loadsTemplate: categoryListHomeTemplate; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin'></ul>
-        <a class='bindByAnchor' href='#!category?navcat=.beach-chairs.beach-gear?templateID=categoryTemplateBrands'>
-        	<div class='shopByProdContainer'>
+
+        	<div onClick="return showContent('category',{'navcat':'.beach-chairs.beach-gear'});" class='shopByProdContainer pointer'>
             	<div class='catName white2LGray'>Shop by Brand</div>
                 <div class='thumbContainer'>
                 	<div class='moreDetailsSmall catDetails prodDetails'>VIEW BRANDS</div>
                 </div>
             </div>
-        </a>
+        
     </div>
     
     <div class='CarouselContainer featuredProductsCarouselContainer'>
@@ -820,12 +820,13 @@ don't modify the 'data-templateid' unless you are changing template names and up
             <ul data-bind="var: category(@subcategoryDetail); format: categoryList; extension: store_navcats; loadsTemplate: categoryListTemplate; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin categoryList'></ul><!-- outputs a list of subcategories -->
         </div>
         
-        <ul data-bind="var: category(@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: productListTemplate; withReviews:1; items_per_page: 24;" class='listStyleNone fluidList clearfix noPadOrMargin productList'>
+        <ul data-bind="var: category(@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: productListTemplate; withReviews:1; items_per_page: 24;" class='listStyleNone fluidList clearfix noPadOrMargin prodMargin productList'>
             <div class='filterBox floatLeft'>
                 <div class='filterContainer clearfix'></div>   
                 <div class='clear'></div>
        		</div>
         </ul><!-- outputs the product list -->
+    	
     
         <p class='blah' data-bind="var: category(%page.description); format:wiki; wikiFormats:myRIA; editor: textarea;"></p>
         
@@ -846,14 +847,23 @@ don't modify the 'data-templateid' unless you are changing template names and up
 		<div class='brandsCatContainer'>            
             <ul data-bind="var: category(@subcategoryDetail); format: categoryList; extension: store_navcats; loadsTemplate: brandsCategoryListTemplate; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin categoryList'></ul><!-- outputs a list of subcategories -->
         
-            <ul data-bind="var: category(@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: productListTemplate; withReviews:1; items_per_page: 24;" class='listStyleNone fluidList clearfix noPadOrMargin productList'></ul><!-- outputs the product list -->
+            <ul data-bind="var: category(@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: brandsProductListTemplate; withReviews:1; items_per_page: 24;" class='listStyleNone fluidList clearfix noPadOrMargin brandsProductList'></ul><!-- outputs the product list -->
         	          
             <p class='blah' data-bind="var: category(%page.description); format:wiki; wikiFormats:myRIA; editor: textarea;"></p>
             
             <p data-bind="var: category(%page.description2); format:wiki; wikiFormats:myRIA; editor: textarea;"></p>
 		</div>
         
-        <div id='recentlyViewedItemsContainer' class='CarouselContainer previousViewedCarouselContainer'>
+        <!--
+        <div class='recentContainer'>
+            <h2>Recently Viewed Items</h2>
+            <ul data-bind="var: session(recentlyViewedItems); format: productList; extension: store_prodlist; loadsTemplate: productListTemplate; hide_summary:1; hide_pagination:1; withReviews:1;" class='listStyleNone fluidList clearfix noPadOrMargin productList'></ul>
+        </div>
+        -->
+        
+        
+        
+        <div id='recentlyViewedItemsContainer' class='recentContainer CarouselContainer previousViewedCarouselContainer displayNone'>
             <div class='carouselTitles lightTealBkgrnd'>
                 <div class='carouselTitleTextContainer floatLeft'>PREVIOUSLY VIEWED PRODUCTS</div>
                 <a class="bindByAnchor" href="#!search?TAG=IS_BESTSELLER">
@@ -862,20 +872,14 @@ don't modify the 'data-templateid' unless you are changing template names and up
                 </a>
             </div>
             <div class='Carousel'>
-                <a class="carouselButtonWhite brandsCatPrevViewedCarouselPrev carouselButtonWhitePrev" href="#">prev</a>
-                <a class="carouselButtonWhite brandsCatPrevViewedCarouselNext carouselButtonWhiteNext" href="#">next</a>
+           <!-- <a class="carouselButtonWhite brandsCatPrevViewedCarouselPrev carouselButtonWhitePrev" href="#">prev</a>
+                <a class="carouselButtonWhite brandsCatPrevViewedCarouselNext carouselButtonWhiteNext" href="#">next</a> -->
                 
-                <ul id='brandCatsPreviousViewed' data-bind="var: session(recentlyViewedItems); format: productList; extension: store_prodlist; loadsTemplate: productListTemplate; hide_summary:1; hide_pagination:1; withReviews:1;" class='listStyleNone fluidList clearfix noPadOrMargin productList'></ul>
-           <!-- <ul id='brandCatsPreviousViewed' data-bind='var: elastic-native({"size":"20","mode":"elastic-native","filter":{"term":{"tags":"IS_BESTSELLER"}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul> -->
+                <ul data-bind="var: session(recentlyViewedItems); format: productList; extension: store_prodlist; loadsTemplate: productListTemplate; hide_summary:1; hide_pagination:1; withReviews:1;" class='listStyleNone fluidList clearfix noPadOrMargin productList brandCatsPreviousViewed'></ul>
             </div>
-            <div id='brandCatsPreviousViewedCarPagenation' class='standardCarouselPagenation'></div>
+       <!-- <div class='standardCarouselPagenation brandCatsPreviousViewedCarPagenation'></div> -->
         </div>
-            
-   <!--     <div id='recentlyViewedItemsContainer' class='displayNone'>
-            <h2>Recently Viewed Items</h2>
-            <ul data-bind="var: session(recentlyViewedItems); format: productList; extension: store_prodlist; loadsTemplate: productListTemplate; hide_summary:1; hide_pagination:1; withReviews:1;" class='listStyleNone fluidList clearfix noPadOrMargin productList'></ul>
-        </div>  
-	-->
+
 </div>
 
 
@@ -935,12 +939,12 @@ don't modify the 'data-templateid' unless you are changing template names and up
 
 <li id='brandsCategoryListTemplate' class='catListBrand'>
 	<div onClick="showContent('category',{'navcat':$(this).parent().attr('data-catsafeid')});" class='catTemplateContainer pointer'>
-<!--<a class='catTemplateContainer pointer bindByAnchor' href='#!category?navcat=$(this).parent().attr('data-catsafeid')?templateID=categoryTemplateBrands'>
- 	<div onClick="showContent('category',{'navcat':$(this).parent().attr('data-catsafeid')},templateID=categoryTemplateBrands);" class='catTemplateContainer pointer'> NEED TO LOAD DIFF TEMPLATE! -->
+<!--<a class='catTemplateContainer pointer bindByAnchor' href='#!category?navcat=$(this).parent().attr('data-catsafeid')?templateID=brandsProductListTemplate'> -->
+<!--<div onClick="showContent('category',{'navcat':$(this).parent().attr('data-catsafeid')},templateID='brandsProductListTemplate');" class='catTemplateContainer pointer'> --> <!-- NEED TO LOAD DIFF TEMPLATE! -->
         <div class='brandThumbContainer'><img src='blank.gif' class='brandCatThumb' data-bind='var: category(%meta.CAT_THUMB); format:imageURL;' width='152' height='152' /></div>
 		<div class='brandsCatName white2LGray'><span data-bind='var: category(pretty); format:catText; extension: myRIA;'></span></div>
 	</div>
-<!--</a> -->
+<!--</a>-->
 </li>
 
 <li id='categoryListTemplateRootCats'>
@@ -1018,6 +1022,50 @@ remember to NOT put the button inside the 'onclick' container or two events will
 	
 	
 </li>
+
+
+<li id='brandsProductListTemplate' class='loadingBG  products product floatLeft' onMouseOver="$('.quickView',$(this)).show();" onMouseOut="$('.quickView').hide();" >
+	 
+	<button class='floatRight pointer quickView displayNone' onClick="quickView('product',{'templateID':'productTemplateQuickView','pid':$(this).closest('[data-pid]').attr('data-pid')});">Quickview</button>
+		
+    <div onClick="showContent('product',{'pid':$(this).attr('data-pid')})" data-bind='var:product(pid);format:assignAttribute; attribute:data-pid;' class='pointer productListSmall'>
+		<div class='prodHoverContainer'>		
+            <div class='prodThumbContainer myProdThumbSmall' data-bind='var:product(pid); format:addPicSlider; extension:myRIA;'>
+                <img src='blank.gif' class='prodThumb' data-bind='var: product(zoovy:prod_image1); format:imageURL;' width='210' height='210' />
+            </div> 
+            							       <!-- sprite zoovy:prod_is_tags-->
+            <!-- <div class='starBurst sprite' data-bind='var: product(user:prod_promo); format:text;'></div> -->
+            <div class='floatRight pointer moreDetailsSmall' onClick="showContent('product',{'pid':$(this).parent().attr('data-pid')});">more details</div>
+        </div>
+        <div class='prodTextContainerSmall'>
+        		<div class='productPriceContainer'>
+	                <h6 class='floatLeft prodPriceSmall' data-bind='var: product(zoovy:base_price); format:money; currencySign: $;  hideZero:true; className:price;'></h6>
+    				<div class='prodPriceDesc'>DESC OF PRICE</div>
+                </div>
+                <h5 class='clearfix prodDescSmall' data-bind='var: product(zoovy:prod_name); format:text;'></h5>
+                <span data-bind='var: reviews(reviews.average); format:addClass; className:review_;' class='reviewSprite'></span>
+                <!-- Need Color Options here, will work w/ form to show product, or colors pop up -->
+                <div class='regularPriceContainer floatLeft'>
+                    <div class='regularPrice' data-bind='var: product(zoovy:prod_msrp); format:money; currencySign: $; hideZero:true;'> </div>
+                    <div class='regularPriceDesc'>Regular Price</div>
+				</div>
+                <div class='shipContainer floatLeft'>
+                    <div class='shipCost' data-bind='var: product(zoovy:prod_promoclass); format:text;'></div>
+                    <div class='shipTime latency' data-bind='var: product(user:prod_shipping_msg); format:text;'></div>
+                </div>
+                <form data-bind='var: product(pid); format:atcForm; extension:store_product;' class='prodViewerAddToCartForm clearfix' action='#'>
+                    <button class='prodViewerAddToCartButton' data-bind='format:addToCartButton; extension:myRIA; useParentData:true;'>more details</button>
+                </form>
+                <div class='prodNum stid' data-bind='var: product(pid); format:text; pretext: ITEM &nbsp #: &nbsp ;'></div>
+	      <!-- 	<span data-bind='var: reviews(reviews.total); format:text; pretext: from ;posttext: reviews; className:numReviews;'></span> -->
+        </div>  
+    </div>
+	
+	
+	
+</li>
+
+
 
 
 <!--
@@ -1171,14 +1219,16 @@ SANITY -> if you change the height and width of this image, change the .minimalM
 
 <li id='productListTemplateResultsCustomSmaller' class='loadingBG searchResultsProduct ' >
 	<div onClick="return showContent('product', {'pid' : $(this).parent().attr('data-pid')});" class='pointer productListSmall'>
-		<div class='prodThumbContainer myProdThumbSmall'>
-			<img src='blank.gif' class='prodThumb' data-bind='var: product(images); format:imageURL;isElastic:1;bgcolor:ffffff;' width='210' height='210' />
+		<div class='prodHoverContainer'>
+            <div class='prodThumbContainer myProdThumbSmall'>
+                <img src='blank.gif' class='prodThumb' data-bind='var: product(images); format:imageURL;isElastic:1;bgcolor:ffffff;' width='210' height='210' />
+            </div>
             <div class='prodTextContainerSmall'>        
                 <h6 class='hideInMinimalMode floatLeft prodPriceSmall' data-bind='var: product(base_price); format:money; isElastic:1; currencySign: $;  hideZero:true; className:price;'></h6>
                 <div class='hideInMinimalMode floatRight pointer moreDetailsSmall' onClick="showContent('product',{'pid':$(this).parent().attr('data-pid')});">DETAILS</div> 
                 <h5 class='hideInMinimalMode clearfix prodDescSmall' data-bind='var: product(prod_name); format:text;'></h5>
             </div>
-        </div>
+   		</div>
     </div>  
     
 </li>
@@ -1858,7 +1908,7 @@ onclicks are recursive, so only add it to the parent element.
 
 	 <div class='mpControls'>
         
-        <span class="mpControlsPagination ui-state-active floatRight paging pointer" data-role='next' title="next page">NEXT</span>
+       <span class="mpControlsPagination ui-state-active floatRight paging pointer" data-role='next' title="next page">NEXT</span>
         <div class='floatRight ddUlMenu mpControlsPagination'>
             <ul>
                 <li>
@@ -1870,7 +1920,7 @@ onclicks are recursive, so only add it to the parent element.
                 </li>
             </ul>
         </div>
-        <span class="mpControlsPagination ui-state-active floatRight paging pointer" data-role='previous' title="previous page">PREV</span>
+       <span class="mpControlsPagination ui-state-active floatRight paging pointer" data-role='previous' title="previous page">PREV</span>
         
         <div class='mpFiltersContainer floatRight'>
         	<div class='floatLeft'>
@@ -2393,11 +2443,16 @@ put all filters into the appFilters container.
             <input type="text"  class='sliderValue' />
             <div class="slider-range"></div>
         </fieldset>
-        
+        <!-- 
         <fieldset data-elastic-key="prod_type" data-filtertype="hidden">
-            <input type='hidden' name="prod_type" value="beach-umbrellas-shelter" /> <!-- this is root cat for this cat, don't know if this is correct -->
-        </fieldset>  
+            <input type='hidden' name="prod_type" value="beach-umbrellas-shelter" /> this is root cat for this cat, don't know if this is correct -->
+     <!--  </fieldset>  -->
         
+        <fieldset data-elastic-key="pogs" data-filtertype="checkboxes">
+            <legend>options test</legend>
+            <label class='break'><input class="" type='checkbox' value='au00' />au00</label>
+
+        </fieldset>
         <fieldset data-elastic-key="canopy_size" data-filtertype="checkboxes">
             <legend>Canopy Size</legend>
             <label class='break'><input class="" type='checkbox' value='6.0 Feet' />6.0 Feet</label>

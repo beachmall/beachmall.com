@@ -61,6 +61,15 @@ app.rq.push(['templateFunction','productTemplate','onDeparts',function(P) {
 	$container.anycontent({data:app.ext.myRIA.vars.session}); //build product list
 	}]);
 
+//add previously viwed items to the div 'recentlyViewedItemsContainer' if present
+/*app.rq.push(['templateFunction','categoryTemplateBrands','onCompletes',function(P) {
+	app.u.dump("prodTemplate on depart");	
+	var $context = $(app.u.jqSelector('#',P.parentID));
+	var $container = $('.recentContainer', $context);
+	$container.show();
+	$('ul',$container).empty();
+	$container.anycontent({data:app.ext.myRIA.vars.session}); //build product list
+	}]);  */
 
 //adds tabs to image/video IF video is set.
 app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {
