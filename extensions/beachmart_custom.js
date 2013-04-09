@@ -96,9 +96,11 @@ app.ext.beachmart.u.initEstArrival();
 			showTransitTimes : {
 				
 				onSuccess : function(tagObj){
-//					app.u.dump("BEGIN beachmart.callbacks.showTransitTimes");
+					app.u.dump("BEGIN beachmart.callbacks.showTransitTimes");
+					app.u.dump(tagObj);
 					//use cutoff from response, not product.
-					var $container = $("#productContainer");
+					var $container = $('#productTemplate_'+app.u.makeSafeHTMLId(SKU));
+					app.u.dump(" -> $container.length: "+$container.length);
 					var data = app.data[tagObj.datapointer]; //shortcut.
 					
 					if(!$.isEmptyObject(data['@Services']))	{
@@ -788,7 +790,7 @@ uities
 			initEstArrival : function(infoObj){
 
 app.u.dump("BEGIN beachmart.u.initEstArrival");
-
+window.SKU = infoObj.pid; app.u.dump("GLOBAL SKU IS A TEMPORARY SOLUTION!!!",'warn'); //was originally written in a hybrid store. need to get this more app friendly.
 var zip;
 if(app.data.cartDetail && app.data.cartDetail.ship && app.data.cartDetail.ship.postal)	{
 	zip = app.data.cartDetail.ship.postal;
@@ -805,7 +807,7 @@ if(zip)	{
 else	{
 	app.u.dump(" -> no zip code entered. request via whereAmI");
 	app.ext.store_crm.calls.whereAmI.init({'callback':'handleWhereAmI','extension':'beachmart'},'passive');
-	app.model.dispatchThis('passive');
+	app.model.dispatchThis('mutable');
 	}
 
 				},
@@ -853,6 +855,7 @@ else	{
 
 			getShipQuotes : function(zip)	{
 app.u.dump("BEGin beachmart.u.getShipQuotes");
+
 //here, inventory check is done instead of isProductPurchaseable, because is used specifically to determine whether or not to show shipping.
 // the purchaseable function takes into account considerations which have no relevance here (is parent, price, etc).
 if(app.ext.store_product.u.getProductInventory(SKU) <= 0){
@@ -901,7 +904,7 @@ else	{
 			fetchLocationInfoByZip : function(zip,attempts)	{
 				attempts = Number(attempts) || 0;
 //				app.u.dump("BEGIN beachmart.u.app.ext.beachmart.u.fetchLocationInfoByZip("+zip+")");
-				if(zip && geocoder && typeof geocoder.geocode == 'function')	{
+				if(zip && typeof geocoder != 'undefined' && typeof geocoder.geocode == 'function')	{
 					geocoder.geocode({ 'address': zip}, function(results, status) {
 						if(results.length > 0)	{
 //							app.u.dump(results[0].address_components);
@@ -921,7 +924,7 @@ else	{
 				else if(!zip)	{
 					app.u.dump("ERROR! zip not passed into beachmart.u.fetchLocationInfoByZip");
 					}
-				else if(geocoder && typeof geocoder.geocode != 'function' && attempts < 30)	{
+				else if(typeof geocoder != 'undefined' && typeof geocoder.geocode != 'function' && attempts < 30)	{
 					app.ext.beachmart.u.fetchLocationInfoByZip(zip,attempts+1); //perhaps the maps api hasn't loaded yet. try again.
 					}
 				else	{
