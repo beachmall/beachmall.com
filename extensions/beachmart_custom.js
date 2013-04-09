@@ -474,8 +474,9 @@ Action
 						app.calls.cartSet.init({"ship/region":""},{},'passive');
 
 						if(zip && zip.length >= 5 && !isNaN(zip))	{
-							var $container = $("#productContainer"); //using $container as second param in $ below targets better (lighter and leaves door open for multiple instances later)
+							var $container = $("#productTemplate_"+app.u.makeSafeHTMLId(SKU)); //using $container as second param in $ below targets better (lighter and leaves door open for multiple instances later)
 							app.ext.beachmart.u.getShipQuotes(zip);
+							$('.postalCode').text(zip);
 							//reset all the spans
 							$('.putLoadingHere',$container).addClass('loadingBG');
 							$('.loadingText',$container).hide();
