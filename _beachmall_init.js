@@ -49,9 +49,9 @@ app.rq.push(['script',1,app.vars.baseURL+'resources/jquery.carouFredSel-6.2.0.mi
 
 
 // get the estimate arrival code running. works passively.
-//app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {
-//	app.ext.beachmart.u.initEstArrival(P);
-//	}]);
+app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {
+	app.ext.beachmart.u.initEstArrival(P);
+	}]);
 
 //add previously viwed items to the div 'recentlyViewedItemsContainer' if present
 app.rq.push(['templateFunction','productTemplate','onDeparts',function(P) {
