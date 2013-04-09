@@ -60,7 +60,7 @@ document.body.appendChild(script);
 						app.calls.refreshCart.init({'callback':'checkForOrGetShipZip','extension':'beachmart'}); //callback starts chain reaction for displaying est. arrival date.
 						app.model.dispatchThis();
 	
-						showContent = app.ext.beachmart.action.showContent;
+						showContent = app.ext.beachmart.a.showContent;
 						if(typeof myAppIsLoaded == 'function')	{
 							myAppIsLoaded();
 							}
@@ -410,7 +410,7 @@ Action
 				}, //showContent
 		
 			printByElementID : function(id)	{
-//				app.u.dump("BEGIN beachmart.action.printByElementID");
+//				app.u.dump("BEGIN beachmart.a.printByElementID");
 				if(id && $('#'+id).length)	{
 					var html="<html><body style='font-family:sans-serif;'>";
 					html+= document.getElementById(id).innerHTML;
@@ -424,7 +424,7 @@ Action
 					printWin.close();
 					}
 				else	{
-					app.u.dump("WARNING! - beachmart.action.printByElementID executed but not ID was passed ["+id+"] or was not found on DOM [$('#'+"+id+").length"+$('#'+id).length+"].");
+					app.u.dump("WARNING! - beachmart.a.printByElementID executed but not ID was passed ["+id+"] or was not found on DOM [$('#'+"+id+").length"+$('#'+id).length+"].");
 					}
 				}, //printByElementID 
 				
@@ -1313,7 +1313,7 @@ if(prodAttribs['user:prod_ship_expavail'] == 1)	{
 //if expedited shipping is not available, no other methods show up (will ship ground)
 	$('.deliveryMethod',$r).append(data['@Services'][index]['method'])
 	$('.deliveryMethod',$r).append(" (<span class='zlink'> Need it faster?</span>)").addClass('pointer').click(function(){
-		app.ext.beachmart.action.showShipGridInModal('appShippingTransitEstimate');
+		app.ext.beachmart.a.showShipGridInModal('appShippingTransitEstimate');
 		});
 	}
 else	{
@@ -1333,7 +1333,7 @@ else if	(app.data.cartDetail.ship.postal)	{
 else{
 	$('.deliveryLocation',$r).append(" (enter zip) ")
 	}
-$('.deliveryLocation',$r).click(function(){app.ext.beachmart.action.showZipDialog()})
+$('.deliveryLocation',$r).click(function(){app.ext.beachmart.a.showZipDialog()})
 			return $r;
 			}, //getTransitInfo
 			
