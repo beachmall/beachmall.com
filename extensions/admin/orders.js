@@ -1712,26 +1712,30 @@ $('.editable',$container).each(function(){
 				
 
 			"orderItemUpdate" : function($btn)	{
-				$btn.button();
-				$btn.button({icons: {primary: "ui-icon-arrowrefresh-1-e"},text: false});
-				$btn.off('click.orderItemUpdate').on('click.orderItemUpdate',function(){
-					var $parent = $btn.closest("[data-order-view-parent]"),
-					orderID = $parent.data('order-view-parent'),
-					$row = $btn.closest('tr'),
-					uuid = $row.data('uuid'),
-					qty = $("[name='qty']",$row).val(),
-					price = $("[name='price']",$row).val();
-					
-					if(uuid && orderID && qty && price)	{
-						app.ext.admin.calls.adminOrderUpdate.init(orderID,["ITEMUPDATE?uuid="+uuid+"&qty="+qty+"&price="+price]);
-						$parent.empty();
-						app.ext.admin_orders.a.showOrderView(orderID,app.data['adminOrderDetail|'+orderID].customer.cid,$parent.attr('id'),'immutable');
-						app.model.dispatchThis('immutable');
-						}
-					else	{
-						app.u.throwGMessage("in admin_orders.buttonActions.orderItemUpdate, unable to determine orderID ["+orderID+"], uuid ["+uuid+"], price ["+price+"], OR qty ["+qty+"]");
-						}
-					});
+				var $row = $btn.closest('tr');
+				
+				if($row.data('stid') && $row.data('stid').charAt(0) == '%')	{}
+				else	{
+					$btn.button();
+					$btn.button({icons: {primary: "ui-icon-arrowrefresh-1-e"},text: false});
+					$btn.off('click.orderItemUpdate').on('click.orderItemUpdate',function(){
+						var $parent = $btn.closest("[data-order-view-parent]"),
+						orderID = $parent.data('order-view-parent'),
+						uuid = $row.data('uuid'),
+						qty = $("[name='qty']",$row).val(),
+						price = $("[name='price']",$row).val();
+						
+						if(uuid && orderID && qty && price)	{
+							app.ext.admin.calls.adminOrderUpdate.init(orderID,["ITEMUPDATE?uuid="+uuid+"&qty="+qty+"&price="+price]);
+							$parent.empty();
+							app.ext.admin_orders.a.showOrderView(orderID,app.data['adminOrderDetail|'+orderID].customer.cid,$parent.attr('id'),'immutable');
+							app.model.dispatchThis('immutable');
+							}
+						else	{
+							app.u.throwGMessage("in admin_orders.buttonActions.orderItemUpdate, unable to determine orderID ["+orderID+"], uuid ["+uuid+"], price ["+price+"], OR qty ["+qty+"]");
+							}
+						});
+					}
 				}, //orderItemUpdate
 
 			"orderItemRemove" : function($btn)	{
