@@ -217,7 +217,8 @@ BRANDS CATEGORY PAGE
 BRANDS PRODUCT LIST
 *************************************************************************************/
 
-#brandsProductListTemplate {background-color:#F00;}
+.brandsTopBanner {height:400px; width:100%; background-color:#F0F;}
+
 
 /*************************************************************************************
 MP CONTROLS CONTAINER
