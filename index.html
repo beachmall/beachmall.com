@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"20130408163300",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"20130409124600",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"",
 	"httpsURL":"https://www-beachmall-com.app-hosted.com/",
@@ -991,8 +991,12 @@ remember to NOT put the button inside the 'onclick' container or two events will
             <div class='prodThumbContainer myProdThumbSmall' data-bind='var:product(pid); format:addPicSlider; extension:myRIA;'>
                 <img src='blank.gif' class='prodThumb' data-bind='var: product(zoovy:prod_image1); format:imageURL;' width='210' height='210' />
             </div> 
-            							       <!-- sprite zoovy:prod_is_tags-->
-            <div class='starBurst sprite' data-bind='var: product(user:prod_promo); format:text;'></div>
+
+            <div class='starBurst sprite displayNone' data-bind='var: product(user:prod_promo); format:showIfSet;'>
+            	<div class='starBurstTextOuter'>
+                	<div class='starBurstTextInner' data-bind='var: product(user:prod_promo); format:text;'></div>
+                </div>
+            </div>
             <div class='floatRight pointer moreDetailsSmall' onClick="showContent('product',{'pid':$(this).parent().attr('data-pid')});">more details</div>
         </div>
         <div class='prodTextContainerSmall'>
