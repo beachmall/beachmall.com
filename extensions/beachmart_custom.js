@@ -476,7 +476,7 @@ Action
 						if(zip && zip.length >= 5 && !isNaN(zip))	{
 							var $container = $("#productTemplate_"+app.u.makeSafeHTMLId(SKU)); //using $container as second param in $ below targets better (lighter and leaves door open for multiple instances later)
 							app.ext.beachmart.u.getShipQuotes(zip);
-							$('.postalCode').text(zip);
+							$('.shipPostal').text(zip);
 							//reset all the spans
 							$('.putLoadingHere',$container).addClass('loadingBG');
 							$('.loadingText',$container).hide();
@@ -914,7 +914,9 @@ else	{
 //update the local cart object right away, in addition to the server side cart, so that vars are available globally right away.
 							app.data.cartDetail.ship.city = city;
 							app.data.cartDetail.ship.region = state;
-							app.calls.cartSet.init({"ship/city":city,"ship/state":state},{},'passive');
+							app.calls.cartSet.init({"ship/city":city,"ship/region":state},{},'passive');
+							$('.shipCity').text(city || "");
+							$('.shipRegion').text(state || "");
 							app.model.dispatchThis('passive');
 							}
 						else	{
