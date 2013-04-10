@@ -60,7 +60,7 @@ document.body.appendChild(script);
 						app.calls.refreshCart.init({'callback':'checkForOrGetShipZip','extension':'beachmart'}); //callback starts chain reaction for displaying est. arrival date.
 						app.model.dispatchThis();
 	
-						showContent = app.ext.beachmart.action.showContent;
+						showContent = app.ext.beachmart.a.showContent;
 						if(typeof myAppIsLoaded == 'function')	{
 							myAppIsLoaded();
 							}
@@ -96,9 +96,11 @@ app.ext.beachmart.u.initEstArrival();
 			showTransitTimes : {
 				
 				onSuccess : function(tagObj){
-//					app.u.dump("BEGIN beachmart.callbacks.showTransitTimes");
+					app.u.dump("BEGIN beachmart.callbacks.showTransitTimes");
+					app.u.dump(tagObj);
 					//use cutoff from response, not product.
-					var $container = $("#productContainer");
+					var $container = $('#productTemplate_'+app.u.makeSafeHTMLId(SKU));
+					app.u.dump(" -> $container.length: "+$container.length);
 					var data = app.data[tagObj.datapointer]; //shortcut.
 					
 					if(!$.isEmptyObject(data['@Services']))	{
@@ -408,7 +410,7 @@ Action
 				}, //showContent
 		
 			printByElementID : function(id)	{
-//				app.u.dump("BEGIN beachmart.action.printByElementID");
+//				app.u.dump("BEGIN beachmart.a.printByElementID");
 				if(id && $('#'+id).length)	{
 					var html="<html><body style='font-family:sans-serif;'>";
 					html+= document.getElementById(id).innerHTML;
@@ -422,7 +424,7 @@ Action
 					printWin.close();
 					}
 				else	{
-					app.u.dump("WARNING! - beachmart.action.printByElementID executed but not ID was passed ["+id+"] or was not found on DOM [$('#'+"+id+").length"+$('#'+id).length+"].");
+					app.u.dump("WARNING! - beachmart.a.printByElementID executed but not ID was passed ["+id+"] or was not found on DOM [$('#'+"+id+").length"+$('#'+id).length+"].");
 					}
 				}, //printByElementID 
 				
@@ -472,8 +474,9 @@ Action
 						app.calls.cartSet.init({"ship/region":""},{},'passive');
 
 						if(zip && zip.length >= 5 && !isNaN(zip))	{
-							var $container = $("#productContainer"); //using $container as second param in $ below targets better (lighter and leaves door open for multiple instances later)
+							var $container = $("#productTemplate_"+app.u.makeSafeHTMLId(SKU)); //using $container as second param in $ below targets better (lighter and leaves door open for multiple instances later)
 							app.ext.beachmart.u.getShipQuotes(zip);
+							$('.shipPostal').text(zip);
 							//reset all the spans
 							$('.putLoadingHere',$container).addClass('loadingBG');
 							$('.loadingText',$container).hide();
@@ -788,7 +791,7 @@ uities
 			initEstArrival : function(infoObj){
 
 app.u.dump("BEGIN beachmart.u.initEstArrival");
-
+window.SKU = infoObj.pid; app.u.dump("GLOBAL SKU IS A TEMPORARY SOLUTION!!!",'warn'); //was originally written in a hybrid store. need to get this more app friendly.
 var zip;
 if(app.data.cartDetail && app.data.cartDetail.ship && app.data.cartDetail.ship.postal)	{
 	zip = app.data.cartDetail.ship.postal;
@@ -805,7 +808,7 @@ if(zip)	{
 else	{
 	app.u.dump(" -> no zip code entered. request via whereAmI");
 	app.ext.store_crm.calls.whereAmI.init({'callback':'handleWhereAmI','extension':'beachmart'},'passive');
-	app.model.dispatchThis('passive');
+	app.model.dispatchThis('mutable');
 	}
 
 				},
@@ -853,6 +856,7 @@ else	{
 
 			getShipQuotes : function(zip)	{
 app.u.dump("BEGin beachmart.u.getShipQuotes");
+
 //here, inventory check is done instead of isProductPurchaseable, because is used specifically to determine whether or not to show shipping.
 // the purchaseable function takes into account considerations which have no relevance here (is parent, price, etc).
 if(app.ext.store_product.u.getProductInventory(SKU) <= 0){
@@ -901,7 +905,7 @@ else	{
 			fetchLocationInfoByZip : function(zip,attempts)	{
 				attempts = Number(attempts) || 0;
 //				app.u.dump("BEGIN beachmart.u.app.ext.beachmart.u.fetchLocationInfoByZip("+zip+")");
-				if(zip && geocoder && typeof geocoder.geocode == 'function')	{
+				if(zip && typeof geocoder != 'undefined' && typeof geocoder.geocode == 'function')	{
 					geocoder.geocode({ 'address': zip}, function(results, status) {
 						if(results.length > 0)	{
 //							app.u.dump(results[0].address_components);
@@ -910,7 +914,9 @@ else	{
 //update the local cart object right away, in addition to the server side cart, so that vars are available globally right away.
 							app.data.cartDetail.ship.city = city;
 							app.data.cartDetail.ship.region = state;
-							app.calls.cartSet.init({"ship/city":city,"ship/state":state},{},'passive');
+							app.calls.cartSet.init({"ship/city":city,"ship/region":state},{},'passive');
+							$('.shipCity').text(city || "");
+							$('.shipRegion').text(state || "");
 							app.model.dispatchThis('passive');
 							}
 						else	{
@@ -921,7 +927,7 @@ else	{
 				else if(!zip)	{
 					app.u.dump("ERROR! zip not passed into beachmart.u.fetchLocationInfoByZip");
 					}
-				else if(geocoder && typeof geocoder.geocode != 'function' && attempts < 30)	{
+				else if(typeof geocoder != 'undefined' && typeof geocoder.geocode != 'function' && attempts < 30)	{
 					app.ext.beachmart.u.fetchLocationInfoByZip(zip,attempts+1); //perhaps the maps api hasn't loaded yet. try again.
 					}
 				else	{
@@ -1310,7 +1316,7 @@ if(prodAttribs['user:prod_ship_expavail'] == 1)	{
 //if expedited shipping is not available, no other methods show up (will ship ground)
 	$('.deliveryMethod',$r).append(data['@Services'][index]['method'])
 	$('.deliveryMethod',$r).append(" (<span class='zlink'> Need it faster?</span>)").addClass('pointer').click(function(){
-		app.ext.beachmart.action.showShipGridInModal('appShippingTransitEstimate');
+		app.ext.beachmart.a.showShipGridInModal('appShippingTransitEstimate');
 		});
 	}
 else	{
@@ -1330,7 +1336,7 @@ else if	(app.data.cartDetail.ship.postal)	{
 else{
 	$('.deliveryLocation',$r).append(" (enter zip) ")
 	}
-$('.deliveryLocation',$r).click(function(){app.ext.beachmart.action.showZipDialog()})
+$('.deliveryLocation',$r).click(function(){app.ext.beachmart.a.showZipDialog()})
 			return $r;
 			}, //getTransitInfo
 			
