@@ -19,7 +19,7 @@ body {
 	background-color:#fff;
 	margin:0;
 	}
-	
+
 .openSansFont {font-family: "Open Sans"; font-weight:normal;}
 .openSansFontBold {font-family: "Open Sans"; font-weight: bold;}
 
@@ -530,9 +530,15 @@ HOMEPAGE
 
 
 
-.categoryDescriptionContainer {height:390px; width:1020px; background-color:#303;}
-
-    
+.categoryDescriptionContainer {height:360px; width:940px; padding:0px 40px; position:relative;}
+.catDescStd {height:auto; margin-top:10px; position:absolute; top:0px; width:215px; z-index:10;}
+.catDescStd1 {left:40px;}
+.catDescStd2 {left:285px;}
+.catDescStd3 {right:275px;}   
+.catDescStd4 {right:40px;}
+.catDescStd h1 {color:#666; font-family:Oswald; font-size:24px; font-weight:bold;}
+.catDescStd span {font-family:"Open Sans"; font-size:12px; font-weight:normal;}
+.catDescNonStd {height:auto; width:auto; top:330px; right:530px;}
 
 /* for the carousel */
 .list_carousel {
@@ -571,7 +577,7 @@ HOMEPAGE
 	top:25%; 
 	z-index:1;
 	}
-	
+
 .carouselButtonPrev {
 	left:5px;
 	}
@@ -579,7 +585,7 @@ HOMEPAGE
 	right:1px;
 	background-position:-35px 0;
 	}
-	
+
 .carouselButtonWhite {
 	background:url(images/carousel_buttons_white-66x60.png) no-repeat;
 	width:35px;
@@ -592,7 +598,7 @@ HOMEPAGE
 
 .carouselButtonWhitePrev {left:11px; background-position:-37px 0;}
 .carouselButtonWhiteNext {right:5px; background-position:0px 0;}
-	
+
 
 
 
@@ -747,6 +753,7 @@ h1.prodName	{font-size:18px; margin:0; padding:0; margin-bottom:6px;}
 .basePrice .value	{color:#e63738;}
 .priceContainer .savings, .retailPrice	{color:#666666; font-size:13px;}
 
+/*
 .addToCartButton	{
 	height:50px;
 	width:170px;
@@ -763,7 +770,7 @@ h1.prodName	{font-size:18px; margin:0; padding:0; margin-bottom:6px;}
 	text-indent:-10000px;
 	background:url(bm10_preorder-159x33.png) no-repeat; padding:0; border:0;
 	}
-
+*/
 .sizingChartLink	{padding:22px 25px 0 0px;} /* don't set a display: here. displayNone is used and element is toggle on based on whether a value is set */
 
 .preorderButton	{
@@ -1074,8 +1081,8 @@ some shared styles, pulled from cat layout but that will impact, potentially, mo
 	}
 
 @media only screen and (max-width: 600px), only screen and (max-device-width: 600px) {
-	
-	
+
+
 	#mastHead 	{height:45px;}
 	#mastHead .logo img	{width:84px; height:42px;}
 	#mastHead .phone	{width:130px; background-position: -27px 0; margin-top:0; } /* crop icon from phone. */

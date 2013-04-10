@@ -456,8 +456,9 @@ return filters;
 							}
 						}]);		*/
 					
-				}//END CAROUSEL FUNCTIONS
-
+				},//END CAROUSEL FUNCTIONS
+				
+				
 			}, //u
 
 
