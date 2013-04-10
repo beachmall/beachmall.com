@@ -416,6 +416,33 @@ return filters;
 								},1000); 
 							}
 						}]);
+						
+					//PRODUCT PAGE LOWER THUMBNAIL CAROUSEL
+					app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {
+						var $target = $('.prodPageCarousel');
+						if($target.data('isCarousel'))	{} //only make it a carousel once.
+						else	{
+							$target.data('isCarousel',true);
+					//for whatever reason, caroufredsel needs to be executed after a moment.
+							setTimeout(function(){
+								$target.carouFredSel({
+									auto: false,
+									prev: '.prodPageCarPrev',
+									next: '.prodPageCarNext',
+									height: 70,
+									width: 370,
+									//items: 4,
+									//pagination: '#bestCarPagenation',
+									scroll: 1,
+							//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
+									swipe: {
+										onMouse: true,
+										onTouch: true
+										}
+									});
+								},1000); 
+							}
+						}]);
 					
 					//PREVIOUSLY VIEWED ITEMS CAROUSEL
 		/*			app.rq.push(['templateFunction','categoryTemplateBrands','onCompletes',function(P) {

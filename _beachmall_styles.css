@@ -541,6 +541,22 @@ HOMEPAGE
 .catDescStd span {font-family:"Open Sans"; font-size:12px; font-weight:normal;}
 .catDescNonStd {height:auto; width:auto; top:330px; right:530px;}
 
+
+
+/*************************************************************************
+PRODUCT PAGE
+*************************************************************************/
+
+/* PRODUCT CAROUSEL */
+.productPageCarouselContainer {height:70px; width:380px; background-color:#F3C; position:relative;}
+.prodPageCarousel {position:absolute; left:5px; top:0px; z-index:1; list-style:none;}
+.prodPageCarPrev {height:70px; width:20px; background-color:#0C0; position:absolute; top:0px; left:0px; z-index:2;}
+.prodPageCarNext {height:70px; width:20px; background-color:#39F; position:absolute; top:0px; right:0px; z-index:2;}
+.prodPageCarousel ul {margin:0; padding:0; list-style:none;}
+.prodPageCarousel li {height:50px; width:50px; float:left; margin:10px;}
+
+
+/* orig carousel */
 /* for the carousel */
 .list_carousel {
 	background-color: #79ccc8;
@@ -601,15 +617,7 @@ HOMEPAGE
 .carouselButtonWhiteNext {right:5px; background-position:0px 0;}
 
 
-
-
-
-/*
-PRODUCT PAGE
-*/
-
-
-
+/*****************/
 
 
 .prodTabViewContainer .ui-tabs .ui-tabs-nav li a	{font-size:13px; font-family:Helvetica, Arial, sans-serif; padding:6px;}
