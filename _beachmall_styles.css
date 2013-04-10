@@ -176,7 +176,8 @@ FOOTER
 .footerIcons {height:107px; width:100%; position:relative; top:208px; left:0px; z-index:5;}
 .footerIcons .ccCards {height:23px; width:223px; background-position:-1px -120px; position:absolute; bottom:0px; left:40px;}
 .footerIcons .bbbBadge {height:43px; width:195px; position:absolute; bottom:-1px; left:273px;}
-.footerIcons .googleTrustedBadge {height:58px; width:122px; background-color:#C09; position:absolute; top:0px; right:0px;  box-shadow:-2px 2px 2px #000000;}
+/* ADD THIS BACK INTO THE LINE BELOW ONCE GOOGLE TRUSTED BADGE HAS BEEN CLEARED BY GOOGLE: box-shadow:-2px 2px 2px #000000; */
+.footerIcons .googleTrustedBadge {height:58px; width:122px; position:absolute; top:0px; right:0px;}
 .footerIcons .footerPhoneChat {height:22px; width:218px; color:#3bb3c3; font-family:Oswald; font-weight:bold; font-size:17px; position:absolute; bottom:0px; right:40px;}
 .footerIcons .footerPhoneChat span {color:#000; font-family:"Open Sans"; font-size:10px; font-weight:400;}
 
