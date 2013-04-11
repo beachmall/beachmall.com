@@ -86,6 +86,10 @@ var store_filter = function() {
 			onSuccess : function()	{
 				
 				app.ext.store_filter.u.runCarousels();
+				app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {
+					app.ext.store_filter.u.runProductCarousel();
+					app.u.dump('Product fredsel ran');
+				}]);
 				
 //				app.u.dump('BEGIN app.ext.store_navcats.init.onSuccess ');
 				var r = true; //return false if extension won't load for some reason (account config, dependencies, etc).
@@ -417,33 +421,7 @@ return filters;
 							}
 						}]);
 						
-					//PRODUCT PAGE LOWER THUMBNAIL CAROUSEL
-					app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {
-						var $target = $('.prodPageCarousel');
-						if($target.data('isCarousel'))	{} //only make it a carousel once.
-						else	{
-							$target.data('isCarousel',true);
-					//for whatever reason, caroufredsel needs to be executed after a moment.
-							setTimeout(function(){
-								$target.carouFredSel({
-									auto: false,
-									prev: '.prodPageCarPrev',
-									next: '.prodPageCarNext',
-									height: 70,
-									width: 370,
-									//items: 4,
-									//pagination: '#bestCarPagenation',
-									scroll: 1,
-							//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
-									swipe: {
-										onMouse: true,
-										onTouch: true
-										}
-									});
-								},1000); 
-							}
-						}]);
-					
+
 					//PREVIOUSLY VIEWED ITEMS CAROUSEL
 		/*			app.rq.push(['templateFunction','categoryTemplateBrands','onCompletes',function(P) {
 						var $target = $('.brandCatsPreviousViewed');
@@ -484,6 +462,33 @@ return filters;
 						}]);		*/
 					
 				},//END CAROUSEL FUNCTIONS
+				
+				//PRODUCT PAGE LOWER THUMBNAIL CAROUSEL
+				runProductCarousel : function() {
+					var $target = $('.prodPageCarousel');
+					if($target.data('isCarousel'))	{} //only make it a carousel once.
+					else	{
+						$target.data('isCarousel',true);
+				//for whatever reason, caroufredsel needs to be executed after a moment.
+						setTimeout(function(){
+							$target.carouFredSel({
+								auto: false,
+								prev: '.prodPageCarPrev',
+								next: '.prodPageCarNext',
+								height: 70,
+								width: 370,
+								//items: 4,
+								//pagination: '#bestCarPagenation',
+								scroll: 1,
+						//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
+								swipe: {
+									onMouse: true,
+									onTouch: true
+									}
+								});
+							},1000); 
+						}
+					},
 				
 				
 			}, //u
