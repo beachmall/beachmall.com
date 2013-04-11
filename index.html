@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"20130409201000",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"20130411145800",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"",
 	"httpsURL":"https://www-beachmall-com.app-hosted.com/",
@@ -874,8 +874,9 @@ don't modify the 'data-templateid' unless you are changing template names and up
        		</div>
         </ul><!-- outputs the product list -->
     	
-    
-        <p class='blah' data-bind="var: category(%page.description); format:wiki; wikiFormats:myRIA; editor: textarea;"></p>
+		<div class='catDescription'>
+			<p data-bind="var: category(%page.description); format:wiki; wikiFormats:myRIA; editor: textarea;"></p>
+		</div>
         
         <p data-bind="var: category(%page.description2); format:wiki; wikiFormats:myRIA; editor: textarea;"></p>
 		
@@ -1215,17 +1216,22 @@ remember to NOT put the button inside the 'onclick' container or two events will
 
 SANITY -> if you change the height and width of this image, change the .minimalMode .searchResultsProduct in qs_styles.css to match
 -->
-<li id='productListTemplateResults' class='loadingBG searchResultsProduct ' >
-	<div onClick="app.ext.myRIA.a.handleProdPreview($(this).parent().attr('data-pid'));" class='pointer'>
-		<div class='prodThumbContainer'>
-		<img src='blank.gif' class='prodThumb' data-bind='var: product(images); format:imageURL;isElastic:1;bgcolor:ffffff;' width='120' height='120' />
+<li id='productListTemplateResults' class='loadingBG searchResultsProduct products product floatLeft' >
+	<div onClick="app.ext.myRIA.a.handleProdPreview($(this).parent().attr('data-pid'));" class='pointer productListSmall'>
+		<div class='prodHoverContainer'>
+			<div class='prodThumbContainer myProdThumbSmall'>
+				<img src='blank.gif' class='prodThumb' data-bind='var: product(images); format:imageURL;isElastic:1;bgcolor:ffffff;' width='210' height='210' />
+			</div>
+			<div class='hideInMinimalMode pointer moreDetailsSmall floatRight' onClick="showContent('product',{'pid':$(this).parent().attr('data-pid')});">more details</div>
 		</div>
-
-		<h5 class='hideInMinimalMode' data-bind='var: product(prod_name); format:text;'></h5>
-
-		<h6 class='hideInMinimalMode' data-bind='var: product(base_price); format:money; isElastic:1; currencySign: $;  hideZero:true; className:price; pretext: Our Price: ;'></h6>
+		
+		<div class='prodTextContainerSmall'>
+			<h6 class='hideInMinimalMode floatLeft prodPriceSmall' data-bind='var: product(base_price); format:money; isElastic:1; currencySign: $;  hideZero:true; className:price;'></h6>
+				
+			<h5 class='hideInMinimalMode clearfix prodDescSmall' data-bind='var: product(prod_name); format:text;'></h5>
+		</div>
 	</div>
-	<div class='hideInMinimalMode pointer moreDetails' onClick="showContent('product',{'pid':$(this).parent().attr('data-pid')});">more details</div>
+	
 </li>
 
 <li id='productListTemplateResultsNoPreview' class='loadingBG searchResultsProduct ' >
@@ -2508,6 +2514,8 @@ put all filters into the appFilters container.
             <input type='hidden' name="prod_type" value="beach-umbrellas-shelter" /> this is root cat for this cat, don't know if this is correct -->
      <!--  </fieldset>  -->
         
+		<button class='resetButton floatRight'>RESET OPTIONS</button>
+		
         <fieldset data-elastic-key="pogs" data-filtertype="checkboxes">
             <legend>options test</legend>
             <label class='break'><input class="" type='checkbox' value='au00' />au00</label>
@@ -2515,51 +2523,49 @@ put all filters into the appFilters container.
         </fieldset>
         <fieldset data-elastic-key="canopy_size" data-filtertype="checkboxes">
             <legend>Canopy Size</legend>
-            <label class='break'><input class="" type='checkbox' value='6.0 Feet' />6.0 Feet</label>
-            <label class='break'><input type='checkbox' value='6.5 Feet' />6.5 Feet</label>
-            <label class='break'><input type='checkbox' value='7.0 - 7.5 Feet' />7.0 - 7.5 Feet</label>
-            <label class='break'><input type='checkbox' value='8.0 Feet $amp up' />8.0 Feet $amp up</label>   
+            <label class='break'><input class="" type='checkbox' value='6.0 Feet' /> 6.0 Feet</label>
+            <label class='break'><input type='checkbox' value='6.5 Feet' /> 6.5 Feet</label>
+            <label class='break'><input type='checkbox' value='7.0 - 7.5 Feet' /> 7.0 - 7.5 Feet</label>
+            <label class='break'><input type='checkbox' value='8.0 Feet $amp up' /> 8.0 Feet &#38 up</label>   
         </fieldset>
         
         <fieldset class="umbrellaStyle" data-elastic-key="prod_style" data-filtertype="checkboxes">
             <legend>Style</legend>
-            <label class='break'><input type='checkbox' value='vented' />Vented</label>
-            <label class='break'><input type='checkbox' value='tiling' />Tiling</label>
-            <label class='break'><input type='checkbox' value='novent' />No Vent</label>
+            <label class='break'><input type='checkbox' value='vented' /> Vented</label>
+            <label class='break'><input type='checkbox' value='tiling' /> Tiling</label>
+            <label class='break'><input type='checkbox' value='novent' /> No Vent</label>
         </fieldset>
         
         <fieldset class="umbrellaOptions" data-elastic-key="prod_options" data-filtertype="checkboxes">
             <legend>Options</legend>
-            <label class='break'><input type='checkbox' value='fiberglassribs' />Fiberglass Ribs</label>
-            <label class='break'><input type='checkbox' value='steelribs' />Steel Ribs</label>
-            <label class='break'><input type='checkbox' value='commercialgrade' />Commercial Grade</label>
+            <label class='break'><input type='checkbox' value='fiberglassribs' /> Fiberglass Ribs</label>
+            <label class='break'><input type='checkbox' value='steelribs' /> Steel Ribs</label>
+            <label class='break'><input type='checkbox' value='commercialgrade' /> Commercial Grade</label>
         </fieldset>
         
         <fieldset class="umbrellaUvProtection" data-elastic-key="prod_uv_protection" data-filtertype="checkboxes">
             <legend>UV Protection</legend>
-            <label class='break'><input type='checkbox' value='35upf' />35 UPF</label>
-            <label class='break'><input type='checkbox' value='50upf' />50 UPF</label>
-            <label class='break'><input type='checkbox' value='100+upf' />100 + upf</label>
+            <label class='break'><input type='checkbox' value='35upf' /> 35 UPF</label>
+            <label class='break'><input type='checkbox' value='50upf' /> 50 UPF</label>
+            <label class='break'><input type='checkbox' value='100+upf' /> 100 + upf</label>
         </fieldset>
         
         <fieldset class="umbrellaPoleMaterial" data-elastic-key="prod_pole_material" data-filtertype="checkboxes">
             <legend>Pole Material</legend>
-            <label class='break'><input type='checkbox' value='wood' />Wood</label>
-            <label class='break'><input type='checkbox' value='aluminum' />Aluminum</label>
-            <label class='break'><input type='checkbox' value='steel' />Steel</label>
+            <label class='break'><input type='checkbox' value='wood' /> Wood</label>
+            <label class='break'><input type='checkbox' value='aluminum' /> Aluminum</label>
+            <label class='break'><input type='checkbox' value='steel' /> Steel</label>
         </fieldset>
         
         <fieldset class="umbrellaFabric" data-elastic-key="prod_faberic" data-filtertype="checkboxes">
             <legend>Fabric</legend>
-            <label class='break'><input type='checkbox' value='polyester' />Polyester</label>
-            <label class='break'><input type='checkbox' value='acrylic' />Acrylic</label>
-            <label class='break'><input type='checkbox' value='polycotton' />PolyCotton</label>
-            <label class='break'><input type='checkbox' value='nylon' />Nylon</label>
-            <label class='break'><input type='checkbox' value='vynil' />Vinyl</label>    
-            <label class='break'><input type='checkbox' value='sunbrella' />Sunbrella</label>
+            <label class='break'><input type='checkbox' value='polyester' /> Polyester</label>
+            <label class='break'><input type='checkbox' value='acrylic' /> Acrylic</label>
+            <label class='break'><input type='checkbox' value='polycotton' /> PolyCotton</label>
+            <label class='break'><input type='checkbox' value='nylon' /> Nylon</label>
+            <label class='break'><input type='checkbox' value='vynil' /> Vinyl</label>    
+            <label class='break'><input type='checkbox' value='sunbrella' /> Sunbrella</label>
         </fieldset>
-        
-        <button class='resetButton floatRight'>REMOVE ALL OPTIONS</button>
 
     </form>
 
