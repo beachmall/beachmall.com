@@ -334,7 +334,10 @@ label.break	{display:block; margin-bottom:2px;}
 .products.product > div {height:auto; width:220px;}
 
 .searchResultsProduct.products.product {height:300px; margin:20px 16.75px 7.5px;}
-.prodViewerContainer .imageContainer {width:260px;}
+.prodViewerContainer .imageContainer {height:auto; width:260px;}
+.prodSummaryContainer .priceContainer .basePrice {height:auto; width:100%;}
+.prodSummaryContainer .priceContainer .savings {height:auto; width:100%; padding-left:0px;}
+.prodSummaryContainer .latency {height:auto; width:100%; margin-bottom:10px;}
 
 /* Joins thumbborder and shop now text box to both hover at same time*/
 .prodHoverContainer:hover .moreDetailsSmall {background-color:#e0463a;}
