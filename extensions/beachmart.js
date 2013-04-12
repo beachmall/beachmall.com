@@ -486,7 +486,7 @@ return filters;
 									onTouch: true
 									}
 								});
-							},1000); 
+							},3000); 
 						}
 					},
 				

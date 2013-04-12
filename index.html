@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"20130411145800",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"20130411202700",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"",
 	"httpsURL":"https://www-beachmall-com.app-hosted.com/",
@@ -810,37 +810,8 @@ the homepageTemplate template is loaded into mainContentArea by default when the
             </span>
         </div>        
     </div>
-    
-    
-    
-   <!-- <h2 class='prodlistTitle'>New Arrivals</h2>
-        <div class="list_carousel responsive clearfix">
-            
-            <a class="carouselButton newCarouselPrev carouselButtonPrev" href="#">prev</a>
-            <a class="carouselButton newCarouselNext carouselButtonNext" href="#">next</a>
-    
-            <ul id='homeProdSearchNewArrivals' data-bind='var: elastic-native({"size":"20","mode":"elastic-native","filter":{"term":{"tags":"IS_NEWARRIVAL"}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsNoPreview;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults'></ul>
-    
-        </div>
-    
-    
-        <h2 class='prodlistTitle'>Best Sellers</h2>
-        <div class="list_carousel responsive clearfix">
-            <a class="carouselButton bestCarouselPrev carouselButtonPrev" href="#">prev</a>
-            <a class="carouselButton bestCarouselNext carouselButtonNext" href="#">next</a>
-    
-            <ul id='homeProdSearchBestSellers' data-bind='var: elastic-native({"size":"20","mode":"elastic-native","filter":{"term":{"tags":"IS_BESTSELLER"}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsNoPreview;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults'></ul>
-    
-        </div>
-    
-        <p data-bind="var: category(%page.description); format:wiki; wikiFormats:myRIA; editor: textarea;"></p>
 
-	</div> <!-- END WHITE BG -->
-
-
-
-
-</div>
+</div> <!-- END HOMEPAGE TEMPLATE -->
 
 
 
@@ -1398,28 +1369,20 @@ this will likely become more flexible in the future. ###
 	<div class='prodTabs tabbedProductContent ui-tabs ui-widget ui-widget-content ui-corner-all'>
 
 		<ul class='imageAndVideoTabs displayNone'>
-			<li ><a href="#prodImages" class='ui-button-text-icon-primary' ><span><img src='images/bm12_cameraicon-25x21.png' width="25" height='21' alt='' /></span>Images</a></li>
-			<li ><a href="#prodVideo"><span><img src='images/bm12_videoicon-24x24.png' width="24" height='24' alt='' /></span>Video</a></li>
+			<li ><a href="#prodImages" class='ui-button-text-icon-primary imageTab' ><span><img src='images/bm12_cameraicon-25x21.png' width="25" height='21' alt='' /></span>Images</a></li>
+			<li ><a href="#prodVideo" class='videoTab'><span><img src='images/bm12_videoicon-24x24.png' width="24" height='24' alt='' /></span>Video</a></li>
 		</ul>
 
-
 		<div class='prodPageImages'  data-anytab-content='prodImages'>
-		<img src='blank.gif' class='prodBigImage' name='prodBigImage' data-bind='var: product(zoovy:prod_image1); format: magicZoomPlus; extension: magicToolBox_mzp;' width='380' height='380' />
+			<img src='blank.gif' class='prodBigImage' name='prodBigImage' data-bind='var: product(zoovy:prod_image1); format: magicZoomPlus; extension: magicToolBox_mzp;' width='380' height='380' />
 			<div class='zhint'>Mouse over main image to zoom in</div>
-<div class='productPageCarouselContainer'>
-    <a href='#' class='prodPageCarPrev'>prev</a>
-	<div>
-		<ul class='prodPageCarousel' data-bind='var: product(pid); format: productImages; extension: beachmart;'></ul>    
-    </div>
-    <a href='#' class='prodPageCarNext'>next</a>
-</div>
-            
-            
-       <!-- <div class='prodPageImageThumbs list_carousel responsive clearfix'>
-				<a class="carouselButtonPrev" href="#">prev</a>
-				<a class="carouselButtonNext" href="#">next</a>
-				<ul data-bind='var: product(pid); format: productImages; extension: beachmart;'></ul>
-			</div> -->
+			<div class='productPageCarouselContainer'>
+				<div>
+					<ul class='prodPageCarousel' data-bind='var: product(pid); format: productImages; extension: beachmart;'></ul>    
+				</div>
+				<a href='#' class='prodPageCarPrev sprite'><span>prev</span></a>
+				<a href='#' class='prodPageCarNext sprite'><span>next</span></a>
+			</div>
 		</div> <!-- END prodPageImages -->
 	
 		<div data-anytab-content='prodVideo' >
@@ -1514,7 +1477,7 @@ this will likely become more flexible in the future. ###
 
 <table>
 <tr>
-	<td>
+	<td class='mainProdTabs'>
 
 
 <div class='prodTabViewContainer clearfix marginRight'>
@@ -1566,7 +1529,7 @@ this will likely become more flexible in the future. ###
 
 
 	</td><!-- /tabbed info -->
-	<td>
+	<td class='youMayLikeAccessories'>
 
 
 	<div class='tabbedProductListsTD marginLeft'>
@@ -1645,7 +1608,7 @@ this will likely become more flexible in the future. ###
 		</span>
 	</div>
 
-	<div data-bind='var: product(zoovy:ship_latency); format:text;pretext:Normally ships in ;posttext: day(s);' class='latency floatLeft'></div>
+	<div data-bind='var: product(zoovy:ship_latency); format:text;pretext:Normally ships in ;posttext: day(s);' class='latency'></div>
 
 	<section id='prodViewerReviewSummary' class='marginBottom'>
 		<span data-bind='var: reviews(reviews.average); format:addClass; className:review_;' class='reviewSprite'></span>

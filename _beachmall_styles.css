@@ -114,7 +114,7 @@ the padding is to compensate for the spacing between the main nav.
 #mastHead .bannerContainer {height:28px; width:241px; position:absolute; top:31px; left:38%;}
 #mastHead .bannerContainer .banner	{width:49%; display:inline-block; margin:0; padding:0;}
 #mastHead .logo {margin:30px 0px 0px 0px; position:absolute;}
-#mastHead .freeShipping	{background-position:-123px -150px; height:28px; width:118px; float:left; margin-left:.2em;}
+#mastHead .freeShipping	{background-position:-123px -150px; height:28px; width:88px; float:left; margin-left:.2em;}
 #mastHead .easyReturns	{background-position:0 -150px; height:28px; width:114px; float:right; margin-right:.2em;}
 
 #mastHead .searchContainer {border: none; position:relative; width: 300px; margin-bottom: 20px;}
@@ -545,62 +545,6 @@ HOMEPAGE
 .bestSellersCarouselContainer {border-bottom:5px solid #3bb3c3;}
 .bestSellersCarouselTitles {background-color:#3bb3c3;}
 
-
-
-.categoryDescriptionContainer {height:360px; width:940px; padding:0px 40px; position:relative;}
-.catDescStd {height:auto; margin-top:10px; position:absolute; top:0px; width:215px; z-index:10;}
-.catDescStd1 {left:40px;}
-.catDescStd2 {left:285px;}
-.catDescStd3 {right:275px;}   
-.catDescStd4 {right:40px;}
-.catDescStd h1 {color:#666; font-family:Oswald; font-size:24px; font-weight:bold;}
-.catDescStd span {font-family:"Open Sans"; font-size:12px; font-weight:normal;}
-.catDescNonStd {height:auto; width:auto; top:330px; right:530px;}
-
-
-
-/*************************************************************************
-PRODUCT PAGE
-*************************************************************************/
-
-/* PRODUCT CAROUSEL */
-.productPageCarouselContainer {height:70px; width:380px; background-color:#F3C; position:relative;}
-.prodPageCarousel {position:absolute; left:5px; top:0px; z-index:1; list-style:none;}
-.prodPageCarPrev {height:70px; width:20px; background-color:#0C0; position:absolute; top:0px; left:0px; z-index:2;}
-.prodPageCarNext {height:70px; width:20px; background-color:#39F; position:absolute; top:0px; right:0px; z-index:2;}
-.prodPageCarousel ul {margin:0; padding:0; list-style:none;}
-.prodPageCarousel li {height:50px; width:50px; float:left; margin:10px;}
-
-
-/* orig carousel */
-/* for the carousel */
-.list_carousel {
-	background-color: #79ccc8;
-	position:relative;
-	padding:.3em 2em;
-	margin: 0 0 1.5em 0px;
-	}
-.list_carousel ul {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-	display: block;
-	}
-.list_carousel li {
-	text-align: center;
-	width: 120px;
-	height: 120px;
-	overflow:hidden;
-	padding: 0;
-	margin: 6px;
-	display: block;
-	float: left;
-	}
-.list_carousel.responsive {
-	width: auto;
-	margin-left: 0;
-	}
-
 .carouselButton	{
 	background:url(images/carousel_buttons-66x60.png) no-repeat;
 	width:35px;
@@ -609,15 +553,15 @@ PRODUCT PAGE
 	position:absolute;
 	top:25%; 
 	z-index:1;
-	}
+}
 
 .carouselButtonPrev {
 	left:5px;
-	}
+}
 .carouselButtonNext {
 	right:1px;
 	background-position:-35px 0;
-	}
+}
 
 .carouselButtonWhite {
 	background:url(images/carousel_buttons_white-66x60.png) no-repeat;
@@ -632,23 +576,67 @@ PRODUCT PAGE
 .carouselButtonWhitePrev {left:11px; background-position:-37px 0;}
 .carouselButtonWhiteNext {right:5px; background-position:0px 0;}
 
+.categoryDescriptionContainer {height:360px; width:940px; padding:0px 40px; position:relative;}
+.catDescStd {height:auto; margin-top:10px; position:absolute; top:0px; width:215px; z-index:10;}
+.catDescStd1 {left:40px;}
+.catDescStd2 {left:285px;}
+.catDescStd3 {right:275px;}   
+.catDescStd4 {right:40px;}
+.catDescStd h1 {color:#666; font-family:Oswald; font-size:24px; font-weight:bold;}
+.catDescStd span {font-family:"Open Sans"; font-size:12px; font-weight:normal;}
+.catDescNonStd {height:auto; width:auto; top:330px; right:530px;}
 
-/*****************/
+
+/*************************************************************************
+PRODUCT PAGE
+*************************************************************************/
+
+/* PRODUCT CAROUSEL */
+.productPageCarouselContainer {height:70px; width:380px; background-color:; position:relative;}
+.prodPageCarousel {position:absolute; left:5px; top:0px; z-index:1; list-style:none; overflow:hidden;}
+.prodPageCarPrev {height:70px; width:20px; background-color:; background-position:-227px -106px; position:absolute; top:0px; left:0px; z-index:2;}
+a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
+.prodPageCarNext {height:70px; width:20px; background-color:; background-position:-248px -106px; position:absolute; top:0px; right:0px; z-index:2;}
+.prodPageCarousel ul {margin:0; padding:0; list-style:none;}
+.prodPageCarousel li {height:50px; width:50px; float:left; margin:10px;}
 
 
-.prodTabViewContainer .ui-tabs .ui-tabs-nav li a	{font-size:13px; font-family:Helvetica, Arial, sans-serif; padding:6px;}
-
-.prodTabViewContainer .ui-widget-header	{padding:3px 3px 0 3px; margin:0; border-width:0; border-bottom-width:1px;}
-.prodTabViewContainer .ui-tabs	{padding:0;}
-.ui-tabs .ui-tabs-nav li	{margin-right:2px;}
-
-
+/* PRODUCT IMAGE / TABS */
+.fullWidth .imageContainer {width:380px; padding:0 55px 20px 40px;}
+.imageContainer .prodTabs.tabbedProductContent {background-color:#fff; padding:0px; border:none;} /*tabbed container bkgrnd*/
+.imageContainer .prodTabs.tabbedProductContent > div {background-color:#fff; border:none;} /*image bkgrnd*/
+.imageContainer .prodTabs.tabbedProductContent > ul {background-color:#fff;} /*tab bkgrnd*/
+.imageContainer .prodTabs.tabbedProductContent .imageAndVideoTabs .ui-state-default {background:#3bb3c3; border-radius:0px; border:1px solid #3bb3c3;}
+.imageContainer .prodTabs.tabbedProductContent .imageAndVideoTabs .ui-state-active {background:#f5f1de; border-radius:0px; border:1px solid #3bb3c3;}
+.imageContainer .prodTabs.tabbedProductContent .imageAndVideoTabs .ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited {color:#f5f1de;}
+.imageContainer .prodTabs.tabbedProductContent .imageAndVideoTabs .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {color:#3bb3c3;}
+.imageContainer .prodTabs.tabbedProductContent .prodPageImages {padding:0px; box-shadow:0 1px 3px 2px #3BB3C3;}
 
 .mtClickToZoom	{background:url(images/bm09_c_zoomicon-95x28.png) no-repeat; width:95px; height:28px; position:absolute; right:5px; bottom:5px; display:none; z-index:100;}
 .prodThumbAndMT	{position:relative; width:175px; height:130px;}
 .prodThumbAndMT .prodThumbContainer	{z-index:10; position:absolute; top:0; left:0;}
 
+.mainProdTabs {height:auto; width:72%;}
+.prodTabViewContainer .ui-tabs .ui-tabs-nav li a {font-size:13px; font-family:Oswald; padding:6px;}
+.prodTabViewContainer .ui-widget-header	{padding:3px 3px 0 3px; margin:0; border-width:0; border-bottom-width:1px;}
+.prodTabViewContainer .ui-tabs	{padding:0;}
+.ui-tabs .ui-tabs-nav li	{margin-right:2px;}
+.prodTabViewContainer .prodViewerTable .prodTabs.tabbedProductContent .tabs .ui-state-default {background:#3bb3c3; border-radius:0px; border:1px solid #3bb3c3;}
+.prodTabViewContainer .prodViewerTable .prodTabs.tabbedProductContent .tabs .ui-state-active {background:#f5f1de; border-radius:0px; border:1px solid #3bb3c3;}
+.prodTabViewContainer .prodViewerTable .prodTabs.tabbedProductContent .tabs .ui-state-default a, .tabs .ui-state-default a:link, .ui-state-default a:visited {color:#f5f1de;}
+.prodTabViewContainer .prodViewerTable .prodTabs.tabbedProductContent .tabs .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {color:#3bb3c3;}
+.prodTabViewContainer .prodViewerTable .prodTabs.tabbedProductContent .ui-widget-content {background:#f5f1de; border:1px solid #3bb3c3;}
+.prodTabViewContainer .prodViewerTable .prodTabs.tabbedProductContent > div {}
 
+.youMayLikeAccessories {height:auto; width:auto;}
+.youMayLikeAccessories .tabbedProductListsTD {height:auto; width:97%;}
+.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .tabs .ui-state-default {background:#3bb3c3; border-radius:0px; border:1px solid #3bb3c3;}
+.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .tabs .ui-state-active {background:#f5f1de; border-radius:0px; border:1px solid #3bb3c3;}
+.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .tabs .ui-state-default a, .tabs .ui-state-default a:link, .ui-state-default a:visited {color:#f5f1de;}
+.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .tabs .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {color:#3bb3c3;}
+.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content {background:#f5f1de; border:1px solid #3bb3c3;}
+.youMayLikeAccessories .tabbedProductListsTD .jcarousel-skin-default .prodlistSlideshow ul  {height:auto; width:100%;}
+.youMayLikeAccessories .tabbedProductListsTD .jcarousel-skin-default .products.product {height:auto; width:100%;}
 
 
 /* used for the picture slider mouse over effect in some product lists */
@@ -756,7 +744,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6db3f2', end
 /* carousel styles for product thumbnails */
 
 .imageContainer .ui-tabs .ui-tabs-panel	{padding:6px;}
-.imageContainer .zhint	{text-align:center; padding:6px 0;}
+.imageContainer .zhint	{text-align:center; padding:6px 0; font-family:"Open Sans"; font-weight:normal;}
 .imageContainer	{width:402px; padding:0px 20px 0px 0px; float:left;}
 #prodImageVideoTabs	{margin-right:24px;}
 
@@ -861,7 +849,7 @@ lower tab sets (text fields and product lists)
 #tabbedProductContentTD	{padding-right:12px;}
 #tabbedProductContentTD .ui-tabs-panel	{height:424px; overflow:auto;}
 
-.tabbedProductListsTD	{width:190px;}
+/*.tabbedProductListsTD	{width:190px;}*/
 .tabbedProductListsTD .ui-tabs .ui-tabs-panel	{padding:6px;}
 
 .tabbedProductListsTD .jcarousel-skin-default {position:relative;}
