@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"20130411202700",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"20130412121100",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"",
 	"httpsURL":"https://www-beachmall-com.app-hosted.com/",
@@ -1374,7 +1374,7 @@ this will likely become more flexible in the future. ###
 		</ul>
 
 		<div class='prodPageImages'  data-anytab-content='prodImages'>
-			<img src='blank.gif' class='prodBigImage' name='prodBigImage' data-bind='var: product(zoovy:prod_image1); format: magicZoomPlus; extension: magicToolBox_mzp;' width='380' height='380' />
+			<img src='blank.gif' class='prodBigImage' name='prodBigImage' data-bind='var: product(zoovy:prod_image1); format: magicZoomPlus; extension: magicToolBox_mzp;' width='310' height='310' />
 			<div class='zhint'>Mouse over main image to zoom in</div>
 			<div class='productPageCarouselContainer'>
 				<div>
@@ -1472,6 +1472,59 @@ this will likely become more flexible in the future. ###
 
 
 	</td>
+	
+	<td class='youMayLikeAccessories'>
+
+
+	<div class='tabbedProductListsTD marginLeft'>
+		<div class="tabbedProductLists" data-app-role='xsellTabContainer'>
+
+			<ul class='tabs'>
+				<li><a href="#prodlistRelated" >You may like</a></li>
+				<li class='displayNone' data-bind='var: product(zoovy:accessory_products); format:showIfSet;'><a href="#prodlistAccessories">Accessories</a></li>
+			</ul>
+		
+			<div class='jcarousel-skin-default verticalProdlist' data-anytab-content='prodlistRelated'>
+				<div class='slideshowContainerVertical1 prodlistSlideshow'>
+					<div>
+						<ul class='prodPageCarouselVert1' data-bind="var: product(zoovy:accessory_products); format:productList; extension:store_prodlist;loadsTemplate:productListTemplate;hide_summary:true; withInventory:1; withVariations:1;"></ul>
+					</div>
+					<a class='next1' href='#'>next</a>
+					<a class='prev1' href='#'>prev</a>					
+				</div>
+			</div>
+			<!--
+			<div class='productPageCarouselContainer'>
+				<div>
+					<ul class='prodPageCarousel' data-bind='var: product(pid); format: productImages; extension: beachmart;'></ul>    
+				</div>
+				<a href='#' class='prodPageCarPrev sprite'><span>prev</span></a>
+				<a href='#' class='prodPageCarNext sprite'><span>next</span></a>
+			</div>
+			-->
+						
+
+			<div class='jcarousel-skin-default verticalProdlist' data-anytab-content='prodlistRelated'>
+				<div class='slideshowContainerVertical2 prodlistSlideshow '>
+					<div class='next carouselNav carouselNavLgS displayNone'></div>
+					<div class='prev carouselNav carouselNavLgN displayNone'></div>
+					<ul data-bind="var: product(zoovy:related_products); format:productList; extension:store_prodlist;loadsTemplate:productListTemplate;hide_summary:true; withInventory:1; withVariations:1;"></ul>
+				</div>	
+			</div>
+			
+		</div> <!-- END tabbedProductLists -->
+
+	</div> <!-- END tabbedProductListsTD -->
+
+
+
+
+
+
+
+	</td><!-- /tabbed xsell -->
+	
+	
 </tr>
 </table>
 
@@ -1529,44 +1582,7 @@ this will likely become more flexible in the future. ###
 
 
 	</td><!-- /tabbed info -->
-	<td class='youMayLikeAccessories'>
-
-
-	<div class='tabbedProductListsTD marginLeft'>
-		<div class="tabbedProductLists" data-app-role='xsellTabContainer'>
-
-			<ul class='tabs'>
-				<li><a href="#prodlistRelated" >You may like</a></li>
-				<li class='displayNone' data-bind='var: product(zoovy:accessory_products); format:showIfSet;'><a href="#prodlistAccessories">Accessories</a></li>
-			</ul>
-		
-			<div class='jcarousel-skin-default' data-anytab-content='prodlistAccessories'>
-				<div class='slideshowContainerVertical prodlistSlideshow '>
-					<div class='next carouselNav carouselNavLgS displayNone'></div>
-					<div class='prev carouselNav carouselNavLgN displayNone'></div>
-					<ul data-bind="var: product(zoovy:accessory_products); format:productList; extension:store_prodlist;loadsTemplate:productListTemplate;hide_summary:true; withInventory:1; withVariations:1;"></ul>
-				</div>
-			</div>
-
-			<div class='jcarousel-skin-default verticalProdlist' data-anytab-content='prodlistRelated'>
-				<div class='slideshowContainerVertical prodlistSlideshow '>
-					<div class='next carouselNav carouselNavLgS displayNone'></div>
-					<div class='prev carouselNav carouselNavLgN displayNone'></div>
-					<ul data-bind="var: product(zoovy:related_products); format:productList; extension:store_prodlist;loadsTemplate:productListTemplate;hide_summary:true; withInventory:1; withVariations:1;"></ul>
-				</div>	
-			</div>
-			
-		</div> <!-- END tabbedProductLists -->
-
-	</div> <!-- END tabbedProductListsTD -->
-
-
-
-
-
-
-
-	</td><!-- /tabbed xsell -->
+	
 </tr>
 </table>
 

@@ -463,8 +463,9 @@ return filters;
 					
 				},//END CAROUSEL FUNCTIONS
 				
-				//PRODUCT PAGE LOWER THUMBNAIL CAROUSEL
+				//PRODUCT CAROUSELS
 				runProductCarousel : function() {
+					//CAROUSEL UNDER MAIN PRODUCT IMAGE
 					var $target = $('.prodPageCarousel');
 					if($target.data('isCarousel'))	{} //only make it a carousel once.
 					else	{
@@ -476,7 +477,7 @@ return filters;
 								prev: '.prodPageCarPrev',
 								next: '.prodPageCarNext',
 								height: 70,
-								width: 370,
+								width: 300,
 								//items: 4,
 								//pagination: '#bestCarPagenation',
 								scroll: 1,
@@ -487,8 +488,40 @@ return filters;
 									}
 								});
 							},3000); 
-						}
-					},
+						} //end prodPageCarousel
+					
+					//YOU MAY LIKE THIS VERTICAL CAROUSEL
+					var $target = $('.slideshowContainerVertical1');
+					if($target.data('isCarousel'))	{} //only make it a carousel once.
+					else	{
+						$target.data('isCarousel',true);
+						app.u.dump('*** Carousel is true');
+				//for whatever reason, caroufredsel needs to be executed after a moment.
+						setTimeout(function(){
+							$target.carouFredSel({
+								circular: true,
+								auto: false,
+								direction: 'up',
+								prev: '.prev1',
+								next: '.next1',
+								items:{
+									height: 440,
+									width: 240
+								},
+								height: 450,
+								width: 250,
+								//items: 1,
+								//pagination: '#bestCarPagenation',
+								scroll: 1,
+						//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
+								swipe: {
+									onMouse: true,
+									onTouch: true
+									}
+								});
+							},3000); 
+						}//END VERTICAL CAROUSEL1
+					}//END PRODUCT PAGE CAROUSELS
 				
 				
 			}, //u
