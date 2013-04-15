@@ -190,7 +190,7 @@ if(app.ext.store_filter.u.validateFilterProperties($form))	{
 					}
 				}
 
-			},'datapointer':'appPublicSearch|elasticFiltering','templateID':'productListTemplateResults'});
+			},'datapointer':'appPublicSearch|elasticFiltering','templateID':'productListTemplateResultsNoPreview'});
 		app.model.dispatchThis();
 		}
 	else	{
