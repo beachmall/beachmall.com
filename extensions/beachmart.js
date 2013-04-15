@@ -213,7 +213,45 @@ $('html, body').animate({scrollTop : 0},200); //new page content loading. scroll
 //on a data-bind, format: is equal to a renderformat. extension: tells the rendering engine where to look for the renderFormat.
 //that way, two render formats named the same (but in different extensions) don't overwrite each other.
 		renderFormats : {
-
+				showFreeShippingTag: function($tag, data) {
+					//app.u.dump(data.value);
+					var us1ts = data.value['%attribs']['us1:ts'];
+					var zoovyProdSalesRank = data.value['%attribs']['zoovy:prodsalesrank'];
+					var d = new Date();
+					var month = d.getMonth()+1;
+					var day = d.getDate();
+					var year = d.getFullYear();
+					var date = month + '-' + day + '-' + year;
+					
+					//app.u.dump('us1ts= '+us1ts);
+					//app.u.dump(us1ts['zoovy:prod_salesrank']);
+					if (us1ts != 1 || date > zoovyProdSalesRank) {
+						$tag.show();
+					}
+					else {
+						//do nothing tag is hidden by default
+					}
+				}, //End showFreeShippingTag
+				
+				showPriceModifier : function($tag, data) {
+					var priceFrom = data.value['%attribs']['user:prod_has_price_modifiers'];
+					var clearance = data.value['%attribs']['is:clearance'];
+					var sale = data.value['%attribs']['is:sale'];
+					
+					app.u.dump('***Price Modifier = '+priceFrom);
+					if (clearance == 1) {
+						$tag.append('CLEARANCE');
+					}
+					else if (priceFrom != 0) {
+						$tag.append(priceFrom);
+					}
+					else if (sale == 0) {
+						//THIS NEEDS TO BE FINISHED ONCE VIN PROVIDES COLOR OPTIONS FOR SALE PRICES!!
+					}
+						
+					}
+				} //End showPriceModifier			
+				
 			}, //renderFormats
 ////////////////////////////////////   UTIL    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
@@ -487,7 +525,7 @@ return filters;
 									onTouch: true
 									}
 								});
-							},3000); 
+							},1000); 
 						} //end prodPageCarousel
 					
 					//YOU MAY LIKE THIS VERTICAL CAROUSEL
@@ -519,7 +557,7 @@ return filters;
 									onTouch: true
 									}
 								});
-							},3000); 
+							},1000); 
 						}//END VERTICAL CAROUSEL1
 					}//END PRODUCT PAGE CAROUSELS
 				
