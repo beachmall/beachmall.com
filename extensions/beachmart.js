@@ -313,16 +313,17 @@ return filters;
 //false is returned in nothing is checked/selected.
 //can be used on a series of inputs, such as hidden or checkbox 
 			buildElasticTerms : function($obj,attr)	{
+
 				var r = false; //what is returned. will be term or terms object if valid.
 				if($obj.length == 1)	{
 					r = {term:{}};
-					r.term[attr] = $obj.val().toLowerCase();
+					r.term[attr] = (attr == 'pogs') ? $obj.val() : $obj.val().toLowerCase(); //pog searching is case sensitive.
 					}
 				else if($obj.length > 1)	{
 					r = {terms:{}};
 					r.terms[attr] = new Array();
 					$obj.each(function(){
-						r.terms[attr].push($(this).val().toLowerCase());
+						r.terms[attr].push((attr == pogs) ? $(this).val() : $(this).val().toLowerCase());
 						});
 					}
 				else	{
