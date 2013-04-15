@@ -249,7 +249,7 @@ $('html, body').animate({scrollTop : 0},200); //new page content loading. scroll
 						//THIS NEEDS TO BE FINISHED ONCE VIN PROVIDES COLOR OPTIONS FOR SALE PRICES!!
 					}
 						
-					}
+					
 				} //End showPriceModifier			
 				
 			}, //renderFormats
