@@ -352,7 +352,7 @@ label.break	{display:block; margin-bottom:2px;}
 	width:30%;
 	top:4%;
 	max-width:100px;
-	background:#777;
+	background:transparent;
 	-webkit-box-shadow: 0 -10px 10px #777;   
 	-moz-box-shadow: 0 -10px 10px #777; 
 	box-shadow: 0 -10px 10px #777; 
@@ -371,7 +371,7 @@ label.break	{display:block; margin-bottom:2px;}
 	width:30%;
 	top:13%;
 	max-width:100px;
-	background:#777;
+	background:transparent;
 	-webkit-box-shadow: -6px 15px 10px #777;   
 	-moz-box-shadow: -6px 15px 10px #777;
 	box-shadow: -6px 15px 10px #777;
@@ -390,7 +390,7 @@ label.break	{display:block; margin-bottom:2px;}
 	width:30%;
 	top:6%;
 	max-width:100px;
-	background:#777;
+	background:transparent;
 	-webkit-box-shadow: -8px 15px 10px #777;   
 	-moz-box-shadow: -8px 15px 10px #777;
 	box-shadow: -8px 15px 10px #777;
@@ -409,7 +409,7 @@ label.break	{display:block; margin-bottom:2px;}
 	width:30%;
 	top:15%;
 	max-width:100px;
-	background:#777;
+	background:transparent;
 	-webkit-box-shadow: 11px 15px 10px #777;   
 	-moz-box-shadow: 11px 15px 10px #777;
 	box-shadow: 11px 15px 10px #777;
@@ -428,7 +428,7 @@ label.break	{display:block; margin-bottom:2px;}
 	width:50%;
 	top:71%;
 	max-width:100px;
-	background:#777;
+	background:transparent;
 	-webkit-box-shadow: 0 15px 10px rgba(0,0,0, 0.7);   
 	-moz-box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
 	box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
@@ -447,7 +447,7 @@ label.break	{display:block; margin-bottom:2px;}
 	width:30%;
 	top:62%;
 	max-width:100px;
-	background:#777;
+	background:transparent;
 	-webkit-box-shadow: 10px 10px 10px #777;   
 	-moz-box-shadow: 10px 10px 10px #777;
 	box-shadow: 10px 10px 10px #777;
@@ -466,7 +466,7 @@ label.break	{display:block; margin-bottom:2px;}
 	width:30%;
 	top:81%;
 	max-width:100px;
-	background:#777;
+	background:transparent;
 	-webkit-box-shadow: 9px 17px 10px #777;   
 	-moz-box-shadow: 9px 17px 10px #777;
 	box-shadow: 9px 17px 10px #777;
@@ -485,7 +485,7 @@ label.break	{display:block; margin-bottom:2px;}
 	width:30%;
 	top:73%;
 	max-width:100px;
-	background:#777;
+	background:transparent;
 	-webkit-box-shadow: -10px 15px 10px #777;   
 	-moz-box-shadow: -10px 15px 10px #777;
 	box-shadow: -10px 15px 10px #777;
@@ -899,6 +899,14 @@ newArrivalsCarouselRight, .myProdThumb:hover .moreDetails {background-color:#e04
 
 .productListSmall.productList li {height:303px; width:220px; float:left; margin:20px 10px 7.5px 10px;}
 .productListSmall.productList li > div {width:220px;}
+.productListSmall .prodShadowFix .topLeftCorner {top:6%;}
+.productListSmall .prodShadowFix .leftTopCorner {top:17%;}
+.productListSmall .prodShadowFix .topRightCorner {top:9%;}
+.productListSmall .prodShadowFix .rightTopCorner {top:20%;}
+.productListSmall .prodShadowFix .bottomLeftCorner {top:91%;}
+.productListSmall .prodShadowFix .leftBottomCorner {top:82%;}
+.productListSmall .prodShadowFix .bottomRightCorner {top:105%;}
+.productListSmall .prodShadowFix .rightBottomCorner {top:93%;}
 .myProdThumbSmall {height:210px; border:5px solid #FFF; position:relative; z-index:2;}
 .myProdThumbSmall:hover {border:5px solid #e0463a;}
 .prodTextContainerSmall {height:auto; width:220px; font-family:Oswald; font-size:24px;}
