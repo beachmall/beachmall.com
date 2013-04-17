@@ -157,55 +157,72 @@ var store_filter = function() {
 
 			execFilter : function($form,$page){
 
-app.u.dump("BEGIN store_filter.a.filter");
-var $prodlist = $("[data-app-role='productList']",$page).first().empty();
+				app.u.dump("BEGIN store_filter.a.filter");
+				var $prodlist = $("[data-app-role='productList']",$page).first().empty();
 
 
-$('.categoryList',$page).hide(); //hide any subcategory lists in the main area so customer can focus on results
-$('.categoryText',$page).hide(); //hide any text blocks.
+				$('.categoryList',$page).hide(); //hide any subcategory lists in the main area so customer can focus on results
+				$('.categoryText',$page).hide(); //hide any text blocks.
 
-if(app.ext.store_filter.u.validateFilterProperties($form))	{
-//	app.u.dump(" -> validated Filter Properties.")
-	var query = {
-		"mode":"elastic-native",
-		"size":50,
-		"filter" : app.ext.store_filter.u.buildElasticFilters($form)
-		}//query
-//	app.u.dump(" -> Query: "); app.u.dump(query);
-	if(query.filter.and.length > 0)	{
-		$prodlist.addClass('loadingBG');
-		app.ext.store_search.calls.appPublicProductSearch.init(query,{'callback':function(rd){
+				if(app.ext.store_filter.u.validateFilterProperties($form))	{
+				//	app.u.dump(" -> validated Filter Properties.")
+					var query = {
+						"mode":"elastic-native",
+						"size":50,
+						"filter" : app.ext.store_filter.u.buildElasticFilters($form)
+						}//query
+				//	app.u.dump(" -> Query: "); app.u.dump(query);
+					if(query.filter.and.length > 0)	{
+						$prodlist.addClass('loadingBG');
+						app.ext.store_search.calls.appPublicProductSearch.init(query,{'callback':function(rd){
 
-			if(app.model.responseHasErrors(rd)){
-				$page.anymessage({'message':rd});
-				}
-			else	{
-				var L = app.data[rd.datapointer]['_count'];
-				$prodlist.removeClass('loadingBG')
-				if(L == 0)	{
-					$page.anymessage({"message":"Your query returned zero results."});
+							if(app.model.responseHasErrors(rd)){
+								$page.anymessage({'message':rd});
+								}
+							else	{
+								var L = app.data[rd.datapointer]['_count'];
+								$prodlist.removeClass('loadingBG')
+								if(L == 0)	{
+									$page.anymessage({"message":"Your query returned zero results."});
+									}
+								else	{
+									$prodlist.append(app.ext.store_search.u.getElasticResultsAsJQObject(rd));
+									}
+								}
+
+							},'datapointer':'appPublicSearch|elasticFiltering','templateID':'productListTemplateResultsNoPreview'});
+						app.model.dispatchThis();
+						}
+					else	{
+						$page.anymessage({'message':"Please make some selections from the list of filters"});
+						}
 					}
 				else	{
-					$prodlist.append(app.ext.store_search.u.getElasticResultsAsJQObject(rd));
+					$page.anymessage({"message":"Uh Oh! It seems an error occured. Please try again or contact the site administator if error persists."});
 					}
-				}
-
-			},'datapointer':'appPublicSearch|elasticFiltering','templateID':'productListTemplateResultsNoPreview'});
-		app.model.dispatchThis();
-		}
-	else	{
-		$page.anymessage({'message':"Please make some selections from the list of filters"});
-		}
-	}
-else	{
-	$page.anymessage({"message":"Uh Oh! It seems an error occured. Please try again or contact the site administator if error persists."});
-	}
-$('html, body').animate({scrollTop : 0},200); //new page content loading. scroll to top.
+				$('html, body').animate({scrollTop : 0},200); //new page content loading. scroll to top.
 
 
-				},//filter
-
-			}, //actions
+			},//filter
+			
+			showDropdown : function ($tag) {
+				var $dropdown = $(".dropdown", $tag);
+				var height = 535;
+				$dropdown.children().each(function(){
+					$(this).outerHeight(true);
+				});
+				$dropdown.stop().animate({"height":height+"px"}, 1000);
+			},
+                    
+			hideDropdown : function ($tag) {
+				$(".dropdown", $tag).stop().animate({"height":"0px"}, 1000);
+			},
+			
+			clickDropdown : function ($tag) {
+				$(".dropdown", $tag).stop().animate({"height":"0px"}, 0);
+			}
+			
+		}, //actions
 
 ////////////////////////////////////   RENDERFORMATS    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 

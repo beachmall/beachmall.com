@@ -239,8 +239,8 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                     }
                 </script>
             
-                <!-- DROPDOWN SCRIPT -->
-                <script type="text/javascript">
+                <!-- DROPDOWN SCRIPT 
+               <script type="text/javascript">
                     var showDropdown = function ($tag) {
                         var $dropdown = $(".dropdown", $tag);
                         var height = 535;
@@ -258,6 +258,8 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 						$(".dropdown", $tag).stop().animate({"height":"0px"}, 0);
 					};	
                 </script>
+				-->
+			
                 
                 <!-- SECOND LEVEL DROPOUT SCRIPT -->
                 <script type="text/javascript">
@@ -276,10 +278,12 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                 </script>
                     
                 <div class='dropdownsContainer'>
-                    <div class='singleDropdown floatLeft sprite' onMouseOver="showDropdown($(this));" onMouseOut="hideDropdown($(this));">
-               <!-- <a href='#top' class='pointer' onClick="clickDropdown($(this)); return showContent('category',{'navcat':'.beach-accessories'});">BEACH ACCESSORIES</a> -->
-               <!-- <a class='bindByAnchor' href='#!category?navcat=.beach-accessories' onClick="clickDropdown($(this));">BEACH ACCESSORIES</a> -->
-               		<a class='bindByAnchor' href='#!category?navcat=.beach-accessories'>BEACH ACCESSORIES</a>    
+               <!-- <div class='singleDropdown floatLeft sprite' onMouseOver="app.ext.store_filter.a.showDropdown($(this));" onMouseOut="app.ext.store_filter.a.hideDropdown($(this));">
+					<a href='#!' class='pointer' onClick="app.ext.store_filter.a.hideDropdownClick($(this).parent()); return showContent('category',{'navcat':'.beach-accessories'});">BEACH ACCESSORIES</a> -->
+			   <!-- <a href='#top' class='pointer' onClick="clickDropdown($(this)); return showContent('category',{'navcat':'.beach-accessories'});">BEACH ACCESSORIES</a> -->
+					<div class='singleDropdown floatLeft sprite' onMouseOver="app.ext.store_filter.a.showDropdown($(this));" onMouseOut="app.ext.store_filter.a.hideDropdown($(this));">
+<!-- <a href='#!' class='pointer' onClick="clickDropdown($(this).parent()); return showContent('category',{'navcat':'.beach-accessories'});">BEACH ACCESSORIES</a> -->
+					<a class='bindByAnchor' href='#!category?navcat=.beach-accessories' onClick="app.ext.store_filter.a.clickDropdown($(this).parent());">BEACH ACCESSORIES</a> 
                         <div class='beachAccessoriesDD dropdown twoLine floatLeft'>
                             <ul class='listStyleNone floatLeft'>
                             	<li class='noArrow'>BEACH<br>ACCESSORIES</li>
