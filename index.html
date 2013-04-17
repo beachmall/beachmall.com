@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"20130417104400",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"20130417155000",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"",
 	"httpsURL":"https://www-beachmall-com.app-hosted.com/",
@@ -109,10 +109,11 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 	
 <div class='headerContainer'>
 <header class='clearfix topNav greyGradient'>
-	<div class='localizedBox fontBlack fontSize12 floatLeft' onMouseOver="showGeoDropdown($(this))" onMouseOut="hideGeoDropdown($(this))">
+	<div class='localizedBox fontBlack fontSize12 floatLeft' onMouseOver="app.ext.store_filter.a.showDropdown($(this),220);" onMouseOut="app.ext.store_filter.a.hideDropdown($(this));">
         <span class='oswaldFontBold  fontSize14'>LOCALIZED FOR </span><span class='oswaldFontBold fontTeal fontSize18'>32099</span><br>
         <span class='openSansFont'>Jacksonville, FL </span><span class='openSansFontBold'>(Change)</span>
-    	<div class='geoDropdown'>
+    	<div class='geoDropdown dropdown'>
+			<div class='arrowContainer'></div>
 			<h1>WE JUST NEED YOUR ZIP CODE!</h1>
             By providing your delivery ZIP code, you'll allow us to:<br>
             <span>Show you special pricing</span> that may only be available in select areas.<br>
@@ -140,9 +141,9 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 	<nav class='floatRight'>
         <div class='cartIcon sprite'><a href='#' onClick="return showContent('cart',{});"><span class='cartItemCount'>0</span></a></div>
 	</nav>
-    <nav class='topNavLinks floatRight openSansFontBold fontSize12' onMouseOver="showMyAcctDropdown($(this))" onMouseOut="hideMyAcctDropdown($(this))">
+    <nav class='topNavLinks floatRight openSansFontBold fontSize12' onMouseOver="app.ext.store_filter.a.showDropdown($(this),100);" onMouseOut="app.ext.store_filter.a.hideDropdown($(this));">
         <a href="#" onClick="return showContent('customer',{'show':'myaccount'});">My Account</a> 
-    	<div class='myAcctDropdown'>
+    	<div class='dropdown myAcctDropdown'>
         	<ul class='listStyleNone'>
             	<li><a class='bindByAnchor' href='#!customer?show=myaccount'>Sign In</a> / <a class='bindByAnchor' href='#!customer?show=logout'>Sign Out</a></li>
                 <li><a class='bindByAnchor' href='#!customer?show=myaccount'>Create An Account</a></li>
@@ -150,9 +151,9 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
             </ul>
         </div>
     </nav> 
-    <nav class='topNavLinks floatRight openSansFont fontSize12' onMouseOver="showCustCareDropdown($(this))" onMouseOut="hideCustCareDropdown($(this))">
+    <nav class='topNavLinks floatRight openSansFont fontSize12' onMouseOver="app.ext.store_filter.a.showDropdown($(this),150);" onMouseOut="app.ext.store_filter.a.hideDropdown($(this));">
 		<a href="#" onClick="return showContent('company',{'show':'contact'});">Customer Care</a> |
-        <div class='custCareDropdown'>
+        <div class='dropdown custCareDropdown'>
         	<ul class='listStyleNone'>
             	<li><a class='bindByAnchor' href='#!customer?show=orders'>Ordering & Cancelations</a></li>
                 <li><a class="bindByAnchor" href="#!company?show=shipping">Shipping</a></li>
@@ -186,108 +187,16 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
         </div>
         
         <div class='dropdownsContainer floatRight'>
-        
-        
-        
+
             <div id='mainDropdown'>
-            
-            	<!-- GEO DROPDOWN SCRIPT -->
-				<script type="text/javascript">
-                    var showGeoDropdown = function ($tag) {
-                        var $geoDropdown = $(".geoDropdown", $tag);
-                        var height = 220;
-                        $geoDropdown.children().each(function(){
-                            $(this).outerHeight(true);
-                        });
-                        $geoDropdown.stop().animate({"height":height+"px"}, 1000);
-                    }
-                    
-                    var hideGeoDropdown = function ($tag) {
-                        $(".geoDropdown", $tag).stop().animate({"height":"0px"}, 1000);
-                    }
-                </script>
-                
-                <!-- CUSTOMER CARE DROPDOWN SCRIPT -->
-				<script type="text/javascript">
-                    var showCustCareDropdown = function ($tag) {
-                        var $custCareDropdown = $(".custCareDropdown", $tag);
-                        var height = 150;
-                        $custCareDropdown.children().each(function(){
-                            $(this).outerHeight(true);
-                        });
-                        $custCareDropdown.stop().animate({"height":height+"px"}, 1000);
-                    }
-                    
-                    var hideCustCareDropdown = function ($tag) {
-                        $(".custCareDropdown", $tag).stop().animate({"height":"0px"}, 1000);
-                    }
-                </script>
-                
-                <!-- MY ACCOUNT DROPDOWN SCRIPT -->
-				<script type="text/javascript">
-                    var showMyAcctDropdown = function ($tag) {
-                        var $myAcctDropdown = $(".myAcctDropdown", $tag);
-                        var height = 100;
-                        $myAcctDropdown.children().each(function(){
-                            $(this).outerHeight(true);
-                        });
-                        $myAcctDropdown.stop().animate({"height":height+"px"}, 1000);
-                    }
-                    
-                    var hideMyAcctDropdown = function ($tag) {
-                        $(".myAcctDropdown", $tag).stop().animate({"height":"0px"}, 1000);
-                    }
-                </script>
-            
-                <!-- DROPDOWN SCRIPT 
-               <script type="text/javascript">
-                    var showDropdown = function ($tag) {
-                        var $dropdown = $(".dropdown", $tag);
-                        var height = 535;
-                        $dropdown.children().each(function(){
-                            $(this).outerHeight(true);
-                        });
-                        $dropdown.stop().animate({"height":height+"px"}, 1000);
-                    }
-                    
-                    var hideDropdown = function ($tag) {
-                        $(".dropdown", $tag).stop().animate({"height":"0px"}, 1000);
-                    }
-					
-					var clickDropdown = function ($tag) {
-						$(".dropdown", $tag).stop().animate({"height":"0px"}, 0);
-					};	
-                </script>
-				-->
-			
-                
-                <!-- SECOND LEVEL DROPOUT SCRIPT -->
-                <script type="text/javascript">
-                    var showDropout = function ($tag) {
-                        var $dropout = $(".dropout", $tag);
-                        var width = 240;
-                        $dropout.children().each(function(){
-                            $(this).outerWidth(true);
-                        });
-                        $dropout.stop().animate({"width":width+"px"}, 1000);
-                    }
-                    
-                    var hideDropout = function ($tag) {
-                        $(".dropout", $tag).stop().animate({"width":"0px"}, 1000);
-                    }
-                </script>
-                    
+ 
                 <div class='dropdownsContainer'>
-               <!-- <div class='singleDropdown floatLeft sprite' onMouseOver="app.ext.store_filter.a.showDropdown($(this));" onMouseOut="app.ext.store_filter.a.hideDropdown($(this));">
-					<a href='#!' class='pointer' onClick="app.ext.store_filter.a.hideDropdownClick($(this).parent()); return showContent('category',{'navcat':'.beach-accessories'});">BEACH ACCESSORIES</a> -->
-			   <!-- <a href='#top' class='pointer' onClick="clickDropdown($(this)); return showContent('category',{'navcat':'.beach-accessories'});">BEACH ACCESSORIES</a> -->
-					<div class='singleDropdown floatLeft sprite' onMouseOver="app.ext.store_filter.a.showDropdown($(this));" onMouseOut="app.ext.store_filter.a.hideDropdown($(this));">
-<!-- <a href='#!' class='pointer' onClick="clickDropdown($(this).parent()); return showContent('category',{'navcat':'.beach-accessories'});">BEACH ACCESSORIES</a> -->
+					<div class='singleDropdown floatLeft sprite' onMouseOver="app.ext.store_filter.a.showDropdown($(this),535);" onMouseOut="app.ext.store_filter.a.hideDropdown($(this));">
 					<a class='bindByAnchor' href='#!category?navcat=.beach-accessories' onClick="app.ext.store_filter.a.clickDropdown($(this).parent());">BEACH ACCESSORIES</a> 
                         <div class='beachAccessoriesDD dropdown twoLine floatLeft'>
                             <ul class='listStyleNone floatLeft'>
                             	<li class='noArrow'>BEACH<br>ACCESSORIES</li>
-                            	<li onMouseOver="showDropout($(this))" onMouseOut="hideDropout($(this))">Beach Bags & Totes
+                            	<li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Beach Bags & Totes
                                 	<div class='dropout out'>
                                     	<ul>
                                         	<li>Some Beach Bags</li>
@@ -300,7 +209,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                                         </ul>
                                     </div>
                                 </li>
-                                <li onMouseOver="showDropout($(this))" onMouseOut="hideDropout($(this))">Beach Towels & Blankets
+                                <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Beach Towels & Blankets
                                 	<div class='dropout out'>
                                         <ul>
                                             <li>Content To Be Determined</li>
@@ -312,7 +221,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                                         </ul>
                                     </div>
                                 </li>
-                                <li onMouseOver="showDropout($(this))" onMouseOut="hideDropout($(this))">Beach Carts
+                                <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Beach Carts
                                 	<div class='dropout out'>
                                         <ul>
                                             <li>Content To Be Determined</li>
@@ -324,7 +233,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                                         </ul>
                                     </div>
                                 </li>
-                                <li onMouseOver="showDropout($(this))" onMouseOut="hideDropout($(this))">Electronics
+                                <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Electronics
                                 	<div class='dropout out'>
                                         <ul>
                                             <li>Content To Be Determined</li>
@@ -336,7 +245,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                                         </ul>
                                     </div>
                                 </li>
-                                <li onMouseOver="showDropout($(this))" onMouseOut="hideDropout($(this))">Picnic Backpacks
+                                <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Picnic Backpacks
                                 	<div class='dropout out'>
                                         <ul>
                                             <li>Content To Be Determined</li>
@@ -348,7 +257,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                                         </ul>
                                     </div>
                                 </li>
-                                <li onMouseOver="showDropout($(this))" onMouseOut="hideDropout($(this))">Picnic Baskets
+                                <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Picnic Baskets
                                 	<div class='dropout out'>
                                         <ul>
                                             <li>Content To Be Determined</li>
@@ -360,7 +269,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                                         </ul>
                                     </div>
                                 </li>
-                                <li onMouseOver="showDropout($(this))" onMouseOut="hideDropout($(this))">Coolers
+                                <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Coolers
                                 	<div class='dropout out'>
                                         <ul>
                                             <li>Content To Be Determined</li>
@@ -372,7 +281,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                                         </ul>
 									</div>
                                 </li>
-                                <li onMouseOver="showDropout($(this))" onMouseOut="hideDropout($(this))">Tailgating
+                                <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Tailgating
                                 	<div class='dropout out'>
                                         <ul>
                                             <li>Content To Be Determined</li>
@@ -388,8 +297,8 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                             <div class='beachAccProduct'></div>
                         </div>
                     </div>
-					<div class='singleDropdown floatLeft sprite' onMouseOver="showDropdown($(this))" onMouseOut="hideDropdown($(this))">
-                    	<a class='bindByAnchor' href='#!category?navcat=.beach-chair'>BEACH<br>CHAIRS</a>
+					<div class='singleDropdown floatLeft sprite' onMouseOver="app.ext.store_filter.a.showDropdown($(this),535);" onMouseOut="app.ext.store_filter.a.hideDropdown($(this));">
+                    	<a class='bindByAnchor' href='#!category?navcat=.beach-chair' onClick="app.ext.store_filter.a.clickDropdown($(this).parent());">BEACH<br>CHAIRS</a>
                         <div class='beachChairsDD dropdown floatLeft'>    
                             <ul class='listStyleNone floatLeft'>
                                 <li class='noArrow'>BEACH CHAIRS</li>
@@ -411,8 +320,8 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                             </ul>
                         </div>
                     </div>
-                    <div class='singleDropdown singleLineDD floatLeft sprite' onMouseOver="showDropdown($(this))" onMouseOut="hideDropdown($(this))">
-						<a class='bindByAnchor' href='#!category?navcat=.beach-sports'><span>RECREATION</span></a>
+                    <div class='singleDropdown singleLineDD floatLeft sprite' onMouseOver="app.ext.store_filter.a.showDropdown($(this),535);" onMouseOut="app.ext.store_filter.a.hideDropdown($(this));">
+						<a class='bindByAnchor' href='#!category?navcat=.beach-sports' onClick="app.ext.store_filter.a.clickDropdown($(this).parent());"><span>RECREATION</span></a>
                         <div class='recreationDD dropdown floatLeft'>
                             <ul class='listStyleNone floatLeft'>
                             	<li class='noArrow'>RECREATION</li>
@@ -424,8 +333,8 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                             </ul>
                         </div>
                     </div>
-                    <div class='singleDropdown floatLeft sprite' onMouseOver="showDropdown($(this))" onMouseOut="hideDropdown($(this))">
-                    	<a class='bindByAnchor' href='#!category?navcat=.beach-umbrellas-shelter'>UMBRELLAS<br>& SHELTERS</a>
+                    <div class='singleDropdown floatLeft sprite' onMouseOver="app.ext.store_filter.a.showDropdown($(this),535);" onMouseOut="app.ext.store_filter.a.hideDropdown($(this));">
+                    	<a class='bindByAnchor' href='#!category?navcat=.beach-umbrellas-shelter' onClick="app.ext.store_filter.a.clickDropdown($(this).parent());">UMBRELLAS<br>& SHELTERS</a>
                         <div class='umbrellasShelterDD dropdown twoLine floatLeft'>
                             <ul class='listStyleNone floatLeft'>
                             	<li class='noArrow'>UMBRELLAS & SHELTERS</li>
@@ -437,8 +346,8 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                             </ul>
                         </div>
                     </div>
-                    <div class='singleDropdown floatLeft sprite' onMouseOver="showDropdown($(this))" onMouseOut="hideDropdown($(this))">
-                    	<a class='bindByAnchor' href='#!category?navcat=.beachwear'>BEACH<br>WEAR</a>
+                    <div class='singleDropdown floatLeft sprite' onMouseOver="app.ext.store_filter.a.showDropdown($(this),535);" onMouseOut="app.ext.store_filter.a.hideDropdown($(this));">
+                    	<a class='bindByAnchor' href='#!category?navcat=.beachwear' onClick="app.ext.store_filter.a.clickDropdown($(this).parent());">BEACH<br>WEAR</a>
                         <div class='beachWearDD dropdown floatLeft'>
                             <ul class='listStyleNone floatLeft'>
                             	<li class='noArrow'>BEACH WEAR</li>

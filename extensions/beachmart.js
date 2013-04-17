@@ -205,22 +205,40 @@ var store_filter = function() {
 
 			},//filter
 			
-			showDropdown : function ($tag) {
+			//SHOW MAIN CATEGORY DROPDOWN MENU
+			showDropdown : function ($tag, ht) {
 				var $dropdown = $(".dropdown", $tag);
-				var height = 535;
+				var height = ht;
 				$dropdown.children().each(function(){
 					$(this).outerHeight(true);
 				});
 				$dropdown.stop().animate({"height":height+"px"}, 1000);
 			},
-                    
+            
+			//ANIMATE RETRACTION OF MAIN CATEGORY DROPDOWN MENU
 			hideDropdown : function ($tag) {
 				$(".dropdown", $tag).stop().animate({"height":"0px"}, 1000);
 			},
 			
+			//IMEDIATE RETRACTION OF MAIN CATEGORY DROPDOWN MENU WHEN HEADER IS CLICKED
 			clickDropdown : function ($tag) {
 				$(".dropdown", $tag).stop().animate({"height":"0px"}, 0);
-			}
+			},
+			
+			//SHOW MAIN CATEGORY 2ND LEVEL DROPOUT MENU
+			showDropout : function ($tag, wd) {
+				var $dropout = $(".dropout", $tag);
+				var width = wd;
+				$dropout.children().each(function(){
+					$(this).outerWidth(true);
+				});
+				$dropout.stop().animate({"width":width+"px"}, 1000);
+			},
+			
+			//ANIMATE RETRACTION OF MAIN CATEGORY 2ND LEVEL DROPOUT MENU
+			hideDropout : function ($tag) {
+				$(".dropout", $tag).stop().animate({"width":"0px"}, 1000);
+			},
 			
 		}, //actions
 
