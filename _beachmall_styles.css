@@ -340,8 +340,162 @@ label.break	{display:block; margin-bottom:2px;}
 .prodSummaryContainer .latency {height:auto; width:100%; margin-bottom:10px;}
 
 /* Joins thumbborder and shop now text box to both hover at same time*/
+.prodHoverContainer {position:relative;}
 .prodHoverContainer:hover .moreDetailsSmall {background-color:#e0463a;}
 .prodHoverContainer:hover .myProdThumbSmall {border:5px solid #e0463a;}
+
+/* EACH CORNER ADDS CORNER SHADOWING TO A DIV APPLIED TO PRODUCTS */
+.topLeftCorner {
+	z-index:1; 
+	position:absolute;  
+	left:0px;
+	width:30%;
+	top:4%;
+	max-width:100px;
+	background:#777;
+	-webkit-box-shadow: 0 -10px 10px #777;   
+	-moz-box-shadow: 0 -10px 10px #777; 
+	box-shadow: 0 -10px 10px #777; 
+	-webkit-transform: rotate(3deg);    
+	-moz-transform: rotate(3deg);   
+	-o-transform: rotate(3deg);
+	-ms-transform: rotate(3deg);
+	transform: rotate(3deg);
+	height:1%;
+	}
+	
+.leftTopCorner {
+	z-index:1; 
+	position:absolute;  
+	left:-13px;
+	width:30%;
+	top:13%;
+	max-width:100px;
+	background:#777;
+	-webkit-box-shadow: -6px 15px 10px #777;   
+	-moz-box-shadow: -6px 15px 10px #777;
+	box-shadow: -6px 15px 10px #777;
+	-webkit-transform: rotate(86deg);    
+	-moz-transform: rotate(86deg);   
+	-o-transform: rotate(86deg);
+	-ms-transform: rotate(86deg);
+	transform: rotate(86deg);
+	height:1%;
+}
+
+.topRightCorner {
+	z-index:1; 
+	position:absolute;  
+	left:150px;
+	width:30%;
+	top:6%;
+	max-width:100px;
+	background:#777;
+	-webkit-box-shadow: -8px 15px 10px #777;   
+	-moz-box-shadow: -8px 15px 10px #777;
+	box-shadow: -8px 15px 10px #777;
+	-webkit-transform: rotate(-183deg);    
+	-moz-transform: rotate(-183deg);   
+	-o-transform: rotate(-183deg);
+	-ms-transform: rotate(-183deg);
+	transform: rotate(-183deg);
+	height:1%;
+}
+
+.rightTopCorner {
+	z-index:1; 
+	position:absolute;  
+	left:168px;
+	width:30%;
+	top:15%;
+	max-width:100px;
+	background:#777;
+	-webkit-box-shadow: 11px 15px 10px #777;   
+	-moz-box-shadow: 11px 15px 10px #777;
+	box-shadow: 11px 15px 10px #777;
+	-webkit-transform: rotate(-83deg);    
+	-moz-transform: rotate(-83deg);   
+	-o-transform: rotate(-83deg);
+	-ms-transform: rotate(-83deg);
+	transform: rotate(-83deg);
+	height:1%;
+}
+
+.bottomLeftCorner {
+	z-index:1; 
+	position:absolute;  
+	left:0px;
+	width:50%;
+	top:71%;
+	max-width:100px;
+	background:#777;
+	-webkit-box-shadow: 0 15px 10px rgba(0,0,0, 0.7);   
+	-moz-box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
+	box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
+	-webkit-transform: rotate(-3deg);    
+	-moz-transform: rotate(-3deg);   
+	-o-transform: rotate(-3deg);
+	-ms-transform: rotate(-3deg);
+	transform: rotate(-3deg);
+	height:1%;
+	}
+
+.leftBottomCorner {
+	z-index:1; 
+	position:absolute;  
+	left:-18px;
+	width:30%;
+	top:62%;
+	max-width:100px;
+	background:#777;
+	-webkit-box-shadow: 10px 10px 10px #777;   
+	-moz-box-shadow: 10px 10px 10px #777;
+	box-shadow: 10px 10px 10px #777;
+	-webkit-transform: rotate(95deg);    
+	-moz-transform: rotate(95deg);  
+	-o-transform: rotate(95deg);
+	-ms-transform: rotate(95deg);
+	transform: rotate(95deg);
+	height:1%;
+}
+
+.bottomRightCorner {
+	z-index:0; 
+	position:absolute;  
+	left:149px;
+	width:30%;
+	top:81%;
+	max-width:100px;
+	background:#777;
+	-webkit-box-shadow: 9px 17px 10px #777;   
+	-moz-box-shadow: 9px 17px 10px #777;
+	box-shadow: 9px 17px 10px #777;
+	-webkit-transform: rotate(3deg);    
+	-moz-transform: rotate(3deg);   
+	-o-transform: rotate(3deg);
+	-ms-transform: rotate(3deg);
+	transform: rotate(3deg);
+	height:1%;
+}
+
+.rightBottomCorner {
+	z-index:0; 
+	position:absolute;  
+	left:169px;
+	width:30%;
+	top:73%;
+	max-width:100px;
+	background:#777;
+	-webkit-box-shadow: -10px 15px 10px #777;   
+	-moz-box-shadow: -10px 15px 10px #777;
+	box-shadow: -10px 15px 10px #777;
+	-webkit-transform: rotate(-93deg);    
+	-moz-transform: rotate(-93deg);   
+	-o-transform: rotate(-93deg);
+	-ms-transform: rotate(-93deg);
+	transform: rotate(-93deg);
+	height:1%;
+}
 
 /* Adds user:prod_promo to products that have it set*/
 .starBurst {height:70px; width:65px; padding:12px 12px 0px 11px; background-position:-409px -1px; color:#fff; font-family:Oswald; font-size:13px; text-align:center; line-height:16px; position:absolute; top:140px; left:10px; z-index:100;}
@@ -493,7 +647,7 @@ HOMEPAGE
 **************************************************/
 .homeTemplate a {color:#fff;}
 
-.floatingBar {height:50px; width:1020px; background-color:#e0463a; position:fixed; bottom:0px; z-index:10; font-family:"Open Sans"; font-weight:bold; font-size:12px;}
+.floatingBar {height:50px; width:1020px; background-color:#e0463a; position:fixed; bottom:0px; z-index:20; font-family:"Open Sans"; font-weight:bold; font-size:12px;}
 .floatingBar .backToTop {height:17px; width:110px; position:absolute; left:40px; top:17px; color:#fff;}
 .floatingBar .recentlyViewed {height:26px; width:350px; position:absolute; left:193px; top:12px; color:#fff;}
 .floatingBar .recentlyViewed span:first-child {font-size:18px;}
@@ -745,12 +899,12 @@ newArrivalsCarouselRight, .myProdThumb:hover .moreDetails {background-color:#e04
 
 .productListSmall.productList li {height:303px; width:220px; float:left; margin:20px 10px 7.5px 10px;}
 .productListSmall.productList li > div {width:220px;}
-.myProdThumbSmall {height:210px; border:5px solid #FFF;}
+.myProdThumbSmall {height:210px; border:5px solid #FFF; position:relative; z-index:2;}
 .myProdThumbSmall:hover {border:5px solid #e0463a;}
 .prodTextContainerSmall {height:auto; width:220px; font-family:Oswald; font-size:24px;}
 .prodDescSmall, .productList h5, .categoryList h5 {color:#000; font-family:"Open Sans"; font-size:11px; text-align:center; line-height:13px; padding:7px 5px 0px 5px;}
 .prodPriceSmall, .productList h6, .categoryList h6 {margin-left:0px;}
-.moreDetailsSmall {height:30px; width:100px; color:#fff; font-size:14px; text-align:center; line-height:30px; background-color:#3bb3c3;}
+.moreDetailsSmall {height:30px; width:100px; color:#fff; font-size:14px; text-align:center; line-height:30px; background-color:#3bb3c3; position:relative;}
 .myProdThumbSmall:hover .moreDetailsSmall {background-color:#e0463a;}
 
 

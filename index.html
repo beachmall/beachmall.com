@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"20130415142900",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"20130417104400",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"",
 	"httpsURL":"https://www-beachmall-com.app-hosted.com/",
@@ -1255,7 +1255,11 @@ SANITY -> if you change the height and width of this image, change the .minimalM
 <li id='productListTemplateResultsCustomSmaller' class='loadingBG searchResultsProduct ' >
 	<div onClick="return showContent('product', {'pid' : $(this).parent().attr('data-pid')});" class='pointer productListSmall'>
 		<div class='prodHoverContainer'>
-            <div class='prodThumbContainer myProdThumbSmall'>
+			<!-- CORNER SHADOW DIVS -->
+			<div class='topLeftCorner'></div><div class='leftTopCorner'></div><div class='topRightCorner'></div><div class='rightTopCorner'></div>
+			<div class='bottomLeftCorner'></div><div class='leftBottomCorner'></div><div class='bottomRightCorner'></div><div class='rightBottomCorner'></div> 
+			<!-- END CORNER SHADOWS -->
+			<div class='prodThumbContainer myProdThumbSmall'>
                 <img src='blank.gif' class='prodThumb' data-bind='var: product(images); format:imageURL;isElastic:1;bgcolor:ffffff;' width='210' height='210' />
             </div>
             <div class='prodTextContainerSmall'>        
