@@ -961,7 +961,7 @@ remember to NOT put the button inside the 'onclick' container or two events will
                     <div class='shipTime latency' data-bind='var: product(user:prod_shipping_msg); format:text;'></div>
                 </div>
                 <form data-bind='var: product(pid); format:atcForm; extension:store_product;' class='prodViewerAddToCartForm clearfix' action='#'>
-                    <button class='prodViewerAddToCartButton' data-bind='format:addToCartButton; extension:myRIA; useParentData:true;'>more details</button>
+                    <button class='prodViewerAddToCartButton' data-bind='format:addToCartButton; extension:myRIA; useParentData:true;'></button>
                 </form>
                 <div class='prodNum stid' data-bind='var: product(pid); format:text; pretext: ITEM &nbsp #: &nbsp ;'></div>
 	      <!-- 	<span data-bind='var: reviews(reviews.total); format:text; pretext: from ;posttext: reviews; className:numReviews;'></span> -->
@@ -1131,17 +1131,45 @@ SANITY -> if you change the height and width of this image, change the .minimalM
 	
 </li>
 
-<li id='productListTemplateResultsNoPreview' class='loadingBG searchResultsProduct ' >
-	<div onClick="return showContent('product', {'pid' : $(this).parent().attr('data-pid')});" class='pointer'>
-		<div class='prodThumbContainer'>
-		<img src='blank.gif' class='prodThumb' data-bind='var: product(images); format:imageURL;isElastic:1;bgcolor:ffffff;' width='120' height='120' />
+<li id='productListTemplateResultsNoPreview' class='loadingBG products product floatLeft' >
+	<div onClick="return showContent('product', {'pid' : $(this).parent().attr('data-pid')});" class='pointer productListSmall'>
+		<div class='prodHoverContainer prodShadowFix'>
+			<!-- CORNER SHADOW DIVS -->
+			<div class='topLeftCorner'></div><div class='leftTopCorner'></div><div class='topRightCorner'></div><div class='rightTopCorner'></div>
+			<div class='bottomLeftCorner'></div><div class='leftBottomCorner'></div><div class='bottomRightCorner'></div><div class='rightBottomCorner'></div> 
+			<!-- END CORNER SHADOWS -->
+			<div class='prodThumbContainer myProdThumbSmall'>
+				<img src='blank.gif' class='prodThumb' data-bind='var: product(images); format:imageURL;isElastic:1;bgcolor:ffffff;' width='210' height='210' />
+			</div>
+			<div class='starBurst sprite displayNone' data-bind='var: product(user:prod_promo); format:showIfSet;'>
+            	<div class='starBurstTextOuter'>
+                	<div class='starBurstTextInner' data-bind='var: product(user:prod_promo); format:text;'></div>
+                </div>
+            </div>
+			<div class='hideInMinimalMode pointer moreDetailsSmall floatRight' onClick="showContent('product',{'pid':$(this).parent().attr('data-pid')});">more details</div>
 		</div>
-
-		<h5 class='hideInMinimalMode' data-bind='var: product(prod_name); format:text;'></h5>
-
-		<h6 class='hideInMinimalMode' data-bind='var: product(base_price); format:money; isElastic:1; currencySign: $;  hideZero:true; className:price; pretext: Our Price: ;'></h6>
+		<div class='prodTextContainerSmall'>
+			<div class='productPriceContainer'>
+				<h6 class='hideInMinimalMode floatLeft prodPriceSmall' data-bind='var: product(base_price); format:money; isElastic:1; currencySign: $;  hideZero:true; className:price;'></h6>
+			</div>
+			<h5 class='hideInMinimalMode clearfix prodDescSmall' data-bind='var: product(prod_name); format:text;'></h5>
+			<div class='regularPriceContainer floatLeft'>
+				<div class='regularPrice' data-bind='var: product(zoovy:prod_msrp); format:money; currencySign: $; hideZero:true;'> </div>
+				<div class='regularPriceDesc'>Regular Price</div>
+			</div>
+			<!-- THIS SECTION BREAKS SEARCH RESULTS, MAINLY WHEN useParentData IS CALLED
+			<div class='shipContainer floatLeft'>
+				<!--<div class='shipCost sprite displayNone' data-bind='useParentData:true; format:showFreeShippingTag; extension:store_filter;'></div>-->
+		<!--	<div class='shipTime latency' data-bind='var: product(user:prod_shipping_msg); format:text;'></div>
+			</div>
+			<form data-bind='var: product(pid); format:atcForm; extension:store_product;' class='prodViewerAddToCartForm clearfix' action='#'>
+                    <button class='prodViewerAddToCartButton' data-bind='format:addToCartButton; extension:myRIA; useParentData:true;'>more details</button>
+                </form>
+			<div class='prodNum stid' data-bind='var: product(pid); format:text; pretext: ITEM &nbsp #: &nbsp ;'></div> -->
+	  <!-- 	<span data-bind='var: reviews(reviews.total); format:text; pretext: from ;posttext: reviews; className:numReviews;'></span> -->
+		</div>
 	</div>
-	<div class='hideInMinimalMode pointer moreDetails' onClick="showContent('product',{'pid':$(this).parent().attr('data-pid')});">more details</div>
+	
 </li>
 
 <!-- CUSTOM VERSION OF ABOVE TEMPLATE -->
@@ -2424,62 +2452,63 @@ put all filters into the appFilters container.
             <input type="text"  class='sliderValue' />
             <div class="slider-range"></div>
         </fieldset>
-        <!-- 
-        <fieldset data-elastic-key="prod_type" data-filtertype="hidden">
+        
+   <!-- <fieldset data-elastic-key="prod_type" data-filtertype="hidden">
             <input type='hidden' name="prod_type" value="beach-umbrellas-shelter" /> this is root cat for this cat, don't know if this is correct -->
-     <!--  </fieldset>  -->
+   <!-- </fieldset>  -->
         
 		<button class='resetButton floatRight'>RESET OPTIONS</button>
 		
-        <fieldset data-elastic-key="pogs" data-filtertype="checkboxes">
+   <!-- <fieldset data-elastic-key="pogs" data-filtertype="checkboxes">
             <legend>options test</legend>
             <label class='break'><input class="" type='checkbox' value='AU00' />au00</label>
 
-        </fieldset>
-        <fieldset data-elastic-key="canopy_size" data-filtertype="checkboxes">
+        </fieldset> -->
+		
+        <fieldset data-elastic-key="pogs" data-filtertype="checkboxes">
             <legend>Canopy Size</legend>
-            <label class='break'><input class="" type='checkbox' value='6.0 Feet' /> 6.0 Feet</label>
-            <label class='break'><input type='checkbox' value='6.5 Feet' /> 6.5 Feet</label>
-            <label class='break'><input type='checkbox' value='7.0 - 7.5 Feet' /> 7.0 - 7.5 Feet</label>
-            <label class='break'><input type='checkbox' value='8.0 Feet $amp up' /> 8.0 Feet &#38 up</label>   
+            <label class='break'><input class="" type='checkbox' value='AF00' /> 6.0 Feet</label>
+            <label class='break'><input type='checkbox' value='AF01' /> 6.5 Feet</label>
+            <label class='break'><input type='checkbox' value='AF02' /> 7.0 - 7.5 Feet</label>
+            <label class='break'><input type='checkbox' value='AF03' /> 8.0 Feet &#38 up</label>   
         </fieldset>
         
-        <fieldset class="umbrellaStyle" data-elastic-key="prod_style" data-filtertype="checkboxes">
+        <fieldset class="umbrellaStyle" data-elastic-key="pogs" data-filtertype="checkboxes">
             <legend>Style</legend>
-            <label class='break'><input type='checkbox' value='vented' /> Vented</label>
-            <label class='break'><input type='checkbox' value='tiling' /> Tiling</label>
-            <label class='break'><input type='checkbox' value='novent' /> No Vent</label>
+            <label class='break'><input type='checkbox' value='AU00' /> Vented</label>
+            <label class='break'><input type='checkbox' value='AU01' /> Tiling</label>
+            <label class='break'><input type='checkbox' value='AU02' /> No Vent</label>
         </fieldset>
         
-        <fieldset class="umbrellaOptions" data-elastic-key="prod_options" data-filtertype="checkboxes">
+        <fieldset class="umbrellaOptions" data-elastic-key="pogs" data-filtertype="checkboxes">
             <legend>Options</legend>
-            <label class='break'><input type='checkbox' value='fiberglassribs' /> Fiberglass Ribs</label>
-            <label class='break'><input type='checkbox' value='steelribs' /> Steel Ribs</label>
-            <label class='break'><input type='checkbox' value='commercialgrade' /> Commercial Grade</label>
+            <label class='break'><input type='checkbox' value='B500' /> Fiberglass Ribs</label>
+            <label class='break'><input type='checkbox' value='B501' /> Steel Ribs</label>
+            <label class='break'><input type='checkbox' value='B502' /> Commercial Grade</label>
         </fieldset>
         
-        <fieldset class="umbrellaUvProtection" data-elastic-key="prod_uv_protection" data-filtertype="checkboxes">
+        <fieldset class="umbrellaUvProtection" data-elastic-key="pogs" data-filtertype="checkboxes">
             <legend>UV Protection</legend>
-            <label class='break'><input type='checkbox' value='35upf' /> 35 UPF</label>
-            <label class='break'><input type='checkbox' value='50upf' /> 50 UPF</label>
-            <label class='break'><input type='checkbox' value='100+upf' /> 100 + upf</label>
+            <label class='break'><input type='checkbox' value='AV00' /> 35 UPF</label>
+            <label class='break'><input type='checkbox' value='AV01' /> 50 UPF</label>
+            <label class='break'><input type='checkbox' value='AV02' /> 100 + upf</label>
         </fieldset>
         
-        <fieldset class="umbrellaPoleMaterial" data-elastic-key="prod_pole_material" data-filtertype="checkboxes">
+        <fieldset class="umbrellaPoleMaterial" data-elastic-key="pogs" data-filtertype="checkboxes">
             <legend>Pole Material</legend>
-            <label class='break'><input type='checkbox' value='wood' /> Wood</label>
-            <label class='break'><input type='checkbox' value='aluminum' /> Aluminum</label>
-            <label class='break'><input type='checkbox' value='steel' /> Steel</label>
+            <label class='break'><input type='checkbox' value='B600' /> Wood</label>
+            <label class='break'><input type='checkbox' value='B601' /> Aluminum</label>
+            <label class='break'><input type='checkbox' value='B602' /> Steel</label>
         </fieldset>
         
-        <fieldset class="umbrellaFabric" data-elastic-key="prod_faberic" data-filtertype="checkboxes">
+        <fieldset class="umbrellaFabric" data-elastic-key="pogs" data-filtertype="checkboxes">
             <legend>Fabric</legend>
-            <label class='break'><input type='checkbox' value='polyester' /> Polyester</label>
-            <label class='break'><input type='checkbox' value='acrylic' /> Acrylic</label>
-            <label class='break'><input type='checkbox' value='polycotton' /> PolyCotton</label>
-            <label class='break'><input type='checkbox' value='nylon' /> Nylon</label>
-            <label class='break'><input type='checkbox' value='vynil' /> Vinyl</label>    
-            <label class='break'><input type='checkbox' value='sunbrella' /> Sunbrella</label>
+            <label class='break'><input type='checkbox' value='CP00' /> Polyester</label>
+            <label class='break'><input type='checkbox' value='CP01' /> Acrylic</label>
+            <label class='break'><input type='checkbox' value='CP02' /> PolyCotton</label>
+            <label class='break'><input type='checkbox' value='CP03' /> Nylon</label>
+            <label class='break'><input type='checkbox' value='CP04' /> Vinyl</label>    
+            <label class='break'><input type='checkbox' value='CP05' /> Sunbrella</label>
         </fieldset>
 
     </form>

@@ -325,9 +325,9 @@ PRODUCT LIST
 .filterBox {height:auto; width:auto; background-color:#3BB3C3; margin-top:10px; font-family:"Open Sans";}
 .productColumn {width:auto;}
 .categoryTemplateContainer {height:auto; width:761px;}
-label.break	{display:block; margin-bottom:2px;}
+label.break	{display:block; margin:0 0 4px 6px;}
 .layeredSearch	{height:auto; width:200px; margin:16.8px; color:#000;}
-.layeredSearch legend	{font-size:1.0em; font-family:Oswald;  font-weight:bold; text-align:center; border:none;}
+.layeredSearch legend	{font-size:1.0em; font-family:Oswald;  font-weight:bold; text-align:center; border:none; margin:0 0 4px 0; color:#f8c301;}
 .layeredSearch fieldset	{margin-bottom:12px;} 
 .layeredSearch .sliderValue {text-align:center; margin-left:25px;}
 .layeredSearch .resetButton {height:30px; width:100px; background-color:#f8c301; border:none; corners:none; font-family:Oswald;  font-weight:bold; margin:0 50px 11px 50px;}
@@ -516,7 +516,7 @@ label.break	{display:block; margin-bottom:2px;}
 .prodViewerAddToCartForm {height:30px; width:100%; margin-bottom:10px;}
 .prodViewerAddToCartButton.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-only {
 	height:30px;
-	width:120px;
+	width:130px;
 	margin:6px 0px 0px 50px;
 	color#fff;
 	font-family:Oswald;
