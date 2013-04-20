@@ -342,9 +342,22 @@ label.break	{display:block; margin:0 0 4px 6px;}
 .prodSummaryContainer .priceContainer .savings {height:auto; width:100%; padding-left:0px;}
 .prodSummaryContainer .latency {height:auto; width:100%; margin-bottom:10px;}
 
+.prodModifierContainer {height:60px; width:210px; color:#fff; text-align:center; font-family:"Open Sans"; font-weight:bold; font-size:12px; position:absolute; top:5px; left:5px; z-index:3; line-height:31px; overflow:hidden;}
+.prodModifier {height:30px; width:210px; background-color:#3BB3C3;}
+
+/* Adds user:prod_promo to products that have it set*/
+.starBurst {height:30px; width:210px; background-position:-280px -120px;}
+
+/*.starBurst {height:70px; width:65px; padding:12px 12px 0px 11px; background-position:-409px -1px; color:#fff; font-family:Oswald; font-size:13px; text-align:center; line-height:16px; position:absolute; top:140px; left:10px; z-index:100;}
+.starBurstTextOuter {height:47px; width:auto; #position:absolute; #top:50%; display:table-cell; vertical-align:middle;}
+.starBurstTextInner {#position:relative; #top: -50%;}
+.starBurst span.user_prod_promo {background-image:url(images/sprites-500x500.png);}
+/* -moz-transform:rotate(-20deg); -webkit-transform:rotate(-20deg); -o-transform:rotate(-20deg); -ms-transform:rotate(-20deg); filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=-.2); */
+
+
 /* Joins thumbborder and shop now text box to both hover at same time*/
 .prodHoverContainer {position:relative;}
-.prodHoverContainer:hover .moreDetailsSmall {background-color:#e0463a;}
+.prodHoverContainer:hover .moreDetailsSmall, .prodHoverContainer:hover  .prodModifier {background-color:#e0463a;}
 .prodHoverContainer:hover .myProdThumbSmall {border:5px solid #e0463a;}
 
 /* EACH CORNER ADDS CORNER SHADOWING TO A DIV APPLIED TO PRODUCTS */
@@ -499,14 +512,6 @@ label.break	{display:block; margin:0 0 4px 6px;}
 	transform: rotate(-93deg);
 	height:1%;
 }
-
-/* Adds user:prod_promo to products that have it set*/
-.starBurst {height:70px; width:65px; padding:12px 12px 0px 11px; background-position:-409px -1px; color:#fff; font-family:Oswald; font-size:13px; text-align:center; line-height:16px; position:absolute; top:140px; left:10px; z-index:100;}
-.starBurstTextOuter {height:47px; width:auto; #position:absolute; #top:50%; display:table-cell; vertical-align:middle;}
-.starBurstTextInner {#position:relative; #top: -50%;}
-
-/*.starBurst span.user_prod_promo {background-image:url(images/sprites-500x500.png);}
-/* -moz-transform:rotate(-20deg); -webkit-transform:rotate(-20deg); -o-transform:rotate(-20deg); -ms-transform:rotate(-20deg); filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=-.2); */
 
 .productPriceContainer {height:50px; width:120px;}
 .prodPriceDesc {color:#e0463a; text-align:center; font-family:"Open Sans"; font-size:10px; font-weight:bold; background-position:1px 1px;}

@@ -275,11 +275,7 @@ var store_filter = function() {
 					
 					//app.u.dump('*** IS_USER2 = '+newLowPrice);
 					//app.u.dump('***Price Modifier = '+priceFrom);
-					if (zoovyIsTags.indexOf('IS_USER2') >= 0) {
-						$tag.append('NEW LOW PRICE!');
-						$tag.show();
-					}
-					else if (zoovyIsTags.indexOf('IS_CLEARANCE') >= 0) {
+					if (zoovyIsTags.indexOf('IS_CLEARANCE') >= 0) {
 						$tag.append('CLEARANCE PRICE!');
 					}
 					else if (zoovyIsTags.indexOf('IS_SALE') >= 0) {
@@ -289,8 +285,63 @@ var store_filter = function() {
 						//don't add anything
 					}
 					
-				} //End showPriceModifier			
-				
+				}, //End showPriceModifier	
+
+				showProdModifier : function($tag, data) {
+					var zoovyIsTags = data.value['%attribs']['zoovy:prod_is_tags'];
+					
+					//app.u.dump('*** IS_USER2 = '+newLowPrice);
+					if (zoovyIsTags.indexOf('IS_USER3') >= 0) {
+						$tag.append('Closeout!');
+						$tag.show();
+					}
+					else if (zoovyIsTags.indexOf('IS_CLEARANCE') >= 0) {
+						$tag.append('Clearance');
+						$tag.show();
+					}
+					else if (zoovyIsTags.indexOf('IS_USER6') >= 0) {
+						$tag.append('Customer Favorite');
+						$tag.show();
+					}
+					else if (zoovyIsTags.indexOf('IS_USER4') >= 0) {
+						$tag.append('Exclusive');
+						$tag.show();
+					}
+					else if (zoovyIsTags.indexOf('IS_USER5') >= 0) {
+						$tag.append('Exclusive');
+						$tag.show();
+					}
+					else if (zoovyIsTags.indexOf('IS_BESTSELLER') >= 0) {
+						$tag.append('Best Seller');
+						$tag.show();
+					}
+					else if (zoovyIsTags.indexOf('IS_USER2') >= 0) {
+						$tag.append('New Low Price!');
+						$tag.show();
+					}
+					else if (zoovyIsTags.indexOf('IS_NEWARRIVAL') >= 0) {
+						$tag.append('New Arrival');
+						$tag.show();
+					}
+					else if (zoovyIsTags.indexOf('IS_USER7') >= 0) {
+						$tag.append('Overstock Sale');
+						$tag.show();
+					}
+					else if (zoovyIsTags.indexOf('IS_DISCONTINUED') >= 0) {
+						$tag.append('Discontinued');
+						$tag.show();
+					}
+					else if (zoovyIsTags.indexOf('IS_PREORDER') >= 0) {
+						$tag.append('Back Order');
+						$tag.show();
+					}
+					else if (zoovyIsTags.indexOf('IS_SALE') >= 0) {
+						$tag.append('SALE!');
+					}
+					else {
+						//add no tags
+					}
+				}
 			}, //renderFormats
 ////////////////////////////////////   UTIL    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
