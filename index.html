@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"20130417155000",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"20130419183200",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"",
 	"httpsURL":"https://www-beachmall-com.app-hosted.com/",
@@ -946,8 +946,9 @@ remember to NOT put the button inside the 'onclick' container or two events will
         <div class='prodTextContainerSmall'>
         		<div class='productPriceContainer'>
 	                <h6 class='floatLeft prodPriceSmall' data-bind='var: product(zoovy:base_price); format:money; currencySign: $;  hideZero:true; className:price;'></h6>
-    				<div class='prodPriceDesc displayNone' data-bind='useParentData:true; format:showPriceModifier; extension:store_filter;'>Price From</div>
-			   <!-- <div class='prodPriceDesc displayNone sprite' data-bind='var: product(is:clearance); format:showIfSet;'>CLEARANCE</div> -->
+    			<!--	<div class='prodPriceDesc' data-bind='var: product(is:user2); format:showIfSet;'></div> -->
+			    <div class='prodPriceDesc displayNone' data-bind='useParentData:true; format:showPriceModifier; extension:store_filter;'></div>
+				<!--	<div class='prodPriceDesc displayNone sprite' data-bind='var: product(is:clearance); format:showIfSet;'>CLEARANCE</div> -->
                 </div>
                 <h5 class='clearfix prodDescSmall' data-bind='var: product(zoovy:prod_name); format:text;'></h5>
                 <span data-bind='var: reviews(reviews.average); format:addClass; className:review_;' class='reviewSprite'></span>

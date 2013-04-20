@@ -270,20 +270,24 @@ var store_filter = function() {
 				
 				showPriceModifier : function($tag, data) {
 					var priceFrom = data.value['%attribs']['user:prod_has_price_modifiers'];
-					var clearance = data.value['%attribs']['is:clearance'];
 					var sale = data.value['%attribs']['is:sale'];
+					var zoovyIsTags = data.value['%attribs']['zoovy:prod_is_tags'];
 					
-					app.u.dump('***Price Modifier = '+priceFrom);
-					if (clearance == 1) {
-						$tag.append('CLEARANCE');
+					//app.u.dump('*** IS_USER2 = '+newLowPrice);
+					//app.u.dump('***Price Modifier = '+priceFrom);
+					if (zoovyIsTags.indexOf('IS_USER2') >= 0) {
+						$tag.append('NEW LOW PRICE!');
+						$tag.show();
 					}
-					else if (priceFrom != 0) {
-						$tag.append(priceFrom);
+					else if (zoovyIsTags.indexOf('IS_CLEARANCE') >= 0) {
+						$tag.append('CLEARANCE PRICE!');
 					}
-					else if (sale == 0) {
-						//THIS NEEDS TO BE FINISHED ONCE VIN PROVIDES COLOR OPTIONS FOR SALE PRICES!!
+					else if (zoovyIsTags.indexOf('IS_SALE') >= 0) {
+						$tag.append('SALE PRICE!');
 					}
-						
+					else {
+						//don't add anything
+					}
 					
 				} //End showPriceModifier			
 				
