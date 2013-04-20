@@ -452,6 +452,9 @@ return filters;
 					//for whatever reason, caroufredsel needs to be executed after a moment.
 							setTimeout(function(){
 								$target.carouFredSel({
+									items: {
+										start: 8,
+									},
 									auto: false,
 									prev: '.featCarouselPrev',
 									next: '.featCarouselNext',
