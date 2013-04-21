@@ -40,14 +40,14 @@ body {
 .fontSize18 {font-size:18px;}
 .fontSize24 {font-size:24px;}
 
-.greyGradient {background: rgb(255,255,255); /* Old browsers */
-	background:-moz-linear-gradient(top,  rgba(255,255,255,1) 1%, rgba(209,209,209,1) 100%); /* FF3.6+ */
-	background:-webkit-gradient(linear, left top, left bottom, color-stop(1%,rgba(255,255,255,1)), color-stop(100%,rgba(209,209,209,1))); /* Chrome,Safari4+ */
-	background:-webkit-linear-gradient(top,  rgba(255,255,255,1) 1%,rgba(209,209,209,1) 100%); /* Chrome10+,Safari5.1+ */
-	background:-o-linear-gradient(top,  rgba(255,255,255,1) 1%,rgba(209,209,209,1) 100%); /* Opera 11.10+ */
-	background:-ms-linear-gradient(top,  rgba(255,255,255,1) 1%,rgba(209,209,209,1) 100%); /* IE10+ */
-	background:linear-gradient(to bottom,  rgba(255,255,255,1) 1%,rgba(209,209,209,1) 100%); /* W3C */
-	filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#d1d1d1',GradientType=0 ); /* IE6-9 */
+.tanGradient {background: #ffffff; /* Old browsers */
+	background: -moz-linear-gradient(top,  #ffffff 0%, #f5f1de 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#f5f1de)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #ffffff 0%,#f5f1de 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #ffffff 0%,#f5f1de 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #ffffff 0%,#f5f1de 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #ffffff 0%,#f5f1de 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f5f1de',GradientType=0 ); /* IE6-9 */
 }
 
 a {text-decoration:none;}
@@ -91,8 +91,9 @@ the padding is to compensate for the spacing between the main nav.
 .topNav .liveHelp	{height:19px; width:145px; font-size:0.75em;}
 .topNav .liveHelp div.icon {background-position:0 -91px; width:25px; height:19px;float:left;}
 .topNav .liveHelp a {text-decoration:none; font-family:Oswald; font-weight:bold; font-size:18px;color:#000;}
-.topNav .cartIcon {height:40px; width:30px; background-position:4px -45px; margin:0px 40px 0px 0px; padding: 10px 12px 0px 0px;}
+.topNav .cartIcon {height:30px; width:50px; background-position:4px -40px; margin:0px 40px 0px 0px; padding: 15px 7px 0px 0px;}
 .topNav .cartIcon a {color:#fff;}
+.topNav .cartIcon .cartItemCount {height:10px; width:10px; text-align:center;}
 .topNav .topNavLinks {height:50px; width:97px; line-height:48px; text-align:left;}
 .topNav .topNavLinks a {text-decoration:none; color: #000;}
 .custCareDropdown {height:0px; width:220px; background-color:#f8c301; position:relative; top:2px; right:65px; z-index:5; overflow:hidden;}
@@ -113,14 +114,15 @@ the padding is to compensate for the spacing between the main nav.
 }
 #mastHead .headerRightContainer {height:185px; width:980px; padding: 20px 0px 0px 0px;}
 #mastHead .bannerContainer {height:28px; width:241px; position:absolute; top:31px; left:38%;}
-#mastHead .bannerContainer .banner	{width:49%; display:inline-block; margin:0; padding:0;}
+#mastHead .bannerContainer .banner {width:49%; display:inline-block; margin:0; padding:0;}
 #mastHead .logo {margin:30px 0px 0px 0px; position:absolute;}
-#mastHead .freeShipping	{background-position:-123px -150px; height:28px; width:88px; float:left; margin-left:.2em;}
-#mastHead .easyReturns	{background-position:0 -150px; height:28px; width:114px; float:right; margin-right:.2em;}
+#mastHead .freeShipping {background-position:-123px -150px; height:28px; width:88px; float:left; margin-left:.2em;}
+#mastHead .easyReturns {background-position:0 -150px; height:28px; width:114px; float:right; margin-right:.2em;}
 
-#mastHead .searchContainer {border: none; position:relative; width: 300px; margin-bottom: 20px;}
-#mastHead .searchContainer .productSearchKeyword {border:0; background:#ffffff; text-indent:.4em; height:45px; width:200px;  box-shadow:-2px 2px 2px #000000;}
-#mastHead .searchContainer .searchButton {background-color:#e0463a; border:none; text-align:center; font-size: 14px; color:#fff; width:100px; height:45px; cursor:pointer; float:Right; box-shadow:-2px 2px 2px #000000;}
+#mastHead .searchContainer {border: 2px solid #f8c301; position:relative; width: 305px; margin-bottom: 20px; box-shadow:-2px 2px 2px #000000; background-color:#f8c301;}
+#mastHead .searchContainer .productSearchKeyword {border:0; background:#ffffff; text-indent:.4em; height:40px; width:200px; color:#3bb3c3;}
+#mastHead .productSearchForm > div {height:40px; width:40px; background-position:-49px -10px;}
+#mastHead .searchContainer .searchButton {background-color:#f8c301; border:none; text-align:center; font-size: 14px; color:#e0463a; width:60px; height:40px; cursor:pointer; float:Right; }
 
 #mastHead .dropdownsContainer {height:100px; width:780px;}
 #mastHead .dropdownsContainer a {text-decoration:none;}
@@ -660,8 +662,8 @@ HOMEPAGE
 .floatingBar .recentlyViewed {height:26px; width:350px; position:absolute; left:193px; top:12px; color:#fff;}
 .floatingBar .recentlyViewed span:first-child {font-size:18px;}
 .floatingBar .recentlyViewed span:nth-child(2) {font-size: 14px;}
-.floatingBar .cartIcon {height:38px; width:160px; position:absolute; left:580px; top:6px; padding:3px 0px 0px 18px; background-position:0 -53px;}
-.floatingBar .cartIcon p {height:20px; width:133px; position:absolute; left:44px; top:9px;}
+.floatingBar .cartIcon {height:38px; width:160px; position:absolute; left:570px; top:6px; padding:10px 0px 0px 37px; background-position:-1px -44px;}
+.floatingBar .cartIcon p {height:20px; width:133px; position:absolute; left:62px; top:9px;}
 .floatingBar .checkoutButton {height:40px; width:100px; background-color:#f8c301; position:absolute; right:120px; top:5px; border:none; color:#fff; font-family:Oswald; font-size:14px; font-weight:bold;}
 .floatingBar .floatingBarClose {height:20px; width:20px; background-color:#a8342b; position:absolute; right:10px; top:15px; border:none; background-position:-23px -96px;}
 
