@@ -106,7 +106,7 @@ the padding is to compensate for the spacing between the main nav.
 }
 
 
-#mastHead	{height:185px; width:auto; padding:0px 40px 0px 40px; position:relative; background-image:url(images/HeaderBackground.jpg); background-color:#f5f1de; border-bottom:5px solid #3bb3c3;} /* left/right padding to compensate for padding on main nav. helps w/ alignment */
+#mastHead	{height:159px; width:auto; padding:0px 40px 0px 40px; position:relative; background-image:url(images/HeaderBackground.jpg); background-color:#f5f1de; border-bottom:5px solid #3bb3c3;} /* left/right padding to compensate for padding on main nav. helps w/ alignment */
 #mastHead .phone {
 	background-position:0 0;
 	width:155px;
@@ -119,25 +119,28 @@ the padding is to compensate for the spacing between the main nav.
 #mastHead .freeShipping {background-position:-123px -150px; height:28px; width:88px; float:left; margin-left:.2em;}
 #mastHead .easyReturns {background-position:0 -150px; height:28px; width:114px; float:right; margin-right:.2em;}
 
-#mastHead .searchContainer {border: 2px solid #f8c301; position:relative; width: 305px; margin-bottom: 20px; box-shadow:-2px 2px 2px #000000; background-color:#f8c301;}
+#mastHead .searchContainer {border: 2px solid #f8c301; position:relative; width: 305px; margin-bottom: 20px; box-shadow:-2px 2px 2px #999; background-color:#f8c301;}
 #mastHead .searchContainer .productSearchKeyword {border:0; background:#ffffff; text-indent:.4em; height:40px; width:200px; color:#3bb3c3;}
 #mastHead .productSearchForm > div {height:40px; width:40px; background-position:-49px -10px;}
 #mastHead .searchContainer .searchButton {background-color:#f8c301; border:none; text-align:center; font-size: 14px; color:#e0463a; width:60px; height:40px; cursor:pointer; float:Right; }
 
-#mastHead .dropdownsContainer {height:100px; width:780px;}
-#mastHead .dropdownsContainer a {text-decoration:none;}
-#mastHead .singleDropdown {height:80px; width:156px; background-position:-47px 99px; font-family:Oswald; font-weight:bold; font-size: 24px; color:#3bb3c3; text-align:center; line-height: 27px; padding-top: 25px;}
-#mastHead .singleDropdown.singleLineDD {padding-top:30px;}
-#mastHead .singleDropdown span {line-height:49px;}
-#mastHead .singleDropdown:hover {background-position:-248px -1px; color:#e0463a;}
-#mastHead .dropdown {height:0px; width:980px; margin:0px 0px 0px 20px; position:relative; top:21px; overflow:hidden; z-index:5; background-color:#e0463a;}
+#mastHead .dropdownsContainer {height:65px; width:942px; margin:10px 0; padding:0 39px;}
+#mastHead .dropdownsContainer a {text-decoration:none; color:#fff;}
+#mastHead .singleDropdown {height:45px; width:145px; background-position:-88px 64px; padding:10px 6px 15px 6px;}
+#mastHead .singleDropdown:hover {background-position:-248px -36px;}
+#mastHead .dropdownsContainer .dropdownBorderMaker {height:30px; width:130px; background-color:#3bb3c3; border:2px solid #fff;}
+#mastHead .singleDropdown .dropdownBorderContainer:hover {background-position:-248px -36px; background-color:#e0463a;}
+#mastHead .singleDropdown .dropdownBorderContainer {height:35px; width:135px; background-position:-47px 99px; background-color: #3bb3c3; font-family:Oswald; font-weight:normal; font-size: 16px; color:#fff; text-align:center; line-height: 30px; padding:5px;}
+#mastHead .singleDropdown .dropdownBorderMaker:hover {background-color:#e0463a;}
+#mastHead .dropdown {height:0px; width:980px; margin:0px 0px 0px 20px; position:relative; top:10px; overflow:hidden; z-index:5; background-color:#e0463a;}
 #mastHead .dropdown.beachAccessoriesDD {left: -200px;}
 #mastHead .dropdown.beachAccessoriesDD .beachAccProductContainer ul {height:500px; width:720px; background-color:#eee;}
 #mastHead .beachAccProductContainer {height:525px; width:740px; background-color:#ffe680; position:absolute; top:5px; left:240px;}
-#mastHead .dropdown.beachChairsDD {left:-356px;}
-#mastHead .dropdown.recreationDD {left:-512px;}
-#mastHead .dropdown.umbrellasShelterDD {left:-668px;}
-#mastHead .dropdown.beachWearDD {left:-824px}
+#mastHead .dropdown.beachChairsDD {left:-44px;}
+#mastHead .dropdown.recreationDD {left:-358px;}
+#mastHead .dropdown.umbrellasDD {left:-627px;}
+#mastHead .dropdown.shelter {left:-829px;}
+#mastHead .dropdown.beachWearDD {left:-515px}
 #mastHead .dropdown.singleLineDD {padding-top:30px;}
 #mastHead .dropdown ul {height: 522px; width:220px; margin: 5px 0px 5px 0px; padding: 0px 0px 3px 20px; background-color:#ffe680; font-weight: normal;}
 #mastHead .dropdown li:first-child {height:27px; width:207px; font-family:Oswald; font-size:24px; font-weight: normal; color:#e0463a; text-align:left; margin: 20px 0px 16px 13px;}
@@ -146,9 +149,24 @@ the padding is to compensate for the spacing between the main nav.
 #mastHead .dropdown li:hover {color:#e0463a; cursor:pointer; background-image:url(images/DropoutArrow-207x27.png);}
 #mastHead .dropdown .noArrow:hover {background:none;}
 
-#mastHead .dropout.out {height:525px; width:0px; background-color:#f8c301; margin:0px 0px 0px 20px; position:relative; top:-117px; left:186px; overflow:hidden; z-index:5;} 
+#mastHead .dropout.out {height:525px; width:0px; background-color:#f8c301; margin:0px 0px 0px 20px; position:relative; left:186px; overflow:hidden; z-index:5;} 
 #mastHead .dropout.out ul {height: 522px; width:205px; margin: 90px 0px 0px 0px; padding:0px 0px 0px 6px; background-color:#f8c301;}
 #mastHead .dropout.out li:first-child {height:27px; width:207px; font-family:"Open Sans"; font-size:14px; color:#000; text-align:left; margin: -5px 14px 3px 14px;}
+#mastHead .dropout1  {top:-82px;}
+#mastHead .dropout2 {top:-112px;}
+#mastHead .dropout3 {top:-142px;}
+#mastHead .dropout4 {top:-172px;}
+#mastHead .dropout5 {top:-202px;}
+#mastHead .dropout6 {top:-232px;}
+#mastHead .dropout7 {top:-262px;}
+#mastHead .dropout8 {top:-292px;}
+#mastHead .dropout9 {top:-322px;}
+#mastHead .dropout10 {top:-352px;}
+#mastHead .dropout11 {top:-382px;}
+#mastHead .dropout12 {top:-412px;}
+#mastHead .dropout13 {top:-442px;}
+#mastHead .dropout14 {top:-472px;}
+#mastHead .dropout15 {top:-502px;}
 
 /*********************************************************************************
 FOOTER

@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"20130419242900",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"2013042114700",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"",
 	"httpsURL":"https://www-beachmall-com.app-hosted.com/",
@@ -187,122 +187,18 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
             <div class='banner'><div class='sprite freeShipping'></div></div>
         </div>
         
-        <div class='dropdownsContainer floatRight'>
+        <div class='dropdownsContainer floatLeft'>
 
             <div id='mainDropdown'>
  
-                <div class='dropdownsContainer'>
+                <!-- <div class='dropdownsContainer'> -->
 					<div class='singleDropdown floatLeft sprite' onMouseOver="app.ext.store_filter.a.showDropdown($(this),535);" onMouseOut="app.ext.store_filter.a.hideDropdown($(this));">
-					<a class='bindByAnchor' href='#!category?navcat=.beach-accessories' onClick="app.ext.store_filter.a.clickDropdown($(this).parent());">BEACH ACCESSORIES</a> 
-                        <div class='beachAccessoriesDD dropdown twoLine floatLeft'>
-                            <ul class='listStyleNone floatLeft'>
-                            	<li class='noArrow'>BEACH<br>ACCESSORIES</li>
-                            	<li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Beach Bags & Totes
-                                	<div class='dropout out'>
-                                    	<ul>
-                                        	<li>Some Beach Bags</li>
-                                            <li>More Beach Bags</li>
-                                            <li>Still More Beach Bags</li>
-                                            <li>Some Customized Beach Bags</li>
-                                            <li>Some Beach Totes</li>
-                                            <li>Still Yet More Beach Totes</li>
-                                            <li>The Last of the Beach Bags & Totes</li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Beach Towels & Blankets
-                                	<div class='dropout out'>
-                                        <ul>
-                                            <li>Content To Be Determined</li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Beach Carts
-                                	<div class='dropout out'>
-                                        <ul>
-                                            <li>Content To Be Determined</li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Electronics
-                                	<div class='dropout out'>
-                                        <ul>
-                                            <li>Content To Be Determined</li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Picnic Backpacks
-                                	<div class='dropout out'>
-                                        <ul>
-                                            <li>Content To Be Determined</li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Picnic Baskets
-                                	<div class='dropout out'>
-                                        <ul>
-                                            <li>Content To Be Determined</li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Coolers
-                                	<div class='dropout out'>
-                                        <ul>
-                                            <li>Content To Be Determined</li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                        </ul>
-									</div>
-                                </li>
-                                <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Tailgating
-                                	<div class='dropout out'>
-                                        <ul>
-                                            <li>Content To Be Determined</li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                        </ul>
-                                	</div>
-                                </li>
-                            </ul>
-                            <div class='beachAccProductContainer'>
-								
+                    	<div class='dropdownBorderContainer'>
+							<div class='dropdownBorderMaker'>
+								<a class='bindByAnchor' href='#!category?navcat=.beach-chair' onClick="app.ext.store_filter.a.clickDropdown($(this).parent());">BEACH CHAIRS</a>
 							</div>
-                        </div>
-                    </div>
-					<div class='singleDropdown floatLeft sprite' onMouseOver="app.ext.store_filter.a.showDropdown($(this),535);" onMouseOut="app.ext.store_filter.a.hideDropdown($(this));">
-                    	<a class='bindByAnchor' href='#!category?navcat=.beach-chair' onClick="app.ext.store_filter.a.clickDropdown($(this).parent());">BEACH<br>CHAIRS</a>
-                        <div class='beachChairsDD dropdown floatLeft'>    
+						</div>
+						<div class='beachChairsDD dropdown floatLeft'>    
                             <ul class='listStyleNone floatLeft'>
                                 <li class='noArrow'>BEACH CHAIRS</li>
                                 <li>Adirondack</li>
@@ -323,9 +219,125 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                             </ul>
                         </div>
                     </div>
-                    <div class='singleDropdown singleLineDD floatLeft sprite' onMouseOver="app.ext.store_filter.a.showDropdown($(this),535);" onMouseOut="app.ext.store_filter.a.hideDropdown($(this));">
-						<a class='bindByAnchor' href='#!category?navcat=.beach-sports' onClick="app.ext.store_filter.a.clickDropdown($(this).parent());"><span>RECREATION</span></a>
-                        <div class='recreationDD dropdown floatLeft'>
+					<div class='singleDropdown floatLeft sprite' onMouseOver="app.ext.store_filter.a.showDropdown($(this),535);" onMouseOut="app.ext.store_filter.a.hideDropdown($(this));">
+						<div class='dropdownBorderContainer'>	
+							<div class='dropdownBorderMaker'>
+								<a class='bindByAnchor' href='#!category?navcat=.beach-accessories' onClick="app.ext.store_filter.a.clickDropdown($(this).parent());">ACCESSORIES</a> 
+							</div>
+						</div>
+						<div class='beachAccessoriesDD dropdown floatLeft'>
+                            <ul class='listStyleNone floatLeft'>
+                            	<li class='noArrow'>ACCESSORIES</li>
+                            	<li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Beach Bags & Totes
+                                	<div class='dropout out dropout1'>
+                                    	<ul>
+                                        	<li>Some Beach Bags</li>
+                                            <li>More Beach Bags</li>
+                                            <li>Still More Beach Bags</li>
+                                            <li>Some Customized Beach Bags</li>
+                                            <li>Some Beach Totes</li>
+                                            <li>Still Yet More Beach Totes</li>
+                                            <li>The Last of the Beach Bags & Totes</li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Beach Towels & Blankets
+                                	<div class='dropout out dropout2'>
+                                        <ul>
+                                            <li>Content To Be Determined</li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Beach Carts
+                                	<div class='dropout out dropout3'>
+                                        <ul>
+                                            <li>Content To Be Determined</li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Electronics
+                                	<div class='dropout out dropout4'>
+                                        <ul>
+                                            <li>Content To Be Determined</li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Picnic Backpacks
+                                	<div class='dropout out dropout5'>
+                                        <ul>
+                                            <li>Content To Be Determined</li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Picnic Baskets
+                                	<div class='dropout out dropout6'>
+                                        <ul>
+                                            <li>Content To Be Determined</li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Coolers
+                                	<div class='dropout out dropout7'>
+                                        <ul>
+                                            <li>Content To Be Determined</li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                        </ul>
+									</div>
+                                </li>
+                                <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Tailgating
+                                	<div class='dropout out dropout8'>
+                                        <ul>
+                                            <li>Content To Be Determined</li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                        </ul>
+                                	</div>
+                                </li>
+                            </ul>
+                            <div class='beachAccProductContainer'>
+								
+							</div>
+                        </div>
+                    </div>
+                    <div class='singleDropdown floatLeft sprite' onMouseOver="app.ext.store_filter.a.showDropdown($(this),535);" onMouseOut="app.ext.store_filter.a.hideDropdown($(this));">
+						<div class='dropdownBorderContainer'>
+							<div class='dropdownBorderMaker'>
+								<a class='bindByAnchor' href='#!category?navcat=.beach-sports' onClick="app.ext.store_filter.a.clickDropdown($(this).parent());">RECREATION</a>
+							</div>
+						</div>
+						<div class='recreationDD dropdown floatLeft'>
                             <ul class='listStyleNone floatLeft'>
                             	<li class='noArrow'>RECREATION</li>
                                 <li>Body Boards</li>
@@ -337,21 +349,12 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                         </div>
                     </div>
                     <div class='singleDropdown floatLeft sprite' onMouseOver="app.ext.store_filter.a.showDropdown($(this),535);" onMouseOut="app.ext.store_filter.a.hideDropdown($(this));">
-                    	<a class='bindByAnchor' href='#!category?navcat=.beach-umbrellas-shelter' onClick="app.ext.store_filter.a.clickDropdown($(this).parent());">UMBRELLAS<br>& SHELTERS</a>
-                        <div class='umbrellasShelterDD dropdown twoLine floatLeft'>
-                            <ul class='listStyleNone floatLeft'>
-                            	<li class='noArrow'>UMBRELLAS & SHELTERS</li>
-                                <li>Beach Cabanas</li>
-                                <li>Beach Tents & Shelters</li>
-                                <li>Beach Umbrellas</li>
-                                <li>Market & Patio Umbrellas</li>
-                                <li>Umbrella Accessories</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class='singleDropdown floatLeft sprite' onMouseOver="app.ext.store_filter.a.showDropdown($(this),535);" onMouseOut="app.ext.store_filter.a.hideDropdown($(this));">
-                    	<a class='bindByAnchor' href='#!category?navcat=.beachwear' onClick="app.ext.store_filter.a.clickDropdown($(this).parent());">BEACH<br>WEAR</a>
-                        <div class='beachWearDD dropdown floatLeft'>
+                    	<div class='dropdownBorderContainer'>
+							<div class='dropdownBorderMaker'>
+								<a class='bindByAnchor' href='#!category?navcat=.beachwear' onClick="app.ext.store_filter.a.clickDropdown($(this).parent());">BEACH WEAR</a>
+							</div>
+						</div>
+						<div class='beachWearDD dropdown floatLeft'>
                             <ul class='listStyleNone floatLeft'>
                             	<li class='noArrow'>BEACH WEAR</li>
                                 <li>Summer Hats</li>
@@ -360,8 +363,42 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                                 <li>Women Swimwear</li>
                             </ul>
                         </div>
-                    </div>	
-                </div>
+                    </div>
+					<div class='singleDropdown floatLeft sprite' onMouseOver="app.ext.store_filter.a.showDropdown($(this),535);" onMouseOut="app.ext.store_filter.a.hideDropdown($(this));">
+                    	<div class='dropdownBorderContainer'>
+							<div class='dropdownBorderMaker'>
+								<a class='bindByAnchor' href='#!category?navcat=.beach-umbrellas-shelter' onClick="app.ext.store_filter.a.clickDropdown($(this).parent());">UMBRELLAS</a>
+							</div>
+						</div>
+						<div class='umbrellasShelterDD dropdown floatLeft'>
+                            <ul class='listStyleNone floatLeft'>
+                            	<li class='noArrow'>UMBRELLAS</li>
+                                <li>Beach Cabanas</li>
+                                <li>Beach Tents & Shelters</li>
+                                <li>Beach Umbrellas</li>
+                                <li>Market & Patio Umbrellas</li>
+                                <li>Umbrella Accessories</li>
+                            </ul>
+                        </div>
+                    </div>
+					<div class='singleDropdown floatLeft sprite' onMouseOver="app.ext.store_filter.a.showDropdown($(this),535);" onMouseOut="app.ext.store_filter.a.hideDropdown($(this));">
+                    	<div class='dropdownBorderContainer'>
+							<div class='dropdownBorderMaker'>
+								<a class='bindByAnchor' href='#!category?navcat=.beach-umbrellas-shelter' onClick="app.ext.store_filter.a.clickDropdown($(this).parent());">SHELTERS</a>
+							</div>
+						</div>
+						<div class='umbrellasShelterDD dropdown floatLeft'>
+                            <ul class='listStyleNone floatLeft'>
+                            	<li class='noArrow'>SHELTERS</li>
+                                <li>Beach Cabanas</li>
+                                <li>Beach Tents & Shelters</li>
+                                <li>Beach Umbrellas</li>
+                                <li>Market & Patio Umbrellas</li>
+                                <li>Umbrella Accessories</li>
+                            </ul>
+                        </div>
+                    </div>
+                <!-- </div> SECOND DROPDOWN CONTAINER? -->
 			</div>
     	</div>
     </div>
