@@ -110,8 +110,8 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 <div class='headerContainer'>
 <header class='clearfix topNav tanGradient'>
 	<div class='localizedBox fontBlack fontSize12 floatLeft' onMouseOver="app.ext.store_filter.a.showDropdown($(this),220);" onMouseOut="app.ext.store_filter.a.hideDropdown($(this));">
-        <span class='oswaldFontBold  fontSize14'>LOCALIZED FOR </span><span class='oswaldFontBold fontTeal fontSize18'>32099</span><br>
-        <span class='openSansFont'>Jacksonville, FL </span><span class='openSansFontBold'>(Change)</span>
+        <span class='oswaldFontBold  fontSize14'>LOCALIZED FOR </span><span class='oswaldFontBold fontTeal fontSize18 shipPostal'></span><br>
+        <span class='openSansFont shipCity'><span class='shipRegion'></span> </span><span class='openSansFontBold'>(Change)</span>
     	<div class='arrowContainer'></div>
 		<div class='geoDropdown dropdown'>
 			<h1>WE JUST NEED YOUR ZIP CODE!</h1>
@@ -119,7 +119,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
             <span>Show you special pricing</span> that may only be available in select areas.<br>
             <span>See estimated delivery dates</span> without having to checkout.            
             <form>
-                <input name="ZIPCODE" value="" placeholder=' Enter your ZIP / Postal Code' class="geoZipInput handleDefault" type="number">
+                <input name="ship/postal" value="" placeholder=' Enter your ZIP / Postal Code' class="geoZipInput handleDefault" type="number">
                 <input class="search searchButton oswaldFontBold" id="headerSearchSubmit" value="SEE DETAILS IN MY AREA" type="submit">
             </form>
             <h2>BeachMall.com respects your privacy and will not share this information with anyone.</h2>
@@ -840,16 +840,20 @@ don't modify the 'data-templateid' unless you are changing template names and up
 <div id='categoryTemplateBrands' class='loadingBG categoryTemplate'>
 
         <ul class='breadcrumb clearfix noPadOrMargin fluidList' data-bind='var: category(id); format:breadcrumb; extension:store_navcats; loadsTemplate: breadcrumbTemplate;'></ul>
-    
-        <img data-bind="var: category(%page.banner1); format: banner; editor: banner; height:250; width:750; extension: myRIA;" />
+		
+		<div class='brandsHeader'>
+			<img src='' />
+		</div>
+        
+		<img data-bind="var: category(%page.banner1); format: banner; editor: banner; height:250; width:750; extension: myRIA;" />
     
         <h2 class='blah5' data-bind="var: category(%page.header); format: text; editor: text;"></h2>
     
 		<div class='brandsCatContainer'>            
             <ul data-bind="var: category(@subcategoryDetail); format: categoryList; extension: store_navcats; loadsTemplate: brandsCategoryListTemplate; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin categoryList'></ul><!-- outputs a list of subcategories -->
         	
-        	<ul data-bind="var: category(@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: brandsProductListTemplate; withReviews:1; items_per_page: 24;" class='listStyleNone fluidList clearfix noPadOrMargin brandsProductList'></ul><!-- outputs the product list -->
-                 
+			<ul data-bind="var: category(@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: brandsProductListTemplate; withReviews:1; items_per_page: 24;" class='listStyleNone fluidList clearfix noPadOrMargin brandsProductList'></ul><!-- outputs the product list -->
+  
             <p class='blah' data-bind="var: category(%page.description); format:wiki; wikiFormats:myRIA; editor: textarea;"></p>
             
             <p data-bind="var: category(%page.description2); format:wiki; wikiFormats:myRIA; editor: textarea;"></p>
