@@ -149,6 +149,14 @@ if(data.city || data.state)	{
 	}
 app.ext.beachmart.u.getShipQuotes(app.data[tagObj.datapointer].zip);
 
+					},
+				onError : function(responseData)	{
+					var $container = $(app.u.jqSelector('#',app.ext.myRIA.vars.hotw[0].parentID));
+					//reset all the spans
+					$('.putLoadingHere',$container).removeClass('loadingBG');
+					$('.loadingText',$container).hide();
+					$('.shipMessage, .estimatedArrivalDate, .deliveryLocation, .deliveryMethod',$container).empty()
+					$('.timeInTransitMessaging',$container).append("Unable to determine your zip code for estimated arrival date. <a href='#' onClick='app.ext.beachmart.a.showZipDialog();'>click here</a> to enter zip.").show();
 					}
 				}, //checkForOrGetShipZip
 			
@@ -349,7 +357,42 @@ Action
 				}, //showShipGridInModal
 			
 			
+			updateShipPostal : function($form)	{
+//				app.u.dump("BEGIN beachmall.a.updateShipPostal.");
+				var postal = $("[name='ship/postal']",$form).val();
+				if(postal)	{
+//					app.u.dump(" -> postal set: "+postal);
+					app.calls.cartSet.init({
+						'ship/postal':postal
+						},{
+						callback:function(rd){
+							if(app.model.responseHasErrors(rd)){
+								$('#globalMessaging').anymessage({'message':rd});
+								}
+							else	{
+								if(app.ext.myRIA.vars.hotw && app.ext.myRIA.vars.hotw[0] && app.ext.myRIA.vars.hotw[0].pageType == 'product')	{
+									//update the time in transit.
 
+									var $container = $(app.u.jqSelector('#',app.ext.myRIA.vars.hotw[0].parentID));
+									app.ext.beachmart.u.getShipQuotes(postal);
+									$('.shipPostal').text(postal);
+									//reset all the spans
+									$('.putLoadingHere',$container).addClass('loadingBG');
+									$('.loadingText',$container).hide();
+									$('.shipMessage, .estimatedArrivalDate, .deliveryLocation, .deliveryMethod',$container).empty()
+
+									}
+								else	{} //not on a product page. do nothing.
+								}
+							}
+						},'passive');
+					app.model.dispatchThis('passive');
+					}
+				else	{
+					$('#globalMessaging').anymessage({'message':'In beachmart_custom.u.updateShipPostal, no postal code passed.','gMessage':true})
+					}
+				
+				},
 			
 //this is a dumbed down version of this for the product page app.
 			showContent : function(pageType,infoObj)	{
@@ -465,21 +508,25 @@ Action
 					var $button = $("<button />").html('Update Zip Code').click(function(){
 						var zip = $('#shipDialogZip').val();
 						app.u.dump("BEGIN showZipDialog .click event. zip: '"+zip+"'");
-//reset these vars so getShipQuotes doesn't use them.
-						app.data.cartDetail.ship.city = ""; 
-						app.data.cartDetail.ship.postal = ""; 
-						app.data.cartDetail.ship.region = "";
-						app.calls.cartSet.init({"ship/postal":""},{},'passive');
-						app.calls.cartSet.init({"ship/city":""},{},'passive');
-						app.calls.cartSet.init({"ship/region":""},{},'passive');
 
 						if(zip && zip.length >= 5 && !isNaN(zip))	{
+
+//reset these vars so getShipQuotes doesn't use them.
+							if(app.data.cartDetail.ship)	{
+								app.data.cartDetail.ship.city = ""; 
+								app.data.cartDetail.ship.postal = zip; 
+								app.data.cartDetail.ship.region = "";
+								}
+							app.calls.cartSet.init({"ship/postal":zip,"ship/city":"","ship/region":""},{},'passive');
+//if you destroy the cartDetail call, you'll break time in transit.
+
 							var $container = $("#productTemplate_"+app.u.makeSafeHTMLId(SKU)); //using $container as second param in $ below targets better (lighter and leaves door open for multiple instances later)
 							app.ext.beachmart.u.getShipQuotes(zip);
+							$('.timeInTransitMessaging').empty(); //intentionally has no context. once a zip is entered, remove this anywhere it was displayed.
 							$('.shipPostal').text(zip);
 							//reset all the spans
-							$('.putLoadingHere',$container).addClass('loadingBG');
-							$('.loadingText',$container).hide();
+							$('.putLoadingHere',$container).addClass('loadingBG').show();
+							$('.loadingText',$container).show();
 							$('.shipMessage, .estimatedArrivalDate, .deliveryLocation, .deliveryMethod',$container).empty()
 							$dialog.dialog('close');
 							}
@@ -854,15 +901,16 @@ else	{
 				},	
 				
 
+
 			getShipQuotes : function(zip)	{
 app.u.dump("BEGin beachmart.u.getShipQuotes");
-
+var $context = $(app.u.jqSelector('#','productTemplate_'+SKU));
 //here, inventory check is done instead of isProductPurchaseable, because is used specifically to determine whether or not to show shipping.
 // the purchaseable function takes into account considerations which have no relevance here (is parent, price, etc).
 if(app.ext.store_product.u.getProductInventory(SKU) <= 0){
 	//no inventory. Item not purchaseable. Don't get shipping info
-	$('.shippingInformation .putLoadingHere').removeClass('loadingBG').hide();
-	app.u.dump("SANITY! ship times not displayed because inventory unavailable.");
+	$('.shippingInformation .putLoadingHere',$context).removeClass('loadingBG').hide();
+	$('.timeInTransitMessaging',$context).append("Inventory not available.");
 	}
 else if(app.data['appProductGet|'+SKU] && app.data['appProductGet|'+SKU]['%attribs']['is:preorder'])	{
 	this.handlePreorderShipDate();
