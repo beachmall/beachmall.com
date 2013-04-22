@@ -737,6 +737,7 @@ the homepageTemplate template is loaded into mainContentArea by default when the
         </div>
         <div id='bestCarPagenation' class='standardCarouselPagenation'></div>
     </div>
+	
     <div class='categoryDescriptionContainer'>
     	<div class='catDescStd catDescStd1 floatLeft'>
         	<h1>Beach Gear</h1>
@@ -856,9 +857,9 @@ don't modify the 'data-templateid' unless you are changing template names and up
     
         <h2 class='blah5' data-bind="var: category(%page.header); format: text; editor: text;"></h2>
     
-		<div class='brandsCatContainer'>            
-            <ul data-bind="var: category(@subcategoryDetail); format: categoryList; extension: store_navcats; loadsTemplate: brandsCategoryListTemplate; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin categoryList'>
-				<li class='brandsHeader'>
+		<div class='brandsCatContainer'> 
+			<ul>
+				<li class='brandsHeader listStyleNone'>
 					<img src='images/BrandsHeaderImg.jpg' height='300' width='460' />
 					<ul>
 						<li><span>This is the title</span>
@@ -866,8 +867,107 @@ don't modify the 'data-templateid' unless you are changing template names and up
 						<li>! LOGO GOES HERE !<BR><BR><BR>AUTHORIZED DEALER</li>
 					</ul>
 				</li>
-			</ul><!-- outputs a list of subcategories -->
-        	
+			</ul>
+			
+			<div class='brandsTabs'>
+				<ul class='tabs'>
+					<li><a href="#featuredProdsTab">Description</a></li>
+					<li class='displayNone' ><a href="#bestSellersTab">Specs</a></li>
+					<li class='displayNone' ><a href="#viewAllProductsTab">Guarantee &amp; Returns</a></li>
+				</ul>
+			</div>
+<!-- TAB CONTENT TEST -->
+			<div data-anytab-content='featuredProdsTab'>
+				<div class='CarouselContainer featuredProductsCarouselContainer'>
+					<div class='carouselTitles yellowBkgrd'>
+						<div class='carouselTitleTextContainer floatLeft'>FEATURED PRODUCTS</div>
+						<div class='carouselLinkContainer floatRight featWidth'>View All Featured Products</div>
+						<div class='carouselArrowContainer floatRight sprite'></div>
+					</div>
+					<div class='Carousel'>
+						<a class="carouselButtonWhite featCarouselPrev carouselButtonWhitePrev" href="#">prev</a>
+						<a class="carouselButtonWhite featCarouselNext carouselButtonWhiteNext" href="#">next</a>
+						
+						<ul id='homeProdSearchFeatured' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"or":{"filters":[{"term":{"tags":"IS_USER4"}},{"term":{"tags":"IS_COLORFUL"}},{"term":{"tags":"IS_USER5"}},{"term":{"user:prod_promo":"IS_USER4"}}]}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>
+					</div>
+					<div id='featCarPagenation' class='standardCarouselPagenation'></div>
+				</div>
+			</div>
+			
+			<div data-anytab-content='bestSellersTab'>
+				<div class='CarouselContainer bestSellersCarouselContainer'>
+					<div class='carouselTitles'>
+						<div class='carouselTitleTextContainer floatLeft'>BEST SELLERS</div>
+						<a class="bindByAnchor" href="#!search?TAG=IS_BESTSELLER">
+							<div class='carouselLinkContainer floatRight'>View Best Sellers</div>
+							<div class='carouselArrowContainer floatRight sprite'></div>
+						</a>
+					</div>
+					<div class='Carousel'>
+						<a class="carouselButtonWhite bestCarouselPrev carouselButtonWhitePrev" href="#">prev</a>
+						<a class="carouselButtonWhite bestCarouselNext carouselButtonWhiteNext" href="#">next</a>
+						
+						<ul id='homeProdSearchBestSellers' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"term":{"tags":"IS_BESTSELLER"}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>
+					</div>
+					<div id='bestCarPagenation' class='standardCarouselPagenation'></div>
+				</div>
+			</div>
+		
+		
+            <ul data-bind="var: category(@subcategoryDetail); format: categoryList; extension: store_navcats; loadsTemplate: brandsCategoryListTemplate; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin categoryList'></ul><!-- outputs a list of subcategories -->
+<!-- 		
+<div class='prodTabs tabbedProductContent'>
+
+			<ul class='tabs'>
+				<li><a href="#prodDesc" >Description</a></li>
+				<li class='displayNone' data-bind='var: product(zoovy:prod_detail); format:showIfSet;'><a href="#prodDetail">Specs</a></li>
+				<li class='displayNone' data-bind='var: product(user:prod_guarantee); format:showIfSet;'><a href="#prodGuarantee">Guarantee &amp; Returns</a></li>
+			</ul>
+					
+			<!-- tab content -->
+<!--			<div data-anytab-content='prodDesc' data-bind='var: product(zoovy:prod_desc); format:wiki; wikiFormats:myRIA;'></div>
+			
+			<div data-anytab-content="prodDetail" data-bind='var: product(zoovy:prod_detail);  format:wiki; wikiFormats:myRIA; '></div>
+			
+			<div data-anytab-content="prodGuarantee" data-bind='var: product(user:prod_guarantee);  format:wiki; wikiFormats:myRIA; '></div>
+			
+			<div data-anytab-content="prodShipping">
+				<div data-bind='var: product(user:prod_shipping_msg);  format:text;'></div>
+				<div data-bind='var: product(user:prod_shipping);  format:wiki; wikiFormats:myRIA; '></div>
+			</div>
+			
+			<div data-anytab-content="prodSizing">
+				<img src='blank.gif' data-bind='var: product(user:prod_sizing_img); format: magicThumb; extension:  magicToolBox_mzp;' width='250' height='250' />
+				<div data-bind='var: product(user:prod_sizing_txt);  format:wiki; wikiFormats:myRIA; '></div>
+			</div>
+			
+			<div data-anytab-content="prodBundle" class='tabbedProductList'>
+				<ul class='productList listStyleNone noPadOrMargin fluidList clearfix bundleProdlist' data-bind="var: product(zoovy:asm_bundle_products); format:productList; extension:store_prodlist;loadsTemplate:productListTemplateBundle;hide_summary:true; withInventory:1; withVariations:1;"></ul>
+			</div>
+			
+			<div data-anytab-content="prodColors" class='tabbedProductList'>
+				<ul class='productList listStyleNone noPadOrMargin fluidList clearfix bundleProdlist' data-bind="var: product(user:prod_colors); format:productList; extension:store_prodlist;loadsTemplate:productListTemplateBundle;hide_summary:true;"></ul>
+			</div>
+			
+		</div><!-- /tabbedProductContent -->			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			<ul data-bind="var: category(@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: brandsProductListTemplate; withReviews:1; items_per_page: 24;" class='listStyleNone fluidList clearfix noPadOrMargin brandsProductList'></ul><!-- outputs the product list -->
   
             <p class='blah' data-bind="var: category(%page.description); format:wiki; wikiFormats:myRIA; editor: textarea;"></p>
