@@ -76,9 +76,9 @@ the padding is to compensate for the spacing between the main nav.
 .topNav nav a	{text-decoration:none;}
 .topNav nav a:hover	{text-decoration:underline;}
 .topNav .localizedBox {height:53px; width:216px; text-align:center; background-color:#f5f1de; border:2px solid #fff; padding-top:5px; position:absolute; top:0px; left:40px; z-index:5; box-shadow:0px 2px 2px #000000;}
+.topNav .localizedBox:hover .arrowContainer {height:11px; width:27px; background-image:url(images/DropdownArrow-27x11.png); position:absolute; bottom:-3px; left:136px;}
 
-.geoDropdown {height:0px; width:460px; background-color:#f8c301; padding:0px 20px; line-height:31px; position:relative; top:11px; left:-42px; z-index:5; overflow:hidden; text-align:left; font-family:"Open Sans"; font-size:12px; color#000;}
-.geoDropdown .arrowContainer{height:11px; width:27px; background-image:url(images/DropdownArrow-27x11.png); top:-11px; left:217px;}
+.geoDropdown {height:0px; width:460px; background-color:#f8c301; padding:0px 20px; line-height:31px; position:relative; top:11px; left:-42px; z-index:6; overflow:hidden; text-align:left; font-family:"Open Sans"; font-size:12px; color#000;}
 .geoDropdown h1 {font-family:Oswald; font-size:18px; color:#e0463a; padding-top:20px;}
 .geoDropdown span {font-weight:bold;}
 .geoDropdown form {height:40px; width:420px; background-color:#009;}
@@ -96,6 +96,8 @@ the padding is to compensate for the spacing between the main nav.
 .topNav .cartIcon .cartItemCount {height:10px; width:10px; text-align:center;}
 .topNav .topNavLinks {height:50px; width:97px; line-height:48px; text-align:left;}
 .topNav .topNavLinks a {text-decoration:none; color: #000;}
+.topNav .topNavLinks:hover .arrowContainer {height:11px; width:27px; background-image:url(images/DropdownArrow-27x11.png); position:absolute; top:39px; right:145px;}
+.topNav .topNavLinks:hover .arrowContainer2 {height:11px; width:27px; background-image:url(images/DropdownArrow-27x11.png); position:absolute; top:39px; right:231px;}
 .custCareDropdown {height:0px; width:220px; background-color:#f8c301; position:relative; top:2px; right:65px; z-index:5; overflow:hidden;}
 .myAcctDropdown {height:0px; width:220px; background-color:#f8c301; position:relative; top:2px; right:75px; z-index:5; overflow:hidden;}
 .topNavLinks > div li {margin:15px 0px 15px 20px; line-height:12px;}
@@ -138,8 +140,8 @@ the padding is to compensate for the spacing between the main nav.
 #mastHead .beachAccProductContainer {height:525px; width:740px; background-color:#ffe680; position:absolute; top:5px; left:240px;}
 #mastHead .dropdown.beachChairsDD {left:-44px;}
 #mastHead .dropdown.recreationDD {left:-358px;}
-#mastHead .dropdown.umbrellasDD {left:-627px;}
-#mastHead .dropdown.shelter {left:-829px;}
+#mastHead .dropdown.umbrellasDD {left:-672px;}
+#mastHead .dropdown.shelterDD {left:-829px;}
 #mastHead .dropdown.beachWearDD {left:-515px}
 #mastHead .dropdown.singleLineDD {padding-top:30px;}
 #mastHead .dropdown ul {height: 522px; width:220px; margin: 5px 0px 5px 0px; padding: 0px 0px 3px 20px; background-color:#ffe680; font-weight: normal;}
@@ -685,7 +687,7 @@ HOMEPAGE
 .floatingBar .checkoutButton {height:40px; width:100px; background-color:#f8c301; position:absolute; right:120px; top:5px; border:none; color:#fff; font-family:Oswald; font-size:14px; font-weight:bold;}
 .floatingBar .floatingBarClose {height:20px; width:20px; background-color:#a8342b; position:absolute; right:10px; top:15px; border:none; background-position:-23px -96px;}
 
-.homeTemplate .overhang {height:268px; width:255px; color:#fff; font-family:Oswald; font-weight:bold; background-color:#3bb3c3; position:absolute; top:235px; left:203px; z-index:5;}
+.homeTemplate .overhang {height:268px; width:255px; color:#fff; font-family:Oswald; font-weight:bold; background-color:#3bb3c3; position:absolute; top:209px; left:198px; z-index:5;}
 .homeTemplate .overhangClose {height:20px; width: 20px; background-position:-1px -96px; backgroung-color:#3bb3c3; border:none; position:absolute; top:5px; right:5px; z-index:5;}
 .homeTemplate .overhang span {height:47px; width:255px; color:#ffe680; font-size:30px; text-align:center; position:absolute; top:25px; left:0px; z-index:5;}
 .homeTemplate p {height:20px; width:214px; font-family:"Open Sans"; font-size:14px; margin:0px; position:absolute; top:75px; left:21px; z-index:5;}

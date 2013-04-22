@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"2013042114700",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"20130421125200",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"",
 	"httpsURL":"https://www-beachmall-com.app-hosted.com/",
@@ -112,8 +112,8 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 	<div class='localizedBox fontBlack fontSize12 floatLeft' onMouseOver="app.ext.store_filter.a.showDropdown($(this),220);" onMouseOut="app.ext.store_filter.a.hideDropdown($(this));">
         <span class='oswaldFontBold  fontSize14'>LOCALIZED FOR </span><span class='oswaldFontBold fontTeal fontSize18'>32099</span><br>
         <span class='openSansFont'>Jacksonville, FL </span><span class='openSansFontBold'>(Change)</span>
-    	<div class='geoDropdown dropdown'>
-			<div class='arrowContainer'></div>
+    	<div class='arrowContainer'></div>
+		<div class='geoDropdown dropdown'>
 			<h1>WE JUST NEED YOUR ZIP CODE!</h1>
             By providing your delivery ZIP code, you'll allow us to:<br>
             <span>Show you special pricing</span> that may only be available in select areas.<br>
@@ -143,6 +143,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 	</nav>
     <nav class='topNavLinks floatRight openSansFontBold fontSize12' onMouseOver="app.ext.store_filter.a.showDropdown($(this),100);" onMouseOut="app.ext.store_filter.a.hideDropdown($(this));">
         <a href="#" onClick="return showContent('customer',{'show':'myaccount'});">My Account</a> 
+		<div class='arrowContainer'></div>
     	<div class='dropdown myAcctDropdown'>
         	<ul class='listStyleNone'>
             	<li><a class='bindByAnchor' href='#!customer?show=myaccount'>Sign In</a> / <a class='bindByAnchor' href='#!customer?show=logout'>Sign Out</a></li>
@@ -153,7 +154,8 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
     </nav> 
     <nav class='topNavLinks floatRight openSansFont fontSize12' onMouseOver="app.ext.store_filter.a.showDropdown($(this),150);" onMouseOut="app.ext.store_filter.a.hideDropdown($(this));">
 		<a href="#" onClick="return showContent('company',{'show':'contact'});">Customer Care</a> |
-        <div class='dropdown custCareDropdown'>
+        <div class='arrowContainer2'></div>
+		<div class='dropdown custCareDropdown'>
         	<ul class='listStyleNone'>
             	<li><a class='bindByAnchor' href='#!customer?show=orders'>Ordering & Cancelations</a></li>
                 <li><a class="bindByAnchor" href="#!company?show=shipping">Shipping</a></li>
@@ -370,7 +372,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 								<a class='bindByAnchor' href='#!category?navcat=.beach-umbrellas-shelter' onClick="app.ext.store_filter.a.clickDropdown($(this).parent());">UMBRELLAS</a>
 							</div>
 						</div>
-						<div class='umbrellasShelterDD dropdown floatLeft'>
+						<div class='umbrellasDD dropdown floatLeft'>
                             <ul class='listStyleNone floatLeft'>
                             	<li class='noArrow'>UMBRELLAS</li>
                                 <li>Beach Cabanas</li>
@@ -387,7 +389,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 								<a class='bindByAnchor' href='#!category?navcat=.beach-umbrellas-shelter' onClick="app.ext.store_filter.a.clickDropdown($(this).parent());">SHELTERS</a>
 							</div>
 						</div>
-						<div class='umbrellasShelterDD dropdown floatLeft'>
+						<div class='shelterDD dropdown floatLeft'>
                             <ul class='listStyleNone floatLeft'>
                             	<li class='noArrow'>SHELTERS</li>
                                 <li>Beach Cabanas</li>
@@ -643,7 +645,7 @@ the homepageTemplate template is loaded into mainContentArea by default when the
         <button class='floatingBarClose sprite' onclick="$('.floatingBar').hide(); return false;"></button>
     </div>
 
-	<div class='overhang displayNone'>
+	<div class='overhang'>
         <button class='overhangClose sprite' onClick="$('.overhang').hide(); return false;"></button>
         <span>SUMMER IS HERE!</span>
         <p>Insert small paragraph or snipper regarding a summer special 
