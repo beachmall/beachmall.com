@@ -706,7 +706,15 @@ HOMEPAGE
 .featuredCarouselPagination a span {display: none;}
 .newArrivalsCarouselRight {height:300px; width:300px; margin-left:15px; overflow:hidden;position:relative;}
 
-.homepageCategories {height:330px; width:960px; margin: 0px auto 0px auto; padding:10px 0px 10px 0px;}
+.homepageCategories {height:410px; width:960px; margin: 0px auto 0px auto; padding:10px 0px 10px 0px;}
+.homepageCategories .additionalHompageCatsContainer {height:80px; width:100%;}
+.homepageCategories .additionalHompageCats {height:76px; width:212px; background-color:#fff; border:5px solid #ccc; font-family:Oswald; font-weight:bold; margin:9px;}
+.homepageCategories .additionalHompageCats .addCatArrow {height:30px; width:30px; background-position:-131px -14px; margin:23px 25px 0 0;}
+.homepageCategories .additionalHompageCats:hover {border:5px solid #e0463a;}
+.homepageCategories .additionalHompageCats:hover .addCatArrow {background-position:-97px -14px;}
+.homepageCategories .additionalHompageCats:hover span:nth-child(3) {color:#e0463a}
+.homepageCategories .additionalHompageCats span:nth-child(2) {height:auto; width:120px; font-size:12px; margin:20px 0 0 15px; display:block; color:#ccc;}
+.homepageCategories .additionalHompageCats span:nth-child(3) {height:auto; width:120px; font-size:18px; margin:1px 0 0 15px; display:block; float:left; color:#3bb3c3;}
 .shopByProdContainer {height:155px; width:300px; background:url(images/ShopbyBrandCatBkgrd-290x105.jpg); background-position:0 45px; position:relative; top:-160px; left:650px;}
 .shopByProdContainer:hover .catName {background-color:#e0463a;}
 .shopByProdContainer:hover .thumbContainer {border:5px solid #e0463a;}
