@@ -839,18 +839,34 @@ don't modify the 'data-templateid' unless you are changing template names and up
 
 <div id='categoryTemplateBrands' class='loadingBG categoryTemplate'>
 
+		<div class='brandsPromoBanner floatLeft'>
+			<div>SPECIAL OFFER!</div>
+			<div><span>TAKE AN EXTRA</span><br>10% OFF ALL COPA GEAR</div>
+			<div>PROMO CODE: 10COPA <span>See Details</span></div>
+		</div>
+
         <ul class='breadcrumb clearfix noPadOrMargin fluidList' data-bind='var: category(id); format:breadcrumb; extension:store_navcats; loadsTemplate: breadcrumbTemplate;'></ul>
 		
-		<div class='brandsHeader'>
+	<!--	<div class='brandsHeader'>
 			<img src='' />
-		</div>
+			<div></div>
+		</div> -->
         
 		<img data-bind="var: category(%page.banner1); format: banner; editor: banner; height:250; width:750; extension: myRIA;" />
     
         <h2 class='blah5' data-bind="var: category(%page.header); format: text; editor: text;"></h2>
     
 		<div class='brandsCatContainer'>            
-            <ul data-bind="var: category(@subcategoryDetail); format: categoryList; extension: store_navcats; loadsTemplate: brandsCategoryListTemplate; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin categoryList'></ul><!-- outputs a list of subcategories -->
+            <ul data-bind="var: category(@subcategoryDetail); format: categoryList; extension: store_navcats; loadsTemplate: brandsCategoryListTemplate; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin categoryList'>
+				<li class='brandsHeader'>
+					<img src='images/BrandsHeaderImg.jpg' height='300' width='460' />
+					<ul>
+						<li><span>This is the title</span>
+						<br><br>This is the text that goes under the title. It looks great and I would like to thank all of the grade school teachers that made it possible for me to form this sentence.</li>
+						<li>! LOGO GOES HERE !<BR><BR><BR>AUTHORIZED DEALER</li>
+					</ul>
+				</li>
+			</ul><!-- outputs a list of subcategories -->
         	
 			<ul data-bind="var: category(@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: brandsProductListTemplate; withReviews:1; items_per_page: 24;" class='listStyleNone fluidList clearfix noPadOrMargin brandsProductList'></ul><!-- outputs the product list -->
   

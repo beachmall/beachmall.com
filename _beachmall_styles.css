@@ -65,7 +65,7 @@ the padding is to compensate for the spacing between the main nav.
 .percent20	{width:20%; padding:.2em;}
 .percent40	{width:40%; padding:.2em;}
 
-#mainContentArea	{padding:.4em .2em;} /* side padding is compensating for margins on main nav */
+/*#mainContentArea	{padding:.4em .2em;}  side padding is compensating for margins on main nav */
 
 .headerContainer {height:auto; width:1020px; margin:auto; position:relative;}
 
@@ -228,10 +228,20 @@ CATEGORY PAGE
 BRANDS CATEGORY PAGE
 **************************************************************/
 
+.brandsPromoBanner {height:60px; width:100%; background-color:#f8c301; font-family:Oswald; font-weight:bold; color:#fff; margin:-41px 0 10px 0 ;}
+.brandsPromoBanner div:nth-child(1) {font-size:36px; float:Left; margin:3px 0 0 40px;}
+.brandsPromoBanner div:nth-child(2) {height:60px; width:440px; margin:-4px 0 0 10px; text-align:center; font-size:30px; float:Left; line-height:25px;}
+.brandsPromoBanner div:nth-child(2) span {font-size:18px; line-height:27px;}
+.brandsPromoBanner div:nth-child(3) {height:60px; width:230px; font-size:24px; float:Right; margin:0 40px 0 0; padding:12px 0 0 0; line-height:17px;}
+.brandsPromoBanner div:nth-child(3) span {font-family:"Open Sans"; font-size:14px; font-weight:bold; color:#e0463a;}
 
-.brandCategoryList {}
 .brandsCatContainer {height:auto; width:960px; padding:0px 30px;}
-.brandsHeader {height:355px; width:100%; background-color:#e45;}
+.brandsCatContainer .categoryList .brandsHeader {height:355px; width:100%; background-color:#e45; margin:auto auto 10px auto;}
+.brandsHeader img {margin:27px 0 0 9px; float:left;}
+.brandsHeader ul {height:355px; width:491px; background-color:#ccc; float:left;}
+.brandsHeader ul li:nth-child(1) {height:331px; width:325px; background-color:#a45; float:left; font-family:"Open Sans"; font-size:14px; font-weight:normal;}
+.brandsHeader ul li:nth-child(1) span {color:#a1d3ca; font-family:Oswald; font-size:24px; font-weight:bold;}
+.brandsHeader ul li:nth-child(2) {height:90px; width:140px; background-color:#b66; float:left; margin:30px 0 0 0; font-family:Oswald; font-size:14px; font-weight:bold; color:#ccc; text-align:center;}
 .categoryList > .catListBrand {height:190px; width:220px; margin:10px;}
 .brandThumbContainer {height:152px; width:152px; box-shadow:0px 0px 3px 2px #3bb3c3; padding:0px 34px;}
 .brandsCatName {height:25px; width:100%; color:#3BB3C3; font-family:"Open Sans"; font-size:14px; font-weight:bold; text-align:center; padding-top:10px;}
