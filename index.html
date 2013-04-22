@@ -106,7 +106,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 
 
 <div id='appView' class='displayNone'>
-	
+
 <div class='headerContainer'>
 <header class='clearfix topNav tanGradient'>
 	<div class='localizedBox fontBlack fontSize12 floatLeft' onMouseOver="app.ext.store_filter.a.showDropdown($(this),220);" onMouseOut="app.ext.store_filter.a.hideDropdown($(this));">
@@ -118,8 +118,8 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
             By providing your delivery ZIP code, you'll allow us to:<br>
             <span>Show you special pricing</span> that may only be available in select areas.<br>
             <span>See estimated delivery dates</span> without having to checkout.            
-            <form>
-                <input name="ship/postal" value="" placeholder=' Enter your ZIP / Postal Code' class="geoZipInput handleDefault" type="number">
+            <form onSubmit="app.ext.beachmart.a.updateShipPostal($(this)); return false;">
+                <input name='ship/postal' value="" placeholder=' Enter your ZIP / Postal Code' class="geoZipInput handleDefault" type="number">
                 <input class="search searchButton oswaldFontBold" id="headerSearchSubmit" value="SEE DETAILS IN MY AREA" type="submit">
             </form>
             <h2>BeachMall.com respects your privacy and will not share this information with anyone.</h2>
@@ -1440,6 +1440,7 @@ this will likely become more flexible in the future. ###
 		</div>
 	</div>
 	<div class='floatLeft'>
+	<div class='timeInTransitMessaging clearfix'></div>
 		<div class='putLoadingHere loadingBG'>
 			<span class='loadingText'>Acquiring Shipping Estimates</span>
 			<div class='transitContainer'></div>
