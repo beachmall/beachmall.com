@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"20130422173000",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"20130423162600",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"",
 	"httpsURL":"https://www-beachmall-com.app-hosted.com/",
@@ -60,6 +60,7 @@ css files should be included before any .js file to ensure they are downloaded i
 <link rel="stylesheet" type="text/css" href="_beachmall_styles.css" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
@@ -171,7 +172,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 
 
 
-<header class='marginBottom' id='mastHead'>
+<header id='mastHead'>
 	
 	<div class='floatLeft logo pointer' onClick="return showContent('category',{'navcat':'.'});"><img src='images/BeachmallLogoWide-220x65.jpg' width='220' height='65' alt='beachmall.com' /></div>
 	
@@ -654,58 +655,60 @@ the homepageTemplate template is loaded into mainContentArea by default when the
         <button class='overhangSpecialOfferButton'>VIEW SPECIAL OFFER</button>
     </div>	
 
-    <div class='featuredContainer'>
-        <div class='featuredCarousel floatLeft'>
-			<div class='featuredBannerText'>NEW<BR>ARRIVALS</div>
-            <a class="bindByAnchor" href="#!search?TAG=IS_NEWARRIVAL"><button class='largeButton featuredBannerButton'>SHOP NOW</button></a>
-            <div>
-                <div id='featuredCarouselPagination' class='featuredCarouselPagination'></div>
-                    <!-- a sample of how to format an elastic native search in a data-bind -->
-                <ul id='homeProdSearchNewArrivals' data-bind='var: elastic-native({"size":"20","mode":"elastic-native","filter":{"term":{"tags":"IS_NEWARRIVAL"}}}); format: productSearch; bgcolor: TTTTTT; extension: myRIA; loadsTemplate: productListTemplateResultsCustomTall;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productListTall'></ul>
-            </div>
-        </div>
-		<div class='newArrivalsCarouselRight floatLeft'>
-        	<a class="carouselButton new2CarouselPrev carouselButtonPrev" href="#">prev</a>
-			<a class="carouselButton new2CarouselNext carouselButtonNext" href="#">next</a>
-			
-			<ul id='homeProdSearchNewArrivals2' data-bind='var: elastic-native({"size":"20","mode":"elastic-native","filter":{"term":{"tags":"IS_NEWARRIVAL"}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustom;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList'></ul>
-        </div>
-    </div>
-    
-    <div class='homepageCategories'>
-		<div class='additionalHompageCatsContainer'>
-			<div class='additionalHompageCats floatLeft bindByAnchor pointer' href='#!category?navcat=.beach-accessories.beach-cart'>
-				<div class='addCatArrow sprite floatRight'></div>
-				<span>SHOP</span>
-				<span>BEACH CARTS</span>
+	<div class='featuredCatWrapper'>
+		<div class='featuredContainer'>
+			<div class='featuredCarousel floatLeft'>
+				<div class='featuredBannerText'>NEW<BR>ARRIVALS</div>
+				<button class='largeButton featuredBannerButton bindByAnchor' href="#!search?TAG=IS_NEWARRIVAL">SHOP NOW</button>
+				<div>
+					<div id='featuredCarouselPagination' class='featuredCarouselPagination'></div>
+						<!-- a sample of how to format an elastic native search in a data-bind -->
+					<ul id='homeProdSearchNewArrivals' data-bind='var: elastic-native({"size":"20","mode":"elastic-native","filter":{"term":{"tags":"IS_NEWARRIVAL"}}}); format: productSearch; bgcolor: TTTTTT; extension: myRIA; loadsTemplate: productListTemplateResultsCustomTall;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productListTall'></ul>
+				</div>
 			</div>
-			<div class='additionalHompageCats floatLeft bindByAnchor pointer' href='#!category?navcat=.beach-umbrellas-shelter.beach-tent-shelters'>
-				<div class='addCatArrow sprite floatRight'></div>
-				<span>SHOP</span>
-				<span>BEACH TENTS</span>
-			</div>
-			<div class='additionalHompageCats floatLeft bindByAnchor pointer' href='#!category?navcat=.beach-accessories.beach-bags-totes'>
-			<!--	<a class='bindByAnchor' href='#!category?navcat=.beach-umbrellas-shelter.beach-tent-shelters' onClick="app.ext.store_filter.a.clickDropdown($(this).parent());"> -->
-				<div class='addCatArrow sprite floatRight'></div>
-				<span>SHOP</span>
-				<span>BEACH BAGS</span>
-			</div>
-			<div class='additionalHompageCats floatLeft pointer' onClick="return showContent('category',{'navcat':'.beach-chairs.beach-gear'});">
-				<div class='addCatArrow sprite floatRight'></div>
-				<span>SHOP</span>
-				<span>BY BRAND</span>
+			<div class='newArrivalsCarouselRight floatLeft'>
+				<a class="carouselButton new2CarouselPrev carouselButtonPrev" href="#">prev</a>
+				<a class="carouselButton new2CarouselNext carouselButtonNext" href="#">next</a>
+				
+				<ul id='homeProdSearchNewArrivals2' data-bind='var: elastic-native({"size":"20","mode":"elastic-native","filter":{"term":{"tags":"IS_NEWARRIVAL"}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustom;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList'></ul>
 			</div>
 		</div>
-    	<ul data-bind="var: category(@subcategoryDetail); format: categoryList; bgcolor: TTTTTT; extension: store_navcats; loadsTemplate: categoryListHomeTemplate; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin'></ul>
+    
+		<div class='homepageCategories'>
+			<div class='additionalHompageCatsContainer'>
+				<div class='additionalHompageCats floatLeft bindByAnchor pointer' href='#!category?navcat=.beach-accessories.beach-cart'>
+					<div class='addCatArrow sprite floatRight'></div>
+					<span>SHOP</span>
+					<span>BEACH CARTS</span>
+				</div>
+				<div class='additionalHompageCats floatLeft bindByAnchor pointer' href='#!category?navcat=.beach-umbrellas-shelter.beach-tent-shelters'>
+					<div class='addCatArrow sprite floatRight'></div>
+					<span>SHOP</span>
+					<span>BEACH TENTS</span>
+				</div>
+				<div class='additionalHompageCats floatLeft bindByAnchor pointer' href='#!category?navcat=.beach-accessories.beach-bags-totes'>
+				<!--	<a class='bindByAnchor' href='#!category?navcat=.beach-umbrellas-shelter.beach-tent-shelters' onClick="app.ext.store_filter.a.clickDropdown($(this).parent());"> -->
+					<div class='addCatArrow sprite floatRight'></div>
+					<span>SHOP</span>
+					<span>BEACH BAGS</span>
+				</div>
+				<div class='additionalHompageCats floatLeft pointer' onClick="return showContent('category',{'navcat':'.beach-chairs.beach-gear'});">
+					<div class='addCatArrow sprite floatRight'></div>
+					<span>SHOP</span>
+					<span>BY BRAND</span>
+				</div>
+			</div>
+			<ul data-bind="var: category(@subcategoryDetail); format: categoryList; bgcolor: TTTTTT; extension: store_navcats; loadsTemplate: categoryListHomeTemplate; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin'></ul>
 
-        <!--	<div onClick="return showContent('category',{'navcat':'.beach-chairs.beach-gear'});" class='shopByProdContainer pointer'>
-            	<div class='catName white2LGray'>Shop by Brand</div>
-                <div class='thumbContainer'>
-                	<div class='moreDetailsSmall catDetails prodDetails'>VIEW BRANDS</div>
-                </div>
-            </div> -->
-        
-    </div>
+			<!--	<div onClick="return showContent('category',{'navcat':'.beach-chairs.beach-gear'});" class='shopByProdContainer pointer'>
+					<div class='catName white2LGray'>Shop by Brand</div>
+					<div class='thumbContainer'>
+						<div class='moreDetailsSmall catDetails prodDetails'>VIEW BRANDS</div>
+					</div>
+				</div> -->
+			
+		</div>
+	</div>
     
     <div class='CarouselContainer featuredProductsCarouselContainer'>
     	<div class='carouselTitles yellowBkgrd'>
@@ -714,8 +717,8 @@ the homepageTemplate template is loaded into mainContentArea by default when the
             <div class='carouselArrowContainer floatRight sprite'></div>
         </div>
         <div class='Carousel'>
-        	<a class="carouselButtonWhite featCarouselPrev carouselButtonWhitePrev" href="#">prev</a>
-			<a class="carouselButtonWhite featCarouselNext carouselButtonWhiteNext" href="#">next</a>
+        	<a class="carouselButtonDkBlue featCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
+			<a class="carouselButtonDkBlue featCarouselNext carouselButtonDkBlueNext" href="#">next</a>
         	
         	<ul id='homeProdSearchFeatured' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"or":{"filters":[{"term":{"tags":"IS_USER4"}},{"term":{"tags":"IS_COLORFUL"}},{"term":{"tags":"IS_USER5"}},{"term":{"user:prod_promo":"IS_USER4"}}]}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>
         </div>
@@ -731,8 +734,8 @@ the homepageTemplate template is loaded into mainContentArea by default when the
             </a>
         </div>
         <div class='Carousel'>
-        	<a class="carouselButtonWhite bestCarouselPrev carouselButtonWhitePrev" href="#">prev</a>
-			<a class="carouselButtonWhite bestCarouselNext carouselButtonWhiteNext" href="#">next</a>
+        	<a class="carouselButtonDkBlue bestCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
+			<a class="carouselButtonDkBlue bestCarouselNext carouselButtonDkBlueNext" href="#">next</a>
         	
         	<ul id='homeProdSearchBestSellers' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"term":{"tags":"IS_BESTSELLER"}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>
         </div>
@@ -886,8 +889,8 @@ don't modify the 'data-templateid' unless you are changing template names and up
 						<div class='carouselArrowContainer floatRight sprite'></div>
 					</div>
 					<div class='Carousel'>
-						<a class="carouselButtonWhite featCarouselPrev carouselButtonWhitePrev" href="#">prev</a>
-						<a class="carouselButtonWhite featCarouselNext carouselButtonWhiteNext" href="#">next</a>
+						<a class="carouselButtonDkBlue featCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
+						<a class="carouselButtonDkBlue featCarouselNext carouselButtonDkBlueNext" href="#">next</a>
 						
 						<ul id='homeProdSearchFeatured' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"or":{"filters":[{"term":{"tags":"IS_USER4"}},{"term":{"tags":"IS_COLORFUL"}},{"term":{"tags":"IS_USER5"}},{"term":{"user:prod_promo":"IS_USER4"}}]}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>
 					</div>
@@ -905,8 +908,8 @@ don't modify the 'data-templateid' unless you are changing template names and up
 						</a>
 					</div>
 					<div class='Carousel'>
-						<a class="carouselButtonWhite bestCarouselPrev carouselButtonWhitePrev" href="#">prev</a>
-						<a class="carouselButtonWhite bestCarouselNext carouselButtonWhiteNext" href="#">next</a>
+						<a class="carouselButtonDkBlue bestCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
+						<a class="carouselButtonDkBlue bestCarouselNext carouselButtonDkBlueNext" href="#">next</a>
 						
 						<ul id='homeProdSearchBestSellers' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"term":{"tags":"IS_BESTSELLER"}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>
 					</div>
@@ -994,8 +997,8 @@ don't modify the 'data-templateid' unless you are changing template names and up
                 </a>
             </div>
             <div class='Carousel'>
-           <!-- <a class="carouselButtonWhite brandsCatPrevViewedCarouselPrev carouselButtonWhitePrev" href="#">prev</a>
-                <a class="carouselButtonWhite brandsCatPrevViewedCarouselNext carouselButtonWhiteNext" href="#">next</a> -->
+           <!-- <a class="carouselButtonDkBlue brandsCatPrevViewedCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
+                <a class="carouselButtonDkBlue brandsCatPrevViewedCarouselNext carouselButtonDkBlueNext" href="#">next</a> -->
                 
                 <ul data-bind="var: session(recentlyViewedItems); format: productList; extension: store_prodlist; loadsTemplate: productListTemplate; hide_summary:1; hide_pagination:1; withReviews:1;" class='listStyleNone fluidList clearfix noPadOrMargin productList brandCatsPreviousViewed'></ul>
             </div>
@@ -1044,7 +1047,9 @@ don't modify the 'data-templateid' unless you are changing template names and up
 <li id='categoryListTemplate' class='catListTemp'>
 	<div onClick="showContent('category',{'navcat':$(this).parent().attr('data-catsafeid')});" class='catTemplateContainer pointer'>
 		<div class='prodHoverContainer'>
-			<div class='catName white2LGray'><span data-bind='var: category(pretty); format:catText; extension: myRIA;'></span></div>
+			<div class='catBorderContainer'>
+				<div class='catName white2LGray'><span data-bind='var: category(pretty); format:catText; extension: myRIA;'></span></div>
+			</div>
 			<div class='thumbContainer'><img src='blank.gif' class='catThumb' data-bind='var: category(%meta.CAT_THUMB); format:imageURL;' width='105' height='105' /></div>
 			<div class='moreDetailsSmall catDetails'>SHOP NOW</div>
 		</div>
@@ -1053,9 +1058,11 @@ don't modify the 'data-templateid' unless you are changing template names and up
 
 <li id='categoryListHomeTemplate' class='catListTemp'>
 	<div onClick="showContent('category',{'navcat':$(this).parent().attr('data-catsafeid')});" class='catTemplateContainer pointer'>
-		<div class='catName white2LGray'><span data-bind='var: category(pretty); format:catText; extension: myRIA;'></span></div>
-        <div class='thumbContainer'><img src='blank.gif' class='catThumb' data-bind='var: category(%meta.CAT_THUMB); format:imageURL;' width='105' height='105' />
-        	<div class='moreDetailsSmall catDetails'>SHOP NOW</div>
+		<div class='catBorderContainer'>
+			<div class='catName white2LGray'><span data-bind='var: category(pretty); format:catText; extension: myRIA;'></span></div>
+        </div>
+		<div class='thumbContainer'><img src='blank.gif' class='catThumb' data-bind='var: category(%meta.CAT_THUMB); format:imageURL;' width='105' height='105' />
+        	<div class='moreDetailsSmall catHomeDetails'>SHOP NOW</div>
         </div>
 	</div>
 </li>
@@ -1304,7 +1311,7 @@ SANITY -> if you change the height and width of this image, change the .minimalM
 	<div onClick="app.ext.myRIA.a.handleProdPreview($(this).parent().attr('data-pid'));" class='pointer productListSmall'>
 		<div class='prodHoverContainer'>
 			<div class='prodThumbContainer myProdThumbSmall'>
-				<img src='blank.gif' class='prodThumb' data-bind='var: product(images); format:imageURL;isElastic:1;bgcolor:ffffff;' width='210' height='210' />
+				<img src='blank.gif' class='prodThumb imgBorder' data-bind='var: product(images); format:imageURL;isElastic:1;bgcolor:ffffff;' width='208' height='208' />
 			</div>
 			<div class='hideInMinimalMode pointer moreDetailsSmall floatRight' onClick="showContent('product',{'pid':$(this).parent().attr('data-pid')});">more details</div>
 		</div>
@@ -1326,7 +1333,7 @@ SANITY -> if you change the height and width of this image, change the .minimalM
 			<div class='bottomLeftCorner'></div><div class='leftBottomCorner'></div><div class='bottomRightCorner'></div><div class='rightBottomCorner'></div> 
 			<!-- END CORNER SHADOWS -->
 			<div class='prodThumbContainer myProdThumbSmall'>
-				<img src='blank.gif' class='prodThumb' data-bind='var: product(images); format:imageURL;isElastic:1;bgcolor:ffffff;' width='210' height='210' />
+				<img src='blank.gif' class='prodThumb imgBorder' data-bind='var: product(images); format:imageURL;isElastic:1;bgcolor:ffffff;' width='208' height='208' />
 			</div>
 			<div class='starBurst sprite displayNone' data-bind='var: product(user:prod_promo); format:showIfSet;'>
             	<div class='starBurstTextOuter'>
@@ -1362,8 +1369,8 @@ SANITY -> if you change the height and width of this image, change the .minimalM
 <!-- CUSTOM VERSION OF ABOVE TEMPLATE -->
 <li id='productListTemplateResultsCustomTall' class='loadingBG searchResultsProduct ' >
 	<div onClick="return showContent('product', {'pid' : $(this).parent().attr('data-pid')});" class='pointer'>
-		<div class='prodThumbContainer'>
-		<img src='blank.gif' class='prodThumb' data-bind='var: product(images); format:imageURL;isElastic:1;bgcolor:ffffff;' width='95' height='300' />
+		<div class='prodThumbContainer'>																					<!--  width='95' height='300' -->
+		<img src='blank.gif' class='prodThumb' data-bind='var: product(images); format:imageURL;isElastic:1;bgcolor:tttttt;' width='116' height='300' />
 		</div>
 
 		<!-- <h5 class='hideInMinimalMode' data-bind='var: product(prod_name); format:text;'></h5>
@@ -1378,7 +1385,7 @@ SANITY -> if you change the height and width of this image, change the .minimalM
 			<img src='blank.gif' class='prodThumb push' data-bind='var: product(images); format:imageURL;isElastic:1;bgcolor:ffffff;' width='210' height='210' />
             <div class='prodTextContainer'>        
                 <h6 class='hideInMinimalMode floatLeft prodPrice' data-bind='var: product(base_price); format:money; isElastic:1; currencySign: $;  hideZero:true; className:price;'></h6>
-                <div class='hideInMinimalMode floatRight pointer moreDetails' onClick="showContent('product',{'pid':$(this).parent().attr('data-pid')});">DETAILS</div> 
+                <div class='hideInMinimalMode floatRight pointer moreDetails' onClick="showContent('product',{'pid':$(this).parent().attr('data-pid')});">VIEW DETAILS</div> 
                 <h5 class='hideInMinimalMode clearfix prodDesc' data-bind='var: product(prod_name); format:text;'></h5>
             </div>
         </div>
@@ -1394,7 +1401,7 @@ SANITY -> if you change the height and width of this image, change the .minimalM
 			<div class='bottomLeftCorner'></div><div class='leftBottomCorner'></div><div class='bottomRightCorner'></div><div class='rightBottomCorner'></div> 
 			<!-- END CORNER SHADOWS -->
 			<div class='prodThumbContainer myProdThumbSmall'>
-                <img src='blank.gif' class='prodThumb' data-bind='var: product(images); format:imageURL;isElastic:1;bgcolor:ffffff;' width='210' height='210' />
+                <img src='blank.gif' class='prodThumb' data-bind='var: product(images); format:imageURL;isElastic:1;bgcolor:ffffff;' width='208' height='208' />
             </div>
             <div class='prodTextContainerSmall'>        
                 <h6 class='hideInMinimalMode floatLeft prodPriceSmall' data-bind='var: product(base_price); format:money; isElastic:1; currencySign: $;  hideZero:true; className:price;'></h6>
@@ -1403,7 +1410,7 @@ SANITY -> if you change the height and width of this image, change the .minimalM
 						<div class='starBurstTextInner' data-bind='var: product(user:prod_promo); format:text;'></div>
 					</div>
 				</div>
-				<div class='hideInMinimalMode floatRight pointer moreDetailsSmall' onClick="showContent('product',{'pid':$(this).parent().attr('data-pid')});">DETAILS</div> 
+				<div class='hideInMinimalMode floatRight pointer moreDetailsSmall' onClick="showContent('product',{'pid':$(this).parent().attr('data-pid')});">VIEW DETAILS</div> 
                 <h5 class='hideInMinimalMode clearfix prodDescSmall' data-bind='var: product(prod_name); format:text;'></h5>
             </div>
    		</div>

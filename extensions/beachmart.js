@@ -452,7 +452,7 @@ return filters;
 					//for whatever reason, caroufredsel needs to be executed after a moment.
 							setTimeout(function(){
 								$target.carouFredSel({
-									auto: {
+									auto: { 
 										/*items			: 6,
 										duration		: 5000,
 										easing			: "linear",
@@ -463,7 +463,7 @@ return filters;
 									next: '.newCarouselNext',
 									width: '100%',
 									pagination: '#featuredCarouselPagination',
-									scroll: 6,
+									scroll: 5,
 							//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
 									swipe: {
 										onMouse: true,
