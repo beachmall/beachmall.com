@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"20130421220900",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"20130422173000",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"",
 	"httpsURL":"https://www-beachmall-com.app-hosted.com/",
@@ -674,22 +674,23 @@ the homepageTemplate template is loaded into mainContentArea by default when the
     
     <div class='homepageCategories'>
 		<div class='additionalHompageCatsContainer'>
-			<div class='additionalHompageCats floatLeft'>
+			<div class='additionalHompageCats floatLeft bindByAnchor pointer' href='#!category?navcat=.beach-accessories.beach-cart'>
 				<div class='addCatArrow sprite floatRight'></div>
 				<span>SHOP</span>
 				<span>BEACH CARTS</span>
 			</div>
-			<div class='additionalHompageCats floatLeft'>
+			<div class='additionalHompageCats floatLeft bindByAnchor pointer' href='#!category?navcat=.beach-umbrellas-shelter.beach-tent-shelters'>
 				<div class='addCatArrow sprite floatRight'></div>
 				<span>SHOP</span>
 				<span>BEACH TENTS</span>
 			</div>
-			<div class='additionalHompageCats floatLeft'>
+			<div class='additionalHompageCats floatLeft bindByAnchor pointer' href='#!category?navcat=.beach-accessories.beach-bags-totes'>
+			<!--	<a class='bindByAnchor' href='#!category?navcat=.beach-umbrellas-shelter.beach-tent-shelters' onClick="app.ext.store_filter.a.clickDropdown($(this).parent());"> -->
 				<div class='addCatArrow sprite floatRight'></div>
 				<span>SHOP</span>
 				<span>BEACH BAGS</span>
 			</div>
-			<div class='additionalHompageCats floatLeft'>
+			<div class='additionalHompageCats floatLeft pointer' onClick="return showContent('category',{'navcat':'.beach-chairs.beach-gear'});">
 				<div class='addCatArrow sprite floatRight'></div>
 				<span>SHOP</span>
 				<span>BY BRAND</span>
@@ -697,12 +698,12 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 		</div>
     	<ul data-bind="var: category(@subcategoryDetail); format: categoryList; bgcolor: TTTTTT; extension: store_navcats; loadsTemplate: categoryListHomeTemplate; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin'></ul>
 
-        	<div onClick="return showContent('category',{'navcat':'.beach-chairs.beach-gear'});" class='shopByProdContainer pointer'>
+        <!--	<div onClick="return showContent('category',{'navcat':'.beach-chairs.beach-gear'});" class='shopByProdContainer pointer'>
             	<div class='catName white2LGray'>Shop by Brand</div>
                 <div class='thumbContainer'>
                 	<div class='moreDetailsSmall catDetails prodDetails'>VIEW BRANDS</div>
                 </div>
-            </div>
+            </div> -->
         
     </div>
     
