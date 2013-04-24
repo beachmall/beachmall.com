@@ -2896,7 +2896,13 @@ else	{
 				else	{
 					//cart not in memory yet. use defaults.
 					}
-
+// ** updates the city, postal and state in his header and on the detail pages
+				if(app.data[tagObj.datapointer] && app.data[tagObj.datapointer].ship)	{
+					$('.shipCity').text(app.data[tagObj.datapointer].ship.city || "");
+					$('.shipRegion').text(app.data[tagObj.datapointer].ship.region || "");
+					$('.shipPostal').text(app.data[tagObj.datapointer].ship.postal || "");
+					}
+				
 				$('.cartItemCount',$appView).text(itemCount);
 				$('.cartSubtotal',$appView).text(app.u.formatMoney(subtotal,'$',2,false));
 				$('.cartTotal',$appView).text(app.u.formatMoney(total,'$',2,false));

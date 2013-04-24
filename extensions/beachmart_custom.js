@@ -362,6 +362,7 @@ Action
 				var postal = $("[name='ship/postal']",$form).val();
 				if(postal)	{
 //					app.u.dump(" -> postal set: "+postal);
+					app.ext.beachmart.u.fetchLocationInfoByZip(postal);
 					app.calls.cartSet.init({
 						'ship/postal':postal
 						},{
@@ -952,6 +953,7 @@ else	{
 
 			fetchLocationInfoByZip : function(zip,attempts)	{
 				attempts = Number(attempts) || 0;
+				app.u.dump("BEGIN beachmart.u.fetchLocationInfoByZip. attempt: "+attempts);
 //				app.u.dump("BEGIN beachmart.u.app.ext.beachmart.u.fetchLocationInfoByZip("+zip+")");
 				if(zip && typeof geocoder != 'undefined' && typeof geocoder.geocode == 'function')	{
 					geocoder.geocode({ 'address': zip}, function(results, status) {
@@ -963,8 +965,9 @@ else	{
 							app.data.cartDetail.ship.city = city;
 							app.data.cartDetail.ship.region = state;
 							app.calls.cartSet.init({"ship/city":city,"ship/region":state},{},'passive');
-							$('.shipCity').text(city || "");
-							$('.shipRegion').text(state || "");
+							$('.shipCity').text(app.data.cartDetail.ship.city || "");
+							$('.shipRegion').text(app.data.cartDetail.ship.region || "");
+							$('.shipPostal').text(app.data.cartDetail.ship.postal || "");
 							app.model.dispatchThis('passive');
 							}
 						else	{
