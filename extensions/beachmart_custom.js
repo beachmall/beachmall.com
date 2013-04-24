@@ -22,7 +22,7 @@
 var beachmart = function() {
 	var r = {
 		vars : { 
-			"templates" : ["productListTemplateBundle","shipGridTemplate","productListTemplateThumb"]},
+			"templates" : ["productListTemplateBundle","shipGridTemplate","productListTemplateThumb","categoryTemplateBrandsBestSellers","categoryTemplateBrandsViewAll","categoryTemplateBrandsFeatured"]},
 		callbacks : {
 //run when controller loads this extension.  Should contain any validation that needs to be done. return false if validation fails.
 			init : {

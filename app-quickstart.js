@@ -1536,6 +1536,8 @@ if(ps.indexOf('?') >= 1)	{
 //search, customer and company contain 'articles' (pages within pages) so when moving from one company to another company, skip the transition
 // or the content is likely to be hidden. execute scroll to top unless transition implicitly turned off (will happen with modals).
 				if(infoObj.pageType == 'cart'){r = false; app.u.dump('fail 0');}
+//** BEACHMART -> he reloads the same page w/ different templates
+				else if(infoObj.pageType == 'category' && ($old.data('templateid') != infoObj.templateID))	{r = true; app.u.dump("transition not fail due to different templates");}
 				else if(infoObj.pageType == 'category' && $old.data('templateid') == 'categoryTemplate' && $old.data('catsafeid') == infoObj.navcat){r = false; app.u.dump("transition fail 1");}
 				else if(infoObj.pageType == 'category' && $old.data('templateid') == 'homepageTemplate' && $old.data('catsafeid') == infoObj.navcat){r = false; app.u.dump("transition fail 2");}
 				else if(infoObj.pageType == 'product' && $old.data('templateid') == 'productTemplate' && $old.data('pid') == infoObj.pid){r = false; app.u.dump("transition fail 3");}
@@ -2918,7 +2920,7 @@ else	{
 			createTemplateFunctions : function()	{
 
 				app.ext.myRIA.template = {};
-				var pageTemplates = new Array('categoryTemplate','categoryTemplateBrands','productTemplate','companyTemplate','customerTemplate','homepageTemplate','searchTemplate','cartTemplate','checkoutTemplate','pageNotFoundTemplate');
+				var pageTemplates = new Array('categoryTemplate','categoryTemplateBrands','categoryTemplateBrandsBestSellers','productTemplate','companyTemplate','customerTemplate','homepageTemplate','searchTemplate','cartTemplate','checkoutTemplate','pageNotFoundTemplate');
 				var L = pageTemplates.length;
 				for(var i = 0; i < L; i += 1)	{
 					app.ext.myRIA.template[pageTemplates[i]] = {"onCompletes":[],"onInits":[],"onDeparts":[]};
