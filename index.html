@@ -727,7 +727,7 @@ the homepageTemplate template is loaded into mainContentArea by default when the
     <div class='CarouselContainer featuredProductsCarouselContainer'>
     	<div class='carouselTitles yellowBkgrd'>
         	<div class='carouselTitleTextContainer floatLeft'>FEATURED PRODUCTS</div>
-            <div class='carouselLinkContainer floatRight featWidth'>View All Featured Products</div>
+            <div class='carouselLinkContainer floatRight featWidth'><a class='bindByAnchor' href="#!search?TAG=IS_USER4">View All Featured Products</a></div>
             <div class='carouselArrowContainer floatRight sprite'></div>
         </div>
         <div class='Carousel'>
@@ -881,7 +881,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 					<li class='brandsHeader listStyleNone'>
 						<img src='images/BrandsHeaderImg.jpg' height='300' width='460' />
 						<ul>
-					   <!-- <p class='blah' data-bind="var: category(%page.description); format:wiki; wikiFormats:myRIA; editor: textarea;"></p> -->
+					   <!-- <p data-bind="var: category(%page.description2); format:wiki; wikiFormats:myRIA; editor: textarea;"></p> -->
 							<li><span>This is the title</span>
 							<br><br>This is the text that goes under the title. It looks great and I would like to thank all of the grade school teachers that made it possible for me to form this sentence.</li>
 							<li>! LOGO GOES HERE !<BR><BR><BR>AUTHORIZED DEALER</li>
@@ -992,7 +992,6 @@ don't modify the 'data-templateid' unless you are changing template names and up
   
             <p class='blah' data-bind="var: category(%page.description); format:wiki; wikiFormats:myRIA; editor: textarea;"></p>
             
-            <p data-bind="var: category(%page.description2); format:wiki; wikiFormats:myRIA; editor: textarea;"></p>
 		</div>
         
         <!--
@@ -1170,6 +1169,7 @@ remember to NOT put the button inside the 'onclick' container or two events will
                     <div class='shipCost sprite displayNone' data-bind='useParentData:true; format:showFreeShippingTag; extension:store_filter;'></div>
                     <div class='shipTime latency' data-bind='var: product(user:prod_shipping_msg); format:text;'></div>
                 </div>
+				<!--<div data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews_reviews;'></div> BCERO271 MARK-->
                 <form data-bind='var: product(pid); format:atcForm; extension:store_product;' class='prodViewerAddToCartForm clearfix' action='#'>
                     <button class='prodViewerAddToCartButton' data-bind='format:addToCartButton; extension:myRIA; useParentData:true;'></button>
                 </form>
