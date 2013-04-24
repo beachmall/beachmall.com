@@ -562,8 +562,6 @@ RenderFormats
 			
 			prodSearchFeaturedByBrand : function($tag,data)	{
 				//data.value will be the brand.
-				app.u.dump("GOT TO THIS POINTER");
-				
 				var query = {
 					"mode":"elastic-native",
 					"filter":{
@@ -577,23 +575,15 @@ RenderFormats
 								]
 							}
 						}
-					},
-				elasticsearch = app.ext.store_search.u.buildElasticRaw(query);
-				elasticsearch.size = data.bindData.size || "24"; 
-
-				var _tag = {'callback':'handleElasticResults','extension':'store_search','templateID':'productListTemplateResults','list':$tag};
-				_tag.datapointer = "appPublicSearch|"+JSON.stringify(elasticsearch);
+					}
 				
-				app.ext.store_search.u.updateDataOnListElement($tag,elasticsearch,1);
-				app.ext.store_search.calls.appPublicSearch.init(elasticsearch,_tag);
-				app.model.dispatchThis();
+				app.ext.beachmart.u.handleBrandSearches($tag,data,query);
 
 
 				},			
 			
 			prodSearchBestSellersByBrand : function($tag,data)	{
 				//data.value will be the brand.
-				
 				var query = {
 					"size": data.bindData.size || "24",
 					"mode":"elastic-native",
@@ -606,6 +596,7 @@ RenderFormats
 							}
 						}
 					}
+				app.ext.beachmart.u.handleBrandSearches($tag,data,query);
 				},
 			
 			
@@ -886,6 +877,19 @@ uities
 
 		u: {
 
+			handleBrandSearches : function($tag,data,query)	{
+
+				var elasticsearch = app.ext.store_search.u.buildElasticRaw(query);
+				elasticsearch.size = data.bindData.size || "24"; 
+
+				var _tag = {'callback':'handleElasticResults','extension':'store_search','templateID':'productListTemplateResults','list':$tag};
+				_tag.datapointer = "appPublicSearch|"+JSON.stringify(elasticsearch);
+				
+//				app.ext.store_search.u.updateDataOnListElement($tag,elasticsearch,1);
+				app.ext.store_search.calls.appPublicSearch.init(elasticsearch,_tag);
+				app.model.dispatchThis();
+
+				},
 
 			initEstArrival : function(infoObj){
 

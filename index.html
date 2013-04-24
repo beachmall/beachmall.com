@@ -922,7 +922,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 								<a class="carouselButtonDkBlue bestCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
 								<a class="carouselButtonDkBlue bestCarouselNext carouselButtonDkBlueNext" href="#">next</a>
 								
-								<ul id='homeProdSearchBestSellers' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"term":{"tags":"IS_BESTSELLER"}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>
+								<ul  data-bind='var: category(%page.mfg); defaultValue:ujena; format: prodSearchBestSellersByBrand; extension: beachmart; size:24; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>
 							</div>
 							<div id='bestCarPagenation' class='standardCarouselPagenation'></div>
 						</div>
@@ -1022,7 +1022,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 	</div>
 
 	<ul class='breadcrumb clearfix noPadOrMargin fluidList' data-bind='var: category(id); format:breadcrumb; extension:store_navcats; loadsTemplate: breadcrumbTemplate;'></ul>
-	<ul id='catProdSearchFeatured' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"or":{"filters":[{"term":{"tags":"IS_USER4"}},{"term":{"tags":"IS_COLORFUL"}},{"term":{"tags":"IS_USER5"}},{"term":{"user:prod_promo":"IS_USER4"}}]}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>
+	<ul  data-bind='var: category(%page.mfg); defaultValue:ujena; format: prodSearchFeaturedByBrand; extension: beachmart; size:250; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>
 
 </div>
 
@@ -1040,7 +1040,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 
 	<ul class='breadcrumb clearfix noPadOrMargin fluidList' data-bind='var: category(id); format:breadcrumb; extension:store_navcats; loadsTemplate: breadcrumbTemplate;'></ul>
 	
-	<ul id='catProdSearchBestSellers' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"term":{"tags":"IS_NEWARRIVAL"}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>
+	<ul  data-bind='var: category(%page.mfg); defaultValue:ujena; format: prodSearchBestSellersByBrand; extension: beachmart; size:24; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>
 </div>
 
 
