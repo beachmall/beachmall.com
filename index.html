@@ -866,7 +866,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 		</div>
 
         <ul class='breadcrumb clearfix noPadOrMargin fluidList' data-bind='var: category(id); format:breadcrumb; extension:store_navcats; loadsTemplate: breadcrumbTemplate;'></ul>
-   
+<div class='displayNone' data-bind="var: category(%page.description); format:showIfSet;">
 		<div class='brandsCatContainer'> 
 			
 				<ul>
@@ -875,7 +875,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 						<ul>
 					   <!-- <p data-bind="var: category(%page.description2); format:wiki; wikiFormats:myRIA; editor: textarea;"></p> -->
 							<li><span  data-bind="var: category(%page.header); format: text; editor: text;"></span>
-							<br><div data-bind="var: category(%page.description); format:wiki;"></div>
+							<br><div data-bind="var: category(%page.description2); format:wiki;"></div>
 							</li>
 							<li><img data-bind="var: category(%page.mfg_logo); format: banner; editor: banner; height:250; width:750; extension: myRIA;" /><BR><BR><BR>AUTHORIZED DEALER</li>
 						</ul>
@@ -950,9 +950,9 @@ don't modify the 'data-templateid' unless you are changing template names and up
 					</div>
 
 				</div>
-		
-			</div>
-		
+
+		</div>
+</div>
 		
             <ul data-bind="var: category(@subcategoryDetail); format: categoryList; extension: store_navcats; loadsTemplate: brandsCategoryListTemplate; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin categoryList'></ul><!-- outputs a list of subcategories -->
 			
@@ -973,7 +973,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
   
             <p class='blah' data-bind="var: category(%page.description); format:wiki; wikiFormats:myRIA; editor: textarea;"></p>
             
-		</div>
+		<!-- </div> -->
         
         <!--
         <div class='recentContainer'>
@@ -998,6 +998,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
                 
                 <ul data-bind="var: session(recentlyViewedItems); format: productList; extension: store_prodlist; loadsTemplate: productListTemplate; hide_summary:1; hide_pagination:1; withReviews:1;" class='listStyleNone fluidList clearfix noPadOrMargin productList brandCatsPreviousViewed'></ul>
             </div>
+		</div>
        <!-- <div class='standardCarouselPagenation brandCatsPreviousViewedCarPagenation'></div> -->
 
 </div><!-- /categoryTemplate -->
