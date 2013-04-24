@@ -130,6 +130,19 @@ app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {
 
 
 
+//add tabs to product data.
+app.rq.push(['templateFunction','categoryTemplateBrands','onCompletes',function(P) {
+	app.u.dump("GOT HERE!!!!!!!!!!!!");
+	var $tabContainer = $( ".brandsTabs",$(app.u.jqSelector('#',P.parentID)));
+	if($tabContainer.length)	{
+		if($tabContainer.data("widget") == 'anytabs'){} //tabs have already been instantiated. no need to be redundant.
+		else	{
+			$tabContainer.anytabs();
+			}
+		}
+	else	{} //couldn't find the tab to tabificate.
+	}]);
+
 
 //Filter Search:
 //sample of an onDeparts. executed any time a user leaves this page/template type.

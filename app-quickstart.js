@@ -946,6 +946,7 @@ for legacy browsers. That means old browsers will use the anchor to retain 'back
 	//add item to recently viewed list IF it is not already in the list.				
 						if($.inArray(infoObj.pid,app.ext.myRIA.vars.session.recentlyViewedItems) < 0)	{
 							app.ext.myRIA.vars.session.recentlyViewedItems.unshift(infoObj.pid);
+//** BEACHMART -> used for displaying the # of recently viewed items in the view.
 							$('.numRecentlyViewed','#appView').text(app.ext.myRIA.vars.session.recentlyViewedItems.length);
 							}
 						infoObj.parentID = app.ext.myRIA.u.showProd(infoObj);

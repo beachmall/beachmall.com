@@ -66,6 +66,10 @@ var magicToolBox_mzp = function() {
 					app.rq.push(['css',0,'examples/magictoolbox/magiczoomplus.css','mzpStylesheet']);
 					app.rq.push(['script',0,'examples/magictoolbox/magiczoomplus.js',function(){
 						MagicZoomPlus.start();
+						
+MagicZoomPlus.options = {
+    'hint' : 'false'
+	}
 						app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {app.u.dump("Refreshing MZP."); setTimeout(function(){MagicZoomPlus.refresh();},2000)}]);
 						}]);
 //						app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {app.u.dump("Refreshing MZP."); MagicZoomPlus.refresh();}]);

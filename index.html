@@ -891,48 +891,52 @@ don't modify the 'data-templateid' unless you are changing template names and up
 				
 				<div class='brandsTabs'>
 					<ul class='tabs'>
-						<li><a href="#featuredProdsTab">Description</a></li>
-						<li class='displayNone' ><a href="#bestSellersTab">Specs</a></li>
-						<li class='displayNone' ><a href="#viewAllProductsTab">Guarantee &amp; Returns</a></li>
+						<li class='tabFeatured'><a href="#featuredProdsTab">Featured</a></li>
+						<li class='tabBest' ><a href="#bestSellersTab">Best Sellers</a></li>
+						<li class='tabViewAll'><a href="#viewAllProductsTab">View All</a></li>
 					</ul>
-				</div>
-	<!-- TAB CONTENT TEST -->
-				<div data-anytab-content='featuredProdsTab'>
-					<div class='CarouselContainer featuredProductsCarouselContainer'>
-						<div class='carouselTitles yellowBkgrd'>
-							<div class='carouselTitleTextContainer floatLeft'>FEATURED PRODUCTS</div>
-							<div class='carouselLinkContainer floatRight featWidth'>View All Featured Products</div>
-							<div class='carouselArrowContainer floatRight sprite'></div>
-						</div>
-						<div class='Carousel'>
-							<a class="carouselButtonDkBlue featCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
-							<a class="carouselButtonDkBlue featCarouselNext carouselButtonDkBlueNext" href="#">next</a>
-							
-							<ul id='homeProdSearchFeatured' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"or":{"filters":[{"term":{"tags":"IS_USER4"}},{"term":{"tags":"IS_COLORFUL"}},{"term":{"tags":"IS_USER5"}},{"term":{"user:prod_promo":"IS_USER4"}}]}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>
-						</div>
-						<div id='featCarPagenation' class='standardCarouselPagenation'></div>
-					</div>
-				</div>
 				
-				<div data-anytab-content='bestSellersTab'>
-					<div class='CarouselContainer bestSellersCarouselContainer'>
-						<div class='carouselTitles'>
-							<div class='carouselTitleTextContainer floatLeft'>BEST SELLERS</div>
-							<a class="bindByAnchor" href="#!search?TAG=IS_BESTSELLER">
-								<div class='carouselLinkContainer floatRight'>View Best Sellers</div>
+	
+					<div data-anytab-content='featuredProdsTab'>
+						<div class='CarouselContainer featuredProductsCarouselContainer'>
+							<div class='carouselTitles yellowBkgrd'>
+								<div class='carouselTitleTextContainer floatLeft'>FEATURED PRODUCTS</div>
+								<div class='carouselLinkContainer floatRight featWidth'>View All Featured Products</div>
 								<div class='carouselArrowContainer floatRight sprite'></div>
-							</a>
+							</div>
+							<div class='Carousel'>
+								<a class="carouselButtonDkBlue featCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
+								<a class="carouselButtonDkBlue featCarouselNext carouselButtonDkBlueNext" href="#">next</a>
+								
+								<ul id='homeProdSearchFeatured' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"or":{"filters":[{"term":{"tags":"IS_USER4"}},{"term":{"tags":"IS_COLORFUL"}},{"term":{"tags":"IS_USER5"}},{"term":{"user:prod_promo":"IS_USER4"}}]}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>
+							</div>
+							<div id='featCarPagenation' class='standardCarouselPagenation'></div>
 						</div>
-						<div class='Carousel'>
-							<a class="carouselButtonDkBlue bestCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
-							<a class="carouselButtonDkBlue bestCarouselNext carouselButtonDkBlueNext" href="#">next</a>
-							
-							<ul id='homeProdSearchBestSellers' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"term":{"tags":"IS_BESTSELLER"}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>
+					</div>
+					
+					<div data-anytab-content='bestSellersTab'>
+						<div class='CarouselContainer bestSellersCarouselContainer'>
+							<div class='carouselTitles'>
+								<div class='carouselTitleTextContainer floatLeft'>BEST SELLERS</div>
+								<a class="bindByAnchor" href="#!search?TAG=IS_BESTSELLER">
+									<div class='carouselLinkContainer floatRight'>View Best Sellers</div>
+									<div class='carouselArrowContainer floatRight sprite'></div>
+								</a>
+							</div>
+							<div class='Carousel'>
+								<a class="carouselButtonDkBlue bestCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
+								<a class="carouselButtonDkBlue bestCarouselNext carouselButtonDkBlueNext" href="#">next</a>
+								
+								<ul id='homeProdSearchBestSellers' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"term":{"tags":"IS_BESTSELLER"}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>
+							</div>
+							<div id='bestCarPagenation' class='standardCarouselPagenation'></div>
 						</div>
-						<div id='bestCarPagenation' class='standardCarouselPagenation'></div>
 					</div>
 				</div>
+		
+		
 			</div>
+		
 		
             <ul data-bind="var: category(@subcategoryDetail); format: categoryList; extension: store_navcats; loadsTemplate: brandsCategoryListTemplate; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin categoryList'></ul><!-- outputs a list of subcategories -->
 <!-- 		
