@@ -132,7 +132,6 @@ app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {
 
 //add tabs to product data.
 app.rq.push(['templateFunction','categoryTemplateBrands','onCompletes',function(P) {
-	app.u.dump("GOT HERE!!!!!!!!!!!!");
 	var $tabContainer = $( ".brandsTabs",$(app.u.jqSelector('#',P.parentID)));
 	if($tabContainer.length)	{
 		if($tabContainer.data("widget") == 'anytabs'){} //tabs have already been instantiated. no need to be redundant.

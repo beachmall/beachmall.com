@@ -558,6 +558,48 @@ RenderFormats
 
 
 		renderFormats: {
+			
+			
+			prodSearchFeaturedByBrand : function($tag,data)	{
+				//data.value will be the brand.
+				var query = {
+					"mode":"elastic-native",
+					"filter":{
+						"or":{
+							"filters":[
+								{"term":{"prod_mfg":data.value}},
+								{"term":{"tags":"IS_USER4"}},
+								{"term":{"tags":"IS_COLORFUL"}},
+								{"term":{"tags":"IS_USER5"}},
+								{"term":{"user:prod_promo":"IS_USER4"}}
+								]
+							}
+						}
+					}
+				
+				app.ext.beachmart.u.handleBrandSearches($tag,data,query);
+
+
+				},			
+			
+			prodSearchBestSellersByBrand : function($tag,data)	{
+				//data.value will be the brand.
+				var query = {
+					"size": data.bindData.size || "24",
+					"mode":"elastic-native",
+					"filter":{
+						"or":{
+							"filters":[
+								{"term":{"prod_mfg":data.value}},
+								{"term":{"tags":"IS_BESTSELLER"}}
+								]
+							}
+						}
+					}
+				app.ext.beachmart.u.handleBrandSearches($tag,data,query);
+				},
+			
+			
 //needed more control over the size.		
 			youtubeVideo : function($tag,data){
 				var r = "<iframe style='z-index:1;' width='380' height='214' src='https://www.youtube.com/embed/"+data.value+"' frameborder='0' allowfullscreen></iframe>";
@@ -835,6 +877,19 @@ uities
 
 		u: {
 
+			handleBrandSearches : function($tag,data,query)	{
+
+				var elasticsearch = app.ext.store_search.u.buildElasticRaw(query);
+				elasticsearch.size = data.bindData.size || "24"; 
+
+				var _tag = {'callback':'handleElasticResults','extension':'store_search','templateID':'productListTemplateResults','list':$tag};
+				_tag.datapointer = "appPublicSearch|"+JSON.stringify(elasticsearch);
+				
+//				app.ext.store_search.u.updateDataOnListElement($tag,elasticsearch,1);
+				app.ext.store_search.calls.appPublicSearch.init(elasticsearch,_tag);
+				app.model.dispatchThis();
+
+				},
 
 			initEstArrival : function(infoObj){
 

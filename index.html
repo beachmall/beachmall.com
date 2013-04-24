@@ -302,7 +302,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                                         </ul>
                                     </div> -->
                                 </li>
-                                <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-accessories.picnic-baskets'>Picnic Baskets</li>
+                                <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-accessories.picnic-baskets'>Picnic Baskets
                            <!-- <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Picnic Baskets
                                 	<div class='dropout out dropout6'>
                                         <ul>
@@ -425,7 +425,6 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 </header>
 
 </div> <!-- END HEADER CONTAINER -->
-
 
 
 <!--
@@ -598,6 +597,10 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 </div>    
 
 </div><!-- /#appView -->
+
+
+
+
 
 
 
@@ -816,7 +819,6 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 
 
 
-
 <!--
 used to organize content when a category is clicked.
 each of the 'sections' are used to load another template. don't change the id.
@@ -855,35 +857,27 @@ don't modify the 'data-templateid' unless you are changing template names and up
 </div>
 
 
-<div id='categoryTemplateBrands' class='loadingBG categoryTemplate'>
+<div id='categoryTemplateBrands' class='loadingBG categoryTemplate' data-app-role='categoryPage'>
 
-		<div class='brandsPromoBanner floatLeft'>
+		<div class='brandsPromoBanner floatLeft' data-bind='var: category(%page.coupon_code); format:showIfSet;'>
 			<div>SPECIAL OFFER!</div>
-			<div><span>TAKE AN EXTRA</span><br>10% OFF ALL COPA GEAR</div>
-			<div>PROMO CODE: 10COPA <span>See Details</span></div>
+			<div><span>TAKE AN EXTRA</span><br>10% OFF ALL <span  data-bind="var: category(%page.mfg); format: text; editor: text;"></span> GEAR</div>
+			<div>PROMO CODE: <span data-bind="var: category(%page.coupon_code); format: text; editor: text;"></span> <span>See Details</span></div>
 		</div>
 
         <ul class='breadcrumb clearfix noPadOrMargin fluidList' data-bind='var: category(id); format:breadcrumb; extension:store_navcats; loadsTemplate: breadcrumbTemplate;'></ul>
-		
-	<!--	<div class='brandsHeader'>
-			<img src='' />
-			<div></div>
-		</div> -->
-        
-		<img data-bind="var: category(%page.banner1); format: banner; editor: banner; height:250; width:750; extension: myRIA;" />
-    
-        <h2 class='blah5' data-bind="var: category(%page.header); format: text; editor: text;"></h2>
    
 		<div class='brandsCatContainer'> 
-			<div class='displayNone' data-bind="var: category(%page.description); format:showIfSet;">
+			
 				<ul>
 					<li class='brandsHeader listStyleNone'>
-						<img src='images/BrandsHeaderImg.jpg' height='300' width='460' />
+						<img data-bind="var: category(%page.banner1); format: banner; editor: banner; height:250; width:750; extension: myRIA;" />
 						<ul>
 					   <!-- <p data-bind="var: category(%page.description2); format:wiki; wikiFormats:myRIA; editor: textarea;"></p> -->
-							<li><span>This is the title</span>
-							<br><br>This is the text that goes under the title. It looks great and I would like to thank all of the grade school teachers that made it possible for me to form this sentence.</li>
-							<li>! LOGO GOES HERE !<BR><BR><BR>AUTHORIZED DEALER</li>
+							<li><span  data-bind="var: category(%page.header); format: text; editor: text;"></span>
+							<br><div data-bind="var: category(%page.description); format:wiki;"></div>
+							</li>
+							<li><img data-bind="var: category(%page.mfg_logo); format: banner; editor: banner; height:250; width:750; extension: myRIA;" /><BR><BR><BR>AUTHORIZED DEALER</li>
 						</ul>
 					</li>
 				</ul>
@@ -909,7 +903,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 								<a class="carouselButtonDkBlue featCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
 								<a class="carouselButtonDkBlue featCarouselNext carouselButtonDkBlueNext" href="#">next</a>
 								
-								<ul id='homeProdSearchFeatured' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"or":{"filters":[{"term":{"tags":"IS_USER4"}},{"term":{"tags":"IS_COLORFUL"}},{"term":{"tags":"IS_USER5"}},{"term":{"user:prod_promo":"IS_USER4"}}]}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>
+								<ul  data-bind='var: category(%page.mfg); defaultValue:ujena; format: prodSearchFeaturedByBrand; extension: beachmart; size:24; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>
 							</div>
 							<div id='featCarPagenation' class='standardCarouselPagenation'></div>
 						</div>
@@ -928,7 +922,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 								<a class="carouselButtonDkBlue bestCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
 								<a class="carouselButtonDkBlue bestCarouselNext carouselButtonDkBlueNext" href="#">next</a>
 								
-								<ul id='homeProdSearchBestSellers' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"term":{"tags":"IS_BESTSELLER"}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>
+								<ul  data-bind='var: category(%page.mfg); defaultValue:ujena; format: prodSearchBestSellersByBrand; extension: beachmart; size:24; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>
 							</div>
 							<div id='bestCarPagenation' class='standardCarouselPagenation'></div>
 						</div>
@@ -1005,10 +999,8 @@ don't modify the 'data-templateid' unless you are changing template names and up
                 <ul data-bind="var: session(recentlyViewedItems); format: productList; extension: store_prodlist; loadsTemplate: productListTemplate; hide_summary:1; hide_pagination:1; withReviews:1;" class='listStyleNone fluidList clearfix noPadOrMargin productList brandCatsPreviousViewed'></ul>
             </div>
        <!-- <div class='standardCarouselPagenation brandCatsPreviousViewedCarPagenation'></div> -->
-        </div>
 
-</div>
-
+</div><!-- /categoryTemplate -->
 
 
 
@@ -1021,11 +1013,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 
 
 
-
-
-
-
-<div id='categoryTemplateBrandsFeatured' class='loadingBG categoryTemplate'>
+<div id='categoryTemplateBrandsFeatured' class='loadingBG categoryTemplate' data-app-role='categoryPage'>
 
 	<div class='brandsPromoBanner floatLeft'>
 		<div>SPECIAL OFFER!</div>
@@ -1034,7 +1022,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 	</div>
 
 	<ul class='breadcrumb clearfix noPadOrMargin fluidList' data-bind='var: category(id); format:breadcrumb; extension:store_navcats; loadsTemplate: breadcrumbTemplate;'></ul>
-	<ul id='catProdSearchFeatured' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"or":{"filters":[{"term":{"tags":"IS_USER4"}},{"term":{"tags":"IS_COLORFUL"}},{"term":{"tags":"IS_USER5"}},{"term":{"user:prod_promo":"IS_USER4"}}]}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>
+	<ul  data-bind='var: category(%page.mfg); defaultValue:ujena; format: prodSearchFeaturedByBrand; extension: beachmart; size:250; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>
 
 </div>
 
@@ -1042,7 +1030,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 
 
 
-<div id='categoryTemplateBrandsBestSellers' class='loadingBG categoryTemplate'>
+<div id='categoryTemplateBrandsBestSellers' class='loadingBG categoryTemplate' data-app-role='categoryPage'>
 
 	<div class='brandsPromoBanner floatLeft'>
 		<div>SPECIAL OFFER!</div>
@@ -1052,14 +1040,14 @@ don't modify the 'data-templateid' unless you are changing template names and up
 
 	<ul class='breadcrumb clearfix noPadOrMargin fluidList' data-bind='var: category(id); format:breadcrumb; extension:store_navcats; loadsTemplate: breadcrumbTemplate;'></ul>
 	
-	<ul id='catProdSearchBestSellers' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"term":{"tags":"IS_NEWARRIVAL"}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>
+	<ul  data-bind='var: category(%page.mfg); defaultValue:ujena; format: prodSearchBestSellersByBrand; extension: beachmart; size:24; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>
 </div>
 
 
 
 
 
-<div id='categoryTemplateBrandsViewAll' class='loadingBG categoryTemplate'>
+<div id='categoryTemplateBrandsViewAll' class='loadingBG categoryTemplate' data-app-role='categoryPage'>
 
 	<div class='brandsPromoBanner floatLeft'>
 		<div>SPECIAL OFFER!</div>
