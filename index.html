@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"20130423162600",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"20130423211800",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"",
 	"httpsURL":"https://www-beachmall-com.app-hosted.com/",
@@ -204,21 +204,28 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 						<div class='beachChairsDD dropdown floatLeft'>    
                             <ul class='listStyleNone floatLeft'>
                                 <li class='noArrow'>BEACH CHAIRS</li>
-                                <li>Adirondack</li>
-                                <li>Backpack Chairs</li>
-                                <li>Cup Holder Chairs</li>
-                                <li>Beach Chaises</li>
-                                <li>Hammocks</li>
-                                <li>Beach & Pool Lounges</li>
-                                <li>Canopy Beach Chairs</li>
-                                <li>Padded Beach Chairs</li>
-                                <li>High-back Beach Chairs</li>
-                                <li>Large Beach Chairs</li>
-                                <li>High Seat Beach Chairs</li>
-                                <li>Premium Chairs</li>
-                                <li>Low Seat Beach Chairs</li>
-                                <li>Lay Flat Beach Cahirs</li>
-                                <li>Wooden Beach Chairs</li>
+                                <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-chair.adirondack-furniture'>Adirondack</li>
+                                <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-chair.backpack-chair'>Backpack Chairs</li>
+                                <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-chair.beach-chairs'>Cup Holder Chairs</li>
+                                <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-chair.beach-chaise'>Beach Chaises</li>
+                           <!-- <li>Hammocks</li> REMOVE?-->
+                                <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))" class='bindByAnchor' href='#!category?navcat=.beach-chair.beach-lounges'>Beach & Pool Lounges
+									<div class='dropout out dropout5'>
+                                    	<ul>
+                                        	<li class='bindByAnchor noArrow' href='#!category?navcat=.beach-chair.beach-lounges.beach-recliner' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent());">Beach Lounges</li>
+                                            <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-chair.beach-lounges.pool-floats'onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent());">Pool Lounges</li>
+                                        </ul>
+                                    </div>
+								</li>
+                                <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-chair.canopy-beach-chair'>Canopy Beach Chairs</li>
+                                <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-chair.folding-beach-chairs'>Padded Beach Chairs</li>
+                                <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-chair.heavy-beach-chairs'>High-back Beach Chairs</li>
+                                <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-chair.heavy-duty-beach-chairs'>Large Beach Chairs</li>
+                                <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-chair.high-beach-chair'>High Seat Beach Chairs</li>
+                           <!-- <li>Premium Chairs</li> REMOVE?-->
+                                <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-chair.sand-chair'>Low Seat Beach Chairs</li>
+                                <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-chair.sand-chairs'>Lay Flat Beach Cahirs</li>
+                                <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-chair.wooden-beach-chairs'>Wooden Beach Chairs</li>
                             </ul>
                         </div>
                     </div>
@@ -231,8 +238,9 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 						<div class='beachAccessoriesDD dropdown floatLeft'>
                             <ul class='listStyleNone floatLeft'>
                             	<li class='noArrow'>ACCESSORIES</li>
-                            	<li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Beach Bags & Totes
-                                	<div class='dropout out dropout1'>
+                           <!--	<li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))" class='bindByAnchor' href='#!category?navcat=.beach-accessories.beach-bags-totes'>Beach Bags & Totes -->
+                            	<li class='bindByAnchor noArrow' href='#!category?navcat=.beach-accessories.beach-bags-totes'>Beach Bags & Totes
+                               <!-- <div class='dropout out dropout1'>
                                     	<ul>
                                         	<li>Some Beach Bags</li>
                                             <li>More Beach Bags</li>
@@ -242,9 +250,9 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                                             <li>Still Yet More Beach Totes</li>
                                             <li>The Last of the Beach Bags & Totes</li>
                                         </ul>
-                                    </div>
+                                    </div> -->
                                 </li>
-                                <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Beach Towels & Blankets
+                           <!-- <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Beach Towels & Blankets
                                 	<div class='dropout out dropout2'>
                                         <ul>
                                             <li>Content To Be Determined</li>
@@ -255,8 +263,9 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                                             <li></li>
                                         </ul>
                                     </div>
-                                </li>
-                                <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Beach Carts
+                                </li> -->
+								<li class='bindByAnchor noArrow' href='#!category?navcat=.beach-accessories.beach-cart'>Beach Carts
+                           <!-- <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Beach Carts
                                 	<div class='dropout out dropout3'>
                                         <ul>
                                             <li>Content To Be Determined</li>
@@ -266,9 +275,9 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                                             <li></li>
                                             <li></li>
                                         </ul>
-                                    </div>
+                                    </div> -->
                                 </li>
-                                <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Electronics
+                           <!-- <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Electronics
                                 	<div class='dropout out dropout4'>
                                         <ul>
                                             <li>Content To Be Determined</li>
@@ -279,8 +288,9 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                                             <li></li>
                                         </ul>
                                     </div>
-                                </li>
-                                <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Picnic Backpacks
+                                </li> -->
+                                <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-accessories.picnic-backpack'>Picnic Backpacks
+                           <!-- <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Picnic Backpacks
                                 	<div class='dropout out dropout5'>
                                         <ul>
                                             <li>Content To Be Determined</li>
@@ -290,9 +300,10 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                                             <li></li>
                                             <li></li>
                                         </ul>
-                                    </div>
+                                    </div> -->
                                 </li>
-                                <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Picnic Baskets
+                                <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-accessories.picnic-baskets'>Picnic Baskets</li>
+                           <!-- <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Picnic Baskets
                                 	<div class='dropout out dropout6'>
                                         <ul>
                                             <li>Content To Be Determined</li>
@@ -302,9 +313,10 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                                             <li></li>
                                             <li></li>
                                         </ul>
-                                    </div>
+                                    </div> -->
                                 </li>
-                                <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Coolers
+                                <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-accessories.picnic-cooler'>Coolers
+                           <!-- <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Coolers
                                 	<div class='dropout out dropout7'>
                                         <ul>
                                             <li>Content To Be Determined</li>
@@ -314,9 +326,9 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                                             <li></li>
                                             <li></li>
                                         </ul>
-									</div>
+									</div> -->
                                 </li>
-                                <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Tailgating
+                           <!-- <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Tailgating
                                 	<div class='dropout out dropout8'>
                                         <ul>
                                             <li>Content To Be Determined</li>
@@ -327,7 +339,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                                             <li></li>
                                         </ul>
                                 	</div>
-                                </li>
+                                </li> -->
                             </ul>
                             <div class='beachAccProductContainer'>
 								
@@ -343,11 +355,9 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 						<div class='recreationDD dropdown floatLeft'>
                             <ul class='listStyleNone floatLeft'>
                             	<li class='noArrow'>RECREATION</li>
-                                <li>Body Boards</li>
-                                <li>Inflatables</li>
-                                <li>Pool Floats</li>
-                                <li>Skimboards</li>
-                                <li>Water Towables</li>
+                                <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-sports.bodyboards'>Body Boards</li>
+                                <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-sports.pool-floats'>Pool Floats</li>
+                                <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-sports.skimboards'>Skimboards</li>
                             </ul>
                         </div>
                     </div>
@@ -376,11 +386,18 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 						<div class='umbrellasDD dropdown floatLeft'>
                             <ul class='listStyleNone floatLeft'>
                             	<li class='noArrow'>UMBRELLAS</li>
-                                <li>Beach Cabanas</li>
-                                <li>Beach Tents & Shelters</li>
-                                <li>Beach Umbrellas</li>
-                                <li>Market & Patio Umbrellas</li>
-                                <li>Umbrella Accessories</li>
+                                <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-umbrellas-shelter.beach-umbrella'>Beach Umbrellas</li>
+                                <li class='bindByAnchor' href='#!category?navcat=.beach-umbrellas-shelter.patio-umbrella' onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))"  onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent());">Market & Patio Umbrellas
+									<div class='dropout out dropout2'>
+                                        <ul>
+                                            <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-umbrellas-shelter.patio-umbrella.6-foot-patio-umbrellas' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent());">6 Foot Umbrellas</li>
+                                            <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-umbrellas-shelter.patio-umbrella.7-foot-patio-umbrellas' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent());">7 Foot Umbrellas</li>
+                                            <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-umbrellas-shelter.patio-umbrella.offset-umbrellas' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent());">9 Foot Umbrellas</li>
+                                            <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-umbrellas-shelter.patio-umbrella.market-umbrellas' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent());">11 Foot Umbrellas</li>
+                                        </ul>
+                                	</div>
+								</li>
+                                <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-umbrellas-shelter.umbrella-stand-stands-base'>Umbrella Accessories</li>
                             </ul>
                         </div>
                     </div>
@@ -393,11 +410,8 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 						<div class='shelterDD dropdown floatLeft'>
                             <ul class='listStyleNone floatLeft'>
                             	<li class='noArrow'>SHELTERS</li>
-                                <li>Beach Cabanas</li>
-                                <li>Beach Tents & Shelters</li>
-                                <li>Beach Umbrellas</li>
-                                <li>Market & Patio Umbrellas</li>
-                                <li>Umbrella Accessories</li>
+                                <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-umbrellas-shelter.beach-cabana'>Beach Cabanas</li>
+                                <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-umbrellas-shelter.beach-tent-shelters'>Beach Tents</li>
                             </ul>
                         </div>
                     </div>

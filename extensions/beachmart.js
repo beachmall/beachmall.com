@@ -240,6 +240,11 @@ var store_filter = function() {
 				$(".dropout", $tag).stop().animate({"width":"0px"}, 1000);
 			},
 			
+			//IMEDIATE RETRACTION OF MAIN CATEGORY DROPDOWN MENU WHEN 2ND LEVEL LINK IS CLICKED
+			clickDropdown : function ($tag) {
+				$(".dropdown", $tag).stop().animate({"height":"0px"}, 0);
+			},
+			
 		}, //actions
 
 ////////////////////////////////////   RENDERFORMATS    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
