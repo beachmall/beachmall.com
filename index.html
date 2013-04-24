@@ -198,7 +198,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 					<div class='singleDropdown floatLeft sprite' onMouseOver="app.ext.store_filter.a.showDropdown($(this),535);" onMouseOut="app.ext.store_filter.a.hideDropdown($(this));">
                     	<div class='dropdownBorderContainer'>
 							<div class='dropdownBorderMaker'>
-								<a class='bindByAnchor' href='#!category?navcat=.beach-chair' onClick="app.ext.store_filter.a.clickDropdown($(this).parent());">BEACH CHAIRS</a>
+								<a class='bindByAnchor' href='#!category?navcat=.beach-chair' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent());">BEACH CHAIRS</a>
 							</div>
 						</div>
 						<div class='beachChairsDD dropdown floatLeft'>    
@@ -225,7 +225,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 					<div class='singleDropdown floatLeft sprite' onMouseOver="app.ext.store_filter.a.showDropdown($(this),535);" onMouseOut="app.ext.store_filter.a.hideDropdown($(this));">
 						<div class='dropdownBorderContainer'>	
 							<div class='dropdownBorderMaker'>
-								<a class='bindByAnchor' href='#!category?navcat=.beach-accessories' onClick="app.ext.store_filter.a.clickDropdown($(this).parent());">ACCESSORIES</a> 
+								<a class='bindByAnchor' href='#!category?navcat=.beach-accessories' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent());">ACCESSORIES</a> 
 							</div>
 						</div>
 						<div class='beachAccessoriesDD dropdown floatLeft'>
@@ -337,7 +337,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                     <div class='singleDropdown floatLeft sprite' onMouseOver="app.ext.store_filter.a.showDropdown($(this),535);" onMouseOut="app.ext.store_filter.a.hideDropdown($(this));">
 						<div class='dropdownBorderContainer'>
 							<div class='dropdownBorderMaker'>
-								<a class='bindByAnchor' href='#!category?navcat=.beach-sports' onClick="app.ext.store_filter.a.clickDropdown($(this).parent());">RECREATION</a>
+								<a class='bindByAnchor' href='#!category?navcat=.beach-sports' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent());">RECREATION</a>
 							</div>
 						</div>
 						<div class='recreationDD dropdown floatLeft'>
@@ -354,7 +354,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                     <div class='singleDropdown floatLeft sprite' onMouseOver="app.ext.store_filter.a.showDropdown($(this),535);" onMouseOut="app.ext.store_filter.a.hideDropdown($(this));">
                     	<div class='dropdownBorderContainer'>
 							<div class='dropdownBorderMaker'>
-								<a class='bindByAnchor' href='#!category?navcat=.beachwear' onClick="app.ext.store_filter.a.clickDropdown($(this).parent());">BEACH WEAR</a>
+								<a class='bindByAnchor' href='#!category?navcat=.beachwear' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent());">BEACH WEAR</a>
 							</div>
 						</div>
 						<div class='beachWearDD dropdown floatLeft'>
@@ -370,7 +370,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 					<div class='singleDropdown floatLeft sprite' onMouseOver="app.ext.store_filter.a.showDropdown($(this),535);" onMouseOut="app.ext.store_filter.a.hideDropdown($(this));">
                     	<div class='dropdownBorderContainer'>
 							<div class='dropdownBorderMaker'>
-								<a class='bindByAnchor' href='#!category?navcat=.beach-umbrellas-shelter' onClick="app.ext.store_filter.a.clickDropdown($(this).parent());">UMBRELLAS</a>
+								<a class='bindByAnchor' href='#!category?navcat=.beach-umbrellas-shelter' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent());">UMBRELLAS</a>
 							</div>
 						</div>
 						<div class='umbrellasDD dropdown floatLeft'>
@@ -387,7 +387,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 					<div class='singleDropdown floatLeft sprite' onMouseOver="app.ext.store_filter.a.showDropdown($(this),535);" onMouseOut="app.ext.store_filter.a.hideDropdown($(this));">
                     	<div class='dropdownBorderContainer'>
 							<div class='dropdownBorderMaker'>
-								<a class='bindByAnchor' href='#!category?navcat=.beach-umbrellas-shelter' onClick="app.ext.store_filter.a.clickDropdown($(this).parent());">SHELTERS</a>
+								<a class='bindByAnchor' href='#!category?navcat=.beach-umbrellas-shelter' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent());">SHELTERS</a>
 							</div>
 						</div>
 						<div class='shelterDD dropdown floatLeft'>
@@ -860,14 +860,14 @@ don't modify the 'data-templateid' unless you are changing template names and up
 		<img data-bind="var: category(%page.banner1); format: banner; editor: banner; height:250; width:750; extension: myRIA;" />
     
         <h2 class='blah5' data-bind="var: category(%page.header); format: text; editor: text;"></h2>
-    
-	<!-- <p class='blah' data-bind="var: category(%page.description); format:wiki; wikiFormats:myRIA; editor: textarea;"></p> -->
+   
 		<div class='brandsCatContainer'> 
 			<div class='displayNone' data-bind="var: category(%page.description); format:showIfSet;">
 				<ul>
 					<li class='brandsHeader listStyleNone'>
 						<img src='images/BrandsHeaderImg.jpg' height='300' width='460' />
 						<ul>
+					   <!-- <p class='blah' data-bind="var: category(%page.description); format:wiki; wikiFormats:myRIA; editor: textarea;"></p> -->
 							<li><span>This is the title</span>
 							<br><br>This is the text that goes under the title. It looks great and I would like to thank all of the grade school teachers that made it possible for me to form this sentence.</li>
 							<li>! LOGO GOES HERE !<BR><BR><BR>AUTHORIZED DEALER</li>

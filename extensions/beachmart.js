@@ -655,7 +655,6 @@ return filters;
 						}//END VERTICAL CAROUSEL1
 					}//END PRODUCT PAGE CAROUSELS
 				
-				
 			}, //u
 
 
