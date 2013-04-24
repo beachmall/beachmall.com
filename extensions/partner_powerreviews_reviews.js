@@ -83,8 +83,6 @@ var powerReviews_reviews = function() {
 					var r;
 					if(app.ext.powerReviews_reviews.vars.merchantID && app.ext.powerReviews_reviews.vars.groupID)	{
 						r = true;
-						app.rq.push(['script',0,'http://cdn.powerreviews.com/repos/'+app.ext.powerReviews_reviews.vars.merchantID+'/pr/pwr/engine/js/full.js']);
-
 						}
 					else	{
 						var msg = app.u.errMsgObject("Uh Oh! It seems an error occured on our app. PowerReviews may not load properly. We apologize for the inconvenience.");
@@ -107,6 +105,7 @@ var powerReviews_reviews = function() {
 			startExtension : {
 				onSuccess : function(){
 					app.u.dump("BEGIN powerReviews_reviews.callbacks.startExtension");
+// * JS moved to init to ensure it's loaded early enough in the process.
 					app.rq.push(['css',0,'http://cdn.powerreviews.com/repos/'+app.ext.powerReviews_reviews.vars.merchantID+'/pr/pwr/engine/pr_styles_review.css','prBaseStylesheet']);
 					app.rq.push(['css',0,'http://cdn.powerreviews.com/aux/'+app.ext.powerReviews_reviews.vars.merchantID+'/'+app.ext.powerReviews_reviews.vars.groupID+'/css/powerreviews_express.css','prMerchantOverrideStylesheet']);
 					},
