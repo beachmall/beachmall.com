@@ -565,7 +565,6 @@ RenderFormats
 				app.u.dump("GOT TO THIS POINTER");
 				
 				var query = {
-					"size": data.bindData.size || "24",
 					"mode":"elastic-native",
 					"filter":{
 						"or":{
@@ -580,6 +579,7 @@ RenderFormats
 						}
 					},
 				elasticsearch = app.ext.store_search.u.buildElasticRaw(query);
+				elasticsearch.size = data.bindData.size || "24"; 
 
 				var _tag = {'callback':'handleElasticResults','extension':'store_search','templateID':'productListTemplateResults','list':$tag};
 				_tag.datapointer = "appPublicSearch|"+JSON.stringify(elasticsearch);

@@ -302,7 +302,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                                         </ul>
                                     </div> -->
                                 </li>
-                                <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-accessories.picnic-baskets'>Picnic Baskets</li>
+                                <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-accessories.picnic-baskets'>Picnic Baskets
                            <!-- <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Picnic Baskets
                                 	<div class='dropout out dropout6'>
                                         <ul>
@@ -425,7 +425,6 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 </header>
 
 </div> <!-- END HEADER CONTAINER -->
-
 
 
 <!--
@@ -598,6 +597,10 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 </div>    
 
 </div><!-- /#appView -->
+
+
+
+
 
 
 
@@ -816,7 +819,6 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 
 
 
-
 <!--
 used to organize content when a category is clicked.
 each of the 'sections' are used to load another template. don't change the id.
@@ -901,7 +903,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 								<a class="carouselButtonDkBlue featCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
 								<a class="carouselButtonDkBlue featCarouselNext carouselButtonDkBlueNext" href="#">next</a>
 								
-								<ul  data-bind='var: category(%page.mfg); defaultValue:ujena; format: prodSearchFeaturedByBrand; extension: beachmart; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>
+								<ul  data-bind='var: category(%page.mfg); defaultValue:ujena; format: prodSearchFeaturedByBrand; extension: beachmart; size:24; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>
 							</div>
 							<div id='featCarPagenation' class='standardCarouselPagenation'></div>
 						</div>
@@ -997,14 +999,8 @@ don't modify the 'data-templateid' unless you are changing template names and up
                 <ul data-bind="var: session(recentlyViewedItems); format: productList; extension: store_prodlist; loadsTemplate: productListTemplate; hide_summary:1; hide_pagination:1; withReviews:1;" class='listStyleNone fluidList clearfix noPadOrMargin productList brandCatsPreviousViewed'></ul>
             </div>
        <!-- <div class='standardCarouselPagenation brandCatsPreviousViewedCarPagenation'></div> -->
-        </div>
 
-</div>
-
-
-
-
-
+</div><!-- /categoryTemplate -->
 
 
 
