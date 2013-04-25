@@ -1202,20 +1202,34 @@ lower tab sets (text fields and product lists)
 	height: 50px;
 	margin:0 7px 0 2px; /* this'll get the images justified under the main product image */
 	padding: 0px;
-	}
+}
 
 
 
 
 
 
-/* power reviews */
+/* power reviews*/ 
+.reviewsStarsCount  {height:28px; width:164px; margin:42px auto 0 auto;}
+.reviewsStarsCount .pr-snippet-wrapper {height:16px; width:auto; border:none; background:none;}
+.reviewsStarsCount .pr-snippet {height:28px; width:auto; padding:0; border:0; background-color:none; background-image:none;}
+.reviewsStarsCount .pr-snippet-stars  {padding:0; border:0; background-color:#ffffff; background-image:none;}
+.reviewsStarsCount .pr-snippet-stars .pr-snippet-rating-decimal {display:none;}
+
+.reviewsStarsCount .pr-snippet-review-count	{font-size:10px; line-height:13px;}
+.reviewsStarsCount .pr-snippet-read-write {display:none;}
+.pr-snippet-read-write	{border:0;}
+.pr-snippet-read-reviews	{padding:0 5px 0 0;}
+.pr-snippet-write-review	{padding:0 0 0 5px;}
+
+/* USE FOR PRODPAGE REVIEWS
 .pr-snippet-wrapper, .pr-snippet, .pr-snippet-stars 	{padding:0; border:0; background-color:#ffffff; background-image:none;}
 
 .pr-snippet-review-count	{font-size:10px; line-height:12px;}
 .pr-snippet-read-write	{border:0;}
 .pr-snippet-read-reviews	{padding:0 5px 0 0;}
 .pr-snippet-write-review	{padding:0 0 0 5px;}
+*/
 
 /* ship times modal */
 
