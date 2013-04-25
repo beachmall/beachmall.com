@@ -84,7 +84,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 <div id='appPreView'>
 <table>
 <tr>
-	<td><div class='logo'><img src='images/beachmall_logo-170x85.png' width='170' height='85' alt='beachmall.com' /></div></td>
+	<td><div class='logo'><img src='images/BeachmallLogoWide-220x65.jpg' width='220' height='65' alt='beachmall.com' /></div></td>
 	<td>
 
 	<div id="loader">
@@ -414,7 +414,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
         	<a href="https://www.facebook.com/BeachMall" target="_blank"><div class='facebook sprite footerSocialIconContainers'></div></a>
             <a href="https://twitter.com/Beachmall" target="_blank"><div class='twitter sprite footerSocialIconContainers'></div></a>
             <a href="https://plus.google.com/104451134911916367843/posts" target="_blank"><div class='googlePlus sprite footerSocialIconContainers'></div></a>
-            <div class='pintrest sprite footerSocialIconContainers'></div>
+            <a href="https://pinterest.com/beachmall/" target="_blank" class='pintrest sprite footerSocialIconContainers'></a>
             <div class='email sprite footerSocialIconContainers'></div>
         </div>
         <div class='footerNewsletter'>
@@ -689,7 +689,7 @@ the homepageTemplate template is loaded into mainContentArea by default when the
     <div class='CarouselContainer featuredProductsCarouselContainer'>
     	<div class='carouselTitles yellowBkgrd'>
         	<div class='carouselTitleTextContainer floatLeft'>FEATURED PRODUCTS</div>
-            <div class='carouselLinkContainer floatRight featWidth'><a class='bindByAnchor' href="#!search?TAG=IS_USER4">View All Featured Products</a></div>
+            <div class='carouselLinkContainer floatRight featWidth pointer' onClick="return showContent('search',{'elasticsearch':{'filter':{'or':[{'term':{'tags':'IS_USER4'}},{'term':{'tags':'IS_COLORFUL'}},{'term':{'tags':'IS_USER5'}},{'term':{'user:prod_promo':'IS_USER4'}}]}}});">View All Featured Products</div>
             <div class='carouselArrowContainer floatRight sprite'></div>
         </div>
         <div class='Carousel'>

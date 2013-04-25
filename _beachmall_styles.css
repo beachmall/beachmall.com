@@ -9,7 +9,8 @@
 
 #appView {background:white; margin: 0px auto; height:auto; width: 1020px;}
 #appPreView {margin-top:10%;}
-#appPreView, .whiteBG	{padding:1.0em; border:1px solid #d2e9f6;}
+#appPreView, .whiteBG {heigth:auto; width:415px; padding:1.0em; border:1px solid #d2e9f6;}
+#appPreView .logo {margin-right:50px;}
 
 body {
 	font-family: Oswald, Helvetica, sans-serif;
