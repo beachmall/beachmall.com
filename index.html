@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"20130423211800",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"20130424201700",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"",
 	"httpsURL":"https://www-beachmall-com.app-hosted.com/",
@@ -227,6 +227,9 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                                 <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-chair.sand-chairs'>Lay Flat Beach Cahirs</li>
                                 <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-chair.wooden-beach-chairs'>Wooden Beach Chairs</li>
                             </ul>
+							<div class='beachAccProductContainer'>
+								
+							</div>
                         </div>
                     </div>
 					<div class='singleDropdown floatLeft sprite' onMouseOver="app.ext.store_filter.a.showDropdown($(this),535);" onMouseOut="app.ext.store_filter.a.hideDropdown($(this));">
@@ -238,109 +241,12 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 						<div class='beachAccessoriesDD dropdown floatLeft'>
                             <ul class='listStyleNone floatLeft'>
                             	<li class='noArrow'>ACCESSORIES</li>
-                           <!--	<li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))" class='bindByAnchor' href='#!category?navcat=.beach-accessories.beach-bags-totes'>Beach Bags & Totes -->
-                            	<li class='bindByAnchor noArrow' href='#!category?navcat=.beach-accessories.beach-bags-totes'>Beach Bags & Totes
-                               <!-- <div class='dropout out dropout1'>
-                                    	<ul>
-                                        	<li>Some Beach Bags</li>
-                                            <li>More Beach Bags</li>
-                                            <li>Still More Beach Bags</li>
-                                            <li>Some Customized Beach Bags</li>
-                                            <li>Some Beach Totes</li>
-                                            <li>Still Yet More Beach Totes</li>
-                                            <li>The Last of the Beach Bags & Totes</li>
-                                        </ul>
-                                    </div> -->
-                                </li>
-                           <!-- <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Beach Towels & Blankets
-                                	<div class='dropout out dropout2'>
-                                        <ul>
-                                            <li>Content To Be Determined</li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                        </ul>
-                                    </div>
-                                </li> -->
-								<li class='bindByAnchor noArrow' href='#!category?navcat=.beach-accessories.beach-cart'>Beach Carts
-                           <!-- <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Beach Carts
-                                	<div class='dropout out dropout3'>
-                                        <ul>
-                                            <li>Content To Be Determined</li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                        </ul>
-                                    </div> -->
-                                </li>
-                           <!-- <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Electronics
-                                	<div class='dropout out dropout4'>
-                                        <ul>
-                                            <li>Content To Be Determined</li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                        </ul>
-                                    </div>
-                                </li> -->
-                                <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-accessories.picnic-backpack'>Picnic Backpacks
-                           <!-- <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Picnic Backpacks
-                                	<div class='dropout out dropout5'>
-                                        <ul>
-                                            <li>Content To Be Determined</li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                        </ul>
-                                    </div> -->
-                                </li>
-                                <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-accessories.picnic-baskets'>Picnic Baskets
-                           <!-- <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Picnic Baskets
-                                	<div class='dropout out dropout6'>
-                                        <ul>
-                                            <li>Content To Be Determined</li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                        </ul>
-                                    </div> -->
-                                </li>
-                                <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-accessories.picnic-cooler'>Coolers
-                           <!-- <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Coolers
-                                	<div class='dropout out dropout7'>
-                                        <ul>
-                                            <li>Content To Be Determined</li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                        </ul>
-									</div> -->
-                                </li>
-                           <!-- <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))">Tailgating
-                                	<div class='dropout out dropout8'>
-                                        <ul>
-                                            <li>Content To Be Determined</li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                            <li></li>
-                                        </ul>
-                                	</div>
-                                </li> -->
-                            </ul>
+                            	<li class='bindByAnchor noArrow' href='#!category?navcat=.beach-accessories.beach-bags-totes'>Beach Bags & Totes</li>
+                           		<li class='bindByAnchor noArrow' href='#!category?navcat=.beach-accessories.beach-cart'>Beach Carts</li>
+								<li class='bindByAnchor noArrow' href='#!category?navcat=.beach-accessories.picnic-backpack'>Picnic Backpacks</li>
+                                <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-accessories.picnic-baskets'>Picnic Baskets</li>
+                                <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-accessories.picnic-cooler'>Coolers</li>
+							</ul>
                             <div class='beachAccProductContainer'>
 								
 							</div>
@@ -359,6 +265,9 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                                 <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-sports.pool-floats'>Pool Floats</li>
                                 <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-sports.skimboards'>Skimboards</li>
                             </ul>
+							<div class='beachAccProductContainer'>
+								
+							</div>
                         </div>
                     </div>
                     <div class='singleDropdown floatLeft sprite' onMouseOver="app.ext.store_filter.a.showDropdown($(this),535);" onMouseOut="app.ext.store_filter.a.hideDropdown($(this));">
@@ -370,11 +279,55 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 						<div class='beachWearDD dropdown floatLeft'>
                             <ul class='listStyleNone floatLeft'>
                             	<li class='noArrow'>BEACH WEAR</li>
-                                <li>Summer Hats</li>
-                                <li>Beach & Pool Apparels</li>
-                                <li>Women Sundresses</li>
-                                <li>Women Swimwear</li>
+								<li class='bindByAnchor noArrow' href='#!category?navcat=.beachwear.beach-hat.baby-hats'>Baby Hats</li>
+								<li class='bindByAnchor noArrow' href='#!category?navcat=.beachwear.beach-hat.kids-hats'>Kid's Hats</li>
+								<li class='bindByAnchor noArrow' href='#!category?navcat=.beachwear.beach-swimwear.babies-swimsuit'>Babies Swimwear</li>
+								<li class='bindByAnchor noArrow' href='#!category?navcat=.beachwear.beach-swimwear.beach-wear.boys-swimwear'>Boy's Swimwear</li>
+								<li class='bindByAnchor noArrow' href='#!category?navcat=.beachwear.beach-swimwear.beach-wear.girls-swimwear'>Girl's Swimwear</li>
+								<li class='bindByAnchor noArrow' href='#!category?navcat=.beachwear.beach-swimwear.kids-swimsuit'>Kid's Swimwear</li>
+								<li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))" class='bindByAnchor' href='#!category?navcat=.beachwear.beach-swimwear.board-shorts'>Board Shorts
+									<div class='dropout out dropout5'>
+                                    	<ul>
+											<li class='bindByAnchor noArrow' href='#!category?navcat=.beachwear.beach-swimwear.board-shorts.boys-boardshorts' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent());">Boy's Board Shorts</li>
+											<li class='bindByAnchor noArrow' href='#!category?navcat=.beachwear.beach-swimwear.board-shorts.girls-board-shorts' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent());">Girl's Board Shorts</li>
+											<li class='bindByAnchor noArrow' href='#!category?navcat=.beachwear.beach-swimwear.board-shorts.kids' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent());">Kids's Board Shorts</li>
+										</ul>
+									</div>
+								</li>
+								<li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))" class='bindByAnchor' href='#!category?navcat=.beachwear.beach-swimwear.rashguard'>Rashguard
+									<div class='dropout out dropout6'>
+                                    	<ul>
+											<li class='bindByAnchor noArrow' href='#!category?navcat=.beachwear.beach-swimwear.rashguard.rashguards' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent());">Boy's Rash Guards</li>
+											<li class='bindByAnchor noArrow' href='#!category?navcat=.beachwear.beach-swimwear.rashguard.girls-rash-guard' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent());">Girl's Rash Guards</li>
+											<li class='bindByAnchor noArrow' href='#!category?navcat=.beachwear.beach-swimwear.rashguard.kids-rash-guard' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent());">Kid's / Baby Rash Guards</li>
+										</ul>
+									</div>
+								</li>
+                                <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))" class='bindByAnchor' href='#!category?navcat=.beachwear.sun-dresses-women'>Women's Sundresses
+									<div class='dropout out dropout7'>
+                                    	<ul>
+											<li class='bindByAnchor noArrow' href='#!category?navcat=.beachwear.sun-dresses-women.beach-dresses' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent());">Casual</li>
+											<li class='bindByAnchor noArrow' href='#!category?navcat=.beachwear.sun-dresses-women.body-slimming' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent());">Body Slimming</li>
+											<li class='bindByAnchor noArrow' href='#!category?navcat=.beachwear.sun-dresses-women.evening' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent());">Evening</li>
+										</ul>
+									</div>
+								</li>
+                                <li onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))" class='bindByAnchor' href='#!category?navcat=.beachwear.swimwear-women'>Women's Swimwear
+									<div class='dropout out dropout8'>
+                                    	<ul>		
+											<li class='bindByAnchor noArrow' href='#!category?navcat=.beachwear.swimwear-women.bathing-suits' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent());">Monokinis</li>
+											<li class='bindByAnchor noArrow' href='#!category?navcat=.beachwear.swimwear-women.bikini-two-piece' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent());">Two Piece Bikinis</li>
+											<li class='bindByAnchor noArrow' href='#!category?navcat=.beachwear.swimwear-women.cover-ups' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent());">Cover Ups</li>
+											<li class='bindByAnchor noArrow' href='#!category?navcat=.beachwear.swimwear-women.monokinis-tankinis' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent());">Tankinis</li>
+											<li class='bindByAnchor noArrow' href='#!category?navcat=.beachwear.swimwear-women.one-piece-swimsuits' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent());">One Piece</li>
+											<li class='bindByAnchor noArrow' href='#!category?navcat=.beachwear.swimwear-women.plus-size-swimsuits' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent());">Plus Size</li>
+										</ul>
+									</div>
+								</li>
                             </ul>
+							<div class='beachAccProductContainer'>
+								
+							</div>
                         </div>
                     </div>
 					<div class='singleDropdown floatLeft sprite' onMouseOver="app.ext.store_filter.a.showDropdown($(this),535);" onMouseOut="app.ext.store_filter.a.hideDropdown($(this));">
@@ -399,6 +352,9 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 								</li>
                                 <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-umbrellas-shelter.umbrella-stand-stands-base'>Umbrella Accessories</li>
                             </ul>
+							<div class='beachAccProductContainer'>
+								
+							</div>
                         </div>
                     </div>
 					<div class='singleDropdown floatLeft sprite' onMouseOver="app.ext.store_filter.a.showDropdown($(this),535);" onMouseOut="app.ext.store_filter.a.hideDropdown($(this));">
@@ -413,6 +369,9 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                                 <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-umbrellas-shelter.beach-cabana'>Beach Cabanas</li>
                                 <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-umbrellas-shelter.beach-tent-shelters'>Beach Tents</li>
                             </ul>
+							<div class='beachAccProductContainer'>
+								
+							</div>
                         </div>
                     </div>
                 <!-- </div> SECOND DROPDOWN CONTAINER? -->
@@ -1716,8 +1675,8 @@ this will likely become more flexible in the future. ###
 					
 						<ul class='prodPageCarouselVert1' data-bind="var: product(zoovy:accessory_products); format:productList; extension:store_prodlist;loadsTemplate:productListTemplate;hide_summary:true; withInventory:1; withVariations:1;"></ul>
 					
-					<a class='next1' href='#'>next</a>
-					<a class='prev1' href='#'>prev</a>					
+					<button class='next1' href='#'>next</button>
+					<button class='prev1' href='#'>prev</button>					
 				</div>
 			</div> 
 

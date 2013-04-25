@@ -46,6 +46,7 @@ app.rq.push(['script',0,app.vars.baseURL+'resources/jquery.ui.anyplugins.js']); 
 
 app.rq.push(['script',1,app.vars.baseURL+'resources/jquery.touchSwipe-1.3.3.min.js']); //used w/ carouFedSel.
 app.rq.push(['script',1,app.vars.baseURL+'resources/jquery.carouFredSel-6.2.0.min.js']); //used on homepage.
+app.rq.push(['script',1,app.vars.baseURL+'resources/jquery.jcarousellite.js']); //used on product pages.
 
 
 

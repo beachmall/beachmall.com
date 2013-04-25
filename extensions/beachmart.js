@@ -88,6 +88,7 @@ var store_filter = function() {
 				app.ext.store_filter.u.runCarousels();
 				app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {
 					app.ext.store_filter.u.runProductCarousel();
+					app.ext.store_filter.u.runProductVerticalCarousel();
 					app.u.dump('Product fredsel ran');
 				}]);
 				
@@ -626,8 +627,10 @@ return filters;
 								});
 							},1000); 
 						} //end prodPageCarousel
+					},
 					
 					//YOU MAY LIKE THIS VERTICAL CAROUSEL
+					runProductVerticalCarousel : function() {
 					var $target = $('.slideshowContainerVertical1');
 					if($target.data('isCarousel'))	{} //only make it a carousel once.
 					else	{
@@ -657,7 +660,7 @@ return filters;
 									}
 								});
 							},1000); 
-						}//END VERTICAL CAROUSEL1
+						}//END VERTICAL CAROUSEL1  
 					}//END PRODUCT PAGE CAROUSELS
 				
 			}, //u

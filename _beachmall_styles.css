@@ -146,15 +146,15 @@ the padding is to compensate for the spacing between the main nav.
 #mastHead .singleDropdown .dropdownBorderContainer:hover {background-position:-248px -36px; background-color:#e0463a;}
 #mastHead .singleDropdown .dropdownBorderContainer {height:35px; width:135px; background-position:-47px 99px; background-color: #3bb3c3; font-family:Montserrat; font-weight:normal; font-size: 16px; color:#fff; text-align:center; line-height: 30px; padding:5px;}
 #mastHead .singleDropdown .dropdownBorderMaker:hover {background-color:#e0463a;}
-#mastHead .dropdown {height:0px; width:980px; margin:0px 0px 0px 20px; position:relative; top:10px; overflow:hidden; z-index:5; background-color:#e0463a;}
-#mastHead .dropdown.beachAccessoriesDD {left: -200px;}
+#mastHead .dropdown {height:0px; width:485px; margin:0px 0px 0px 20px; position:relative; top:10px; overflow:hidden; z-index:5; background-color:#e0463a;}
+#mastHead .dropdown.beachAccessoriesDD {left: -26px;}
 #mastHead .dropdown.beachAccessoriesDD .beachAccProductContainer ul {height:500px; width:720px; background-color:#eee;}
-#mastHead .beachAccProductContainer {height:525px; width:740px; background-color:#ffe680; position:absolute; top:5px; left:240px;}
-#mastHead .dropdown.beachChairsDD {left:-44px;}
-#mastHead .dropdown.recreationDD {left:-358px;}
-#mastHead .dropdown.umbrellasDD {left:-672px;}
-#mastHead .dropdown.shelterDD {left:-829px;}
-#mastHead .dropdown.beachWearDD {left:-515px}
+#mastHead .beachAccProductContainer {height:525px; width:240px; background-color:#ffe680; position:absolute; top:5px; left:240px;}
+#mastHead .dropdown.beachChairsDD {left:-26px;}
+#mastHead .dropdown.recreationDD {left:-26px;}
+#mastHead .dropdown.umbrellasDD {right:355px;}
+#mastHead .dropdown.shelterDD {right:355px;}
+#mastHead .dropdown.beachWearDD {right:355px}
 #mastHead .dropdown.singleLineDD {padding-top:30px;}
 #mastHead .dropdown ul {height: 522px; width:220px; margin: 5px 0px 5px 0px; padding: 0px 0px 3px 20px; background-color:#ffe680; font-weight: normal;}
 #mastHead .dropdown li:first-child {height:27px; width:207px; font-family:Oswald; font-size:24px; font-weight: normal; color:#e0463a; text-align:left; margin: 20px 0px 16px 13px;}
