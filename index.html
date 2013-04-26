@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"20130424201700",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"20130425171200",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"",
 	"httpsURL":"https://www-beachmall-com.app-hosted.com/",
@@ -405,7 +405,25 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 <div id='mainContentArea'></div><!-- DO NOT REMOVE - this is where the specific page (ex: homepage, product, category) content is going to go -->
 </section>
 
+	<div id='recentlyViewedItemsContainer' class='recentContainer CarouselContainer previousViewedCarouselContainer displayNone'>
+            <div class='carouselTitles lightTealBkgrnd'>
+                <div class='carouselTitleTextContainer floatLeft'>PREVIOUSLY VIEWED PRODUCTS</div>
+                <a class="bindByAnchor" href="#!search?TAG=IS_BESTSELLER">
+                    <div class='carouselLinkContainer brandCatsPrevViewedWidth floatRight'>View All Previously Viewed Products</div>
+                    <div class='carouselArrowContainer floatRight sprite'></div>
+                </a>
+            </div>
+            <div class='Carousel'>
+           <!-- <a class="carouselButtonDkBlue brandsCatPrevViewedCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
+                <a class="carouselButtonDkBlue brandsCatPrevViewedCarouselNext carouselButtonDkBlueNext" href="#">next</a> -->
+                
+               <ul data-bind="var: session(recentlyViewedItems); format: productList; extension: store_prodlist; loadsTemplate: productListTemplate; hide_summary:1; hide_pagination:1; withReviews:1;" class='listStyleNone fluidList clearfix noPadOrMargin productList brandCatsPreviousViewed'></ul>
+            </div>
+	</div>
+<!-- <div class='standardCarouselPagenation brandCatsPreviousViewedCarPagenation'></div> -->
+
 <footer class='footerContainer clearfix'>
+
 	
     <section class='footerInteractContainer'>
     	<div class='footerSocialIcons'>
@@ -614,7 +632,7 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 
 	<div class='floatingBar'>
     	<a href='#'><div class='backToTop'>&#187 BACK TO TOP</div></a>
-        <div class='recentlyViewed'><span>1,234</span><span> Recently Viewed Item(s)</span><span class='fontWhite'>&nbsp&nbsp&nbsp &#187 </span><span class='fontYellow'> VIEW ITEM(S)</span></div>
+        <div class='recentlyViewed'><span class='numRecentlyViewed'></span><span> Recently Viewed Item(s)</span><span class='fontWhite'>&nbsp&nbsp&nbsp &#187 </span><span class='fontYellow'> VIEW ITEM(S)</span></div>
         <div class='cartIcon sprite'><a href='#' onClick="return showContent('cart',{});"><span class='cartItemCount'>0</span><p><span class='fontWhite'>&#187 </span><span class='fontYellow'>SHOPPING CART</span></p></a></div>
         <button class='checkoutButton'>CHECK OUT</button>
         <button class='floatingBarClose sprite' onclick="$('.floatingBar').hide(); return false;"></button>
@@ -821,8 +839,9 @@ don't modify the 'data-templateid' unless you are changing template names and up
 			<div><span>TAKE AN EXTRA</span><br>10% OFF ALL <span  data-bind="var: category(%page.mfg); format: text; editor: text;"></span> GEAR</div>
 			<div>PROMO CODE: <span data-bind="var: category(%page.coupon_code); format: text; editor: text;"></span> <span>See Details</span></div>
 		</div>
+		
+		<ul class='breadcrumb clearfix noPadOrMargin fluidList' data-bind='var: category(id); format:breadcrumb; extension:store_navcats; loadsTemplate: breadcrumbTemplate;'></ul>
 
-        <ul class='breadcrumb clearfix noPadOrMargin fluidList' data-bind='var: category(id); format:breadcrumb; extension:store_navcats; loadsTemplate: breadcrumbTemplate;'></ul>
 <div class='displayNone' data-bind="var: category(%page.description); format:showIfSet;">
 		<div class='brandsCatContainer'> 
 			
@@ -850,58 +869,55 @@ don't modify the 'data-templateid' unless you are changing template names and up
 					<div data-anytab-content='featuredProdsTab'>
 						<div class='CarouselContainer featuredProductsCarouselContainer'>
 							<div class='carouselTitles yellowBkgrd'>
-								<div class='carouselTitleTextContainer floatLeft'>FEATURED PRODUCTS</div>
 								<div href="#" class='pointer' onClick="showContent('category',{'navcat':$(this).closest('[data-catsafeid]').data('catsafeid'),'templateID':'categoryTemplateBrandsFeatured'});">
-									<div class='carouselLinkContainer floatRight' >View all featured product</div>
+									<div class='brandCarouselLinkContainer floatRight' >View all featured product</div>
 									<div class='carouselArrowContainer floatRight sprite'></div>
 								</div>
 							</div>
 							<div class='Carousel'>
-								<a class="carouselButtonDkBlue featCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
-								<a class="carouselButtonDkBlue featCarouselNext carouselButtonDkBlueNext" href="#">next</a>
+								<!-- <a class="carouselButtonDkBlue featCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
+								<a class="carouselButtonDkBlue featCarouselNext carouselButtonDkBlueNext" href="#">next</a> -->
 								
 								<ul  data-bind='var: category(%page.mfg); defaultValue:ujena; format: prodSearchFeaturedByBrand; extension: beachmart; size:24; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>
 							</div>
-							<div id='featCarPagenation' class='standardCarouselPagenation'></div>
+							<!-- <div class='standardCarouselPagenation'></div> -->
 						</div>
 					</div>
 					
 					<div data-anytab-content='bestSellersTab'>
 						<div class='CarouselContainer bestSellersCarouselContainer'>
 							<div class='carouselTitles'>
-								<div class='carouselTitleTextContainer floatLeft'>BEST SELLERS</div>
 								<div href="#" class='pointer' onClick="showContent('category',{'navcat':$(this).closest('[data-catsafeid]').data('catsafeid'),'templateID':'categoryTemplateBrandsBestSellers'});">
 									<div class='carouselLinkContainer floatRight' >View Best Sellers</div>
 									<div class='carouselArrowContainer floatRight sprite'></div>
 								</div>
 							</div>
 							<div class='Carousel'>
-								<a class="carouselButtonDkBlue bestCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
-								<a class="carouselButtonDkBlue bestCarouselNext carouselButtonDkBlueNext" href="#">next</a>
+								<!-- <a class="carouselButtonDkBlue bestCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
+								<a class="carouselButtonDkBlue bestCarouselNext carouselButtonDkBlueNext" href="#">next</a> -->
 								
 								<ul  data-bind='var: category(%page.mfg); defaultValue:ujena; format: prodSearchBestSellersByBrand; extension: beachmart; size:24; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>
-							</div>
-							<div id='bestCarPagenation' class='standardCarouselPagenation'></div>
+								</div>
+							<!-- <div class='standardCarouselPagenation'></div> -->
 						</div>
 					</div>
 		
 					<div data-anytab-content='viewAllProductsTab'>
 						<div class='CarouselContainer bestSellersCarouselContainer'>
 							<div class='carouselTitles'>
-								<div class='carouselTitleTextContainer floatLeft'>View All</div>
 								<div href="#" class='pointer' onClick="showContent('category',{'navcat':$(this).closest('[data-catsafeid]').data('catsafeid'),'templateID':'categoryTemplateBrandsBestSellers'});">
-									<div class='carouselLinkContainer floatRight' >View All</div>
+									<div class='brandCarouselLinkContainer floatRight' >View All</div>
 									<div class='carouselArrowContainer floatRight sprite'></div>
 								</div>
 							</div>
 							<div class='Carousel'>
-								<a class="carouselButtonDkBlue bestCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
-								<a class="carouselButtonDkBlue bestCarouselNext carouselButtonDkBlueNext" href="#">next</a>
+								<!-- <a class="carouselButtonDkBlue bestCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
+								<a class="carouselButtonDkBlue bestCarouselNext carouselButtonDkBlueNext" href="#">next</a> -->
 								
 								<ul data-bind="var: category(@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: brandsProductListTemplate; withReviews:1; items_per_page: 24; hide_summary:true;" class='listStyleNone fluidList clearfix noPadOrMargin brandsProductList'></ul>
 
 							</div>
-							<div id='bestCarPagenation' class='standardCarouselPagenation'></div>
+							<!-- <div class='standardCarouselPagenation'></div> -->
 						</div>
 						
 					</div>
@@ -911,8 +927,9 @@ don't modify the 'data-templateid' unless you are changing template names and up
 		</div>
 </div>
 		
+		<div class='brandsTopCatContainer'>
             <ul data-bind="var: category(@subcategoryDetail); format: categoryList; extension: store_navcats; loadsTemplate: brandsCategoryListTemplate; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin categoryList'></ul><!-- outputs a list of subcategories -->
-			
+		</div>
 			
 			
 			
@@ -933,30 +950,15 @@ don't modify the 'data-templateid' unless you are changing template names and up
 		<!-- </div> -->
         
         <!--
-        <div class='recentContainer'>
-            <h2>Recently Viewed Items</h2>
-            <ul data-bind="var: session(recentlyViewedItems); format: productList; extension: store_prodlist; loadsTemplate: productListTemplate; hide_summary:1; hide_pagination:1; withReviews:1;" class='listStyleNone fluidList clearfix noPadOrMargin productList'></ul>
-        </div>
+        <div id='recentlyViewedItemsContainer' class='displayNone'>
+			<h2>Recently Viewed Items</h2>
+			<ul data-bind="var: session(recentlyViewedItems); format: productList; extension: store_prodlist; loadsTemplate: productListTemplate; hide_summary:1; hide_pagination:1; withReviews:1;" class='listStyleNone fluidList clearfix noPadOrMargin productList'></ul>
+		</div>
         -->
         
         
         
-        <div id='recentlyViewedItemsContainer' class='recentContainer CarouselContainer previousViewedCarouselContainer displayNone'>
-            <div class='carouselTitles lightTealBkgrnd'>
-                <div class='carouselTitleTextContainer floatLeft'>PREVIOUSLY VIEWED PRODUCTS</div>
-                <a class="bindByAnchor" href="#!search?TAG=IS_BESTSELLER">
-                    <div class='carouselLinkContainer brandCatsPrevViewedWidth floatRight'>View All Previously Viewed Products</div>
-                    <div class='carouselArrowContainer floatRight sprite'></div>
-                </a>
-            </div>
-            <div class='Carousel'>
-           <!-- <a class="carouselButtonDkBlue brandsCatPrevViewedCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
-                <a class="carouselButtonDkBlue brandsCatPrevViewedCarouselNext carouselButtonDkBlueNext" href="#">next</a> -->
-                
-                <ul data-bind="var: session(recentlyViewedItems); format: productList; extension: store_prodlist; loadsTemplate: productListTemplate; hide_summary:1; hide_pagination:1; withReviews:1;" class='listStyleNone fluidList clearfix noPadOrMargin productList brandCatsPreviousViewed'></ul>
-            </div>
-		</div>
-       <!-- <div class='standardCarouselPagenation brandCatsPreviousViewedCarPagenation'></div> -->
+        
 
 </div><!-- /categoryTemplate -->
 
@@ -980,7 +982,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 	</div>
 
 	<ul class='breadcrumb clearfix noPadOrMargin fluidList' data-bind='var: category(id); format:breadcrumb; extension:store_navcats; loadsTemplate: breadcrumbTemplate;'></ul>
-	<ul  data-bind='var: category(%page.mfg); defaultValue:ujena; format: prodSearchFeaturedByBrand; extension: beachmart; size:250; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>
+	<ul  data-bind='var: category(%page.mfg); defaultValue:ujena; format: prodSearchFeaturedByBrand; extension: beachmart; size:250; loadsTemplate: productListTemplate;' class='listStyleNone fluidList clearfix noPadOrMargin prodMargin productList'></ul>
 
 </div>
 

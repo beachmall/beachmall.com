@@ -659,7 +659,7 @@ return filters;
 									onTouch: true
 									}
 								});
-							},1000); 
+							},1500); 
 						}//END VERTICAL CAROUSEL1  
 					}//END PRODUCT PAGE CAROUSELS
 				

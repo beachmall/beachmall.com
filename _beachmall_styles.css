@@ -248,13 +248,29 @@ BRANDS CATEGORY PAGE
 .brandsPromoBanner div:nth-child(3) {height:60px; width:230px; font-size:24px; float:Right; margin:0 40px 0 0; padding:12px 0 0 0; line-height:17px;}
 .brandsPromoBanner div:nth-child(3) span {font-family:"Open Sans"; font-size:14px; font-weight:bold; color:#e0463a;}
 
-.brandsCatContainer {height:auto; width:960px; padding:0px 30px;}
+.brandsTopCatContainer {height:auto; width:960px; padding:0px 30px;}
+.brandsCatContainer {height:auto; width:1020px; padding:0px 0px;}
 .brandsCatContainer .brandsHeader {height:355px; width:100%; background-color:#e45; margin:auto auto 10px auto; list-style:none;}
 .brandsHeader img {margin:27px 0 0 9px; float:left;}
 .brandsHeader ul {height:355px; width:491px; background-color:#ccc; float:right;}
 .brandsHeader ul li:nth-child(1) {height:331px; width:315px; background-color:#a45; float:left; font-family:"Open Sans"; font-size:14px; font-weight:normal; margin:12px 20px 12px 12px;}
 .brandsHeader ul li:nth-child(1) span {color:#a1d3ca; font-family:Oswald; font-size:24px; font-weight:bold;}
 .brandsHeader ul li:nth-child(2) {height:90px; width:140px; background-color:#b66; float:left; margin:30px 0 0 0; font-family:Oswald; font-size:14px; font-weight:bold; color:#ccc; text-align:center;}
+.brandsCatContainer  .ui-tabs {padding:0px;}
+.brandsCatContainer .ui-tabs .ui-tabs-panel {padding:0px;}
+.brandsCatContainer .ui-state-active {color:#fff; background-color:#f8c301;}
+
+
+.brandsCatContainer .brandsTabs .tabs .ui-state-default {height:auto; width:280px; background:#ccc; border-radius:0px; border:1px solid #ccc; font-family:Oswald; font-size:24px; font-weight:bold; line-height:12px; margin:0 0 0 40px;}
+.brandsCatContainer .brandsTabs .tabs .ui-state-active {height:auto; width:280px; background:#f8c301; border-radius:0px; border:1px solid #f8c301; font-family:Oswald; font-size:24px; font-weight:bold; line-height:12px; margin:0 0 0 40px;}
+.brandsCatContainer .brandsTabs .tabs .ui-state-default a, .tabs .ui-state-default a:link, .ui-state-default a:visited {color:#fff;}
+.brandsCatContainer .brandsTabs .tabs .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {color:#fff;}
+.brandsCatContainer .brandsTabs .ui-widget-content {background:#f5f1de; border:none; border-radius:0px;}
+.brandsCatContainer .brandsTabs .carouselTitles {color:#fff; background:#f8c301;}
+.brandCarouselLinkContainer {font-family:"Open Sans"; font-size:14px; font-weight:bold; margin-right:40px; padding-top:7px; height:auto;}
+.featuredProdsTab .brandCarouselLinkContainer {height:auto; width:195px;}
+.viewAllProductsTab .brandCarouselLinkContainer {height:auto; width:65px;}
+.brahdsTabs .Carousel {width:1020px; padding:0;}
 .categoryList > .catListBrand {height:190px; width:220px; margin:10px;}
 .brandThumbContainer {height:152px; width:152px; box-shadow:0px 0px 3px 2px #3bb3c3; padding:0px 34px;}
 .brandsCatName {height:25px; width:100%; color:#3BB3C3; font-family:"Open Sans"; font-size:14px; font-weight:bold; text-align:center; padding-top:10px;}
@@ -849,7 +865,7 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 .mainProdTabs {height:auto; width:100%;}
 .prodTabViewContainer .ui-tabs .ui-tabs-nav li a {font-size:13px; font-family:Oswald; padding:6px;}
 .prodTabViewContainer .ui-widget-header	{padding:3px 3px 0 3px; margin:0; border-width:0; border-bottom-width:1px;}
-.prodTabViewContainer .ui-tabs	{padding:0;}
+.prodTabViewContainer .ui-tabs	{padding:0; margin-bottom:20px;}
 .ui-tabs .ui-tabs-nav li	{margin-right:2px;}
 .prodTabViewContainer .prodViewerTable .prodTabs.tabbedProductContent .tabs .ui-state-default {background:#3bb3c3; border-radius:0px; border:1px solid #3bb3c3;}
 .prodTabViewContainer .prodViewerTable .prodTabs.tabbedProductContent .tabs .ui-state-active {background:#f5f1de; border-radius:0px; border:1px solid #3bb3c3;}
