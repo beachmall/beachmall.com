@@ -910,7 +910,8 @@ if(zip)	{
 	}
 else	{
 	app.u.dump(" -> no zip code entered. request via whereAmI");
-	app.ext.store_crm.calls.whereAmI.init({'callback':'handleWhereAmI','extension':'beachmart'},'passive');
+
+	app.calls.whereAmI.init({'callback':'handleWhereAmI','extension':'beachmart'},'passive');
 	app.model.dispatchThis('mutable');
 	}
 

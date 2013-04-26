@@ -102,7 +102,7 @@ MagicZoomPlus.options = {
 				},
 
 			magicThumb : function($tag,data)	{
-//				app.u.dump('BEGIN myRIA.renderFormats.magicThumb');
+				app.u.dump('BEGIN myRIA.renderFormats.magicThumb');
 				var bgcolor = data.bindData.bgcolor ? data.bindData.bgcolor : 'ffffff'
 				if(data.value)	{
 					var imgSrc = app.u.makeImage({'tag':0,'w':$tag.attr('width'),'h':$tag.attr('height'),'name':data.value,'b':bgcolor});

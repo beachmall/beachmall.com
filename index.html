@@ -18,7 +18,7 @@
 <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
 <meta http-equiv="pragma" content="no-cache" />
 
-<base href='' /><!-- leave blank so it works for a local file -->
+<base href='' /><!-- leave blank so it works for a local file. updated to / if protocol is not file: -->
 
 
 
@@ -27,17 +27,17 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"20130425171200",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"20130426145500",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
-	"baseURL":"",
-	"httpsURL":"https://www-beachmall-com.app-hosted.com/",
-	"httpURL":"http://www.81a72f.hoth.zoovy.net/"
+	"baseURL":"", //used in non-local mode.
+	"checkoutAuthMode" : "required",//can be passive, active or required
+	"testURL":"http://www.81a72f.hoth.zoovy.net/" //used ONLY if protocol is file: (for testing)
 	},u:{},rq:[]};
 
 //set base url so images, css, js, etc all load from appropriate location once deployed.
 //baseURL as blank lets loadScript function run off local copy when testing locally.
 if(document.location.protocol != 'file:')	{
-	app.vars.baseURL  = "https:" == document.location.protocol ? app.vars.httpsURL : app.vars.httpURL;
+	app.vars.baseURL  = "/";
 	document.getElementsByTagName('base')[0].href = app.vars.baseURL;
 	}
 </script>
@@ -47,14 +47,7 @@ if(document.location.protocol != 'file:')	{
 all css includes need to be after the js that changes the base url.
 css files should be included before any .js file to ensure they are downloaded in parallel
 -->
-<!--[if gte IE 9]>
-  <style type="text/css">
-    .gradient {
-       filter: none;
-    }
-  </style>
-<![endif]-->
-<link rel="stylesheet" type="text/css" href="qs_styles.css" />
+<link rel="stylesheet" type="text/css" href="app-quickstart.css" />
 <link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/ui-lightness/jquery-ui.css" />
 <link rel="stylesheet" type="text/css" href="fonts/fontawesome.css" />
 <link rel="stylesheet" type="text/css" href="_beachmall_styles.css" />
@@ -64,7 +57,7 @@ css files should be included before any .js file to ensure they are downloaded i
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-<script src="jquery.ui.widget.min.js"></script>
+<script src="resources/jquery.ui.widget.min.js"></script><!-- here so that plugins that may load before the jqueryui lib load without error -->
 <script type="text/javascript" src="loadscript.js"></script>
 <script type='text/javascript' src='examples/magictoolbox/magiczoomplus.js' ></script>
 
@@ -96,7 +89,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 		<div id='appPreViewProgressText'>0% Complete</div>
 	</div>
 	<div id="clickToLoad" class="displayNone pointer">
-		Click here to load your totally kickass shopping experience!
+		Click here to load your shopping experience!
 	</div>
 	<div class='appMessaging'></div>
 	</td>
@@ -404,6 +397,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 
 <div id='mainContentArea'></div><!-- DO NOT REMOVE - this is where the specific page (ex: homepage, product, category) content is going to go -->
 </section>
+
 
 	<div id='recentlyViewedItemsContainer' class='recentContainer CarouselContainer previousViewedCarouselContainer displayNone'>
             <div class='carouselTitles lightTealBkgrnd'>
@@ -1613,21 +1607,15 @@ this will likely become more flexible in the future. ###
 <!-- not sure about this img yet -->	
 	<img src='blank.gif' data-bind='var: product(zoovy:prod_image99); format: magicThumb; extension:  magicToolBox_mzp;' width='300' height='85' alt='' />
 	
-	<form data-bind='var: product(pid); format:atcForm; extension:store_product;' class='prodViewerAddToCartForm clearfix' action='#' onSubmit="app.ext.myRIA.u.handleAddToCart($(this),{'action':'modal'}); return false;">
 
-		
-		
-
-		
-	
-
+	<form data-bind='var: product(pid); format:atcForm; extension:store_product;' class='prodViewerAddToCartForm clearfix' action='#' onSubmit="app.ext.myRIA.u.addItemToCart($(this)); return false;">
 
 		<fieldset data-bind='var: product(pid); format:atcVariations; extension:store_product;' class='borderNone'></fieldset>
 
 		<div class='clearfix marginBottom'>
 			<div class='floatLeft'><!-- BUYSAFE KICKER --></div>
 			<div class='floatRight alignRight'>
-				<fieldset data-bind='var: product(pid); format:atcQuantityInput; extension:store_product; pretext:Quantity: ;' class='borderNone'></fieldset>
+				<fieldset data-bind='var: product(pid); format:atcQuantityInput; defaultValue:1; extension:store_product; pretext:Quantity: ;' class='borderNone'></fieldset>
 			</div>
 		</div>
 				
@@ -1640,7 +1628,6 @@ this will likely become more flexible in the future. ###
 			<span class='floatRight sizingChartLink displayNone' data-bind='var:product(user:prod_sizing_txt); format:showIfSet;'><a href='#tabbedProductContentTD'>Sizing Chart</a></span>   
 		</div>
 		
-	
 	</form>
 
 	<div class='clearfix'><br /></div>
@@ -2562,8 +2549,70 @@ The 'data-action' attribute is used to assign an onclick.
 
 
 
+<table class='orderContentsTable' data-app-role='invoiceContainer' id='invoiceTemplate'>
+<tr>
+	<td colspan='2'>
+<div class='floatRight'>
+<button data-app-event="myRIA|execOrder2Cart">Re-order</button>
+<button data-app-event="orderCreate|execInvoicePrint">Print Invoice</button>
+</div>
+
+<h3 data-bind='var:order(order/flow/pool);format:text; pretext:Order Status: ;'></h3>
+
+	</td>
+</tr>
+<tr>
+	<td>
+<hgroup class='marginBottom'>
+<!-- print icon -->
 
 
+<!-- <h2 data-bind='var:order(bill/firstname);format:text; pretext:Shipping Status: ;'></h2> -->
+
+<h5 class='orderTotal' data-bind='var:order(order/sum/order_total);format:money; currencySign: $;  hideZero:false; pretext:Order Total: ;'></h5>
+<h5 class='balanceDue' data-bind='var:order(order/sum/balance_due_total);format:money; currencySign: $;  hideZero:false; pretext:Balance Due: ;'></h5>
+</hgroup>
+
+<address class='marginBottom'>
+<b>
+	<span data-bind='var:order(order/bill/firstname);format:text; pretext:Bill To: ;'></span>
+	<span data-bind='var:order(order/bill/lastname);format:text;'></span>
+</b>
+<div data-bind='var:order(order/bill/address1);format:text;'></div>
+<div data-bind='var:order(order/bill/address2);format:text;'></div>
+<div>
+	<span data-bind='var:order(order/bill/city);format:text;posttext:, ;'></span>
+	<span data-bind='var:order(order/bill/region);format:text;posttext:. ;'></span>
+	<span data-bind='var:order(order/bill/postal);format:text; defaultVar:order(order/data.bill_int_zip);'></span>
+</div>
+<div data-bind='var:order(order/bill/countrycode);format:text;'></div>
+</address>
+
+<address class='marginBottom'>
+<b>
+	<span data-bind='var:order(order/ship/firstname);format:text; pretext:Ship To: ;'></span>
+	<span data-bind='var:order(order/ship/lastname);format:text;'></span>
+</b>
+<div data-bind='var:order(order/ship/address1);format:text;'></div>
+<div data-bind='var:order(order/ship/address2);format:text;'></div>
+<div>
+	<span data-bind='var:order(order/ship/city);format:text;posttext:, ;'></span>
+	<span data-bind='var:order(order/ship/region);format:text;posttext:. ;'></span>
+	<span data-bind='var:order(order/ship/postal);format:text;'></span>
+</div>
+<div data-bind='var:order(order/ship/countrycode);format:text;'></div>
+</address>
+
+
+	</td>
+	<td class='orderContentsProdlistContainer'>
+	<ul data-bind='var:order(order/tracking); format:orderTrackingLinks; extension:store_crm;before:<h4>Shipping:</h4>;' class='displayNone noListStyle marginBottom'></ul>
+	<table  class='listStyleNone lineItemProdlist'>
+		<tbody data-bind="var: order(order/@ITEMS); format:stuffList; loadsTemplate:chkoutInvoiceItemTemplate;"></tbody>
+	</table>
+	</td>
+</tr>
+</table>
 
 
 

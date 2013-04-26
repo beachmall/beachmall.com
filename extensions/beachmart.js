@@ -347,6 +347,10 @@ var store_filter = function() {
 					else {
 						//add no tags
 					}
+				},
+				
+				homePageHider : function($tag,data) {
+					app.u.dump('*** homePageHider: '+data.value);
 				}
 			}, //renderFormats
 ////////////////////////////////////   UTIL    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
