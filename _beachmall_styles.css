@@ -882,13 +882,19 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 .youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .tabs .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {color:#3bb3c3;}
 .youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content {background:#f5f1de; border:1px solid #3bb3c3;}
 
-.youMayLikeAccessories .jcarousel-skin-default {height:480px; width:260px; position:relative;}
-.youMayLikeAccessories .slideshowContainerVertical1 {height:460px; width:250px; position:relative; display:block;}
+.youMayLikeAccessories .notjcarousel-skin-default {height:480px; width:260px; position:relative;}
+.youMayLikeAccessories .slideshowContainerVertical1 {height:490px; width:250px; position:relative;}
 .youMayLikeAccessories .prev1 {height:20px; width:100px; position:absolute; top:0px; left:10px;}
 .youMayLikeAccessories .next1 {height:20px; width:100px; position:absolute; top:427px; left:10px;}
-.prodPageCarouselVert1 {height:440px; width:240px; list-style:none; position:absolute;}
+/*.prodPageCarouselVert1 {height:451px; width:240px; list-style:none;}*/
 /*.youMayLikeAccessories .tabbedProductListsTD .slideshowContainerVertical1 .prodlistSlideshow ul  {}*/
-.youMayLikeAccessories .tabbedProductListsTD .slideshowContainerVertical1 .products.product {height:400px; width:220px;}
+/*.youMayLikeAccessories .tabbedProductListsTD .slideshowContainerVertical1 .products.product {height:400px; width:220px;}*/
+
+.testCarCont {height:500px; width:540px; background-color:#eee;}
+.testCar {height:490px; width:520px; background-color:#ccc;}
+.testPrev, .testNext{height:50px; width:10px; background-color:#777;}
+
+
 
 
 
@@ -1229,7 +1235,7 @@ lower tab sets (text fields and product lists)
 .reviewsStarsCount  {height:28px; width:164px; margin:42px auto 0 auto;}
 .reviewsStarsCount .pr-snippet-wrapper {height:16px; width:auto; border:none; background:none;}
 .reviewsStarsCount .pr-snippet {height:28px; width:auto; padding:0; border:0; background-color:none; background-image:none;}
-.reviewsStarsCount .pr-snippet-stars  {padding:0; border:0; background-color:#ffffff; background-image:none;}
+.reviewsStarsCount .pr-snippet-stars  {padding:0; border:0; background:none; background-image:none;}
 .reviewsStarsCount .pr-snippet-stars .pr-snippet-rating-decimal {display:none;}
 
 .reviewsStarsCount .pr-snippet-review-count	{font-size:10px; line-height:13px;}
@@ -1391,3 +1397,13 @@ some shared styles, pulled from cat layout but that will impact, potentially, mo
 .blah3 {background-color:#F0F;}
 .blah4 {background-color: #0FF;}
 .blah5 {background-color: #3F0;}
+
+
+
+
+
+
+
+
+
+.test {height:250px; width:200px; background:#000;}

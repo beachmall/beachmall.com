@@ -92,6 +92,7 @@ var store_filter = function() {
 					app.u.dump('Product fredsel ran');
 				}]);
 				
+				
 //				app.u.dump('BEGIN app.ext.store_navcats.init.onSuccess ');
 				var r = true; //return false if extension won't load for some reason (account config, dependencies, etc).
 				return r;
@@ -255,7 +256,7 @@ var store_filter = function() {
 //that way, two render formats named the same (but in different extensions) don't overwrite each other.
 		renderFormats : {
 				showFreeShippingTag: function($tag, data) {
-					//app.u.dump(data.value);
+					app.u.dump('***TEST '+data.value);
 					var us1ts = data.value['%attribs']['us1:ts'];
 					var zoovyProdSalesRank = data.value['%attribs']['zoovy:prodsalesrank'];
 					var d = new Date();
@@ -350,7 +351,8 @@ var store_filter = function() {
 				},
 				
 				homePageHider : function($tag,data) {
-					app.u.dump('*** homePageHider: '+data.value);
+					/*app.u.dump(data.value);
+					app.u.dump('*** homePageHider: '+data.value);*/
 				}
 			}, //renderFormats
 ////////////////////////////////////   UTIL    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -635,7 +637,7 @@ return filters;
 					
 					//YOU MAY LIKE THIS VERTICAL CAROUSEL
 					runProductVerticalCarousel : function() {
-					var $target = $('.slideshowContainerVertical1');
+					var $target = $('.testUL');
 					if($target.data('isCarousel'))	{} //only make it a carousel once.
 					else	{
 						$target.data('isCarousel',true);
@@ -645,14 +647,14 @@ return filters;
 							$target.carouFredSel({
 								circular: true,
 								auto: false,
-								direction: 'up',
-								prev: '.prev1',
-								next: '.next1',
+								direction: 'down',
+								prev: '.testPrev',
+								next: '.testNext',
 								items:{
-									height: 440,
+									height: 468,
 									width: 240
 								},
-								height: 450,
+								height: 490,
 								width: 250,
 								//items: 1,
 								//pagination: '#bestCarPagenation',
@@ -663,7 +665,7 @@ return filters;
 									onTouch: true
 									}
 								});
-							},1500); 
+							},1000); 
 						}//END VERTICAL CAROUSEL1  
 					}//END PRODUCT PAGE CAROUSELS
 				

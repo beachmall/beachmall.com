@@ -398,7 +398,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 <div id='mainContentArea'></div><!-- DO NOT REMOVE - this is where the specific page (ex: homepage, product, category) content is going to go -->
 </section>
 
-
+<div data-bind='useParentData:true; format:homePageHider; extension:store_filter;'></div>
 	<div id='recentlyViewedItemsContainer' class='recentContainer CarouselContainer previousViewedCarouselContainer displayNone'>
             <div class='carouselTitles lightTealBkgrnd'>
                 <div class='carouselTitleTextContainer floatLeft'>PREVIOUSLY VIEWED PRODUCTS</div>
@@ -1648,8 +1648,7 @@ this will likely become more flexible in the future. ###
 	
 	<td class='youMayLikeAccessories'>
 
-
-	<div class='tabbedProductListsTD marginLeft'>
+		<div class='tabbedProductListsTD marginLeft'>
 		<div class="tabbedProductLists" data-app-role='xsellTabContainer'>
 
 			<ul class='tabs'>
@@ -1657,18 +1656,26 @@ this will likely become more flexible in the future. ###
 				<li class='displayNone' data-bind='var: product(zoovy:accessory_products); format:showIfSet;'><a href="#prodlistAccessories">Accessories</a></li>
 			</ul>
 		
-			<div class='jcarousel-skin-default verticalProdlist' data-anytab-content='prodlistRelated'>
-				<div class='slideshowContainerVertical1 prodlistSlideshow'>
-					
+			<div class='testCarCont' data-anytab-content='prodlistRelated'>
+				<div class='testCar'>
+					<ul class='testUL listStyleNone' data-bind="var: product(zoovy:accessory_products); format:productList; extension:store_prodlist;loadsTemplate:productListTemplate;hide_summary:true; withInventory:1; withVariations:1;"></ul>
+				</div>
+				<div class='testPrev'></div>
+				<div class='textNext'></div>
+			</div>
+		
+		<!--
+			<div class='notjcarousel-skin-default verticalProdlist' data-anytab-content='prodlistRelated'>
+					<div class='slideshowContainerVertical1 prodlistSlideshow'>
+						<button class='next1' href='#'>next</button>
+						<button class='prev1' href='#'>prev</button>
 						<ul class='prodPageCarouselVert1' data-bind="var: product(zoovy:accessory_products); format:productList; extension:store_prodlist;loadsTemplate:productListTemplate;hide_summary:true; withInventory:1; withVariations:1;"></ul>
-					
-					<button class='next1' href='#'>next</button>
-					<button class='prev1' href='#'>prev</button>					
+					</div>
 				</div>
 			</div> 
 
 			<!--
-			<div class='productPageCarouselContainer'>
+			<div class='productPageCarouselContainer'>productListTemplateResultsCustom
 				<div>
 					<ul class='prodPageCarousel' data-bind='var: product(pid); format: productImages; extension: beachmart;'></ul>    
 				</div>
@@ -1677,7 +1684,7 @@ this will likely become more flexible in the future. ###
 			</div>
 			-->
 						
-
+			<!--
 			<div class='jcarousel-skin-default verticalProdlist' data-anytab-content='prodlistRelated'>
 				<div class='slideshowContainerVertical2 prodlistSlideshow '>
 					<div class='next carouselNav carouselNavLgS displayNone'></div>
@@ -1685,10 +1692,12 @@ this will likely become more flexible in the future. ###
 					<ul data-bind="var: product(zoovy:related_products); format:productList; extension:store_prodlist;loadsTemplate:productListTemplate;hide_summary:true; withInventory:1; withVariations:1;"></ul>
 				</div>	
 			</div>
+			-->
 			
 		</div> <!-- END tabbedProductLists -->
 
 	</div> <!-- END tabbedProductListsTD -->
+
 
 
 
