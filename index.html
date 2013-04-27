@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"20130426145500",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"20130426205100",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"", //used in non-local mode.
 	"checkoutAuthMode" : "required",//can be passive, active or required
@@ -1653,46 +1653,24 @@ this will likely become more flexible in the future. ###
 
 			<ul class='tabs'>
 				<li><a href="#prodlistRelated" >You may like</a></li>
-				<li class='displayNone' data-bind='var: product(zoovy:accessory_products); format:showIfSet;'><a href="#prodlistAccessories">Accessories</a></li>
+				<li><a href="#prodlistAccessories" >Accessories</a></li>
 			</ul>
 		
 			<div class='testCarCont' data-anytab-content='prodlistRelated'>
 				<div class='testCar'>
-					<ul class='testUL listStyleNone' data-bind="var: product(zoovy:accessory_products); format:productList; extension:store_prodlist;loadsTemplate:productListTemplate;hide_summary:true; withInventory:1; withVariations:1;"></ul>
+					<ul data-bind="var: product(zoovy:related_products); format:productList; extension:store_prodlist;loadsTemplate:productListTemplate;hide_summary:true; withInventory:1; withVariations:1;"></ul>
 				</div>
 				<div class='testPrev'></div>
-				<div class='textNext'></div>
+				<div class='testNext'></div>
 			</div>
-		
-		<!--
-			<div class='notjcarousel-skin-default verticalProdlist' data-anytab-content='prodlistRelated'>
-					<div class='slideshowContainerVertical1 prodlistSlideshow'>
-						<button class='next1' href='#'>next</button>
-						<button class='prev1' href='#'>prev</button>
-						<ul class='prodPageCarouselVert1' data-bind="var: product(zoovy:accessory_products); format:productList; extension:store_prodlist;loadsTemplate:productListTemplate;hide_summary:true; withInventory:1; withVariations:1;"></ul>
-					</div>
-				</div>
-			</div> 
 
-			<!--
-			<div class='productPageCarouselContainer'>productListTemplateResultsCustom
-				<div>
-					<ul class='prodPageCarousel' data-bind='var: product(pid); format: productImages; extension: beachmart;'></ul>    
-				</div>
-				<a href='#' class='prodPageCarPrev sprite'><span>prev</span></a>
-				<a href='#' class='prodPageCarNext sprite'><span>next</span></a>
-			</div>
-			-->
-						
-			<!--
-			<div class='jcarousel-skin-default verticalProdlist' data-anytab-content='prodlistRelated'>
-				<div class='slideshowContainerVertical2 prodlistSlideshow '>
-					<div class='next carouselNav carouselNavLgS displayNone'></div>
-					<div class='prev carouselNav carouselNavLgN displayNone'></div>
-					<ul data-bind="var: product(zoovy:related_products); format:productList; extension:store_prodlist;loadsTemplate:productListTemplate;hide_summary:true; withInventory:1; withVariations:1;"></ul>
+			<div class='testCarCont2' data-anytab-content='prodlistAccessories'>
+				<div class='testCar2'>
+					<ul class='testUL2 listStyleNone' data-bind="var: product(zoovy:accessory_products); format:productList; extension:store_prodlist;loadsTemplate:productListTemplate;hide_summary:true; withInventory:1; withVariations:1;"></ul>
 				</div>	
+				<div class='testPrev2'></div>
+				<div class='testNext2'></div>
 			</div>
-			-->
 			
 		</div> <!-- END tabbedProductLists -->
 

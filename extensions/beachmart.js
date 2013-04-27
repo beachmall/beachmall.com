@@ -89,6 +89,7 @@ var store_filter = function() {
 				app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {
 					app.ext.store_filter.u.runProductCarousel();
 					app.ext.store_filter.u.runProductVerticalCarousel();
+					app.ext.store_filter.u.runProductVerticalCarousel2();
 					app.u.dump('Product fredsel ran');
 				}]);
 				
@@ -666,7 +667,42 @@ return filters;
 									}
 								});
 							},1000); 
-						}//END VERTICAL CAROUSEL1  
+						}//END VERTICAL CAROUSEL1 
+					},						
+						
+						//YOU MAY LIKE THIS VERTICAL CAROUSEL
+					runProductVerticalCarousel2 : function() {
+					var $target = $('.testUL2');
+					if($target.data('isCarousel'))	{} //only make it a carousel once.
+					else	{
+						$target.data('isCarousel',true);
+						app.u.dump('*** Carousel is true');
+				//for whatever reason, caroufredsel needs to be executed after a moment.
+						setTimeout(function(){
+							$target.carouFredSel({
+								circular: true,
+								auto: false,
+								direction: 'down',
+								prev: '.testPrev2',
+								next: '.testNext2',
+								items:{
+									height: 468,
+									width: 240
+								},
+								height: 490,
+								width: 250,
+								//items: 1,
+								//pagination: '#bestCarPagenation',
+								scroll: 1,
+						//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
+								swipe: {
+									onMouse: true,
+									onTouch: true
+									}
+								});
+							},1000); 
+						}//END VERTICAL CAROUSEL2  
+						
 					}//END PRODUCT PAGE CAROUSELS
 				
 			}, //u

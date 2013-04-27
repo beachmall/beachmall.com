@@ -882,18 +882,15 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 .youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .tabs .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {color:#3bb3c3;}
 .youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content {background:#f5f1de; border:1px solid #3bb3c3;}
 
-.youMayLikeAccessories .notjcarousel-skin-default {height:480px; width:260px; position:relative;}
-.youMayLikeAccessories .slideshowContainerVertical1 {height:490px; width:250px; position:relative;}
-.youMayLikeAccessories .prev1 {height:20px; width:100px; position:absolute; top:0px; left:10px;}
-.youMayLikeAccessories .next1 {height:20px; width:100px; position:absolute; top:427px; left:10px;}
-/*.prodPageCarouselVert1 {height:451px; width:240px; list-style:none;}*/
-/*.youMayLikeAccessories .tabbedProductListsTD .slideshowContainerVertical1 .prodlistSlideshow ul  {}*/
-/*.youMayLikeAccessories .tabbedProductListsTD .slideshowContainerVertical1 .products.product {height:400px; width:220px;}*/
+.testCarCont {height:500px; width:240px; background-color:#eee;}
+.testCar {height:490px; width:240px; background-color:#ccc;}
+.testPrev {height:30px; width:252px; position:relative; top:-14px; left:-6px; background-color:#777;}
+.testNext{height:30px; width:252px; position:relative; top:-526px; left:-6px; background-color:#777;}
 
-.testCarCont {height:500px; width:540px; background-color:#eee;}
-.testCar {height:490px; width:520px; background-color:#ccc;}
-.testPrev, .testNext{height:50px; width:10px; background-color:#777;}
-
+.testCarCont2 {height:500px; width:240px; background-color:#eee;}
+.testCar2 {height:490px; width:240px; background-color:#ccc;}
+.testPrev2{height:30px; width:252px; position:relative; top:-14px; left:-6px; background-color:#777;}
+.testNext2{height:30px; width:252px; position:relative; top:-526px; left:-6px; background-color:#777;}
 
 
 
