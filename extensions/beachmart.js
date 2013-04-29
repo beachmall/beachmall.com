@@ -40,7 +40,13 @@ var store_filter = function() {
 		".beach-umbrellas-shelter.beach-umbrella":{
 			"filter": "UmbrellasForm",
 			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
-			}/*,
+			},
+		".beach-umbrellas-shelter.patio-umbrella":{
+			"filter": "UmbrellasForm",
+			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
+			}
+			
+			/*,.beach-umbrellas-shelter.patio-umbrella
 			".00027-metal-chess-pieces":{
 			"filter": "chessPiecesForm",
 			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
@@ -236,11 +242,14 @@ var store_filter = function() {
 					$(this).outerWidth(true);
 				});
 				$dropout.stop().animate({"width":width+"px"}, 1000);
+				$dropout.parent().parent().parent().stop().animate({"width":1000+"px"}, 1000);
+				$dropout.parent().parent().stop().animate({"width":760+"px"}, 1000);
 			},
 			
 			//ANIMATE RETRACTION OF MAIN CATEGORY 2ND LEVEL DROPOUT MENU
 			hideDropout : function ($tag) {
 				$(".dropout", $tag).stop().animate({"width":"0px"}, 1000);
+				$(".dropout", $tag).parent().parent().stop().animate({"width":220+"px"}, 1000);
 			},
 			
 			//IMEDIATE RETRACTION OF MAIN CATEGORY DROPDOWN MENU WHEN 2ND LEVEL LINK IS CLICKED
@@ -565,48 +574,8 @@ return filters;
 								},1000); 
 							}
 						}]);
-						
-
-					//PREVIOUSLY VIEWED ITEMS CAROUSEL
-		/*			app.rq.push(['templateFunction','categoryTemplateBrands','onCompletes',function(P) {
-						var $target = $('.brandCatsPreviousViewed');
-//						if($target.data('isCarousel'))	{} //only make it a carousel once.
-
-						var execCarousel = function(){ setTimeout(function(){
-								$target.carouFredSel({
-									auto: false,
-									prev: '.brandsCatPrevViewedCarouselPrev',
-									next: '.brandsCatPrevViewedCarouselNext',
-									height: 405,
-									width: 'variable',
-									items : {
-										visible : null
-									},
-									pagination: '.brandCatsPreviousViewedCarPagenation',
-									scroll: 4,
-							//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
-									swipe: {
-										onMouse: true,
-										onTouch: true
-										}
-									});
-								},1000);}
-
-						if($target.children().length === 0)	{} //no kids, do nothing.
-						else if($target.data('isCarousel') == true)	{
-							$target.carouFredSel('destroy');
-							execCarousel();
-							}
-						else	{
-							$target.data('isCarousel',true);
-							execCarousel();
-							app.u.dump(" -> !!! children: "+$target.children().length);
-					//for whatever reason, caroufredsel needs to be executed after a moment.
- 
-							}
-						}]);		*/
 					
-				},//END CAROUSEL FUNCTIONS
+				},//END  HOMEPAGE CAROUSEL FUNCTIONS
 				
 				//PRODUCT CAROUSELS
 				runProductCarousel : function() {
@@ -666,11 +635,11 @@ return filters;
 									onTouch: true
 									}
 								});
-							},1000); 
+							},100); 
 						}//END VERTICAL CAROUSEL1 
 					},						
 						
-						//YOU MAY LIKE THIS VERTICAL CAROUSEL
+						//ACCESSORIES VERTICAL CAROUSEL
 					runProductVerticalCarousel2 : function() {
 					var $target = $('.testUL2');
 					if($target.data('isCarousel'))	{} //only make it a carousel once.
@@ -704,6 +673,45 @@ return filters;
 						}//END VERTICAL CAROUSEL2  
 						
 					}//END PRODUCT PAGE CAROUSELS
+					
+					//PREVIOUSLY VIEWED ITEMS CAROUSEL
+		/*			app.rq.push(['templateFunction','categoryTemplateBrands','onCompletes',function(P) {
+						var $target = $('.brandCatsPreviousViewed');
+//						if($target.data('isCarousel'))	{} //only make it a carousel once.
+
+						var execCarousel = function(){ setTimeout(function(){
+								$target.carouFredSel({
+									auto: false,
+									prev: '.brandsCatPrevViewedCarouselPrev',
+									next: '.brandsCatPrevViewedCarouselNext',
+									height: 405,
+									width: 'variable',
+									items : {
+										visible : null
+									},
+									pagination: '.brandCatsPreviousViewedCarPagenation',
+									scroll: 4,
+							//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
+									swipe: {
+										onMouse: true,
+										onTouch: true
+										}
+									});
+								},1000);}
+
+						if($target.children().length === 0)	{} //no kids, do nothing.
+						else if($target.data('isCarousel') == true)	{
+							$target.carouFredSel('destroy');
+							execCarousel();
+							}
+						else	{
+							$target.data('isCarousel',true);
+							execCarousel();
+							app.u.dump(" -> !!! children: "+$target.children().length);
+					//for whatever reason, caroufredsel needs to be executed after a moment.
+ 
+							}
+						}]);		*/
 				
 			}, //u
 
