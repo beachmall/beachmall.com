@@ -92,10 +92,11 @@ var store_filter = function() {
 			onSuccess : function()	{
 				
 				app.ext.store_filter.u.runCarousels();
-				app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {
-					app.ext.store_filter.u.runProductCarousel();
-					app.ext.store_filter.u.runProductVerticalCarousel();
-					app.ext.store_filter.u.runProductVerticalCarousel2();
+				app.rq.push(['templateFunction','productTemplate','onCompletes',function(infoObj) {
+					var $context = $(app.u.jqSelector('#'+infoObj.parentID)); //grabs the currently loaded product page (to ignore previously loaded / invisible ones)
+					app.ext.store_filter.u.runProductCarousel($context);
+					app.ext.store_filter.u.runProductVerticalCarousel($context);
+					app.ext.store_filter.u.runProductVerticalCarousel2($context);
 					app.u.dump('Product fredsel ran');
 				}]);
 				
@@ -235,21 +236,22 @@ var store_filter = function() {
 			},
 			
 			//SHOW MAIN CATEGORY 2ND LEVEL DROPOUT MENU
-			showDropout : function ($tag, wd) {
+			showDropout : function ($tag, $parentparent, $parent, wd) {
 				var $dropout = $(".dropout", $tag);
 				var width = wd;
 				$dropout.children().each(function(){
 					$(this).outerWidth(true);
 				});
+				$parentparent.css({"width":705+"px"},1000);
+				$parent.stop().animate({"width":680+"px"}, 1000);
 				$dropout.stop().animate({"width":width+"px"}, 1000);
-				$dropout.parent().parent().parent().stop().animate({"width":1000+"px"}, 1000);
-				$dropout.parent().parent().stop().animate({"width":760+"px"}, 1000);
 			},
 			
 			//ANIMATE RETRACTION OF MAIN CATEGORY 2ND LEVEL DROPOUT MENU
-			hideDropout : function ($tag) {
+			hideDropout : function ($tag, $parentparent, $parent) {
 				$(".dropout", $tag).stop().animate({"width":"0px"}, 1000);
-				$(".dropout", $tag).parent().parent().stop().animate({"width":220+"px"}, 1000);
+				$parent.stop().animate({"width":220+"px"}, 1000);
+				$parentparent.css({"width":485+"px"}, 1000);
 			},
 			
 			//IMEDIATE RETRACTION OF MAIN CATEGORY DROPDOWN MENU WHEN 2ND LEVEL LINK IS CLICKED
@@ -265,6 +267,13 @@ var store_filter = function() {
 //on a data-bind, format: is equal to a renderformat. extension: tells the rendering engine where to look for the renderFormat.
 //that way, two render formats named the same (but in different extensions) don't overwrite each other.
 		renderFormats : {
+				showTabsIfSet : function($tag, data) {
+					if(data.value['%attribs']['zoovy:related_products'] ||
+						data.value['%attribs']['zoovy:related_products']){
+							$tag.show();
+						}
+					},
+		
 				showFreeShippingTag: function($tag, data) {
 					app.u.dump('***TEST '+data.value);
 					var us1ts = data.value['%attribs']['us1:ts'];
@@ -578,9 +587,9 @@ return filters;
 				},//END  HOMEPAGE CAROUSEL FUNCTIONS
 				
 				//PRODUCT CAROUSELS
-				runProductCarousel : function() {
+				runProductCarousel : function($context) {
 					//CAROUSEL UNDER MAIN PRODUCT IMAGE
-					var $target = $('.prodPageCarousel');
+					var $target = $('.prodPageCarousel', $context);
 					if($target.data('isCarousel'))	{} //only make it a carousel once.
 					else	{
 						$target.data('isCarousel',true);
@@ -606,8 +615,8 @@ return filters;
 					},
 					
 					//YOU MAY LIKE THIS VERTICAL CAROUSEL
-					runProductVerticalCarousel : function() {
-					var $target = $('.testUL');
+					runProductVerticalCarousel : function($context) {
+					var $target = $('.testUL', $context);
 					if($target.data('isCarousel'))	{} //only make it a carousel once.
 					else	{
 						$target.data('isCarousel',true);
@@ -640,8 +649,8 @@ return filters;
 					},						
 						
 						//ACCESSORIES VERTICAL CAROUSEL
-					runProductVerticalCarousel2 : function() {
-					var $target = $('.testUL2');
+					runProductVerticalCarousel2 : function($context) {
+					var $target = $('.testUL2', $context);
 					if($target.data('isCarousel'))	{} //only make it a carousel once.
 					else	{
 						$target.data('isCarousel',true);

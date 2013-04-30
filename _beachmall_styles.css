@@ -1293,11 +1293,14 @@ PRODUCT VIEWER / MODAL
 
 
 
-/*
-
+/***************************************************************************
 CART TEMPLATE
+****************************************************************************/
 
-*/
+.cartAccessories {height:500px; width: 40%; background-color:#e58;}
+
+
+
 #modalCart	{min-width:750px;}
 .cartStuffListContainer	{height: 300px; overflow:auto;}
 
