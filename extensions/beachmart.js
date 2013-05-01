@@ -131,6 +131,16 @@ var store_filter = function() {
 			onSuccess : function()	{
 				
 				app.ext.store_filter.u.runCarousels();
+				app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(infoObj) {
+					var $context = $(app.u.jqSelector('#'+infoObj.parentID));
+					app.ext.store_filter.u.hidePreviouslyViewed($context);
+				}]);
+				
+				app.rq.push(['templateFunction','homepageTemplate','onDeparts',function(infoObj) {
+					var $context = $(app.u.jqSelector('#'+infoObj.parentID));
+					app.ext.store_filter.u.showPreviouslyViewed($context);
+				}]);
+				
 				app.rq.push(['templateFunction','productTemplate','onCompletes',function(infoObj) {
 					var $context = $(app.u.jqSelector('#'+infoObj.parentID)); //grabs the currently loaded product page (to ignore previously loaded / invisible ones)
 					app.ext.store_filter.u.runProductCarousel($context);
@@ -314,7 +324,7 @@ var store_filter = function() {
 					},
 		
 				showFreeShippingTag: function($tag, data) {
-					app.u.dump('***TEST '+data.value);
+					//app.u.dump('***TEST '+data.value);
 					var us1ts = data.value['%attribs']['us1:ts'];
 					var zoovyProdSalesRank = data.value['%attribs']['zoovy:prodsalesrank'];
 					var d = new Date();
@@ -693,7 +703,7 @@ return filters;
 					if($target.data('isCarousel'))	{} //only make it a carousel once.
 					else	{
 						$target.data('isCarousel',true);
-						app.u.dump('*** Carousel is true');
+						//app.u.dump('*** Carousel is true');
 				//for whatever reason, caroufredsel needs to be executed after a moment.
 						setTimeout(function(){
 							$target.carouFredSel({
@@ -720,7 +730,7 @@ return filters;
 							},1000); 
 						}//END VERTICAL CAROUSEL2  
 						
-					}//END PRODUCT PAGE CAROUSELS
+					},//END PRODUCT PAGE CAROUSELS
 					
 					//PREVIOUSLY VIEWED ITEMS CAROUSEL
 		/*			app.rq.push(['templateFunction','categoryTemplateBrands','onCompletes',function(P) {
@@ -760,6 +770,14 @@ return filters;
  
 							}
 						}]);		*/
+						
+				hidePreviouslyViewed : function($context) {
+					$('#recentlyViewedItemsContainer').hide();
+				},
+				
+				showPreviouslyViewed : function($context) {
+					$('#recentlyViewedItemsContainer').show();
+				}
 				
 			}, //u
 
