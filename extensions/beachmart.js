@@ -45,6 +45,7 @@ var store_filter = function() {
 			"filter": "UmbrellasForm",
 			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
 		},
+/* ACCESSORIES FORMS */
 		".beach-accessories.beach-bags-totes":{
 			"filter": "AccessoriesForm",
 			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
@@ -56,29 +57,68 @@ var store_filter = function() {
 		".beach-accessories.picnic-baskets":{
 			"filter": "AccessoriesForm",
 			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
-		}
-			/*
-			".00029-theme-chess-pieces":{
-			"filter": "chessPiecesForm",
+		}, 
+/* BEACH CHAIR FORMS */
+		".beach-chair.beach-chairs":{
+			"filter": "BeachChairsForm",
 			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
-			},
-			".00055-unfinished-chess-sets":{
-			"filter": "chessPiecesForm",
-			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
-			},
-			".00022-jaques-london-chess-sets":{
-			"filter": "chessPiecesForm",
-			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
-			},
-			".00033-artisan-hand-carved-chess-sets":{
-			"filter": "chessPiecesForm",
-			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
-			},
-			".000295-most-unique-chess-pieces":{
-			"filter": "chessPiecesForm",
-			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
-			},*/
 		},
+		".beach-chair.canopy-beach-chair":{
+			"filter": "BeachChairsForm",
+			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
+		},
+		".beach-chair.folding-beach-chairs":{
+			"filter": "BeachChairsForm",
+			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
+		},
+		".beach-chair.heavy-beach-chairs":{
+			"filter": "BeachChairsForm",
+			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
+		},
+		".beach-chair.high-beach-chair":{
+			"filter": "BeachChairsForm",
+			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
+		},
+		".beach-chair.sand-chair":{
+			"filter": "BeachChairsForm",
+			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
+		},
+		".beach-chair.sand-chairs":{
+			"filter": "BeachChairsForm",
+			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
+		},
+		".beach-chair.wooden-beach-chairs":{
+			"filter": "BeachChairsForm",
+			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
+		},
+/* WOMENS COVER UP FORM */
+		".beachwear.swimwear-women.cover-ups":{
+			"filter": "WomensCoverUpsForm",
+			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
+		},
+/* WOMENS SWIMWEAR FORMS */
+		".beachwear.swimwear-women.bathing-suits":{
+			"filter": "WomensSwimwearForm",
+			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
+		},
+		".beachwear.swimwear-women.bikini-two-piece":{
+			"filter": "WomensSwimwearForm",
+			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
+		},
+		".beachwear.swimwear-women.monokinis-tankinis":{
+			"filter": "WomensSwimwearForm",
+			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
+		},
+		".beachwear.swimwear-women.one-piece-swimsuits":{
+			"filter": "WomensSwimwearForm",
+			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
+		},
+		".beachwear.swimwear-women.plus-size-swimsuits":{
+			"filter": "WomensSwimwearForm",
+			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
+		}
+
+	},
 
 					////////////////////////////////////   CALLBACKS    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
