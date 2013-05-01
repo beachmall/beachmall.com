@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"20130429133100",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"20130430202800",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"", //used in non-local mode.
 	"checkoutAuthMode" : "required",//can be passive, active or required
@@ -1803,7 +1803,7 @@ this will likely become more flexible in the future. ###
 	</section>
 
 	<div id="prodDesc" data-bind='var: product(zoovy:prod_desc); format:wiki; wikiFormats:myRIA;'></div>
-
+	
 	</td>
 </tr>
 <tr>
@@ -2719,7 +2719,7 @@ put all filters into the appFilters container.
 
 <div id='appFilters' class='displayNone'>
 
-
+<!-- UMBRELLA FILTERS -->
     <form action='#' name='UmbrellasForm' id='UmbrellasForm' class='layeredSearch'>
     
         <fieldset data-elastic-key="base_price" data-filtertype="slider">
@@ -2786,7 +2786,90 @@ put all filters into the appFilters container.
             <label class='break'><input type='checkbox' value='CP05' /> Sunbrella</label>
         </fieldset>
 
-    </form>
+    </form> <!-- //UMBRELLA FILTERS -->
+	
+	
+	<form action='#' name='AccessoriesForm' id='AccessoriesForm' class='layeredSearch'>
+    
+        <fieldset data-elastic-key="base_price" data-filtertype="slider">
+            <legend>Price</legend>
+            <input type="text"  class='sliderValue' />
+            <div class="slider-range"></div>
+        </fieldset>
+        
+		<button class='resetButton floatRight'>RESET OPTIONS</button>
+		
+        <fieldset data-elastic-key="pogs" data-filtertype="checkboxes">
+            <legend>Product Type</legend>
+            <label class='break'><input class="" type='checkbox' value='CH00' /> Picnic Baskets</label>
+            <label class='break'><input class="" type='checkbox' value='CH01' /> Picnic Backpack</label>
+            <label class='break'><input class="" type='checkbox' value='CH02' /> Wine Baskets</label>
+            <label class='break'><input class="" type='checkbox' value='CH03' /> Tote Bags</label>
+            <label class='break'><input class="" type='checkbox' value='CH04' /> Lunch Bags</label>
+            <label class='break'><input class="" type='checkbox' value='CH05' /> Coolers</label>
+            <label class='break'><input class="" type='checkbox' value='CH06' /> Coffee Tea Sets</label>
+            <label class='break'><input class="" type='checkbox' value='CH07' /> Picnic Blankets</label>
+            <label class='break'><input class="" type='checkbox' value='CH08' /> Tailgaiting</label>
+            <label class='break'><input class="" type='checkbox' value='CH09' /> Accessories</label>
+        </fieldset>
+        
+        <fieldset class="umbrellaStyle" data-elastic-key="pogs" data-filtertype="checkboxes">
+            <legend>Service for</legend>
+            <label class='break'><input type='checkbox' value='CI00' /> 2 Persons</label>
+            <label class='break'><input type='checkbox' value='CI01' /> 4 Persons</label>
+            <label class='break'><input type='checkbox' value='CI02' /> 6 Persons</label>
+        </fieldset>
+        
+        <fieldset class="umbrellaOptions" data-elastic-key="pogs" data-filtertype="checkboxes">
+            <legend>Special Features</legend>
+            <label class='break'><input type='checkbox' value='CL00' /> Insulated</label>
+            <label class='break'><input type='checkbox' value='CL01' /> Silverware Storage</label>
+            <label class='break'><input type='checkbox' value='CL02' /> Waterproof Liner</label>
+            <label class='break'><input type='checkbox' value='CL03' /> Adjustable Straps</label>
+            <label class='break'><input type='checkbox' value='CL04' /> Removable Wine Duffel</label>
+        </fieldset>
+        
+        <fieldset class="umbrellaUvProtection" data-elastic-key="pogs" data-filtertype="checkboxes">
+            <legend>Included</legend>
+            <label class='break'><input type='checkbox' value='CM00' /> Corkscrew/Bottle Opener</label>
+            <label class='break'><input type='checkbox' value='CM01' /> Napkins</label>
+            <label class='break'><input type='checkbox' value='CM02' /> Wine Glasses</label>
+            <label class='break'><input type='checkbox' value='CM03' /> Silverware</label>
+            <label class='break'><input type='checkbox' value='CM04' /> Cutting Board/Cheese Knife</label>
+            <label class='break'><input type='checkbox' value='CM05' /> Salt &#39 Pepper Shakers </label>
+            <label class='break'><input type='checkbox' value='CM06' /> Table Cloth</label>
+            <label class='break'><input type='checkbox' value='CM07' /> Wine Stoppers</label>
+            <label class='break'><input type='checkbox' value='CM08' /> Tumblers</label>
+            <label class='break'><input type='checkbox' value='CM09' /> Coffe Mugs/Thermos</label>
+            <label class='break'><input type='checkbox' value='CM0A' /> Plastic Food Containers</label>
+            <label class='break'><input type='checkbox' value='CM0B' /> Plates</label>
+        </fieldset>
+        
+        <fieldset class="umbrellaPoleMaterial" data-elastic-key="pogs" data-filtertype="checkboxes">
+            <legend>Material</legend>
+            <label class='break'><input type='checkbox' value='CN00' /> Polyester</label>
+            <label class='break'><input type='checkbox' value='CN01' /> Nylon</label>
+            <label class='break'><input type='checkbox' value='CN02' /> Leather</label>
+            <label class='break'><input type='checkbox' value='CN03' /> Cotton Canvas</label>
+            <label class='break'><input type='checkbox' value='CN04' /> Willow</label>
+            <label class='break'><input type='checkbox' value='CN05' /> Rattan</label>
+            <label class='break'><input type='checkbox' value='CN06' /> Other</label>
+        </fieldset>
+        
+        <fieldset class="umbrellaFabric" data-elastic-key="pogs" data-filtertype="checkboxes">
+            <legend>Color</legend>
+            <label class='break'><input type='checkbox' value='CJ00' /> Green</label>
+            <label class='break'><input type='checkbox' value='CJ01' /> Blue</label>
+            <label class='break'><input type='checkbox' value='CJ02' /> Black</label>
+            <label class='break'><input type='checkbox' value='CJ03' /> Red</label>
+            <label class='break'><input type='checkbox' value='CJ04' /> Brown</label>
+            <label class='break'><input type='checkbox' value='CJ05' /> Violet</label>
+            <label class='break'><input type='checkbox' value='CJ06' /> White</label>
+            <label class='break'><input type='checkbox' value='CJ07' /> Yellow</label>
+            <label class='break'><input type='checkbox' value='CJ08' /> Others</label>
+        </fieldset>
+
+    </form> <!-- //ACCESSORIES FILTERS
 
 </div>
 

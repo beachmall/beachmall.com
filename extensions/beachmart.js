@@ -40,25 +40,24 @@ var store_filter = function() {
 		".beach-umbrellas-shelter.beach-umbrella":{
 			"filter": "UmbrellasForm",
 			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
-			},
+		},
 		".beach-umbrellas-shelter.patio-umbrella":{
 			"filter": "UmbrellasForm",
 			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
-			}
-			
-			/*,.beach-umbrellas-shelter.patio-umbrella
-			".00027-metal-chess-pieces":{
-			"filter": "chessPiecesForm",
+		},
+		".beach-accessories.beach-bags-totes":{
+			"filter": "AccessoriesForm",
 			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
-			},
-			".00024-marble-onyx-chess-sets.marble-onyx-chess-pieces":{
-			"filter": "chessPiecesForm",
+		},	
+		".beach-accessories.picnic-backpack":{
+			"filter": "AccessoriesForm",
 			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
-			},
-			".00020-plastic-chess-sets":{
-			"filter": "chessPiecesForm",
+		},	
+		".beach-accessories.picnic-baskets":{
+			"filter": "AccessoriesForm",
 			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
-			},
+		}
+			/*
 			".00029-theme-chess-pieces":{
 			"filter": "chessPiecesForm",
 			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
