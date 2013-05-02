@@ -299,7 +299,7 @@ var store_filter = function() {
 			//ANIMATE RETRACTION OF MAIN CATEGORY 2ND LEVEL DROPOUT MENU
 			hideDropout : function ($tag, $parentparent, $parent) {
 				$(".dropout", $tag).stop().animate({"width":"0px"}, 1000);
-				$parent.stop().animate({"width":220+"px"}, 1000);
+				$parent.stop().animate({"width":460+"px"}, 1000);
 				$parentparent.css({"width":485+"px"}, 1000);
 			},
 			

@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"20130501110200",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"20130501191000",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"", //used in non-local mode.
 	"checkoutAuthMode" : "required",//can be passive, active or required
@@ -199,6 +199,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 						</div>
 						<div class='beachChairsDD dropdown floatLeft'> 
                             <ul class='listStyleNone floatLeft dropoutUL'>
+								<div class='boodie floatRight'></div>
                                 <li class='noArrow'>BEACH CHAIRS</li>
                                 <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-chair.adirondack-furniture' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent());">Adirondack</li>
                                 <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-chair.backpack-chair' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent());">Backpack Chairs</li>
@@ -223,10 +224,10 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                                 <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-chair.sand-chair' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent());">Low Seat Beach Chairs</li>
                                 <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-chair.sand-chairs' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent());">Lay Flat Beach Cahirs</li>
                                 <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-chair.wooden-beach-chairs' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent());">Wooden Beach Chairs</li>
-                            </ul>
-							<div class='beachAccProductContainer'>
-								
-							</div>
+							</ul>
+					<!--		<div class='beachAccProductContainer'>
+							
+							</div> -->
                         </div>
                     </div>
 					<div class='singleDropdown floatLeft sprite' onMouseOver="app.ext.store_filter.a.showDropdown($(this),535);" onMouseOut="app.ext.store_filter.a.hideDropdown($(this));">
@@ -237,6 +238,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 						</div>
 						<div class='beachAccessoriesDD dropdown floatLeft'>
                             <ul class='listStyleNone floatLeft'>
+								<div class='boodie floatRight'></div>
                             	<li class='noArrow'>ACCESSORIES</li>
                             	<li class='bindByAnchor noArrow' href='#!category?navcat=.beach-accessories.beach-bags-totes' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent());">Beach Bags & Totes</li>
                            		<li class='bindByAnchor noArrow' href='#!category?navcat=.beach-accessories.beach-cart' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent());">Beach Carts</li>
@@ -257,6 +259,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 						</div>
 						<div class='recreationDD dropdown floatLeft'>
                             <ul class='listStyleNone floatLeft'>
+								<div class='boodie floatRight'></div>
                             	<li class='noArrow'>RECREATION</li>
                                 <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-sports.bodyboards' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent());">Body Boards</li>
                                 <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-sports.pool-floats' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent());">Pool Floats</li>
@@ -275,6 +278,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 						</div>
 						<div class='beachWearDD dropdown floatLeft'>
                             <ul class='listStyleNone floatLeft'>
+								<div class='boodie floatRight'></div>
                             	<li class='noArrow'>BEACH WEAR</li>
 								<li class='bindByAnchor noArrow' href='#!category?navcat=.beachwear.beach-hat.baby-hats' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent());">Baby Hats</li>
 								<li class='bindByAnchor noArrow' href='#!category?navcat=.beachwear.beach-hat.kids-hats' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent());">Kid's Hats</li>
@@ -335,6 +339,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 						</div>
 						<div class='umbrellasDD dropdown floatLeft'>
                             <ul class='listStyleNone floatLeft'>
+								<div class='boodie floatRight'></div>
                             	<li class='noArrow'>UMBRELLAS</li>
                                 <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-umbrellas-shelter.beach-umbrella' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent());">Beach Umbrellas</li>
                                 <li class='bindByAnchor' href='#!category?navcat=.beach-umbrellas-shelter.patio-umbrella' onMouseOver="app.ext.store_filter.a.showDropout($(this),240)" onMouseOut="app.ext.store_filter.a.hideDropout($(this))"  onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent());">Market & Patio Umbrellas
@@ -362,6 +367,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 						</div>
 						<div class='shelterDD dropdown floatLeft'>
                             <ul class='listStyleNone floatLeft'>
+								<div class='boodie floatRight'></div>
                             	<li class='noArrow'>SHELTERS</li>
                                 <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-umbrellas-shelter.beach-cabana' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent());">Beach Cabanas</li>
                                 <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-umbrellas-shelter.beach-tent-shelters' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent());">Beach Tents</li>
