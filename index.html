@@ -186,6 +186,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
             <div class='banner'><div class='sprite freeShipping'></div></div>
         </div>
         
+								<div class="hoverproduct-PDADDC1"></div>
         <div class='dropdownsContainer floatLeft'>
 
             <div id='mainDropdown'>
@@ -201,8 +202,12 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                             <ul class='listStyleNone floatLeft dropoutUL'>
 								<div class='boodie floatRight'></div>
                                 <li class='noArrow'>BEACH CHAIRS</li>
-                                <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-chair.adirondack-furniture' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent());">Adirondack</li>
-                                <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-chair.backpack-chair' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent());">Backpack Chairs</li>
+                                <li class='bindByAnchor noArrow' data-hoverproduct="PDADDC1" href='#!category?navcat=.beach-chair.adirondack-furniture' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent());">Adirondack</li>
+                                
+								
+								
+								
+								<li class='bindByAnchor noArrow' href='#!category?navcat=.beach-chair.backpack-chair' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent());">Backpack Chairs</li>
                                 <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-chair.beach-chairs' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent());">Cup Holder Chairs</li>
                                 <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-chair.beach-chaise' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent());">Beach Chaises</li>
                                 <li onMouseOver="app.ext.store_filter.a.showDropout($(this), $(this).parent().parent(), $(this).parent(), 240)" 
@@ -615,6 +620,10 @@ APP-SPECIFIC TEMPLATES
 	</div>
 </li>
 </ul>
+
+<div id="hoverProductTemplate">
+	<div data-bind="var: product(zoovy:prod_name); format:text;"></div>
+</div>
 
 <!--
 
