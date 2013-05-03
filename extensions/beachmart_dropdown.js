@@ -67,7 +67,8 @@ var beachmart_dropdown = function() {
 				// (dataresponse is returned from the model when the API request returns, 
 				// generaly just a repeat of _tag object you passed, but contains error response durring an error)
 				onSuccess:function(responseData){		
-					// call anycontent (from anyplugins) on class to put content in using the template you want to render with, using a pointr to the data that was returned. 
+					// call anycontent (from anyplugins) on class to put content in ** '.hoverproduct-'+app.data[responseData.datapointer].pid) **, 
+					//using the template you want to render with ** "hoverProductTemplate" **, using a pointr to the data that was returned ** "datapointer":responseData.datapointer **. 
 					$('.hoverproduct-'+app.data[responseData.datapointer].pid).anycontent({"templateID":"hoverProductTemplate","datapointer":responseData.datapointer}); 
 					},
 				onError:function(responseData){			// error response goes here if needed
@@ -79,21 +80,34 @@ var beachmart_dropdown = function() {
 
 ////////////////////////////////////   Actions    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-
 		a : {
 			
+			showHoverProduct : function ($tag) {
+				//app.u.dump('*** '+$tag.attr("data-hoverproduct"));
+				var pid = ($tag.attr("data-hoverproduct"));
+				$('.hoverproduct-'+pid).removeClass('displayNone');
+			},
+			
+			hideHoverProduct : function ($tag) {
+				//app.u.dump('*** '+$tag.attr("data-hoverproduct"));
+				var pid = new String($tag.attr("data-hoverproduct"));
+				$('.hoverproduct-'+pid).addClass('displayNone');
+			}
+			
 		}, //actions
-
+		
 ////////////////////////////////////   RENDERFORMATS    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 //renderFormats are what is used to actually output data.
 //on a data-bind, format: is equal to a renderformat. extension: tells the rendering engine where to look for the renderFormat.
 //that way, two render formats named the same (but in different extensions) don't overwrite each other.
+		
 		renderFormats : {
+		
 			}, //renderFormats
+			
 ////////////////////////////////////   UTIL    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-
-
+		
 		u : {
 		
 			loadHoverProducts : function(){

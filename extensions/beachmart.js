@@ -291,8 +291,8 @@ var store_filter = function() {
 				$dropout.children().each(function(){
 					$(this).outerWidth(true);
 				});
-				$parentparent.css({"width":705+"px"},1000);
-				$parent.stop().animate({"width":680+"px"}, 1000);
+				$parentparent.css({"width":720+"px"},1000);
+				$parent.stop().animate({"width":700+"px"}, 1000);
 				$dropout.stop().animate({"width":width+"px"}, 1000);
 			},
 			
