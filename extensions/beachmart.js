@@ -395,8 +395,7 @@ var store_filter = function() {
 						$tag.show();
 					}
 					else if (zoovyIsTags.indexOf('IS_NEWARRIVAL') >= 0) {
-						$tag.append('New Arrival');
-						$tag.show();
+						$tag.append('New Arrival').addClass('newTagBkgrnd').show();;
 					}
 					else if (zoovyIsTags.indexOf('IS_USER7') >= 0) {
 						$tag.append('Overstock Sale');
