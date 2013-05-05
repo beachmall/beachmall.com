@@ -308,6 +308,38 @@ var store_filter = function() {
 				$(".dropdown", $tag).stop().animate({"height":"0px"}, 0);
 			},
 			
+			//SHOW HOVERPRODUCT DROPOUT MENU
+			showHoverout : function ($tag) {
+				var $hoverout = $(".hoverout", $tag);
+				var width = 240;
+				$hoverout.children().each(function(){
+					$(this).outerWidth(true);
+				});
+				$hoverout.stop().animate({"width":width+"px",opacity:1}, 1000);
+			},
+			
+			//ANIMATE RETRACTION OF HOVERPRODUCT DROPOUT MENU
+			hideHoverout : function ($tag) {
+				$(".hoverout", $tag).stop().animate({"width":"0px",opacity:0}, 1000);
+			},
+			
+			//SHOW HOVERPRODUCT DROPOUT MENU
+			showHoverout2 : function ($tag, $parent) {
+				var $hoverout = $(".hoverout", $tag);
+				var width = 240;
+				$hoverout.children().each(function(){
+					$(this).outerWidth(true);
+				});
+				$hoverout.stop().animate({"width":width+"px",opacity:1}, 1000);
+				$parent.css({"width":680+"px"},1000);
+			},
+			
+			//ANIMATE RETRACTION OF HOVERPRODUCT DROPOUT MENU
+			hideHoverout2 : function ($tag, $parent) {
+				$(".hoverout", $tag).stop().animate({"width":"0px",opacity:0}, 1000);
+				$parent.css({"width":485+"px"}, 1000);
+			},
+			
 		}, //actions
 
 ////////////////////////////////////   RENDERFORMATS    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\

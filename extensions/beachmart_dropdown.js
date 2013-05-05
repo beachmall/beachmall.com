@@ -85,13 +85,31 @@ var beachmart_dropdown = function() {
 			showHoverProduct : function ($tag) {
 				//app.u.dump('*** '+$tag.attr("data-hoverproduct"));
 				var pid = ($tag.attr("data-hoverproduct"));
-				$('.hoverproduct-'+pid).removeClass('displayNone');
+				$('.hoverproduct-'+pid).removeClass('displayNone').animate(1000);
+				$('.hoverProduct-'+pid).onMouseOver().show();
 			},
 			
 			hideHoverProduct : function ($tag) {
 				//app.u.dump('*** '+$tag.attr("data-hoverproduct"));
 				var pid = new String($tag.attr("data-hoverproduct"));
 				$('.hoverproduct-'+pid).addClass('displayNone');
+				$('.hoverProduct-'+pid).onMouseOut().addClass('displayNone');
+			},
+			
+			holdHoverProduct : function ($tag) {
+				var $H = $('.H', $tag);
+				$H.onMouseOver().show();
+			
+			/*	var $dropdown = $(".dropdown", $tag);
+				var height = ht;
+				$dropdown.children().each(function(){
+					$(this).outerHeight(true);
+				});
+				$dropdown.stop().animate({"height":height+"px"}, 1000);*/
+			},
+			
+			releaseHoverProduct : function ($tag) {
+				
 			}
 			
 		}, //actions

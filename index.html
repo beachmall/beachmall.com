@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"20130502180300",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"20130503203000",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"", //used in non-local mode.
 	"checkoutAuthMode" : "required",//can be passive, active or required
@@ -200,22 +200,34 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 						</div>
 						<div class='beachChairsDD dropdown floatLeft'> 
                             <ul class='listStyleNone floatLeft dropoutUL'>
-								<div class='hoverProductContainer floatRight'>
-									<div class="hoverproduct-PDADDC1 displayNone"></div>
-									<div class="hoverproduct-WRB5436 displayNone"></div>
+								<!--<div class='hoverProductContainer floatRight'>
+									<div class="H hoverproduct-PDADDC1 displayNone" onMouseOver='app.ext.beachmart_dropdown.a.holdHoverProduct($(this));' onMouseOut='app.ext.beachmart_dropdown.a.releaseHoverProduct($(this));'></div>
+									<div class="H hoverproduct-WRB5436 displayNone"></div>
 								</div>
+								-->
                                 <li class='noArrow'>BEACH CHAIRS</li>
-                                <li class='bindByAnchor noArrow' data-hoverproduct="PDADDC1" href='#!category?navcat=.beach-chair.adirondack-furniture' onMouseOver='app.ext.beachmart_dropdown.a.showHoverProduct($(this));' onMouseOut='app.ext.beachmart_dropdown.a.hideHoverProduct($(this));' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent());">Adirondack</li>
-								<li class='bindByAnchor noArrow' data-hoverproduct="WRB5436" href='#!category?navcat=.beach-chair.backpack-chair' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent());">Backpack Chairs</li>
+                           <!-- <li class='bindByAnchor noArrow' data-hoverproduct="PDADDC1" href='#!category?navcat=.beach-chair.adirondack-furniture' onMouseOver='app.ext.beachmart_dropdown.a.showHoverProduct($(this));' onMouseOut='app.ext.beachmart_dropdown.a.hideHoverProduct($(this));' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent());">Adirondack</li>
+								<li class='bindByAnchor noArrow' data-hoverproduct="WRB5436" href='#!category?navcat=.beach-chair.backpack-chair' onMouseOver='app.ext.beachmart_dropdown.a.showHoverProduct($(this));' onMouseOut='app.ext.beachmart_dropdown.a.hideHoverProduct($(this));' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent());">Backpack Chairs</li>
+                            -->    
+								<li class='bindByAnchor noArrow' data-hoverproduct="PDADDC1" href='#!category?navcat=.beach-chair.adirondack-furniture' onMouseOver='app.ext.store_filter.a.showHoverout($(this));' onMouseOut='app.ext.store_filter.a.hideHoverout($(this));' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent());">Adirondack
+									<ul class='hoverProductContainer hoverout listStyleNone'>
+										<li class="hoverproduct-PDADDC1"></li>
+									</ul>	
+								</li>
+								<li class='bindByAnchor noArrow' data-hoverproduct="WRB5436" href='#!category?navcat=.beach-chair.backpack-chair' onMouseOver='app.ext.beachmart_dropdown.a.showHoverProduct($(this));' onMouseOut='app.ext.beachmart_dropdown.a.hideHoverProduct($(this));' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent());">Backpack Chairs</li>
                                 <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-chair.beach-chairs' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent());">Cup Holder Chairs</li>
                                 <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-chair.beach-chaise' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent());">Beach Chaises</li>
-                                <li onMouseOver="app.ext.store_filter.a.showDropout($(this), $(this).parent().parent(), $(this).parent(), 240)" 
+                                <li onMouseOver="app.ext.store_filter.a.showDropout($(this), $(this).parent().parent(), $(this).parent(), 480)" 
 									onMouseOut="app.ext.store_filter.a.hideDropout($(this), $(this).parent().parent(), $(this).parent())" 
 									class='bindByAnchor' href='#!category?navcat=.beach-chair.beach-lounges' 
 									onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent());">Beach & Pool Lounges
 									<div class='dropout out dropout5'>
                                     	<ul>
-                                        	<li class='bindByAnchor noArrow' href='#!category?navcat=.beach-chair.beach-lounges.beach-recliner' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent());">Beach Lounges</li>
+                                        	<li class='bindByAnchor noArrow' data-hoverproduct="BCOST3N1" href='#!category?navcat=.beach-chair.beach-lounges.beach-recliner' onMouseOver='app.ext.store_filter.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='app.ext.store_filter.a.hideHoverout2($(this), $(this).parent().parent());' onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent());">Beach Lounges
+												<ul class='hoverProductContainer innerHovProdCont hoverout listStyleNone'>
+													<li class="hoverproduct-BCOST3N1"></li>
+												</ul>
+											</li>
                                             <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-chair.beach-lounges.pool-floats'onClick="app.ext.store_filter.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent());">Pool Lounges</li>
                                         </ul>
                                     </div>
@@ -621,8 +633,54 @@ APP-SPECIFIC TEMPLATES
 </ul>
 
 <div id="hoverProductTemplate">
-	<div data-bind="var: product(zoovy:prod_name); format:text;"></div>
-</div>
+	
+	<button class='floatRight pointer quickView displayNone' onClick="quickView('product',{'templateID':'productTemplateQuickView','pid':$(this).closest('[data-pid]').attr('data-pid')});">Quickview</button>
+		
+    <div onClick="showContent('product',{'pid':$(this).attr('data-pid')})" data-bind='var:product(pid);format:assignAttribute; attribute:data-pid;' class='pointer productListSmall'>
+		<div class='prodHoverContainer prodShadowFix'>
+<!-- data-bind='useParentData:true; format:showProdModifier; extension:store_filter;' -->			<div class='prodModifierContainer sprite displayNone'></div>
+			<div class='starBurst sprite displayNone' data-bind='var: product(user:prod_promo); format:showIfSet;'>
+				<div class='starBurstTextOuter'>
+					<div class='starBurstTextInner' data-bind='var: product(user:prod_promo); format:text;'></div>
+				</div>
+			</div>
+			<!-- CORNER SHADOW DIVS -->
+			<div class='topLeftCorner'></div><div class='leftTopCorner'></div><div class='topRightCorner'></div><div class='rightTopCorner'></div>
+			<div class='bottomLeftCorner'></div><div class='leftBottomCorner'></div><div class='bottomRightCorner'></div><div class='rightBottomCorner'></div> 
+			<!-- END CORNER SHADOWS -->
+<!-- data-bind='var:product(pid); format:addPicSlider; extension:myRIA;' -->			<div class='prodThumbContainer myProdThumbSmall'>
+                <img src='blank.gif' class='prodThumb' data-bind='var: product(zoovy:prod_image1); format:imageURL;' width='210' height='210' />
+            </div> 
+
+            <div class='floatRight pointer moreDetailsSmall' onClick="showContent('product',{'pid':$(this).parent().attr('data-pid')});">VIEW DETAILS</div>
+        </div>
+        <div class='prodTextContainerSmall'>
+        		<div class='productPriceContainer'>
+					<h6 class='floatLeft prodPriceSmall' data-bind='var: product(zoovy:base_price); format:money; currencySign: $;  hideZero:true; className:price;'></h6>
+<!-- data-bind='useParentData:true; format:showPriceModifier; extension:store_filter;' -->					<div class='prodPriceDesc displayNone'></div>
+                </div>
+                <h5 class='clearfix prodDescSmall' data-bind='var: product(zoovy:prod_name); format:text;'></h5>
+                <span data-bind='var: reviews(reviews.average); format:addClass; className:review_;' class='reviewSprite'></span>
+                <!-- Need Color Options here, will work w/ form to show product, or colors pop up -->
+                <div class='regularPriceContainer floatLeft displayNone' data-bind='var: product(zoovy:prod_msrp); format:showIfSet;'>
+                    <div class='regularPrice' data-bind='var: product(zoovy:prod_msrp); format:money; currencySign: $; hideZero:true;'> </div>
+                    <div class='regularPriceDesc'>Regular Price</div>
+				</div>
+                <div class='shipContainer floatLeft'>
+<!-- data-bind='useParentData:true; format:showFreeShippingTag; extension:store_filter;' -->                    <div class='shipCost sprite displayNone'></div>
+                    <div class='shipTime latency' data-bind='var: product(user:prod_shipping_msg); format:text;'></div>
+                </div>
+				<div class='reviewsStarsCount' data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews_reviews;'></div><!-- BCERO271 MARK-->
+<!--            <form data-bind='var: product(pid); format:atcForm; extension:store_product;' class='prodViewerAddToCartForm clearfix' action='#'>
+                    <button class='prodViewerAddToCartButton' data-bind='format:addToCartButton; extension:myRIA; useParentData:true;'></button>
+                </form>
+-->
+                <div class='prodNum stid' data-bind='var: product(pid); format:text; pretext: ITEM &nbsp #: &nbsp ;'></div>
+	      <!-- 	<span data-bind='var: reviews(reviews.total); format:text; pretext: from ;posttext: reviews; className:numReviews;'></span> -->
+        </div>  
+    </div>
+	
+</div> <!-- //hoverProductTemplate
 
 <!--
 
