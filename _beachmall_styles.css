@@ -419,7 +419,8 @@ label.break	{display:block; margin:0 0 4px 6px;}
 .prodSummaryContainer .latency {height:auto; width:100%; margin-bottom:10px;}
 
 
-.prodModifierContainer {height:23px; width:191px; background-position:-280px -154px; color:#3BB3C3 text-align:center; font-family:"Open Sans"; font-weight:bold; font-size:14px; position:absolute; top:-6px; left:5px; z-index:3; line-height:19px; overflow:hidden; color:#3bb3c3; text-align:center;}
+.prodModifierContainer {height:23px; width:191px; background-position:-280px -154px; color:#000; text-align:center; font-family:"Open Sans"; font-weight:bold; font-size:14px; position:absolute; top:-6px; left:5px; z-index:3; line-height:19px; overflow:hidden;}
+.prodModifierContainer.red {color:#e0463a;}
 .prodModifierContainer.newTagBkgrnd {width:118px; background-position:-280px -181px;}
 .prodModifier {height:23px; width:193px;}
 

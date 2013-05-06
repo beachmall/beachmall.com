@@ -323,50 +323,40 @@ var store_filter = function() {
 					
 					//app.u.dump('*** IS_USER2 = '+newLowPrice);
 					if (zoovyIsTags.indexOf('IS_USER3') >= 0) {
-						$tag.append('Closeout!');
-						$tag.show();
+						$tag.append('Closeout!').addClass('red').show();
 					}
 					else if (zoovyIsTags.indexOf('IS_CLEARANCE') >= 0) {
-						$tag.append('Clearance');
-						$tag.show();
+						$tag.append('Clearance').addClass('red').show();
 					}
 					else if (zoovyIsTags.indexOf('IS_USER6') >= 0) {
-						$tag.append('Customer Favorite');
-						$tag.show();
+						$tag.append('Customer Favorite').show();
 					}
 					else if (zoovyIsTags.indexOf('IS_USER4') >= 0) {
-						$tag.append('Exclusive');
-						$tag.show();
+						$tag.append('Exclusive').show();
 					}
 					else if (zoovyIsTags.indexOf('IS_USER5') >= 0) {
-						$tag.append('Exclusive');
-						$tag.show();
+						$tag.append('Exclusive').show();
 					}
 					else if (zoovyIsTags.indexOf('IS_BESTSELLER') >= 0) {
-						$tag.append('Best Seller');
-						$tag.show();
+						$tag.append('Best Seller').show();
 					}
 					else if (zoovyIsTags.indexOf('IS_USER2') >= 0) {
-						$tag.append('New Low Price!');
-						$tag.show();
+						$tag.append('New Low Price!').show();
 					}
 					else if (zoovyIsTags.indexOf('IS_NEWARRIVAL') >= 0) {
-						$tag.append('New Arrival').addClass('newTagBkgrnd').show();;
+						$tag.append('New Arrival').addClass('newTagBkgrnd').show();
 					}
 					else if (zoovyIsTags.indexOf('IS_USER7') >= 0) {
-						$tag.append('Overstock Sale');
-						$tag.show();
+						$tag.append('Overstock Sale').addClass('red').show();
 					}
 					else if (zoovyIsTags.indexOf('IS_DISCONTINUED') >= 0) {
-						$tag.append('Discontinued');
-						$tag.show();
+						$tag.append('Discontinued').show();
 					}
 					else if (zoovyIsTags.indexOf('IS_PREORDER') >= 0) {
-						$tag.append('Back Order');
-						$tag.show();
+						$tag.append('Back Order').show();
 					}
 					else if (zoovyIsTags.indexOf('IS_SALE') >= 0) {
-						$tag.append('SALE!');
+						$tag.append('SALE!').addClass('newTagBkgrnd').show();
 					}
 					else {
 						//add no tags
