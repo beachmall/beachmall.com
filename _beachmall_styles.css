@@ -172,6 +172,7 @@ the padding is to compensate for the spacing between the main nav.
 #mastHead .dropdown .hoverProductContainer li {width:240px; margin:0; }
 
 #mastHead .dropout.out .hoverProductContainer.innerHovProdCont {top:-187px; left:194px;}
+#mastHead .dropout.out .hoverProductContainer.innerHovProdCont.dropout2 {top:-217px;}
 #mastHead .dropout.out .hoverProductContainer.innerHovProdCont li {width:240px; margin:0;} 
 
 #mastHead .dropout.out {height:525px; width:0px; background-color:#f8c301; margin:0px 0px 0px 20px; position:relative; left:186px; overflow:hidden; z-index:5;} 
@@ -180,20 +181,20 @@ the padding is to compensate for the spacing between the main nav.
 #mastHead .dropout.out li {height:27px; width:207px; font-family:"Open Sans"; font-size:14px; color:#000; text-align:left; margin: -5px 14px 3px 14px;}
 #mastHead .dropout.out li:hover {color:#e0463a; cursor:pointer;}
 #mastHead .dropout1  {top:-82px;}
-#mastHead .dropout2 {top:-112px;}
-#mastHead .dropout3 {top:-142px;}
-#mastHead .dropout4 {top:-172px;}
-#mastHead .dropout5 {top:-202px;}
-#mastHead .dropout6 {top:-232px;}
-#mastHead .dropout7 {top:-262px;}
-#mastHead .dropout8 {top:-292px;}
-#mastHead .dropout9 {top:-322px;}
-#mastHead .dropout10 {top:-352px;}
-#mastHead .dropout11 {top:-382px;}
-#mastHead .dropout12 {top:-412px;}
-#mastHead .dropout13 {top:-442px;}
-#mastHead .dropout14 {top:-472px;}
-#mastHead .dropout15 {top:-502px;}
+#mastHead .dropout2, #mastHead .dropdown .hoverProductContainer.dropout2 {top:-112px;}
+#mastHead .dropout3, #mastHead .dropdown .hoverProductContainer.dropout3 {top:-142px;}
+#mastHead .dropout4, #mastHead .dropdown .hoverProductContainer.dropout4 {top:-172px;}
+#mastHead .dropout5, #mastHead .dropdown .hoverProductContainer.dropout5 {top:-202px;}
+#mastHead .dropout6, #mastHead .dropdown .hoverProductContainer.dropout6 {top:-232px;}
+#mastHead .dropout7, #mastHead .dropdown .hoverProductContainer.dropout7 {top:-262px;}
+#mastHead .dropout8, #mastHead .dropdown .hoverProductContainer.dropout8 {top:-292px;}
+#mastHead .dropout9, #mastHead .dropdown .hoverProductContainer.dropout9 {top:-322px;}
+#mastHead .dropout10, #mastHead .dropdown .hoverProductContainer.dropout10 {top:-352px;}
+#mastHead .dropout11, #mastHead .dropdown .hoverProductContainer.dropout11 {top:-382px;}
+#mastHead .dropout12, #mastHead .dropdown .hoverProductContainer.dropout12 {top:-412px;}
+#mastHead .dropout13, #mastHead .dropdown .hoverProductContainer.dropout13 {top:-442px;}
+#mastHead .dropout14, #mastHead .dropdown .hoverProductContainer.dropout14 {top:-472px;}
+#mastHead .dropout15, #mastHead .dropdown .hoverProductContainer.dropout15 {top:-502px;}
 
 /*********************************************************************************
 FOOTER
