@@ -12,6 +12,8 @@
 #appPreView, .whiteBG {heigth:auto; width:415px; padding:1.0em; border:1px solid #d2e9f6;}
 #appPreView .logo {margin-right:50px;}
 
+.breadcrumb {margin-bottom:0px;}
+
 body {
 	font-family: Oswald, Helvetica, sans-serif;
 	font-size: 14px;
@@ -128,7 +130,7 @@ the padding is to compensate for the spacing between the main nav.
 	width:155px;
 	height:28px;
 }
-#mastHead .headerRightContainer {height:185px; width:980px; padding: 20px 0px 0px 0px;}
+#mastHead .headerRightContainer {height:150px; width:980px; padding: 20px 0px 0px 0px;}
 #mastHead .bannerContainer {height:28px; width:241px; position:absolute; top:31px; left:38%;}
 #mastHead .bannerContainer .banner {width:49%; display:inline-block; margin:0; padding:0;}
 #mastHead .logo {margin:30px 0px 0px 0px; position:absolute;}
@@ -420,8 +422,10 @@ label.break	{display:block; margin:0 0 4px 6px;}
 
 
 .prodModifierContainer {height:23px; width:191px; background-position:-280px -154px; color:#000; text-align:center; font-family:"Open Sans"; font-weight:bold; font-size:14px; position:absolute; top:-6px; left:5px; z-index:3; line-height:19px; overflow:hidden;}
-.prodModifierContainer.red {color:#e0463a;}
-.prodModifierContainer.newTagBkgrnd {width:118px; background-position:-280px -181px;}
+.prodModifierContainer.mediumTagBkgrnd {width:156px; background-position:-280px -208px;}
+.prodModifierContainer.smallTagBkgrnd {width:118px; background-position:-280px -181px;}
+.prodModifierContainer.smallRed {width:118px; color:#e0463a; background-position:-280px -234px;}
+.prodModifierContainer.mediumRed {width:156px; color:#e0463a; background-position:-280px -262px;}
 .prodModifier {height:23px; width:193px;}
 
 
@@ -594,7 +598,7 @@ label.break	{display:block; margin:0 0 4px 6px;}
 }
 
 .productPriceContainer {height:50px; width:120px;}
-.prodPriceDesc {color:#e0463a; text-align:center; font-family:"Open Sans"; font-size:10px; font-weight:bold; background-position:1px 1px;}
+.prodPriceDesc {height:20px; width:125px; color:#e0463a; text-align:center; font-family:"Open Sans"; font-size:10px; font-weight:bold; display:block; float:left;}
 
 .products.product .productListSmall .prodTextContainerSmall .prodPriceSmall, .productList h6, .categoryList h6 {heigth:25px; width:120px; text-align:center; margin:0px;}
 
@@ -626,6 +630,7 @@ label.break	{display:block; margin:0 0 4px 6px;}
 .prodViewerAddToCartButton, .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {color:#fff;}*/
 .prodViewerAddToCartForm.clearfix .prodViewerAddToCartButton {color:#fff;}
 
+.products.product .productSeperationBar {height:5px; width:240px; position:absolute; left:-5px; bottom:0px; background-color:#eee;}
 
 
 /*M
@@ -865,6 +870,7 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 
 
 /* PRODUCT IMAGE / TABS */
+.fullWidth {margin-top:20px;}
 .fullWidth .imageContainer {width:310px;} /*padding:0 55px 20px 40px;*/
 .imageContainer .prodTabs.tabbedProductContent {background-color:#fff; padding:0px; border:none;} /*tabbed container bkgrnd*/
 .imageContainer .prodTabs.tabbedProductContent > div {background-color:#fff; border:none;} /*image bkgrnd*/
@@ -884,7 +890,7 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 .mainProdTabs {height:auto; width:100%;}
 .prodTabViewContainer .ui-tabs .ui-tabs-nav li a {font-size:13px; font-family:Oswald; padding:6px;}
 .prodTabViewContainer .ui-widget-header	{padding:3px 3px 0 3px; margin:0; border-width:0; border-bottom-width:1px;}
-.prodTabViewContainer .ui-tabs	{padding:0; margin-bottom:20px;}
+.prodTabViewContainer .ui-tabs	{padding:0; margin:40px 0 20px 0;}
 .ui-tabs .ui-tabs-nav li	{margin-right:2px;}
 .prodTabViewContainer .prodViewerTable .prodTabs.tabbedProductContent .tabs .ui-state-default {background:#3bb3c3; border-radius:0px; border:1px solid #3bb3c3;}
 .prodTabViewContainer .prodViewerTable .prodTabs.tabbedProductContent .tabs .ui-state-active {background:#f5f1de; border-radius:0px; border:1px solid #3bb3c3;}
@@ -1025,6 +1031,7 @@ newArrivalsCarouselRight, .myProdThumb:hover .moreDetails {background-color:#e04
 .myProdThumbSmall:hover {border:5px solid #e0463a;}
 .prodTextContainerSmall {height:auto; width:220px; font-family:Oswald; font-size:24px;}
 .prodDescSmall, .productList h5, .categoryList h5 {color:#000; font-family:"Open Sans"; font-size:11px; text-align:center; line-height:13px; padding:7px 5px 0px 5px;}
+.prodDescSmall:hover {color:#e0463a; text-decoration:underline;}
 .prodPriceSmall, .productList h6, .categoryList h6 {margin-left:0px;}
 .moreDetailsSmall {height:25px; width:95px; color:#fff; font-size:14px; text-align:center; line-height:24px; background-color:#3bb3c3; position:relative;}
 .myProdThumbSmall:hover .moreDetailsSmall {background-color:#e0463a;}
@@ -1306,6 +1313,16 @@ PRODUCT VIEWER / MODAL
 
 
 
+/***************************************************************************
+QUICKVIEW TEMPLATE
+****************************************************************************/
+
+
+.quickviewThumbnailsContainer {height:180px; width:240px; position:relative; margin-bottom:20px; overflow:hidden; left:0px;}
+.quickviewThumbnailsContainer .quickviewThumbnails li {margin:5px;}
+
+.prodTemplateQuickView .ztable_row_small {margin-top:70px;}
+.prodTemplateQuickView .priceContainer .basePrice {float:none;}
 
 
 /***************************************************************************
@@ -1424,5 +1441,3 @@ some shared styles, pulled from cat layout but that will impact, potentially, mo
 
 
 
-
-.test {height:250px; width:200px; background:#000;}

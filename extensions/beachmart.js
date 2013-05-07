@@ -299,74 +299,92 @@ var store_filter = function() {
 					}
 				}, //End showFreeShippingTag
 				
-				showPriceModifier : function($tag, data) {
+				prodPriceDesc : function($tag, data) {
 					var priceFrom = data.value['%attribs']['user:prod_has_price_modifiers'];
 					var sale = data.value['%attribs']['is:sale'];
 					var zoovyIsTags = data.value['%attribs']['zoovy:prod_is_tags'];
 					
-					//app.u.dump('*** IS_USER2 = '+newLowPrice);
+					//app.u.dump('*** zoovyIsTags = '+zoovyIsTags);
 					//app.u.dump('***Price Modifier = '+priceFrom);
-					if (zoovyIsTags.indexOf('IS_CLEARANCE') >= 0) {
-						$tag.append('CLEARANCE PRICE!');
+					if (zoovyIsTags.indexOf('IS_USER3') >= 0) {
+						$tag.append('Clearance Price!');
 					}
 					else if (zoovyIsTags.indexOf('IS_SALE') >= 0) {
-						$tag.append('SALE PRICE!');
+						$tag.append('Sale Price!');
 					}
+					else if (sale != 0) {
+						$tag.append('Sale Price!');
+					}
+					else if(priceFrom == 1) {
+						$tag.append('From');
+					} 
 					else {
-						//don't add anything
+						$tag.append('Our Price');
 					}
 					
-				}, //End showPriceModifier	
+				}, //End prodPriceDesc
 
 				showProdModifier : function($tag, data) {
 					var zoovyIsTags = data.value['%attribs']['zoovy:prod_is_tags'];
 					
 					//app.u.dump('*** IS_USER2 = '+newLowPrice);
 					if (zoovyIsTags.indexOf('IS_USER3') >= 0) {
-						$tag.append('Closeout!').addClass('red').show();
+						$tag.append('Closeout!').addClass('smallRed').show();
 					}
 					else if (zoovyIsTags.indexOf('IS_CLEARANCE') >= 0) {
-						$tag.append('Clearance').addClass('red').show();
+						$tag.append('Clearance').addClass('smallRed').show();
 					}
 					else if (zoovyIsTags.indexOf('IS_USER6') >= 0) {
 						$tag.append('Customer Favorite').show();
 					}
 					else if (zoovyIsTags.indexOf('IS_USER4') >= 0) {
-						$tag.append('Exclusive').show();
+						$tag.append('Exclusive').addClass('smallTagBkgrnd').show();
 					}
 					else if (zoovyIsTags.indexOf('IS_USER5') >= 0) {
-						$tag.append('Exclusive').show();
+						$tag.append('Exclusive').addClass('smallTagBkgrnd').show();
 					}
 					else if (zoovyIsTags.indexOf('IS_BESTSELLER') >= 0) {
-						$tag.append('Best Seller').show();
+						$tag.append('Best Seller').addClass('smallTagBkgrnd').show();
 					}
 					else if (zoovyIsTags.indexOf('IS_USER2') >= 0) {
-						$tag.append('New Low Price!').show();
+						$tag.append('New Low Price!').addClass('mediumTagBkgrnd').show();
 					}
 					else if (zoovyIsTags.indexOf('IS_NEWARRIVAL') >= 0) {
-						$tag.append('New Arrival').addClass('newTagBkgrnd').show();
+						$tag.append('New Arrival').addClass('smallTagBkgrnd').show();
 					}
 					else if (zoovyIsTags.indexOf('IS_USER7') >= 0) {
-						$tag.append('Overstock Sale').addClass('red').show();
+						$tag.append('Overstock Sale').addClass('mediumRed').show();
 					}
 					else if (zoovyIsTags.indexOf('IS_DISCONTINUED') >= 0) {
-						$tag.append('Discontinued').show();
+						$tag.append('Discontinued').addClass('mediumTagBkgrnd').show();
 					}
 					else if (zoovyIsTags.indexOf('IS_PREORDER') >= 0) {
-						$tag.append('Back Order').show();
+						$tag.append('Back Order').addClass('smallTagBkgrnd').show();
 					}
 					else if (zoovyIsTags.indexOf('IS_SALE') >= 0) {
-						$tag.append('SALE!').addClass('newTagBkgrnd').show();
+						$tag.append('SALE!').addClass('smallTagBkgrnd').show();
 					}
 					else {
 						//add no tags
 					}
 				},
 				
+				priceFrom : function($tag, data) {
+					var priceModifier = data.value['%attribs']['user:prod_has_price_modifiers'];
+					//app.u.dump('*** '+priceModifier);
+					
+					if(priceModifier == 0) {
+						$tag.append('Our Price: ');
+					} else {
+						$tag.append('Our Price From: ');
+					}
+				},
+
 				homePageHider : function($tag,data) {
 					/*app.u.dump(data.value);
 					app.u.dump('*** homePageHider: '+data.value);*/
 				}
+				
 			}, //renderFormats
 ////////////////////////////////////   UTIL    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
@@ -715,7 +733,7 @@ return filters;
  
 							}
 						}]);		*/
-						
+
 				hidePreviouslyViewed : function($context) {
 					$('#recentlyViewedItemsContainer').hide();
 				},
