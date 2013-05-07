@@ -739,17 +739,19 @@ M*/
 /**************************************************
 HOMEPAGE 
 **************************************************/
-.floatingBar {height:50px; width:1020px; background-color:#e0463a; position:fixed; bottom:0px; z-index:20; font-family:"Open Sans"; font-weight:bold; font-size:12px;}
-.floatingBar .backToTop {height:17px; width:110px; position:absolute; left:40px; top:17px; color:#fff;}
-.floatingBar .recentlyViewed {height:26px; width:350px; position:absolute; left:193px; top:12px; color:#fff;}
-.floatingBar .recentlyViewed span:first-child {font-size:18px;}
-.floatingBar .recentlyViewed span:nth-child(2) {font-size: 14px;}
-.floatingBar .cartIcon {height:38px; width:166px; position:absolute; left:570px; top:6px; padding:10px 0px 0px 31px; background-position:-1px -44px;}
+.floatingBar {height:38px; width:1020px; background-color:#e0463a; position:fixed; bottom:0px; z-index:20; font-family:"Open Sans"; font-weight:bold; font-size:12px;}
+.floatingBar .backToTop {height:17px; width:110px; position:absolute; left:40px; top:11px; color:#fff;}
+.floatingBar .recentlyViewed {height:26px; width:350px; position:absolute; left:193px; top:4px; color:#fff;}
+.floatingBar .recentlyViewed span:first-child {display:inline-block; float:left; line-height:28px; font-size: 14px;}
+.floatingBar .recentlyViewed .numRecentlyViewed {height:30px; width:30px; background:#A8342B; border-radius:20px; display:inline-block; line-height:27px; text-align:center; font-size:18px; float:left;}
+.recentCarat {line-height:28px; float:left; margin:0 5px 0 10px;}
+.recentViewItems {line-height:30px; float:left;}
+.floatingBar .cartIcon {height:38px; width:176px; position:absolute; left:570px; top:0px; padding:10px 0px 0px 31px; background-position:-1px -44px;}
 .floatingBar .cartIcon p {height:20px; width:133px; position:absolute; left:62px; top:9px;}
 .floatingBar .cartIcon a {color:#fff;}
-.floatingBar .cartItemCount {height:20px; width:21px; text-align:center; display:inline-block;}
-.floatingBar .checkoutButton {height:40px; width:100px; background-color:#f8c301; position:absolute; right:94px; top:5px; border:none; color:#fff; font-family:Oswald; font-size:14px; font-weight:bold;}
-.floatingBar .floatingBarClose {height:20px; width:20px; background-color:#a8342b; position:absolute; right:10px; top:15px; border:none; background-position:-23px -96px;}
+.floatingBar .cartItemCount {height:20px; width:21px; text-align:center; display:inline-block; background:#A8342B; border-radius:10px; line-height:19px;}
+.floatingBar .checkoutButton {height:40px; width:100px; background-color:#f8c301; position:absolute; right:94px; top:4px; border:none; color:#fff; font-family:Oswald; font-size:14px; font-weight:bold; padding-bottom:3px;}
+.floatingBar .floatingBarClose {height:20px; width:20px; background-color:#a8342b; position:absolute; right:10px; top:10px; border:none; background-position:-23px -96px;}
 
 .homeTemplate .overhang {height:268px; width:255px; color:#fff; font-family:Oswald; font-weight:bold; background-color:#3bb3c3; position:absolute; top:209px; left:198px; z-index:4;}
 .homeTemplate .overhangClose {height:20px; width: 20px; background-position:-1px -96px; backgroung-color:#3bb3c3; border:none; position:absolute; top:5px; right:5px; z-index:5;}
