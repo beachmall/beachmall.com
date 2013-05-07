@@ -256,7 +256,7 @@ CATEGORY PAGE
 BRANDS CATEGORY PAGE
 **************************************************************/
 
-.brandsPromoBanner {height:60px; width:100%; background-color:#f8c301; font-family:Oswald; font-weight:bold; color:#fff; margin:-41px 0 10px 0 ;}
+.brandsPromoBanner {height:60px; width:100%; background-color:#f8c301; font-family:Oswald; font-weight:bold; color:#fff; margin:-6px 0 10px 0 ;}
 .brandsPromoBanner div:nth-child(1) {font-size:36px; float:Left; margin:3px 0 0 40px;}
 .brandsPromoBanner div:nth-child(2) {height:60px; width:440px; margin:-4px 0 0 10px; text-align:center; font-size:30px; float:Left; line-height:25px;}
 .brandsPromoBanner div:nth-child(2) span {font-size:18px; line-height:27px;}
@@ -282,10 +282,10 @@ BRANDS CATEGORY PAGE
 .brandsCatContainer .brandsTabs .tabs .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {color:#fff;}
 .brandsCatContainer .brandsTabs .ui-widget-content {background:#f5f1de; border:none; border-radius:0px;}
 .brandsCatContainer .brandsTabs .carouselTitles {color:#fff; background:#f8c301;}
-.brandCarouselLinkContainer {font-family:"Open Sans"; font-size:14px; font-weight:bold; margin-right:40px; padding-top:7px; height:auto;}
-.featuredProdsTab .brandCarouselLinkContainer {height:auto; width:195px;}
-.viewAllProductsTab .brandCarouselLinkContainer {height:auto; width:65px;}
-.brahdsTabs .Carousel {width:1020px; padding:0;}
+.brandCarouselLinkContainer {height:20px; width:203px; font-family:"Open Sans"; font-size:14px; font-weight:bold; margin-right:40px; padding-top:7px; height:auto; text-align:right;}
+.featuredProdsTab .brandCarouselLinkContainer {height:auto; width:203px;}
+.viewAllProductsTab.brandCarouselLinkContainer {height:auto; width:70px;}
+.brandsTabs .Carousel {width:1020px; padding:0;}
 .categoryList > .catListBrand {height:190px; width:220px; margin:10px;}
 .brandThumbContainer {height:152px; width:152px; box-shadow:0px 0px 3px 2px #3bb3c3; padding:0px 34px;}
 .brandsCatName {height:25px; width:100%; color:#3BB3C3; font-family:"Open Sans"; font-size:14px; font-weight:bold; text-align:center; padding-top:10px;}
@@ -801,8 +801,8 @@ HOMEPAGE
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffec9a', endColorstr='#ffc42f',GradientType=0 ); /* IE6-9 */
 }
 .carouselTitleTextContainer {height:81%; width:400px; font-family:Montserrat; font-weight:normal; font-size:18px; margin-left:40px; padding-top:7px}
-.carouselArrowContainer {height:16px; width:16px; margin:9px 10px 0px 0px; padding-top:10px; background-position:-88px -218px;}
-.carouselLinkContainer {height:47; width:126px; font-family:"Open Sans"; font-weight:bold; font-size:14px; margin-right:40px; padding-top:7px;}
+.carouselArrowContainer {height:16px; width:16px; margin:9px 0px 0px 0px; padding-top:10px; background-position:-88px -218px;}
+.carouselLinkContainer {height:47; width:136px; font-family:"Open Sans"; font-weight:bold; font-size:14px; margin-right:40px; padding-top:7px; text-align:right;}
 .Carousel {height:330px; width:960px; padding:0px 30px 0px 30px; position:relative; overflow:hidden;}
 .Carousel img {border:1px solid #eee;}
 .standardCarouselPagenation {height:30px; width:100%; text-align:center; padding-top:10px;}
@@ -810,7 +810,7 @@ HOMEPAGE
 .standardCarouselPagenation a.selected {background:url(images/sprites-500x500.png); background-position:-33px -216px;}
 .standardCarouselPagenation a span {display: none;}
 .carouselTitles.yellowBkgrd {background-color:#f8c301;}
-.carouselLinkContainer.featWidth {width:200px;}
+.carouselLinkContainer.featWidth {width:210px;}
 .bestSellersCarouselTitles {background-color:#3bb3c3;}
 
 .carouselButton	{
