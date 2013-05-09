@@ -871,6 +871,9 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 .prodPageCarousel li {height:50px; width:50px; float:left; margin:10px;}
 
 
+/*.mainProdColumn #prodSiblings */
+
+
 /* PRODUCT IMAGE / TABS */
 .fullWidth {margin-top:20px;}
 .fullWidth .imageContainer {width:310px;} /*padding:0 55px 20px 40px;*/
@@ -883,6 +886,7 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 .imageContainer .prodTabs.tabbedProductContent .imageAndVideoTabs .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {color:#777;}
 .imageContainer .prodTabs.tabbedProductContent .prodPageImages {width:310px; padding:0px; border:1px solid #777777; background:#F5F1DE;} /*box-shadow:0 1px 3px 2px #777;*/
 .imageContainer .prodTabs.tabbedProductContent .ui-tabs-panel {padding:0;}
+.imageContainer .prodTabs.tabbedProductContent .imageAndVideoTabs > div {border:none;}
 
 .mtClickToZoom	{background:url(images/bm09_c_zoomicon-95x28.png) no-repeat; width:95px; height:28px; position:absolute; right:5px; bottom:5px; display:none; z-index:100;}
 .prodThumbAndMT	{position:relative; width:175px; height:130px;}
@@ -905,6 +909,7 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 
 .youMayLikeAccessories {height:auto; width:auto;}
 .youMayLikeAccessories .tabbedProductListsTD {height:auto; width:97%;}
+.youMayLikeAccessories .tabbedProductListsTD {padding:0; margin:36.8px 0 20px 0;}
 .youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .tabs .ui-state-default {background:#777; border-radius:0px; border:1px solid #777;}
 .youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .tabs .ui-state-active {background:#f5f1de; border-radius:0px; border-bottom:1px solid #f5f1de;}
 .youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .tabs .ui-state-default a, .tabs .ui-state-default a:link, .ui-state-default a:visited {color:#f5f1de;}
