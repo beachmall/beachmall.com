@@ -877,11 +877,12 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 .imageContainer .prodTabs.tabbedProductContent {background-color:#fff; padding:0px; border:none;} /*tabbed container bkgrnd*/
 .imageContainer .prodTabs.tabbedProductContent > div {background-color:#fff; border:none;} /*image bkgrnd*/
 .imageContainer .prodTabs.tabbedProductContent > ul {background-color:#fff;} /*tab bkgrnd*/
-.imageContainer .prodTabs.tabbedProductContent .imageAndVideoTabs .ui-state-default {background:#3bb3c3; border-radius:0px; border:1px solid #3bb3c3;}
-.imageContainer .prodTabs.tabbedProductContent .imageAndVideoTabs .ui-state-active {background:#f5f1de; border-radius:0px; border:1px solid #3bb3c3;}
+.imageContainer .prodTabs.tabbedProductContent .imageAndVideoTabs .ui-state-default {height:35px; background:#777; border-radius:0px; border:1px solid #777;}
+.imageContainer .prodTabs.tabbedProductContent .imageAndVideoTabs .ui-state-active {background:#f5f1de; border-radius:0px; border-bottom:1px solid #f5f1de;}
 .imageContainer .prodTabs.tabbedProductContent .imageAndVideoTabs .ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited {color:#f5f1de;}
-.imageContainer .prodTabs.tabbedProductContent .imageAndVideoTabs .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {color:#3bb3c3;}
-.imageContainer .prodTabs.tabbedProductContent .prodPageImages {width:310px; padding:0px; box-shadow:0 1px 3px 2px #777;}
+.imageContainer .prodTabs.tabbedProductContent .imageAndVideoTabs .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {color:#777;}
+.imageContainer .prodTabs.tabbedProductContent .prodPageImages {width:310px; padding:0px; border:1px solid #777777; background:#F5F1DE;} /*box-shadow:0 1px 3px 2px #777;*/
+.imageContainer .prodTabs.tabbedProductContent .ui-tabs-panel {padding:0;}
 
 .mtClickToZoom	{background:url(images/bm09_c_zoomicon-95x28.png) no-repeat; width:95px; height:28px; position:absolute; right:5px; bottom:5px; display:none; z-index:100;}
 .prodThumbAndMT	{position:relative; width:175px; height:130px;}

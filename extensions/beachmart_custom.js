@@ -1018,12 +1018,15 @@ else	{
 							var city = app.ext.beachmart.u.getCityFromAddressComponents(results[0].address_components);
 							var state = app.ext.beachmart.u.getStateFromAddressComponents(results[0].address_components);
 //update the local cart object right away, in addition to the server side cart, so that vars are available globally right away.
-							app.data.cartDetail.ship.city = city;
-							app.data.cartDetail.ship.region = state;
+							
+							if(app.data.cartDetail && app.data.cartDetail.ship)	{
+								app.data.cartDetail.ship.city = city;
+								app.data.cartDetail.ship.region = state;
+								}
 							app.calls.cartSet.init({"ship/city":city,"ship/region":state},{},'passive');
-							$('.shipCity').text(app.data.cartDetail.ship.city || "");
-							$('.shipRegion').text(app.data.cartDetail.ship.region || "");
-							$('.shipPostal').text(app.data.cartDetail.ship.postal || "");
+							$('.shipCity').text(city || "");
+							$('.shipRegion').text(state || "");
+							$('.shipPostal').text(zip || "");
 							app.model.dispatchThis('passive');
 							}
 						else	{
