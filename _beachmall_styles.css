@@ -894,6 +894,9 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 
 .fullWidth .prodViewerAddToCartForm .addToCartButton {height:30px; width:120px; color:#fff; background:#E0463A; border:none; border-radius:0px;}
 
+.rightColumn {height:300px; width:258px; margin-left:20px; background:#ccc;}
+
+/*MAIN PRODUCT DESCRIPTION TABS*/
 .mainProdTabs {height:auto; width:100%;}
 .prodTabViewContainer .ui-tabs .ui-tabs-nav li a {font-size:13px; font-family:Oswald; padding:6px;}
 .prodTabViewContainer .ui-widget-header	{padding:3px 3px 0 3px; margin:0; border-width:0; border-bottom-width:1px;}
@@ -907,6 +910,7 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 .prodTabViewContainer .prodViewerTable .prodTabs.tabbedProductContent .ui-widget-content {background:#f5f1de; border:1px solid #777;}
 .prodTabViewContainer .prodViewerTable .prodTabs.tabbedProductContent > div {}
 
+/*VERTICAL CAROUSEL PRODUCT TABS*/
 .youMayLikeAccessories {height:auto; width:auto;}
 .youMayLikeAccessories .tabbedProductListsTD {height:auto; width:97%;}
 .youMayLikeAccessories .tabbedProductListsTD {padding:0; margin:36.8px 0 20px 0;}

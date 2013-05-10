@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"20130507142200",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"20130509175600",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"", //used in non-local mode.
 	"checkoutAuthMode" : "required",//can be passive, active or required
@@ -1778,15 +1778,25 @@ this will likely become more flexible in the future. ###
 			<a class="addthis_counter addthis_pill_style"></a>
 		</div>
 	</div>
-	
+
 </div> <!-- END mainProdColumn -->
+
+	<div class='rightColumn floatRight'>
+		<div>Q&A E-mail Print Graphic goes here!</div>
+		<div class='displayNone' data-bind="var: product(user:prod_guarantee); format:showIfSet;">
+			<a href='#' class='tipify'>Guarantee & Returns</a>
+			<div class='toolTip' data-bind="var: product(user:prod_guarantee); format:wiki; wikiFormats:myRIA;">
+				<p>Something goes here</p>
+			</div>
+		</div>
+		<div class='' data-bind="var: product(pid); format:reviewSnippet; extension:powerReviews;"></div>
+		<div class='' data-bind="var: product(zoovy:prod_mfg); format:searchLink; extension:myRIA; pretext: » View All ; posttext: Product;"></div>
+	</div>
 
 </td>
 
 	<td>
-		<div class='rightColumn'>
-			
-		</div>
+
 	</td>
 
 </tr>
