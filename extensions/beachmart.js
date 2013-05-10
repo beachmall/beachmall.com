@@ -325,7 +325,11 @@ var store_filter = function() {
 				}, //End prodPriceDesc
 
 				showProdModifier : function($tag, data) {
-					var zoovyIsTags = data.value['%attribs']['zoovy:prod_is_tags'];
+				//	if(data.bindData.isElastic){
+				//		app.u.dump(data.value);
+				//		}
+						
+					var zoovyIsTags = (data.bindData.isElastic) ? data.value.tags : data.value['%attribs']['zoovy:prod_is_tags'];
 					
 					//app.u.dump('*** IS_USER2 = '+newLowPrice);
 					if (zoovyIsTags.indexOf('IS_USER3') >= 0) {

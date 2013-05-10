@@ -16,10 +16,10 @@ app.rq.push(['extension',0,'store_crm','extensions/store_crm.js']);
 app.rq.push(['extension',0,'myRIA','app-quickstart.js','startMyProgram']);
 app.rq.push(['extension',0,'beachmart','extensions/beachmart_custom.js']); // custom product page, built by JT based on old hybrid site
 app.rq.push(['extension',0,'store_filter','extensions/beachmart.js']); 
-app.rq.push(['extension',0,'beachmart_dropdown','extensions/beachmart_dropdown.js']); // custom product getter for dropdowns 
+app.rq.push(['extension',0,'beachmart_dropdown','extensions/beachmart_dropdown.js', 'startExtension']); // custom product getter for dropdowns Runs startExtension as well
 
 //app.rq.push(['extension',1,'google_analytics','extensions/partner_google_analytics.js','startExtension']);
-//app.rq.push(['extension',0,'partner_addthis','extensions/partner_addthis.js','startExtension']);
+app.rq.push(['extension',0,'partner_addthis','extensions/partner_addthis.js','startExtension']);
 //app.rq.push(['extension',1,'resellerratings_survey','extensions/partner_buysafe_guarantee.js','startExtension']); /// !!! needs testing.
 //app.rq.push(['extension',1,'buysafe_guarantee','extensions/partner_buysafe_guarantee.js','startExtension']);
 
@@ -300,6 +300,7 @@ app.u.initMVC = function(attempts){
 		}
 
 	$('#appPreViewProgressBar','#appPreView').val(percentComplete);
+	//$('#appPreViewProgressBar','#appPreView').css('width',percentComplete+'%'); Beachmall
 	$('#appPreViewProgressText','#appPreView').empty().append(percentComplete+"% Complete");
 
 	if(resourcesLoaded == app.vars.rq.length)	{

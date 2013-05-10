@@ -38,7 +38,7 @@ var beachmart_dropdown = function() {
 //the callback is auto-executed as part of the extensions loading process.
 		init : {
 			onSuccess : function()	{
-				app.ext.beachmart_dropdown.u.loadHoverProducts(); //load function
+				
 //				app.u.dump('BEGIN app.ext.store_navcats.init.onSuccess ');
 				var r = true; //return false if extension won't load for some reason (account config, dependencies, etc).
 				return r;
@@ -50,8 +50,9 @@ var beachmart_dropdown = function() {
 			
 			startExtension : {
 				onSuccess : function() {
-					if(app.ext.myRIA && app.ext.myRIA.template){
+					if(app.ext.powerReviews_reviews && app.ext.store_filter){
 						app.u.dump("beachmart Extension Started");
+						app.ext.beachmart_dropdown.u.loadHoverProducts(); //load function
 						
 					} else	{
 						setTimeout(function(){app.ext.beachmart.callbacks.startExtension.onSuccess()},250);
