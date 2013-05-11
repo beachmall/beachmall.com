@@ -1712,7 +1712,7 @@ this will likely become more flexible in the future. ###
 
 <div class='topBottomBorder marginBottom clearfix shippingInformation'>
 	<div class='floatLeft'>
-		<div data-bind="var:product(is:shipfree); format:showIfSet; className:shipfree;"></div>
+		<div class='sprite' data-bind="var:product(is:shipfree); format:showIfSet; className:shipfree;"></div>
 		<div class='displayNone' data-bind='var:product(is:shipfree); format:showIfSet;'>
 			<div class='displayNone' data-bind='var:product(user:prod_shipping); format:showIfSet;'>
 				<a href='#' class='tipify'>Offer Details</a>
@@ -1727,6 +1727,14 @@ this will likely become more flexible in the future. ###
 			<div class='transitContainer'></div>
 		</div>
 	</div>
+	<div class='floatRight'>
+		<img src='images/bm12_p_toprtcol-180x89.jpg' alt width='180' height='89' usemap='#prodMap'/>
+		<div class='displayNone' data-bind="var: product(user:prod_guarantee); format:showIfSet;">
+			<a href='#' class='tipify tipifyGuarantee'>Guarantee & Returns</a>
+			<div class='toolTip' data-bind="var: product(user:prod_guarantee); format:wiki; wikiFormats:myRIA;"></div>
+		</div>
+	</div>
+	
 </div><!-- /shipping information -->
 
 
@@ -1742,8 +1750,6 @@ this will likely become more flexible in the future. ###
 	<img src='blank.gif' data-bind='var: product(zoovy:prod_image99); format: magicThumb; extension:  magicToolBox_mzp;' width='300' height='85' alt='' />
 	
 	<div id='prodSiblings' class='clearfix marginBottom'>
-		<b>Available Colors</b>
-		<span class='zhint'>(click image to select)</span>
 		<ul class='listStyleNone noPadOrMargin fluidList clearfix' data-bind="var: product(user:grp_siblings); format:productList; extension:store_prodlist;loadsTemplate:productListTemplateThumb;hide_multipage:true;before:<b>Available Colors:</b> <span class='zhint'>(click image to select)</span> ; withInventory:1; withVariations:1;"></ul> <!-- id='prodlistSiblings' -->
 	</div>
 
@@ -1782,13 +1788,6 @@ this will likely become more flexible in the future. ###
 </div> <!-- END mainProdColumn -->
 
 	<div class='rightColumn floatRight'>
-		<div>Q&A E-mail Print Graphic goes here!</div>
-		<div class='displayNone' data-bind="var: product(user:prod_guarantee); format:showIfSet;">
-			<a href='#' class='tipify'>Guarantee & Returns</a>
-			<div class='toolTip' data-bind="var: product(user:prod_guarantee); format:wiki; wikiFormats:myRIA;">
-				<p>Something goes here</p>
-			</div>
-		</div>
 		<div class='' data-bind="var: product(pid); format:reviewSnippet; extension:powerReviews;"></div>
 		<div class='' data-bind="var: product(zoovy:prod_mfg); format:searchLink; extension:myRIA; pretext: » View All ; posttext: Product;"></div>
 	</div>
@@ -2270,7 +2269,7 @@ onclicks are recursive, so only add it to the parent element.
 .mpControlsPagination is used to 'hide' the pagination portion of the header if pagination is disabled.
 -->
 
-<div id='mpControlSpec' class='mpControlContainer'>
+<div id='mpControlSpec' class='mpControlContainer mpNoShow'>
 
 	 <div class='mpControls'>
         

@@ -892,6 +892,9 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 .prodThumbAndMT	{position:relative; width:175px; height:130px;}
 .prodThumbAndMT .prodThumbContainer	{z-index:10; position:absolute; top:0; left:0;}
 
+.fullWidth .tipifyGuarantee {margin-left:63px;}
+.productFreeShipping {height:17px; width:108px; overflow:hidden; background-position:-67px -56px;}
+.fullWidth .mainProdColumn .mpNoShow {display:none;}
 .fullWidth .prodViewerAddToCartForm .addToCartButton {height:30px; width:120px; color:#fff; background:#E0463A; border:none; border-radius:0px;}
 
 .rightColumn {height:300px; width:258px; margin-left:20px; background:#ccc;}
@@ -1165,7 +1168,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b7deed', end
 
 /* shipping section */
 .topBottomBorder	{border:1px dotted #666666; border-left-width:0; border-right-width:0; padding:12px 0;}
-.shipfree	{width:119px; height:17px; background: url(bm12_shipfree-107x17.gif) no-repeat;}
+.shipfree {width:119px; height:17px; background-position: -66px -96px;}
 .shippingInformation .loadingBG	{background:url(wait.gif) no-repeat; min-height:16px; min-width:16px; padding-left:20px;}
 
 /* right column (from add to cart) */
