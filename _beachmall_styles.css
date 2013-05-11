@@ -899,6 +899,10 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 
 .rightColumn {height:300px; width:258px; margin-left:20px; background:#ccc;}
 
+.rightColumn .prodPageMfgForward {height:auto; width:100%; text-align:center; color:#3BB3C3;}
+.rightColumn .prodPageMfgForward:hover {color:#e0463a;}
+
+
 /*MAIN PRODUCT DESCRIPTION TABS*/
 .mainProdTabs {height:auto; width:100%;}
 .prodTabViewContainer .ui-tabs .ui-tabs-nav li a {font-size:13px; font-family:Oswald; padding:6px;}
