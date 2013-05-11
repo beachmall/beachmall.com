@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"20130511123800",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"20130511134900",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"", //used in non-local mode.
 	"checkoutAuthMode" : "required",//can be passive, active or required
@@ -1749,7 +1749,7 @@ this will likely become more flexible in the future. ###
 	
 	<img src='blank.gif' data-bind='var: product(zoovy:prod_image99); format: magicThumb; extension:  magicToolBox_mzp;' width='300' height='85' alt='' />
 	
-	<div id='prodSiblings' class='clearfix marginBottom'>
+	<div id='prodSiblings' class='clearfix'>
 		<ul class='listStyleNone noPadOrMargin fluidList clearfix' data-bind="var: product(user:grp_siblings); format:productList; extension:store_prodlist;loadsTemplate:productListTemplateThumb;hide_multipage:true;before:<b>Available Colors:</b> <span class='zhint'>(click image to select)</span> ; withInventory:1; withVariations:1;"></ul> <!-- id='prodlistSiblings' -->
 	</div>
 
@@ -1760,17 +1760,20 @@ this will likely become more flexible in the future. ###
 		<div class='clearfix marginBottom'>
 			<div class='floatLeft'><!-- BUYSAFE KICKER --></div>
 			<div class='floatRight alignRight'>
-				<fieldset data-bind='var: product(pid); format:atcQuantityInput; defaultValue:1; extension:store_product; pretext:Quantity: ;' class='borderNone'></fieldset>
+				<!-- orig actQuantityInput <fieldset data-bind='var: product(pid); format:atcQuantityInput; defaultValue:1; extension:store_product; pretext:Quantity: ;' class='borderNone'></fieldset>-->
+				<fieldset data-bind='useParentData:true; format:atcQuantityInput; extension:store_product; pretext:Quantity: ; defaultValue:1;' class='borderNone'></fieldset>
 			</div>
 		</div>
 				
 		<div class='alignRight'>
 			
-			<input type='submit' value='Add to Cart' class='ui-button ui-button-text ui-corner-all ui-state-default addToCartButton displayNone' data-bind='var: product(pid); format:addToCartButton; extension:store_product;' id='addToCartBtn' />
-			<div class='displayNone zsmall alignRight' data-bind='var: product(user:prod_shipping); format:showIfSet;'><a href='#' onClick="app.ext.beachmart.a.showProdAttInDialog($(this).attr('data-pid'),'user:prod_shipping'); return false;" data-bind='var:product(pid);format:assignAttribute; attribute:data-pid;'>Shipping Surcharge May Apply</a></div>
-			
+			<input type='submit' value='Add to Cart' class='floatRight ui-button ui-button-text ui-corner-all ui-state-default addToCartButton displayNone' data-bind='var: product(pid); format:addToCartButton; extension:store_product;' id='addToCartBtn' />
 			<!-- anchor is for tab container so tabs are still visible when page jumps down -->
 			<span class='floatRight sizingChartLink displayNone' data-bind='var:product(user:prod_sizing_txt); format:showIfSet;'><a href='#tabbedProductContentTD'>Sizing Chart</a></span>   
+			<div class='displayNone zsmall alignRight' data-bind='var: product(user:prod_shipping); format:showIfSet;'><a href='#' onClick="app.ext.beachmart.a.showProdAttInDialog($(this).attr('data-pid'),'user:prod_shipping'); return false;" data-bind='var:product(pid);format:assignAttribute; attribute:data-pid;'>Shipping Surcharge May Apply</a></div>
+			
+			
+			
 		</div>
 		
 	</form>

@@ -896,10 +896,12 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 .productFreeShipping {height:17px; width:108px; overflow:hidden; background-position:-67px -56px;}
 .fullWidth .mainProdColumn .mpNoShow {display:none;}
 .fullWidth .prodViewerAddToCartForm .addToCartButton {height:30px; width:120px; color:#fff; background:#E0463A; border:none; border-radius:0px;}
+.fullWidth .zsmall {padding-top:10px; clear:both;}
+.fullWidth .socialLinks {margin-top:30px;}
 
 .rightColumn {height:300px; width:258px; margin-left:20px; background:#ccc;}
 
-.rightColumn .prodPageMfgForward {height:auto; width:100%; text-align:center; color:#3BB3C3;}
+.rightColumn .prodPageMfgForward {height:auto; width:100%; text-align:center; color:#3BB3C3; margin-top:20px}
 .rightColumn .prodPageMfgForward:hover {color:#e0463a;}
 
 
@@ -1137,7 +1139,7 @@ h1.prodName	{font-size:18px; margin:0; padding:0; margin-bottom:6px;}
 	background:url(bm10_preorder-159x33.png) no-repeat; padding:0; border:0;
 	}
 */
-.sizingChartLink {padding:22px 25px 0 0px;} /* don't set a display: here. displayNone is used and element is toggle on based on whether a value is set */
+.sizingChartLink {padding:4px 25px 0 0px;} /* don't set a display: here. displayNone is used and element is toggle on based on whether a value is set */
 
 .preorderButton	{
 	text-indent: 0px;
