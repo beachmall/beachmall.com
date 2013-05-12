@@ -846,6 +846,9 @@ HOMEPAGE
 .carouselButtonDkBluePrev {left:11px; background-position:-37px 0;}
 .carouselButtonDkBlueNext {right:5px; background-position:0px 0;}
 
+.reviewsStarsCount.homeCars {margin:0 auto;}
+.reviewsStarsCount.homeCars p {position:relative; top:0px; left:10px; text-align:left; width:160px;} 
+
 .categoryDescriptionContainer {height:360px; width:940px; padding:0px 40px; position:relative;}
 .catDescStd {height:auto; margin-top:10px; position:absolute; top:0px; width:215px; z-index:10;}
 .catDescStd1 {left:40px;}

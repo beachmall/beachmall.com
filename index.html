@@ -1552,7 +1552,7 @@ SANITY -> if you change the height and width of this image, change the .minimalM
 <li id='productListTemplateResultsCustomSmaller' class='loadingBG searchResultsProduct ' >
 	<div onClick="return showContent('product', {'pid' : $(this).parent().attr('data-pid')});" class='pointer productListSmall'>
 		<div class='prodHoverContainer'>
-		<div class='prodModifierContainer sprite displayNone' data-bind='useParentData:true; format:showProdModifier; extension:store_filter; isElastic:1;'></div>
+			<div class='prodModifierContainer sprite displayNone' data-bind='useParentData:true; format:showProdModifier; extension:store_filter; isElastic:1;'></div>
 			<!-- CORNER SHADOW DIVS -->
 			<div class='topLeftCorner'></div><div class='leftTopCorner'></div><div class='topRightCorner'></div><div class='rightTopCorner'></div>
 			<div class='bottomLeftCorner'></div><div class='leftBottomCorner'></div><div class='bottomRightCorner'></div><div class='rightBottomCorner'></div> 
@@ -1569,8 +1569,9 @@ SANITY -> if you change the height and width of this image, change the .minimalM
 				</div>
 				<div class='hideInMinimalMode floatRight pointer moreDetailsSmall' onClick="showContent('product',{'pid':$(this).parent().attr('data-pid')});">VIEW DETAILS</div> 
                 <h5 class='hideInMinimalMode clearfix prodDescSmall' data-bind='var: product(prod_name); format:text;'></h5>
-            </div>
-   		</div>
+			</div>
+		</div>
+		<div class='reviewsStarsCount homeCars' data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews_reviews;'></div><!-- BCERO271 MARK-->
     </div>  
     
 </li>
