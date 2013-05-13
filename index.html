@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"20130511134900",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"20130513165100",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"", //used in non-local mode.
 	"checkoutAuthMode" : "required",//can be passive, active or required
@@ -185,12 +185,12 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
             <div class='banner hideMed'><div class='sprite easyReturns hideMed'></div></div>
             <div class='banner'><div class='sprite freeShipping'></div></div>
         </div>
-        
+       
 <!--DROPDOWN PRODUCT SELECTION CLASS HERE! <div class="hoverproduct-PDADDC1"></div> -->
         <div class='dropdownsContainer floatLeft'>
 
             <div id='mainDropdown'>
- 
+
                 <!-- <div class='dropdownsContainer'> -->
 					<div class='singleDropdown floatLeft sprite' onMouseOver="app.ext.beachmart_dropdown.a.showDropdown($(this),535);" onMouseOut="app.ext.beachmart_dropdown.a.hideDropdown($(this));">
                     	<div class='dropdownBorderContainer'>
@@ -201,10 +201,17 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 						<div class='beachChairsDD dropdown floatLeft'> 
                             <ul class='listStyleNone floatLeft dropoutUL'>
                                 <li class='noArrow'>BEACH CHAIRS</li>   
-								<li class='bindByAnchor noArrow' data-hoverproduct="PDADDC1" href='#!category?navcat=.beach-chair.adirondack-furniture' onMouseOver='app.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='app.ext.beachmart_dropdown.a.hideHoverout($(this));' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+								<li class='bindByAnchor noArrow' href='#!category?navcat=.beach-chair.adirondack-furniture' onMouseOver='app.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='app.ext.beachmart_dropdown.a.hideHoverout($(this));' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());"> <!--data-hoverproduct="PDADDC1"-->
 									Adirondack
 									<ul class='hoverProductContainer hoverout listStyleNone'>
-										<li class="hoverproduct-PDADDC1 noArrow"></li>
+										<!--<li class="hoverproduct-PDADDC1 noArrow"></li>-->
+										<div class='stockImageContainer'>
+											<img src='images/adirondack chair 2.jpg'>
+										</div>
+										<button class='catSearchBestSeller' onClick='app.ext.beachmart_catsearch.a.catSearch("IS_BESTSELLER", "beach chair adirondack furniture");'>Best Selling Items</button>
+										<button class='catSearchBestSeller' onClick='app.ext.beachmart_catsearch.a.catSearch("IS_SALE", "beach accessories beach bags totes beach chairs beach gear beach products");'>Featured Items</button>
+										<button class='catSearchBestSeller' onClick='app.ext.beachmart_catsearch.a.catSearch("IS_CLEARANCE", "beach accessories beach bags totes beach chairs beach gear beach products");'>Clearance Items</button>
+										<button class='catSearchBestSeller' href='#!category?navcat=.beach-chair.adirondack-furniture'>See All Items</button>
 									</ul>	
 								</li>
 								<li class='bindByAnchor noArrow' data-hoverproduct="WRB5436" href='#!category?navcat=.beach-chair.backpack-chair' onMouseOver='app.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='app.ext.beachmart_dropdown.a.hideHoverout($(this));' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">

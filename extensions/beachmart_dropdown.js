@@ -51,15 +51,15 @@ var beachmart_dropdown = function() {
 			startExtension : {
 				onSuccess : function() {
 					if(app.ext.powerReviews_reviews && app.ext.store_filter){
-						app.u.dump("beachmart Extension Started");
+						app.u.dump("beachmart dropdown Extension Started");
 						app.ext.beachmart_dropdown.u.loadHoverProducts(); //load function
 						
 					} else	{
-						setTimeout(function(){app.ext.beachmart.callbacks.startExtension.onSuccess()},250);
+						setTimeout(function(){app.ext.beachmart_dropdown.callbacks.startExtension.onSuccess()},250);
 					}
 				},
 				onError : function (){
-					app.u.dump('BEGIN app.ext._2bhip.callbacks.startExtension.onError');
+					app.u.dump('BEGIN app.ext.beachmart_dropdowns.callbacks.startExtension.onError');
 				}
 			},
 			
@@ -134,12 +134,12 @@ var beachmart_dropdown = function() {
 				$hoverout.children().each(function(){
 					$(this).outerWidth(true);
 				});
-				$hoverout.stop().animate({"width":width+"px",opacity:1}, 1000);
+				$hoverout.stop().animate({"width":width+"px",opacity:1}, 0);
 			},
 			
 			//ANIMATE RETRACTION OF HOVERPRODUCT DROPOUT MENU
 			hideHoverout : function ($tag) {
-				$(".hoverout", $tag).stop().animate({"width":"0px",opacity:0}, 1000);
+				$(".hoverout", $tag).stop().animate({"width":"0px",opacity:0}, 0);
 			},
 			
 			//SHOW HOVERPRODUCT DROPOUT MENU
@@ -149,14 +149,14 @@ var beachmart_dropdown = function() {
 				$hoverout.children().each(function(){
 					$(this).outerWidth(true);
 				});
-				$hoverout.stop().animate({"width":width+"px",opacity:1}, 1000);
-				$parent.css({"width":680+"px"},1000);
+				$hoverout.stop().animate({"width":width+"px",opacity:1}, 000);
+				$parent.css({"width":680+"px"}, 000);
 			},
 			
 			//ANIMATE RETRACTION OF HOVERPRODUCT DROPOUT MENU
 			hideHoverout2 : function ($tag, $parent) {
-				$(".hoverout", $tag).stop().animate({"width":"0px",opacity:0}, 1000);
-				$parent.css({"width":485+"px"}, 1000);
+				$(".hoverout", $tag).stop().animate({"width":"0px",opacity:0}, 000);
+				$parent.css({"width":485+"px"}, 000);
 			},
 			
 			

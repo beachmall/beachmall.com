@@ -24,9 +24,9 @@ var analyzer = function() {
 		vars : {
 			"templates" : ['profileTemplate','catInfoTemplate','prodlistProdTemplate']
 			},
-		
+
 		calls: {
-			
+
 			appResource : {
 				init : function(filename,tagObj,Q)	{
 //					app.u.dump("BEGIN analyzer.calls.appResource.init");
@@ -44,7 +44,7 @@ var analyzer = function() {
 					}
 				} //appResource
 			}, //calls
-		
+
 		callbacks : {
 //run when controller loads this extension.  Should contain any validation that needs to be done. return false if validation fails.
 			init : {
@@ -138,7 +138,7 @@ $('#tabs-4').append(app.ext.analyzer.u.buildTagsList({'id':'tagList'}));
 					app.u.handleErrors(responseData,uuid);
 					}
 				}, //handleFlexedit
-				
+
 			handleElasticResults : {
 				onSuccess : function(tagObj)	{
 //					app.u.dump("BEGIN analyzer.callbacks.handleElasticResults.onSuccess.");
@@ -160,13 +160,13 @@ $('#tabs-4').append(app.ext.analyzer.u.buildTagsList({'id':'tagList'}));
 					app.u.handleErrors(responseData,uuid)
 					}
 				}		//handleElasticResults	
-				
 
-				
+
+
 			}, //callbacks
 
 		a : {
-			
+
 			showSubcats : function(path)	{
 //				app.u.dump("BEGIN analyzer.a.showSubcats ["+path+"]");
 				var parentID = 'categoryTreeSubs_'+app.u.makeSafeHTMLId(path);
@@ -177,13 +177,13 @@ $('#tabs-4').append(app.ext.analyzer.u.buildTagsList({'id':'tagList'}));
 					app.model.dispatchThis();
 					}
 				}, //showSubcats
-			
+
 			exploreProduct : function(pid)	{
 				$('#attribsDebugData, #variationsDebugData ,#inventoryDebugData, #prodDebugThumbs').empty();
 				app.ext.store_product.calls.appProductGet.init(pid,{'callback':'prodDebug','extension':'analyzer'});
 				app.model.dispatchThis();
 				},
-			
+
 			showItemsTaggedAs : function(tag)	{
 				$('#tagList li').removeClass('ui-state-active'); //remove any previously active states from list item choiced.
 				$('#'+tag).addClass('ui-state-active'); //add active state to list item now in focus.
@@ -196,12 +196,12 @@ $('#tabs-4').append(app.ext.analyzer.u.buildTagsList({'id':'tagList'}));
 				localStorage.clear(); //make sure local storage is empty so a new cart is automatically obtained.
 				location.reload(true); //refresh page to restart experience.
 				},
-				
-			
+
+
 			showPageGetDetailsInModal : function(catSafeID)	{
 				if(catSafeID)	{
 					var $div = $("<div \/>",{'title':'Detail for: '+catSafeID});
-					
+
 					$div.appendTo('body')
 					$div.dialog({'modal':true,'width':'90%','height':500});
 					$div.showLoading({'message':'fetching category data'});
@@ -216,11 +216,11 @@ $('#tabs-4').append(app.ext.analyzer.u.buildTagsList({'id':'tagList'}));
 					app.u.dump("No catsafeid passed into showPageGetDetailsinModal");
 					}
 				}
-			
+
 
 			}, //actions
 		u : {
-			
+
 			buildTagsList : function(P)	{
 				var $ul = $("<ul>").attr(P); //what is returned.
 				var tags = new Array('IS_FRESH','IS_NEEDREVIEW','IS_HASERRORS','IS_CONFIGABLE','IS_COLORFUL','IS_SIZEABLE','IS_OPENBOX','IS_PREORDER','IS_DISCONTINUED','IS_SPECIALORDER','IS_BESTSELLER','IS_SALE','IS_SHIPFREE','IS_NEWARRIVAL','IS_CLEARANCE','IS_REFURB','IS_USER1','IS_USER2','IS_USER3','IS_USER4','IS_USER5','IS_USER6','IS_USER7','IS_USER8','IS_USER9');
@@ -234,7 +234,7 @@ $('#tabs-4').append(app.ext.analyzer.u.buildTagsList({'id':'tagList'}));
 					}
 				return $ul;
 				},
-				
+
 			prodDebugImageList : function(datapointer)	{
 				var data = app.data[datapointer]['%attribs']
 				var $div = $("<div>").attr('id','debugImageContainer');
@@ -243,13 +243,13 @@ $('#tabs-4').append(app.ext.analyzer.u.buildTagsList({'id':'tagList'}));
 					filename = data['zoovy:prod_image'+i];
 					if(filename)	{
 						$div.append("<figure>"+app.u.makeImage({"name":filename,"w":150,"b":"FFFFFF","tag":1})+"<figcaption>image"+i+": "+filename+"</figcaption>");
-						
+
 						}
 					}
 				return $div;
 				},
 			handleElasticFilterOrQuery : function()	{
-				var quilter = $.parseJSON($('#advsrch_filterQuery').val()); //query/filter object
+				var quilter = app.ext.store_search.u.buildElasticRaw($.parseJSON($('#advsrch_filterQuery').val())); //query/filter object
 				if(quilter)	{
 					app.ext.store_search.calls.appPublicProductSearch.init(quilter,{'callback':'handleElasticResults','extension':'analyzer','parentID':'elasticResults','datapointer':'elasticsearch|Test'});
 					app.model.dispatchThis();
@@ -257,9 +257,9 @@ $('#tabs-4').append(app.ext.analyzer.u.buildTagsList({'id':'tagList'}));
 				else	{
 					alert('invalid json');
 					}
-				
+
 				},
-			
+
 			objExplore : function(obj)	{
 // 				app.u.dump("BEGIN analyzer.u.objExplore");
 				var keys = new Array();
@@ -274,7 +274,7 @@ $('#tabs-4').append(app.ext.analyzer.u.buildTagsList({'id':'tagList'}));
 				for(var i = 0; i < L; i += 1)	{
 					$li = $('<li>');
 					$prompt = $('<span>').addClass('prompt').text(keys[i]).appendTo($li);
-					
+
 					if(typeof obj[keys[i]] == 'object')	{
 						$value = app.ext.analyzer.u.objExplore(obj[keys[i]]);
 						}
@@ -287,7 +287,7 @@ $('#tabs-4').append(app.ext.analyzer.u.buildTagsList({'id':'tagList'}));
 
 				return $ul;
 				}
-			
+
 			} //util
 
 		} //r object.
