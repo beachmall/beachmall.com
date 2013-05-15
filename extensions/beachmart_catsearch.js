@@ -71,7 +71,7 @@ var beachmart_catsearch = function() {
 //these are going the way of the do do, in favor of app events. new extensions should have few (if any) actions.
 		a : {
 			catSearch : function(tag, category){
-				app.u.dump("*** "+tag+" "+category);
+				//app.u.dump("*** "+tag+" "+category);
 				var elasticsearch = {
 					"query": {
 						"filtered": {
@@ -92,10 +92,16 @@ var beachmart_catsearch = function() {
 					}
 				};
 				
-				if (elasticsearch.query.filtered.query.query_string.fields.tags == 1) {
-					return showContent('search',{'elasticsearch':elasticsearch});
-				} else {
-					return app.u.dump("GOOD TIMES!!");
+				return showContent('search',{'elasticsearch':elasticsearch});
+			},
+			
+			catShow : function(category, $parent) {
+				var elasticsearch = {
+					"filter": {
+						"term": {
+							"app_category": category
+						}
+					}
 				}
 			}
 		}, //Actions

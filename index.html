@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"20130513165100",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"20130515144800",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"", //used in non-local mode.
 	"checkoutAuthMode" : "required",//can be passive, active or required
@@ -201,7 +201,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 						<div class='beachChairsDD dropdown floatLeft'> 
                             <ul class='listStyleNone floatLeft dropoutUL'>
                                 <li class='noArrow'>BEACH CHAIRS</li>   
-								<li class='bindByAnchor noArrow' href='#!category?navcat=.beach-chair.adirondack-furniture' onMouseOver='app.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='app.ext.beachmart_dropdown.a.hideHoverout($(this));' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());"> <!--data-hoverproduct="PDADDC1"-->
+								<li class='bindByAnchor noArrow' onMouseOver='app.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='app.ext.beachmart_dropdown.a.hideHoverout($(this));' > <!--data-hoverproduct="PDADDC1"-->
 									Adirondack
 									<ul class='hoverProductContainer hoverout listStyleNone'>
 										<!--<li class="hoverproduct-PDADDC1 noArrow"></li>-->
@@ -211,7 +211,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 										<button class='catSearchBestSeller' onClick='app.ext.beachmart_catsearch.a.catSearch("IS_BESTSELLER", "beach chair adirondack furniture");'>Best Selling Items</button>
 										<button class='catSearchBestSeller' onClick='app.ext.beachmart_catsearch.a.catSearch("IS_SALE", "beach accessories beach bags totes beach chairs beach gear beach products");'>Featured Items</button>
 										<button class='catSearchBestSeller' onClick='app.ext.beachmart_catsearch.a.catSearch("IS_CLEARANCE", "beach accessories beach bags totes beach chairs beach gear beach products");'>Clearance Items</button>
-										<button class='catSearchBestSeller' href='#!category?navcat=.beach-chair.adirondack-furniture'>See All Items</button>
+										<button class='catSearchBestSeller bindByAnchor' href='#!category?navcat=.beach-chair.adirondack-furniture' onClick='app.ext.beachmart_catsearch.a.catShow("beach chair adirondack furniture", $(this).parent().parent().parent().parent().parent().parent());'>See All Items</button>
 									</ul>	
 								</li>
 								<li class='bindByAnchor noArrow' data-hoverproduct="WRB5436" href='#!category?navcat=.beach-chair.backpack-chair' onMouseOver='app.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='app.ext.beachmart_dropdown.a.hideHoverout($(this));' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
@@ -1578,6 +1578,9 @@ SANITY -> if you change the height and width of this image, change the .minimalM
                 <h5 class='hideInMinimalMode clearfix prodDescSmall' data-bind='var: product(prod_name); format:text;'></h5>
 			</div>
 		</div>
+		<div id='prodSiblings' class='clearfix'>
+			<ul class='listStyleNone noPadOrMargin fluidList clearfix' data-bind="var: product(user:grp_siblings); format:productList; extension:store_prodlist;loadsTemplate:productListTemplateThumb;hide_multipage:true;before:<b>Available Colors:</b> <span class='zhint'>(click image to select)</span> ; withInventory:1; withVariations:1;"></ul> <!-- id='prodlistSiblings' -->
+		</div>
 		<div class='reviewsStarsCount homeCars' data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews_reviews;'></div><!-- BCERO271 MARK-->
     </div>  
     
@@ -1800,7 +1803,7 @@ this will likely become more flexible in the future. ###
 
 	<div class='rightColumn floatRight'>
 		<div class='' data-bind="var: product(pid); format:reviewSnippet; extension:powerReviews_reviews;"></div>
-		<div class='prodPageMfgForward' data-bind="var: product(zoovy:prod_mfg); format:searchLink; extension:myRIA; pretext: » View All ; posttext: Product;"></div>
+		<div class='prodPageMfgForward' data-bind="var: product(zoovy:prod_mfg); format:searchLink; extension:myRIA; pretext: &#187 View All ; posttext: Product;"></div>
 	</div>
 
 </td>

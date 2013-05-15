@@ -167,7 +167,7 @@ the padding is to compensate for the spacing between the main nav.
 #mastHead .dropdown .noArrow:hover {background:none;}
 
 /*#mastHead .dropdown .hoverProductContainer {height: 525px; width:240px; background-color:#2B9;}*/
-#mastHead .dropdown .hoverProductContainer {height: 525px; width:0px; background-color:#2B9; position:relative; top:-82px; left:206px; overflow:hidden; border:none; margin:0; padding:0; opacity:0;}
+#mastHead .dropdown .hoverProductContainer {height: 525px; width:0px; background-color:#F8C301; position:relative; top:-82px; left:206px; overflow:hidden; border:none; margin:0; padding:0; opacity:0;}
 #mastHead .dropdown .hoverProductContainer .productListSmall {padding:25px 10px;}
 #mastHead .dropdown .hoverProductContainer .myProdThumbSmall {width:210px;}
 #mastHead .dropdown .hoverProductContainer .prodPriceSmall {width:125px; text-align:center; font-size:.85em; color:#000;}
@@ -907,7 +907,7 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 .fullWidth .zsmall {padding-top:10px; clear:both;}
 .fullWidth .socialLinks {margin-top:30px;}
 
-.rightColumn {height:300px; width:258px; margin-left:20px; background:#ccc;}
+.rightColumn {height:300px; width:258px; margin-left:20px;}
 
 .rightColumn .prodPageMfgForward {height:auto; width:100%; text-align:center; color:#3BB3C3; margin-top:20px}
 .rightColumn .prodPageMfgForward:hover {color:#e0463a;}

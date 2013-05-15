@@ -227,7 +227,7 @@ var beachmart_dropdown = function() {
 					var obj = {									// object to hold product id for each product
 						"pid" : prods[i]						
 						};
-					console.debug(obj);							// see what was returned in console
+					//console.debug(obj);							// see what was returned in console
 					var _tag = {								// create holder for call back
 						"callback":"renderHoverProduct",		// call back function (in callbacks above)
 						"extension":"beachmart_dropdown"		// extension that holds call back (this extension you're in)
