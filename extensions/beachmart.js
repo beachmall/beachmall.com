@@ -131,21 +131,22 @@ var store_filter = function() {
 			onSuccess : function()	{
 				
 				app.ext.store_filter.u.runCarousels();
-				app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(infoObj) {
+				/*app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(infoObj) {
 					var $context = $(app.u.jqSelector('#'+infoObj.parentID));
 					app.ext.store_filter.u.hidePreviouslyViewed($context);
-				}]);
+				}]);*/
 				
-				app.rq.push(['templateFunction','homepageTemplate','onDeparts',function(infoObj) {
+				/*app.rq.push(['templateFunction','homepageTemplate','onDeparts',function(infoObj) {
 					var $context = $(app.u.jqSelector('#'+infoObj.parentID));
 					app.ext.store_filter.u.showPreviouslyViewed($context);
-				}]);
+				}]);*/
 				
 				app.rq.push(['templateFunction','productTemplate','onCompletes',function(infoObj) {
 					var $context = $(app.u.jqSelector('#'+infoObj.parentID)); //grabs the currently loaded product page (to ignore previously loaded / invisible ones)
 					app.ext.store_filter.u.runProductCarousel($context);
 					app.ext.store_filter.u.runProductVerticalCarousel($context);
 					app.ext.store_filter.u.runProductVerticalCarousel2($context);
+					app.ext.store_filter.u.runProductRecentCarousel($context);
 					app.u.dump('Product fredsel ran');
 				}]);
 				
@@ -632,75 +633,107 @@ return filters;
 					
 					//YOU MAY LIKE THIS VERTICAL CAROUSEL
 					runProductVerticalCarousel : function($context) {
-					var $target = $('.testUL', $context);
-					if($target.data('isCarousel'))	{} //only make it a carousel once.
-					else	{
-						$target.data('isCarousel',true);
-						app.u.dump('*** Carousel is true');
-				//for whatever reason, caroufredsel needs to be executed after a moment.
-						setTimeout(function(){
-							$target.carouFredSel({
-								circular: true,
-								auto: false,
-								direction: 'down',
-								prev: '.testPrev',
-								next: '.testNext',
-								items:{
-									height: 468,
-									width: 240
-								},
-								height: 490,
-								width: 250,
-								//items: 1,
-								//pagination: '#bestCarPagenation',
-								scroll: 1,
-						//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
-								swipe: {
-									onMouse: true,
-									onTouch: true
-									}
-								});
-							},100); 
-						}//END VERTICAL CAROUSEL1 
-					},						
+						var $target = $('.testUL', $context);
+						if($target.data('isCarousel'))	{} //only make it a carousel once.
+						else	{
+							$target.data('isCarousel',true);
+							app.u.dump('*** Carousel is true');
+					//for whatever reason, caroufredsel needs to be executed after a moment.
+							setTimeout(function(){
+								$target.carouFredSel({
+									circular: true,
+									auto: false,
+									direction: 'down',
+									prev: '.testPrev',
+									next: '.testNext',
+									items:{
+										height: 468,
+										width: 240
+									},
+									height: 490,
+									width: 250,
+									//items: 1,
+									//pagination: '#bestCarPagenation',
+									scroll: 1,
+							//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
+									swipe: {
+										onMouse: true,
+										onTouch: true
+										}
+									});
+								},100); 
+							}//END VERTICAL CAROUSEL1 
+						},						
 						
 						//ACCESSORIES VERTICAL CAROUSEL
 					runProductVerticalCarousel2 : function($context) {
-					var $target = $('.testUL2', $context);
-					if($target.data('isCarousel'))	{} //only make it a carousel once.
-					else	{
-						$target.data('isCarousel',true);
-						//app.u.dump('*** Carousel is true');
-				//for whatever reason, caroufredsel needs to be executed after a moment.
-						setTimeout(function(){
-							$target.carouFredSel({
-								circular: true,
-								auto: false,
-								direction: 'down',
-								prev: '.testPrev2',
-								next: '.testNext2',
-								items:{
-									height: 468,
-									width: 240
-								},
-								height: 490,
-								width: 250,
-								//items: 1,
-								//pagination: '#bestCarPagenation',
-								scroll: 1,
-						//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
-								swipe: {
-									onMouse: true,
-									onTouch: true
-									}
-								});
-							},1000); 
+						var $target = $('.testUL2', $context);
+						if($target.data('isCarousel'))	{} //only make it a carousel once.
+						else	{
+							$target.data('isCarousel',true);
+							//app.u.dump('*** Carousel is true');
+					//for whatever reason, caroufredsel needs to be executed after a moment.
+							setTimeout(function(){
+								$target.carouFredSel({
+									circular: true,
+									auto: false,
+									direction: 'down',
+									prev: '.testPrev2',
+									next: '.testNext2',
+									items:{
+										height: 468,
+										width: 240
+									},
+									height: 490,
+									width: 250,
+									//items: 1,
+									//pagination: '#bestCarPagenation',
+									scroll: 1,
+							//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
+									swipe: {
+										onMouse: true,
+										onTouch: true
+										}
+									});
+								},1000); 
 						}//END VERTICAL CAROUSEL2  
 						
 					},//END PRODUCT PAGE CAROUSELS
 					
-					//PREVIOUSLY VIEWED ITEMS CAROUSEL
-		/*			app.rq.push(['templateFunction','categoryTemplateBrands','onCompletes',function(P) {
+					runProductRecentCarousel : function($context) {
+						var $target = $('.productPreviousViewed', $context);
+						if($target.data('isCarousel'))	{} //only make it a carousel once.
+						else	{
+							$target.data('isCarousel',true);
+							//app.u.dump('*** Carousel is true');
+					//for whatever reason, caroufredsel needs to be executed after a moment.
+							setTimeout(function(){
+								$target.carouFredSel({
+									circular: true,
+									auto: false,
+									prev: '.productPreviousViewedPrev',
+									next: '.productPreviousViewedNext',
+									/*items:{
+										height: 468,
+										width: 240
+									},*/
+									height: 405,
+									width: 960,
+									//items: 1,
+									pagination: '.productPreviousViewedPagenation',
+									scroll: 1,
+							//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
+									swipe: {
+										onMouse: true,
+										onTouch: true
+									}
+								});
+							},1000); 
+						}
+					},//END PRODCUT RECENT CAROUSEL
+						
+				//PREVIOUSLY VIEWED ITEMS CAROUSEL
+/*					app.rq.push(['templateFunction','categoryTemplateBrands','onCompletes',function(P) {
 						var $target = $('.brandCatsPreviousViewed');
 //						if($target.data('isCarousel'))	{} //only make it a carousel once.
 
@@ -738,13 +771,13 @@ return filters;
 							}
 						}]);		*/
 
-				hidePreviouslyViewed : function($context) {
+	/*			hidePreviouslyViewed : function($context) {
 					$('#recentlyViewedItemsContainer').hide();
 				},
 				
 				showPreviouslyViewed : function($context) {
 					$('#recentlyViewedItemsContainer').show();
-				}
+				}*/
 				
 			}, //u
 

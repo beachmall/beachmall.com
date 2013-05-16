@@ -266,7 +266,7 @@ BRANDS CATEGORY PAGE
 .brandsPromoBanner div:nth-child(2) {height:60px; width:440px; margin:-4px 0 0 10px; text-align:center; font-size:30px; float:Left; line-height:25px;}
 .brandsPromoBanner div:nth-child(2) span {font-size:18px; line-height:27px;}
 .brandsPromoBanner div:nth-child(3) {height:60px; width:230px; font-size:24px; float:Right; margin:0 40px 0 0; padding:12px 0 0 0; line-height:17px;}
-.brandsPromoBanner div:nth-child(3) span {font-family:"Open Sans"; font-size:14px; font-weight:bold; color:#e0463a;}
+.brandsPromoBanner div:nth-child(3) span {font-family:"Open Sans"; font-size:14px; font-weight:bold; color:#e0463a; display:block; margin:7px 0 0 0; text-align:center;}
 
 .brandsTopCatContainer {height:auto; width:960px; padding:0px 30px;}
 .brandsCatContainer {height:auto; width:1020px; padding:0px 0px;}
@@ -906,6 +906,7 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 .fullWidth .prodViewerAddToCartForm .addToCartButton {height:30px; width:120px; color:#fff; background:#E0463A; border:none; border-radius:0px;}
 .fullWidth .zsmall {padding-top:10px; clear:both;}
 .fullWidth .socialLinks {margin-top:30px;}
+.fullWidth span.notAvailableForPurchase {float:left; color:#e0463a;}
 
 .rightColumn {height:300px; width:258px; margin-left:20px;}
 
