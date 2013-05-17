@@ -406,6 +406,9 @@ PRODUCT LIST
 /*Layered search styles*/
 .filterBox {height:auto; width:auto; background-color:#3BB3C3; margin-top:10px; font-family:"Open Sans";}
 .productColumn {width:auto;}
+.catTitle {height:35px; width:auto; margin: 0 10px; color:#3BB3C3; font-family:"Open Sans"; font-size:24px; font-weight:bold; line-height:32px; position:absolute; top:215px; left:530px; background:none;}
+.buyerGuides {height:30px; width:220px; border:2px solid #F8C301; position:absolute; top:215px; right:207px; color:#3BB3C3; text-align:center; font-family:"Open Sans"; font-size:14px; font-weight:bold; background:#F5F1DE;}
+.buyerGuides span {font-size:10px; color:#000; font-weight:normal; display:block; margin:-4px 0 0 0;}
 .categoryTemplateContainer {height:auto; width:761px;}
 label.break	{display:block; margin:0 0 4px 6px;}
 .layeredSearch	{height:auto; width:200px; margin:16.8px; color:#000;}
@@ -1467,7 +1470,35 @@ some shared styles, pulled from cat layout but that will impact, potentially, mo
 .blah5 {background-color: #3F0;}
 
 
+/******************************************************************************
+CUSTOMER ARTICLES
+******************************************************************************/
 
+.custArticle .articleHeader{height:100px; width:100%; border:2px solid #F8C301;}
+.custArticle .articleHeader > div:first-child {height:20px; width:100%; background:#F8C301; text-align:center; color:#fff;}
+.custArticle .articleHeader > div:nth-child(2) {padding:7px 0 0 10px;}
+.custArticle .articleHeader > div:nth-child(3) {text-align:right; padding:7px 10px 0 0;}
+.custArticle {margin:0 0 0 40px; font-family:"Open Sans";}
+.custArticle h1 {margin:10px 0;}
+.custArticle h1 a {color:#000;}
+.custArticle h1 a:hover {color:#000;}
+.custArticle h2 {margin:10px 0 0 0; color:#3BB3C3;}
+.custArticle h4 {color:#3BB3C3;}
+.custArticle h5 {margin:0 0 10px 0;}
+.custArticle ul {padding:10px 0 10px 40px;}
+#contactForm {height:auto; width:280px; float:left; margin:20px 0;}
+.custArticle #faqContent {color:#3BB3C3; margin:10px 0;}
+.custArticle .privacyDisclaimer {color:#e0463a; margin:10px 0 0 0;}
+.custArticle a {color:#e0463a;}
+.custArticle a:hover {color:#3BB3C3;}
+
+
+
+<div class='articleHeader'>
+	<div>BEACHMALL.COM Contact Information</div>
+	<div>11555 Central Parkway, Ste 1101<br>Jacksonville, FL. 32224<br>US</div>
+	<div>Phone: 1-888-975-6555<br>cs@beachmall.com</div>
+</div>
 
 
 
