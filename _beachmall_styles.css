@@ -639,7 +639,7 @@ label.break	{display:block; margin:0 0 4px 6px;}
 .prodViewerAddToCartForm.clearfix .prodViewerAddToCartButton {color:#fff;}
 
 .products.product .productSeperationBar {height:5px; width:240px; position:absolute; left:-5px; bottom:0px; background-color:#eee;}
-
+.searchResultsProduct.products.product  .productSeperationBar {width:254px;left:-16px; bottom:-10px} 
 
 /*M
 .categoryNav	{position:relative;}
