@@ -1356,9 +1356,12 @@ QUICKVIEW TEMPLATE
 .quickviewThumbnailsContainer {height:180px; width:240px; position:relative; margin-bottom:20px; overflow:hidden; left:0px;}
 .quickviewThumbnailsContainer .quickviewThumbnails li {margin:5px;}
 
-.prodTemplateQuickView .ztable_row_small {margin-top:70px;}
+.prodTemplateQuickView .ztable_row_small {margin-top:70px; font-weight:normal;}
 .prodTemplateQuickView .priceContainer .basePrice {float:none;}
 
+.prodTemplateQuickView .moreColors {margin:15px 0 0 20px; color:#e0463a;}
+.prodTemplateQuickView  .mpControlContainer {display:none;} 
+.quickViewColorSib {height:55px; width:55px; overflow:hidden; margin:0 0 0 10px}
 
 /***************************************************************************
 CART TEMPLATE
