@@ -355,16 +355,15 @@ MP CONTROLS CONTAINER
 }
 
 .ddUlMenu li ul {
-	top:295px; 
-	left: -999em;
 	margin: 24px 0px 0 -34px; /* top margin should = tier 1 line-height - 1px...ish */
-	position: absolute;
 	width: 160px;
 	z-index: 9999;
 	background-image: none;
 	background-color:#3bb3c3;
 	border: none;
-}
+}/*	position: absolute;
+	top:295px; 
+	left: -999em;*/
 
 .ddUlMenu li ul li {padding:4px;}
 
