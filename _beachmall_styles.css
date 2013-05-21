@@ -629,7 +629,7 @@ label.break	{display:block; margin:0 0 4px 6px;}
 .regularPriceContainer .regularPriceDesc {height:15px; width:100%; color:#000; font-size:10px;}
 .shipContainer {height:31px; width:130px; text-align:center; font-family:"Open Sans"; padding-top:9px}
 .shipContainer .shipCost {height:12px; width:98px; color:#e0463a; font-size:14px; font-weight:bold; background-position:-116px -219px; margin-left:15px;}
-.shipContainer .shipTime {height:15px; width:100%; color:#000; font-size:10px;}
+.shipContainer .shipTime {height:15px; width:100%; color:#000; font-size:9px;}
 .prodNum {height:10px; width:100%; font-family:"Open Sans"; font-size:10px; text-align:center;}
 
 
@@ -1069,7 +1069,8 @@ newArrivalsCarouselRight, .myProdThumb:hover .moreDetails {background-color:#e04
 .prodPriceSmall, .productList h6, .categoryList h6 {margin-left:0px;}
 .moreDetailsSmall {height:25px; width:95px; color:#fff; font-size:14px; text-align:center; line-height:24px; background-color:#3bb3c3; position:relative;}
 .myProdThumbSmall:hover .moreDetailsSmall {background-color:#e0463a;}
-
+.showColors {height:20px; width: 100px; background-color:#3bb3c3; color:#fff; line-height:20px; margin:auto; text-align:center;}
+.showColors:hover {background-color:#e0463a;}
 
 .productList h5, .categoryList h5 {height:2.5em; width:auto; margin-bottom:0.5em; overflow:hidden;}
 .productListItem .zlink	{color:#FC410E;}

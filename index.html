@@ -1206,7 +1206,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 </li>
 
 <li id='categoryListHomeTemplate' class='catListTemp'>
-	<div onClick="showContent('category',{'navcat':$(this).parent().attr('data-catsafeid')});" class='catTemplateContainer pointer'>
+	<div onClick="showContent('category',{'navcat':$(this).parent().attr('data-catsafeid')}); items_per_page: 25" class='catTemplateContainer pointer'>
 		<div class='catBorderContainer'>
 			<div class='catName white2LGray'><span data-bind='var: category(pretty); format:catText; extension: myRIA;'></span></div>
         </div>
@@ -1569,10 +1569,13 @@ SANITY -> if you change the height and width of this image, change the .minimalM
 		<div id='prodSiblings' class='clearfix'>
 			<ul class='listStyleNone noPadOrMargin fluidList clearfix' data-bind="var: product(user:grp_siblings); format:productList; extension:store_prodlist;loadsTemplate:productListTemplateThumb;hide_multipage:true;before:<b>Available Colors:</b> <span class='zhint'>(click image to select)</span> ; withInventory:1; withVariations:1;"></ul> <!-- id='prodlistSiblings' -->
 		</div>
-		<div class='reviewsStarsCount homeCars' data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews_reviews;'></div><!-- BCERO271 MARK-->
-		<img src='blank.gif' data-bind='var: product(zoovy:prod_image99); format: magicThumb; extension:  magicToolBox_mzp;' width='300' height='85' alt='' />
-	</div>  
-    
+	</div>
+	<div data-bind='useParentData: true; format:noReviews; extension: store_filter;'>
+		<div class='reviewsStarsCount homeCars' data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews_reviews;'></div><!-- BCERO271 MARK--> 
+    </div>
+	<div class='seeColors displayNone' data-bind='useParentData: true; format: moreColors; extension: store_filter;'>
+		<div class='showColors pointer' onClick="quickView('product',{'templateID':'productTemplateQuickView','pid':$(this).closest('[data-pid]').attr('data-pid')});">MORE COLORS</div>
+	</div>
 </li>
 
 

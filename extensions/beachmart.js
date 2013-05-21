@@ -384,6 +384,28 @@ var store_filter = function() {
 						$tag.append('Our Price From: ');
 					}
 				},
+				
+				noReviews : function($tag, data) {
+					var blah = $('.seeColors', $tag).children();
+
+					app.u.dump('*** '+blah.text());
+			//		if($tag.text().indexOf() > -1) {
+			//			$tag.show();
+			//		}
+				},
+				
+				moreColors : function($tag, data) {
+					var pid = data.value.pid,
+						//isColorful = (data.bindData.isElastic) ? data.value.tags : data.value['%attribs']['zoovy:prod_is_tags'];
+						isColorful = data.value.tags;
+						
+						//app.u.dump('*** '+pid);
+		//			if (app.ext.store_product.u.productIsPurchaseable(pid) == true) {
+						if (isColorful.indexOf('IS_COLORFUL') > -1) {
+							$tag.show();
+						}
+		//			}
+				},
 
 				homePageHider : function($tag,data) {
 					/*app.u.dump(data.value);
