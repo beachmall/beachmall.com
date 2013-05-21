@@ -386,9 +386,11 @@ var store_filter = function() {
 				},
 				
 				noReviews : function($tag, data) {
-					var blah = $('.seeColors', $tag).children();
-
-					app.u.dump('*** '+blah.text());
+			//		var $blah = "";
+			//		setTimeout(function() {
+			//			$blah = $('.seeColors', $tag);
+			//		}, 2000);
+			//		app.u.dump('*** '+$blah);
 			//		if($tag.text().indexOf() > -1) {
 			//			$tag.show();
 			//		}

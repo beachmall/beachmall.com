@@ -104,6 +104,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 <div id='appView' class='displayNone'>
 
 <div class='headerContainer'>
+				<!--	<div class='test' onClick="return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'tags':'.beach-chair.lafuma-recliner'}}]}}});"></div> -->
 <header class='clearfix topNav tanGradient'>
 	<div class='localizedBox fontBlack fontSize12 floatLeft'>
         <span class='oswaldFontBold  fontSize14'>LOCALIZED FOR &nbsp</span><span class='oswaldFontBold fontTeal fontSize18 shipPostal'></span><br>
@@ -751,7 +752,7 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 
 	<div class='floatingBar'>
     	<a href='#'><div class='backToTop'>&#187 BACK TO TOP</div></a>
-        <div class='recentlyViewed'><span> Recently Viewed Item(s) &nbsp</span><span class='numRecentlyViewed displayNone'>0</span><span class='fontWhite recentCarat'> &#187 </span><span class='fontYellow recentViewItems'> VIEW ITEM(S)</span></div>
+        <div class='recentlyViewed'><span> Recently Viewed Item(s) &nbsp</span><span class='numRecentlyViewed displayNone'>0</span><span class='fontWhite recentCarat'> &#187 </span><span class='fontYellow recentViewItems'><a class='bindByAnchor' href='#!company?show=recent'> VIEW ITEM(S)</a></span></div>
         <div class='cartIcon sprite'><a href='#' onClick="return showContent('cart',{});"><span class='cartItemCount'>0</span><p><span class='fontWhite'>&#187 </span><span class='fontYellow'>SHOPPING CART</span></p></a></div>
         <button class='checkoutButton'>CHECK OUT</button>
         <button class='floatingBarClose sprite' onclick="$('.floatingBar').hide(); return false;"></button>
@@ -939,10 +940,14 @@ don't modify the 'data-templateid' unless you are changing template names and up
 					</div>
 				</td>
 				<td class='productColumn'>
-					<ul data-app-role='productList' data-bind="var: category(@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: productListTemplate; withReviews:1; items_per_page: 24;" class='listStyleNone fluidList clearfix noPadOrMargin prodMargin productList'>
-						<div class='catTitle floatLeft' data-bind='var: category(pretty); format:catText; extension: myRIA;'></div>
-						<div class='buyerGuides floatLeft'><a href='#!top' onClick="return showContent('category',{'navcat':'[.buyer_guides]'});">VIEW BUYER GUIDE</a><span>Learn how to shop for these items</span></div>
-					</ul><!-- outputs the product list -->
+					<div class='howManyProducts'>
+						<ul data-app-role='productList' data-bind="var: category(@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: productListTemplate; withReviews:1; items_per_page: 24;" class='listStyleNone fluidList clearfix noPadOrMargin prodMargin productList'>
+							<div class='catTitle floatLeft' data-bind='var: category(pretty); format:catText; extension: myRIA;'></div>
+							<div class='buyerGuides floatLeft'><a href='#!top' onClick="return showContent('category',{'navcat':'[.buyer_guides]'});">VIEW BUYER GUIDE</a><span>Learn how to shop for these items</span></div>
+							<div class='buyerGuides' onClick='app.ext.beachmart_items_per_page.a.killProdList($(this).parent().data("catsafeid"));'>
+						<!-- onClick="app.ext.store_filter.a.clickDropdown($(this).parent());" -->
+						</ul><!-- outputs the product list -->
+					</div>
 					<div class='catDescription'>
 						<p data-bind="var: category(%page.description); format:wiki; wikiFormats:myRIA; editor: textarea;"></p>
 					</div>
@@ -2450,6 +2455,16 @@ if you change these, you should move them above this comment so that when you (o
 			<br><br>
        <!-- <div data-bind='var: profile(zoovy:shipping_policy); format:wiki; wikiFormats:myRIA;' id='shippingContent'></div> -->
 		</div>
+		
+			
+	<div id='recentArticle' class='displayNone textContentArea recentArticle'>
+		<h1>Recently Viewed Items</h1>
+	<!--	
+		<div class='recentlyViewedItemsContainer CarouselContainer previousViewedCarouselContainer'>
+			 <ul data-bind="var: session(session.recentlyViewedItems); format: productList; extension: store_prodlist; loadsTemplate: productListTemplate; hide_summary:1; hide_pagination:1; withReviews:1;  withVariations:1; withInventory:1;" class='listStyleNone fluidList clearfix noPadOrMargin productList productPreviousViewed'></ul>
+		</div>
+	-->
+	</div>
 
 	</div>
 
