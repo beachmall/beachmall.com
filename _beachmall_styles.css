@@ -409,10 +409,13 @@ PRODUCT LIST
 .productColumn {width:auto;}
 .catTitle {height:35px; width:auto; margin: 0 10px; color:#3BB3C3; font-family:"Open Sans"; font-size:24px; font-weight:bold; line-height:32px; position:absolute; top:215px; left:530px; background:none;}
 .buyerGuides {height:30px; width:220px; border:2px solid #F8C301; position:absolute; top:215px; right:207px; color:#3BB3C3; text-align:center; font-family:"Open Sans"; font-size:14px; font-weight:bold; background:#F5F1DE;}
-.buyerGuides span {font-size:10px; color:#000; font-weight:normal; display:block; margin:-4px 0 0 0;}
+.buyerGuides span {font-size:10px; color:#0000000; font-weight:normal; display:block; margin:-4px 0 0 0;}
+.numItemsOnListContainer {height:30px; width:45px; position:absolute; top:253px; right:510px; overflow:hidden;}
+.numItemsOnList {background-color:#3bb3c3; width:67px; height:auto; border:none; color:#ffffff; background-image:url(images/sprites-500x500.png); background-position:-455px -183px;}
+.numItemsOnList option {text-align:center;}
 .categoryTemplateContainer {height:auto; width:761px;}
 label.break	{display:block; margin:0 0 4px 6px;}
-.layeredSearch	{height:auto; width:200px; margin:16.8px; color:#000;}
+.layeredSearch	{height:auto; width:200px; margin:16.8px; color:#000000;}
 .layeredSearch legend	{font-size:1.0em; font-family:Oswald;  font-weight:bold; text-align:center; border:none; margin:0 0 4px 0; color:#f8c301;}
 .layeredSearch fieldset	{margin-bottom:12px;} 
 .layeredSearch .sliderValue {text-align:center; margin-left:25px;}

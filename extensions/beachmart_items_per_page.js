@@ -70,15 +70,12 @@ var beachmart_items_per_page = function() {
 		a : {
 
 			//FUNCTIONS TO CHANGE ITEMS PER PAGE IN PRODUCT LISTS
-			killProdList : function(page) {
-				var $context = $('categoryTemplate_'+app.u.makeSafeHTMLId(page));
-				app.u.dump('*** '+$context);
-				var $howManyProducts = ('.howManyProducts', $context);
-				$howManyProducts.empty();
-				app.u.dump('poop');
-			
-			},
-			
+			changeItemCount : function($container, count, navcat) {
+				//app.u.dump({'datapointer':'appCategoryGet|'+navcat,'templateID':'catProdList_'+count});
+				$container.empty();
+				$container.anycontent({'datapointer':'appCategoryGet|'+navcat,'templateID':'catProdList_'+count});
+			}
+		
 		}, //actions
 		
 ////////////////////////////////////   RENDERFORMATS    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
