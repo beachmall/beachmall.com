@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"20130517141700",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"201314.20130522113700",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"", //used in non-local mode.
 	"checkoutAuthMode" : "required",//can be passive, active or required
@@ -207,30 +207,49 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 									<ul class='hoverProductContainer hoverout listStyleNone'>
 										<!--<li class="hoverproduct-PDADDC1 noArrow"></li>-->
 										<div class='stockImageContainer'>
-											<img src='images/adirondack chair 2.jpg'>
+											<img src='images/adirondack_chair_210x210.jpg'>
 										</div>
-										<button class='catSearchBestSeller' onClick='app.ext.beachmart_catsearch.a.catSearch("IS_BESTSELLER", "beach chair adirondack furniture");'>Best Selling Items</button>
-										<button class='catSearchBestSeller' onClick='app.ext.beachmart_catsearch.a.catSearch("IS_SALE", "beach accessories beach bags totes beach chairs beach gear beach products");'>Featured Items</button>
-										<button class='catSearchBestSeller' onClick='app.ext.beachmart_catsearch.a.catSearch("IS_CLEARANCE", "beach accessories beach bags totes beach chairs beach gear beach products");'>Clearance Items</button>
-										<button class='catSearchBestSeller bindByAnchor' href='#!category?navcat=.beach-chair.adirondack-furniture' onClick='app.ext.beachmart_catsearch.a.catShow("beach chair adirondack furniture", $(this).parent().parent().parent().parent().parent().parent());'>See All Items</button>
+									<!--<button class='catSearchHomeDropdown' onClick='app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent()); app.ext.beachmart_catsearch.a.catSearch("IS_BESTSELLER", "beach chair adirondack furniture");'>Best Selling Items</button>-->
+										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'user:app_category':'.beach-chair.adirondack-furniture'}}]}}});">Best Selling Items</button>
+										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_USER4'}},{'term':{'tags':'IS_COLORFUL'}},{'term':{'tags':'IS_USER5'}},{'term':{'user:prod_promo':'IS_USER4'}},{'term':{'user:app_category':'.beach-chair.adirondack-furniture'}}]}}});">Featured Items</button>
+										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'user:app_category':'.beach-chair.adirondack-furniture'}}]}}});">Clearance Items</button>
+										<button class='catSearchHomeDropdown bindByAnchor' href='#!category?navcat=.beach-chair.adirondack-furniture' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</button>
 									</ul>	
 								</li>
-								<li class='bindByAnchor noArrow' data-hoverproduct="WRB5436" href='#!category?navcat=.beach-chair.backpack-chair' onMouseOver='app.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='app.ext.beachmart_dropdown.a.hideHoverout($(this));' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+								<li class='bindByAnchor noArrow' href='#!category?navcat=.beach-chair.backpack-chair' onMouseOver='app.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='app.ext.beachmart_dropdown.a.hideHoverout($(this));' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 									Backpack Chairs
 									<ul class='hoverProductContainer hoverout listStyleNone dropout2'>
-										<li class="hoverproduct-WRB5436 noArrow"></li>
+										<div class='stockImageContainer'>
+											<img src='images/backpack_chair_210x210.jpg'>
+										</div>
+										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'user:app_category':'.beach-chair.backpack-chair'}}]}}});">Best Selling Items</button>
+										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_USER4'}},{'term':{'tags':'IS_COLORFUL'}},{'term':{'tags':'IS_USER5'}},{'term':{'user:prod_promo':'IS_USER4'}},{'term':{'user:app_category':'.beach-chair.backpack-chair'}}]}}});">Featured Items</button>
+										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'user:app_category':'.beach-chair.backpack-chair'}}]}}});">Clearance Items</button>
+										<button class='catSearchHomeDropdown bindByAnchor' href='#!category?navcat=.beach-chair.backpack-chair' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</button>
 									</ul>
 								</li>
-                                <li class='bindByAnchor noArrow' data-hoverproduct="BCTEL511B" href='#!category?navcat=.beach-chair.beach-chairs' onMouseOver='app.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='app.ext.beachmart_dropdown.a.hideHoverout($(this));' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+                                <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-chair.beach-chairs' onMouseOver='app.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='app.ext.beachmart_dropdown.a.hideHoverout($(this));' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 									Cup Holder Chairs
 									<ul class='hoverProductContainer hoverout listStyleNone dropout3'>
-										<li class="hoverproduct-BCTEL511B noArrow"></li>
+										<div class='stockImageContainer'>
+											<img src='images/adirondack_chair_210x210.jpg'>
+										</div>
+										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'user:app_category':'.beach-chair.beach-chairs'}}]}}});">Best Selling Items</button>
+										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_USER4'}},{'term':{'tags':'IS_COLORFUL'}},{'term':{'tags':'IS_USER5'}},{'term':{'user:prod_promo':'IS_USER4'}},{'term':{'user:app_category':'.beach-chair.beach-chairs'}}]}}});">Featured Items</button>
+										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'user:app_category':'.beach-chair.beach-chairs'}}]}}});">Clearance Items</button>
+										<button class='catSearchHomeDropdown bindByAnchor' href='#!category?navcat=.beach-chair.beach-chairs' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</button>
 									</ul>
 								</li>
-                                <li class='bindByAnchor noArrow' data-hoverproduct="FFCB02" href='#!category?navcat=.beach-chair.beach-chaise' onMouseOver='app.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='app.ext.beachmart_dropdown.a.hideHoverout($(this));' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+                                <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-chair.beach-chaise' onMouseOver='app.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='app.ext.beachmart_dropdown.a.hideHoverout($(this));' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 									Beach Chaises
 									<ul class='hoverProductContainer hoverout listStyleNone dropout4'>
-										<li class="hoverproduct-FFCB02 noArrow"></li>
+										<div class='stockImageContainer'>
+											<img src='images/backpack_chair_210x210.jpg'>
+										</div>
+										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'user:app_category':'.beach-chair.beach-chaise'}}]}}});">Best Selling Items</button>
+										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_USER4'}},{'term':{'tags':'IS_COLORFUL'}},{'term':{'tags':'IS_USER5'}},{'term':{'user:prod_promo':'IS_USER4'}},{'term':{'user:app_category':'.beach-chair.beach-chaise'}}]}}});">Featured Items</button>
+										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'user:app_category':'.beach-chair.beach-chaise'}}]}}});">Clearance Items</button>
+										<button class='catSearchHomeDropdown bindByAnchor' href='#!category?navcat=.beach-chair.beach-chaise' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</button>
 									</ul>
 								</li>
                                 <li onMouseOver="app.ext.beachmart_dropdown.a.showDropout($(this), $(this).parent().parent(), $(this).parent(), 480)" 
@@ -240,15 +259,27 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 									Beach & Pool Lounges
 									<div class='dropout out dropout5'>
                                     	<ul>
-                                        	<li class='bindByAnchor noArrow' data-hoverproduct="BCOST3N1" href='#!category?navcat=.beach-chair.beach-lounges.beach-recliner' onMouseOver='app.ext.beachmart_dropdown.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='app.ext.beachmart_dropdown.a.hideHoverout2($(this), $(this).parent().parent());' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent());">Beach Lounges
-												<ul class='hoverProductContainer innerHovProdCont hoverout listStyleNone'>
-													<li class="hoverproduct-BCOST3N1 noArrow"></li>
+                                        	<li class='bindByAnchor noArrow' href='#!category?navcat=.beach-chair.beach-lounges.beach-recliner' onMouseOver='app.ext.beachmart_dropdown.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='app.ext.beachmart_dropdown.a.hideHoverout2($(this), $(this).parent().parent());' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent());">Beach Lounges
+												<ul class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout1'>
+													<div class='stockImageContainer'>
+														<img src='images/adirondack_chair_210x210.jpg'>
+													</div>
+													<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'user:app_category':'.beach-chair.beach-lounges.beach-recliner'}}]}}});">Best Selling Items</button>
+													<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_USER4'}},{'term':{'tags':'IS_COLORFUL'}},{'term':{'tags':'IS_USER5'}},{'term':{'user:prod_promo':'IS_USER4'}},{'term':{'user:app_category':'.beach-chair.beach-lounges.beach-recliner'}}]}}});">Featured Items</button>
+													<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'user:app_category':'.beach-chair.beach-lounges.beach-recliner'}}]}}});">Clearance Items</button>
+													<button class='catSearchHomeDropdown bindByAnchor' href='#!category?navcat=.beach-chair.beach-lounges.beach-recliner' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</button>
 												</ul>
 											</li>
-                                            <li class='bindByAnchor noArrow' data-hoverproduct="SS502" href='#!category?navcat=.beach-chair.beach-lounges.pool-floats' onMouseOver='app.ext.beachmart_dropdown.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='app.ext.beachmart_dropdown.a.hideHoverout2($(this), $(this).parent().parent());' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent());">
+                                            <li class='bindByAnchor noArrow' href='#!category?navcat=.beach-chair.beach-lounges.pool-floats' onMouseOver='app.ext.beachmart_dropdown.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='app.ext.beachmart_dropdown.a.hideHoverout2($(this), $(this).parent().parent());' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent());">
 											Pool Lounges
 												<ul class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout2'>
-													<li class="hoverproduct-SS502 noArrow"></li>
+													<div class='stockImageContainer'>
+														<img src='images/backpack_chair_210x210.jpg'>
+													</div>
+													<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'user:app_category':'.beach-chair.beach-lounges.pool-floats'}}]}}});">Best Selling Items</button>
+													<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_USER4'}},{'term':{'tags':'IS_COLORFUL'}},{'term':{'tags':'IS_USER5'}},{'term':{'user:prod_promo':'IS_USER4'}},{'term':{'user:app_category':'.beach-chair.beach-lounges.pool-floats'}}]}}});">Featured Items</button>
+													<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'user:app_category':'.beach-chair.beach-lounges.pool-floats'}}]}}});">Clearance Items</button>
+													<button class='catSearchHomeDropdown bindByAnchor' href='#!category?navcat=.beach-chair.beach-lounges.pool-floats' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</button>
 												</ul>
 											</li>
                                         </ul>
@@ -256,50 +287,98 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 								</li>
                                 <li class='bindByAnchor noArrow' data-hoverproduct="WCP320" href='#!category?navcat=.beach-chair.canopy-beach-chair' onMouseOver='app.ext.beachmart_dropdown.a.showHoverout($(this), $(this).parent().parent());' onMouseOut='app.ext.beachmart_dropdown.a.hideHoverout($(this), $(this).parent().parent());' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 								Canopy Beach Chairs
-									<ul class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout6'>
-										<li class="hoverproduct-WCP320 noArrow"></li>
+									<ul class='hoverProductContainer hoverout listStyleNone dropout6'>
+										<div class='stockImageContainer'>
+											<img src='images/adirondack_chair_210x210.jpg'>
+										</div>
+										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'user:app_category':'.beach-chair.canopy-beach-chair'}}]}}});">Best Selling Items</button>
+										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_USER4'}},{'term':{'tags':'IS_COLORFUL'}},{'term':{'tags':'IS_USER5'}},{'term':{'user:prod_promo':'IS_USER4'}},{'term':{'user:app_category':'.beach-chair.canopy-beach-chair'}}]}}});">Featured Items</button>
+										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'user:app_category':'.beach-chair.canopy-beach-chair'}}]}}});">Clearance Items</button>
+										<button class='catSearchHomeDropdown bindByAnchor' href='#!category?navcat=.beach-chair.canopy-beach-chair' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</button>
 									</ul>
 								</li>
                                 <li class='bindByAnchor noArrow' data-hoverproduct="WCP340" href='#!category?navcat=.beach-chair.folding-beach-chairs' onMouseOver='app.ext.beachmart_dropdown.a.showHoverout($(this), $(this).parent().parent());' onMouseOut='app.ext.beachmart_dropdown.a.hideHoverout($(this), $(this).parent().parent());' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 								Padded Beach Chairs
-									<ul class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout7'>
-										<li class="hoverproduct-WCP340 noArrow"></li>
+									<ul class='hoverProductContainer hoverout listStyleNone dropout7'>
+										<div class='stockImageContainer'>
+											<img src='images/backpack_chair_210x210.jpg'>
+										</div>
+										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'user:app_category':'.beach-chair.folding-beach-chairs'}}]}}});">Best Selling Items</button>
+										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_USER4'}},{'term':{'tags':'IS_COLORFUL'}},{'term':{'tags':'IS_USER5'}},{'term':{'user:prod_promo':'IS_USER4'}},{'term':{'user:app_category':'.beach-chair.folding-beach-chairs'}}]}}});">Featured Items</button>
+										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'user:app_category':'.beach-chair.folding-beach-chairs'}}]}}});">Clearance Items</button>
+										<button class='catSearchHomeDropdown bindByAnchor' href='#!category?navcat=.beach-chair.folding-beach-chairs' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</button>
 									</ul>
 								</li>
                                 <li class='bindByAnchor noArrow' data-hoverproduct="WLF184465" href='#!category?navcat=.beach-chair.heavy-beach-chairs' onMouseOver='app.ext.beachmart_dropdown.a.showHoverout($(this), $(this).parent().parent());' onMouseOut='app.ext.beachmart_dropdown.a.hideHoverout($(this), $(this).parent().parent());' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 								High-back Beach Chairs
-									<ul class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout8'>
-										<li class="hoverproduct-WLF184465 noArrow"></li>
+									<ul class='hoverProductContainer hoverout listStyleNone dropout8'>
+										<div class='stockImageContainer'>
+											<img src='images/adirondack_chair_210x210.jpg'>
+										</div>
+										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'user:app_category':'.beach-chair.heavy-beach-chairs'}}]}}});">Best Selling Items</button>
+										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_USER4'}},{'term':{'tags':'IS_COLORFUL'}},{'term':{'tags':'IS_USER5'}},{'term':{'user:prod_promo':'IS_USER4'}},{'term':{'user:app_category':'.beach-chair.heavy-beach-chairs'}}]}}});">Featured Items</button>
+										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'user:app_category':'.beach-chair.heavy-beach-chairs'}}]}}});">Clearance Items</button>
+										<button class='catSearchHomeDropdown bindByAnchor' href='#!category?navcat=.beach-chair.heavy-beach-chairs' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</button>
 									</ul>
 								</li>
                                 <li class='bindByAnchor noArrow' data-hoverproduct="WLF219327" href='#!category?navcat=.beach-chair.heavy-duty-beach-chairs' onMouseOver='app.ext.beachmart_dropdown.a.showHoverout($(this), $(this).parent().parent());' onMouseOut='app.ext.beachmart_dropdown.a.hideHoverout($(this), $(this).parent().parent());' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 								Large Beach Chairs
-									<ul class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout9'>
-										<li class="hoverproduct-WLF219327 noArrow"></li>
+									<ul class='hoverProductContainer hoverout listStyleNone dropout9'>
+										<div class='stockImageContainer'>
+											<img src='images/backpack_chair_210x210.jpg'>
+										</div>
+										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'user:app_category':'.beach-chair.heavy-duty-beach-chairs'}}]}}});">Best Selling Items</button>
+										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_USER4'}},{'term':{'tags':'IS_COLORFUL'}},{'term':{'tags':'IS_USER5'}},{'term':{'user:prod_promo':'IS_USER4'}},{'term':{'user:app_category':'.beach-chair.heavy-duty-beach-chairs'}}]}}});">Featured Items</button>
+										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'user:app_category':'.beach-chair.heavy-duty-beach-chairs'}}]}}});">Clearance Items</button>
+										<button class='catSearchHomeDropdown bindByAnchor' href='#!category?navcat=.beach-chair.heavy-duty-beach-chairs' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</button>
 									</ul>
 								</li>
                                 <li class='bindByAnchor noArrow' data-hoverproduct="BCTEL711" href='#!category?navcat=.beach-chair.high-beach-chair' onMouseOver='app.ext.beachmart_dropdown.a.showHoverout($(this), $(this).parent().parent());' onMouseOut='app.ext.beachmart_dropdown.a.hideHoverout($(this), $(this).parent().parent());' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 								High Seat Beach Chairs
-									<ul class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout10'>
-										<li class="hoverproduct-BCTEL711 noArrow"></li>
+									<ul class='hoverProductContainer hoverout listStyleNone dropout10'>
+										<div class='stockImageContainer'>
+											<img src='images/adirondack_chair_210x210.jpg'>
+										</div>
+										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'user:app_category':'.beach-chair.high-beach-chair'}}]}}});">Best Selling Items</button>
+										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_USER4'}},{'term':{'tags':'IS_COLORFUL'}},{'term':{'tags':'IS_USER5'}},{'term':{'user:prod_promo':'IS_USER4'}},{'term':{'user:app_category':'.beach-chair.high-beach-chair'}}]}}});">Featured Items</button>
+										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'user:app_category':'.beach-chair.high-beach-chair'}}]}}});">Clearance Items</button>
+										<button class='catSearchHomeDropdown bindByAnchor' href='#!category?navcat=.beach-chair.high-beach-chair' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</button>
 									</ul>
 								</li>
                                 <li class='bindByAnchor noArrow' data-hoverproduct="WRB7909" href='#!category?navcat=.beach-chair.sand-chair' onMouseOver='app.ext.beachmart_dropdown.a.showHoverout($(this), $(this).parent().parent());' onMouseOut='app.ext.beachmart_dropdown.a.hideHoverout($(this), $(this).parent().parent());' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 								Low Seat Beach Chairs
-									<ul class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout11'>
-										<li class="hoverproduct-WRB7909 noArrow"></li>
+									<ul class='hoverProductContainer hoverout listStyleNone dropout11'>
+										<div class='stockImageContainer'>
+											<img src='images/backpack_chair_210x210.jpg'>
+										</div>
+										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'user:app_category':'.beach-chair.sand-chair'}}]}}});">Best Selling Items</button>
+										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_USER4'}},{'term':{'tags':'IS_COLORFUL'}},{'term':{'tags':'IS_USER5'}},{'term':{'user:prod_promo':'IS_USER4'}},{'term':{'user:app_category':'.beach-chair.sand-chair'}}]}}});">Featured Items</button>
+										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'user:app_category':'.beach-chair.sand-chair'}}]}}});">Clearance Items</button>
+										<button class='catSearchHomeDropdown bindByAnchor' href='#!category?navcat=.beach-chair.sand-chair' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</button>
 									</ul>
 								</li>
                                 <li class='bindByAnchor noArrow' data-hoverproduct="WLF240179" href='#!category?navcat=.beach-chair.sand-chairs' onMouseOver='app.ext.beachmart_dropdown.a.showHoverout($(this), $(this).parent().parent());' onMouseOut='app.ext.beachmart_dropdown.a.hideHoverout($(this), $(this).parent().parent());' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 								Lay Flat Beach Cahirs
-									<ul class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout12'>
-										<li class="hoverproduct-WLF240179 noArrow"></li>
+									<ul class='hoverProductContainer hoverout listStyleNone dropout12'>
+										<div class='stockImageContainer'>
+											<img src='images/adirondack_chair_210x210.jpg'>
+										</div>
+										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'user:app_category':'.beach-chair.sand-chairs'}}]}}});">Best Selling Items</button>
+										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_USER4'}},{'term':{'tags':'IS_COLORFUL'}},{'term':{'tags':'IS_USER5'}},{'term':{'user:prod_promo':'IS_USER4'}},{'term':{'user:app_category':'.beach-chair.sand-chairs'}}]}}});">Featured Items</button>
+										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'user:app_category':'.beach-chair.sand-chairs'}}]}}});">Clearance Items</button>
+										<button class='catSearchHomeDropdown bindByAnchor' href='#!category?navcat=.beach-chair.sand-chairs' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</button>
 									</ul>
 								</li>
                                 <li class='bindByAnchor noArrow' data-hoverproduct="WBMC906" href='#!category?navcat=.beach-chair.wooden-beach-chairs' onMouseOver='app.ext.beachmart_dropdown.a.showHoverout($(this), $(this).parent().parent());' onMouseOut='app.ext.beachmart_dropdown.a.hideHoverout($(this), $(this).parent().parent());' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 								Wooden Beach Chairs
-									<ul class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout13'>
-										<li class="hoverproduct-WBMC906 noArrow"></li>
+									<ul class='hoverProductContainer hoverout listStyleNone dropout13'>
+										<div class='stockImageContainer'>
+											<img src='images/backpack_chair_210x210.jpg'>
+										</div>
+										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'user:app_category':'.beach-chair.wooden-beach-chairs'}}]}}});">Best Selling Items</button>
+										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_USER4'}},{'term':{'tags':'IS_COLORFUL'}},{'term':{'tags':'IS_USER5'}},{'term':{'user:prod_promo':'IS_USER4'}},{'term':{'user:app_category':'.beach-chair.wooden-beach-chairs'}}]}}});">Featured Items</button>
+										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'user:app_category':'.beach-chair.wooden-beach-chairs'}}]}}});">Clearance Items</button>
+										<button class='catSearchHomeDropdown bindByAnchor' href='#!category?navcat=.beach-chair.wooden-beach-chairs' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</button>
 									</ul>
 								</li>
 							</ul>
@@ -1920,7 +1999,8 @@ this will likely become more flexible in the future. ###
 				<a class="carouselButtonDkBlue productPreviousViewedPrev carouselButtonDkBluePrev" href="#">prev</a>
 				<a class="carouselButtonDkBlue productPreviousViewedNext carouselButtonDkBlueNext" href="#">next</a>
 				
-			    <ul data-bind="var: session(session.recentlyViewedItems); format: productList; extension: store_prodlist; loadsTemplate: productListTemplate; hide_summary:1; hide_pagination:1; withReviews:1;  withVariations:1; withInventory:1;" class='listStyleNone fluidList clearfix noPadOrMargin productList productPreviousViewed'></ul>
+			    <ul data-bind="var: session(session.recentlyViewedItems); format: productList; extension: store_prodlist; loadsTemplate: productListTemplate; hide_summary:1; hide_pagination:1; withReviews:1;  withVariations:1; withInventory:1;" class='listStyleNone fluidList clearfix noPadOrMargin productList productPreviousViewed'></ul> 
+			<!--<ul data-bind="var: session(recentlyViewedItems); format: productList; extension: store_prodlist; loadsTemplate: productListTemplate; hide_summary:1; hide_pagination:1; withReviews:1;  withVariations:1; withInventory:1;" class='listStyleNone fluidList clearfix noPadOrMargin productList productPreviousViewed'></ul>-->
 			</div>
 		<div class='standardCarouselPagenation productPreviousViewedPagenation'></div>
 	</div>

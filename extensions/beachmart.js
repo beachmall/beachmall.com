@@ -151,6 +151,8 @@ var store_filter = function() {
 				}]);
 				
 				
+				
+				
 //				app.u.dump('BEGIN app.ext.store_navcats.init.onSuccess ');
 				var r = true; //return false if extension won't load for some reason (account config, dependencies, etc).
 				return r;
@@ -162,7 +164,12 @@ var store_filter = function() {
 			
 			startExtension : {
 				onSuccess : function() {
-					if(app.ext.myRIA && app.ext.myRIA.template){
+					if(app.ext.myRIA && app.ext.myRIA.template && app.ext.powerReviews_reviews){
+						app.u.dump('*** Power Reviews is Loaded');
+						app.rq.push(['templateFunction','homepageTemplate','onDeparts',function(infoObj) {
+							var $context = $(app.u.jqSelector('#'+infoObj.parentID));
+							app.ext.store_filter.u.noReviews($context);
+						}]);
 						app.u.dump("beachmart Extension Started");
 						
 					} else	{
@@ -385,16 +392,14 @@ var store_filter = function() {
 					}
 				},
 				
-				noReviews : function($tag, data) {
-			//		var $blah = "";
-			//		setTimeout(function() {
-			//			$blah = $('.seeColors', $tag);
-			//		}, 2000);
-			//		app.u.dump('*** '+$blah);
-			//		if($tag.text().indexOf() > -1) {
-			//			$tag.show();
-			//		}
-				},
+				noReviews : function($context) {
+		/*			var $blah = "";
+					$blah = $('.reviewsStarsCount', $context);
+					app.u.dump('*** '+$blah.text());
+					if($blah.text().indexOf() > -1) {
+						$blah.hide();
+					}
+		*/		},
 				
 				moreColors : function($tag, data) {
 					var pid = data.value.pid,

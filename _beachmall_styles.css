@@ -181,15 +181,15 @@ the padding is to compensate for the spacing between the main nav.
 
 .stockImageContainer {height:210px; width:210px; background:#777; margin:10px auto; border:5px solid #fff;}
 .stockImageContainer:hover {border:5px solid #e0463a;}
-.hoverProductContainer .catSearchBestSeller {height:30px; width:150px; margin:10px 45px; border:none; background:#3bb3c3; color:#fff;}
-.hoverProductContainer .catSearchBestSeller:hover {background:#e0463a;}
+.hoverProductContainer .catSearchHomeDropdown {height:30px; width:150px; margin:10px 45px; border:none; background:#3bb3c3; color:#fff;}
+.hoverProductContainer .catSearchHomeDropdown:hover {background:#e0463a;}
 
 #mastHead .dropout.out {height:525px; width:0px; background-color:#f8c301; margin:0px 0px 0px 20px; position:relative; left:186px; overflow:hidden; z-index:5;} 
 #mastHead .dropout.out ul {height: 522px; width:225px; margin: 90px 0px 0px 0px; padding:0px 0px 0px 6px; background-color:#f8c301; border:0;}
-#mastHead .dropout.out li:first-child {height:27px; width:207px; font-family:"Open Sans"; font-size:14px; color:#000; text-align:left; margin: -5px 14px 3px 14px;}
+/*#mastHead .dropout.out li:first-child {height:27px; width:207px; font-family:"Open Sans"; font-size:14px; color:#000; text-align:left; margin: -5px 14px 3px 14px;}*/
 #mastHead .dropout.out li {height:27px; width:207px; font-family:"Open Sans"; font-size:14px; color:#000; text-align:left; margin: -5px 14px 3px 14px;}
 #mastHead .dropout.out li:hover {color:#e0463a; cursor:pointer;}
-#mastHead .dropout1  {top:-82px;}
+#mastHead .dropout1, #mastHead .dropdown .hoverProductContainer.dropout1 {top:-82px;}
 #mastHead .dropout2, #mastHead .dropdown .hoverProductContainer.dropout2 {top:-112px;}
 #mastHead .dropout3, #mastHead .dropdown .hoverProductContainer.dropout3 {top:-142px;}
 #mastHead .dropout4, #mastHead .dropdown .hoverProductContainer.dropout4 {top:-172px;}
