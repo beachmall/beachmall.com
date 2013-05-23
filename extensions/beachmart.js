@@ -289,6 +289,8 @@ var store_filter = function() {
 		
 				showFreeShippingTag: function($tag, data) {
 					//app.u.dump('***TEST '+data.value);
+					//var us1ts = (data.bindData.isElastic) ? data.value.tags : data.value['%attribs']['us1:ts'];
+					
 					var us1ts = data.value['%attribs']['us1:ts'];
 					var zoovyProdSalesRank = data.value['%attribs']['zoovy:prodsalesrank'];
 					var d = new Date();
@@ -308,8 +310,11 @@ var store_filter = function() {
 				}, //End showFreeShippingTag
 				
 				prodPriceDesc : function($tag, data) {
+					//var priceFrom = (data.bindData.isElastic) ? data.value.tags : data.value['%attribs']['zoovy:prod_is_tags'];
 					var priceFrom = data.value['%attribs']['user:prod_has_price_modifiers'];
+					//var sale = (data.bindData.isElastic) ? data.value.tags : data.value['%attribs']['zoovy:prod_is_tags'];
 					var sale = data.value['%attribs']['is:sale'];
+					//var zoovyIsTags = (data.bindData.isElastic) ? data.value.tags : data.value['%attribs']['zoovy:prod_is_tags'];
 					var zoovyIsTags = data.value['%attribs']['zoovy:prod_is_tags'];
 					
 					//app.u.dump('*** zoovyIsTags = '+zoovyIsTags);

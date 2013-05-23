@@ -1572,7 +1572,18 @@ SANITY -> if you change the height and width of this image, change the .minimalM
 -->
 <li id='productListTemplateResults' class='loadingBG searchResultsProduct products product floatLeft' >
 	<div onClick="app.ext.myRIA.a.handleProdPreview($(this).parent().attr('data-pid'));" class='pointer productListSmall'>
-		<div class='prodHoverContainer'>
+		<div class='prodHoverContainer prodShadowFix'>
+<!--Bug#1:	<div class='prodModifierContainer sprite displayNone' data-bind='useParentData:true; format:showProdModifier; extension:store_filter; isElastic:1;'></div> -->
+<!--Bug#2:		<div class='starBurst sprite displayNone' data-bind='var: product(user:prod_promo); format:showIfSet; isElastic:1;'>
+				<div class='starBurstTextOuter'>
+					<div class='starBurstTextInner' data-bind='var: product(user:prod_promo); format:text; isElastic:1;'></div>
+				</div>
+			</div>
+EndBug#2-->
+			<!-- CORNER SHADOW DIVS -->
+			<div class='topLeftCorner'></div><div class='leftTopCorner'></div><div class='topRightCorner'></div><div class='rightTopCorner'></div>
+			<div class='bottomLeftCorner'></div><div class='leftBottomCorner'></div><div class='bottomRightCorner'></div><div class='rightBottomCorner'></div> 
+			<!-- END CORNER SHADOWS -->
 			<div class='prodThumbContainer myProdThumbSmall'>
 				<img src='blank.gif' class='prodThumb imgBorder' data-bind='var: product(images); format:imageURL;isElastic:1;bgcolor:ffffff;' width='208' height='208' />
 			</div>
@@ -1581,8 +1592,26 @@ SANITY -> if you change the height and width of this image, change the .minimalM
 		
 		<div class='prodTextContainerSmall'>
 			<h6 class='hideInMinimalMode floatLeft prodPriceSmall' data-bind='var: product(base_price); format:money; isElastic:1; currencySign: $;  hideZero:true; className:price;'></h6>
-				
+<!--Bug#3   <span class='prodPriceDesc' data-bind='format:prodPriceDesc; extension:store_filter; useParentData:true; isElastic:1;'></span>-->
 			<h5 class='hideInMinimalMode clearfix prodDescSmall' data-bind='var: product(prod_name); format:text;'></h5>
+<!--Bug#4	<div class='regularPriceContainer floatLeft displayNone' data-bind='var: product(zoovy:prod_msrp); format:showIfSet; isElastic:1;'>
+				<div class='regularPrice' data-bind='var: product(zoovy:prod_msrp); format:money; currencySign: $; hideZero:true; isElastic:1;'> </div>
+				<div class='regularPriceDesc'>Regular Price</div>
+			</div>
+END BUG4-->
+<!--!!-->	<div class='shipContainer floatLeft'>
+<!--Bug#5		<div class='shipCost sprite displayNone' data-bind='useParentData:true; format:showFreeShippingTag; extension:store_filter;'></div>-->
+<!--Bug#6		<div data-bind='var: product(user:prod_shipping_msg); format:showIfSet;'>
+					<div class='shipTime latency' data-bind='var: product(user:prod_shipping_msg); format:text; isElastic:1;'></div>
+				</div>
+END BUG6-->			
+<!--!!-->	</div>
+<!--!!-->	<div class='reviewsStarsCount' data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews_reviews;'></div><!-- BCERO271 MARK-->
+<!--Bug#7	<form data-bind='var: product(pid); format:atcForm; extension:store_product;' class='prodViewerAddToCartForm clearfix' action='#'>
+				<button class='prodViewerAddToCartButton' data-bind='format:addToCartButton; extension:myRIA; useParentData:true;'></button>
+			</form>
+END BUG7-->
+<!--!!-->	<div class='prodNum stid' data-bind='var: product(pid); format:text; pretext: ITEM &nbsp #: &nbsp ;'></div>
 		</div>
 	</div>
 	<div class='productSeperationBar'></div>
