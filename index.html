@@ -1711,12 +1711,12 @@ END BUG7-->
 			<ul class='listStyleNone noPadOrMargin fluidList clearfix' data-bind="var: product(user:grp_siblings); format:productList; extension:store_prodlist;loadsTemplate:productListTemplateThumb;hide_multipage:true;before:<b>Available Colors:</b> <span class='zhint'>(click image to select)</span> ; withInventory:1; withVariations:1;"></ul> <!-- id='prodlistSiblings' -->
 		</div>
 	</div>
-	<div data-bind='useParentData: true; format:noReviews; extension: store_filter;'>
-		<div class='reviewsStarsCount homeCars' data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews_reviews;'></div><!-- BCERO271 MARK--> 
-    </div>
 	<div class='seeColors displayNone' data-bind='useParentData: true; format: moreColors; extension: store_filter;'>
 		<div class='showColors pointer' onClick="quickView('product',{'templateID':'productTemplateQuickView','pid':$(this).closest('[data-pid]').attr('data-pid')});">MORE COLORS</div>
 	</div>
+	<div data-bind='useParentData: true; format:noReviews; extension: store_filter;'>
+		<div class='reviewsStarsCount homeCars' data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews_reviews;'></div><!-- BCERO271 MARK--> 
+    </div>
 </li>
 
 
