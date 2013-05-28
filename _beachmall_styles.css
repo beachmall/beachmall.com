@@ -753,7 +753,7 @@ HOMEPAGE
 **************************************************/
 .floatingBar {height:38px; width:1020px; background-color:#e0463a; position:fixed; bottom:0px; z-index:20; font-family:"Open Sans"; font-weight:bold; font-size:12px;}
 .floatingBar .backToTop {height:17px; width:110px; position:absolute; left:40px; top:11px; color:#fff;}
-.floatingBar .recentlyViewed {height:26px; width:350px; position:absolute; left:193px; top:4px; color:#fff;}
+.floatingBar .recentlyViewed {height:26px; width:230px; position:absolute; left:243px; top:4px; color:#fff;}
 .floatingBar .recentlyViewed span:first-child {display:inline-block; float:left; line-height:28px; font-size: 14px;}
 .floatingBar .recentlyViewed .numRecentlyViewed {height:30px; width:30px; background:#A8342B; border-radius:20px; display:inline-block; line-height:27px; text-align:center; font-size:18px; float:left;}
 .recentCarat {line-height:28px; float:left; margin:0 5px 0 10px;}
