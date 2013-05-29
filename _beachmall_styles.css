@@ -1036,7 +1036,7 @@ global app styles
 /*M.categoryList li {border:1px dotted #0285CD;}
 .categoryList li:nth-child(even) {border:1px dotted #00a9a4;}
 .categoryList li:nth-child(even) .catName {background-color:#00a9a4;}M*/
-.catThumb {padding: 0px 28px 0px 28px;}
+.catThumb {padding: 0px 0px 0px 0px;}
 .catBorderContainer {height:30px; width:162px; padding:5px; background-color:#3bb3c3;}
 .catName {height:30px; width:158px; background-color:#3bb3c3; color:#FFFFFF; font-family:Montserrat; font-size:16px; font-weight:normal; text-align:center; line-height:31px; border:2px solid #fff; text-transform:uppercase;}
 .homepageCategories ul li:nth-child(1) span {font-size: 12px; line-height:30px; display:block;} 

@@ -525,8 +525,9 @@ return filters;
 			//CAROUSEL FUNCTIONS
 				runCarousels : function() {
 					
+					//THIS CAROUSEL MAY BE REMOVED ENTIRELY, WAS REPLACED W/ CHANGEABLE BANNER
 					//HOMEPAGE FEATURED PRODUCTS TALL CAROUSEL					
-					app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(P) {
+	/*				app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(P) {
 						var $target = $('#homeProdSearchNewArrivals');
 						if($target.data('isCarousel'))	{} //only make it a carousel once.
 						else	{
@@ -539,7 +540,7 @@ return filters;
 										duration		: 5000,
 										easing			: "linear",
 										timeoutDuration	: 0,*/
-										pauseOnHover	: "immediate"
+	/*									pauseOnHover	: "immediate"
 									},
 									prev: '.newCarouselPrev',
 									next: '.newCarouselNext',
@@ -554,7 +555,7 @@ return filters;
 									});
 								},1000); 
 							}
-					}]);
+					}]);						*/
 						
 					//HOMEPAGE FEATURED CAROUSEL	
 					app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(P) {
