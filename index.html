@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"201314.20130522113700",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"201314.20130528213700",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"", //used in non-local mode.
 	"checkoutAuthMode" : "required",//can be passive, active or required
@@ -896,6 +896,13 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 					<span>BY BRAND</span>
 				</div>
 			</div>
+<div class='tempCatImages'>
+	<img class='floatLeft' src='images/shop_beach-accessories_160x105.jpg' />
+	<img class='floatLeft' src='images/shop-beach-chairs_160x105.jpg' />
+	<img class='floatLeft' src='images/shop-recreation_160x105.jpg' />
+	<img class='floatLeft' src='images/shop-umbrellas_160x105.jpg' />
+	<img class='floatLeft' src='images/shop_beachwear_160x105.jpg' />
+</div>
 			<ul data-bind="var: category(@subcategoryDetail); format: categoryList; bgcolor: TTTTTT; extension: store_navcats; loadsTemplate: categoryListHomeTemplate; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin'></ul>
 		</div>
 	</div>
@@ -1864,24 +1871,9 @@ this will likely become more flexible in the future. ###
 	<td>
 
 
-<div class='topBottomBorder marginBottom clearfix shippingInformation'>
-	<div class='floatLeft'>
-		<div class='sprite' data-bind="var:product(is:shipfree); format:showIfSet; className:shipfree;"></div>
-		<div class='displayNone' data-bind='var:product(is:shipfree); format:showIfSet;'>
-			<div class='displayNone' data-bind='var:product(user:prod_shipping); format:showIfSet;'>
-				<a href='#' class='tipify'>Offer Details</a>
-				<div class='toolTip' data-bind='var: product(user:prod_shipping); format:wiki; wikiFormats:myRIA;'></div>
-			</div>
-		</div>
-	</div>
-	<div class='floatLeft'>
-	<div class='timeInTransitMessaging clearfix'></div>
-		<div class='putLoadingHere loadingBG'>
-			<span class='loadingText'>Acquiring Shipping Estimates</span>
-			<div class='transitContainer'></div>
-		</div>
-	</div>
-	<div class='floatRight'>
+
+
+	<div class='floatRight marginBottom'>
 		<img src='images/bm12_p_toprtcol-180x89.jpg' alt width='180' height='89' usemap='#prodMap'/>
 		<div class='displayNone' data-bind="var: product(user:prod_guarantee); format:showIfSet;">
 			<a href='#' class='tipify tipifyGuarantee'>Guarantee & Returns</a>
@@ -1889,7 +1881,7 @@ this will likely become more flexible in the future. ###
 		</div>
 	</div>
 	
-</div><!-- /shipping information -->
+
 
 
 <div class='mainProdColumn marginBottom'>
@@ -1901,6 +1893,25 @@ this will likely become more flexible in the future. ###
 	</div>
 	<div class='priceContainer clearfix' data-bind="var: product(pid); format:priceRetailSavings; extension:beachmart;"></div>
 	
+	<div class='topBottomBorder marginBottom clearfix shippingInformation'>
+		<div class='floatLeft'>
+			<div class='sprite' data-bind="var:product(is:shipfree); format:showIfSet; className:shipfree;"></div>
+			<div class='displayNone' data-bind='var:product(is:shipfree); format:showIfSet;'>
+				<div class='displayNone' data-bind='var:product(user:prod_shipping); format:showIfSet;'>
+					<a href='#' class='tipify'>Offer Details</a>
+					<div class='toolTip' data-bind='var: product(user:prod_shipping); format:wiki; wikiFormats:myRIA;'></div>
+				</div>
+			</div>
+		</div>
+		<div class='floatLeft'>
+		<div class='timeInTransitMessaging clearfix'></div>
+			<div class='putLoadingHere loadingBG'>
+				<span class='loadingText'>Acquiring Shipping Estimates</span>
+				<div class='transitContainer'></div>
+			</div>
+		</div>
+	</div><!-- /shipping information -->
+		
 	<img src='blank.gif' data-bind='var: product(zoovy:prod_image99); format: magicThumb; extension:  magicToolBox_mzp;' width='300' height='85' alt='' />
 
 	<div id='prodSiblings' class='clearfix'>

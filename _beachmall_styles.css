@@ -796,6 +796,10 @@ HOMEPAGE
 .homepageCategories .additionalHompageCats:hover span:nth-child(3) {color:#e0463a}
 .homepageCategories .additionalHompageCats span:nth-child(2) {height:auto; width:120px; font-size:12px; margin:17px 0 0 15px; display:block; color:#ccc;}
 .homepageCategories .additionalHompageCats span:nth-child(3) {height:auto; width:120px; font-size:18px; margin:1px 0 0 15px; display:block; float:left; color:#3bb3c3;}
+/*TEMPORARY FOR HOMEPAGE CATEGORY IMAGE PREVIEW - REMOVE BEFORE APP IS LIVE*/
+.tempCatImages {height:105px; width:960px; position:absolute; top:698px; left:193px;}
+.tempCatImages img {margin:0 16px}
+/*END CAT IMAGE PREVIEW*/
 .shopByProdContainer {height:155px; width:300px; position:relative; top:-160px; left:650px;}
 .shopByProdContainer:hover .catName {background-color:#e0463a;}
 .shopByProdContainer:hover .thumbContainer {border:5px solid #e0463a;}
