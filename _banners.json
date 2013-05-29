@@ -1,0 +1,10 @@
+{
+	"homepageBanners" : {
+		"main" : {
+			"src"		: "images/homepage_banner_620x300.jpg",
+			"alt"		: "New Arrivals",
+			"title"		: "New Arrivals",
+			"catLink"	: ".beach-chairs"
+		}
+	}
+}

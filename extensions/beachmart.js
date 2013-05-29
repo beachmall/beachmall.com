@@ -565,7 +565,9 @@ return filters;
 					//for whatever reason, caroufredsel needs to be executed after a moment.
 							setTimeout(function(){
 								$target.carouFredSel({
-									auto: false,
+									auto: {
+										pauseOnHover: "immediate"
+									},
 									prev: '.new2CarouselPrev',
 									next: '.new2CarouselNext',
 									width: '100%',
@@ -592,7 +594,9 @@ return filters;
 									items: {
 										start: 8,
 									},
-									auto: false,
+									auto: {
+										pauseOnHover: "immediate"
+									},
 									prev: '.featCarouselPrev',
 									next: '.featCarouselNext',
 									height: 405,
@@ -618,7 +622,9 @@ return filters;
 					//for whatever reason, caroufredsel needs to be executed after a moment.
 							setTimeout(function(){
 								$target.carouFredSel({
-									auto: false,
+									auto: {
+										pauseOnHover: "immediate"
+									},
 									prev: '.bestCarouselPrev',
 									next: '.bestCarouselNext',
 									height: 405,

@@ -848,15 +848,22 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 
 	<div class='featuredCatWrapper'>
 		<div class='featuredContainer'>
-			<div class='featuredCarousel floatLeft'>
+			<div class='bannerContainer floatLeft'>
+				<div class='main loadingBG'></div>
+				<div class='featuredBannerText'>NEW<BR>ARRIVALS</div>
+				<button class='largeButton featuredBannerButton bindByAnchor' href="#!search?TAG=IS_NEWARRIVAL">SHOP NOW</button>
+			</div>
+		
+<!--		<div class='featuredCarousel floatLeft'>
 				<div class='featuredBannerText'>NEW<BR>ARRIVALS</div>
 				<button class='largeButton featuredBannerButton bindByAnchor' href="#!search?TAG=IS_NEWARRIVAL">SHOP NOW</button>
 				<div>
 					<div id='featuredCarouselPagination' class='featuredCarouselPagination'></div>
 						<!-- a sample of how to format an elastic native search in a data-bind -->
-					<ul id='homeProdSearchNewArrivals' data-bind='var: elastic-native({"size":"20","mode":"elastic-native","filter":{"term":{"tags":"IS_NEWARRIVAL"}}}); format: productSearch; bgcolor: TTTTTT; extension: myRIA; loadsTemplate: productListTemplateResultsCustomTall;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productListTall'></ul>
+<!--					<ul id='homeProdSearchNewArrivals' data-bind='var: elastic-native({"size":"20","mode":"elastic-native","filter":{"term":{"tags":"IS_NEWARRIVAL"}}}); format: productSearch; bgcolor: TTTTTT; extension: myRIA; loadsTemplate: productListTemplateResultsCustomTall;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productListTall'></ul>
 				</div>
 			</div>
+-->
 			<div class='newArrivalsCarouselRight floatLeft'>
 				<a class="carouselButton new2CarouselPrev carouselButtonPrev" href="#">prev</a>
 				<a class="carouselButton new2CarouselNext carouselButtonNext" href="#">next</a>
