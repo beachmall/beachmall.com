@@ -273,11 +273,11 @@ BRANDS CATEGORY PAGE
 .brandsTopCatContainer {height:auto; width:960px; padding:0px 30px;}
 .brandsCatContainer {height:auto; width:1020px; padding:0px 0px;}
 .brandsCatContainer .brandsHeader {height:355px; width:100%; background-color:#e45; margin:auto auto 10px auto; list-style:none;}
-.brandsHeader img {margin:27px 0 0 9px; float:left;}
+.brandsHeader img {margin:0; float:left;}
 .brandsHeader ul {height:355px; width:491px; background-color:#ccc; float:right;}
-.brandsHeader ul li:nth-child(1) {height:331px; width:315px; background-color:#a45; float:left; font-family:"Open Sans"; font-size:14px; font-weight:normal; margin:12px 20px 12px 12px;}
+.brandsHeader ul li:nth-child(1) {height:331px; width:315px; background-color:#a45; float:left; font-family:"Open Sans"; font-size:14px; font-weight:normal; margin:12px 12px 12px 12px;}
 .brandsHeader ul li:nth-child(1) span {color:#a1d3ca; font-family:Oswald; font-size:24px; font-weight:bold;}
-.brandsHeader ul li:nth-child(2) {height:90px; width:140px; background-color:#b66; float:left; margin:30px 0 0 0; font-family:Oswald; font-size:14px; font-weight:bold; color:#ccc; text-align:center;}
+.brandsHeader ul li:nth-child(2) {height:110px; width:140px; background-color:#b66; float:left; margin:30px 0 0 0; font-family:Oswald; font-size:14px; font-weight:bold; color:#ccc; text-align:center;}
 .brandsCatContainer  .ui-tabs {padding:0px;}
 .brandsCatContainer .ui-tabs .ui-tabs-panel {padding:0px;}
 .brandsCatContainer .ui-state-active {color:#fff; background-color:#f8c301;}
