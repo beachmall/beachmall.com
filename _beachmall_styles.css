@@ -1195,8 +1195,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b7deed', end
 .rightProdColumn	{float:right; width:249px; position:relative;}
 
 .priceContainer .basePrice	{float:left;}
-.priceContainer .savings	{padding-left:24px;}
-.priceContainer .retailPrice	{display:inline; margin:0 0 0 19px;}
+.priceContainer .savings	{padding-left:10px;}
+.priceContainer .retailPrice	{display:inline; margin:0 0 0 12px;}
 
 /* shipping section */
 .topBottomBorder	{border:1px dotted #666666; border-left-width:0; border-right-width:0; padding:12px 0;}

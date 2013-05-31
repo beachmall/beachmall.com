@@ -694,10 +694,17 @@ RenderFormats
 	//use original pdata vars for display of price/msrp. use parseInts for savings computation only.
 				var price = Number(pData['zoovy:base_price']);
 				var msrp = Number(pData['zoovy:prod_msrp']);
+				var priceModifier = Number(pData['user:prod_has_price_modifiers']);
+//				app.u.dump(" ->: priceMod: "+priceModifier);
 //				app.u.dump(" -> price: "+price);
 //				app.u.dump(" -> msrp: "+msrp);
 				if(price > .01)	{
-					o += "<div class='basePrice'><span class='prompt pricePrompt'>Our Price: <\/span><span class='value'>";
+					if(priceModifier < 1) {
+						o += "<div class='basePrice'><span class='prompt pricePrompt'>Our Price: <\/span><span class='value'>";
+					}
+					else {
+						o += "<div class='basePrice'><span class='prompt pricePrompt'>Our Price From: <\/span><span class='value'>";
+					}
 					o += app.u.formatMoney(pData['zoovy:base_price'],'$',2,true)
 					o += "<\/span><\/div>";
 	//only show the msrp if it is greater than the price.

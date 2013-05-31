@@ -401,7 +401,7 @@ var store_filter = function() {
 					var priceModifier = data.value['%attribs']['user:prod_has_price_modifiers'];
 					//app.u.dump('*** '+priceModifier);
 					
-					if(priceModifier == 0) {
+					if(priceModifier < 1) {
 						$tag.append('Our Price: ');
 					} else {
 						$tag.append('Our Price From: ');
