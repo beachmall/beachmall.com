@@ -916,7 +916,7 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 .fullWidth .tipifyGuarantee {margin-left:63px;}
 .productFreeShipping {height:17px; width:108px; overflow:hidden; background-position:-67px -56px;}
 .fullWidth .mainProdColumn .mpNoShow {display:none;}
-.fullWidth .prodViewerAddToCartForm .addToCartButton {height:30px; width:120px; color:#fff; background:#E0463A; border:none; border-radius:0px;}
+.fullWidth .prodViewerAddToCartForm .addToCartButton {height:30px; width:120px; color:#fff; background:#E0463A; border:none; border-radius:0px; clear:both;}
 .fullWidth .zsmall {padding-top:10px; clear:both;}
 .fullWidth .socialLinks {margin-top:10px;}
 .fullWidth span.notAvailableForPurchase {float:left; color:#e0463a;}
