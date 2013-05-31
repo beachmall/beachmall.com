@@ -1051,6 +1051,8 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 /*
 global app styles 
 */
+.ui-widget-anymessage {position:relative; z-index:500; font-size:13px; font-family:"Open Sans";}
+.ui-widget-anymessage button.ui-state-default {height:20px; width:20px;}
 .cents {font-size: 50%;	vertical-align: super;}
 .largeButton {height:40px; width:160px; background-color:#3bb3c3; color:#fff; font-family:Oswald; font-size:18px; font-weight:bold; text-align:center; line-height:10px; border:none;}
 
