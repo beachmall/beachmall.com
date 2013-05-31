@@ -14,7 +14,8 @@
 #appPreView, .whiteBG {heigth:auto; width:415px; padding:1.0em; border:1px solid #d2e9f6;}
 #appPreView .logo {margin-right:50px;}
 
-.breadcrumb {margin-bottom:0px;}
+.breadcrumb {margin-bottom:0px; font-weight:normal;}
+.breadcrumb li:last-child a {font-weight:normal;}
 
 body {
 	font-family: Oswald, Helvetica, sans-serif;
