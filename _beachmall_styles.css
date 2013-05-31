@@ -1137,7 +1137,7 @@ Top content area (price, add to cart, etc)
 .prodSummaryContainer.marginBottom.no_underline {width:106%;}
 .leftProdColumn {width: 78%; float:left;}
 
-h1.prodName	{font-size:18px; margin:0; padding:0; margin-bottom:6px;}
+h1.prodName	{font-size:18px; margin:0; padding:0; margin-bottom:6px; color:#666666;}
 .prodStidAndMfg span	{padding-right:24px; font-size:12px;}
 
 
