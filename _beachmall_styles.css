@@ -903,8 +903,8 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 .imageContainer .prodTabs.tabbedProductContent > ul {background-color:#fff;} /*tab bkgrnd*/
 .imageContainer .prodTabs.tabbedProductContent .imageAndVideoTabs .ui-state-default {height:35px; background:#777; border-radius:0px; border:1px solid #777;}
 .imageContainer .prodTabs.tabbedProductContent .imageAndVideoTabs .ui-state-active {background:#f5f1de; border-radius:0px; border-bottom:1px solid #f5f1de;}
-.imageContainer .prodTabs.tabbedProductContent .imageAndVideoTabs .ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited {color:#f5f1de;}
-.imageContainer .prodTabs.tabbedProductContent .imageAndVideoTabs .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {color:#777;}
+.imageContainer .prodTabs.tabbedProductContent .imageAndVideoTabs .ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited {color:#f5f1de; font-weight:normal; font-family:"Open Sans";}
+.imageContainer .prodTabs.tabbedProductContent .imageAndVideoTabs .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {color:#777; font-weight:normal; font-family:"Open Sans";}
 .imageContainer .prodTabs.tabbedProductContent .prodPageImages {width:310px; padding:0px; border:1px solid #777777; background:#F5F1DE;} /*box-shadow:0 1px 3px 2px #777;*/
 .imageContainer .prodTabs.tabbedProductContent .ui-tabs-panel {padding:0;}
 .imageContainer .prodTabs.tabbedProductContent .imageAndVideoTabs > div {border:none;}
@@ -918,7 +918,7 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 .fullWidth .mainProdColumn .mpNoShow {display:none;}
 .fullWidth .prodViewerAddToCartForm .addToCartButton {height:30px; width:120px; color:#fff; background:#E0463A; border:none; border-radius:0px;}
 .fullWidth .zsmall {padding-top:10px; clear:both;}
-.fullWidth .socialLinks {margin-top:30px;}
+.fullWidth .socialLinks {margin-top:10px;}
 .fullWidth span.notAvailableForPurchase {float:left; color:#e0463a;}
 
 .rightColumn {height:auto; width:258px; margin:0 0 15px 20px;}
@@ -932,12 +932,12 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 .mainProdTabs {height:auto; width:100%;}
 .prodTabViewContainer .ui-tabs .ui-tabs-nav li a {font-size:13px; font-family:Oswald; padding:6px;}
 .prodTabViewContainer .ui-widget-header	{padding:3px 3px 0 3px; margin:0; border-width:0; border-bottom-width:1px;}
-.prodTabViewContainer .ui-tabs	{padding:0; margin:40px 0 20px 0;}
+.prodTabViewContainer .ui-tabs	{padding:0; margin:5px 0 20px 0;}
 .ui-tabs .ui-tabs-nav li	{margin-right:2px;}
 .prodTabViewContainer .prodViewerTable .prodTabs.tabbedProductContent .tabs .ui-state-default {background:#777; border-radius:0px; border:1px solid #777;}
 .prodTabViewContainer .prodViewerTable .prodTabs.tabbedProductContent .tabs .ui-state-active {background:#f5f1de; border-radius:0px; border-bottom:1px solid #f5f1de;}
-.prodTabViewContainer .prodViewerTable .prodTabs.tabbedProductContent .tabs .ui-state-default a, .tabs .ui-state-default a:link, .ui-state-default a:visited {color:#f5f1de;}
-.prodTabViewContainer .prodViewerTable .prodTabs.tabbedProductContent .tabs .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {color:#777;}
+.prodTabViewContainer .prodViewerTable .prodTabs.tabbedProductContent .tabs .ui-state-default a, .tabs .ui-state-default a:link, .ui-state-default a:visited {color:#f5f1de; font-weight:normal; font-family:"Open Sans";}
+.prodTabViewContainer .prodViewerTable .prodTabs.tabbedProductContent .tabs .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {color:#777; font-weight:normal; font-family:"Open Sans";}
 .prodTabViewContainer .prodViewerTable .prodTabs.tabbedProductContent .ui-widget-content.ui-corner-tr {background:#f5f1de; border:none;}
 .prodTabViewContainer .prodViewerTable .prodTabs.tabbedProductContent .ui-widget-content {background:#f5f1de; border:1px solid #777;}
 .prodTabViewContainer .prodViewerTable .prodTabs.tabbedProductContent > div {}
@@ -948,8 +948,8 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 .youMayLikeAccessories .tabbedProductListsTD {padding:0; margin:36.8px 0 20px 18px;}
 .youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .tabs .ui-state-default {background:#777; border-radius:0px; border:1px solid #777;}
 .youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .tabs .ui-state-active {background:#f5f1de; border-radius:0px; border-bottom:1px solid #f5f1de;}
-.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .tabs .ui-state-default a, .tabs .ui-state-default a:link, .ui-state-default a:visited {color:#f5f1de;}
-.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .tabs .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {color:#777;}
+.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .tabs .ui-state-default a, .tabs .ui-state-default a:link, .ui-state-default a:visited {color:#f5f1de; font-weight:normal; font-family:"Open Sans";}
+.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .tabs .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {color:#777; font-weight:normal; font-family:"Open Sans";}
 .youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content {height:536px; width:252px; background:#f5f1de; border:1px solid #777;}
 .youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content > div {width:240px; background:#f5f1de; border:none;}
 
