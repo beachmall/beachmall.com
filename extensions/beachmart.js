@@ -148,6 +148,7 @@ var store_filter = function() {
 					app.ext.store_filter.u.runProductVerticalCarousel2($context);
 					app.ext.store_filter.u.runProductRecentCarousel($context);
 					app.u.dump('Product fredsel ran');
+					app.ext.store_filter.u.handleToolTip();
 				}]);
 				
 				
@@ -306,7 +307,6 @@ var store_filter = function() {
 					var year = d.getFullYear();
 					var date = month + '-' + day + '-' + year;
 					
-					app.u.dump('*** '+userProdShipMsg);
 					//app.u.dump('us1ts= '+us1ts);
 					//app.u.dump(us1ts['zoovy:prod_salesrank']);
 					if (us1ts != 1 && date < zoovyProdSalesRank) {
@@ -389,9 +389,9 @@ var store_filter = function() {
 					else if (zoovyIsTags.indexOf('IS_PREORDER') >= 0) {
 						$tag.append('Back Order').addClass('smallTagBkgrnd').show();
 					}
-					else if (zoovyIsTags.indexOf('IS_SALE') >= 0) {
+					/*else if (zoovyIsTags.indexOf('IS_SALE') >= 0) {
 						$tag.append('SALE!').addClass('smallTagBkgrnd').show();
-					}
+					}*/
 					else {
 						//add no tags
 					}
@@ -830,6 +830,15 @@ return filters;
 				showPreviouslyViewed : function($context) {
 					$('#recentlyViewedItemsContainer').show();
 				}*/
+				
+				handleToolTip : function()	{
+				app.u.dump("BEGIN beachmart.u.handleToolTip.");
+					$('.tipify',$('#appView')).each(function(){
+						var $this = $(this);
+						$this.parent().css('position','relative'); //this is what makes the tooltip appear next to the link instead of off in space.
+						$this.mouseover(function(){	$('.toolTip',$this.parent()).show();}).mouseout(function(){	$('.toolTip',$this.parent()).hide();});
+						});
+				},
 				
 			}, //u
 

@@ -1458,7 +1458,7 @@ $('.deliveryLocation',$r).click(function(){app.ext.beachmart.a.showZipDialog()})
 			}, //getTransitInfo
 			
 			handleToolTip : function()	{
-//				app.u.dump("BEGIN beachmart.u.handleToolTip.");
+				app.u.dump("BEGIN beachmart.u.handleToolTip.");
 				$('.tipify',$('#appView')).each(function(){
 					var $this = $(this);
 					$this.parent().css('position','relative'); //this is what makes the tooltip appear next to the link instead of off in space.
