@@ -211,7 +211,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 										</div>
 									<!--<button class='catSearchHomeDropdown' onClick='app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent()); app.ext.beachmart_catsearch.a.catSearch("IS_BESTSELLER", "beach chair adirondack furniture");'>Best Selling Items</button>-->
 									<!--<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'user:app_category':'.beach-chair.adirondack-furniture'}}]}}});">Best Selling Items</button>-->
-										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'user:app_category':'.beach-chair.adirondack-furniture'}}]}}});">Best Selling Items</button>
+										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('category',{'navcat':'.beach_chair', 'templateID':'categoryTemplateWithSpecialList'});">Best Selling Items</button>
 										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_USER4'}},{'term':{'tags':'IS_COLORFUL'}},{'term':{'tags':'IS_USER5'}},{'term':{'user:prod_promo':'IS_USER4'}},{'term':{'user:app_category':'.beach-chair.adirondack-furniture'}}]}}});">Featured Items</button>
 										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'user:app_category':'.beach-chair.adirondack-furniture'}}]}}});">Clearance Items</button>
 										<button class='catSearchHomeDropdown bindByAnchor' href='#!category?navcat=.beach-chair.adirondack-furniture' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</button>
@@ -1183,20 +1183,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 		<div class='brandsTopCatContainer'>
             <ul data-bind="var: category(@subcategoryDetail); format: categoryList; extension: store_navcats; loadsTemplate: brandsCategoryListTemplate; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin categoryList'></ul><!-- outputs a list of subcategories -->
 		</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			<!-- outputs the product list -->
+
   
             <p class='blah' data-bind="var: category(%page.description); format:wiki; wikiFormats:myRIA; editor: textarea;"></p>
             
@@ -1208,19 +1195,8 @@ don't modify the 'data-templateid' unless you are changing template names and up
 			<ul data-bind="var: session(recentlyViewedItems); format: productList; extension: store_prodlist; loadsTemplate: productListTemplate; hide_summary:1; hide_pagination:1; withReviews:1;" class='listStyleNone fluidList clearfix noPadOrMargin productList'></ul>
 		</div>
         -->
-        
-        
-        
-        
 
 </div><!-- /categoryTemplate -->
-
-
-
-
-
-
-
 
 
 
@@ -1278,7 +1254,9 @@ don't modify the 'data-templateid' unless you are changing template names and up
 
 
 
-
+<div id='categoryTemplateWithSpecialList' class='loadingBG categoryTemplate'>
+	<ul data-bind="var: list($featured_list.@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: productListTemplate; withReviews:1; items_per_page: 25;"></ul>
+</div>
 
 
 
