@@ -1843,7 +1843,7 @@ this will likely become more flexible in the future. ###
 
 <ul class='clearfix noPadOrMargin fluidList breadcrumb' data-bind='var: session(session.recentCategories.0); format:breadcrumb; extension:store_navcats; loadsTemplate: breadcrumbTemplate;'></ul>
 
-<table class='fullWidth'>
+<table class='fullWidth floatLeft'>
 <tr>
 	<td>
 
@@ -1880,13 +1880,7 @@ this will likely become more flexible in the future. ###
 
 
 
-	<div class='floatRight marginBottom'>
-		<img src='images/bm12_p_toprtcol-180x89.jpg' alt width='180' height='89' usemap='#prodMap'/>
-		<div class='displayNone' data-bind="var: product(user:prod_guarantee); format:showIfSet;">
-			<a href='#' class='tipify tipifyGuarantee'>Guarantee & Returns</a>
-			<div class='toolTip' data-bind="var: product(user:prod_guarantee); format:wiki; wikiFormats:myRIA;"></div>
-		</div>
-	</div>
+	
 	
 
 
@@ -1962,23 +1956,12 @@ this will likely become more flexible in the future. ###
 
 </div> <!-- END mainProdColumn -->
 
-	<div class='rightColumn floatRight'>
-		<div class='' data-bind="var: product(pid); format:reviewSnippet; extension:powerReviews_reviews;"></div>
-		<div class='prodPageMfgForward' data-bind="var: product(zoovy:prod_mfg); format:searchLink; extension:myRIA; pretext: &#187 View All ; posttext: Product;"></div>
-	</div>
+	
 
 </td>
-
-	<td>
-
-	</td>
-
 </tr>
-</table>
-
-<table>
 <tr>
-	<td class='mainProdTabs'>
+	<td colspan='2' class='mainProdTabs'>
 
 
 <div class='prodTabViewContainer clearfix marginRight'>
@@ -2030,10 +2013,30 @@ this will likely become more flexible in the future. ###
 
 
 	</td><!-- /tabbed info -->
-	
+
+
+</tr>
+</table>
+
+<table>
+<tr>
+
 	<td class='youMayLikeAccessories displayNone' data-bind="useParentData:true; format:showTabsIfSet; extension:store_filter;">
 
-		<div class='tabbedProductListsTD marginLeft'>
+		<div class='floatRight marginBottom marginRight'>
+			<img src='images/bm12_p_toprtcol-180x89.jpg' alt width='180' height='89' usemap='#prodMap'/>
+			<div class='displayNone' data-bind="var: product(user:prod_guarantee); format:showIfSet;">
+				<a href='#' class='tipify tipifyGuarantee'>Guarantee & Returns</a>
+				<div class='toolTip' data-bind="var: product(user:prod_guarantee); format:wiki; wikiFormats:myRIA;"></div>
+			</div>
+		</div>
+	
+		<div class='rightColumn floatRight clearfix'>
+			<div class='' data-bind="var: product(pid); format:reviewSnippet; extension:powerReviews_reviews;"></div>
+			<div class='prodPageMfgForward' data-bind="var: product(zoovy:prod_mfg); format:searchLink; extension:myRIA; pretext: &#187 View All ; posttext: Product;"></div>
+		</div>
+	
+		<div class='tabbedProductListsTD marginLeft clearfix'>
 			<div class="tabbedProductLists" data-app-role='xsellTabContainer'>
 
 				<ul class='tabs'>
@@ -2072,7 +2075,7 @@ this will likely become more flexible in the future. ###
 
 </table>
 
-	<div class='recentlyViewedItemsContainer CarouselContainer previousViewedCarouselContainer'>
+	<div class='recentlyViewedItemsContainer CarouselContainer previousViewedCarouselContainer clearfix'>
 			<div class='carouselTitles lightTealBkgrnd'>
 				<div class='carouselTitleTextContainer floatLeft'>PREVIOUSLY VIEWED PRODUCTS</div>
 				<a class="bindByAnchor" href="#!search?TAG=IS_BESTSELLER">

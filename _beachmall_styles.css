@@ -895,7 +895,7 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 
 
 /* PRODUCT IMAGE / TABS */
-.fullWidth {margin-top:20px;}
+.fullWidth {margin-top:20px; width:70%}
 .fullWidth .imageContainer {width:310px;} /*padding:0 55px 20px 40px;*/
 .imageContainer .prodTabs.tabbedProductContent {background-color:#fff; padding:0px; border:none;} /*tabbed container bkgrnd*/
 .imageContainer .prodTabs.tabbedProductContent > div {background-color:#fff; border:none;} /*image bkgrnd*/
@@ -920,13 +920,14 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 .fullWidth .socialLinks {margin-top:30px;}
 .fullWidth span.notAvailableForPurchase {float:left; color:#e0463a;}
 
-.rightColumn {height:300px; width:258px; margin-left:20px;}
+.rightColumn {height:auto; width:258px; margin:0 0 15px 20px;}
 
 .rightColumn .prodPageMfgForward {height:auto; width:100%; text-align:center; color:#3BB3C3; margin-top:20px}
 .rightColumn .prodPageMfgForward:hover {color:#e0463a;}
 
 
 /*MAIN PRODUCT DESCRIPTION TABS*/
+.poo {height:auto; width:70%;}
 .mainProdTabs {height:auto; width:100%;}
 .prodTabViewContainer .ui-tabs .ui-tabs-nav li a {font-size:13px; font-family:Oswald; padding:6px;}
 .prodTabViewContainer .ui-widget-header	{padding:3px 3px 0 3px; margin:0; border-width:0; border-bottom-width:1px;}
@@ -941,9 +942,9 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 .prodTabViewContainer .prodViewerTable .prodTabs.tabbedProductContent > div {}
 
 /*VERTICAL CAROUSEL PRODUCT TABS*/
-.youMayLikeAccessories {height:auto; width:auto;}
+.youMayLikeAccessories {height:auto; width:auto; padding:20px 0 0 0;}
 .youMayLikeAccessories .tabbedProductListsTD {height:auto; width:97%;}
-.youMayLikeAccessories .tabbedProductListsTD {padding:0; margin:36.8px 0 20px 0;}
+.youMayLikeAccessories .tabbedProductListsTD {padding:0; margin:36.8px 0 20px 18px;}
 .youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .tabs .ui-state-default {background:#777; border-radius:0px; border:1px solid #777;}
 .youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .tabs .ui-state-active {background:#f5f1de; border-radius:0px; border-bottom:1px solid #f5f1de;}
 .youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .tabs .ui-state-default a, .tabs .ui-state-default a:link, .ui-state-default a:visited {color:#f5f1de;}
