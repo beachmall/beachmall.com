@@ -288,9 +288,16 @@ var store_filter = function() {
 					},
 		
 				showFreeShippingTag: function($tag, data) {
+					var isShipFree = data.value['%attribs']['zoovy:prod_is_tags'];
+					if(isShipFree.indexOf('IS_SHIPFREE') >= 0)
+					$tag.show();
+				}, //End showFreeShippingTag
+				
+				showShipLatency : function ($tag, data) {
 					//app.u.dump('***TEST '+data.value);
 					//var us1ts = (data.bindData.isElastic) ? data.value.tags : data.value['%attribs']['us1:ts'];
 					
+					var userProdShipMsg = data.value['%attribs']['user:prod_shipping_message'];
 					var us1ts = data.value['%attribs']['us1:ts'];
 					var zoovyProdSalesRank = data.value['%attribs']['zoovy:prodsalesrank'];
 					var d = new Date();
@@ -299,15 +306,19 @@ var store_filter = function() {
 					var year = d.getFullYear();
 					var date = month + '-' + day + '-' + year;
 					
+					app.u.dump('*** '+userProdShipMsg);
 					//app.u.dump('us1ts= '+us1ts);
 					//app.u.dump(us1ts['zoovy:prod_salesrank']);
-					if (us1ts != 1 || date > zoovyProdSalesRank) {
-						$tag.show();
+					if (us1ts != 1 && date < zoovyProdSalesRank) {
+						$tag.children('.poo').show().append(''+zoovyProdSalesRank);
+					}
+					else if (date > zoovyProdSalesRank) {
+						$tag.children('.shipTime').show();
 					}
 					else {
-						//do nothing tag is hidden by default
+						//do nada
 					}
-				}, //End showFreeShippingTag
+				},
 				
 				prodPriceDesc : function($tag, data) {
 					//var priceFrom = (data.bindData.isElastic) ? data.value.tags : data.value['%attribs']['zoovy:prod_is_tags'];

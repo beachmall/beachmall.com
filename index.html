@@ -607,7 +607,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
     	<ul>
         	<li>CATEGORIES</li>
             <li><a class='bindByAnchor' href='#!category?navcat=.beach-accessories'>Beach Accesories</a></li>
-            <li><a class='bindByAnchor' href='#!category?navcat=.beach-chairs'>Beach Chairs</a></li>
+            <li><a class='bindByAnchor' href='#!category?navcat=.beach-chair'>Beach Chairs</a></li>
             <li><a class='bindByAnchor' href='#!category?navcat=.beach-sports'>Recreation</a></li>
             <li><a class='bindByAnchor' href='#!category?navcat=.beach-umbrellas-shelter'>Umbrellas & Shelter</a></li>
             <li><a class='bindByAnchor' href='#!category?navcat=.beachwear'>Beach Wear</a></li>
@@ -1427,9 +1427,14 @@ remember to NOT put the button inside the 'onclick' container or two events will
 				</div>
                 <div class='shipContainer floatLeft'>
                     <div class='shipCost sprite displayNone' data-bind='useParentData:true; format:showFreeShippingTag; extension:store_filter;'></div>
-                    <div data-bind='var: product(user:prod_shipping_msg); format:showIfSet;'>
+                    <div class='shipTime latency' data-bind='useParentData:true; format:showShipLatency; extension:store_filter;'>
+						<div class='shipTime latency displayNone' data-bind='var: product(user:prod_shipping_msg); format:text;'></div>
+						<div class='poo displayNone'></div>
+					</div>
+					<!--<div data-bind='var: product(user:prod_shipping_msg); format:showIfSet;'>
 						<div class='shipTime latency' data-bind='var: product(user:prod_shipping_msg); format:text;'></div>
 					</div>
+					-->
 				</div>
 				<div class='reviewsStarsCount' data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews_reviews;'></div><!-- BCERO271 MARK-->
                 <form data-bind='var: product(pid); format:atcForm; extension:store_product;' class='prodViewerAddToCartForm clearfix' action='#'>
