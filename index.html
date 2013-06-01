@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"201314.20130530131700",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"201314.20130531181400",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"", //used in non-local mode.
 	"checkoutAuthMode" : "required",//can be passive, active or required
@@ -876,18 +876,17 @@ the homepageTemplate template is loaded into mainContentArea by default when the
     
 		<div class='homepageCategories'>
 			<div class='additionalHompageCatsContainer'>
-				<div class='additionalHompageCats floatLeft bindByAnchor pointer' href='#!category?navcat=.beach-accessories.beach-cart'>
+				<div class='additionalHompageCats floatLeft bindByAnchor pointer' onClick="return showContent('category',{'navcat':'.beach-accessories.beach-cart'});">
 					<div class='addCatArrow sprite floatRight'></div>
 					<span>SHOP</span>
 					<span>BEACH CARTS</span>
 				</div>
-				<div class='additionalHompageCats floatLeft bindByAnchor pointer' href='#!category?navcat=.beach-umbrellas-shelter.beach-tent-shelters'>
+				<div class='additionalHompageCats floatLeft bindByAnchor pointer' onClick="return showContent('category',{'navcat':'.beach-umbrellas-shelter.beach-tent-shelters'});">
 					<div class='addCatArrow sprite floatRight'></div>
 					<span>SHOP</span>
 					<span>BEACH TENTS</span>
 				</div>
-				<div class='additionalHompageCats floatLeft bindByAnchor pointer' href='#!category?navcat=.beach-accessories.beach-bags-totes'>
-				<!--	<a class='bindByAnchor' href='#!category?navcat=.beach-umbrellas-shelter.beach-tent-shelters' onClick="app.ext.store_filter.a.clickDropdown($(this).parent());"> -->
+				<div class='additionalHompageCats floatLeft bindByAnchor pointer' onClick="return showContent('category',{'navcat':'.beach-accessories.beach-bags-totes'});"'>
 					<div class='addCatArrow sprite floatRight'></div>
 					<span>SHOP</span>
 					<span>BEACH BAGS</span>
