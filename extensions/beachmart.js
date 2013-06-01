@@ -300,15 +300,24 @@ var store_filter = function() {
 					
 					var userProdShipMsg = data.value['%attribs']['user:prod_shipping_message'];
 					var us1ts = data.value['%attribs']['us1:ts'];
-					var zoovyProdSalesRank = data.value['%attribs']['zoovy:prodsalesrank'];
+					var zoovyProdSalesRank = data.value['%attribs']['zoovy:prod_salesrank'];
+					var zoovyPreOrder = data.value['%attribs']['zoovy:prod_is_tags'];
 					var d = new Date();
 					var month = d.getMonth()+1;
 					var day = d.getDate();
 					var year = d.getFullYear();
-					var date = month + '-' + day + '-' + year;
-					
+					if(month < 10){month = '0'+month};
+					if(day < 10){day = '0'+day};
+					var date = year + '' + month + '' + day;
+					//app.u.dump('*** '+date);
 					//app.u.dump('us1ts= '+us1ts);
-					//app.u.dump(us1ts['zoovy:prod_salesrank']);
+										
+					if(zoovyPreOrder.indexOf('IS_PREORDER') > -1 && (zoovyProdSalesRank > -1 || zoovyProdSalesRank != undefined) ) {
+						var outputDate =  zoovyProdSalesRank.substring(5,6) + '/' + zoovyProdSalesRank.substring(7,8) + '/' + zoovyProdSalesRank.substring(0,4);
+						app.u.dump('*** '+outputDate);
+						$tag.empty().append('Will ship on '+outputDate);
+					}
+					
 					if (us1ts != 1 && date < zoovyProdSalesRank) {
 						$tag.children('.poo').show().append(''+zoovyProdSalesRank);
 					}
