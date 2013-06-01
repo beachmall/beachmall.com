@@ -298,7 +298,7 @@ var store_filter = function() {
 					//app.u.dump('***TEST '+data.value);
 					//var us1ts = (data.bindData.isElastic) ? data.value.tags : data.value['%attribs']['us1:ts'];
 					
-					var userProdShipMsg = data.value['%attribs']['user:prod_shipping_message'];
+					var userProdShipMsg = data.value['%attribs']['user:prod_shipping_msg'];
 					var us1ts = data.value['%attribs']['us1:ts'];
 					var zoovyProdSalesRank = data.value['%attribs']['zoovy:prod_salesrank'];
 					var zoovyPreOrder = data.value['%attribs']['zoovy:prod_is_tags'];
@@ -306,27 +306,32 @@ var store_filter = function() {
 					var month = d.getMonth()+1;
 					var day = d.getDate();
 					var year = d.getFullYear();
-					if(month < 10){month = '0'+month};
-					if(day < 10){day = '0'+day};
+					if (month < 10){month = '0'+month};
+					if (day < 10){day = '0'+day};
 					var date = year + '' + month + '' + day;
 					//app.u.dump('*** '+date);
-					//app.u.dump('us1ts= '+us1ts);
+					app.u.dump(userProdShipMsg);
 										
-					if(zoovyPreOrder.indexOf('IS_PREORDER') > -1 && (zoovyProdSalesRank > -1 || zoovyProdSalesRank != undefined) ) {
+					if (zoovyPreOrder.indexOf('IS_PREORDER') > -1 && ([zoovyProdSalesRank > -1 || zoovyProdSalesRank != undefined] && zoovyProdSalesRank > date) ) {
 						var outputDate =  zoovyProdSalesRank.substring(5,6) + '/' + zoovyProdSalesRank.substring(7,8) + '/' + zoovyProdSalesRank.substring(0,4);
-						app.u.dump('*** '+outputDate);
+						//app.u.dump('*** '+outputDate);
 						$tag.empty().append('Will ship on '+outputDate);
 					}
-					
-					if (us1ts != 1 && date < zoovyProdSalesRank) {
-						$tag.children('.poo').show().append(''+zoovyProdSalesRank);
-					}
-					else if (date > zoovyProdSalesRank) {
+					else if (zoovyProdSalesRank == undefined || zoovyProdSalesRank <= date) {
 						$tag.children('.shipTime').show();
+						var d = new Date();
+						var n = d.getDay();
+						var t = d.getHours();
+						//app.u.dump('*** '+t);
+						if (userProdShipMsg.indexOf('Ships Today by 12 Noon EST') > -1 && t >= 12 && (d > 0 && d < 7)) {
+							$tag.empty().append('Ships Next Business Day');
+						}
+						else if (userProdShipMsg.indexOf('Ships Today by 12 Noon EST') > -1 && [(t >= 12 && d == 6) || (d > 6 && d < 1)]) {
+							$tag.empty().append('Ships Monday by 12 Noon EST');
+						}
+						else {/*do nada*/}
 					}
-					else {
-						//do nada
-					}
+					else {/*do nada*/}
 				},
 				
 				prodPriceDesc : function($tag, data) {
