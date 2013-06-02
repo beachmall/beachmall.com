@@ -917,13 +917,13 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 .productFreeShipping {height:17px; width:108px; overflow:hidden; background-position:-67px -56px;}
 .fullWidth .mainProdColumn .mpNoShow {display:none;}
 /*.fullWidth .prodViewerAddToCartForm .addToCartButton {height:30px; width:120px; color:#fff; background:#E0463A; border:none; border-radius:0px; clear:both;}*/
-.fullWidth .prodViewerAddToCartForm .shipTime.latency.floatLeft {line-height:40px;}
+.fullWidth .prodViewerAddToCartForm .shipTime.latency.floatLeft {margin:20px 0 0 0;}
 .fullWidth .prodViewerAddToCartForm .addToCartButton	{
-	height:33px;
-	width:138px;
+	height:50px;
+	width:170px;
 	margin:6px 0;
 	text-indent:-10000px;
-	background:url(images/bm_add_to_cart-136x31.png) no-repeat; padding:0; border:0;
+	background:url(images/add-to-cart_170x50.gif) no-repeat; padding:0; border:0;
 	clear:both;
 	}
 
@@ -1168,7 +1168,7 @@ h1.prodName	{font-size:18px; margin:0; padding:0; margin-bottom:6px; color:#6666
 .priceContainer .savings, .retailPrice	{color:#666666; font-size:13px;}
 .priceContainer .retailPrice span.value {text-decoration:line-through;}
 
-.sizingChartLink {padding:4px 25px 0 0px;} /* don't set a display: here. displayNone is used and element is toggle on based on whether a value is set */
+.sizingChartLink {padding:4px 0 0 0;} /* don't set a display: here. displayNone is used and element is toggle on based on whether a value is set */
 
 /*
 .fullWidth .prodViewerAddToCartForm .addToCartButton.preorderButton	{

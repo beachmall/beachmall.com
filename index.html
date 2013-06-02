@@ -1918,7 +1918,7 @@ this will likely become more flexible in the future. ###
 				<div class='shipTime latency displayNone' data-bind='var: product(user:prod_shipping_msg); format:text;'></div>
 			</div>
 		</div>
-		<span class='floatRight sizingChartLink displayNone' data-bind='var:product(user:prod_sizing_txt); format:showIfSet;'><a href='#tabbedProductContentTD'>Sizing Chart</a></span>
+		<span class='floatRight sizingChartLink displayNone clearfix' data-bind='var:product(user:prod_sizing_txt); format:showIfSet;'><a href='#tabbedProductContentTD'>Sizing Chart</a></span>
 		<div class='displayNone zsmall alignRight' data-bind='var: product(user:prod_shipping); format:showIfSet;'><a href='#' onClick="app.ext.beachmart.a.showProdAttInDialog($(this).attr('data-pid'),'user:prod_shipping'); return false;" data-bind='var:product(pid);format:assignAttribute; attribute:data-pid;'>Shipping Surcharge May Apply</a></div>
 	</form>
 
