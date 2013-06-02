@@ -1410,7 +1410,6 @@ remember to NOT put the button inside the 'onclick' container or two events will
                     <div class='shipCost sprite displayNone' data-bind='useParentData:true; format:showFreeShippingTag; extension:store_filter;'></div>
                     <div class='shipTime latency' data-bind='useParentData:true; format:showShipLatency; extension:store_filter;'>
 						<div class='shipTime latency displayNone' data-bind='var: product(user:prod_shipping_msg); format:text;'></div>
-						<div class='poo displayNone'></div>
 					</div>
 					<!--<div data-bind='var: product(user:prod_shipping_msg); format:showIfSet;'>
 						<div class='shipTime latency' data-bind='var: product(user:prod_shipping_msg); format:text;'></div>
@@ -1913,7 +1912,12 @@ this will likely become more flexible in the future. ###
 		<fieldset data-bind='var: product(pid); format:atcVariations; extension:store_product;' class='borderNone'></fieldset>
 		<fieldset data-bind='useParentData:true; format:atcQuantityInput; extension:store_product; pretext:Quantity: ; defaultValue:1;' class='borderNone floatRight'></fieldset>
 	<!--	<fieldset data-bind='var: product(pid); format:atcQuantityInput; defaultValue:1; extension:store_product; pretext:Quantity: ;' class='borderNone'></fieldset>-->
-		<input type='submit' value='Add to Cart' class='floatRight ui-button ui-button-text ui-corner-all ui-state-default addToCartButton displayNone' data-bind='var: product(pid); format:addToCartButton; extension:store_product;'  />
+		<div>
+			<input type='submit' value='Add to Cart' class='floatRight ui-button ui-button-text ui-corner-all ui-state-default addToCartButton displayNone' data-bind='var: product(pid); format:addToCartButton; extension:store_product;'  />
+			<div class='shipTime latency floatLeft' data-bind='useParentData:true; format:showShipLatency; extension:store_filter;'>
+				<div class='shipTime latency displayNone' data-bind='var: product(user:prod_shipping_msg); format:text;'></div>
+			</div>
+		</div>
 		<span class='floatRight sizingChartLink displayNone' data-bind='var:product(user:prod_sizing_txt); format:showIfSet;'><a href='#tabbedProductContentTD'>Sizing Chart</a></span>
 		<div class='displayNone zsmall alignRight' data-bind='var: product(user:prod_shipping); format:showIfSet;'><a href='#' onClick="app.ext.beachmart.a.showProdAttInDialog($(this).attr('data-pid'),'user:prod_shipping'); return false;" data-bind='var:product(pid);format:assignAttribute; attribute:data-pid;'>Shipping Surcharge May Apply</a></div>
 	</form>
