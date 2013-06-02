@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"201314.20130602150300",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"201314.20130602152500",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"", //used in non-local mode.
 	"checkoutAuthMode" : "required",//can be passive, active or required
@@ -626,7 +626,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 													<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('category',{'navcat':'.beachwear.beach-swimwear.board-shorts.kids', 'templateID':'categoryTemplateWithSpecialList'});">Best Selling Items</button>
 													<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_USER4'}},{'term':{'tags':'IS_COLORFUL'}},{'term':{'tags':'IS_USER5'}},{'term':{'user:prod_promo':'IS_USER4'}},{'term':{'user:app_category':'.beach-chair.beach-lounges.beach-recliner'}}]}}});">Featured Items</button>
 													<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'user:app_category':'.beach-chair.beach-lounges.beach-recliner'}}]}}});">Clearance Items</button>
-													<button class='catSearchHomeDropdown bindByAnchor' href='#!category?navcat=..beachwear.beach-swimwear.board-shorts.kids' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</button>
+													<button class='catSearchHomeDropdown bindByAnchor' href='#!category?navcat=.beachwear.beach-swimwear.board-shorts.kids' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</button>
 												</ul>
 											</li>
 										</ul>
