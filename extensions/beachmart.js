@@ -310,7 +310,7 @@ var store_filter = function() {
 					if (day < 10){day = '0'+day};
 					var date = year + '' + month + '' + day;
 					//app.u.dump('*** '+date);
-					app.u.dump(userProdShipMsg);
+					//app.u.dump(userProdShipMsg);
 										
 					if (zoovyPreOrder.indexOf('IS_PREORDER') > -1 && ([zoovyProdSalesRank > -1 || zoovyProdSalesRank != undefined] && zoovyProdSalesRank > date) ) {
 						var outputDate =  zoovyProdSalesRank.substring(5,6) + '/' + zoovyProdSalesRank.substring(7,8) + '/' + zoovyProdSalesRank.substring(0,4);
@@ -319,10 +319,17 @@ var store_filter = function() {
 					}
 					else if (zoovyProdSalesRank == undefined || zoovyProdSalesRank <= date) {
 						$tag.children('.shipTime').show();
-						var d = new Date();
 						var n = d.getDay();
-						var t = d.getHours();
-						//app.u.dump('*** '+t);
+						var t = d.getUTCHours();
+						if(date < '20131103') {
+							t = t - 4;
+						}
+						else if (date > '20131102' && date < '20140309') {
+							t = t - 5;
+						}
+						else {
+							// posibly need further years calculated here
+						}
 						if (userProdShipMsg.indexOf('Ships Today by 12 Noon EST') > -1 && t >= 12 && (d > 0 && d < 7)) {
 							$tag.empty().append('Ships Next Business Day');
 						}
