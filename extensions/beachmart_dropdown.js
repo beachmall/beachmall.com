@@ -53,6 +53,7 @@ var beachmart_dropdown = function() {
 					if(app.ext.powerReviews_reviews && app.ext.store_filter){
 						app.u.dump("beachmart dropdown Extension Started");
 						app.ext.beachmart_dropdown.u.loadHoverProducts(); //load function
+						//app.ext.beachmart_dropdown.u.renderTagsElastic();
 						
 					} else	{
 						setTimeout(function(){app.ext.beachmart_dropdown.callbacks.startExtension.onSuccess()},250);
@@ -74,7 +75,16 @@ var beachmart_dropdown = function() {
 					},
 				onError:function(responseData){			// error response goes here if needed
 					}
+				},
+				
+			renderTagsElastic : {
+				onSuccess:function(responseData){
+					$('.extraElastic-'+app.data[responseData.datapointer].pid).anycontent({"templateID":"extraElasticTemplate","datapointer":responseData.datapointer});
+				},
+				onError:function(responseData){
 				}
+			}
+			
 		}, //callbacks
 
 
@@ -237,7 +247,30 @@ var beachmart_dropdown = function() {
 				
 				//execute calls
 				app.model.dispatchThis('mutable');				// execute: mutable = as soon as convinient, immutable = now or else, passive = whenevs 
+				},
+			
+			getTagsElastic : function () {
+				var prods = [];
+				$('.searchResultsProduct').each(function() {
+					prods.push($(this).data(""));	//how to get product info??
+				});
+				
+				for(var i=0; i<prods.length; i++) {
+					var obj = {
+						"pid" : prods[i]
+					};
+					console.debug(obj);
+					var _tag = {
+						"callback":"renderTagsElastic",
+						"extension":"beachmart_dropdown"
+					};
+					app.calls.appProductGet.init(obj, _tag);
 				}
+				
+				app.model.dispatchThis('mutable');
+				
+			}
+			
 //pass in form as object.  This function will verify that each fieldset has the appropriate attributes.
 //will also verify that each filterType has a getElasticFilter function.
 			}, //u

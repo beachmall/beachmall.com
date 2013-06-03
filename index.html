@@ -1215,7 +1215,16 @@ APP-SPECIFIC TEMPLATES
         </div>  
     </div>
 	
-</div> <!-- //hoverProductTemplate
+</div> <!-- //hoverProductTemplate -->
+
+<div id="extraElasticTemplate">
+	<div class='prodModifierContainer sprite displayNone' data-bind='useParentData:true; format:showProdModifier; extension:store_filter; isElastic:1;'></div> -->
+		<div class='starBurst sprite displayNone' data-bind='var: product(user:prod_promo); format:showIfSet; isElastic:1;'>
+			<div class='starBurstTextOuter'>
+				<div class='starBurstTextInner' data-bind='var: product(user:prod_promo); format:text; isElastic:1;'></div>
+			</div>
+		</div>
+</div>
 
 <!--
 
@@ -2062,6 +2071,7 @@ END BUG7-->
 			<div class='prodNum stid' data-bind='var: product(pid); format:text; pretext: ITEM &nbsp #: &nbsp ;'></div> -->
 	  <!-- 	<span data-bind='var: reviews(reviews.total); format:text; pretext: from ;posttext: reviews; className:numReviews;'></span> -->
 		</div>
+		<div class='extraElastic'></div>
 	</div>
 	
 </li>
