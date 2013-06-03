@@ -450,6 +450,11 @@ var store_filter = function() {
 						}
 		//			}
 				},
+				
+				optionsCount : function($tag, data) {
+					app.u.dump('*** ');
+					$tag.text(data.value.length + 'variations available!');
+				},
 
 				homePageHider : function($tag,data) {
 					/*app.u.dump(data.value);
@@ -627,9 +632,9 @@ return filters;
 									items: {
 										start: 8,
 									},
-									auto: {
+									auto: false, /*{
 										pauseOnHover: "immediate"
-									},
+									},*/
 									prev: '.featCarouselPrev',
 									next: '.featCarouselNext',
 									height: 405,

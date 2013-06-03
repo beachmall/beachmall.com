@@ -2115,10 +2115,11 @@ END BUG7-->
                 <h5 class='hideInMinimalMode clearfix prodDescSmall' data-bind='var: product(prod_name); format:text;'></h5>
 			</div>
 		</div>
-		<div id='prodSiblings' class='clearfix'>
-			<ul class='listStyleNone noPadOrMargin fluidList clearfix' data-bind="var: product(user:grp_siblings); format:productList; extension:store_prodlist;loadsTemplate:productListTemplateThumb;hide_multipage:true;before:<b>Available Colors:</b> <span class='zhint'>(click image to select)</span> ; withInventory:1; withVariations:1;"></ul> <!-- id='prodlistSiblings' -->
-		</div>
 	</div>
+<!--for sibling color images (future)	<div class='clearfix prodSiblings'>
+		<ul class='listStyleNone noPadOrMargin fluidList clearfix' data-bind="var: product(user:grp_siblings); format:productList; extension:store_prodlist;loadsTemplate:productListTemplateThumb;hide_multipage:true;before:<b>Available Colors:</b> <span class='zhint'>(click image to select)</span> ; withInventory:1; withVariations:1;"></ul> <!-- id='prodlistSiblings' -->
+<!--	</div>-->
+	<div class='clearfix prodSiblings' data-bind='var:product(@options); format:optionsCount; extension:store_filter;'></div>
 	<div class='seeColors displayNone' data-bind='useParentData: true; format: moreColors; extension: store_filter;'>
 		<div class='showColors pointer' onClick="quickView('product',{'templateID':'productTemplateQuickView','pid':$(this).closest('[data-pid]').attr('data-pid')});">MORE COLORS</div>
 	</div>

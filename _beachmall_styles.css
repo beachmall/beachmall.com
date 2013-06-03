@@ -1107,12 +1107,14 @@ newArrivalsCarouselRight, .myProdThumb:hover .moreDetails {background-color:#e04
 .prodPriceSmall, .productList h6, .categoryList h6 {margin-left:0px;}
 .moreDetailsSmall {height:25px; width:95px; color:#fff; font-size:14px; text-align:center; line-height:24px; background-color:#3bb3c3; position:relative;}
 .myProdThumbSmall:hover .moreDetailsSmall {background-color:#e0463a;}
+.prodSiblings {height:20px; width:100%; background:#eee;}
 .showColors {height:20px; width: 100px; background-color:#3bb3c3; color:#fff; line-height:20px; margin:auto; text-align:center;}
 .showColors:hover {background-color:#e0463a;}
 
 .productList h5, .categoryList h5 {height:2.5em; width:auto; margin-bottom:0.5em; overflow:hidden;}
 .productListItem .zlink	{color:#FC410E;}
 .pogType_attribs	{display:none;}
+
 
 .productListItem .colorful	{background:url(bmo9_btn_colors-67x11.png) no-repeat; width:67px; height:11px; float:left; margin-right:8px;}
 .productListItem .sizeable	{background:url(bmo9_btn_sizes-56x7.png) no-repeat center center; width:56px; height:11px; float:left; margin-right:8px;}
