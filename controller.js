@@ -1833,8 +1833,18 @@ app.u.makeImage({"name":"","w":150,"h":150,"b":"FFFFFF","class":"prodThumb","tag
 			if(a.w == null || a.w == 'undefined' || a.w == 0)
 				a.w = '';
 			
-			url = location.protocol === 'https:' ? 'https:' : 'http:';  //determine protocol
-			url += '\/\/static.zoovy.com\/img\/'+a.lib+'\/';
+// *** 201318 -> new url for media library.			
+//			url = location.protocol === 'https:' ? 'https:' : 'http:';  //determine protocol
+//			url += '\/\/static.zoovy.com\/img\/'+a.lib+'\/';
+//In an admin session, the config.js isn't loaded. The secure domain is set as a global var when a domain is selected or can be retrieved from adminDomainList
+			if(app.vars.thisSessionIsAdmin)	{
+				url = 'https:\/\/'+(app.vars.https_domain || app.ext.admin.a.getDataForDomain(app.vars.domain,'https'))+"\/"
+				url += "media\/img\/"+app.vars.username+"\/";
+				}
+			else	{
+				url = location.protocol === 'https:' ? zGlobals.appSettings.https_app_url : zGlobals.appSettings.http_app_url;
+				url += "media\/img\/"+app.vars.username+"\/";
+				}
 		
 			if((a.w == '') && (a.h == ''))
 				url += '-';
