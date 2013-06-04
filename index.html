@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"201314.20130602152500",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"201314.20130604124100",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"", //used in non-local mode.
 	"checkoutAuthMode" : "required",//can be passive, active or required
@@ -2342,12 +2342,7 @@ this will likely become more flexible in the future. ###
 
 	<!--<div class='clearfix'><br /></div>-->
 	<div class="socialLinks">
-		<div class="addthis_toolbox addthis_default_style alignRight">
-			<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-			<a class="addthis_button_tweet"></a>
-			<a class="addthis_button_pinterest_pinit"></a>
-			<a class="addthis_counter addthis_pill_style"></a>
-		</div>
+
 	</div>
 
 </div> <!-- END mainProdColumn -->
@@ -3210,7 +3205,7 @@ onclicks are recursive, so only add it to the parent element.
         <span class='ofItems mpMargin'>&nbsp ITEM(S) &nbsp </span>
 
 		<div class='floatLeft mpMargin'>
-            	<img src="images/SmallBlackRoundDownArrow.png" class='floatLeft'>
+<!--            	<img src="images/SmallBlackRoundDownArrow.png" class='floatLeft'> !!! this image does not exist -->
             	<span class='floatLeft' data-bind='var:prodlistmeta(page_product_count); format:text; pretext: <span class="fontLightTeal ofItems">YOUR RESULTS: </span>;'></span>
         </div>
         

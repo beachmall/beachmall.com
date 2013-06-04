@@ -2998,6 +2998,7 @@ else	{
 				obj = obj || {'action':''}
 				if($form && $form.length)	{
 					var cartObj = app.ext.store_product.u.buildCartItemAppendObj($form);
+					app.u.dump('cartObj: '); app.u.dump(cartObj);
 					if(cartObj)	{
 						if(cartObj)	{
 							app.calls.cartItemAppend.init(cartObj,{},'immutable');

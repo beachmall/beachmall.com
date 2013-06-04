@@ -155,8 +155,8 @@ var store_product = function() {
 //this'll change going forward.
 
 addToCart : function (pid,$form){
-//	app.u.dump("BEGIN store_product.validate.addToCart");
-//	app.u.dump(" -> pid: "+pid);
+	app.u.dump("BEGIN store_product.validate.addToCart");
+	app.u.dump(" -> pid: "+pid);
 	var valid = true; //what is returned.
 	if(pid && $form)	{
 		//copied locally for quick reference.
@@ -166,13 +166,13 @@ addToCart : function (pid,$form){
 	//	app.u.dump('BEGIN validate_pogs. Formid ='+formId);
 	
 		if($.isEmptyObject(sogJSON))	{
-//			app.u.dump('no sogs present (or empty object)'); //valid. product may not have sogs.
+			app.u.dump('no sogs present (or empty object)'); //valid. product may not have sogs.
 			}
 		else if($.isEmptyObject(formJSON))	{
-//			app.u.throwGMessage("In store_product.validate.addToCart, formJSON is empty.");
+			app.u.throwGMessage("In store_product.validate.addToCart, formJSON is empty.");
 			} //this shouldn't be empty. if it is, likely $form not valid or on DOM.
 		else	{
-//			app.u.dump(" -> everything is accounted for. Start validating.");	
+			app.u.dump(" -> everything is accounted for. Start validating.");	
 			$('.appMessage',$form).empty().remove(); //clear all existing errors/messages.
 		
 			var thisSTID = pid, //used to compose the STID for inventory lookup.
@@ -180,6 +180,7 @@ addToCart : function (pid,$form){
 			errors = '', pogid, pogType;
 			
 //			app.u.dump(" -> formJSON: "); app.u.dump(formJSON);
+//			app.u.dump(" -> sogJSON: "); app.u.dump(sogJSON);
 			
 //No work to do if there are no sogs. 
 			if(sogJSON)	{
@@ -189,15 +190,21 @@ addToCart : function (pid,$form){
 					pogType = sogJSON[i]['type']; //the type is used multiple times so a var is created to reduce number of lookups needed.
 		
 					if(sogJSON[i]['optional'] == 1)	{
+						app.u.dump(" -> "+sogJSON[i]['id']+" is optional.");
 						//if the pog is optional, validation isn't needed.			
 						}
 					else if (pogType == 'attribs' || pogType == 'hidden' || pogType == 'readonly' || pogType == 'cb'){
+						app.u.dump(" -> "+sogJSON[i]['id']+" is a type that requires no validation (readonly, hidden, etc).");
 						//these types don't require validation.
 						}
 		//Okay, validate what's left.
 					else	{
+						app.u.dump(" -> "+sogJSON[i]['id']+" Requires validation");
+						app.u.dump("formJSON[pogid]: "+formJSON[pogid]);
 		//If the option IS required (not set to optional) AND the option value is blank, AND the option type is not attribs (finder) record an error
-						if(formJSON[pogid]){}
+						if(formJSON[pogid]){
+							
+							}
 						else	{
 							valid = false;
 							errors += "<li>"+sogJSON[i]['prompt']+"<!--  id: "+pogid+" --><\/li>";
@@ -241,7 +248,8 @@ addToCart : function (pid,$form){
 		app.u.throwGMessage("in store_product.validate.addToCart, either pid ("+pid+") not set or $form was not passed.");
 		valid = false;
 		}
-//	app.u.dump('STID = '+thisSTID);
+	app.u.dump(' -> STID = '+thisSTID);
+	app.u.dump(" -> valid = "+valid);
 	return valid;
 
 	} //validate.addToCart
@@ -701,15 +709,21 @@ NOTES
 
 							}
 						else	{
+// ** 201318 returning false will prevent the addItemToCart from dispatching calls
+							obj = false;
 							//the validation itself will display the errors.
 							}
 						}
 					else	{
+// ** 201318 returning false will prevent the addItemToCart from dispatching calls
+						obj = false;
 						$form.anymessage({'message':'The form for store_product.u.handleAddToCart was either missing a sku ['+sku+'] or qty input ['+$qtyInput.length+'].','gMessage':true});
 						}
 		
 					}
 				else	{
+// ** 201318 returning false will prevent the addItemToCart from dispatching calls
+					obj = false;
 					$('#globalMessaging').anymessage({'message':'In store_product.u.buildCartItemAppendObj, $form not passed.','gMessage':true});
 					}
 				return obj;
