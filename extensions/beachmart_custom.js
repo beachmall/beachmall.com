@@ -156,7 +156,7 @@ app.ext.beachmart.u.getShipQuotes(app.data[tagObj.datapointer].zip);
 					$('.putLoadingHere',$container).removeClass('loadingBG');
 					$('.loadingText',$container).hide();
 					$('.shipMessage, .estimatedArrivalDate, .deliveryLocation, .deliveryMethod',$container).empty()
-					$('.timeInTransitMessaging',$container).append("Unable to determine your zip code for estimated arrival date. <a href='#' onClick='app.ext.beachmart.a.showZipDialog();'>click here</a> to enter zip.").show();
+					$('.timeInTransitMessaging',$container).append("Unable to determine your zip code for estimated arrival date. <a href='#' onClick='app.ext.beachmart.a.showZipDialog(); return false;'>click here</a> to enter zip.").show();
 					}
 				}, //checkForOrGetShipZip
 			
@@ -983,7 +983,7 @@ else if(zip)	{
 //	app.u.dump(" -> zip: "+zip);
 //if the city or the state is already available, don't waste a call to get additional info.
 //this block is also executed for zip update, so allow reset.
-	if(app.data.cartDetail.ship.city || app.data.cartDetail.ship.region)	{
+	if(app.data.cartDetail && app.data.cartDetail.ship && (app.data.cartDetail.ship.city || app.data.cartDetail.ship.region))	{
 		app.ext.beachmart.u.fetchLocationInfoByZip(zip);
 		}
 	var prodArray = new Array();
