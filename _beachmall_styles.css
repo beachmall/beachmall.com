@@ -945,6 +945,10 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 
 .rightColumn {height:auto; width:258px; margin:0 0 15px 20px;}
 
+.rightColumn .pr-snippet-wrapper {background:#f5f1de; border:1px solid #777777;}
+.rightColumn .pr-snippet-stars {border:1px solid #777777;}
+.rightColumn .pr-snippet-read-write {border:1px solid #777777;}
+
 .rightColumn .prodPageMfgForward {height:auto; width:100%; text-align:center; color:#3BB3C3; margin-top:20px}
 .rightColumn .prodPageMfgForward:hover {color:#e0463a;}
 
