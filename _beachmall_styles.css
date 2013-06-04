@@ -1430,12 +1430,12 @@ some shared styles, pulled from cat layout but that will impact, potentially, mo
 
 /* magictoolbox styles */
 
-/* CSS class for thumbnail link <A> */
+/* CSS class for thumbnail link <A>
 .MagicThumb {
-    cursor: url(zoomin.cur), pointer;
+    cursor: url(zoomin.cur), pointer; // !!! this img does not exist in this location.
     outline: none;
 }
-
+ */
 
 
 /* CSS class for the zoomed big image */

@@ -988,7 +988,12 @@ else if(zip)	{
 		}
 	var prodArray = new Array();
 	prodArray.push(SKU);
-	app.data.cartDetail.ship.postal = zip; //update local object so no request for full cart needs to be made for showTransitTimes to work right.
+	if(app.data.cartDetail.ship)	{
+		app.data.cartDetail.ship.postal = zip; //update local object so no request for full cart needs to be made for showTransitTimes to work right.
+		}
+	else	{
+		app.data.cartDetail.ship = {'postal' : zip};
+		}
 	app.calls.cartSet.init({"ship/postal":zip},{},'passive');
 	app.ext.beachmart.calls.time.init({},'passive');
 	app.ext.beachmart.calls.appShippingTransitEstimate.init({"@products":prodArray,"ship_postal":zip,"ship_country":"US"},{'callback':'showTransitTimes','extension':'beachmart'},'passive');
