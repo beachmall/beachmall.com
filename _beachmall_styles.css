@@ -943,6 +943,7 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 .fullWidth .socialLinks {margin-top:10px; clear:both;}
 .fullWidth span.notAvailableForPurchase {float:left; color:#e0463a;}
 
+.qafEmailPrint {height:89px; width:180px;}
 .rightColumn {height:auto; width:258px; margin:0 0 15px 20px;}
 
 .rightColumn .pr-snippet-wrapper {background:#f5f1de; border:1px solid #777777;}
