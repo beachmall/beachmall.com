@@ -981,13 +981,13 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 
 .youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content .testCarCont {height:500px; width:240px;}
 .youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content .testCar {height:490px; width:240px; margin-top:24px; overflow:hidden;}
-.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content .testPrev {height:30px; width:102px; position:relative; top:-24px; left:-6px;  background:#777;color:#f5f1de; text-align:center; line-height:30px; margin-left:74px;}
-.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content .testNext{height:30px; width:102px; position:relative; top:-540px; left:-6px;  background:#777;color:#f5f1de; text-align:center; line-height:30px; margin-left:74px;}
+.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content .testPrev {height:30px; width:102px; position:relative; top:-506px; left:-66px;  background:#777;color:#f5f1de; text-align:center; line-height:30px; margin-left:74px;}
+.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content .testNext{height:30px; width:102px; position:relative; top:-536px; left:54px;  background:#777;color:#f5f1de; text-align:center; line-height:30px; margin-left:74px;}
 
 .youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content .testCarCont2 {height:500px; width:240px;}
 .youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content .testCar2 {height:490px; width:240px; margin-top:24px; overflow:hidden;}
-.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content .testPrev2{height:30px; width:102px; position:relative; top:0px; left:-6px; background:#777; color:#f5f1de; text-align:center; line-height:30px; margin-left:74px;}
-.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content .testNext2{height:30px; width:102px; position:relative; top:-516px; left:-6px;  background:#777;color:#f5f1de; text-align:center; line-height:30px; margin-left:74px;}
+.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content .testPrev2{height:30px; width:102px; position:relative; top:-506px; left:-66px; background:#777; color:#f5f1de; text-align:center; line-height:30px; margin-left:74px;}
+.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content .testNext2{height:30px; width:102px; position:relative; top:-536px; left:54px;  background:#777;color:#f5f1de; text-align:center; line-height:30px; margin-left:74px;}
 
 
 

@@ -43,7 +43,7 @@ app.rq.push(['script',1,app.vars.baseURL+'resources/jquery.ui.jeditable.js']); /
 app.rq.push(['script',0,app.vars.baseURL+'resources/jquery.showloading-v1.0.jt.js']); //used for making text editable (customer address). non-essential. loaded late.
 app.rq.push(['script',0,app.vars.baseURL+'resources/jquery.ui.anyplugins.js']); //in zero pass because it contains essential functions (anymessage & anycontent)
 
-app.rq.push(['script',1,app.vars.baseURL+'resources/jquery.touchSwipe-1.3.3.min.js']); //used w/ carouFedSel.
+app.rq.push(['script',0,app.vars.baseURL+'resources/jquery.touchSwipe-1.3.3.min.js']); //used w/ carouFedSel.
 app.rq.push(['script',0,app.vars.baseURL+'resources/jquery.carouFredSel-6.2.0.min.js']); //used on homepage.
 //app.rq.push(['script',1,app.vars.baseURL+'resources/jquery.jcarousellite.js']); //used on product pages.
 
