@@ -271,7 +271,16 @@ var store_filter = function() {
 				$('html, body').animate({scrollTop : 0},200); //new page content loading. scroll to top.
 
 
-			}//filter
+			},//filter
+			
+			scrollToRevealTab : function(pid, href) {
+				var $context = $(app.u.jqSelector("#","productTemplate_"+pid));
+				var $prodSizing = $(".tabbedProductContent",$context);
+				$("a[href="+href+"]",$context).click();
+				$('html, body').animate({
+					scrollTop: $prodSizing.offset().top
+				}, 2000);
+			}
 			
 		}, //actions
 
