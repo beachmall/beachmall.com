@@ -320,46 +320,54 @@ var store_filter = function() {
 					var date = year + '' + month + '' + day;
 					//app.u.dump('*** '+date);
 					//app.u.dump(userProdShipMsg);
-										
-					if (zoovyPreOrder.indexOf('IS_PREORDER') > -1 && ([zoovyProdSalesRank > -1 || zoovyProdSalesRank != undefined] && zoovyProdSalesRank > date) ) {
-						var outputDate =  zoovyProdSalesRank.substring(5,6) + '/' + zoovyProdSalesRank.substring(7,8) + '/' + zoovyProdSalesRank.substring(0,4);
-						//app.u.dump('*** '+outputDate);
-						$tag.empty().append('Will ship on '+outputDate);
-					}
-					else if (zoovyProdSalesRank == undefined || zoovyProdSalesRank <= date) {
-						$tag.children('.shipTime').show();
-						var n = d.getDay();
-						var t = d.getUTCHours();
-						app.u.dump('Date= '+date);
-						app.u.dump('d= '+d);
-						if(date < 20131103) {
-							t = t - 4;
+					var pid = data.value.pid;
+					
+		//			if(app.ext.store_product.u.productIsPurchaseable(pid))	{
+						if (zoovyPreOrder.indexOf('IS_PREORDER') > -1 && ([zoovyProdSalesRank > -1 || zoovyProdSalesRank != undefined] && zoovyProdSalesRank > date) ) {
+							var outputDate =  zoovyProdSalesRank.substring(5,6) + '/' + zoovyProdSalesRank.substring(7,8) + '/' + zoovyProdSalesRank.substring(0,4);
+							//app.u.dump('*** '+outputDate);
+							$tag.empty().append('Will ship on '+outputDate);
 						}
-						else if (date > '20131102' && date < '20140309') {
-							t = t - 5;
-						}
-						else {
-							// posibly need further years calculated here
-						}
-						app.u.dump('Time= '+t);
-						app.u.dump('Day= '+n);
-						app.u.dump('ShipMsg= '+userProdShipMsg);
-						if(userProdShipMsg.indexOf('Ships Today by 12 Noon EST') > -1){
-							if ( t >= 12 && (n > 0 && n < 5)) {
-								//Time is after noon, day is Mon-Thurs
-								$tag.empty().append('Ships Next Business Day');
+						else if (zoovyProdSalesRank == undefined || zoovyProdSalesRank <= date) {
+							$tag.children('.shipTime').show();
+							var n = d.getDay();
+							var t = d.getUTCHours();
+							app.u.dump('Date= '+date);
+							app.u.dump('d= '+d);
+							if(date < 20131103) {
+								t = t - 4;
 							}
-							else if (((t >= 12 && n == 5) || (n > 5 && n < 1))) {
-								//Time is after noon, day is Fri (FUN FUN FUN FUN)
-								//OR it is the Weekend
-								$tag.empty().append('Ships Monday by 12 Noon EST');
+							else if (date > '20131102' && date < '20140309') {
+								t = t - 5;
 							}
 							else {
-								//It is before noon on a Weekday, shipping message is perfectly fine
+								// posibly need further years calculated here
+							}
+							app.u.dump('Time= '+t);
+							app.u.dump('Day= '+n);
+							app.u.dump('ShipMsg= '+userProdShipMsg);
+							if(userProdShipMsg.indexOf('Ships Today by 12 Noon EST') > -1){
+								if ( t >= 12 && (n > 0 && n < 5)) {
+									//Time is after noon, day is Mon-Thurs
+									$tag.empty().append('Ships Next Business Day');
+								}
+								else if (((t >= 12 && n == 5) || (n > 5 && n < 1))) {
+									//Time is after noon, day is Fri (FUN FUN FUN FUN)
+									//OR it is the Weekend
+									$tag.empty().append('Ships Monday by 12 Noon EST');
+								}
+								else {
+									//It is before noon on a Weekday, shipping message is perfectly fine
+								}
 							}
 						}
-					}
-					else {/*do nada*/}
+						else { 
+							//do nada*/
+						}
+			//		}
+			//		else {
+			//			$tag.hide();
+			//		}
 				},
 				
 				prodPriceDesc : function($tag, data) {
