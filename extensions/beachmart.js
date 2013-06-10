@@ -330,7 +330,9 @@ var store_filter = function() {
 						$tag.children('.shipTime').show();
 						var n = d.getDay();
 						var t = d.getUTCHours();
-						if(date < '20131103') {
+						app.u.dump('Date= '+date);
+						app.u.dump('d= '+d);
+						if(date < 20131103) {
 							t = t - 4;
 						}
 						else if (date > '20131102' && date < '20140309') {
@@ -339,13 +341,23 @@ var store_filter = function() {
 						else {
 							// posibly need further years calculated here
 						}
-						if (userProdShipMsg.indexOf('Ships Today by 12 Noon EST') > -1 && t >= 12 && (d > 0 && d < 7)) {
-							$tag.empty().append('Ships Next Business Day');
+						app.u.dump('Time= '+t);
+						app.u.dump('Day= '+n);
+						app.u.dump('ShipMsg= '+userProdShipMsg);
+						if(userProdShipMsg.indexOf('Ships Today by 12 Noon EST') > -1){
+							if ( t >= 12 && (n > 0 && n < 5)) {
+								//Time is after noon, day is Mon-Thurs
+								$tag.empty().append('Ships Next Business Day');
+							}
+							else if (((t >= 12 && n == 5) || (n > 5 && n < 1))) {
+								//Time is after noon, day is Fri (FUN FUN FUN FUN)
+								//OR it is the Weekend
+								$tag.empty().append('Ships Monday by 12 Noon EST');
+							}
+							else {
+								//It is before noon on a Weekday, shipping message is perfectly fine
+							}
 						}
-						else if (userProdShipMsg.indexOf('Ships Today by 12 Noon EST') > -1 && [(t >= 12 && d == 6) || (d > 6 && d < 1)]) {
-							$tag.empty().append('Ships Monday by 12 Noon EST');
-						}
-						else {/*do nada*/}
 					}
 					else {/*do nada*/}
 				},
