@@ -720,7 +720,9 @@ return filters;
 				//for whatever reason, caroufredsel needs to be executed after a moment.
 						setTimeout(function(){
 							$target.carouFredSel({
-								auto: false,
+								auto: {
+									pauseOnHover: "immediate"
+								},
 								prev: '.prodPageCarPrev',
 								next: '.prodPageCarNext',
 								height: 70,
