@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"201314.20130607134800",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"201314.20130611124800",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"", //used in non-local mode.
 	"checkoutAuthMode" : "required",//can be passive, active or required
@@ -2129,7 +2129,7 @@ END BUG7-->
 <!--for sibling color images (future)	<div class='clearfix prodSiblings'>
 		<ul class='listStyleNone noPadOrMargin fluidList clearfix' data-bind="var: product(user:grp_siblings); format:productList; extension:store_prodlist;loadsTemplate:productListTemplateThumb;hide_multipage:true;before:<b>Available Colors:</b> <span class='zhint'>(click image to select)</span> ; withInventory:1; withVariations:1;"></ul> <!-- id='prodlistSiblings' -->
 <!--	</div>-->
-	<div class='clearfix prodSiblings' data-bind='var:product(options); format:optionsCount; extension:store_filter;'></div>
+	<div class='clearfix prodSiblings pointer' data-bind='var:product(options); format:optionsCount; extension:store_filter;' onClick="quickView('product',{'templateID':'productTemplateQuickView','pid':$(this).closest('[data-pid]').attr('data-pid')});"></div>
 	<div class='seeColors displayNone' data-bind='useParentData: true; format: moreColors; extension: store_filter;'>
 		<div class='showColors pointer' onClick="quickView('product',{'templateID':'productTemplateQuickView','pid':$(this).closest('[data-pid]').attr('data-pid')});">MORE COLORS</div>
 	</div>

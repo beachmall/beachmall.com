@@ -476,7 +476,7 @@ var store_filter = function() {
 				
 				optionsCount : function($tag, data) {
 					app.u.dump('*** ');
-					$tag.text(data.value.length + ' variations available!');
+					$tag.text(data.value.length + ' VARIATIONS AVAILABLE!');
 				},
 
 				homePageHider : function($tag,data) {
