@@ -772,7 +772,8 @@ HOMEPAGE
 .floatingBar .checkoutButton {height:40px; width:100px; background-color:#f8c301; position:absolute; right:94px; top:4px; border:none; color:#fff; font-family:Oswald; font-size:14px; font-weight:bold; padding-bottom:3px;}
 .floatingBar .floatingBarClose {height:20px; width:20px; background-color:#a8342b; position:absolute; right:10px; top:10px; border:none; background-position:-23px -96px;}
 
-.homeTemplate .overhang {height:268px; width:255px; color:#fff; font-family:Oswald; font-weight:bold; background-color:#3bb3c3; position:absolute; top:209px; left:198px; z-index:4;}
+.homeTemplate {position:relative;}
+.homeTemplate .overhang {height:268px; width:255px; color:#fff; font-family:Oswald; font-weight:bold; background-color:#3bb3c3; position:absolute; top:-5px; left:0; z-index:4; display:none;}
 .homeTemplate .overhangClose {height:20px; width: 20px; background-position:-1px -96px; backgroung-color:#3bb3c3; border:none; position:absolute; top:5px; right:5px; z-index:5;}
 .homeTemplate .overhang span {height:47px; width:255px; color:#ffe680; font-size:30px; text-align:center; position:absolute; top:25px; left:0px; z-index:5;}
 .homeTemplate p {height:20px; width:214px; font-family:"Open Sans"; font-size:14px; margin:0px; position:absolute; top:75px; left:21px; z-index:5;}
@@ -804,7 +805,7 @@ HOMEPAGE
 .homepageCategories .additionalHompageCats span:nth-child(2) {height:auto; width:120px; font-size:12px; margin:17px 0 0 15px; display:block; color:#ccc;}
 .homepageCategories .additionalHompageCats span:nth-child(3) {height:auto; width:120px; font-size:18px; margin:1px 0 0 15px; display:block; float:left; color:#3bb3c3;}
 /*TEMPORARY FOR HOMEPAGE CATEGORY IMAGE PREVIEW - REMOVE BEFORE APP IS LIVE*/
-.tempCatImages {height:105px; width:960px; position:absolute; top:698px; left:193px;}
+.tempCatImages {height:105px; width:960px; position:absolute; top:484px; left:30px; display:none;}
 .tempCatImages img {margin:0 16px}
 /*END CAT IMAGE PREVIEW*/
 .shopByProdContainer {height:155px; width:300px; position:relative; top:-160px; left:650px;}
