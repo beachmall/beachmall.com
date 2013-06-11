@@ -887,7 +887,7 @@ PRODUCT PAGE
 *************************************************************************/
 
 /* PRODUCT CAROUSEL */
-.productPageCarouselContainer {height:70px; width:310px; background-color:; position:relative; margin-bottom:20px; overflow:hidden;}
+.productPageCarouselContainer {height:70px; width:310px; background-color:; position:relative; overflow:hidden;}
 .prodPageCarousel {position:absolute; left:5px; top:0px; z-index:1; list-style:none; overflow:hidden;}
 .prodPageCarPrev {height:70px; width:20px; background-color:; background-position:-227px -106px; position:absolute; top:0px; left:0px; z-index:2;}
 a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
@@ -1156,7 +1156,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6db3f2', end
 /* carousel styles for product thumbnails */
 
 .imageContainer .ui-tabs .ui-tabs-panel	{padding:6px;}
-.imageContainer .zhint	{text-align:center; padding:6px 0; font-family:"Open Sans"; font-weight:normal;}
+.imageContainer .zhint	{text-align:center; padding:3px 0 0 0; font-family:"Open Sans"; font-weight:normal;}
 .imageContainer	{width:402px; padding:0px 20px 0px 0px; float:left;}
 #prodImageVideoTabs	{margin-right:24px;}
 
