@@ -305,7 +305,6 @@ var store_filter = function() {
 				
 				showShipLatency : function ($tag, data) {
 					//app.u.dump('***TEST '+data.value);
-					//var us1ts = (data.bindData.isElastic) ? data.value.tags : data.value['%attribs']['us1:ts'];
 					
 					var userProdShipMsg = data.value['%attribs']['user:prod_shipping_msg'];
 					var us1ts = data.value['%attribs']['us1:ts'];
@@ -318,10 +317,10 @@ var store_filter = function() {
 					if (month < 10){month = '0'+month};
 					if (day < 10){day = '0'+day};
 					var date = year + '' + month + '' + day;
-					//app.u.dump('*** '+date);
 					//app.u.dump(userProdShipMsg);
 					var pid = data.value.pid;
 					
+		//	Product lists need a solution so this info will display there!!
 		//			if(app.ext.store_product.u.productIsPurchaseable(pid))	{
 						if (zoovyPreOrder.indexOf('IS_PREORDER') > -1 && ([zoovyProdSalesRank > -1 || zoovyProdSalesRank != undefined] && zoovyProdSalesRank > date) ) {
 							var outputDate =  zoovyProdSalesRank.substring(5,6) + '/' + zoovyProdSalesRank.substring(7,8) + '/' + zoovyProdSalesRank.substring(0,4);
@@ -332,8 +331,6 @@ var store_filter = function() {
 							$tag.children('.shipTime').show();
 							var n = d.getDay();
 							var t = d.getUTCHours();
-							app.u.dump('Date= '+date);
-							app.u.dump('d= '+d);
 							if(date < 20131103) {
 								t = t - 4;
 							}
@@ -343,9 +340,6 @@ var store_filter = function() {
 							else {
 								// posibly need further years calculated here
 							}
-							app.u.dump('Time= '+t);
-							app.u.dump('Day= '+n);
-							app.u.dump('ShipMsg= '+userProdShipMsg);
 							if(userProdShipMsg.indexOf('Ships Today by 12 Noon EST') > -1){
 								if ( t >= 12 && (n > 0 && n < 5)) {
 									//Time is after noon, day is Mon-Thurs
