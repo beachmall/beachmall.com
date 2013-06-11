@@ -751,7 +751,9 @@ return filters;
 							setTimeout(function(){
 								$target.carouFredSel({
 									circular: true,
-									auto: false,
+									auto: {
+										pauseOnHover: "immediate"
+									},
 									direction: 'down',
 									prev: '.testPrev',
 									next: '.testNext',
@@ -785,7 +787,9 @@ return filters;
 							setTimeout(function(){
 								$target.carouFredSel({
 									circular: true,
-									auto: false,
+									auto: {
+										pauseOnHover: "immediate"
+									},
 									direction: 'down',
 									prev: '.testPrev2',
 									next: '.testNext2',
