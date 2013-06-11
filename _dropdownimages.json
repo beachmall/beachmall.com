@@ -1,0 +1,10 @@
+{
+	"dropdownImages" : {
+		"main" : {
+			"src"		: "images_webfront/beach_chaise.jpg",  
+			"alt"		: "New Arrivals",
+			"title"		: "New Arrivals",
+			"catLink"	: ".beach-chairs"
+		}
+	}
+}

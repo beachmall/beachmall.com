@@ -30,7 +30,8 @@ app.rq.push(['extension',0,'powerReviews_reviews','extensions/partner_powerrevie
 app.rq.push(['extension',0,'magicToolBox_mzp','extensions/partner_magictoolbox_mzp.js','startExtension']); // (not working yet - ticket in to MTB)
 
 // ** moved here from extension to make sure it gets loaded early enough.
-app.rq.push(['script',0,'http://cdn.powerreviews.com/repos/11531/pr/pwr/engine/js/full.js']);
+//app.rq.push(['script',0,'http://cdn.powerreviews.com/repos/11531/pr/pwr/engine/js/full.js']); old user id "11531"
+app.rq.push(['script',0,'https://cdn.powerreviews.com/repos/11024/pr/pwr/engine/js/full.js']);
 
 app.rq.push(['script',0,(document.location.protocol == 'file:') ? app.vars.testURL+'jquery/config.js' : app.vars.baseURL+'jquery/config.js']); //The config.js is dynamically generated.
 app.rq.push(['script',0,app.vars.baseURL+'model.js']); //'validator':function(){return (typeof zoovyModel == 'function') ? true : false;}}

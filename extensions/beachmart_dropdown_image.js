@@ -20,7 +20,7 @@
 
 //    !!! ->   TODO: replace 'username' in the line below with the merchants username.     <- !!!
 
-var beachmart_cat_image_getter = function() {
+var beachmart_dropdown_image = function() {
 	var theseTemplates = new Array('');
 	var r = {
 
@@ -34,14 +34,14 @@ var beachmart_cat_image_getter = function() {
 		init : {
 			onSuccess : function()	{
 				var r = false; //return false if extension won't load for some reason (account config, dependencies, etc).
-				$.getJSON("_banners.json?_v="+(new Date()).getTime(), function(json) {
-					app.ext.beachmart_banner.vars.homepageBanners = json.homepageBanners
-				}).fail(function(){app.u.throwMessage("BANNERS FAILED TO LOAD - there is a bug in _banners.json")});
+				$.getJSON("_dropdown-image.json?_v="+(new Date()).getTime(), function(json) {
+					app.ext.beachmart_dropdown_image.vars.dropdownImages = json.dropdownImages
+				}).fail(function(){app.u.throwMessage("DROPDOWN IMAGES FAILED TO LOAD - there is a bug in _dropdown-image.json")});
 				//if there is any functionality required for this extension to load, put it here. such as a check for async google, the FB object, etc. return false if dependencies are not present. don't check for other extensions.
 				r = true;
 
 				app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(P){
-					app.ext.beachmart_banner.u.showHomepageBanners();
+					app.ext.beachmart_dropdown_image.u.showDropdownImages();
 				}])
 				return r;
 				},
@@ -77,20 +77,36 @@ var beachmart_cat_image_getter = function() {
 //any functions that are recycled should be here.
 		u : {
 		
-			showHomepageBanners : function() {
-				var $container = $('#homepageTemplate_ .bannerContainer');
-				if(!$container.hasClass('bannersRendered')) {
-					if(app.ext.beachmart_banner.vars.homepageBanners) {
-						$container.addClass('bannersRendered');
-						$('.main',$container).removeClass('loadingBG').append(app.ext.beachmart_banner.u.makeBanner(app.ext.beachmart_banner.vars.homepageBanners.main,620,300,"ffffff"));
-					}
-					else {
-						setTimeout(this.showHomepageBanners,250);
-					}
-				}
+			showDropdownImages : function() {
+				$(".stockImageContainer[data-navcat]").each(function(){
+					$(this).attr('data-navcat')
+					$(this).removeClass('loadingBG').append(app.ext.beachmart_dropdown_image.u.makeDropdownImage(app.ext.beachmart_banner.vars.dropdownImages.main,210,210,"ffffff"));
+				})
+		//		var $container = $('#mastHead .stockImageContainer');
+		//		if(!$container.hasClass('dropdownsRendered')) {
+		//			if(app.ext.beachmart_banner.vars.homepageBanners) {
+		//				$container.addClass('dropdownsRendered');
+		//				$('.main',$container).removeClass('loadingBG').append(app.ext.beachmart_banner.u.makeBanner(app.ext.beachmart_banner.vars.homepageBanners.main,620,300,"ffffff"));
+		//			}
+		//			else {
+		//				setTimeout(this.showDropdownImages,250);
+		//			}
+		//		}
 			},
 			
-			makeBanner : function(bannerJSON, w, h, b) {
+//$(this).append(app.u.makeImage())
+			
+			/*
+			$(".stockImageContainer[data-navcat]").each(function(){
+				$(this).attr('data-navcat')
+				$(this).append(app.u.makeImage())
+			})
+			*/
+			
+			
+			
+			
+			makeDropdownImage : function(JSON, w, h, b) {
 				var $img = $(app.u.makeImage({
 					tag : true,
 					w   	: w,
@@ -100,19 +116,20 @@ var beachmart_cat_image_getter = function() {
 					alt		: bannerJSON.alt,
 					title	: bannerJSON.title
 				}));
-				if(bannerJSON.prodLink) {
-					$img.addClass('pointer').data('pid', bannerJSON.prodLink).click(function() {
-						showContent('product',{'pid':$(this).data('pid')});
-					});
-				}
-				else if(bannerJSON.catLink) {
-					$img.addClass('pointer').data('navcat', bannerJSON.catLink).click(function() {
-						showContent('category',{'navcat':$(this).data('navcat')});
-					});
-				}
-				else {
-					//just a banner!
-				}
+	//			if(bannerJSON.prodLink) {
+	//				$img.addClass('pointer').data('pid', bannerJSON.prodLink).click(function() {
+	//
+	//			showContent('product',{'pid':$(this).data('pid')});
+	//				});
+	//			}
+	//			else if(bannerJSON.catLink) {
+	//				$img.addClass('pointer').data('navcat', bannerJSON.catLink).click(function() {
+	//					showContent('category',{'navcat':$(this).data('navcat')});
+	//				});
+	//			}
+	//			else {
+	//				//just a banner!
+	//			}
 				return $img;
 			}
 		
