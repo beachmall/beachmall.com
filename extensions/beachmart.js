@@ -475,8 +475,11 @@ var store_filter = function() {
 				},
 				
 				optionsCount : function($tag, data) {
-					app.u.dump('*** ');
-					$tag.text(data.value.length + ' VARIATIONS AVAILABLE!');
+				//app.u.dump(data.value.length);
+					if(data.value.length) {
+						$tag.text(data.value.length + ' VARIATIONS AVAILABLE!');
+						$tag.show();
+					}
 				},
 
 				homePageHider : function($tag,data) {

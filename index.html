@@ -207,7 +207,8 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 									<ul class='hoverProductContainer hoverout listStyleNone'>
 										<!--<li class="hoverproduct-PDADDC1 noArrow"></li>-->
 										<div class='stockImageContainer'>
-											<img src='blank.gif' class='catThumb' data-bind='var: category(%meta.CAT_THUMB); format:imageURL;'  width='162' height='105' />
+											<img src='images/adirondack_chair_210x210.jpg'>
+											<!--<img src='https://secure.beachmall.com/media/img/beachmart//images_webfront/beach_chaise.jpg' class='catThumb' width='210' height='210' />-->
 										</div>
 									<!--<button class='catSearchHomeDropdown' onClick='app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent()); app.ext.beachmart_catsearch.a.catSearch("IS_BESTSELLER", "beach chair adirondack furniture");'>Best Selling Items</button>-->
 									<!--<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'user:app_category':'.beach-chair.adirondack-furniture'}}]}}});">Best Selling Items</button>-->
@@ -2129,7 +2130,7 @@ END BUG7-->
 <!--for sibling color images (future)	<div class='clearfix prodSiblings'>
 		<ul class='listStyleNone noPadOrMargin fluidList clearfix' data-bind="var: product(user:grp_siblings); format:productList; extension:store_prodlist;loadsTemplate:productListTemplateThumb;hide_multipage:true;before:<b>Available Colors:</b> <span class='zhint'>(click image to select)</span> ; withInventory:1; withVariations:1;"></ul> <!-- id='prodlistSiblings' -->
 <!--	</div>-->
-	<div class='clearfix prodSiblings pointer' data-bind='var:product(options); format:optionsCount; extension:store_filter;' onClick="quickView('product',{'templateID':'productTemplateQuickView','pid':$(this).closest('[data-pid]').attr('data-pid')});"></div>
+	<div class='clearfix prodSiblings pointer displayNone' data-bind='var:product(options); format:optionsCount; extension:store_filter;' onClick="quickView('product',{'templateID':'productTemplateQuickView','pid':$(this).closest('[data-pid]').attr('data-pid')});"></div>
 	<div class='seeColors displayNone' data-bind='useParentData: true; format: moreColors; extension: store_filter;'>
 		<div class='showColors pointer' onClick="quickView('product',{'templateID':'productTemplateQuickView','pid':$(this).closest('[data-pid]').attr('data-pid')});">MORE COLORS</div>
 	</div>
