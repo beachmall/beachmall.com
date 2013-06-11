@@ -435,7 +435,7 @@ label.break	{display:block; margin:0 0 4px 6px;}
 .prodViewerContainer .imageContainer {height:auto; width:260px;}
 .prodSummaryContainer .priceContainer .basePrice {height:auto; width:100%;}
 .prodSummaryContainer .priceContainer .savings {height:auto; width:100%; padding-left:0px;}
-.prodSummaryContainer .latency {height:auto; width:100%; margin-bottom:10px;}
+.prodSummaryContainer .latency {height:auto; width:100%; margin-bottom:30px;}
 
 
 .prodModifierContainer {height:23px; width:191px; background-position:-280px -154px; color:#000; text-align:center; font-family:"Open Sans"; font-weight:bold; font-size:14px; position:absolute; top:-6px; left:5px; z-index:3; line-height:19px; overflow:hidden;}
