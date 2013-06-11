@@ -621,11 +621,13 @@ label.break	{display:block; margin:0 0 4px 6px;}
 
 .prodViewerAddToCartForm {height:30px; width:100%; margin-bottom:10px;}
 .prodViewerAddToCartButton.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-only {
-	height:30px;
-	width:130px;
-	margin:6px 0px 0px 43px;
-	color#fff;
+	height:auto;
+	width:120px;
+	margin:6px 0px 0px 48px;
+	padding: 5px 0;
+	color:#fff;
 	font-family:Oswald;
+	font-weight: normal;
 	font-size:14px;
 	background: #3bb3c3;
 	border:none;
