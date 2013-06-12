@@ -34,7 +34,7 @@ var beachmart_dropdown_image = function() {
 		init : {
 			onSuccess : function()	{
 				var r = false; //return false if extension won't load for some reason (account config, dependencies, etc).
-				app.u.dump("fetching JSON");
+//				app.u.dump("fetching JSON");
 				$.getJSON("_dropdownimages.json?_v="+(new Date()).getTime(), function(json) {
 					app.ext.beachmart_dropdown_image.vars.dropdownImages = json.dropdownImages
 					app.ext.beachmart_dropdown_image.u.showDropdownImages();
@@ -77,16 +77,16 @@ var beachmart_dropdown_image = function() {
 //any functions that are recycled should be here.
 		u : {
 			showDropdownImages : function() {
-				app.u.dump('showing Dropdown Images');
+//				app.u.dump('showing Dropdown Images');
 				$(".stockImageContainer[data-navcat]").each(function(){
 					var navcat = $(this).attr('data-navcat');
-					//app.u.dump(navcat);
+//					app.u.dump(navcat);
 					$(this).removeClass('loadingBG').append(app.ext.beachmart_dropdown_image.u.makeDropdownImage(app.ext.beachmart_dropdown_image.vars.dropdownImages[navcat],210,210,"ffffff"));
 				})
 			},
 			
 			makeDropdownImage : function(JSON, w, h, b) {
-				app.u.dump(JSON);
+//				app.u.dump(JSON);
 				var $img = $(app.u.makeImage({
 					tag : true,
 					w   	: w,

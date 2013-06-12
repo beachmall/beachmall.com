@@ -2270,7 +2270,7 @@ this will likely become more flexible in the future. ###
 				<li class='displayNone' data-bind='var: product(user:prod_sizing_txt); defaultVar: product(user:prod_sizing_img); format:showIfSet;'><a href="#prodSizing">Sizing</a></li>
 				<li class='displayNone' data-bind='var: product(zoovy:asm_bundle_products); format:showIfSet;'><a href="#prodBundle">Savings Bundle</a></li>
 				<li class='displayNone' data-bind='var: product(user:prod_colors); format:showIfSet;'><a href="#prodColors">Colors</a></li>
-				<li class='displayNone'><a href="#prodReviews">Reviews</a></li>
+				<li><a href="#prodReviews">Reviews</a></li>
 			</ul>
 					
 			<!-- tab content -->
@@ -2296,6 +2296,10 @@ this will likely become more flexible in the future. ###
 			
 			<div data-anytab-content="prodColors" class='tabbedProductList'>
 				<ul class='productList listStyleNone noPadOrMargin fluidList clearfix bundleProdlist' data-bind="var: product(user:prod_colors); format:productList; extension:store_prodlist;loadsTemplate:productListTemplateBundle;hide_summary:true;"></ul>
+			</div>
+			
+			<div data-anytab-content="prodReviews" class='tabbedProductList'>
+				<div class='productList listStyleNone noPadOrMargin fluidList clearfix bundleProdlist' data-bind='var: product(pid); format:reviewEngine; extension:powerReviews_reviews;'></div>
 			</div>
 			
 		</div><!-- /tabbedProductContent -->
