@@ -125,7 +125,8 @@ var powerReviews_reviews = function() {
 				if(document.location.protocol != 'https:')	{
 					POWERREVIEWS.display.snippet({ write : function(content) { $tag.append(content); } }, {
 						pr_page_id : data.value,
-						pr_write_review : "javascript:app.ext.powerReviews_reviews.a.writeReview('"+data.value+"');"
+						pr_write_review : "javascript:app.ext.powerReviews_reviews.a.writeReview('"+data.value+"');",
+/*BEACHMALL*/			pr_read_review : "javascript:app.ext.store_filter.a.scrollToRevealTab('"+data.value+"' ,'#prodReviews');"
 						})
 					}
 				}, //reviewSnippet
@@ -170,7 +171,12 @@ var powerReviews_reviews = function() {
 				else	{
 					app.u.dump("WARNING! - no pid was specified for powerReviews_reviews.a.writeReview");
 					}
-				} //writeReview
+				}, //writeReview
+				
+			scrollToReview : function () {
+				app.u.dump('THIS FUNCTION DID SOMETHING!');
+			}
+				
 			}, //action
 
 ////////////////////////////////////   UTIL    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
