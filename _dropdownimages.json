@@ -1,9 +1,285 @@
 {
 	"dropdownImages": {
-		".beach_chaise": {
-			"src": "images_webfront/beach_chaise.jpg",
+		".adirondack-furniture": {
+			"src": "images_webfront/adirondack_furniture.jpg",
 			"alt": "Adirondak Chairs",
 			"title": "Adirondak Chairs"
+		},
+		".backpack-chair":{
+			"src": "images_webfront/",
+			"alt": "Backpack Chairs",
+			"title": "Backpack Chairs"
+		},
+		".beach-chairs":{
+			"src": "images_webfront/",
+			"alt": "Cup Holder Chairs",
+			"title": "Cup Holder Chairs"
+		},
+		".beach-chaise":{
+			"src": "images_webfront/beach_chaise.jpg",
+			"alt": "Beach Chaises",
+			"title": "Beach Chaises"
+		},
+		".beach-recliner":{
+			"src": "images_webfront/",
+			"alt": "Beach Lounges",
+			"title": "Beach Lounges"
+		},
+		".pool-floats":{
+			"src": "images_webfront/",
+			"alt": "Pool Lounges",
+			"title": "Pool Lounges"
+		},
+		".canopy-beach-chair":{
+			"src": "images_webfront/",
+			"alt": "Canopy Beach Chairs",
+			"title": "Canopy Beach Chairs"
+		},
+		".folding-beach-chairs":{
+			"src": "images_webfront/",
+			"alt": "Padded Beach Chairs",
+			"title": "Padded Beach Chairs"
+		},
+		".heavy-beach-chairs":{
+			"src": "images_webfront/",
+			"alt": "High-back Beach Chairs",
+			"title": "High-back Beach Chairs"
+		},
+		".heavy-duty-beach-chairs":{
+			"src": "images_webfront/",
+			"alt": "Large Beach Chairs",
+			"title": "Large Beach Chairs"
+		},
+		".high-beach-chair":{
+			"src": "images_webfront/",
+			"alt": "High Seat Beach Chairs",
+			"title": "High Seat Beach Chairs"
+		},
+		".sand-chair":{
+			"src": "images_webfront/",
+			"alt": "Low Seat Beach Chairs",
+			"title": "Low Seat Beach Chairs"
+		},
+		".sand-chairs":{
+			"src": "images_webfront/",
+			"alt": "Lay Flat Beach Chairs",
+			"title": "Lay Flat Beach Chairs"
+		},
+		".wooden-beach-chairs":{
+			"src": "images_webfront/",
+			"alt": "Wooden Beach Chairs",
+			"title": "Wooden Beach Chairs"
+		},
+		
+		
+		
+		
+		".beach-bags-totes":{
+			"src": "images_webfront/",
+			"alt": "Beach Bags & Totes",
+			"title": "Beach Bags & Totes"
+		},
+		".beach-cart":{
+			"src": "images_webfront/",
+			"alt": "Beach Carts",
+			"title": "Beach Carts"
+		},
+		".picnic-backpack":{
+			"src": "images_webfront/",
+			"alt": "Picnic Backpacks",
+			"title": "Picnic Backpacks"
+		},
+		".picnic-baskets":{
+			"src": "images_webfront/",
+			"alt": "Picnic Baskets",
+			"title": "Picnic Baskets"
+		},
+		".picnic-cooler":{
+			"src": "images_webfront/",
+			"alt": "Coolers",
+			"title": "Coolers"
+		},
+		
+		
+		
+		
+		
+		".bodyboards":{
+			"src": "images_webfront/",
+			"alt": "Body Boards",
+			"title": "Body Boards"
+		},
+		".pool-floats":{
+			"src": "images_webfront/",
+			"alt": "Pool Floats",
+			"title": "Pool Floats"
+		},
+		".skimboards":{
+			"src": "images_webfront/",
+			"alt": "Skimboards",
+			"title": "Skimboards"
+		},
+		
+		
+		
+		
+		
+		".baby-hats":{
+			"src": "images_webfront/",
+			"alt": "Baby Hats",
+			"title": "Baby Hats"
+		},
+		".kids-hats":{
+			"src": "images_webfront/",
+			"alt": "Kid's Hats",
+			"title": "Kid's Hats"
+		},
+		".babies-swimsuit":{
+			"src": "images_webfront/",
+			"alt": "Babies Swimwear",
+			"title": "Babies Swimwear"
+		},
+		".boys-swimwear":{
+			"src": "images_webfront/",
+			"alt": "Boy's Swimwear",
+			"title": "Boy's Swimwear"
+		},
+		".girls-swimwear":{
+			"src": "images_webfront/",
+			"alt": "Girl's Swimwear",
+			"title": "Girl's Swimwear"
+		},
+		".kids-swimsuit":{
+			"src": "images_webfront/",
+			"alt": "Kid's Swimwear",
+			"title": "Kid's Swimwear"
+		},
+		".boys-boardshorts":{
+			"src": "images_webfront/",
+			"alt": "Boy's Board Shorts",
+			"title": "Boy's Board Shorts"
+		},
+		".girls-board-shorts":{
+			"src": "images_webfront/",
+			"alt": "Girl's Board Shorts",
+			"title": "Girl's Board Shorts"
+		},
+		".board-shorts.kids":{
+			"src": "images_webfront/",
+			"alt": "Kids's Board Shorts",
+			"title": "Kids's Board Shorts"
+		},
+		".rashguard.rashguards":{
+			"src": "images_webfront/",
+			"alt": "Boy's Rash Guards",
+			"title": "Boy's Rash Guards"
+		},
+		".girls-rash-guard":{
+			"src": "images_webfront/",
+			"alt": "Girl's Rash Guards",
+			"title": "Girl's Rash Guards"
+		},
+		".kids-rash-guard":{
+			"src": "images_webfront/",
+			"alt": "Kid's / Baby Rash Guards",
+			"title": "Kid's / Baby Rash Guards"
+		},
+		".beach-dresses":{
+			"src": "images_webfront/",
+			"alt": "Casual",
+			"title": "Casual"
+		},
+		".body-slimming":{
+			"src": "images_webfront/",
+			"alt": "Body Slimming",
+			"title": "Body Slimming"
+		},
+		".evening":{
+			"src": "images_webfront/",
+			"alt": "Evening",
+			"title": "Evening"
+		},
+		".bathing-suits":{
+			"src": "images_webfront/",
+			"alt": "Monokinis",
+			"title": "Monokinis"
+		},
+		".bikini-two-piece":{
+			"src": "images_webfront/",
+			"alt": "Two Piece Bikinis",
+			"title": "Two Piece Bikinis"
+		},
+		".swimwear-women.cover-ups":{
+			"src": "images_webfront/",
+			"alt": "Cover Ups",
+			"title": "Cover Ups"
+		},
+		".monokinis-tankinis":{
+			"src": "images_webfront/",
+			"alt": "Tankinis",
+			"title": "Tankinis"
+		},
+		".one-piece-swimsuits":{
+			"src": "images_webfront/",
+			"alt": "One Piece",
+			"title": "One Piece"
+		},
+		".plus-size-swimsuits":{
+			"src": "images_webfront/",
+			"alt": "Plus Size",
+			"title": "Plus Size"
+		},
+		
+		
+		
+		
+		
+		
+		".beach-umbrella":{
+			"src": "images_webfront/",
+			"alt": "Beach Umbrellas",
+			"title": "Beach Umbrellas"
+		},
+		".6-foot-patio-umbrellas":{
+			"src": "images_webfront/",
+			"alt": "6 Foot Umbrellas",
+			"title": "6 Foot Umbrellas"
+		},
+		".7-foot-patio-umbrellas":{
+			"src": "images_webfront/",
+			"alt": "7 Foot Umbrellas",
+			"title": "7 Foot Umbrellas"
+		},
+		".offset-umbrellas":{
+			"src": "images_webfront/",
+			"alt": "9 Foot Umbrellas",
+			"title": "9 Foot Umbrellas"
+		},
+		".market-umbrellas":{
+			"src": "images_webfront/",
+			"alt": "11 Foot Umbrellas",
+			"title": "11 Foot Umbrellas"
+		},
+		".umbrella-stand-stands-base":{
+			"src": "images_webfront/",
+			"alt": "Umbrella Accessories",
+			"title": "Umbrella Accessories"
+		},
+		
+		
+		
+		
+		
+		
+		".beach-cabana":{
+			"src": "images_webfront/",
+			"alt": "Beach Cabanas",
+			"title": "Beach Cabanas"
+		},
+		".beach-tent-shelters":{
+			"src": "images_webfront/",
+			"alt": "Beach Tents",
+			"title": "Beach Tents"
 		}
 	}
 }
