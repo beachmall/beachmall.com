@@ -80,31 +80,10 @@ var beachmart_dropdown_image = function() {
 				app.u.dump('showing Dropdown Images');
 				$(".stockImageContainer[data-navcat]").each(function(){
 					var navcat = $(this).attr('data-navcat');
+					//app.u.dump(navcat);
 					$(this).removeClass('loadingBG').append(app.ext.beachmart_dropdown_image.u.makeDropdownImage(app.ext.beachmart_dropdown_image.vars.dropdownImages[navcat],210,210,"ffffff"));
 				})
-		//		var $container = $('#mastHead .stockImageContainer');
-		//		if(!$container.hasClass('dropdownsRendered')) {
-		//			if(app.ext.beachmart_banner.vars.homepageBanners) {
-		//				$container.addClass('dropdownsRendered');
-		//				$('.main',$container).removeClass('loadingBG').append(app.ext.beachmart_banner.u.makeBanner(app.ext.beachmart_banner.vars.homepageBanners.main,620,300,"ffffff"));
-		//			}
-		//			else {
-		//				setTimeout(this.showDropdownImages,250);
-		//			}
-		//		}
 			},
-			
-//$(this).append(app.u.makeImage())
-			
-			/*
-			$(".stockImageContainer[data-navcat]").each(function(){
-				$(this).attr('data-navcat')
-				$(this).append(app.u.makeImage())
-			})
-			*/
-			
-			
-			
 			
 			makeDropdownImage : function(JSON, w, h, b) {
 				app.u.dump(JSON);
@@ -117,6 +96,7 @@ var beachmart_dropdown_image = function() {
 					alt		: JSON.alt,
 					title	: JSON.title
 				}));
+	//			can be used to add links later if desired
 	//			if(bannerJSON.prodLink) {
 	//				$img.addClass('pointer').data('pid', bannerJSON.prodLink).click(function() {
 	//
