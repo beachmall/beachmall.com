@@ -619,12 +619,12 @@ label.break	{display:block; margin:0 0 4px 6px;}
 
 .products.product .productListSmall .prodTextContainerSmall .prodPriceSmall, .productList h6, .categoryList h6 {heigth:25px; width:120px; text-align:center; margin:0px;}
 
-.prodViewerAddToCartForm {height:30px; width:100%; margin-bottom:10px;}
+.prodViewerAddToCartForm {height:30px; width:100%; margin-bottom:5px;}
 .prodViewerAddToCartButton.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-only {
 	height:auto;
-	width:120px;
+	width:auto;
 	margin:6px 0px 0px 48px;
-	padding: 5px 0;
+	padding: 7px 0;
 	color:#fff;
 	font-family:Oswald;
 	font-weight: normal;
@@ -632,6 +632,7 @@ label.break	{display:block; margin:0 0 4px 6px;}
 	background: #3bb3c3;
 	border:none;
 	border-radius: 0px 0px 0px 0px;
+	display: block;
 }
 
 .prodViewerAddToCartButton.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-only span {line-height:0px;}
