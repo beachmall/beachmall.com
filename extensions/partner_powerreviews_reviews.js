@@ -66,8 +66,8 @@ var powerReviews_reviews = function() {
 
 		calls : {}, //calls
 		vars : {
-			merchantID : 11531, //required 
-			groupID : 8142 //required 
+			merchantID : 11024, //required 
+			groupID : 8347 //required 
 			},
 
 
