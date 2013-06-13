@@ -112,7 +112,7 @@ the padding is to compensate for the spacing between the main nav.
 .topNav .liveHelp a {text-decoration:none; font-family:Oswald; font-weight:bold; font-size:18px;color:#000;}
 .topNav .cartIcon {height:30px; width:57px; background-position:4px -40px; margin:0px 40px 0px 0px; padding: 15px 0px 0px 0px;}
 .topNav .cartIcon a {color:#fff;}
-.topNav .cartIcon .cartItemCount {height:17px; width:21px; text-align:center; display:inline-block;}
+.topNav .cartIcon .cartItemCount {height:17px; width:21px; text-align:center; display:inline-block; color:#ffffff;}
 .topNav .topNavLinks {height:50px; width:97px; line-height:48px; text-align:left;}
 .topNav .topNavLinks a {text-decoration:none; color: #000;}
 .topNav .topNavLinks:hover .arrowContainer {height:11px; width:27px; background-image:url(images/dropdown-arrow-27x11.png); position:absolute; top:39px; right:145px;}
@@ -768,7 +768,7 @@ HOMEPAGE
 .floatingBar .cartIcon {height:38px; width:176px; position:absolute; left:570px; top:0px; padding:10px 0px 0px 31px; background-position:-1px -44px;}
 .floatingBar .cartIcon p {height:20px; width:133px; position:absolute; left:62px; top:9px;}
 .floatingBar .cartIcon a {color:#fff;}
-.floatingBar .cartItemCount {height:20px; width:21px; text-align:center; display:inline-block; background:#A8342B; border-radius:10px; line-height:19px;}
+.floatingBar .cartItemCount {height:20px; width:21px; text-align:center; color:#ffffff; display:inline-block; background:#A8342B; border-radius:10px; line-height:19px;}
 .floatingBar .checkoutButton {height:40px; width:100px; background-color:#f8c301; position:absolute; right:94px; top:4px; border:none; color:#fff; font-family:Oswald; font-size:14px; font-weight:bold; padding-bottom:3px;}
 .floatingBar .floatingBarClose {height:20px; width:20px; background-color:#a8342b; position:absolute; right:10px; top:10px; border:none; background-position:-23px -96px;}
 
