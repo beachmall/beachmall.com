@@ -341,13 +341,13 @@ var store_filter = function() {
 								// posibly need further years calculated here
 							}
 							if(userProdShipMsg.indexOf('Ships Today by 12 Noon EST') > -1){
-								if ( t >= 12 && (n > 0 && n < 5)) {
-									//Time is after noon, day is Mon-Thurs
+								if ( (t >= 12 && (n > 0 && n < 5)) || date == 20130704 || date == 20130902 || date == 20131225 || date == 20131231 || date == 20140101 || date == 20140526 || date == 20140704) {
+									//Time is after noon, day is Mon-Thurs, OR is a UPS holiday weekday
 									$tag.empty().append('Ships Next Business Day');
 								}
-								else if (((t >= 12 && n == 5) || (n > 5 && n < 1))) {
+								else if (((t >= 12 && n == 5) || (n > 5 && n < 1)) || date == 20131128 || date == 20131129) {
 									//Time is after noon, day is Fri (FUN FUN FUN FUN)
-									//OR it is the Weekend
+									//OR it is the Weekend, OR is UPS Thanksgiving weekend
 									$tag.empty().append('Ships Monday by 12 Noon EST');
 								}
 								else {
