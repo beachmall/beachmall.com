@@ -943,7 +943,7 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 	background:url(images/bm10_preorder-159x33.png) no-repeat; padding:0; border:0;
 	}
 
-.fullWidth .zsmall {padding-top:10px; clear:both;}
+.fullWidth .zsmall {padding-top:10px; clear:both; font-size:10px; font-weight:normal;}
 .fullWidth .socialLinks {margin-top:10px; clear:both;}
 .fullWidth span.notAvailableForPurchase {float:left; color:#e0463a;}
 
