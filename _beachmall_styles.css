@@ -981,18 +981,18 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 .youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .tabs .ui-state-active {background:#f5f1de; border-radius:0px; border-bottom:1px solid #f5f1de;}
 .youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .tabs .ui-state-default a, .tabs .ui-state-default a:link, .ui-state-default a:visited {color:#f5f1de; font-weight:normal; font-family:"Open Sans";}
 .youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .tabs .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {color:#777; font-weight:normal; font-family:"Open Sans";}
-.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content {height:536px; width:252px; background:#f5f1de; border:1px solid #777;}
+.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content {height:521px; width:252px; background:#f5f1de; border:1px solid #777;}
 .youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content > div {width:240px; background:#f5f1de; border:none;}
 
-.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content .testCarCont {height:500px; width:240px;}
-.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content .testCar {height:490px; width:240px; margin-top:24px; overflow:hidden;}
-.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content .testPrev {height:30px; width:102px; position:relative; top:-506px; left:-66px;  background:#777;color:#f5f1de; text-align:center; line-height:30px; margin-left:74px;}
-.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content .testNext{height:30px; width:102px; position:relative; top:-536px; left:54px;  background:#777;color:#f5f1de; text-align:center; line-height:30px; margin-left:74px;}
+.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content .testCarCont {height:500px; width:240px; overflow:hidden;}
+.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content .testCar {height:490px; width:240px; margin-top:39px; overflow:hidden;}
+.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content .testPrev {height:30px; width:102px; position:relative; top:-526px; left:-66px;  background:#777;color:#f5f1de; text-align:center; line-height:30px; margin-left:74px;}
+.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content .testNext{height:30px; width:102px; position:relative; top:-556px; left:54px;  background:#777;color:#f5f1de; text-align:center; line-height:30px; margin-left:74px;}
 
-.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content .testCarCont2 {height:500px; width:240px;}
-.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content .testCar2 {height:490px; width:240px; margin-top:24px; overflow:hidden;}
-.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content .testPrev2{height:30px; width:102px; position:relative; top:-506px; left:-66px; background:#777; color:#f5f1de; text-align:center; line-height:30px; margin-left:74px;}
-.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content .testNext2{height:30px; width:102px; position:relative; top:-536px; left:54px;  background:#777;color:#f5f1de; text-align:center; line-height:30px; margin-left:74px;}
+.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content .testCarCont2 {height:500px; width:240px; overflow:hidden;}
+.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content .testCar2 {height:490px; width:240px; margin-top:39px; overflow:hidden;}
+.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content .testPrev2{height:30px; width:102px; position:relative; top:-526px; left:-66px; background:#777; color:#f5f1de; text-align:center; line-height:30px; margin-left:74px;}
+.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content .testNext2{height:30px; width:102px; position:relative; top:-556px; left:54px;  background:#777;color:#f5f1de; text-align:center; line-height:30px; margin-left:74px;}
 
 
 
