@@ -439,9 +439,10 @@ label.break	{display:block; margin:0 0 4px 6px;}
 .prodSummaryContainer .latency {height:auto; width:100%; margin-bottom:30px;}
 
 
-.prodModifierContainer {height:23px; width:191px; background-position:-280px -154px; color:#000; text-align:center; font-family:"Open Sans"; font-weight:bold; font-size:14px; position:absolute; top:-6px; left:5px; z-index:3; line-height:19px; overflow:hidden;}
-.prodModifierContainer.mediumTagBkgrnd {width:156px; background-position:-280px -208px;}
-.prodModifierContainer.smallTagBkgrnd {width:118px; background-position:-280px -181px;}
+.prodModifierContainer {height:23px; width:191px; background-position:-280px -154px; color:#3597d3; text-align:center; font-family:"Open Sans"; font-weight:bold; font-size:14px; position:absolute; top:-6px; left:5px; z-index:3; line-height:19px; overflow:hidden;}
+.prodModifierContainer.smallBlue {width:118px; background-position:-280px -289px;}
+.prodModifierContainer.mediumTagBkgrnd {width:156px; background-position:-280px -208px; color:#000000;}
+.prodModifierContainer.smallTagBkgrnd {width:118px; background-position:-280px -181px; color:#000000;}
 .prodModifierContainer.smallRed {width:118px; color:#e0463a; background-position:-280px -234px;}
 .prodModifierContainer.mediumRed {width:156px; color:#e0463a; background-position:-280px -262px;}
 .prodModifier {height:23px; width:193px;}

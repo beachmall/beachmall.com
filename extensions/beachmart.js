@@ -416,7 +416,7 @@ var store_filter = function() {
 						$tag.append('Exclusive').addClass('smallTagBkgrnd').show();
 					}
 					else if (zoovyIsTags.indexOf('IS_BESTSELLER') >= 0) {
-						$tag.append('Best Seller').addClass('smallTagBkgrnd').show();
+						$tag.append('Best Seller').addClass('smallBlue').show();
 					}
 					else if (zoovyIsTags.indexOf('IS_USER2') >= 0) {
 						$tag.append('New Low Price!').addClass('mediumTagBkgrnd').show();
