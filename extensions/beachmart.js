@@ -760,9 +760,11 @@ return filters;
 									},
 									height: 490,
 									width: 250,
-									//items: 1,
-									//pagination: '#bestCarPagenation',
-									scroll: 1,
+									align: 'false',
+									scroll:	{
+										items: 1,
+										duration: 1500
+									},
 							//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
 									swipe: {
 										onMouse: true,
@@ -796,9 +798,11 @@ return filters;
 									},
 									height: 490,
 									width: 250,
-									//items: 1,
-									//pagination: '#bestCarPagenation',
-									scroll: 1,
+									align: 'false',
+									scroll: {
+										items: 1,
+										duration: 1500
+									},
 							//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
 									swipe: {
 										onMouse: true,
