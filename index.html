@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"201314.20130612161300",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"201314.20130614173500",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"", //used in non-local mode.
 	"checkoutAuthMode" : "required",//can be passive, active or required
@@ -2153,11 +2153,12 @@ this will likely become more flexible in the future. ###
 			<li ><a href="#prodVideo" class='videoTab'><span><img src='images/bm12_videoicon-24x24.png' width="24" height='24' alt='' /></span>Video</a></li>
 
 			<div class='prodPageImages'  data-anytab-content='prodImages'>
-				<img src='blank.gif' class='prodBigImage' rel='rel="selectors-change: mouseover' name='prodBigImage' data-bind='var: product(zoovy:prod_image1); format: magicZoomPlus; extension: magicToolBox_mzp;' width='310' height='310' />
+				<!--<img src='blank.gif' class='prodBigImage' rel='rel="selectors-change: mouseover' name='prodBigImage' data-bind='var: product(zoovy:prod_image1); format: magicZoomPlus; extension: magicToolBox_mzp;' width='310' height='310' />-->
+				<img src='blank.gif' class='prodBigImage' rel='rel="selectors-change: mouseover' name='prodBigImage' data-bind='useParentData:true; format: magicZoomPlus; extension: magicToolBox_mzp;' width='310' height='310' />
 				<div class='zhint'>Mouse over main image to zoom in</div>
 				<div class='productPageCarouselContainer'>
 					<div>
-						<ul class='prodPageCarousel' data-bind='var: product(pid); format: productImages; extension: beachmart;'></ul>    
+						<ul class='prodPageCarousel' data-bind='var: product(pid); format: productImages; extension: magicToolBox_mzp;'></ul>    
 					</div>
 					<a href='#' class='prodPageCarPrev sprite displayNone'><span>prev</span></a>
 					<a href='#' class='prodPageCarNext sprite displayNone'><span>next</span></a>

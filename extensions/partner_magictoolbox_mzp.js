@@ -90,11 +90,14 @@ MagicZoomPlus.options = {
 			magicZoomPlus : function($tag,data)	{
 				app.u.dump('BEGIN myRIA.renderFormats.magicZoomPlus');
 				var bgcolor = data.bindData.bgcolor ? data.bindData.bgcolor : 'ffffff'
-				if(data.value)	{
-					var imgSrc = app.u.makeImage({'tag':0,'w':$tag.attr('width'),'h':$tag.attr('height'),'name':data.value,'b':bgcolor});
-					app.u.dump('ID => '+$tag.attr('id'));
+/*BEACHMALL*/	var fileName = data.value['%attribs']['zoovy:prod_image1'];
+/*BEACHMALL*/	var pid = data.value.pid;
+				if(fileName)	{
+					var imgSrc = app.u.makeImage({'tag':0,'w':$tag.attr('width'),'h':$tag.attr('height'),'name':fileName,'b':bgcolor});
+					//app.u.dump('ID => '); app.u.dump(data.value);
 					$tag.attr('src',imgSrc);
-					$tag.wrap("<a href='"+app.u.makeImage({'tag':0,'name':data.value,'b':bgcolor})+"' class='MagicZoomPlus' id='"+$tag.attr('id')+"_href' />")
+					/*$tag.wrap("<a href='"+app.u.makeImage({'tag':0,'name':data.value,'b':bgcolor})+"' class='MagicZoomPlus' id='"+$tag.attr('id')+"_href' />")*/
+/*BEACHMALL*/		$tag.wrap("<a href='"+app.u.makeImage({'tag':0,'name':fileName,'b':bgcolor})+"' class='MagicZoomPlus' id='prodBigImage_href_"+pid+"' rel='selectors-change: mouseover; hint: false;' />")
 					}
 				else	{
 					$tag.style('display','none'); //if there is no image, hide the src.  !!! added 1/26/2012. this a good idea?
@@ -128,7 +131,7 @@ MagicZoomPlus.options = {
 					imgName = pdata['zoovy:prod_image'+i];
 //					app.u.dump(" -> "+i+": "+imgName);
 					if(app.u.isSet(imgName))	{
-						imgs += "<li><a class='MagicThumb' rel='zoom-id: prodBigImage_href;' rev='"+app.u.makeImage({'tag':0,'w':380,'h':380,'name':imgName,'b':'ffffff'})+"' href='"+app.u.makeImage({'tag':0,'w':'','h':'','name':imgName,'b':'ffffff'})+"'><img src='"+app.u.makeImage({'tag':0,'w':50,'h':50,'name':imgName,'b':'ffffff'})+"' \/><\/a><\/li>";
+/*BEACHMALL*/			imgs += "<li><a class='MagicThumb' rel='zoom-id: prodBigImage_href_"+data.value+"; hint: false' rev='"+app.u.makeImage({'tag':0,'w':380,'h':380,'name':imgName,'b':'ffffff'})+"' href='"+app.u.makeImage({'tag':0,'w':'','h':'','name':imgName,'b':'ffffff'})+"'><img src='"+app.u.makeImage({'tag':0,'w':50,'h':50,'name':imgName,'b':'ffffff'})+"' \/><\/a><\/li>";
 						}
 					}
 				$tag.append(imgs);

@@ -757,24 +757,6 @@ RenderFormats
 
 //				app.u.dump(" -> ID at end: "+$tag.attr('id'));
 				}, //addToCartButton
-
-
-// used to display product image 1 thru X where X is the last image. checks spot 1 - 50
-// product id should be used as var
-			productImages : function($tag,data)	{
-//				app.u.dump("BEGIN beachmart.renderFormats.productImages ["+data.value+"]");
-				var pdata = app.data['appProductGet|'+data.value]['%attribs']; //short cut to product object in memory.
-				var imgs = ''; //all the html for all the images. appended to $tag after loop.
-				var imgName; //recycled in loop.
-				for(i = 1; i < 30; i += 1)	{
-					imgName = pdata['zoovy:prod_image'+i];
-//					app.u.dump(" -> "+i+": "+imgName);
-					if(app.u.isSet(imgName))	{
-						imgs += "<li><a class='MagicThumb MagicThumb-swap' rel='zoom-id: prodBigImage_href;' rev='"+app.u.makeImage({'tag':0,'w':380,'h':380,'name':imgName,'b':'ffffff'})+"' href='"+app.u.makeImage({'tag':0,'w':'','h':'','name':imgName,'b':'ffffff'})+"'><img src='"+app.u.makeImage({'tag':0,'w':50,'h':50,'name':imgName,'b':'ffffff'})+"' \/><\/a><\/li>";
-						}
-					}
-				$tag.append(imgs);
-				} //productImages
 		
 			}, //renderFormats
 
