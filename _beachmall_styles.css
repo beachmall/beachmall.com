@@ -623,7 +623,7 @@ label.break	{display:block; margin:0 0 4px 6px;}
 .prodViewerAddToCartButton.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-only {
 	height:auto;
 	width:auto;
-	margin:6px 0px 0px 48px;
+	margin:6px auto 0px auto;
 	padding: 7px 0;
 	color:#fff;
 	font-family:Oswald;
