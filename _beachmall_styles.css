@@ -2,7 +2,7 @@
     width: device-width;
 	}
 
-	.test {height: 20px; width:20px; background:#000;}
+	.test {height: 20px; width:20px; background:#000000;}
 	
 * {
 	margin:0;
@@ -22,7 +22,7 @@ body {
 	font-size: 14px;
 	font-weight:normal;
 	color:#000000;
-	background-color:#fff;
+	background-color:#ffffff;
 	margin:0;
 	}
 
@@ -32,8 +32,8 @@ body {
 .oswaldFont {font-family: Oswald; font-weight:normal;}
 .oswaldFontBold {font-family: Oswald; font-weight: bold;}
 
-.fontWhite {color:#fff;}
-.fontBlack {color:#000;}
+.fontWhite {color:#ffffff;}
+.fontBlack {color:#000000;}
 .fontLightTeal {color:#a1d3ca;}
 .fontTeal {color:#3bb3c3;}
 .fontYellow {color:#f8c301;}
@@ -90,31 +90,31 @@ the padding is to compensate for the spacing between the main nav.
 /* topNav is the container for the content above the white bg */
 .topNav	{height: 50px; width: 100%; font-size:.75em;} /* @REB - need a media query here to when this gets down to vertical pad size. @ phone size, hide items to make room */
 .topNav	.guarantee {} /* @REB - add guarantee bg here using sprite */
-.topNav nav	{text-align:right; color:#000;}
+.topNav nav	{text-align:right; color:#000000;}
 .topNav nav a	{text-decoration:none;}
 .topNav nav a:hover	{text-decoration:underline;}
-.topNav .localizedBox {height:53px; width:216px; text-align:center; background-color:#f5f1de; border:2px solid #fff; padding-top:5px; position:absolute; top:0px; left:40px; z-index:5; box-shadow:0px 2px 2px #000000;}
+.topNav .localizedBox {height:53px; width:216px; text-align:center; background-color:#f5f1de; border:2px solid #ffffff; padding-top:5px; position:absolute; top:0px; left:40px; z-index:5; box-shadow:0px 2px 2px #000000;}
 .topNav .localizedBox:hover .arrowContainer {height:11px; width:27px; background-image:url(images/dropdown-arrow-27x11.png); position:absolute; bottom:-3px; left:96px;}
 .topNav .localizedClose {background-position:-1px -96px; border:none; height:20px; width:20px; float:right; margin:5px -15px 0 0;}
 
-.geoDropdown {height:0px; width:460px; background-color:#f8c301; padding:0px 20px; line-height:31px; position:relative; top:11px; left:-42px; z-index:6; overflow:hidden; text-align:left; font-family:"Open Sans"; font-size:12px; color#000;}
+.geoDropdown {height:0px; width:460px; background-color:#f8c301; padding:0px 20px; line-height:31px; position:relative; top:11px; left:-42px; z-index:6; overflow:hidden; text-align:left; font-family:"Open Sans"; font-size:12px; color#000000;}
 .geoDropdown h1 {font-family:Oswald; font-size:18px; color:#e0463a; padding-top:20px;}
 .geoDropdown span {font-weight:bold;}
 .geoDropdown form {height:40px; width:420px; background-color:#009;}
 .geoDropdown .geoZipInput{border:0; background:#ffffff; text-indent:.4em; height:40px; width:260px;  box-shadow:-2px 2px 2px #000000;}
-.geoDropdown .searchButton {background-color:#e0463a; border:none; text-align:center; font-size: 14px; color:#fff; width:160px; height:40px; cursor:pointer; float:Right; box-shadow:-2px 2px 2px #000000;}
+.geoDropdown .searchButton {background-color:#e0463a; border:none; text-align:center; font-size: 14px; color:#ffffff; width:160px; height:40px; cursor:pointer; float:Right; box-shadow:-2px 2px 2px #000000;}
 .geoDropdown h2 {font-size:10px}
 
 .topNav .phoneChatLive {height:50px; width:353px; margin:0px 0px 0px 351px; font-family:Oswald; font-weight:bold; font-size: 18px; line-height: 51px;}
 .topNav .phoneIcon {height:50px; width:35px; background-position:0 10px;}
 .topNav .liveHelp	{height:19px; width:145px; font-size:0.75em;}
 .topNav .liveHelp div.icon {background-position:0 -91px; width:25px; height:19px;float:left;}
-.topNav .liveHelp a {text-decoration:none; font-family:Oswald; font-weight:bold; font-size:18px;color:#000;}
+.topNav .liveHelp a {text-decoration:none; font-family:Oswald; font-weight:bold; font-size:18px;color:#000000;}
 .topNav .cartIcon {height:30px; width:57px; background-position:4px -40px; margin:0px 40px 0px 0px; padding: 15px 0px 0px 0px;}
-.topNav .cartIcon a {color:#fff;}
+.topNav .cartIcon a {color:#ffffff;}
 .topNav .cartIcon .cartItemCount {height:17px; width:21px; text-align:center; display:inline-block; color:#ffffff;}
 .topNav .topNavLinks {height:50px; width:97px; line-height:48px; text-align:left;}
-.topNav .topNavLinks a {text-decoration:none; color: #000;}
+.topNav .topNavLinks a {text-decoration:none; color: #000000;}
 .topNav .topNavLinks:hover .arrowContainer {height:11px; width:27px; background-image:url(images/dropdown-arrow-27x11.png); position:absolute; top:39px; right:145px;}
 .topNav .topNavLinks:hover .arrowContainer2 {height:11px; width:27px; background-image:url(images/dropdown-arrow-27x11.png); position:absolute; top:39px; right:231px;}
 .custCareDropdown {height:0px; width:220px; background-color:#f8c301; position:relative; top:2px; right:65px; z-index:5; overflow:hidden;}
@@ -127,7 +127,7 @@ the padding is to compensate for the spacing between the main nav.
 }
 
 
-#mastHead	{height:159px; width:auto; padding:0px 40px 0px 40px; position:relative; background-color:#fff; border-bottom:5px solid #3bb3c3;} /* left/right padding to compensate for padding on main nav. helps w/ alignment */
+#mastHead	{height:159px; width:auto; padding:0px 40px 0px 40px; position:relative; background-color:#ffffff; border-bottom:5px solid #3bb3c3;} /* left/right padding to compensate for padding on main nav. helps w/ alignment */
 #mastHead .phone {
 	background-position:0 0;
 	width:155px;
@@ -146,12 +146,12 @@ the padding is to compensate for the spacing between the main nav.
 #mastHead .searchContainer .searchButton {background-color:#f8c301; border:none; text-align:center; font-size: 14px; color:#e0463a; width:60px; height:40px; cursor:pointer; float:Right; }
 
 #mastHead .dropdownsContainer {height:65px; width:942px; margin:10px 0; padding:0 39px;}
-#mastHead .dropdownsContainer a {text-decoration:none; color:#fff;}
+#mastHead .dropdownsContainer a {text-decoration:none; color:#ffffff;}
 #mastHead .singleDropdown {height:45px; width:145px; background-position:-88px 64px; padding:10px 6px 15px 6px;}
 #mastHead .singleDropdown:hover {background-position:-248px -36px;}
-#mastHead .dropdownsContainer .dropdownBorderMaker {height:30px; width:130px; background-color:#3bb3c3; border:2px solid #fff;}
+#mastHead .dropdownsContainer .dropdownBorderMaker {height:30px; width:130px; background-color:#3bb3c3; border:2px solid #ffffff;}
 #mastHead .singleDropdown .dropdownBorderContainer:hover {background-position:-248px -36px; background-color:#e0463a;}
-#mastHead .singleDropdown .dropdownBorderContainer {height:35px; width:135px; background-position:-47px 99px; background-color: #3bb3c3; font-family:Montserrat; font-weight:normal; font-size: 16px; color:#fff; text-align:center; line-height: 30px; padding:5px;}
+#mastHead .singleDropdown .dropdownBorderContainer {height:35px; width:135px; background-position:-47px 99px; background-color: #3bb3c3; font-family:Montserrat; font-weight:normal; font-size: 16px; color:#ffffff; text-align:center; line-height: 30px; padding:5px;}
 #mastHead .singleDropdown .dropdownBorderMaker:hover {background-color:#e0463a;}
 #mastHead .dropdown {height:0px; width:485px; margin:0px 0px 0px 20px; position:relative; top:10px; overflow:hidden; z-index:5; background-color:#e0463a;}
 #mastHead .dropdown.beachAccessoriesDD {left: -26px;}
@@ -165,7 +165,7 @@ the padding is to compensate for the spacing between the main nav.
 #mastHead .dropdown.singleLineDD {padding-top:30px;}
 #mastHead .dropdown ul {height: 522px; width:460px; margin: 0px 0px 5px 0px; padding: 0px 0px 3px 20px; background-color:#ffe680; font-weight: normal; border-top:5px solid #e0463a; border-bottom:5px solid #e0463a;}
 #mastHead .dropdown li:nth-child(1) {height:27px; width:207px; font-family:Oswald; font-size:24px; font-weight: normal; color:#e0463a; text-align:left; margin: 20px 0px 16px 13px;}
-#mastHead .dropdown li {height:27px; width:226px; font-family:"Open Sans"; font-size:14px; color:#000; text-align:left; margin: 3px 0px 3px 14px;}
+#mastHead .dropdown li {height:27px; width:226px; font-family:"Open Sans"; font-size:14px; color:#000000; text-align:left; margin: 3px 0px 3px 14px;}
 #mastHead .dropdown li:hover {color:#e0463a; cursor:pointer; background-image:url(images/dropout-arrow-207x27.png);}
 #mastHead .dropdown .noArrow:hover {background:none;}
 
@@ -173,7 +173,7 @@ the padding is to compensate for the spacing between the main nav.
 #mastHead .dropdown .hoverProductContainer {height: 525px; width:0px; background-color:#F8C301; position:relative; top:-82px; left:206px; overflow:hidden; border:none; margin:0; padding:0; opacity:0;}
 #mastHead .dropdown .hoverProductContainer .productListSmall {padding:25px 10px;}
 #mastHead .dropdown .hoverProductContainer .myProdThumbSmall {width:210px;}
-#mastHead .dropdown .hoverProductContainer .prodPriceSmall {width:125px; text-align:center; font-size:.85em; color:#000;}
+#mastHead .dropdown .hoverProductContainer .prodPriceSmall {width:125px; text-align:center; font-size:.85em; color:#000000;}
 #mastHead .dropdown .hoverProductContainer li {width:240px; margin:0; }
 
 #mastHead .dropout.out .hoverProductContainer.innerHovProdCont {top:-192px; left:194px;}
@@ -184,15 +184,15 @@ the padding is to compensate for the spacing between the main nav.
 #mastHead .dropout.out .hoverProductContainer.innerHovProdCont.dropout6 {top:-317px;}
 #mastHead .dropout.out .hoverProductContainer.innerHovProdCont li {width:240px; margin:0;} 
 
-.stockImageContainer {height:210px; width:210px; background:#777; margin:10px auto; border:5px solid #fff;}
+.stockImageContainer {height:210px; width:210px; background:#777; margin:10px auto; border:5px solid #ffffff;}
 .stockImageContainer:hover {border:5px solid #e0463a;}
-.hoverProductContainer .catSearchHomeDropdown {height:30px; width:150px; margin:10px 45px; border:none; background:#3bb3c3; color:#fff;}
+.hoverProductContainer .catSearchHomeDropdown {height:30px; width:150px; margin:10px 45px; border:none; background:#3bb3c3; color:#ffffff;}
 .hoverProductContainer .catSearchHomeDropdown:hover {background:#e0463a;}
 
 #mastHead .dropout.out {height:525px; width:0px; background-color:#f8c301; margin:0px 0px 0px 20px; position:relative; left:186px; overflow:hidden; z-index:5;} 
 #mastHead .dropout.out ul {height: 522px; width:225px; margin: 90px 0px 0px 0px; padding:0px 0px 0px 6px; background-color:#f8c301; border:0;}
 /*#mastHead .dropout.out li:first-child {height:27px; width:207px; font-family:"Open Sans"; font-size:14px; color:#000; text-align:left; margin: -5px 14px 3px 14px;}*/
-#mastHead .dropout.out li {height:27px; width:207px; font-family:"Open Sans"; font-size:14px; color:#000; text-align:left; margin: -5px 14px 3px 14px;}
+#mastHead .dropout.out li {height:27px; width:207px; font-family:"Open Sans"; font-size:14px; color:#000000; text-align:left; margin: -5px 14px 3px 14px;}
 #mastHead .dropout.out li:hover {color:#e0463a; cursor:pointer;}
 #mastHead .dropout1, #mastHead .dropdown .hoverProductContainer.dropout1 {top:-82px;}
 #mastHead .dropout2, #mastHead .dropdown .hoverProductContainer.dropout2 {top:-112px;}
@@ -224,10 +224,10 @@ FOOTER
 .footerSocialIcons .pintrest {background-position:-151px -182px;}
 .footerSocialIcons .email {background-position:-204px -182px;}
 
-.footerNewsletter {height:60px; width:675px; position:absolute; top:55px; right:40px; color:#000;}
+.footerNewsletter {height:60px; width:675px; position:absolute; top:55px; right:40px; color:#000000;}
 .footerNewsletter .nameField{border:0; background:#ffffff; font-family:"Open Sans"; text-indent:.4em; height:40px; width:220px; margin:0px 20px 0px 8px; box-shadow:-2px 2px 2px #000000;}
 .footerNewsletter .emailField{border:0; background:#ffffff; font-family:"Open Sans"; text-indent:.4em; height:40px; width:140px;  box-shadow:-2px 2px 2px #000000;}
-.footerNewsletter .joinButton {background-color:#e0463a; border:none; text-align:center; font-family:Oswald; font-weight:bold; font-size: 14px; color:#fff; width:80px; height:40px; cursor:pointer;  box-shadow:-2px 2px 2px #000000;}
+.footerNewsletter .joinButton {background-color:#e0463a; border:none; text-align:center; font-family:Oswald; font-weight:bold; font-size: 14px; color:#ffffff; width:80px; height:40px; cursor:pointer;  box-shadow:-2px 2px 2px #000000;}
 .footerNewsletter h3 {font-family:Oswald; font-size:18px; font-weight:bold; line-height:16px; margin-top:6px; text-align:right;}
 .footerNewsletter span {font-family:"Open Sans"; font-size:12px;}
 
@@ -243,9 +243,9 @@ FOOTER
 /* ADD THIS BACK INTO THE LINE BELOW ONCE GOOGLE TRUSTED BADGE HAS BEEN CLEARED BY GOOGLE: box-shadow:-2px 2px 2px #000000; */
 .footerIcons .googleTrustedBadge {height:58px; width:122px; position:absolute; top:0px; right:0px;}
 .footerIcons .footerPhoneChat {height:22px; width:218px; color:#3bb3c3; font-family:Oswald; font-weight:bold; font-size:17px; position:absolute; bottom:0px; right:40px;}
-.footerIcons .footerPhoneChat span {color:#000; font-family:"Open Sans"; font-size:10px; font-weight:400;}
+.footerIcons .footerPhoneChat span {color:#000000; font-family:"Open Sans"; font-size:10px; font-weight:400;}
 
-.copyright {height: 54px; width: 100%px; padding-top: 33px; text-align: center; font-family:"Open Sans"; font-size:12px; color:#000; background-color:#fff; border-top:10px solid #3bb3c3; margin-bottom:30px;}
+.copyright {height: 54px; width: 100%px; padding-top: 33px; text-align: center; font-family:"Open Sans"; font-size:12px; color:#000000; background-color:#ffffff; border-top:10px solid #3bb3c3; margin-bottom:30px;}
 .copyright span {font-weight:bold; color:#3bb3c3;}
 .copyright .mcAfee {position:absolute; right:250px;}
 
@@ -260,7 +260,7 @@ CATEGORY PAGE
 .categoryList li {height:155px; width:172px;}
 
 /* CATEGORY DESCRIPTIONS */
-.catDescription {font-family:"Open Sans"; font-weight:normal; font-size:12px; color:#000;}
+.catDescription {font-family:"Open Sans"; font-weight:normal; font-size:12px; color:#000000;}
 .catDescription span {font-family:Oswald; font-weight:bold; font-size:24px; color:#3bb3c3;}
 
 
@@ -268,7 +268,7 @@ CATEGORY PAGE
 BRANDS CATEGORY PAGE
 **************************************************************/
 
-.brandsPromoBanner {height:60px; width:100%; background-color:#f8c301; font-family:Oswald; font-weight:bold; color:#fff; margin:-6px 0 10px 0 ;}
+.brandsPromoBanner {height:60px; width:100%; background-color:#f8c301; font-family:Oswald; font-weight:bold; color:#ffffff; margin:-6px 0 10px 0 ;}
 .brandsPromoBanner div:nth-child(1) {font-size:36px; float:Left; margin:3px 0 0 40px;}
 .brandsPromoBanner div:nth-child(2) {height:60px; width:440px; margin:-4px 0 0 10px; text-align:center; font-size:30px; float:Left; line-height:25px;}
 .brandsPromoBanner div:nth-child(2) span {font-size:18px; line-height:27px;}
@@ -285,15 +285,15 @@ BRANDS CATEGORY PAGE
 .brandsHeader ul li:nth-child(2) {height:110px; width:140px; background-color:#b66; float:left; margin:30px 0 0 0; font-family:Oswald; font-size:14px; font-weight:bold; color:#ccc; text-align:center;}
 .brandsCatContainer  .ui-tabs {padding:0px;}
 .brandsCatContainer .ui-tabs .ui-tabs-panel {padding:0px;}
-.brandsCatContainer .ui-state-active {color:#fff; background-color:#f8c301;}
+.brandsCatContainer .ui-state-active {color:#ffffff; background-color:#f8c301;}
 
 
 .brandsCatContainer .brandsTabs .tabs .ui-state-default {height:auto; width:280px; background:#ccc; border-radius:0px; border:1px solid #ccc; font-family:Oswald; font-size:24px; font-weight:bold; line-height:12px; margin:0 0 0 40px;}
 .brandsCatContainer .brandsTabs .tabs .ui-state-active {height:auto; width:280px; background:#f8c301; border-radius:0px; border:1px solid #f8c301; font-family:Oswald; font-size:24px; font-weight:bold; line-height:12px; margin:0 0 0 40px;}
-.brandsCatContainer .brandsTabs .tabs .ui-state-default a, .tabs .ui-state-default a:link, .ui-state-default a:visited {color:#fff;}
-.brandsCatContainer .brandsTabs .tabs .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {color:#fff;}
+.brandsCatContainer .brandsTabs .tabs .ui-state-default a, .tabs .ui-state-default a:link, .ui-state-default a:visited {color:#ffffff;}
+.brandsCatContainer .brandsTabs .tabs .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {color:#ffffff;}
 .brandsCatContainer .brandsTabs .ui-widget-content {background:#f5f1de; border:none; border-radius:0px;}
-.brandsCatContainer .brandsTabs .carouselTitles {color:#fff; background:#f8c301;}
+.brandsCatContainer .brandsTabs .carouselTitles {color:#ffffff; background:#f8c301;}
 .brandCarouselLinkContainer {height:20px; width:203px; font-family:"Open Sans"; font-size:14px; font-weight:bold; margin-right:40px; padding-top:7px; height:auto; text-align:right;}
 .featuredProdsTab .brandCarouselLinkContainer {height:auto; width:203px;}
 .viewAllProductsTab.brandCarouselLinkContainer {height:auto; width:70px;}
@@ -328,7 +328,7 @@ MP CONTROLS CONTAINER
 	font-family:"Open Sans";
 	font-weight:bold;
 	font-size:12px;
-	color:#fff;
+	color:#ffffff;
 	background-color:#3bb3c3;
 }
 
@@ -337,7 +337,7 @@ MP CONTROLS CONTAINER
 	background-color: transparent;
 	background: none;
 	font-weight: 400;
-	color: #fff;
+	color: #ffffff;
 	line-height: 28px;
 }
 
@@ -347,7 +347,7 @@ MP CONTROLS CONTAINER
 	margin:0;
 	padding:0;
 	list-style:none;
-	color: #fff;
+	color: #ffffff;
 	font-size: 14px;
 	text-align: center;
 }
@@ -358,7 +358,7 @@ MP CONTROLS CONTAINER
 	text-decoration:none;
 	padding:3px 12px;
 	cursor: text;
-	color: #fff;
+	color: #ffffff;
 }
 
 .ddUlMenu li ul {
@@ -392,7 +392,7 @@ MP CONTROLS CONTAINER
 .selectionBox {
 	height: 15px;
 	width: 15px;
-	background-color: #fff;
+	background-color: #ffffff;
 	margin: -1px 11px 0px 0px;
 }
 
@@ -414,7 +414,7 @@ PRODUCT LIST
 .productColumn {width:auto;}
 .catTitle {height:35px; width:auto; margin: 0 10px; color:#3BB3C3; font-family:"Open Sans"; font-size:24px; font-weight:bold; line-height:32px; position:absolute; top:215px; left:530px; background:none;}
 .buyerGuides {height:30px; width:220px; border:2px solid #F8C301; position:absolute; top:215px; right:207px; color:#3BB3C3; text-align:center; font-family:"Open Sans"; font-size:14px; font-weight:bold; background:#F5F1DE;}
-.buyerGuides span {font-size:10px; color:#0000000; font-weight:normal; display:block; margin:-4px 0 0 0;}
+.buyerGuides span {font-size:10px; color:#000000; font-weight:normal; display:block; margin:-4px 0 0 0;}
 .numItemsOnListContainer {height:30px; width:45px; position:absolute; top:253px; right:510px; overflow:hidden;}
 .numItemsOnList {background-color:#3bb3c3; width:67px; height:auto; border:none; color:#ffffff; background-image:url(images/sprites-500x500.png); background-position:-455px -183px;}
 .numItemsOnList option {text-align:center;}
@@ -449,7 +449,7 @@ label.break	{display:block; margin:0 0 4px 6px;}
 
 
 /* Adds user:prod_promo to products that have it set*/
-.starBurst {height:19px; width:120px; background-position:-280px -120px; color:#fff; font-family:"Open Sans"; font-size:10px; font-weight:bold; text-align:center; position:absolute; top:193px; left:5px; z-index:3; padding-top:3px; overflow:hidden;}
+.starBurst {height:19px; width:120px; background-position:-280px -120px; color:#ffffff; font-family:"Open Sans"; font-size:10px; font-weight:bold; text-align:center; position:absolute; top:193px; left:5px; z-index:3; padding-top:3px; overflow:hidden;}
 
 /*.starBurst {height:70px; width:65px; padding:12px 12px 0px 11px; background-position:-409px -1px; color:#fff; font-family:Oswald; font-size:13px; text-align:center; line-height:16px; position:absolute; top:140px; left:10px; z-index:100;}
 .starBurstTextOuter {height:47px; width:auto; #position:absolute; #top:50%; display:table-cell; vertical-align:middle;}
@@ -627,7 +627,7 @@ label.break	{display:block; margin:0 0 4px 6px;}
 	width:auto;
 	margin:6px auto 0px auto;
 	padding: 7px 0;
-	color:#fff;
+	color:#ffffff;
 	font-family:Oswald;
 	font-weight: normal;
 	font-size:14px;
@@ -641,16 +641,16 @@ label.break	{display:block; margin:0 0 4px 6px;}
 
 .regularPriceContainer {height:35px; width:83px; text-align:center; font-family:"Open Sans"; padding-top:5px}
 .regularPriceContainer .regularPrice {height:16px; width:100%; text-decoration:line-through; color:#999; font-size:14px; font-weight:bold;}
-.regularPriceContainer .regularPriceDesc {height:15px; width:100%; color:#000; font-size:10px;}
+.regularPriceContainer .regularPriceDesc {height:15px; width:100%; color:#000000; font-size:10px;}
 .shipContainer {height:31px; width:130px; text-align:center; font-family:"Open Sans"; padding-top:9px}
 .shipContainer .shipCost {height:12px; width:98px; color:#e0463a; font-size:14px; font-weight:bold; background-position:-116px -219px; margin-left:15px;}
-.shipContainer .shipTime {height:15px; width:100%; color:#000; font-size:9px;}
+.shipContainer .shipTime {height:15px; width:100%; color:#000000; font-size:9px;}
 .prodNum {height:10px; width:100%; font-family:"Open Sans"; font-size:10px; text-align:center;}
 
 
 /*Overrides widget button text color
 .prodViewerAddToCartButton, .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {color:#fff;}*/
-.prodViewerAddToCartForm.clearfix .prodViewerAddToCartButton {color:#fff;}
+.prodViewerAddToCartForm.clearfix .prodViewerAddToCartButton {color:#ffffff;}
 
 .products.product .productSeperationBar {height:5px; width:240px; position:absolute; left:-5px; bottom:0px; background-color:#eee;}
 .searchResultsProduct.products.product  .productSeperationBar {width:254px;left:-16px; bottom:-10px} 
@@ -762,25 +762,25 @@ M*/
 HOMEPAGE 
 **************************************************/
 .floatingBar {height:38px; width:1020px; background-color:#e0463a; position:fixed; bottom:0px; z-index:20; font-family:"Open Sans"; font-weight:bold; font-size:12px;}
-.floatingBar .backToTop {height:17px; width:110px; position:absolute; left:40px; top:11px; color:#fff;}
-.floatingBar .recentlyViewed {height:26px; width:230px; position:absolute; left:243px; top:4px; color:#fff;}
+.floatingBar .backToTop {height:17px; width:110px; position:absolute; left:40px; top:11px; color:#ffffff;}
+.floatingBar .recentlyViewed {height:26px; width:230px; position:absolute; left:243px; top:4px; color:#ffffff;}
 .floatingBar .recentlyViewed span:first-child {display:inline-block; float:left; line-height:28px; font-size: 14px;}
 .floatingBar .recentlyViewed .numRecentlyViewed {height:30px; width:30px; background:#A8342B; border-radius:20px; display:inline-block; line-height:27px; text-align:center; font-size:18px; float:left;}
 .recentCarat {line-height:28px; float:left; margin:0 5px 0 10px;}
 .recentViewItems {line-height:30px; float:left;}
 .floatingBar .cartIcon {height:38px; width:176px; position:absolute; left:570px; top:0px; padding:10px 0px 0px 31px; background-position:-1px -44px;}
 .floatingBar .cartIcon p {height:20px; width:133px; position:absolute; left:62px; top:9px;}
-.floatingBar .cartIcon a {color:#fff;}
+.floatingBar .cartIcon a {color:#ffffff;}
 .floatingBar .cartItemCount {height:20px; width:21px; text-align:center; color:#ffffff; display:inline-block; background:#A8342B; border-radius:10px; line-height:19px;}
-.floatingBar .checkoutButton {height:40px; width:100px; background-color:#f8c301; position:absolute; right:94px; top:4px; border:none; color:#fff; font-family:Oswald; font-size:14px; font-weight:bold; padding-bottom:3px;}
+.floatingBar .checkoutButton {height:40px; width:100px; background-color:#f8c301; position:absolute; right:94px; top:4px; border:none; color:#ffffff; font-family:Oswald; font-size:14px; font-weight:bold; padding-bottom:3px;}
 .floatingBar .floatingBarClose {height:20px; width:20px; background-color:#a8342b; position:absolute; right:10px; top:10px; border:none; background-position:-23px -96px;}
 
 .homeTemplate {position:relative;}
-.homeTemplate .overhang {height:268px; width:255px; color:#fff; font-family:Oswald; font-weight:bold; background-color:#3bb3c3; position:absolute; top:-5px; left:0; z-index:4; display:none;}
+.homeTemplate .overhang {height:268px; width:255px; color:#ffffff; font-family:Oswald; font-weight:bold; background-color:#3bb3c3; position:absolute; top:-5px; left:0; z-index:4; display:none;}
 .homeTemplate .overhangClose {height:20px; width: 20px; background-position:-1px -96px; backgroung-color:#3bb3c3; border:none; position:absolute; top:5px; right:5px; z-index:5;}
 .homeTemplate .overhang span {height:47px; width:255px; color:#ffe680; font-size:30px; text-align:center; position:absolute; top:25px; left:0px; z-index:5;}
 .homeTemplate p {height:20px; width:214px; font-family:"Open Sans"; font-size:14px; margin:0px; position:absolute; top:75px; left:21px; z-index:5;}
-.homeTemplate .overhangSpecialOfferButton {height:40px; width:190px; margin:10px auto 0px auto; background-color:#A1D3CA; color:#fff; font-size:18px; font-family:Oswald; font-weight:bold; text-align: center; line-height:18px; border:none; position:absolute; top:185px; left:33px; z-index:5;}
+.homeTemplate .overhangSpecialOfferButton {height:40px; width:190px; margin:10px auto 0px auto; background-color:#A1D3CA; color:#ffffff; font-size:18px; font-family:Oswald; font-weight:bold; text-align: center; line-height:18px; border:none; position:absolute; top:185px; left:33px; z-index:5;}
 
 
 .prodlistTitle	{margin:0; padding:0; color:#79ccc8; font-size:1.4em; line-height:1.2em;}
@@ -790,7 +790,7 @@ HOMEPAGE
 .featuredContainer {height:300px; width:960px; margin:auto; padding-top:20px;}
 .featuredCarousel {height:300px; width:630px; margin-left: 5px; overflow:hidden; position:relative;}
 .bannerContainer  {height:300px; width:630px; margin-left: 5px; overflow:hidden; position:relative;}
-.featuredBannerText {font-size:72px; position:absolute; top:22px; right:27px; z-index:4; color: #fff; font-family:Montserrat; font-weight:normal; text-align:center; text-shadow:-4px -4px 2px #3bb3c3, 4px -3px 3px #3bb3c3,	-4px 4px 4px #3bb3c3, 4px 4px 4px #3bb3c3; letter-spacing:-3px; line-height:71px;}
+.featuredBannerText {font-size:72px; position:absolute; top:22px; right:27px; z-index:4; color: #ffffff; font-family:Montserrat; font-weight:normal; text-align:center; text-shadow:-4px -4px 2px #3bb3c3, 4px -3px 3px #3bb3c3,	-4px 4px 4px #3bb3c3, 4px 4px 4px #3bb3c3; letter-spacing:-3px; line-height:71px;}
 .featuredBannerButton {position:absolute; bottom:79px; right:114px; z-index:4;}															     
 .featuredCarouselPagination {height:50px; width:630px; text-align:center; position:absolute; left:0px; bottom:0px; z-index:4;}
 .featuredCarouselPagination a {width:20px; height:20px; background:url(images/sprites-500x500.png); background-position:-1px -216px; margin:0 5.7px 1px 5.7px; display:inline-block;}
@@ -800,7 +800,7 @@ HOMEPAGE
 
 .homepageCategories {height:auto; width:960px; margin: 0px auto 0px auto; padding:10px 0px 10px 0px;}
 .homepageCategories .additionalHompageCatsContainer {height:80px; width:100%;}
-.homepageCategories .additionalHompageCats {height:76px; width:212px; background-color:#fff; border:5px solid #ccc; font-family:Oswald; font-weight:bold; margin:9px;}
+.homepageCategories .additionalHompageCats {height:76px; width:212px; background-color:#ffffff; border:5px solid #ccc; font-family:Oswald; font-weight:bold; margin:9px;}
 .homepageCategories .additionalHompageCats .addCatArrow {height:30px; width:30px; background-position:-131px -14px; margin:23px 25px 0 0;}
 .homepageCategories .additionalHompageCats:hover {border:5px solid #e0463a;}
 .homepageCategories .additionalHompageCats:hover .addCatArrow {background-position:-97px -14px;}
@@ -908,9 +908,9 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 /* PRODUCT IMAGE / TABS */
 .fullWidth {margin-top:20px; width:70%}
 .fullWidth .imageContainer {width:310px;} /*padding:0 55px 20px 40px;*/
-.imageContainer .prodTabs.tabbedProductContent {background-color:#fff; padding:0px; border:none;} /*tabbed container bkgrnd*/
-.imageContainer .prodTabs.tabbedProductContent > div {background-color:#fff; border:none;} /*image bkgrnd*/
-.imageContainer .prodTabs.tabbedProductContent > ul {background-color:#fff;} /*tab bkgrnd*/
+.imageContainer .prodTabs.tabbedProductContent {background-color:#ffffff; padding:0px; border:none;} /*tabbed container bkgrnd*/
+.imageContainer .prodTabs.tabbedProductContent > div {background-color:#ffffff; border:none;} /*image bkgrnd*/
+.imageContainer .prodTabs.tabbedProductContent > ul {background-color:#ffffff;} /*tab bkgrnd*/
 .imageContainer .prodTabs.tabbedProductContent .imageAndVideoTabs .ui-state-default {height:35px; background:#777; border-radius:0px; border:1px solid #777;}
 .imageContainer .prodTabs.tabbedProductContent .imageAndVideoTabs .ui-state-active {background:#f5f1de; border-radius:0px; border-bottom:1px solid #f5f1de;}
 .imageContainer .prodTabs.tabbedProductContent .imageAndVideoTabs .ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited {color:#f5f1de; font-weight:normal; font-family:"Open Sans";}
@@ -1070,16 +1070,16 @@ global app styles
 .ui-widget-anymessage {position:relative; z-index:500; font-size:13px; font-family:"Open Sans";}
 .ui-widget-anymessage button.ui-state-default {height:20px; width:20px;}
 .cents {font-size: 50%;	vertical-align: super;}
-.largeButton {height:40px; width:160px; background-color:#3bb3c3; color:#fff; font-family:Oswald; font-size:18px; font-weight:bold; text-align:center; line-height:10px; border:none;}
+.largeButton {height:40px; width:160px; background-color:#3bb3c3; color:#ffffff; font-family:Oswald; font-size:18px; font-weight:bold; text-align:center; line-height:10px; border:none;}
 
 .homepageCategories ul li {margin: 5px 10px 5px 10px;}
-.thumbContainer {height:105px; width:162px; border:5px solid #3bb3c3; background:#fff;}
+.thumbContainer {height:105px; width:162px; border:5px solid #3bb3c3; background:#ffffff;}
 /*M.categoryList li {border:1px dotted #0285CD;}
 .categoryList li:nth-child(even) {border:1px dotted #00a9a4;}
 .categoryList li:nth-child(even) .catName {background-color:#00a9a4;}M*/
 .catThumb {padding: 0px 0px 0px 0px;}
 .catBorderContainer {height:30px; width:162px; padding:5px; background-color:#3bb3c3;}
-.catName {height:30px; width:158px; background-color:#3bb3c3; color:#FFFFFF; font-family:Montserrat; font-size:16px; font-weight:normal; text-align:center; line-height:31px; border:2px solid #fff; text-transform:uppercase;}
+.catName {height:30px; width:158px; background-color:#3bb3c3; color:#FFFFFF; font-family:Montserrat; font-size:16px; font-weight:normal; text-align:center; line-height:31px; border:2px solid #ffffff; text-transform:uppercase;}
 .homepageCategories ul li:nth-child(1) span {font-size: 12px; line-height:30px; display:block;} 
 .homepageCategories ul li:nth-child(4) span {font-size: 11px; line-height:30px; display:block;} 
 .catListTemp:hover .catBorderContainer {background-color:#e0463a;}
@@ -1091,13 +1091,13 @@ global app styles
 .productListTall li {float: left;  margin: 0px 5px 0px 5px;}
 newArrivalsCarouselRight, .productList li {height:300px; width:300px; float:left; margin:0px;}
 newArrivalsCarouselRight, .productList li > div {width:300px;}
-newArrivalsCarouselRight, .myProdThumb {height:210px; width:290px; border:5px solid #3bb3c3; background-color:#fff;}
+newArrivalsCarouselRight, .myProdThumb {height:210px; width:290px; border:5px solid #3bb3c3; background-color:#ffffff;}
 .prodThumb.push {padding-left:40px;}
 newArrivalsCarouselRight, .myProdThumb:hover {border:5px solid #e0463a;}
 newArrivalsCarouselRight, .prodTextContainer {height:auto; width:295px; margin-top:5px; font-family:Oswald; font-size:24px;}
-newArrivalsCarouselRight, .prodDesc, .productList h5, .categoryList h5 {color:#000; font-family:"Open Sans"; font-size:13px; text-align:center; line-height:16px; padding:7px 10px 0px 7px;}
+newArrivalsCarouselRight, .prodDesc, .productList h5, .categoryList h5 {color:#000000; font-family:"Open Sans"; font-size:13px; text-align:center; line-height:16px; padding:7px 10px 0px 7px;}
 newArrivalsCarouselRight, .prodPrice, .productList h6, .categoryList h6 {margin-left:15px;}
-newArrivalsCarouselRight, .moreDetails {height:30px; width:100px; color:#fff; font-size:14px; text-align:center; line-height:25px; background-color:#3bb3c3;}
+newArrivalsCarouselRight, .moreDetails {height:30px; width:100px; color:#ffffff; font-size:14px; text-align:center; line-height:25px; background-color:#3bb3c3;}
 newArrivalsCarouselRight, .myProdThumb:hover .moreDetails {background-color:#e0463a;}
 
 .productListSmall.productList li {height:303px; width:220px; float:left; margin:20px 10px 7.5px 10px;}
@@ -1110,17 +1110,17 @@ newArrivalsCarouselRight, .myProdThumb:hover .moreDetails {background-color:#e04
 .productListSmall .prodShadowFix .leftBottomCorner {top:82%;}
 .productListSmall .prodShadowFix .bottomRightCorner {top:105%;}
 .productListSmall .prodShadowFix .rightBottomCorner {top:93%;}
-.myProdThumbSmall {height:210px; border:5px solid #FFF; position:relative; z-index:2;} /*background-image:url(images/no-image-bkgrd.jpg);*/
+.myProdThumbSmall {height:210px; border:5px solid #ffffff; position:relative; z-index:2;} /*background-image:url(images/no-image-bkgrd.jpg);*/
 .myProdThumbSmall:hover {border:5px solid #e0463a;}
 .prodTextContainerSmall {height:auto; width:220px; font-family:Oswald; font-size:24px;}
-.prodDescSmall, .productList h5, .categoryList h5 {color:#000; font-family:"Open Sans"; font-size:11px; font-weight:normal; text-align:center; line-height:13px; padding:7px 5px 0px 5px;}
+.prodDescSmall, .productList h5, .categoryList h5 {color:#000000; font-family:"Open Sans"; font-size:11px; font-weight:normal; text-align:center; line-height:13px; padding:7px 5px 0px 5px;}
 .prodDescSmall:hover {color:#e0463a; text-decoration:underline;}
 .prodPriceSmall, .productList h6, .categoryList h6 {margin-left:0px;}
-.moreDetailsSmall {height:25px; width:95px; color:#fff; font-size:14px; text-align:center; line-height:24px; background-color:#3bb3c3; position:relative;}
+.moreDetailsSmall {height:25px; width:95px; color:#ffffff; font-size:14px; text-align:center; line-height:24px; background-color:#3bb3c3; position:relative;}
 .myProdThumbSmall:hover .moreDetailsSmall {background-color:#e0463a;}
 .productListSmall.productList .prodSiblings {height:20px; width:73%; background:#3bb3c3; color:#ffffff; font-family:"Open Sans"; font-size:11px; line-height:19px; margin:auto; text-align:center;}
 .productListSmall.productList .prodSiblings:hover {background-color:#e0463a;}
-.showColors {height:20px; width: 100px; background-color:#3bb3c3; color:#fff; line-height:20px; margin:auto; text-align:center;}
+.showColors {height:20px; width: 100px; background-color:#3bb3c3; color:#ffffff; line-height:20px; margin:auto; text-align:center;}
 .showColors:hover {background-color:#e0463a;}
 
 .productList h5, .categoryList h5 {height:2.5em; width:auto; margin-bottom:0.5em; overflow:hidden;}
@@ -1503,7 +1503,7 @@ some shared styles, pulled from cat layout but that will impact, potentially, mo
 
 
 .blah {background-color: #ff0; font-family:Oswald; font-size:24px; font-weight:bold; color:#3bb3c3;}
-.blah p {font-family:"Open Sans"; font-size:12px; font-weight:normal; color:#000;}
+.blah p {font-family:"Open Sans"; font-size:12px; font-weight:normal; color:#000000;}
 .blah2 {background-color: #C3F;}
 .blah3 {background-color:#F0F;}
 .blah4 {background-color: #0FF;}
@@ -1515,13 +1515,13 @@ CUSTOMER ARTICLES
 ******************************************************************************/
 
 .custArticle .articleHeader{height:100px; width:100%; border:2px solid #F8C301;}
-.custArticle .articleHeader > div:first-child {height:20px; width:100%; background:#F8C301; text-align:center; color:#fff;}
+.custArticle .articleHeader > div:first-child {height:20px; width:100%; background:#F8C301; text-align:center; color:#ffffff;}
 .custArticle .articleHeader > div:nth-child(2) {padding:7px 0 0 10px;}
 .custArticle .articleHeader > div:nth-child(3) {text-align:right; padding:7px 10px 0 0;}
 .custArticle {margin:0 0 0 40px; font-family:"Open Sans";}
 .custArticle h1 {margin:10px 0;}
-.custArticle h1 a {color:#000;}
-.custArticle h1 a:hover {color:#000;}
+.custArticle h1 a {color:#000000;}
+.custArticle h1 a:hover {color:#000000;}
 .custArticle h2 {margin:10px 0 0 0; color:#3BB3C3;}
 .custArticle h4 {color:#3BB3C3;}
 .custArticle h5 {margin:0 0 10px 0;}
