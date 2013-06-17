@@ -298,7 +298,8 @@ var store_filter = function() {
 					},
 		
 				showFreeShippingTag: function($tag, data) {
-					var isShipFree = data.value['%attribs']['zoovy:prod_is_tags'];
+					//var isShipFree = data.value['%attribs']['zoovy:prod_is_tags'];
+					var isShipFree = (data.bindData.isElastic) ? data.value.tags : data.value['%attribs']['zoovy:prod_is_tags'];
 					if(isShipFree.indexOf('IS_SHIPFREE') >= 0)
 					$tag.show();
 				}, //End showFreeShippingTag

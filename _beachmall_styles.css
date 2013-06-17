@@ -1120,6 +1120,7 @@ newArrivalsCarouselRight, .myProdThumb:hover .moreDetails {background-color:#e04
 .myProdThumbSmall:hover .moreDetailsSmall {background-color:#e0463a;}
 .productListSmall.productList .prodSiblings {height:20px; width:73%; background:#3bb3c3; color:#ffffff; font-family:"Open Sans"; font-size:11px; line-height:19px; margin:auto; text-align:center;}
 .productListSmall.productList .prodSiblings:hover {background-color:#e0463a;}
+.productListTemplateResults .productListSmall .prodSiblings {height:20px; width:73%; background:#3bb3c3; color:#ffffff; font-family:"Open Sans"; font-size:11px; line-height:19px; margin:auto; text-align:center;}
 .showColors {height:20px; width: 100px; background-color:#3bb3c3; color:#ffffff; line-height:20px; margin:auto; text-align:center;}
 .showColors:hover {background-color:#e0463a;}
 
