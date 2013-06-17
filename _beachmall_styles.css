@@ -432,6 +432,7 @@ label.break	{display:block; margin:0 0 4px 6px;}
 .quickView {background:#3bb3c3; border:none; color:#ffffff; padding:4px; font-family:"Open Sans";}
 
 .searchResultsProduct.products.product {height:380px; margin:20px 16.75px 7.5px;}
+.minimalMode .searchResultsProduct.products.product {height:222px; width:222px;}
 .searchResultsPage.clearfix.minimalMode button {margin:0 5px; padding:0 5px;}
 .prodViewerContainer .imageContainer {height:auto; width:260px;}
 .prodSummaryContainer .priceContainer .basePrice {height:auto; width:100%;}
