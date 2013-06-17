@@ -46,7 +46,7 @@ document.body.appendChild(script);
 //this is the callback defined to run after extension loads.
 			startMyProgram : {
 				onSuccess : function()	{
-//					app.u.dump("BEGIN beachmart.callbacks.startMyProgram"); // will write to console, if console is enabled.
+					app.u.dump("BEGIN beachmart.callbacks.startMyProgram"); // will write to console, if console is enabled.
 
 /*
 					if(app.u.isSet(SKU))	{
