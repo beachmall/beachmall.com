@@ -927,16 +927,17 @@ return filters;
 
 				app.u.dump('POG -> '); app.u.dump(pog);
 				
-				var $parent = $('<div />');
+				var $parent = $('<div class="blazgando" />');
 				var $select = $("<select class='displayNone' name='"+pog.pogid+"' />");
-				for(option in pog.options){
-					//TODO add app.u.makeimage call in for the image src
-					app.u.dump('IMG: '); app.u.dump(option.img);
-					var thumbImg = app.u.makeImage({"w":pog.width,"h":pog.height,"name":"galtech/fabric_a/79_dolce_mango","b":"FFFFFF","tag":false,"lib":app.username});
-					$parent.append('<div data-pogval="'+pog.options.v+'"><img src="galtech/fabric_a/79_dolce_mango"></div>').bind('click', function(){
-						$select.val=$(this).attr('data-pogval');
-					});
-				}
+				for (var index in pog.options) {
+					var option = pog.options[index];
+						//TODO add app.u.makeimage call in for the image src
+						//app.u.dump('IMG: '); app.u.dump(option.img);
+						var thumbImg = app.u.makeImage({"w":pog.width,"h":pog.height,"name":option.img,"b":"FFFFFF","tag":false,"lib":app.username});
+						$parent.append('<div class="floatLeft" data-pogval="'+option.v+'"><img src="'+thumbImg+'"></div>').bind('click', function(){
+							$select.val=$(this).attr('data-pogval');
+						});
+					}
 				$parent.append($select);
 				return $parent
 				
