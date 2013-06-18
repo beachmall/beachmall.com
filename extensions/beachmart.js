@@ -485,6 +485,12 @@ var store_filter = function() {
 						$tag.show();
 					}
 				},
+				
+				atcCustomVariations : function($tag, data) {
+					var pid = data.value;
+					pogs = new handlePogs(app.data['appProductGet|'+pid]['@variations'],{"formId":formID,"sku":pid});
+					if(typeof pogs.xinit === 'function') {pogs.xinit()}
+				},
 
 				homePageHider : function($tag,data) {
 					/*app.u.dump(data.value);
@@ -916,7 +922,64 @@ return filters;
 //while no naming convention is stricly forced, 
 //when adding an event, be sure to do off('click.appEventName') and then on('click.appEventName') to ensure the same event is not double-added if app events were to get run again over the same template.
 		e : {
-			} //e [app Events]
+			}, //e [app Events]
+			
+		variations : {
+					
+			renderOptionCUSTOMIMGSELECT: function(pog) {
+
+				app.u.dump('POG -> '); app.u.dump(pog);
+				var $option = $('<div></div>');
+				var $input = $('<input name="'+pog.id+'">Hello World />');
+				
+				$option.append($input);
+				
+/*			//	app.u.dump('BEGIN renderOptionIMGSELECT for pog '+pog.id);
+				var pogid = pog.id;
+				var $parentDiv = $("<span \/>").addClass('imgSelectContainer');
+				var $selectList = $("<select>").attr({"name":pogid}).addClass('zform_select').bind('change', function(e){
+					var thumbnail = $("option:selected",$(this)).attr('data-thumbnail');
+					$(this).closest('.imgSelectContainer').find('img').attr('src',app.u.makeImage({"w":pog.width,"h":pog.height,"name":thumbnail,"b":"FFFFFF","tag":false,"lib":app.username}));
+					});
+				var i = 0;
+				var len = pog.options.length;
+
+				var selOption; //used to hold each option added to the select
+				var optionTxt;
+
+			//if the option is 'optional' AND has more than one option, add blank prompt. If required, add a please choose prompt first.
+				if(len > 0)	{
+					optionTxt = (pog['optional'] == 1) ?  "" :  "Please choose (required)";
+					selOption = "<option value='' disabled='disabled' selected='selected'>"+optionTxt+"<\/option>";
+					$selectList.append(selOption);
+					}
+			//adds options to the select list.
+				while (i < len) {
+					optionTxt = pog['options'][i]['prompt'];
+					if(pog['options'][i]['p'])
+						optionTxt += pogs.handlePogPrice(pog['options'][i]['p']); //' '+pog['options'][i]['p'][0]+'$'+pog['options'][i]['p'].substr(1);
+					selOption = "<option value='"+pog['options'][i]['v']+"' data-thumbnail='"+pog['options'][i]['img']+"' id='option_"+pogid+""+pog['options'][i]['v']+"'>"+optionTxt+"<\/option>";
+					$selectList.append(selOption);
+					i++;
+					}
+
+				$selectList.appendTo($parentDiv);
+
+				if(pog['ghint']) {$parentDiv.append(pogs.showHintIcon(pogid,pog['ghint']))}
+
+				$imageDiv = $('<div>').addClass('imageselect_image');
+				$imageDiv.html(app.u.makeImage({"w":pog.width,"h":pog.height,"name":"blank.gif","b":"FFFFFF","tag":true,"lib":app.username,"id":"selectImg_"+pogid}));
+				$imageDiv.appendTo($parentDiv);
+*/			//	app.u.dump('END renderOptionIMGSELECT for pog '+pog.id);
+				return $option;
+			},
+			
+			xinit : function(){
+				this.addHandler("pogid","PO","renderOptionCUSTOMIMGSELECT");
+			}
+			
+		}	
+			
 		} //r object.
 	return r;
 	}
