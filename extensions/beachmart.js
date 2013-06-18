@@ -176,6 +176,10 @@ var store_filter = function() {
 					} else	{
 						setTimeout(function(){app.ext.beachmart.callbacks.startExtension.onSuccess()},250);
 					}
+					if(handlePogs) {
+						app.u.dump('*** Extending Pogs');
+						$.extend(handlePogs.prototype,app.ext.store_filter.variations);
+					}
 				},
 				onError : function (){
 					app.u.dump('BEGIN app.ext._2bhip.callbacks.startExtension.onError');
@@ -484,12 +488,6 @@ var store_filter = function() {
 						$tag.text(data.value.length + ' VARIATIONS AVAILABLE!');
 						$tag.show();
 					}
-				},
-				
-				atcCustomVariations : function($tag, data) {
-					var pid = data.value;
-					pogs = new handlePogs(app.data['appProductGet|'+pid]['@variations'],{"formId":formID,"sku":pid});
-					if(typeof pogs.xinit === 'function') {pogs.xinit()}
 				},
 
 				homePageHider : function($tag,data) {
@@ -926,9 +924,17 @@ return filters;
 			
 		variations : {
 					
-			renderOptionCUSTOMIMGSELECT: function(pog) {
+			renderOptionCUSTOMIMGSELECT: function(pogid) {
 
-				app.u.dump('POG -> '); app.u.dump(pog);
+				app.u.dump('POG -> '); app.u.dump(pogid);
+				
+				var $select = $("<select class='displayNone zform_select name='"+pog.pogid+"' />")
+					for(option in pog.options){
+						$parent.append('<div data-pogval="option.v"><img src=""></div>').bind('click', function(){
+							$select.val=$(this).attr('data-pogval');
+						});
+					}
+				
 				var $option = $('<div></div>');
 				var $input = $('<input name="'+pog.id+'">Hello World />');
 				
@@ -976,6 +982,7 @@ return filters;
 			
 			xinit : function(){
 				this.addHandler("pogid","PO","renderOptionCUSTOMIMGSELECT");
+				alert("--- RUNNING XINIT");
 			}
 			
 		}	
