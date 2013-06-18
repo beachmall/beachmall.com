@@ -165,24 +165,23 @@ var store_filter = function() {
 			
 			startExtension : {
 				onSuccess : function() {
-					if(app.ext.myRIA && app.ext.myRIA.template && app.ext.powerReviews_reviews){
-						app.u.dump('*** Power Reviews is Loaded');
+					if(app.ext.myRIA && app.ext.myRIA.template && app.ext.powerReviews_reviews && handlePogs){
+		/*				app.u.dump('*** Power Reviews is Loaded');
 						app.rq.push(['templateFunction','homepageTemplate','onDeparts',function(infoObj) {
 							var $context = $(app.u.jqSelector('#'+infoObj.parentID));
 							app.ext.store_filter.u.noReviews($context);
 						}]);
+		*/				
 						app.u.dump("beachmart Extension Started");
-						
+						$.extend(handlePogs.prototype,app.ext.store_filter.variations);
+						app.u.dump('*** Extending Pogs');
+		
 					} else	{
 						setTimeout(function(){app.ext.beachmart.callbacks.startExtension.onSuccess()},250);
 					}
-					if(handlePogs) {
-						app.u.dump('*** Extending Pogs');
-						$.extend(handlePogs.prototype,app.ext.store_filter.variations);
-					}
 				},
 				onError : function (){
-					app.u.dump('BEGIN app.ext._2bhip.callbacks.startExtension.onError');
+					app.u.dump('BEGIN app.ext.store_filter.callbacks.startExtension.onError');
 				}
 			}
 		}, //callbacks
@@ -924,11 +923,28 @@ return filters;
 			
 		variations : {
 					
-			renderOptionCUSTOMIMGSELECT: function(pogid) {
+			renderOptionCUSTOMIMGSELECT: function(pog) {
 
-				app.u.dump('POG -> '); app.u.dump(pogid);
+				app.u.dump('POG -> '); app.u.dump(pog);
 				
-				var $select = $("<select class='displayNone zform_select name='"+pog.pogid+"' />")
+				var $parent = $('<div />');
+				var $select = $("<select class='displayNone' name='"+pog.pogid+"' />");
+				for(option in pog.options){
+					//TODO add app.u.makeimage call in for the image src
+					app.u.dump('IMG: '); app.u.dump(pog.options.v);
+					var thumbImg = app.u.makeImage({"w":pog.width,"h":pog.height,"name":"galtech/fabric_a/79_dolce_mango","b":"FFFFFF","tag":false,"lib":app.username});
+					$parent.append('<div data-pogval="'+pog.options.v+'"><img src="galtech/fabric_a/79_dolce_mango"></div>').bind('click', function(){
+						$select.val=$(this).attr('data-pogval');
+					});
+				}
+				$parent.append($select);
+				return $parent
+				
+				
+				
+				
+/*				var $select = $("<select class='zform_select name='"+pog.pogid+"' />")
+				var $parent = $select.parent();
 					for(option in pog.options){
 						$parent.append('<div data-pogval="option.v"><img src=""></div>').bind('click', function(){
 							$select.val=$(this).attr('data-pogval');
@@ -936,12 +952,12 @@ return filters;
 					}
 				
 				var $option = $('<div></div>');
-				var $input = $('<input name="'+pog.id+'">Hello World />');
+				var $input = $('<input name="'+pog.id+'">Hello World');
 				
 				$option.append($input);
-				
-/*			//	app.u.dump('BEGIN renderOptionIMGSELECT for pog '+pog.id);
-				var pogid = pog.id;
+*/				
+			//	app.u.dump('BEGIN renderOptionIMGSELECT for pog '+pog.id);
+/*				var pogid = pog.id;
 				var $parentDiv = $("<span \/>").addClass('imgSelectContainer');
 				var $selectList = $("<select>").attr({"name":pogid}).addClass('zform_select').bind('change', function(e){
 					var thumbnail = $("option:selected",$(this)).attr('data-thumbnail');
@@ -970,19 +986,27 @@ return filters;
 					}
 
 				$selectList.appendTo($parentDiv);
+				
+				if(len > 0) {
+					$imageDiv = $('<div>').addClass('imageSelect_images').show();
+					$imageDiv.appendTo($parentDiv);
+				} 
+				
+				//app.u.dump('THIS MANY POGS: '+len);
 
 				if(pog['ghint']) {$parentDiv.append(pogs.showHintIcon(pogid,pog['ghint']))}
 
 				$imageDiv = $('<div>').addClass('imageselect_image');
 				$imageDiv.html(app.u.makeImage({"w":pog.width,"h":pog.height,"name":"blank.gif","b":"FFFFFF","tag":true,"lib":app.username,"id":"selectImg_"+pogid}));
-				$imageDiv.appendTo($parentDiv);
-*/			//	app.u.dump('END renderOptionIMGSELECT for pog '+pog.id);
+				$imageDiv.appendTo($parentDiv);*/
+//				app.u.dump('END renderOptionIMGSELECT for pog '+pog.id);
 				return $option;
+//				return $parentDiv;
 			},
 			
 			xinit : function(){
-				this.addHandler("pogid","PO","renderOptionCUSTOMIMGSELECT");
-				alert("--- RUNNING XINIT");
+				this.addHandler("type","imgselect","renderOptionCUSTOMIMGSELECT");
+				app.u.dump("--- RUNNING XINIT");
 			}
 			
 		}	
