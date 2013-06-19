@@ -928,7 +928,7 @@ return filters;
 //				app.u.dump('POG -> '); app.u.dump(pog);
 				
 				var $parent = $('<div class="optionsParent" />');
-				var $select = $("<select id=pog_"+pog.id+" name="+pog.id+" />");
+				var $select = $("<select name="+pog.id+" />");
 				var len = pog.options.length;
 								
 				if(len > 0) {

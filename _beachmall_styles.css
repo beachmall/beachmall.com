@@ -1198,6 +1198,7 @@ h1.prodName	{font-size:18px; margin:0; padding:0; margin-bottom:6px; color:#6666
 
 .optionImagesCont {border: 1px solid #cccccc; margin: 0 6px 6px 0; padding:4px 5px 0 4px;}
 .optionImagesCont.selected { border: 1px solid red;}
+.variation {clear:both; float:right;}
 
 .sizingChartLink {padding:4px 0 0 0;} /* don't set a display: here. displayNone is used and element is toggle on based on whether a value is set */
 
