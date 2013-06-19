@@ -295,9 +295,9 @@ BRANDS CATEGORY PAGE
 .brandsCatContainer .brandsTabs .tabs .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {color:#ffffff;}
 .brandsCatContainer .brandsTabs .ui-widget-content {background:#f5f1de; border:none; border-radius:0px;}
 .brandsCatContainer .brandsTabs .carouselTitles {color:#ffffff; background:#f8c301;}
-.brandCarouselLinkContainer {height:20px; width:203px; font-family:"Open Sans"; font-size:14px; font-weight:bold; margin-right:40px; padding-top:7px; height:auto; text-align:right;}
+.brandCarouselLinkContainer {height:20px; width:auto; font-family:"Open Sans"; font-size:14px; font-weight:bold; margin:0 40px 0 5px; padding-top:7px; height:auto; text-align:right;}
 .featuredProdsTab .brandCarouselLinkContainer {height:auto; width:203px;}
-.viewAllProductsTab.brandCarouselLinkContainer {height:auto; width:70px;}
+/*.viewAllProductsTab.brandCarouselLinkContainer {height:auto; width:70px;}*/
 .brandsTabs .Carousel {width:1020px; padding:0;}
 .categoryList > .catListBrand {height:190px; width:220px; margin:10px;}
 .brandThumbContainer {height:152px; width:152px; box-shadow:0px 0px 3px 2px #3bb3c3; padding:0px 34px;}
