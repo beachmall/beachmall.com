@@ -928,35 +928,21 @@ return filters;
 				app.u.dump('POG -> '); app.u.dump(pog);
 				
 				var $parent = $('<div class="blazgando" />');
-				var $select = $("<select class='displayNone' name='"+pog.pogid+"' />");
+				var $select = $("<select name='"+pog.pogid+"' />");
+				var $option;
 				for (var index in pog.options) {
 					var option = pog.options[index];
-						//TODO add app.u.makeimage call in for the image src
-						//app.u.dump('IMG: '); app.u.dump(option.img);
-						var thumbImg = app.u.makeImage({"w":pog.width,"h":pog.height,"name":option.img,"b":"FFFFFF","tag":false,"lib":app.username});
-						$parent.append('<div class="floatLeft" data-pogval="'+option.v+'"><img src="'+thumbImg+'"></div>').bind('click', function(){
-							$select.val=$(this).attr('data-pogval');
-						});
-					}
+//					app.u.dump('IMG: '); app.u.dump(option.img);
+					$option = $("<option value='"+option.v+"'>'"+option.prompt+"'</option>");
+					$select.append($option);
+					var thumbImg = app.u.makeImage({"w":pog.width,"h":pog.height,"name":option.img,"b":"FFFFFF","tag":false,"lib":app.username});
+					$parent.append('<div class="floatLeft" data-pogval="'+option.v+'"><img src="'+thumbImg+'"></div>').bind('click', function(){
+						$select.val=$(this).attr('data-pogval');
+					});
+				}
 				$parent.append($select);
 				return $parent
-				
-				
-				
-				
-/*				var $select = $("<select class='zform_select name='"+pog.pogid+"' />")
-				var $parent = $select.parent();
-					for(option in pog.options){
-						$parent.append('<div data-pogval="option.v"><img src=""></div>').bind('click', function(){
-							$select.val=$(this).attr('data-pogval');
-						});
-					}
-				
-				var $option = $('<div></div>');
-				var $input = $('<input name="'+pog.id+'">Hello World');
-				
-				$option.append($input);
-*/				
+
 			//	app.u.dump('BEGIN renderOptionIMGSELECT for pog '+pog.id);
 /*				var pogid = pog.id;
 				var $parentDiv = $("<span \/>").addClass('imgSelectContainer');
@@ -985,16 +971,7 @@ return filters;
 					$selectList.append(selOption);
 					i++;
 					}
-
-				$selectList.appendTo($parentDiv);
-				
-				if(len > 0) {
-					$imageDiv = $('<div>').addClass('imageSelect_images').show();
-					$imageDiv.appendTo($parentDiv);
-				} 
-				
-				//app.u.dump('THIS MANY POGS: '+len);
-
+					
 				if(pog['ghint']) {$parentDiv.append(pogs.showHintIcon(pogid,pog['ghint']))}
 
 				$imageDiv = $('<div>').addClass('imageselect_image');
