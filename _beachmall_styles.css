@@ -834,7 +834,7 @@ HOMEPAGE
 }
 .carouselTitleTextContainer {height:81%; width:400px; font-family:Montserrat; font-weight:normal; font-size:18px; margin-left:40px; padding-top:7px}
 .carouselArrowContainer {height:16px; width:16px; margin:9px 0px 0px 0px; padding-top:10px; background-position:-88px -218px;}
-.carouselLinkContainer {height:47; width:136px; font-family:"Open Sans"; font-weight:bold; font-size:14px; margin-right:40px; padding-top:7px; text-align:right;}
+.carouselLinkContainer {height:47; width:auto; font-family:"Open Sans"; font-weight:bold; font-size:14px; margin:0 40px 0 5px; padding-top:7px; text-align:right;}
 .Carousel {height:330px; width:960px; padding:0px 30px 0px 30px; position:relative; overflow:hidden;}
 .Carousel img {border:1px solid #eee;}
 .standardCarouselPagenation {height:30px; width:100%; text-align:center; padding-top:10px;}
@@ -842,7 +842,7 @@ HOMEPAGE
 .standardCarouselPagenation a.selected {background:url(images/sprites-500x500.png); background-position:-33px -216px;}
 .standardCarouselPagenation a span {display: none;}
 .carouselTitles.yellowBkgrd {background-color:#f8c301;}
-.carouselLinkContainer.featWidth {width:210px;}
+/*.carouselLinkContainer.featWidth {width:210px;}*/
 .bestSellersCarouselTitles {background-color:#3bb3c3;}
 
 .carouselButton	{
