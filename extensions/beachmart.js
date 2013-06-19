@@ -928,7 +928,7 @@ return filters;
 //				app.u.dump('POG -> '); app.u.dump(pog);
 				
 				var $parent = $('<div class="optionsParent" />');
-				var $select = $("<select name="+pog.id+" />");
+				var $select = $("<select id=pog_"+pog.id+" name="+pog.id+" />");
 				var len = pog.options.length;
 								
 				if(len > 0) {
@@ -941,10 +941,11 @@ return filters;
 				for (var index in pog.options) {
 					var option = pog.options[index];
 //					app.u.dump('IMG: '); app.u.dump(option.img);
-					$option = $("<option value="+option.v+">"+option.prompt+"</option>");
+					$option = $("<option id="+pog.id+"_"+option.v+" value="+option.v+">"+option.prompt+"</option>");
 					$select.append($option);
 					var thumbImg = app.u.makeImage({"w":pog.width,"h":pog.height,"name":option.img,"b":"FFFFFF","tag":false,"lib":app.username});
-					$parent.append('<div class="floatLeft optionImagesCont" data-pogval='+option.v+'><img src='+thumbImg+'></div>').bind('click', function(){
+					var mzBigImg = app.u.makeImage({"w":200,"h":200,"name":option.img,"b":"FFFFFF","tag":false,"lib":app.username});																									//need to try moving these to be appended
+					$parent.append('<div class="floatLeft optionImagesCont" data-pogval='+option.v+'><a id=imgGridHref_'+pog.id+'_'+option.v+' class="MagicZoomPlus" rel="hint:false" title="" href='+mzBigImg+'><img src='+thumbImg+'><div class="MagicZoomBigImageCont" style="height:232px; width:200px;"><div class="MagicZoomHeader">'+option.prompt+'</div></div></a></div>').bind('click', function(){
 						$select.val=$(this).attr('data-pogval');
 						//app.u.dump('Clicked--> '); app.u.dump(pog.id);
 					});
