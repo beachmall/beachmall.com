@@ -258,7 +258,7 @@ CATEGORY PAGE
 
 
 .catContainer {height:auto; width:980px; margin:auto;}
-.categoryList li {height:155px; width:172px;}
+.categoryList li {height:259px; width:220px;}
 
 /* CATEGORY DESCRIPTIONS */
 .catDescription {font-family:"Open Sans"; font-weight:normal; font-size:12px; color:#000000;}
@@ -1075,20 +1075,27 @@ global app styles
 .largeButton {height:40px; width:160px; background-color:#3bb3c3; color:#ffffff; font-family:Oswald; font-size:18px; font-weight:bold; text-align:center; line-height:10px; border:none;}
 
 .homepageCategories ul li {margin: 5px 10px 5px 10px;}
-.thumbContainer {height:105px; width:162px; border:5px solid #3bb3c3; background:#ffffff;}
+.homeTemplate .thumbContainer {height:105px; width:162px; border:5px solid #3bb3c3; background:#ffffff;}
+.thumbContainer {height:210px; width:210px; border:5px solid #3bb3c3; background:#ffffff;}
 /*M.categoryList li {border:1px dotted #0285CD;}
 .categoryList li:nth-child(even) {border:1px dotted #00a9a4;}
 .categoryList li:nth-child(even) .catName {background-color:#00a9a4;}M*/
-.catThumb {padding: 0px 0px 0px 0px;}
-.catBorderContainer {height:30px; width:162px; padding:5px; background-color:#3bb3c3;}
-.catName {height:30px; width:158px; background-color:#3bb3c3; color:#FFFFFF; font-family:Montserrat; font-size:11px; font-weight:normal; text-align:center; line-height:31px; border:2px solid #ffffff; text-transform:uppercase;} /*font-size:16px;*/
+.homeTemplate .catThumb {padding: 0px 0px 0px 0px;}
+.catThumb {padding: 0px 0px 0px 0px;} /*height:154px; width:210px;*/
+.homeTemplate .catBorderContainer {height:30px; width:162px; padding:5px; background-color:#3bb3c3;}
+.catBorderContainer {height:30px; width:210px; padding:5px; background-color:#3bb3c3;}
+.homeTemplate .catName {height:30px; width:158px; background-color:#3bb3c3; color:#FFFFFF; font-family:Montserrat; font-size:11px; font-weight:normal; text-align:center; line-height:31px; border:2px solid #ffffff; text-transform:uppercase;} /*font-size:16px;*/
+.catName {height:30px; width:205px; background-color:#3bb3c3; color:#FFFFFF; font-family:Montserrat; font-size:13px; font-weight:normal; text-align:center; line-height:31px; border:2px solid #ffffff; text-transform:uppercase;} /*font-size:16px;*/
 .homepageCategories ul li:nth-child(1) span {font-size: 12px; line-height:30px; display:block;} 
 .homepageCategories ul li:nth-child(4) span {font-size: 11px; line-height:30px; display:block;} 
 .catListTemp:hover .catBorderContainer {background-color:#e0463a;}
 .catListTemp:hover .catName {background-color:#e0463a;}
 .catListTemp:hover .thumbContainer {border:5px solid #e0463a;}
 .catListTemp:hover .moreDetailsSmall {background-color:#e0463a;}
-.moreDetailsSmall.catDetails {position:relative; bottom:30px; right:-77px; z-index:2;}
+.homeTemplate .moreDetailsSmall.catDetails {position:relative; bottom:30px; right:-77px; z-index:2;}
+.moreDetailsSmall.catDetails {position:relative; bottom:30px; right:-120px; z-index:2;}
+
+homeTemplate 
 
 .productListTall li {float: left;  margin: 0px 5px 0px 5px;}
 newArrivalsCarouselRight, .productList li {height:300px; width:300px; float:left; margin:0px;}
