@@ -929,8 +929,10 @@ return filters;
 				
 				var $parent = $('<div class="optionsParent" />');
 				var $select = $("<select class='optionsSelect' name="+pog.id+" />");
-				var len = pog.options.length;
-								
+				var $hint = $('<div class="zhint">mouse over thumbnail to see larger swatches</div>');
+				$parent.append($hint);
+				
+				var len = pog.options.length;				
 				if(len > 0) {
 					optionTxt = (pog['optional'] == 1) ? "" : "Please choose (required)";
 					selOption = "<option value='' disabled='disabled' selected='selected'>"+optionTxt+"<\/option>";

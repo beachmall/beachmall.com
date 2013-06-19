@@ -1178,7 +1178,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6db3f2', end
 /* carousel styles for product thumbnails */
 
 .imageContainer .ui-tabs .ui-tabs-panel	{padding:6px;}
-.imageContainer .zhint	{text-align:center; padding:3px 0 0 0; font-family:"Open Sans"; font-weight:normal;}
+.imageContainer .zhint {text-align:center; padding:3px 0 0 0; font-family:"Open Sans"; font-weight:normal;}
 .imageContainer	{width:402px; padding:0px 20px 0px 0px; float:left;}
 #prodImageVideoTabs	{margin-right:24px;}
 
@@ -1206,6 +1206,7 @@ h1.prodName	{font-size:18px; margin:0; padding:0; margin-bottom:6px; color:#6666
 .variation {clear:both; float:right;}
 .variation.pogType_imgselect {float:left;}
 .optionsSelect {clear:both; display:block;}
+.optionsParent .zhint {margin:3px 0; font-family:"Open Sans"; font-weight:normal; font-size:10px; text-align:left; color:#777777;}
 
 .sizingChartLink {padding:4px 0 0 0;} /* don't set a display: here. displayNone is used and element is toggle on based on whether a value is set */
 
