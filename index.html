@@ -1473,7 +1473,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 						</div>
 					</div>
 		
-					<div data-anytab-content='viewAllProductsTab'>
+					<div data-anytab-content='viewAllProductsTab' class='viewAllProductsTabContainer'>
 						<div class='CarouselContainer bestSellersCarouselContainer'>
 							<div class='carouselTitles'>
 								<div href="#" class='pointer' onClick="showContent('category',{'navcat':$(this).closest('[data-catsafeid]').data('catsafeid'),'templateID':'categoryTemplateBrandsBestSellers'});">
@@ -1485,7 +1485,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 								<!-- <a class="carouselButtonDkBlue bestCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
 								<a class="carouselButtonDkBlue bestCarouselNext carouselButtonDkBlueNext" href="#">next</a> -->
 								
-								<ul data-bind="var: category(@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: brandsProductListTemplate; withReviews:1; items_per_page: 24; hide_summary:true;" class='listStyleNone fluidList clearfix noPadOrMargin brandsProductList'></ul>
+								<ul data-bind="var: category(@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: productListTemplate; withReviews:1; items_per_page: 24; hide_summary:true;" class='listStyleNone fluidList clearfix noPadOrMargin brandsProductList'></ul>
 
 							</div>
 							<!-- <div class='standardCarouselPagenation'></div> -->
