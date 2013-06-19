@@ -945,10 +945,39 @@ return filters;
 					$select.append($option);
 					var thumbImg = app.u.makeImage({"w":pog.width,"h":pog.height,"name":option.img,"b":"FFFFFF","tag":false,"lib":app.username});
 					var mzBigImg = app.u.makeImage({"w":200,"h":200,"name":option.img,"b":"FFFFFF","tag":false,"lib":app.username});																									//need to try moving these to be appended
+					
+					var $imgContainer = $('<div class="floatLeft optionImagesCont" data-pogval="'+option.v+'" />')
+					var $mzpLink = $('<a id="imgGridHref_'+pog.id+'_'+option.v+'" class="MagicZoom" rel="hint:false" title="" href="'+mzBigImg+'" />');
+					
+					$mzpLink.click(function(){
+						var pogval = $(this).parent().attr('data-pogval');
+						
+						$select.val(pogval);
+						app.u.dump(pogval);
+						app.u.dump(pogval);
+						app.u.dump(pogval);
+						app.u.dump(pogval);
+						$('.optionImagesCont', $parent).each(function(){
+							if($(this).hasClass('selected')){ 
+								$(this).removeClass('selected'); 
+								}
+							if($(this).attr('data-pogval') == pogval){ 
+								$(this).addClass('selected'); 
+								}
+							});
+						
+						
+						});
+					
+					$mzpLink.append($('<img src='+thumbImg+' data-pogval="'+option.v+'"/>'));
+					$imgContainer.append($mzpLink);
+					$parent.append($imgContainer);
+					/*
 					$parent.append('<div class="floatLeft optionImagesCont" data-pogval='+option.v+'><a id=imgGridHref_'+pog.id+'_'+option.v+' class="MagicZoomPlus" rel="hint:false" title="" href='+mzBigImg+'><img src='+thumbImg+'><div class="MagicZoomBigImageCont" style="height:232px; width:200px;"><div class="MagicZoomHeader">'+option.prompt+'</div></div></a></div>').bind('click', function(){
 						$select.val=$(this).attr('data-pogval');
 						//app.u.dump('Clicked--> '); app.u.dump(pog.id);
 					});
+					*/
 				}
 				$parent.append($select);
 				return $parent;

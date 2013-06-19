@@ -1,3 +1,9 @@
+/***
+ADDING THIS AT THE TOP PUT IT WHEREVER YOU WANT
+***/
+.optionImagesCont.selected{ border: 1px solid red;}
+
+
 @viewport, @-o-viewport, @-moz-viewport, @-webkit-viewport {
     width: device-width;
 	}
