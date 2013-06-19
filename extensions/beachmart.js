@@ -927,8 +927,16 @@ return filters;
 
 				app.u.dump('POG -> '); app.u.dump(pog);
 				
-				var $parent = $('<div class="blazgando" />');
-				var $select = $("<select name='"+pog.pogid+"' />");
+				var $parent = $('<div class="optionsParent" />');
+				var $select = $("<select name='"+pog.id+"' />");
+				var len = pog.options.length;
+								
+				if(len > 0) {
+					optionTxt = (pog['optional'] == 1) ? "" : "Please choose (required)";
+					selOption = "<option value='' disabled='disabled' selected='selected'>"+optionTxt+"<\/option>";
+					$select.append(selOption);
+				}
+				
 				var $option;
 				for (var index in pog.options) {
 					var option = pog.options[index];
@@ -938,10 +946,11 @@ return filters;
 					var thumbImg = app.u.makeImage({"w":pog.width,"h":pog.height,"name":option.img,"b":"FFFFFF","tag":false,"lib":app.username});
 					$parent.append('<div class="floatLeft" data-pogval="'+option.v+'"><img src="'+thumbImg+'"></div>').bind('click', function(){
 						$select.val=$(this).attr('data-pogval');
+						//app.u.dump('Clicked--> '); app.u.dump(pog.id);
 					});
 				}
 				$parent.append($select);
-				return $parent
+				return $parent;
 
 			//	app.u.dump('BEGIN renderOptionIMGSELECT for pog '+pog.id);
 /*				var pogid = pog.id;
@@ -978,7 +987,7 @@ return filters;
 				$imageDiv.html(app.u.makeImage({"w":pog.width,"h":pog.height,"name":"blank.gif","b":"FFFFFF","tag":true,"lib":app.username,"id":"selectImg_"+pogid}));
 				$imageDiv.appendTo($parentDiv);*/
 //				app.u.dump('END renderOptionIMGSELECT for pog '+pog.id);
-				return $option;
+	//			return $option;
 //				return $parentDiv;
 			},
 			
