@@ -925,10 +925,10 @@ return filters;
 					
 			renderOptionCUSTOMIMGSELECT: function(pog) {
 
-				app.u.dump('POG -> '); app.u.dump(pog);
+//				app.u.dump('POG -> '); app.u.dump(pog);
 				
 				var $parent = $('<div class="optionsParent" />');
-				var $select = $("<select name='"+pog.id+"' />");
+				var $select = $("<select name="+pog.id+" />");
 				var len = pog.options.length;
 								
 				if(len > 0) {
@@ -941,10 +941,10 @@ return filters;
 				for (var index in pog.options) {
 					var option = pog.options[index];
 //					app.u.dump('IMG: '); app.u.dump(option.img);
-					$option = $("<option value='"+option.v+"'>'"+option.prompt+"'</option>");
+					$option = $("<option value="+option.v+">"+option.prompt+"</option>");
 					$select.append($option);
 					var thumbImg = app.u.makeImage({"w":pog.width,"h":pog.height,"name":option.img,"b":"FFFFFF","tag":false,"lib":app.username});
-					$parent.append('<div class="floatLeft optionImagesCont" data-pogval="'+option.v+'"><img src="'+thumbImg+'"></div>').bind('click', function(){
+					$parent.append('<div class="floatLeft optionImagesCont" data-pogval='+option.v+'><img src='+thumbImg+'></div>').bind('click', function(){
 						$select.val=$(this).attr('data-pogval');
 						//app.u.dump('Clicked--> '); app.u.dump(pog.id);
 					});
