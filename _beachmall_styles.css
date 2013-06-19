@@ -1,8 +1,3 @@
-/***
-ADDING THIS AT THE TOP PUT IT WHEREVER YOU WANT
-***/
-.optionImagesCont.selected{ border: 1px solid red;}
-
 
 @viewport, @-o-viewport, @-moz-viewport, @-webkit-viewport {
     width: device-width;
@@ -1194,7 +1189,8 @@ h1.prodName	{font-size:18px; margin:0; padding:0; margin-bottom:6px; color:#6666
 .priceContainer .savings, .retailPrice	{color:#666666; font-size:13px;}
 .priceContainer .retailPrice span.value {text-decoration:line-through;}
 
-.optionImagesCont {border: 1px outset #777777; margin: 2px 2px 2px 0; padding:2px;}
+.optionImagesCont {border: 1px solid #cccccc; margin: 0 6px 6px 0; padding:4px 5px 0 4px;}
+.optionImagesCont.selected { border: 1px solid red;}
 
 .sizingChartLink {padding:4px 0 0 0;} /* don't set a display: here. displayNone is used and element is toggle on based on whether a value is set */
 
