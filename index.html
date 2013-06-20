@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"201314.20130618221000",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"201314.20130619200400",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"", //used in non-local mode.
 	"checkoutAuthMode" : "required",//can be passive, active or required
@@ -3167,84 +3167,171 @@ sticky, so they're fixed. Makes it easier on the designer and the developer.
 
 So the cart template should contain these two elements and the extension should contain these two templates.
 -->
-
+<!--*************************************************************************************************************
+START NEW CART
+**************************************************************************************************************-->
 <div id='cartTemplate' class='loadingBG'>
 
-<form id='cartTemplateForm' action='#' onSubmit='return false'>
-<table class='cartContainer'>
-<tr>
-	<td class='cartStuffContainer'>
-	<ul id='cartStuffList' data-bind="var: cart(@ITEMS); format:stuffList; loadsTemplate:productListTemplateCart;" class='listStyleNone fluidList clearfix noPadOrMargin productList lineItemProdlist'></ul>
-	</td>
+	<form id='cartTemplateForm' action='#' onSubmit='return false'>
+		<table class='cartContainer'>
+			<tr>
+				<td colspan='2' class='checkoutButtonsContainer'>
+					<span title='proceed to secure checkout'><a href='#' onClick="showContent('checkout',{});"><img src='images/bm10_checkout-136x35.png' width='136' height='35' alt='Proceed to Fast and Secure in Store Checkout' /></a></span>
 
-	<td class='cartSummaryTotalsContainer'>
-	<div class='ui-widget ui-widget-content ui-helper-clearfix ui-corner-all'>
-		<h2 class='ui-widget-header ui-helper-clearfix ui-corner-all ui-header'>Cart Totals</h2>
-		<div class='cartSummaryContainer'>
+					<span id='paypalECButton' data-bind='var: cart(id); format:paypalECButton;'></span>
 
-<section id='cartTemplateCostSummary' class='cartSummary'>
+					<span id='googleCheckoutButton' data-bind='var: cart(id); format:googleCheckoutButton;'></span>
+				<!--
+					<span id='amazonCheckoutButton' data-bind='var: cart(id); format:amazonCheckoutButton;'></span>
+				-->
+				</td>
+			</tr>
+			<tr>
+				<td class='upsellTD loadingBG'>
+					<div class='upsellContainer'>
+						<h3>Recommended Accessories</h3>
+						<ul id='upsellList' class='listStyleNone fluidList clearfix noPadOrMargin productList bundleProdlist'></ul>
+					</div>
+				</td>
 
-	<div data-bind="var: cart(sum/items_total); format:money; className:orderSubtotal; hideZero:false; currencySign: $; pretext:Subtotal: ; "></div>
+				<td class='cartSummaryTotalsContainer'>
 
-	<div data-bind='var: cart(sum/tax_total); format:money; className:orderTax; hideZero:true;currencySign: $; pretext:Tax: ; '></div>
+					<div class='cartStuffListContainer'>
+						<!--<ul id='cartStuffList' data-bind="var: cart(stuff); format:stuffList; loadsTemplate:productListTemplateCart;" class='listStyleNone fluidList clearfix noPadOrMargin productList lineItemProdlist marginBottom'></ul>-->
+						<ul id='cartStuffList' data-bind="var: cart(@ITEMS); format:stuffList; loadsTemplate:productListTemplateCart;" class='listStyleNone fluidList clearfix noPadOrMargin productList lineItemProdlist marginBottom'></ul>
+					</div>
 
-	<div data-bind='var: cart(want/shipping_id); format:shipInfoById; className:orderShipping; hideZero:false; extension:store_cart;'></div>
+					<div class='cartSummaryContainer'>
+						
+						<div id='cartMessaging'></div>
 
-	<div data-bind='var: cart(sum/order_total); format:money; className:orderTotal; hideZero:false; currencySign: $; pretext:Order Total: ; '></div>
+						<section id='cartTemplateCostSummary' class='cartSummary'>
+							<div data-bind="var: cart(sum/items_total); format:money; className:orderSubtotal; hideZero:false; currencySign: $; pretext:Subtotal: ; "></div>
+							<div data-bind='var: cart(sum/tax_total); format:money; className:orderTax; hideZero:true;currencySign: $; pretext:Tax: ; '></div>
+							<div data-bind='var: cart(want/shipping_id); format:shipInfoById; className:orderShipping; hideZero:false; extension:store_cart;'></div>
+							<div data-bind='var: cart(sum/order_total); format:money; className:orderTotal; hideZero:false; currencySign: $; pretext:Order Total: ; '></div>
+							<div data-bind='var: cart(sum/gfc_total); format:money; className:orderGiftcardTotal; hideZero:false; currencySign: $; pretext:Giftcard(s): ; '></div>
+							<div data-bind='var: cart(sum/balance_due_total); format:orderBalance; className:orderBalanceDue; hideZero:false; currencySign: $; pretext:Estimated Total: ; extension:store_cart;'></div>
+						</section>
 
-	<div data-bind='var: cart(sum/gfc_total); format:money; className:orderGiftcardTotal; hideZero:false; currencySign: $; pretext:Giftcard(s): ; '></div>
-	<div data-bind='var: cart(sum/pnt_total); format:money; className:rewardPointsTotal; hideZero:false; currencySign: $; pretext:Reward Points: ; '></div>
-	<div data-bind='var: cart(sum/rmc_total); format:money; className:returnsCreditTotal; hideZero:false; currencySign: $; pretext:Returns Credit: ; '></div>
+						<section id='cartTemplateShippingContainer'>
+							<h4>Shipping/<a onclick="window.open('%CATEGORY_URL%/help.surcharge-explanation/?wrapper=%POPUP_THEME%','advice','status=no,width=650,height=500,menubar=no,scrollbars=yes'); return false" href="#" class='zlink'>Surcharge</a>:</h4>
+							<ul class='noPadOrMargin listStyleNone cartShipMethods' data-bind='var: cart(@shipmethods); format:shipMethodsAsRadioButtons; extension:store_cart;'></ul>
+						</section>
+						
+						<section class='stdMargin'>
 
-	<div data-bind='var: cart(sum/balance_due_total); format:orderBalance; className:orderBalanceDue; hideZero:false; currencySign: $; pretext:Estimated Total: ; extension:store_cart;'></div>
+							<div class='cartZipCodeContainer'>
+								<label for='data-ship_zip'>Zip/Postal Code:</label>
+<!--myControl: all app:			<input type='text' size='6'  name='data.ship_zip' id='data-ship_zip' value='' data-bind='var: cart(data.ship_zip); format:popVal;' maxlength='10' onChange="app.calls.cartSet.init({'data.ship_zip':this.value});-->
+								<input type='text' size='6'  name='ship/postal' id='data-ship_zip' value='' data-bind='var: cart(ship/postal); format:popVal;' maxlength='10' onChange="app.calls.cartSet.init({'ship/postal':this.value, 'ship/region':''});
+									app.ext.store_cart.calls.cartShippingMethodsWithUpdate.init();
+									app.ext.beachmart.util.updateCartSummary();
+									app.model.dispatchThis('immutable');"  />
+							</div>
+							
+							<!-- some buttons that are alternatives to checkout. fewer is better -->
+							<menu class='cartAltButtonsContainer noPadOrMargin'>		
+								<button class='ui-button-text ui-button ui-state-default ui-corner-all continueShoppingButton' onClick="$('#modalCart').dialog('close');">Continue Shopping</button>
+							</menu>
 
-</section>
+						</section>
 
-<section id='cartTemplateShippingContainer'>
-	<h3>Shipping:</h3>
-	<ul class='noPadOrMargin listStyleNone cartShipMethods' data-bind='var: cart(@SHIPMETHODS); format:shipMethodsAsRadioButtons; extension:store_cart;'></ul>
-</section>
+					</div>
 
-<section class='stdMargin'>
+				</td>
+			</tr>
 
-	<div class='cartZipCodeContainer'>
-	<label for='data-ship_zip'>Zip/Postal Code:</label>
-	<input type='text' size='6'  name='ship/postal' id='data-ship_zip' value='' data-bind='var: cart(ship/postal); format:popVal;' maxlength='10' onChange="app.calls.cartSet.init({'ship/postal':this.value, 'ship/region':''});
-	app.ext.store_cart.u.updateCartSummary();
-	app.ext.store_cart.calls.cartShippingMethodsWithUpdate.init();
-	app.model.dispatchThis('immutable');"  />
-	</div>
-
-
-
-	<!-- some buttons that are alternatives to checkout. fewer is better -->
-	<menu class='cartAltButtonsContainer noPadOrMargin'>
-	<button class='ui-button-text ui-button ui-state-default ui-corner-all continueShoppingButton' onClick="$('#modalCart').dialog('close');">Continue Shopping</button>
-	</menu>
-
-	<div class='checkoutButtonsContainer'>
-
-		<span title='proceed to secure checkout'><button class='ui-button ui-button-text ui-state-default ui-corner-all checkoutButton' onClick="showContent('checkout',{});">Store Checkout</button></span>
-
-		<span id='paypalECButton' data-bind='var: cart(cart/cartid); format:paypalECButton;'></span>
-
-		<span id='googleCheckoutButton' class='pointer' data-bind='var: cart(sum/items_total); format:googleCheckoutButton;'></span>
-
-		<span id='amazonCheckoutButton' class='pointer' data-bind='var: cart(cart/cartid); format:amazonCheckoutButton;'></span>
-
-	</div>
-
-</section>
-
-		</div>
-	</div>
-	</td>
-</tr>
-
-</table>
-</form>
+		</table>
+	</form>
 </div><!-- /cartTemplate -->
+<!--*************************************************************************************************************
+END NEW CART
+**************************************************************************************************************-->
 
+
+<!--*************************************************************************************************************
+START ORIG CART
+**************************************************************************************************************-->
+<!--		<div id='cartTemplate' class='loadingBG'>
+
+			<form id='cartTemplateForm' action='#' onSubmit='return false'>
+			<table class='cartContainer'>
+			<tr>
+				<td class='cartStuffContainer'>
+				<ul id='cartStuffList' data-bind="var: cart(@ITEMS); format:stuffList; loadsTemplate:productListTemplateCart;" class='listStyleNone fluidList clearfix noPadOrMargin productList lineItemProdlist'></ul>
+				</td>
+
+				<td class='cartSummaryTotalsContainer'>
+				<div class='ui-widget ui-widget-content ui-helper-clearfix ui-corner-all'>
+					<h2 class='ui-widget-header ui-helper-clearfix ui-corner-all ui-header'>Cart Totals</h2>
+					<div class='cartSummaryContainer'>
+
+			<section id='cartTemplateCostSummary' class='cartSummary'>
+
+				<div data-bind="var: cart(sum/items_total); format:money; className:orderSubtotal; hideZero:false; currencySign: $; pretext:Subtotal: ; "></div>
+
+				<div data-bind='var: cart(sum/tax_total); format:money; className:orderTax; hideZero:true;currencySign: $; pretext:Tax: ; '></div>
+
+				<div data-bind='var: cart(want/shipping_id); format:shipInfoById; className:orderShipping; hideZero:false; extension:store_cart;'></div>
+
+				<div data-bind='var: cart(sum/order_total); format:money; className:orderTotal; hideZero:false; currencySign: $; pretext:Order Total: ; '></div>
+
+				<div data-bind='var: cart(sum/gfc_total); format:money; className:orderGiftcardTotal; hideZero:false; currencySign: $; pretext:Giftcard(s): ; '></div>
+				<div data-bind='var: cart(sum/pnt_total); format:money; className:rewardPointsTotal; hideZero:false; currencySign: $; pretext:Reward Points: ; '></div>
+				<div data-bind='var: cart(sum/rmc_total); format:money; className:returnsCreditTotal; hideZero:false; currencySign: $; pretext:Returns Credit: ; '></div>
+
+				<div data-bind='var: cart(sum/balance_due_total); format:orderBalance; className:orderBalanceDue; hideZero:false; currencySign: $; pretext:Estimated Total: ; extension:store_cart;'></div>
+
+			</section>
+
+			<section id='cartTemplateShippingContainer'>
+				<h3>Shipping:</h3>
+				<ul class='noPadOrMargin listStyleNone cartShipMethods' data-bind='var: cart(@SHIPMETHODS); format:shipMethodsAsRadioButtons; extension:store_cart;'></ul>
+			</section>
+
+			<section class='stdMargin'>
+
+				<div class='cartZipCodeContainer'>
+				<label for='data-ship_zip'>Zip/Postal Code:</label>
+				<input type='text' size='6'  name='ship/postal' id='data-ship_zip' value='' data-bind='var: cart(ship/postal); format:popVal;' maxlength='10' onChange="app.calls.cartSet.init({'ship/postal':this.value, 'ship/region':''});
+				app.ext.store_cart.u.updateCartSummary();
+				app.ext.store_cart.calls.cartShippingMethodsWithUpdate.init();
+				app.model.dispatchThis('immutable');"  />
+				</div>
+
+
+
+				<!-- some buttons that are alternatives to checkout. fewer is better -->
+	<!--		<menu class='cartAltButtonsContainer noPadOrMargin'>
+				<button class='ui-button-text ui-button ui-state-default ui-corner-all continueShoppingButton' onClick="$('#modalCart').dialog('close');">Continue Shopping</button>
+				</menu>
+
+				<div class='checkoutButtonsContainer'>
+
+					<span title='proceed to secure checkout'><button class='ui-button ui-button-text ui-state-default ui-corner-all checkoutButton' onClick="showContent('checkout',{});">Store Checkout</button></span>
+
+					<span id='paypalECButton' data-bind='var: cart(cart/cartid); format:paypalECButton;'></span>
+
+					<span id='googleCheckoutButton' class='pointer' data-bind='var: cart(sum/items_total); format:googleCheckoutButton;'></span>
+
+					<span id='amazonCheckoutButton' class='pointer' data-bind='var: cart(cart/cartid); format:amazonCheckoutButton;'></span>
+
+				</div>
+
+			</section>
+
+					</div>
+				</div>
+				</td>
+			</tr>
+
+			</table>
+			</form>
+			</div><!-- /cartTemplate -->
+<!--*************************************************************************************************************
+END ORIG CART
+**************************************************************************************************************-->
 
 
 
@@ -3253,6 +3340,56 @@ So the cart template should contain these two elements and the extension should 
 
 
 <!-- cart line-item template -->
+<!--*************************************************************************************************************
+START NEW PRODUCTLISTTEMPLATECART
+**************************************************************************************************************-->
+<ul>
+	<li id='productListTemplateCart' class='padMargBorderBottom clearfix'>
+
+	<!--<span class='ui-state-default ui-corner-all floatRight removeButton pointer' data-bind='var: product(stid); format:removeItemBtn; extension:store_cart;' >-->
+		<span class='ui-state-default ui-corner-all floatRight removeButton pointer' data-bind='format:removeItemBtn; extension:store_cart; useParentData:true;' >
+			<span class='ui-icon ui-icon-closethick'></span>
+		</span>
+		
+		<div class='floatLeft'><img src='blank.gif' class='prodThumb' alt='' data-bind='var: product(zoovy:prod_image1); defaultVar: product(%attribs.zoovy:prod_image1); format:imageURL;' width='75' height='75' /></div>
+	
+		<h4 data-bind='var: product(prod_name); format:text; '></h4>
+		
+		<div class='ztable_row_small stid' data-bind='var: product(sku); format:text; className: stid; pretext: Sku: ;'></div>
+		
+		<div>
+<!--myControl   qty: <input type='number' class='qtyInput zform_number' onChange="app.ext.beachmart.u.updateCartQty($(this),this.value); app.model.dispatchThis('immutable');"  data-bind='var: product(qty); format:cartItemQty;extension:store_cart;' size='3' />-->
+<!--myControl-->qty: <input type='number' class='qtyInput zform_number' onChange="app.ext.beachmart.u.updateCartQty($(this),this.value); app.model.dispatchThis('immutable');"  data-bind='useParentData:true; format:cartItemQty;extension:store_cart;' size='3' />
+			<button class='displayNone'>update</button><!-- here to stop 'enter' in input above from closing modal -->
+			<span data-bind='var: product(price); format:money; currencySign: $;  hideZero:false; pretext: x ;' ></span>
+			<span data-bind='var: product(extended); format:money; currencySign: $; hideZero:false; pretext: = ;'></span>
+		</div>
+
+	<!--<div class='ztable_row_small prodOptions' data-bind='var: variations(*options); format:selectedOptionsDisplay;'></div>-->
+		<div class='ztable_row_small prodOptions' data-bind='var: variations(%options); format:selectedOptionsDisplay;'></div>
+		
+		<div class='clear_both'>
+		
+<!--myControl--><div data-bind='var:product(stid);format:assignAttribute; attribute:data-stid;' class='hideAccessoriesBtn displayNone pointer'  onClick="app.ext.beachmart.u.hideCartUpsell();">
+		<!--<img src='%PROJECT_URL%/bm10_mc_hideaccessories-150x20.png' width='150' height='20' alt='hide accessories' />-->
+			<img src='images/bm12_cameraicon-25x21.png' width='150' height='20' alt='hide accessories' />
+			</div>
+			
+<!--myControl--><div class='showAccessoriesBtn displayNone pointer' onClick="app.ext.beachmart.u.showUpsellItemsInCart($(this).closest('[data-stid]').attr('data-stid'));">
+			<!--<img src='%PROJECT_URL%/bm10_mc_showaccessories-150x20.png' width='150' height='20' alt='show accessories' />-->
+				<img src='images/bm12_videoicon-24x24.png' width='150' height='20' alt='show accessories' />
+			</div>
+
+		</div>
+
+	</li>
+</ul>
+<!--*************************************************************************************************************
+END NEW PRODUCTLISTTEMPLATECART
+**************************************************************************************************************-->
+<!--*************************************************************************************************************
+START OLD PRODUCTLISTTEMPLATECART
+**************************************************************************************************************
 <ul>
 	<li id='productListTemplateCart' class='padMargBorderBottom clearfix'>
 
@@ -3268,7 +3405,7 @@ So the cart template should contain these two elements and the extension should 
 		<div>
 		qty: <input type='number' class='qtyInput numberInput' onChange="app.ext.store_cart.u.updateCartQty($(this)); app.model.dispatchThis('immutable');"  data-bind='format:cartItemQty;extension:store_cart;useParentData:true;' />
 		<button class='displayNone'>update</button><!-- here to stop 'enter' in input above from closing modal -->
-		<span data-bind='var: product(price); format:money; currencySign: $;  hideZero:false; pretext: x ;' ></span>
+<!--	<span data-bind='var: product(price); format:money; currencySign: $;  hideZero:false; pretext: x ;' ></span>
 		<span data-bind='var: product(extended); format:money; currencySign: $; hideZero:false; pretext: = ;'></span>
 
 		</div>
@@ -3276,7 +3413,9 @@ So the cart template should contain these two elements and the extension should 
 		<div class='ztable_row_small prodOptions' data-bind='var: variations(%options); format:selectedOptionsDisplay;'></div>
 	</li>
 </ul>
-
+<!--*************************************************************************************************************
+END OLD PRODUCTLISTTEMPLATECART
+**************************************************************************************************************-->
 
 
 
