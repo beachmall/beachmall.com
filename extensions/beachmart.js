@@ -930,6 +930,7 @@ return filters;
 				var $parent = $('<div class="optionsParent" />');
 				var $select = $("<select class='optionsSelect' name="+pog.id+" />");
 				var $hint = $('<div class="zhint">mouse over thumbnail to see larger swatches</div>');
+				$parent.append($hint);
 
 				var len = pog.options.length;				
 				if(len > 0) {
@@ -982,7 +983,6 @@ return filters;
 	
 				} // END for
 
-				$parent.append($hint);
 				$parent.append($select);
 				return $parent;
 			}, // END renderOptionCUSTOMIMGSELECT
