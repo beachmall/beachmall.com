@@ -930,8 +930,7 @@ return filters;
 				var $parent = $('<div class="optionsParent" />');
 				var $select = $("<select class='optionsSelect' name="+pog.id+" />");
 				var $hint = $('<div class="zhint">mouse over thumbnail to see larger swatches</div>');
-				$parent.append($hint);
-				
+
 				var len = pog.options.length;				
 				if(len > 0) {
 					optionTxt = (pog['optional'] == 1) ? "" : "Please choose (required)";
@@ -948,7 +947,7 @@ return filters;
 					var thumbImg = app.u.makeImage({"w":pog.width,"h":pog.height,"name":option.img,"b":"FFFFFF","tag":false,"lib":app.username});
 					var mzBigImg = app.u.makeImage({"w":200,"h":200,"name":option.img,"b":"FFFFFF","tag":false,"lib":app.username});																									//need to try moving these to be appended
 					
-					var $imgContainer = $('<div class="floatLeft optionImagesCont" data-pogval="'+option.v+'" />')
+					var $imgContainer = $('<div class="floatLeft optionImagesCont" data-pogval="'+option.v+'" />');
 					var $mzpLink = $('<a id="imgGridHref_'+pog.id+'_'+option.v+'" class="MagicZoom" rel="hint:false" title="" href="'+mzBigImg+'" />');
 					
 					$mzpLink.click(function(){
@@ -966,62 +965,27 @@ return filters;
 							if($(this).attr('data-pogval') == pogval){ 
 								$(this).addClass('selected'); 
 								}
-							});
-						
-						
+							});	
 						});
-					
+						
 					$mzpLink.append($('<img src='+thumbImg+' data-pogval="'+option.v+'"/>'));
 					$imgContainer.append($mzpLink);
 					$parent.append($imgContainer);
-					/*
-					$parent.append('<div class="floatLeft optionImagesCont" data-pogval='+option.v+'><a id=imgGridHref_'+pog.id+'_'+option.v+' class="MagicZoomPlus" rel="hint:false" title="" href='+mzBigImg+'><img src='+thumbImg+'><div class="MagicZoomBigImageCont" style="height:232px; width:200px;"><div class="MagicZoomHeader">'+option.prompt+'</div></div></a></div>').bind('click', function(){
-						$select.val=$(this).attr('data-pogval');
-						//app.u.dump('Clicked--> '); app.u.dump(pog.id);
-					});
-					*/
-				}
+					
+	//				to add description info to label for
+	//				$mzpLink.mouseover(function() {
+	//					$('.optionImagesCont', $parent).each(function(){
+	//						$('label[value="Fabric"]').empty().text('Fabric: '+option.prompt+'');
+	//						app.u.dump(option.prompt);
+	//					});		
+	//				});
+	
+				} // END for
+
+				$parent.append($hint);
 				$parent.append($select);
 				return $parent;
-
-			//	app.u.dump('BEGIN renderOptionIMGSELECT for pog '+pog.id);
-/*				var pogid = pog.id;
-				var $parentDiv = $("<span \/>").addClass('imgSelectContainer');
-				var $selectList = $("<select>").attr({"name":pogid}).addClass('zform_select').bind('change', function(e){
-					var thumbnail = $("option:selected",$(this)).attr('data-thumbnail');
-					$(this).closest('.imgSelectContainer').find('img').attr('src',app.u.makeImage({"w":pog.width,"h":pog.height,"name":thumbnail,"b":"FFFFFF","tag":false,"lib":app.username}));
-					});
-				var i = 0;
-				var len = pog.options.length;
-
-				var selOption; //used to hold each option added to the select
-				var optionTxt;
-
-			//if the option is 'optional' AND has more than one option, add blank prompt. If required, add a please choose prompt first.
-				if(len > 0)	{
-					optionTxt = (pog['optional'] == 1) ?  "" :  "Please choose (required)";
-					selOption = "<option value='' disabled='disabled' selected='selected'>"+optionTxt+"<\/option>";
-					$selectList.append(selOption);
-					}
-			//adds options to the select list.
-				while (i < len) {
-					optionTxt = pog['options'][i]['prompt'];
-					if(pog['options'][i]['p'])
-						optionTxt += pogs.handlePogPrice(pog['options'][i]['p']); //' '+pog['options'][i]['p'][0]+'$'+pog['options'][i]['p'].substr(1);
-					selOption = "<option value='"+pog['options'][i]['v']+"' data-thumbnail='"+pog['options'][i]['img']+"' id='option_"+pogid+""+pog['options'][i]['v']+"'>"+optionTxt+"<\/option>";
-					$selectList.append(selOption);
-					i++;
-					}
-					
-				if(pog['ghint']) {$parentDiv.append(pogs.showHintIcon(pogid,pog['ghint']))}
-
-				$imageDiv = $('<div>').addClass('imageselect_image');
-				$imageDiv.html(app.u.makeImage({"w":pog.width,"h":pog.height,"name":"blank.gif","b":"FFFFFF","tag":true,"lib":app.username,"id":"selectImg_"+pogid}));
-				$imageDiv.appendTo($parentDiv);*/
-//				app.u.dump('END renderOptionIMGSELECT for pog '+pog.id);
-	//			return $option;
-//				return $parentDiv;
-			},
+			}, // END renderOptionCUSTOMIMGSELECT
 			
 			xinit : function(){
 				this.addHandler("type","imgselect","renderOptionCUSTOMIMGSELECT");
