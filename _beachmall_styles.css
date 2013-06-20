@@ -824,7 +824,7 @@ HOMEPAGE
 .shopByProdContainer:hover .thumbContainer {border:5px solid #e0463a;}
 .shopByProdContainer:hover .thumbContainer .moreDetailsSmall {background-color:#e0463a;}
 .moreDetailsSmall.catHomeDetails.prodDetails {bottom:-75px;}
-.moreDetailsSmall.catHomeDetails {position:relative; bottom:20px; right:-87px; z-index:2;}
+.moreDetailsSmall.catHomeDetails {position:relative; bottom:20px; right:-87px; z-index:2; width:80px;}
 
 .CarouselContainer {height:405px; width:1020px; background:url(images/carousel-background_1020x370.jpg); margin-bottom:10px; border-bottom:5px solid #f8c301;}
 .carouselTitles {
