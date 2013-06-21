@@ -131,7 +131,7 @@ MagicZoomPlus.options = {
 					imgName = pdata['zoovy:prod_image'+i];
 //					app.u.dump(" -> "+i+": "+imgName);
 					if(app.u.isSet(imgName))	{
-/*BEACHMALL*/			imgs += "<li><a class='MagicThumb' rel='zoom-id: prodBigImage_href_"+data.value+"; hint: false' rev='"+app.u.makeImage({'tag':0,'w':380,'h':380,'name':imgName,'b':'ffffff'})+"' href='"+app.u.makeImage({'tag':0,'w':'','h':'','name':imgName,'b':'ffffff'})+"'><img src='"+app.u.makeImage({'tag':0,'w':50,'h':50,'name':imgName,'b':'ffffff'})+"' \/><\/a><\/li>";
+/*BEACHMALL*/			imgs += "<li><a class='MagicThumb' rel='zoom-id: prodBigImage_href_"+data.value+"; hint: false;' rev='"+app.u.makeImage({'tag':0,'w':380,'h':380,'name':imgName,'b':'ffffff'})+"' href='"+app.u.makeImage({'tag':0,'w':'','h':'','name':imgName,'b':'ffffff'})+"'><img src='"+app.u.makeImage({'tag':0,'w':50,'h':50,'name':imgName,'b':'ffffff'})+"' \/><\/a><\/li>";
 						}
 					}
 				$tag.append(imgs);

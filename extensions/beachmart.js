@@ -943,7 +943,7 @@ return filters;
 				for (var index in pog.options) {
 					var option = pog.options[index];
 //					app.u.dump('IMG: '); app.u.dump(option.img);
-					$option = $("<option id="+pog.id+"_"+option.v+" value="+option.v+">"+option.prompt+"</option>");
+					$option = $("<option value="+option.v+">"+option.prompt+"</option>");
 					$select.append($option);
 					var thumbImg = app.u.makeImage({"w":pog.width,"h":pog.height,"name":option.img,"b":"FFFFFF","tag":false,"lib":app.username});
 					var mzBigImg = app.u.makeImage({"w":200,"h":200,"name":option.img,"b":"FFFFFF","tag":false,"lib":app.username});																									//need to try moving these to be appended
