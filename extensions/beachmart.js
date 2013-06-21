@@ -949,7 +949,7 @@ return filters;
 					var mzBigImg = app.u.makeImage({"w":200,"h":200,"name":option.img,"b":"FFFFFF","tag":false,"lib":app.username});																									//need to try moving these to be appended
 					
 					var $imgContainer = $('<div class="floatLeft optionImagesCont" data-pogval="'+option.v+'" />');
-					var $mzpLink = $('<a id="imgGridHref_'+pog.id+'_'+option.v+'" class="MagicZoom" rel="hint:false" title="" href="'+mzBigImg+'" />');
+					var $mzpLink = $('<a id="imgGridHref_'+pog.id+'_'+option.v+'" alt="'+option.prompt+'" class="MagicZoom" title="'+option.prompt+'" rel="hint:false show-title:true" href="'+mzBigImg+'" />');
 					
 					$mzpLink.click(function(){
 						var pogval = $(this).parent().attr('data-pogval');
