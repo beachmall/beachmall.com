@@ -1440,15 +1440,48 @@ CART TEMPLATE
 #upsellList .bundleProdlist li	{margin:0 0 12px 0; padding: 0 0 12px 0; border-bottom:1px dashed #efefef;}
 
 
-#modalCart .lineItemProdlist li	{width:250px; padding:0 0 12px 0; margin:0 0 12px 0; border-bottom:1px dashed #FFCC66;}
 
 /* checkout buttons */
 .checkoutButtonsContainer {border-bottom:1px solid #cccccc;}
 .checkoutButtonsContainer span	{float:right; margin:0 0 0 12px;}
 
 
+/***************************************************************************
+END CART TEMPLATE
+****************************************************************************/
 
 
+/***************************************************************************
+PRODUCTLISTTEMPLATECART
+****************************************************************************/
+#modalCart .lineItemProdlist li	{height:auto; width:100%; padding:0 0 1.5% 0; margin:0 0 1.5% 0; border-bottom:1px dashed #FFCC66; font-family:"Open Sans";}
+
+#modalCart .cartItemWrapper {height:150px; width:98%; padding:1.6%; background-color:#f5f1de;}
+
+#modalCart .cartHeader {height:24%; width:100%; background:#3bb3c3; color:#ffffff;}
+#modalCart .cartHeader .cartDesc {border:none;}
+
+#modalCart .cartImg {height:100%; width:16%;}
+#modalCart .cartDesc {height:100%; width:49%; border-left:1px solid #ffffff;}
+#modalCart .cartDesc h4 {font-size:1.2em; margin:0 0 2% 0; padding:0 0 0 1.5%;}
+
+#modalCart .cartPQT {height:100%; width:33%; text-align:center; font-family:"Open Sans";}
+#modalCart .cartQtyInput {border-left:1px solid #ffffff;}
+#modalCart .cartQtyInput input{height:15%; width:60%; text-align:center; margin:5% auto;}
+#modalCart .cartLineButton.ui-state-default {height:17%; width:60%; margin:6% auto; font-family:"Open Sans"; color:#ffffff; border:none; border-radius:0;}
+#modalCart .cartLineButton.ui-state-default span:first-child {display:none;}
+#modalCart .cartLineButton.ui-state-default span.ui-button-text {text-indent:0; padding:0;}
+#modalCart .updateButton  {background:#3bb3c3;}
+#modalCart .moveToWishlist {background:#f8c301;}
+#modalCart .removeButton.cartLineButton {background:#FFE680; color:#e0463a;}
+#modalCart .cartItemPrice {border-left:1px solid #ffffff;}
+#modalCart .cartItemTotal {border-left:1px solid #ffffff;}
+
+
+
+/***************************************************************************
+END PRODUCTLISTTEMPLATECART
+****************************************************************************/
 /*
 some shared styles, pulled from cat layout but that will impact, potentially, more than that
 */
