@@ -260,7 +260,7 @@ var vertCarouselOptions = {
 //
 			handleCart : 	{
 				onSuccess : function(tagObj)	{
-//					app.u.dump("BEGIN beachmart.callbacks.onSuccess.handleCart");
+					app.u.dump("BEGIN beachmart.callbacks.onSuccess.handleCart");
 					app.ext.beachmart.u.handleMinicartUpdate(tagObj);
 					app.renderFunctions.translateTemplate(app.data[tagObj.datapointer].cart,tagObj.parentID);				
 					app.ext.beachmart.u.handleCartUpSell(tagObj.datapointer);
@@ -1177,7 +1177,8 @@ app.templates[P.templateID].find('[data-bind]').each(function()	{
 //also adds the upsell (accessories) for the most recently added item in the cart that qualifies (has accessories)
 			handleCartUpSell : function()	{
 				app.u.dump("BEGIN beachmart.u.handleCartUpSell");
-				var stuff = app.data.cartDetail.stuff;
+//orig var		var stuff = app.data.cartDetail.stuff;
+				var stuff = app.data.cartDetail['@ITEMS'];
 				var L = stuff.length;
 
 				app.u.dump(" -> L: "+L);
