@@ -1436,7 +1436,7 @@ CART TEMPLATE
 #modalCart .cartZipCodeContainer {height:auto; width:60%; float:left; margin:0; border:none;}
 #modalCart .checkoutButtonsContainer span {float:right; margin:0 0 0 12px;}
 #modalCart .cartButtonsContainer {margin:0 0 3% 0; border:none;}
-#modalCart .cartButtonsContainer span button.ui-state-default {padding:4.3%; color:#ffffff; background:#E0463A; border:none; border-radius:0;}
+#modalCart .cartButtonsContainer span button.ui-state-default {height:auto; width:auto; padding:4.3%; color:#ffffff; background:#E0463A; border:none; border-radius:0;}
 #modalCart .cartButtonsContainer button.ui-state-default {padding:0.5%; color:#ffffff; background:#F8C301; border:none; border-radius:0;}
 #modalCart .cartAltButtonsContainer {margin:0 0 3% 0; border:none;}
 
