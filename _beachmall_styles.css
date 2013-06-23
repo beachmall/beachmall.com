@@ -1426,24 +1426,31 @@ QUICKVIEW TEMPLATE
 CART TEMPLATE
 ****************************************************************************/
 
+#modalCart .cartSummaryTotalsContainer {padding:0; font-size:1.0em; margin:0;}
+#modalCart .cartSummaryTotalsContainer div.ui-widget:first-child {margin:1.6% 0 0 0;}
+#modalCart .cartSummaryTotalsContainer .cartSummaryContainer {padding: 0px; margin:0; border:none;}
+#modalCart .cartSummaryContainer section {height:50%; width:33.3%; float:right; margin:1.6% 0; padding:0 0 0 1%;}
+#modalCart .cartSummary > div {margin:2% 4.6%; padding:0 %5 0 0; text-align:right;}
+#modalCart .cartSummary > div > h6 {font-weight:bold; font-size:1.0em; display:inline;}
+#modalCart  .cartShipOptions {height:auto; width:40%; float:left; margin:0;}
+#modalCart .cartZipCodeContainer {height:auto; width:60%; float:left; margin:0; border:none;}
+#modalCart .checkoutButtonsContainer span {float:right; margin:0 0 0 12px;}
+#modalCart .cartButtonsContainer {margin:0 0 3% 0; border:none;}
+#modalCart .cartButtonsContainer span button.ui-state-default {padding:4.3%; color:#ffffff; background:#E0463A; border:none; border-radius:0;}
+#modalCart .cartButtonsContainer button.ui-state-default {padding:0.5%; color:#ffffff; background:#F8C301; border:none; border-radius:0;}
+#modalCart .cartAltButtonsContainer {margin:0 0 3% 0; border:none;}
+
+
 .cartAccessories {height:500px; width: 40%; background-color:#e58;}
-
-
-
 #modalCart	{min-width:750px;}
 .cartStuffListContainer	{height: 300px; overflow:auto;}
-
 #upsellList, .cartSummaryTotalsContainer	{width:350px;}
-.cartSummaryTotalsContainer .cartSummaryContainer {padding: 0px;}
+
 .upsellContainer	{height:500px; overflow:auto;}
-
 #upsellList .bundleProdlist li	{margin:0 0 12px 0; padding: 0 0 12px 0; border-bottom:1px dashed #efefef;}
-
-
-
 /* checkout buttons */
-.checkoutButtonsContainer {border-bottom:1px solid #cccccc;}
-.checkoutButtonsContainer span	{float:right; margin:0 0 0 12px;}
+
+ 
 
 
 /***************************************************************************
@@ -1454,16 +1461,17 @@ END CART TEMPLATE
 /***************************************************************************
 PRODUCTLISTTEMPLATECART
 ****************************************************************************/
-#modalCart .lineItemProdlist li	{height:auto; width:100%; padding:0 0 1.5% 0; margin:0 0 1.5% 0; border-bottom:1px dashed #FFCC66; font-family:"Open Sans";}
+#modalCart .lineItemProdlist li	{height:auto; width:100%; font-family:"Open Sans"; padding:0;} /* padding:0 0 1.5% 0; margin:0 0 1.5% 0; border-bottom:1px dashed #FFCC66;*/
 
-#modalCart .cartItemWrapper {height:150px; width:98%; padding:1.6%; background-color:#f5f1de;}
+#modalCart .cartItemWrapper {height:150px; width:97.8%; padding:1.6%; background-color:#f5f1de; border-left:1px solid #FFFFFF; border-right:1px solid #FFFFFF; border-bottom:1px solid #FFFFFF;}
 
-#modalCart .cartHeader {height:24%; width:100%; background:#3bb3c3; color:#ffffff;}
+#modalCart .cartHeader {height:30px; width:100%; background:#3bb3c3; color:#ffffff; padding:0 12px 0 0; text-align:center; line-height:30px;}
 #modalCart .cartHeader .cartDesc {border:none;}
 
 #modalCart .cartImg {height:100%; width:16%;}
 #modalCart .cartDesc {height:100%; width:49%; border-left:1px solid #ffffff;}
 #modalCart .cartDesc h4 {font-size:1.2em; margin:0 0 2% 0; padding:0 0 0 1.5%;}
+#modalCart .cartDesc .ztable_row_small {font-size:1.2em; margin:0 0 2% 0; padding:0 0 0 1.5%;}
 
 #modalCart .cartPQT {height:100%; width:33%; text-align:center; font-family:"Open Sans";}
 #modalCart .cartQtyInput {border-left:1px solid #ffffff;}
@@ -1474,8 +1482,8 @@ PRODUCTLISTTEMPLATECART
 #modalCart .updateButton  {background:#3bb3c3;}
 #modalCart .moveToWishlist {background:#f8c301;}
 #modalCart .removeButton.cartLineButton {background:#FFE680; color:#e0463a;}
-#modalCart .cartItemPrice {border-left:1px solid #ffffff;}
-#modalCart .cartItemTotal {border-left:1px solid #ffffff;}
+#modalCart .cartItemPrice {border-left:1px solid #ffffff; padding:2% 0 0 0;}
+#modalCart .cartItemTotal {border-left:1px solid #ffffff; padding:2% 0 0 0;}
 
 
 
