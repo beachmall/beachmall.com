@@ -454,7 +454,7 @@ if no parentID is set, then this function gets the data into memory for later us
 
 */
 			getProductDataForList : function(plObj,$tag,Q)	{
-//				app.u.dump("BEGIN store_prodlist.u.getProductDataForList ["+plObj.parentID+"]");
+//				app.u.dump("BEGIN store_prodlist.u.getProductDataForList ["+plObj.parentID+"]"); app.u.dump(plObj);
 
 				Q = Q || 'mutable';
 				var numRequests = 0; //# of requests that will b made. what is returned.
