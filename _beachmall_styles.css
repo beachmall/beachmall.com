@@ -1099,7 +1099,7 @@ global app styles
 .catListTemp:hover .thumbContainer {border:5px solid #e0463a;}
 .catListTemp:hover .moreDetailsSmall {background-color:#e0463a;}
 .homeTemplate .moreDetailsSmall.catDetails {position:relative; bottom:30px; right:-87px; z-index:2;}
-.moreDetailsSmall.catDetails {position:relative; bottom:30px; right:-140px; z-index:2;}
+.moreDetailsSmall.catDetails {width:80px; position:relative; bottom:30px; right:-140px; z-index:2;}
 .searchResultsProduct .moreDetailsSmall {width:100px;} 
 
 .productListTall li {float: left;  margin: 0px 5px 0px 5px;}
