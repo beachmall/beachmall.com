@@ -327,8 +327,9 @@ BRANDS PRODUCT LIST
 /*************************************************************************************
 BUYER GUIDE CATEGORY
 *************************************************************************************/
-.buyerGuideTemplate p {margin:20px;}
 
+.buyerGuideTemplate {height:auto; width:980px; margin:auto; }
+.buyerGuideTemplate p {margin:20px;}
 
 /*************************************************************************************
 MP CONTROLS CONTAINER
