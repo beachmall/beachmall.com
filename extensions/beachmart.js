@@ -347,19 +347,23 @@ var store_filter = function() {
 							else {
 								// posibly need further years calculated here
 							}
-							if(userProdShipMsg.indexOf('Ships Today by 12 Noon EST') > -1){
-								if ( (t >= 12 && (n > 0 && n < 5)) || date == 20130704 || date == 20130902 || date == 20131225 || date == 20131231 || date == 20140101 || date == 20140526 || date == 20140704) {
-									//Time is after noon, day is Mon-Thurs, OR is a UPS holiday weekday
-									$tag.empty().append('Ships Next Business Day');
+							if(userProdShipMsg) {
+								if(userProdShipMsg.indexOf('Ships Today by 12 Noon EST') > -1){
+									if ( (t >= 12 && (n > 0 && n < 5)) || date == 20130704 || date == 20130902 || date == 20131225 || date == 20131231 || date == 20140101 || date == 20140526 || date == 20140704) {
+										//Time is after noon, day is Mon-Thurs, OR is a UPS holiday weekday
+										$tag.empty().append('Ships Next Business Day');
+									}
+									else if (((t >= 12 && n == 5) || (n > 5 && n < 1)) || date == 20131128 || date == 20131129) {
+										//Time is after noon, day is Fri (FUN FUN FUN FUN)
+										//OR it is the Weekend, OR is UPS Thanksgiving weekend
+										$tag.empty().append('Ships Monday by 12 Noon EST');
+									}
+									else {
+										//It is before noon on a Weekday, shipping message is perfectly fine
+									}
 								}
-								else if (((t >= 12 && n == 5) || (n > 5 && n < 1)) || date == 20131128 || date == 20131129) {
-									//Time is after noon, day is Fri (FUN FUN FUN FUN)
-									//OR it is the Weekend, OR is UPS Thanksgiving weekend
-									$tag.empty().append('Ships Monday by 12 Noon EST');
-								}
-								else {
-									//It is before noon on a Weekday, shipping message is perfectly fine
-								}
+							}
+							else { //userProdShipMsg is not set, skip it
 							}
 						}
 						else { 
