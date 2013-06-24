@@ -1347,7 +1347,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 					<div class='countableProdList'>
 						<ul data-app-role='productList' data-bind="var: category(@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: productListTemplate; withReviews:1; items_per_page: 24;" class='listStyleNone fluidList clearfix noPadOrMargin prodMargin productList'>
 							<!-- Removed until better placement can be acheived in future deploy <div class='catTitle floatLeft' data-bind='var: category(pretty); format:catText; extension: myRIA;'></div> -->
-							<div class='buyerGuides floatLeft'><a href='#!top' onClick="return showContent('category',{'navcat':'.buyer_guides'});">VIEW BUYER GUIDE</a><span>Learn how to shop for these items</span></div>
+							<div class='buyerGuides floatLeft'><a href='#!top' onClick="return showContent('category',{'navcat':'.buyer_guides'});">VIEW BUYER GUIDES</a><span>Learn how to shop for these items</span></div>
 							<!-- Removed until retooling is done, for future deploy <div class='numItemsOnListContainer'>
 								<select class='numItemsOnList' data-bind='var:category(id); format:assignAttribute; attribute:data-catsafeid;' name='numItemsOnList' onChange="app.ext.beachmart_items_per_page.a.changeItemCount($(this).next(), $(this).val(), $(this).attr('data-catsafeid')); return false;">
 									<option>12</option>
@@ -1361,7 +1361,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 					<div id='catProdList_12' class='displayNone'>
 						<ul data-app-role='productList' data-bind="var: category(@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: productListTemplate; withReviews:1; items_per_page: 12;" class='listStyleNone fluidList clearfix noPadOrMargin prodMargin productList'>
 							<div class='catTitle floatLeft' data-bind='var: category(pretty); format:catText; extension: myRIA;'></div>
-							<div class='buyerGuides floatLeft'><a href='#!top' onClick="return showContent('category',{'navcat':'[.buyer_guides]'});">VIEW BUYER GUIDE</a><span>Learn how to shop for these items</span></div>
+							<div class='buyerGuides floatLeft'><a href='#!top' onClick="return showContent('category',{'navcat':'[.buyer_guides]'});">VIEW BUYER GUIDES</a><span>Learn how to shop for these items</span></div>
 							<select data-bind='var:category(id); format:assignAttribute; attribute:data-catsafeid;' name='numItemsOnList' onChange="app.ext.beachmart_items_per_page.a.changeItemCount($(this).next(), $(this).val(), $(this).attr('data-catsafeid')); return false;">
 								<option>12</option>
 								<option>24</option>
@@ -1372,7 +1372,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 					<div id='catProdList_24' class='displayNone'>
 						<ul data-app-role='productList' data-bind="var: category(@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: productListTemplate; withReviews:1; items_per_page: 24;" class='listStyleNone fluidList clearfix noPadOrMargin prodMargin productList'>
 							<div class='catTitle floatLeft' data-bind='var: category(pretty); format:catText; extension: myRIA;'></div>
-							<div class='buyerGuides floatLeft'><a href='#!top' onClick="return showContent('category',{'navcat':'[.buyer_guides]'});">VIEW BUYER GUIDE</a><span>Learn how to shop for these items</span></div>
+							<div class='buyerGuides floatLeft'><a href='#!top' onClick="return showContent('category',{'navcat':'[.buyer_guides]'});">VIEW BUYER GUIDES</a><span>Learn how to shop for these items</span></div>
 							<select data-bind='var:category(id); format:assignAttribute; attribute:data-catsafeid;' name='numItemsOnList' onChange="app.ext.beachmart_items_per_page.a.changeItemCount($(this).next(), $(this).val(), $(this).attr('data-catsafeid')); return false;">
 								<option>12</option>
 								<option>24</option>
@@ -1383,7 +1383,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 					<div id='catProdList_36' class='displayNone'>
 						<ul data-app-role='productList' data-bind="var: category(@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: productListTemplate; withReviews:1; items_per_page: 36;" class='listStyleNone fluidList clearfix noPadOrMargin prodMargin productList'>
 							<div class='catTitle floatLeft' data-bind='var: category(pretty); format:catText; extension: myRIA;'></div>
-							<div class='buyerGuides floatLeft'><a href='#!top' onClick="return showContent('category',{'navcat':'[.buyer_guides]'});">VIEW BUYER GUIDE</a><span>Learn how to shop for these items</span></div>
+							<div class='buyerGuides floatLeft'><a href='#!top' onClick="return showContent('category',{'navcat':'[.buyer_guides]'});">VIEW BUYER GUIDES</a><span>Learn how to shop for these items</span></div>
 							<select data-bind='var:category(id); format:assignAttribute; attribute:data-catsafeid;' name='numItemsOnList' onChange="app.ext.beachmart_items_per_page.a.changeItemCount($(this).next(), $(this).val(), $(this).attr('data-catsafeid')); return false;">
 								<option>12</option>
 								<option>24</option>
@@ -1500,7 +1500,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 
 </div>
 
-<div id='categoryTemplateBuyerGuide' class='loadingBG categoryTemplate'>
+<div id='categoryTemplateBuyerGuide' class='loadingBG categoryTemplate buyerGuideTemplate'>
 	
         <ul class='breadcrumb clearfix noPadOrMargin fluidList' data-bind='var: category(id); format:breadcrumb; extension:store_navcats; loadsTemplate: breadcrumbTemplate;'></ul>
 
@@ -1514,7 +1514,9 @@ don't modify the 'data-templateid' unless you are changing template names and up
 
 		<ul  data-bind="var: category(@subcategoryDetail); format: categoryList; extension: store_navcats; loadsTemplate: categoryListTemplate; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin categoryList'></ul><!-- outputs a list of subcategories -->
     
-		<ul data-app-role='productList' data-bind="var: category(@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: productListTemplate; withReviews:1; items_per_page: 24;" class='listStyleNone fluidList clearfix noPadOrMargin prodMargin productList'></ul><!-- outputs the product list -->
+		<ul data-app-role='productList' data-bind="var: category(@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: productListTemplate; withReviews:1; items_per_page: 24;" class='listStyleNone fluidList clearfix noPadOrMargin prodMargin productList'>
+			<div class='buyerGuides floatLeft'><a href='#!top' onClick="return showContent('category',{'navcat':'.buyer_guides'});">VIEW BUYER GUIDES</a><span>Learn how to shop for these items</span></div>
+		</ul><!-- outputs the product list -->
 
 </div><!-- /categoryTemplate -->
 
