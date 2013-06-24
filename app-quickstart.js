@@ -31,6 +31,7 @@ var myRIA = function() {
 			'categoryTemplateBrands',
 			'brandsProductListTemplate',
 			'categoryTemplateWithSpecialList',
+			'categoryTemplateBuyerGuide',
 //the list of templates that are commonly edited (same order as they appear in appTemplates
 			'homepageTemplate',	'categoryTemplate',
 			'categoryListTemplate',
@@ -2710,6 +2711,10 @@ buyer to 'take with them' as they move between  pages.
 					else if(catSafeID.indexOf('.beach-chairs.beach-gear') == 0)  {
 						infoObj.templateID='categoryTemplateBrands';
 						}
+					//special page handling for buyer guides category	
+					else if(catSafeID.indexOf('.buyer_guides') == 0) {
+						infoObj.templateID='categoryTemplateBuyerGuide';
+						}
 					else	{
 						infoObj.templateID = 'categoryTemplate'
 						}
@@ -3056,7 +3061,7 @@ else	{
 			createTemplateFunctions : function()	{
 
 				app.ext.myRIA.template = {};
-				var pageTemplates = new Array('categoryTemplate','categoryTemplateBrands','categoryTemplateBrandsBestSellers','productTemplate','companyTemplate','customerTemplate','homepageTemplate','searchTemplate','cartTemplate','checkoutTemplate','pageNotFoundTemplate');
+				var pageTemplates = new Array('categoryTemplate','categoryTemplateBrands','categoryTemplateBrandsBestSellers','categoryTemplateBuyerGuide','productTemplate','companyTemplate','customerTemplate','homepageTemplate','searchTemplate','cartTemplate','checkoutTemplate','pageNotFoundTemplate');
 				var L = pageTemplates.length;
 				for(var i = 0; i < L; i += 1)	{
 					app.ext.myRIA.template[pageTemplates[i]] = {"onCompletes":[],"onInits":[],"onDeparts":[]};
