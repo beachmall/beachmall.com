@@ -68,8 +68,9 @@ var magicToolBox_mzp = function() {
 						MagicZoomPlus.start();
 						
 MagicZoomPlus.options = {
-    'hint' : 'false'
+	'hint' : 'false'
 	}
+
 						app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {app.u.dump("Refreshing MZP."); setTimeout(function(){MagicZoomPlus.refresh();},2000)}]);
 						}]);
 //						app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {app.u.dump("Refreshing MZP."); MagicZoomPlus.refresh();}]);

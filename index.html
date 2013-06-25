@@ -32,6 +32,7 @@ var app = {vars:{
 	"baseURL":"", //used in non-local mode.
 	"checkoutAuthMode" : "required",//can be passive, active or required
 	"testURL":"http://www.81a72f.hoth.zoovy.net/" //used ONLY if protocol is file: (for testing)
+	//"testURL":"http://www.beachmall.com/" //used ONLY if protocol is file: (for testing)
 	},u:{},rq:[]};
 
 //set base url so images, css, js, etc all load from appropriate location once deployed.
@@ -2232,7 +2233,9 @@ this will likely become more flexible in the future. ###
 	</form>
 -->
 	<form data-bind='var: product(pid); format:atcForm; extension:store_product;' class='prodViewerAddToCartForm clearfix' action='#' onSubmit="app.ext.myRIA.u.addItemToCart($(this)); return false;">
-		<fieldset data-bind='var: product(pid); format:atcVariations; extension:store_product;' class='borderNone'></fieldset>
+		<div data-bind="var:product(pid); format:assignAttribute; attribute:data-pid;">
+			<fieldset data-bind='var: product(pid); format:atcVariations; extension:store_product;' class='borderNone'></fieldset>
+		</div>
 		<!--<fieldset data-bind='var: product(pid); format:atcCustomVariations; extension:store_filter;' class='borderNone'></fieldset>-->
 		<fieldset data-bind='useParentData:true; format:atcQuantityInput; extension:store_product; pretext:Quantity: ; defaultValue:1;' class='borderNone floatRight'></fieldset>
 	<!--	<fieldset data-bind='var: product(pid); format:atcQuantityInput; defaultValue:1; extension:store_product; pretext:Quantity: ;' class='borderNone'></fieldset>-->
