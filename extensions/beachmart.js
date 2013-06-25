@@ -158,7 +158,7 @@ var store_filter = function() {
 						var product = app.data['appProductGet|'+pid];
 						//app.u.dump('>>>>> '); app.u.dump(product);
 						//app.u.dump('>>>>> '); app.u.dump(product['@variations']['1']['options']['0'].prompt);
-						return '<span>'+$(this).attr('data-tooltip-title')+'</span><img src="'+$(this).attr('data-big-img')+'"/>';
+						return '<span>'+$(this).attr('data-tooltip-title')+'</span><img src="'+$(this).attr('data-big-img')+'" width="200" height="200" />';
 						}
 					});
 				
