@@ -3219,15 +3219,18 @@ START APP CART
 							<section id='cartTemplateShippingContainer'>
 								<h3>Shipping:</h3>
 								<div class='cartShipOptions'>
-									<ul class='noPadOrMargin listStyleNone cartShipMethods' data-bind='var: cart(@SHIPMETHODS); format:shipMethodsAsRadioButtons; extension:store_cart;'></ul>
-								</div>
-								<div class='cartZipCodeContainer'>
 									<label for='data-ship_zip'>Zip/Postal Code:</label>
 									<input type='text' size='6'  name='ship/postal' id='data-ship_zip' value='' data-bind='var: cart(ship/postal); format:popVal;' maxlength='10' onChange="app.calls.cartSet.init({'ship/postal':this.value, 'ship/region':''});
 										app.ext.store_cart.u.updateCartSummary();
 										app.ext.store_cart.calls.cartShippingMethodsWithUpdate.init();
 										app.model.dispatchThis('immutable');"  />
+									<ul class='noPadOrMargin listStyleNone cartShipMethods' data-bind='var: cart(@SHIPMETHODS); format:shipMethodsAsRadioButtons; extension:store_cart;'></ul>
 								</div>
+					<!--			
+								<div class='cartZipCodeContainer'>
+									
+								</div>
+					-->
 							</section>
 
 							<div class='checkoutButtonsContainer stdMargin clearfix'>
