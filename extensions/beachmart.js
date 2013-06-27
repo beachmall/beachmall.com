@@ -917,11 +917,12 @@ return filters;
 				app.u.dump("BEGIN beachmart.u.handleToolTip.");
 					$('.tipify',$('#appView')).each(function(){
 						var $this = $(this);
+						app.u.dump($this);
 						$this.parent().css('position','relative'); //this is what makes the tooltip appear next to the link instead of off in space.
-						$this.mouseover(function(){	$('.toolTip',$this.parent()).show();}).mouseout(function(){	$('.toolTip',$this.parent()).hide();});
+						$this.mouseover(function(){	$('.toolTip',$this.parent()).show();}).mouseout(function(){	$('.toolTip',$this.parent()).fadeOut(3000);});
 						});
 				},
-				
+			
 			}, //u
 
 
