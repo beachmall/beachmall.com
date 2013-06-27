@@ -1090,7 +1090,7 @@ global app styles
 .largeButton {height:40px; width:160px; background-color:#3bb3c3; color:#ffffff; font-family:Oswald; font-size:18px; font-weight:bold; text-align:center; line-height:10px; border:none;}
 
 .homepageCategories ul li {margin: 5px 10px 5px 10px;}
-.homeTemplate .thumbContainer {height:162px; width:162px; border:5px solid #3bb3c3; background:#ffffff;} /*height:105px;*/
+.homeTemplate .thumbContainer {height:105px; width:162px; border:5px solid #3bb3c3; background:#ffffff;} /*height:105px;*/
 .thumbContainer {height:210px; width:210px; border:5px solid #3bb3c3; background:#ffffff;}
 /*M.categoryList li {border:1px dotted #0285CD;}
 .categoryList li:nth-child(even) {border:1px dotted #00a9a4;}
