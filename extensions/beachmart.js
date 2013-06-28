@@ -765,7 +765,7 @@ return filters;
 								width: 300,
 								//items: 4,
 								//pagination: '#bestCarPagenation',
-								scroll: 1,
+								scroll: 4,
 						//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
 								swipe: {
 									onMouse: true,
