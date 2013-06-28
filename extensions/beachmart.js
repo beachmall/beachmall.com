@@ -355,11 +355,13 @@ var store_filter = function() {
 					
 		//	Product lists need a solution so this info will display there!!
 		//			if(app.ext.store_product.u.productIsPurchaseable(pid))	{
+						//Item is preorder, get back to the future Marty! (when it will be shipped)
 						if (zoovyPreOrder.indexOf('IS_PREORDER') > -1 && ([zoovyProdSalesRank > -1 || zoovyProdSalesRank != undefined] && zoovyProdSalesRank > date) ) {
-							var outputDate =  zoovyProdSalesRank.substring(5,6) + '/' + zoovyProdSalesRank.substring(7,8) + '/' + zoovyProdSalesRank.substring(0,4);
+							//var outputDate =  zoovyProdSalesRank.substring(5,6) + '/' + zoovyProdSalesRank.substring(7,8) + '/' + zoovyProdSalesRank.substring(0,4);
 							//app.u.dump('*** '+outputDate);
-							$tag.empty().append('Will ship on '+outputDate);
+							$tag.empty().append('Will ship on '+app.ext.beachmart.u.yyyymmdd2Pretty(zoovyProdSalesRank));
 						}
+						//Not a pre-order, show present-day ship info.
 						else if (zoovyProdSalesRank == undefined || zoovyProdSalesRank <= date) {
 							$tag.children('.shipTime').show();
 							var n = d.getDay();
