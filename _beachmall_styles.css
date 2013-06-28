@@ -919,7 +919,7 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 .prodPageCarousel li {height:50px; width:50px; float:left; margin:10px;}
 
 
-/*.mainProdColumn #prodSiblings */
+.mainProdColumn #prodSiblings li {margin:5px}
 
 
 /* PRODUCT IMAGE / TABS */
