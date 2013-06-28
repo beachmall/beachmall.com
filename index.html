@@ -1940,7 +1940,7 @@ END BUG7-->
 	<div class='productSeperationBar'></div>
 </li>
 
-<li id='productListTemplateResultsNoPreview' class='loadingBG products product floatLeft' >
+<li id='productListTemplateResultsNoPreview' class='loadingBG products product floatLeft productListTemplateResultsNoPreview' >
 	<div onClick="return showContent('product', {'pid' : $(this).parent().attr('data-pid')});" class='pointer productListSmall'>
 		<div class='prodHoverContainer prodShadowFix'>
 			<!-- CORNER SHADOW DIVS -->
@@ -1966,20 +1966,25 @@ END BUG7-->
 				<div class='regularPrice' data-bind='var: product(zoovy:prod_msrp); format:money; currencySign: $; hideZero:true;'> </div>
 				<div class='regularPriceDesc'>Regular Price</div>
 			</div>
-			<!-- THIS SECTION BREAKS SEARCH RESULTS, MAINLY WHEN useParentData IS CALLED
-			<div class='shipContainer floatLeft'>
-				<!--<div class='shipCost sprite displayNone' data-bind='useParentData:true; format:showFreeShippingTag; extension:store_filter;'></div>-->
-		<!--	<div class='shipTime latency' data-bind='var: product(user:prod_shipping_msg); format:text;'></div>
-			</div>
-			<form data-bind='var: product(pid); format:atcForm; extension:store_product;' class='prodViewerAddToCartForm clearfix' action='#'>
-                    <button class='prodViewerAddToCartButton' data-bind='format:addToCartButton; extension:myRIA; useParentData:true;'>more details</button>
-                </form>
-			<div class='prodNum stid' data-bind='var: product(pid); format:text; pretext: ITEM &nbsp #: &nbsp ;'></div> -->
-	  <!-- 	<span data-bind='var: reviews(reviews.total); format:text; pretext: from ;posttext: reviews; className:numReviews;'></span> -->
+			
+			<div class='shipContainer floatLeft'> 
+<!--Bug#5-->		<div class='shipCost sprite displayNone' data-bind='useParentData:true; format:showFreeShippingTag; extension:store_filter; isElastic:1;'></div>
+<!--Bug#6		<div data-bind='var: product(user:prod_shipping_msg); format:showIfSet;'>
+					<div class='shipTime latency' data-bind='var: product(user:prod_shipping_msg); format:text; isElastic:1;'></div>
+				</div>
+END BUG6-->			
+<!--!!-->	</div> 
+			<!-- this doesn't flow well here because preview is opened on product click anyway <div class='clearfix prodSiblings pointer displayNone' data-bind='var:product(options); format:optionsCount; extension:store_filter;' onClick="quickView('product',{'templateID':'productTemplateQuickView','pid':$(this).closest('[data-pid]').attr('data-pid')});"></div>-->
+<!--!!-->	<div class='reviewsStarsCount' data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews_reviews;'></div><!-- BCERO271 MARK-->
+<!--Bug#7	<form data-bind='var: product(pid); format:atcForm; extension:store_product;' class='prodViewerAddToCartForm clearfix' action='#'>
+				<button class='prodViewerAddToCartButton' data-bind='format:addToCartButton; extension:myRIA; useParentData:true;'></button>
+			</form>
+END BUG7-->
+<!--!!-->	<div class='prodNum stid' data-bind='var: product(pid); format:text; pretext: ITEM &nbsp #: &nbsp ;'></div>
 		</div>
 		<div class='extraElastic'></div>
 	</div>
-	
+	<div class='productSeperationBar'></div>
 </li>
 
 <!-- CUSTOM VERSION OF ABOVE TEMPLATE -->
