@@ -157,7 +157,9 @@ var store_filter = function() {
 						my : "center center-250",
 						at : "center top"
 					},
-					effect : "fade",
+					show : {effect : "fadeIn", delay : 250},
+					hide : {effect : "fadeOut", delay : 250},
+					//track : true,
 					content : function(){
 						var element = $(this);
 						if (element.is("img[data-big-img]")) {
