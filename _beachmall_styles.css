@@ -1258,6 +1258,7 @@ background: #b7deed; /* Old browsers */
 .topBottomBorder	{border:1px dotted #666666; border-left-width:0; border-right-width:0; padding:12px 0;}
 .shipfree {width:119px; height:17px; background-position: -66px -96px;}
 .shippingInformation .loadingBG	{background:url(wait.gif) no-repeat; min-height:16px; min-width:16px; padding-left:20px;}
+.zhint.inconspicuouseZhint {font-weight:normal; font-size:10px;}
 
 /* right column (from add to cart) */
 .txtBorderBox	{border:1px solid #fbb325; background:#fdf9e6; padding:3px; font-size:11px; margin-bottom:3px;}

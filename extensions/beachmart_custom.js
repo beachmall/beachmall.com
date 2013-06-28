@@ -1426,7 +1426,7 @@ if(prodAttribs['user:prod_ship_expavail'] == 1)	{
 	}
 else	{
 	app.u.dump(" -> prodAttribs['user:prod_ship_expavail']: "+prodAttribs['user:prod_ship_expavail']);
-	$('.expShipMessage',$r).append("<span class='zhint'>Expedited shipping not available for this item</span>");
+	$('.expShipMessage',$r).append("<span class='zhint inconspicuouseZhint'>Expedited shipping not available for this item</span>");
 	}
 
 
