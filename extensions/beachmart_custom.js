@@ -1069,12 +1069,14 @@ else	{
 				app.u.dump("BEGIN beachmart.u.handlePreorderShipDate");
 				app.u.dump("SANITY! this item is a preorder.");
 				var message;
+				var product = app.data['appProductGet|'+SKU];
 //if no date is set in salesrank, don't show any shipping info.
-				if(app.data['appProductGet|'+SKU]['%attribs']['zoovy:prod_salesrank'])
+				if(product['%attribs']['zoovy:prod_salesrank'])
 					message = "Will ship on "+this.yyyymmdd2Pretty(app.data['appProductGet|'+SKU]['%attribs']['zoovy:prod_salesrank'])
 
-				var $container = $("#productContainer")
-
+				//var $container = $("#productContainer")
+				var $container = $("#productTemplate_"+product.pid)
+				
 				$('.putLoadingHere',$container).removeClass('loadingBG');
 				$('.loadingText',$container).hide();
 				$('.transitContainer',$container).text(message);
