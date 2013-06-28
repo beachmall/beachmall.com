@@ -152,16 +152,31 @@ var store_filter = function() {
 				}]);
 				
 				$( document ).tooltip({
-					items : "img[data-big-img]",
+					items : "img[data-big-img], [data-toolTipThumb]",
+					position : {
+						my : "center center-250",
+						at : "center top"
+					},
+					effect : "fade",
 					content : function(){
-						var pid = $(this).closest('[data-pid]').attr('data-pid');
-						var product = app.data['appProductGet|'+pid];
-						//app.u.dump('>>>>> '); app.u.dump(product);
-						//app.u.dump('>>>>> '); app.u.dump(product['@variations']['1']['options']['0'].prompt);
-						return '<span>'+$(this).attr('data-tooltip-title')+'</span><img src="'+$(this).attr('data-big-img')+'" width="200" height="200" />';
+						var element = $(this);
+						if (element.is("img[data-big-img]")) {
+							var pid = $(this).closest('[data-pid]').attr('data-pid');
+							var product = app.data['appProductGet|'+pid];
+							//app.u.dump('>>>>> '); app.u.dump(product);
+							//app.u.dump('>>>>> '); app.u.dump(product['@variations']['1']['options']['0'].prompt);
+							return '<span class="optionsZoom">'+$(this).attr('data-tooltip-title')+'</span><img src="'+$(this).attr('data-big-img')+'" width="200" height="200" />';
+							}
+						if (element.is("[data-toolTipThumb]")) {
+							//app.u.dump($(this).closest('[data-pid]').attr('data-pid'));
+							var pid = $(this).closest('[data-pid]').attr('data-pid');
+							var product = app.data['appProductGet|'+pid];
+							var prodName = product['%attribs']['zoovy:prod_name'];
+							var productImg = app.u.makeImage({"w":400,"h":400,"b":"ffffff",tag:0,"name":product['%attribs']['zoovy:prod_image1']});
+							return '<span class="siblingZoom">'+prodName+'</span><img src="'+productImg+'" width="400" height="400" />';
+							}
 						}
 					});
-				
 				
 //				app.u.dump('BEGIN app.ext.store_navcats.init.onSuccess ');
 				var r = true; //return false if extension won't load for some reason (account config, dependencies, etc).
@@ -917,7 +932,6 @@ return filters;
 				app.u.dump("BEGIN beachmart.u.handleToolTip.");
 					$('.tipify',$('#appView')).each(function(){
 						var $this = $(this);
-						app.u.dump($this);
 						$this.parent().css('position','relative'); //this is what makes the tooltip appear next to the link instead of off in space.
 						$this.mouseover(function(){	$('.toolTip',$this.parent()).show();}).mouseout(function(){	$('.toolTip',$this.parent()).fadeOut(3000);});
 						});
