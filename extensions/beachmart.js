@@ -154,11 +154,9 @@ var store_filter = function() {
 				$( document ).tooltip({
 					items : "img[data-big-img], [data-toolTipThumb]",
 					position : {
-						my : "center center-250",
-						at : "center top"
+						my : "bottom-5",
+						at : "top"
 					},
-					show : {effect : "fadeIn", delay : 250},
-					hide : {effect : "fadeOut", delay : 250},
 					//track : true,
 					content : function(){
 						var element = $(this);
