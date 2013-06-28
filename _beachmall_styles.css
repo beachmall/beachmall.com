@@ -992,6 +992,9 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 .prodTabViewContainer .prodViewerTable .prodTabs.tabbedProductContent .ui-widget-content {background:#f5f1de; border:1px solid #777;}
 .prodTabViewContainer .prodViewerTable .prodTabs.tabbedProductContent > div {}
 
+/*REVIEW TAB*/
+.mainProdTabs .prodTabs.tabbedProductContent .tabbedPowerReview li {height:auto; width:auto; margin:auto; width:100%;}
+
 /*VERTICAL CAROUSEL PRODUCT TABS*/
 .youMayLikeAccessories {height:auto; width:auto; padding:20px 0 0 0;}
 .youMayLikeAccessories .tabbedProductListsTD {height:auto; width:97%;}
