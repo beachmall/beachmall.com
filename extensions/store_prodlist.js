@@ -195,7 +195,16 @@ A special translate template for product so that reviews can be merged into the 
 					tmp['reviews'] = app.ext.store_prodlist.u.summarizeReviews(pid); //generates a summary object (total, average)
 					tmp['reviews']['@reviews'] = app.data['appReviewsList|'+pid]['@reviews']
 					}
-				$(app.u.jqSelector('#',tagObj.parentID)).anycontent({'datapointer':tagObj.datapointer});
+				
+				var $tag;
+				if(tagObj.placeHolder){
+					$tag = tagObj.placeHolder;
+					}
+				else{
+					$tag = $(app.u.jqSelector('#',tagObj.parentID));
+					}
+//				app.u.dump($tag.html());
+				$tag.anycontent({'datapointer':tagObj.datapointer});
 //				app.renderFunctions.translateTemplate(app.data[tagObj.datapointer],tagObj.parentID);
 				},
 //error needs to clear parent or we end up with orphans (especially in UI finder).
@@ -466,7 +475,7 @@ if no parentID is set, then this function gets the data into memory for later us
 					if(Number(plObj.withVariations) + Number(plObj.withInventory) + Number(plObj.withReviews) > 0)	{
 						call = 'getDetailedProduct'
 						}
-
+					//app.u.dump(plObj.placeHolders);
 					for(var i = 0; i < L; i += 1)	{
 //						app.u.dump("rendering");
 						numRequests += app.ext.store_prodlist.calls[call].init({
@@ -474,10 +483,10 @@ if no parentID is set, then this function gets the data into memory for later us
 							"withVariations":plObj.withVariations,
 							"withReviews":plObj.withReviews,
 							"withInventory":plObj.withInventory
-							}, plObj.parentID ? {'callback':'translateTemplate','extension':'store_prodlist','parentID':this.getSkuSafeIdForList(plObj.parentID,pageCSV[i])} : {});  //tagObj not passed if parentID not set. 
+							}, plObj.parentID ? {'callback':'translateTemplate','extension':'store_prodlist', 'placeHolder':$(plObj.placeHolders.get(i)),'parentID':this.getSkuSafeIdForList(plObj.parentID,pageCSV[i])} : {});  //tagObj not passed if parentID not set. 
 						}
 					}
-				if(numRequests > 0)	{app.model.dispatchThis()}
+				if(numRequests > 0)	{app.model.dispatchThis(Q)}
 				return numRequests;
 				}, //getProductDataForList
 
@@ -526,7 +535,9 @@ params that are missing will be auto-generated.
 						}
 //adds all the placeholders. must happen before getProductDataForList so individual product translation can occur.
 //can't just transmogrify beccause sequence is important and if some data is local and some isn't, order will get messed up.
-					$tag.append(this.getProdlistPlaceholders(plObj)).removeClass('loadingBG');
+					plObj.placeHolders = this.getProdlistPlaceholders(plObj);
+					$tag.append(plObj.placeHolders).removeClass('loadingBG');
+					//app.u.dump($tag.html());
 					$tag.data('prodlist',plObj); //sets data object on parent
 
 					if(!obj.hide_summary)	{
