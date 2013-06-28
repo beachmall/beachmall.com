@@ -788,6 +788,7 @@ return filters;
 								$target.carouFredSel({
 									circular: true,
 									auto: {
+										delay : -1,
 										pauseOnHover: "immediate"
 									},
 									direction: 'down',
@@ -802,7 +803,7 @@ return filters;
 									align: 'false',
 									scroll:	{
 										items: 1,
-										duration: 1500
+										duration: 500
 									},
 							//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
 									swipe: {
@@ -826,6 +827,7 @@ return filters;
 								$target.carouFredSel({
 									circular: true,
 									auto: {
+										delay :-1,
 										pauseOnHover: "immediate"
 									},
 									direction: 'down',
@@ -840,7 +842,7 @@ return filters;
 									align: 'false',
 									scroll: {
 										items: 1,
-										duration: 1500
+										duration: 500
 									},
 							//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
 									swipe: {
