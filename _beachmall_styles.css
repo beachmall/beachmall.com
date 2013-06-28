@@ -1187,7 +1187,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6db3f2', end
 /* carousel styles for product thumbnails */
 
 .imageContainer .ui-tabs .ui-tabs-panel	{padding:6px;}
-.imageContainer .zhint {text-align:center; padding:3px 0 0 0; font-family:"Open Sans"; font-weight:normal;}
+.imageContainer .zhint {text-align:center; padding:3px 0 0 0; font-family:"Open Sans"; font-weight:normal; font-size:11px; line-height:5px;}
 .imageContainer	{width:402px; padding:0px 20px 0px 0px; float:left;}
 #prodImageVideoTabs	{margin-right:24px;}
 
