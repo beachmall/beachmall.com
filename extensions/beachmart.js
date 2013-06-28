@@ -160,6 +160,7 @@ var store_filter = function() {
 					//track : true,
 					content : function(){
 						var element = $(this);
+						//thumbnail zoom for option thumbnails
 						if (element.is("img[data-big-img]")) {
 							var pid = $(this).closest('[data-pid]').attr('data-pid');
 							var product = app.data['appProductGet|'+pid];
@@ -167,6 +168,7 @@ var store_filter = function() {
 							//app.u.dump('>>>>> '); app.u.dump(product['@variations']['1']['options']['0'].prompt);
 							return '<span class="optionsZoom">'+$(this).attr('data-tooltip-title')+'</span><img src="'+$(this).attr('data-big-img')+'" width="200" height="200" />';
 							}
+						//thumbnail zoom for sibling thumbnails
 						if (element.is("[data-toolTipThumb]")) {
 							//app.u.dump($(this).closest('[data-pid]').attr('data-pid'));
 							var pid = $(this).closest('[data-pid]').attr('data-pid');
