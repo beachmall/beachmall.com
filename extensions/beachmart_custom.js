@@ -358,10 +358,19 @@ Action
 			
 			
 			updateShipPostal : function($form)	{
-//				app.u.dump("BEGIN beachmall.a.updateShipPostal.");
+				app.u.dump("BEGIN beachmall.a.updateShipPostal.");
 				var postal = $("[name='ship/postal']",$form).val();
+//the cartSet doesn't download a fresh copy of the cart, so update the local cart object manually.
+				if(app.data.cartDetail)	{
+					if(app.data.cartDetail.ship)	{
+						app.data.cartDetail.ship.postal = postal; 
+						}
+					else	{
+						app.data.cartDetail = {'postal':postal}
+						}
+					}
 				if(postal)	{
-//					app.u.dump(" -> postal set: "+postal);
+					app.u.dump(" -> postal set: "+postal);
 					app.ext.beachmart.u.fetchLocationInfoByZip(postal);
 					app.calls.cartSet.init({
 						'ship/postal':postal
@@ -965,7 +974,7 @@ else if(zip)	{
 //	app.u.dump(" -> zip: "+zip);
 //if the city or the state is already available, don't waste a call to get additional info.
 //this block is also executed for zip update, so allow reset.
-	if(app.data.cartDetail && app.data.cartDetail.ship && (app.data.cartDetail.ship.city || app.data.cartDetail.ship.region))	{
+	if(app.data.cartDetail && app.data.cartDetail.ship && (!app.data.cartDetail.ship.city && !app.data.cartDetail.ship.region))	{
 		app.ext.beachmart.u.fetchLocationInfoByZip(zip);
 		}
 	var prodArray = new Array();
@@ -1003,10 +1012,12 @@ else	{
 
 			fetchLocationInfoByZip : function(zip,attempts)	{
 				attempts = Number(attempts) || 0;
-				app.u.dump("BEGIN beachmart.u.fetchLocationInfoByZip. attempt: "+attempts);
+				app.u.dump("BEGIN beachmart.u.fetchLocationInfoByZip ["+zip+"]. attempt: "+attempts);
 //				app.u.dump("BEGIN beachmart.u.app.ext.beachmart.u.fetchLocationInfoByZip("+zip+")");
 				if(zip && typeof geocoder != 'undefined' && typeof geocoder.geocode == 'function')	{
 					geocoder.geocode({ 'address': zip}, function(results, status) {
+						app.u.dump(" -> geocode.callback executed. zip: "+zip);
+						app.u.dump(results);
 						if(results.length > 0)	{
 //							app.u.dump(results[0].address_components);
 							var city = app.ext.beachmart.u.getCityFromAddressComponents(results[0].address_components);
@@ -1020,7 +1031,7 @@ else	{
 							app.calls.cartSet.init({"ship/city":city,"ship/region":state},{},'passive');
 							$('.shipCity').text(city || "");
 							$('.shipRegion').text(state || "");
-							$('.shipPostal').text(zip || "");
+//							$('.shipPostal').text(zip || "");
 							app.model.dispatchThis('passive');
 							}
 						else	{
