@@ -574,6 +574,9 @@ $('fieldset',$form).each(function(){
 		filters.and.push(filter);
 		}
 	});
+// 20120701 -> do not want discontinued items in the layered search results. JT.
+	filters.and.push({"not" : {"term" : {"tags":"IS_DISCONTINUED"}}});
+	
 //and requires at least 2 inputs, so add a match_all.
 //if there are no filters, don't add it. the return is also used to determine if any filters are present
 	if(filters.and.length == 1)	{
