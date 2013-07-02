@@ -101,7 +101,7 @@ MagicZoomPlus.options = {
 /*BEACHMALL*/		$tag.wrap("<a href='"+app.u.makeImage({'tag':0,'name':fileName,'b':bgcolor})+"' class='MagicZoomPlus' id='prodBigImage_href_"+pid+"' rel='selectors-change: mouseover; zoom-width:410; zoom-height:410; hint: false;' />")
 					}
 				else	{
-					$tag.style('display','none'); //if there is no image, hide the src.  !!! added 1/26/2012. this a good idea?
+/*BEACHMALL*/		$tag.css('display','none'); //if there is no image, hide the src.  !!! added 1/26/2012. this a good idea?
 					}
 				},
 
@@ -116,7 +116,7 @@ MagicZoomPlus.options = {
 					// makes shit blow up: rel='zoom-id:bigAssImage_href; selectors-change:mouseover;'
 					}
 				else	{
-					$tag.style('display','none'); //if there is no image, hide the src.  !!! added 1/26/2012. this a good idea?
+/*BEACHMALL*/		$tag.css('display','none'); //if there is no image, hide the src.  !!! added 1/26/2012. this a good idea?
 					}
 				},
 			
