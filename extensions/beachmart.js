@@ -340,6 +340,14 @@ var store_filter = function() {
 					}
 				}, //End showFreeShippingTag
 				
+				hideShipLatency : function($tag, data) {
+					var pid = data.value.pid;
+//					app.u.dump('***PID'); app.u.dump(pid);
+					if(!app.ext.store_product.u.productIsPurchaseable(pid)) {
+						$tag.addClass('displayNone');
+					}
+				},
+				
 				showShipLatency : function ($tag, data) {
 					//app.u.dump('***TEST '+data.value);
 					
