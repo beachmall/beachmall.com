@@ -5,15 +5,22 @@
 
 	.test {height: 20px; width:20px; background:#000000;}
 	
+html {
+	height: 100%;
+}	
+
 * {
 	margin:0;
 	padding:0;
 	}
 
 #appView {background:white; margin: 0px auto; height:auto; width: 1020px;}
-#appPreView {margin-top:10%;}
-#appPreView, .whiteBG {heigth:auto; width:415px; padding:1.0em; border:1px solid #d2e9f6;}
-#appPreView .logo {margin-right:50px;}
+#appPreView {height:100%; width:100%; background-image:url(images/preview-bkgrnd_1024x775.png); background-repeat:no-repeat; background-size:100% 100%; position:absolute; z-index:9999;} /*rgba(59,179,195,.5)*/
+.preViewWrapper {height:auto; width:495px; padding:1.0em; box-shadow:0 0 6px 3px #3bb3c3; border:3px solid #3bb3c3; border-radius:7px; background-color:#ffffff; margin-top:10%; position:absolute; top:100px; left:430px; z-index:10000;} /*#d2e9f6*/
+#appPreView h3 {text-align:center;}
+#appPreViewProgressBar {margin:20px 0 0 0;}
+#appPreView .logo {margin:10px 0 0 0;}
+.hideDialog.ui0dialog.ui-widget-content {background:none repeat scroll 0 0 transparent; border:medium none;}
 
 .breadcrumb {margin-bottom:0px; font-weight:normal;}
 .breadcrumb li:last-child a {font-weight:normal;}
@@ -25,6 +32,8 @@ body {
 	color:#000000;
 	background-color:#ffffff;
 	margin:0;
+	height:100%;
+	width:100%;
 	}
 
 .openSansFont {font-family: "Open Sans"; font-weight:normal;}

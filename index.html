@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"201314.20130702180000",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"201314.20130702221900",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"", //used in non-local mode.
 	"checkoutAuthMode" : "active",//can be passive, active or required
@@ -76,33 +76,37 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 
 <!-- what is displayed onLoad until the view is loaded -->
 <div id='appPreView'>
-	<table>
-		<tr>
-			<td>
-				<div class='logo'><img src='images/beachmall-logo-wide_220x65.jpg' width='220' height='65' alt='beachmall.com' /></div></td>
-			<td>
-			
-			<div id="loader">
-				<h3>One moment please.</h3>
+<div class='preViewWrapper'>
 
-				<div class='alignCenter'>
-				<progress id="appPreViewProgressBar" max="100" value="0" /><br />
+				<div id="loader">
+					<h3>Loading Special Promotions and Exclusive Offers for your area!</h3>
+					<div class='alignCenter'>
+						<progress id="appPreViewProgressBar" max="100" value="0" /><br />
+					</div>
+					<div id='appPreViewProgressText' class='alignCenter'>0% Complete</div>
 				</div>
-				<div id='appPreViewProgressText'>0% Complete</div>
-			</div>
+				
+				<div id="clickToLoad" class="displayNone pointer">
+					Click here to load your shopping experience!
+				</div>
+				<div class='appMessaging'></div>
 			
-			<div id="clickToLoad" class="displayNone pointer">
-				Click here to load your shopping experience!
-			</div>
-			<div class='appMessaging'></div>
-			</td>
-		</tr>
-	</table>
+				<div class='logo floatRight'><img src='images/beachmall-logo-anim-wide_220x65.gif' width='220' height='65' alt='beachmall.com' /></div>
+		
 </div>
+</div>
+<!--
+<script type="text/javascript">
+	$("#appPreView").dialog({
+		'modal':true,
+		'closeOnEscape' : false,
+		'dialogClass' : 'hideDialog',
+		'width' : 650
+	});
+</script>
+-->
 
-
-
-<div id='appView' class='displayNone'>
+<div id='appView'>
 
 <div class='headerContainer'>
 				<!--	<div class='test' onClick="return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'tags':'.beach-chair.lafuma-recliner'}}]}}});"></div> -->
