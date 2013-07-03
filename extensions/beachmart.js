@@ -204,7 +204,7 @@ var store_filter = function() {
 		*/				
 						app.u.dump("beachmart Extension Started");
 						$.extend(handlePogs.prototype,app.ext.store_filter.variations);
-						app.u.dump('*** Extending Pogs');
+						//app.u.dump('*** Extending Pogs');
 		
 					} else	{
 						setTimeout(function(){app.ext.beachmart.callbacks.startExtension.onSuccess()},250);
