@@ -157,13 +157,13 @@ the padding is to compensate for the spacing between the main nav.
 
 #mastHead .dropdownsContainer {height:65px; width:942px; margin:10px 0; padding:0 39px;}
 #mastHead .dropdownsContainer a {text-decoration:none; color:#ffffff;}
-#mastHead .singleDropdown {height:45px; width:145px; background-position:-88px 64px; padding:10px 6px 15px 6px;}
-#mastHead .singleDropdown:hover {background-position:-248px -36px;}
+#mastHead .singleDropdown {height:45px; width:145px; background-position:-88px 65px; padding:10px 6px 15px 6px;}
+#mastHead .singleDropdown:hover {background-position:-248px -35px;}
 #mastHead .dropdownsContainer .dropdownBorderMaker {height:30px; width:130px; background-color:#3bb3c3; border:2px solid #ffffff;}
 #mastHead .singleDropdown .dropdownBorderContainer:hover {background-position:-248px -36px; background-color:#e0463a;}
 #mastHead .singleDropdown .dropdownBorderContainer {height:35px; width:135px; background-position:-47px 99px; background-color: #3bb3c3; font-family:Montserrat; font-weight:normal; font-size: 16px; color:#ffffff; text-align:center; line-height: 30px; padding:5px;}
 #mastHead .singleDropdown .dropdownBorderMaker:hover {background-color:#e0463a;}
-#mastHead .dropdown {height:0px; width:485px; margin:0px 0px 0px 20px; position:relative; top:10px; overflow:hidden; z-index:5; background-color:#e0463a;}
+#mastHead .dropdown {height:0px; width:485px; margin:0px 0px 0px 20px; position:relative; top:11px; overflow:hidden; z-index:5; background-color:#e0463a;}
 #mastHead .dropdown.beachAccessoriesDD {left: -26px;}
 #mastHead .dropdown.beachAccessoriesDD .beachAccProductContainer ul {height:500px; width:720px; background-color:#eee;}
 #mastHead .beachAccProductContainer {height:525px; width:240px; background-color:#ffe680; position:absolute; top:5px; left:240px;}
