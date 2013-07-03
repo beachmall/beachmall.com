@@ -27,8 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"201314.20130702221900",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
-	"release":"201314.20130702221900",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"201314.20130703143800",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"", //used in non-local mode.
 	"checkoutAuthMode" : "active",//can be passive, active or required
@@ -151,7 +150,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 		<div class='arrowContainer'></div>
     	<div class='dropdown myAcctDropdown'>
         	<ul class='listStyleNone'>
-            	<li><a class='bindByAnchor' href='#!customer?show=myaccount'>Sign In</a> / <a class='bindByAnchor' href='#!customer?show=logout'>Sign Out</a></li>
+            	<li><a class='bindByAnchor' href='#!customer?show=myaccount'>Sign In</a> / <a class='bindByAnchor' onClick="app.ext.myRIA.u.handleLogoutActions(); return false;" href='#'>Sign Out</a></li>
                 <li><a class='bindByAnchor' href='#!customer?show=myaccount'>Create An Account</a></li>
                 <li><a class='bindByAnchor' href='#!customer?show=orders'>Track Your Order</a></li>
             </ul>
