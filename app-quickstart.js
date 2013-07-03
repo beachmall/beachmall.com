@@ -33,6 +33,7 @@ var myRIA = function() {
 			'categoryTemplateWithSpecialList',
 			'categoryTemplateBuyerGuide',
 			'productListTemplateToolTipThumb',
+//above here are custom beachmart templates			
 //the list of templates that are commonly edited (same order as they appear in appTemplates
 			'homepageTemplate',	'categoryTemplate',
 			'categoryListTemplate',
@@ -2709,13 +2710,16 @@ buyer to 'take with them' as they move between  pages.
 						infoObj.templateID = 'homepageTemplate'
 						}
 					//special page handling for brands category	
-					else if(catSafeID.indexOf('.beach-chairs.beach-gear') == 0)  {
+/*<--BEACHMART*/		else if(catSafeID.indexOf('.beach-chairs.beach-gear') == 0)  {
 						infoObj.templateID='categoryTemplateBrands';
 						}
 					//special page handling for buyer guides category	
 					else if(catSafeID.indexOf('.buyer_guides') == 0) {
 						infoObj.templateID='categoryTemplateBuyerGuide';
 						}
+					else if(catSafeID.indexOf('.sitemap') == 0) {
+						infoObj.templateID='categoryTemplateSiteMap';
+/*BEACHMART-->*/		}
 					else	{
 						infoObj.templateID = 'categoryTemplate'
 						}
@@ -3062,7 +3066,7 @@ else	{
 			createTemplateFunctions : function()	{
 
 				app.ext.myRIA.template = {};
-				var pageTemplates = new Array('categoryTemplate','categoryTemplateBrands','categoryTemplateBrandsBestSellers','categoryTemplateBuyerGuide','productTemplate','companyTemplate','customerTemplate','homepageTemplate','searchTemplate','cartTemplate','checkoutTemplate','pageNotFoundTemplate');
+/*BEACHMALL*/	var pageTemplates = new Array('categoryTemplate','categoryTemplateBrands','categoryTemplateBrandsBestSellers','categoryTemplateBuyerGuide','productTemplate','companyTemplate','customerTemplate','homepageTemplate','searchTemplate','cartTemplate','checkoutTemplate','pageNotFoundTemplate');
 				var L = pageTemplates.length;
 				for(var i = 0; i < L; i += 1)	{
 					app.ext.myRIA.template[pageTemplates[i]] = {"onCompletes":[],"onInits":[],"onDeparts":[]};
