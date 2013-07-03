@@ -133,10 +133,12 @@ var store_filter = function() {
 				app.ext.store_filter.u.bindOnclick();
 			
 				app.ext.store_filter.u.runCarousels();
-				/*app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(infoObj) {
-					var $context = $(app.u.jqSelector('#'+infoObj.parentID));
-					app.ext.store_filter.u.hidePreviouslyViewed($context);
-				}]);*/
+				app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(infoObj) {
+					app.ext.store_filter.u.runPhoneChatLive();
+				
+					//var $context = $(app.u.jqSelector('#'+infoObj.parentID));
+					//app.ext.store_filter.u.hidePreviouslyViewed($context);
+				}]);
 				
 				/*app.rq.push(['templateFunction','homepageTemplate','onDeparts',function(infoObj) {
 					var $context = $(app.u.jqSelector('#'+infoObj.parentID));
@@ -966,10 +968,16 @@ return filters;
 							return app.ext.myRIA.a.showContent('',P);
 						});
 					});
+				},
+				
+				runPhoneChatLive : function() {
+		//			var $container = $('.phoneChatScript','#homepageTemplate_');
+		//			//app.u.dump('--------->'); app.u.dump($container);
+		//			var $script =  $('<script type="text/javascript">var seyXFh=document.createElement("script"); seyXFh.type="text/javascript"; var seyXFhs=(location.protocol.indexOf("https")==0?"https":"http")+"://image.providesupport.com/js/1qaxuqjnvcj4w1csevb7u0l3tc/safe-textlink.js?ps_h=yXFh&ps_t="+new Date().getTime()+"&online-link-html=Live%20Chat%20Online&offline-link-html=Live%20Chat%20Offline"; setTimeout("seyXFh.src=seyXFhs;document.getElementById("sdyXFh").appendChild(seyXFh)",1);</script>')
+		//			$container.append($script);
 				}
 			
 			}, //u
-
 
 
 //app-events are added to an element through data-app-event="extensionName|functionName"
