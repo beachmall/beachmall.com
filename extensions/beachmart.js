@@ -478,8 +478,11 @@ var store_filter = function() {
 					else if (zoovyIsTags.indexOf('IS_USER7') >= 0) {
 						$tag.append('Overstock Sale').addClass('mediumRed').show();
 					}
-					else if (zoovyIsTags.indexOf('IS_DISCONTINUED') >= 0) {
+		/*			else if (zoovyIsTags.indexOf('IS_DISCONTINUED') >= 0) {
 						$tag.append('Discontinued').addClass('mediumTagBkgrnd').show();
+					}
+		*/			else if (zoovyIsTags.indexOf('IS_DISCONTINUED') >= 0) {
+						$tag.parent().parent().parent().hide();
 					}
 					else if (zoovyIsTags.indexOf('IS_PREORDER') >= 0) {
 						$tag.append('Back Order').addClass('smallTagBkgrnd').show();
