@@ -956,7 +956,11 @@ return filters;
 							//app.u.dump($this[0].currentTarget.attributes[0].value);
 							var P = app.ext.myRIA.u.parseAnchor($this[0].currentTarget.attributes[0].value);
 							//app.u.dump('-------->'); app.u.dump(P);
-							if(P.pageType == 'category' && P.navcat && P.navcat != '.'){
+							if(P.pageType == "return showContent('cart',{});") {
+								return showContent('cart',{});
+							}
+							else if(P.pageType == 'category' && P.navcat && P.navcat != '.'){
+								//for bindnavs, get info to have handy. add to passive Q and It'll get dispatched by a setInterval.
 								app.ext.store_navcats.calls.appCategoryDetailMax.init(P.navcat,{},'passive');
 							}
 							return app.ext.myRIA.a.showContent('',P);
