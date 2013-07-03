@@ -430,10 +430,14 @@ $display.appendTo($tag);
 						}
 					$tag.show().removeClass('displayNone').removeAttr('disabled');
 					}
+/*BEACHMART*/	else if (pData && (pData['@inventory'][pid]['inv'] == 0) && (pData['%attribs']['zoovy:prod_is_tags'].indexOf('IS_DISCONTINUED') == -1)) {
+/*BEACHMART*/		$tag.hide().addClass('displayNone').before("<span class='notAvailableForPurchase'>This item is not available for purchase. Contact Customer Service for availability.<\/span>"); //hide button, item is not purchaseable.
+/*BEACHMART*/	}
 				else	{
 					$tag.hide().addClass('displayNone').before("<span class='notAvailableForPurchase'>This item is not available for purchase<\/span>"); //hide button, item is not purchaseable.
 					}
-
+				app.u.dump('--------->'); app.u.dump(pData['%attribs']['zoovy:prod_is_tags']);
+				//app.u.dump('--------->'); app.u.dump(pData['@inventory'][pid]['inv']);
 //				app.u.dump(" -> ID at end: "+$tag.attr('id'));
 				} //addToCartButton
 
