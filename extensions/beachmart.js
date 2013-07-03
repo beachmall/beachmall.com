@@ -129,7 +129,9 @@ var store_filter = function() {
 //the callback is auto-executed as part of the extensions loading process.
 		init : {
 			onSuccess : function()	{
-				
+			
+				app.ext.store_filter.u.bindOnclick();
+			
 				app.ext.store_filter.u.runCarousels();
 				/*app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(infoObj) {
 					var $context = $(app.u.jqSelector('#'+infoObj.parentID));
@@ -309,7 +311,7 @@ var store_filter = function() {
 				$('html, body').animate({
 					scrollTop: $prodSizing.offset().top
 				}, 2000);
-			}
+			},
 			
 		}, //actions
 
@@ -945,6 +947,22 @@ return filters;
 						$this.mouseover(function(){	$('.toolTip',$this.parent()).show();}).mouseout(function(){	$('.toolTip',$this.parent()).fadeOut(3000);});
 						});
 				},
+				
+				bindOnclick : function() {
+					$('body').off('click', 'a[data-onclick]').on('click', 'a[data-onclick]', function(selector){
+						//app.u.dump('------->'); app.u.dump(selector);
+						$(selector).each(function(){
+							var $this = $(this);
+							//app.u.dump($this[0].currentTarget.attributes[0].value);
+							var P = app.ext.myRIA.u.parseAnchor($this[0].currentTarget.attributes[0].value);
+							//app.u.dump('-------->'); app.u.dump(P);
+							if(P.pageType == 'category' && P.navcat && P.navcat != '.'){
+								app.ext.store_navcats.calls.appCategoryDetailMax.init(P.navcat,{},'passive');
+							}
+							return app.ext.myRIA.a.showContent('',P);
+						});
+					});
+				}
 			
 			}, //u
 
@@ -955,7 +973,7 @@ return filters;
 //they're used heavily in the admin.html file.
 //while no naming convention is stricly forced, 
 //when adding an event, be sure to do off('click.appEventName') and then on('click.appEventName') to ensure the same event is not double-added if app events were to get run again over the same template.
-		e : {
+		e : {	
 			}, //e [app Events]
 			
 		variations : {

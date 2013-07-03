@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"201314.20130628172000",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"201314.20130702171700",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"", //used in non-local mode.
 	"checkoutAuthMode" : "active",//can be passive, active or required
@@ -2990,7 +2990,8 @@ if you change these, you should move them above this comment so that when you (o
 			<tr> 
 				<td height="21"> </td> 
 				<td> </td> 
-				<td colspan="2"><a class="bindByAnchor" href="#!category?navcat=.affiliates"><font size="2">Affiliates </font></a></td> 
+				<!--<td colspan="2"><a class="bindByAnchor" href="#!category?navcat=.affiliates"><font size="2">Affiliates </font></a></td> -->
+				<td colspan="2"><a class='pointer' data-onclick="#!category?navcat=.affiliates"><font size="2">Affiliates </font></a></td> 
 			</tr> 
 			<tr> 
 				<td height="21"> </td> 
