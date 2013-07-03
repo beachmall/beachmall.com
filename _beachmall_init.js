@@ -21,7 +21,7 @@ app.rq.push(['extension',0,'beachmart_catsearch','extensions/beachmart_catsearch
 //app.rq.push(['extension',0,'beachmart_items_per_page','extensions/beachmart_items_per_page.js', 'startExtension']); // changes number of items displayed in current prodlist
 app.rq.push(['extension',0,'beachmart_banner','extensions/beachmart_banner.js']); // add banner to homepage that can be changed in _banners.json file 
 app.rq.push(['extension',0,'beachmart_dropdown_image','extensions/beachmart_dropdown_image.js']); // add banner to homepage that can be changed in _banners.json file 
-
+app.rq.push(['extension',0,'prodlist_infinite','extensions/prodlist_infinite.js']); //removes pagination in product lists and allows population w/ scroll
 
 //app.rq.push(['extension',1,'google_analytics','extensions/partner_google_analytics.js','startExtension']);
 app.rq.push(['extension',0,'partner_addthis','extensions/partner_addthis.js','startExtension']);
