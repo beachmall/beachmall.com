@@ -133,6 +133,12 @@ var store_filter = function() {
 				app.ext.store_filter.u.bindOnclick();
 			
 				app.ext.store_filter.u.runCarousels();
+				
+				//app.rq.push(['script',0,'http://path.to.script.js/', function(){
+					//This function is called when the script has finished loading
+					//for provide support- add stuff to the DOM here
+				//	}]);
+				
 				app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(infoObj) {
 					app.ext.store_filter.u.runPhoneChatLive();
 				
@@ -323,6 +329,36 @@ var store_filter = function() {
 //on a data-bind, format: is equal to a renderformat. extension: tells the rendering engine where to look for the renderFormat.
 //that way, two render formats named the same (but in different extensions) don't overwrite each other.
 		renderFormats : {
+		
+				expShipMessage : function($tag, data) {
+					var products = [];
+					for(var index in data.value){
+						products.push(data.value[index].product);
+						}
+					//app.u.dump(products);
+					var numRequests = 0;
+					for(var index in products){
+						var _tag = {
+							'callback':function(rd){
+								if(app.model.responseHasErrors(rd)){
+									//If an item in your cart gets an error, you're gonna have a bad time...
+									app.u.throwMessage(rd);
+									}
+								else{
+									if(app.data[rd.datapointer]['%attribs']['user:prod_ship_expavail'] == 1){
+										$tag.text('The rent is too damn high!');
+									}
+						//			if(app.data[rd.datapointer]['%attribs']['zoovy:base_price'] > 200){
+						//				$tag.text('The rent is too damn high!');
+						//				}
+									}
+								}
+							};	
+						numRequests += app.ext.store_prodlist.calls.appProductGet.init({'pid':products[index]},_tag, 'immutable');
+						}
+					if(numRequests > 0){app.model.dispatchThis('immutable');}
+				},
+		
 				showTabsIfSet : function($tag, data) {
 					if(data.value['%attribs']['zoovy:related_products'] ||
 						data.value['%attribs']['zoovy:related_products']){
