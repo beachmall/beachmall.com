@@ -430,9 +430,11 @@ $display.appendTo($tag);
 						}
 					$tag.show().removeClass('displayNone').removeAttr('disabled');
 					}
-/*BEACHMART*/	else if (pData && (pData['@inventory'][pid]['inv'] == 0) && (pData['%attribs']['zoovy:prod_is_tags'].indexOf('IS_DISCONTINUED') == -1)) {
-/*BEACHMART*/		$tag.hide().addClass('displayNone').before("<span class='notAvailableForPurchase'>This item is not available for purchase. Contact Customer Service for availability.<\/span>"); //hide button, item is not purchaseable.
-/*BEACHMART*/	}
+/*BEACHMART*/	else if (typeof pData['@inventory'][pid] !== 'undefined') {//{typeof app.data['appProductGet|'+pid]['@inventory'] === 'undefined'
+/*BEACHMART*/		if (pData && pData['%attribs'] && (pData['@inventory'][pid]['inv'] == 0) && (pData['%attribs']['zoovy:prod_is_tags'].indexOf('IS_DISCONTINUED') == -1)) {
+/*BEACHMART*/			$tag.hide().addClass('displayNone').before("<span class='notAvailableForPurchase'>This item is not available for purchase. Contact Customer Service for availability.<\/span>"); //hide button, item is not purchaseable.
+/*BEACHMART*/		}
+				}
 				else	{
 					$tag.hide().addClass('displayNone').before("<span class='notAvailableForPurchase'>This item is not available for purchase<\/span>"); //hide button, item is not purchaseable.
 					}
