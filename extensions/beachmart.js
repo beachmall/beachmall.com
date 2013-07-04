@@ -346,7 +346,7 @@ var store_filter = function() {
 									}
 								else{
 									if(app.data[rd.datapointer]['%attribs']['user:prod_ship_expavail'] == 1){
-										$tag.text('The rent is too damn high!');
+										$tag.text('Expedited shipping not available');
 									}
 						//			if(app.data[rd.datapointer]['%attribs']['zoovy:base_price'] > 200){
 						//				$tag.text('The rent is too damn high!');
