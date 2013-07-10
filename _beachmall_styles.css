@@ -1448,6 +1448,10 @@ QUICKVIEW TEMPLATE
 .quickViewColorSib {height:55px; width:55px; overflow:hidden; margin:0 0 0 10px}
 .quickViewButton {height:35px; width: 100px; background-color:#3bb3c3; color:#ffffff; margin:10px auto; text-align:center; line-height:35px;}
 
+.prodTemplateQuickView .variation {height:92px; width:280px; overflow:auto;}
+.prodTemplateQuickView .optionsSelect {display:none;}
+.prodTemplateQuickView .priceContainer {width:300px;}
+
 /***************************************************************************
 CART TEMPLATE
 ****************************************************************************/
