@@ -1451,6 +1451,8 @@ QUICKVIEW TEMPLATE
 .quickViewColorSib li {float:left; margin:5px 5px 5px 0;}
 .quickViewButton {height:35px; width: 100px; background-color:#3bb3c3; color:#ffffff; margin:10px auto; text-align:center; line-height:35px;}
 
+.prodTemplateQuickView #prodDesc {font-family:"Open Sans";}
+
 .prodTemplateQuickView .variation {height:92px; width:280px; overflow:auto;}
 .prodTemplateQuickView .optionsSelect {display:none;}
 .prodTemplateQuickView .priceContainer {width:300px;}
