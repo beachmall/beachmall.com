@@ -823,6 +823,7 @@ return filters;
 								auto: {
 									pauseOnHover: "immediate"
 								},
+								minimum: 1,
 								prev: '.prodPageCarPrev',
 								next: '.prodPageCarNext',
 								height: 70,
@@ -862,6 +863,7 @@ return filters;
 										height: 468,
 										width: 240
 									},
+									minimum: 1,
 									height: 490,
 									width: 250,
 									align: 'false',
@@ -901,6 +903,7 @@ return filters;
 										height: 468,
 										width: 240
 									},
+									minimum: 1,
 									height: 490,
 									width: 250,
 									align: 'false',
