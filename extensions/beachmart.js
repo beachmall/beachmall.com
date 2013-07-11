@@ -176,7 +176,7 @@ var store_filter = function() {
 							var product = app.data['appProductGet|'+pid];
 							//app.u.dump('>>>>> '); app.u.dump(product);
 							//app.u.dump('>>>>> '); app.u.dump(product['@variations']['1']['options']['0'].prompt);
-							return '<span class="optionsZoom">'+$(this).attr('data-tooltip-title')+'</span><img src="'+$(this).attr('data-big-img')+'" width="200" height="200" />';
+							return '<span class="optionsZoom">'+$(this).attr('data-tooltip-title')+'</span><img src="'+$(this).attr('data-big-img')+'" width="400" height="400" />';
 							}
 						//thumbnail zoom for sibling thumbnails
 						if (element.is("[data-toolTipThumb]")) {
@@ -1060,7 +1060,7 @@ return filters;
 					$option = $("<option value="+option.v+">"+option.prompt+"</option>");
 					$select.append($option);
 					var thumbImg = app.u.makeImage({"w":pog.width,"h":pog.height,"name":option.img,"b":"FFFFFF","tag":false,"lib":app.username});
-					var bigImg = app.u.makeImage({"w":200,"h":200,"name":option.img,"b":"FFFFFF","tag":false,"lib":app.username});																									//need to try moving these to be appended
+					var bigImg = app.u.makeImage({"w":400,"h":400,"name":option.img,"b":"FFFFFF","tag":false,"lib":app.username});																									//need to try moving these to be appended
 					
 					var $imgContainer = $('<div class="floatLeft optionImagesCont" data-pogval="'+option.v+'" />');
 					/*var $mzpLink = $('<a id="imgGridHref_'+pog.id+'_'+option.v+'" alt="'+option.prompt+'" class="MagicZoom" title="'+option.prompt+'" rel="hint:false; show-title:top; title-source=#id;" href="'+mzBigImg+'" />');

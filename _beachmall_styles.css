@@ -1229,8 +1229,9 @@ h1.prodName	{font-size:18px; margin:0; padding:0; margin-bottom:6px; color:#6666
 .variation.pogType_imgselect {float:left;}
 .optionsSelect {clear:both; display:block;}
 .optionsParent .zhint {margin:3px 0; font-family:"Open Sans"; font-weight:normal; font-size:10px; text-align:left; color:#777777; clear:both;}
-.ui-tooltip {width:200px; background:#777777; border:none; border-radius:0; padding:2px;}
-.ui-tooltip  span.optionsZoom {width:200px; padding:5px 0 10px 0; text-align:center; background:#777777; color:#ffffff; display:block; font-family:"Open Sans";}
+.ui-tooltip {background:transparent; border:none; border-radius:0; box-shadow:0; padding:0;}
+.ui-tooltip-content {width:400px; background:#777777; border:none; border-radius:0; padding:2px;}
+.ui-tooltip  span.optionsZoom {width:400px; padding:5px 0 10px 0; text-align:center; background:#777777; color:#ffffff; display:block; font-family:"Open Sans";}
 .ui-tooltip  span.siblingZoom {width:400px; padding:5px 0 10px 0; text-align:center; background:#777777; color:#ffffff; display:block; font-family:"Open Sans";}
 
 .sizingChartLink {padding:4px 0 0 0;} /* don't set a display: here. displayNone is used and element is toggle on based on whether a value is set */
