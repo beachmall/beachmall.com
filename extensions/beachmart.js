@@ -571,6 +571,16 @@ var store_filter = function() {
 						$tag.show();
 					}
 				},
+				
+				inventoryHide : function($tag, data) {
+					var pid = data.value.pid;
+			//		var inventory = data.value['@inventory'][pid]['inv'];
+			//	app.u.dump('---------->'); app.u.dump(data.value);
+					
+			//		if(inventory == 0)
+			//		$('.invHider', $context).toggleClass('showInv');
+			//		$('.zerInv', $context).toggleClass('displayNone');
+				},
 
 				homePageHider : function($tag,data) {
 					/*app.u.dump(data.value);
