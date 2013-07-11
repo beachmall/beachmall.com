@@ -311,9 +311,15 @@ $tag.one('click',function(event){
 						var pretty = app.u.isSet(app.data.cartDetail['@SHIPMETHODS'][i]['pretty']) ? app.data.cartDetail['@SHIPMETHODS'][i]['pretty'] : app.data.cartDetail['@SHIPMETHODS'][i]['name'];  //sometimes pretty isn't set. also, ie didn't like .pretty, but worked fine once ['pretty'] was used.
 						o = "<span class='orderShipMethod'>"+pretty+": <\/span>";
 //only show amount if not blank.
+						app.u.dump('THE SHIPPING AMOUNT: '); app.u.dump(app.data.cartDetail['@SHIPMETHODS'][i].amount);
 						if(app.data.cartDetail['@SHIPMETHODS'][i].amount)	{
-							o += "<span class='orderShipAmount'>"+app.u.formatMoney(app.data.cartDetail['@SHIPMETHODS'][i].amount,' $',2,false)+"<\/span>";
-							}
+/*BEACHMALL*/				if(app.data.cartDetail['@SHIPMETHODS'][i].amount == 0) {
+/*BEACHMALL*/					o += "<span class='orderShipAmount cartFree'>FREE<\/span>";
+/*BEACHMALL*/				}
+/*BEACHMALL*/				else {
+/*BEACHMALL*/					o += "<span class='orderShipAmount'>"+app.u.formatMoney(app.data.cartDetail['@SHIPMETHODS'][i].amount,' $',2,false)+"<\/span>";
+/*BEACHMALL*/				}
+						}
 						break; //once we hit a match, no need to continue. at this time, only one ship method/price is available.
 						}
 					}
@@ -335,15 +341,21 @@ $tag.one('click',function(event){
 //app.u.dump(' -> id = '+id+' and want/shipping_id = '+app.data.cartDetail['want/shipping_id']);
 					
 					shipName = app.u.isSet(data.value[i].pretty) ? data.value[i].pretty : data.value[i].name
-					
+//app.u.dump('shipName: '); app.u.dump(shipName);
 					o += "<li class='shipcon "
 					if(isSelectedMethod)
 						o+= ' selected ';
 					o += "shipcon_"+safeid; 
 					o += "'><label><input type='radio' name='want/shipping_id' value='"+id+"' onClick='app.ext.store_cart.u.shipMethodSelected(this.value); app.model.dispatchThis(\"immutable\"); '";
-					if(isSelectedMethod)
-						o += " checked='checked' "
-					o += "/>"+shipName+": <span >"+app.u.formatMoney(data.value[i].amount,'$','',false)+"<\/span><\/label><\/li>";
+					if(isSelectedMethod)	
+/*BEACHMART*/			if(data.value[i].amount == 0) {
+/*BEACHMALL*/				o += " checked='checked' "
+/*BEACHMALL*/				o += "/>"+shipName+": <span class='cartFree' >FREE<\/span><\/label><\/li>";
+/*BEACHMALL*/			}
+/*BEACHMALL*/			else {
+/*BEACHMALL*/				o += " checked='checked' "
+/*BEACHMART*/				o += "/>"+shipName+": <span >"+app.u.formatMoney(data.value[i].amount,'$','',false)+"<\/span><\/label><\/li>";
+						}
 					}
 				$tag.html(o);
 				} //shipMethodsAsRadioButtons

@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"201314.20130703174900",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"201314.20130711142100",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"", //used in non-local mode.
 	"checkoutAuthMode" : "active",//can be passive, active or required
@@ -3571,7 +3571,8 @@ START APP CART
 									<ul class='noPadOrMargin listStyleNone cartShipMethods' data-bind='var: cart(@SHIPMETHODS); format:shipMethodsAsRadioButtons; extension:store_cart;'></ul>
 								</div>
 								<span class='floatLeft clearfix' data-bind="var: cart(@ITEMS); format:expShipMessage; extension:store_filter;"></span>
-					<!--			
+								<span class='floatLeft clearfix' data-bind="var: cart(@ITEMS); format:shipSurMessage; extension:store_filter;"></span>
+					<!--		
 								<div class='cartZipCodeContainer'>
 									
 								</div>

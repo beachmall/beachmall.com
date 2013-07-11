@@ -358,6 +358,31 @@ var store_filter = function() {
 						}
 					if(numRequests > 0){app.model.dispatchThis('immutable');}
 				},
+				
+				shipSurMessage : function($tag, data) {
+					var products = [];
+					for(var index in data.value) {
+						products.push(data.value[index].product);
+					}
+					//app.u.dump(products);
+					var numRequests = 0;
+					for(var index in products) {
+						var _tag = {
+							'callback':function(rd) {
+								if(app.model.responseHasErrors(rd)) {
+									app.u.throwMessage(rd);
+								}
+								else {
+									if(app.data[rd.datapointer]['%attribs']['user:prod_shipping']) {
+										$tag.text('Shipping Surcharge');
+									}
+								}
+							}
+						};
+						numRequests += app.ext.store_prodlist.calls.appProductGet.init({'pid':products[index]},_tag,'immutable');
+					}
+					if(numRequests > 0){app.model.dispatchThis('immutable');}
+				},
 		
 				showTabsIfSet : function($tag, data) {
 					if(data.value['%attribs']['zoovy:related_products'] ||
