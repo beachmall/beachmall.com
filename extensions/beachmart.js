@@ -161,6 +161,11 @@ var store_filter = function() {
 					app.ext.store_filter.u.handleToolTip();
 				}]);
 				
+				app.rq.push(['templateFunction','cartTemplate','onCompletes',function(infoObj) {
+					var $context = $(app.u.jqSelector('#'+infoObj.parentID));
+					app.ext.store_filter.u.handleCartToolTip($context);
+				}]);
+				
 				$( document ).tooltip({
 					items : "img[data-big-img], [data-toolTipThumb]",
 					position : {
@@ -1034,6 +1039,17 @@ return filters;
 						$this.mouseover(function(){	$('.toolTip',$this.parent()).show();}).mouseout(function(){	$('.toolTip',$this.parent()).fadeOut(3000);});
 						});
 				},
+					
+				handleCartToolTip : function($context) {	
+					$('.tipifyCart', $context).each(function(){
+						var $this = $(this);
+						$this.parent().css('position','relative'); //this is what makes the tooltip appear next to the link instead of off in space.
+						$this.mouseover(function(){	$('.toolTip',$this.parent()).show();}).mouseout(function(){	$('.toolTip',$this.parent()).hide();});
+						app.u.dump('888888888888'); app.u.dump($this.parent());
+						});
+				},
+				
+				
 				
 				bindOnclick : function() {
 					$('body').off('click', 'a[data-onclick]').on('click', 'a[data-onclick]', function(selector){
