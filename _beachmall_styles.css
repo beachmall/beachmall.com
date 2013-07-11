@@ -1445,9 +1445,10 @@ QUICKVIEW TEMPLATE
 .prodTemplateQuickView .priceContainer .basePrice {float:none;}
 .prodTemplateQuickView .shipTime.latency {margin:0;}
 
-.prodTemplateQuickView .moreColors {margin:15px 0 0 20px; color:#e0463a;}
+.prodTemplateQuickView .moreColors {margin:15px 0 0 0; color:#e0463a;}
 .prodTemplateQuickView  .mpControlContainer {display:none;} 
-.quickViewColorSib {height:55px; width:55px; overflow:hidden; padding:0 0 0 10px;}
+.quickViewColorSib {overflow:hidden;} /*height:55px; width:55px; padding:0 0 0 10px;*/ 
+.quickViewColorSib li {float:left; margin:5px 5px 5px 0;}
 .quickViewButton {height:35px; width: 100px; background-color:#3bb3c3; color:#ffffff; margin:10px auto; text-align:center; line-height:35px;}
 
 .prodTemplateQuickView .variation {height:92px; width:280px; overflow:auto;}
