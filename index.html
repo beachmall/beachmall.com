@@ -1522,7 +1522,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 		
 		<p class='buyerDesc' data-bind="var: category(%page.description2); format:wiki; wikiFormats:myRIA; editor: textarea;"></p>
 
-		<ul  data-bind="var: category(@subcategoryDetail); format: categoryList; extension: store_navcats; loadsTemplate: categoryListTemplate; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin categoryList'></ul><!-- outputs a list of subcategories -->
+		<ul  data-bind="var: category(@subcategoryDetail); format: categoryList; extension: store_navcats; loadsTemplate: categoryListTemplateBuyerGuide; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin categoryList'></ul><!-- outputs a list of subcategories -->
     
 		<ul data-app-role='productList' data-bind="var: category(@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: productListTemplate; withReviews:1; items_per_page: 24;" class='listStyleNone fluidList clearfix noPadOrMargin prodMargin productList'>
 			<div class='buyerGuides floatLeft pointer' onClick="return showContent('category',{'navcat':'.buyer_guides'});"><h4>VIEW BUYER GUIDES</h4><span>Learn how to shop for these items</span></div>
@@ -1947,6 +1947,18 @@ don't modify the 'data-templateid' unless you are changing template names and up
 			</div>
 			<div class='thumbContainer'><img src='blank.gif' class='catThumb' data-bind='var: category(%meta.CAT_THUMB); format:imageURL;'  width='210' height='210' /></div>
 			<div class='moreDetailsSmall catDetails'>SHOP NOW</div>
+		</div>
+	</div>
+</li>
+
+<li id='categoryListTemplateBuyerGuide' class='catListTemp'>
+	<div onClick="showContent('category',{'navcat':$(this).parent().attr('data-catsafeid')});" class='catTemplateContainer pointer'>
+		<div class='prodHoverContainer'>
+			<div class='catBorderContainer'>
+				<div class='catName white2LGray'><span data-bind='var: category(pretty); format:catText; extension: myRIA;'></span></div>
+			</div>
+			<div class='thumbContainer'><img src='blank.gif' class='catThumb' data-bind='var: category(%meta.CAT_THUMB); format:imageURL;'  width='210' height='210' /></div>
+			<div class='moreDetailsSmall catDetails'>VIEW GUIDE</div>
 		</div>
 	</div>
 </li>
