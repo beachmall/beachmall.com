@@ -208,10 +208,10 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 						<div class='beachChairsDD dropdown floatLeft'> 
                             <ul class='listStyleNone floatLeft dropoutUL'>
                                 <li class='noArrow'>BEACH CHAIRS</li>   
-								<li class='bindByAnchor noArrow' href='#!category?navcat=.beach-chair.adirondack-furniture' onMouseOver='app.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='app.ext.beachmart_dropdown.a.hideHoverout($(this));' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent());"> <!--data-hoverproduct="PDADDC1"-->
+								<li class='noArrow' onMouseOver='app.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='app.ext.beachmart_dropdown.a.hideHoverout($(this));'> <!--data-hoverproduct="PDADDC1"-->
 									Adirondack
 									<ul class='hoverProductContainer hoverout listStyleNone'>
-										<div class='stockImageContainer' data-navcat='.adirondack-furniture'></div>
+										<div class='stockImageContainer bindByAnchor' data-navcat='.adirondack-furniture' href='#!category?navcat=.beach-chair.adirondack-furniture' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"></div>
 									<!--<button class='catSearchHomeDropdown' onClick='app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent()); app.ext.beachmart_catsearch.a.catSearch("IS_BESTSELLER", "beach chair adirondack furniture");'>Best Selling Items</button>-->
 										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beach-chair.adirondack-furniture'}}]}}});">Best Selling Items</button>
 									<!--<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('category',{'navcat':'.beach_chair', 'templateID':'categoryTemplateWithSpecialList'});">Best Selling Items</button>-->
