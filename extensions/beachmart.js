@@ -602,14 +602,13 @@ var store_filter = function() {
 					}
 				},
 				
+				//if inventory is 0, don't show in product list (not used w/ elastic because of pagination)
 				inventoryHide : function($tag, data) {
 					var pid = data.value.pid;
-			//		var inventory = data.value['@inventory'][pid]['inv'];
-			//	app.u.dump('---------->'); app.u.dump(data.value);
-					
-			//		if(inventory == 0)
-			//		$('.invHider', $context).toggleClass('showInv');
-			//		$('.zerInv', $context).toggleClass('displayNone');
+					var inventory = data.value['@inventory'][pid]['inv'];
+					if(inventory == 0) {
+						$tag.addClass('displayNone');
+					}
 				},
 
 				homePageHider : function($tag,data) {
@@ -1045,7 +1044,6 @@ return filters;
 						var $this = $(this);
 						$this.parent().css('position','relative'); //this is what makes the tooltip appear next to the link instead of off in space.
 						$this.mouseover(function(){	$('.toolTip',$this.parent()).show();}).mouseout(function(){	$('.toolTip',$this.parent()).hide();});
-						app.u.dump('888888888888'); app.u.dump($this.parent());
 						});
 				},
 				
