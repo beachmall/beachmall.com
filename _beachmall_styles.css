@@ -1464,8 +1464,8 @@ CART TEMPLATE
 ****************************************************************************/
 
 #modalCart .cartSummaryTotalsContainer {padding:0; font-size:1.0em; margin:0;}
-#modalCart .cartSummaryTotalsContainer div.ui-widget:first-child {margin:1.6% 0 0 0;}
-#modalCart .cartSummaryTotalsContainer .cartSummaryContainer {padding: 0px; margin:0; border:none;}
+#modalCart .cartSummaryTotalsContainer div.ui-widget:first-child {margin:1.6% 0 0 0; background:#ffffff;}
+#modalCart .cartSummaryTotalsContainer .cartSummaryContainer {padding: 0px; margin:0; border:none; background:#ffffff;}
 #modalCart .cartSummaryContainer section {height:50%; width:33.3%; float:right; margin:1.6% 0; padding:0 0 0 1%;}
 #modalCart .cartSummary > div {margin:2% 4.6%; padding:0 %5 0 0; text-align:right;}
 #modalCart .cartSummary > div > h6 {font-weight:bold; font-size:1.0em; display:inline;}
@@ -1483,7 +1483,7 @@ CART TEMPLATE
 
 
 .cartAccessories {height:500px; width: 40%; background-color:#e58;}
-#modalCart	{min-width:750px;}
+#modalCart	{min-width:750px; background:#F5F1DE;}
 .cartStuffListContainer	{height: 300px; overflow:auto;}
 #upsellList, .cartSummaryTotalsContainer	{width:350px;}
 
