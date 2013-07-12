@@ -2201,7 +2201,7 @@ EndBug#2-->
 			<h6 class='hideInMinimalMode floatLeft prodPriceSmall' data-bind='var: product(base_price); format:money; isElastic:1; currencySign: $;  hideZero:true; className:price;'></h6>
 <!--Bug#3   <span class='prodPriceDesc' data-bind='format:prodPriceDesc; extension:store_filter; useParentData:true; isElastic:1;'></span>-->
 			<h5 class='hideInMinimalMode clearfix prodDescSmall' data-bind='var: product(prod_name); format:text;'></h5>
-	<div class='regularPriceContainer floatLeft displayNone' data-bind='var: product(zoovy:prod_msrp); format:showIfSet; isElastic:1;'>
+			<div class='regularPriceContainer floatLeft displayNone' data-bind='var: product(zoovy:prod_msrp); format:showIfSet; isElastic:1;'>
 				<div class='regularPrice' data-bind='var: product(zoovy:prod_msrp); format:money; currencySign: $; hideZero:true; isElastic:1;'> </div>
 				<div class='regularPriceDesc'>Regular Price</div>
 			</div>
@@ -3527,6 +3527,12 @@ START APP CART
 										app.ext.store_cart.u.updateCartSummary();
 										app.ext.store_cart.calls.cartShippingMethodsWithUpdate.init();
 										app.model.dispatchThis('immutable');"  />
+									<div data-bind="var:cart(ship/city); format:showIfSet">
+										<div class='cartRegion' data-bind="var:cart(ship/city); format:showShipRegion; extension:store_filter;"></div>
+									</div>
+									<div data-bind="var:cart(ship/region); format:showIfSet">
+										<div class='cartRegion' data-bind="var:cart(ship/region); format:showShipRegion; extension:store_filter;"></div>
+									</div>
 									<ul class='noPadOrMargin listStyleNone cartShipMethods' data-bind='var: cart(@SHIPMETHODS); format:shipMethodsAsRadioButtons; extension:store_cart;'></ul>
 								</div>
 								<span class='floatLeft clearfix' data-bind="var: cart(@ITEMS); format:expShipMessage; extension:store_filter;"></span>
@@ -3540,10 +3546,7 @@ START APP CART
 								</div>	
 					<!--		
 								<div class='cartZipCodeContainer'>
-																			<div class='displayNone' data-bind='var:product(user:prod_shipping); format:showIfSet;'>
-																				<a href='#' class='tipify'>Offer Details</a>
-																				<div class='toolTip' data-bind='var: product(user:prod_shipping); format:wiki; wikiFormats:myRIA;'></div>
-																			</div>
+								
 								</div>
 					-->
 							</section>

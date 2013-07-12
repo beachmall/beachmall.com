@@ -335,12 +335,17 @@ var store_filter = function() {
 //that way, two render formats named the same (but in different extensions) don't overwrite each other.
 		renderFormats : {
 		
+				showShipRegion : function($tag, data) {
+					//app.u.dump('--------->'); app.u.dump(data.value);
+					$tag.append(data.value); 
+				},
+		
 				expShipMessage : function($tag, data) {
 					var products = [];
 					for(var index in data.value){
 						products.push(data.value[index].product);
 						}
-					//app.u.dump(products);
+//					app.u.dump('---------->'); app.u.dump(data.value);
 					var numRequests = 0;
 					for(var index in products){
 						var _tag = {
@@ -388,7 +393,7 @@ var store_filter = function() {
 					}
 					if(numRequests > 0){app.model.dispatchThis('immutable');}
 				},
-		
+				
 				showTabsIfSet : function($tag, data) {
 					if(data.value['%attribs']['zoovy:related_products'] ||
 						data.value['%attribs']['zoovy:related_products']){
@@ -1069,6 +1074,13 @@ return filters;
 					});
 				},
 				
+	/*			showShipRegion : function($context) {
+					$('.cartRegion', $context).each(function() {
+						var $this = $(this);
+						app.u.dump('--------->'); app.u.dump($context);					
+					});
+				},
+	*/			
 				runPhoneChatLive : function() {
 		//			var $container = $('.phoneChatScript','#homepageTemplate_');
 		//			//app.u.dump('--------->'); app.u.dump($container);

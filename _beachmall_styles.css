@@ -1479,6 +1479,7 @@ CART TEMPLATE
 #modalCart .cartButtonsContainer span button.ui-state-default {height:auto; width:auto; padding:4.3%; color:#ffffff; background:#E0463A; border:none; border-radius:0;}
 #modalCart .cartButtonsContainer button.ui-state-default {padding:0.5%; color:#ffffff; background:#F8C301; border:none; border-radius:0;}
 #modalCart .cartAltButtonsContainer {margin:0 0 3% 0; border:none;}
+#modalCart .cartRegion {}
 
 
 .cartAccessories {height:500px; width: 40%; background-color:#e58;}

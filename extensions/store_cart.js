@@ -311,7 +311,7 @@ $tag.one('click',function(event){
 						var pretty = app.u.isSet(app.data.cartDetail['@SHIPMETHODS'][i]['pretty']) ? app.data.cartDetail['@SHIPMETHODS'][i]['pretty'] : app.data.cartDetail['@SHIPMETHODS'][i]['name'];  //sometimes pretty isn't set. also, ie didn't like .pretty, but worked fine once ['pretty'] was used.
 						o = "<span class='orderShipMethod'>"+pretty+": <\/span>";
 //only show amount if not blank.
-						app.u.dump('THE SHIPPING AMOUNT: '); app.u.dump(app.data.cartDetail['@SHIPMETHODS'][i].amount);
+//						app.u.dump('THE SHIPPING AMOUNT: '); app.u.dump(app.data.cartDetail['@SHIPMETHODS'][i].amount);
 						if(app.data.cartDetail['@SHIPMETHODS'][i].amount)	{
 /*BEACHMALL*/				if(app.data.cartDetail['@SHIPMETHODS'][i].amount == 0) {
 /*BEACHMALL*/					o += "<span class='orderShipAmount cartFree'>FREE<\/span>";
