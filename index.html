@@ -2715,9 +2715,9 @@ this will likely become more flexible in the future. ###
 <div>
 
 	<div data-bind="var: product(zoovy:prod_is_tags); format:addTagSpans;" class='tagsContainer'></div>
-	<div class='pointer MagicZoomPlus' onClick="showContent('product',{'pid':$(this).attr('data-pid')})" data-bind="var:product(pid); format:assignAttribute; attribute:data-pid;">
-		<!--<div data-bind='var:product(pid); format:addPicSlider; extension:myRIA;'><img src='blank.gif' class='prodBigImage' data-bind='var: product(zoovy:prod_image1); format:imageURL;' width='240' height='240' /></div>-->
-		<img src='blank.gif' class='prodBigImage' rel='selectors-change: mouseover' name='prodBigImage' data-bind='useParentData:true; format: magicZoomPlus; extension: magicToolBox_mzp;' width='240' height='240' />
+	<div class='pointer' onClick="showContent('product',{'pid':$(this).attr('data-pid')})" data-bind="var:product(pid); format:assignAttribute; attribute:data-pid;">
+		<div data-bind='var:product(pid); format:addPicSlider; extension:myRIA;'><img src='blank.gif' class='prodBigImage' data-bind='var: product(zoovy:prod_image1); format:imageURL;' width='240' height='240' /></div>
+		<!--<img src='blank.gif' class='prodBigImage' rel='selectors-change: mouseover' name='prodBigImage' data-bind='useParentData:true; format: magicZoomPlus; extension: magicToolBox_mzp;' width='240' height='240' />-->
 	</div>
 	
 	<div class='quickviewThumbnailsContainer prodPageCarousel'>

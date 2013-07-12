@@ -1454,7 +1454,7 @@ QUICKVIEW TEMPLATE
 
 .prodTemplateQuickView #prodDesc {font-family:"Open Sans";}
 
-.prodTemplateQuickView .variation {height:92px; width:280px; overflow:auto;}
+.prodTemplateQuickView .variation {height:91px; width:280px; overflow:auto;}
 .prodTemplateQuickView .optionsSelect {display:none;}
 .prodTemplateQuickView .priceContainer {width:300px;}
 .prodTemplateQuickView .variation label[title=Accessory], .prodTemplateQuickView .variation select {display:none}
