@@ -610,10 +610,12 @@ var store_filter = function() {
 				//if inventory is 0, don't show in product list (not used w/ elastic because of pagination)
 				inventoryHide : function($tag, data) {
 					var pid = data.value.pid;
-					var inventory = data.value['@inventory'][pid]['inv'];
-					if(inventory == 0) {
-						$tag.addClass('displayNone');
-					}
+					if(data.value['@inventory'][pid]) {
+						var inventory = data.value['@inventory'][pid]['inv'];
+						if(inventory == 0) {
+							$tag.addClass('displayNone');
+						}
+					}	
 				},
 
 				homePageHider : function($tag,data) {
