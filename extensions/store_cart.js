@@ -313,12 +313,13 @@ $tag.one('click',function(event){
 //only show amount if not blank.
 //						app.u.dump('THE SHIPPING AMOUNT: '); app.u.dump(app.data.cartDetail['@SHIPMETHODS'][i].amount);
 						if(app.data.cartDetail['@SHIPMETHODS'][i].amount)	{
+				app.u.dump('AMOUNT: '); app.u.dump(app.data.cartDetail['@SHIPMETHODS'][i].amount);
 /*BEACHMALL*/				if(app.data.cartDetail['@SHIPMETHODS'][i].amount == 0) {
 /*BEACHMALL*/					o += "<span class='orderShipAmount cartFree'>FREE<\/span>";
-/*BEACHMALL*/				}
+/*BEACHMALL*/					}
 /*BEACHMALL*/				else {
 /*BEACHMALL*/					o += "<span class='orderShipAmount'>"+app.u.formatMoney(app.data.cartDetail['@SHIPMETHODS'][i].amount,' $',2,false)+"<\/span>";
-/*BEACHMALL*/				}
+/*BEACHMALL*/					}
 						}
 						break; //once we hit a match, no need to continue. at this time, only one ship method/price is available.
 						}
@@ -347,16 +348,16 @@ $tag.one('click',function(event){
 						o+= ' selected ';
 					o += "shipcon_"+safeid; 
 					o += "'><label><input type='radio' name='want/shipping_id' value='"+id+"' onClick='app.ext.store_cart.u.shipMethodSelected(this.value); app.model.dispatchThis(\"immutable\"); '";
-					if(isSelectedMethod)	
-/*BEACHMART*/			if(data.value[i].amount == 0) {
-/*BEACHMALL*/				o += " checked='checked' "
-/*BEACHMALL*/				o += "/>"+shipName+": <span class='cartFree' >FREE<\/span><\/label><\/li>";
+//app.u.dump('AMOUNT: '); app.u.dump(data.value[i].amount);
+					if(isSelectedMethod)
+						o += " checked='checked' "
+/*BEACHMART*/		if(data.value[i].amount == 0) {		
+/*BEACHMALL*/			o += "/>"+shipName+": <span class='cartFree' >FREE<\/span><\/label><\/li>";
 /*BEACHMALL*/			}
-/*BEACHMALL*/			else {
-/*BEACHMALL*/				o += " checked='checked' "
-/*BEACHMART*/				o += "/>"+shipName+": <span >"+app.u.formatMoney(data.value[i].amount,'$','',false)+"<\/span><\/label><\/li>";
-						}
-					}
+/*BEACHMALL*/		else {
+/*BEACHMART*/			o += "/>"+shipName+": <span >"+app.u.formatMoney(data.value[i].amount,'$','',false)+"<\/span><\/label><\/li>";
+/*BEACHMART*/			}
+				}
 				$tag.html(o);
 				} //shipMethodsAsRadioButtons
 
