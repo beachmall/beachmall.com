@@ -977,6 +977,7 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 .fullWidth .socialLinks {margin-top:10px; clear:both;}
 .fullWidth span.notAvailableForPurchase {float:left; color:#e0463a;}
 
+.qafCont {margin:26px 0 0 0;}
 .qafEmailPrint {height:89px; width:180px;}
 .rightColumn {height:auto; width:258px; margin:0 0 15px 20px;}
 
@@ -1007,9 +1008,9 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 .mainProdTabs .prodTabs.tabbedProductContent .tabbedPowerReview li {height:auto; width:auto; margin:auto; width:100%;}
 
 /*VERTICAL CAROUSEL PRODUCT TABS*/
-.youMayLikeAccessories {height:auto; width:auto; padding:20px 0 0 0;}
+.youMayLikeAccessories {height:auto; width:auto; padding:0;}
 .youMayLikeAccessories .tabbedProductListsTD {height:auto; width:97%;}
-.youMayLikeAccessories .tabbedProductListsTD {padding:0; margin:36.8px 0 20px 18px;}
+.youMayLikeAccessories .tabbedProductListsTD {padding:0; margin:0 0 20px 18px;}
 .youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .tabs .ui-state-default {background:#777; border-radius:0px; border:1px solid #777;}
 .youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .tabs .ui-state-active {background:#f5f1de; border-radius:0px; border-bottom:1px solid #f5f1de;}
 .youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .tabs .ui-state-default a, .tabs .ui-state-default a:link, .ui-state-default a:visited {color:#3bb3c3; font-weight:normal; font-family:"Open Sans";}
