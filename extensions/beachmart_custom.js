@@ -1442,7 +1442,7 @@ else	{
 	$('.expShipMessage',$r).append("<span class='zhint inconspicuouseZhint'>Expedited shipping not available for this item</span>");
 	}
 
-
+	
 $('.estimatedArrivalDate',$r).append(app.ext.beachmart.u.yyyymmdd2Pretty(data['@Services'][index]['arrival_yyyymmdd']));
 
 if(app.data.cartDetail.ship.region || app.data.cartDetail.ship.city)	{

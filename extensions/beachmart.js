@@ -340,6 +340,7 @@ var store_filter = function() {
 					$tag.append(data.value); 
 				},
 		
+				//Puts message indicating expedited shipping isn't available in cart if applicable to any items there
 				expShipMessage : function($tag, data) {
 					var products = [];
 					for(var index in data.value){
@@ -369,6 +370,7 @@ var store_filter = function() {
 					if(numRequests > 0){app.model.dispatchThis('immutable');}
 				},
 				
+				//Puts shipping surcharge text (which will have a tool tip on it) in cart if applicable to any items there
 				shipSurMessage : function($tag, data) {
 					var products = [];
 					for(var index in data.value) {
