@@ -139,17 +139,12 @@ var store_filter = function() {
 					//for provide support- add stuff to the DOM here
 				//	}]);
 				
-				app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(infoObj) {
-					app.ext.store_filter.u.runPhoneChatLive();
+			//	app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(infoObj) {
+					//app.ext.store_filter.u.runPhoneChatLive();
 				
 					//var $context = $(app.u.jqSelector('#'+infoObj.parentID));
 					//app.ext.store_filter.u.hidePreviouslyViewed($context);
-				}]);
-				
-				/*app.rq.push(['templateFunction','homepageTemplate','onDeparts',function(infoObj) {
-					var $context = $(app.u.jqSelector('#'+infoObj.parentID));
-					app.ext.store_filter.u.showPreviouslyViewed($context);
-				}]);*/
+			//	}]);
 				
 				app.rq.push(['templateFunction','productTemplate','onCompletes',function(infoObj) {
 					var $context = $(app.u.jqSelector('#'+infoObj.parentID)); //grabs the currently loaded product page (to ignore previously loaded / invisible ones)
@@ -166,6 +161,7 @@ var store_filter = function() {
 					app.ext.store_filter.u.handleCartToolTip($context);
 				}]);
 				
+				//creates tool tip for variations and product sibling thumbnails
 				$( document ).tooltip({
 					items : "img[data-big-img], [data-toolTipThumb]",
 					position : {
@@ -396,6 +392,7 @@ var store_filter = function() {
 					if(numRequests > 0){app.model.dispatchThis('immutable');}
 				},
 				
+				//shows container w/ accessories/similar tabbed content if one of them has values set
 				showTabsIfSet : function($tag, data) {
 					if(data.value['%attribs']['zoovy:related_products'] ||
 						data.value['%attribs']['zoovy:related_products']){
@@ -403,6 +400,7 @@ var store_filter = function() {
 						}
 					},
 		
+				//shows free shipping statement in product list if value is set
 				showFreeShippingTag: function($tag, data) {
 					//var isShipFree = data.value['%attribs']['zoovy:prod_is_tags'];
 					var isShipFree = (data.bindData.isElastic) ? data.value.tags : data.value['%attribs']['zoovy:prod_is_tags'];
@@ -413,6 +411,7 @@ var store_filter = function() {
 					}
 				}, //End showFreeShippingTag
 				
+				//hides ships on/in message on product page if product isn't purchaseable
 				hideShipLatency : function($tag, data) {
 					var pid = data.value.pid;
 //					app.u.dump('***PID'); app.u.dump(pid);
@@ -421,6 +420,7 @@ var store_filter = function() {
 					}
 				},
 				
+				//shows ships on/in message if data is set, takes into account when the message is displayed
 				showShipLatency : function ($tag, data) {
 					//app.u.dump('***TEST '+data.value);
 					
@@ -438,56 +438,51 @@ var store_filter = function() {
 					//app.u.dump(userProdShipMsg);
 					var pid = data.value.pid;
 					
-		//	Product lists need a solution so this info will display there!!
-		//			if(app.ext.store_product.u.productIsPurchaseable(pid))	{
-						//Item is preorder, get back to the future Marty! (when it will be shipped)
-						if (zoovyPreOrder.indexOf('IS_PREORDER') > -1 && ([zoovyProdSalesRank > -1 || zoovyProdSalesRank != undefined] && zoovyProdSalesRank > date) ) {
-							//var outputDate =  zoovyProdSalesRank.substring(5,6) + '/' + zoovyProdSalesRank.substring(7,8) + '/' + zoovyProdSalesRank.substring(0,4);
-							//app.u.dump('*** '+outputDate);
-							$tag.empty().append('Will ship on '+app.ext.beachmart.u.yyyymmdd2Pretty(zoovyProdSalesRank));
+					//Item is preorder, get back to the future Marty! (when it will be shipped)
+					if (zoovyPreOrder.indexOf('IS_PREORDER') > -1 && ([zoovyProdSalesRank > -1 || zoovyProdSalesRank != undefined] && zoovyProdSalesRank > date) ) {
+						//var outputDate =  zoovyProdSalesRank.substring(5,6) + '/' + zoovyProdSalesRank.substring(7,8) + '/' + zoovyProdSalesRank.substring(0,4);
+						//app.u.dump('*** '+outputDate);
+						$tag.empty().append('Will ship on '+app.ext.beachmart.u.yyyymmdd2Pretty(zoovyProdSalesRank));
+					}
+					//Not a pre-order, show present-day ship info.
+					else if (zoovyProdSalesRank == undefined || zoovyProdSalesRank <= date) {
+						$tag.children('.shipTime').show();
+						var n = d.getDay();
+						var t = d.getUTCHours();
+						if(date < 20131103) {
+							t = t - 4;
 						}
-						//Not a pre-order, show present-day ship info.
-						else if (zoovyProdSalesRank == undefined || zoovyProdSalesRank <= date) {
-							$tag.children('.shipTime').show();
-							var n = d.getDay();
-							var t = d.getUTCHours();
-							if(date < 20131103) {
-								t = t - 4;
-							}
-							else if (date > '20131102' && date < '20140309') {
-								t = t - 5;
-							}
-							else {
-								// posibly need further years calculated here
-							}
-							if(userProdShipMsg) {
-								if(userProdShipMsg.indexOf('Ships Today by 12 Noon EST') > -1){
-									if ( (t >= 12 && (n > 0 && n < 5)) || date == 20130704 || date == 20130902 || date == 20131225 || date == 20131231 || date == 20140101 || date == 20140526 || date == 20140704) {
-										//Time is after noon, day is Mon-Thurs, OR is a UPS holiday weekday
-										$tag.empty().append('Ships Next Business Day');
-									}
-									else if (((t >= 12 && n == 5) || (n > 5 && n < 1)) || date == 20131128 || date == 20131129) {
-										//Time is after noon, day is Fri (FUN FUN FUN FUN)
-										//OR it is the Weekend, OR is UPS Thanksgiving weekend
-										$tag.empty().append('Ships Monday by 12 Noon EST');
-									}
-									else {
-										//It is before noon on a Weekday, shipping message is perfectly fine
-									}
+						else if (date > '20131102' && date < '20140309') {
+							t = t - 5;
+						}
+						else {
+							// posibly need further years calculated here
+						}
+						if(userProdShipMsg) {
+							if(userProdShipMsg.indexOf('Ships Today by 12 Noon EST') > -1){
+								if ( (t >= 12 && (n > 0 && n < 5)) || date == 20130704 || date == 20130902 || date == 20131225 || date == 20131231 || date == 20140101 || date == 20140526 || date == 20140704) {
+									//Time is after noon, day is Mon-Thurs, OR is a UPS holiday weekday
+									$tag.empty().append('Ships Next Business Day');
+								}
+								else if (((t >= 12 && n == 5) || (n > 5 && n < 1)) || date == 20131128 || date == 20131129) {
+									//Time is after noon, day is Fri (FUN FUN FUN FUN)
+									//OR it is the Weekend, OR is UPS Thanksgiving weekend
+									$tag.empty().append('Ships Monday by 12 Noon EST');
+								}
+								else {
+									//It is before noon on a Weekday, shipping message is perfectly fine
 								}
 							}
-							else { //userProdShipMsg is not set, skip it
-							}
 						}
-						else { 
-							//do nada*/
+						else { //userProdShipMsg is not set, skip it
 						}
-			//		}
-			//		else {
-			//			$tag.hide();
-			//		}
+					}
+					else { 
+						//do nada*/
+					}
 				},
 				
+				//sets a description on the price of a product (usually in a product list)
 				prodPriceDesc : function($tag, data) {
 					//var priceFrom = (data.bindData.isElastic) ? data.value.tags : data.value['%attribs']['zoovy:prod_is_tags'];
 					var priceFrom = data.value['%attribs']['user:prod_has_price_modifiers'];
@@ -516,6 +511,7 @@ var store_filter = function() {
 					
 				}, //End prodPriceDesc
 
+				//sets the overhang tag and hides discontinued products in a product list.
 				showProdModifier : function($tag, data) {
 				//	if(data.bindData.isElastic){
 				//		app.u.dump(data.value);
@@ -568,6 +564,7 @@ var store_filter = function() {
 					}
 				},
 				
+				//changes price description based on tag
 				priceFrom : function($tag, data) {
 					var priceModifier = data.value['%attribs']['user:prod_has_price_modifiers'];
 					//app.u.dump('*** '+priceModifier);
@@ -579,6 +576,7 @@ var store_filter = function() {
 					}
 				},
 				
+				//was intended to hide reviews based on text, but text wasn't accessable at the time, may need to be deleted.
 				noReviews : function($context) {
 		/*			var $blah = "";
 					$blah = $('.reviewsStarsCount', $context);
@@ -588,6 +586,7 @@ var store_filter = function() {
 					}
 		*/		},
 				
+				//shows a message that an item has the is_colorful tag set, usually in a product list
 				moreColors : function($tag, data) {
 					var pid = data.value.pid,
 						//isColorful = (data.bindData.isElastic) ? data.value.tags : data.value['%attribs']['zoovy:prod_is_tags'];
@@ -601,6 +600,9 @@ var store_filter = function() {
 		//			}
 				},
 				
+				//counts the variations on a product if present and displays a button w/ count text on it (button destination set in app)
+				//the count currently includes all variations (including layered POGs) and needs to be adjusted to only include 
+				//color or siblin variations. It is a temp fix for the display of color option graphics in product lists.
 				optionsCount : function($tag, data) {
 				//app.u.dump(data.value.length);
 					if(data.value.length) {
@@ -618,11 +620,6 @@ var store_filter = function() {
 							$tag.addClass('displayNone');
 						}
 					}	
-				},
-
-				homePageHider : function($tag,data) {
-					/*app.u.dump(data.value);
-					app.u.dump('*** homePageHider: '+data.value);*/
 				}
 				
 			}, //renderFormats
@@ -1039,6 +1036,7 @@ return filters;
 					$('#recentlyViewedItemsContainer').show();
 				}*/
 				
+				//shows tool tip on product page. Uses fade out to allow for click on link in tool tip pop up
 				handleToolTip : function()	{
 				app.u.dump("BEGIN beachmart.u.handleToolTip.");
 					$('.tipify',$('#appView')).each(function(){
@@ -1048,6 +1046,7 @@ return filters;
 						});
 				},
 					
+				//shows tool tip in cart	
 				handleCartToolTip : function($context) {	
 					$('.tipifyCart', $context).each(function(){
 						var $this = $(this);
@@ -1057,7 +1056,7 @@ return filters;
 				},
 				
 				
-				
+				//replacement for bindByAnchor href to make crawlable links. Currently used mainly on sitemap
 				bindOnclick : function() {
 					$('body').off('click', 'a[data-onclick]').on('click', 'a[data-onclick]', function(selector){
 						//app.u.dump('------->'); app.u.dump(selector);
@@ -1085,12 +1084,12 @@ return filters;
 					});
 				},
 	*/			
-				runPhoneChatLive : function() {
+		//		runPhoneChatLive : function() {
 		//			var $container = $('.phoneChatScript','#homepageTemplate_');
 		//			//app.u.dump('--------->'); app.u.dump($container);
 		//			var $script =  $('<script type="text/javascript">var seyXFh=document.createElement("script"); seyXFh.type="text/javascript"; var seyXFhs=(location.protocol.indexOf("https")==0?"https":"http")+"://image.providesupport.com/js/1qaxuqjnvcj4w1csevb7u0l3tc/safe-textlink.js?ps_h=yXFh&ps_t="+new Date().getTime()+"&online-link-html=Live%20Chat%20Online&offline-link-html=Live%20Chat%20Offline"; setTimeout("seyXFh.src=seyXFhs;document.getElementById("sdyXFh").appendChild(seyXFh)",1);</script>')
 		//			$container.append($script);
-				}
+		//		}
 			
 			}, //u
 
@@ -1104,7 +1103,8 @@ return filters;
 			}, //e [app Events]
 			
 		variations : {
-					
+			
+			//puts color options on product page as image selectable select list. Also adds jquery tool tip pop up of image for zoom
 			renderOptionCUSTOMIMGSELECT: function(pog) {
 
 //				app.u.dump('POG -> '); app.u.dump(pog);
@@ -1194,7 +1194,7 @@ return filters;
 				app.u.dump("--- RUNNING XINIT");
 			}
 			
-		}	
+		} //variations	
 			
 		} //r object.
 	return r;
