@@ -398,7 +398,19 @@ var store_filter = function() {
 						data.value['%attribs']['zoovy:accessory_products']){
 							$tag.show();
 						}
+					if(data.value['%attribs']['zoovy:accessory_products'] && 
+						!data.value['%attribs']['zoovy:related_products']) {
+						$('.accTab',$tag).addClass('ui-state-active').addClass('ui-tabs-active');
+						setTimeout(function(){
+							$('.accAnch','.accTab',$tag).click();},500);
+						app.u.dump('got past trigger');
+					}
 					},
+					
+				//set accessories to active if it is the only one
+		//		showIfLonely : function($tag, data) {
+		//			
+		//		},
 		
 				//shows free shipping statement in product list if value is set
 				showFreeShippingTag: function($tag, data) {
