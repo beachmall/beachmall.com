@@ -395,7 +395,7 @@ var store_filter = function() {
 				//shows container w/ accessories/similar tabbed content if one of them has values set
 				showTabsIfSet : function($tag, data) {
 					if(data.value['%attribs']['zoovy:related_products'] ||
-						data.value['%attribs']['zoovy:related_products']){
+						data.value['%attribs']['zoovy:accessory_products']){
 							$tag.show();
 						}
 					},
