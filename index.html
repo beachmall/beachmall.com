@@ -2336,7 +2336,7 @@ END BUG7-->
 
 
 	<li id='productListTemplateThumb' class='loadingBG  ' >
-		<div class='prodThumbContainer pointer' onClick="showContent('product',{'pid':$(this).attr('data-pid')});" data-bind='var:product(pid);format:assignAttribute; attribute:data-pid;'>
+		<div class='prodThumbContainer pointer' onClick="showContent('product',{'pid':$(this).attr('data-pid')});" data-bind='var:product(pid);format:assignAttribute; attribute:data-pid;' data-toolTipThumb="data-toolTipThumb">
 		<img src='blank.gif' class='prodThumb' data-bind='var: product(zoovy:prod_image1); format:imageURL;' width='55' height='55' />
 		</div>
 	</li>
@@ -2710,13 +2710,13 @@ this will likely become more flexible in the future. ###
 <div>
 
 	<div data-bind="var: product(zoovy:prod_is_tags); format:addTagSpans;" class='tagsContainer'></div>
-	<div class='pointer' onClick="showContent('product',{'pid':$(this).attr('data-pid')})" data-bind="var:product(pid); format:assignAttribute; attribute:data-pid;">
+	<div class='pointer' onClick="showContent('product',{'pid':$(this).attr('data-pid')})" data-bind="var:product(pid); format:assignAttribute; attribute:data-pid;" data-toolTipThumb="data-toolTipThumb">
 		<div data-bind='var:product(pid); format:addPicSlider; extension:myRIA;'><img src='blank.gif' class='prodBigImage' data-bind='var: product(zoovy:prod_image1); format:imageURL;' width='240' height='240' /></div>
 		<!--<img src='blank.gif' class='prodBigImage' rel='selectors-change: mouseover' name='prodBigImage' data-bind='useParentData:true; format: magicZoomPlus; extension: magicToolBox_mzp;' width='240' height='240' />-->
 	</div>
 	
 	<div class='quickviewThumbnailsContainer prodPageCarousel'>
-		<ul class='quickviewThumbnails' data-bind='var: product(pid); format: productImages; extension: magicToolBox_mzp;'></ul>    
+		<ul class='quickviewThumbnails' data-bind='var: product(pid); format: productImages; extension: store_filter;'></ul>    
 	</div>
 
 
