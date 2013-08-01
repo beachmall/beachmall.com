@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"201314.20130712123200",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"201314.20130731202200",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"", //used in non-local mode.
 	"checkoutAuthMode" : "active",//can be passive, active or required
@@ -1263,11 +1263,16 @@ the homepageTemplate template is loaded into mainContentArea by default when the
             <span>
             	We offer every kind of beach gear you need for fun in the sun at the beach this summer. 
                 Browse our beach products by category or by brand, if you are looking for a specific item or 
-                brand name. We offer products in categories such as beach chair, beach accessories, outdoor 
-                umbrellas, toys and recreation, beach umbrellas and beach shelters. Our inventory is so 
-                extensive, you are sure to find the perfect items for your summer of fun and relaxation with 
-                your family in the shade. Many items are multipurpose designed like the beach cabana or beach 
-                tent can be used for camping and beach chaise for the pool. 
+                brand name. We offer products in categories such as 
+				<a class='pointer' title="beach chair" data-onclick='#!category?navcat=.beach-chair'>beach chair</a>, 
+				<a class='pointer' title="beach accessories" data-onclick='#!category?navcat=.beach-accessories'>beach accessories</a>, 
+				outdoor umbrellas, toys and recreation, 
+				<a class='pointer' title="beach umbrellas" data-onclick='#!category?navcat=.beach-umbrellas-shelter.beach-umbrella'>beach umbrellas</a> and 
+				<a class='pointer' title="beach shelters" data-onclick='#!category?navcat=.beach-umbrellas-shelter.beach-tent-shelters'>beach shelters</a>. 
+				Our inventory is so extensive, you are sure to find the perfect items for your summer of fun and 
+				relaxation with your family in the shade. Many items are multipurpose designed like the 
+				<a class='pointer' title="beach cabana" data-onclick='#!category?navcat=.beach-umbrellas-shelter.beach-cabana'>beach cabana</a>
+				or beach tent can be used for camping and beach chaise for the pool. 
             </span>
         </div>
         <div class='catDescStd catDescStd2 floatLeft'>
@@ -1275,9 +1280,13 @@ the homepageTemplate template is loaded into mainContentArea by default when the
             <span>
             	What trip to the beach would be the same without your favorite beach accessories? We have a 
                 large selection of picnic baskets, beach bags and totes to take along your favorite foods. 
-                Enjoy fun in the water with a new skimboard or bodyboard. Carry all that gear to the beach in 
-                a new beach cart. We have several styles, including the popular Wonder wheeler beach cart and 
-                Wheeleez Beach Carts at great prices. Beach Umbrella with high UPF is recommended. 
+                Enjoy fun in the water with a new 
+				<a class='pointer' title="skimboard" data-onclick='#!category?navcat=.beach-sports.skimboards'>skimboard</a> or 
+				<a class='pointer' title="bodyboard" data-onclick='#!category?navcat=.beach-sports.bodyboards'>bodyboard</a>. 
+				Carry all that gear to the beach in a new 
+				<a class='pointer' title="beach cart" data-onclick='#!category?navcat=.beach-accessories.beach-cart'>beach cart</a>. 
+				We have several styles, including the popular Wonder wheeler beach cart and Wheeleez Beach Carts 
+				at great prices. Beach Umbrella with high UPF is recommended. 
             </span>
         </div>
          <div class='catDescStd catDescStd3 floatLeft'>
@@ -1293,9 +1302,12 @@ the homepageTemplate template is loaded into mainContentArea by default when the
          <div class='catDescStd catDescStd4 floatLeft'>
         	<h1>Beach Chairs</h1>
             <span>
-            	We carry all the popular beach chairs brands, including the Rio Beach Chairs, Lafuma Chair , 
-                Wearever and Galtech. Whether you are looking for backpack chair, beach lounge chairs, canopy 
-                chair or beach hammock to relax and nap in the sun, you will find them here.
+            	We carry all the popular beach chairs brands, including the Rio Beach Chairs, 
+				<a class='pointer' title="Lafuma Chairs" data-onclick='#!category?navcat=.beach-chairs.beach-gear.lafuma-chair-recliner'>Lafuma Chairs</a>, 
+                Wearever and Galtech. Whether you are looking for 
+				<a class='pointer' title="beach chairs" data-onclick='#!category?navcat=.beach-chair.backpack-chair'>backpack chair</a> 
+				<a class='pointer' title="backpack chair" data-onclick='#!category?navcat=.beach-chair.sand-chairs'>beach chairs</a>, 
+				beach lounge chairs, canopy chair or beach hammock to relax and nap in the sun, you will find them here.
             </span>
          </div>
          <div class='catDescStd catDescNonStd floatLeft'>
