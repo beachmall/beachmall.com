@@ -188,7 +188,7 @@ var store_filter = function() {
 							var productImg = app.u.makeImage({"w":400,"h":400,"b":"ffffff",tag:0,"name":product['%attribs']['zoovy:prod_image1']});
 							return '<span class="siblingZoom">'+prodName+'</span><img src="'+productImg+'" width="400" height="400" />';
 							}
-						
+						//thumbnail zoom for thumbs under main prod images in quickview
 						if (element.is("[data-toolTipQuickview]")) {
 							app.u.dump('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&'); app.u.dump($(this).closest('[data-toolTipName]').attr('data-toolTipName'));
 							var pid = $(this).closest('[data-pid]').attr('data-pid');
