@@ -152,7 +152,7 @@ var store_filter = function() {
 					app.ext.store_filter.u.runProductVerticalCarousel($context);
 					app.ext.store_filter.u.runProductVerticalCarousel2($context);
 					app.ext.store_filter.u.runProductRecentCarousel($context);
-					app.u.dump('Product fredsel ran');
+					//app.u.dump('Product fredsel ran');
 					app.ext.store_filter.u.handleToolTip();
 				}]);
 				
@@ -352,6 +352,17 @@ var store_filter = function() {
 //on a data-bind, format: is equal to a renderformat. extension: tells the rendering engine where to look for the renderFormat.
 //that way, two render formats named the same (but in different extensions) don't overwrite each other.
 		renderFormats : {
+		
+				hideDiscontinuedElements : function($tag, data) {
+					//app.u.dump('*********************'); app.u.dump(data.value.pid); 
+					if(data.value['%attribs']['zoovy:prod_is_tags']
+						&& data.value['%attribs']['zoovy:prod_is_tags'].indexOf('IS_DISCONTINUED') > 0) {
+						$tag.hide();
+						if($('.addToCartButton',$tag.parent())) {
+							$('.addToCartButton',$tag.parent()).hide();
+						}
+					}
+				},
 		
 				showShipRegion : function($tag, data) {
 					//app.u.dump('--------->'); app.u.dump(data.value);
@@ -1125,7 +1136,7 @@ return filters;
 						});
 					});
 				},
-				
+							
 	/*			showShipRegion : function($context) {
 					$('.cartRegion', $context).each(function() {
 						var $this = $(this);
