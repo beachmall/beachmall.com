@@ -941,11 +941,11 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 .imageContainer .prodTabs.tabbedProductContent {background-color:#ffffff; padding:0px; border:none;} /*tabbed container bkgrnd*/
 .imageContainer .prodTabs.tabbedProductContent > div {background-color:#ffffff; border:none;} /*image bkgrnd*/
 .imageContainer .prodTabs.tabbedProductContent > ul {background-color:#ffffff;} /*tab bkgrnd*/
-.imageContainer .prodTabs.tabbedProductContent .imageAndVideoTabs .ui-state-default {height:35px; background:#777; border-radius:0px; border:1px solid #777;}
+.imageContainer .prodTabs.tabbedProductContent .imageAndVideoTabs .ui-state-default {height:35px; background:#444444; border-radius:0px; border:1px solid #444444;}
 .imageContainer .prodTabs.tabbedProductContent .imageAndVideoTabs .ui-state-active {background:#f5f1de; border-radius:0px; border-bottom:1px solid #f5f1de;}
 .imageContainer .prodTabs.tabbedProductContent .imageAndVideoTabs .ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited {color:#3bb3c3; font-weight:normal; font-family:"Open Sans";}
 .imageContainer .prodTabs.tabbedProductContent .imageAndVideoTabs .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {color:#777; font-weight:normal; font-family:"Open Sans";}
-.imageContainer .prodTabs.tabbedProductContent .prodPageImages {width:310px; padding:0px; border:1px solid #777777; background:#F5F1DE;} /*box-shadow:0 1px 3px 2px #777;*/
+.imageContainer .prodTabs.tabbedProductContent .prodPageImages {width:310px; padding:0px; border:1px solid #444444; background:#F5F1DE;} /*box-shadow:0 1px 3px 2px #777;*/
 .imageContainer .prodTabs.tabbedProductContent .ui-tabs-panel {padding:0;}
 .imageContainer .prodTabs.tabbedProductContent .imageAndVideoTabs > div {border:none;}
 
@@ -998,12 +998,12 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 .prodTabViewContainer .ui-widget-header	{padding:3px 3px 0 3px; margin:0; border-width:0; border-bottom-width:1px;}
 .prodTabViewContainer .ui-tabs	{padding:0; margin:5px 0 20px 0;}
 .ui-tabs .ui-tabs-nav li	{margin-right:2px;}
-.prodTabViewContainer .prodViewerTable .prodTabs.tabbedProductContent .tabs .ui-state-default {background:#777; border-radius:0px; border:1px solid #777;}
+.prodTabViewContainer .prodViewerTable .prodTabs.tabbedProductContent .tabs .ui-state-default {background:#444444; border-radius:0px; border:1px solid #444444;}
 .prodTabViewContainer .prodViewerTable .prodTabs.tabbedProductContent .tabs .ui-state-active {background:#f5f1de; border-radius:0px; border-bottom:1px solid #f5f1de;}
 .prodTabViewContainer .prodViewerTable .prodTabs.tabbedProductContent .tabs .ui-state-default a, .tabs .ui-state-default a:link, .ui-state-default a:visited {color:#3bb3c3; font-weight:normal; font-family:"Open Sans";}
-.prodTabViewContainer .prodViewerTable .prodTabs.tabbedProductContent .tabs .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {color:#777; font-weight:normal; font-family:"Open Sans";}
+.prodTabViewContainer .prodViewerTable .prodTabs.tabbedProductContent .tabs .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {color:#444444; font-weight:normal; font-family:"Open Sans";}
 .prodTabViewContainer .prodViewerTable .prodTabs.tabbedProductContent .ui-widget-content.ui-corner-tr {background:#f5f1de; border:none;}
-.prodTabViewContainer .prodViewerTable .prodTabs.tabbedProductContent .ui-widget-content {background:#f5f1de; border:1px solid #777;}
+.prodTabViewContainer .prodViewerTable .prodTabs.tabbedProductContent .ui-widget-content {background:#f5f1de; border:1px solid #444444;}
 .prodTabViewContainer .prodViewerTable .prodTabs.tabbedProductContent > div {}
 
 /*REVIEW TAB*/
@@ -1013,22 +1013,22 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 .youMayLikeAccessories {height:auto; width:auto; padding:0;}
 .youMayLikeAccessories .tabbedProductListsTD {height:auto; width:97%;}
 .youMayLikeAccessories .tabbedProductListsTD {padding:0; margin:0 0 20px 18px;}
-.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .tabs .ui-state-default {background:#777; border-radius:0px; border:1px solid #777;}
+.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .tabs .ui-state-default {background:#444444; border-radius:0px; border:1px solid #444444;}
 .youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .tabs .ui-state-active {background:#f5f1de; border-radius:0px; border-bottom:1px solid #f5f1de;}
 .youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .tabs .ui-state-default a, .tabs .ui-state-default a:link, .ui-state-default a:visited {color:#3bb3c3; font-weight:normal; font-family:"Open Sans";}
-.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .tabs .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {color:#777; font-weight:normal; font-family:"Open Sans";}
-.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content {height:521px; width:252px; background:#f5f1de; border:1px solid #777;}
+.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .tabs .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {color:#444444; font-weight:normal; font-family:"Open Sans";}
+.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content {height:521px; width:252px; background:#f5f1de; border:1px solid #444444;}
 .youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content > div {width:240px; background:#f5f1de; border:none;}
 
 .youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content .testCarCont {height:500px; width:240px; overflow:hidden;}
 .youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content .testCar {height:490px; width:240px; margin-top:39px; overflow:hidden;}
-.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content .testPrev {height:30px; width:102px; position:relative; top:-526px; left:-66px;  background:#777;color:#f5f1de; text-align:center; line-height:30px; margin-left:74px;}
-.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content .testNext{height:30px; width:102px; position:relative; top:-556px; left:54px;  background:#777;color:#f5f1de; text-align:center; line-height:30px; margin-left:74px;}
+.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content .testPrev {height:30px; width:102px; position:relative; top:-526px; left:-66px;  background:#444444;color:#f5f1de; text-align:center; line-height:30px; margin-left:74px;}
+.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content .testNext{height:30px; width:102px; position:relative; top:-556px; left:54px;  background:#444444;color:#f5f1de; text-align:center; line-height:30px; margin-left:74px;}
 
 .youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content .testCarCont2 {height:500px; width:240px; overflow:hidden;}
 .youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content .testCar2 {height:490px; width:240px; margin-top:39px; overflow:hidden;}
-.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content .testPrev2{height:30px; width:102px; position:relative; top:-526px; left:-66px; background:#777; color:#f5f1de; text-align:center; line-height:30px; margin-left:74px;}
-.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content .testNext2{height:30px; width:102px; position:relative; top:-556px; left:54px;  background:#777;color:#f5f1de; text-align:center; line-height:30px; margin-left:74px;}
+.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content .testPrev2{height:30px; width:102px; position:relative; top:-526px; left:-66px; background:#444444; color:#f5f1de; text-align:center; line-height:30px; margin-left:74px;}
+.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content .testNext2{height:30px; width:102px; position:relative; top:-556px; left:54px;  background:#444444;color:#f5f1de; text-align:center; line-height:30px; margin-left:74px;}
 
 
 
