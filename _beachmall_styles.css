@@ -1318,7 +1318,7 @@ lower tab sets (text fields and product lists)
 #prodBundle, #prodSiblings, #prodColors	{padding:0 !important;} /* product lists will handle their own padding/margin inside these tabs */
 
 
-.bundleProdlist li	{width:350px; margin:12px; height:120px;}
+.bundleProdlist li {width:350px; margin:12px; height:120px;}
 .bundleProdlist .prodThumbAndMT	{float:left; margin-right:6px;position:relative; width:120px; height:100px;}
 .bundleProdlist .prodContent	{float:left; width:200px;}
 .bundleProdlist .spanTastic	span	{margin-right:12px; display:inline-block; float:left;}
