@@ -353,11 +353,18 @@ var store_filter = function() {
 //that way, two render formats named the same (but in different extensions) don't overwrite each other.
 		renderFormats : {
 		
-				hideDiscontinuedElements : function($tag, data) {
+				//hides geo location/time in transit and add to cart button if product is discontinued or not purchasable
+				hideGeoElements : function($tag, data) {
 					//app.u.dump('*********************'); app.u.dump(data.value.pid); 
 					if(data.value['%attribs']['zoovy:prod_is_tags']
 						&& data.value['%attribs']['zoovy:prod_is_tags'].indexOf('IS_DISCONTINUED') > 0) {
 						$tag.hide();
+						if($('.addToCartButton',$tag.parent())) {
+							$('.addToCartButton',$tag.parent()).hide();
+						}
+					}
+					else if (!app.ext.store_product.u.productIsPurchaseable(data.value.pid)){
+						$tag.hide();	
 						if($('.addToCartButton',$tag.parent())) {
 							$('.addToCartButton',$tag.parent()).hide();
 						}
