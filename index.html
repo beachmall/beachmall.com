@@ -930,7 +930,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
             <li><a class="bindByAnchor" href="#!company?show=contact">Contact Us</a></li>
             <li><a class="bindByAnchor" href="#!company?show=faq">FAQ</a></li>
             <!--<li><a class='bindByAnchor' href='#!category?navcat=.sitemap'>Site Map</a></li>-->
-            <li><a class='pointer' data-onclick='#!category?navcat=.sitemap'>Site Map</a></li>
+            <li><a href='#!category?navcat=.sitemap' data-onclick='#!category?navcat=.sitemap' class='pointer'>Site Map</a></li>
 			<!--<li><a href="http://reviews.app.beachmall.com <http://reviews.app.beachmall.com/>">Product Reviews</a></li>-->
 			<!--<li><a href="http://reviews.beachmall.com <http://reviews.beachmall.com/>">Product Reviews</a></li>-->
             <li><a class="bindByAnchor" href="#!company?show=return">Returns & Exchanges</a></li>
@@ -1265,14 +1265,14 @@ the homepageTemplate template is loaded into mainContentArea by default when the
                 Browse our beach products by category or by brand, if you are looking for a specific item or 
                 brand name. We offer products in categories such as 
 				<!-- <a class='pointer' title="beach chair" data-onclick='#!category?navcat=.beach-chair'>beach chair</a>, -->
-				<a class='bindByAnchor pointer' title="beach chair" href='#!category?navcat=.beach-chair'>beach chair</a>, 
-				<a class='bindByAnchor pointer' title="beach accessories" href='#!category?navcat=.beach-accessories'>beach accessories</a>, 
+				<a href='#!category?navcat=.beach-chair' class='pointer' title="beach chair" data-onclick='#!category?navcat=.beach-chair'>beach chair</a>, 
+				<a href="#!category?navcat=.beach-accessories" class='pointer' title="beach accessories" data-onclick='#!category?navcat=.beach-accessories'>beach accessories</a>, 
 				outdoor umbrellas, toys and recreation, 
-				<a class='bindByAnchor pointer' title="beach umbrellas" href='#!category?navcat=.beach-umbrellas-shelter.beach-umbrella'>beach umbrellas</a> and 
-				<a class='bindByAnchor pointer' title="beach shelters" href='#!category?navcat=.beach-umbrellas-shelter.beach-tent-shelters'>beach shelters</a>. 
+				<a href="#!category?navcat=.beach-umbrellas-shelter.beach-umbrella" class='pointer' title="beach umbrellas" data-onclick='#!category?navcat=.beach-umbrellas-shelter.beach-umbrella'>beach umbrellas</a> and 
+				<a href="#!category?navcat=.beach-umbrellas-shelter.beach-tent-shelters" class='pointer' title="beach shelters" data-onclick='#!category?navcat=.beach-umbrellas-shelter.beach-tent-shelters'>beach shelters</a>. 
 				Our inventory is so extensive, you are sure to find the perfect items for your summer of fun and 
 				relaxation with your family in the shade. Many items are multipurpose designed like the 
-				<a class='bindByAnchor pointer' title="beach cabana" href='#!category?navcat=.beach-umbrellas-shelter.beach-cabana'>beach cabana</a>
+				<a href="#!category?navcat=.beach-umbrellas-shelter.beach-cabana" class='pointer' title="beach cabana" data-onclick='#!category?navcat=.beach-umbrellas-shelter.beach-cabana'>beach cabana</a>
 				or beach tent can be used for camping and beach chaise for the pool. 
             </span>
         </div>
@@ -1282,10 +1282,10 @@ the homepageTemplate template is loaded into mainContentArea by default when the
             	What trip to the beach would be the same without your favorite beach accessories? We have a 
                 large selection of picnic baskets, beach bags and totes to take along your favorite foods. 
                 Enjoy fun in the water with a new 
-				<a class='bindByAnchor pointer' title="skimboard" href='#!category?navcat=.beach-sports.skimboards'>skimboard</a> or 
-				<a class='bindByAnchor pointer' title="bodyboard" href='#!category?navcat=.beach-sports.bodyboards'>bodyboard</a>. 
+				<a href="#!category?navcat=.beach-sports.skimboards" class='pointer' title="skimboard" data-onclick='#!category?navcat=.beach-sports.skimboards'>skimboard</a> or 
+				<a href="#!category?navcat=.beach-sports.bodyboards" class='pointer' title="bodyboard" data-onclick='#!category?navcat=.beach-sports.bodyboards'>bodyboard</a>. 
 				Carry all that gear to the beach in a new 
-				<a class='bindByAnchor pointer' title="beach cart" href='#!category?navcat=.beach-accessories.beach-cart'>beach cart</a>. 
+				<a href="#!category?navcat=.beach-accessories.beach-cart" class='pointer' title="beach cart" data-onclick='#!category?navcat=.beach-accessories.beach-cart'>beach cart</a>. 
 				We have several styles, including the popular Wonder wheeler beach cart and Wheeleez Beach Carts 
 				at great prices. Beach Umbrella with high UPF is recommended. 
             </span>
@@ -1304,10 +1304,10 @@ the homepageTemplate template is loaded into mainContentArea by default when the
         	<h1>Beach Chairs</h1>
             <span>
             	We carry all the popular beach chairs brands, including the Rio Beach Chairs, 
-				<a class='bindByAnchor pointer' title="Lafuma Chairs" href='#!category?navcat=.beach-chairs.beach-gear.lafuma-chair-recliner'>Lafuma Chairs</a>, 
+				<a href="#!category?navcat=.beach-chairs.beach-gear.lafuma-chair-recliner" class='pointer' title="Lafuma Chairs" data-onclick='#!category?navcat=.beach-chairs.beach-gear.lafuma-chair-recliner'>Lafuma Chairs</a>, 
                 Wearever and Galtech. Whether you are looking for 
-				<a class='bindByAnchor pointer' title="beach chairs" href='#!category?navcat=.beach-chair.backpack-chair'>backpack chair</a> 
-				<a class='bindByAnchor pointer' title="backpack chair" href='#!category?navcat=.beach-chair.sand-chairs'>beach chairs</a>, 
+				<a href="#!category?navcat=.beach-chair.backpack-chair" class='pointer' title="beach chairs" data-onclick='#!category?navcat=.beach-chair.backpack-chair'>backpack chair</a> 
+				<a href="#!category?navcat=.beach-chair.sand-chairs" class='pointer' title="backpack chair" data-onclick='#!category?navcat=.beach-chair.sand-chairs'>beach chairs</a>, 
 				beach lounge chairs, canopy chair or beach hammock to relax and nap in the sun, you will find them here.
             </span>
          </div>
@@ -1595,303 +1595,303 @@ don't modify the 'data-templateid' unless you are changing template names and up
 		</tr> 
 		<tr> 
 			<td width="3%"> </td> 
-			<td colspan="3"><a class='pointer' data-onclick="#!category?navcat=."><font size="2"><strong>Home</strong></font><strong></font></strong></a></td> 
+			<td colspan="3"><a href="#!category?navcat=." class='pointer' data-onclick="#!category?navcat=."><font size="2"><strong>Home</strong></font><strong></font></strong></a></td> 
 		</tr> 
 		<tr> 
 			<td> </td> 
 			<td width="4%"> </td> 
-			<td colspan="2"><a class='pointer' data-onclick="#!company?show=about"><font size="2">About Us </font></a></td> 
+			<td colspan="2"><a href="#!company?show=about" class='pointer' data-onclick="#!company?show=about"><font size="2">About Us </font></a></td> 
 		</tr> 
 		<tr> 
 			<td> </td> 
 			<td> </td> 
-			<td colspan="2"><a class='pointer' data-onclick="#!company?show=contact"><font size="2">Contact Us </font></a></td> 
+			<td colspan="2"><a href="#!company?show=contact" class='pointer' data-onclick="#!company?show=contact"><font size="2">Contact Us </font></a></td> 
 		</tr> 
 		<tr> 
 			<td> </td> 
 			<td> </td> 
-			<td colspan="2"><a class='pointer' data-onclick="#!company?show=faq"><font size="2">FAQ</font></a></td> 
+			<td colspan="2"><a href="#!company?show=faq" class='pointer' data-onclick="#!company?show=faq"><font size="2">FAQ</font></a></td> 
 		</tr> 
 		<tr> 
 			<td> </td> 
 			<td> </td> 
-			<td colspan="2"><a class='pointer' data-onclick="#!company?show=contact"><font size="2">Wholesale </font></a></td> 
+			<td colspan="2"><a href="#!company?show=contact" class='pointer' data-onclick="#!company?show=contact"><font size="2">Wholesale </font></a></td> 
 		</tr> 
 		<tr> 
 			<td height="21"> </td> 
 			<td> </td> 
 			<!--<td colspan="2"><a class="bindByAnchor" href="#!category?navcat=.affiliates"><font size="2">Affiliates </font></a></td> -->
-			<td colspan="2"><a class='pointer' data-onclick="#!category?navcat=.affiliates"><font size="2">Affiliates </font></a></td> 
+			<td colspan="2"><a href="#!category?navcat=.affiliates" class='pointer' data-onclick="#!category?navcat=.affiliates"><font size="2">Affiliates </font></a></td> 
 		</tr> 
 		<tr> 
 			<td height="21"> </td> 
 			<td> </td> 
-			<td colspan="2"><a class='pointer' data-onclick="#!company?show=payment"><font size="2">Payment Policy</font></a></td> 
+			<td colspan="2"><a href="#!company?show=payment" class='pointer' data-onclick="#!company?show=payment"><font size="2">Payment Policy</font></a></td> 
 		</tr> 
 		<tr> 
 			<td height="21"> </td> 
 			<td> </td> 
-			<td colspan="2"><a class='pointer' data-onclick="#!company?show=privacy"><font size="2">Privacy Policy</font></a></td> 
+			<td colspan="2"><a href="#!company?show=privacy" class='pointer' data-onclick="#!company?show=privacy"><font size="2">Privacy Policy</font></a></td> 
 		</tr> 
 		<tr> 
 			<td height="21"> </td> 
 			<td> </td> 
-			<td colspan="2"><a class='pointer' data-onclick="#!company?show=return"><font size="2">Return Policy</font></a></td> 
+			<td colspan="2"><a href="#!company?show=return" class='pointer' data-onclick="#!company?show=return"><font size="2">Return Policy</font></a></td> 
 		</tr> 
 		<tr> 
 			<td height="21"> </td> 
 			<td> </td> 
-			<td colspan="2"><a class='pointer' data-onclick="#!company?show=shipping"><font size="2">Shipping Policy</font></a></td> 
+			<td colspan="2"><a href="#!company?show=shipping" class='pointer' data-onclick="#!company?show=shipping"><font size="2">Shipping Policy</font></a></td> 
 		</tr> 
 		<tr> 
 			<td height="21"> </td> 
 			<td> </td> 
-			<td colspan="2"><a class='pointer' data-onclick="#!" onClick="return showContent('cart',{});"><font size="2">Shopping Cart</font></a></td> 
+			<td colspan="2"><a href="#!"class='pointer' onClick="return showContent('cart',{});"><font size="2">Shopping Cart</font></a></td> 
 		</tr> 
 		<tr> 
 			<td height="21"> </td> 
 			<td> </td> 
-			<td colspan="2"><a class='pointer' data-onclick="#!category?navcat=.beach-chair"><font size="2"><strong>Beach Chairs</strong></font></a></td> 
+			<td colspan="2"><a href="#!category?navcat=.beach-chair" class='pointer' data-onclick="#!category?navcat=.beach-chair"><font size="2"><strong>Beach Chairs</strong></font></a></td> 
 		</tr> 
 		<tr> 
 			<td height="21"> </td> 
 			<td> </td> 
 			<td width="6%"> </td> 
-			<td width="87%"><a class='pointer' data-onclick="#!category?navcat=.beach-chair.backpack-chair"><font size="2">BackPack Beach Chairs</font></a></td> 
+			<td width="87%"><a href="#!category?navcat=.beach-chair.backpack-chair" class='pointer' data-onclick="#!category?navcat=.beach-chair.backpack-chair"><font size="2">BackPack Beach Chairs</font></a></td> 
 		</tr> 
 		<tr> 
 			<td height="21"> </td> 
 			<td> </td> 
 			<td> </td> 
-			<td><a class='pointer' data-onclick="#!category?navcat=.beach-chair.beach-chaise"><font size="2">Beach Chaises</font></a></td> 
+			<td><a href="#!category?navcat=.beach-chair.beach-chaise" class='pointer' data-onclick="#!category?navcat=.beach-chair.beach-chaise"><font size="2">Beach Chaises</font></a></td> 
 		</tr>
 		<tr> 
 			<td height="21"> </td> 
 			<td> </td> 
 			<td> </td> 
-			<td><a class='pointer' data-onclick="#!category?navcat=.beach-chair.beach-lounges"><font size="2">Beach And Pool Lounges</font></a></td> 
+			<td><a href="#!category?navcat=.beach-chair.beach-lounges" class='pointer' data-onclick="#!category?navcat=.beach-chair.beach-lounges"><font size="2">Beach And Pool Lounges</font></a></td> 
 		</tr> 
 		<tr> 
 			<td height="21"> </td> 
 			<td> </td> 
 			<td> </td> 
-			<td><a class='pointer' data-onclick="#!category?navcat=.beach-chair.canopy-beach-chair"><font size="2">Canopy Beach Chairs</font></a></td> 
+			<td><a href="#!category?navcat=.beach-chair.canopy-beach-chair" class='pointer' data-onclick="#!category?navcat=.beach-chair.canopy-beach-chair"><font size="2">Canopy Beach Chairs</font></a></td> 
 		</tr> 
 		<tr> 
 			<td height="21"> </td> 
 			<td> </td> 
 			<td> </td> 
-			<td><a class='pointer' data-onclick="#!category?navcat=.beach-chair.beach-chairs"><font size="2">Cup Holder Beach Chairs</font></a></td> 
+			<td><a href="#!category?navcat=.beach-chair.beach-chairs" class='pointer' data-onclick="#!category?navcat=.beach-chair.beach-chairs"><font size="2">Cup Holder Beach Chairs</font></a></td> 
 		</tr> 
 		<tr> 
 			<td height="21"> </td> 
 			<td> </td> 
 			<td> </td> 
-			<td><a class='pointer' data-onclick="#!category?navcat=.beach-chair.high-beach-chair"><font size="2">High Seat Beach Chairs</font></a></td> 
+			<td><a href="#!category?navcat=.beach-chair.high-beach-chair" class='pointer' data-onclick="#!category?navcat=.beach-chair.high-beach-chair"><font size="2">High Seat Beach Chairs</font></a></td> 
 		</tr> 
 		<tr> 
 			<td height="21"> </td> 
 			<td> </td> 
 			<td> </td> 
-			<td><a class='pointer' data-onclick="#!category?navcat=.beach-chair.beach-chairs"><font size="2">Kids Chairs</font></a></td> 
+			<td><a href="#!category?navcat=.beach-chair.beach-chairs" class='pointer' data-onclick="#!category?navcat=.beach-chair.beach-chairs"><font size="2">Kids Chairs</font></a></td> 
 		</tr> 
 		<tr> 
 			<td height="21"> </td> 
 			<td> </td> 
 			<td> </td> 
-			<td><a class='pointer' data-onclick="#!category?navcat=.beach-chair.sand-chairs"><font size="2">Sand Chairs</font></a></td> 
+			<td><a href="#!category?navcat=.beach-chair.sand-chairs" class='pointer' data-onclick="#!category?navcat=.beach-chair.sand-chairs"><font size="2">Sand Chairs</font></a></td> 
 		</tr> 
 		<tr> 
 			<td height="21"> </td> 
 			<td> </td> 
 			<td> </td> 
-			<td><a class='pointer' data-onclick="#!category?navcat=.beach-chair.sand-chair"><font size="2">Low Seat Beach Chairs</font></a></td> 
+			<td><a href="#!category?navcat=.beach-chair.sand-chair" class='pointer' data-onclick="#!category?navcat=.beach-chair.sand-chair"><font size="2">Low Seat Beach Chairs</font></a></td> 
 		</tr> 
 		<tr> 
 			<td height="21"> </td> 
 			<td> </td> 
 			<td> </td> 
-			<td><a class='pointer' data-onclick="#!category?navcat=.beach-chair.folding-beach-chairs"><font size="2">Folding Beach Chairs</font></a></td> 
+			<td><a href="#!category?navcat=.beach-chair.folding-beach-chairs" class='pointer' data-onclick="#!category?navcat=.beach-chair.folding-beach-chairs"><font size="2">Folding Beach Chairs</font></a></td> 
 		</tr> 
 		<tr> 
 			<td height="21"> </td> 
 			<td> </td> 
 			<td> </td> 
-			<td><a class='pointer' data-onclick="#!category?navcat=.beach-chair.lafuma-recliner"><font size="2">Premium Chairs</font></a></td> 
+			<td><a href="#!category?navcat=.beach-chair.lafuma-recliner" class='pointer' data-onclick="#!category?navcat=.beach-chair.lafuma-recliner"><font size="2">Premium Chairs</font></a></td> 
 		</tr> 
 		<tr> 
 			<td height="21"> </td> 
 			<td> </td> 
 			<td> </td> 
-			<td><a class='pointer' data-onclick="#!category?navcat=.beach-chair.backpack-chair"><font size="2">Backpack Chairs</font></a></td> 
+			<td><a href="#!category?navcat=.beach-chair.backpack-chair" class='pointer' data-onclick="#!category?navcat=.beach-chair.backpack-chair"><font size="2">Backpack Chairs</font></a></td> 
 		</tr> 
 		<tr> 
 			<td height="21"> </td> 
 			<td> </td> 
 			<td> </td> 
-			<td><a class='pointer' data-onclick="#!category?navcat=.beach-chair.wooden-beach-chairs"><font size="2">Wooden Beach Chairs</font></a></td> 
+			<td><a href="#!category?navcat=.beach-chair.wooden-beach-chairs" class='pointer' data-onclick="#!category?navcat=.beach-chair.wooden-beach-chairs"><font size="2">Wooden Beach Chairs</font></a></td> 
 		</tr> 
 		<tr> 
 			<td height="21"> </td> 
 			<td> </td> 
-			<td colspan="2"><a class='pointer' data-onclick="#!category?navcat=.beach-accessories"><font size="2"><strong>Beach Accessories</strong></font></a></td> 
-		</tr> 
-		<tr> 
-			<td height="21"> </td> 
-			<td> </td> 
-			<td> </td> 
-			<td><a class='pointer' data-onclick="#!category?navcat=.beach-accessories.beach-bags-totes"><font size="2">Beach Bags Totes</font></a></td> 
+			<td colspan="2"><a href="#!category?navcat=.beach-accessories" class='pointer' data-onclick="#!category?navcat=.beach-accessories"><font size="2"><strong>Beach Accessories</strong></font></a></td> 
 		</tr> 
 		<tr> 
 			<td height="21"> </td> 
 			<td> </td> 
 			<td> </td> 
-			<td><a class='pointer' data-onclick="#!category?navcat=.beach-accessories.beach-cart"><font size="2">Beach Carts</font></a></td> 
+			<td><a href="#!category?navcat=.beach-accessories.beach-bags-totes" class='pointer' data-onclick="#!category?navcat=.beach-accessories.beach-bags-totes"><font size="2">Beach Bags Totes</font></a></td> 
 		</tr> 
 		<tr> 
 			<td height="21"> </td> 
 			<td> </td> 
 			<td> </td> 
-			<td><a class='pointer' data-onclick="#!category?navcat=.beach-accessories.beach-blanket"><font size="2">Beach Towels</font></a></td> 
+			<td><a href="#!category?navcat=.beach-accessories.beach-cart" class='pointer' data-onclick="#!category?navcat=.beach-accessories.beach-cart"><font size="2">Beach Carts</font></a></td> 
+		</tr> 
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="#!category?navcat=.beach-accessories.beach-blanket" class='pointer' data-onclick="#!category?navcat=.beach-accessories.beach-blanket"><font size="2">Beach Towels</font></a></td> 
 		</tr> 
 		<tr>
 			<td height="21"> </td> 
 			<td> </td> 
 			<td> </td> 
-			<td><a class='pointer' data-onclick="#!category?navcat=.beach-accessories.picnic-cooler"><font size="2">Coolers</font></a></td> 
+			<td><a href="#!category?navcat=.beach-accessories.picnic-cooler" class='pointer' data-onclick="#!category?navcat=.beach-accessories.picnic-cooler"><font size="2">Coolers</font></a></td> 
 		</tr> 
 		<tr> 
 			<td height="21"> </td> 
 			<td> </td> 
 			<td> </td> 
-			<td><a class='pointer' data-onclick="#!category?navcat=.beach-accessories.tailgating"><font size="2">Tailgating </font></a></td> 
+			<td><a href="#!category?navcat=.beach-accessories.tailgating" class='pointer' data-onclick="#!category?navcat=.beach-accessories.tailgating"><font size="2">Tailgating </font></a></td> 
 		</tr> 
 		<tr> 
 			<td height="21"> </td> 
 			<td> </td> 
 			<td> </td> 
-			<td><a class='pointer' data-onclick="#!category?navcat=.beach-accessories.picnic-baskets"><font size="2">Picnic Baskets </font></a></td> 
+			<td><a href="#!category?navcat=.beach-accessories.picnic-baskets" class='pointer' data-onclick="#!category?navcat=.beach-accessories.picnic-baskets"><font size="2">Picnic Baskets </font></a></td> 
 		</tr> 
 		<tr> 
 			<td height="21"> </td> 
 			<td> </td> 
-			<td colspan="2"><a class='pointer' data-onclick="#!category?navcat=.beachwear"><font size="2"><strong>BeachWear </strong></font></a></td> 
-		</tr> 
-		<tr> 
-			<td height="21"> </td> 
-			<td> </td> 
-			<td> </td> 
-			<td><a class='pointer' data-onclick="#!category?navcat=.beachwear.beach-hat"><font size="2">Beach Hats</font></a></td> 
+			<td colspan="2"><a href="#!category?navcat=.beachwear" class='pointer' data-onclick="#!category?navcat=.beachwear"><font size="2"><strong>BeachWear </strong></font></a></td> 
 		</tr> 
 		<tr> 
 			<td height="21"> </td> 
 			<td> </td> 
 			<td> </td> 
-			<td><a class='pointer' data-onclick="#!category?navcat=.beachwear.beach-swimwear"><font size="2">Beach Swimwear</font></a></td> 
+			<td><a href="#!category?navcat=.beachwear.beach-hat" class='pointer' data-onclick="#!category?navcat=.beachwear.beach-hat"><font size="2">Beach Hats</font></a></td> 
 		</tr> 
 		<tr> 
 			<td height="21"> </td> 
 			<td> </td> 
 			<td> </td> 
-			<td><a class='pointer' data-onclick="#!category?navcat=.beachwear.beach-swimwear.rashguard"><font size="2">Rashguards</font></a></td> 
+			<td><a href="#!category?navcat=.beachwear.beach-swimwear" class='pointer' data-onclick="#!category?navcat=.beachwear.beach-swimwear"><font size="2">Beach Swimwear</font></a></td> 
 		</tr> 
 		<tr> 
 			<td height="21"> </td> 
 			<td> </td> 
 			<td> </td> 
-			<td><a class='pointer' data-onclick="#!category?navcat=.beachwear.beach-swimwear.beach-wear.girls-swimwear"><font size="2">Girls Beachwear</font></a></td> 
+			<td><a href="#!category?navcat=.beachwear.beach-swimwear.rashguard" class='pointer' data-onclick="#!category?navcat=.beachwear.beach-swimwear.rashguard"><font size="2">Rashguards</font></a></td> 
 		</tr> 
 		<tr> 
 			<td height="21"> </td> 
 			<td> </td> 
 			<td> </td> 
-			<td><a class='pointer' data-onclick="#!category?navcat=.beachwear.beach-swimwear.kids-swimsuit"><font size="2">Kids Swimwear</font></a></td> 
+			<td><a href="#!category?navcat=.beachwear.beach-swimwear.beach-wear.girls-swimwear" class='pointer' data-onclick="#!category?navcat=.beachwear.beach-swimwear.beach-wear.girls-swimwear"><font size="2">Girls Beachwear</font></a></td> 
 		</tr> 
 		<tr> 
 			<td height="21"> </td> 
 			<td> </td> 
 			<td> </td> 
-			<td><a class='pointer' data-onclick="#!category?navcat=.beachwear.beach-swimwear.babies-swimsuit"><font size="2">Babies Swimwear</font></a></td> 
+			<td><a href="#!category?navcat=.beachwear.beach-swimwear.kids-swimsuit" class='pointer' data-onclick="#!category?navcat=.beachwear.beach-swimwear.kids-swimsuit"><font size="2">Kids Swimwear</font></a></td> 
 		</tr> 
 		<tr> 
 			<td height="21"> </td> 
 			<td> </td> 
 			<td> </td> 
-			<td><a class='pointer' data-onclick="#!category?navcat=.beachwear.beach-swimwear.board-shorts"><font size="2">Board Shorts</font></a></td> 
+			<td><a href="#!category?navcat=.beachwear.beach-swimwear.babies-swimsuit" class='pointer' data-onclick="#!category?navcat=.beachwear.beach-swimwear.babies-swimsuit"><font size="2">Babies Swimwear</font></a></td> 
 		</tr> 
 		<tr> 
 			<td height="21"> </td> 
 			<td> </td> 
-			<td colspan="2"><a class='pointer' data-onclick="#!category?navcat=.beach-sports"><font size="2"><strong>Beach Recreation</strong></font></a></td>
+			<td> </td> 
+			<td><a href="#!category?navcat=.beachwear.beach-swimwear.board-shorts" class='pointer' data-onclick="#!category?navcat=.beachwear.beach-swimwear.board-shorts"><font size="2">Board Shorts</font></a></td> 
+		</tr> 
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td colspan="2"><a href="#!category?navcat=.beach-sports" class='pointer' data-onclick="#!category?navcat=.beach-sports"><font size="2"><strong>Beach Recreation</strong></font></a></td>
 		</tr> 
 		<tr> 
 			<td height="21"> </td> 
 			<td> </td> 
 			<td> </td>
-			<td><a class='pointer' data-onclick="#!category?navcat=.beach-sports.bodyboards"><font size="2">BodyBoards </font></a></td> 
+			<td><a href="#!category?navcat=.beach-sports.bodyboards" class='pointer' data-onclick="#!category?navcat=.beach-sports.bodyboards"><font size="2">BodyBoards </font></a></td> 
 		</tr>
 		<tr> 
 			<td height="21"> </td> 
 			<td> </td> 
 			<td> </td> 
-			<td><a class='pointer' data-onclick="#!category?navcat=.beach-sports.pool-floats"><font size="2">Pool Floats </font></a></td> 
+			<td><a href="#!category?navcat=.beach-sports.pool-floats" class='pointer' data-onclick="#!category?navcat=.beach-sports.pool-floats"><font size="2">Pool Floats </font></a></td> 
 		</tr> 
 		<tr> 
 			<td height="21"> </td> 
 			<td> </td>
 			<td> </td> 
-			<td><a class='pointer' data-onclick="#!category?navcat=.beach-sports.skimboards"><font size="2">SkimBoards</font></a></td> 
+			<td><a href="#!category?navcat=.beach-sports.skimboards" class='pointer' data-onclick="#!category?navcat=.beach-sports.skimboards"><font size="2">SkimBoards</font></a></td> 
 		</tr> 
 		<tr>
 			<td height="21"> </td> 
 			<td> </td> 
 			<td> </td> 
-			<td><a class='pointer' data-onclick="#!category?navcat=.beach-sports.inflatables"><font size="2">Pool Inflatables</font></a></td> 
+			<td><a href="#!category?navcat=.beach-sports.inflatables" class='pointer' data-onclick="#!category?navcat=.beach-sports.inflatables"><font size="2">Pool Inflatables</font></a></td> 
 		</tr> 
 		<tr> 
 			<td height="21"> </td> 
 			<td> </td> 
 			<td> </td> 
-			<td><a class='pointer' data-onclick="#!category?navcat=.beach-sports.water-towables"><font size="2">Water Towables</font></a></td> 
+			<td><a href="#!category?navcat=.beach-sports.water-towables" class='pointer' data-onclick="#!category?navcat=.beach-sports.water-towables"><font size="2">Water Towables</font></a></td> 
 		</tr> 
 		<tr> 
 			<td height="21"> </td> 
 			<td> </td> 
-			<td colspan="2"><a class='pointer' data-onclick="#!category?navcat=.beach-umbrellas-shelter"><font size="2"><strong>Beach Umbrellas And Beach Shelters</strong></font></a></td> 
-		</tr> 
-		<tr> 
-			<td height="21"> </td> 
-			<td> </td> 
-			<td> </td> 
-			<td><a class='pointer' data-onclick="#!category?navcat=.beach-umbrellas-shelter.beach-umbrella"><font size="2">Beach Umbrellas</font></a></td> 
-		</tr> 
-		<tr> 
-			<td height="21"> </td> 
-			<td> </td>
-			<td> </td> 
-			<td><a class='pointer' data-onclick="#!category?navcat=.beach-umbrellas-shelter.umbrella-stand-stands-base"><font size="2">Umbrella Stands and Bases</font></a></td> 
+			<td colspan="2"><a href="#!category?navcat=.beach-umbrellas-shelter" class='pointer' data-onclick="#!category?navcat=.beach-umbrellas-shelter"><font size="2"><strong>Beach Umbrellas And Beach Shelters</strong></font></a></td> 
 		</tr> 
 		<tr> 
 			<td height="21"> </td> 
 			<td> </td> 
 			<td> </td> 
-			<td><a class='pointer' data-onclick="#!category?navcat=.beach-umbrellas-shelter.patio-umbrella"><font size="2">Outdoor Umbrellas</font></a></td> 
+			<td><a href="#!category?navcat=.beach-umbrellas-shelter.beach-umbrella" class='pointer' data-onclick="#!category?navcat=.beach-umbrellas-shelter.beach-umbrella"><font size="2">Beach Umbrellas</font></a></td> 
 		</tr> 
 		<tr> 
 			<td height="21"> </td> 
 			<td> </td>
 			<td> </td> 
-			<td><a class='pointer' data-onclick="#!category?navcat=.beach-umbrellas-shelter.beach-tent-shelters"><font size="2">Beach Tents </font></a></td> 
+			<td><a href="#!category?navcat=.beach-umbrellas-shelter.umbrella-stand-stands-base" class='pointer' data-onclick="#!category?navcat=.beach-umbrellas-shelter.umbrella-stand-stands-base"><font size="2">Umbrella Stands and Bases</font></a></td> 
 		</tr> 
 		<tr> 
 			<td height="21"> </td> 
 			<td> </td> 
-			<td colspan="2"><a class='pointer' data-onclick="#!category?navcat=.beach-umbrellas-shelter.beach-cabana"><font size="2">Beach Cabanas</font></a></td> 
+			<td> </td> 
+			<td><a href="#!category?navcat=.beach-umbrellas-shelter.patio-umbrella" class='pointer' data-onclick="#!category?navcat=.beach-umbrellas-shelter.patio-umbrella"><font size="2">Outdoor Umbrellas</font></a></td> 
+		</tr> 
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td>
+			<td> </td> 
+			<td><a href="#!category?navcat=.beach-umbrellas-shelter.beach-tent-shelters" class='pointer' data-onclick="#!category?navcat=.beach-umbrellas-shelter.beach-tent-shelters"><font size="2">Beach Tents </font></a></td> 
 		</tr> 
 		<tr> 
 			<td height="21"> </td> 
 			<td> </td> 
-			<td colspan="2"><a class='pointer' data-onclick="#!category?navcat=.directory"><font size="2"><strong>External Directory</strong></font></a></td> 
+			<td colspan="2"><a href="#!category?navcat=.beach-umbrellas-shelter.beach-cabana" class='pointer' data-onclick="#!category?navcat=.beach-umbrellas-shelter.beach-cabana"><font size="2">Beach Cabanas</font></a></td> 
+		</tr> 
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td colspan="2"><a href="#!category?navcat=.directory" class='pointer' data-onclick="#!category?navcat=.directory"><font size="2"><strong>External Directory</strong></font></a></td> 
 		</tr>
 	</table>
 </div>
