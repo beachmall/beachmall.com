@@ -3067,7 +3067,7 @@ else	{
 			createTemplateFunctions : function()	{
 
 				app.ext.myRIA.template = {};
-/*BEACHMALL*/	var pageTemplates = new Array('categoryTemplate','categoryTemplateBrands','categoryTemplateBrandsBestSellers','categoryTemplateBuyerGuide','productTemplate','companyTemplate','customerTemplate','homepageTemplate','searchTemplate','cartTemplate','checkoutTemplate','pageNotFoundTemplate');
+/*BEACHMALL*/	var pageTemplates = new Array('categoryTemplate','categoryTemplateBrands','categoryTemplateBrandsBestSellers','categoryTemplateBuyerGuide','categoryTemplateSiteMap','productTemplate','companyTemplate','customerTemplate','homepageTemplate','searchTemplate','cartTemplate','checkoutTemplate','pageNotFoundTemplate');
 				var L = pageTemplates.length;
 				for(var i = 0; i < L; i += 1)	{
 					app.ext.myRIA.template[pageTemplates[i]] = {"onCompletes":[],"onInits":[],"onDeparts":[]};
