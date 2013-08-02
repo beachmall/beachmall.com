@@ -2487,6 +2487,8 @@ this will likely become more flexible in the future. ###
 	</div>
 	<div class='priceContainer clearfix' data-bind="var: product(pid); format:priceRetailSavings; extension:beachmart;"></div>
 	
+	<div class='disRedirect' data-bind="useParentData:true; format:addRedirectURL; extension:store_filter;"></div>
+	
 	<div class='topBottomBorder marginBottom clearfix shippingInformation' data-bind="useParentData:true; format:hideGeoElements; extension:store_filter;">
 		<div class='floatLeft'>
 			<div class='sprite' data-bind="var:product(is:shipfree); format:showIfSet; className:shipfree;"></div>
