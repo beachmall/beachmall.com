@@ -163,7 +163,7 @@ the padding is to compensate for the spacing between the main nav.
 #mastHead .singleDropdown .dropdownBorderContainer:hover {background-position:-248px -36px; background-color:#e0463a;}
 #mastHead .singleDropdown .dropdownBorderContainer {height:35px; width:135px; background-position:-47px 99px; background-color: #3bb3c3; font-family:Montserrat; font-weight:normal; font-size: 16px; color:#ffffff; text-align:center; line-height: 30px; padding:5px;}
 #mastHead .singleDropdown .dropdownBorderMaker:hover {background-color:#e0463a;}
-#mastHead .dropdown {height:0px; width:485px; margin:0px 0px 0px 20px; position:relative; top:11px; overflow:hidden; z-index:5; background-color:#e0463a;}
+#mastHead .dropdown {height:0px; width:480px; margin:0px 0px 0px 20px; position:relative; top:11px; overflow:hidden; z-index:5; background-color:transparent;} /*#e0463a;*/
 #mastHead .dropdown.beachAccessoriesDD {left: -26px;}
 #mastHead .dropdown.beachAccessoriesDD .beachAccProductContainer ul {height:500px; width:720px; background-color:#eee;}
 #mastHead .beachAccProductContainer {height:525px; width:240px; background-color:#ffe680; position:absolute; top:5px; left:240px;}
@@ -194,7 +194,7 @@ the padding is to compensate for the spacing between the main nav.
 #mastHead .dropout.out .hoverProductContainer.innerHovProdCont.dropout6 {top:-317px;}
 #mastHead .dropout.out .hoverProductContainer.innerHovProdCont li {width:240px; margin:0;} 
 
-.defaultDDImage {height:526px; width:233px; background:#FFE680; margin:5px; position:absolute; right:0;}
+.defaultDDImage, .defaultDOImage {height:526px; width:233px; background:#FFE680; margin:5px; position:absolute; right:0;}
 .stockImageContainer {height:210px; width:210px; background:#777; margin:10px auto; border:5px solid #ffffff; cursor:pointer;}
 .stockImageContainer:hover {border:5px solid #e0463a;}
 .hoverProductContainer .catSearchHomeDropdown {height:30px; width:150px; margin:10px 45px; border:none; background:#3bb3c3; color:#ffffff;}
