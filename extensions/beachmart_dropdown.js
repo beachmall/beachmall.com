@@ -120,9 +120,10 @@ var beachmart_dropdown = function() {
 				$dropout.children().each(function(){
 					$(this).outerWidth(true);
 				});
+				$('.defaultDDImage',$parentparent).css({"right":"-300px"});	//hide default image so sub-cat image can display
 				$parentparent.css({"width":720+"px"},1000);
 				$parent.stop().animate({"width":700+"px"}, 1000);
-				$dropout.stop().animate({"width":width+"px"}, 1000);
+				$dropout.stop().animate({"width":width+"px"});
 			},
 			
 			//ANIMATE RETRACTION OF MAIN CATEGORY 2ND LEVEL DROPOUT MENU
@@ -130,6 +131,7 @@ var beachmart_dropdown = function() {
 				$(".dropout", $tag).stop().animate({"width":"0px"}, 1000);
 				$parent.stop().animate({"width":460+"px"}, 1000);
 				$parentparent.css({"width":485+"px"}, 1000);
+				$('.defaultDDImage',$parentparent).css({"right":"0px"});
 			},
 			
 			//IMEDIATE RETRACTION OF MAIN CATEGORY DROPDOWN MENU WHEN 2ND LEVEL LINK IS CLICKED
