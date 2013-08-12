@@ -195,6 +195,7 @@ the padding is to compensate for the spacing between the main nav.
 #mastHead .dropout.out .hoverProductContainer.innerHovProdCont li {width:240px; margin:0;} 
 
 .defaultDDImage, .defaultDOImage {height:526px; width:233px; background:#FFE680; margin:5px; position:absolute; right:0;}
+.defaultDOImage {width:260px; background:#f8c301; right:5px; top:-3px;}
 .stockImageContainer {height:210px; width:210px; background:#777; margin:10px auto; border:5px solid #ffffff; cursor:pointer;}
 .stockImageContainer:hover {border:5px solid #e0463a;}
 .hoverProductContainer .catSearchHomeDropdown {height:30px; width:150px; margin:10px 45px; border:none; background:#3bb3c3; color:#ffffff;}
