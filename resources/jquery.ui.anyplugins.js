@@ -295,12 +295,12 @@ or this: $('#bob').find('.ui-tabs-nav li:nth-child(2)').trigger('click');
 		_addEvent2Tabs : function()	{
 			var self = this;
 			this.tabs.find('li').each(function(){
-				$(this).off('click.anytab').on('click.anytab',function(){
+/*beachmall*/	$(this).off('hover.anytab').on('hover.anytab',function(){ //was click
 					self.reveal($(this));
 					});
 				});
 			this.tabs.find('li a').each(function(){
-				$(this).on('click',function(event){
+/*beachmall*/	$(this).on('hover',function(event){  //was click
 					event.preventDefault();
 					});
 				});
