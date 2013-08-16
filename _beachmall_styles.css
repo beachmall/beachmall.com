@@ -13,6 +13,19 @@ html {
 	margin:0;
 	padding:0;
 	}
+	
+/*WEBKIT SCROLLBARS*/
+::-webkit-scrollbar {width:10px;}
+::-webkit-scrollbar-track {background-color:#cccccc;}
+::-webkit-scrollbar-thumb {background-color:#777777;}
+::-webkit-scrollbar-button {display:none;}
+
+/*WEBKIT BORDER RADIUS RESETS*/
+input, button {
+	-webkit-appearance:none;
+	-webkit-border-radius:0;
+	border-radius:0;
+}
 
 #appView {background:white; margin: 0px auto; height:auto; width: 1020px;}
 #appPreView {height:100%; width:100%; background-image:url(images/preview-bkgrnd_1024x775.png); background-repeat:no-repeat; background-size:100% 100%; position:absolute; z-index:9999;} /*rgba(59,179,195,.5)*/
