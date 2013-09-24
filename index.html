@@ -2062,6 +2062,7 @@ remember to NOT put the button inside the 'onclick' container or two events will
 					</div>
 					-->
 				</div>
+				<div class='prodListMiniThumb' data-bind='var: product(pid); format: productListThumbnails; extension: store_filter;'></div>
 				<div class='reviewsStarsCount' data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews_reviews;'></div><!-- BCERO271 MARK-->
                 <form data-bind='var: product(pid); format:atcForm; extension:store_product;' class='prodViewerAddToCartForm clearfix' action='#' onSubmit="app.ext.myRIA.u.addItemToCart($(this),{'action':'modal'}); return false;">
                     <button class='prodViewerAddToCartButton' data-bind='format:addToCartButton; extension:myRIA; useParentData:true;'></button>

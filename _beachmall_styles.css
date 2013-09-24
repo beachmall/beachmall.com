@@ -692,6 +692,10 @@ label.break	{display:block; margin:0 0 4px 6px;}
 .shipContainer .shipTime {height:15px; width:100%; color:#000000; font-size:9px;}
 .prodNum {height:10px; width:100%; font-family:"Open Sans"; font-size:10px; text-align:center;}
 
+.prodListMiniThumb ul {height:40px; width:100%; overflow:hidden; clear:both;}
+.prodListMiniThumb li.miniThumbLi {height:30px; width:30px; float:left; font-size:11px; text-align:center; color:#3bb3c3; line-height:14px; margin:0 0 0 10px; border:1px solid #999999;}
+.prodListMiniThumb li.miniThumbLi.miniThumbText {height:29px; padding:1px 0 0 0;}
+.prodListMiniThumb li.miniThumbLi.miniThumbText:hover {color:#e0463a;}
 
 /*Overrides widget button text color
 .prodViewerAddToCartButton, .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {color:#fff;}*/

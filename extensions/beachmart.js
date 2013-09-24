@@ -683,18 +683,41 @@ var store_filter = function() {
 				},
 				
 				productImages : function($tag,data)	{
-//				app.u.dump("BEGIN myRIA.renderFormats.productImages ["+data.value+"]");
-				var pdata = app.data['appProductGet|'+data.value]['%attribs']; //short cut to product object in memory.
-				var imgs = ''; //all the html for all the images. appended to $tag after loop.
-				var imgName; //recycled in loop.
-				for(i = 1; i < 30; i += 1)	{
-					imgName = pdata['zoovy:prod_image'+i];
-//					app.u.dump(" -> "+i+": "+imgName);
-					if(app.u.isSet(imgName)) {
-/*BEACHMALL*/			imgs += "<li><a data-pid="+data.value+" data-toolTipQuickview='data-toolTipQuickview' data-toolTipName='"+imgName+"'class='MagicThumb-swap' rel='zoom-id: prodBigImage_href_"+data.value+"; hint: false;' rev='"+app.u.makeImage({'tag':0,'w':380,'h':380,'name':imgName,'b':'ffffff'})+"' href='"+app.u.makeImage({'tag':0,'w':'','h':'','name':imgName,'b':'ffffff'})+"'><img src='"+app.u.makeImage({'tag':0,'w':50,'h':50,'name':imgName,'b':'ffffff'})+"' \/><\/a><\/li>";
+					app.u.dump('data.value:::'); app.u.dump(data.value);
+	//				app.u.dump("BEGIN myRIA.renderFormats.productImages ["+data.value+"]");
+					var pdata = app.data['appProductGet|'+data.value]['%attribs']; //short cut to product object in memory.
+					var imgs = ''; //all the html for all the images. appended to $tag after loop.
+					var imgName; //recycled in loop.
+					for(i = 1; i < 30; i += 1)	{
+						imgName = pdata['zoovy:prod_image'+i];
+	//					app.u.dump(" -> "+i+": "+imgName);
+						if(app.u.isSet(imgName)) {
+							imgs += "<li><a data-pid="+data.value+" data-toolTipQuickview='data-toolTipQuickview' data-toolTipName='"+imgName+"'class='MagicThumb-swap' rel='zoom-id: prodBigImage_href_"+data.value+"; hint: false;' rev='"+app.u.makeImage({'tag':0,'w':380,'h':380,'name':imgName,'b':'ffffff'})+"' href='"+app.u.makeImage({'tag':0,'w':'','h':'','name':imgName,'b':'ffffff'})+"'><img src='"+app.u.makeImage({'tag':0,'w':50,'h':50,'name':imgName,'b':'ffffff'})+"' \/><\/a><\/li>";
+							}
 						}
+					$tag.append(imgs);
+				}, //productImages
+				
+				productListThumbnails : function($tag,data)	{
+					var pdata = app.data['appProductGet|'+data.value]['%attribs']; //short cut to product object in memory.
+					var imgs = ''; //all the html for all the images. appended to <ul> "list" after loop.
+					var imgName; //recycled in loop.
+					var $list = $('<ul>'); //append to $tag after loop
+					var imgCount = 0;
+					for(i = 1; i < 5; i += 1)	{
+						imgName = pdata['zoovy:prod_image'+i];
+	//					app.u.dump(" -> "+i+": "+imgName);
+						if(app.u.isSet(imgName)) {
+							imgs += "<li class='miniThumbLi'><a data-pid="+data.value+" data-toolTipQuickview='data-toolTipQuickview' data-toolTipName='"+imgName+"'class='' rel='zoom-id: prodBigImage_href_"+data.value+"; hint: false;' rev='"+app.u.makeImage({'tag':0,'w':380,'h':380,'name':imgName,'b':'ffffff'})+"' href='"+app.u.makeImage({'tag':0,'w':'','h':'','name':imgName,'b':'ffffff'})+"'><img src='"+app.u.makeImage({'tag':0,'w':30,'h':30,'name':imgName,'b':'ffffff'})+"' \/><\/a><\/li>";
+							imgCount++;
+							}
+						}
+					if(imgCount > 3) {
+						imgs += "<li class='miniThumbLi miniThumbText' onClick='quickView('product',{'templateID':'productTemplateQuickView','pid':$(this).closest('[data-pid]').attr('data-pid')});'>SEE MORE!<\/li>";
+						$list.append(imgs);
+						$tag.append($list);
+						$('.reviewsStarsCount', $tag.parent()).hide();
 					}
-				$tag.append(imgs);
 				} //productImages
 				
 			}, //renderFormats
