@@ -580,7 +580,10 @@ var store_filter = function() {
 					var zoovyIsTags = (data.bindData.isElastic) ? data.value.tags : data.value['%attribs']['zoovy:prod_is_tags'];
 					
 					//app.u.dump('*** IS_USER2 = '+newLowPrice);
-					if (zoovyIsTags.indexOf('IS_USER3') >= 0) {
+					if (zoovyIsTags.indexOf('IS_DISCONTINUED') >= 0) {
+						$tag.parent().parent().parent().hide();
+					}
+					else if (zoovyIsTags.indexOf('IS_USER3') >= 0) {
 						$tag.append('Closeout!').addClass('smallRed').show();
 					}
 					else if (zoovyIsTags.indexOf('IS_CLEARANCE') >= 0) {
@@ -610,10 +613,7 @@ var store_filter = function() {
 		/*			else if (zoovyIsTags.indexOf('IS_DISCONTINUED') >= 0) {
 						$tag.append('Discontinued').addClass('mediumTagBkgrnd').show();
 					}
-		*/			else if (zoovyIsTags.indexOf('IS_DISCONTINUED') >= 0) {
-						$tag.parent().parent().parent().hide();
-					}
-					else if (zoovyIsTags.indexOf('IS_PREORDER') >= 0) {
+		*/			else if (zoovyIsTags.indexOf('IS_PREORDER') >= 0) {
 						$tag.append('Back Order').addClass('smallTagBkgrnd').show();
 					}
 					/*else if (zoovyIsTags.indexOf('IS_SALE') >= 0) {
