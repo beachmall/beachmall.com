@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"201314.20130924101000",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"201314.20130924142900",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"", //used in non-local mode.
 	"checkoutAuthMode" : "active",//can be passive, active or required
@@ -215,8 +215,10 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 							</div>
                             <ul class='listStyleNone floatLeft dropoutUL'>
                                 <li class='noArrow'>BEACH CHAIRS</li>   
-								<li class='noArrow' onMouseOver='app.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='app.ext.beachmart_dropdown.a.hideHoverout($(this));'> <!--data-hoverproduct="PDADDC1"-->
-									Adirondack
+								<li onMouseOver='app.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='app.ext.beachmart_dropdown.a.hideHoverout($(this));'> <!--data-hoverproduct="PDADDC1"-->
+									<a data-onclick='#!category?navcat=.beach-chair.adirondack-furniture' href='#!category?navcat=.beach-chair.adirondack-furniture' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+										Adirondack
+									</a>
 									<ul class='hoverProductContainer hoverout listStyleNone'>
 										<div class='stockImageContainer bindByAnchor' data-navcat='.adirondack-furniture' href='#!category?navcat=.beach-chair.adirondack-furniture' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"></div>
 									<!--<button class='catSearchHomeDropdown' onClick='app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent()); app.ext.beachmart_catsearch.a.catSearch("IS_BESTSELLER", "beach chair adirondack furniture");'>Best Selling Items</button>-->
@@ -385,8 +387,10 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 							</div>
                             <ul class='listStyleNone floatLeft dropoutUL'>
                             	<li class='noArrow'>ACCESSORIES</li>
-                            	<li class='noArrow' onMouseOver='app.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='app.ext.beachmart_dropdown.a.hideHoverout($(this));'>
-									Beach Bags & Totes
+                            	<li onMouseOver='app.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='app.ext.beachmart_dropdown.a.hideHoverout($(this));'>
+									<a data-onclick='#!category?navcat=.beach-accessories.beach-bags-totes' href='#!category?navcat=.beach-accessories.beach-bags-totes' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+										Beach Bags & Totes
+									</a>
 									<ul class='hoverProductContainer hoverout listStyleNone'>
 										<div class='stockImageContainer bindByAnchor' data-navcat='.beach-bags-totes' href='#!category?navcat=.beach-accessories.beach-bags-totes' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"></div>
 										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'user:app_category':'.beach-accessories.beach-bags-totes'}}]}}});">Best Selling Items</button>
@@ -450,8 +454,10 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 							</div>
                             <ul class='listStyleNone floatLeft dropoutUL'>
                             	<li class='noArrow'>RECREATION</li>
-								<li class='noArrow' onMouseOver='app.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='app.ext.beachmart_dropdown.a.hideHoverout($(this));'>
-									Body Boards
+								<li onMouseOver='app.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='app.ext.beachmart_dropdown.a.hideHoverout($(this));'>
+									<a data-onclick='#!category?navcat=.beach-sports.bodyboards' href='#!category?navcat=.beach-sports.bodyboards' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+										Body Boards
+									</a>
 									<ul class='hoverProductContainer hoverout listStyleNone'>
 										<div class='stockImageContainer bindByAnchor' data-navcat='.bodyboards' href='#!category?navcat=.beach-sports.bodyboards' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"></div>
 										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'user:app_category':'.beach-sports.bodyboards'}}]}}});">Best Selling Items</button>
@@ -495,8 +501,10 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 							</div>
                             <ul class='listStyleNone floatLeft dropoutUL'>
                             	<li class='noArrow'>BEACH WEAR</li>
-								<li class='noArrow' onMouseOver='app.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='app.ext.beachmart_dropdown.a.hideHoverout($(this));'> <!--data-hoverproduct="PDADDC1"-->
-									Baby Hats
+								<li onMouseOver='app.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='app.ext.beachmart_dropdown.a.hideHoverout($(this));'> <!--data-hoverproduct="PDADDC1"-->
+									<a data-onclick='#!category?navcat=.beachwear.beach-hat.baby-hats' href='#!category?navcat=.beachwear.beach-hat.baby-hats' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+										Baby Hats
+									</a>
 									<ul class='hoverProductContainer hoverout listStyleNone'>
 										<div class='stockImageContainer bindByAnchor' data-navcat='.baby-hats'  href='#!category?navcat=.beachwear.beach-hat.baby-hats' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"></div>
 										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'user:app_category':'.beachwear.beach-hat.baby-hats'}}]}}});">Best Selling Items</button>
@@ -754,8 +762,10 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 							</div>
                             <ul class='listStyleNone floatLeft dropoutUL'>
                             	<li class='noArrow'>UMBRELLAS</li>
-								<li class='noArrow' onMouseOver='app.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='app.ext.beachmart_dropdown.a.hideHoverout($(this));'> <!--data-hoverproduct="PDADDC1" onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent());" -->
-									Beach Umbrellas
+								<li onMouseOver='app.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='app.ext.beachmart_dropdown.a.hideHoverout($(this));'> <!--data-hoverproduct="PDADDC1" onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent());" -->
+									<a data-onclick='#!category?navcat=.beach-umbrellas-shelter.beach-umbrella' href='#!category?navcat=.beach-umbrellas-shelter.beach-umbrella' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+										Beach Umbrellas
+									</a>
 									<ul class='hoverProductContainer hoverout listStyleNone'>
 										<div class='stockImageContainer bindByAnchor' data-navcat='.beach-umbrella' href='#!category?navcat=.beach-umbrellas-shelter.beach-umbrella' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"></div>
 										<!-- LIST USAGE NOT IMPLIMENTED <button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('category',{'navcat':'.beach-umbrellas-shelter.beach-umbrella', 'templateID':'categoryTemplateWithSpecialList'});">Best Selling Items</button>-->
@@ -839,8 +849,10 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 							</div>
                             <ul class='listStyleNone floatLeft dropoutUL'>
                             	<li class='noArrow'>SHELTERS</li>
-								<li class='noArrow' onMouseOver='app.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='app.ext.beachmart_dropdown.a.hideHoverout($(this));'> <!--data-hoverproduct="PDADDC1"-->
-									Beach Cabanas
+								<li onMouseOver='app.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='app.ext.beachmart_dropdown.a.hideHoverout($(this));'> <!--data-hoverproduct="PDADDC1"-->
+									<a data-onclick='#!category?navcat=.beach-umbrellas-shelter.beach-cabana' href='#!category?navcat=.beach-umbrellas-shelter.beach-cabana' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+										Beach Cabanas
+									</a>
 									<ul class='hoverProductContainer hoverout listStyleNone'>
 										<div class='stockImageContainer bindByAnchor' data-navcat='.beach-cabana' href='#!category?navcat=.beach-umbrellas-shelter.beach-cabana' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"></div>
 										<button class='catSearchHomeDropdown' onClick="app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'user:app_category':'.beach-umbrellas-shelter.beach-cabana'}}]}}});">Best Selling Items</button>

@@ -190,6 +190,8 @@ the padding is to compensate for the spacing between the main nav.
 #mastHead .dropdown li:nth-child(1) {height:27px; width:207px; font-family:Oswald; font-size:24px; font-weight: normal; color:#e0463a; text-align:left; margin: 20px 0px 16px 13px;}
 #mastHead .dropdown li {height:27px; width:226px; font-family:"Open Sans"; font-size:14px; color:#000000; text-align:left; margin: 3px 0px 3px 14px;}
 #mastHead .dropdown li:hover {color:#e0463a;  background-image:url(images/dropout-arrow-207x27.png);}
+#mastHead .dropdown li a {color:#000000;}
+#mastHead .dropdown li a:hover {color:#e0463a;}
 #mastHead .dropdown .noArrow:hover {background:none;}
 
 /*#mastHead .dropdown .hoverProductContainer {height: 525px; width:240px; background-color:#2B9;}*/
