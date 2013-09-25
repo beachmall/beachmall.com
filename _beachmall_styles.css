@@ -470,12 +470,13 @@ label.break	{display:block; margin:0 0 4px 6px;}
 .layeredSearch .resetButton {height:30px; width:100px; background-color:#f8c301; border:none; font-family:Oswald;  font-weight:normal; margin:0 50px 11px 50px;}
 
 .prodMargin {height:auto; width:auto; margin:auto 25px;} /*width:960px;*/
-.products.product {height:450px; width:220px; margin:20px 10px 7.5px;} /*margin:16.8px;  20px 10px 7.5px*/
+.products.product {height:470px; width:220px; margin:20px 10px 7.5px;} /*margin:16.8px;  20px 10px 7.5px*/
 .products.product > div {height:auto; width:220px;}
 .productListTemplateResultsNoPreview.products.product {height:420px;}
 .quickView {background:#3bb3c3; border:none; color:#ffffff; padding:4px; font-family:"Open Sans";}
 
 .searchResultsProduct.products.product {height:380px; margin:20px 16.75px 7.5px;}
+.searchResultsProduct .reviewsStarsCount {margin:42px auto 0 auto;}
 .minimalMode .searchResultsProduct.products.product {height:222px; width:222px;}
 .searchResultsPage.clearfix.minimalMode button {margin:0 5px; padding:0 5px;}
 .prodViewerContainer .imageContainer {height:auto; width:260px;}
@@ -1403,7 +1404,7 @@ lower tab sets (text fields and product lists)
 
 
 /* power reviews*/ 
-.reviewsStarsCount  {height:28px; width:164px; margin:42px auto 0 auto;}
+.reviewsStarsCount  {height:28px; width:164px; margin:52px auto 12px auto;}
 .reviewsStarsCount .pr-snippet-wrapper {height:16px; width:auto; border:none; background:none;}
 .reviewsStarsCount .pr-snippet {height:28px; width:auto; padding:0; border:0; background-color:none; background-image:none;}
 .reviewsStarsCount .pr-snippet-stars  {padding:0; border:0; background:none; background-image:none;}
