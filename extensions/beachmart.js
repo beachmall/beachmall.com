@@ -713,7 +713,7 @@ var store_filter = function() {
 							}
 						}
 					if(imgCount > 3) {
-						imgs += "<li class='miniThumbLi miniThumbText' onClick='quickView('product',{'templateID':'productTemplateQuickView','pid':$(this).closest('[data-pid]').attr('data-pid')});'>SEE MORE!<\/li>";
+						imgs += "<li class='miniThumbLi miniThumbText'>SEE MORE!<\/li>";
 						$list.append(imgs);
 						$tag.append($list);
 						$('.reviewsStarsCount', $tag.parent()).hide();
