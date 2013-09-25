@@ -690,13 +690,18 @@ label.break	{display:block; margin:0 0 4px 6px;}
 .regularPriceContainer .regularPriceDesc {height:15px; width:100%; color:#000000; font-size:10px;}
 .shipContainer {height:31px; width:130px; text-align:center; font-family:"Open Sans"; padding-top:9px}
 .shipContainer .shipCost {height:12px; width:98px; color:#e0463a; font-size:14px; font-weight:bold; background-position:-116px -219px; margin-left:15px;}
-.shipContainer .shipTime {height:15px; width:100%; color:#000000; font-size:9px;}
+.shipContainer .shipTime {height:15px; width:100%; color:#000000; font-size:9px; overflow:hidden;}
 .prodNum {height:10px; width:100%; font-family:"Open Sans"; font-size:10px; text-align:center;}
 
 .prodListMiniThumb ul {height:40px; width:100%; overflow:hidden; clear:both;}
 .prodListMiniThumb li.miniThumbLi {height:30px; width:30px; float:left; font-size:11px; text-align:center; color:#3bb3c3; line-height:14px; margin:0 0 0 10px; border:1px solid #999999;}
 .prodListMiniThumb li.miniThumbLi.miniThumbText {height:29px; padding:1px 0 0 0;}
 .prodListMiniThumb li.miniThumbLi.miniThumbText:hover {color:#e0463a;}
+
+.prodListMiniVariation label, .prodListMiniVariation .zhint, .prodListMiniVariation select, .prodListMiniVariation .variation.pogType_imggrid {display:none}
+.prodListMiniVariation .optionsParent {height:50px; width:100%; overflow:hidden;}
+.prodListMiniVariation .optionImagesCont {height:30px; width:30px; margin:8px 0 6px 13px; padding:0;}
+.prodListMiniVariation .optionImagesCont img {height:30px; width:30px;}
 
 /*Overrides widget button text color
 .prodViewerAddToCartButton, .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {color:#fff;}*/

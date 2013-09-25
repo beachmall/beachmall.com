@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"201314.20130924142900",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"201314.20130924205500",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"", //used in non-local mode.
 	"checkoutAuthMode" : "active",//can be passive, active or required
@@ -2062,7 +2062,8 @@ remember to NOT put the button inside the 'onclick' container or two events will
 					</div>
 					-->
 				</div>
-				<div class='prodListMiniThumb' data-bind='var: product(pid); format: productListThumbnails; extension: store_filter;'></div>
+	<div class='prodListMiniThumb' data-bind='var: product(pid); format: productListThumbnails; extension: store_filter;'></div> 
+	<!-- <div class='prodListMiniVariation' data-bind='var: product(pid); format:atcVariations; extension:store_product;'></div> -->
 				<div class='reviewsStarsCount' data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews_reviews;'></div><!-- BCERO271 MARK-->
                 <form data-bind='var: product(pid); format:atcForm; extension:store_product;' class='prodViewerAddToCartForm clearfix' action='#' onSubmit="app.ext.myRIA.u.addItemToCart($(this),{'action':'modal'}); return false;">
                     <button class='prodViewerAddToCartButton' data-bind='format:addToCartButton; extension:myRIA; useParentData:true;'></button>
