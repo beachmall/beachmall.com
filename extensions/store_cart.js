@@ -318,8 +318,17 @@ $tag.one('click',function(event){
 /*BEACHMALL*/					o += "<span class='orderShipAmount cartFree'>FREE<\/span>";
 /*BEACHMALL*/					}
 /*BEACHMALL*/				else {
-/*BEACHMALL*/					o += "<span class='orderShipAmount'>"+app.u.formatMoney(app.data.cartDetail['@SHIPMETHODS'][i].amount,' $',2,false)+"<\/span>";
+/*BEACHMALL*/					var r = app.u.formatMoney(app.data.cartDetail['@SHIPMETHODS'][i].amount,' $',2,false);
+/*BEACHMALL*/					if(r.indexOf('.') > 0)	{ //add cents span for style
+/*BEACHMALL*/					//app.u.dump(' -> r = '+r);
+/*BEACHMALL*/						sr = r.split('.');
+/*BEACHMALL*/						o = "<span class='orderShipAmount'>Shipping: "+sr[0]+"<\/span>";
+/*BEACHMALL*/						if(sr[1])	{o += '<span class="cents">.'+sr[1]+'<\/span>'}
 /*BEACHMALL*/					}
+/*BEACHMALL*/					else {
+/*BEACHMALL*/						o += "<span class='orderShipAmount'>"+r+"<\/span>";
+/*BEACHMALL*/					}
+							}
 						}
 						break; //once we hit a match, no need to continue. at this time, only one ship method/price is available.
 						}

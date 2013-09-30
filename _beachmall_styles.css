@@ -1502,7 +1502,7 @@ CART TEMPLATE
 #modalCart .cartSummaryContainer section {height:50%; width:33.3%; float:right; margin:1.6% 0; padding:0 0 0 1%;}
 #modalCart .cartSummary > div {margin:2% 4.6%; padding:0 %5 0 0; text-align:right;}
 #modalCart .cartSummary > div > h6 {font-weight:bold; font-size:1.0em; display:inline;}
-#modalCart .cartSummary > div .orderShipMethod  {font-weight:bold; font-size:1.0em; display:inline;}
+#modalCart .cartSummary > div .orderShipMethod, #modalCart .cartSummary > div .orderShipAmount {font-weight:bold; font-size:1.0em; display:inline;}
 #modalCart .cartShipOptions {height:auto; width:100%; float:left; margin:0; font-family:"Open Sans";}
 #modalCart .toolTip {top:-70px; left:-90px;}
 #modalCart .cartFree {font-weight:bold; color:#E0463A;}
