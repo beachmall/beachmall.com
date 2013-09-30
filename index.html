@@ -3571,7 +3571,7 @@ START APP CART
 							</section>
 
 							<section id='cartTemplateShippingContainer'>
-								<h3>Shipping:</h3>
+								<h3 data-bind='useParentData:true; format:displayOrShippingText; extension:store_filter;'></h3>
 								<div class='cartShipOptions'>
 									<label for='data-ship_zip'>Zip/Postal Code:</label>
 									<input type='text' size='6'  name='ship/postal' id='data-ship_zip' value='' data-bind='var: cart(ship/postal); format:popVal;' maxlength='10' onChange="app.calls.cartSet.init({'ship/postal':this.value, 'ship/region':''});

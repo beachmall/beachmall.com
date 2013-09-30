@@ -383,6 +383,12 @@ var store_filter = function() {
 					//app.u.dump('--------->'); app.u.dump(data.value);
 					$tag.append(data.value); 
 				},
+				
+				//Changes header in shipping section based on whether or not a zip code has been entered there
+				displayOrShippingText : function($tag) {
+					if(app.data.cartDetail && app.data.cartDetail.ship && app.data.cartDetail.ship.postal) {$tag.append('Shipping:');}
+					else {$tag.append('Delivery:');}
+				},
 		
 				//Puts message indicating expedited shipping isn't available in cart if applicable to any items there
 				expShipMessage : function($tag, data) {
