@@ -400,7 +400,7 @@ var store_filter = function() {
 									app.u.throwMessage(rd);
 									}
 								else{
-									if(app.data[rd.datapointer]['%attribs']['user:prod_ship_expavail'] == 1){
+									if(app.data[rd.datapointer]['%attribs']['user:prod_ship_expavail'] == 0){
 										$tag.text('Expedited shipping not available');
 									}
 						//			if(app.data[rd.datapointer]['%attribs']['zoovy:base_price'] > 200){
