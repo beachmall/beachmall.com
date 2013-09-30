@@ -450,6 +450,7 @@ either templateID needs to be set OR showloading must be true. TemplateID will t
 			updateCartSummary : function()	{
 				$('#modalCartContents').replaceWith(app.renderFunctions.createTemplateInstance('cartTemplate','modalCartContents'));
 				app.calls.refreshCart.init({'callback':'translateTemplate','parentID':'modalCartContents'},'immutable');
+/*beachmart*/	app.ext.store_filter.u.handleCartToolTip($('#modalCartContents'));
 //don't set this up with a getShipping because we don't always need it.  Add it to parent functions when needed.
 				},
 /*
