@@ -429,7 +429,7 @@ var store_filter = function() {
 									app.u.throwMessage(rd);
 								}
 								else {
-									if(app.data[rd.datapointer]['%attribs']['user:prod_shipping']) {
+									if(app.data[rd.datapointer]['%attribs']['user:prod_shipping'] && app.data.cartDetail['@SHIPMETHODS'] && app.data.cartDetail['@SHIPMETHODS'][0] && app.data.cartDetail['@SHIPMETHODS'][0].amount) {
 										$tag.text('Shipping Surcharge');
 									}
 								}
