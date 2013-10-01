@@ -1501,7 +1501,7 @@ CART TEMPLATE
 #modalCart .cartSummaryTotalsContainer div.ui-widget:first-child {margin:1.6% 0 0 0; background:#ffffff;}
 #modalCart .cartSummaryTotalsContainer .cartSummaryContainer {padding: 0px; margin:0; border:none; background:#ffffff;}
 #modalCart .cartSummaryContainer section {height:50%; width:33.3%; float:right; margin:1.6% 0;}
-#modalCart #cartTemplateCostSummary {border-top:1px solid #dddddd;}
+#modalCart #cartTemplateCostSummary {border-top:1px solid #dddddd; border-left:1px solid #DDDDDD;}
 #modalCart .cartSummaryContainer section#cartTemplateShippingContainer {border:1px solid #dddddd; padding:0 0 1% 1%;}
 #modalCart .cartSummary > div {padding:2% 4.6% 2% 2%; text-align:right; border-bottom:1px solid #dddddd;}
 #modalCart .cartSummary > div > h6 {font-weight:bold; font-size:1.0em; display:inline; float:left;}
@@ -1513,10 +1513,10 @@ CART TEMPLATE
 #modalCart .cartZipCodeContainer {height:auto; width:60%; float:left; margin:0; border:none;}
 #modalCart .checkoutButtonsContainer span {float:right; margin:0 0 0 12px;}
 #modalCart .cartButtonsContainer {margin:0 0 1% 0; border:none;}
-#modalCart .cartButtonsContainer .cartBar {width:63%; height:auto; float:left; padding:5px; background:none repeat scroll 0px 0px #ffffff; color:#ffffff;}
-#modalCart .cartContainer .cartButtonsContainer .cartBar {width:63%; height:auto; float:left; padding:5px; background:none repeat scroll 0px 0px #3bb3c3; color:#3bb3c3;}
+#modalCart .cartButtonsContainer .cartBar {width:100%; height:auto; float:left; background:none repeat scroll 0px 0px #ffffff; color:#ffffff;}
+#modalCart .cartContainer .cartButtonsContainer .cartBar {width:100%; height:auto; float:left; background:none repeat scroll 0px 0px #3bb3c3; color:#3bb3c3;}
 #modalCart .checkoutButtonsContainer {margin:0;}
-#modalCart .cartButtonsContainer span button.ui-state-default {height:auto; width:auto; padding:5px; color:#ffffff; background:#E0463A; border:none; border-radius:0;}
+#modalCart .cartButtonsContainer span button.ui-state-default {height:auto; width:auto; padding:5px; margin:0; color:#ffffff; background:#E0463A; border:none; border-radius:0;}
 #modalCart .cartButtonsContainer span button.ui-state-default:hover {color:#E0463A; background:#ffffff;}
 #modalCart .cartButtonsContainer button.ui-state-default {padding:5px; color:#ffffff; background:#F8C301; border:none; border-radius:0;}
 #modalCart .cartButtonsContainer button.ui-state-default:hover {color:#F8C301; background:#ffffff;}
