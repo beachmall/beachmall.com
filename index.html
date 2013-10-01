@@ -3573,11 +3573,11 @@ START APP CART
 							<section id='cartTemplateCostSummary' class='cartSummary'>
 								<div data-bind="var: cart(sum/items_total); format:money; className:orderSubtotal; hideZero:false; currencySign: $; pretext:<h6>Subtotal: </h6>; "></div>
 								<div data-bind='var: cart(sum/tax_total); format:money; className:orderTax; hideZero:false;currencySign: $; pretext:<h6>Tax: </h6>; '></div>
-								<div data-bind='var: cart(want/shipping_id); format:shipInfoById; className:orderShipping; hideZero:false; extension:store_cart;'></div>
+								<div class='displayNone' data-bind='var: cart(want/shipping_id); format:shipInfoById; className:orderShipping; hideZero:false; extension:store_cart;'></div>
 								<div data-bind='var: cart(sum/order_total); format:money; className:orderTotal; hideZero:false; currencySign: $; pretext:<h6>Order Total: </h6>; '></div>
-								<div data-bind='var: cart(sum/gfc_total); format:beachMoney; extension:store_filter; className:orderGiftcardTotal; hideZero:true; currencySign: $; pretext:<h6>Giftcard(s): </h6>; '></div>
-								<div data-bind='var: cart(sum/pnt_total); format:beachMoney; extension:store_filter; className:rewardPointsTotal; hideZero:true; currencySign: $; pretext:<h6>Reward Points: </h6>; '></div>
-								<div data-bind='var: cart(sum/rmc_total); format:beachMoney; extension:store_filter; className:returnsCreditTotal; hideZero:true; currencySign: $; pretext:<h6>Returns Credit: </h6>; '></div>
+								<div class='displayNone' data-bind='var: cart(sum/gfc_total); format:beachMoney; extension:store_filter; className:orderGiftcardTotal; hideZero:true; currencySign: $; pretext:<h6>Giftcard(s): </h6>; '></div>
+								<div class='displayNone' data-bind='var: cart(sum/pnt_total); format:beachMoney; extension:store_filter; className:rewardPointsTotal; hideZero:true; currencySign: $; pretext:<h6>Reward Points: </h6>; '></div>
+								<div class='displayNone' data-bind='var: cart(sum/rmc_total); format:beachMoney; extension:store_filter; className:returnsCreditTotal; hideZero:true; currencySign: $; pretext:<h6>Returns Credit: </h6>; '></div>
 								<!-- <div data-bind='var: cart(sum/balance_due_total); format:orderBalance; className:orderBalanceDue; hideZero:false; currencySign: $; pretext:<h6>Estimated Total: </h6>; extension:store_cart;'></div> -->
 								<div data-bind='var: cart(sum/balance_due_total); format:money; className:orderBalanceDue; hideZero:false; currencySign: $; pretext:<h6>Estimated Total: </h6>; extension:store_cart;'></div>
 							</section>

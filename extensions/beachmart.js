@@ -438,7 +438,7 @@ var store_filter = function() {
 									if(app.data[rd.datapointer]['%attribs']['user:prod_shipping'] && app.data.cartDetail['@SHIPMETHODS'] && app.data.cartDetail['@SHIPMETHODS'][0] && app.data.cartDetail['@SHIPMETHODS'][0].amount) {
 										$tag.text('Shipping Surcharge:');
 										setTimeout(function(){
-											$('.orderShipAmount','#modalCartContents')
+											$('.orderShipMethod','#modalCartContents')
 												.empty()
 												.css('position','relative')
 												.append("<a class='floatLeft clearfix tipifyCart' href='#'>Shipping Surcharge: </a>")
@@ -447,7 +447,7 @@ var store_filter = function() {
 														+	"items and destinations applicable. More details of this charge is stated on the shipping tab of the product page"
 													+	"</div>");
 											},250);
-										setTimeout(function(){$('.orderShipAmount','#modalCartContents').mouseenter(function(){	$('.toolTip2','#modalCartContents').show();}).mouseleave(function(){	$('.toolTip2','#modalCartContents').hide();});},250);
+										setTimeout(function(){$('.orderShipMethod','#modalCartContents').mouseenter(function(){	$('.toolTip2','#modalCartContents').show();}).mouseleave(function(){	$('.toolTip2','#modalCartContents').hide();});},250);
 									}
 								}
 							}

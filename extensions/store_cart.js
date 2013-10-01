@@ -322,7 +322,7 @@ $tag.one('click',function(event){
 /*BEACHMALL*/					if(r.indexOf('.') > 0)	{ //add cents span for style
 /*BEACHMALL*/					//app.u.dump(' -> r = '+r);
 /*BEACHMALL*/						sr = r.split('.');
-/*BEACHMALL*/						o = "<span class='orderShipAmount'>Shipping: <\/span><span class='orderShipDollars'>"+sr[0]+"<\/span>";
+/*BEACHMALL*/						o = "<span class='orderShipMethod'>"+pretty+": <\/span><span class='orderShipDollars'>"+sr[0]+"<\/span>";
 /*BEACHMALL*/						if(sr[1])	{o += '<span class="cents">.'+sr[1]+'<\/span>'}
 /*BEACHMALL*/					}
 /*BEACHMALL*/					else {
@@ -334,6 +334,7 @@ $tag.one('click',function(event){
 						}
 					}
 				$tag.html(o);
+/*BEACHMALL*/	$tag.removeClass('displayNone').css('height','20px');
 				}, //shipInfoById
 
 
