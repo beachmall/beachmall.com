@@ -1513,7 +1513,8 @@ CART TEMPLATE
 #modalCart .cartZipCodeContainer {height:auto; width:60%; float:left; margin:0; border:none;}
 #modalCart .checkoutButtonsContainer span {float:right; margin:0 0 0 12px;}
 #modalCart .cartButtonsContainer {margin:0 0 1% 0; border:none;}
-#modalCart .cartButtonsContainer .cartBar {width:63%; height:auto; float:left; padding:5px; background:none repeat scroll 0px 0px #3BB3C3; color:#3BB3C3;}
+#modalCart .cartButtonsContainer .cartBar {width:63%; height:auto; float:left; padding:5px; background:none repeat scroll 0px 0px #ffffff; color:#ffffff;}
+#modalCart .cartContainer .cartButtonsContainer .cartBar {width:63%; height:auto; float:left; padding:5px; background:none repeat scroll 0px 0px #3bb3c3; color:#3bb3c3;}
 #modalCart .checkoutButtonsContainer {margin:0;}
 #modalCart .cartButtonsContainer span button.ui-state-default {height:auto; width:auto; padding:5px; color:#ffffff; background:#E0463A; border:none; border-radius:0;}
 #modalCart .cartButtonsContainer span button.ui-state-default:hover {color:#E0463A; background:#ffffff;}
