@@ -457,6 +457,33 @@ var store_filter = function() {
 					if(numRequests > 0){app.model.dispatchThis('immutable');}
 				},
 				
+				beachMoney : function($tag,data)	{
+			
+					app.u.dump('BEGIN view.formats.money');
+					var amount = data.bindData.isElastic ? (data.value / 100) : data.value;
+					app.u.dump('amount:'); app.u.dump(amount);
+					if(amount)	{
+						var r,o,sr;
+						r = app.u.formatMoney(amount,data.bindData.currencySign,'',data.bindData.hideZero);
+		//					app.u.dump(' -> attempting to use var. value: '+data.value);
+		//					app.u.dump(' -> currencySign = "'+data.bindData.currencySign+'"');
+
+		//if the value is greater than .99 AND has a decimal, put the 'change' into a span to allow for styling.
+						if(r.indexOf('.') > 0)	{
+		//					app.u.dump(' -> r = '+r);
+							sr = r.split('.');
+							o = sr[0];
+							if(sr[1])	{o += '<span class="cents">.'+sr[1]+'<\/span>'}
+							$tag.html(o);
+							}
+						else	{
+							$tag.html(r);
+							}
+						}
+					else {$tag.addClass('displayNone');}
+				}, //beachMoney
+
+				
 				//shows container w/ accessories/similar tabbed content if one of them has values set
 				showTabsIfSet : function($tag, data) {
 					if(data.value['%attribs']['zoovy:related_products'] ||
