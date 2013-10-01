@@ -436,7 +436,18 @@ var store_filter = function() {
 								}
 								else {
 									if(app.data[rd.datapointer]['%attribs']['user:prod_shipping'] && app.data.cartDetail['@SHIPMETHODS'] && app.data.cartDetail['@SHIPMETHODS'][0] && app.data.cartDetail['@SHIPMETHODS'][0].amount) {
-										$tag.text('Shipping Surcharge');
+										$tag.text('Shipping Surcharge:');
+										setTimeout(function(){
+											$('.orderShipAmount','#modalCartContents')
+												.empty()
+												.css('position','relative')
+												.append("<a class='floatLeft clearfix tipifyCart' href='#'>Shipping Surcharge: </a>")
+												.append("<div class='toolTip2 displayNone'>"
+														+	"If the calculated shipping cost is not zero, then shipping surcharge is applied for "
+														+	"items and destinations applicable. More details of this charge is stated on the shipping tab of the product page"
+													+	"</div>");
+											},250);
+										setTimeout(function(){$('.orderShipAmount','#modalCartContents').mouseenter(function(){	$('.toolTip2','#modalCartContents').show();}).mouseleave(function(){	$('.toolTip2','#modalCartContents').hide();});},250);
 									}
 								}
 							}
