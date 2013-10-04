@@ -1222,7 +1222,7 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 				<a class="carouselButton new2CarouselNext carouselButtonNext" href="#">next</a>
 				
 				<!-- non filtered search: <ul id='homeProdSearchNewArrivals2' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"term":{"tags":"IS_NEWARRIVAL"}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustom;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList'></ul>-->
-				<ul id='homeProdSearchNewArrivals2' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"and":{"filters":[{"term":{"tags":"IS_NEWARRIVAL"}},{"not":{"term":{"tags":"IS_DISCONTINUED"}}}]}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustom;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList'></ul>
+				<ul id='homeProdSearchNewArrivals2' data-bind='var: elastic-native({"size":"25","mode":"elastic-native","filter":{"and":{"filters":[{"term":{"tags":"IS_NEWARRIVAL"}},{"not":{"term":{"tags":"IS_DISCONTINUED"}}}]}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustom;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList'></ul>
 			</div>
 		</div>
     
@@ -1271,7 +1271,7 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 			<a class="carouselButtonDkBlue featCarouselNext carouselButtonDkBlueNext" href="#">next</a>
         	
         	<!--non filtered search: <ul id='homeProdSearchFeatured' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"or":{"filters":[{"term":{"tags":"IS_USER4"}},{"term":{"tags":"IS_COLORFUL"}},{"term":{"tags":"IS_USER5"}},{"term":{"user:prod_promo":"IS_USER4"}}]}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>-->
-        	<ul id='homeProdSearchFeatured' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"and":{"filters":[{"or":{"filters":[{"term":{"tags":"IS_USER4"}},{"term":{"tags":"IS_COLORFUL"}},{"term":{"tags":"IS_USER5"}},{"term":{"user:prod_promo":"IS_USER4"}}]}},{"not":{"term":{"tags":"IS_DISCONTINUED"}}}]}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>
+        	<ul id='homeProdSearchFeatured' data-bind='var: elastic-native({"size":"28","mode":"elastic-native","filter":{"and":{"filters":[{"or":{"filters":[{"term":{"tags":"IS_USER4"}},{"term":{"tags":"IS_COLORFUL"}},{"term":{"tags":"IS_USER5"}},{"term":{"user:prod_promo":"IS_USER4"}}]}},{"not":{"term":{"tags":"IS_DISCONTINUED"}}}]}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>
         </div>
         <div id='featCarPagenation' class='standardCarouselPagenation'></div>
     </div>
@@ -1289,7 +1289,7 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 			<a class="carouselButtonDkBlue bestCarouselNext carouselButtonDkBlueNext" href="#">next</a>
         	
         <!--non filtered search: <ul id='homeProdSearchBestSellers' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"term":{"tags":"IS_BESTSELLER"}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>-->
-        	<ul id='homeProdSearchBestSellers' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"and":{"filters":[{"term":{"tags":"IS_BESTSELLER"}},{"not":{"term":{"tags":"IS_DISCONTINUED"}}}]}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>
+        	<ul id='homeProdSearchBestSellers' data-bind='var: elastic-native({"size":"28","mode":"elastic-native","filter":{"and":{"filters":[{"term":{"tags":"IS_BESTSELLER"}},{"not":{"term":{"tags":"IS_DISCONTINUED"}}}]}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>
         </div>																																																	
         <div id='bestCarPagenation' class='standardCarouselPagenation'></div>
     </div>
