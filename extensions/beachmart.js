@@ -545,7 +545,7 @@ var store_filter = function() {
 					var pid = data.value.pid;
 					
 					//Item is preorder, get back to the future Marty! (when it will be shipped)
-					if (zoovyPreOrder.indexOf('IS_PREORDER') > -1 && ([zoovyProdSalesRank > -1 || zoovyProdSalesRank != undefined] && zoovyProdSalesRank > date) ) {
+					if (zoovyPreOrder && zoovyPreOrder.indexOf('IS_PREORDER') > -1 && ([zoovyProdSalesRank > -1 || zoovyProdSalesRank != undefined] && zoovyProdSalesRank > date) ) {
 						//var outputDate =  zoovyProdSalesRank.substring(5,6) + '/' + zoovyProdSalesRank.substring(7,8) + '/' + zoovyProdSalesRank.substring(0,4);
 						//app.u.dump('*** '+outputDate);
 						$tag.empty().append('Will ship on '+app.ext.beachmart.u.yyyymmdd2Pretty(zoovyProdSalesRank));
