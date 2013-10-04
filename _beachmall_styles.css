@@ -704,7 +704,7 @@ label.break	{display:block; margin:0 0 4px 6px;}
 .prodListMiniVariation .optionImagesCont img {height:30px; width:30px;}
 
 .prodListSibs .mpNoShow, .prodListSibs b, .prodListSibs span.zhint {display:none;}
-.prodListSibs ul {height:44px; width:44px; overflow:hidden; float:left;}
+.prodListSibs ul {height:auto; width:44px; overflow:hidden; float:left;}
 .prodListSibs .fluidList li {display:none;}
 .prodListSibs .fluidList li:nth-child(2) {height:30px; width:30px; margin:5px; display:block; border:2px solid #3bb3c3;}
 .prodListSibs .fluidList li:nth-child(2) {border:2px solid #e0463a;}
