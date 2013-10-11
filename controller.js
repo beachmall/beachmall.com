@@ -103,7 +103,7 @@ copying the template into memory was done for two reasons:
 			overrideAttempts : 0, //incremented when an override occurs. allows for a cease after X attempts.
 			lastDispatch : null, //timestamp.
 			passiveInterval : setInterval(function(){app.model.dispatchThis('passive')},5000), //auto-dispatch the passive q every five seconds.
-			numRequestsPerPipe : 50,
+/*beachmall*/			numRequestsPerPipe : 0,// 50,
 			requests : {"mutable":{},"immutable":{},"passive":{}} //'holds' each ajax request. completed requests are removed.
 			}; //holds ajax related vars.
 			
