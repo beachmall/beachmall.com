@@ -1060,7 +1060,7 @@ return filters;
 									onTouch: true
 									}
 								});
-							},1000); 
+							},2000); 
 						} //end prodPageCarousel
 					},
 					
@@ -1100,7 +1100,7 @@ return filters;
 										onTouch: true
 										}
 									});
-								},100); 
+								},2000); 
 							}//END VERTICAL CAROUSEL1 
 						},						
 						
@@ -1140,7 +1140,7 @@ return filters;
 										onTouch: true
 										}
 									});
-								},1000); 
+								},2000); 
 						}//END VERTICAL CAROUSEL2  
 						
 					},//END PRODUCT PAGE CAROUSELS
