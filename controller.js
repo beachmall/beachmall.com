@@ -1818,8 +1818,8 @@ app.u.makeImage({"name":"","w":150,"h":150,"b":"FFFFFF","class":"prodThumb","tag
 */
 		makeImage : function(a)	{
 //			app.u.dump(a);
-
-			a.lib = app.u.isSet(a.lib) ? a.lib : app.vars.username;  //determine protocol
+// ** 201318 -> other libs are no longer supported. forced to username
+//			a.lib = app.u.isSet(a.lib) ? a.lib : app.vars.username;  //determine protocol
 			a.m = a.m ? 'M' : '';  //default to minimal mode off. If anything true value (not 0, false etc) is passed in as m, minimal is turned on.
 //			app.u.dump(' -> library: '+a.lib+' and name: '+a.name);
 			if(a.name == null) { a.name = 'i/imagenotfound'; }
@@ -1827,12 +1827,15 @@ app.u.makeImage({"name":"","w":150,"h":150,"b":"FFFFFF","class":"prodThumb","tag
 			var url, tag;
 			// alert(a.lib);		// uncomment then go into media library for some really wonky behavior 
 		
-		//default height and width to blank. setting it to zero or NaN is bad for IE.
+				//default height and width to blank. setting it to zero or NaN is bad for IE.
+// *** 201338 Added better handling for when no parameters are set, as well as a bug fix where a necessary '-' character was being removed
+// from a valid use case. -mc
 			if(a.h == null || a.h == 'undefined' || a.h == 0)
 				a.h = '';
 			if(a.w == null || a.w == 'undefined' || a.w == 0)
 				a.w = '';
-			
+			if(a.b == null || a.b == 'undefined')
+				a.b = '';
 // *** 201318 -> new url for media library.			
 //			url = location.protocol === 'https:' ? 'https:' : 'http:';  //determine protocol
 //			url += '\/\/static.zoovy.com\/img\/'+a.lib+'\/';
@@ -1845,9 +1848,10 @@ app.u.makeImage({"name":"","w":150,"h":150,"b":"FFFFFF","class":"prodThumb","tag
 				url = location.protocol === 'https:' ? zGlobals.appSettings.https_app_url : zGlobals.appSettings.http_app_url;
 				url += "media\/img\/"+app.vars.username+"\/";
 				}
-		
-			if((a.w == '') && (a.h == ''))
+				
+			if(!a.w && !a.h && !a.b && !a.m){
 				url += '-';
+				}
 			else	{
 				if(a.w)	{
 					url += 'W'+a.w+'-';
@@ -1859,19 +1863,30 @@ app.u.makeImage({"name":"","w":150,"h":150,"b":"FFFFFF","class":"prodThumb","tag
 					url += 'B'+a.b+'-';
 					}
 				url += a.m;
-				}
-			if(url.charAt(url.length-1) == '-')	{
-				url = url.slice(0,url.length-1); //strip trailing - because it isn't stricly 'compliant' with media lib specs.
+// *** 201338 Moved up into the else statement so that the valid case of no parameters produces the expected URL containing "/-/" instead of "//" -mc
+				if(url.charAt(url.length-1) == '-')	{
+					url = url.slice(0,url.length-1); //strip trailing - because it isn't stricly 'compliant' with media lib specs.
+					}
 				}
 			url += '\/'+a.name;
-		
-//			app.u.dump(url);
+
+//			app.u.dump(" -> URL: "+url);
 			
 			if(a.tag == true)	{
 				a['class'] = typeof a['class'] == 'string' ? a['class'] : ''; //default class to blank
 				a['id'] = typeof a['id'] == 'string' ? a['id'] : 'img_'+a.name; // default id to filename (more or less)
 				a['alt'] = typeof a['alt'] == 'string' ? a['alt'] : a.name; //default alt text to filename
-				var tag = "<img src='"+url+"' alt='"+a.alt+"' id='"+a['id']+"' class='"+a['class']+"' \/>";
+// ** 201318 if width and height are present, they are added to the tag.  This solves an issue that occurs in loading
+//	pic sliders where the width of the images, and thus the scroll amount, is not calculated correctly the first time
+//	the slider loads
+				var tag = "<img src='"+url+"' alt='"+a.alt+"' id='"+a['id']+"' class='"+a['class']+"'"
+				if(a.w){
+					tag+=" width='"+a.w+"'";
+				}
+				if(a.h){
+					tag+=" height='"+a.h+"'";
+				}
+				tag += " \/>";
 				return tag;
 				}
 			else	{
