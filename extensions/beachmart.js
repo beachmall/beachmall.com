@@ -451,6 +451,7 @@ var store_filter = function() {
 								}
 							};	
 						numRequests += app.ext.store_prodlist.calls.appProductGet.init({'pid':products[index]},_tag, 'immutable');
+						app.u.dump('HERE'); app.u.dump(numRequests);
 						}
 					if(numRequests > 0){app.model.dispatchThis('immutable');}
 				},
@@ -1325,15 +1326,17 @@ return filters;
 						
 					$mzpLink.append($('<img src='+thumbImg+' title="'+pog.prompt+'" data-pogval="'+option.v+'"/>'));
 					$imgContainer.append($mzpLink);*/
-					
+
+						//add selected indicator to image, and change select list option to match
 					$imgContainer.click(function(){
-						var pogval = $(this).attr('data-pogval');
+						var pogval = $(this).attr('data-pogval');	//value of image clicked
 						
-						$select.val(pogval);
+						$select.val(pogval); 	//change select list to clicked image value
+							//remove the selected indicator from all images
 						$('.optionImagesCont', $parent).each(function(){
 							if($(this).hasClass('selected')){ 
 								$(this).removeClass('selected'); 
-								}
+								}	//add selected indicator to clicked image
 							if($(this).attr('data-pogval') == pogval){ 
 								$(this).addClass('selected'); 
 								}
@@ -1356,6 +1359,21 @@ return filters;
 	//				});
 	
 				} // END for
+				
+					//add selected indicator on image when variation is selected w/ select list
+				$select.change(function() {
+					var selected = $(this).val();	//the option selected in select list
+				
+						//remove selected indicator from all images
+					$('.optionImagesCont', $parent).each(function(){
+						if($(this).hasClass('selected')){ 
+							$(this).removeClass('selected'); 
+						}	//add it back to the value of select list option if one matches
+						if($(this).attr('data-pogval') == selected){ 
+							$(this).addClass('selected'); 
+						}
+					});
+				});
 
 				$parent.append($select);
 				return $parent;
