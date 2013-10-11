@@ -391,6 +391,39 @@ var store_filter = function() {
 					if(app.data.cartDetail && app.data.cartDetail.ship && app.data.cartDetail.ship.postal) {$tag.append('Shipping:');}
 					else {$tag.append('Delivery:');}
 				},
+				
+				showShipLatencyCart : function($tag, data) {
+					var products = [];
+					for(var index in data.value){
+						products.push(data.value[index].product);
+						}
+					app.u.dump('---------->'); app.u.dump(data.value);
+					
+					var numRequests = 0;
+					for(var index in products){
+						var _tag = {
+							'callback':function(rd){
+								if(app.model.responseHasErrors(rd)){
+									//If an item in your cart gets an error, you're gonna have a bad time...
+									app.u.throwMessage(rd);
+									}
+								else{
+								//user:prod_shipping_msg'];
+								//var us1ts = data.value['%attribs']['us1:ts'
+
+									if(app.data[rd.datapointer]['%attribs']['user:prod_ship_expavail'] == 0){
+										$tag.text('Expedited shipping not available');
+									}
+						//			if(app.data[rd.datapointer]['%attribs']['zoovy:base_price'] > 200){
+						//				$tag.text('The rent is too damn high!');
+						//				}
+									}
+								}
+							};	
+						numRequests += app.ext.store_prodlist.calls.appProductGet.init({'pid':products[index]},_tag, 'immutable');
+						}
+					if(numRequests > 0){app.model.dispatchThis('immutable');}
+				},
 		
 				//Puts message indicating expedited shipping isn't available in cart if applicable to any items there
 				expShipMessage : function($tag, data) {
@@ -528,64 +561,75 @@ var store_filter = function() {
 				
 				//shows ships on/in message if data is set, takes into account when the message is displayed
 				showShipLatency : function ($tag, data) {
-					//app.u.dump('***TEST '+data.value);
+					//app.u.dump('***TEST '); app.u.dump(data.value);
+					setTimeout(function(){
 					
-					var userProdShipMsg = data.value['%attribs']['user:prod_shipping_msg'];
-					var us1ts = data.value['%attribs']['us1:ts'];
-					var zoovyProdSalesRank = data.value['%attribs']['zoovy:prod_salesrank'];
-					var zoovyPreOrder = data.value['%attribs']['zoovy:prod_is_tags'];
-					var d = new Date();
-					var month = d.getMonth()+1;
-					var day = d.getDate();
-					var year = d.getFullYear();
-					if (month < 10){month = '0'+month};
-					if (day < 10){day = '0'+day};
-					var date = year + '' + month + '' + day;
-					//app.u.dump(userProdShipMsg);
-					var pid = data.value.pid;
-					
-					//Item is preorder, get back to the future Marty! (when it will be shipped)
-					if (zoovyPreOrder && zoovyPreOrder.indexOf('IS_PREORDER') > -1 && ([zoovyProdSalesRank > -1 || zoovyProdSalesRank != undefined] && zoovyProdSalesRank > date) ) {
-						//var outputDate =  zoovyProdSalesRank.substring(5,6) + '/' + zoovyProdSalesRank.substring(7,8) + '/' + zoovyProdSalesRank.substring(0,4);
-						//app.u.dump('*** '+outputDate);
-						$tag.empty().append('Will ship on '+app.ext.beachmart.u.yyyymmdd2Pretty(zoovyProdSalesRank));
-					}
-					//Not a pre-order, show present-day ship info.
-					else if (zoovyProdSalesRank == undefined || zoovyProdSalesRank <= date) {
-						$tag.children('.shipTime').show();
-						var n = d.getDay();
-						var t = d.getUTCHours();
-						if(date < 20131103) {
-							t = t - 4;
-						}
-						else if (date > '20131102' && date < '20140309') {
-							t = t - 5;
-						}
-						else {
-							// posibly need further years calculated here
-						}
-						if(userProdShipMsg) {
-							if(userProdShipMsg.indexOf('Ships Today by 12 Noon EST') > -1){
-								if ( (t >= 12 && (n > 0 && n < 5)) || date == 20130704 || date == 20130902 || date == 20131225 || date == 20131231 || date == 20140101 || date == 20140526 || date == 20140704) {
-									//Time is after noon, day is Mon-Thurs, OR is a UPS holiday weekday
-									$tag.empty().append('Ships Next Business Day');
-								}
-								else if (((t >= 12 && n == 5) || (n > 5 && n < 1)) || date == 20131128 || date == 20131129) {
-									//Time is after noon, day is Fri (FUN FUN FUN FUN)
-									//OR it is the Weekend, OR is UPS Thanksgiving weekend
-									$tag.empty().append('Ships Monday by 12 Noon EST');
-								}
-								else {
-									//It is before noon on a Weekday, shipping message is perfectly fine
-								}
+							//set the vars needed to determine message
+						if($tag.attr('data-cart')) {	//if is for cart prod list
+							if(data.value.product) {
+								var prod = app.data['appProductGet|'+app.u.makeSafeHTMLId(data.value.product)];
+								var userProdShipMsg = prod['%attribs']['user:prod_shipping_msg'];
+								var us1ts = prod['%attribs']['us1:ts'];
 							}
 						}
-						else { //userProdShipMsg is not set, skip it
+						else {	//else is for not cart prod list
+							var userProdShipMsg = data.value['%attribs']['user:prod_shipping_msg'];
+							var us1ts = data.value['%attribs']['us1:ts'];
 						}
-					}
-					else { 
-						//do nada*/
-					}
+						var zoovyProdSalesRank = data.value['%attribs']['zoovy:prod_salesrank'];
+						var zoovyPreOrder = data.value['%attribs']['zoovy:prod_is_tags'];
+						var d = new Date();
+						var month = d.getMonth()+1;
+						var day = d.getDate();
+						var year = d.getFullYear();
+						if (month < 10){month = '0'+month};
+						if (day < 10){day = '0'+day};
+						var date = year + '' + month + '' + day;
+						
+						//Item is preorder, get back to the future Marty! (when it will be shipped)
+						if (zoovyPreOrder && zoovyPreOrder.indexOf('IS_PREORDER') > -1 && ([zoovyProdSalesRank > -1 || zoovyProdSalesRank != undefined] && zoovyProdSalesRank > date) ) {
+							//var outputDate =  zoovyProdSalesRank.substring(5,6) + '/' + zoovyProdSalesRank.substring(7,8) + '/' + zoovyProdSalesRank.substring(0,4);
+							//app.u.dump('*** '+outputDate);
+							$tag.empty().append('Will ship on '+app.ext.beachmart.u.yyyymmdd2Pretty(zoovyProdSalesRank));
+						}
+						//Not a pre-order, show present-day ship info.
+						else if (zoovyProdSalesRank == undefined || zoovyProdSalesRank <= date) {
+							//$tag.children('.shipTime').show();
+							$tag.children('.shipTime').empty().text(userProdShipMsg).show();
+							var n = d.getDay();
+							var t = d.getUTCHours();
+							if(date < 20131103) {
+								t = t - 4;
+							}
+							else if (date > '20131102' && date < '20140309') {
+								t = t - 5;
+							}
+							else {
+								// posibly need further years calculated here
+							}
+							if(userProdShipMsg) {
+								if(userProdShipMsg.indexOf('Ships Today by 12 Noon EST') > -1){
+									if ( (t >= 12 && (n > 0 && n < 5)) || date == 20130704 || date == 20130902 || date == 20131225 || date == 20131231 || date == 20140101 || date == 20140526 || date == 20140704) {
+										//Time is after noon, day is Mon-Thurs, OR is a UPS holiday weekday
+										$tag.empty().append('Ships Next Business Day');
+									}
+									else if (((t >= 12 && n == 5) || (n > 5 && n < 1)) || date == 20131128 || date == 20131129) {
+										//Time is after noon, day is Fri (FUN FUN FUN FUN)
+										//OR it is the Weekend, OR is UPS Thanksgiving weekend
+										$tag.empty().append('Ships Monday by 12 Noon EST');
+									}
+									else {
+										//It is before noon on a Weekday, shipping message is perfectly fine
+									}
+								}
+							}
+							else { //userProdShipMsg is not set, skip it
+							}
+						}
+						else { 
+							//do nada*/
+						}
+					},1000); //setTimeout
 				},
 				
 				//sets a description on the price of a product (usually in a product list)

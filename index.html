@@ -3613,7 +3613,7 @@ START APP CART
 										shipping tab of the product page
 									</div>
 								</div>	
-					<!--		
+													<!--		
 								<div class='cartZipCodeContainer'>
 								
 								</div>
@@ -3661,10 +3661,15 @@ START APP PRODUCTLISTTEMPLATECART
 				<h4 data-bind='var: product(prod_name); format:text; '></h4>
 				<div class='ztable_row_small prodOptions' data-bind='var: variations(%options); format:selectedOptionsDisplay;'></div>
 				<div class='ztable_row_small stid' data-bind='var: product(sku); format:text; className: stid; pretext: Sku: ;'></div>
+				<div class='cartLatency' data-cart='1' data-bind="useParentData:true; format:showShipLatency; extension:store_filter;">
+					<div class='shipTime'></div>
+				</div>
 				<div data-bind="useParentData:true; format:hideShipLatency; extension:store_filter;">
+				<!--
 					<div class='shipTime latency floatLeft' data-bind='useParentData:true; format:showShipLatency; extension:store_filter;'>
 						<div class='shipTime latency displayNone' data-bind='var: product(user:prod_shipping_msg); format:text;'></div>
 					</div>
+				-->	
 				</div> 
 			</div>
 
