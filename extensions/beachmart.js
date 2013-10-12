@@ -354,6 +354,34 @@ var store_filter = function() {
 //on a data-bind, format: is equal to a renderformat. extension: tells the rendering engine where to look for the renderFormat.
 //that way, two render formats named the same (but in different extensions) don't overwrite each other.
 		renderFormats : {
+	
+				//gets list of siblings from product (if present) and puts first two on product list
+				//the one that doesn't match the product is set first, and the second is hidden w/ css
+			siblingProductList : function($tag,data)	{
+//				app.u.dump("BEGIN store_filter.renderFormats.productList");
+//				app.u.dump(" -> data.bindData: "); app.u.dump(data.bindData);
+				var pid = app.u.makeSafeHTMLId($tag.parent().attr('data-pid'));
+				if(app.u.isSet(data.value))	{
+						//data is comma separated list, make into array for processing
+					var listOfProducts = data.value.split(",");
+						//if at least two sib images exist,
+						//check if first sib is prod image, if not send as is, if so put second image first
+						//(buildProductList didn't like a single item in csv)
+					if(listOfProducts[0] && listOfProducts[1]) {
+						if(listOfProducts[0].indexOf(''+pid) < 0) {
+							data.bindData.csv = data.value;
+						}
+						else {  //flip values
+							var tmp = listOfProducts[1];
+							listOfProducts[1] = listOfProducts[0];
+							listOfProducts[0] = tmp;
+ 							data.bindData.csv = listOfProducts;
+						}
+					}
+					//data.bindData.csv = data.value;
+					app.ext.store_prodlist.u.buildProductList(data.bindData,$tag);
+				}
+			}, //siblingProductList		
 		
 				//hides geo location/time in transit and add to cart button if product is discontinued or not purchasable
 				hideGeoElements : function($tag, data) {

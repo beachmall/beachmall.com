@@ -27,7 +27,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"201314.20131011125400",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"201314.20131011174300",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"", //used in non-local mode.
 	"checkoutAuthMode" : "active",//can be passive, active or required
@@ -1089,7 +1089,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
             <div class='googleTrustedBadge'>
 
 <!-- BEGIN: Google Trusted Store -->
-				<script type="text/javascript">
+<!--				<script type="text/javascript">
 					var gts = gts || [];
 					gts.push(["id", "3253696"]);
 					gts.push(["google_base_offer_id", "%PRODUCT%"]);
@@ -1110,9 +1110,9 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                 
                 <!-- JavaScript Checkout Tracking Code (HTML): -->
                 <!-- START Trusted Stores Order -->
-                <div id="gts-order" style="display:none;">
+<!--                <div id="gts-order" style="display:none;">
                 <!-- start order and merchant information -->
-                  <span id="gts-o-id">%ORDERID%</span>
+<!--                  <span id="gts-o-id">%ORDERID%</span>
                   <span id="gts-o-domain">%SDOMAIN%</span>
                   <span id="gts-o-email">%BILLEMAIL%</span>
                   <span id="gts-o-country">%BILLCOUNTRY%</span>
@@ -1131,7 +1131,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                 <!-- %GOOGLE_TRUSTED_STORES_ITEM_SPANS% -->
                 <!-- end repeated item specific information -->
 
-				</div>
+<!--				</div>
 <!-- END Trusted Stores -->
 
             </div>
@@ -2163,8 +2163,8 @@ remember to NOT put the button inside the 'onclick' container or two events will
 			<div class='thumbStarsContainer'>
 				<!-- <div class='prodListMiniThumb' data-bind='var: product(pid); format: productListThumbnails; extension: store_filter;'></div> --> 
 				<!-- <div class='prodListMiniVariation' data-bind='var: product(pid); format:atcVariations; extension:store_product;'></div> -->
-				<div class='clearfix prodListSibs'>
-					<ul class='listStyleNone noPadOrMargin fluidList' data-bind="var: product(user:grp_siblings); format:productList; extension:store_prodlist;loadsTemplate:productListTemplateToolTipThumb;hide_multipage:true;before:<b>Available Colors:</b> <span class='zhint'>(click image to select)</span> ; withInventory:1; withVariations:1;"></ul>
+				<div class='clearfix prodListSibs' data-bind='var:product(pid);format:assignAttribute; attribute:data-pid;'>
+					<ul class='listStyleNone noPadOrMargin fluidList' data-bind="var: product(user:grp_siblings); format:siblingProductList; extension:store_filter;loadsTemplate:productListTemplateToolTipThumb;hide_multipage:true;before:<b>Available Colors:</b> <span class='zhint'>(click image to select)</span> ; withInventory:1; withVariations:1;"></ul>
 					<div class='prodListSibsText displayNone' data-bind='var:product(user:grp_siblings; format:showIfSet;)'>More Colors Available!</div>
 				</div>
 				<div class='reviewsStarsCount' data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews_reviews;'></div><!-- BCERO271 MARK-->
@@ -2499,7 +2499,7 @@ END BUG7-->
 
 	<li id='productListTemplateToolTipThumb' class='loadingBG ' >
 		<div class='prodThumbContainer pointer targetElement' data-toolTipThumb="data-toolTipThumb"  onClick="showContent('product',{'pid':$(this).attr('data-pid')});" data-bind='var:product(pid);format:assignAttribute; attribute:data-pid;'>
-		<img src='blank.gif' class='prodThumb'data-bind='var: product(zoovy:prod_image1); format:imageURL;' width='55' height='55' />
+		<img src='blank.gif' class='prodThumb'data-bind='var: product(zoovy:prod_image1); format:imageURL;' width='30' height='30' />
 		</div>
 	</li>
 
