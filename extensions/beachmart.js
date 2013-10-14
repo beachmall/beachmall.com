@@ -479,7 +479,7 @@ var store_filter = function() {
 								}
 							};	
 						numRequests += app.ext.store_prodlist.calls.appProductGet.init({'pid':products[index]},_tag, 'immutable');
-						app.u.dump('HERE'); app.u.dump(numRequests);
+						//app.u.dump('HERE'); app.u.dump(numRequests);
 						}
 					if(numRequests > 0){app.model.dispatchThis('immutable');}
 				},
@@ -596,6 +596,8 @@ var store_filter = function() {
 								var userProdShipMsg = prod['%attribs']['user:prod_shipping_msg'];
 								var us1ts = prod['%attribs']['us1:ts'];
 							}
+							//app.u.dump(prod.pid);
+							app.ext.beachmart_cartEstArrival.u.initEstArrival(prod);
 						}
 						else {	//else is for not cart prod list
 							var userProdShipMsg = data.value['%attribs']['user:prod_shipping_msg'];

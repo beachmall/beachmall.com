@@ -3753,7 +3753,7 @@ END APP CART
 START APP PRODUCTLISTTEMPLATECART
 **************************************************************************************************************-->
 <ul>
-	<li id='productListTemplateCart' class='padMargBorderBottom clearfix productListTemplateCart'>
+	<li id='productListTemplateCart' class='padMargBorderBottom clearfix productListTemplateCart' data-bind='var:product(pid);format:assignAttribute; attribute:data-pid;'>
 
 		<div class='cartItemWrapper'>
 
@@ -3764,6 +3764,12 @@ START APP PRODUCTLISTTEMPLATECART
 				<div class='ztable_row_small stid' data-bind='var: product(sku); format:text; className: stid; pretext: Sku: ;'></div>
 				<div class='cartLatency' data-cart='1' data-bind="useParentData:true; format:showShipLatency; extension:store_filter;">
 					<div class='shipTime'></div>
+				</div>
+				<div class='cartShippingInformation'>
+					<div class='cartTimeInTransitMessaging'></div>
+					<div class='cartPutLoadingHere loadingBG'>
+						<div class='transitContainer'></div>
+					</div>
 				</div>
 			</div>
 
