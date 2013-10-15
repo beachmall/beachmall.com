@@ -190,7 +190,7 @@ var beachmart_cartEstArrival = function() {
 				var prodAttribs = app.data['appProductGet|'+pid]['%attribs'];
 
 				var $r = $("<div class='shipSummaryContainer' \/>"); //what is returned. jquery object of shipping info.
-				$r.append("<span class='shipMessage'></span><span class='estimatedArrivalDate'></span><span title='Click to change destination zip code' class='deliveryLocation zlink pointer'></span><div class='deliveryMethod'></div><div class='expShipMessage'></div>");
+				$r.append("<span class='shipMessage'></span><span class='estimatedArrivalDate'></span><span title='Click to change destination zip code' class='deliveryLocation'></span><div class='deliveryMethod'></div><div class='expShipMessage'></div>");
 
 				var hour = Number(data.cutoff_hhmm.substring(0,2)) + 3; //add 3 to convert to EST.
 				var minutes = data.cutoff_hhmm.substring(2);
@@ -209,7 +209,7 @@ var beachmart_cartEstArrival = function() {
 				if(prodAttribs['user:prod_ship_expavail'] == 1)	{
 				//if expedited shipping is not available, no other methods show up (will ship ground)
 					$('.deliveryMethod',$r).append(data['@Services'][index]['method'])
-					$('.deliveryMethod',$r).append(" (<span class='zlink'> Need it faster?</span>)").addClass('pointer').click(function(){
+					$('.deliveryMethod',$r).append("<span class='zlink'> (Need it faster?)</span>").addClass('pointer').click(function(){
 						app.ext.beachmart.a.showShipGridInModal('appShippingTransitEstimate');
 						});
 					}
@@ -219,24 +219,24 @@ var beachmart_cartEstArrival = function() {
 					}
 
 					
-				$('.estimatedArrivalDate',$r).append(app.ext.beachmart.u.yyyymmdd2Pretty(data['@Services'][index]['arrival_yyyymmdd']));
+				$('.estimatedArrivalDate',$r).append(app.ext.beachmart.u.yyyymmdd2Pretty(data['@Services'][index]['arrival_yyyymmdd'])+" to");
 
+					if(app.data.cartDetail.ship.city)	{
+						//$('.deliveryLocation',$r).append(" to "+app.data.cartDetail.ship.city+" "+app.data.cartDetail.ship.city+" (change)");
+						$('.deliveryLocation',$r).append(" "+app.data.cartDetail.ship.city+"");
+					}
 					if(app.data.cartDetail.ship.region)	{
 						//$('.deliveryLocation',$r).append(" to "+app.data.cartDetail.ship.city+" "+app.data.cartDetail.ship.region+" (change)");
-						$('.deliveryLocation',$r).append(" to "+app.data.cartDetail.ship.city+"");
-					}
-					if(app.data.cartDetail.ship.city)	{
-						//$('.deliveryLocation',$r).append(" to "+app.data.cartDetail.ship.city+" "+app.data.cartDetail.ship.region+" (change)");
-						$('.deliveryLocation',$r).append(" to "+app.data.cartDetail.ship.region+"");
+						$('.deliveryLocation',$r).append(" "+app.data.cartDetail.ship.region+"");
 					}
 					if(app.data.cartDetail.ship.postal)	{
 						//$('.deliveryLocation',$r).append(" to "+app.data.cartDetail.ship.city+" "+app.data.cartDetail.ship.region+" (change)");
-						$('.deliveryLocation',$r).append(" to "+app.data.cartDetail.ship.postal+"");
+						$('.deliveryLocation',$r).append(" "+app.data.cartDetail.ship.postal+"");
 					}
 				else{
 					$('.deliveryLocation',$r).append(" (enter zip) ")
 					}
-				$('.deliveryLocation',$r).click(function(){app.ext.beachmart.a.showZipDialog()})
+				//$('.deliveryLocation',$r).click(function(){app.ext.beachmart.a.showZipDialog()})
 							return $r;
 			}, //getTransitInfo
 			
