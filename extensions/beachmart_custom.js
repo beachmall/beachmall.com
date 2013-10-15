@@ -1433,7 +1433,7 @@ else	{
 if(prodAttribs['user:prod_ship_expavail'] == 1)	{
 //if expedited shipping is not available, no other methods show up (will ship ground)
 	$('.deliveryMethod',$r).append(data['@Services'][index]['method'])
-	$('.deliveryMethod',$r).append(" (<span class='zlink'> Need it faster?</span>)").addClass('pointer').click(function(){
+	$('.deliveryMethod',$r).append(" <span class='zlink'>(Need it faster?)</span>").addClass('pointer').click(function(){
 		app.ext.beachmart.a.showShipGridInModal('appShippingTransitEstimate');
 		});
 	}
@@ -1443,13 +1443,16 @@ else	{
 	}
 
 	
-$('.estimatedArrivalDate',$r).append(app.ext.beachmart.u.yyyymmdd2Pretty(data['@Services'][index]['arrival_yyyymmdd']));
+$('.estimatedArrivalDate',$r).append(app.ext.beachmart.u.yyyymmdd2Pretty(data['@Services'][index]['arrival_yyyymmdd'])+" to");
 
-if(app.data.cartDetail.ship.region || app.data.cartDetail.ship.city)	{
-	$('.deliveryLocation',$r).append(" to "+app.data.cartDetail.ship.city+" "+app.data.cartDetail.ship.region+" (change)");
+if(app.data.cartDetail.ship.city)	{
+	$('.deliveryLocation',$r).append(" "+app.data.cartDetail.ship.city);
 	}
-else if	(app.data.cartDetail.ship.postal)	{
-	$('.deliveryLocation',$r).append(" to "+app.data.cartDetail.ship.postal+" (change)")
+if(app.data.cartDetail.ship.region)	{
+	$('.deliveryLocation',$r).append(" "+app.data.cartDetail.ship.region);
+	}
+if	(app.data.cartDetail.ship.postal)	{
+	$('.deliveryLocation',$r).append(" "+app.data.cartDetail.ship.postal+" (change)")
 	}
 else{
 	$('.deliveryLocation',$r).append(" (enter zip) ")
