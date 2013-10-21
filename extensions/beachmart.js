@@ -354,6 +354,13 @@ var store_filter = function() {
 //on a data-bind, format: is equal to a renderformat. extension: tells the rendering engine where to look for the renderFormat.
 //that way, two render formats named the same (but in different extensions) don't overwrite each other.
 		renderFormats : {
+				
+				//hide the update button on assembly products
+			hideIfASM : function($tag, data) {
+				if((data.value.stid && data.value.stid[0] == '%') || data.value.asm_master)	{
+					$tag.hide().after('(included)');
+				}
+			},
 	
 				//gets list of siblings from product (if present) and puts first two on product list
 				//the one that doesn't match the product is set first, and the second is hidden w/ css

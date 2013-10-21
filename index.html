@@ -3776,7 +3776,7 @@ START APP PRODUCTLISTTEMPLATECART
 			<div class='floatLeft cartPQT'>
 				<div class='cartQtyInput cartPQT floatLeft'>
 					<input type='number' class='qtyInput numberInput' onChange="app.ext.store_cart.u.updateCartQty($(this)); app.model.dispatchThis('immutable');"  data-bind='format:cartItemQty;extension:store_cart;useParentData:true;' />
-					<button class='updateButton cartLineButton ui-state-default'>Update</button><!-- here to stop 'enter' in input above from closing modal -->
+					<button class='updateButton cartLineButton ui-state-default' data-bind='useParentData:true; format:hideIfASM; extension:store_filter;'>Update</button><!-- here to stop 'enter' in input above from closing modal -->
 					<button class='moveToWishlist cartLineButton' data-bind='format:moveToWishlistButton; extension:myRIA; useParentData:true;' >Wishlist</button>
 					<button class='removeButton cartLineButton' data-bind='format:removeItemBtn; extension:store_cart; useParentData:true;' >Remove</button>
 				</div>

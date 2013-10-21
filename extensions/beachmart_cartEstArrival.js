@@ -55,7 +55,7 @@ var beachmart_cartEstArrival = function() {
 		
 					app.u.dump(" -> $container.length: "+$container.length);
 					var data = app.data[tagObj.datapointer]; //shortcut.
-		app.u.dump('Data:') ;app.u.dump(data); 			
+	//	app.u.dump('Data:') ;app.u.dump(data); 			
 					if(!$.isEmptyObject(data['@Services'])) {
 						app.u.dump(" -> @Services is not empty");
 						var index = app.ext.beachmart.u.getShipMethodByID(data['@Services'],'UGND');
@@ -206,7 +206,7 @@ var beachmart_cartEstArrival = function() {
 					$('.shipMessage',$r).append("Order today for arrival on ");
 					}
 
-				if(prodAttribs['user:prod_ship_expavail'] == 1)	{
+				if(prodAttribs['user:prod_ship_expavail'] && prodAttribs['user:prod_ship_expavail'] == 1)	{
 				//if expedited shipping is not available, no other methods show up (will ship ground)
 					$('.deliveryMethod',$r).append(data['@Services'][index]['method'])
 					$('.deliveryMethod',$r).append("<span class='zlink'> (Need it faster?)</span>").addClass('pointer').click(function(){
