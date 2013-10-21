@@ -355,7 +355,7 @@ var store_filter = function() {
 //that way, two render formats named the same (but in different extensions) don't overwrite each other.
 		renderFormats : {
 				
-				//hide the update button on assembly products
+				//hide the update button on assembly products, put "(included)" text in it's place
 			hideIfASM : function($tag, data) {
 				if((data.value.stid && data.value.stid[0] == '%') || data.value.asm_master)	{
 					$tag.hide().after('(included)');
@@ -507,12 +507,12 @@ var store_filter = function() {
 								}
 								else {
 									if(app.data[rd.datapointer]['%attribs']['user:prod_shipping'] && app.data.cartDetail['@SHIPMETHODS'] && app.data.cartDetail['@SHIPMETHODS'][0] && app.data.cartDetail['@SHIPMETHODS'][0].amount) {
-										$tag.text('Shipping Surcharge:');
+										$tag.text('Shipping Surcharge');
 										setTimeout(function(){
 											$('.orderShipMethod','#modalCartContents')
 												.empty()
 												.css('position','relative')
-												.append("<a class='floatLeft clearfix tipifyCart' href='#'>Shipping Surcharge: </a>")
+												.append("<a class='floatLeft clearfix tipifyCart' href='#'><span class='surcharge'>Surcharge</span> / Shipping: </a>")
 												.append("<div class='toolTip2 displayNone'>"
 														+	"If the calculated shipping cost is not zero, then shipping surcharge is applied for "
 														+	"items and destinations applicable. More details of this charge is stated on the shipping tab of the product page"

@@ -1523,6 +1523,7 @@ CART TEMPLATE
 #modalCart .cartSummary > div {padding:2% 4.6% 2% 2%; text-align:right; border-bottom:1px solid #dddddd;}
 #modalCart .cartSummary > div > h6 {font-weight:bold; font-size:1.0em; display:inline; float:left;}
 #modalCart .cartSummary > div .orderShipMethod {font-weight:bold; font-size:1.0em; display:inline; float:left;}
+#modalCart .cartSummary > div .orderShipMethod .surcharge {color:#e0463a;}
 #modalCart .cartSummary > div .orderShipAmount {font-weight:bold; font-size:1.0em; display:inline; float:right;}
 #modalCart .cartShipOptions {height:auto; width:100%; float:left; margin:0; font-family:"Open Sans";}
 #modalCart .toolTip {top:-20px; left:-90px;}
