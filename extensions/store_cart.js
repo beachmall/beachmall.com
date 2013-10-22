@@ -335,6 +335,8 @@ $tag.one('click',function(event){
 					}
 				$tag.html(o);
 /*BEACHMALL*/	$tag.removeClass('displayNone').css('height','20px');
+/*BEACHMALL*/		//hide estimated total if shipping zip is present (and therefore tax has been calculated).
+/*BEACHMALL*/	setTimeout(function(){$('.orderBalanceDue',$tag.parent()).hide();},500);
 				}, //shipInfoById
 
 
