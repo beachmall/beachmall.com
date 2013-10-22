@@ -358,7 +358,10 @@ var store_filter = function() {
 				//hide the update button on assembly products, put "(included)" text in it's place
 			hideIfASM : function($tag, data) {
 				if((data.value.stid && data.value.stid[0] == '%') || data.value.asm_master)	{
-					$tag.hide().after('(included)');
+					$tag.hide()
+					if($tag.attr('data-included') == 1) {
+						$tag.after('(included)');
+					}
 				}
 			},
 	
@@ -603,8 +606,9 @@ var store_filter = function() {
 								var userProdShipMsg = prod['%attribs']['user:prod_shipping_msg'];
 								var us1ts = prod['%attribs']['us1:ts'];
 							}
-							//app.u.dump(prod.pid);
-							app.ext.beachmart_cartEstArrival.u.initEstArrival(prod);
+								//pass stid so each item can be found in cart later when time in transit info gets added
+							var stid = app.u.makeSafeHTMLId($tag.parent().parent().parent().attr('data-stid'));
+							app.ext.beachmart_cartEstArrival.u.initEstArrival(prod, stid);
 						}
 						else {	//else is for not cart prod list
 							var userProdShipMsg = data.value['%attribs']['user:prod_shipping_msg'];

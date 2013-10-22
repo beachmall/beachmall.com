@@ -49,9 +49,11 @@ var beachmart_cartEstArrival = function() {
 				
 				onSuccess : function(tagObj) {
 					app.u.dump("BEGIN beachmart_cartEstArrival.callbacks.showTransitTimes");
-					app.u.dump(tagObj);
+					app.u.dump(tagObj.stid);
 					//use cutoff from response, not product.
-					var $container = $('#cartStuffList_'+app.u.makeSafeHTMLId(SKU));
+					//var $container = $('#cartStuffList_'+app.u.makeSafeHTMLId(SKU));
+					var $container = $('#cartStuffList_'+app.u.makeSafeHTMLId(tagObj.stid));
+					$container.attr('data-number','2');
 		
 					app.u.dump(" -> $container.length: "+$container.length);
 					var data = app.data[tagObj.datapointer]; //shortcut.
@@ -65,7 +67,7 @@ var beachmart_cartEstArrival = function() {
 						app.u.dump(" -> index: "+index);
 //index could be false if no methods were available. or could be int starting w/ 0
 						if(index >= 0) {
-							$('.transitContainer',$container).empty().append(app.ext.beachmart_cartEstArrival.u.getTransitInfo(SKU,data,index)); //empty first so when reset by zip change, no duplicate info is displayed.
+							$('.transitContainer',$container).empty().append(app.ext.beachmart_cartEstArrival.u.getTransitInfo(tagObj.pid,data,index)); //empty first so when reset by zip change, no duplicate info is displayed.
 						}
 						
 					}
@@ -108,10 +110,10 @@ var beachmart_cartEstArrival = function() {
 //any functions that are recycled should be here.
 		u : {
 		
-			initEstArrival : function(infoObj){
+			initEstArrival : function(infoObj, stid){
 
 				app.u.dump("BEGIN beachmart_cartEstArrival.u.initEstArrival");
-				window.SKU = infoObj.pid; app.u.dump("GLOBAL SKU IS A TEMPORARY SOLUTION!!!",'warn'); //was originally written in a hybrid store. need to get this more app friendly.
+				//window.SKU = infoObj.pid; app.u.dump("GLOBAL SKU IS A TEMPORARY SOLUTION!!!",'warn'); //was originally written in a hybrid store. need to get this more app friendly.
 				var pid = infoObj.pid;
 				var zip;
 				if(app.data.cartDetail && app.data.cartDetail.ship && app.data.cartDetail.ship.postal) {
@@ -121,10 +123,14 @@ var beachmart_cartEstArrival = function() {
 				navigator.geolocation is crappily supported. appears there's no 'if user hits no' support to execute an alternative. at least in FF.
 				look at a pre-20120815 copy of this lib for geocoding
 				*/
-
-				if(zip) {
-					app.u.dump(" -> zip code is cart ["+zip+"]. Use it");
-					app.ext.beachmart_cartEstArrival.u.getShipQuotes(zip, pid); //function also gets city/state from googleapi
+					//if there is a zip, getShipQuotes, if there is a zip but item is a coupon or bundled item skip it. 
+					// Otherwise tell user to enter their zip
+				if(zip) {	
+					if((stid && stid[0] == '%') || infoObj.asm_master) {}
+					else {
+						app.u.dump(" -> zip code is cart ["+zip+"]. Use it");
+						app.ext.beachmart_cartEstArrival.u.getShipQuotes(zip, pid, stid); //function also gets city/state from googleapi
+					}
 				}
 				else {
 					app.u.dump(" -> no zip code entered. Info will be added when zip is entered.");
@@ -137,11 +143,12 @@ var beachmart_cartEstArrival = function() {
 
 			},
 			
-			getShipQuotes : function(zip, pid)	{
-				app.u.dump("BEGin beachmart_cartEstArrival.u.getShipQuotes");
-				var $context = $(app.u.jqSelector('#','cartStuffList_'+pid));
+			getShipQuotes : function(zip, pid, stid)	{
+				app.u.dump("BEGin beachmart_cartEstArrival.u.getShipQuotes"); app.u.dump(pid);
+				var $context = $(app.u.jqSelector('#','cartStuffList_'+stid));
 				//here, inventory check is done instead of isProductPurchaseable, because is used specifically to determine whether or not to show shipping.
 				// the purchaseable function takes into account considerations which have no relevance here (is parent, price, etc).
+				app.u.dump(app.data['appProductGet|'+pid]);
 				if(app.ext.store_product.u.getProductInventory(pid) <= 0){
 					//no inventory. Item not purchaseable. Don't get shipping info
 					$('.cartShippingInformation .cartPutLoadingHere',$context).removeClass('loadingBG').hide();
@@ -167,7 +174,7 @@ var beachmart_cartEstArrival = function() {
 					}
 					app.calls.cartSet.init({"ship/postal":zip},{},'passive');
 					app.ext.beachmart.calls.time.init({},'passive');
-					app.ext.beachmart.calls.appShippingTransitEstimate.init({"@products":prodArray,"ship_postal":zip,"ship_country":"US"},{'callback':'showTransitTimes','extension':'beachmart_cartEstArrival'},'passive');
+					app.ext.beachmart.calls.appShippingTransitEstimate.init({"@products":prodArray,"ship_postal":zip,"ship_country":"US"},{'callback':'showTransitTimes','extension':'beachmart_cartEstArrival','stid':stid,'pid':pid},'passive');
 				//	app.data.cartDetail['data.ship_zip'] = app.data[tagObj.datapointer].zip; //need this local for getShipQuotes's callback.
 
 					app.model.dispatchThis('passive'); //potentially a slow request that should interfere with the rest of the load.
