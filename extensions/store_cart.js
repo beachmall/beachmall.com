@@ -313,7 +313,7 @@ $tag.one('click',function(event){
 //only show amount if not blank.
 //						app.u.dump('THE SHIPPING AMOUNT: '); app.u.dump(app.data.cartDetail['@SHIPMETHODS'][i].amount);
 						if(app.data.cartDetail['@SHIPMETHODS'][i].amount !== "undefined")	{
-				app.u.dump('AMOUNT: '); app.u.dump(app.data.cartDetail['@SHIPMETHODS'][i].amount);
+				//app.u.dump('AMOUNT: '); app.u.dump(app.data.cartDetail['@SHIPMETHODS'][i].amount);
 /*BEACHMALL*/				if(app.data.cartDetail['@SHIPMETHODS'][i].amount == 0) {
 /*BEACHMALL*/					o += "<span class='orderShipAmount cartFree'>FREE<\/span>";
 /*BEACHMALL*/					}

@@ -49,15 +49,12 @@ var beachmart_cartEstArrival = function() {
 				
 				onSuccess : function(tagObj) {
 					app.u.dump("BEGIN beachmart_cartEstArrival.callbacks.showTransitTimes");
-					app.u.dump(tagObj.stid);
 					//use cutoff from response, not product.
 					//var $container = $('#cartStuffList_'+app.u.makeSafeHTMLId(SKU));
 					var $container = $('#cartStuffList_'+app.u.makeSafeHTMLId(tagObj.stid));
-					$container.attr('data-number','2');
 		
 					app.u.dump(" -> $container.length: "+$container.length);
-					var data = app.data[tagObj.datapointer]; //shortcut.
-	//	app.u.dump('Data:') ;app.u.dump(data); 			
+					var data = app.data[tagObj.datapointer]; //shortcut.		
 					if(!$.isEmptyObject(data['@Services'])) {
 						app.u.dump(" -> @Services is not empty");
 						var index = app.ext.beachmart.u.getShipMethodByID(data['@Services'],'UGND');
@@ -123,18 +120,14 @@ var beachmart_cartEstArrival = function() {
 				navigator.geolocation is crappily supported. appears there's no 'if user hits no' support to execute an alternative. at least in FF.
 				look at a pre-20120815 copy of this lib for geocoding
 				*/
-					//if there is a zip, getShipQuotes, if there is a zip but item is a coupon or bundled item skip it. 
-					// Otherwise tell user to enter their zip
+					//if there is a zip, getShipQuotes, otherwise tell user to enter their zip
 				if(zip) {	
-					if((stid && stid[0] == '%') || infoObj.asm_master) {}
-					else {
-						app.u.dump(" -> zip code is cart ["+zip+"]. Use it");
-						app.ext.beachmart_cartEstArrival.u.getShipQuotes(zip, pid, stid); //function also gets city/state from googleapi
-					}
+					app.u.dump(" -> zip code is cart ["+zip+"]. Use it");
+					app.ext.beachmart_cartEstArrival.u.getShipQuotes(zip, pid, stid); //function also gets city/state from googleapi
 				}
 				else {
 					app.u.dump(" -> no zip code entered. Info will be added when zip is entered.");
-					$('.cartPutLoadingHere.loadingBG', '#cartStuffList_'+pid).removeClass('loadingBG').append('Enter your zip-code in the field at the bottom of the cart to see shipping estimates.');
+					$('.cartPutLoadingHere.loadingBG', '#cartStuffList_'+stid).removeClass('loadingBG').append('Enter your zip-code in the field at the bottom of the cart to see shipping estimates.');
 				//	app.u.dump(" -> no zip code entered. request via whereAmI");
 
 				//	app.calls.whereAmI.init({'callback':'handleWhereAmI','extension':'beachmart'},'passive');
@@ -144,11 +137,11 @@ var beachmart_cartEstArrival = function() {
 			},
 			
 			getShipQuotes : function(zip, pid, stid)	{
-				app.u.dump("BEGin beachmart_cartEstArrival.u.getShipQuotes"); app.u.dump(pid);
+				app.u.dump("BEGin beachmart_cartEstArrival.u.getShipQuotes");
 				var $context = $(app.u.jqSelector('#','cartStuffList_'+stid));
 				//here, inventory check is done instead of isProductPurchaseable, because is used specifically to determine whether or not to show shipping.
 				// the purchaseable function takes into account considerations which have no relevance here (is parent, price, etc).
-				app.u.dump(app.data['appProductGet|'+pid]);
+//				app.u.dump(app.data['appProductGet|'+pid]);
 				if(app.ext.store_product.u.getProductInventory(pid) <= 0){
 					//no inventory. Item not purchaseable. Don't get shipping info
 					$('.cartShippingInformation .cartPutLoadingHere',$context).removeClass('loadingBG').hide();
