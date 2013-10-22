@@ -1150,7 +1150,8 @@ global app styles
 */
 .ui-widget-anymessage {position:relative; z-index:500; font-size:13px; font-family:"Open Sans";}
 .ui-widget-anymessage button.ui-state-default {height:20px; width:20px;}
-.cents {font-size: 50%;	vertical-align: super;}
+.cents {font-size: 75%;	vertical-align: top;}
+.productTemplate .cents, #modalCartContents .cents, .checkoutFormContainer .cents {font-size:100%}
 .largeButton {height:40px; width:160px; background-color:#3bb3c3; color:#ffffff; font-family:Oswald; font-size:18px; font-weight:bold; text-align:center; line-height:10px; border:none;}
 
 .homepageCategories ul li {margin: 5px 10px 5px 10px;}
@@ -1516,10 +1517,10 @@ CART TEMPLATE
 #modalCart .cartSummaryTotalsContainer {padding:0; font-size:1.0em; margin:0;}
 #modalCart .cartSummaryTotalsContainer h2.ui-widget-header {display:none;}
 #modalCart .cartSummaryTotalsContainer div.ui-widget:first-child {margin:1.6% 0 0 0; background:#ffffff;}
-#modalCart .cartSummaryTotalsContainer .cartSummaryContainer {padding: 0px; margin:0; border:none; background:#ffffff;}
+#modalCart .cartSummaryTotalsContainer .cartSummaryContainer {padding: 0px; margin:0; border:none; background:#F5F1DE;}
 #modalCart .cartSummaryContainer section {height:50%; width:33.3%; float:right; margin:1.6% 0;}
-#modalCart #cartTemplateCostSummary {border-top:1px solid #dddddd; border-left:1px solid #DDDDDD;}
-#modalCart .cartSummaryContainer section#cartTemplateShippingContainer {border:1px solid #dddddd; padding:0 0 1% 1%;}
+#modalCart #cartTemplateCostSummary {border-top:1px solid #dddddd; border-left:1px solid #DDDDDD; background:#ffffff;}
+#modalCart .cartSummaryContainer section#cartTemplateShippingContainer {border:1px solid #dddddd; padding:0 0 1% 1%; background:#ffffff;}
 #modalCart .cartSummary > div {padding:2% 4.6% 2% 2%; text-align:right; border-bottom:1px solid #dddddd;}
 #modalCart .cartSummary > div > h6 {font-weight:bold; font-size:1.0em; display:inline; float:left;}
 #modalCart .cartSummary > div .orderShipMethod {font-weight:bold; font-size:1.0em; display:inline; float:left;}
@@ -1566,14 +1567,14 @@ PRODUCTLISTTEMPLATECART
 ****************************************************************************/
 #modalCart .lineItemProdlist li	{height:auto; width:100%; font-family:"Open Sans"; padding:0;} /* padding:0 0 1.5% 0; margin:0 0 1.5% 0; border-bottom:1px dashed #FFCC66;*/
 
-#modalCart .cartItemWrapper {height:150px; width:97.8%; padding:1.6%; background-color:#f5f1de; border-left:1px solid #FFFFFF; border-right:1px solid #FFFFFF; border-bottom:1px solid #FFFFFF;}
+#modalCart .cartItemWrapper {height:150px; width:97.8%; padding:1.6%; background-color:#f5f1de; border-left:1px solid #999999; border-right:1px solid #999999; border-bottom:1px solid #999999;}
 
 #modalCart .cartHeader {height:30px; width:100%; background:#3bb3c3; color:#ffffff; padding:0 1.2% 0 0; text-align:center; line-height:30px;}
 #modalCart .cartHeader .cartDesc {border:none;}
 
 #modalCart .cartImg {height:100%; width:21%;}
 #modalCart .cartImg img {max-width:100%; margin:0;}
-#modalCart .cartDesc {height:100%; width:44%; border-left:1px solid #ffffff;}
+#modalCart .cartDesc {height:100%; width:44%; border-left:1px solid #999999;}
 #modalCart .cartDesc h4 {font-size:1.2em; margin:0 0 2% 0; padding:0 1.5%;}
 #modalCart .cartDesc .ztable_row_small {font-size:1.2em; margin:0 0 2% 0; padding:0 0 0 1.5%;}
 #modalCart .cartDesc .cartLatency, #modalCart .cartDesc .transitContainer, #modalCart .cartDesc .cartPutLoadingHere {margin:0 0 2% 0; padding:0 0 0 1.5%;}
@@ -1582,7 +1583,7 @@ PRODUCTLISTTEMPLATECART
 
 
 #modalCart .cartPQT {height:100%; width:33%; text-align:center; font-family:"Open Sans";}
-#modalCart .cartQtyInput {border-left:1px solid #ffffff;}
+#modalCart .cartQtyInput {border-left:1px solid #999999;}
 #modalCart .cartQtyInput input{height:15%; width:60%; text-align:center; margin:5% auto;}
 #modalCart .cartLineButton.ui-state-default {height:17%; width:60%; margin:6% auto; font-family:"Open Sans"; color:#ffffff; border:none; border-radius:0;}
 #modalCart .cartLineButton.ui-state-default span:first-child {display:none;}
@@ -1590,8 +1591,8 @@ PRODUCTLISTTEMPLATECART
 #modalCart .updateButton  {background:#3bb3c3;}
 #modalCart .moveToWishlist {background:#f8c301;}
 #modalCart .removeButton.cartLineButton {background:#FFE680; color:#e0463a;}
-#modalCart .cartItemPrice {border-left:1px solid #ffffff; padding:2% 0 0 0;}
-#modalCart .cartItemTotal {border-left:1px solid #ffffff; padding:2% 0 0 0;}
+#modalCart .cartItemPrice {border-left:1px solid #999999; padding:2% 0 0 0;}
+#modalCart .cartItemTotal {border-left:1px solid #999999; padding:2% 0 0 0;}
 
 
 
