@@ -366,7 +366,7 @@ var store_filter = function() {
 			},
 	
 				//gets list of siblings from product (if present) and puts first two on product list
-				//the one that doesn't match the product is set first, and the second is hidden w/ css
+				//the one that doesn't match the product is set first
 			siblingProductList : function($tag,data)	{
 //				app.u.dump("BEGIN store_filter.renderFormats.productList");
 //				app.u.dump(" -> data.bindData: "); app.u.dump(data.bindData);
@@ -374,6 +374,7 @@ var store_filter = function() {
 				if(app.u.isSet(data.value))	{
 						//data is comma separated list, make into array for processing
 					var listOfProducts = data.value.split(",");
+
 						//if at least two sib images exist,
 						//check if first sib is prod image, if not send as is, if so put second image first
 						//(buildProductList didn't like a single item in csv)
@@ -389,9 +390,20 @@ var store_filter = function() {
 						}
 					}
 					//data.bindData.csv = data.value;
-					app.ext.store_prodlist.u.buildProductList(data.bindData,$tag);
+					app.ext.store_prodlist.u.buildProductList(data.bindData,$tag);	
 				}
-			}, //siblingProductList		
+			}, //siblingProductList	
+
+			hideIfNotPurchaseable : function($tag, data) {
+				if(app.ext.store_product.u.productIsPurchaseable(data.value)) {
+//					app.u.dump('Product is purchasable....');
+					//yay, you get to stay in the list!!
+				}
+				else {
+					$tag.hide();
+//					app.u.dump('TAG HIDDEN!!');
+				}
+			}, //hideIfNotPurchaseable
 		
 				//hides geo location/time in transit and add to cart button if product is discontinued or not purchasable
 				hideGeoElements : function($tag, data) {
@@ -1290,7 +1302,8 @@ return filters;
 						 return app.ext.myRIA.a.showContent('',P);
 					});
 				},
-							
+				
+				
 	/*			showShipRegion : function($context) {
 					$('.cartRegion', $context).each(function() {
 						var $this = $(this);
