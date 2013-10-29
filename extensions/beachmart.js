@@ -838,7 +838,6 @@ var store_filter = function() {
 				},
 				
 				productImages : function($tag,data)	{
-					app.u.dump('data.value:::'); app.u.dump(data.value);
 	//				app.u.dump("BEGIN myRIA.renderFormats.productImages ["+data.value+"]");
 					var pdata = app.data['appProductGet|'+data.value]['%attribs']; //short cut to product object in memory.
 					var imgs = ''; //all the html for all the images. appended to $tag after loop.
@@ -1049,9 +1048,9 @@ return filters;
 									items: {
 										start: 8,
 									},
-									auto: false, /*{
+									auto: {
 										pauseOnHover: "immediate"
-									},*/
+									},
 									prev: '.featCarouselPrev',
 									next: '.featCarouselNext',
 									height: 405,
