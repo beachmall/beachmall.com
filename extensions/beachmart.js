@@ -368,16 +368,15 @@ var store_filter = function() {
 				//gets list of siblings from product (if present) and puts first two on product list
 				//the one that doesn't match the product is set first
 			siblingProductList : function($tag,data)	{
-//				app.u.dump("BEGIN store_filter.renderFormats.productList");
+//				app.u.dump("BEGIN store_filter.renderFormats.siblingProductList");
 //				app.u.dump(" -> data.bindData: "); app.u.dump(data.bindData);
 				var pid = app.u.makeSafeHTMLId($tag.parent().attr('data-pid'));
+		
 				if(app.u.isSet(data.value))	{
 						//data is comma separated list, make into array for processing
 					var listOfProducts = data.value.split(",");
-
 						//if at least two sib images exist,
 						//check if first sib is prod image, if not send as is, if so put second image first
-						//(buildProductList didn't like a single item in csv)
 					if(listOfProducts[0] && listOfProducts[1]) {
 						if(listOfProducts[0].indexOf(''+pid) < 0) {
 							data.bindData.csv = data.value;
@@ -388,14 +387,17 @@ var store_filter = function() {
 							listOfProducts[0] = tmp;
  							data.bindData.csv = listOfProducts;
 						}
+						app.ext.store_prodlist.u.buildProductList(data.bindData,$tag);	
 					}
-					//data.bindData.csv = data.value;
-					app.ext.store_prodlist.u.buildProductList(data.bindData,$tag);	
+					
 				}
 			}, //siblingProductList	
 
+				//looks at siblings added with siblingProductList and hides if not purchasable.
+				//adds an attribute used for counting number of purchasable siblings if is purchasable
 			hideIfNotPurchaseable : function($tag, data) {
 				if(app.ext.store_product.u.productIsPurchaseable(data.value)) {
+					$tag.attr('data-purchasable',true);
 //					app.u.dump('Product is purchasable....');
 					//yay, you get to stay in the list!!
 				}
@@ -404,6 +406,19 @@ var store_filter = function() {
 //					app.u.dump('TAG HIDDEN!!');
 				}
 			}, //hideIfNotPurchaseable
+			
+			siblingCount : function($tag, data) {
+				var count = 0;
+				$('ul.fluidList li',$tag.parent().parent()).each(function(){
+					if($(this).attr('data-purchasable')) {
+						count += 1;
+					}
+				});
+				
+				if(count > 3) {
+					$tag.show();
+				}
+			},
 		
 				//hides geo location/time in transit and add to cart button if product is discontinued or not purchasable
 				hideGeoElements : function($tag, data) {
