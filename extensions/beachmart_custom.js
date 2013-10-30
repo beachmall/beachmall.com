@@ -156,7 +156,7 @@ app.ext.beachmart.u.getShipQuotes(app.data[tagObj.datapointer].zip);
 					$('.putLoadingHere',$container).removeClass('loadingBG');
 					$('.loadingText',$container).hide();
 					$('.shipMessage, .estimatedArrivalDate, .deliveryLocation, .deliveryMethod',$container).empty()
-					$('.timeInTransitMessaging',$container).append("Unable to determine your zip code for estimated arrival date. <a href='#' onClick='app.ext.beachmart.a.showZipDialog(); return false;'>click here</a> to enter zip.").show();
+					$('.timeInTransitMessaging',$container).empty().append("Unable to determine your zip code for estimated arrival date. <a href='#' onClick='app.ext.beachmart.a.showZipDialog(); return false;'>click here</a> to enter zip.").show();
 					}
 				}, //checkForOrGetShipZip
 			
