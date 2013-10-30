@@ -30,7 +30,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"201314.20131029205000",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"201314.20131030102600",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"", //used in non-local mode.
 	"checkoutAuthMode" : "active",//can be passive, active or required
@@ -2840,7 +2840,7 @@ this will likely become more flexible in the future. ###
 
 </table>
 
-	<div class='recentlyViewedItemsContainer CarouselContainer previousViewedCarouselContainer clearfix'>
+	<div class='recentlyViewedItemsContainer CarouselContainer previousViewedCarouselContainer clearfix displayNone'>
 			<div class='carouselTitles lightTealBkgrnd'>
 				<div class='carouselTitleTextContainer floatLeft'>PREVIOUSLY VIEWED PRODUCTS</div>
 <!-- REMOVED UNTIL PREVIOUSLY VIEWED AS A LIST IS READY				
@@ -2854,8 +2854,8 @@ this will likely become more flexible in the future. ###
 				<a class="carouselButtonDkBlue productPreviousViewedPrev carouselButtonDkBluePrev" href="#">prev</a>
 				<a class="carouselButtonDkBlue productPreviousViewedNext carouselButtonDkBlueNext" href="#">next</a>
 				
-			    <ul data-bind="var: session(session.recentlyViewedItems); format: productList; extension: store_prodlist; loadsTemplate: productListTemplate; hide_summary:1; hide_pagination:1; withReviews:1;  withVariations:1; withInventory:1;" class='listStyleNone fluidList clearfix noPadOrMargin productList productPreviousViewed'></ul> 
-			<!--<ul data-bind="var: session(recentlyViewedItems); format: productList; extension: store_prodlist; loadsTemplate: productListTemplate; hide_summary:1; hide_pagination:1; withReviews:1;  withVariations:1; withInventory:1;" class='listStyleNone fluidList clearfix noPadOrMargin productList productPreviousViewed'></ul>-->
+			<!-- <ul data-bind="var: session(session.recentlyViewedItems); format: productList; extension: store_prodlist; loadsTemplate: productListTemplate; hide_summary:1; hide_pagination:1; withReviews:1;  withVariations:1; withInventory:1;" class='listStyleNone fluidList clearfix noPadOrMargin productList productPreviousViewed'></ul> -->
+			<ul data-bind="var: session(recentlyViewedItems); format: productList; extension: store_prodlist; loadsTemplate: productListTemplate; hide_summary:1; hide_pagination:1; withReviews:1;  withVariations:1; withInventory:1;" class='listStyleNone fluidList clearfix noPadOrMargin productList productPreviousViewed'></ul> 
 			</div>
 		<div class='standardCarouselPagenation productPreviousViewedPagenation'></div>
 	</div>

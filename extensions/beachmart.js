@@ -154,6 +154,13 @@ var store_filter = function() {
 					app.ext.store_filter.u.runProductRecentCarousel($context);
 					//app.u.dump('Product fredsel ran');
 					app.ext.store_filter.u.handleToolTip();
+					app.ext.store_filter.u.showRecentlyViewedItems($context);
+				}]);
+				
+				app.rq.push(['templateFunction','productTemplate','onDeparts',function(infoObj) {
+					var $context = $(app.u.jqSelector('#'+infoObj.parentID));
+					var pid = infoObj.pid;
+					app.ext.store_filter.u.addRecentlyViewedItems($context, pid);
 				}]);
 				
 				app.rq.push(['templateFunction','cartTemplate','onCompletes',function(infoObj) {
@@ -1016,6 +1023,41 @@ return filters;
 				$( ".sliderValue",$form ).val( "$" + $( ".slider-range" ).slider( "values", 0 ) + " - $" + $( ".slider-range" ).slider( "values", 1 ) );
 				}, //renderSlider
 				
+				
+					//called on depart from prod page to add item to recently viewed items list
+					//changed this from quickstart's addition at page load to prevent items from showing in list on first page visit
+				addRecentlyViewedItems : function($context, pid) {
+						//pid is infoObj.pid passed from onDeparts
+					if($.inArray(pid,app.ext.myRIA.vars.session.recentlyViewedItems) < 0)	{
+						app.ext.myRIA.vars.session.recentlyViewedItems.unshift(pid);
+						$('.numRecentlyViewed','#appView').text(app.ext.myRIA.vars.session.recentlyViewedItems.length);
+						}
+					else	{
+						//the item is already in the list. move it to the front.
+						app.ext.myRIA.vars.session.recentlyViewedItems.splice(0, 0, app.ext.myRIA.vars.session.recentlyViewedItems.splice(app.ext.myRIA.vars.session.recentlyViewedItems.indexOf(pid), 1)[0]);
+						}
+				},//addRecentlyViewedItems
+				
+				
+					//populates carousel if items in recently viewed list, shows placeholder text if list empty
+				showRecentlyViewedItems : function($context) {
+					var $container = $('.recentlyViewedItemsContainer', $context);
+					
+						//if no recently viewed items, tell them the sky is blue
+					if(app.ext.myRIA.vars.session.recentlyViewedItems.length == 0) {
+		//container hidden by default. show by default and uncomment below to use a message indicating it's empty
+				//		$('.recentEmpty',$container).show();
+						//app.u.dump('There aint nuthin in there ma!');
+					}
+						//otherwise, show them what they've seen
+					else {
+						$container.show();
+				//		$('.recentEmpty',$container).hide();
+						$('ul',$container).empty(); //empty product list;
+						$($container.anycontent({data:app.ext.myRIA.vars.session})); //build product list
+						//app.u.dump('SESSION VAR:'); app.u.dump(app.ext.myRIA.vars.session.recentlyViewedItems);
+					}
+				},//showRecentlyViewedItems
 
 			//CAROUSEL FUNCTIONS
 				runCarousels : function() {
@@ -1262,12 +1304,14 @@ return filters;
 								$target.carouFredSel({
 									circular: true,
 									auto: false,
+									align: 'center',
 									prev: '.productPreviousViewedPrev',
 									next: '.productPreviousViewedNext',
-									/*items:{
+									items:{
 										height: 468,
-										width: 240
-									},*/
+										width: 240,
+										visible: 4
+									},
 									height: 405,
 									width: 960,
 									//items: 1,

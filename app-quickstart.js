@@ -900,12 +900,14 @@ for legacy browsers. That means old browsers will use the anchor to retain 'back
 				switch(pageType)	{
 
 					case 'product':
-	//add item to recently viewed list IF it is not already in the list.				
-						if($.inArray(infoObj.pid,app.ext.myRIA.vars.session.recentlyViewedItems) < 0)	{
-							app.ext.myRIA.vars.session.recentlyViewedItems.unshift(infoObj.pid);
+	//add item to recently viewed list IF it is not already in the list.
+//THIS MOVED TO beachmart.js TO ALLOW ITEMS TO BE ADDED ON DEPART IN ORDER TO PREVENT AN ITEM 
+//FROM BEING SHOWN ON ITS OWN PAGE (UNLESS IT IS NOT THE FIRST VISIT TO THAT PRODUCT'S PAGE)	
+//						if($.inArray(infoObj.pid,app.ext.myRIA.vars.session.recentlyViewedItems) < 0)	{
+//							app.ext.myRIA.vars.session.recentlyViewedItems.unshift(infoObj.pid);
 //** BEACHMART -> used for displaying the # of recently viewed items in the view.
-							$('.numRecentlyViewed','#appView').text(app.ext.myRIA.vars.session.recentlyViewedItems.length);
-							}
+//							$('.numRecentlyViewed','#appView').text(app.ext.myRIA.vars.session.recentlyViewedItems.length);
+//							}
 						infoObj.parentID = app.ext.myRIA.u.showProd(infoObj);
 						break;
 	

@@ -121,9 +121,11 @@ app.ext.beachmart.u.initEstArrival();
 					$('.loadingText',$container).hide();
 					},
 				onError : function(responseData,uuid)	{
+					var $container = $('#productTemplate_'+app.u.makeSafeHTMLId(SKU));
 //					alert("got here");
 //error handling is a case where the response is delivered (unlike success where datapointers are used for recycling purposes)
-					app.u.handleErrors(responseData,uuid); //a default error handling function that will try to put error message in correct spot or into a globalMessaging element, if set. Failing that, goes to modal.
+					//app.u.handleErrors(responseData,uuid); //a default error handling function that will try to put error message in correct spot or into a globalMessaging element, if set. Failing that, goes to modal.
+					$('.transitContainer',$container).empty().anymessage(app.u.youErrObject(responseData,uuid));
 					}
 				
 				

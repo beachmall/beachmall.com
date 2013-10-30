@@ -59,13 +59,13 @@ app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {
 	app.ext.beachmart.u.initEstArrival(P);
 	}]);
 
-//add previously viwed items to the div 'recentlyViewedItemsContainer' if present
-app.rq.push(['templateFunction','productTemplate','onDeparts',function(P) {
-	var $container = $('.recentlyViewedItemsContainer');
-	$container.show();
-	$("ul",$container).empty(); //empty product list
-	$container.anycontent({data:app.ext.myRIA.vars.session}); //build product list
-	}]);
+	//add previously viwed items to the div 'recentlyViewedItemsContainer' if present
+//	app.rq.push(['templateFunction','productTemplate','onDeparts',function(P) {
+//		var $container = $('.recentlyViewedItemsContainer');
+//		$container.show();
+//		$("ul",$container).empty(); //empty product list
+//		$container.anycontent({data:app.ext.myRIA.vars.session}); //build product list
+//		}]);
 
 //add previously viwed items to the div 'recentlyViewedItemsContainer' if present
 /*app.rq.push(['templateFunction','categoryTemplateBrands','onCompletes',function(P) {
