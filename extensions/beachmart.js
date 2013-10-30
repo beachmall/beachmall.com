@@ -244,7 +244,18 @@ var store_filter = function() {
 				onError : function (){
 					app.u.dump('BEGIN app.ext.store_filter.callbacks.startExtension.onError');
 				}
-			}
+			},
+			
+			
+			renderRedirectProduct : {
+				onSuccess:function(responseData){	
+					app.u.dump(' -> renderRedirectProduct');
+					responseData.$container.anycontent({"templateID":responseData.loadsTemplate,"datapointer":responseData.datapointer}); 
+				},
+				onError:function(responseData){	
+					app.u.dump('Error in extension: store_filter renderRedirectProduct');
+				}
+			},
 		}, //callbacks
 
 
@@ -438,6 +449,7 @@ var store_filter = function() {
 					}
 				},
 				
+					//Will add a message that current product is discontinued, and provide a link to a replacement
 				addRedirectURL : function($tag, data) {
 					//app.u.dump('Replacement Product: '); app.u.dump(data.value['%attribs']['user:replacement_product']);
 					if(data.value['%attribs']['user:replacement_product']) {
@@ -445,7 +457,36 @@ var store_filter = function() {
 						$tag.append('THIS PRODUCT IS DISCONTINUED,<br><a class="pointer" title="new product" onClick="return showContent(\'product\',{\'pid\':\''+data.value['%attribs']['user:replacement_product']+'\'});">CLICK HERE TO SEE</a><BR>THE NEW VERSION!');
 					}																						 onClick="return showContent('product',{'pid':'wridt'});"
 				},
-		
+				
+					//if a product is discontinued, will add minimal info about the replacement and provide a link to it.
+				addRedirectProduct : function($tag, data) {
+					var obj = {
+						pid : app.u.makeSafeHTMLId(data.value),
+						"withVariations":1,
+						"withInventory":1
+					};
+					
+					var _tag = {								
+						"callback":"renderRedirectProduct",		
+						"extension":"store_filter",			
+						"$container" : $tag,
+						"loadsTemplate" : data.bindData.loadsTemplate
+					};
+					app.calls.appProductGet.init(obj, _tag, 'immutable');
+				
+					//execute calls
+					app.model.dispatchThis('immutable');
+				},
+				
+					//get product inventory and display in tag
+				showInv :function($tag, data) {
+					var pid = app.u.makeSafeHTMLId(data.value.pid);
+					app.u.dump('redirect inventory_____________________'); app.u.dump(data.value['@inventory'][pid].inv); app.u.dump(data.bindData.posttext);
+					if(data.value['@inventory'] && data.value['@inventory'][pid] && data.value['@inventory'][pid].inv) {
+						$tag.text("(" + data.value['@inventory'][pid].inv + ")");
+					}
+				},
+
 				showShipRegion : function($tag, data) {
 					//app.u.dump('--------->'); app.u.dump(data.value);
 					$tag.append(data.value); 

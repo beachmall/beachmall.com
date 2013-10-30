@@ -34,6 +34,7 @@ var myRIA = function() {
 			'categoryTemplateBuyerGuide',
 			'productListTemplateToolTipThumb',
 			'categoryTemplateSiteMap',
+			'redirectProductTemplate',
 //above here are custom beachmart templates			
 //the list of templates that are commonly edited (same order as they appear in appTemplates
 			'homepageTemplate',	'categoryTemplate',

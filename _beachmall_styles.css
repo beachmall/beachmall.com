@@ -1001,7 +1001,15 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 .fullWidth .mainProdColumn .mpNoShow {display:none;}
 /*.fullWidth .prodViewerAddToCartForm .addToCartButton {height:30px; width:120px; color:#fff; background:#E0463A; border:none; border-radius:0px; clear:both;}*/
 .fullWidth .prodViewerAddToCartForm .shipTime.latency.floatLeft {margin:20px 0 0 0;}
-.disRedirect {color:#f8c301; font-family:montserrat; font-size:30px; text-align:center;}
+.disRedirect {font-family:"Open Sans"; color:#3bb3c3;}
+.disRedirect h2 {font-family:montserrat; margin:0 0 10px 0; color:#000000;}
+.disRedirect .imaginarium {margin:0 15px 0 0;}
+.disRedirect h3 {height:auto; width:60%; margin:0 0 5px 0;}
+.disRedirect h4 {color:#E63738; width:61%;}
+.disRedirect .reviewtorium {width:61%;}
+.disRedirect .pr-snippet-wrapper {background:none; border:none; padding:0;}
+.disRedirect .pr-snippet-stars {border:none;}
+.disRedirect .pr-snippet-read-write,.disRedirect .pr-snippet-social-bar {display:none;}
 .disRedirect a {color:#3bb3c3; font-weight:bold; text-decoration:underline;}
 .disRedirect a:hover {color:#E63738;}
 .fullWidth .prodViewerAddToCartForm .addToCartButton	{
