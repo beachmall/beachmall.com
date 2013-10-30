@@ -525,7 +525,7 @@ var store_filter = function() {
 								//user:prod_shipping_msg'];
 								//var us1ts = data.value['%attribs']['us1:ts'
 
-									if(app.data[rd.datapointer]['%attribs']['user:prod_ship_expavail'] == 0){
+									if(app.data[rd.datapointer]['%attribs']['user:prod_ship_expavail'] && app.data[rd.datapointer]['%attribs']['user:prod_ship_expavail'] == 1){
 										$tag.text('Expedited shipping not available');
 									}
 						//			if(app.data[rd.datapointer]['%attribs']['zoovy:base_price'] > 200){
@@ -555,8 +555,8 @@ var store_filter = function() {
 									app.u.throwMessage(rd);
 									}
 								else{
-									if(app.data[rd.datapointer]['%attribs']['user:prod_ship_expavail'] == 0){
-										$tag.text('Expedited shipping not available');
+									if(app.data[rd.datapointer]['%attribs']['user:prod_ship_expavail'] && app.data[rd.datapointer]['%attribs']['user:prod_ship_expavail'] == 1){
+										$tag.text('Expedited shipping not available for this order');
 									}
 						//			if(app.data[rd.datapointer]['%attribs']['zoovy:base_price'] > 200){
 						//				$tag.text('The rent is too damn high!');
@@ -674,22 +674,6 @@ var store_filter = function() {
 				showShipLatency : function ($tag, data) {
 					//app.u.dump('***TEST '); app.u.dump(data.value);
 					setTimeout(function(){
-					
-					app.u.dump('data.value.stid'); app.u.dump(data.value.stid);
-					
-	/*				hideIfASM : function($tag, data) {
-				if((data.value.stid && data.value.stid[0] == '%') || data.value.asm_master)	{
-					$tag.hide()
-					if($tag.attr('data-included') == 1) {
-						$tag.after('(included)');
-					}
-				}
-			},				
-	*/				
-					
-					
-					
-					
 							//set the vars needed to determine message
 						if($tag.attr('data-cart')) {	//if is for cart prod list
 							if((data.value.stid && data.value.stid[0] == '%') || data.value.asm_master) {
