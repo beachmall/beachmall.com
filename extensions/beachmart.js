@@ -481,11 +481,10 @@ var store_filter = function() {
 					//get product inventory and display in tag
 				showInv :function($tag, data) {
 					var pid = app.u.makeSafeHTMLId(data.value.pid);
-					app.u.dump('redirect inventory_____________________'); app.u.dump(data.value['@inventory'][pid].inv); app.u.dump(data.bindData.posttext);
 					if(data.value['@inventory'] && data.value['@inventory'][pid] && data.value['@inventory'][pid].inv) {
 						$tag.text("(" + data.value['@inventory'][pid].inv + ")");
 					}
-				},
+				}, //showInv
 
 				showShipRegion : function($tag, data) {
 					//app.u.dump('--------->'); app.u.dump(data.value);
