@@ -1302,21 +1302,20 @@ return filters;
 					//for whatever reason, caroufredsel needs to be executed after a moment.
 							setTimeout(function(){
 								$target.carouFredSel({
-									circular: true,
+						//			circular: true,
 									auto: false,
-									align: 'center',
+						//			align: 'left',
 									prev: '.productPreviousViewedPrev',
 									next: '.productPreviousViewedNext',
 									items:{
 										height: 468,
-										width: 240,
-										visible: 4
+										width: 240
 									},
 									height: 405,
 									width: 960,
-									//items: 1,
+									//items: 4,
 									pagination: '.productPreviousViewedPagenation',
-									scroll: 4,
+									scroll: 1,
 							//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
 									swipe: {
 										onMouse: true,
