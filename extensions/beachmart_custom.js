@@ -125,7 +125,7 @@ app.ext.beachmart.u.initEstArrival();
 //					alert("got here");
 //error handling is a case where the response is delivered (unlike success where datapointers are used for recycling purposes)
 					//app.u.handleErrors(responseData,uuid); //a default error handling function that will try to put error message in correct spot or into a globalMessaging element, if set. Failing that, goes to modal.
-					$('.transitContainer',$container).empty().anymessage(app.u.youErrObject(responseData,uuid));
+					$('.transitContainer',$container).empty().anymessage(app.u.youErrObject(""+responseData,uuid));
 					}
 				
 				
@@ -1447,13 +1447,13 @@ else	{
 	
 $('.estimatedArrivalDate',$r).append(app.ext.beachmart.u.yyyymmdd2Pretty(data['@Services'][index]['arrival_yyyymmdd'])+" to");
 
-if(app.data.cartDetail.ship.city)	{
+if(app.data.cartDetail && app.data.cartDetail.ship.city)	{
 	$('.deliveryLocation',$r).append(" "+app.data.cartDetail.ship.city);
 	}
-if(app.data.cartDetail.ship.region)	{
+if(app.data.cartDetail && app.data.cartDetail.ship.region)	{
 	$('.deliveryLocation',$r).append(" "+app.data.cartDetail.ship.region);
 	}
-if	(app.data.cartDetail.ship.postal)	{
+if	(app.data.cartDetail && app.data.cartDetail.ship.postal)	{
 	$('.deliveryLocation',$r).append(" "+app.data.cartDetail.ship.postal+" (change)")
 	}
 else{
