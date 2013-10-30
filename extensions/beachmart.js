@@ -351,10 +351,12 @@ var store_filter = function() {
 			scrollToRevealTab : function(pid, href) {
 				var $context = $(app.u.jqSelector("#","productTemplate_"+pid));
 				var $prodSizing = $(".tabbedProductContent",$context);
-				$("a[href="+href+"]",$context).click();
-				$('html, body').animate({
-					scrollTop: $prodSizing.offset().top
-				}, 2000);
+				setTimeout(function(){
+					$("a[href="+href+"]",$context).mouseenter();
+					$('html, body').animate({
+						scrollTop: $prodSizing.offset().top
+					}, 2000);
+				},500);
 			},
 			
 		}, //actions
