@@ -675,9 +675,27 @@ var store_filter = function() {
 					//app.u.dump('***TEST '); app.u.dump(data.value);
 					setTimeout(function(){
 					
+					app.u.dump('data.value.stid'); app.u.dump(data.value.stid);
+					
+	/*				hideIfASM : function($tag, data) {
+				if((data.value.stid && data.value.stid[0] == '%') || data.value.asm_master)	{
+					$tag.hide()
+					if($tag.attr('data-included') == 1) {
+						$tag.after('(included)');
+					}
+				}
+			},				
+	*/				
+					
+					
+					
+					
 							//set the vars needed to determine message
 						if($tag.attr('data-cart')) {	//if is for cart prod list
-							if(data.value.product) {
+							if((data.value.stid && data.value.stid[0] == '%') || data.value.asm_master) {
+								return; //if this is an assembly product in the cart, skip the time in trans altogether
+							}
+							else if(data.value.product) {
 								var prod = app.data['appProductGet|'+app.u.makeSafeHTMLId(data.value.product)];
 								var userProdShipMsg = prod['%attribs']['user:prod_shipping_msg'];
 								var us1ts = prod['%attribs']['us1:ts'];
