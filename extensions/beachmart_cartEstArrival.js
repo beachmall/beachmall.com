@@ -208,7 +208,10 @@ var beachmart_cartEstArrival = function() {
 
 				if(prodAttribs['user:prod_ship_expavail'] && prodAttribs['user:prod_ship_expavail'] == 0)	{
 				//if expedited shipping is not available, no other methods show up (will ship ground)
-					$('.deliveryMethod',$r).append(data['@Services'][index]['method'])
+					var shipMeth = $('input[type="radio"]:checked','.cartShipMethods').parent().text().split(":");
+					shipMeth = shipMeth[0];
+					//$('.deliveryMethod',$r).append(data['@Services'][index]['method'])
+					$('.deliveryMethod',$r).append("by " + shipMeth);
 					$('.deliveryMethod',$r).append("<span class='zlink'> (Need it faster?)</span>").addClass('pointer').click(function(){
 						app.ext.beachmart.a.showShipGridInModal('appShippingTransitEstimate');
 						});
