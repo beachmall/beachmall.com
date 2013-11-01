@@ -3658,19 +3658,18 @@ START APP CART
 **************************************************************************************************************-->
 <div id='cartTemplate' class='loadingBG'>
 
+	<div class='checkoutButtonsContainer stdMargin clearfix'>
+		<menu class='cartButtonsContainer clearfix'>
+			<div class='cartBar'>
+				<!-- some buttons that are alternatives to checkout. fewer is better -->
+				<span title='proceed to secure checkout'><button class='ui-button ui-button-text ui-state-default ui-corner-all checkoutButton' onClick="showContent('checkout',{});">Begin Checkout</button></span>
+				<button class='floatRight ui-button-text ui-button ui-state-default ui-corner-all continueShoppingButton' onClick="$('#modalCart').dialog('close');">Continue Shopping</button>
+			</div>
+		</menu>
+	</div>
+
 	<form id='cartTemplateForm' action='#' onSubmit='return false'>
 		<table class='cartContainer'>
-			<tr>
-				<div class='checkoutButtonsContainer stdMargin clearfix'>
-					<menu class='cartButtonsContainer clearfix'>
-						<div class='cartBar'>
-							<!-- some buttons that are alternatives to checkout. fewer is better -->
-							<span title='proceed to secure checkout'><button class='ui-button ui-button-text ui-state-default ui-corner-all checkoutButton' onClick="showContent('checkout',{});">Begin Checkout</button></span>
-							<button class='floatRight ui-button-text ui-button ui-state-default ui-corner-all continueShoppingButton' onClick="$('#modalCart').dialog('close');">Continue Shopping</button>
-						</div>
-					</menu>
-				</div>
-			</tr>
 			<tr>
 				<td class='cartStuffContainer'>
 				
@@ -3708,11 +3707,14 @@ START APP CART
 							<section id='cartTemplateShippingContainer'>
 								<h3 data-bind='useParentData:true; format:displayOrShippingText; extension:store_filter;'></h3>
 								<div class='cartShipOptions'>
-									<label for='data-ship_zip'>Zip/Postal Code:</label>
-									<input type='text' size='6'  name='ship/postal' id='data-ship_zip' value='' data-bind='var: cart(ship/postal); format:popVal;' maxlength='10' onChange="app.calls.cartSet.init({'ship/postal':this.value, 'ship/region':''});
-										app.ext.store_cart.u.updateCartSummary();
-										app.ext.store_cart.calls.cartShippingMethodsWithUpdate.init();
-										app.model.dispatchThis('immutable');"  />
+									<form action='#' onSubmit='return false;'>
+										<label for='data-ship_zip'>Zip/Postal Code:</label>
+										<input type='text' size='6'  name='ship/postal' id='data-ship_zip' value='' data-bind='var: cart(ship/postal); format:popVal;' maxlength='10' onChange="app.calls.cartSet.init({'ship/postal':this.value, 'ship/region':''});
+											app.ext.store_cart.u.updateCartSummary();
+											app.ext.store_cart.calls.cartShippingMethodsWithUpdate.init();
+											app.model.dispatchThis('immutable');">
+										<input class='displayNone' type='button' value='submit'></input>
+									</form>
 									<div data-bind="var:cart(ship/city); format:showIfSet">
 										<div class='cartRegion' data-bind="var:cart(ship/city); format:showShipRegion; extension:store_filter;"></div>
 									</div>
