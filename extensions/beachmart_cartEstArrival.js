@@ -57,7 +57,9 @@ var beachmart_cartEstArrival = function() {
 					var data = app.data[tagObj.datapointer]; //shortcut.		
 					if(!$.isEmptyObject(data['@Services'])) {
 						app.u.dump(" -> @Services is not empty");
-						var index = app.ext.beachmart.u.getShipMethodByID(data['@Services'],'UGND');
+						var index = app.ext.beachmart.u.getShipMethodByID(data['@Services'],app.data.cartDetail.want.shipping_id);
+						app.u.dump(app.data.cartDetail.want.shipping_id);
+						app.u.dump(index);
 						if(!index) {
 							index = app.ext.beachmart.u.getFastestShipMethod(data['@Services']);
 						}
