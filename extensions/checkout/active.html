@@ -106,7 +106,7 @@ item list and summary are separate just to give more control over location.
 
 <div data-app-role='login'>
 
-	<div data-app-role='loginPasswordContainer' class='displayNone floatRight'>
+	<div data-app-role='loginPasswordContainer' class='displayNone'>
 		<div>If you have an account with us, please enter your password below to login</div>
 		<input type='password' placeholder='password' size='30' name='password' /><button data-app-event='orderCreate|execBuyerLogin'>login</button>
 	</div>
@@ -277,16 +277,16 @@ the defaultVar on prodName & image is for promotions, which have a 'description'
 -->
 <table>
 <tr id='chkoutCartItemTemplate'>
-	<td><img class='prodThumb' data-bind='var: product(zoovy:prod_image1); format:imageURL; defaultVar: product(%attribs.zoovy:prod_image1);' width='50' height='50' /></td>
-	<td>
+	<td class='pic'><img class='prodThumb' data-bind='var: product(zoovy:prod_image1); format:imageURL; defaultVar: product(%attribs.zoovy:prod_image1);' width='50' height='50' /></td>
+	<td class='text'>
 	<div class='prodName' data-bind='var: product(prod_name); format:text; defaultVar: description;'></div>
 	<div class='stid' data-bind='var: product(sku); format:text; className: stid; pretext: Sku: ;'></div>
 	<div class='prodLatency' data-bind='var:product(%attribs.zoovy:ship_latency); format:text; pretext:Normally ships in ; posttext: day(s);'></div>
 	<div class='prodOptions' data-bind='var: variations(%options); format:selectedOptionsDisplay;'></div>
 	</td>
-	<td class='alignRight'><span data-bind='var: product(qty); format:text;'></span></td>
-	<td class='alignRight'><span data-bind='var: product(price); format:money; currencySign: $;  hideZero:false; pretext: x ;'></span></td>
-	<td class='alignRight'><span data-bind='var: product(extended); format:money; currencySign: $; hideZero:false; pretext: = ;'></span></td>
+	<td class='alignRight qty'><span data-bind='var: product(qty); format:text;'></span></td>
+	<td class='alignRight smallCol'><span data-bind='var: product(price); format:money; currencySign: $;  hideZero:false; pretext: x ;'></span></td>
+	<td class='alignRight smallCol'><span data-bind='var: product(extended); format:money; currencySign: $; hideZero:false; pretext: = ;'></span></td>
 </tr>
 </table>
 
@@ -296,9 +296,9 @@ the defaultVar on prodName & image is for promotions, which have a 'description'
 <thead>
 <tr>
 	<th colspan='2' class='alignLeft'>product information</th>
-	<th class='alignRight'>qty</th>
-	<th class='alignRight'>price</th>
-	<th class='alignRight'>item total</th>
+	<th class='alignRight qty'>qty</th>
+	<th class='alignRight smallCol'>price</th>
+	<th class='alignRight smallCol'>item total</th>
 </tr>
 </thead>
 <tbody data-bind='var: cart(@ITEMS); format:processList; loadsTemplate:chkoutCartItemTemplate;'></tbody>

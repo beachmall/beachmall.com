@@ -1606,6 +1606,29 @@ PRODUCTLISTTEMPLATECART
 /***************************************************************************
 END PRODUCTLISTTEMPLATECART
 ****************************************************************************/
+
+/***************************************************************************
+CHECKOUT
+****************************************************************************/
+
+#checkoutContainer {height:auto; width:960px; margin:20px auto; font-family:"Open Sans";}
+#checkoutContainer fieldset{height:auto; width:600px; padding:15px; margin:10px auto;}
+#checkoutContainer input[type="text"], #checkoutContainer input[type="password"], #checkoutContainer input[type="email"], #checkoutContainer input[type="tel"]{min-width:200px; border:1px solid #cccccc; padding:6px;}
+#checkoutContainer .fullWidth {width:100%}
+#checkoutContainer .fullWidth thead tr {background:#3BB3C3; color:#ffffff; padding:2px 1px;}
+#checkoutContainer .fullWidth thead tr th {padding:2px 4px; text-align:center;}
+#checkoutContainer .fullWidth tr {border:1px solid #cccccc;}
+#checkoutContainer .fullWidth td {height:auto; padding:1%; border-right:1px solid #cccccc; text-align:center;}
+#checkoutContainer .pic {width:10%}
+#checkoutContainer .fullWidth td.text {width:50%; text-align:left;}
+#checkoutContainer .qty {width:5%;}
+#checkoutContainer .smallCol {width:12%;}
+
+
+/***************************************************************************
+END CHECKOUT
+****************************************************************************/
+
 /*
 some shared styles, pulled from cat layout but that will impact, potentially, more than that
 */
