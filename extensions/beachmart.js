@@ -555,8 +555,12 @@ var store_filter = function() {
 									app.u.throwMessage(rd);
 									}
 								else{
-									if(app.data[rd.datapointer]['%attribs']['user:prod_ship_expavail'] && app.data[rd.datapointer]['%attribs']['user:prod_ship_expavail'] == 1){
+									if(app.data[rd.datapointer]['%attribs']['user:prod_ship_expavail'] && app.data[rd.datapointer]['%attribs']['user:prod_ship_expavail'] == 0){
 										$tag.text('Expedited shipping not available for this order');
+										$('.shipMessage','#cartTemplateForm').hide();
+										$('.estimatedArrivalDate','#cartTemplateForm').hide();
+										$('.deliveryLocation','#cartTemplateForm').hide();
+										$('.deliveryMethod','#cartTemplateForm').hide();
 									}
 						//			if(app.data[rd.datapointer]['%attribs']['zoovy:base_price'] > 200){
 						//				$tag.text('The rent is too damn high!');

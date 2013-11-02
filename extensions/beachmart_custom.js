@@ -108,6 +108,9 @@ app.ext.beachmart.u.initEstArrival();
 						if(app.data.cartDetail && app.data.cartDetail.want && app.data.cartDetail.want.shipping_id) {
 							var index = app.ext.beachmart.u.getShipMethodByID(data['@Services'],app.data.cartDetail.want.shipping_id);
 						}
+						else if(app.ext.beachmart.u.getSlowestShipMethod(data['@Services'])) {
+							index = app.ext.beachmart.u.getSlowestShipMethod(data['@Services']);
+						}
 						else {
 							index = app.ext.beachmart.u.getFastestShipMethod(data['@Services']);
 							}
@@ -1476,7 +1479,7 @@ $('.deliveryLocation',$r).click(function(){app.ext.beachmart.a.showZipDialog()})
 			
 
 //pass in the @services object in a appShippingTransitEstimate and the index in that object of the fastest shipping method will be returned.
-			getShipMethodByID : function(servicesObj,ID)	{
+			getShipMethodByID : function(servicesObj,ID,useProdPage)	{
 				var r = false; //what is returned. will be index of data object
 				
 				if(app.data.cartShippingMethods && app.data.cartShippingMethods["@methods"]){
@@ -1512,6 +1515,20 @@ $('.deliveryLocation',$r).click(function(){app.ext.beachmart.a.showZipDialog()})
 				
 //				app.u.dump(" -> fastest index: "+r);
 				return r;
+				},
+				
+				getSlowestShipMethod : function(servicesObj) {
+					var r = false; //what is returned, index of ground shipping service, or false
+					if(typeof servicesObj == 'object')	{
+						var L = servicesObj.length;
+						for(var i = 0; i < L; i += 1)	{
+							if(servicesObj[i].method == 'UPS Ground')	{
+								r = i;
+								break; //no need to continue in loop.
+							}
+						}
+					}
+					return r;
 				},
 
 //pass in the @services object in a appShippingTransitEstimate and the index in that object of the fastest shipping method will be returned.

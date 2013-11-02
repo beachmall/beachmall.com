@@ -192,7 +192,7 @@ var beachmart_cartEstArrival = function() {
 				var prodAttribs = app.data['appProductGet|'+pid]['%attribs'];
 
 				var $r = $("<div class='shipSummaryContainer' \/>"); //what is returned. jquery object of shipping info.
-				$r.append("<span class='shipMessage'></span><span class='estimatedArrivalDate'></span><span title='Click to change destination zip code' class='deliveryLocation'></span><div class='deliveryMethod'></div><div class='expShipMessage'></div>");
+				$r.append("<span class='shipMessage'></span><span class='estimatedArrivalDate'></span><span title='Click to change destination zip code' class='deliveryLocation'></span><div class='deliveryMethod'></div>");
 
 				var hour = Number(data.cutoff_hhmm.substring(0,2)) + 3; //add 3 to convert to EST.
 				var minutes = data.cutoff_hhmm.substring(2);
@@ -220,7 +220,13 @@ var beachmart_cartEstArrival = function() {
 					}
 				else	{
 					app.u.dump(" -> prodAttribs['user:prod_ship_expavail']: "+prodAttribs['user:prod_ship_expavail']);
+					$r.empty().append("<div class='expShipMessage'></div>");
 					$('.expShipMessage',$r).append("<span class='zhint inconspicuouseZhint'>Expedited shipping not available for this item</span>");
+/*mark*/					$('.shipMessage','#cartTemplateForm').hide();
+					$('.estimatedArrivalDate','#cartTemplateForm').hide();
+					$('.deliveryLocation','#cartTemplateForm').hide();
+					$('.deliveryMethod','#cartTemplateForm').hide();
+					
 					}
 
 					
@@ -242,7 +248,7 @@ var beachmart_cartEstArrival = function() {
 					$('.deliveryLocation',$r).append(" (enter zip) ")
 					}
 				//$('.deliveryLocation',$r).click(function(){app.ext.beachmart.a.showZipDialog()})
-							return $r;
+				return $r;
 			}, //getTransitInfo
 			
 		
