@@ -222,7 +222,7 @@ var beachmart_cartEstArrival = function() {
 					app.u.dump(" -> prodAttribs['user:prod_ship_expavail']: "+prodAttribs['user:prod_ship_expavail']);
 					$r.empty().append("<div class='expShipMessage'></div>");
 					$('.expShipMessage',$r).append("<span class='zhint inconspicuouseZhint'>Expedited shipping not available for this item</span>");
-/*mark*/					$('.shipMessage','#cartTemplateForm').hide();
+					$('.shipMessage','#cartTemplateForm').hide();
 					$('.estimatedArrivalDate','#cartTemplateForm').hide();
 					$('.deliveryLocation','#cartTemplateForm').hide();
 					$('.deliveryMethod','#cartTemplateForm').hide();
@@ -251,7 +251,6 @@ var beachmart_cartEstArrival = function() {
 				return $r;
 			}, //getTransitInfo
 			
-		
 		}, //u [utilities]
 
 //app-events are added to an element through data-app-event="extensionName|functionName"

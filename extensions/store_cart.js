@@ -369,17 +369,7 @@ $tag.one('click',function(event){
 /*BEACHMALL*/		else {
 /*BEACHMART*/			o += "/>"+shipName+": <span >"+app.u.formatMoney(data.value[i].amount,'$','',false)+"<\/span><\/label><\/li>";
 /*BEACHMART*/			}
-/*new ish that may need to come out..........................................................
-					var d = new Date();
-					var arriveMonth = d.getMonth() + 1;
-					var arriveDay = Number(d.getDay());
-					var guaranteedDay = Number(data.value[i].guaranteed_delivery_days);
-					app.u.dump('now date'); app.u.dump(arriveMonth+"/"+arriveDay);
-					arriveDay = arriveDay+guaranteedDay;
-					app.u.dump('arrive date'); app.u.dump(arriveMonth+"/"+arriveDay);
-					o += "<span class='shippingArriveDate'> (arrival on "+arriveMonth+"/"+arriveDay+"<\/span><\/label><\/li>";
-//new ish that may need to come out..........................................................				
-*/				}
+				}
 				$tag.html(o);
 				} //shipMethodsAsRadioButtons
 
