@@ -558,7 +558,7 @@ var store_filter = function() {
 									if(app.data[rd.datapointer]['%attribs']['user:prod_ship_expavail'] && app.data[rd.datapointer]['%attribs']['user:prod_ship_expavail'] == 0){
 										//do nothing, attrib isn't set
 									}
-									else
+									else {
 										$tag.text('Expedited shipping not available for this order');
 											//if one item has no expedited shipping no items have it, hide time in transit
 										$('.shipMessage','#cartTemplateForm').hide();
