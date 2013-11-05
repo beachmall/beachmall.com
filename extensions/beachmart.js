@@ -305,6 +305,12 @@ var store_filter = function() {
 
 		a : {
 
+			showContentNoPropagation : function(product, pid) {
+				app.u.dump('Somthing to Read!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+				showContent(product,pid);
+				return false;
+			},
+		
 			execFilter : function($form,$page){
 
 				app.u.dump("BEGIN store_filter.a.filter");

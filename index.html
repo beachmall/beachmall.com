@@ -2345,7 +2345,8 @@ EndBug#2-->
 			<div class='prodThumbContainer myProdThumbSmall'>
 				<img src='blank.gif' class='prodThumb imgBorder' data-bind='var: product(images); format:imageURL;isElastic:1;bgcolor:ffffff;' width='208' height='208' />
 			</div>
-			<div class='hideInMinimalMode pointer moreDetailsSmall floatRight' onClick="showContent('product',{'pid':$(this).closest('[data-pid]').attr('data-pid')});">VIEW DETAILS</div>
+			<!-- <div class='hideInMinimalMode pointer moreDetailsSmall floatRight' onClick="showContent('product',{'pid':$(this).closest('[data-pid]').attr('data-pid')});">VIEW DETAILS</div> -->
+			<div class='hideInMinimalMode pointer moreDetailsSmall floatRight' onClick="app.ext.store_filter.a.showContentNoPropagation('product',{'pid':$(this).closest('[data-pid]').attr('data-pid')});">VIEW DETAILS</div>
 		</div>
 		
 		<div class='prodTextContainerSmall'>
