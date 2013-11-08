@@ -530,8 +530,11 @@ var store_filter = function() {
 								else{
 								//user:prod_shipping_msg'];
 								//var us1ts = data.value['%attribs']['us1:ts'
-
+										//if user:prod_ship_expavail is present and checked (set to 1) expedited shipping is available, show no message.
 									if(app.data[rd.datapointer]['%attribs']['user:prod_ship_expavail'] && app.data[rd.datapointer]['%attribs']['user:prod_ship_expavail'] == 1){
+										$tag.text('Expedited shipping not available');
+									}
+									else {	//the attribute is zero or not set, but either way no expedited shipping is available, show the message
 										$tag.text('Expedited shipping not available');
 									}
 						//			if(app.data[rd.datapointer]['%attribs']['zoovy:base_price'] > 200){
@@ -561,10 +564,10 @@ var store_filter = function() {
 									app.u.throwMessage(rd);
 									}
 								else{
-									if(app.data[rd.datapointer]['%attribs']['user:prod_ship_expavail'] && app.data[rd.datapointer]['%attribs']['user:prod_ship_expavail'] == 0){
-										//do nothing, attrib isn't set
+									if(app.data[rd.datapointer]['%attribs']['user:prod_ship_expavail'] && app.data[rd.datapointer]['%attribs']['user:prod_ship_expavail'] == 1){
+										//do nothing, expedited shipping is available.
 									}
-									else {
+									else {	//if the attrib isn't set, expedited shipping is not available
 										$tag.text('Expedited shipping not available for this order');
 											//if one item has no expedited shipping no items have it, hide time in transit
 										$('.shipMessage','#cartTemplateForm').hide();

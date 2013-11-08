@@ -1437,7 +1437,7 @@ else	{
 	$('.shipMessage',$r).append("Order today for arrival on ");
 	}
 
-if(prodAttribs['user:prod_ship_expavail'] == 0)	{
+if(prodAttribs['user:prod_ship_expavail'] && prodAttribs['user:prod_ship_expavail'] == 1)	{
 //if expedited shipping is not available, no other methods show up (will ship ground)
 	$('.deliveryMethod',$r).append(data['@Services'][index]['method'])
 	$('.deliveryMethod',$r).append(" <span class='zlink'>(Need it faster?)</span>").addClass('pointer').click(function(){
