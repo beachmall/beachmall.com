@@ -105,15 +105,10 @@ app.ext.beachmart.u.initEstArrival();
 					
 					if(!$.isEmptyObject(data['@Services']))	{
 						app.u.dump(" -> @Services is not empty");
-						if(app.data.cartDetail && app.data.cartDetail.want && app.data.cartDetail.want.shipping_id) {
-							var index = app.ext.beachmart.u.getShipMethodByID(data['@Services'],app.data.cartDetail.want.shipping_id);
-						}
-						else if(app.ext.beachmart.u.getSlowestShipMethod(data['@Services'])) {
-							index = app.ext.beachmart.u.getSlowestShipMethod(data['@Services']);
-						}
-						else {
+						var index = app.ext.beachmart.u.getShipMethodByID(data['@Services'],'UGND');
+						if(!index) {
 							index = app.ext.beachmart.u.getFastestShipMethod(data['@Services']);
-							}
+						}
 						app.u.dump(" -> index: "+index);
 //index could be false if no methods were available. or could be int starting w/ 0
 						if(index >= 0)	{
@@ -1479,43 +1474,24 @@ $('.deliveryLocation',$r).click(function(){app.ext.beachmart.a.showZipDialog()})
 			
 
 //pass in the @services object in a appShippingTransitEstimate and the index in that object of the fastest shipping method will be returned.
-			getShipMethodByID : function(servicesObj,ID,useProdPage)	{
+			getShipMethodByID : function(servicesObj,ID)        {
 				var r = false; //what is returned. will be index of data object
-				
-				if(app.data.cartShippingMethods && app.data.cartShippingMethods["@methods"]){
-					var method = false;
-					for(var i=0; i < app.data.cartShippingMethods["@methods"].length; i++){
-						if(app.data.cartShippingMethods["@methods"][i].id == ID){
-							method = app.data.cartShippingMethods["@methods"][i].method;
-							break;
-							}
-						}
-					if(method){
-						if(typeof servicesObj == 'object')	{
-							var L = servicesObj.length;
-							for(var i = 0; i < L; i += 1)	{
-								if(servicesObj[i].method == method)	{
-									r = i;
-									break; //no need to continue in loop.
-									}
-								}
-							}
-						else	{
-							app.u.dump("WARNING! servicesObj passed into getFastestShipMethod is empty or not an object. servicesObj:");
-							app.u.dump(servicesObj);
-							}
-						}
-					else {
-						app.u.dump("WARNING! no shipping method of that ID was found.");
+				if(typeof servicesObj == 'object')        {
+					var L = servicesObj.length;
+					for(var i = 0; i < L; i += 1)        {
+						if(servicesObj[i].id == ID)        {
+							r = i;
+							break; //no need to continue in loop.
+							}	
 						}
 					}
 				else {
-					app.u.dump("WARNING! attempting to getShipMethodByID but cartShippingMethods or cartShippingMethods.@methods not available");
+					app.u.dump("WARNING! servicesObj passed into getFastestShipMethod is empty or not an object. servicesObj:");
+					app.u.dump(servicesObj);
 					}
-				
-//				app.u.dump(" -> fastest index: "+r);
+//              app.u.dump(" -> fastest index: "+r);
 				return r;
-				},
+				}, //getShipMethodByID
 				
 				getSlowestShipMethod : function(servicesObj) {
 					var r = false; //what is returned, index of ground shipping service, or false
