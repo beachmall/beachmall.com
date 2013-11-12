@@ -1561,7 +1561,8 @@ CART TEMPLATE
 #upsellList .bundleProdlist li	{margin:0 0 12px 0; padding: 0 0 12px 0; border-bottom:1px dashed #efefef;}
 /* checkout buttons */
 
- 
+#cartTemplateForm.cartHasNoExpedite .shipMessage, #cartTemplateForm.cartHasNoExpedite .estimatedArrivalDate {display:none;}
+#cartTemplateForm.cartHasNoExpedite .deliveryLocation, #cartTemplateForm.cartHasNoExpedite .deliveryMethod {display:none;}
 
 
 /***************************************************************************

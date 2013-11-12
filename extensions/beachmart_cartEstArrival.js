@@ -262,11 +262,12 @@ var beachmart_cartEstArrival = function() {
 					app.u.dump(" -> prodAttribs['user:prod_ship_expavail']: "+prodAttribs['user:prod_ship_expavail']);
 					$r.empty().append("<div class='expShipMessage'></div>");
 					$('.expShipMessage',$r).append("<span class='zhint inconspicuouseZhint'>Expedited shipping not available for this item</span>");
-					$('.shipMessage','#cartTemplateForm').hide();
+					$('#cartTemplateForm').addClass('cartHasNoExpedite');
+				/*	$('.shipMessage','#cartTemplateForm').hide();
 					$('.estimatedArrivalDate','#cartTemplateForm').hide();
 					$('.deliveryLocation','#cartTemplateForm').hide();
 					$('.deliveryMethod','#cartTemplateForm').hide();
-					
+				*/	
 					}
 
 					
