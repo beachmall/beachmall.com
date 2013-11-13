@@ -257,6 +257,12 @@ var beachmart_cartEstArrival = function() {
 					$('.deliveryMethod',$r).append("<span class='zlink'> (Need it faster?)</span>").addClass('pointer').click(function(){
 						app.ext.beachmart.a.showShipGridInModal('appShippingTransitEstimate');
 						});
+						
+					var $shipMethodsUL = $('.cartShipMethods', '#modalCart');
+					if(app.data.appShippingTransitEstimate && app.data.appShippingTransitEstimate['@Services'] && !$shipMethodsUL.data('transitized')) {
+						//app.u.dump('@services: ----------------->'); app.u.dump(app.data.appShippingTransitEstimate['@Services']);
+						app.ext.beachmart_cartEstArrival.u.addDatesToRadioButtons(app.data.appShippingTransitEstimate['@Services'], $shipMethodsUL);
+						}
 					}
 				else	{
 					app.u.dump(" -> prodAttribs['user:prod_ship_expavail']: "+prodAttribs['user:prod_ship_expavail']);
@@ -291,6 +297,25 @@ var beachmart_cartEstArrival = function() {
 				//$('.deliveryLocation',$r).click(function(){app.ext.beachmart.a.showZipDialog()})
 				return $r;
 			}, //getTransitInfo
+			
+				//add estimated shipping arrival dates to ship method radio buttons
+				//perform check for services data in calling function 
+			addDatesToRadioButtons : function(services, $shipMethodsUL) {
+				app.u.dump('addDatesToRadioButtons services: ---------------->'); app.u.dump(services);
+				var L = services.length;
+				$('li', $shipMethodsUL).each(function() {
+					var shipMeth = $(this).text().split(":");
+					for (i=L-1; i>-1; i--) { //go backwards since services are listed w/ fastest first and radio buttons slowest first
+						if(shipMeth[0] == services[i].method) { //if there is a match, append the date to the li
+							var $container = $('<span class="radioShipTime">(arrival on '+app.ext.beachmart.u.yyyymmdd2Pretty(services[i]["arrival_yyyymmdd"])+')</span>');
+							$(this).append($container);
+							$('#cartTemplateShippingContainer').css('width','54%'); //make the shipping section wider to keep it all on one line
+							$shipMethodsUL.data('transitized',true); //set data so this doesn't have to get called multiple times
+							break; //once a match is found, no need to keep going
+						}
+					}
+				});
+			} //addDatesToRadioButtons
 			
 		}, //u [utilities]
 

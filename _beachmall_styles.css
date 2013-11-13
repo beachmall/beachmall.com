@@ -1563,7 +1563,7 @@ CART TEMPLATE
 
 #cartTemplateForm.cartHasNoExpedite .shipMessage, #cartTemplateForm.cartHasNoExpedite .estimatedArrivalDate {display:none;}
 #cartTemplateForm.cartHasNoExpedite .deliveryLocation, #cartTemplateForm.cartHasNoExpedite .deliveryMethod {display:none;}
-
+.radioShipTime {margin: 0 0 0 10px;}
 
 /***************************************************************************
 END CART TEMPLATE
