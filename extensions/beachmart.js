@@ -515,8 +515,10 @@ var store_filter = function() {
 				showShipLatencyCart : function($tag, data) {
 					var products = [];
 					for(var index in data.value){
-						products.push(data.value[index].product);
+						if(data.value[index].product[0] != '%') {
+							products.push(data.value[index].product);
 						}
+					}
 					app.u.dump('---------->'); app.u.dump(data.value);
 					
 					var numRequests = 0;
@@ -531,9 +533,7 @@ var store_filter = function() {
 								//user:prod_shipping_msg'];
 								//var us1ts = data.value['%attribs']['us1:ts'
 										//if user:prod_ship_expavail is present and checked (set to 1) expedited shipping is available, show no message.
-									if(app.data[rd.datapointer]['%attribs']['user:prod_ship_expavail'] && app.data[rd.datapointer]['%attribs']['user:prod_ship_expavail'] == 1){
-										$tag.text('Expedited shipping not available');
-									}
+									if(app.data[rd.datapointer]['%attribs']['user:prod_ship_expavail'] && app.data[rd.datapointer]['%attribs']['user:prod_ship_expavail'] == 1){}
 									else {	//the attribute is zero or not set, but either way no expedited shipping is available, show the message
 										$tag.text('Expedited shipping not available');
 									}
@@ -552,8 +552,10 @@ var store_filter = function() {
 				expShipMessage : function($tag, data) {
 					var products = [];
 					for(var index in data.value){
-						products.push(data.value[index].product);
+						if(data.value[index].product[0] != '%') {
+							products.push(data.value[index].product);
 						}
+					}
 //					app.u.dump('---------->'); app.u.dump(data.value);
 					var numRequests = 0;
 					for(var index in products){
@@ -591,7 +593,9 @@ var store_filter = function() {
 				shipSurMessage : function($tag, data) {
 					var products = [];
 					for(var index in data.value) {
-						products.push(data.value[index].product);
+						if(data.value[index].product[0] != '%') {
+							products.push(data.value[index].product);
+						}
 					}
 					//app.u.dump(products);
 					var numRequests = 0;

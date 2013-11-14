@@ -301,7 +301,7 @@ var beachmart_cartEstArrival = function() {
 				//add estimated shipping arrival dates to ship method radio buttons
 				//perform check for services data in calling function 
 			addDatesToRadioButtons : function(services, $shipMethodsUL) {
-				app.u.dump('addDatesToRadioButtons services: ---------------->'); app.u.dump(services);
+				//app.u.dump('addDatesToRadioButtons services: ---------------->'); app.u.dump(services);
 				var L = services.length;
 				$('li', $shipMethodsUL).each(function() {
 					var shipMeth = $(this).text().split(":");
