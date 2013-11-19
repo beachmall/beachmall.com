@@ -326,7 +326,7 @@ Action
 			
 //Data must already be in memory to execute this action.
 //added as a .click to the shipping method
-			showShipGridInModal : function(datapointer){
+			showShipGridInModal : function(datapointer, cart){
 				var $parent = $('#modalShipGrid').empty();
 //the modal opens as quick as possible so users know something is happening.
 //open if it's been opened before so old data is not displayed. placeholder content (including a loading graphic, if set) will be populated pretty quick.
@@ -344,9 +344,18 @@ Action
 					var L = services.length;
 //					app.u.dump(" -> @Services.length: "+L);
 					for(var i = 0; i < L; i += 1)	{
-//						app.u.dump(" -> "+i+") id: "+services[i].id);
-						$table.append(app.renderFunctions.transmogrify({'id':'service_'+services[i].id},"shipGridTemplate",services[i]));
+						if(cart) { //if this is in the cart, only show methods that match what is available in the cart shipping area
+//							app.u.dump('-->'); app.u.dump($('.cartShipMethods').text()); app.u.dump(services[i].method);
+							var shipMethods = $('.cartShipMethods').text();
+							if(shipMethods.indexOf(services[i].method) != -1) {
+								$table.append(app.renderFunctions.transmogrify({'id':'service_'+services[i].id},"shipGridTemplate",services[i]));
+							}
 						}
+						else {
+	//						app.u.dump(" -> "+i+") id: "+services[i].id);
+							$table.append(app.renderFunctions.transmogrify({'id':'service_'+services[i].id},"shipGridTemplate",services[i]));
+						}
+					}
 					$parent.removeClass('loadingBG').append($table);
 
 					}
