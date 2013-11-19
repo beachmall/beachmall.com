@@ -3714,7 +3714,7 @@ START APP CART
 											app.ext.store_cart.u.updateCartSummary();
 											app.ext.store_cart.calls.cartShippingMethodsWithUpdate.init();
 											app.model.dispatchThis('immutable');">
-										<input class='displayNone' type='button' value='submit'></input>
+										<input class='cartLineButton ui-state-default updateButton zipButton pointer' type='button' value='Update'></input>
 									</form>
 									<div data-bind="var:cart(ship/city); format:showIfSet">
 										<div class='cartRegion' data-bind="var:cart(ship/city); format:showShipRegion; extension:store_filter;"></div>

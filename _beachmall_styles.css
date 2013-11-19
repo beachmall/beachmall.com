@@ -1538,6 +1538,7 @@ CART TEMPLATE
 #modalCart .toolTip2 {top:-120px; left:-100px;}
 #modalCart .cartFree {font-weight:bold; color:#E0463A;}
 #modalCart .cartZipCodeContainer {height:auto; width:60%; float:left; margin:0; border:none;}
+#modalCart .updateButton.zipButton.cartLineButton {width:auto;}
 #modalCart .checkoutButtonsContainer span {float:right; margin:0 0 0 12px;}
 #modalCart .cartButtonsContainer {margin:0 0 1% 0; border:none;}
 #modalCart .cartButtonsContainer .cartBar {width:100%; height:auto; float:left; background:none repeat scroll 0px 0px #ffffff; color:#ffffff;}
