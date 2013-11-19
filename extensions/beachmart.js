@@ -304,6 +304,15 @@ var store_filter = function() {
 
 
 		a : {
+		
+				//for product link in cart, converts stid into pid and does show content on it.
+			showContentSTID : function ($tag, arg) {
+				app.u.dump('Who is this is?'); app.u.dump(arg);
+				if(arg.indexOf(':') != -1) {
+					var pid = arg.split(':');
+					showContent('product',{'pid':pid[0]});
+				}
+			}, //showContentSTID
 
 			showContentNoPropagation : function(product, pid) {
 				app.u.dump('Somthing to Read!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
