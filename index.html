@@ -3780,7 +3780,7 @@ START APP PRODUCTLISTTEMPLATECART
 			<div class='floatLeft cartDesc'>
 				<h4 class="pointer carProdLink" data-bind='var: product(prod_name); format:text;' onClick="app.ext.store_filter.a.showContentSTID($(this),$(this).parent().parent().parent().attr('data-stid'));"></h4>
 				<div class='ztable_row_small prodOptions' data-bind='var: variations(%options); format:selectedOptionsDisplay;'></div>
-				<div class='ztable_row_small stid' data-bind='var: product(sku); format:text; className: stid; pretext: Sku: ;'></div>
+				<div class='ztable_row_small stid' data-bind='var: product(sku); format:text; className: stid; pretext:<span class="cartSku">Sku: </span>;'></div>
 				<div class='cartLatency' data-cart='1' data-bind="useParentData:true; format:showShipLatency; extension:store_filter;">
 					<div class='shipTime'></div>
 				</div>
