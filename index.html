@@ -3704,6 +3704,7 @@ START APP CART
 								<!-- <div data-bind='var: cart(sum/balance_due_total); format:orderBalance; className:orderBalanceDue; hideZero:false; currencySign: $; pretext:<h6>Estimated Total: </h6>; extension:store_cart;'></div> -->
 								<div data-bind='var: cart(sum/balance_due_total); format:money; className:orderBalanceDue; hideZero:false; currencySign: $; pretext:<h6>Estimated Total: </h6>; extension:store_cart;'></div>
 								<div class='couponEntryContainer' data-app-role='couponContainer'>
+								<fieldset>
 									<label for='coupon'>Promotional Code:</label>
 									<div class='cartCouponHint tipifyCart'>What's this?</div>
 									<div class='toolTip couponToolTip'>We strive to bring you the best products at everyday low prices. 
@@ -3712,7 +3713,8 @@ START APP CART
 										applied to your order total
 									</div>
 									<input type='text' name='coupon' size='8'  data-app-event='orderCreate|addTriggerButtonClick' />
-									<button data-app-event="orderCreate|execCouponAdd" >Update</button>
+									<button data-app-event="orderCreate|execCouponAdd" >Update Total</button>
+								</fieldset>
 								</div>
 							</section>
 
