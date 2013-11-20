@@ -1525,6 +1525,12 @@ CART TEMPLATE
 #modalCart .cartSummaryTotalsContainer h2.ui-widget-header {display:none;}
 #modalCart .cartSummaryTotalsContainer div.ui-widget:first-child {margin:1.6% 0 0 0; background:#ffffff;}
 #modalCart .cartSummaryTotalsContainer .cartSummaryContainer {padding: 0px; margin:0; border:none; background:#F5F1DE;}
+#modalCart .couponEntryContainer {font-weight:bold;}
+#modalCart .couponEntryContainer label {display:block; text-align:left;}
+#modalCart .cartCouponHint {text-decoration:underline; font-size:10px; text-align:left; margin:0 0 5px 0;}
+#modalCart .cartCouponHint:hover {color:#e0463a;}
+#modalCart .couponEntryContainer input {float:left; margin:0 10px 0 0;}
+#modalCart .couponEntryContainer button {display:block; border:none; background:#3bb3c3; color:#ffffff; padding:1px;}
 #modalCart .cartSummaryContainer section {height:50%; width:33.3%; float:right; margin:1.6% 0;}
 #modalCart #cartTemplateCostSummary {border-top:1px solid #dddddd; border-left:1px solid #DDDDDD; background:#ffffff;}
 #modalCart .cartSummaryContainer section#cartTemplateShippingContainer {border:1px solid #dddddd; padding:0 0 1% 1%; background:#ffffff;}

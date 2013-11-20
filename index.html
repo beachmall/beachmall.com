@@ -3703,6 +3703,12 @@ START APP CART
 								<div class='displayNone' data-bind='var: cart(sum/rmc_total); format:beachMoney; extension:store_filter; className:returnsCreditTotal; hideZero:true; currencySign: $; pretext:<h6>Returns Credit: </h6>; '></div>
 								<!-- <div data-bind='var: cart(sum/balance_due_total); format:orderBalance; className:orderBalanceDue; hideZero:false; currencySign: $; pretext:<h6>Estimated Total: </h6>; extension:store_cart;'></div> -->
 								<div data-bind='var: cart(sum/balance_due_total); format:money; className:orderBalanceDue; hideZero:false; currencySign: $; pretext:<h6>Estimated Total: </h6>; extension:store_cart;'></div>
+								<div class='couponEntryContainer' data-app-role='couponContainer'>
+									<label for='coupon'>Promotional Code:</label>
+									<div class='cartCouponHint'>What's this?</div>
+									<input type='text' name='coupon' size='8'  data-app-event='orderCreate|addTriggerButtonClick' />
+									<button data-app-event="orderCreate|execCouponAdd" >Update</button>
+								</div>
 							</section>
 
 							<section id='cartTemplateShippingContainer'>
