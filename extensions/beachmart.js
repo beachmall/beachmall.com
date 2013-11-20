@@ -166,6 +166,7 @@ var store_filter = function() {
 				app.rq.push(['templateFunction','cartTemplate','onCompletes',function(infoObj) {
 					var $context = $(app.u.jqSelector('#'+infoObj.parentID));
 					app.ext.store_filter.u.handleCartToolTip($context);
+					app.ext.store_filter.u.execCouponAdd($('.cartCouponButton',$context));
 				}]);
 				
 				//creates tool tip for variations and product sibling thumbnails
@@ -304,7 +305,7 @@ var store_filter = function() {
 
 
 		a : {
-		
+				
 				//for product link in cart, converts stid into pid and does show content on it.
 			showContentSTID : function ($tag, arg) {
 				app.u.dump('Who is this is?'); app.u.dump(arg);
@@ -1433,6 +1434,36 @@ return filters;
 						 return app.ext.myRIA.a.showContent('',P);
 					});
 				},
+				
+				execCouponAdd : function($btn)	{
+				app.u.dump($btn.text());
+					//$btn.button();
+					$btn.off('click.app.ext.store_filter.a.execCouponAdd').on('click.app.ext.store_filter.a.execCouponAdd',function(event){
+						event.preventDefault();
+						
+						var $fieldset = $btn.closest('fieldset'),
+						$form = $btn.closest('form'),
+						$input = $("[name='coupon']",$fieldset);
+						
+						//$btn.button('disable');
+	//update the panel only on a successful add. That way, error messaging is persistent. success messaging gets nuked, but coupon will show in cart so that's okay.
+						app.ext.cco.calls.cartCouponAdd.init($input.val(),{"callback":function(rd){
+
+							if(app.model.responseHasErrors(rd)){
+								$fieldset.anymessage({'message':rd});
+							}
+							else	{
+								$input.val(''); //reset input only on success.  allows for a typo to be corrected.
+								$fieldset.anymessage(app.u.successMsgObject('Your coupon has been added.'));
+								//app.ext.orderCreate.u.handlePanel($form,'chkoutCartItemsList',['empty','translate','handleDisplayLogic','handleAppEvents']);
+	//							_gaq.push(['_trackEvent','Checkout','User Event','Cart updated - coupon added']);
+							}
+
+						}});
+						//app.ext.orderCreate.u.handleCommonPanels($form);
+						app.model.dispatchThis('immutable');
+					})
+				}, //execCouponAdd
 				
 				
 	/*			showShipRegion : function($context) {
