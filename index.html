@@ -3705,7 +3705,12 @@ START APP CART
 								<div data-bind='var: cart(sum/balance_due_total); format:money; className:orderBalanceDue; hideZero:false; currencySign: $; pretext:<h6>Estimated Total: </h6>; extension:store_cart;'></div>
 								<div class='couponEntryContainer' data-app-role='couponContainer'>
 									<label for='coupon'>Promotional Code:</label>
-									<div class='cartCouponHint'>What's this?</div>
+									<div class='cartCouponHint tipifyCart'>What's this?</div>
+									<div class='toolTip couponToolTip'>We strive to bring you the best products at everyday low prices. 
+										Occasionally we offer a special promotion. 
+										If you have a promotional code, simply enter this code and the discount will be 
+										applied to your order total
+									</div>
 									<input type='text' name='coupon' size='8'  data-app-event='orderCreate|addTriggerButtonClick' />
 									<button data-app-event="orderCreate|execCouponAdd" >Update</button>
 								</div>
