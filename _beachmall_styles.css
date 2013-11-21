@@ -1528,7 +1528,7 @@ CART TEMPLATE
 #modalCart .couponEntryContainer {font-weight:bold;}
 #modalCart .couponEntryContainer fieldset {border:none;}
 #modalCart .couponEntryContainer label {display:block; text-align:left;}
-#modalCart .cartCouponHint {height:auto; width:70px; text-decoration:underline; font-size:10px; text-align:left; margin:0 0 5px 0;}
+#modalCart .cartCouponHint {height:auto; width:70px; text-decoration:underline; font-size:10px; font-weight:normal; text-align:left; margin:0 0 5px 0;}
 #modalCart .cartCouponHint:hover {color:#e0463a;}
 #modalCart .couponEntryContainer .couponToolTip {top:-120px; left:-120px;}
 #modalCart .couponEntryContainer input {float:left; margin:0 10px 0 0;}
