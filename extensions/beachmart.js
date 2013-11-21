@@ -305,6 +305,13 @@ var store_filter = function() {
 
 
 		a : {
+		
+				//work around to allow chat to be clicked from cart.
+			showChat : function() {
+				$('a','#ciyXFh').trigger('click');
+				$('a','#scyXFh').trigger('click');
+				$('a','#sdyXFh').trigger('click');
+			},
 				
 				//for product link in cart, converts stid into pid and does show content on it.
 			showContentSTID : function ($tag, arg) {
