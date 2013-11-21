@@ -320,6 +320,13 @@ var store_filter = function() {
 					var pid = arg.split(':');
 					showContent('product',{'pid':pid[0]});
 				}
+				else if (arg.indexOf('/') != -1) {
+					var pid = arg.split('/');
+					showContent('product',{'pid':pid[0]});
+				}
+				else {
+					showContent('product',{'pid':arg});
+				}
 			}, //showContentSTID
 
 			showContentNoPropagation : function(product, pid) {
