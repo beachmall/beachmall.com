@@ -3824,11 +3824,11 @@ START APP PRODUCTLISTTEMPLATECART
 			<div class='floatLeft cartDesc'>
 				<h4 class="pointer carProdLink" data-bind='var: product(prod_name); format:text;' onClick="app.ext.store_filter.a.showContentSTID($(this),$(this).parent().parent().parent().attr('data-stid'));"></h4>
 				<div class='ztable_row_small prodOptions' data-bind='var: variations(%options); format:selectedOptionsDisplay;'></div>
-				<div class='ztable_row_small stid' data-bind='var: product(sku); format:text; className: stid; pretext:SKU: ;'></div>
-				<div class='cartLatency' data-cart='1' data-bind="useParentData:true; format:showShipLatency; extension:store_filter;">
+				<div class='ztable_row_small stid floatLeft' data-bind='var: product(sku); format:text; className: stid; pretext:SKU: ;'></div>
+				<div class='cartLatency floatRight' data-cart='1' data-bind="useParentData:true; format:showShipLatency; extension:store_filter;">
 					<div class='shipTime'></div>
 				</div>
-				<div class='cartShippingInformation' data-bind='useParentData:true; format:hideIfASM; extension:store_filter;' data-included='0'>
+				<div class='cartShippingInformation clearfix' data-bind='useParentData:true; format:hideIfASM; extension:store_filter;' data-included='0'>
 					<div class='cartTimeInTransitMessaging'></div>
 					<div class='cartPutLoadingHere loadingBG'>
 						<div class='transitContainer'></div>
