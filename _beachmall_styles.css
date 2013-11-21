@@ -1530,7 +1530,7 @@ CART TEMPLATE
 #modalCart .couponEntryContainer label {display:block; text-align:left;}
 #modalCart .cartCouponHint {height:auto; width:70px; text-decoration:underline; font-size:10px; text-align:left; margin:0 0 5px 0;}
 #modalCart .cartCouponHint:hover {color:#e0463a;}
-#modalCart .couponEntryContainer .couponToolTip {top:-110px; left:-120px;}
+#modalCart .couponEntryContainer .couponToolTip {top:-120px; left:-120px;}
 #modalCart .couponEntryContainer input {float:left; margin:0 10px 0 0;}
 #modalCart .couponEntryContainer button {display:block; border:none; background:#3bb3c3; color:#ffffff; padding:1px;}
 #modalCart .cartSummaryContainer section {height:50%; width:33.3%; float:right; margin:1.6% 0;}
@@ -1542,7 +1542,7 @@ CART TEMPLATE
 #modalCart .cartSummary > div .orderShipMethod .surcharge {color:#e0463a;}
 #modalCart .cartSummary > div .orderShipAmount {font-weight:bold; font-size:1.0em; display:inline; float:right;}
 #modalCart .cartShipOptions {height:auto; width:100%; float:left; margin:0; font-family:"Open Sans";}
-#modalCart .toolTip {top:-20px; left:-90px;}
+#modalCart .toolTip {top:44px; left:-90px;}
 #modalCart .toolTip2 {top:-120px; left:-100px;}
 #modalCart .cartFree {font-weight:bold; color:#E0463A;}
 #modalCart .cartZipCodeContainer {height:auto; width:60%; float:left; margin:0; border:none;}
