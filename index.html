@@ -3822,7 +3822,7 @@ START APP PRODUCTLISTTEMPLATECART
 
 			<div class='floatLeft cartImg'><img src='blank.gif' class='prodThumb' alt='' data-bind='var: product(zoovy:prod_image1); defaultVar: product(%attribs.zoovy:prod_image1); format:imageURL;' width='150' height='150' /></div>
 			<div class='floatLeft cartDesc'>
-				<h4 class="pointer carProdLink" data-bind='var: product(prod_name); format:text;' onClick="app.ext.store_filter.a.showContentSTID($(this),$(this).parent().parent().parent().attr('data-stid'));"></h4>
+				<h4 class="pointer carProdLink" data-bind="useParentData:true; format:cartProdName; extension:store_filter;"></h4>
 				<div class='ztable_row_small prodOptions' data-bind='var: variations(%options); format:selectedOptionsDisplay;'></div>
 				<div class='ztable_row_small stid floatLeft' data-bind='var: product(sku); format:text; className: stid; pretext:SKU: ;'></div>
 				<div class='cartLatency floatRight' data-cart='1' data-bind="useParentData:true; format:showShipLatency; extension:store_filter;">

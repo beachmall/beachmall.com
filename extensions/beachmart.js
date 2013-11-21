@@ -313,22 +313,6 @@ var store_filter = function() {
 				$('a','#sdyXFh').trigger('click');
 			},
 				
-				//for product link in cart, converts stid into pid and does show content on it.
-			showContentSTID : function ($tag, arg) {
-				app.u.dump('Who is this is?'); app.u.dump(arg);
-				if(arg.indexOf(':') != -1) {
-					var pid = arg.split(':');
-					showContent('product',{'pid':pid[0]});
-				}
-				else if (arg.indexOf('/') != -1) {
-					var pid = arg.split('/');
-					showContent('product',{'pid':pid[0]});
-				}
-				else {
-					showContent('product',{'pid':arg});
-				}
-			}, //showContentSTID
-
 			showContentNoPropagation : function(product, pid) {
 				app.u.dump('Somthing to Read!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
 				showContent(product,pid);
@@ -404,6 +388,44 @@ var store_filter = function() {
 //on a data-bind, format: is equal to a renderformat. extension: tells the rendering engine where to look for the renderFormat.
 //that way, two render formats named the same (but in different extensions) don't overwrite each other.
 		renderFormats : {
+		
+				//adds product name on cart list item and puts a link on it by 
+				//converting stid into pid and doing show content on it.
+			cartProdName : function ($tag, data) {
+			
+					//get the product name and bind data if any show on the line item in the cart
+				var o = '';
+				if(data.value.prod_name) {
+					if(jQuery.isEmptyObject(data.bindData))	{o = data.value.prod_name}
+					else	{
+						o += data.value.prod_name;
+						}
+				}
+				$tag.html(o);
+			
+			//	app.u.dump('Who is this is?'); app.u.dump(stid);
+				var stid = data.value.stid
+				if((stid && stid[0] == '%') || data.value.asm_master)	{
+					$tag.css({'text-decoration':'none','cursor':'text'});
+				}
+				else { //isn't a promo or assembly, add a the link
+					if(stid.indexOf(':') != -1) {
+						var pid = stid.split(':');
+						pid = pid[0];
+					}
+					else if (stid.indexOf('/') != -1) {
+						var pid = stid.split('/');
+						pid = pid[0];
+					}
+					else {
+						pid = stid;
+					}
+					
+					$tag.off('click').on('click',function() {
+						showContent('product',{'pid':pid});
+					});
+				}
+			}, //showContentSTID
 				
 				//hide the update button on assembly products, put "(included)" text in it's place
 			hideIfASM : function($tag, data) {
