@@ -307,11 +307,9 @@ var store_filter = function() {
 		a : {
 		
 				//work around to allow chat to be clicked from cart.
-			showChat : function() {
-				$('a','#ciyXFh').trigger('click');
-				$('a','#scyXFh').trigger('click');
-				$('a','#sdyXFh').trigger('click');
-			},
+		//	showChat : function() {
+		//		$('a','.headerContainer .phoneChatLive').trigger('click');
+		//	},
 				
 			showContentNoPropagation : function(product, pid) {
 				app.u.dump('Somthing to Read!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');

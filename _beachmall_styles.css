@@ -134,9 +134,11 @@ the padding is to compensate for the spacing between the main nav.
 
 .topNav .phoneChatLive, .cartFooter .phoneChatLive {height:50px; width:353px; margin:0px 0px 0px 351px; font-family:Oswald; font-weight:bold; font-size: 18px; line-height: 51px;}
 .topNav .phoneIcon, .cartFooter .phoneIcon {height:50px; width:35px; background-position:0 10px;}
+.topNav .phoneChatLive h6 {display:inline; padding:0 4px 0 0;}
 .topNav .liveHelp	{height:19px; width:145px; font-size:0.75em;}
 .topNav .liveHelp div.icon {background-position:0 -91px; width:25px; height:19px;float:left;}
 .topNav .liveHelp a {text-decoration:none; font-family:Oswald; font-weight:bold; font-size:18px;color:#000000;}
+.topNav .liveHelp a:hover {color:#e0463a;}
 .topNav .cartIcon {height:30px; width:57px; background-position:4px -40px; margin:0px 40px 0px 0px; padding: 15px 0px 0px 0px;}
 .topNav .cartIcon a {color:#ffffff;}
 .topNav .cartIcon .cartItemCount {height:17px; width:21px; text-align:center; display:inline-block; color:#ffffff;}
@@ -1582,7 +1584,9 @@ CART TEMPLATE
 .cartFooter h5 {font-size:8px; font-weight:bold;}
 .cartFooter .phoneChatLive {height:auto; width:163px; line-height:17px; text-align:center; font-size:15px; margin:0 0 0 9%;}
 .cartFooter .phoneIcon {height:30px; background-position:0 -318px;}
-.cartFooter .phoneChatLive span {font-size:10px;}
+.cartFooter .phoneChatLive h6 {display:inline; font-size:10px;}
+.cartFooter .phoneChatLive span {color:#ffffff;}
+.cartFooter .phoneChatLive span:hover {color:#333333;}
 .cartFooter .mcAfee{margin:2px 0 0 0;}
 
 /***************************************************************************

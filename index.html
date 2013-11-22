@@ -136,8 +136,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
         </div>    
     </div>
     <div class='phoneChatLive phone floatLeft'>
-    	<div class='phoneIcon sprite floatLeft'></div>
-    	(888) 975-6555 <span class='openSansFont fontSize10'>OR </span>
+    	
     	<div class='floatRight liveHelp marginRight hideMed'>
     		<!-- BEGIN ProvideSupport.com Text Chat Link Code -->
 			<div id="ci41TM" style="z-index:100;position:absolute"></div>
@@ -151,6 +150,8 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 			</noscript>
 			<!-- END ProvideSupport.com Text Chat Link Code -->	
         </div>	
+    	<span class='floatRight'>(888) 975-6555 <h6 class='openSansFont fontSize10'>OR</h6></span>
+		<div class='phoneIcon sprite floatRight'></div>
     </div>
 	<nav class='floatRight'>
         <div class='cartIcon sprite pointer' onClick="return showContent('cart',{});"><span class='cartItemCount'>0</span></div>
@@ -3708,6 +3709,7 @@ START APP CART
 								<!-- <div data-bind='var: cart(sum/balance_due_total); format:orderBalance; className:orderBalanceDue; hideZero:false; currencySign: $; pretext:<h6>Estimated Total: </h6>; extension:store_cart;'></div> -->
 								<div data-bind='var: cart(sum/balance_due_total); format:money; className:orderBalanceDue; hideZero:false; currencySign: $; pretext:<h6>Estimated Total: </h6>; extension:store_cart;'></div>
 								<div class='couponEntryContainer' data-app-role='couponContainer'>
+									<!-- runs with execCouponAdd from beachmart.js  -->
 								<fieldset>
 									<label for='coupon'>Promotional Code:</label>
 									<div class='cartCouponHint tipifyCart'>What's this?</div>
@@ -3796,9 +3798,19 @@ START APP CART
 						
 						<div class='phoneChatLive phone floatLeft'>
 							<div class='phoneIcon sprite floatLeft'></div>
-							(888) 975-6555 <span class='openSansFont'>OR</span>
-							<div class='liveHelp pointer' onClick='app.ext.store_filter.a.showChat();'>
-								Live Chat Offline
+							(888) 975-6555 <h6 class='openSansFont'>OR</h6>
+							<div class='liveHelp pointer'>
+								<!-- BEGIN ProvideSupport.com Text Chat Link Code -->
+								<div id="cinuRJ" style="z-index:100;position:absolute"></div>
+								<div id="scnuRJ" style="display:inline"></div>
+								<div id="sdnuRJ" style="display:none"></div>
+								<script type="text/javascript">var senuRJ=document.createElement("script");senuRJ.type="text/javascript";var senuRJs=(location.protocol.indexOf("https")==0?"https":"http")+"://image.providesupport.com/js/1qaxuqjnvcj4w1csevb7u0l3tc/safe-textlink.js?ps_h=nuRJ&ps_t="+new Date().getTime()+"&online-link-html=Live%20Chat%20Online&offline-link-html=Live%20Chat%20Offline";setTimeout("senuRJ.src=senuRJs;document.getElementById('sdnuRJ').appendChild(senuRJ)",1)</script>
+								<noscript>
+									<div style="display:inline">
+										<a href="http://www.providesupport.com?messenger=1qaxuqjnvcj4w1csevb7u0l3tc">Customer Support Chat</a>
+									</div>
+								</noscript>
+								<!-- END ProvideSupport.com Text Chat Link Code -->
 							</div>	
 						</div>
 						
