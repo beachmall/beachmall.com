@@ -171,7 +171,7 @@ var store_filter = function() {
 				
 				//creates tool tip for variations and product sibling thumbnails
 				$( document ).tooltip({
-					items : "img[data-big-img], [data-toolTipThumb], [data-toolTipQuickview]",
+					items : "img[data-big-img], [data-toolTipThumb], [data-cartToolTipThumb], [data-toolTipQuickview]",
 					position : {
 						my : "bottom-5",
 						at : "top"
@@ -185,7 +185,7 @@ var store_filter = function() {
 							var product = app.data['appProductGet|'+pid];
 							//app.u.dump('>>>>> '); app.u.dump(product);
 							//app.u.dump('>>>>> '); app.u.dump(product['@variations']['1']['options']['0'].prompt);
-							return '<span class="optionsZoom">'+$(this).attr('data-tooltip-title')+'</span><img src="'+$(this).attr('data-big-img')+'" width="400" height="400" />';
+							return '<div class="toolTipWrapper"><span class="optionsZoom">'+$(this).attr('data-tooltip-title')+'</span><img src="'+$(this).attr('data-big-img')+'" width="400" height="400" /></div>';
 							}
 						//thumbnail zoom for sibling thumbnails
 						if (element.is("[data-toolTipThumb]")) {
@@ -195,7 +195,21 @@ var store_filter = function() {
 							if(product && product['%attribs'] && product['%attribs']['zoovy:prod_name']) {
 								var prodName = product['%attribs']['zoovy:prod_name'];
 								var productImg = app.u.makeImage({"w":400,"h":400,"b":"ffffff",tag:0,"name":product['%attribs']['zoovy:prod_image1']});
-								return '<span class="siblingZoom">'+prodName+'</span><img src="'+productImg+'" width="400" height="400" />';
+								return '<div class="toolTipWrapper"><span class="siblingZoom">'+prodName+'</span><img src="'+productImg+'" width="400" height="400" /></div>';
+							}
+						}
+						//thumbnail zoom for accessory in cart line items
+						if (element.is("[data-cartToolTipThumb]")) {
+							//app.u.dump($(this).closest('[data-pid]').attr('data-pid'));
+							var pid = $(this).closest('[data-pid]').attr('data-pid');
+							var product = app.data['appProductGet|'+pid];
+							app.u.dump('--> cart thumbnail prod'); app.u.dump(product);
+							if(product && product['%attribs']) {
+								var prodName = product['%attribs']['zoovy:prod_name'] ? product['%attribs']['zoovy:prod_name'] : "";
+								var prodPrice = product['%attribs']['zoovy:base_price'] ? product['%attribs']['zoovy:base_price'] : "";
+								prodPrice = app.u.formatMoney(prodPrice,'$',2,true);
+								var productImg = app.u.makeImage({"w":200,"h":200,"b":"ffffff",tag:0,"name":product['%attribs']['zoovy:prod_image1']});
+								return '<div class="cartToolTipWrapper"><span class="cartAccZoom">'+prodName+'</span><span class="cartAccZoom cartAccZoomPrice">'+prodPrice+'</span><img src="'+productImg+'" width="200" height="200" /></div>';
 							}
 						}
 						//thumbnail zoom for thumbs under main prod images in quickview
@@ -206,7 +220,7 @@ var store_filter = function() {
 							var prodName = product['%attribs']['zoovy:prod_name'];
 							var imgName = $(this).closest('[data-toolTipName]').attr('data-toolTipName');
 							var productImg = app.u.makeImage({"w":400,"h":400,"b":"ffffff",tag:0,"name":imgName});
-							return '<span class="quickviewZoom">'+prodName+'</span><img src="'+productImg+'" width="400" height="400" />';
+							return '<div class="toolTipWrapper"><span class="quickviewZoom">'+prodName+'</span><img src="'+productImg+'" width="400" height="400" /></div>';
 							}
 						}
 					});
@@ -310,6 +324,11 @@ var store_filter = function() {
 		//	showChat : function() {
 		//		$('a','.headerContainer .phoneChatLive').trigger('click');
 		//	},
+				
+			showCartAcc : function($this) {
+				$this.hide();
+				$('.cartAccList',$this.parent()).animate({'height':'40px'});
+			},
 				
 			showContentNoPropagation : function(product, pid) {
 				app.u.dump('Somthing to Read!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
@@ -462,6 +481,31 @@ var store_filter = function() {
 					
 				}
 			}, //siblingProductList	
+			
+				//gets list of accessories from product (if present) and makes a list of them
+			accessoryProductList : function($tag, data) {
+				if(data.value.stid && data.value.stid[0] == '%' || data.value.asm_master) {
+					return; //promos and assembly items don't get accessories list
+				}
+				else {
+					$('.cartAccButton',$tag.parent()).removeClass('displayNone');
+					var pid = app.ext.store_filter.u.pidFromStid(data.value.stid);
+					//app.u.dump('--> accessoryProductList PID'); app.u.dump(pid);
+					setTimeout(function(){ //time out because appProductGet was coming back undefined
+						var prod = app.data['appProductGet|'+pid];
+//						app.u.dump('--> accessoryProductList pid:'); app.u.dump(pid); 	
+//						app.u.dump('--> accessoryProductList product:'); app.u.dump(prod); 
+						if(prod && prod['%attribs'] && prod['%attribs']['zoovy:accessory_products']) {
+//							app.u.dump('--> accessoryProductList accessory_products:'); app.u.dump(prod['%attribs']['zoovy:accessory_products']);
+							data.bindData.csv = prod['%attribs']['zoovy:accessory_products'];
+							app.ext.store_prodlist.u.buildProductList(data.bindData,$tag);
+						}
+					},1000);
+				}
+				//if(pid) {
+				//	app.u.dump('--> accessoryProductList data.value:'); app.u.dump(data.value); 	
+				//}
+			},
 
 				//looks at siblings added with siblingProductList and hides if not purchasable.
 				//adds an attribute used for counting number of purchasable siblings if is purchasable
@@ -1500,6 +1544,21 @@ return filters;
 						app.model.dispatchThis('immutable');
 					})
 				}, //execCouponAdd
+				
+				pidFromStid : function(stid) {
+					if(stid.indexOf(':') != -1) {
+						var pid = stid.split(':');
+						pid = app.u.makeSafeHTMLId(pid[0]);
+					}
+					else if (stid.indexOf('/') != -1) {
+						var pid = stid.split('/');
+						pid = app.u.makeSafeHTMLId(pid[0]);
+					}
+					else {
+						pid = app.u.makeSafeHTMLId(stid);
+					}
+					return pid;
+				}
 				
 				
 	/*			showShipRegion : function($context) {

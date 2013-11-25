@@ -3836,7 +3836,9 @@ START APP PRODUCTLISTTEMPLATECART
 
 		<div class='cartItemWrapper'>
 
-			<div class='floatLeft cartImg'><img src='blank.gif' class='prodThumb' alt='' data-bind='var: product(zoovy:prod_image1); defaultVar: product(%attribs.zoovy:prod_image1); format:imageURL;' width='150' height='150' /></div>
+			<div class='floatLeft cartImg'>
+				<img src='blank.gif' class='prodThumb' alt='' data-bind='var: product(zoovy:prod_image1); defaultVar: product(%attribs.zoovy:prod_image1); format:imageURL;' width='150' height='150' />
+			</div>
 			<div class='floatLeft cartDesc'>
 				<h4 class="pointer carProdLink" data-bind="useParentData:true; format:cartProdName; extension:store_filter;"></h4>
 				<div class='ztable_row_small prodOptions' data-bind='var: variations(%options); format:selectedOptionsDisplay;'></div>
@@ -3849,6 +3851,11 @@ START APP PRODUCTLISTTEMPLATECART
 					<div class='cartPutLoadingHere loadingBG'>
 						<div class='transitContainer'></div>
 					</div>
+				</div>
+				<div>
+					<button class='floatRight cartAccButton displayNone' onClick='app.ext.store_filter.a.showCartAcc($(this));'>View Recommended Accesories</button>
+					<ul class='cartAccList floatRight' data-bind="useParentData:true; format:accessoryProductList; extension:store_filter;loadsTemplate:cartAccListTemplateToolTipThumb;hide_multipage:true; withInventory:1; withVariations:1;"></ul>
+					<!-- <ul class='cartAccList floatRight' data-bind="useParentData:true; format:accessoryProductList; extension:store_filter;loadsTemplate:cartAccListTemplateToolTipThumb;hide_multipage:true; withInventory:1; withVariations:1;"></ul> -->
 				</div>
 			</div>
 
@@ -3874,6 +3881,11 @@ START APP PRODUCTLISTTEMPLATECART
 END APP PRODUCTLISTTEMPLATECART
 **************************************************************************************************************-->
 
+<li id='cartAccListTemplateToolTipThumb' class='loadingBG ' data-bind="var:product(pid); format:hideIfNotPurchaseable; extension:store_filter;">
+	<div class='prodThumbContainer pointer targetElement' data-cartToolTipThumb="data-cartToolTipThumb"  onClick="showContent('product',{'pid':$(this).attr('data-pid')});" data-bind='var:product(pid);format:assignAttribute; attribute:data-pid;'>
+		<img src='blank.gif' class='prodThumb'data-bind='var: product(zoovy:prod_image1); format:imageURL;' width='30' height='30' />
+	</div>
+</li>
 
 
 
