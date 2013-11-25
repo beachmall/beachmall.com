@@ -746,7 +746,8 @@ var store_filter = function() {
 							}
 							else if(data.value.product) {
 								var prod = app.data['appProductGet|'+app.u.makeSafeHTMLId(data.value.product)];
-								var userProdShipMsg = prod['%attribs']['user:prod_shipping_msg'];
+								//possible for this user:prod_shipping_msg to be present but not set, make it a blank string to prevent undefined. 
+								var userProdShipMsg = prod['%attribs']['user:prod_shipping_msg'] ? prod['%attribs']['user:prod_shipping_msg'] : "" ;
 								var us1ts = prod['%attribs']['us1:ts'];
 							}
 								//pass stid so each item can be found in cart later when time in transit info gets added
@@ -754,7 +755,8 @@ var store_filter = function() {
 							app.ext.beachmart_cartEstArrival.u.initEstArrival(prod, stid);
 						}
 						else {	//else is for not cart prod list
-							var userProdShipMsg = data.value['%attribs']['user:prod_shipping_msg'];
+							//possible for this user:prod_shipping_msg to be present but not set, make it a blank string to prevent undefined.
+							var userProdShipMsg = data.value['%attribs']['user:prod_shipping_msg'] ? data.value['%attribs']['user:prod_shipping_msg'] : "";
 							var us1ts = data.value['%attribs']['us1:ts'];
 						}
 						var zoovyProdSalesRank = data.value['%attribs']['zoovy:prod_salesrank'];
