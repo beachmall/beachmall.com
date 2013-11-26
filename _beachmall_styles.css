@@ -1574,9 +1574,10 @@ CART TEMPLATE
 .upsellContainer	{height:500px; overflow:auto;}
 #upsellList .bundleProdlist li	{margin:0 0 12px 0; padding: 0 0 12px 0; border-bottom:1px dashed #efefef;}
 /* checkout buttons */
-
+/*
 #cartTemplateForm.cartHasNoExpedite .shipMessage, #cartTemplateForm.cartHasNoExpedite .estimatedArrivalDate {display:none;}
 #cartTemplateForm.cartHasNoExpedite .deliveryLocation, #cartTemplateForm.cartHasNoExpedite .deliveryMethod {display:none;}
+*/
 .radioShipTime {margin: 0 0 0 10px;}
 
 .cartFooter {height:30px; width:auto; margin:10px 0 15px 0; padding:6px 10px 10px 10px; background:#e0463a; color:#ffffff; text-align:center;}
@@ -1614,7 +1615,7 @@ PRODUCTLISTTEMPLATECART
 #modalCart .cartDesc .loadingBG {min-height:40px; background-size:10% auto;}
 #modalCart .cartShippingInformation .zlink, .mainProdColumn .deliveryMethod .zlink  {color:#E0463A; font-style:italic; font-weight:normal; font-family:montserrat;}
 #modalCart .cartShowAccButton, #modalCart .cartHideAccButton {padding:2px 5px; border:none; background:#f8c301; border-radius:0; color:#ffffff; font-family:"Open Sans"; font-weight:bold; margin:0 5px 0 0;}
-#modalCart .cartAccList {height:0; max-height:40px; max-width:260px; overflow:hidden;}
+#modalCart .cartAccList {height:0; max-height:40px; max-width:260px; overflow:hidden; clear:both;}
 #modalCart .mpControlContainer {display:none;}
 #modalCart .cartAccList li {height:30px; width:30px; border:2px solid #3bb3c3; margin:5px 5px 5px 13px;}
 #modalCart .cartAccList li > div {width:auto;}

@@ -661,11 +661,12 @@ var store_filter = function() {
 									else {	//if the attrib isn't set, expedited shipping is not available
 										$tag.text('Expedited shipping not available for this order');
 											//if one item has no expedited shipping no items have it, hide time in transit
-										$('.shipMessage','#cartTemplateForm').hide();
+										$tag.parent().attr('groundonall',1);
+								/*		$('.shipMessage','#cartTemplateForm').hide();
 										$('.estimatedArrivalDate','#cartTemplateForm').hide();
 										$('.deliveryLocation','#cartTemplateForm').hide();
 										$('.deliveryMethod','#cartTemplateForm').hide();
-									}
+								*/	}
 						//			if(app.data[rd.datapointer]['%attribs']['zoovy:base_price'] > 200){
 						//				$tag.text('The rent is too damn high!');
 						//				}

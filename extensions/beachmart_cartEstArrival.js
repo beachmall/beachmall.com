@@ -52,23 +52,32 @@ var beachmart_cartEstArrival = function() {
 					//use cutoff from response, not product.
 					//var $container = $('#cartStuffList_'+app.u.makeSafeHTMLId(SKU));
 					var $container = $('#cartStuffList_'+app.u.makeSafeHTMLId(tagObj.stid));
+					var data = app.data[tagObj.datapointer]; //shortcut.	
 		
-					app.u.dump(" -> $container.length: "+$container.length);
-					var data = app.data[tagObj.datapointer]; //shortcut.		
-					if(!$.isEmptyObject(data['@Services'])) {
-						app.u.dump(" -> @Services is not empty");
-						var index = app.ext.beachmart_cartEstArrival.u.getShipMethodByID(data['@Services'],app.data.cartDetail.want.shipping_id);
-						app.u.dump(app.data.cartDetail.want.shipping_id);
-						app.u.dump(index);
-						if(!index) {
-							index = app.ext.beachmart.u.getFastestShipMethod(data['@Services']);
+						//if ground on all set to 1, an item has no expedited shipping, make all methods ground
+					if($('#cartTemplateShippingContainer').attr('groundonall') == 1) {
+						index = app.ext.beachmart.u.getSlowestShipMethod(data['@Services']);
+						var ground = true; //true will bypass additional shipping methods later
+					}
+					else {
+						var ground = false;
+						app.u.dump(" -> $container.length: "+$container.length);
+						if(!$.isEmptyObject(data['@Services'])) {
+							app.u.dump(" -> @Services is not empty");
+							var index = app.ext.beachmart_cartEstArrival.u.getShipMethodByID(data['@Services'],app.data.cartDetail.want.shipping_id);
+							app.u.dump(app.data.cartDetail.want.shipping_id);
+							app.u.dump(index);
+							if(!index) {
+							//	index = app.ext.beachmart.u.getFastestShipMethod(data['@Services']);
+								index = app.ext.beachmart.u.getSlowestShipMethod(data['@Services']);
+							}
+							app.u.dump(" -> index: "+index);
+							
 						}
-						app.u.dump(" -> index: "+index);
-//index could be false if no methods were available. or could be int starting w/ 0
-						if(index >= 0) {
-							$('.transitContainer',$container).empty().append(app.ext.beachmart_cartEstArrival.u.getTransitInfo(tagObj.pid,data,index)); //empty first so when reset by zip change, no duplicate info is displayed.
-						}
-						
+					}
+						//index could be false if no methods were available. or could be int starting w/ 0
+					if(index >= 0) {
+						$('.transitContainer',$container).empty().append(app.ext.beachmart_cartEstArrival.u.getTransitInfo(tagObj.pid,data,index,ground)); //empty first so when reset by zip change, no duplicate info is displayed.
 					}
 					
 					$('.cartShippingInformation .loadingBG',$container).removeClass('loadingBG');
@@ -226,7 +235,7 @@ var beachmart_cartEstArrival = function() {
 			}, //getShipQuotes
 			
 			
-			getTransitInfo : function(pid,data,index)	{
+			getTransitInfo : function(pid,data,index,ground)	{
 				app.u.dump("BEGIN beachmart_cartEstArrival.u.getTransitInfo");
 
 				var prodAttribs = app.data['appProductGet|'+pid]['%attribs'];
@@ -248,8 +257,7 @@ var beachmart_cartEstArrival = function() {
 					$('.shipMessage',$r).append("Order today for arrival on ");
 					}
 
-				if(prodAttribs['user:prod_ship_expavail'] && prodAttribs['user:prod_ship_expavail'] == 1)	{
-				//if expedited shipping is not available, no other methods show up (will ship ground)
+				if(prodAttribs['user:prod_ship_expavail'] && prodAttribs['user:prod_ship_expavail'] == 1 && !ground)	{
 					var shipMeth = $('input[type="radio"]:checked','.cartShipMethods').parent().text().split(":");
 					shipMeth = shipMeth[0];
 					//$('.deliveryMethod',$r).append(data['@Services'][index]['method'])
@@ -263,18 +271,26 @@ var beachmart_cartEstArrival = function() {
 						//app.u.dump('@services: ----------------->'); app.u.dump(app.data.appShippingTransitEstimate['@Services']);
 						app.ext.beachmart_cartEstArrival.u.addDatesToRadioButtons(app.data.appShippingTransitEstimate['@Services'], $shipMethodsUL);
 						}
-					}
+				}
 				else	{
+						//if one item has expedited shipping is not available, no other methods show up (will ship ground)
 					app.u.dump(" -> prodAttribs['user:prod_ship_expavail']: "+prodAttribs['user:prod_ship_expavail']);
-					$r.empty().append("<div class='expShipMessage'></div>");
-					$('.expShipMessage',$r).append("<span class='zhint inconspicuouseZhint'>Expedited shipping not available for this item</span>");
-					$('#cartTemplateForm').addClass('cartHasNoExpedite');
+					$('.deliveryMethod',$r).append("by UPS Ground");
+						
+					if(prodAttribs['user:prod_ship_expavail'] && prodAttribs['user:prod_ship_expavail'] == 1) {
+						//only put "not available" message on items that don't have expavail set to 1
+					}
+					else { 
+						$r.append("<div class='expShipMessage'></div>");
+						$('.expShipMessage',$r).append("<span class='zhint inconspicuouseZhint'>Expedited shipping not available for this item</span>");
+						$('#cartTemplateForm').addClass('cartHasNoExpedite');
+					}
 				/*	$('.shipMessage','#cartTemplateForm').hide();
 					$('.estimatedArrivalDate','#cartTemplateForm').hide();
 					$('.deliveryLocation','#cartTemplateForm').hide();
 					$('.deliveryMethod','#cartTemplateForm').hide();
 				*/	
-					}
+				}
 
 					
 				$('.estimatedArrivalDate',$r).append(app.ext.beachmart.u.yyyymmdd2Pretty(data['@Services'][index]['arrival_yyyymmdd'])+" to");
