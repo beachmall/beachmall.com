@@ -1541,6 +1541,7 @@ return filters;
 
 						}});
 						//app.ext.orderCreate.u.handleCommonPanels($form);
+						app.ext.store_cart.u.updateCartSummary();
 						app.model.dispatchThis('immutable');
 					})
 				}, //execCouponAdd
