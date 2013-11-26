@@ -33,6 +33,7 @@ var myRIA = function() {
 			'categoryTemplateWithSpecialList',
 			'categoryTemplateBuyerGuide',
 			'productListTemplateToolTipThumb',
+			'cartAccListTemplateToolTipThumb',
 			'categoryTemplateSiteMap',
 			'redirectProductTemplate',
 //above here are custom beachmart templates			

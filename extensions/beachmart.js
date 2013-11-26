@@ -203,7 +203,6 @@ var store_filter = function() {
 							//app.u.dump($(this).closest('[data-pid]').attr('data-pid'));
 							var pid = $(this).closest('[data-pid]').attr('data-pid');
 							var product = app.data['appProductGet|'+pid];
-							app.u.dump('--> cart thumbnail prod'); app.u.dump(product);
 							if(product && product['%attribs']) {
 								var prodName = product['%attribs']['zoovy:prod_name'] ? product['%attribs']['zoovy:prod_name'] : "";
 								var prodPrice = product['%attribs']['zoovy:base_price'] ? product['%attribs']['zoovy:base_price'] : "";
@@ -324,10 +323,18 @@ var store_filter = function() {
 		//	showChat : function() {
 		//		$('a','.headerContainer .phoneChatLive').trigger('click');
 		//	},
-				
+				//reveals recommended accessories list, hides itself, shows "hide" accessories button
 			showCartAcc : function($this) {
-				$this.hide();
+				$this.hide().css('opacity','0');
+				$('.cartHideAccButton',$this.parent()).animate({'opacity':'1'}).show();
 				$('.cartAccList',$this.parent()).animate({'height':'40px'});
+			},
+			
+				//hides recommended accessories list, hides itself, show "reveal" accessories button
+			hideCartAcc : function($this) {
+				$this.hide().css('opacity','0');
+				$('.cartShowAccButton',$this.parent()).animate({'opacity':'1'}).show();
+				$('.cartAccList',$this.parent()).animate({'height':'0px'});
 			},
 				
 			showContentNoPropagation : function(product, pid) {
@@ -488,23 +495,17 @@ var store_filter = function() {
 					return; //promos and assembly items don't get accessories list
 				}
 				else {
-					$('.cartAccButton',$tag.parent()).removeClass('displayNone');
 					var pid = app.ext.store_filter.u.pidFromStid(data.value.stid);
-					//app.u.dump('--> accessoryProductList PID'); app.u.dump(pid);
 					setTimeout(function(){ //time out because appProductGet was coming back undefined
 						var prod = app.data['appProductGet|'+pid];
-//						app.u.dump('--> accessoryProductList pid:'); app.u.dump(pid); 	
-//						app.u.dump('--> accessoryProductList product:'); app.u.dump(prod); 
 						if(prod && prod['%attribs'] && prod['%attribs']['zoovy:accessory_products']) {
-//							app.u.dump('--> accessoryProductList accessory_products:'); app.u.dump(prod['%attribs']['zoovy:accessory_products']);
-							data.bindData.csv = prod['%attribs']['zoovy:accessory_products'];
-							app.ext.store_prodlist.u.buildProductList(data.bindData,$tag);
+							$('.cartShowAccButton',$tag.parent()).removeClass('displayNone'); //show button to reveal list
+							$('.cartItemWrapper','#cartStuffList_'+pid).css('height','200px'); //make line item taller to fit list & button
+							data.bindData.csv = prod['%attribs']['zoovy:accessory_products']; //add list to bindData
+							app.ext.store_prodlist.u.buildProductList(data.bindData,$tag); //make list
 						}
 					},1000);
 				}
-				//if(pid) {
-				//	app.u.dump('--> accessoryProductList data.value:'); app.u.dump(data.value); 	
-				//}
 			},
 
 				//looks at siblings added with siblingProductList and hides if not purchasable.

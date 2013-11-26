@@ -3853,7 +3853,8 @@ START APP PRODUCTLISTTEMPLATECART
 					</div>
 				</div>
 				<div>
-					<button class='floatRight cartAccButton displayNone' onClick='app.ext.store_filter.a.showCartAcc($(this));'>View Recommended Accesories</button>
+					<button class='floatRight cartShowAccButton displayNone' onClick='app.ext.store_filter.a.showCartAcc($(this));'>View Recommended Accesories</button>
+					<button class='floatRight cartHideAccButton displayNone' onClick='app.ext.store_filter.a.hideCartAcc($(this));'>Hide Recommended Accesories</button>
 					<ul class='cartAccList floatRight' data-bind="useParentData:true; format:accessoryProductList; extension:store_filter;loadsTemplate:cartAccListTemplateToolTipThumb;hide_multipage:true; withInventory:1; withVariations:1;"></ul>
 					<!-- <ul class='cartAccList floatRight' data-bind="useParentData:true; format:accessoryProductList; extension:store_filter;loadsTemplate:cartAccListTemplateToolTipThumb;hide_multipage:true; withInventory:1; withVariations:1;"></ul> -->
 				</div>
