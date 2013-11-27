@@ -319,10 +319,18 @@ var store_filter = function() {
 
 		a : {
 		
-				//work around to allow chat to be clicked from cart.
-		//	showChat : function() {
-		//		$('a','.headerContainer .phoneChatLive').trigger('click');
-		//	},
+			showContactPID : function (pid) {
+				//app.u.dump('the pid is: '); app.u.dump(pid);
+				setTimeout(function(){$('#contactFormOID','#mainContentArea_company').val('SKU: '+pid)},1000);
+			},
+			
+			resetContactPID : function() {
+				//app.u.dump('Got Here');
+				var $field = $('#contactFormOID','#mainContentArea_company');
+				$field.val('');
+				$field.attr('placeholder', 'Order Number (if applicable)');
+			},
+		
 				//reveals recommended accessories list, hides itself, shows "hide" accessories button
 			showCartAcc : function($this) {
 				$this.hide().css('opacity','0');
