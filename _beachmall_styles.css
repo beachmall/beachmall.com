@@ -1042,7 +1042,7 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 .qafCont {height:109px; width:180px; margin:26px 0 0 0; background:#ffffff url(images/bm12_p_toprtcol-180x89.jpg) no-repeat left top;}
 .qafQA, .qafEmail, .qafPrint {height:89px; width:60px; float:left; cursor:pointer;}
 .guarenteeTipCont {height:0;}
-.guarenteeTipCont p a {color:#e0463a;}
+.guarenteeTipCont .toolTip a {color:#e0463a;}
 .rightColumn {height:auto; width:258px; margin:0 0 15px 20px;}
 
 .rightColumn .pr-snippet-wrapper {background:#f5f1de; border:1px solid #777777;}
@@ -1569,7 +1569,18 @@ CART TEMPLATE
 #modalCart .cartButtonsContainer button.ui-state-default:hover {color:#F8C301; background:#ffffff;}
 #modalCart .cartAltButtonsContainer {margin:0 0 3% 0; border:none;}
 #modalCart .cartAltButtonsContainer .orUse {margin:10px 20px 10px 0; text-align:right;}
-#modalCart .cartRegion {}
+#modalCart .cartRegion {color:black;}
+
+#modalCart .mailCartCont {position:relative; font-weight:normal;}
+#modalCart .mailCartCont span {height:20px; width:20px; background-position:-1px -96px; margin:5px -5px 0 0; display:none;}
+#modalCart .mailCartCont form {height:19px; width:220px; background:#f8c301; color:#000000; position:absolute; right:20px; bottom:-29px; padding:0 10px 10px 10px; z-index:1; overflow:hidden;}
+#modalCart .mailCartCont form h2 {text-align:center; font-size:1em; margin:3px 0 0 0; color:#ffffff; padding:2px 0; cursor:pointer;}
+#modalCart .mailCartCont input {margin:5px auto; display:block;}
+#modalCart .mailCartCont input[type="submit"] {background:#3bb3c3; border:none; padding:1px 5px; color:#ffffff; font-family:Oswald;}
+#modalCart .mailCartCont input[type="checkbox"] {margin:0;  display:inline;}
+#modalCart .mailCartCont label {height:auto; width:200px; display:block; float:right; font-size:9px; line-height:10px; margin:5px 0 0 0;}
+
+
 
 
 .cartAccessories {height:500px; width: 40%; background-color:#e58;}

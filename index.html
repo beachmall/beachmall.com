@@ -3778,6 +3778,20 @@ START APP CART
 										<!-- some buttons that are alternatives to checkout. fewer is better -->
 										<span title='proceed to secure checkout'><button class='ui-button ui-button-text ui-state-default ui-corner-all checkoutButton' onClick="showContent('checkout',{});">Begin Checkout</button></span>
 										<button class='floatRight ui-button-text ui-button ui-state-default ui-corner-all continueShoppingButton' onClick="$('#modalCart').dialog('close');">Continue Shopping</button>
+										<div class='mailCartCont floatRight'>
+											<form>
+												<div class='cartEmailMessaging'></div>
+												<span class='sprite pointer' onClick='app.ext.beachmart_cartEmail.a.hideCartEmail($(this),$(this).parent())'></span>
+												<h2 onClick='app.ext.beachmart_cartEmail.a.showCartEmail($(this),$(this).parent())'>E-mail your shopping cart</h2>
+												<input type='text' placeholder='Full Name'></input>
+												<input type='email' placeholder='E-mail Address'></input>
+												<input type='submit' value='Send Cart'></input>
+												<div>
+													<input type='checkbox' name='newsletter'></input>
+													<label for='newsletter'>Keep me informed about Beachmall.com special offers, exclusive products, and new product information.</label>
+												</div>
+											</form>
+										</div>
 									</div>
 								</menu>
 								
