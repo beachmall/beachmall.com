@@ -968,6 +968,9 @@ HOMEPAGE
 PRODUCT PAGE
 *************************************************************************/
 
+.productTemplate, .productTemplate .ui-widget  {font-family:arial,sans-serif;}
+.productTemplate .ui-widget {font-size:13px;}
+
 /* PRODUCT CAROUSEL */
 .productPageCarouselContainer {height:70px; width:310px; background-color:; position:relative; overflow:hidden;}
 .prodPageCarousel {position:absolute; left:5px; top:0px; z-index:1; list-style:none; overflow:hidden;}
@@ -989,8 +992,8 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 .imageContainer .prodTabs.tabbedProductContent > ul {background-color:#ffffff;} /*tab bkgrnd*/
 .imageContainer .prodTabs.tabbedProductContent .imageAndVideoTabs .ui-state-default {height:35px; background:#444444; border-radius:0px; border:1px solid #444444;}
 .imageContainer .prodTabs.tabbedProductContent .imageAndVideoTabs .ui-state-active {background:#f5f1de; border-radius:0px; border-bottom:1px solid #f5f1de;}
-.imageContainer .prodTabs.tabbedProductContent .imageAndVideoTabs .ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited {color:#3bb3c3; font-weight:normal; font-family:"Open Sans";}
-.imageContainer .prodTabs.tabbedProductContent .imageAndVideoTabs .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {color:#777; font-weight:normal; font-family:"Open Sans";}
+.imageContainer .prodTabs.tabbedProductContent .imageAndVideoTabs .ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited {color:#3bb3c3; font-weight:normal;}
+.imageContainer .prodTabs.tabbedProductContent .imageAndVideoTabs .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {color:#777; font-weight:normal;}
 .imageContainer .prodTabs.tabbedProductContent .prodPageImages {width:310px; padding:0px; border:1px solid #444444; background:#F5F1DE;} /*box-shadow:0 1px 3px 2px #777;*/
 .imageContainer .prodTabs.tabbedProductContent .ui-tabs-panel {padding:0;}
 .imageContainer .prodTabs.tabbedProductContent .imageAndVideoTabs > div {border:none;}
@@ -1004,8 +1007,8 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 .fullWidth .mainProdColumn .mpNoShow {display:none;}
 /*.fullWidth .prodViewerAddToCartForm .addToCartButton {height:30px; width:120px; color:#fff; background:#E0463A; border:none; border-radius:0px; clear:both;}*/
 .fullWidth .prodViewerAddToCartForm .shipTime.latency.floatLeft {margin:20px 0 0 0;}
-.disRedirect {font-family:"Open Sans"; color:#3bb3c3;}
-.disRedirect h2 {font-family:montserrat; margin:0 0 10px 0; color:#000000;}
+.disRedirect {color:#3bb3c3;}
+.disRedirect h2 {margin:0 0 10px 0; color:#000000;}
 .disRedirect .imaginarium {margin:0 15px 0 0;}
 .disRedirect h3 {height:auto; width:60%; margin:0 0 5px 0;}
 .disRedirect h4 {color:#E63738; width:61%;}
@@ -1052,14 +1055,14 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 /*MAIN PRODUCT DESCRIPTION TABS*/
 .poo {height:auto; width:70%;}
 .mainProdTabs {height:auto; width:100%;}
-.prodTabViewContainer .ui-tabs .ui-tabs-nav li a {font-size:13px; font-family:Oswald; padding:6px;}
+.prodTabViewContainer .ui-tabs .ui-tabs-nav li a {font-size:13px; padding:6px;}
 .prodTabViewContainer .ui-widget-header	{padding:3px 3px 0 3px; margin:0; border-width:0; border-bottom-width:1px;}
 .prodTabViewContainer .ui-tabs	{padding:0; margin:5px 0 20px 0;}
 .ui-tabs .ui-tabs-nav li	{margin-right:2px;}
 .prodTabViewContainer .prodViewerTable .prodTabs.tabbedProductContent .tabs .ui-state-default {background:#444444; border-radius:0px; border:1px solid #444444;}
 .prodTabViewContainer .prodViewerTable .prodTabs.tabbedProductContent .tabs .ui-state-active {background:#f5f1de; border-radius:0px; border-bottom:1px solid #f5f1de;}
-.prodTabViewContainer .prodViewerTable .prodTabs.tabbedProductContent .tabs .ui-state-default a, .tabs .ui-state-default a:link, .ui-state-default a:visited {color:#3bb3c3; font-weight:normal; font-family:"Open Sans";}
-.prodTabViewContainer .prodViewerTable .prodTabs.tabbedProductContent .tabs .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {color:#444444; font-weight:normal; font-family:"Open Sans";}
+.prodTabViewContainer .prodViewerTable .prodTabs.tabbedProductContent .tabs .ui-state-default a, .tabs .ui-state-default a:link, .ui-state-default a:visited {color:#3bb3c3; font-weight:normal;}
+.prodTabViewContainer .prodViewerTable .prodTabs.tabbedProductContent .tabs .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {color:#444444; font-weight:normal;}
 .prodTabViewContainer .prodViewerTable .prodTabs.tabbedProductContent .ui-widget-content.ui-corner-tr {background:#f5f1de; border:none;}
 .prodTabViewContainer .prodViewerTable .prodTabs.tabbedProductContent .ui-widget-content {background:#f5f1de; border:1px solid #444444;}
 .prodTabViewContainer .prodViewerTable .prodTabs.tabbedProductContent > div {}
@@ -1073,8 +1076,8 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 .youMayLikeAccessories .tabbedProductListsTD {padding:0; margin:0 0 20px 18px;}
 .youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .tabs .ui-state-default {background:#444444; border-radius:0px; border:1px solid #444444;}
 .youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .tabs .ui-state-active {background:#f5f1de; border-radius:0px; border-bottom:1px solid #f5f1de;}
-.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .tabs .ui-state-default a, .tabs .ui-state-default a:link, .ui-state-default a:visited {color:#3bb3c3; font-weight:normal; font-family:"Open Sans";}
-.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .tabs .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {color:#444444; font-weight:normal; font-family:"Open Sans";}
+.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .tabs .ui-state-default a, .tabs .ui-state-default a:link, .ui-state-default a:visited {color:#3bb3c3; font-weight:normal;}
+.youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .tabs .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {color:#444444; font-weight:normal;}
 .youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content {height:521px; width:252px; background:#f5f1de; border:1px solid #444444;}
 .youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content > div {width:240px; background:#f5f1de; border:none;}
 
@@ -1263,7 +1266,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6db3f2', end
 /* carousel styles for product thumbnails */
 
 .imageContainer .ui-tabs .ui-tabs-panel	{padding:6px;}
-.imageContainer .zhint {text-align:center; padding:3px 0 0 0; font-family:"Open Sans"; font-weight:normal; font-size:11px; line-height:5px;}
+.imageContainer .zhint {text-align:center; padding:3px 0 0 0; font-weight:normal; font-size:11px; line-height:5px;}
 .imageContainer	{width:402px; padding:0px 20px 0px 0px; float:left;}
 #prodImageVideoTabs	{margin-right:24px;}
 
@@ -1275,13 +1278,14 @@ Top content area (price, add to cart, etc)
 .prodSummaryContainer.marginBottom.no_underline {width:106%;}
 .leftProdColumn {width: 78%; float:left;}
 
-h1.prodName	{font-size:18px; margin:0; padding:0; margin-bottom:6px; color:#666666;}
-.prodStidAndMfg span	{padding-right:24px; font-size:12px;}
+h1.prodName	{font-size:21px; font-weight:normal; text-rendering:optimizelegibility; margin:0; padding:0; margin-bottom:6px; color:#000000;}
+.prodStidAndMfg {font-size:13px;}
+.prodStidAndMfg span	{padding-right:24px;}
 
 
 .priceContainer	{padding:12px 0;}
-.basePrice	{font-size:18px; font-weight:bold;}
-.basePrice .prompt	{color:#34af99;}
+.basePrice	{font-size:17px; font-weight:bold;}
+.basePrice .prompt	{color:#34af99; font-size:13px;}
 .basePrice .value	{color:#e63738;}
 .priceContainer .savings, .retailPrice	{color:#666666; font-size:13px;}
 .priceContainer .retailPrice span.value {text-decoration:line-through;}
@@ -1614,7 +1618,7 @@ PRODUCTLISTTEMPLATECART
 #modalCart .cartDesc .ztable_row_small.stid {font-size:12px;}
 #modalCart .cartDesc .cartLatency, #modalCart .cartDesc .transitContainer, #modalCart .cartDesc .cartPutLoadingHere {margin:0 0 2% 0; padding:0 1.5%;}
 #modalCart .cartDesc .loadingBG {min-height:40px; background-size:10% auto;}
-#modalCart .cartShippingInformation .zlink, .mainProdColumn .deliveryMethod .zlink  {color:#E0463A; font-style:italic; font-weight:normal; font-family:montserrat;}
+#modalCart .cartShippingInformation .zlink, .mainProdColumn .deliveryMethod .zlink  {color:#E0463A; font-style:italic; font-weight:normal;}
 #modalCart .cartShowAccButton, #modalCart .cartHideAccButton {padding:2px 5px; border:none; background:#f8c301; border-radius:0; color:#ffffff; font-family:"Open Sans"; font-weight:bold; margin:0 5px 0 0;}
 #modalCart .cartAccList {height:0; max-height:40px; max-width:260px; overflow:hidden; clear:both;}
 #modalCart .mpControlContainer {display:none;}
