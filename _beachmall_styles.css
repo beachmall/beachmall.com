@@ -1042,6 +1042,7 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 .qafCont {height:109px; width:180px; margin:26px 0 0 0; background:#ffffff url(images/bm12_p_toprtcol-180x89.jpg) no-repeat left top;}
 .qafQA, .qafEmail, .qafPrint {height:89px; width:60px; float:left; cursor:pointer;}
 .guarenteeTipCont {height:0;}
+.guarenteeTipCont p a {color:#e0463a;}
 .rightColumn {height:auto; width:258px; margin:0 0 15px 20px;}
 
 .rightColumn .pr-snippet-wrapper {background:#f5f1de; border:1px solid #777777;}
