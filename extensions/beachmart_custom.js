@@ -326,7 +326,8 @@ Action
 			
 //Data must already be in memory to execute this action.
 //added as a .click to the shipping method
-			showShipGridInModal : function(datapointer, cart){
+			showShipGridInModal : function(datapointerS, datapointerM, cart){
+	//app.u.dump('----> showShipGridInModal datapointer'); app.u.dump(datapointer);
 				var $parent = $('#modalShipGrid').empty();
 //the modal opens as quick as possible so users know something is happening.
 //open if it's been opened before so old data is not displayed. placeholder content (including a loading graphic, if set) will be populated pretty quick.
@@ -337,10 +338,10 @@ Action
 //empty the existing cart and add a loadingBG so that the user sees something is happening.
 				$parent.dialog('open').addClass('loadingBG');
 					
-				if(datapointer && !$.isEmptyObject(app.data[datapointer]))	{
+				if(datapointerS && datapointerM && !$.isEmptyObject(app.data[datapointerS]) && !$.isEmptyObject(app.data[datapointerM]))	{
 					var $table = $("<table />").addClass('center');
 					$table.append("<tr class='ztable_row_head'><td></td><td>Method</td><td>Est. Arrival</td></tr>");
-					var services = app.data[datapointer]['@Services']
+					var services = app.data[datapointerS]['@Services']
 					var L = services.length;
 //					app.u.dump(" -> @Services.length: "+L);
 					for(var i = 0; i < L; i += 1)	{
@@ -352,8 +353,17 @@ Action
 							}
 						}
 						else {
-	//						app.u.dump(" -> "+i+") id: "+services[i].id);
-							$table.append(app.renderFunctions.transmogrify({'id':'service_'+services[i].id},"shipGridTemplate",services[i]));
+//							app.u.dump(" S -> "+i+") id: "+services[i].id);
+							var methods = app.data[datapointerM]['@methods'];
+							var methL = methods.length;
+							//app.u.dump(" S -> "+i+") id: "+services[i].method);
+							//if(methods[i]) app.u.dump(" M -> "+i+") id: "+methods[i].method);
+							for(var j=0; j < methL; j +=1) {
+								if(services[i].method == methods[j].method) {
+									$table.append(app.renderFunctions.transmogrify({'id':'service_'+services[i].id},"shipGridTemplate",services[i]));
+								}
+							}
+					//------$table.append(app.renderFunctions.transmogrify({'id':'method_'+methods[i].id},"shipGridTemplate",methods[i]));
 						}
 					}
 					$parent.removeClass('loadingBG').append($table);
@@ -1445,7 +1455,8 @@ if(prodAttribs['user:prod_ship_expavail'] && prodAttribs['user:prod_ship_expavai
 //if expedited shipping is not available, no other methods show up (will ship ground)
 	$('.deliveryMethod',$r).append(data['@Services'][index]['method'])
 	$('.deliveryMethod',$r).append(" <span class='zlink'>(Need it faster?)</span>").addClass('pointer').click(function(){
-		app.ext.beachmart.a.showShipGridInModal('appShippingTransitEstimate');
+		app.ext.beachmart.a.showShipGridInModal('appShippingTransitEstimate','cartShippingMethods');
+		//app.ext.beachmart.a.showShipGridInModal('cartShippingMethods');
 		});
 	}
 else	{

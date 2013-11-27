@@ -263,7 +263,7 @@ var beachmart_cartEstArrival = function() {
 					//$('.deliveryMethod',$r).append(data['@Services'][index]['method'])
 					$('.deliveryMethod',$r).append("by " + shipMeth);
 					$('.deliveryMethod',$r).append("<span class='zlink'> (Need it faster?)</span>").addClass('pointer').click(function(){
-						app.ext.beachmart.a.showShipGridInModal('appShippingTransitEstimate', 'cart');
+						app.ext.beachmart.a.showShipGridInModal('appShippingTransitEstimate','appShippingTransitEstimate', 'cart');
 						});
 						
 					var $shipMethodsUL = $('.cartShipMethods', '#modalCart');
