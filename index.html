@@ -2791,7 +2791,7 @@ this will likely become more flexible in the future. ###
 		<div class='floatRight marginBottom marginRight qafCont'>
 			<a class="bindByAnchor qafQA pointer" data-onclick="#!company?show=contact" href="#!company?show=contact" onClick="app.ext.store_filter.a.showContactPID($(this).attr('data-pid'))" data-bind='var:product(pid);format:assignAttribute; attribute:data-pid;'></a>
 			<a class="bindByAnchor qafEmail" target='_blank' data-bind='useParentData:true; format:bindMailto; extension:store_filter;'></a>
-			<a class="bindByAnchor qafPrint" data-onclick="#!company?show=contact" href="#!company?show=contact"></a>
+			<a class="bindByAnchor qafPrint" onClick='javascript:window.print()'></a>
 			<div class='displayNone guarenteeTipCont' data-bind="var: product(user:prod_guarantee); format:showIfSet;">
 				<a href='#' class='tipify tipifyGuarantee'>Guarantee & Returns</a>
 				<div class='toolTip' data-bind="var: product(user:prod_guarantee); format:wiki; wikiFormats:myRIA;"></div>
