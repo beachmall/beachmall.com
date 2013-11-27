@@ -328,7 +328,7 @@ var store_filter = function() {
 				//app.u.dump('Got Here');
 				var $field = $('#contactFormOID','#mainContentArea_company');
 				$field.val('');
-				$field.attr('placeholder', 'Order Number (if applicable)');
+				//$field.attr('placeholder', 'Order Number (if applicable)');
 			},
 		
 				//reveals recommended accessories list, hides itself, shows "hide" accessories button

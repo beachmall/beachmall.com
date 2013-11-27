@@ -176,7 +176,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
                 <li><a class="bindByAnchor" href="#!company?show=shipping">Shipping</a></li>
                 <li><a class="bindByAnchor" href="#!company?show=return">Returns</a></li>
                 <li><a class="bindByAnchor" href="#!company?show=privacy">Security & Privacy</a></li>
-                <li><a class="bindByAnchor" href="#!company?show=contact">Contact Us</a></li>
+                <li><a class="bindByAnchor" href="#!company?show=contact" onClick="app.ext.store_filter.a.resetContactPID();">Contact Us</a></li>
             </ul>
         </div>
 	</nav>
@@ -1069,7 +1069,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
        	  <li>NAVIGATE</li>
             <li><a class='bindByAnchor' href='#!category?navcat=.'>Home</a></li>
             <li><a class="bindByAnchor" href="#!company?show=about">About Us</a></li>
-            <li><a class="bindByAnchor" href="#!company?show=contact">Contact Us</a></li>
+            <li><a class="bindByAnchor" href="#!company?show=contact" onClick="app.ext.store_filter.a.resetContactPID();">Contact Us</a></li>
             <li><a class="bindByAnchor" href="#!company?show=faq">FAQ</a></li>
             <!--<li><a class='bindByAnchor' href='#!category?navcat=.sitemap'>Site Map</a></li>-->
             <li><a href='#!category?navcat=.sitemap' data-onclick='#!category?navcat=.sitemap' class='pointer'>Site Map</a></li>
@@ -1081,7 +1081,7 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
         <ul>
         	<li>ADDITIONAL LINKS</li>
             <li><a class='bindByAnchor' href='#!category?navcat=.buyer_guides'>Buying Guides</a></li>
-            <li><a class="bindByAnchor" href="#!company?show=contact">Wholesale</a></li>
+            <li><a class="bindByAnchor" href="#!company?show=contact" onClick="app.ext.store_filter.a.resetContactPID();">Wholesale</a></li>
             <li><a class='bindByAnchor' href='#!category?navcat=.affiliates'>Affiliates</a></li>
             <li><a href="https://www.facebook.com/BeachMall" target="_blank">Facebook</a></li>
             <li><a href="https://twitter.com/Beachmall" target="_blank">Twitter</a></li>
@@ -1748,7 +1748,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 		<tr> 
 			<td> </td> 
 			<td> </td> 
-			<td colspan="2"><a href="#!company?show=contact" class='pointer' data-onclick="#!company?show=contact"><font size="2">Contact Us </font></a></td> 
+			<td colspan="2"><a href="#!company?show=contact" class='pointer' data-onclick="#!company?show=contact" onClick="app.ext.store_filter.a.resetContactPID();"><font size="2">Contact Us </font></a></td> 
 		</tr> 
 		<tr> 
 			<td> </td> 
@@ -1758,7 +1758,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 		<tr> 
 			<td> </td> 
 			<td> </td> 
-			<td colspan="2"><a href="#!company?show=contact" class='pointer' data-onclick="#!company?show=contact"><font size="2">Wholesale </font></a></td> 
+			<td colspan="2"><a href="#!company?show=contact" class='pointer' data-onclick="#!company?show=contact" onClick="app.ext.store_filter.a.resetContactPID();"><font size="2">Wholesale </font></a></td> 
 		</tr> 
 		<tr> 
 			<td height="21"> </td> 
