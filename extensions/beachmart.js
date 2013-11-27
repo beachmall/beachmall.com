@@ -318,12 +318,15 @@ var store_filter = function() {
 
 
 		a : {
-		
+				
+				//Q&A link on product page will populate the order/prod id field on contact form w/ pid
 			showContactPID : function (pid) {
 				//app.u.dump('the pid is: '); app.u.dump(pid);
 				setTimeout(function(){$('#contactFormOID','#mainContentArea_company').val('SKU: '+pid)},1000);
 			},
 			
+				//clears the order/prod id field in contact form to be sure it doesn't still 
+				//have showContactPID value still displayed (if form did not get submitted). 
 			resetContactPID : function() {
 				//app.u.dump('Got Here');
 				var $field = $('#contactFormOID','#mainContentArea_company');
@@ -420,6 +423,53 @@ var store_filter = function() {
 //on a data-bind, format: is equal to a renderformat. extension: tells the rendering engine where to look for the renderFormat.
 //that way, two render formats named the same (but in different extensions) don't overwrite each other.
 		renderFormats : {
+		
+				//opens e-mail in default mail provider (new window if web-based)
+				//if info is available will populate subject and body w/ prod name, mfg, & price
+				//if only name, subject will have name, body will be empty. If no content, no subject or body
+			bindMailto : function($tag, data){
+				app.u.dump('data.value:'); app.u.dump(data.value);
+				if(data.value['%attribs'] && data.value['%attribs']['zoovy:prod_name']) {
+					
+					var name = data.value['%attribs']['zoovy:prod_name'];
+					
+						//if all the info is present, add it all to the message
+					if(data.value['%attribs']['zoovy:prod_mfg'] && data.value['%attribs']['zoovy:prod_msrp']) {
+						var MFG = data.value['%attribs']['zoovy:prod_mfg'];
+						var price = data.value['%attribs']['zoovy:prod_msrp'];
+						$tag.on("click", function() {
+							var eWindow = window.open("mailto:?subject="+name+"%20I%20found%20on%20beachmall.com&body="+name+",%20by%20"+MFG+",%20for%20only%20"+price+"%20"+window.location+""); //+window.location
+						
+								//window object has an array of content if something loaded in it.
+								//the timeout was necessary to access the data to determine whether or not to close.
+								//test thoroughly to determine the reliability of this method!!
+								
+								//the window is set, check if it's filled, and kill it if not
+							setTimeout(function(){
+								//app.u.dump('WindowObjectReference'); app.u.dump(eWindow.WindowObjectReference); //Security issues? check for later possibility of cleaner implementation 
+								if(eWindow[0]) {//app.u.dump('Webmail, window has content don't close');
+								}
+								else {
+									//app.u.dump('Outlook-esq, window has no content'); 
+									eWindow.close();
+								}
+							},5000);
+						});
+					}
+					else {
+						$tag.on("click", function() {
+							var eWindow = window.open("mailto:?subject="+name+"%20I%20found%20on%20beachmall.com&body=%20"+window.location+"");
+							setTimeout(function(){if(eWindow[0]) {} else {eWindow.close();}	},5000);
+						});
+					}
+				}
+				else {
+					$tag.on("click", function() {
+						var eWindow = window.open("mailto:?body="+window.location+"");
+						setTimeout(function(){if(eWindow[0]) {} else {eWindow.close();}	},5000);
+					});
+				}
+			}, //bindMailto
 		
 				//adds product name on cart list item and puts a link on it by 
 				//converting stid into pid and doing show content on it.
