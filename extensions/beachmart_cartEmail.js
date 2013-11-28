@@ -34,7 +34,7 @@ var beachmart_cartEmail = function() {
 				this.dispatch(params,_tag,Q);
 			},
 			dispatch : function(params,_tag,Q)	{
-				app.model.addDispatchToQ({"_cmd":"appMashUpSMTP","params":params,"_tag" : _tag},Q || 'immutable');	
+				app.model.addDispatchToQ($.extend({"_cmd":"appMashUpSMTP","_tag" : _tag},Q || 'immutable'),params);	
 			}			
 		}, //cartEmailMashup
 	
@@ -50,9 +50,7 @@ var beachmart_cartEmail = function() {
 			onSuccess : function()	{
 				var r = false; //return false if extension won't load for some reason (account config, dependencies, etc).
 				
-				$.getJSON("_mashups/cartEmailPermissions.json?_v="+(new Date()).getTime(), function(json) {
-					app.ext.beachmart_cartEmail.vars.cartEmail = json.cartEmail;
-				}).fail(function(){app.u.throwMessage("CART EMAIL FAILED TO LOAD - there is a bug in _mashups/cartEmailPermissions.json")});
+				//app.u.dump('--> Extension beachmart_cartEmail started');
 				
 				//if there is any functionality required for this extension to load, put it here. such as a check for async google, the FB object, etc. return false if dependencies are not present. don't check for other extensions.
 				r = true;
@@ -62,7 +60,7 @@ var beachmart_cartEmail = function() {
 			onError : function()	{
 //errors will get reported for this callback as part of the extensions loading.  This is here for extra error handling purposes.
 //you may or may not need it.
-				app.u.dump('BEGIN admin_orders.callbacks.init.onError');
+				app.u.dump('BEGIN beachmart_cartEmail.callbacks.init.onError');
 				}
 			}
 		}, //callbacks
@@ -77,19 +75,20 @@ var beachmart_cartEmail = function() {
 		
 				//processes cart e-mail form and calls appMashUpSMTP for it
 			emailCart : function($form) {
-				var uName= $('input[type="text"]',$form).val();
+				var uName = $('input[type="text"]',$form).val();
 				var eAddress = $('input[type="email"]',$form).val();
 				var newsletter = $('input[type="checkbox"]',$form).is(':checked');
 				var products = app.data['cartDetail']['@ITEMS'];
-				var limit = app.ext.beachmart_cartEmail.vars.cartEmail.permisions.limit;
 				
-				var params : {
-					user 	: uName,
-					email	: eaddress,
-					products: products
-				}
+				var params = {
+					"permission"	: "_mashups/cartEmailPermissions",
+					"sender"		: "help@beachmall.com",
+					"recipient"		: eAddress,
+					"subject"		: "Your Beachmall.com cart contents",
+					"products"		: products
+				};
 				
-				app.ext.beachmart_cartEmail.calls.init($input.val(),{"callback":function(rd){
+				app.ext.beachmart_cartEmail.calls.cartEmailMashup.init(params,{"callback":function(rd){
 					if(app.model.responseHasErrors(rd)){
 						$form.anymessage({'message':rd});
 					}
@@ -99,12 +98,12 @@ var beachmart_cartEmail = function() {
 					}
 				}});
 				
-	//			app.u.dump('--> All that stuff from the e-mail form:'); 
-	//			app.u.dump(uName); 
-	//			app.u.dump(eAddress); 
-	//			app.u.dump(newsletter);
-	//			app.u.dump(products);
-	//			app.u.dump(limit);
+		//		app.u.dump('--> All that stuff from the e-mail form:'); 
+		//		app.u.dump(uName); 
+		//		app.u.dump(eAddress); 
+		//		app.u.dump(newsletter);
+		//		app.u.dump(products);
+		//		app.u.dump(params);
 	
 			//HIDDEN FOR EASE OF TESTING, UNCOMMENT WHEN DONE
 			//	if(newsletter) {

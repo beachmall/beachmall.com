@@ -1,9 +1,7 @@
 {
-	"cartEmail" : {
-		"permisions" : {
-			"api" : "appMashUpSMTP",
-			"title" : "Your Cart",
-			"limit" : "3"
-		}
-	}
+	"api"			: "appMashUpSMTP",
+	"min-version"	: "201314",
+	"max-version"	: "201346",
+	"title" 		: "Your Cart",
+	"limit" 		: "3"
 }
