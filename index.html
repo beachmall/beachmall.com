@@ -30,7 +30,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"201314.20131126194400",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"201314.20131127161600",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"", //used in non-local mode.
 	"checkoutAuthMode" : "active",//can be passive, active or required
@@ -3779,15 +3779,15 @@ START APP CART
 										<span title='proceed to secure checkout'><button class='ui-button ui-button-text ui-state-default ui-corner-all checkoutButton' onClick="showContent('checkout',{});">Begin Checkout</button></span>
 										<button class='floatRight ui-button-text ui-button ui-state-default ui-corner-all continueShoppingButton' onClick="$('#modalCart').dialog('close');">Continue Shopping</button>
 										<div class='mailCartCont floatRight'>
-											<form>
+											<form onSubmit="app.ext.beachmart_cartEmail.a.emailCart($(this)); return false;">
 												<div class='cartEmailMessaging'></div>
 												<span class='sprite pointer' onClick='app.ext.beachmart_cartEmail.a.hideCartEmail($(this),$(this).parent())'></span>
 												<h2 onClick='app.ext.beachmart_cartEmail.a.showCartEmail($(this),$(this).parent())'>E-mail your shopping cart</h2>
-												<input type='text' placeholder='Full Name'></input>
-												<input type='email' placeholder='E-mail Address'></input>
-												<input type='submit' value='Send Cart'></input>
+												<input type='text' name='fullname' placeholder='Full Name'></input>
+												<input type='email' name='login' placeholder='E-mail Address'></input>
+												<input type='submit' value='Send Cart' class='pointer'></input>
 												<div>
-													<input type='checkbox' name='newsletter'></input>
+													<input type='checkbox' checked='checked' name='newsletter'></input>
 													<label for='newsletter'>Keep me informed about Beachmall.com special offers, exclusive products, and new product information.</label>
 												</div>
 											</form>

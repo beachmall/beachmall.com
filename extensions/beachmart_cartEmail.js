@@ -24,7 +24,22 @@ var beachmart_cartEmail = function() {
 	var theseTemplates = new Array('');
 	var r = {
 
-
+	vars : {},
+////////////////////////////////////   CALLS    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\	
+	
+	calls : {	
+	
+		cartEmailMashup: {
+			init : function(params,_tag,Q)	{
+				this.dispatch(params,_tag,Q);
+			},
+			dispatch : function(params,_tag,Q)	{
+				app.model.addDispatchToQ({"_cmd":"appMashUpSMTP","params":params,"_tag" : _tag},Q || 'immutable');	
+			}			
+		}, //cartEmailMashup
+	
+	}, //calls
+	
 ////////////////////////////////////   CALLBACKS    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 
@@ -34,7 +49,11 @@ var beachmart_cartEmail = function() {
 		init : {
 			onSuccess : function()	{
 				var r = false; //return false if extension won't load for some reason (account config, dependencies, etc).
-
+				
+				$.getJSON("_mashups/cartEmailPermissions.json?_v="+(new Date()).getTime(), function(json) {
+					app.ext.beachmart_cartEmail.vars.cartEmail = json.cartEmail;
+				}).fail(function(){app.u.throwMessage("CART EMAIL FAILED TO LOAD - there is a bug in _mashups/cartEmailPermissions.json")});
+				
 				//if there is any functionality required for this extension to load, put it here. such as a check for async google, the FB object, etc. return false if dependencies are not present. don't check for other extensions.
 				r = true;
 
@@ -55,6 +74,46 @@ var beachmart_cartEmail = function() {
 //actions are functions triggered by a user interaction, such as a click/tap.
 //these are going the way of the do do, in favor of app events. new extensions should have few (if any) actions.
 		a : {
+		
+				//processes cart e-mail form and calls appMashUpSMTP for it
+			emailCart : function($form) {
+				var uName= $('input[type="text"]',$form).val();
+				var eAddress = $('input[type="email"]',$form).val();
+				var newsletter = $('input[type="checkbox"]',$form).is(':checked');
+				var products = app.data['cartDetail']['@ITEMS'];
+				var limit = app.ext.beachmart_cartEmail.vars.cartEmail.permisions.limit;
+				
+				var params : {
+					user 	: uName,
+					email	: eaddress,
+					products: products
+				}
+				
+				app.ext.beachmart_cartEmail.calls.init($input.val(),{"callback":function(rd){
+					if(app.model.responseHasErrors(rd)){
+						$form.anymessage({'message':rd});
+					}
+					else	{
+						$form.anymessage(app.u.successMsgObject('Your message has been sent.'));
+//							_gaq.push(['_trackEvent','Cart','User Event','Cart e-mailed']);
+					}
+				}});
+				
+	//			app.u.dump('--> All that stuff from the e-mail form:'); 
+	//			app.u.dump(uName); 
+	//			app.u.dump(eAddress); 
+	//			app.u.dump(newsletter);
+	//			app.u.dump(products);
+	//			app.u.dump(limit);
+	
+			//HIDDEN FOR EASE OF TESTING, UNCOMMENT WHEN DONE
+			//	if(newsletter) {
+			//		app.ext.store_crm.u.handleSubscribe($form);
+			//	}
+			//	setTimeout(function() {
+			//		app.ext.beachmart_cartEmail.a.hideCartEmail($('span',$form),$form);
+			//	},5000);
+			},
 		
 				//animates cart e-mail form into view, shows close button in form
 			showCartEmail : function($this, $form) {

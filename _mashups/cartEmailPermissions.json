@@ -1,0 +1,9 @@
+{
+	"cartEmail" : {
+		"permisions" : {
+			"api" : "appMashUpSMTP",
+			"title" : "Your Cart",
+			"limit" : "3"
+		}
+	}
+}
