@@ -79,15 +79,18 @@ var beachmart_cartEmail = function() {
 				var eAddress = $('input[type="email"]',$form).val();
 				var newsletter = $('input[type="checkbox"]',$form).is(':checked');
 				var products = app.data['cartDetail']['@ITEMS'];
+				var body = "This is the contents of your Beachmall.com cart. It was e-mailed to you at your request. "
+					+		"Please come see us again soon!"; 
 				
 				var params = {
 					"permission"	: "_mashups/cartEmailPermissions",
 					"sender"		: "help@beachmall.com",
 					"recipient"		: eAddress,
 					"subject"		: "Your Beachmall.com cart contents",
-					"products"		: products
+					"products"		: products,
+					"body"			: body
 				};
-				
+		/*		
 				app.ext.beachmart_cartEmail.calls.cartEmailMashup.init(params,{"callback":function(rd){
 					if(app.model.responseHasErrors(rd)){
 						$form.anymessage({'message':rd});
@@ -97,13 +100,15 @@ var beachmart_cartEmail = function() {
 //							_gaq.push(['_trackEvent','Cart','User Event','Cart e-mailed']);
 					}
 				}});
-				
+		*/		
+		
 		//		app.u.dump('--> All that stuff from the e-mail form:'); 
 		//		app.u.dump(uName); 
 		//		app.u.dump(eAddress); 
 		//		app.u.dump(newsletter);
 		//		app.u.dump(products);
 		//		app.u.dump(params);
+		//		app.u.dump(body);
 	
 			//HIDDEN FOR EASE OF TESTING, UNCOMMENT WHEN DONE
 			//	if(newsletter) {
@@ -145,7 +150,79 @@ var beachmart_cartEmail = function() {
 //utilities are typically functions that are exected by an event or action.
 //any functions that are recycled should be here.
 		u : {
-			}, //u [utilities]
+		
+			runMashupTest : function($form) {
+				var uName = $('input[type="text"]',$form).val();
+				var eAddress = $('input[type="email"]',$form).val();
+				var newsletter = $('input[type="checkbox"]',$form).is(':checked');
+				var products = app.data['cartDetail']['@ITEMS'];
+				var body = "Something to see as the e-mail body";
+		/*		var products = [
+				{
+					"sku": "BCHCDY",
+					"%attribs": {
+						"zoovy:profile": "DEFAULT",
+						"zoovy:pkg_width": "15",
+						"zoovy:prod_mfg": "Bcaddy",
+						"zoovy:pkg_height": "38",
+						"zoovy:prod_mfgid": "GENERIC:BHCADY",
+						"zoovy:ship_cost1": "0.0",
+						"zoovy:virtual": "GENERIC:BHCADY",
+						"zoovy:prod_image1": "beach_caddy/haulincart2_4.jpg",
+						"zoovy:prod_supplier": "BHCADY",
+						"zoovy:pkg_depth": "22",
+						"is:shipfree": "1",
+						"zoovy:prod_is": "1073153",
+						"zoovy:prod_promoclass": "FREE SHIP",
+						"zoovy:ship_latency": "1",
+						"zoovy:pkg_exclusive": "1"
+					},
+					"uuid": "FD8C6214578611E3982BA3A338230745",
+					"shipdsn": "",
+					"weight": "528",
+					"base_price": "349.00",
+					"assembly": "",
+					"prod_name": "Wide Wheels Utility Cart with Tote(included), and Surf Board Option",
+					"pog_sequence": "",
+					"taxable": "1",
+					"qty": "1",
+					"description": "Wide Wheels Utility Cart with Tote(included), and Surf Board Option",
+					"base_weight": "528",
+					"virtual": "GENERIC:BHCADY",
+					"full_product": {
+						
+					},
+					"added_gmt": "1385572304",
+					"product": "BCHCDY",
+					"price": "349.00",
+					"stid": "BCHCDY",
+					"extended": "349.00"
+				}
+				]
+		*/		
+				var params = {
+					"permission"	: "_mashups/cartEmailPermissions",
+					"sender"		: "help@beachmall.com",
+					"recipient"		: "ryanm@zoovy.com",
+					"subject"		: "Your Beachmall.com cart contents",
+					"products"		: products,
+					"body"			: "Something to see as the e-mail body"
+				};
+				
+				//app.u.dump('--> PARAMS'); app.u.dump(params);
+				
+		/*		app.ext.beachmart_cartEmail.calls.cartEmailMashup.init(params,{"callback":function(rd){
+					if(app.model.responseHasErrors(rd)){
+						$form.anymessage({'message':rd});
+					}
+					else	{
+						$form.anymessage(app.u.successMsgObject('Your message has been sent.'));
+//							_gaq.push(['_trackEvent','Cart','User Event','Cart e-mailed']);
+					}
+				}});
+		*/	},
+		
+		}, //u [utilities]
 
 //app-events are added to an element through data-app-event="extensionName|functionName"
 //right now, these are not fully supported, but they will be going forward. 
