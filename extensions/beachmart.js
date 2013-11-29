@@ -423,6 +423,33 @@ var store_filter = function() {
 //on a data-bind, format: is equal to a renderformat. extension: tells the rendering engine where to look for the renderFormat.
 //that way, two render formats named the same (but in different extensions) don't overwrite each other.
 		renderFormats : {
+	
+				//creates image for search results lists from user:app_thumb (a copy of image1) to prevent
+				//banner/icon images that had been getting indexed from being used for the list image.
+				// !! -- TEMPORARILY WORKS AROUND THE BROKEN APP_THUMB ATTRIB -- !!
+			appThumb : function($tag, data) {
+				//app.u.dump('--> store_filter: appThumb started'); app.u.dump(data.value.images[0]);
+				data.bindData.b = data.bindData.bgcolor || 'ffffff'; //default to white.
+				
+				if(data.value) {
+					//data.bindData.name = data.value.app_thumb;
+					
+			/*TMP FOR TESTING replace w/ above name assignment when app_thumb attrib is corrected*/ 
+					var banners = data.value.images[0]; 
+					if(banners.indexOf('banners') != -1 || banners.indexOf('icons') != -1) {
+						data.bindData.name =  data.value.images[1] ? data.value.images[1] : data.value.images[2];
+					}
+					else {
+						data.bindData.name = data.bindData.name = data.value.images[0];
+					}
+			/*TMP FOR TESTING*/
+					
+					data.bindData.w = $tag.attr('width');
+					data.bindData.h = $tag.attr('height');
+					data.bindData.tag = 0;
+					$tag.attr('src',app.u.makeImage(data.bindData));
+				}
+			}, //appThumb
 		
 				//opens e-mail in default mail provider (new window if web-based)
 				//if info is available will populate subject and body w/ prod name, mfg, & price

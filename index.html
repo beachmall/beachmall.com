@@ -30,7 +30,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"201314.20131127202900",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"201314.20131129100800",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"", //used in non-local mode.
 	"checkoutAuthMode" : "active",//can be passive, active or required
@@ -2348,7 +2348,8 @@ EndBug#2-->
 			<div class='bottomLeftCorner'></div><div class='leftBottomCorner'></div><div class='bottomRightCorner'></div><div class='rightBottomCorner'></div> 
 			<!-- END CORNER SHADOWS -->
 			<div class='prodThumbContainer myProdThumbSmall'>
-				<img src='blank.gif' class='prodThumb imgBorder' data-bind='var: product(images); format:imageURL;isElastic:1;bgcolor:ffffff;' width='208' height='208' />
+				<!-- <img src='blank.gif' class='prodThumb imgBorder' data-bind='var: product(images); format:imageURL;isElastic:1;bgcolor:ffffff;' width='208' height='208' /> -->
+				<img src='blank.gif' class='prodThumb imgBorder' data-bind='useParentData:true; format:appThumb; extension:store_filter; isElastic:1;' width='208' height='208' />
 			</div>
 			<!-- <div class='hideInMinimalMode pointer moreDetailsSmall floatRight' onClick="showContent('product',{'pid':$(this).closest('[data-pid]').attr('data-pid')});">VIEW DETAILS</div> -->
 			<div class='hideInMinimalMode pointer moreDetailsSmall floatRight' onClick="app.ext.store_filter.a.showContentNoPropagation('product',{'pid':$(this).closest('[data-pid]').attr('data-pid')});">VIEW DETAILS</div>
@@ -2390,7 +2391,8 @@ END BUG7-->
 			<div class='bottomLeftCorner'></div><div class='leftBottomCorner'></div><div class='bottomRightCorner'></div><div class='rightBottomCorner'></div> 
 			<!-- END CORNER SHADOWS -->
 			<div class='prodThumbContainer myProdThumbSmall'>
-				<img src='blank.gif' class='prodThumb imgBorder' data-bind='var: product(images); format:imageURL;isElastic:1;bgcolor:ffffff;' width='208' height='208' />
+				<!-- <img src='blank.gif' class='prodThumb imgBorder' data-bind='var: product(images); format:imageURL;isElastic:1;bgcolor:ffffff;' width='208' height='208' /> -->
+				<img src='blank.gif' class='prodThumb imgBorder' data-bind='useParentData:true; format:appThumb; extension:store_filter; isElastic:1;' width='208' height='208' />
 			</div>
 			<div class='starBurst sprite displayNone' data-bind='var: product(user:prod_promo); format:showIfSet;'>
             	<div class='starBurstTextOuter'>
@@ -2445,7 +2447,8 @@ END BUG7-->
 <li id='productListTemplateResultsCustom' class='loadingBG searchResultsProduct ' >
 	<div onClick="return showContent('product', {'pid' : $(this).parent().attr('data-pid')});" class='pointer'>
 		<div class='prodThumbContainer myProdThumb'>
-			<img src='blank.gif' class='prodThumb push' data-bind='var: product(images); format:imageURL;isElastic:1;bgcolor:ffffff;' width='210' height='210' />
+			<!-- <img src='blank.gif' class='prodThumb push' data-bind='var: product(images); format:imageURL;isElastic:1;bgcolor:ffffff;' width='210' height='210' /> -->
+			<img src='blank.gif' class='prodThumb push' data-bind='useParentData:true; format:appThumb; extension:store_filter; isElastic:1;' width='210' height='210' />
             <div class='prodTextContainer'>        
                 <h6 class='hideInMinimalMode floatLeft prodPrice' data-bind='var: product(base_price); format:money; isElastic:1; currencySign: $;  hideZero:true; className:price;'></h6>
                 <div class='hideInMinimalMode floatRight pointer moreDetails'>VIEW DETAILS</div> 
@@ -2465,7 +2468,8 @@ END BUG7-->
 			<div class='bottomLeftCorner'></div><div class='leftBottomCorner'></div><div class='bottomRightCorner'></div><div class='rightBottomCorner'></div> 
 			<!-- END CORNER SHADOWS -->
 			<div class='prodThumbContainer myProdThumbSmall'>
-                <img src='blank.gif' class='prodThumb' data-bind='var: product(images); format:imageURL;isElastic:1;bgcolor:ffffff;' width='208' height='208' />
+                <!-- <img src='blank.gif' class='prodThumb' data-bind='var: product(images); format:imageURL;isElastic:1;bgcolor:ffffff;' width='208' height='208' /> -->
+				<img src='blank.gif' class='prodThumb' data-bind='useParentData:true; format:appThumb; extension:store_filter; isElastic:1;' width='208' height='208' />
             </div>
             <div class='prodTextContainerSmall'>        
                 <h6 class='hideInMinimalMode floatLeft prodPriceSmall' data-bind='var: product(base_price); format:money; isElastic:1; currencySign: $;  hideZero:true; className:price;'></h6>
