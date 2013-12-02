@@ -30,7 +30,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"201314.20131202123800",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"201314.20131202144200",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc",
 	"baseURL":"", //used in non-local mode.
 	"checkoutAuthMode" : "active",//can be passive, active or required
@@ -3735,7 +3735,7 @@ START APP CART
 								<div class='cartShipOptions'>
 									<form action='#' onSubmit='return false;'>
 										<label for='data-ship_zip'>Zip/Postal Code:</label>
-										<input type='text' size='6'  name='ship/postal' id='data-ship_zip' value='' data-bind='var: cart(ship/postal); format:popVal;' maxlength='10' onChange="app.calls.cartSet.init({'ship/postal':this.value, 'ship/region':''});
+										<input type='text' size='6'  name='ship/postal' id='data-ship_zip' value='' data-bind='var: cart(ship/postal); format:popVal;' maxlength='10' onChange="app.calls.cartSet.init({'ship/postal':this.value, 'ship/region':'', 'ship/city':''});
 											app.ext.store_cart.u.updateCartSummary();
 											app.ext.store_cart.calls.cartShippingMethodsWithUpdate.init();
 											app.model.dispatchThis('immutable');">
