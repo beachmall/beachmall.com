@@ -1478,7 +1478,7 @@ if(ps.indexOf('?') >= 1)	{
 //				app.u.dump(infoObj);
 /*beachmart*/		//check for cart to ensure cart is loaded as modal on return form pay pal
 				if(infoObj.pageType == 'cart') {
-					infoObj.pageType == 'homepage';
+					infoObj.pageType = 'homepage';
 					app.ext.myRIA.a.showContent('',infoObj);
 					app.ext.myRIA.a.showContent('cart',{'action':'modal'});
 				}
