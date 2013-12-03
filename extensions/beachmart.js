@@ -581,17 +581,18 @@ var store_filter = function() {
 				}
 				else {
 					var pid = app.ext.store_filter.u.pidFromStid(data.value.stid);
+					var stid = app.u.makeSafeHTMLId(data.value.stid);
 					setTimeout(function(){ //time out because appProductGet was coming back undefined
 						var prod = app.data['appProductGet|'+pid];
 						if(prod && prod['%attribs'] && prod['%attribs']['zoovy:accessory_products']) {
 							$('.cartShowAccButton',$tag.parent()).removeClass('displayNone'); //show button to reveal list
-							$('.cartItemWrapper','#cartStuffList_'+pid).css('height','200px'); //make line item taller to fit list & button
+							$('.cartItemWrapper','#cartStuffList_'+stid).css('height','200px'); //make line item taller to fit list & button
 							data.bindData.csv = prod['%attribs']['zoovy:accessory_products']; //add list to bindData
 							app.ext.store_prodlist.u.buildProductList(data.bindData,$tag); //make list
 						}
 					},1000);
 				}
-			},
+			}, //accessoryProductList
 
 				//looks at siblings added with siblingProductList and hides if not purchasable.
 				//adds an attribute used for counting number of purchasable siblings if is purchasable
