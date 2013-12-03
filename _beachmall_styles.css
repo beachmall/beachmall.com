@@ -1631,6 +1631,7 @@ PRODUCTLISTTEMPLATECART
 #modalCart .cartDesc .cartLatency, #modalCart .cartDesc .transitContainer, #modalCart .cartDesc .cartPutLoadingHere {margin:0 0 2% 0; padding:0 1.5%;}
 #modalCart .cartDesc .loadingBG {min-height:40px; background-size:10% auto;}
 #modalCart .cartShippingInformation .zlink, .mainProdColumn .deliveryMethod .zlink  {color:#E0463A; font-style:italic; font-weight:normal;}
+#modalCart .shipCity, #modalCart .shipRegion, #modalCart .shipPostal, #modalCart .deliveryMethod {margin:0 0 0 5px;} 
 #modalCart .cartShowAccButton, #modalCart .cartHideAccButton {padding:2px 5px; border:none; background:#f8c301; border-radius:0; color:#ffffff; font-family:"Open Sans"; font-weight:bold; margin:0 5px 0 0;}
 #modalCart .cartAccList {height:0; max-height:40px; max-width:260px; overflow:hidden; clear:both;}
 #modalCart .mpControlContainer {display:none;}

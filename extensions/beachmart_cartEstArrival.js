@@ -241,7 +241,7 @@ var beachmart_cartEstArrival = function() {
 				var prodAttribs = app.data['appProductGet|'+pid]['%attribs'];
 
 				var $r = $("<div class='shipSummaryContainer' \/>"); //what is returned. jquery object of shipping info.
-				$r.append("<span class='shipMessage'></span><span class='estimatedArrivalDate'></span><span title='Click to change destination zip code' class='deliveryLocation'></span><div class='deliveryMethod'></div>");
+				$r.append("<span class='shipMessage'></span></span><span class='estimatedArrivalDate'></span><span class='shipCity'></span><span class='shipRegion'></span><span class='shipPostal'></span><span class='deliveryMethod'></span>");
 
 				var hour = Number(data.cutoff_hhmm.substring(0,2)) + 3; //add 3 to convert to EST.
 				var minutes = data.cutoff_hhmm.substring(2);
@@ -295,22 +295,8 @@ var beachmart_cartEstArrival = function() {
 					
 				$('.estimatedArrivalDate',$r).append(app.ext.beachmart.u.yyyymmdd2Pretty(data['@Services'][index]['arrival_yyyymmdd'])+" to");
 
-					if(app.data.cartDetail.ship.city)	{
-						//$('.deliveryLocation',$r).append(" to "+app.data.cartDetail.ship.city+" "+app.data.cartDetail.ship.city+" (change)");
-						$('.deliveryLocation',$r).append(" "+app.data.cartDetail.ship.city+"");
-					}
-					if(app.data.cartDetail.ship.region)	{
-						//$('.deliveryLocation',$r).append(" to "+app.data.cartDetail.ship.city+" "+app.data.cartDetail.ship.region+" (change)");
-						$('.deliveryLocation',$r).append(" "+app.data.cartDetail.ship.region+"");
-					}
-					if(app.data.cartDetail.ship.postal)	{
-						//$('.deliveryLocation',$r).append(" to "+app.data.cartDetail.ship.city+" "+app.data.cartDetail.ship.region+" (change)");
-						$('.deliveryLocation',$r).append(" "+app.data.cartDetail.ship.postal+"");
-					}
-				else{
-					$('.deliveryLocation',$r).append(" (enter zip) ")
-					}
-				//$('.deliveryLocation',$r).click(function(){app.ext.beachmart.a.showZipDialog()})
+				app.ext.beachmart.u.fetchLocationInfoByZip(app.data.cartDetail.ship.postal);
+				
 				return $r;
 			}, //getTransitInfo
 			
