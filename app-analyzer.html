@@ -17,7 +17,7 @@ var $tabs, //set globally so tabs can easily be opened via click events
 myCreole;
 
 var app = {vars:{
-	"release":"201318",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"201346.a",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc"
 	},u:{},rq:[]};
 
@@ -53,7 +53,6 @@ function getConfig4Domain()	{
 		console.log('BEGIN getConfig4Domain');
 		console.log(app.vars.testURL);
 		var url = app.vars.testURL+'jquery/config.js';
-		var url = 'http://'+$('#domain').val()+'/jquery/config.js';
 		$.getScript(url).success(function(script, textStatus) {
 //instantiate wiki parser.
 			app.u.handleRQ(0);
@@ -68,7 +67,7 @@ function getConfig4Domain()	{
 		alert('please enter a domain.');
 		$('#domain').focus();
 		}	
-
+	
 	}
 
 </script>
@@ -151,29 +150,29 @@ ul .prompt	{display:inline-block; width:250px;}
 		<li><a href='#tabs-5'>Product</a></li>
 		<li><a href='#tabs-6'>Search</a></li>
 	</ul>
-
-
-
+	
+	
+	
 	<div id="tabs-1"></div>
-
-
-
+	
+	
+	
 	<div id="tabs-2">
 		<div id='profileSummary' class='clearfix'></div>
 		<hr>
 		<div id='profileData' class='clearfix'></div>
 	</div>
-
-
-
-
+	
+	
+	
+	
 	<div id="tabs-3">
 <ul id='categoryTree' class='catTree'></ul>
 	</div>
-
-
-
-
+	
+	
+	
+	
 	<div id="tabs-4" class='clearfix'>
 
 
@@ -182,9 +181,9 @@ ul .prompt	{display:inline-block; width:250px;}
 </ul>
 
 	</div>
-
-
-
+	
+	
+	
 	<div id="tabs-5" >
 <form action='#' onSubmit="app.ext.analyzer.a.exploreProduct($('#pid').val()); return false;">
 <label for='pid'>Product ID: </label>
@@ -202,13 +201,13 @@ ul .prompt	{display:inline-block; width:250px;}
 <div id='inventoryDebugData'></div>
 
 	</div>
-
-
-
-
+	
+	
+	
+	
 	<div id="tabs-6" class='clearfix'>
-
-
+	
+	
 <div id='keywordContainer'>
 	<label for='simpleKeywordSearch'>keyword</label><input type='text' name='simpleKeywordSearch' id='simpleKeywordSearch' value='' />
 	<button onClick="app.ext.store_search.u.handleElasticSimpleQuery($('#simpleKeywordSearch').val(),{'callback':'handleElasticResults','extension':'analyzer','parentID':'elasticResults','datapointer':'elasticsearch|'+$('#simpleKeywordSearch').val()}); app.model.dispatchThis(); return false;">Go</button>
@@ -230,7 +229,7 @@ ul .prompt	{display:inline-block; width:250px;}
 
 
 
-
+	
 	</div>
 
 
@@ -288,7 +287,7 @@ ul .prompt	{display:inline-block; width:250px;}
 		# product: <span data-bind='var: category(@products); format:numProduct; extension:store_navcats; defaultVal:0;'></span>
 		<a href='#'  data-bind='var:category(id); format:assignAttribute; attribute:data-catsafeid;' onClick="app.ext.analyzer.a.showSubcats($(this).attr('data-catsafeid')); return false;"># subcats: <span data-bind='var: category(@subcategories); format:numSubcats; extension:store_navcats;defaultVal:0;'></span></a>
 	</div>
-
+	
 	<ul data-bind='var:category(id); format:assignAttribute; attribute:id; valuePretext:categoryTreeSubs_;' class='subcats'></ul>
 </li>
 </ul>

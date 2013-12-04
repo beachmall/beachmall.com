@@ -29,7 +29,6 @@ var store_product = function() {
 
 
 
-
 					////////////////////////////////////   CALLS    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\		
 
 
@@ -46,7 +45,7 @@ var store_product = function() {
 //if no object is passed in, one must be created so that adding datapointer to a non existent object doesn't cause a js error
 // Override datapointer, if set.
 // The advantage of saving the data in memory and local storage is lost if the datapointer isn't consistent, especially for product data.
-				pid = pid.toUpperCase();
+				pid = pid.toString().toUpperCase(); //if a pid is all numbers, pid.toUpperCase results in JS error.
 				tagObj = $.isEmptyObject(tagObj) ? {} : tagObj; 
 				tagObj["datapointer"] = "appProductGet|"+pid; 
 
@@ -95,7 +94,7 @@ var store_product = function() {
 				var r = 0; //will return a 1 or a 0 based on whether the item is in local storage or not, respectively.
 //app.u.dump("appReviewsList tagObj:");
 //app.u.dump(tagObj);
-				pid = pid.toUpperCase();
+				pid = pid.toString().toUpperCase();
 				tagObj = $.isEmptyObject(tagObj) ? {} : tagObj;
 				tagObj["datapointer"] = "appReviewsList|"+pid;
 
@@ -155,8 +154,8 @@ var store_product = function() {
 //this'll change going forward.
 
 addToCart : function (pid,$form){
-	app.u.dump("BEGIN store_product.validate.addToCart");
-	app.u.dump(" -> pid: "+pid);
+//	app.u.dump("BEGIN store_product.validate.addToCart");
+//	app.u.dump(" -> pid: "+pid);
 	var valid = true; //what is returned.
 	if(pid && $form)	{
 		//copied locally for quick reference.
@@ -166,13 +165,13 @@ addToCart : function (pid,$form){
 	//	app.u.dump('BEGIN validate_pogs. Formid ='+formId);
 	
 		if($.isEmptyObject(sogJSON))	{
-			app.u.dump('no sogs present (or empty object)'); //valid. product may not have sogs.
+//			app.u.dump('no sogs present (or empty object)'); //valid. product may not have sogs.
 			}
 		else if($.isEmptyObject(formJSON))	{
-			app.u.throwGMessage("In store_product.validate.addToCart, formJSON is empty.");
+//			app.u.throwGMessage("In store_product.validate.addToCart, formJSON is empty.");
 			} //this shouldn't be empty. if it is, likely $form not valid or on DOM.
 		else	{
-			app.u.dump(" -> everything is accounted for. Start validating.");	
+//			app.u.dump(" -> everything is accounted for. Start validating.");	
 			$('.appMessage',$form).empty().remove(); //clear all existing errors/messages.
 		
 			var thisSTID = pid, //used to compose the STID for inventory lookup.
@@ -180,7 +179,6 @@ addToCart : function (pid,$form){
 			errors = '', pogid, pogType;
 			
 //			app.u.dump(" -> formJSON: "); app.u.dump(formJSON);
-//			app.u.dump(" -> sogJSON: "); app.u.dump(sogJSON);
 			
 //No work to do if there are no sogs. 
 			if(sogJSON)	{
@@ -190,21 +188,15 @@ addToCart : function (pid,$form){
 					pogType = sogJSON[i]['type']; //the type is used multiple times so a var is created to reduce number of lookups needed.
 		
 					if(sogJSON[i]['optional'] == 1)	{
-						app.u.dump(" -> "+sogJSON[i]['id']+" is optional.");
 						//if the pog is optional, validation isn't needed.			
 						}
 					else if (pogType == 'attribs' || pogType == 'hidden' || pogType == 'readonly' || pogType == 'cb'){
-						app.u.dump(" -> "+sogJSON[i]['id']+" is a type that requires no validation (readonly, hidden, etc).");
 						//these types don't require validation.
 						}
 		//Okay, validate what's left.
 					else	{
-						app.u.dump(" -> "+sogJSON[i]['id']+" Requires validation");
-						app.u.dump("formJSON[pogid]: "+formJSON[pogid]);
 		//If the option IS required (not set to optional) AND the option value is blank, AND the option type is not attribs (finder) record an error
-						if(formJSON[pogid]){
-							
-							}
+						if(formJSON[pogid]){}
 						else	{
 							valid = false;
 							errors += "<li>"+sogJSON[i]['prompt']+"<!--  id: "+pogid+" --><\/li>";
@@ -248,8 +240,7 @@ addToCart : function (pid,$form){
 		app.u.throwGMessage("in store_product.validate.addToCart, either pid ("+pid+") not set or $form was not passed.");
 		valid = false;
 		}
-	app.u.dump(' -> STID = '+thisSTID);
-	app.u.dump(" -> valid = "+valid);
+//	app.u.dump('STID = '+thisSTID);
 	return valid;
 
 	} //validate.addToCart
@@ -500,9 +491,9 @@ it has no inventory AND inventory matters to merchant
 					var L = variations.length;
 					for(var i = 0; i < L; i += 1)	{
 						r[variations[i].id] = {'prompt':variations[i].prompt};
-						var OL = variations[i].options.length;
+						var OL = variations[i]['@options'].length;
 						for(var oi = 0; oi < OL; oi += 1)	{
-							r[variations[i].id][variations[i].options[oi].v] = variations[i].options[oi].prompt;
+							r[variations[i].id][variations[i]['@options'][oi].v] = variations[i]['@options'][oi].prompt;
 							}
 						}
 					}
@@ -555,13 +546,13 @@ it has no inventory AND inventory matters to merchant
 //if variations are NOT present, inventory count is readily available.
 				if(app.data['appProductGet|'+pid])	{
 					if((app.data['appProductGet|'+pid]['@variations'] && $.isEmptyObject(app.data['appProductGet|'+pid]['@variations'])) && !$.isEmptyObject(app.data['appProductGet|'+pid]['@inventory']))	{
-						inv = Number(app.data['appProductGet|'+pid]['@inventory'][pid].inv);
+						inv = Number(app.data['appProductGet|'+pid]['@inventory'][pid].AVAILABLE);
 	//					app.u.dump(" -> item has no variations. inv = "+inv);
 						}
 	//if variations ARE present, inventory must be summed from each inventory-able variation.
 					else	{
 						for(var index in app.data['appProductGet|'+pid]['@inventory']) {
-							inv += Number(app.data['appProductGet|'+pid]['@inventory'][index].inv)
+							inv += Number(app.data['appProductGet|'+pid]['@inventory'][index].AVAILABLE)
 							}
 	//					app.u.dump(" -> item HAS variations. inv = "+inv);
 						}
@@ -636,7 +627,7 @@ NOTES
 						}
 					
 					
-					$parent.dialog('open');
+					$parent.dialog('open').append(app.renderFunctions.createTemplateInstance(P.templateID,P));
 
 					app.ext.store_product.calls.appProductGet.init(P.pid,{'callback': function(rd){
 						if(app.model.responseHasErrors(rd)){
@@ -644,12 +635,12 @@ NOTES
 							}
 						else	{
 							$parent.dialog( "option", "title", app.data["appProductGet|"+P.pid]['%attribs']['zoovy:prod_name'] );
-							$parent.anycontent({'templateID':P.templateID,'datapointer':"appProductGet|"+P.pid});
+							$parent.anycontent({'templateID':P.templateID,'translateOnly':true,'datapointer':"appProductGet|"+P.pid});
 							}
 						}});
 					app.ext.store_product.calls.appReviewsList.init(P.pid); //
 					app.model.dispatchThis();
-
+					app.u.handleCommonPlugins($parent);
 					}
 				else	{
 					app.u.dump(" -> pid ("+P.pid+") or templateID ("+P.templateID+") not set for viewer. both are required.");
@@ -741,7 +732,7 @@ NOTES
 				if($form && $form.length && $form.is('form'))	{
 					var cartObj = app.ext.store_product.u.buildCartItemAppendObj($form);
 					if(cartObj)	{
-						app.u.dump(" -> have a valid cart object"); app.u.dump(cartObj);
+//						app.u.dump(" -> have a valid cart object"); app.u.dump(cartObj);
 						if(cartObj)	{
 							r = true;
 							app.calls.cartItemAppend.init(cartObj,_tag || {},'immutable');

@@ -86,7 +86,7 @@ var powerReviews_reviews = function() {
 						}
 					else	{
 						var msg = app.u.errMsgObject("Uh Oh! It seems an error occured on our app. PowerReviews may not load properly. We apologize for the inconvenience.");
-						msg.persistant = true;
+						msg.persistent = true;
 						app.u.throwMessage(msg);
 						app.u.dump("ERROR! powerReviews_reviews did not pass init. The following variables are all required:");
 						app.u.dump(" -> app.ext.powerReviews_reviews.vars.merchantID: "+app.ext.powerReviews_reviews.vars.merchantID);
@@ -159,20 +159,19 @@ var powerReviews_reviews = function() {
 		a : {
 			writeReview : function(pid)	{
 				if(pid)	{
-					//document.location = "/_powerreviews?verb=writereview&pr_page_id="+pid;
-					var $div = $('#powerReviewsModal');
+					document.location = "/_powerreviews?verb=writereview&pr_page_id="+pid;
+/*					var $div = $('#powerReviewsModal');
 					if($div.length == 0)	{
 						$div = $("<div />").attr({'id':'powerReviewsModal','title':'Write a review'}).appendTo('body');
 						$div.dialog({width:'90%',height:650,modal:true,autoOpen:false})
 						}
 					$div.html("<iframe src='/_powerreviews?verb=writereview&amp;pr_page_id="+pid+"' border='0' class='prIframe' style='min-width:700px; min-height:350px; height:100%; margin:0 auto; border:0;' />");
 					$div.dialog('open');
-					}
+*/					}
 				else	{
 					app.u.dump("WARNING! - no pid was specified for powerReviews_reviews.a.writeReview");
 					}
-				}, //writeReview
-
+				} //writeReview
 			}, //action
 
 ////////////////////////////////////   UTIL    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\

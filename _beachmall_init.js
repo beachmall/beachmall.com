@@ -14,6 +14,9 @@ app.rq.push(['extension',0,'store_product','extensions/store_product.js']);
 app.rq.push(['extension',0,'store_cart','extensions/store_cart.js']);
 app.rq.push(['extension',0,'store_crm','extensions/store_crm.js']);
 app.rq.push(['extension',0,'myRIA','app-quickstart.js','startMyProgram']);
+app.rq.push(['extension',0,'entomologist','extensions/entomologist/extension.js']);
+app.rq.push(['extension',0,'tools_animation','extensions/tools_animation.js']);
+
 app.rq.push(['extension',0,'beachmart','extensions/beachmart_custom.js']); // custom product page, built by JT based on old hybrid site
 app.rq.push(['extension',0,'store_filter','extensions/beachmart.js','startExtension']); 
 app.rq.push(['extension',0,'beachmart_dropdown','extensions/beachmart_dropdown.js', 'startExtension']); // custom product getter for dropdowns Runs startExtension as well
@@ -26,7 +29,8 @@ app.rq.push(['extension',0,'beachmart_cartEstArrival','extensions/beachmart_cart
 app.rq.push(['extension',0,'beachmart_cartEmail','extensions/beachmart_cartEmail.js']); //handles sending user an e-mail of cart contents
 
 //app.rq.push(['extension',1,'google_analytics','extensions/partner_google_analytics.js','startExtension']);
-app.rq.push(['extension',0,'partner_addthis','extensions/partner_addthis.js','startExtension']);
+//app.rq.push(['extension',1,'tools_ABtesting','extensions/tools_ABtesting.js']);
+app.rq.push(['extension',0,'partner_addthis','extensions/partner_addthis.js']);
 //app.rq.push(['extension',1,'resellerratings_survey','extensions/partner_buysafe_guarantee.js','startExtension']); /// !!! needs testing.
 //app.rq.push(['extension',1,'buysafe_guarantee','extensions/partner_buysafe_guarantee.js','startExtension']);
 
@@ -37,7 +41,7 @@ app.rq.push(['extension',0,'magicToolBox_mzp','extensions/partner_magictoolbox_m
 //app.rq.push(['script',0,'http://cdn.powerreviews.com/repos/11531/pr/pwr/engine/js/full.js']); old user id "11531"
 app.rq.push(['script',0,'https://cdn.powerreviews.com/repos/11024/pr/pwr/engine/js/full.js']);
 
-app.rq.push(['script',0,(document.location.protocol == 'file:') ? app.vars.testURL+'jquery/config.js' : app.vars.baseURL+'jquery/config.js']); //The config.js is dynamically generated.
+app.rq.push(['script',0,(document.location.protocol == 'file:') ? app.vars.testURL+'jsonapi/config.js' : app.vars.baseURL+'jsonapi/config.js']); //The config.js is dynamically generated.
 app.rq.push(['script',0,app.vars.baseURL+'model.js']); //'validator':function(){return (typeof zoovyModel == 'function') ? true : false;}}
 app.rq.push(['script',0,app.vars.baseURL+'includes.js']); //','validator':function(){return (typeof handlePogs == 'function') ? true : false;}})
 
@@ -47,6 +51,7 @@ app.rq.push(['script',0,app.vars.baseURL+'controller.js']);
 app.rq.push(['script',1,app.vars.baseURL+'resources/jquery.ui.jeditable.js']); //used for making text editable (customer address). non-essential. loaded late.
 app.rq.push(['script',0,app.vars.baseURL+'resources/jquery.showloading-v1.0.jt.js']); //used for making text editable (customer address). non-essential. loaded late.
 app.rq.push(['script',0,app.vars.baseURL+'resources/jquery.ui.anyplugins.js']); //in zero pass because it contains essential functions (anymessage & anycontent)
+app.rq.push(['css',1,app.vars.baseURL+'resources/anyplugins.css']);
 
 app.rq.push(['script',0,app.vars.baseURL+'resources/jquery.touchSwipe-1.3.3.min.js']); //used w/ carouFedSel.
 app.rq.push(['script',0,app.vars.baseURL+'resources/jquery.carouFredSel-6.2.0.min.js']); //used on homepage.
@@ -295,14 +300,13 @@ app.u.howManyPassZeroResourcesAreLoaded = function(debug)	{
 //the 'attempts' var is incremented each time the function is executed.
 
 app.u.initMVC = function(attempts){
-	app.u.dump("app.u.initMVC activated ["+attempts+"]");
-	var includesAreDone = true;
+//	app.u.dump("app.u.initMVC activated ["+attempts+"]");
+	var includesAreDone = true,
+	percentPerInclude = (100 / app.vars.rq.length),   //what percentage of completion a single include represents (if 10 includes, each is 10%).
+	resourcesLoaded = app.u.howManyPassZeroResourcesAreLoaded(),
+	percentComplete = Math.round(resourcesLoaded * percentPerInclude); //used to sum how many includes have successfully loaded.
 
-//what percentage of completion a single include represents (if 10 includes, each is 10%).
-	var percentPerInclude = (100 / app.vars.rq.length);  
-	var resourcesLoaded = app.u.howManyPassZeroResourcesAreLoaded();
-	var percentComplete = Math.round(resourcesLoaded * percentPerInclude); //used to sum how many includes have successfully loaded.
-	//make sure precentage is never over 100
+//make sure precentage is never over 100
 	if(percentComplete > 100 )	{
 		percentComplete = 100;
 		}
@@ -322,6 +326,7 @@ app.u.initMVC = function(attempts){
 			app.u.loadApp();
 			}
 		}
+// *** 201324 -> increase # of attempts to reduce pre-timeout error reporting. will help to load app on slow connection/computer.
 	else if(attempts > 350)	{
 		app.u.dump("WARNING! something went wrong in init.js");
 		//this is 10 seconds of trying. something isn't going well.
