@@ -743,7 +743,7 @@ or this: $('#bob').find('.ui-tabs-nav li:nth-child(2)').trigger('click');
 		_addEvent2Tabs : function()	{
 			var self = this;
 // *** 201336 -> tab clicks now use delegated events. more efficient.
-			this.tabs.on('click','a',function(event){
+			this.tabs.on('mouseenter','a',function(event){ //beachmall: was 'click'
 				event.preventDefault();
 				var oldHash = window.location.hash;
 				_ignoreHashChange = true;
@@ -751,7 +751,7 @@ or this: $('#bob').find('.ui-tabs-nav li:nth-child(2)').trigger('click');
 				_ignoreHashChange = false;
 				self.reveal($(this).parent());
 				if($(this).data('app-click'))	{
-					app.u.executeEvent($(this),{'type':'click'});
+					app.u.executeEvent($(this),{'type':'mouseenter'}); //beachmall: was 'click'
 					}
 				return false;
 				});
