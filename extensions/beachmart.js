@@ -1687,7 +1687,7 @@ return filters;
 				var $hint = $('<div class="zhint">mouse over thumbnail to see larger swatches</div>');
 				$parent.append($hint);
 
-				var len = pog.options.length;				
+				var len = pog['@options'].length;				
 				if(len > 0) {
 					optionTxt = (pog['optional'] == 1) ? "" : "Please choose (required)";
 					selOption = "<option value='' disabled='disabled' selected='selected'>"+optionTxt+"<\/option>";
@@ -1695,8 +1695,8 @@ return filters;
 				}
 				
 				var $option;
-				for (var index in pog.options) {
-					var option = pog.options[index];
+				for (var index in pog['@options']) {
+					var option = pog['@options'][index];
 //					app.u.dump('IMG: '); app.u.dump(option.img);
 					$option = $("<option value="+option.v+">"+option.prompt+"</option>");
 					$select.append($option);
