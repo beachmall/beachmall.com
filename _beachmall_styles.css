@@ -1229,7 +1229,7 @@ newArrivalsCarouselRight, .myProdThumb:hover .moreDetails {background-color:#e04
 
 .productList h5, .categoryList h5 {height:2.5em; width:auto; margin-bottom:0.5em; overflow:hidden;}
 .productListItem .zlink	{color:#FC410E;}
-.pogType_attribs	{display:none;}
+.pogType_attribs, .variation_attribs {display:none;}
 
 
 .productListItem .colorful	{background:url(bmo9_btn_colors-67x11.png) no-repeat; width:67px; height:11px; float:left; margin-right:8px;}
@@ -1294,7 +1294,7 @@ h1.prodName	{font-size:21px; font-weight:normal; text-rendering:optimizelegibili
 .optionImagesCont {border: 1px solid #cccccc; margin: 0 6px 6px 0; padding:4px 5px 0 4px;}
 .optionImagesCont.selected { border: 1px solid red;}
 .variation {clear:both; float:right;}
-.variation.pogType_imgselect {float:left;}
+.variation.pogType_imgselect, .variation.variation_imgselect {float:left;}
 .optionsSelect {clear:both; display:block;}
 .optionsParent .zhint {margin:3px 0; font-family:"Open Sans"; font-weight:normal; font-size:10px; text-align:left; color:#777777; clear:both;}
 .ui-tooltip {background:transparent; border:none; border-radius:0; box-shadow:0; padding:0;}
