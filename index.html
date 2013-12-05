@@ -3671,8 +3671,9 @@ START APP CART
 		<menu class='cartButtonsContainer clearfix'>
 			<div class='cartBar'>
 				<!-- some buttons that are alternatives to checkout. fewer is better -->
-				<span title='proceed to secure checkout'><button class='ui-button ui-button-text ui-state-default ui-corner-all checkoutButton' onClick="showContent('checkout',{});">Begin Checkout</button></span>
-				<button class='floatRight ui-button-text ui-button ui-state-default ui-corner-all continueShoppingButton' onClick="$('#modalCart').dialog('close');">Continue Shopping</button>
+				<span title='proceed to secure checkout'><button class='ui-state-default checkoutButton' onClick="showContent('checkout',{});">Begin Checkout</button></span>
+				<button class='floatRight  ui-state-default continueShoppingButton' onClick="$('#modalCart').dialog('close');">Continue Shopping</button>
+				<button class='floatRight scrollToEmail ui-state-default' onClick="app.ext.beachmart_cartEmail.a.scrollToEmailCart();">E-mail Cart</button>
 			</div>
 		</menu>
 	</div>

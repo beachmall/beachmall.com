@@ -1567,7 +1567,7 @@ CART TEMPLATE
 #modalCart .checkoutButtonsContainer {margin:0;}
 #modalCart .cartButtonsContainer span button.ui-state-default {height:auto; width:auto; padding:5px; margin:0; color:#ffffff; background:#E0463A; border:none; border-radius:0;}
 #modalCart .cartButtonsContainer span button.ui-state-default:hover {color:#E0463A; background:#ffffff;}
-#modalCart .cartButtonsContainer button.ui-state-default {padding:5px; color:#ffffff; background:#F8C301; border:none; border-radius:0;}
+#modalCart .cartButtonsContainer button.ui-state-default {padding:5px; color:#ffffff; background:#F8C301; border:none; border-radius:0; margin:0 0 0 12px;}
 #modalCart .cartButtonsContainer button.ui-state-default:hover {color:#F8C301; background:#ffffff;}
 #modalCart .cartAltButtonsContainer {margin:0 0 3% 0; border:none;}
 #modalCart .cartAltButtonsContainer .orUse {margin:10px 20px 10px 0; text-align:right;}
