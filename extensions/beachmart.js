@@ -593,7 +593,7 @@ var store_filter = function() {
 						var prod = app.data['appProductGet|'+pid];
 						if(prod && prod['%attribs'] && prod['%attribs']['zoovy:accessory_products']) {
 							$('.cartShowAccButton',$tag.parent()).removeClass('displayNone'); //show button to reveal list
-							$('.cartItemWrapper','#cartStuffList_'+stid).css('height','200px'); //make line item taller to fit list & button
+							$('.cartItemWrapper[data-geostid='+stid+']').css('height','200px'); //make line item taller to fit list & button
 							data.bindData.csv = prod['%attribs']['zoovy:accessory_products']; //add list to bindData
 							app.ext.store_prodlist.u.buildProductList(data.bindData,$tag); //make list
 						}
