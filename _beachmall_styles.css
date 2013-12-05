@@ -1575,7 +1575,7 @@ CART TEMPLATE
 
 #modalCart .mailCartCont {position:relative; font-weight:normal;}
 #modalCart .mailCartCont span {height:20px; width:20px; background-position:-1px -96px; margin:5px -5px 0 0; display:none;}
-#modalCart .mailCartCont form {height:19px; width:80px; background:#f8c301; color:#000000; position:absolute; right:12px; bottom:-29px; padding:0 10px 10px 10px; z-index:1; overflow:hidden;}
+#modalCart .mailCartCont form {height:19px; width:80px; background:#f8c301; color:#000000; position:absolute; right:0; bottom:-29px; padding:0 10px 10px 10px; z-index:1; overflow:hidden;}
 #modalCart .mailCartCont form:hover {background:#ffffff;}
 #modalCart .mailCartCont form.noHover:hover {background:#f8c301;}
 #modalCart .mailCartCont form h2 {text-align:center; font-size:1em; margin:3px 0 0 0; color:#ffffff; padding:2px 0; cursor:pointer;}
@@ -1652,7 +1652,7 @@ PRODUCTLISTTEMPLATECART
 #modalCart .cartPQT {height:100%; width:33%; text-align:center; font-family:"Open Sans";}
 #modalCart .cartQtyInput {border-left:1px solid #999999;}
 #modalCart .cartQtyInput input{height:15%; width:60%; text-align:center; margin:5% auto;}
-#modalCart .cartLineButton.ui-state-default {height:13%; width:60%; margin:6% auto; font-weight:normal; color:#ffffff; border:none; border-radius:0;}
+#modalCart .cartLineButton.ui-state-default {height:auto; width:60%; margin:6% auto; padding:2px 0; font-weight:normal; color:#ffffff; border:none; border-radius:0;}
 #modalCart .cartLineButton.ui-state-default span:first-child {display:none;}
 #modalCart .cartLineButton.ui-state-default span.ui-button-text {text-indent:0; padding:0;}
 #modalCart .updateButton  {background:#3bb3c3;}
