@@ -1633,6 +1633,7 @@ PRODUCTLISTTEMPLATECART
 #modalCart .cartImg .stid {height:15px; width:90%; text-align:center; margin:5px 0 0 0;}
 #modalCart .cartDesc {height:100%; width:44%; border-left:1px solid #999999;}
 #modalCart .cartDesc h4 {font-size:1.2em; margin:0 0 2% 0; padding:0 1.5%; text-decoration:underline;}
+#modalCart .cartDesc h4:hover {color:#e0463a;}
 #modalCart .cartDesc .ztable_row_small, #modalCart .cartDesc .ztable_row_small.stid .cartSku {font-size:1.2em; margin:0 0 2% 0; padding:0 0 0 1.5%;}
 #modalCart .cartDesc .ztable_row_small.stid {font-size:12px;}
 #modalCart .cartDesc .cartLatency, #modalCart .cartDesc .transitContainer, #modalCart .cartDesc .cartPutLoadingHere {margin:0 0 2% 0; padding:0 1.5%;}
