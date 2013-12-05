@@ -1158,6 +1158,7 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 	left:-120px;
 	z-index:10001;
 	text-align:left;
+	font-weight:normal;
 	}
 .toolTip p	{margin:6px 0;}
 
