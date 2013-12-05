@@ -1640,7 +1640,7 @@ PRODUCTLISTTEMPLATECART
 #modalCart .cartAccList li > div {width:auto;}
 .cartToolTipWrapper {width:200px; background:#777777; border:none; border-radius:0; padding:4px;}
 .ui-tooltip  span.cartAccZoom {width:200px; padding:2px 0; text-align:center; background:#777777; color:#ffffff; display:block; font-family:"Open Sans"; font-size:10px;}
-.ui-tooltip  span.cartAccZoomPrice {text-align:right;}
+.ui-tooltip  span.cartAccZoomPrice {font-weight:bold;}
 
 #modalCart .cartPQT {height:100%; width:33%; text-align:center; font-family:"Open Sans";}
 #modalCart .cartQtyInput {border-left:1px solid #999999;}
