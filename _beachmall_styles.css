@@ -1623,13 +1623,14 @@ PRODUCTLISTTEMPLATECART
 ****************************************************************************/
 #modalCart .lineItemProdlist li	{height:auto; width:100%; font-family:"Open Sans"; padding:0;} /* padding:0 0 1.5% 0; margin:0 0 1.5% 0; border-bottom:1px dashed #FFCC66;*/
 
-#modalCart .cartItemWrapper {height:150px; width:97.8%; padding:1.6%; background-color:#f5f1de; border-left:1px solid #999999; border-right:1px solid #999999; border-bottom:1px solid #999999;}
+#modalCart .cartItemWrapper {height:160px; width:97.8%; padding:1.6%; background-color:#f5f1de; border-left:1px solid #999999; border-right:1px solid #999999; border-bottom:1px solid #999999;}
 
 #modalCart .cartHeader {height:30px; width:100%; background:#3bb3c3; color:#ffffff; padding:0 1.2% 0 0; text-align:center; line-height:30px;}
 #modalCart .cartHeader .cartDesc {border:none;}
 
 #modalCart .cartImg {height:100%; width:21%;}
 #modalCart .cartImg img {max-width:100%; margin:0;}
+#modalCart .cartImg .stid {height:15px; width:90%; text-align:center; margin:5px 0 0 0;}
 #modalCart .cartDesc {height:100%; width:44%; border-left:1px solid #999999;}
 #modalCart .cartDesc h4 {font-size:1.2em; margin:0 0 2% 0; padding:0 1.5%; text-decoration:underline;}
 #modalCart .cartDesc .ztable_row_small, #modalCart .cartDesc .ztable_row_small.stid .cartSku {font-size:1.2em; margin:0 0 2% 0; padding:0 0 0 1.5%;}
