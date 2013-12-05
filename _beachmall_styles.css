@@ -1650,7 +1650,7 @@ PRODUCTLISTTEMPLATECART
 #modalCart .cartPQT {height:100%; width:33%; text-align:center; font-family:"Open Sans";}
 #modalCart .cartQtyInput {border-left:1px solid #999999;}
 #modalCart .cartQtyInput input{height:15%; width:60%; text-align:center; margin:5% auto;}
-#modalCart .cartLineButton.ui-state-default {height:17%; width:60%; margin:6% auto; font-weight:normal; color:#ffffff; border:none; border-radius:0;}
+#modalCart .cartLineButton.ui-state-default {height:13%; width:60%; margin:6% auto; font-weight:normal; color:#ffffff; border:none; border-radius:0;}
 #modalCart .cartLineButton.ui-state-default span:first-child {display:none;}
 #modalCart .cartLineButton.ui-state-default span.ui-button-text {text-indent:0; padding:0;}
 #modalCart .updateButton  {background:#3bb3c3;}
