@@ -135,6 +135,16 @@ var beachmart_cartEmail = function() {
 					$('h2',$form).css({'cursor':'pointer'});
 				},550);
 			}, //hideCartEmail
+			
+				//animates scroll from top e-mail cart button to lower e-mail cart form, and opens form. 
+			scrollToEmailCart : function() {
+				var $context = $(".cartSummaryTotalsContainer","#modalCart");
+				var $emailCart = $(".cartBar",$context);
+				setTimeout(function(){
+					$('#modalCart').animate({scrollTop: $emailCart.offset().top}, 2000);
+				},500);
+				setTimeout(function(){$("h2",$context).click();},1000);
+			},
 
 		}, //Actions
 
