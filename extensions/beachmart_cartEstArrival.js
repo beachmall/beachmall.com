@@ -49,15 +49,30 @@ var beachmart_cartEstArrival = function() {
 				
 				onSuccess : function(tagObj) {
 					app.u.dump("BEGIN beachmart_cartEstArrival.callbacks.showTransitTimes");
-					//use cutoff from response, not product.
-					//var $container = $('#cartStuffList_'+app.u.makeSafeHTMLId(SKU));
-					var $container = $('#cartStuffList_'+app.u.makeSafeHTMLId(tagObj.stid));
+					var $container = false; //transit info. will end up here
+						//use cutoff from response, not product
+						//but find $container by matching stid added to it in index w/ response stid
+					$('.cartItemWrapper','#modalCart').each(function(){ //look at each cartItemWrapper in cart
+						var geoSTID = $(this).attr('data-geostid'); //record its geostid value
+							//check if this geostid value matches the response value, and set container if it does
+						if (geoSTID.indexOf(app.u.makeSafeHTMLId(tagObj.stid)) != -1) {
+							$container = $(this);
+							$('.cartPutLoadingHere',$container).removeClass('loadingBG'); //may want to remove this later on...
+							return false; //there is only one, once it's found no need to continue
+						}
+					});
+						//if $container is still false here, then the stid couldn't be matched for some reason
+					if(!$container ) {
+						app.u.dump('This line item shipping info. could not be determined: '+tagObj);
+					}
+			
 					var data = app.data[tagObj.datapointer]; //shortcut.	
 		
 						//if ground on all set to 1, an item has no expedited shipping, make all methods ground
 					if($('#cartTemplateShippingContainer').attr('groundonall') == 1) {
 						index = app.ext.beachmart.u.getSlowestShipMethod(data['@Services']);
 						var ground = true; //true will bypass additional shipping methods later
+						app.u.dump(" -> index: "+index);
 					}
 					else {
 						var ground = false;
@@ -67,7 +82,7 @@ var beachmart_cartEstArrival = function() {
 							var index = app.ext.beachmart_cartEstArrival.u.getShipMethodByID(data['@Services'],app.data.cartDetail.want.shipping_id);
 							app.u.dump(app.data.cartDetail.want.shipping_id);
 							app.u.dump(index);
-							if(!index) {
+			 				if(!index) {
 							//	index = app.ext.beachmart.u.getFastestShipMethod(data['@Services']);
 								index = app.ext.beachmart.u.getSlowestShipMethod(data['@Services']);
 							}
@@ -77,10 +92,10 @@ var beachmart_cartEstArrival = function() {
 					}
 						//index could be false if no methods were available. or could be int starting w/ 0
 					if(index >= 0) {
-						$('.transitContainer',$container).empty().append(app.ext.beachmart_cartEstArrival.u.getTransitInfo(tagObj.pid,data,index,ground)); //empty first so when reset by zip change, no duplicate info is displayed.
+/*prob w/ $container selector*/						$('.transitContainer',$container).empty().append(app.ext.beachmart_cartEstArrival.u.getTransitInfo(tagObj.pid,data,index,ground)); //empty first so when reset by zip change, no duplicate info is displayed.
 					}
 					
-					$('.cartShippingInformation .loadingBG',$container).removeClass('loadingBG');
+					//$('.cartShippingInformation .loadingBG',$container).removeClass('loadingBG');
 					$('.loadingText',$container).hide();
 				},
 				onError : function(responseData,uuid) {
@@ -110,6 +125,12 @@ var beachmart_cartEstArrival = function() {
 //on a data-bind, format: is equal to a renderformat. extension: tells the rendering engine where to look for the renderFormat.
 //that way, two render formats named the same (but in different extensions) don't overwrite each other.
 		renderFormats : {
+		
+			safeSTID : function($tag, data) {
+				if(data.value && data.value.stid) {
+					$tag.attr('data-geoSTID',app.u.makeSafeHTMLId(data.value.stid));
+				}
+			}
 
 			}, //renderFormats
 ////////////////////////////////////   UTIL [u]   \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\

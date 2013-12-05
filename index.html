@@ -23,7 +23,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"201346.20131203160000",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"201346.20131205152000",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 	"baseURL":"", //used in non-local mode.
 	"checkoutAuthMode" : "active",//can be passive, active or required
@@ -3848,7 +3848,7 @@ START APP PRODUCTLISTTEMPLATECART
 <ul>
 	<li id='productListTemplateCart' class='padMargBorderBottom clearfix productListTemplateCart' data-bind='var:product(pid);format:assignAttribute; attribute:data-pid;'>
 
-		<div class='cartItemWrapper'>
+		<div class='cartItemWrapper' data-bind="useParentData:true; format:safeSTID; extension:beachmart_cartEstArrival;">
 
 			<div class='floatLeft cartImg'>
 				<img src='blank.gif' class='prodThumb' alt='' data-bind='var: product(zoovy:prod_image1); defaultVar: product(%attribs.zoovy:prod_image1); format:imageURL;' width='150' height='150' />
