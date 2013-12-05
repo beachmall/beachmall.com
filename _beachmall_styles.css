@@ -1630,9 +1630,9 @@ PRODUCTLISTTEMPLATECART
 
 #modalCart .cartImg {height:100%; width:21%;}
 #modalCart .cartImg img {max-width:100%; margin:0;}
-#modalCart .cartImg .stid {height:15px; width:90%; text-align:center; margin:5px 0 0 0;}
+#modalCart .cartImg .stid {height:15px; width:90%; text-align:center; margin:3px 0 0 0; font-size:12px;}
 #modalCart .cartDesc {height:100%; width:44%; border-left:1px solid #999999;}
-#modalCart .cartDesc h4 {font-size:1.2em; margin:0 0 2% 0; padding:0 1.5%; text-decoration:underline;}
+#modalCart .cartDesc h4 {font-size:12px; margin:0 0 2% 0; padding:0 1.5%; text-decoration:underline;}
 #modalCart .cartDesc h4:hover {color:#e0463a;}
 #modalCart .cartDesc .ztable_row_small, #modalCart .cartDesc .ztable_row_small.stid .cartSku {font-size:1.2em; margin:0 0 2% 0; padding:0 0 0 1.5%;}
 #modalCart .cartDesc .ztable_row_small.stid {font-size:12px;}
