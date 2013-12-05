@@ -121,21 +121,22 @@ var beachmart_cartEmail = function() {
 		
 				//animates cart e-mail form into view, shows close button in form
 			showCartEmail : function($this, $form) {
-				$form.animate({'height':'150px'},500);
-				$this.css({'cursor':'auto','color':'#000000'});
+				$form.animate({'height':'150px','width':'220px'},500).addClass('noHover');
+				$this.css({'cursor':'auto'});
 				$('span',$form).css('display','inline');
 			}, //showCartEmail
 			
 				//animates cart e-mail form out of view, hides close button in form
 			hideCartEmail : function($this, $form) {
-				$form.animate({'height':'19px'},500);
+				$form.animate({'height':'19px','width':'80px'},500);
 				setTimeout(function() {
+					$form.removeClass('noHover');
 					$this.css('display','none');
-					$('h2',$form).css({'cursor':'pointer','color':'#ffffff'});
+					$('h2',$form).css({'cursor':'pointer'});
 				},550);
 			}, //hideCartEmail
 
-			}, //Actions
+		}, //Actions
 
 ////////////////////////////////////   RENDERFORMATS    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
