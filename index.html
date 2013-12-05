@@ -2174,7 +2174,7 @@ remember to NOT put the button inside the 'onclick' container or two events will
 				<!-- <div class='prodListMiniVariation' data-bind='var: product(pid); format:atcVariations; extension:store_product;'></div> -->
 				<div class='displayNone' data-bind="var:product(user:grp_siblings); format:showIfSet;">
 					<div class='clearfix prodListSibs' data-bind='var:product(pid);format:assignAttribute; attribute:data-pid;'>
-						<ul class='listStyleNone noPadOrMargin fluidList' data-bind="var: product(user:grp_siblings); format:siblingProductList; extension:store_filter;loadsTemplate:productListTemplateToolTipThumb;hide_multipage:true;before:<b>Available Colors:</b> <span class='zhint'>(click image to select)</span> ; withInventory:1; withVariations:1;"></ul>
+						<ul class='listStyleNone noPadOrMargin fluidList' data-bind="var: product(user:grp_siblings); format:siblingProductList; extension:store_filter;loadsTemplate:productListTemplateToolTipThumb;hide_summary:true;before:<b>Available Colors:</b> <span class='zhint'>(click image to select)</span> ; withInventory:1; withVariations:1;"></ul>
 						<div class='prodListSibsText displayNone' data-bind='useParentData:true; format:siblingCount; extension:store_filter;'>More Colors Available!</div>
 					</div>
 				</div>

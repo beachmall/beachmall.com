@@ -571,6 +571,13 @@ var store_filter = function() {
 						app.ext.store_prodlist.u.buildProductList(data.bindData,$tag);	
 					}
 					
+						//check to see if any of the siblings came back un-purchasable. 
+						//If none purchasable, hide ul.
+					var count = 0;
+					$tag.children().each(function() {
+						if($(this).data('purchasable')) {count += 1;}
+					}); 
+					if(count == 0) {$tag.hide();}
 				}
 			}, //siblingProductList	
 			

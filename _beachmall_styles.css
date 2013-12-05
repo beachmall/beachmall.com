@@ -714,6 +714,7 @@ label.break	{display:block; margin:0 0 4px 6px;}
 .prodListSibs ul {height:40px; width:100%; overflow:hidden; float:left;}
 .prodListSibs .fluidList li {height:30px; width:30px; margin:5px 5px 5px 13px; display:block; border:2px solid #3bb3c3;}
 .prodListSibs .fluidList li:hover {border:2px solid #e0463a;}
+.prodListSibs .fluidList li > div {height:30px; width:30px;}
 /*STYLE FOR ABOVE LISTS W/ MORE THAN ONE ITEM INSTEAD OF JUST THE 1st
 .prodListSibs .fluidList li {height:30px; width:30px; margin:5px; display:block; border:2px solid #3bb3c3;}
 .prodListSibs .fluidList li:hover {border:2px solid #e0463a;}
