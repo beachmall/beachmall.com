@@ -199,7 +199,7 @@ var beachmart_cartEstArrival = function() {
 				}
 				else {
 					app.u.dump(" -> no zip code entered. Info will be added when zip is entered.");
-					$('.cartPutLoadingHere.loadingBG', '#cartStuffList_'+stid).removeClass('loadingBG').append('Enter your zip-code in the field at the bottom of the cart to see shipping estimates.');
+					$('.cartPutLoadingHere.loadingBG', '.cartItemWrapper[data-geoSTID='+stid+']').removeClass('loadingBG').append('Enter your zip-code in the field at the bottom of the cart to see shipping estimates.');
 				//	app.u.dump(" -> no zip code entered. request via whereAmI");
 
 				//	app.calls.whereAmI.init({'callback':'handleWhereAmI','extension':'beachmart'},'passive');
