@@ -97,7 +97,7 @@ app.ext.beachmart.u.initEstArrival();
 				
 				onSuccess : function(tagObj){
 					app.u.dump("BEGIN beachmart.callbacks.showTransitTimes");
-					app.u.dump(tagObj);
+		//			app.u.dump(tagObj);
 					//use cutoff from response, not product.
 					var $container = $('#productTemplate_'+app.u.makeSafeHTMLId(SKU));
 					app.u.dump(" -> $container.length: "+$container.length);
@@ -1484,7 +1484,7 @@ $('.deliveryLocation',$r).click(function(){app.ext.beachmart.a.showZipDialog()})
 			}, //getTransitInfo
 			
 			handleToolTip : function()	{
-				app.u.dump("BEGIN beachmart.u.handleToolTip.");
+		//		app.u.dump("BEGIN beachmart.u.handleToolTip.");
 				$('.tipify',$('#appView')).each(function(){
 					var $this = $(this);
 					$this.parent().css('position','relative'); //this is what makes the tooltip appear next to the link instead of off in space.

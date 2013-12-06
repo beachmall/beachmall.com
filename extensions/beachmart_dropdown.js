@@ -51,7 +51,7 @@ var beachmart_dropdown = function() {
 			startExtension : {
 				onSuccess : function() {
 					if(app.ext.powerReviews_reviews && app.ext.store_filter){
-						app.u.dump("beachmart dropdown Extension Started");
+		//				app.u.dump("beachmart dropdown Extension Started");
 						app.ext.beachmart_dropdown.u.loadHoverProducts(); //load function
 						//app.ext.beachmart_dropdown.u.renderTagsElastic();
 						

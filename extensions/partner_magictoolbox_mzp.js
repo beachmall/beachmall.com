@@ -62,7 +62,7 @@ var magicToolBox_mzp = function() {
 				},
 			startExtension : {
 				onSuccess : function(){
-					app.u.dump("BEGIN magictoolbox.callbacks.startExtension");
+	//				app.u.dump("BEGIN magictoolbox.callbacks.startExtension");
 					app.rq.push(['css',0,'examples/magictoolbox/magiczoomplus.css','mzpStylesheet']);
 					app.rq.push(['script',0,'examples/magictoolbox/magiczoomplus.js',function(){
 						MagicZoomPlus.start();

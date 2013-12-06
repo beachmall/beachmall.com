@@ -254,7 +254,7 @@ var store_filter = function() {
 							app.ext.store_filter.u.noReviews($context);
 						}]);
 		*/				
-						app.u.dump("beachmart Extension Started");
+			//			app.u.dump("beachmart Extension Started");
 						$.extend(handlePogs.prototype,app.ext.store_filter.variations);
 						//app.u.dump('*** Extending Pogs');
 		
@@ -455,7 +455,7 @@ var store_filter = function() {
 				//if info is available will populate subject and body w/ prod name, mfg, & price
 				//if only name, subject will have name, body will be empty. If no content, no subject or body
 			bindMailto : function($tag, data){
-				app.u.dump('data.value:'); app.u.dump(data.value);
+	//			app.u.dump('data.value:'); app.u.dump(data.value);
 				if(data.value['%attribs'] && data.value['%attribs']['zoovy:prod_name']) {
 					
 					var name = data.value['%attribs']['zoovy:prod_name'];

@@ -49,7 +49,7 @@ var beachmart_catsearch = function() {
 			startExtension : {
 				onSuccess : function() {
 					if(app.ext.myRIA && app.ext.myRIA.template){
-						app.u.dump("beachmart catsearch Extension Started");
+		//				app.u.dump("beachmart catsearch Extension Started");
 						app.ext.beachmart_dropdown.u.loadHoverProducts(); //load function
 						
 					} else	{
