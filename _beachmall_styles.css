@@ -1560,6 +1560,8 @@ CART TEMPLATE
 #modalCart .updateButton.zipButton.cartLineButton {width:auto; margin:2% 0 6% 0; padding:1px;}
 #modalCart .interNatText {font-size:10px; margin:10px 0 0 0; clear:both;}
 #modalCart .interNatHint {top:-130px; left:-70px}
+#modalCart .surchargeText {margin:10px 0 0 0; clear:both;}
+#modalCart .surchargeHint {top:-110px; left:-100px}
 #modalCart .checkoutButtonsContainer span {float:right; margin:0 0 0 12px;}
 #modalCart .cartButtonsContainer {margin:0 0 1% 0; border:none;}
 #modalCart .cartButtonsContainer .cartBar {width:100%; height:auto; float:left; background:none repeat scroll 0px 0px #ffffff; color:#ffffff;}

@@ -3744,9 +3744,9 @@ START APP CART
 									<ul class='noPadOrMargin listStyleNone cartShipMethods' data-bind='var: cart(@SHIPMETHODS); format:shipMethodsAsRadioButtons; extension:store_cart;'></ul>
 								</div>
 								<span class='floatLeft clearfix' data-bind="var: cart(@ITEMS); format:expShipMessage; extension:store_filter;"></span>
-								<div>
-									<a href='#' class='floatLeft clearfix tipifyCart' data-bind="var: cart(@ITEMS); format:shipSurMessage; extension:store_filter;"></a>
-									<div class='toolTip'>
+								<div class='clearfix'>
+									<a href='#' class='floatLeft tipifyCart surchargeText' data-bind="var: cart(@ITEMS); format:shipSurMessage; extension:store_filter;"></a>
+									<div class='toolTip surchargeHint'>
 										If the calculated shipping cost is not zero, then shipping surcharge is applied for 
 										items and destinations applicable. More details of this charge is stated on the 
 										shipping tab of the product page
