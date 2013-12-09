@@ -840,19 +840,50 @@ var store_filter = function() {
 				
 				//shows container w/ accessories/similar tabbed content if one of them has values set
 				showTabsIfSet : function($tag, data) {
-					if(data.value['%attribs']['zoovy:related_products'] ||
-						data.value['%attribs']['zoovy:accessory_products']){
+					setTimeout(function(){ //timeout here to allow time for data to get added to dom before this is run
+						var attribs = data.value['%attribs'] ? data.value['%attribs'] : false; 
+						if(!attribs) return; //if no attribs, run for it Marty!
+						var relatedProds = attribs['zoovy:related_products'] ? attribs['zoovy:related_products'] : false;
+						var accessoryProds = attribs['zoovy:accessory_products'] ? attribs['zoovy:accessory_products'] : false;
+						var L, relatedIsDiscontinued, accessoryIsDiscontinued; //used for length of attrib lists and to hold whether list is discontinued or not
+
+						var listList = [];
+						listList.push(relatedProds,accessoryProds);
+					//	app.u.dump('--> List of lists'); app.u.dump(listList); 
+						
+						for(j=0;j<listList.length;j++) {
+							if(listList[j]) {
+								var count = 0; //used to compare # discontinued items to list lengths
+								prodAttribList = listList[j].split(',');
+								L = prodAttribList.length;
+								var tempProd; //used in loop
+					//			app.u.dump('--> prodAttribList'+j+'---'); app.u.dump(prodAttribList);
+								for(i=0;i<L;i++) {
+									tempProd = app.data['appProductGet|'+app.u.makeSafeHTMLId(prodAttribList[i])];
+									if(tempProd['%attribs'] && tempProd['%attribs']['zoovy:prod_is_tags']) {
+										tempProd['%attribs']['zoovy:prod_is_tags'].indexOf('IS_DISCONTINUED') == -1 ? count = count : count += 1;
+									}
+								}
+								L == count ? listList[j] = false : listList[j] = true;
+							}
+						}
+						listList[0] == true ? relatedIsDiscontinued = false : relatedIsDiscontinued = true;
+						listList[1] == true ? accessoryIsDiscontinued = false : accessoryIsDiscontinued = true;
+						 
+			//			app.u.dump('--> Lots to look at'); app.u.dump(relatedProds); app.u.dump(relatedIsDiscontinued); app.u.dump(accessoryProds); app.u.dump(accessoryIsDiscontinued);
+					
+						if( (relatedProds && !relatedIsDiscontinued) || (accessoryProds && !accessoryIsDiscontinued) ) {
 							$tag.show();
 						}
-					if(data.value['%attribs']['zoovy:accessory_products'] && 
-						!data.value['%attribs']['zoovy:related_products']) {
-						$('.accTab',$tag).addClass('ui-state-active').addClass('ui-tabs-active');
-						setTimeout(function(){
-							$('.accAnch','.accTab',$tag).mouseenter();},500);
-						app.u.dump('got past trigger');
-					}
+						
+						if( (accessoryProds && !accessoryIsDiscontinued) && ( (!relatedProds) || (relatedProds && relatedIsDiscontinued) ) ) {
+							$('.accTab',$tag).addClass('ui-state-active').addClass('ui-tabs-active');
+							setTimeout(function(){
+								$('.accAnch','.accTab',$tag).mouseenter();},500);
+			//				app.u.dump('got past trigger');
+						}
+					},1000);	
 				},
-				
 		
 				//shows free shipping statement in product list if value is set
 				showFreeShippingTag: function($tag, data) {
@@ -993,7 +1024,7 @@ var store_filter = function() {
 					
 					//app.u.dump('*** IS_USER2 = '+newLowPrice);
 					if (zoovyIsTags.indexOf('IS_DISCONTINUED') >= 0) {
-						$tag.parent().parent().parent().hide();
+						$tag.parent().parent().parent().hide().attr('data-discontinued',1);
 					}
 					else if (zoovyIsTags.indexOf('IS_USER3') >= 0) {
 						$tag.append('Closeout!').addClass('smallRed').show();
