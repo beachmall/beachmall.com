@@ -319,6 +319,18 @@ var store_filter = function() {
 
 		a : {
 				
+				//sets prod image frame and view detail button to hover red on mouseenter of the other
+			resultsRedMouseIn : function($this) {
+				$('.myProdThumbSmall',$this.parent()).css('border','5px solid #e0463a');
+				$('.moreDetailsSmall',$this.parent()).css('background-color','#e0463a');
+			},
+			
+				//sets prod image frame and view detail button to default state on mouseleave of the other
+			resultsRedMouseOut : function($this) {
+				$('.myProdThumbSmall',$this.parent()).css('border','5px solid #ffffff');
+				$('.moreDetailsSmall',$this.parent()).css('background-color','#3bb3c3');
+			},
+				
 				//Q&A link on product page will populate the order/prod id field on contact form w/ pid
 			showContactPID : function (pid) {
 				//app.u.dump('the pid is: '); app.u.dump(pid);
@@ -347,13 +359,7 @@ var store_filter = function() {
 				$('.cartShowAccButton',$this.parent()).animate({'opacity':'1'}).show();
 				$('.cartAccList',$this.parent()).animate({'height':'0px'});
 			},
-				
-			showContentNoPropagation : function(product, pid) {
-				app.u.dump('Somthing to Read!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-				showContent(product,pid);
-				return false;
-			},
-		
+			
 			execFilter : function($form,$page){
 
 				app.u.dump("BEGIN store_filter.a.filter");
