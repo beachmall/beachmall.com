@@ -194,43 +194,44 @@ the padding is to compensate for the spacing between the main nav.
 #mastHead .dropdown.singleLineDD {padding-top:30px;}
 #mastHead .dropdown ul {height: 522px; width:460px; margin: 0px 0px 5px 0px; padding: 0px 0px 3px 20px; background-color:#tttttt; font-weight: normal; border-top:5px solid #e0463a; border-bottom:5px solid #e0463a;}
 #mastHead .dropdown li:nth-child(1) {height:27px; width:207px; font-family:Oswald; font-size:24px; font-weight: normal; color:#e0463a; text-align:left; margin: 20px 0px 16px 13px;}
-#mastHead .dropdown li {height:27px; width:226px; font-family:"Open Sans"; font-size:14px; color:#000000; text-align:left; margin: 3px 0px 3px 14px;}
-#mastHead .dropdown li:hover {color:#e0463a;  background-image:url(images/dropout-arrow-207x27.png);}
+#mastHead .dropdown li {height:27px; width:226px; font-family:"Open Sans"; font-size:14px; color:#000000; text-align:left; margin: 3px 0px 3px 14px; position:relative; z-index:1;}
+#mastHead .dropdown li:hover {color:#e0463a;  background:url(images/dropout-arrow-white-207x27.png) no-repeat 0 -3px;}
 #mastHead .dropdown li a {color:#000000;}
 #mastHead .dropdown li a:hover {color:#e0463a;}
 #mastHead .dropdown .noArrow:hover {background:none;}
 
 /*#mastHead .dropdown .hoverProductContainer {height: 525px; width:240px; background-color:#2B9;}*/
-#mastHead .dropdown .hoverProductContainer {height: 525px; width:0px; position:relative; top:-83px; left:226px; z-index:1; overflow:hidden; border:none; margin:0; padding:0; opacity:0;}
+#mastHead .dropdown .hoverProductContainer {height: 525px; width:0px; position:relative; top:-83px; left:207px; z-index:1; overflow:hidden; border:none; margin:0; padding:0; opacity:0;}
 #mastHead .dropdown .hoverProductContainer .productListSmall {padding:25px 10px;}
 #mastHead .dropdown .hoverProductContainer .myProdThumbSmall {width:210px;}
 #mastHead .dropdown .hoverProductContainer .prodPriceSmall {width:125px; text-align:center; font-size:.85em; color:#000000;}
 #mastHead .dropdown .hoverProductContainer li {width:240px; margin:0; }
 
-#mastHead .dropout.out .hoverProductContainer.innerHovProdCont {top:-192px; left:199px; padding:0;}
-#mastHead .dropout.out .hoverProductContainer.innerHovProdCont.dropout2 {top:-217px;}
+#mastHead .dropout.out .hoverProductContainer.innerHovProdCont {top:-195px; left:222px; padding:0;}
+#mastHead .dropout.out .hoverProductContainer.innerHovProdCont.dropout2 {top:-220px;}
 #mastHead .dropout.out .hoverProductContainer.innerHovProdCont.dropout3 {top:-242px;}
 #mastHead .dropout.out .hoverProductContainer.innerHovProdCont.dropout4 {top:-267px;}
 #mastHead .dropout.out .hoverProductContainer.innerHovProdCont.dropout5 {top:-292px;}
 #mastHead .dropout.out .hoverProductContainer.innerHovProdCont.dropout6 {top:-317px;}
 #mastHead .dropout.out .hoverProductContainer.innerHovProdCont li {width:240px; margin:0;} 
 
-.defaultDDImage, .defaultDOImage {height:526px; width:237px; background:#FFE680; margin:5px; position:absolute; top:-0.5px; right:2px; z-index:1;}
-.defaultDOImage {width:260px; background:#f8c301; right:5px; top:-3px;}
+.defaultDDImage, #mastHead .dropout.out .defaultDOImage {height:526px; width:237px; background:#FFE680; margin:5px; position:absolute; top:-0.5px; right:2px; z-index:1;}
+#mastHead .dropout.out .defaultDOImage {width:238px; background:#ffe680; right:-5px; top:-5px;}
 /*.stockImageContainer {height: 210px; width:100%;}*/
 .stockImageContainer  {height:210px; width:210px; background:#777; margin:10px auto; border:5px solid #ffffff; cursor:pointer; position:relative; z-index:1;}
 .stockImageContainer:hover {border:5px solid #e0463a;}
 .hoverProductContainer .catSearchHomeDropdown {height:30px; width:150px; margin:10px 45px; border:none; background:#3bb3c3; color:#ffffff; position:relative; z-index:1;}
 .hoverProductContainer .catSearchHomeDropdown:hover {background:#e0463a;}
 
-.dropdownBGLeft {height:525px; width:242px; position:absolute; top:0; left:0; background:#f8c301; border-top:5px solid #e0463a; border-bottom:#e0463a;}
+.dropdownBGLeft {height:525px; width:242px; position:absolute; top:0; left:0; z-index:0; background:#f8c301; border-top:5px solid #e0463a; border-bottom:#e0463a;}
 .dropdownBGRight {height:535px; width:240px; background:#f7f7f7; position:absolute; top:0; left:0; opacity:0.9; z-index:0;}
+.dropout.out .dropdownBGLeft {border:none;}
 
-#mastHead .dropout.out {height:525px; width:0px; background-color:#f8c301; margin:0px 0px 0px 20px; position:relative; left:186px; overflow:hidden; z-index:5;} 
-#mastHead .dropout.out ul {height: 522px; width:225px; margin: 90px 0px 0px 0px; padding:0px 0px 0px 6px; background-color:#f8c301; border:0;}
+#mastHead .dropout.out {height:525px; width:0px; margin:0px 0px 0px 20px; position:relative; left:186px; overflow:hidden; z-index:5;} 
+#mastHead .dropout.out ul {height: 522px; width:225px; margin: 90px 0px 0px 0px; padding:0px 0px 0px 6px; border:0;}
 /*#mastHead .dropout.out li:first-child {height:27px; width:207px; font-family:"Open Sans"; font-size:14px; color:#000; text-align:left; margin: -5px 14px 3px 14px;}*/
 #mastHead .dropout.out li {height:27px; width:300px; font-family:"Open Sans"; font-size:14px; color:#000000; text-align:left; margin: -5px 14px 3px 14px;}
-#mastHead .dropout.out li:hover {color:#e0463a; cursor:pointer;}
+#mastHead .dropout.out li:hover {color:#e0463a; cursor:pointer; background:url(images/dropout-arrow-white-207x27.png) no-repeat 15px -3px;}
 #mastHead .dropout1, #mastHead .dropdown .hoverProductContainer.dropout1 {top:-85px;}
 #mastHead .dropout2, #mastHead .dropdown .hoverProductContainer.dropout2 {top:-113px;}
 #mastHead .dropout3, #mastHead .dropdown .hoverProductContainer.dropout3 {top:-143px;}

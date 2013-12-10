@@ -100,12 +100,12 @@ var beachmart_dropdown = function() {
 				$dropdown.children().each(function(){
 					$(this).outerHeight(true);
 				});
-				$dropdown.stop().animate({"height":height+"px"}, 1000);
+				$dropdown.stop().animate({"height":height+"px"}, 500);
 			},
             
 			//ANIMATE RETRACTION OF MAIN CATEGORY DROPDOWN MENU
 			hideDropdown : function ($tag) {
-				$(".dropdown", $tag).stop().animate({"height":"0px"}, 1000);
+				$(".dropdown", $tag).stop().animate({"height":"0px"}, 500);
 			},
 			
 			//IMEDIATE RETRACTION OF MAIN CATEGORY DROPDOWN MENU WHEN HEADER IS CLICKED
@@ -121,17 +121,17 @@ var beachmart_dropdown = function() {
 					$(this).outerWidth(true);
 				});
 				$('.defaultDDImage',$parentparent).css({"right":"-300px"});	//hide default image so sub-cat image can display
-				$parentparent.css({"width":700+"px"},1000);
-				$parent.stop().animate({"width":700+"px"}, 1000);
+				$parentparent.css({"width":720+"px"},1000);
+				$parent.stop().animate({"width":700+"px"},0);
 				$dropout.stop().animate({"width":width+"px"});
 			},
 			
 			//ANIMATE RETRACTION OF MAIN CATEGORY 2ND LEVEL DROPOUT MENU
 			hideDropout : function ($tag, $parentparent, $parent) {
 				$(".dropout", $tag).stop().animate({"width":"0px"}, 1000);
-				$parent.stop().animate({"width":242+"px"}, 1000);
-				$parentparent.css({"width":460+"px"}, 1000);
-				$('.defaultDDImage',$parentparent).css({"right":"0px"});
+				$parent.stop().animate({"width":460+"px"}, 1000);
+				$parentparent.css({"width":480+"px"}, 1000);
+				$('.defaultDDImage',$parentparent).css({"right":"-4px"});
 			},
 			
 			//IMEDIATE RETRACTION OF MAIN CATEGORY DROPDOWN MENU WHEN 2ND LEVEL LINK IS CLICKED
@@ -163,14 +163,16 @@ var beachmart_dropdown = function() {
 				$hoverout.children().each(function(){
 					$(this).outerWidth(true);
 				});
-				$hoverout.stop().animate({"width":width+"px",opacity:1}, 000);
-				$parent.css({"width":680+"px"}, 000);
+				$('.defaultDOImage',$tag.parent()).animate({"opacity":"0"},0);
+				$hoverout.stop().animate({"width":width+"px",opacity:1},0);
+				//$parent.css({"width":680+"px"}, 000);
 			},
 			
 			//ANIMATE RETRACTION OF HOVERPRODUCT DROPOUT MENU
 			hideHoverout2 : function ($tag, $parent) {
-				$(".hoverout", $tag).stop().animate({"width":"0px",opacity:0}, 000);
-				$parent.css({"width":485+"px"}, 000);
+				$(".hoverout", $tag).stop().animate({"width":"0px",opacity:0},0);
+			//	$parent.css({"width":485+"px"}, 000);
+				$('.defaultDOImage',$tag.parent()).animate({"opacity":"1"},0);
 			},
 			
 			
