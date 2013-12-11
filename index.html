@@ -3961,10 +3961,10 @@ START APP PRODUCTLISTTEMPLATECART
 					<button class='moveToWishlist cartLineButton' data-bind='format:moveToWishlistButton; extension:myRIA; useParentData:true;' >Wishlist</button>
 					<button class='removeButton cartLineButton' data-bind='format:removeItemBtn; extension:store_cart; useParentData:true;' >Remove</button>
 				</div>
-				<div class='cartItemPrice cartPQT floatLeft'>
+				<div class='cartItemPrice cartPQT floatLeft' data-bind='var: product(sku); format:redMoney; extension:store_filter;'>
 					<span data-bind='var: product(price); format:money; currencySign: $;  hideZero:false; pretext:;' ></span>
 				</div>
-				<div class='cartItemTotal cartPQT floatLeft'>
+				<div class='cartItemTotal cartPQT floatLeft' data-bind='var: product(sku); format:redMoney; extension:store_filter;'>
 					<span data-bind='var: product(extended); format:money; currencySign: $; hideZero:false; pretext:;'></span>
 				</div>
 			</div>

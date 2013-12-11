@@ -551,7 +551,14 @@ var store_filter = function() {
 					}
 				}
 			},
-	
+			
+				//checks for % at beginning of sku to see if item is a promo, sets css to red if so. 
+			redMoney : function($tag, data) {
+				if(data.value && data.value[0] == '%') {
+					$tag.css('color','#e0463a');
+				} else {}
+			},
+			
 				//gets list of siblings from product (if present) and puts first two on product list
 				//the one that doesn't match the product is set first
 			siblingProductList : function($tag,data)	{
@@ -819,7 +826,7 @@ var store_filter = function() {
 				
 				beachMoney : function($tag,data)	{
 			
-					app.u.dump('BEGIN view.formats.money');
+					app.u.dump('BEGIN view.formats.beachMoney');
 					var amount = data.bindData.isElastic ? (data.value / 100) : data.value;
 					app.u.dump('amount:'); app.u.dump(amount);
 					if(amount)	{
