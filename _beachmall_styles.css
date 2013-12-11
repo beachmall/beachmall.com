@@ -1025,7 +1025,8 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 .disRedirect .pr-snippet-read-write,.disRedirect .pr-snippet-social-bar {display:none;}
 .disRedirect a {color:#3bb3c3; font-weight:bold; text-decoration:underline;}
 .disRedirect a:hover {color:#E63738;}
-.fullWidth .prodViewerAddToCartForm .addToCartButton	{
+.fullWidth .prodViewerAddToCartForm .addToCartButton,
+.fullWidth .prodViewerAddToCartForm .atcButton {
 	height:50px;
 	width:170px;
 	margin:6px 0;
