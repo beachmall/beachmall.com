@@ -20,6 +20,11 @@
 			"alt": "Beach Chaises",
 			"title": "Beach Chaises"
 		},
+		".beach-chair.beach-lounges": {
+			"src": "images_webfront/beach_recliner.jpg",
+			"alt": "Beach &#38 Pool Lounges",
+			"title": "Beach &#38 Pool Lounges"
+		},
 		".beach-recliner":{
 			"src": "images_webfront/beach_lounger.jpg",
 			"alt": "Beach Lounges",
@@ -154,6 +159,11 @@
 			"alt": "Kid's Swimwear",
 			"title": "Kid's Swimwear"
 		},
+		".beachwear.beach-swimwear.board-shorts": {
+			"src": "images_webfront/",
+			"alt": "Board Shorts",
+			"title": "Board Shorts"
+		},
 		".boys-boardshorts":{
 			"src": "images_webfront/",
 			"alt": "Boy's Board Shorts",
@@ -168,6 +178,11 @@
 			"src": "images_webfront/",
 			"alt": "Kids's Board Shorts",
 			"title": "Kids's Board Shorts"
+		},
+		".beachwear.beach-swimwear.rashguard": {
+			"src": "images_webfront/",
+			"alt": "Rashguard",
+			"title": "Rashguard"
 		},
 		".rashguard.rashguards":{
 			"src": "images_webfront/",
@@ -184,6 +199,11 @@
 			"alt": "Kid's / Baby Rash Guards",
 			"title": "Kid's / Baby Rash Guards"
 		},
+		".beachwear.sun-dresses-women": {
+			"src": "images_webfront/",
+			"alt": "Women&#39s Sundresses",
+			"title": "Women&#39s Sundresses"
+		},
 		".beach-dresses":{
 			"src": "images_webfront/",
 			"alt": "Casual",
@@ -198,6 +218,11 @@
 			"src": "images_webfront/",
 			"alt": "Evening",
 			"title": "Evening"
+		},
+		".beachwear.swimwear-women": {
+			"src": "images_webfront/",
+			"alt": "Women&#39s Swimwear",
+			"title": "Women&#39s Swimwear"
 		},
 		".bathing-suits":{
 			"src": "images_webfront/",
@@ -236,9 +261,14 @@
 		
 		
 		".beach-umbrella":{
-			"src": "galtech/532tk_5432_5",
+			"src": "fiberbuilt/fbt1025_l",
 			"alt": "Beach Umbrellas",
 			"title": "Beach Umbrellas"
+		},
+		".beach-umbrellas-shelter.patio-umbrella": {
+			"src": "galtech/532tk_5432_5",
+			"alt": "Market &#38 Patio Umbrellas",
+			"title": "Market &#38 Patio Umbrellas"
 		},
 		".6-foot-patio-umbrellas":{
 			"src": "galtech/735w56_2",

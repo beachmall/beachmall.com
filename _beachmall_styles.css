@@ -209,10 +209,10 @@ the padding is to compensate for the spacing between the main nav.
 
 #mastHead .dropout.out .hoverProductContainer.innerHovProdCont {top:-195px; left:222px; padding:0;}
 #mastHead .dropout.out .hoverProductContainer.innerHovProdCont.dropout2 {top:-220px;}
-#mastHead .dropout.out .hoverProductContainer.innerHovProdCont.dropout3 {top:-242px;}
-#mastHead .dropout.out .hoverProductContainer.innerHovProdCont.dropout4 {top:-267px;}
-#mastHead .dropout.out .hoverProductContainer.innerHovProdCont.dropout5 {top:-292px;}
-#mastHead .dropout.out .hoverProductContainer.innerHovProdCont.dropout6 {top:-317px;}
+#mastHead .dropout.out .hoverProductContainer.innerHovProdCont.dropout3 {top:-245px;}
+#mastHead .dropout.out .hoverProductContainer.innerHovProdCont.dropout4 {top:-270px;}
+#mastHead .dropout.out .hoverProductContainer.innerHovProdCont.dropout5 {top:-295px;}
+#mastHead .dropout.out .hoverProductContainer.innerHovProdCont.dropout6 {top:-320px;}
 #mastHead .dropout.out .hoverProductContainer.innerHovProdCont li {width:240px; margin:0;} 
 
 .defaultDDImage, #mastHead .dropout.out .defaultDOImage {height:526px; width:237px; background:#FFE680; margin:5px; position:absolute; top:-0.5px; right:2px; z-index:1;}
