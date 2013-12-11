@@ -943,7 +943,9 @@ var store_filter = function() {
 							var us1ts = data.value['%attribs']['us1:ts'];
 						}
 						var zoovyProdSalesRank = data.value['%attribs']['zoovy:prod_salesrank'];
-						var zoovyPreOrder = data.value['%attribs']['zoovy:prod_is_tags'];
+						var zoovyIsPreOrder = data.value['%attribs']['zoovy:prod_is_tags'];
+						var zoovyPreOrder = data.value['%attribs']['is:preorder'];
+						var zoovyIsUser1 = data.value['%attribs']['is:user1'];
 						var d = new Date();
 						var month = d.getMonth()+1;
 						var day = d.getDate();
@@ -953,10 +955,10 @@ var store_filter = function() {
 						var date = year + '' + month + '' + day;
 						
 						//Item is preorder, get back to the future Marty! (when it will be shipped)
-						if (zoovyPreOrder && zoovyPreOrder.indexOf('IS_PREORDER') > -1 && ([zoovyProdSalesRank > -1 || zoovyProdSalesRank != undefined] && zoovyProdSalesRank > date) ) {
+						if ((zoovyPreOrder || zoovyIsUser1 || zoovyIsPreOrder && zoovyIsPreOrder.indexOf('IS_PREORDER') > -1) && ([zoovyProdSalesRank > -1 || zoovyProdSalesRank != undefined] && zoovyProdSalesRank > date) ) {
 							//var outputDate =  zoovyProdSalesRank.substring(5,6) + '/' + zoovyProdSalesRank.substring(7,8) + '/' + zoovyProdSalesRank.substring(0,4);
 							//app.u.dump('*** '+outputDate);
-							$tag.empty().append('Will ship on '+app.ext.beachmart.u.yyyymmdd2Pretty(zoovyProdSalesRank));
+							$tag.empty().append('Backorder: Will ship on '+app.ext.beachmart.u.yyyymmdd2Pretty(zoovyProdSalesRank)).css('color','blue');
 						}
 						//Not a pre-order, show present-day ship info.
 						else if (zoovyProdSalesRank == undefined || zoovyProdSalesRank <= date) {

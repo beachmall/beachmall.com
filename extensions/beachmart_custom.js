@@ -768,7 +768,7 @@ RenderFormats
 				$tag.attr('id',$tag.attr('id')+'_'+pid).before("<div class='atcSuccessMessage' id='atcMessaging_"+pid+"'><\/div>");
 				var pData = app.data['appProductGet|'+data.value]
 				if(pData && pData['%attribs'] && pData['%attribs']['is:user1']){
-					$tag.addClass('addToCartButton backorderButton');
+					$tag.val("Back-Order Now").text("Back-Order Now").addClass('addToCartButton backorderButton');
 					}
 				else if(pData && pData['%attribs'] && pData['%attribs']['is:preorder']){
 					$tag.addClass('preorderButton');
