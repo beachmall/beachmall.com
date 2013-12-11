@@ -859,7 +859,7 @@ var store_filter = function() {
 						var relatedProds = attribs['zoovy:related_products'] ? attribs['zoovy:related_products'] : false;
 						var accessoryProds = attribs['zoovy:accessory_products'] ? attribs['zoovy:accessory_products'] : false;
 						var L, relatedIsDiscontinued, accessoryIsDiscontinued; //used for length of attrib lists and to hold whether list is discontinued or not
-
+app.u.dump('Related Products'); app.u.dump(relatedProds); app.u.dump(accessoryProds); 
 						var listList = [];
 						listList.push(relatedProds,accessoryProds);
 					//	app.u.dump('--> List of lists'); app.u.dump(listList); 
@@ -869,6 +869,17 @@ var store_filter = function() {
 								var count = 0; //used to compare # discontinued items to list lengths
 								prodAttribList = listList[j].split(',');
 								L = prodAttribList.length;
+							
+									//check for any empty strings in array. Remove and adjust length if found
+								var p = L;
+								for(k=0;k<p;k++) {
+									if(prodAttribList[k] == "" || prodAttribList[k] == " ") {
+										L -= 1;
+										prodAttribList.splice(k,1);
+									}
+								}
+
+									//check for discontinued and adjust count if found
 								var tempProd; //used in loop
 					//			app.u.dump('--> prodAttribList'+j+'---'); app.u.dump(prodAttribList);
 								for(i=0;i<L;i++) {
@@ -877,9 +888,10 @@ var store_filter = function() {
 										tempProd['%attribs']['zoovy:prod_is_tags'].indexOf('IS_DISCONTINUED') == -1 ? count = count : count += 1;
 									}
 								}
-								L == count ? listList[j] = false : listList[j] = true;
+								L == count ? listList[j] = false : listList[j] = true; //if length is same as count, all prods in list are not show-able
 							}
 						}
+							//check the findings for each list and set discontinued accordingly
 						listList[0] == true ? relatedIsDiscontinued = false : relatedIsDiscontinued = true;
 						listList[1] == true ? accessoryIsDiscontinued = false : accessoryIsDiscontinued = true;
 						 
@@ -1700,6 +1712,10 @@ return filters;
 						pid = app.u.makeSafeHTMLId(stid);
 					}
 					return pid;
+				},
+				
+				isBlank : function(obj) {
+					return (!obj || $.trim(obj) === "");
 				}
 				
 				
@@ -1727,6 +1743,9 @@ return filters;
 //when adding an event, be sure to do off('click.appEventName') and then on('click.appEventName') to ensure the same event is not double-added if app events were to get run again over the same template.
 		e : {	
 			}, //e [app Events]
+			
+			
+////////////////////////////////////   VARIATIONS    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\			
 			
 		variations : {
 			
