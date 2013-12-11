@@ -2789,7 +2789,12 @@ this will likely become more flexible in the future. ###
 				<a onClick='app.ext.store_filter.a.scrollToRevealTab($(this).parent().attr("data-pid"), "#prodSizing")'>Sizing Chart</a>
 			</span>
 		</span>
-		<div class='displayNone zsmall alignRight' data-bind='var: product(user:prod_shipping); format:showIfSet;'><a href='#' onClick="app.ext.beachmart.a.showProdAttInDialog($(this).attr('data-pid'),'user:prod_shipping'); return false;" data-bind='var:product(pid);format:assignAttribute; attribute:data-pid;'>Shipping Surcharge May Apply</a></div>
+	<!--	<div class='displayNone zsmall alignRight' data-bind='var: product(user:prod_shipping); format:showIfSet;'><a href='#' onClick="app.ext.beachmart.a.showProdAttInDialog($(this).attr('data-pid'),'user:prod_shipping'); return false;" data-bind='var:product(pid);format:assignAttribute; attribute:data-pid;'>Shipping Surcharge May Apply</a></div> -->
+		
+		<div class='displayNone zsmall alignRight' data-bind='var: product(user:prod_shipping); format:showIfSet;'>
+			<a href='#' class='tipify'>Shipping Surcharge May Apply</a>
+			<div class='toolTip' data-bind='var: product(user:prod_shipping); format:wiki; wikiFormats:myRIA;'></div>
+		</div>
 	</form>
 
 	<!--<div class='clearfix'><br /></div>-->

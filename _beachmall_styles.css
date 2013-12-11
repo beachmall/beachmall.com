@@ -1168,6 +1168,7 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 	font-weight:normal;
 	}
 .toolTip p	{margin:6px 0;}
+.fullWidth .zsmall .toolTip {font-size:14px; position:relative; top:182px; left:168px;}
 
 /*
 global app styles 
