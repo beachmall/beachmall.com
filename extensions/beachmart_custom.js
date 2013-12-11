@@ -348,7 +348,8 @@ Action
 						if(cart) { //if this is in the cart, only show methods that match what is available in the cart shipping area
 //							app.u.dump('-->'); app.u.dump($('.cartShipMethods').text()); app.u.dump(services[i].method);
 							var shipMethods = $('.cartShipMethods').text();
-							if(shipMethods.indexOf(services[i].method) != -1) {
+							if(shipMethods.indexOf(services[i].method) != -1 && services[i].method != 'UPS Next Day Air') {
+					app.u.dump('-->'); app.u.dump(shipMethods); app.u.dump(services[i].method);
 								$table.append(app.renderFunctions.transmogrify({'id':'service_'+services[i].id},"shipGridTemplate",services[i]));
 							}
 						}

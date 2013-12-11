@@ -859,7 +859,6 @@ var store_filter = function() {
 						var relatedProds = attribs['zoovy:related_products'] ? attribs['zoovy:related_products'] : false;
 						var accessoryProds = attribs['zoovy:accessory_products'] ? attribs['zoovy:accessory_products'] : false;
 						var L, relatedIsDiscontinued, accessoryIsDiscontinued; //used for length of attrib lists and to hold whether list is discontinued or not
-app.u.dump('Related Products'); app.u.dump(relatedProds); app.u.dump(accessoryProds); 
 						var listList = [];
 						listList.push(relatedProds,accessoryProds);
 					//	app.u.dump('--> List of lists'); app.u.dump(listList); 
