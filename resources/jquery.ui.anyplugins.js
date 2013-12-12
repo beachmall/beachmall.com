@@ -743,7 +743,7 @@ or this: $('#bob').find('.ui-tabs-nav li:nth-child(2)').trigger('click');
 		_addEvent2Tabs : function()	{
 			var self = this;
 // *** 201336 -> tab clicks now use delegated events. more efficient.
-			this.tabs.off('click').on('mouseenter','a',function(event){ //beachmall: was 'click'
+			this.tabs.off('click').on('click', function(event){event.preventDefault()}).on('mouseenter','a',function(event){ //beachmall: was 'click'
 				event.preventDefault();
 				var oldHash = window.location.hash;
 				_ignoreHashChange = true;
