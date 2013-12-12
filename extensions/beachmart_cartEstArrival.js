@@ -53,6 +53,7 @@ var beachmart_cartEstArrival = function() {
 						//use cutoff from response, not product
 						//but find $container by matching stid added to it in index w/ response stid
 					$('.cartItemWrapper','#modalCart').each(function(){ //look at each cartItemWrapper in cart
+						tagObj.backorder = $(this).attr('data-backorder'); //add backorder attrib to tagObj for use in getTransitInfo later
 						var geoSTID = $(this).attr('data-geostid'); //record its geostid value
 							//check if this geostid value matches the response value, and set container if it does
 						if (geoSTID.indexOf(app.u.makeSafeHTMLId(tagObj.stid)) != -1) {
@@ -68,7 +69,7 @@ var beachmart_cartEstArrival = function() {
 			
 					var data = app.data[tagObj.datapointer]; //shortcut.	
 		
-						//if ground on all set to 1, an item has no expedited shipping, make all methods ground
+						//if ground on all set to 1, an item has no expedited shipping (and/or is backorder), make all methods ground
 					if($('#cartTemplateShippingContainer').attr('groundonall') == 1) {
 						index = app.ext.beachmart.u.getSlowestShipMethod(data['@Services']);
 						var ground = true; //true will bypass additional shipping methods later
@@ -92,7 +93,7 @@ var beachmart_cartEstArrival = function() {
 					}
 						//index could be false if no methods were available. or could be int starting w/ 0
 					if(index >= 0) {
-/*prob w/ $container selector*/						$('.transitContainer',$container).empty().append(app.ext.beachmart_cartEstArrival.u.getTransitInfo(tagObj.pid,data,index,ground)); //empty first so when reset by zip change, no duplicate info is displayed.
+/*prob w/ $container selector*/						$('.transitContainer',$container).empty().append(app.ext.beachmart_cartEstArrival.u.getTransitInfo(tagObj,data,index,ground)); //empty first so when reset by zip change, no duplicate info is displayed.
 					}
 					
 					//$('.cartShippingInformation .loadingBG',$container).removeClass('loadingBG');
@@ -256,9 +257,10 @@ var beachmart_cartEstArrival = function() {
 			}, //getShipQuotes
 			
 			
-			getTransitInfo : function(pid,data,index,ground)	{
+			getTransitInfo : function(tagObj,data,index,ground)	{
 				app.u.dump("BEGIN beachmart_cartEstArrival.u.getTransitInfo");
 
+				var pid = tagObj.pid;
 				var prodAttribs = app.data['appProductGet|'+pid]['%attribs'];
 
 				var $r = $("<div class='shipSummaryContainer' \/>"); //what is returned. jquery object of shipping info.
@@ -306,16 +308,15 @@ var beachmart_cartEstArrival = function() {
 						$('.expShipMessage',$r).append("<span class='zhint inconspicuouseZhint'>Expedited shipping not available for this item</span>");
 						$('#cartTemplateForm').addClass('cartHasNoExpedite');
 					}
-				/*	$('.shipMessage','#cartTemplateForm').hide();
-					$('.estimatedArrivalDate','#cartTemplateForm').hide();
-					$('.deliveryLocation','#cartTemplateForm').hide();
-					$('.deliveryMethod','#cartTemplateForm').hide();
-				*/	
 				}
 
+				if(tagObj.backorder) {
+					var futureShipDate = app.ext.beachmart_dates.u.getFutureDate(tagObj.backorder, data['@Services'][index]['arrival_yyyymmdd'].slice(0,8));
+					$('.estimatedArrivalDate',$r).append(app.ext.beachmart.u.yyyymmdd2Pretty(futureShipDate)+" to");
+				} else {
+					$('.estimatedArrivalDate',$r).append(app.ext.beachmart.u.yyyymmdd2Pretty(data['@Services'][index]['arrival_yyyymmdd'])+" to");
+				}
 					
-				$('.estimatedArrivalDate',$r).append(app.ext.beachmart.u.yyyymmdd2Pretty(data['@Services'][index]['arrival_yyyymmdd'])+" to");
-
 				app.ext.beachmart.u.fetchLocationInfoByZip(app.data.cartDetail.ship.postal);
 				
 				return $r;

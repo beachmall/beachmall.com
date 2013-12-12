@@ -943,6 +943,10 @@ var store_filter = function() {
 								//possible for this user:prod_shipping_msg to be present but not set, make it a blank string to prevent undefined. 
 								var userProdShipMsg = prod['%attribs']['user:prod_shipping_msg'] ? prod['%attribs']['user:prod_shipping_msg'] : "" ;
 								var us1ts = prod['%attribs']['us1:ts'];
+								var zoovyProdSalesRank = prod['%attribs']['zoovy:prod_salesrank'];
+								var zoovyIsPreOrder = prod['%attribs']['zoovy:prod_is_tags'];
+								var zoovyPreOrder = prod['%attribs']['is:preorder'];
+								var zoovyIsUser1 = prod['%attribs']['is:user1'];
 							}
 								//pass stid so each item can be found in cart later when time in transit info gets added
 							var stid = app.u.makeSafeHTMLId($tag.parent().parent().parent().attr('data-stid'));
@@ -952,11 +956,11 @@ var store_filter = function() {
 							//possible for this user:prod_shipping_msg to be present but not set, make it a blank string to prevent undefined.
 							var userProdShipMsg = data.value['%attribs']['user:prod_shipping_msg'] ? data.value['%attribs']['user:prod_shipping_msg'] : "";
 							var us1ts = data.value['%attribs']['us1:ts'];
+							var zoovyProdSalesRank = data.value['%attribs']['zoovy:prod_salesrank'];
+							var zoovyIsPreOrder = data.value['%attribs']['zoovy:prod_is_tags'];
+							var zoovyPreOrder = data.value['%attribs']['is:preorder'];
+							var zoovyIsUser1 = data.value['%attribs']['is:user1'];
 						}
-						var zoovyProdSalesRank = data.value['%attribs']['zoovy:prod_salesrank'];
-						var zoovyIsPreOrder = data.value['%attribs']['zoovy:prod_is_tags'];
-						var zoovyPreOrder = data.value['%attribs']['is:preorder'];
-						var zoovyIsUser1 = data.value['%attribs']['is:user1'];
 						var d = new Date();
 						var month = d.getMonth()+1;
 						var day = d.getDate();
@@ -964,12 +968,17 @@ var store_filter = function() {
 						if (month < 10){month = '0'+month};
 						if (day < 10){day = '0'+day};
 						var date = year + '' + month + '' + day;
-						
+
 						//Item is preorder, get back to the future Marty! (when it will be shipped)
-						if ((zoovyPreOrder || zoovyIsUser1 || zoovyIsPreOrder && zoovyIsPreOrder.indexOf('IS_PREORDER') > -1) && ([zoovyProdSalesRank > -1 || zoovyProdSalesRank != undefined] && zoovyProdSalesRank > date) ) {
+						if ((zoovyPreOrder || zoovyIsUser1 || zoovyIsPreOrder || zoovyIsPreOrder.indexOf('IS_PREORDER') > -1) && ([zoovyProdSalesRank > -1 || zoovyProdSalesRank != undefined] && zoovyProdSalesRank > date) ) {
 							//var outputDate =  zoovyProdSalesRank.substring(5,6) + '/' + zoovyProdSalesRank.substring(7,8) + '/' + zoovyProdSalesRank.substring(0,4);
 							//app.u.dump('*** '+outputDate);
-							$tag.empty().append('Backorder: Will ship on '+app.ext.beachmart.u.yyyymmdd2Pretty(zoovyProdSalesRank)).css('color','blue');
+							$tag.empty().append('Backorder: Will ship on '+app.ext.beachmart.u.yyyymmdd2Pretty(zoovyProdSalesRank));
+							$tag.attr('data-cart') ? $tag.css('color','#e0463a') : $tag.css('color','blue');
+/*should be for cart only?*/$tag.parent().parent().attr('data-backorder',zoovyProdSalesRank); //used to mod time in transit arrival date for backorder items 
+								//set groundonall to indicate for all cart shipping items to be ground in beachmart_cartEstArrival showTransitTimes.
+								//will also ensure expedited shipping not available message will be shown for this item. 
+/*should be for cart only?*/$('#cartTemplateShippingContainer').attr('groundonall',1); 
 						}
 						//Not a pre-order, show present-day ship info.
 						else if (zoovyProdSalesRank == undefined || zoovyProdSalesRank <= date) {
@@ -1668,7 +1677,7 @@ return filters;
 				},
 				
 				execCouponAdd : function($btn)	{
-				app.u.dump($btn.text());
+					app.u.dump($btn.text());
 					//$btn.button();
 					$btn.off('click.app.ext.store_filter.a.execCouponAdd').on('click.app.ext.store_filter.a.execCouponAdd',function(event){
 						event.preventDefault();
@@ -1711,10 +1720,6 @@ return filters;
 						pid = app.u.makeSafeHTMLId(stid);
 					}
 					return pid;
-				},
-				
-				isBlank : function(obj) {
-					return (!obj || $.trim(obj) === "");
 				}
 				
 				
@@ -1755,6 +1760,7 @@ return filters;
 				
 				var $parent = $('<div class="optionsParent" />');
 				var $select = $("<select class='optionsSelect' name="+pog.id+" />");
+				var $hint = $('<div class="zhint">mouse over thumbnail to see larger swatches</div>');
 				var $hint = $('<div class="zhint">mouse over thumbnail to see larger swatches</div>');
 				$parent.append($hint);
 
