@@ -168,8 +168,9 @@ var beachmart_dates = function() {
 				var today = new Date().getTime();
 				var futureShipDate = (presentShipDate - today) + backorderDate;
 				
-//				app.u.dump(backorderDate); app.u.dump(presentShipDate); futureShipDate = app.ext.beachmart_dates.u.noWeekends(futureShipDate);
+//				app.u.dump(backorderDate); app.u.dump(presentShipDate); 
 //				app.u.dump(app.ext.beachmart_dates.u.millisecondsToYYYYMMDD(new Date(futureShipDate)));
+				futureShipDate = app.ext.beachmart_dates.u.noWeekends(futureShipDate);
 				return app.ext.beachmart_dates.u.millisecondsToYYYYMMDD(new Date(futureShipDate));
  			},
 			
@@ -180,6 +181,14 @@ var beachmart_dates = function() {
 				if(new Date(date).getDay() == 4) { return new Date().setTime(date + 172800000); } //it's sat, add two days
 				else if(new Date(date).getDay() == 5) { return new Date().setTime(date + 86400000); } //it's sun, add one day
 				else { return date; } //it's not sat or sun leave date alone.
+			},
+			
+			
+				//creates a new now time for app time
+			appTimeNow : function() {
+				if(app.data.time && app.data.time.unix)	{
+					return new Date(app.data.time.unix*1000);
+				} else { return false; }
 			}
 			
 		}, //u [utilities]

@@ -1439,8 +1439,23 @@ $r.append("<span class='shipMessage'></span><span class='estimatedArrivalDate'><
 
 var hour = Number(data.cutoff_hhmm.substring(0,2)) + 3; //add 3 to convert to EST.
 var minutes = data.cutoff_hhmm.substring(2);
+	
+	//used to indicate backorder rule should be used (all noexpedite, ground, future arrival date)
+	//0=not backorder, 1=backorder w/ salerank ship date, 3=backorder w/ no salerank ship date
+var backorder = 0;
 
-if(prodAttribs['user:prod_shipping_msg'] == "Ships Today by 12 Noon EST"){
+	//if item is backorder item, indicate w/ attr data-backorderdate on container for estimate date
+if(prodAttribs['is:user1'] == 1 || prodAttribs['is:preorder'] == 1 || prodAttribs['zoovy:prod_is_tags'].indexOf('IS_DISCONTINUED') != -1) {
+	if(app.ext.beachmart_dates.u.appTimeNow()) { //set backorderdate value according to whether or not salesrank date can be determined
+		if( (prodAttribs['zoovy:prod_salesrank'] != undefined || prodAttribs['zoovy:prod_salesrank'] > -1)  && prodAttribs['zoovy:prod_salesrank'] > app.ext.beachmart_dates.u.millisecondsToYYYYMMDD(app.ext.beachmart_dates.u.appTimeNow())) {
+			$('.shipMessage',$r).append("Order today for arrival on ");
+			backorder = 1; //if date, then = 1
+		} else {
+			backorder = 2; //if not date, then = 2
+		}
+	} else { backorder = 2; } //if app date cannot be determined, then = 2
+}
+else if(prodAttribs['user:prod_shipping_msg'] == "Ships Today by 12 Noon EST"){
 	if(app.data.time && app.data.time.unix)	{
 		var date = new Date(app.data.time.unix*1000);
 		var hours = date.getHours();
@@ -1451,7 +1466,8 @@ else	{
 	$('.shipMessage',$r).append("Order today for arrival on ");
 	}
 
-if(prodAttribs['user:prod_ship_expavail'] && prodAttribs['user:prod_ship_expavail'] == 1)	{
+	
+if(prodAttribs['user:prod_ship_expavail'] && prodAttribs['user:prod_ship_expavail'] == 1 && backorder == 0)	{
 //if expedited shipping is not available, no other methods show up (will ship ground)
 	$('.deliveryMethod',$r).append(data['@Services'][index]['method'])
 	$('.deliveryMethod',$r).append(" <span class='zlink'>(Need it faster?)</span>").addClass('pointer').click(function(){
@@ -1464,19 +1480,27 @@ else	{
 	$('.expShipMessage',$r).append("<span class='zhint inconspicuouseZhint'>Expedited shipping not available for this item</span>");
 	}
 
-	
-$('.estimatedArrivalDate',$r).append(app.ext.beachmart.u.yyyymmdd2Pretty(data['@Services'][index]['arrival_yyyymmdd'])+" to");
+	//check backorder status to determine which date to use for arrival date
+if(backorder == 1) {
+	var futureShipDate = app.ext.beachmart_dates.u.getFutureDate(prodAttribs['zoovy:prod_salesrank'], data['@Services'][index]['arrival_yyyymmdd'].slice(0,8));
+	$('.estimatedArrivalDate',$r).append(app.ext.beachmart.u.yyyymmdd2Pretty(futureShipDate)+" to");
+} else if (backorder == 2) {
+	app.u.dump('The shipping time could not be determined due to a problem obtaining the date or salesrank value')
+} else {
+	$('.estimatedArrivalDate',$r).append(app.ext.beachmart.u.yyyymmdd2Pretty(data['@Services'][index]['arrival_yyyymmdd'])+" to");
+}
 
-if(app.data.cartDetail && app.data.cartDetail.ship.city)	{
+
+if(app.data.cartDetail && app.data.cartDetail.ship.city && backorder != 2)	{
 	$('.deliveryLocation',$r).append(" "+app.data.cartDetail.ship.city);
 	}
-if(app.data.cartDetail && app.data.cartDetail.ship.region)	{
+if(app.data.cartDetail && app.data.cartDetail.ship.region && backorder != 2)	{
 	$('.deliveryLocation',$r).append(" "+app.data.cartDetail.ship.region);
 	}
-if	(app.data.cartDetail && app.data.cartDetail.ship.postal)	{
+if	(app.data.cartDetail && app.data.cartDetail.ship.postal && backorder != 2)	{
 	$('.deliveryLocation',$r).append(" "+app.data.cartDetail.ship.postal+" (change)")
 	}
-else{
+else if (backorder != 2){
 	$('.deliveryLocation',$r).append(" (enter zip) ")
 	}
 $('.deliveryLocation',$r).click(function(){app.ext.beachmart.a.showZipDialog()})
