@@ -29,6 +29,7 @@ input, button {
 
 input[type=radio] {
 	-webkit-appearance:normal;
+	-webkit-appearance:radio;
 }
 
 #appView {background:white; margin: 0px auto; height:auto; width: 1020px;}
@@ -1230,7 +1231,7 @@ newArrivalsCarouselRight, .myProdThumb:hover .moreDetails {background-color:#e04
 .prodDescSmall, .productList h5, .categoryList h5 {color:#000000; font-family:"Open Sans"; font-size:11px; font-weight:normal; text-align:center; line-height:13px; padding:7px 5px 0px 5px;}
 .prodDescSmall:hover {color:#e0463a; text-decoration:underline;}
 .prodPriceSmall, .productList h6, .categoryList h6 {margin-left:0px;}
-.moreDetailsSmall {height:25px; width:100px; color:#ffffff; font-size:14px; text-align:center; line-height:24px; background-color:#3bb3c3; position:relative;}
+.moreDetailsSmall {height:25px; width:100px; color:#ffffff; font-family:Oswald; font-size:14px; text-align:center; line-height:24px; background-color:#3bb3c3; position:relative;}
 .myProdThumbSmall:hover .moreDetailsSmall {background-color:#e0463a;}
 .productListSmall.productList .prodSiblings {height:20px; width:73%; background:#3bb3c3; color:#ffffff; font-family:"Open Sans"; font-size:11px; line-height:19px; margin:auto; text-align:center;}
 .productListSmall.productList .prodSiblings:hover {background-color:#e0463a;}
