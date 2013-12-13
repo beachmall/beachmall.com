@@ -981,6 +981,16 @@ else	{
 			getShipQuotes : function(zip)	{
 app.u.dump("BEGin beachmart.u.getShipQuotes");
 var $context = $(app.u.jqSelector('#','productTemplate_'+SKU));
+
+
+	//if item has user:is_dropship set to one, transit/geo location will be hidden, don't bother going further
+if(app.data['appProductGet|'+SKU] && app.data['appProductGet|'+SKU]['%attribs']['user:is_dropship']) {
+	if(app.data['appProductGet|'+SKU]['%attribs']['user:is_dropship'] == 1) {
+		return;
+	}
+}
+
+
 //here, inventory check is done instead of isProductPurchaseable, because is used specifically to determine whether or not to show shipping.
 // the purchaseable function takes into account considerations which have no relevance here (is parent, price, etc).
 if(app.ext.store_product.u.getProductInventory(SKU) <= 0){

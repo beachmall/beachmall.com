@@ -429,6 +429,15 @@ var store_filter = function() {
 //on a data-bind, format: is equal to a renderformat. extension: tells the rendering engine where to look for the renderFormat.
 //that way, two render formats named the same (but in different extensions) don't overwrite each other.
 		renderFormats : {
+		
+				//hides time in transit/geo location section if item is a drop-shipped item
+				//time in transit code checks this attrib also, and doesn't run if it's set.
+			hideIfDropShip : function($tag, data) {
+				if(data.value) {
+					$tag.before('<div>Expedited shipping not available for this item</div>');
+					$tag.hide().css('display','none');
+				}
+			},
 	
 				//creates image for search results lists from user:app_thumb (a copy of image1) to prevent
 				//banner/icon images that had been getting indexed from being used for the list image.
