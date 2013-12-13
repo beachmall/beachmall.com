@@ -956,10 +956,19 @@ var store_filter = function() {
 								var zoovyIsPreOrder = prod['%attribs']['zoovy:prod_is_tags'];
 								var zoovyPreOrder = prod['%attribs']['is:preorder'];
 								var zoovyIsUser1 = prod['%attribs']['is:user1'];
-							}
-								//pass stid so each item can be found in cart later when time in transit info gets added
-							var stid = app.u.makeSafeHTMLId($tag.parent().parent().parent().attr('data-stid'));
-							app.ext.beachmart_cartEstArrival.u.initEstArrival(prod, stid);
+							} else {app.u.dump('Problem w/ data.value in beachmart.js: renderformats.showShipLatency. Data follows:'); app.u.dump(data.value);}
+							
+							if(data.value.product) {
+								var prod = app.data['appProductGet|'+app.u.makeSafeHTMLId(data.value.product)];
+								if(prod['%attribs'] && prod['%attribs']['user:is_dropship'] && prod['%attribs']['user:is_dropship'] == 1) {
+										//don't start time in transit, hide loadingBG and insert message
+									$('.cartPutLoadingHere',$tag.parent()).removeClass('loadingBG').text('Expedited shipping not available for this item');
+								} else {
+										//pass stid so each item can be found in cart later when time in transit info gets added
+									var stid = app.u.makeSafeHTMLId($tag.parent().parent().parent().attr('data-stid'));
+									app.ext.beachmart_cartEstArrival.u.initEstArrival(prod, stid);
+								}
+							} else {app.u.dump('Problem w/ data.value in beachmart.js: renderformats.showShipLatency. Data follows:'); app.u.dump(data.value);}
 						}
 						else {	//else is for not cart prod list
 							//possible for this user:prod_shipping_msg to be present but not set, make it a blank string to prevent undefined.
