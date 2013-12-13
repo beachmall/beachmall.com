@@ -162,6 +162,8 @@ var beachmart_cartEmail = function() {
 //any functions that are recycled should be here.
 		u : {
 		
+				//text function to call from console. Call w/:
+				// app.ext.beachmart_cartEmail.u.runMashupTest($('form.noHover','#modalCart'));
 			runMashupTest : function($form) {
 				var uName = $('input[type="text"]',$form).val();
 				var eAddress = $('input[type="email"]',$form).val();
