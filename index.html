@@ -23,7 +23,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"201346.20131213102900",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"201346.20131214135400",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 	"baseURL":"", //used in non-local mode.
 	"checkoutAuthMode" : "active",//can be passive, active or required
@@ -1369,7 +1369,7 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 
 	<div class='floatingBar'>
     	<a href='#'><div class='backToTop'>&#187 BACK TO TOP</div></a>
-        <div class='recentlyViewed pointer'><span onClick="return showContent('company',{'show':'recent'});">Recently Viewed Item(s)&nbsp </span><span class='numRecentlyViewed displayNone'>0</span><!--<span class='fontWhite recentCarat'> &#187 </span><span class='fontYellow recentViewItems'><a class='bindByAnchor' href='#!company?show=recent'> VIEW ITEM(S)</a></span>--></div>
+        <div class='recentlyViewed pointer' onClick="return showContent('company',{'show':'recent'});"><span>Recently Viewed Item(s)&nbsp </span><span class='numRecentlyViewed displayNone'>0</span><!--<span class='fontWhite recentCarat'> &#187 </span><span class='fontYellow recentViewItems'><a class='bindByAnchor' href='#!company?show=recent'> VIEW ITEM(S)</a></span>--></div>
         <div class='cartIcon sprite pointer' onClick="return showContent('cart',{});"><span class='cartItemCount'>0</span><p><span class='fontWhite'>&#187 </span><span class='fontYellow'>SHOPPING CART</span></p></div>
         <button class='checkoutButton' onClick="showContent('checkout',{});">CHECK OUT</button>
         <button class='floatingBarClose sprite' onclick="$('.floatingBar').hide(); return false;"></button>
