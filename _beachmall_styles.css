@@ -847,6 +847,7 @@ HOMEPAGE
 .floatingBar .backToTop {height:17px; width:110px; position:absolute; left:40px; top:11px; color:#ffffff;}
 .floatingBar .recentlyViewed {height:26px; width:230px; position:absolute; left:243px; top:4px; color:#ffffff;}
 .floatingBar .recentlyViewed span:first-child {display:inline-block; float:left; line-height:28px; font-size: 14px;}
+.floatingBar .recentlyViewed span:first-child:hover {color:#F8C301;}
 .floatingBar .recentlyViewed .numRecentlyViewed {height:30px; width:30px; background:#A8342B; border-radius:20px; display:inline-block; line-height:27px; text-align:center; font-size:18px; float:left;}
 .recentCarat {line-height:28px; float:left; margin:0 5px 0 10px;}
 .recentViewItems {line-height:30px; float:left;}

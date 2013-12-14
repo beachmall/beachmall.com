@@ -139,12 +139,11 @@ var store_filter = function() {
 					//for provide support- add stuff to the DOM here
 				//	}]);
 				
-			//	app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(infoObj) {
+				app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(infoObj) {
+					var $context = $(app.u.jqSelector('#'+infoObj.parentID));
+					$('.floatingBar',$context).show(); //shows floating bar upon return to hompage if it's been closed.
 					//app.ext.store_filter.u.runPhoneChatLive();
-				
-					//var $context = $(app.u.jqSelector('#'+infoObj.parentID));
-					//app.ext.store_filter.u.hidePreviouslyViewed($context);
-			//	}]);
+				}]);
 				
 				app.rq.push(['templateFunction','productTemplate','onCompletes',function(infoObj) {
 					var $context = $(app.u.jqSelector('#'+infoObj.parentID)); //grabs the currently loaded product page (to ignore previously loaded / invisible ones)
