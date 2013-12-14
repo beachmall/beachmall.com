@@ -3116,6 +3116,7 @@ if you change these, you should move them above this comment so that when you (o
 	<div class='sideline' >
 <nav id='companyNav'>
 <ul class='listStyleNone noPadOrMargin'>
+<!--
 	<li><a href='#company?show=about'  id='navLink_about'>About Us</a></li>
 	<li><a href='#company?show=contact'  id='navLink_contact'>Contact Information</a></li>
 	<li><a href='#company?show=faq'  id='navLink_faq'>FAQ</a></li>
@@ -3123,6 +3124,7 @@ if you change these, you should move them above this comment so that when you (o
 	<li><a href='#company?show=privacy' id='navLink_privacy'>Privacy Statement</a></li>
 	<li><a href='#company?show=return' id='navLink_return'>Return Policy</a></li>
 	<li><a href='#company?show=shipping' id='navLink_shipping'>Shipping Information</a></li>
+-->
 </ul>
 </nav>
 	</div>
@@ -3150,6 +3152,7 @@ if you change these, you should move them above this comment so that when you (o
 		<div id='contactArticle' class='displayNone textContentArea custArticle'>
 			<h4>Contact Us for Cheap Beach Products & Picnic Accessories</h4>
 			<form action='#' onSubmit="app.calls.appSendMessage.init($(this).serializeJSON(),{'callback':'showMessaging','parentID':'contactFormMessaging','message':'Thank you, your message has been sent'},'immutable'); app.model.dispatchThis('immutable');  return false;" id='contactForm' name='contactForm'>
+			<h1 class='displayNone'>Contact Us</h1>
 			<fieldset>
 				<legend>Contact Us</legend>
 				<div id='contactFormMessaging'></div>
@@ -3214,6 +3217,7 @@ if you change these, you should move them above this comment so that when you (o
 
 
 		<div class='displayNone textContentArea custArticle' id='privacyArticle'>
+			<h1 class='displayNone'>Privacy Policy</h1>
 			<h4>Privacy Policy - Beach Products & Accessories from Beachmall.com</h4>
 			<h2>Site Security:</h2>
 			Ordering online at Beachmall.com is safe and easy &#38 guaranteed! Our secure servers will protect your 
@@ -3345,7 +3349,7 @@ if you change these, you should move them above this comment so that when you (o
 				<div class='floatLeft'>11555 Central Parkway, Ste 1101<br>Jacksonville, FL. 32224<br>US</div>
 				<div class='floatRight'>Phone: 1-888-975-6555<br><a href='mailto:cs@beachmall.com'>cs@beachmall.com</a></div>
 			</div>
-			<h1><a name='linkToReturns'>Return Policy:</a></h1>
+			<h1><a name='linkToReturns'>Return Policy</a></h1>
 			<h5>Purchases made between Dec. 1st 2012, and Dec. 31, 2012, may be returned through January 31, 2013.</h5>
 			If for any reason you're not completely satisfied with your purchase, you may return it within 30 days of the 
 				original purchase date for a full refund (you meet the below eligibility criteria) less any shipping costs. 
@@ -3477,7 +3481,7 @@ if you change these, you should move them above this comment so that when you (o
 				<div class='floatLeft'>11555 Central Parkway, Ste 1101<br>Jacksonville, FL. 32224<br>US</div>
 				<div class='floatRight'>Phone: 1-888-975-6555<br><a href='mailto:cs@beachmall.com'>cs@beachmall.com</a></div>
 			</div>
-			<h1>Shipping Policy:</h1>
+			<h1>Shipping Policy</h1>
 			At this time, we can only ship orders to destinations in the 48 contiguous US States by UPS or FedEx only. 
 				We don't ship any orders to Hawaii, Alaska, or Puerto Rico, DPO, APO and FPO addresses, Canada or other 
 				International Destinations.
@@ -3510,11 +3514,12 @@ if you change these, you should move them above this comment so that when you (o
 			
 	<div id='recentArticle' class='displayNone textContentArea recentArticle'>
 		<h1>Recently Viewed Items</h1>
-	<!--	
-		<div class='recentlyViewedItemsContainer CarouselContainer previousViewedCarouselContainer'>
-			 <ul data-bind="var: session(session.recentlyViewedItems); format: productList; extension: store_prodlist; loadsTemplate: productListTemplate; hide_summary:1; hide_pagination:1; withReviews:1;  withVariations:1; withInventory:1;" class='listStyleNone fluidList clearfix noPadOrMargin productList productPreviousViewed'></ul>
+		
+		<div class='recentlyViewedItemsContainer'>
+			<div class='recentEmpty'>There are no recently viewed items to show. Do some browsing and we'll add to the list for you!</div>
+			<ul data-bind="var: session(recentlyViewedItems); format: productList; extension: store_prodlist; loadsTemplate: productListTemplate; hide_summary:1; hide_pagination:1; withReviews:1;  withVariations:1; withInventory:1;" class='listStyleNone fluidList noPadOrMargin productList productPreviousViewed'></ul>
 		</div>
-	-->
+	
 	</div>
 	
 

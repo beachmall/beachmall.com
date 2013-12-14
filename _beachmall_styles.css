@@ -1807,6 +1807,15 @@ CUSTOMER ARTICLES
 .custArticle a:hover {color:#3BB3C3;}
 
 
+/******************************************************************************
+COMPANY ARTICLES
+******************************************************************************/
+
+
+#mainContentArea_company .recentEmpty {margin:50px 0 100px 0; text-align:center;}
+#mainContentArea_company .mainColumn {margin:0 auto;}
+
+/******************************************************************************/
 
 <div class='articleHeader'>
 	<div>BEACHMALL.COM Contact Information</div>

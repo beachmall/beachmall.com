@@ -154,7 +154,7 @@ var store_filter = function() {
 					app.ext.store_filter.u.runProductRecentCarousel($context);
 					//app.u.dump('Product fredsel ran');
 					app.ext.store_filter.u.handleToolTip();
-					app.ext.store_filter.u.showRecentlyViewedItems($context);
+					app.ext.store_filter.u.showRecentlyViewedItems($context,false);
 				}]);
 				
 				app.rq.push(['templateFunction','productTemplate','onDeparts',function(infoObj) {
@@ -169,6 +169,20 @@ var store_filter = function() {
 					app.ext.store_filter.u.execCouponAdd($('.cartCouponButton',$context));
 				}]);
 				
+				app.rq.push(['templateFunction','companyTemplate','onCompletes',function(infoObj) {
+					var $context = $(app.u.jqSelector('#'+infoObj.parentID));
+					app.ext.store_filter.u.showRecentlyViewedItems($context,true);
+					var $sideline = $('.sideline', $(app.u.jqSelector('#',infoObj.parentID)));
+					if (infoObj.show == 'recent') {
+						$('.mainColumn',$context).css({'width':'960px','margin':'0 auto'});
+						$sideline.hide();
+					}
+					else {
+						$sideline.show();
+						$('.mainColumn',$context).css({'width':'75%','margin':'0'});
+					}
+				}]);
+								
 				//creates tool tip for variations and product sibling thumbnails
 				$( document ).tooltip({
 					items : "img[data-big-img], [data-toolTipThumb], [data-cartToolTipThumb], [data-toolTipQuickview]",
@@ -1331,23 +1345,26 @@ return filters;
 				},//addRecentlyViewedItems
 				
 				
-					//populates carousel if items in recently viewed list, shows placeholder text if list empty
-				showRecentlyViewedItems : function($context) {
+					//populates carousel if items in recently viewed list, shows place holder text if list empty
+					//show = true will show container w/ place holder text if empty. show = false will hide container until not empty
+				showRecentlyViewedItems : function($context,show) {
 					var $container = $('.recentlyViewedItemsContainer', $context);
 					
-						//if no recently viewed items, tell them the sky is blue
-					if(app.ext.myRIA.vars.session.recentlyViewedItems.length == 0) {
-		//container hidden by default. show by default and uncomment below to use a message indicating it's empty
-				//		$('.recentEmpty',$container).show();
+						//if no recently viewed items && show is set, tell them the sky is blue
+					if(app.ext.myRIA.vars.session.recentlyViewedItems.length == 0 && show == true) {
+						$container.show();
+						$('.recentEmpty',$container).show(); //contains place holder text
 						//app.u.dump('There aint nuthin in there ma!');
+						$context.removeClass('loadingBG');
 					}
 						//otherwise, show them what they've seen
 					else {
 						$container.show();
-				//		$('.recentEmpty',$container).hide();
+						$('.recentEmpty',$container).hide();
 						$('ul',$container).empty(); //empty product list;
 						$($container.anycontent({data:app.ext.myRIA.vars.session})); //build product list
 						//app.u.dump('SESSION VAR:'); app.u.dump(app.ext.myRIA.vars.session.recentlyViewedItems);
+						$context.removeClass('loadingBG');
 					}
 				},//showRecentlyViewedItems
 

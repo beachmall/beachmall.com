@@ -2311,8 +2311,9 @@ effects the display of the nav buttons only. should be run just after the handle
 
 					var $nav = $('#companyNav ul:first',$content);
 //builds the nav menu.
-					$('.textContentArea',$content).not('.disabled').each(function(){
-						$nav.append("<li><a href='#company?show="+$(this).attr('id').replace('Article','')+"'>"+($('h1:first',$(this)).text())+"</a></li>");
+					$('.textContentArea',$content).each(function(){
+/*beachmart*/			if($('h1:first',$(this)).text() == 'Recently Viewed Items') {} //Dont put recently viewed in sideline
+/*beachmart*/			else { $nav.append("<li><a href='#company?show="+$(this).attr('id').replace('Article','')+"'>"+($('h1:first',$(this)).text())+"</a></li>"); }
 						});
 
 					$('#mainContentArea').append($content);
