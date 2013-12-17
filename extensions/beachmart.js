@@ -443,6 +443,23 @@ var store_filter = function() {
 //that way, two render formats named the same (but in different extensions) don't overwrite each other.
 		renderFormats : {
 		
+				//checks search product list for reviews, if none hides and shows sibling count (if there is one)
+			showReviewThenSiblings : function($tag,data) {
+				app.u.dump('-->test function'); app.u.dump(data.value);
+				setTimeout(function(){ //timeout allows reviews to be populated so text can be checked
+						//if reviews say "no reviews" hide them so sibling count can show, \
+						//otherwise hide siblings to make room for reviews
+					if($('.pr-snippet-review-count',$tag).text().indexOf('(No reviews)') != -1 && data.value.pogs) { 
+						$('.reviewsStarsCount',$tag).hide();
+					}
+					else {
+						$('.searchProdSiblings',$tag).hide();
+					}
+				},1000);
+				
+				
+			},
+		
 				//hides time in transit/geo location section if item is a drop-shipped item
 				//time in transit code checks this attrib also, and doesn't run if it's set.
 			hideIfDropShip : function($tag, data) {
