@@ -681,7 +681,7 @@ label.break	{display:block; margin:0 0 4px 6px;}
 
 .products.product .productListSmall .prodTextContainerSmall .prodPriceSmall, .productList h6, .categoryList h6 {heigth:25px; width:120px; text-align:center; margin:0px;}
 
-.prodViewerAddToCartForm {height:30px; width:100%; margin-bottom:5px;}
+.prodViewerAddToCartForm {height:30px; width:auto; margin-bottom:0 4% 0 0;}
 .prodViewerAddToCartButton.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-only {
 	height:auto;
 	width:auto;
@@ -705,9 +705,10 @@ label.break	{display:block; margin:0 0 4px 6px;}
 .shipContainer {height:31px; width:130px; text-align:center; font-family:"Open Sans"; padding-top:9px}
 .shipContainer .shipCost {height:12px; width:98px; color:#e0463a; font-size:14px; font-weight:bold; background-position:-116px -219px; margin-left:15px;}
 .shipContainer .shipTime {height:15px; width:100%; color:#000000; font-size:9px; overflow:hidden;}
-.prodNum {height:10px; width:100%; font-family:"Open Sans"; font-size:10px; text-align:center;}
+.prodNum {height:10px; width:40%; font-family:"Open Sans"; font-size:10px; text-align:center; margin:4px 0 0 0;}
+.searchResultsProduct .prodNum {width:100%;}
 
-.thumbStarsContainer, .prodListMiniThumb ul {height:52px; width:100%; overflow:hidden; clear:both;}
+.thumbStarsContainer, .prodListMiniThumb ul {height:42px; width:100%; overflow:hidden; clear:both;}
 .prodListMiniThumb li.miniThumbLi {height:30px; width:30px; float:left; font-size:11px; text-align:center; color:#3bb3c3; line-height:14px; margin:0 0 0 10px; border:1px solid #999999;}
 .prodListMiniThumb li.miniThumbLi.miniThumbText {height:29px; padding:1px 0 0 0;}
 .prodListMiniThumb li.miniThumbLi.miniThumbText:hover {color:#e0463a;}
