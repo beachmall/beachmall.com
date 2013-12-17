@@ -2566,6 +2566,10 @@ elasticsearch.size = 50;
 								app.ext.cco.calls.appCheckoutDestinations.init({},'mutable'); //needed for country list in address editor.
 								app.calls.buyerAddressList.init({'callback':'showAddresses','extension':'myRIA'},'mutable');
 								break;
+/*beachmall*/				case 'createaccount':
+/*beachmall*/					app.ext.cco.calls.appCheckoutDestinations.init({},'mutable'); //needed for country list in address entry.
+/*beachmall*/					$('#mainContentArea_customer').removeClass('loadingBG');
+/*beachmall*/					break;
 							default:
 								app.u.dump("WARNING - unknown article/show ["+infoObj.show+" in showCustomer. ");
 							}
@@ -2677,7 +2681,7 @@ buyer to 'take with them' as they move between  pages.
 				$('#loginSuccessContainer').hide(); //contains 'continue' button.
 				$('#loginMessaging, #recoverPasswordMessaging').empty(); //used for success and fail messaging.
 				$('#loginFormContainer, #recoverPasswordContainer').show(); //contains actual form and password recovery form (second id)
-				$('#loginFormForModal').dialog({modal: true,width: ($(window).width() > 500) ? 500 : '90%',autoOpen:false});
+/*beachmall*/	$('#loginFormForModal').dialog({modal: true,width: ($(window).width() > 660) ? 660 : '90%',autoOpen:false});
 				$('#loginFormForModal').dialog('open');
 				
 		

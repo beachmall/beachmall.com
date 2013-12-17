@@ -28,6 +28,7 @@ app.rq.push(['extension',0,'prodlist_infinite','extensions/prodlist_infinite.js'
 app.rq.push(['extension',0,'beachmart_cartEstArrival','extensions/beachmart_cartEstArrival.js']); //estimates shipping/arrival times for cart items
 app.rq.push(['extension',0,'beachmart_cartEmail','extensions/beachmart_cartEmail.js']); //handles sending user an e-mail of cart contents
 app.rq.push(['extension',0,'beachmart_dates','extensions/beachmart_dates.js']); //handles various date based calculations
+app.rq.push(['extension',0,'store_createAccount','extensions/store_createAccount.js']); //handles account creation actions
 
 //app.rq.push(['extension',1,'google_analytics','extensions/partner_google_analytics.js','startExtension']);
 //app.rq.push(['extension',1,'tools_ABtesting','extensions/tools_ABtesting.js']);

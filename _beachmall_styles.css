@@ -1829,3 +1829,54 @@ COMPANY ARTICLES
 
 
 .imageSelect_images {background-color: green; width:10px; height:10px;}
+
+
+/******************************************************************************
+LOGIN MODAL / INLINE LOGIN
+******************************************************************************/
+
+#loginFormForModal.loginOption.displayNone {	background:url("images/carousel-background_1020x370.jpg") repeat scroll 0 0 #FFFFFF; border: none;}
+.createAccount {height:270px; width:300px; float:left; font-family:"Open Sans"; font-size:14px; text-align:center; padding: 0;}
+.createAccount h1 {color: #e0463a; font-family: Oswald; font-size: 35px; margin: 33px 0 8px; text-align: center;}
+.modalCreateButton.button {padding: 5px; margin: 10px; width: auto; border:none; background:#e0463a; color:#ffffff; font-size:16px;}
+#gotAccount, #gotAccountInline {height: 270px; width: 300px;	float: right; margin: 0 0 10px 0; text-align: center; box-shadow: 1px 1px 2px 2px #cccccc;}
+#gotAccountInline {padding: 10px; float: left; background:url("images/carousel-background_1020x370.jpg") repeat scroll 0 0 #FFFFFF;}
+#gotAccount h1, #gotAccountInline h1 {margin: 29px 0 0 0;	font-family: Oswald; font-size: 35px; font-weight: normal; color:#3bb3c3;}
+#gotAccount fieldset, #gotAccountInline fieldset {padding: 0; border: none;}
+#gotAccount input, #gotAccountInline input {height: auto; width: 200px; display: block;	margin: 10px auto; padding: 5px 0 5px 5px;}
+#gotAccount input[type='submit'], #gotAccountInline input[type='submit']{width: auto; padding: 5px 10px; font-family: Oswald; font-size:16px; background:#3bb3c3; color:#ffffff; border:none;}
+#gotAccount a, #gotAccountInline a {color: #be0000; display: block; font-family: "Open Sans"; font-size: 12px; margin: auto; text-align: center; text-decoration: underline;}
+
+/*END LOGIN*/
+
+/*&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+ACCT CREATION
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
+
+
+.creatAccount {height: auto; width: 940px; margin: 20px 0 0 7%;}
+.Account {height: auto; 	width: 580px; float: right; font-family: "Open Sans"; font-size: 0.8em; font-weight: bold; margin: 0 0 10px 0;}
+.Account h1 {font-family: Oswald; font-size: 35px; margin: 0 0 30px 0; font-weight: normal;}
+.fieldM {height: auto; margin: 0 auto; overflow: hidden; padding: 0 0 10px; width: 570px;}
+.field {display: inline-block; height: auto; text-align: right; width: 72px;}
+.field.mname {width:82px;}
+.fieldM input, .fieldM select {height:30px; width:154px; margin:0 7px; padding:0 9px; border-radius:0; font-family:"Open Sans"; border:2px solid #000000;}
+.fieldM option {height:20px; padding:5px 0 0 5px;}
+.fieldM input.textflast {width:177px;}
+.fieldM input.textfmname {width:15px;}
+.fieldM input.textfadd {width:250px;}
+.fieldM input.textfadd1 {width:150px;}
+.fieldM input.textfcity {width:170px;}
+.fieldM.stateFix {position:relative; top:-6px;}
+.selectWrapperS {height:30px; width:60px; display:inline-block; overflow:hidden; border:2px solid #000000; margin:0 7px; position:relative; bottom:-13px;}
+.fieldM select.textfstate {height:30px; width:80px; padding:6px 0px 3px 2px; border:none; background-position:-23px -322px; margin:0;}
+.fieldM input.textfzip {height:30px; width:92px;}
+.fieldM .selectField {position:relative; bottom:10px;}
+.selectWrapperC {height:30px; width:245px; display:inline-block; overflow:hidden; border:2px solid #000000; margin:0 7px;}
+.fieldM select.textfcountry {width:285px; padding:7px 3px 3px 3px; background-position:160px -322px; border:none; margin:0;}
+.fieldM input.textfmail {width:140px; margin:0 26px 0 7px;}
+.fieldM input.textfpass {width:140px;}
+.fieldM input.textfphone {width:143px;}
+.Account .createButton {color:#ffffff; padding:5px 15px; margin:10px auto; display:block; font-family:Oswald; font-weight:normal; font-size:1.8em; border:none; background:#e0463a;}
+
+/*END ACCT CREATION*/
