@@ -23,7 +23,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"201346.20131214135400",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"201346.20131216213700",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 	"baseURL":"", //used in non-local mode.
 	"checkoutAuthMode" : "active",//can be passive, active or required
@@ -2569,15 +2569,21 @@ END BUG7-->
 <!--for sibling color images (future)	<div class='clearfix prodSiblings'>
 		<ul class='listStyleNone noPadOrMargin fluidList clearfix' data-bind="var: product(user:grp_siblings); format:productList; extension:store_prodlist;loadsTemplate:productListTemplateThumb;hide_multipage:true;before:<b>Available Colors:</b> <span class='zhint'>(click image to select)</span> ; withInventory:1; withVariations:1;"></ul> <!-- id='prodlistSiblings' -->
 <!--	</div>-->
+<!-- THIS HAS BEEN REPLACED AND SHOULD BE REMOVED ONCE IT HAS HAD MORE TESTING	
 	<div class='clearfix prodSiblings pointer displayNone' data-bind='var:product(options); format:optionsCount; extension:store_filter;' onClick="quickView('product',{'templateID':'productTemplateQuickView','pid':$(this).closest('[data-pid]').attr('data-pid')});"></div>
 	<div class='seeColors displayNone' data-bind='useParentData: true; format: moreColors; extension: store_filter;'>
 		<div class='showColors pointer' onClick="quickView('product',{'templateID':'productTemplateQuickView','pid':$(this).closest('[data-pid]').attr('data-pid')});">MORE COLORS</div>
 	</div>
 	<div data-bind='useParentData: true; format:noReviews; extension: store_filter;'>
 		<div class='reviewsStarsCount homeCars' data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews_reviews;'></div><!-- BCERO271 MARK--> 
-    </div>
+<!--    </div>
+MARK --> 	
+		<div data-bind="useParentData:true; format:showReviewThenSiblings; extension:store_filter;">
+			<div class='reviewsStarsCount homeCars' data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews_reviews;'></div> <!-- BCERO271 MARK-->
+			<div class='clearfix searchProdSiblings pointer displayNone' data-bind='var:product(options); format:optionsCount; extension:store_filter;'></div>
+		</div>
+	
 </li>
-
 
 
 

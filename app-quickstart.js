@@ -1207,7 +1207,7 @@ app.ext.myRIA.pageTransition($old,$('#'+infoObj.parentID));
 				$liContainer = $('.previewListContainer',$parent), //div around UL with search results.
 				$detail = $('.previewProductDetail',$parent); //target for content.
 				
-				
+/*beachmall*/	window.scrollTo(0,200);
 //##### SANITY -> 	there are a few checks to see if data.pid is already = to the pid passed in.  
 //					This is to prevent double-click on a button or clicking on a product that is already in focus.
 

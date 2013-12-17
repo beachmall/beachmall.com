@@ -443,23 +443,7 @@ var store_filter = function() {
 //that way, two render formats named the same (but in different extensions) don't overwrite each other.
 		renderFormats : {
 		
-				//checks search product list for reviews, if none hides and shows sibling count (if there is one)
-			showReviewThenSiblings : function($tag,data) {
-				app.u.dump('-->test function'); app.u.dump(data.value);
-				setTimeout(function(){ //timeout allows reviews to be populated so text can be checked
-						//if reviews say "no reviews" hide them so sibling count can show, \
-						//otherwise hide siblings to make room for reviews
-					if($('.pr-snippet-review-count',$tag).text().indexOf('(No reviews)') != -1 && data.value.pogs) { 
-						$('.reviewsStarsCount',$tag).hide();
-					}
-					else {
-						$('.searchProdSiblings',$tag).hide();
-					}
-				},1000);
-				
-				
-			},
-		
+
 				//hides time in transit/geo location section if item is a drop-shipped item
 				//time in transit code checks this attrib also, and doesn't run if it's set.
 			hideIfDropShip : function($tag, data) {
@@ -1162,17 +1146,35 @@ var store_filter = function() {
 					}
 				},
 				
-				//was intended to hide reviews based on text, but text wasn't accessable at the time, may need to be deleted.
-				noReviews : function($context) {
-		/*			var $blah = "";
-					$blah = $('.reviewsStarsCount', $context);
-					app.u.dump('*** '+$blah.text());
-					if($blah.text().indexOf() > -1) {
-						$blah.hide();
-					}
-		*/		},
+					//checks search product list for reviews, if none hides and shows sibling count (if there is one)
+				showReviewThenSiblings : function($tag,data) {
+			//		app.u.dump('-->showReviewThenSiblings:'); app.u.dump(data.value);
+					setTimeout(function(){ //timeout allows reviews to be populated so text can be checked
+						if(data.value) { //if there's data start checking, if not just show reviews
+								//if reviews say "no reviews" hide them so sibling count can show, \
+								//otherwise hide siblings to make room for reviews
+							if($('.pr-snippet-review-count',$tag).text().indexOf('(No reviews)') != -1 && data.value.pogs) { 
+								$('.reviewsStarsCount',$tag).hide();
+								if($('.reviewsStarsCount',$tag).hasClass('homeCars')) { //if it's the homepage use quickview
+									$('.searchProdSiblings',$tag).off('click').on('click',function(){
+										quickView('product',{'templateID':'productTemplateQuickView','pid':data.value.pid})
+									});
+								} else { //if it's searchbar results use handlprodpreview
+									$('.searchProdSiblings',$tag).off('click').on('click',function(){
+										app.ext.myRIA.a.handleProdPreview(data.value.pid);
+										window.scrollTo(0,200);
+									});
+								}
+							} else {
+								$('.searchProdSiblings',$tag).hide(); //there are reviews, or no pogs, hide sibs
+							}
+						} else { 
+							$('.searchProdSiblings',$tag).hide(); //no data, show reviews
+						}
+					},1000);
+				},
 				
-				//shows a message that an item has the is_colorful tag set, usually in a product list
+					//shows a message that an item has the is_colorful tag set, usually in a product list
 				moreColors : function($tag, data) {
 					var pid = data.value.pid,
 						//isColorful = (data.bindData.isElastic) ? data.value.tags : data.value['%attribs']['zoovy:prod_is_tags'];
@@ -1188,7 +1190,7 @@ var store_filter = function() {
 				
 				//counts the variations on a product if present and displays a button w/ count text on it (button destination set in app)
 				//the count currently includes all variations (including layered POGs) and needs to be adjusted to only include 
-				//color or siblin variations. It is a temp fix for the display of color option graphics in product lists.
+				//color or sibling variations. It is a temp fix for the display of color option graphics in product lists.
 				optionsCount : function($tag, data) {
 				//app.u.dump(data.value.length);
 					if(data.value.length) {
@@ -1197,7 +1199,7 @@ var store_filter = function() {
 					}
 				},
 				
-				//if inventory is 0, don't show in product list (not used w/ elastic because of pagination)
+				//if inventory is 0, don't show in product list (not used w/ elastic because of pagination & absence of inventory data)
 				inventoryHide : function($tag, data) {
 					var pid = data.value.pid;
 					if(data.value['@inventory'] && data.value['@inventory'][pid]) {
