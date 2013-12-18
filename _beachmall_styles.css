@@ -194,7 +194,7 @@ the padding is to compensate for the spacing between the main nav.
 #mastHead .dropdown.beachWearDD {right:350px}
 #mastHead .dropdown.singleLineDD {padding-top:30px;}
 #mastHead .dropdown ul {height: 522px; width:460px; margin: 0px 0px 5px 0px; padding: 0px 0px 3px 20px; background-color:#tttttt; font-weight: normal; border-top:5px solid #e0463a; border-bottom:5px solid #e0463a;}
-#mastHead .dropdown li:nth-child(1) {height:27px; width:207px; font-family:Oswald; font-size:24px; font-weight: normal; color:#e0463a; text-align:left; margin: 20px 0px 16px 13px;}
+/* MARK #mastHead .dropdown li:nth-child(1) {height:27px; width:207px; font-family:Oswald; font-size:24px; font-weight: normal; color:#e0463a; text-align:left; margin: 20px 0px 16px 13px;}*/
 #mastHead .dropdown li {height:27px; width:226px; font-family:"Open Sans"; font-size:14px; color:#000000; text-align:left; margin: 3px 0px 3px 14px; position:relative; z-index:1;}
 #mastHead .dropdown li:hover {color:#e0463a;  background:url(images/dropout-arrow-white-207x27.png) no-repeat 0 -3px;}
 #mastHead .dropdown li a {color:#000000;}
@@ -202,7 +202,7 @@ the padding is to compensate for the spacing between the main nav.
 #mastHead .dropdown .noArrow:hover {background:none;}
 
 /*#mastHead .dropdown .hoverProductContainer {height: 525px; width:240px; background-color:#2B9;}*/
-#mastHead .dropdown .hoverProductContainer {height: 525px; width:0px; position:relative; top:-83px; left:207px; z-index:1; overflow:hidden; border:none; margin:0; padding:0; opacity:0;}
+#mastHead .dropdown .hoverProductContainer {height: 525px; width:0px; position:relative; top:-23px; left:207px; z-index:1; overflow:hidden; border:none; margin:0; padding:0; opacity:0;}
 #mastHead .dropdown .hoverProductContainer .productListSmall {padding:25px 10px;}
 #mastHead .dropdown .hoverProductContainer .myProdThumbSmall {width:210px;}
 #mastHead .dropdown .hoverProductContainer .prodPriceSmall {width:125px; text-align:center; font-size:.85em; color:#000000;}
@@ -234,20 +234,20 @@ the padding is to compensate for the spacing between the main nav.
 #mastHead .dropout.out li {height:27px; width:300px; font-family:"Open Sans"; font-size:14px; color:#000000; text-align:left; margin: -5px 14px 3px 14px;}
 #mastHead .dropout.out li:hover {color:#e0463a; cursor:pointer; background:url(images/dropout-arrow-white-207x27.png) no-repeat 15px -3px;}
 #mastHead .dropout1, #mastHead .dropdown .hoverProductContainer.dropout1 {top:-85px;}
-#mastHead .dropout2, #mastHead .dropdown .hoverProductContainer.dropout2 {top:-113px;}
-#mastHead .dropout3, #mastHead .dropdown .hoverProductContainer.dropout3 {top:-143px;}
-#mastHead .dropout4, #mastHead .dropdown .hoverProductContainer.dropout4 {top:-173px;}
-#mastHead .dropout5, #mastHead .dropdown .hoverProductContainer.dropout5 {top:-203px;}
-#mastHead .dropout6, #mastHead .dropdown .hoverProductContainer.dropout6 {top:-233px;}
-#mastHead .dropout7, #mastHead .dropdown .hoverProductContainer.dropout7 {top:-263px;}
-#mastHead .dropout8, #mastHead .dropdown .hoverProductContainer.dropout8 {top:-293px;}
-#mastHead .dropout9, #mastHead .dropdown .hoverProductContainer.dropout9 {top:-323px;}
-#mastHead .dropout10, #mastHead .dropdown .hoverProductContainer.dropout10 {top:-353px;}
-#mastHead .dropout11, #mastHead .dropdown .hoverProductContainer.dropout11 {top:-383px;}
-#mastHead .dropout12, #mastHead .dropdown .hoverProductContainer.dropout12 {top:-413px;}
-#mastHead .dropout13, #mastHead .dropdown .hoverProductContainer.dropout13 {top:-443px;}
-#mastHead .dropout14, #mastHead .dropdown .hoverProductContainer.dropout14 {top:-473px;}
-#mastHead .dropout15, #mastHead .dropdown .hoverProductContainer.dropout15 {top:-503px;}
+#mastHead .dropout2, #mastHead .dropdown .hoverProductContainer.dropout2 {top:-53px;}
+#mastHead .dropout3, #mastHead .dropdown .hoverProductContainer.dropout3 {top:-83px;}
+#mastHead .dropout4, #mastHead .dropdown .hoverProductContainer.dropout4 {top:-113px;}
+#mastHead .dropout5, #mastHead .dropdown .hoverProductContainer.dropout5 {top:-143px;}
+#mastHead .dropout6, #mastHead .dropdown .hoverProductContainer.dropout6 {top:-173px;}
+#mastHead .dropout7, #mastHead .dropdown .hoverProductContainer.dropout7 {top:-203px;}
+#mastHead .dropout8, #mastHead .dropdown .hoverProductContainer.dropout8 {top:-233px;}
+#mastHead .dropout9, #mastHead .dropdown .hoverProductContainer.dropout9 {top:-263px;}
+#mastHead .dropout10, #mastHead .dropdown .hoverProductContainer.dropout10 {top:-293px;}
+#mastHead .dropout11, #mastHead .dropdown .hoverProductContainer.dropout11 {top:-323px;}
+#mastHead .dropout12, #mastHead .dropdown .hoverProductContainer.dropout12 {top:-353px;}
+#mastHead .dropout13, #mastHead .dropdown .hoverProductContainer.dropout13 {top:-383px;}
+#mastHead .dropout14, #mastHead .dropdown .hoverProductContainer.dropout14 {top:-413px;}
+#mastHead .dropout15, #mastHead .dropdown .hoverProductContainer.dropout15 {top:-443px;}
 
 
 /*********************************************************************************
