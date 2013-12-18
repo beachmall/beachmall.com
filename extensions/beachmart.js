@@ -1151,7 +1151,7 @@ var store_filter = function() {
 					//app.u.dump('--> this is what we got'); app.u.dump(data.value);
 					var count = 0; //holds purchasable sibling count
 					
-					setTimeout(function() {
+					setTimeout(function() { //give review elements time to get on dom in order to read text.
 							//get count of purchasable siblings in list
 						$('ul.fluidList li',$tag).each(function(){
 							if($(this).attr('data-purchasable')) {
@@ -1173,7 +1173,7 @@ var store_filter = function() {
 								$tag.css('height','62px'); //more colors than shown, but no reviews
 							}
 						}
-					},1000);
+					},1500);
 				},
 				
 					//checks search product list for reviews, if none hides and shows sibling count (if there is one)
