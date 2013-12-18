@@ -123,7 +123,14 @@ var powerReviews_reviews = function() {
 //pass is PID through bindData var:
 			reviewSnippet : function($tag,data)	{
 				if(document.location.protocol != 'https:')	{
+					
+/*BEACHMALL*/		var minimumReview = 0;
+/*BEACHMALL*/		if(data.bindData.minreview) {
+/*BEACHMALL*/			minimumReview = data.bindData.minreview;
+/*BEACHMALL*/		} else {}
+				
 					POWERREVIEWS.display.snippet({ write : function(content) { $tag.append(content); } }, {
+						pr_snippet_min_reviews : minimumReview, //shows reviews snippet based on qty of reviews
 						pr_page_id : data.value,
 						pr_write_review : "javascript:app.ext.powerReviews_reviews.a.writeReview('"+data.value+"');",
 /*BEACHMALL*/			pr_read_review : "javascript:app.ext.store_filter.a.scrollToRevealTab('"+data.value+"' ,'#prodReviews');"

@@ -1326,7 +1326,7 @@ APP-SPECIFIC TEMPLATES
 						<div class='shipTime latency' data-bind='var: product(user:prod_shipping_msg); format:text;'></div>
 					</div>
 				</div>
-				<div class='reviewsStarsCount' data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews_reviews;'></div><!-- BCERO271 MARK-->
+				<div class='reviewsStarsCount' data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews_reviews;  minreview:1;'></div><!-- BCERO271 MARK-->
 <!--            <form data-bind='var: product(pid); format:atcForm; extension:store_product;' class='prodViewerAddToCartForm clearfix' action='#'>
                     <button class='prodViewerAddToCartButton' data-bind='format:addToCartButton; extension:myRIA; useParentData:true;'></button>
                 </form>
@@ -2257,7 +2257,7 @@ remember to NOT put the button inside the 'onclick' container or two events will
 						<div class='prodListSibsText displayNone' data-bind='useParentData:true; format:siblingCount; extension:store_filter;'>More Colors Available!</div>
 					</div>
 				</div>
-				<div class='reviewsStarsCount' data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews_reviews;'></div><!-- BCERO271 MARK-->
+				<div class='reviewsStarsCount pr_snippet_category' data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews_reviews; minreview:1;'></div><!-- BCERO271 MARK-->
 			</div>
 			<div class='prodNum stid floatLeft' data-bind='var: product(pid); format:text; pretext: ITEM#:<br> ;'></div>
 			<form data-bind='var: product(pid); format:atcForm; extension:store_product;' class='prodViewerAddToCartForm floatRight' action='#' onSubmit="app.ext.myRIA.u.addItemToCart($(this),{'action':'modal'}); return false;">
@@ -2453,7 +2453,7 @@ EndBug#2-->
 END BUG6-->			
 <!--!!--></div> 
 		<div data-bind="useParentData:true; format:showReviewThenSiblings; extension:store_filter;">
-			<div class='reviewsStarsCount' data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews_reviews;'></div><!-- BCERO271 MARK-->
+			<div class='reviewsStarsCount' data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews_reviews; minreview:1;'></div><!-- BCERO271 MARK-->
 			<div class='clearfix searchProdSiblings pointer displayNone' data-bind='var:product(options); format:optionsCount; extension:store_filter;'></div>
 		</div>
 <!--Bug#7	<form data-bind='var: product(pid); format:atcForm; extension:store_product;' class='prodViewerAddToCartForm clearfix' action='#'>
@@ -2502,7 +2502,7 @@ END BUG7-->
 END BUG6-->			
 <!--!!-->	</div> 
 			<!-- this doesn't flow well here because preview is opened on product click anyway <div class='clearfix prodSiblings pointer displayNone' data-bind='var:product(options); format:optionsCount; extension:store_filter;' onClick="quickView('product',{'templateID':'productTemplateQuickView','pid':$(this).closest('[data-pid]').attr('data-pid')});"></div>-->
-<!--!!-->	<div class='reviewsStarsCount' data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews_reviews;'></div><!-- BCERO271 MARK-->
+<!--!!-->	<div class='reviewsStarsCount' data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews_reviews;  minreview:1;'></div><!-- BCERO271 MARK-->
 <!--Bug#7	<form data-bind='var: product(pid); format:atcForm; extension:store_product;' class='prodViewerAddToCartForm clearfix' action='#'>
 				<button class='prodViewerAddToCartButton' data-bind='format:addToCartButton; extension:myRIA; useParentData:true;'></button>
 			</form>
@@ -2579,7 +2579,7 @@ END BUG7-->
 <!--    </div>
 MARK --> 	
 		<div data-bind="useParentData:true; format:showReviewThenSiblings; extension:store_filter;">
-			<div class='reviewsStarsCount homeCars' data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews_reviews;'></div> <!-- BCERO271 MARK-->
+			<div class='reviewsStarsCount homeCars' data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews_reviews; minreview:1;'></div> <!-- BCERO271 MARK-->
 			<div class='clearfix searchProdSiblings pointer displayNone' data-bind='var:product(options); format:optionsCount; extension:store_filter;'></div>
 		</div>
 	
@@ -2621,7 +2621,7 @@ MARK -->
 	<h5 data-bind='var: product(zoovy:prod_name); format:text;'></h5>
 
 	<div class='pr_snippet_category'>
-		<div data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews_reviews;'></div>
+		<div data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews_reviews;  minreview:1;'></div>
 	</div>
 
 	<div class='ztable_row_small stid' data-bind='var: product(sku); format:text; pretext: Sku: ;'></div>
