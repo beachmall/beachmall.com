@@ -1184,7 +1184,7 @@ var store_filter = function() {
 						if(data.value) { //if there's data start checking, if not just show reviews
 								//if reviews say "no reviews" hide them so sibling count can show, \
 								//otherwise hide siblings to make room for reviews
-							if($('.pr-snippet-review-count',$tag).text().indexOf('(No reviews)') != -1 && data.value.pogs) { 
+							if($('.pr-snippet-review-count',$tag).text().indexOf('(No reviews)') != -1) { 
 								$('.reviewsStarsCount',$tag).hide();
 								if($('.reviewsStarsCount',$tag).hasClass('homeCars')) { //if it's the homepage use quickview
 									$('.searchProdSiblings',$tag).off('click').on('click',function(){
