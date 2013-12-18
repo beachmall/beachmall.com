@@ -1168,9 +1168,10 @@ var store_filter = function() {
 							} else {
 								$tag.css('height','72px'); //all colors are shown, just make room for reviews
 							}
-						} else { //if there are no reviews...
+						} else { //if there are no reviews don't show content at all
+							$('.reviewsStarsCount',$tag).hide();
 							if(count > 5) {
-								$tag.css('height','62px'); //more colors than shown, but no reviews
+								$tag.css('height','52px');
 							}
 						}
 					},1500);
