@@ -659,7 +659,7 @@ var store_filter = function() {
 					}
 				});
 				
-				if(count > 3) {
+				if(count > 5) {
 					$tag.show();
 				}
 			},
@@ -1144,6 +1144,36 @@ var store_filter = function() {
 					} else {
 						$tag.append('Our Price From: ');
 					}
+				},
+				
+					//makes product sibling/review container taller to show reviews if there are any present on reg. prod. list
+				areThereReviews : function($tag,data) {
+					//app.u.dump('--> this is what we got'); app.u.dump(data.value);
+					var count = 0; //holds purchasable sibling count
+					
+					setTimeout(function() {
+							//get count of purchasable siblings in list
+						$('ul.fluidList li',$tag).each(function(){
+							if($(this).attr('data-purchasable')) {
+								count += 1;
+							}
+						});
+		
+							//if there are reviews...
+						if($('.pr-snippet-review-count',$tag).text().indexOf('(No reviews)') == -1) {
+							if(count < 1) {
+								//leave the tag the height it is, there is plenty of room to show what's there
+							} else if(count > 5) {
+								$tag.css('height','78px'); //more colors than shown, make room for "more colors" text
+							} else {
+								$tag.css('height','72px'); //all colors are shown, just make room for reviews
+							}
+						} else { //if there are no reviews...
+							if(count > 5) {
+								$tag.css('height','62px'); //more colors than shown, but no reviews
+							}
+						}
+					},1000);
 				},
 				
 					//checks search product list for reviews, if none hides and shows sibling count (if there is one)
