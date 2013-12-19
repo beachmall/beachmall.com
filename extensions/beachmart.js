@@ -1609,10 +1609,10 @@ return filters;
 									prev: '.productPreviousViewedPrev',
 									next: '.productPreviousViewedNext',
 									items:{
-										height: 468,
+										height: 500,
 										width: 240
 									},
-									height: 405,
+									height: 500,
 									width: 960,
 									//items: 4,
 									pagination: '.productPreviousViewedPagenation',
