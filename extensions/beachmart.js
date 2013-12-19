@@ -1145,66 +1145,7 @@ var store_filter = function() {
 						$tag.append('Our Price From: ');
 					}
 				},
-				
-					//makes product sibling/review container taller to show reviews if there are any present on reg. prod. list
-	/*			areThereReviews : function($tag,data) {
-					//app.u.dump('--> this is what we got'); app.u.dump(data.value);
-					var count = 0; //holds purchasable sibling count
-					
-					setTimeout(function() { //give review elements time to get on dom in order to read text.
-							//get count of purchasable siblings in list
-						$('ul.fluidList li',$tag).each(function(){
-							if($(this).attr('data-purchasable')) {
-								count += 1;
-							}
-						});
-		
-							//if there are reviews...
-						if($('.pr-snippet-review-count',$tag).text().indexOf('(No reviews)') == -1) {
-							if(count < 1) {
-								//leave the tag the height it is, there is plenty of room to show what's there
-							} else if(count > 5) {
-								$tag.css('height','78px'); //more colors than shown, make room for "more colors" text
-							} else {
-								$tag.css('height','72px'); //all colors are shown, just make room for reviews
-							}
-						} else { //if there are no reviews don't show content at all
-							$('.reviewsStarsCount',$tag).hide();
-							if(count > 5) {
-								$tag.css('height','52px');
-							}
-						}
-					},1500);
-				},
-		*/		
-					//checks search product list for reviews, if none hides and shows sibling count (if there is one)
-				showReviewThenSiblings : function($tag,data) {
-			//		app.u.dump('-->showReviewThenSiblings:'); app.u.dump(data.value);
-					setTimeout(function(){ //timeout allows reviews to be populated so text can be checked
-						if(data.value) { //if there's data start checking, if not just show reviews
-								//if reviews say "no reviews" hide them so sibling count can show, \
-								//otherwise hide siblings to make room for reviews
-							if($('.pr-snippet-review-count',$tag).text().indexOf('(No reviews)') != -1) { 
-								$('.reviewsStarsCount',$tag).hide();
-								if($('.reviewsStarsCount',$tag).hasClass('homeCars')) { //if it's the homepage use quickview
-									$('.searchProdSiblings',$tag).off('click').on('click',function(){
-										quickView('product',{'templateID':'productTemplateQuickView','pid':data.value.pid})
-									});
-								} else { //if it's searchbar results use handlprodpreview
-									$('.searchProdSiblings',$tag).off('click').on('click',function(){
-										app.ext.myRIA.a.handleProdPreview(data.value.pid);
-										window.scrollTo(0,200);
-									});
-								}
-							} else {
-								$('.searchProdSiblings',$tag).hide(); //there are reviews, or no pogs, hide sibs
-							}
-						} else { 
-							$('.searchProdSiblings',$tag).hide(); //no data, show reviews
-						}
-					},1000);
-				},
-				
+
 					//shows a message that an item has the is_colorful tag set, usually in a product list
 				moreColors : function($tag, data) {
 					var pid = data.value.pid,
@@ -1490,9 +1431,9 @@ return filters;
 									items: {
 										start: 8,
 									},
-									auto: {
-										pauseOnHover: "immediate"
-									},
+									auto:false, //{
+							//			pauseOnHover: "immediate"
+							//		},
 									prev: '.featCarouselPrev',
 									next: '.featCarouselNext',
 									height: 405,
