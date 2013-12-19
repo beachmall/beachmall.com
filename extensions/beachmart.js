@@ -1341,12 +1341,14 @@ return filters;
 					var $container = $('.recentlyViewedItemsContainer', $context);
 					
 						//if no recently viewed items && show is set, tell them the sky is blue
-					if(app.ext.myRIA.vars.session.recentlyViewedItems.length == 0 && show == true) {
+					if(app.ext.myRIA.vars.session.recentlyViewedItems.length == 0 && show) {
 						$container.show();
 						$('.recentEmpty',$container).show(); //contains place holder text
 						//app.u.dump('There aint nuthin in there ma!');
 						$context.removeClass('loadingBG');
 					}
+						//if no recent items && show is not set, container is already hidden do nada
+					else if (app.ext.myRIA.vars.session.recentlyViewedItems.length == 0 && !show) {}
 						//otherwise, show them what they've seen
 					else {
 						$container.show();
