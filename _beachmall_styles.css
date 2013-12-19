@@ -1458,9 +1458,9 @@ lower tab sets (text fields and product lists)
 
 
 /* power reviews*/ 
-.reviewsStarsCount  {height:28px; width:164px; margin:6px auto 12px auto;}
-.reviewsStarsCount .pr-snippet-wrapper {height:16px; width:auto; border:none; background:none;}
-.reviewsStarsCount .pr-snippet {height:28px; width:auto; padding:0; border:0; background-color:none; background-image:none;}
+/*.reviewsStarsCount  {height:28px; width:164px; margin:6px auto 12px auto;}*/
+.reviewsStarsCount .pr-snippet {height:auto; width:164px; padding:0; border:0; background-color:none; background-image:none; clear:both; margin:0 auto;}
+.reviewsStarsCount .pr-snippet-wrapper {height:16px; width:auto; border:none; background:none; padding:5px 5px 3px 5px;}
 .reviewsStarsCount .pr-snippet-stars  {padding:0; border:0; background:none; background-image:none;}
 .reviewsStarsCount .pr-snippet-stars .pr-snippet-rating-decimal {display:none;}
 

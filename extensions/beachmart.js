@@ -1147,7 +1147,7 @@ var store_filter = function() {
 				},
 				
 					//makes product sibling/review container taller to show reviews if there are any present on reg. prod. list
-				areThereReviews : function($tag,data) {
+	/*			areThereReviews : function($tag,data) {
 					//app.u.dump('--> this is what we got'); app.u.dump(data.value);
 					var count = 0; //holds purchasable sibling count
 					
@@ -1176,7 +1176,7 @@ var store_filter = function() {
 						}
 					},1500);
 				},
-				
+		*/		
 					//checks search product list for reviews, if none hides and shows sibling count (if there is one)
 				showReviewThenSiblings : function($tag,data) {
 			//		app.u.dump('-->showReviewThenSiblings:'); app.u.dump(data.value);
