@@ -1771,7 +1771,7 @@ return filters;
 				},
 				
 				backToTop : function($context) {
-					$($context).append('<div onClick="app.ext.store_filter.u.scrollToTop()" href="#" class="appBackToTop"><span class="sprite"></span>Back to Top</div>')
+					$($context).append('<div class="appBackToTop pointer" onClick="app.ext.store_filter.u.scrollToTop()"><span class="sprite"></span>Back to Top</div>')
 				},
 				
 				scrollToTop : function() {
