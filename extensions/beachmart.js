@@ -461,9 +461,9 @@ var store_filter = function() {
 				data.bindData.b = data.bindData.bgcolor || 'ffffff'; //default to white.
 				
 				if(data.value) {
-					//data.bindData.name = data.value.app_thumb;
+					data.bindData.name = data.value.app_thumb;
 					
-			/*TMP FOR TESTING replace w/ above name assignment when app_thumb attrib is corrected*/ 
+			/*TMP FOR TESTING replace w/ above name assignment when app_thumb attrib is corrected*
 					var banners = data.value.images[0]; 
 					if(banners.indexOf('banners') != -1 || banners.indexOf('icons') != -1) {
 						data.bindData.name =  data.value.images[1] ? data.value.images[1] : data.value.images[2];
