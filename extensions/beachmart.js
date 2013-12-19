@@ -1771,7 +1771,11 @@ return filters;
 				},
 				
 				backToTop : function($context) {
-					$($context).append('<a href="#" class="appBackToTop"><span class="sprite"></span>Back to Top</a>')
+					$($context).append('<div onClick="app.ext.store_filter.u.scrollToTop()" href="#" class="appBackToTop"><span class="sprite"></span>Back to Top</div>')
+				},
+				
+				scrollToTop : function() {
+					$('html,body').animate({ scrollTop: 0 }, 'slow');
 				}
 				
 				
