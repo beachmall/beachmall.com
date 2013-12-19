@@ -145,6 +145,16 @@ var store_filter = function() {
 					//app.ext.store_filter.u.runPhoneChatLive();
 				}]);
 				
+				app.rq.push(['templateFunction','categoryTemplate','onCompletes',function(infoObj) {
+					var $context = $(app.u.jqSelector('#'+infoObj.parentID));
+					app.ext.store_filter.u.backToTop($context);
+				}]);
+				
+				app.rq.push(['templateFunction','searchTemplate','onCompletes',function(infoObj) {
+					var $context = $(app.u.jqSelector('#'+infoObj.parentID));
+					app.ext.store_filter.u.backToTop($context);
+				}]);
+				
 				app.rq.push(['templateFunction','productTemplate','onCompletes',function(infoObj) {
 					var $context = $(app.u.jqSelector('#'+infoObj.parentID)); //grabs the currently loaded product page (to ignore previously loaded / invisible ones)
 					app.ext.store_filter.u.runProductCarousel($context);
@@ -154,6 +164,7 @@ var store_filter = function() {
 					//app.u.dump('Product fredsel ran');
 					app.ext.store_filter.u.handleToolTip();
 					app.ext.store_filter.u.showRecentlyViewedItems($context,false);
+					app.ext.store_filter.u.backToTop($context);
 				}]);
 				
 				app.rq.push(['templateFunction','productTemplate','onDeparts',function(infoObj) {
@@ -168,6 +179,11 @@ var store_filter = function() {
 					app.ext.store_filter.u.execCouponAdd($('.cartCouponButton',$context));
 				}]);
 				
+				app.rq.push(['templateFunction','checkoutTemplate','onCompletes',function(infoObj) {
+					var $context = $(app.u.jqSelector('#'+infoObj.parentID));
+					app.ext.store_filter.u.backToTop($context);
+				}]);
+				
 				app.rq.push(['templateFunction','companyTemplate','onCompletes',function(infoObj) {
 					var $context = $(app.u.jqSelector('#'+infoObj.parentID));
 					app.ext.store_filter.u.showRecentlyViewedItems($context,true);
@@ -180,6 +196,7 @@ var store_filter = function() {
 						$sideline.show();
 						$('.mainColumn',$context).css({'width':'75%','margin':'0'});
 					}
+					app.ext.store_filter.u.backToTop($context);
 				}]);
 								
 				//creates tool tip for variations and product sibling thumbnails
@@ -442,6 +459,10 @@ var store_filter = function() {
 //on a data-bind, format: is equal to a renderformat. extension: tells the rendering engine where to look for the renderFormat.
 //that way, two render formats named the same (but in different extensions) don't overwrite each other.
 		renderFormats : {
+		
+			testers : function($tag,data) {
+				app.u.dump('--> search data:'); app.u.dump(data.value); 
+			},
 		
 
 				//hides time in transit/geo location section if item is a drop-shipped item
@@ -1747,6 +1768,10 @@ return filters;
 						pid = app.u.makeSafeHTMLId(stid);
 					}
 					return pid;
+				},
+				
+				backToTop : function($context) {
+					$($context).append('<a href="#" class="appBackToTop"><span class="sprite"></span>Back to Top</a>')
 				}
 				
 				

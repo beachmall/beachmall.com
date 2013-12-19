@@ -113,6 +113,9 @@ the padding is to compensate for the spacing between the main nav.
 
 /*#mainContentArea	{padding:.4em .2em;}  side padding is compensating for margins on main nav */
 
+#mainContentArea .appBackToTop {padding:2px 5px; position:fixed; bottom:0; right:0; z-index:1000; color:#ffffff; background:#e0463a; font-family:Oswald; font-size:10px;}
+#mainContentArea .appBackToTop span{height:15px; width:15px; background-position:-94px -328px; float:left;}
+
 .headerContainer {height:auto; width:1020px; margin:auto; position:relative;}
 
 /* topNav is the container for the content above the white bg */
