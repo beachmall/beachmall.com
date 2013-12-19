@@ -2453,9 +2453,9 @@ EndBug#2-->
 				</div>
 END BUG6-->			
 <!--!!--></div> 
-		<div data-bind="useParentData:true; format:showReviewThenSiblings; extension:store_filter;">
+		<div class='searchReviewSiblingsCont'>
 			<div class='reviewsStarsCount' data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews_reviews; minreview:1;'></div><!-- BCERO271 MARK-->
-			<div class='clearfix searchProdSiblings pointer displayNone' data-bind='var:product(options); format:optionsCount; extension:store_filter;'></div>
+			<div class='clearfix searchProdSiblings displayNone' data-bind='var:product(options); format:optionsCount; extension:store_filter;'></div>
 		</div>
 <!--Bug#7	<form data-bind='var: product(pid); format:atcForm; extension:store_product;' class='prodViewerAddToCartForm clearfix' action='#'>
 				<button class='prodViewerAddToCartButton' data-bind='format:addToCartButton; extension:myRIA; useParentData:true;'></button>
@@ -2503,7 +2503,10 @@ END BUG7-->
 END BUG6-->			
 <!--!!-->	</div> 
 			<!-- this doesn't flow well here because preview is opened on product click anyway <div class='clearfix prodSiblings pointer displayNone' data-bind='var:product(options); format:optionsCount; extension:store_filter;' onClick="quickView('product',{'templateID':'productTemplateQuickView','pid':$(this).closest('[data-pid]').attr('data-pid')});"></div>-->
-<!--!!-->	<div class='reviewsStarsCount' data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews_reviews;  minreview:1;'></div><!-- BCERO271 MARK-->
+<!--!!-->	<div class='searchReviewSiblingsCont'>
+				<div class='reviewsStarsCount' data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews_reviews; minreview:1;'></div><!-- BCERO271 MARK-->
+				<div class='clearfix searchProdSiblings displayNone' data-bind='var:product(options); format:optionsCount; extension:store_filter;'></div>
+			</div><!-- BCERO271 MARK-->
 <!--Bug#7	<form data-bind='var: product(pid); format:atcForm; extension:store_product;' class='prodViewerAddToCartForm clearfix' action='#'>
 				<button class='prodViewerAddToCartButton' data-bind='format:addToCartButton; extension:myRIA; useParentData:true;'></button>
 			</form>
@@ -2579,11 +2582,11 @@ END BUG7-->
 		<div class='reviewsStarsCount homeCars' data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews_reviews;'></div><!-- BCERO271 MARK--> 
 <!--    </div>
 MARK --> 	
-		<div data-bind="useParentData:true; format:showReviewThenSiblings; extension:store_filter;">
-			<div class='reviewsStarsCount homeCars' data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews_reviews; minreview:1;'></div> <!-- BCERO271 MARK-->
-			<div class='clearfix searchProdSiblings pointer displayNone' data-bind='var:product(options); format:optionsCount; extension:store_filter;'></div>
+		<div class='searchReviewSiblingsCont'>
+			<div class='reviewsStarsCount' data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews_reviews; minreview:1;'></div><!-- BCERO271 MARK-->
+			<div class='clearfix searchProdSiblings displayNone' data-bind='var:product(options); format:optionsCount; extension:store_filter;'></div>
 		</div>
-	
+		<div class='prodNum stid' data-bind='var: product(pid); format:text; pretext: ITEM &nbsp #: &nbsp ;'></div>
 </li>
 
 
