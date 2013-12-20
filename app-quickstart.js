@@ -778,7 +778,7 @@ fallback is to just output the value.
 					if($.inArray('IS_PREORDER', data.value.tags) > -1)	{buttonText = 'Preorder'; className = 'preorder';}
 					else if($.inArray('IS_COLORFUL', data.value.tags) > -1)	{buttonText = 'Choose Color'; className = 'variational colorful';}
 					else if($.inArray('IS_SIZEABLE', data.value.tags) > -1)	{buttonText = 'Choose Size'; className = 'variational sizeable';}
-					else if(data.value.pogs.length > 0)	{buttonText = 'Choose Options'; className = 'variational';}
+/*beachmall*/		else if(data.value.pogs && data.value.pogs.length > 0)	{buttonText = 'Choose Options'; className = 'variational';}
 					else	{}
 					//look in tags for tags. indexOf
 					}

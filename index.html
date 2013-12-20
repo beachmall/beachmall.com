@@ -2455,13 +2455,13 @@ END BUG6-->
 <!--!!--></div> 
 		<div class='searchReviewSiblingsCont'>
 			<div class='reviewsStarsCount' data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews_reviews; minreview:1;'></div><!-- BCERO271 MARK-->
-			<div class='clearfix searchProdSiblings displayNone' data-bind='var:product(options); format:optionsCount; extension:store_filter;'></div>
-		</div>
-<!--Bug#7	<form data-bind='var: product(pid); format:atcForm; extension:store_product;' class='prodViewerAddToCartForm clearfix' action='#'>
-				<button class='prodViewerAddToCartButton' data-bind='format:addToCartButton; extension:myRIA; useParentData:true;'></button>
+			<form data-bind='var: product(pid); format:atcForm; extension:store_product;' class='prodViewerAddToCartForm clearfix' action='#'>
+				<button class='prodViewerAddToCartButton' data-bind='format:addToCartButton; extension:myRIA; useParentData:true; isElastic:1;'></button>
 			</form>
-END BUG7-->
-<!--!!--><div class='prodNum stid clearfix' data-bind='var: product(pid); format:text; pretext: ITEM &nbsp #: &nbsp ;'></div>
+			<!-- <div class='clearfix searchProdSiblings displayNone' data-bind='var:product(options); format:optionsCount; extension:store_filter;'></div> -->
+		</div>
+
+		<div class='prodNum stid clearfix' data-bind='var: product(pid); format:text; pretext: ITEM &nbsp #: &nbsp ;'></div>
 	</div>
 	
 	<div class='productSeperationBar'></div>
@@ -2584,7 +2584,9 @@ END BUG7-->
 MARK --> 	
 		<div class='searchReviewSiblingsCont'>
 			<div class='reviewsStarsCount' data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews_reviews; minreview:1;'></div><!-- BCERO271 MARK-->
-			<div class='clearfix searchProdSiblings displayNone' data-bind='var:product(options); format:optionsCount; extension:store_filter;'></div>
+			<form data-bind='var: product(pid); format:atcForm; extension:store_product;' class='prodViewerAddToCartForm clearfix' action='#'>
+				<button class='prodViewerAddToCartButton' data-bind='format:addToCartButton; extension:myRIA; useParentData:true; isElastic:1;'></button>
+			</form>
 		</div>
 		<div class='prodNum stid' data-bind='var: product(pid); format:text; pretext: ITEM &nbsp #: &nbsp ;'></div>
 </li>

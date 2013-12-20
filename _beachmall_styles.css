@@ -707,6 +707,7 @@ label.break	{display:block; margin:0 0 4px 6px;}
 .regularPriceContainer .regularPrice {height:16px; width:100%; text-decoration:line-through; color:#999; font-size:14px; font-weight:bold;}
 .regularPriceContainer .regularPriceDesc {height:15px; width:100%; color:#000000; font-size:10px;}
 .shipContainer {height:31px; width:130px; text-align:center; font-family:"Open Sans"; padding-top:9px}
+.searchResultsProduct .shipContainer {height:25px;}
 .shipContainer .shipCost {height:12px; width:98px; color:#e0463a; font-size:14px; font-weight:bold; background-position:-116px -219px; margin-left:15px;}
 .shipContainer .shipTime {height:15px; width:100%; color:#000000; font-size:8px; overflow:hidden;}
 .prodNum {height:10px; width:40%; font-family:"Open Sans"; font-size:10px; text-align:center; margin:4px 0 0 0;}
@@ -906,7 +907,7 @@ HOMEPAGE
 .moreDetailsSmall.catHomeDetails.prodDetails {bottom:-75px;}
 .moreDetailsSmall.catHomeDetails {position:relative; bottom:20px; right:-87px; z-index:2; width:80px;}
 
-.CarouselContainer {height:425px; width:1020px; background:url(images/carousel-background_1020x370.jpg); margin-bottom:10px; border-bottom:5px solid #f8c301;}
+.CarouselContainer {height:435px; width:1020px; background:url(images/carousel-background_1020x370.jpg); margin-bottom:10px; border-bottom:5px solid #f8c301;}
 .carouselTitles {
 	height:35px; width:100%; color:#3bb3c3; 
 	background: #ffec9a; /* Old browsers */
@@ -921,7 +922,7 @@ HOMEPAGE
 .carouselTitleTextContainer {height:81%; width:400px; font-family:Montserrat; font-weight:normal; font-size:18px; margin-left:40px; padding-top:7px}
 .carouselArrowContainer {height:16px; width:16px; margin:9px 0px 0px 0px; padding-top:10px; background-position:-88px -218px;}
 .carouselLinkContainer {height:47; width:auto; font-family:"Open Sans"; font-weight:bold; font-size:14px; margin:0 40px 0 5px; padding-top:7px; text-align:right;}
-.Carousel {height:350px; width:960px; padding:0px 30px 0px 30px; position:relative; overflow:hidden;}
+.Carousel {height:360px; width:960px; padding:0px 30px 0px 30px; position:relative; overflow:hidden;}
 .Carousel img {border:1px solid #eee;}
 .standardCarouselPagenation {height:30px; width:100%; text-align:center; padding-top:10px;}
 .standardCarouselPagenation a {width:20px; height:20px; background:url(images/sprites-500x500.png); background-position:-63px -216px; margin:0 5.7px 1px 5.7px; display:inline-block;}
@@ -1466,10 +1467,10 @@ lower tab sets (text fields and product lists)
 
 /* power reviews*/ 
 /*.reviewsStarsCount  {height:28px; width:164px; margin:6px auto 12px auto;}*/
-.reviewsStarsCount .pr-snippet {height:auto; width:164px; padding:0; border:0; background-color:none; background-image:none; clear:both; margin:0 auto;}
+.reviewsStarsCount .pr-snippet {height:auto; width:160px; padding:0; border:0; background-color:none; background-image:none; clear:both; margin:0 auto;}
 .reviewsStarsCount .pr-snippet-wrapper {height:16px; width:auto; border:none; background:none; padding:5px 5px 3px 5px;}
-.searchReviewSiblingsCont {height:22px; width:100%; overflow:hidden;}
-.searchResultsProduct .reviewsStarsCount .pr-snippet-wrapper {padding:3px 5px;}
+.searchReviewSiblingsCont {height:32px; width:100%; overflow:hidden;}
+.searchResultsProduct .reviewsStarsCount .pr-snippet-wrapper {padding:3px 5px; margin:5px 0 0 0;}
 .reviewsStarsCount .pr-snippet-stars  {padding:0; border:0; background:none; background-image:none;}
 .reviewsStarsCount .pr-snippet-stars .pr-snippet-rating-decimal {display:none;}
 
