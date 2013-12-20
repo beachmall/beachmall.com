@@ -1657,7 +1657,7 @@ jQuery.extend(imgSlider.prototype, {
 		this.slideWidth = (this.width / this.numSlides); 
 		this.pause = 200; //first pic has been displayed, so start rotation quickly.
 		this.handleAnime(); //start the slideshow
-		this.pause = 3500; //used to determine length of time before slide leaves. takes into account time it takes to slide in (but not depart)
+		this.pause = 1200; /*3500*/ //used to determine length of time before slide leaves. takes into account time it takes to slide in (but not depart)
 //		app.u.dump(this);
 		},
 	getWidth : function(){
@@ -1683,11 +1683,11 @@ jQuery.extend(imgSlider.prototype, {
 		},
 	slideleft : function()	{
 		this.focusSlide += 1;
-		this.$jObjUl.animate({left: "-="+this.slideWidth}, 1500, this.handleAnime());
+		this.$jObjUl.animate({left: "-="+this.slideWidth}, 500, this.handleAnime()); /*1500*/
 		},
 	slideright : function()	{
 		this.focusSlide -= 1;
-		this.$jObjUl.animate({left: "+="+this.slideWidth}, 1500, this.handleAnime());
+		this.$jObjUl.animate({left: "+="+this.slideWidth}, 500, this.handleAnime()); /*1500*/
 		},
 	kill : function(){
 		clearTimeout(this.to); //makes sure anything set to run in the timeout is killed.
