@@ -373,7 +373,7 @@ BUYER GUIDE CATEGORY
 *************************************************************************************/
 
 .buyerGuideTemplate {height:auto; width:980px; margin:auto; }
-.buyerGuideTemplate .buyerDesc {margin:20px; font-family:"Open Sans"; font-size:11px;}
+.buyerGuideTemplate .buyerDesc {margin:20px; font-family:Arial; font-size:13px;}
 .buyerGuideTemplate .prodMargin {margin:auto 10px;}
 .buyerGuideTemplate .moreDetailsSmall {line-height:29px;}
 
