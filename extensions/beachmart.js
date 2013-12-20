@@ -461,7 +461,7 @@ var store_filter = function() {
 		renderFormats : {
 		
 			testers : function($tag,data) {
-				app.u.dump('--> search data:'); app.u.dump(data.value); 
+				app.u.dump('--> test'); app.u.dump();
 			},
 		
 
@@ -758,7 +758,7 @@ var store_filter = function() {
 							products.push(data.value[index].product);
 						}
 					}
-					app.u.dump('---------->'); app.u.dump(data.value);
+					//app.u.dump('---------->'); app.u.dump(data.value);
 					
 					var numRequests = 0;
 					for(var index in products){
@@ -1626,7 +1626,7 @@ return filters;
 								$target.carouFredSel({
 						//			circular: true,
 									auto: false,
-						//			align: 'left',
+									align: false,
 									prev: '.productPreviousViewedPrev',
 									next: '.productPreviousViewedNext',
 									items:{
@@ -1637,14 +1637,14 @@ return filters;
 									width: 960,
 									//items: 4,
 									pagination: '.productPreviousViewedPagenation',
-									scroll: 1,
+									scroll: 4,
 							//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
 									swipe: {
 										onMouse: true,
 										onTouch: true
 									}
 								});
-							},1000); 
+							},2000); 
 						}
 					},//END PRODCUT RECENT CAROUSEL
 						
