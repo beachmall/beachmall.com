@@ -74,6 +74,8 @@ body {
 .fontSize18 {font-size:18px;}
 .fontSize24 {font-size:24px;}
 
+.relative {position:relative;}
+
 .tanGradient {
 	background: #ffffff; /* Old browsers */
 	background: -moz-linear-gradient(top,  #ffffff 0%, #f5f1de 100%); /* FF3.6+ */
@@ -473,7 +475,13 @@ PRODUCT LIST
 .filterBox {height:auto; width:auto; background-color:#3BB3C3; margin-top:10px; font-family:"Open Sans";}
 .productColumn {width:auto;}
 .catTitle {height:35px; width:auto; margin: 0 10px; color:#3BB3C3; font-family:"Open Sans"; font-size:24px; font-weight:bold; line-height:32px; position:absolute; top:215px; left:530px; background:none;}
-.buyerGuides {height:30px; width:220px; border:2px solid #F8C301; position:absolute; top:215px; right:207px; color:#3BB3C3; text-align:center; font-family:"Open Sans"; font-size:14px; font-weight:bold; background:#F5F1DE;}
+.photosOnly {height:25px; width:120px; background:none; font-weight:normal; position:absolute; top:-21px; right:275px; color:#666666;}
+.photosOnly button {height:20px; width:40px; border:none; background:#F8C301; text-align:center; font-weight:bold; font-size:}
+.productList.photophy .photosOnly button {background:#e0463a; color:#ffffff;}
+.productList.photophy .hideMe{display:none;}
+.productList.photophy .products.product {height:310px;}
+.productList.photophy .productPriceContainer {height:30px;}
+.buyerGuides {height:30px; width:220px; border:2px solid #F8C301; position:absolute; top:-25px; right:25px; color:#3BB3C3; text-align:center; font-family:"Open Sans"; font-size:14px; font-weight:bold; background:#F5F1DE;}
 .buyerGuides span {font-size:10px; color:#000000; font-weight:normal; display:block; margin:-4px 0 0 0;}
 .buyerGuides:hover {color:#E0463A;}
 .numItemsOnListContainer {height:30px; width:45px; position:absolute; top:253px; right:510px; overflow:hidden;}

@@ -348,7 +348,23 @@ var store_filter = function() {
 
 
 		a : {
-				
+		
+				//add a class (first arg) to an element (third arg) and toggles the text on the 
+				//calling element (second arg) between the last two args. 
+			toggleMyClass : function(arg,$tag,$tagParent,primary,secondary) {
+				var which = $tag.text();
+				switch(which) {
+					case 'OFF':
+						$tagParent.addClass(arg);
+						$tag.text(secondary);
+						break;
+					case 'ON':
+						$tagParent.removeClass(arg);
+						$tag.text(primary);
+						break;
+				}
+			},
+		
 				//sets prod image frame and view detail button to hover red on mouseenter of the other
 			resultsRedMouseIn : function($this) {
 				$('.myProdThumbSmall',$this.parent()).css('border','5px solid #e0463a');
@@ -462,9 +478,9 @@ var store_filter = function() {
 		
 			testers : function($tag,data) {
 				app.u.dump('--> test'); app.u.dump();
+				//<div data-bind='useParentData:true; format:testers; extension:store_filter;'></div>
 			},
-		
-
+			
 				//hides time in transit/geo location section if item is a drop-shipped item
 				//time in transit code checks this attrib also, and doesn't run if it's set.
 			hideIfDropShip : function($tag, data) {
