@@ -39,11 +39,17 @@ var store_filter = function() {
 
 		".beach-umbrellas-shelter.beach-umbrella":{
 			"filter": "UmbrellasForm",
-			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
+			"exec" : function($form,infoObj){
+				app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});
+				app.ext.store_filter.u.renderHiddenField($form, infoObj);
+			}
 		},
 		".beach-umbrellas-shelter.patio-umbrella":{
 			"filter": "UmbrellasForm",
-			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
+			"exec" : function($form,infoObj){
+				app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});
+				app.ext.store_filter.u.renderHiddenField($form, infoObj);
+			}
 		},
 /* ACCESSORIES FORMS */
 		".beach-accessories.beach-bags-totes":{
@@ -1355,6 +1361,16 @@ return filters;
 					});
 				$( ".sliderValue",$form ).val( "$" + $( ".slider-range" ).slider( "values", 0 ) + " - $" + $( ".slider-range" ).slider( "values", 1 ) );
 				}, //renderSlider
+				
+				//adds hidden field to limit filter results to category filter is in
+			renderHiddenField : function($form, infoObj) {
+				if(infoObj && infoObj.navcat) {
+					app.u.dump('--> Hidden field navcat'); app.u.dump(infoObj.navcat);	
+					var thisNavCat = infoObj.navcat;
+					var $fieldset = "<fieldset data-elastic-key='app_category' data-filtertype='hidden'><input type='hidden' name='app_category' value='"+thisNavCat+"' /></fieldset>";
+					$form.append($fieldset);
+				}
+			},
 				
 				
 					//called on depart from prod page to add item to recently viewed items list
