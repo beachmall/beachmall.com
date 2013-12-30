@@ -1478,6 +1478,7 @@ lower tab sets (text fields and product lists)
 .reviewsStarsCount .pr-snippet {height:auto; width:160px; padding:0; border:0; background-color:none; background-image:none; clear:both; margin:0 auto;}
 .reviewsStarsCount .pr-snippet-wrapper {height:16px; width:auto; border:none; background:none; padding:5px 5px 3px 5px;}
 .searchReviewSiblingsCont {height:32px; width:100%; overflow:hidden;}
+.productListTemplateResultsNoPreview .searchReviewSiblingsCont {height:30px;}
 .searchResultsProduct .reviewsStarsCount .pr-snippet-wrapper {padding:3px 5px; margin:5px 0 0 0;}
 .reviewsStarsCount .pr-snippet-stars  {padding:0; border:0; background:none; background-image:none;}
 .reviewsStarsCount .pr-snippet-stars .pr-snippet-rating-decimal {display:none;}
