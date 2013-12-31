@@ -1336,7 +1336,7 @@ return filters;
 					r = {terms:{}};
 					r.terms[attr] = new Array();
 					$obj.each(function(){
-						r.terms[attr].push((attr == pogs) ? $(this).val() : $(this).val().toLowerCase());
+						r.terms[attr].push((attr == 'pogs') ? $(this).val() : $(this).val().toLowerCase());
 						});
 					}
 				else	{
