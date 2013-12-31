@@ -341,6 +341,13 @@ var store_filter = function() {
 			hidden : function($fieldset){
 				return app.ext.store_filter.u.buildElasticTerms($("input:hidden",$fieldset),$fieldset.attr('data-elastic-key'));
 				},
+			hiddenOr : function($fieldset){
+				var r = {"or":[]};
+				$("input:hidden",$fieldset).each(function(){
+					r.or.push(app.ext.store_filter.u.buildElasticTerms($(this),$fieldset.attr('data-elastic-key')));
+					});
+				return r;
+				},
 			checkboxes : function($fieldset)	{
 				return app.ext.store_filter.u.buildElasticTerms($(':checked',$fieldset),$fieldset.attr('data-elastic-key'));
 				} //checkboxes
