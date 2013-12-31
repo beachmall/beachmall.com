@@ -100,7 +100,10 @@ var store_filter = function() {
 /* WOMENS COVER UP FORM */
 		".beachwear.swimwear-women.cover-ups":{
 			"filter": "WomensCoverUpsForm",
-			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
+			"exec" : function($form,infoObj){
+				app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});
+				app.ext.store_filter.u.renderHiddenField($form, infoObj);
+			}
 		},
 /* WOMENS SWIMWEAR FORMS */
 		".beachwear.swimwear-women.bathing-suits":{

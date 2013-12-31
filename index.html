@@ -23,7 +23,7 @@ var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPL
 var myCreole;
 
 var app = {vars:{
-	"release":"201346.20131220180600",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+	"release":"201346.20131231123700",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 	"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 	"baseURL":"", //used in non-local mode.
 	"checkoutAuthMode" : "active",//can be passive, active or required
@@ -4705,6 +4705,19 @@ put all filters into the appFilters container.
             <input type="text"  class='sliderValue' />
             <div class="slider-range"></div>
         </fieldset>
+		
+		<fieldset class='displayNone' data-elastic-key="pogs" data-filtertype="hiddenOr">
+            <input type='hidden' name="h-picnicbasket" value="CH00" />
+            <input type='hidden' name="h-picnicbackpack" value="CH01" />
+            <input type='hidden' name="h-winebaskets" value="CH02" />
+            <input type='hidden' name="h-totebags" value="CH03" />
+            <input type='hidden' name="h-lunchbags" value="CH04" />
+            <input type='hidden' name="h-coolers" value="CH05" />
+            <input type='hidden' name="h-coffeeteasets" value="CH06" />
+            <input type='hidden' name="h-picnicblankets" value="CH07" />
+            <input type='hidden' name="h-tailgating" value="CH08" />
+            <input type='hidden' name="h-accessories" value="CH09" />
+		</fieldset>  
         
 		<button class='resetButton floatRight'>RESET OPTIONS</button>
 		
@@ -4787,6 +4800,19 @@ put all filters into the appFilters container.
             <input type="text"  class='sliderValue' />
             <div class="slider-range"></div>
         </fieldset>
+		
+		<fieldset class='displayNone' data-elastic-key="pogs" data-filtertype="hiddenOr">
+            <input type='hidden' name="h-highseat" value="CV00" />
+            <input type='hidden' name="h-lowseat" value="CV01" />
+            <input type='hidden' name="h-layflat" value="CV02" />
+            <input type='hidden' name="h-backpack" value="CV03" />
+            <input type='hidden' name="h-heavyduty" value="CV04" />
+            <input type='hidden' name="h-loungerchaise" value="CV05" />
+            <input type='hidden' name="h-canopy" value="CV06" />
+            <input type='hidden' name="h-padded" value="CV07" />
+            <input type='hidden' name="h-tallwide" value="CV08" />
+            <input type='hidden' name="h-zerogravity" value="CV09" />
+		</fieldset> 
         
 		<button class='resetButton floatRight'>RESET OPTIONS</button>
 		
@@ -4815,7 +4841,7 @@ put all filters into the appFilters container.
             <label class='break'><input type='checkbox' value='CV05' /> Lounger &#47 Chaise</label>
             <label class='break'><input type='checkbox' value='CV06' /> Canopy</label>
             <label class='break'><input type='checkbox' value='CV07' /> Padded</label>
-            <label class='break'><input type='checkbox' value='CV08' /> Tall &#39 Wide</label>
+            <label class='break'><input type='checkbox' value='CV08' /> Tall &#38 Wide</label>
             <label class='break'><input type='checkbox' value='CV09' /> Zero Gravity</label>
         </fieldset>
         
@@ -4882,7 +4908,19 @@ put all filters into the appFilters container.
             <input type="text"  class='sliderValue' />
             <div class="slider-range"></div>
         </fieldset>
-        
+	<!--	
+		<fieldset class='displayNone' data-elastic-key="pogs" data-filtertype="hiddenOr">
+            <input type='hidden' name="h-tunics" value="EO00" />
+            <input type='hidden' name="h-kaftans" value="EO07" />
+            <input type='hidden' name="h-dresses" value="EO01" />
+            <input type='hidden' name="h-rompers" value="EO02" />
+            <input type='hidden' name="h-shorts" value="EO03" />
+            <input type='hidden' name="h-pants" value="EO04" />
+            <input type='hidden' name="h-skirts" value="EO05" />
+            <input type='hidden' name="h-pareoswraps" value="EO08" />
+            <input type='hidden' name="h-crocket" value="EO06" />
+		</fieldset> 
+    -->    
 		<button class='resetButton floatRight'>RESET OPTIONS</button>
 		
         <fieldset data-elastic-key="pogs" data-filtertype="checkboxes">
@@ -4987,7 +5025,7 @@ put all filters into the appFilters container.
 		<button class='resetButton floatRight'>RESET OPTIONS</button>
 		
         <fieldset data-elastic-key="pogs" data-filtertype="checkboxes">
-            <legend>Cover-Up Style</legend>
+            <legend>Category</legend>
             <label class='break'><input class="" type='checkbox' value='EH00' /> Bikinis</label>
             <label class='break'><input class="" type='checkbox' value='EH01' /> Tankinis</label>
             <label class='break'><input class="" type='checkbox' value='EH02' /> Monokinis</label>
