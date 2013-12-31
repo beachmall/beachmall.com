@@ -258,7 +258,10 @@ var beachmart_dropdown = function() {
 			getTagsElastic : function () {
 				var prods = [];
 				$('.searchResultsProduct').each(function() {
-					prods.push($(this).data(""));	//how to get product info??
+					if($(this).data() && $(this).data("pid")) {
+						//app.u.dump('--> searchResultsProduct');  app.u.dump($(this).data("pid")); 
+						prods.push($(this).data("pid")); //put product info into array for processing later
+					}
 				});
 				
 				for(var i=0; i<prods.length; i++) {
