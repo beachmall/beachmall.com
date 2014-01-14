@@ -223,7 +223,7 @@ the padding is to compensate for the spacing between the main nav.
 #mastHead .dropout.out .hoverProductContainer.innerHovProdCont li {width:240px; margin:0;} 
 
 .defaultDDImage, #mastHead .dropout.out .defaultDOImage {height:526px; width:237px; margin:5px; position:absolute; top:-0.5px; right:2px; z-index:1;}
-#mastHead .dropout.out .defaultDOImage {width:238px; background:#ffe680; right:-5px; top:-5px;}
+#mastHead .dropout.out .defaultDOImage {width:238px; right:-5px; top:-5px;}
 /*.stockImageContainer {height: 210px; width:100%;}*/
 .stockImageContainer  {height:210px; width:210px; background:#777; margin:10px auto; border:5px solid #ffffff; cursor:pointer; position:relative; z-index:1;}
 .stockImageContainer:hover {border:5px solid #e0463a;}
