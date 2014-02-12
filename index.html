@@ -1618,6 +1618,8 @@ don't modify the 'data-templateid' unless you are changing template names and up
 		
 		<ul class='breadcrumb clearfix noPadOrMargin fluidList' data-bind='var: category(id); format:breadcrumb; extension:store_navcats; loadsTemplate: breadcrumbTemplate;'></ul>
 
+		
+		
 <div class='displayNone' data-bind="var: category(%page.description); format:showIfSet;">
 		<div class='brandsCatContainer'> 
 			
@@ -1702,6 +1704,11 @@ don't modify the 'data-templateid' unless you are changing template names and up
 				</div>
 
 		</div>
+</div>
+
+<div class='brandsTopCatContainer'>
+	<ul data-bind="var: category(@subcategoryDetail); format: categoryList; extension: store_navcats; loadsTemplate: brandsCategoryListTemplate; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin categoryList'></ul><!-- outputs a list of subcategories -->
+	<!-- <ul data-bind="var: category(@subcategoryDetail); format: categoryList; extension: store_navcats; loadsTemplate: categoryListTemplate; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin categoryList'></ul><!-- outputs a list of subcategories -->
 </div>
 
 </div>
