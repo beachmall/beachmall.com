@@ -31,7 +31,7 @@ app.rq.push(['extension',0,'beachmart_dates','extensions/beachmart_dates.js']); 
 app.rq.push(['extension',0,'store_createAccount','extensions/store_createAccount.js']); //handles account creation actions
 
 //app.rq.push(['extension',1,'google_analytics','extensions/partner_google_analytics.js','startExtension']);
-//app.rq.push(['extension',1,'tools_ABtesting','extensions/tools_ABtesting.js']);
+//app.rq.push(['extension',1,'tools_ABtesting','extensions/tools_ab_testing.js']);
 app.rq.push(['extension',0,'partner_addthis','extensions/partner_addthis.js']);
 //app.rq.push(['extension',1,'resellerratings_survey','extensions/partner_buysafe_guarantee.js','startExtension']); /// !!! needs testing.
 //app.rq.push(['extension',1,'buysafe_guarantee','extensions/partner_buysafe_guarantee.js','startExtension']);
