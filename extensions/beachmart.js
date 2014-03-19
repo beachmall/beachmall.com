@@ -222,19 +222,10 @@ var store_filter = function() {
 						if (element.is("img[data-big-img]")) {
 							var pid = $(this).closest('[data-pid]').attr('data-pid');
 							var product = app.data['appProductGet|'+pid];
-							app.u.dump('>>>>> '); app.u.dump(pid);
-							var imgTag = "";
-
-							for(var i = 2; i < 10; i++) {
-								if(product['%attribs']['zoovy:prod_image'+i]) {
-									app.u.dump(i);
-									var thumbItteration = app.u.makeImage({"w":60,"h":60,"b":"ffffff",tag:0,"name":product['%attribs']['zoovy:prod_image'+i]});
-									imgTag += "<img src='"+thumbItteration+"'>";
-								}
-							}
-							var zoomThumbs = "<div class='optionsZoomThumb'>"+imgTag+"</div>"
+						//	app.u.dump('>>>>> '); app.u.dump(pid);
+							
 							//app.u.dump('>>>>> '); app.u.dump(product['@variations']['1']['options']['0'].prompt);
-							return '<div class="toolTipWrapper"><span class="optionsZoom">'+$(this).attr('data-tooltip-title')+'</span><img src="'+$(this).attr('data-big-img')+'" width="400" height="400" />'+zoomThumbs+'</div>';
+							return '<div class="toolTipWrapper"><span class="optionsZoom">'+$(this).attr('data-tooltip-title')+'</span><img src="'+$(this).attr('data-big-img')+'" width="400" height="400" /></div>';
 							}
 						//thumbnail zoom for sibling thumbnails
 						if (element.is("[data-toolTipThumb]")) {
