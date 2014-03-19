@@ -591,6 +591,7 @@ RenderFormats
 			
 			
 			prodSearchFeaturedByBrand : function($tag,data)	{
+				app.u.dump('---- data.value featured Brands:'); app.u.dump(data.value);
 				//data.value will be the brand.
 				var query = {
 					"mode":"elastic-native",
@@ -613,12 +614,13 @@ RenderFormats
 				},			
 			
 			prodSearchBestSellersByBrand : function($tag,data)	{
+				app.u.dump('---- data.value bestSeller Brands:'); app.u.dump(data.value);
 				//data.value will be the brand.
 				var query = {
 					"size": data.bindData.size || "24",
 					"mode":"elastic-native",
 					"filter":{
-						"or":{
+						"and":{
 							"filters":[
 								{"term":{"prod_mfg":data.value}},
 								{"term":{"tags":"IS_BESTSELLER"}}
