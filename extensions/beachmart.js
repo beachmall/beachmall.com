@@ -210,7 +210,7 @@ var store_filter = function() {
 								
 				//creates tool tip for variations and product sibling thumbnails
 				$( document ).tooltip({
-					items : "img[data-big-img], [data-toolTipThumb], [data-cartToolTipThumb], [data-toolTipQuickview]",
+					items : "img[data-big-img], [data-toolTipThumb], [data-cartToolTipThumb], [data-toolTipQuickview], [data-grid-img]",
 					position : {
 						my : "bottom-5",
 						at : "top"
@@ -218,7 +218,7 @@ var store_filter = function() {
 					//track : true,
 					content : function(){
 						var element = $(this);
-						//thumbnail zoom for option thumbnails
+						//thumbnail zoom for option image select thumbnails
 						if (element.is("img[data-big-img]")) {
 							var pid = $(this).closest('[data-pid]').attr('data-pid');
 							var product = app.data['appProductGet|'+pid];
@@ -226,6 +226,15 @@ var store_filter = function() {
 							
 							//app.u.dump('>>>>> '); app.u.dump(product['@variations']['1']['options']['0'].prompt);
 							return '<div class="toolTipWrapper"><span class="optionsZoom">'+$(this).attr('data-tooltip-title')+'</span><img src="'+$(this).attr('data-big-img')+'" width="400" height="400" /></div>';
+							}
+						//thumbnail zoom for option grid image thumbnails
+						if (element.is("[data-grid-img]")) {
+							var pid = $(this).closest('[data-pid]').attr('data-pid');
+							var product = app.data['appProductGet|'+pid];
+						//	app.u.dump('>>>>> '); app.u.dump(product);
+							
+							//app.u.dump('>>>>> '); app.u.dump(product['@variations']['1']['options']['0'].prompt);
+							return '<div class="toolTipWrapper"><span class="optionsZoom">'+$(this).attr('data-tooltip-title')+'</span><img src="'+$(this).attr('data-grid-img')+'" width="400" height="400" /></div>';
 							}
 						//thumbnail zoom for sibling thumbnails
 						if (element.is("[data-toolTipThumb]")) {
@@ -1851,6 +1860,30 @@ return filters;
 ////////////////////////////////////   VARIATIONS    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\			
 			
 		variations : {
+		
+			renderOptionCUSTOMIMGGRID : function(pog) {
+				var pogid = pog.id;
+				var $parentDiv = $("<span \/>");
+				if(pog['ghint']) {$parentDiv.append(pogs.showHintIcon(pogid,pog['ghint']))}
+				
+				var $radioInput; //used to create the radio button element.
+				var radioLabel; //used to create the radio button label.
+				var thumbnail; //guess what this holds
+				var thumbnailTag; //tag created manually to add jquery tool tip attribs
+				var i = 0;
+				var len = pog['@options'].length;
+				while (i < len) {
+					thumbnail = app.u.makeImage({"w":pog.width,"h":pog.height,"name":pog['@options'][i]['img'],"b":"FFFFFF","lib":app.username});
+					thumbnailTag = "<img src='"+thumbnail+"' width='"+pog.width+"' height='"+pog.height+"' name='"+pog['@options'][i]['img']+"' data-grid-img='"+thumbnail+"' data-tooltip-title='"+pog['@options'][i]['prompt']+"'>";
+				//	app.u.dump('----thumbnail'); app.u.dump(thumbnail); app.u.dump(thumbnailTag);
+					radioLabel = "<label>"+pog['@options'][i]['prompt']+"<\/label>";
+					$radioInput = $('<input>').attr({type: "radio", name: pogid, value: pog['@options'][i]['v']});
+					$parentDiv.append(thumbnailTag).append($radioInput).append(radioLabel).wrap("<div class='floatLeft'><\/div>");;
+					i++
+					}
+				
+				return $parentDiv;
+			},
 			
 			//puts color options on product page as image selectable select list. Also adds jquery tool tip pop up of image for zoom
 			renderOptionCUSTOMIMGSELECT: function(pog) {
@@ -1956,6 +1989,7 @@ return filters;
 			}, // END renderOptionCUSTOMIMGSELECT
 			
 			xinit : function(){
+				this.addHandler("type","imggrid","renderOptionCUSTOMIMGGRID");
 				this.addHandler("type","imgselect","renderOptionCUSTOMIMGSELECT");
 				app.u.dump("--- RUNNING XINIT");
 			}
