@@ -3,16 +3,15 @@
 <head>
 <meta charset="utf-8">
 
-<!-- do not populate or add meta data or title, the SEO layer will add it -->
-
-<!-- used to solve problem w/ app content being duplicated... -->
-<meta name="robots" content="noindex">
+<!-- do not populate or add meta data, the SEO layer will add it -->
+<title>Quickstart</title><!-- this will get populated by the SEO layer -->
 
 <!-- used for optional social media extensions -->
 <meta property="og:type" content="" id='ogType' >
 <meta property="og:image" content="" id='ogImage' >
 <meta property="og:description" content="" id='ogDescription' >
 
+<meta name=viewport content="width=device-width, initial-scale=1">
 
 <base href='' /><!-- leave blank so it works for a local file. updated to / if protocol is not file: -->
 
@@ -20,24 +19,19 @@
 
 <script type="text/javascript">
 var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPLOYMENT!
-var myCreole;
-
-var app = {vars:{
-	"release":"201346.20140319165500",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
-	"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
-	"baseURL":"", //used in non-local mode.
-	"checkoutAuthMode" : "active",//can be passive, active or required
-	"testURL":"http://www.81a72f.hoth.zoovy.net/" //used ONLY if protocol is file: (for testing)
-	//"testURL":"http://www.beachmall.com/" //used ONLY if protocol is file: (for testing)
-	},u:{},rq:[]};
+var myCreole, baseURL;
 
 //set base url so images, css, js, etc all load from appropriate location once deployed.
 //baseURL as blank lets loadScript function run off local copy when testing locally.
-if(document.location.protocol != 'file:')	{
-	app.vars.baseURL  = "/";
-	document.getElementsByTagName('base')[0].href = app.vars.baseURL;
+if(document.location.protocol == 'file:')	{
+	baseURL  = "";
 	}
+else	{
+	baseURL = document.location.protocol+"//"+document.domain+"/";
+	}
+document.getElementsByTagName('base')[0].href = baseURL;
 </script>
+
 
 
 <!--
@@ -46,7 +40,6 @@ css files should be included before any .js file to ensure they are downloaded i
 -->
 <link rel="stylesheet" type="text/css" href="app-quickstart.css" />
 <link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/themes/ui-lightness/jquery-ui.css" />
-<link rel="stylesheet" type="text/css" href="fonts/fontawesome.css" />
 <link rel="stylesheet" type="text/css" href="_beachmall_styles.css" />
 
 <link rel="SHORTCUT ICON" href="images/favicon.ico" />
@@ -57,17 +50,40 @@ css files should be included before any .js file to ensure they are downloaded i
 <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 
 
-<!-- ** 201338 -> jquery and jquery ui are pivotal to the functionality of the app. load them first -->
+<!-- jquery and jquery ui are pivotal to the functionality of the app. load them early -->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
-<script type="text/javascript" src="loadscript.js"></script>
+<script src="controller.js"></script>
+<script src="model.js"></script>
+
 <script type='text/javascript' src='examples/magictoolbox/magiczoomplus.js' ></script>
 
-
+<!-- ### TODO -> test how the load process goes w/ these in init. if includes is moved, move the new Parse  -->
+<script src="resources/jquery.ui.anyplugins.js"></script>
+<script type="text/javascript" src="includes.js"></script>
 
 
 <script type="text/javascript">
-app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
+$(document).ready(function(){
+
+	window.myApp = new initApp({
+		"release":"201402.20140321113700",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+		"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
+		"baseURL":baseURL, //used in non-local mode.
+		"checkoutAuthMode" : "active",//can be passive, active or required
+		"testURL":"http://www.81a72f.hoth.zoovy.net/", //used ONLY if protocol is file: (for testing)
+		"addjQueryPointer" : true,
+		"initComplete" : function(t){
+			dump(" -> init is complete");
+			t.u.loadScript('_beachmall_init.js',function(){
+				var progress = t.u.loadResources(); //the object returns by loadResources will get updated as the resources finish loading.
+				t.u.showProgress(progress);
+				});
+			$('#appversion').text(t.vars.release);
+			}
+		});
+	myCreole = new Parse.Simple.Creole();
+	});
 </script>
 
 
@@ -95,17 +111,6 @@ app.u.loadScript(app.vars.baseURL+"_beachmall_init.js");
 				<div class='logo floatRight'><img src='images/beachmall-logo-anim-wide_220x65.gif' width='220' height='65' alt='beachmall.com' /></div>
 		
 </div>
-</div>
-<!--
-<script type="text/javascript">
-	$("#appPreView").dialog({
-		'modal':true,
-		'closeOnEscape' : false,
-		'dialogClass' : 'hideDialog',
-		'width' : 650
-	});
-</script>
--->
 
 <div id='appView'>
 
