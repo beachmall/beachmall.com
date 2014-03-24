@@ -28,17 +28,17 @@ myApp.rq.push(['extension',0,'quickstart','app-quickstart.js','startMyProgram'])
 myApp.rq.push(['extension',0,'beachmart','extensions/beachmart_custom.js']); // custom product page, built by JT based on old hybrid site
 myApp.rq.push(['extension',0,'store_filter','extensions/beachmart.js','startExtension']); 
 myApp.rq.push(['extension',0,'beachmart_dropdown','extensions/beachmart_dropdown.js', 'startExtension']); // custom product getter for dropdowns Runs startExtension as well
-myApp.rq.push(['extension',0,'beachmart_catsearch','extensions/beachmart_catsearch.js', 'startExtension']); // custom search of designated category and tag
+//myApp.rq.push(['extension',0,'beachmart_catsearch','extensions/beachmart_catsearch.js', 'startExtension']); // custom search of designated category and tag
 //myApp.rq.push(['extension',0,'beachmart_items_per_page','extensions/beachmart_items_per_page.js', 'startExtension']); // changes number of items displayed in current prodlist
-myApp.rq.push(['extension',0,'beachmart_banner','extensions/beachmart_banner.js']); // add banner to homepage that can be changed in _banners.json file 
-myApp.rq.push(['extension',0,'beachmart_dropdown_image','extensions/beachmart_dropdown_image.js']); // add banner to homepage that can be changed in _banners.json file 
-myApp.rq.push(['extension',0,'prodlist_infinite','extensions/prodlist_infinite.js']); //removes pagination in product lists and allows population w/ scroll
-myApp.rq.push(['extension',0,'beachmart_cartEstArrival','extensions/beachmart_cartEstArrival.js']); //estimates shipping/arrival times for cart items
-myApp.rq.push(['extension',0,'beachmart_cartEmail','extensions/beachmart_cartEmail.js']); //handles sending user an e-mail of cart contents
-myApp.rq.push(['extension',0,'beachmart_dates','extensions/beachmart_dates.js']); //handles various date based calculations
-myApp.rq.push(['extension',0,'store_createAccount','extensions/store_createAccount.js']); //handles account creation actions
-myAppapp.rq.push(['script',0,app.vars.baseURL+'resources/jquery.touchSwipe-1.3.3.min.js']); //used w/ carouFedSel.
-myAppapp.rq.push(['script',0,app.vars.baseURL+'resources/jquery.carouFredSel-6.2.0.min.js']); //used for carousels.
+//myApp.rq.push(['extension',0,'beachmart_banner','extensions/beachmart_banner.js']); // add banner to homepage that can be changed in _banners.json file 
+myApp.rq.push(['extension',0,'beachmart_dropdown_image','extensions/beachmart_dropdown_image.js']); // add images to dropdowns that can be changed in _dropdownimages.json file 
+//myApp.rq.push(['extension',0,'prodlist_infinite','extensions/prodlist_infinite.js']); //removes pagination in product lists and allows population w/ scroll
+//myApp.rq.push(['extension',0,'beachmart_cartEstArrival','extensions/beachmart_cartEstArrival.js']); //estimates shipping/arrival times for cart items
+//myApp.rq.push(['extension',0,'beachmart_cartEmail','extensions/beachmart_cartEmail.js']); //handles sending user an e-mail of cart contents
+//myApp.rq.push(['extension',0,'beachmart_dates','extensions/beachmart_dates.js']); //handles various date based calculations
+//myApp.rq.push(['extension',0,'store_createAccount','extensions/store_createAccount.js']); //handles account creation actions
+//myAppapp.rq.push(['script',0,app.vars.baseURL+'resources/jquery.touchSwipe-1.3.3.min.js']); //used w/ carouFedSel.
+//myAppapp.rq.push(['script',0,app.vars.baseURL+'resources/jquery.carouFredSel-6.2.0.min.js']); //used for carousels.
 
 //myApp.rq.push(['extension',1,'google_analytics','extensions/partner_google_analytics.js','startExtension']);
 //myApp.rq.push(['extension',1,'tools_ab_testing','extensions/tools_ab_testing.js']);
@@ -50,7 +50,7 @@ myAppapp.rq.push(['script',0,app.vars.baseURL+'resources/jquery.carouFredSel-6.2
 
 // ** moved here from extension to make sure it gets loaded early enough.
 //myApp.rq.push(['script',0,'http://cdn.powerreviews.com/repos/11531/pr/pwr/engine/js/full.js']); old user id "11531"
-myApp.rq.push(['script',0,'https://cdn.powerreviews.com/repos/11024/pr/pwr/engine/js/full.js']);
+//myApp.rq.push(['script',0,'https://cdn.powerreviews.com/repos/11024/pr/pwr/engine/js/full.js']);
 
 myApp.rq.push(['script',0,myApp.vars.baseURL+'resources/jquery.showloading-v1.0.jt.js']); //used pretty early in process..
 myApp.rq.push(['script',0,myApp.vars.baseURL+'resources/jquery.ui.anyplugins.js']); //in zero pass in case product page is first page.

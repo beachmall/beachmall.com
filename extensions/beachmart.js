@@ -22,7 +22,7 @@ The functions here are designed to work with 'reasonable' size lists of categori
 */
 
 
-var store_filter = function() {
+var store_filter = function(_app) {
 	var r = {
 
 	vars : {
@@ -40,91 +40,91 @@ var store_filter = function() {
 		".beach-umbrellas-shelter.beach-umbrella":{
 			"filter": "UmbrellasForm",
 			"exec" : function($form,infoObj){
-				app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});
-				app.ext.store_filter.u.renderHiddenField($form, infoObj);
+				_app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});
+				_app.ext.store_filter.u.renderHiddenField($form, infoObj);
 			}
 		},
 		".beach-umbrellas-shelter.patio-umbrella":{
 			"filter": "UmbrellasForm",
 			"exec" : function($form,infoObj){
-				app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});
-				app.ext.store_filter.u.renderHiddenField($form, infoObj);
+				_app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});
+				_app.ext.store_filter.u.renderHiddenField($form, infoObj);
 			}
 		},
 /* ACCESSORIES FORMS */
 		".beach-accessories.beach-bags-totes":{
 			"filter": "AccessoriesForm",
-			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
+			"exec" : function($form,infoObj){_app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
 		},	
 		".beach-accessories.picnic-backpack":{
 			"filter": "AccessoriesForm",
-			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
+			"exec" : function($form,infoObj){_app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
 		},	
 		".beach-accessories.picnic-baskets":{
 			"filter": "AccessoriesForm",
-			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
+			"exec" : function($form,infoObj){_app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
 		}, 
 /* BEACH CHAIR FORMS */
 		".beach-chair.beach-chairs":{
 			"filter": "BeachChairsForm",
-			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
+			"exec" : function($form,infoObj){_app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
 		},
 		".beach-chair.canopy-beach-chair":{
 			"filter": "BeachChairsForm",
-			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
+			"exec" : function($form,infoObj){_app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
 		},
 		".beach-chair.folding-beach-chairs":{
 			"filter": "BeachChairsForm",
-			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
+			"exec" : function($form,infoObj){_app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
 		},
 		".beach-chair.heavy-beach-chairs":{
 			"filter": "BeachChairsForm",
-			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
+			"exec" : function($form,infoObj){_app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
 		},
 		".beach-chair.high-beach-chair":{
 			"filter": "BeachChairsForm",
-			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
+			"exec" : function($form,infoObj){_app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
 		},
 		".beach-chair.sand-chair":{
 			"filter": "BeachChairsForm",
-			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
+			"exec" : function($form,infoObj){_app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
 		},
 		".beach-chair.sand-chairs":{
 			"filter": "BeachChairsForm",
-			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
+			"exec" : function($form,infoObj){_app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
 		},
 		".beach-chair.wooden-beach-chairs":{
 			"filter": "BeachChairsForm",
-			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
+			"exec" : function($form,infoObj){_app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
 		},
 /* WOMENS COVER UP FORM */
 		".beachwear.swimwear-women.cover-ups":{
 			"filter": "WomensCoverUpsForm",
 			"exec" : function($form,infoObj){
-				app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});
-				app.ext.store_filter.u.renderHiddenField($form, infoObj);
+				_app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});
+				_app.ext.store_filter.u.renderHiddenField($form, infoObj);
 			}
 		},
 /* WOMENS SWIMWEAR FORMS */
 		".beachwear.swimwear-women.bathing-suits":{
 			"filter": "WomensSwimwearForm",
-			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
+			"exec" : function($form,infoObj){_app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
 		},
 		".beachwear.swimwear-women.bikini-two-piece":{
 			"filter": "WomensSwimwearForm",
-			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
+			"exec" : function($form,infoObj){_app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
 		},
 		".beachwear.swimwear-women.monokinis-tankinis":{
 			"filter": "WomensSwimwearForm",
-			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
+			"exec" : function($form,infoObj){_app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
 		},
 		".beachwear.swimwear-women.one-piece-swimsuits":{
 			"filter": "WomensSwimwearForm",
-			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
+			"exec" : function($form,infoObj){_app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
 		},
 		".beachwear.swimwear-women.plus-size-swimsuits":{
 			"filter": "WomensSwimwearForm",
-			"exec" : function($form,infoObj){app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
+			"exec" : function($form,infoObj){_app.ext.store_filter.u.renderSlider($form, infoObj, {MIN:0,MAX:500});}
 		}
 
 	},
@@ -139,64 +139,64 @@ var store_filter = function() {
 		init : {
 			onSuccess : function()	{
 			
-				app.ext.store_filter.u.bindOnclick();
+				_app.ext.store_filter.u.bindOnclick();
 			
-				app.ext.store_filter.u.runCarousels();
+				_app.ext.store_filter.u.runCarousels();
 				
-				//app.rq.push(['script',0,'http://path.to.script.js/', function(){
+				//_app.rq.push(['script',0,'http://path.to.script.js/', function(){
 					//This function is called when the script has finished loading
 					//for provide support- add stuff to the DOM here
 				//	}]);
 				
-				app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(infoObj) {
-					var $context = $(app.u.jqSelector('#'+infoObj.parentID));
+				_app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(infoObj) {
+					var $context = $(_app.u.jqSelector('#'+infoObj.parentID));
 					$('.floatingBar',$context).show(); //shows floating bar upon return to hompage if it's been closed.
-					//app.ext.store_filter.u.runPhoneChatLive();
+					//_app.ext.store_filter.u.runPhoneChatLive();
 				}]);
 				
-				app.rq.push(['templateFunction','categoryTemplate','onCompletes',function(infoObj) {
-					var $context = $(app.u.jqSelector('#'+infoObj.parentID));
-					app.ext.store_filter.u.backToTop($context);
+				_app.rq.push(['templateFunction','categoryTemplate','onCompletes',function(infoObj) {
+					var $context = $(_app.u.jqSelector('#'+infoObj.parentID));
+					_app.ext.store_filter.u.backToTop($context);
 				}]);
 				
-				app.rq.push(['templateFunction','searchTemplate','onCompletes',function(infoObj) {
-					var $context = $(app.u.jqSelector('#'+infoObj.parentID));
-					app.ext.store_filter.u.backToTop($context);
+				_app.rq.push(['templateFunction','searchTemplate','onCompletes',function(infoObj) {
+					var $context = $(_app.u.jqSelector('#'+infoObj.parentID));
+					_app.ext.store_filter.u.backToTop($context);
 				}]);
 				
-				app.rq.push(['templateFunction','productTemplate','onCompletes',function(infoObj) {
-					var $context = $(app.u.jqSelector('#'+infoObj.parentID)); //grabs the currently loaded product page (to ignore previously loaded / invisible ones)
-					app.ext.store_filter.u.runProductCarousel($context);
-					app.ext.store_filter.u.runProductVerticalCarousel($context);
-					app.ext.store_filter.u.runProductVerticalCarousel2($context);
-					app.ext.store_filter.u.runProductRecentCarousel($context);
-					//app.u.dump('Product fredsel ran');
-					app.ext.store_filter.u.handleToolTip();
-					app.ext.store_filter.u.showRecentlyViewedItems($context,false);
-					app.ext.store_filter.u.backToTop($context);
+				_app.rq.push(['templateFunction','productTemplate','onCompletes',function(infoObj) {
+					var $context = $(_app.u.jqSelector('#'+infoObj.parentID)); //grabs the currently loaded product page (to ignore previously loaded / invisible ones)
+					_app.ext.store_filter.u.runProductCarousel($context);
+					_app.ext.store_filter.u.runProductVerticalCarousel($context);
+					_app.ext.store_filter.u.runProductVerticalCarousel2($context);
+					_app.ext.store_filter.u.runProductRecentCarousel($context);
+					//_app.u.dump('Product fredsel ran');
+					_app.ext.store_filter.u.handleToolTip();
+					_app.ext.store_filter.u.showRecentlyViewedItems($context,false);
+					_app.ext.store_filter.u.backToTop($context);
 				}]);
 				
-				app.rq.push(['templateFunction','productTemplate','onDeparts',function(infoObj) {
-					var $context = $(app.u.jqSelector('#'+infoObj.parentID));
+				_app.rq.push(['templateFunction','productTemplate','onDeparts',function(infoObj) {
+					var $context = $(_app.u.jqSelector('#'+infoObj.parentID));
 					var pid = infoObj.pid;
-					app.ext.store_filter.u.addRecentlyViewedItems($context, pid);
+					_app.ext.store_filter.u.addRecentlyViewedItems($context, pid);
 				}]);
 				
-				app.rq.push(['templateFunction','cartTemplate','onCompletes',function(infoObj) {
-					var $context = $(app.u.jqSelector('#'+infoObj.parentID));
-					app.ext.store_filter.u.handleCartToolTip($context);
-					app.ext.store_filter.u.execCouponAdd($('.cartCouponButton',$context));
+				_app.rq.push(['templateFunction','cartTemplate','onCompletes',function(infoObj) {
+					var $context = $(_app.u.jqSelector('#'+infoObj.parentID));
+					_app.ext.store_filter.u.handleCartToolTip($context);
+					_app.ext.store_filter.u.execCouponAdd($('.cartCouponButton',$context));
 				}]);
 				
-				app.rq.push(['templateFunction','checkoutTemplate','onCompletes',function(infoObj) {
-					var $context = $(app.u.jqSelector('#'+infoObj.parentID));
-					app.ext.store_filter.u.backToTop($context);
+				_app.rq.push(['templateFunction','checkoutTemplate','onCompletes',function(infoObj) {
+					var $context = $(_app.u.jqSelector('#'+infoObj.parentID));
+					_app.ext.store_filter.u.backToTop($context);
 				}]);
 				
-				app.rq.push(['templateFunction','companyTemplate','onCompletes',function(infoObj) {
-					var $context = $(app.u.jqSelector('#'+infoObj.parentID));
-					app.ext.store_filter.u.showRecentlyViewedItems($context,true);
-					var $sideline = $('.sideline', $(app.u.jqSelector('#',infoObj.parentID)));
+				_app.rq.push(['templateFunction','companyTemplate','onCompletes',function(infoObj) {
+					var $context = $(_app.u.jqSelector('#'+infoObj.parentID));
+					_app.ext.store_filter.u.showRecentlyViewedItems($context,true);
+					var $sideline = $('.sideline', $(_app.u.jqSelector('#',infoObj.parentID)));
 					if (infoObj.show == 'recent') {
 						$('.mainColumn',$context).css({'width':'960px','margin':'0 auto'});
 						$sideline.hide();
@@ -205,7 +205,7 @@ var store_filter = function() {
 						$sideline.show();
 						$('.mainColumn',$context).css({'width':'75%','margin':'0'});
 					}
-					app.ext.store_filter.u.backToTop($context);
+					_app.ext.store_filter.u.backToTop($context);
 				}]);
 								
 				//creates tool tip for variations and product sibling thumbnails
@@ -222,9 +222,9 @@ var store_filter = function() {
 						if (element.is("img[data-big-img]")) {
 							var pid = $(this).closest('[data-pid]').attr('data-pid');
 							var product = app.data['appProductGet|'+pid];
-						//	app.u.dump('>>>>> '); app.u.dump(pid);
+						//	_app.u.dump('>>>>> '); _app.u.dump(pid);
 							
-							//app.u.dump('>>>>> '); app.u.dump(product['@variations']['1']['options']['0'].prompt);
+							//_app.u.dump('>>>>> '); _app.u.dump(product['@variations']['1']['options']['0'].prompt);
 							return '<div class="toolTipWrapper"><span class="optionsZoom">'+$(this).attr('data-tooltip-title')+'</span><img src="'+$(this).attr('data-big-img')+'" width="400" height="400" /></div>';
 							}
 						//thumbnail zoom for option grid image thumbnails
@@ -296,7 +296,7 @@ var store_filter = function() {
 			
 			startExtension : {
 				onSuccess : function() {
-					if(app.ext.myRIA && app.ext.myRIA.template && app.ext.powerReviews_reviews && handlePogs){
+					if(_app.ext.quickstart && _app.ext.quickstart.template && _app.ext.powerReviews_reviews && handlePogs){
 		/*				app.u.dump('*** Power Reviews is Loaded');
 						app.rq.push(['templateFunction','homepageTemplate','onDeparts',function(infoObj) {
 							var $context = $(app.u.jqSelector('#'+infoObj.parentID));
@@ -304,26 +304,26 @@ var store_filter = function() {
 						}]);
 		*/				
 			//			app.u.dump("beachmart Extension Started");
-						$.extend(handlePogs.prototype,app.ext.store_filter.variations);
+						$.extend(handlePogs.prototype,_app.ext.store_filter.variations);
 						//app.u.dump('*** Extending Pogs');
 		
 					} else	{
-						setTimeout(function(){app.ext.beachmart.callbacks.startExtension.onSuccess()},250);
+						setTimeout(function(){_app.ext.store_filter.callbacks.startExtension.onSuccess()},250);
 					}
 				},
 				onError : function (){
-					app.u.dump('BEGIN app.ext.store_filter.callbacks.startExtension.onError');
+					_app.u.dump('BEGIN app.ext.store_filter.callbacks.startExtension.onError');
 				}
 			},
 			
 			
 			renderRedirectProduct : {
 				onSuccess:function(responseData){	
-					app.u.dump(' -> renderRedirectProduct');
+					_app.u.dump(' -> renderRedirectProduct');
 					responseData.$container.anycontent({"templateID":responseData.loadsTemplate,"datapointer":responseData.datapointer}); 
 				},
 				onError:function(responseData){	
-					app.u.dump('Error in extension: store_filter renderRedirectProduct');
+					_app.u.dump('Error in extension: store_filter renderRedirectProduct');
 				}
 			},
 		}, //callbacks
@@ -1469,7 +1469,7 @@ return filters;
 					}]);						*/
 						
 					//HOMEPAGE FEATURED CAROUSEL	
-					app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(P) {
+					_app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(P) {
 						var $target = $('#homeProdSearchNewArrivals2');
 						if($target.data('isCarousel'))	{} //only make it a carousel once.
 						else	{
@@ -1495,7 +1495,7 @@ return filters;
 					}]);
 					
 					//HOMEPAGE FEATURED PRODUCTS CAROUSEL
-					app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(P) {
+					_app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(P) {
 						var $target = $('#homeProdSearchFeatured');
 						if($target.data('isCarousel'))	{} //only make it a carousel once.
 						else	{
@@ -1526,7 +1526,7 @@ return filters;
 					}]);
 
 					//HOMEPAGE BESTSELLERS PRODCUTS CAROUSEL
-					app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(P) {
+					_app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(P) {
 						var $target = $('#homeProdSearchBestSellers');
 						if($target.data('isCarousel'))	{} //only make it a carousel once.
 						else	{
@@ -1701,7 +1701,7 @@ return filters;
 					},//END PRODCUT RECENT CAROUSEL
 						
 				//PREVIOUSLY VIEWED ITEMS CAROUSEL
-/*					app.rq.push(['templateFunction','categoryTemplateBrands','onCompletes',function(P) {
+/*					_app.rq.push(['templateFunction','categoryTemplateBrands','onCompletes',function(P) {
 						var $target = $('.brandCatsPreviousViewed');
 //						if($target.data('isCarousel'))	{} //only make it a carousel once.
 
@@ -1771,8 +1771,8 @@ return filters;
 				bindOnclick : function() {
 					$('body').off('click', 'a[data-onclick]').on('click', 'a[data-onclick]', function(event){
 						 var $this = $(this);
-						 var P = app.ext.myRIA.u.parseAnchor($this.data('onclick'));
-						 return app.ext.myRIA.a.showContent('',P);
+						 var P = _app.ext.quickstart.u.parseAnchor($this.data('onclick'));
+						 return _app.ext.quickstart.a.showContent('',P);
 					});
 				},
 				

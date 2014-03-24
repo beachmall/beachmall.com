@@ -22,7 +22,7 @@ The functions here are designed to work with 'reasonable' size lists of categori
 */
 
 
-var beachmart_dropdown = function() {
+var beachmart_dropdown = function(_app) {
 	var r = {
 
 	vars : {
@@ -39,7 +39,7 @@ var beachmart_dropdown = function() {
 		init : {
 			onSuccess : function()	{
 				
-//				app.u.dump('BEGIN app.ext.store_navcats.init.onSuccess ');
+//				_app.u.dump('BEGIN _app.ext.store_navcats.init.onSuccess ');
 				var r = true; //return false if extension won't load for some reason (account config, dependencies, etc).
 				return r;
 				},
@@ -50,17 +50,17 @@ var beachmart_dropdown = function() {
 			
 			startExtension : {
 				onSuccess : function() {
-					if(app.ext.powerReviews_reviews && app.ext.store_filter){
-		//				app.u.dump("beachmart dropdown Extension Started");
-						app.ext.beachmart_dropdown.u.loadHoverProducts(); //load function
-						//app.ext.beachmart_dropdown.u.renderTagsElastic();
+					if(_app.ext.powerReviews_reviews && _app.ext.store_filter){
+		//				_app.u.dump("beachmart dropdown Extension Started");
+						_app.ext.beachmart_dropdown.u.loadHoverProducts(); //load function
+						//_app.ext.beachmart_dropdown.u.renderTagsElastic();
 						
 					} else	{
-						setTimeout(function(){app.ext.beachmart_dropdown.callbacks.startExtension.onSuccess()},250);
+						setTimeout(function(){_app.ext.beachmart_dropdown.callbacks.startExtension.onSuccess()},250);
 					}
 				},
 				onError : function (){
-					app.u.dump('BEGIN app.ext.beachmart_dropdowns.callbacks.startExtension.onError');
+					_app.u.dump('BEGIN _app.ext.beachmart_dropdowns.callbacks.startExtension.onError');
 				}
 			},
 			
@@ -69,7 +69,7 @@ var beachmart_dropdown = function() {
 				// (dataresponse is returned from the model when the API request returns, 
 				// generaly just a repeat of _tag object you passed, but contains error response durring an error)
 				onSuccess:function(responseData){		
-					// call anycontent (from anyplugins) on class to put content in ** '.hoverproduct-'+app.data[responseData.datapointer].pid) **, 
+					// call anycontent (from anyplugins) on class to put content in ** '.hoverproduct-'+_app.data[responseData.datapointer].pid) **, 
 					//using the template you want to render with ** "hoverProductTemplate" **, using a pointr to the data that was returned ** "datapointer":responseData.datapointer **. 
 					$('.hoverproduct-'+app.data[responseData.datapointer].pid).anycontent({"templateID":"hoverProductTemplate","datapointer":responseData.datapointer}); 
 					},
@@ -186,14 +186,14 @@ var beachmart_dropdown = function() {
 			
 			
 			showHoverProduct : function ($tag) {
-				//app.u.dump('*** '+$tag.attr("data-hoverproduct"));
+				//_app.u.dump('*** '+$tag.attr("data-hoverproduct"));
 				var pid = ($tag.attr("data-hoverproduct"));
 				$('.hoverproduct-'+pid).removeClass('displayNone').animate(1000);
 				$('.hoverProduct-'+pid).onMouseOver().show();
 			},
 			
 			hideHoverProduct : function ($tag) {
-				//app.u.dump('*** '+$tag.attr("data-hoverproduct"));
+				//_app.u.dump('*** '+$tag.attr("data-hoverproduct"));
 				var pid = new String($tag.attr("data-hoverproduct"));
 				$('.hoverproduct-'+pid).addClass('displayNone');
 				$('.hoverProduct-'+pid).onMouseOut().addClass('displayNone');
@@ -248,18 +248,18 @@ var beachmart_dropdown = function() {
 						"callback":"renderHoverProduct",		// call back function (in callbacks above)
 						"extension":"beachmart_dropdown"		// extension that holds call back (this extension you're in)
 						};
-					app.calls.appProductGet.init(obj, _tag);	// call appProductGet.init on the product id with the callback and callback location
+					_app.calls.appProductGet.init(obj, _tag);	// call appProductGet.init on the product id with the callback and callback location
 					}
 				
 				//execute calls
-				app.model.dispatchThis('mutable');				// execute: mutable = as soon as convinient, immutable = now or else, passive = whenevs 
+				_app.model.dispatchThis('mutable');				// execute: mutable = as soon as convinient, immutable = now or else, passive = whenevs 
 				},
 			
 			getTagsElastic : function () {
 				var prods = [];
 				$('.searchResultsProduct').each(function() {
 					if($(this).data() && $(this).data("pid")) {
-						//app.u.dump('--> searchResultsProduct');  app.u.dump($(this).data("pid")); 
+						//_app.u.dump('--> searchResultsProduct');  _app.u.dump($(this).data("pid")); 
 						prods.push($(this).data("pid")); //put product info into array for processing later
 					}
 				});
@@ -273,10 +273,10 @@ var beachmart_dropdown = function() {
 						"callback":"renderTagsElastic",
 						"extension":"beachmart_dropdown"
 					};
-					app.calls.appProductGet.init(obj, _tag);
+					_app.calls.appProductGet.init(obj, _tag);
 				}
 				
-				app.model.dispatchThis('mutable');
+				_app.model.dispatchThis('mutable');
 				
 			}
 			

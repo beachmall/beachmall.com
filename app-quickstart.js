@@ -1509,7 +1509,7 @@ $target.tlc({
 
 //				app.u.dump(" -> infoObj follows:");
 //				app.u.dump(infoObj);
-/*beachmart*/		//check for cart to ensure cart is loaded as modal on return form pay pal
+/*beachmart		//check for cart to ensure cart is loaded as modal on return form pay pal
 				if(infoObj.pageType == 'cart') {
 					infoObj.pageType = 'homepage';
 					app.ext.myRIA.a.showContent('',infoObj);
@@ -1518,7 +1518,7 @@ $target.tlc({
 				else {
 					app.ext.myRIA.a.showContent('',infoObj);
 				}
-/*beachmart*/				
+beachmart*/				
 
 				},
 
@@ -1591,7 +1591,7 @@ $target.tlc({
 // or the content is likely to be hidden. execute scroll to top unless transition implicitly turned off (will happen with modals).
 //				if(infoObj.pageType == 'cart' && infoObj.show != 'inline'){r = false; dump('transition suppressed: showing modal cart.');}
 //** BEACHMART -> he reloads the same page w/ different templates
-				if(infoObj.pageType == 'category' && ($old.data('templateid') != infoObj.templateID))	{r = true; app.u.dump("transition not fail due to different templates");}
+				if(infoObj.pageType == 'category' && ($old.data('templateid') != infoObj.templateID))	{r = true; dump("transition not fail due to different templates");}
 				else if(infoObj.pageType == 'category' && $old.data('templateid') == 'categoryTemplate' && $old.data('catsafeid') == infoObj.navcat){r = false; dump("transition suppressed: reloading same category.");}
 				else if(infoObj.pageType == 'category' && $old.data('templateid') == 'homepageTemplate' && $old.data('catsafeid') == infoObj.navcat){r = false; dump("transition suppressed: reloading homepage.");}
 				else if(infoObj.pageType == 'product' && $old.data('templateid') == 'productTemplate' && $old.data('pid') == infoObj.pid){r = false; dump("transition suppressed: reloading same product.");}
@@ -2431,10 +2431,10 @@ either templateID needs to be set OR showloading must be true. TemplateID will t
 								_app.ext.cco.calls.appCheckoutDestinations.init({},'mutable'); //needed for country list in address editor.
 								_app.calls.buyerAddressList.init({'callback':'showAddresses','extension':'quickstart'},'mutable');
 								break;
-/*beachmall*/						case 'createaccount':
-/*beachmall*/							app.ext.cco.calls.appCheckoutDestinations.init({},'mutable'); //needed for country list in address entry.
-/*beachmall*/							$('#mainContentArea_customer').removeClass('loadingBG');
-/*beachmall*/							break;
+/*beachmall*/				case 'createaccount':
+/*beachmall*/					_app.ext.cco.calls.appCheckoutDestinations.init({},'mutable'); //needed for country list in address entry.
+/*beachmall*/					$('#mainContentArea_customer').removeClass('loadingBG');
+/*beachmall*/					break;
 							
 							case 'logout':
 								dump(" --------> got to here");
@@ -2844,7 +2844,7 @@ else	{
 					//cart not in memory yet. use defaults.
 					}
 //<-- BEACHMART** updates the city, postal and state in his header and on the detail pages
-				if(app.data[tagObj.datapointer] && app.data[tagObj.datapointer].ship)	{
+				if(_app.data[tagObj.datapointer] && _app.data[tagObj.datapointer].ship)	{
 					$('.shipCity').text(_app.data[tagObj.datapointer].ship.city || "");
 					$('.shipRegion').text(_app.data[tagObj.datapointer].ship.region || "");
 					$('.shipPostal').text(_app.data[tagObj.datapointer].ship.postal || "");

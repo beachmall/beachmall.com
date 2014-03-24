@@ -20,7 +20,7 @@
 
 //    !!! ->   TODO: replace 'username' in the line below with the merchants username.     <- !!!
 
-var beachmart_dropdown_image = function() {
+var beachmart_dropdown_image = function(_app) {
 	var theseTemplates = new Array('');
 	var r = {
 
@@ -36,9 +36,9 @@ var beachmart_dropdown_image = function() {
 				var r = false; //return false if extension won't load for some reason (account config, dependencies, etc).
 //				app.u.dump("fetching JSON");
 				$.getJSON("_dropdownimages.json?_v="+(new Date()).getTime(), function(json) {
-					app.ext.beachmart_dropdown_image.vars.dropdownImages = json.dropdownImages
-					app.ext.beachmart_dropdown_image.u.showDropdownImages();
-				}).fail(function(){app.u.throwMessage("DROPDOWN IMAGES FAILED TO LOAD - there is a bug in _dropdown-image.json")});
+					_app.ext.beachmart_dropdown_image.vars.dropdownImages = json.dropdownImages
+					_app.ext.beachmart_dropdown_image.u.showDropdownImages();
+				}).fail(function(){_app.u.throwMessage("DROPDOWN IMAGES FAILED TO LOAD - there is a bug in _dropdown-image.json")});
 				//if there is any functionality required for this extension to load, put it here. such as a check for async google, the FB object, etc. return false if dependencies are not present. don't check for other extensions.
 				r = true;
 
@@ -48,7 +48,7 @@ var beachmart_dropdown_image = function() {
 			onError : function()	{
 //errors will get reported for this callback as part of the extensions loading.  This is here for extra error handling purposes.
 //you may or may not need it.
-				app.u.dump('BEGIN admin_orders.callbacks.init.onError');
+				_app.u.dump('BEGIN admin_orders.callbacks.init.onError');
 			}
 		}
 	}, //callbacks
@@ -77,17 +77,17 @@ var beachmart_dropdown_image = function() {
 //any functions that are recycled should be here.
 		u : {
 			showDropdownImages : function() {
-//				app.u.dump('showing Dropdown Images');
+//				_app.u.dump('showing Dropdown Images');
 				$(".stockImageContainer[data-navcat]").each(function(){
 					var navcat = $(this).attr('data-navcat');
-//					app.u.dump(navcat);
-					$(this).removeClass('loadingBG').append(app.ext.beachmart_dropdown_image.u.makeDropdownImage(app.ext.beachmart_dropdown_image.vars.dropdownImages[navcat],210,210,"ffffff"));
+//					_app.u.dump(navcat);
+					$(this).removeClass('loadingBG').append(_app.ext.beachmart_dropdown_image.u.makeDropdownImage(_app.ext.beachmart_dropdown_image.vars.dropdownImages[navcat],210,210,"ffffff"));
 				})
 			},
 			
 			makeDropdownImage : function(JSON, w, h, b) {
-//				app.u.dump(JSON);
-				var $img = $(app.u.makeImage({
+//				_app.u.dump(JSON);
+				var $img = $(_app.u.makeImage({
 					tag : true,
 					w   	: w,
 					h		: h,
