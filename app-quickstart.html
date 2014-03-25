@@ -1360,25 +1360,197 @@ COMMONLY EDITED TEMPLATES
 <!--
 the homepageTemplate template is loaded into mainContentArea by default when the application loads
 -->
-<div id="homepageTemplate" class="homeTemplate">
-	
+<div id='homepageTemplate' class='homeTemplate'>
+
+	<div class='floatingBar'>
+    	<div class='backToTop pointer' onClick="myApp.ext.store_filter.u.scrollToTop()">&#187 BACK TO TOP</div>
+        <div class='recentlyViewed pointer' onClick="return showContent('company',{'show':'recent'});"><span>Recently Viewed Item(s)&nbsp </span><span class='numRecentlyViewed displayNone'>0</span><!--<span class='fontWhite recentCarat'> &#187 </span><span class='fontYellow recentViewItems'><a class='bindByAnchor' href='#!company?show=recent'> VIEW ITEM(S)</a></span>--></div>
+        <div class='cartIcon sprite pointer' onClick="return showContent('cart',{});"><span class='cartItemCount'>0</span><p><span class='fontWhite'>&#187 </span><span class='fontYellow'>SHOPPING CART</span></p></div>
+        <button class='checkoutButton' onClick="showContent('checkout',{});">CHECK OUT</button>
+        <button class='floatingBarClose sprite' onclick="$('.floatingBar').hide(); return false;"></button>
+    </div>
+
+	<div class='overhang'>
+        <button class='overhangClose sprite' onClick="$('.overhang').hide(); return false;"></button>
+        <span>SUMMER IS HERE!</span>
+        <p>Insert small paragraph or snipper regarding a summer special 
+            or other featured deals or products for this overhanging ad.
+        </p>
+        <button class='overhangSpecialOfferButton'>VIEW SPECIAL OFFER</button>
+    </div>	
+
+	<div class='featuredCatWrapper'>
+		<div class='featuredContainer'>
+			<div class='bannerContainer floatLeft'>
+				<div class='main loadingBG'></div>
+<!--				<div class='featuredBannerText'>NEW<BR>ARRIVALS</div>
+				<button class='largeButton featuredBannerButton bindByAnchor' href="#!search?TAG=IS_NEWARRIVAL">SHOP NOW</button>
+-->
+				</div>
+			
+<!--		<div class='featuredCarousel floatLeft'>
+				<div class='featuredBannerText'>NEW<BR>ARRIVALS</div>
+				<button class='largeButton featuredBannerButton bindByAnchor' href="#!search?TAG=IS_NEWARRIVAL">SHOP NOW</button>
+				<div>
+					<div id='featuredCarouselPagination' class='featuredCarouselPagination'></div>
+						<!-- a sample of how to format an elastic native search in a data-bind -->
+<!--					<ul id='homeProdSearchNewArrivals' data-bind='var: elastic-native({"size":"20","mode":"elastic-native","filter":{"term":{"tags":"IS_NEWARRIVAL"}}}); format: productSearch; bgcolor: TTTTTT; extension: quickstart; loadsTemplate: productListTemplateResultsCustomTall;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productListTall'></ul>
+				</div>
+			</div>
+-->
+			<div class='newArrivalsCarouselRight floatLeft'>
+				<a class="carouselButton new2CarouselPrev carouselButtonPrev" href="#">prev</a>
+				<a class="carouselButton new2CarouselNext carouselButtonNext" href="#">next</a>
+<!-- MARK THIS NEEDS ORIG ELASTIC SEARCH. TODO: HOW TO PASS SEARCH OBJECT WHEN TOO MANY QUOTES USED. -->
+				<ul data-tlc="quickstart#searchbytag --tag='IS_BESTSELLER' --size='8' --templateid='productListTemplateResultsCustom';" class='listStyleNone fluidList clearfix noPadOrMargin productList'></ul>		
+				<!-- <ul data-tlc="beachmall_search#searchbytag --searchvar='' --tag='IS_BESTSELLER' --title='Best Sellers' --size='8' --templateid='productListTemplateResultsNoPreview';" class='listStyleNone fluidList clearfix noPadOrMargin productList'></ul>		
+				<!-- <ul id='homeProdSearchNewArrivals2' data-bind='var: elastic-native({"size":"25","mode":"elastic-native","filter":{"and":{"filters":[{"term":{"tags":"IS_NEWARRIVAL"}},{"not":{"term":{"tags":"IS_DISCONTINUED"}}}]}}}); format: productSearch; extension: quickstart; loadsTemplate: productListTemplateResultsCustom;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList'></ul>
+				 non filtered search: <ul id='homeProdSearchNewArrivals2' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"term":{"tags":"IS_NEWARRIVAL"}}}); format: productSearch; extension: quickstart; loadsTemplate: productListTemplateResultsCustom;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList'></ul>-->
+			</div>
+		</div>
+    
+		<div class='homepageCategories'>
+			<div class='additionalHompageCatsContainer'>
+				<div class='additionalHompageCats floatLeft pointer' onClick="return showContent('category',{'navcat':'.beach-accessories.beach-cart'});">
+					<div class='addCatArrow sprite floatRight'></div>
+					<span>SHOP</span>
+					<span>BEACH CARTS</span>
+				</div>
+				<div class='additionalHompageCats floatLeft pointer' onClick="return showContent('category',{'navcat':'.beach-umbrellas-shelter.beach-tent-shelters'});">
+					<div class='addCatArrow sprite floatRight'></div>
+					<span>SHOP</span>
+					<span>BEACH TENTS</span>
+				</div>
+				<div class='additionalHompageCats floatLeft pointer' onClick="return showContent('category',{'navcat':'.beach-accessories.beach-bags-totes'});">
+					<div class='addCatArrow sprite floatRight'></div>
+					<span>SHOP</span>
+					<span>BEACH BAGS</span>
+				</div>
+				<div class='additionalHompageCats floatLeft pointer' onClick="return showContent('category',{'navcat':'.beach-chairs.beach-gear'});">
+					<div class='addCatArrow sprite floatRight'></div>
+					<span>SHOP</span>
+					<span>BY BRAND</span>
+				</div>
+			</div>
+<div class='tempCatImages'>
+	<img class='floatLeft' src='images/shop_beach-accessories_160x105.jpg' />
+	<img class='floatLeft' src='images/shop-beach-chairs_160x105.jpg' />
+	<img class='floatLeft' src='images/shop-recreation_160x105.jpg' />
+	<img class='floatLeft' src='images/shop-umbrellas_160x105.jpg' />
+	<img class='floatLeft' src='images/shop_beachwear_160x105.jpg' />
+</div>
+			<ul data-bind="var: category(@subcategoryDetail); format: categoryList; bgcolor: TTTTTT; extension: store_navcats; loadsTemplate: categoryListHomeTemplate; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin'></ul>
+		</div>
+	</div>
+<!--    
+    <div class='CarouselContainer featuredProductsCarouselContainer'>
+    	<div class='carouselTitles yellowBkgrd'>
+        	<div class='carouselTitleTextContainer floatLeft'>FEATURED PRODUCTS</div>
+            <div class='carouselLinkContainer floatRight featWidth pointer' onClick="return showContent('search',{'elasticsearch':{'filter':{'or':[{'term':{'tags':'IS_USER4'}},{'term':{'tags':'IS_COLORFUL'}},{'term':{'tags':'IS_USER5'}},{'term':{'user:prod_promo':'IS_USER4'}}]}}});">View All Featured Products</div>
+            <div class='carouselArrowContainer floatRight sprite'></div>
+        </div>
+        <div class='Carousel'>
+        	<a class="carouselButtonDkBlue featCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
+			<a class="carouselButtonDkBlue featCarouselNext carouselButtonDkBlueNext" href="#">next</a>
+        	
+        	<!--non filtered search: <ul id='homeProdSearchFeatured' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"or":{"filters":[{"term":{"tags":"IS_USER4"}},{"term":{"tags":"IS_COLORFUL"}},{"term":{"tags":"IS_USER5"}},{"term":{"user:prod_promo":"IS_USER4"}}]}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>-->
+<!--        	<ul id='homeProdSearchFeatured' data-bind='var: elastic-native({"size":"28","mode":"elastic-native","filter":{"and":{"filters":[{"or":{"filters":[{"term":{"tags":"IS_USER4"}},{"term":{"tags":"IS_COLORFUL"}},{"term":{"tags":"IS_USER5"}},{"term":{"user:prod_promo":"IS_USER4"}}]}},{"not":{"term":{"tags":"IS_DISCONTINUED"}}}]}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>
+        </div>
+        <div id='featCarPagenation' class='standardCarouselPagenation'></div>
+    </div>
+    
+    <div class='CarouselContainer bestSellersCarouselContainer'>
+    	<div class='carouselTitles'>
+        	<div class='carouselTitleTextContainer floatLeft'>BEST SELLERS</div>
+            <a class="bindByAnchor" href="#!search?TAG=IS_BESTSELLER">
+                <div class='carouselLinkContainer floatRight'>View Best Sellers</div>
+                <div class='carouselArrowContainer floatRight sprite'></div>
+            </a>
+        </div>
+        <div class='Carousel'>
+        	<a class="carouselButtonDkBlue bestCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
+			<a class="carouselButtonDkBlue bestCarouselNext carouselButtonDkBlueNext" href="#">next</a>
+        	
+        <!--non filtered search: <ul id='homeProdSearchBestSellers' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"term":{"tags":"IS_BESTSELLER"}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>-->
+<!--        	<ul id='homeProdSearchBestSellers' data-bind='var: elastic-native({"size":"28","mode":"elastic-native","filter":{"and":{"filters":[{"term":{"tags":"IS_BESTSELLER"}},{"not":{"term":{"tags":"IS_DISCONTINUED"}}}]}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>
+        </div>																																																	
+        <div id='bestCarPagenation' class='standardCarouselPagenation'></div>
+    </div>
+-->	
+    <div class='categoryDescriptionContainer'>
+    	<div class='catDescStd catDescStd1 floatLeft'>
+        	<h1>Beach Gear</h1>
+            <span>
+            	We offer every kind of beach gear you need for fun in the sun at the beach this summer. 
+                Browse our beach products by category or by brand, if you are looking for a specific item or 
+                brand name. We offer products in categories such as 
+				<!-- <a class='pointer' title="beach chair" data-onclick='#!category?navcat=.beach-chair'>beach chair</a>, -->
+				<a href='#!category?navcat=.beach-chair' class='pointer' title="beach chair" data-onclick='#!category?navcat=.beach-chair'>beach chair</a>, 
+				<a href="#!category?navcat=.beach-accessories" class='pointer' title="beach accessories" data-onclick='#!category?navcat=.beach-accessories'>beach accessories</a>, 
+				outdoor umbrellas, toys and recreation, 
+				<a href="#!category?navcat=.beach-umbrellas-shelter.beach-umbrella" class='pointer' title="beach umbrellas" data-onclick='#!category?navcat=.beach-umbrellas-shelter.beach-umbrella'>beach umbrellas</a> and 
+				<a href="#!category?navcat=.beach-umbrellas-shelter.beach-tent-shelters" class='pointer' title="beach shelters" data-onclick='#!category?navcat=.beach-umbrellas-shelter.beach-tent-shelters'>beach shelters</a>. 
+				Our inventory is so extensive, you are sure to find the perfect items for your summer of fun and 
+				relaxation with your family in the shade. Many items are multipurpose designed like the 
+				<a href="#!category?navcat=.beach-umbrellas-shelter.beach-cabana" class='pointer' title="beach cabana" data-onclick='#!category?navcat=.beach-umbrellas-shelter.beach-cabana'>beach cabana</a>
+				or beach tent can be used for camping and beach chaise for the pool. 
+            </span>
+        </div>
+        <div class='catDescStd catDescStd2 floatLeft'>
+        	<h1>Beach Umbrellas</h1>
+            <span>
+            	What trip to the beach would be the same without your favorite beach accessories? We have a 
+                large selection of picnic baskets, beach bags and totes to take along your favorite foods. 
+                Enjoy fun in the water with a new 
+				<a href="#!category?navcat=.beach-sports.skimboards" class='pointer' title="skimboard" data-onclick='#!category?navcat=.beach-sports.skimboards'>skimboard</a> or 
+				<a href="#!category?navcat=.beach-sports.bodyboards" class='pointer' title="bodyboard" data-onclick='#!category?navcat=.beach-sports.bodyboards'>bodyboard</a>. 
+				Carry all that gear to the beach in a new 
+				<a href="#!category?navcat=.beach-accessories.beach-cart" class='pointer' title="beach cart" data-onclick='#!category?navcat=.beach-accessories.beach-cart'>beach cart</a>. 
+				We have several styles, including the popular Wonder wheeler beach cart and Wheeleez Beach Carts 
+				at great prices. Beach Umbrella with high UPF is recommended. 
+            </span>
+        </div>
+         <div class='catDescStd catDescStd3 floatLeft'>
+        	<h1>Beach Carts</h1>
+            <span>
+            	You will like our products and our prices. We offer the lowest prices of any online retailer. 
+                If you find the same product within 14 days at a lower price in stock with another internet 
+                retailer, we will match the price. We accept credit card payments, Google Checkout and PayPal 
+                for your order. We use Secure Sockets Layer (SSL) software to encrypt your personal and credit 
+                card information, so you can shop in confidence with Beach Mall. 
+            </span>
+         </div>
+         <div class='catDescStd catDescStd4 floatLeft'>
+        	<h1>Beach Chairs</h1>
+            <span>
+            	We carry all the popular beach chairs brands, including the Rio Beach Chairs, 
+				<a href="#!category?navcat=.beach-chairs.beach-gear.lafuma-chair-recliner" class='pointer' title="Lafuma Chairs" data-onclick='#!category?navcat=.beach-chairs.beach-gear.lafuma-chair-recliner'>Lafuma Chairs</a>, 
+                Wearever and Galtech. Whether you are looking for 
+				<a href="#!category?navcat=.beach-chair.backpack-chair" class='pointer' title="beach chairs" data-onclick='#!category?navcat=.beach-chair.backpack-chair'>backpack chair</a> 
+				<a href="#!category?navcat=.beach-chair.sand-chairs" class='pointer' title="backpack chair" data-onclick='#!category?navcat=.beach-chair.sand-chairs'>beach chairs</a>, 
+				beach lounge chairs, canopy chair or beach hammock to relax and nap in the sun, you will find them here.
+            </span>
+         </div>
+         <div class='catDescStd catDescNonStd floatLeft'>
+        	<h1>Beach Products & Accessories Supplies</h1>
+            <span>
+            	We have the largest selection of beach products in the largest variety of categories on the 
+                web for fun in the sun at the beach this summer by offering the most compelling combination 
+                of selection, value, service and convenience. 
+            </span>
+        </div>        
+    </div>
+
+<!-- ORIG HOMEPAGE TLC'S
 	<ul data-tlc="bind $var '.@subcategoryDetail'; store_navcats#categorylist  --detail='max' --templateid='categoryListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin categoryList"></ul>
-
 	<ul data-tlc="bind $var '.@products'; store_prodlist#productlist  --hidesummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin productList"></ul>
-
 	<p data-tlc="bind $var '.%page.description'; if (is $var --notblank;) {{ render --wiki='quickstart'; apply --append;}};"></p>
-
 	<ul data-tlc="quickstart#searchbytag --tag='IS_BESTSELLER' --title='Best Sellers' --size='8' --templateid='productListTemplateResultsNoPreview';" class='listStyleNone fluidList clearfix noPadOrMargin productList'></ul>
-
 	<!--
 	<ul data-tlc="bind $var '.$listName.@products'; store_prodlist#productlist  --hidesummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin productList"></ul>
 	-->
-</div>
 
-
-
-
-
+</div> <!-- END HOMEPAGE TEMPLATE -->
 
 
 
@@ -1562,6 +1734,22 @@ SANITY -> if you change the height and width of this image, change the .minimalM
 	</a>
 	<a class="hideInMinimalMode pointer moreDetails" data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';">more details</a>
 </li>
+
+<!-- used on homepage for small carousel to the right of the main banner -->
+<li id='productListTemplateResultsCustom' class='loadingBG searchResultsProduct ' >
+	<div onClick="return showContent('product', {'pid' : $(this).parent().attr('data-pid')});" class='pointer'>
+		<div class='prodThumbContainer myProdThumb'>
+			<img data-useparentdata='1' data-tlc="store_filter#appthumb --legacy; apply --append;" src='blank.gif" class='prodThumb push' width='290' height='210' />
+            <div class='prodTextContainer'>   
+				<h6 data-tlc="bind $var '.base_price';  if (is $var --notblank;) {{format --currency='USD'; apply --append;}};" class="price hideInMinimalMode floatLeft prodPrice"></h6>
+				<div class='hideInMinimalMode floatRight pointer moreDetails'>VIEW DETAILS</div> 
+                <h5 data-tlc="bind $var '.prod_name'; if (is $var --notblank;) {{apply --append;}};" class="hideInMinimalMode clearfix prodDesc"></h5>
+            </div>
+        </div>
+    </div>  
+</li>
+
+
 </ul>
 
 
