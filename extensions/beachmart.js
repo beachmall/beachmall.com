@@ -156,12 +156,10 @@ var store_filter = function(_app) {
 				
 				_app.rq.push(['templateFunction','categoryTemplate','onCompletes',function(infoObj) {
 					var $context = $(_app.u.jqSelector('#'+infoObj.parentID));
-					_app.ext.store_filter.u.backToTop($context);
 				}]);
 				
 				_app.rq.push(['templateFunction','searchTemplate','onCompletes',function(infoObj) {
 					var $context = $(_app.u.jqSelector('#'+infoObj.parentID));
-					_app.ext.store_filter.u.backToTop($context);
 				}]);
 				
 				_app.rq.push(['templateFunction','productTemplate','onCompletes',function(infoObj) {
@@ -173,7 +171,6 @@ var store_filter = function(_app) {
 					//_app.u.dump('Product fredsel ran');
 					_app.ext.store_filter.u.handleToolTip();
 					_app.ext.store_filter.u.showRecentlyViewedItems($context,false);
-					_app.ext.store_filter.u.backToTop($context);
 				}]);
 				
 				_app.rq.push(['templateFunction','productTemplate','onDeparts',function(infoObj) {
@@ -190,7 +187,6 @@ var store_filter = function(_app) {
 				
 				_app.rq.push(['templateFunction','checkoutTemplate','onCompletes',function(infoObj) {
 					var $context = $(_app.u.jqSelector('#'+infoObj.parentID));
-					_app.ext.store_filter.u.backToTop($context);
 				}]);
 				
 				_app.rq.push(['templateFunction','companyTemplate','onCompletes',function(infoObj) {
@@ -205,7 +201,6 @@ var store_filter = function(_app) {
 						$sideline.show();
 						$('.mainColumn',$context).css({'width':'75%','margin':'0'});
 					}
-					_app.ext.store_filter.u.backToTop($context);
 				}]);
 								
 				//creates tool tip for variations and product sibling thumbnails
@@ -408,15 +403,6 @@ var store_filter = function(_app) {
 				//app.u.dump('the pid is: '); app.u.dump(pid);
 				setTimeout(function(){$('#contactFormOID','#mainContentArea_company').val('SKU: '+pid)},1000);
 			},
-			
-				//clears the order/prod id field in contact form to be sure it doesn't still 
-				//have showContactPID value still displayed (if form did not get submitted). 
-			resetContactPID : function() {
-				//app.u.dump('Got Here');
-				var $field = $('#contactFormOID','#mainContentArea_company');
-				$field.val('');
-				//$field.attr('placeholder', 'Order Number (if applicable)');
-			},
 		
 				//reveals recommended accessories list, hides itself, shows "hide" accessories button
 			showCartAcc : function($this) {
@@ -515,21 +501,6 @@ var store_filter = function(_app) {
 					$tag.hide().css('display','none');
 				}
 			},
-	
-				//creates image for search results lists from user:app_thumb (a copy of image1) to prevent
-				//banner/icon images that had been getting indexed from being used for the list image.
-			appthumb : function($tag, data) { /*!201402 COMPLIANT*/
-				//_app.u.dump('--> store_filter: appThumb started'); _app.u.dump(data.value.images[0]);
-				data.bindData.b = data.bindData.bgcolor || 'ffffff'; //default to white.
-				
-				if(data.value) {
-					data.bindData.name = data.value.app_thumb;
-					data.bindData.w = $tag.attr('width');
-					data.bindData.h = $tag.attr('height');
-					data.bindData.tag = 0;
-					$tag.attr('src',_app.u.makeImage(data.bindData));
-				}
-			}, //appThumb
 		
 				//opens e-mail in default mail provider (new window if web-based)
 				//if info is available will populate subject and body w/ prod name, mfg, & price
@@ -1809,16 +1780,7 @@ return filters;
 					}
 					return pid;
 				},
-				
-				backToTop : function($context) {
-					$($context).append('<div class="appBackToTop pointer" onClick="app.ext.store_filter.u.scrollToTop()"><span class="sprite"></span>Back to Top</div>')
-				},
-				
-				scrollToTop : function() {
-					$('html,body').animate({ scrollTop: 0 }, 'slow');
-				}
-				
-				
+
 	/*			showShipRegion : function($context) {
 					$('.cartRegion', $context).each(function() {
 						var $this = $(this);

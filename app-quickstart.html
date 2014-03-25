@@ -207,7 +207,7 @@ ANIMATION TESTING
                 <li><a href="#!company/shipping">Shipping</a></li>
                 <li><a href="#!company/return">Returns</a></li>
                 <li><a href="#!company/privacy">Security & Privacy</a></li>
-                <li><a href="#!company/contact" onClick="myApp.ext.store_filter.a.resetContactPID();">Contact Us</a></li>
+                <li><a href="#!company/contact" onClick="myApp.ext.beachmall_store.a.resetContactPID();">Contact Us</a></li>
             </ul>
         </div>
 	</nav>
@@ -1174,7 +1174,7 @@ ANIMATION TESTING
        	  <li>NAVIGATE</li>
             <li><a data-onclick='#!category?navcat=.' href='#!category?navcat=.'>Home</a></li>
             <li><a href="#!company/about">About Us</a></li>
-            <li><a href="#!company/contact" onClick="_app.ext.store_filter.a.resetContactPID();">Contact Us</a></li>
+            <li><a href="#!company/contact" onClick="myApp.ext.beachmall_store.a.resetContactPID();">Contact Us</a></li>
             <li><a href="#!company/faq">FAQ</a></li>
             <li><a href='#!category?navcat=.sitemap' data-onclick='#!category?navcat=.sitemap' class='pointer'>Site Map</a></li>
 			<!--<li><a href="http://reviews.app.beachmall.com <http://reviews.app.beachmall.com/>">Product Reviews</a></li>-->
@@ -1185,7 +1185,7 @@ ANIMATION TESTING
         <ul>
         	<li>ADDITIONAL LINKS</li>
             <li><a data-onclick='#!category?navcat=.buyer_guides' href='#!category?navcat=.buyer_guides'>Buying Guides</a></li>
-            <li><a href="#!company/contact" onClick="app.ext.store_filter.a.resetContactPID();">Wholesale</a></li>
+            <li><a href="#!company/contact" onClick="myApp.ext.beachmall_store.a.resetContactPID();">Wholesale</a></li>
             <li><a data-onclick='#!category?navcat=.affiliates' href='#!category?navcat=.affiliates'>Affiliates</a></li>
             <li><a href="https://www.facebook.com/BeachMall" target="_blank">Facebook</a></li>
             <li><a href="https://twitter.com/Beachmall" target="_blank">Twitter</a></li>
@@ -1363,7 +1363,7 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 <div id='homepageTemplate' class='homeTemplate'>
 
 	<div class='floatingBar'>
-    	<div class='backToTop pointer' onClick="myApp.ext.store_filter.u.scrollToTop()">&#187 BACK TO TOP</div>
+    	<div class='backToTop pointer' onClick="myApp.ext.beachmall_store.u.scrollToTop()">&#187 BACK TO TOP</div>
         <div class='recentlyViewed pointer' onClick="return showContent('company',{'show':'recent'});"><span>Recently Viewed Item(s)&nbsp </span><span class='numRecentlyViewed displayNone'>0</span><!--<span class='fontWhite recentCarat'> &#187 </span><span class='fontYellow recentViewItems'><a class='bindByAnchor' href='#!company?show=recent'> VIEW ITEM(S)</a></span>--></div>
         <div class='cartIcon sprite pointer' onClick="return showContent('cart',{});"><span class='cartItemCount'>0</span><p><span class='fontWhite'>&#187 </span><span class='fontYellow'>SHOPPING CART</span></p></div>
         <button class='checkoutButton' onClick="showContent('checkout',{});">CHECK OUT</button>
@@ -1402,8 +1402,8 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 				<a class="carouselButton new2CarouselPrev carouselButtonPrev" href="#">prev</a>
 				<a class="carouselButton new2CarouselNext carouselButtonNext" href="#">next</a>
 <!-- MARK THIS NEEDS ORIG ELASTIC SEARCH. TODO: HOW TO PASS SEARCH OBJECT WHEN TOO MANY QUOTES USED. -->
-				<ul data-tlc="quickstart#searchbytag --tag='IS_BESTSELLER' --size='8' --templateid='productListTemplateResultsCustom';" class='listStyleNone fluidList clearfix noPadOrMargin productList homeProdSearchNewArrivals2'></ul>		
-				<!-- <ul data-tlc="beachmall_search#searchbytag --searchvar='' --tag='IS_BESTSELLER' --title='Best Sellers' --size='8' --templateid='productListTemplateResultsNoPreview';" class='listStyleNone fluidList clearfix noPadOrMargin productList'></ul>		
+				 <ul data-tlc="quickstart#searchbytag --tag='IS_BESTSELLER' --size='8' --templateid='productListTemplateResultsCustom';" class='listStyleNone fluidList clearfix noPadOrMargin productList homeProdSearchNewArrivals2'></ul> 	
+				<!-- <ul data-tlc="beachmall_search#searchbytag --size='8' --templateid='productListTemplateResultsNoPreview';" data-filter='{"and":{"filters":[{"term":{"tags":"IS_NEWARRIVAL"}},{"not":{"term":{"tags":"IS_DISCONTINUED"}}}]}}' class='listStyleNone fluidList clearfix noPadOrMargin productList'></ul>		
 				<!-- <ul id='homeProdSearchNewArrivals2' data-bind='var: elastic-native({"size":"25","mode":"elastic-native","filter":{"and":{"filters":[{"term":{"tags":"IS_NEWARRIVAL"}},{"not":{"term":{"tags":"IS_DISCONTINUED"}}}]}}}); format: productSearch; extension: quickstart; loadsTemplate: productListTemplateResultsCustom;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList'></ul>
 				 non filtered search: <ul id='homeProdSearchNewArrivals2' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"term":{"tags":"IS_NEWARRIVAL"}}}); format: productSearch; extension: quickstart; loadsTemplate: productListTemplateResultsCustom;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList'></ul>-->
 			</div>
@@ -1739,7 +1739,7 @@ SANITY -> if you change the height and width of this image, change the .minimalM
 <li id='productListTemplateResultsCustom' class='loadingBG searchResultsProduct ' >
 	<div onClick="return showContent('product', {'pid' : $(this).parent().attr('data-pid')});" class='pointer'>
 		<div class='prodThumbContainer myProdThumb'>
-			<img data-useparentdata='1' data-tlc="store_filter#appthumb --legacy; apply --append;" src='blank.gif" class='prodThumb push' width='290' height='210' />
+			<img data-useparentdata='1' data-tlc="beachmall_store#appthumb --legacy; apply --append;" src='blank.gif" class='prodThumb push' width='290' height='210' />
             <div class='prodTextContainer'>   
 				<h6 data-tlc="bind $var '.base_price';  if (is $var --notblank;) {{format --currency='USD'; apply --append;}};" class="price hideInMinimalMode floatLeft prodPrice"></h6>
 				<div class='hideInMinimalMode floatRight pointer moreDetails'>VIEW DETAILS</div> 
