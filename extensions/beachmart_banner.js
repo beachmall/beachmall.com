@@ -20,7 +20,7 @@
 
 //    !!! ->   TODO: replace 'username' in the line below with the merchants username.     <- !!!
 
-var beachmart_banner = function() {
+var beachmart_banner = function(_app) {
 	var theseTemplates = new Array('');
 	var r = {
 
@@ -35,22 +35,32 @@ var beachmart_banner = function() {
 			onSuccess : function()	{
 				var r = false; //return false if extension won't load for some reason (account config, dependencies, etc).
 				$.getJSON("_banners.json?_v="+(new Date()).getTime(), function(json) {
-					app.ext.beachmart_banner.vars.homepageBanners = json.homepageBanners
-				}).fail(function(){app.u.throwMessage("BANNERS FAILED TO LOAD - there is a bug in _banners.json")});
+					_app.ext.beachmart_banner.vars.homepageBanners = json.homepageBanners
+				}).fail(function(){_app.u.throwMessage("BANNERS FAILED TO LOAD - there is a bug in _banners.json")});
 				//if there is any functionality required for this extension to load, put it here. such as a check for async google, the FB object, etc. return false if dependencies are not present. don't check for other extensions.
 				r = true;
 
-				app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(P){
-					app.ext.beachmart_banner.u.showHomepageBanners();
-				}])
 				return r;
 				},
 			onError : function()	{
 //errors will get reported for this callback as part of the extensions loading.  This is here for extra error handling purposes.
 //you may or may not need it.
-				app.u.dump('BEGIN admin_orders.callbacks.init.onError');
+				_app.u.dump('BEGIN beachmart_banner.callbacks.init.onError');
+			}
+		},
+		
+		startExtension : {
+			onSuccess : function() {
+				_app.templates.homepageTemplate.on('complete.beachmart_banner',function(event,$ele,P) {
+					_app.ext.beachmart_banner.u.showHomepageBanners();
+				})
+			},
+			onError : function() {
+				_app.u.dump('START beachmart_banner.callbacks.startExtension.onError');
 			}
 		}
+		
+		
 	}, //callbacks
 
 
@@ -80,9 +90,9 @@ var beachmart_banner = function() {
 			showHomepageBanners : function() {
 				var $container = $('#homepageTemplate_ .bannerContainer');
 				if(!$container.hasClass('bannersRendered')) {
-					if(app.ext.beachmart_banner.vars.homepageBanners) {
+					if(_app.ext.beachmart_banner.vars.homepageBanners) {
 						$container.addClass('bannersRendered');
-						$('.main',$container).removeClass('loadingBG').append(app.ext.beachmart_banner.u.makeBanner(app.ext.beachmart_banner.vars.homepageBanners.main,620,300,"ffffff"));
+						$('.main',$container).removeClass('loadingBG').append(_app.ext.beachmart_banner.u.makeBanner(_app.ext.beachmart_banner.vars.homepageBanners.main,620,300,"ffffff"));
 					}
 					else {
 						setTimeout(this.showHomepageBanners,250);
@@ -91,7 +101,7 @@ var beachmart_banner = function() {
 			},
 			
 			makeBanner : function(bannerJSON, w, h, b) {
-				var $img = $(app.u.makeImage({
+				var $img = $(_app.u.makeImage({
 					tag : true,
 					w   	: w,
 					h		: h,

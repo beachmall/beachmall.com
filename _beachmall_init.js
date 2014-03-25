@@ -31,7 +31,7 @@ myApp.rq.push(['extension',0,'beachmall_carousel','extensions/beachmall_carousel
 myApp.rq.push(['extension',0,'beachmart_dropdown','extensions/beachmart_dropdown.js', 'startExtension']); // custom product getter for dropdowns Runs startExtension as well
 //myApp.rq.push(['extension',0,'beachmart_catsearch','extensions/beachmart_catsearch.js', 'startExtension']); // custom search of designated category and tag
 //myApp.rq.push(['extension',0,'beachmart_items_per_page','extensions/beachmart_items_per_page.js', 'startExtension']); // changes number of items displayed in current prodlist
-//myApp.rq.push(['extension',0,'beachmart_banner','extensions/beachmart_banner.js']); // add banner to homepage that can be changed in _banners.json file 
+myApp.rq.push(['extension',0,'beachmart_banner','extensions/beachmart_banner.js','startExtension']); // add banner to homepage that can be changed in _banners.json file 
 myApp.rq.push(['extension',0,'beachmart_dropdown_image','extensions/beachmart_dropdown_image.js']); // add images to dropdowns that can be changed in _dropdownimages.json file 
 //myApp.rq.push(['extension',0,'prodlist_infinite','extensions/prodlist_infinite.js']); //removes pagination in product lists and allows population w/ scroll
 //myApp.rq.push(['extension',0,'beachmart_cartEstArrival','extensions/beachmart_cartEstArrival.js']); //estimates shipping/arrival times for cart items

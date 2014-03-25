@@ -42,7 +42,7 @@ var beachmall_carousel = function(_app) {
 			onError : function()	{
 //errors will get reported for this callback as part of the extensions loading.  This is here for extra error handling purposes.
 //you may or may not need it.
-				_app.u.dump('BEGIN admin_orders.callbacks.init.onError');
+				_app.u.dump('BEGIN beachmall_carousel.callbacks.init.onError');
 				}
 			},
 			
