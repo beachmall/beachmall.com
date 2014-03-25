@@ -1117,6 +1117,159 @@ ANIMATION TESTING
 
 <div id='mainContentArea'></div><!-- DO NOT REMOVE - this is where the specific page (ex: homepage, product, category) content is going to go -->
 
+
+<footer class='footerContainer clearfix'>
+
+	
+    <section class='footerInteractContainer'>
+    	<div class='footerSocialIcons'>
+        	<a href="https://www.facebook.com/BeachMall" target="_blank"><div class='facebook sprite footerSocialIconContainers'></div></a>
+            <a href="https://twitter.com/Beachmall" target="_blank"><div class='twitter sprite footerSocialIconContainers'></div></a>
+            <a href="https://plus.google.com/104451134911916367843/posts" target="_blank"><div class='googlePlus sprite footerSocialIconContainers'></div></a>
+            <a href="https://pinterest.com/beachmall/" target="_blank" class='pintrest sprite footerSocialIconContainers'></a>
+            <div class='email sprite footerSocialIconContainers'></div>
+        </div>
+        <div class='footerNewsletter'>
+        	<h3 class='floatLeft marginRight'>STAY UPDATED<br><span>SIGN UP FOR OUR NEWSLETTER</span></h3>
+			<form action='#' id='subscribeFrmFooter' name='subscribeFrm' class='newsletterSubscriptionForm floatLeft' method="get">
+                <fieldset >
+                    <input type='hidden' name='newsletter-1' value='1' />
+                    <input type="submit" class="joinButton submit floatRight " value="SIGN-UP" />
+                    <input required='required' type='email' placeholder='E-mail Address' class='emailField floatRight newsSubscribeInput textbox email handleDefault'  maxlength='50' size='25' name='login' id='subscribeLoginFooter' />                 
+                	<input required='required' type='text'  placeholder='Full Name' class='nameField floatRight newsSubscribeInput textbox fullname handleDefault' maxlength='50' size='25' name='fullname' id='subscribeFullnameFooter' />
+                </fieldset>
+			</form>
+        </div>
+    </section>
+    
+    <!-- 	<a class="bindByAnchor" href="#!product?pid=XYZ">A Product Name</a>
+            <a onClick='return showContent('product',{'pid':'XYZ'});'>A Product Name</a>
+            
+            <!-- category example 
+            <a class="bindByAnchor" href="#!category?navcat=.path.to.category">Category Name</a>
+            <a onClick='return showContent('category',{'navcat':'.path.to.category'});'>Category Name</a>
+            
+            <!-- company/returns example 
+            <a class="bindByAnchor" href="#!company?show=return">Returns Policy</a>
+            <a onClick=' return showContent('company',{'show':'return'});'>Returns Policy</a>
+	-->
+
+	<section class='footerLinksContainer'>
+    	<ul>
+        	<li>CATEGORIES</li>
+            <li><a data-onclick='#!category?navcat=.beach-accessories' href='#!category?navcat=.beach-accessories'>Beach Accesories</a></li>
+            <li><a data-onclick='#!category?navcat=.beach-chair' href='#!category?navcat=.beach-chair'>Beach Chairs</a></li>
+            <li><a data-onclick='#!category?navcat=.beach-sports' href='#!category?navcat=.beach-sports'>Recreation</a></li>
+            <li><a data-onclick='#!category?navcat=.beach-umbrellas-shelter' href='#!category?navcat=.beach-umbrellas-shelter'>Umbrellas &#38 Shelter</a></li>
+            <li><a data-onclick='#!category?navcat=.beachwear' href='#!category?navcat=.beachwear'>Beach Wear</a></li>
+        </ul>
+        <ul>
+        	<li>ACCOUNT SERVICES</li>
+            <li><a href='#!customer/myaccount'>Log&#45in or Create Account</a></li>
+            <li><a href="#!customer/logout">Log out</a></li>
+            <li><a href='#!customer/cart'>View Shopping Cart</a></li>
+            <li><a href='#!customer/orders'>Order Status</a></li>
+        </ul>
+        <ul>
+       	  <li>NAVIGATE</li>
+            <li><a data-onclick='#!category?navcat=.' href='#!category?navcat=.'>Home</a></li>
+            <li><a href="#!company/about">About Us</a></li>
+            <li><a href="#!company/contact" onClick="_app.ext.store_filter.a.resetContactPID();">Contact Us</a></li>
+            <li><a href="#!company/faq">FAQ</a></li>
+            <li><a href='#!category?navcat=.sitemap' data-onclick='#!category?navcat=.sitemap' class='pointer'>Site Map</a></li>
+			<!--<li><a href="http://reviews.app.beachmall.com <http://reviews.app.beachmall.com/>">Product Reviews</a></li>-->
+			<!--<li><a href="http://reviews.beachmall.com <http://reviews.beachmall.com/>">Product Reviews</a></li>-->
+            <li><a href="#!company/return">Returns &#38 Exchanges</a></li>
+            <li><a href="#!company/privacy">Privacy Policy</a></li>
+        </ul>
+        <ul>
+        	<li>ADDITIONAL LINKS</li>
+            <li><a data-onclick='#!category?navcat=.buyer_guides' href='#!category?navcat=.buyer_guides'>Buying Guides</a></li>
+            <li><a href="#!company/contact" onClick="app.ext.store_filter.a.resetContactPID();">Wholesale</a></li>
+            <li><a data-onclick='#!category?navcat=.affiliates' href='#!category?navcat=.affiliates'>Affiliates</a></li>
+            <li><a href="https://www.facebook.com/BeachMall" target="_blank">Facebook</a></li>
+            <li><a href="https://twitter.com/Beachmall" target="_blank">Twitter</a></li>
+            <li><a href="https://plus.google.com/104451134911916367843/posts" target="_blank">Google Plus</a></li>
+            <li><a href="https://pinterest.com/beachmall/" target="_blank">Pinterest</a></li>
+        </ul>
+        <div class='footerIcons'>
+        	<div class='ccCards sprite'></div>
+            <a href="https://www.bbb.org/north-east-florida/business-reviews/internet-shopping/ beachmall-com-in-jacksonville-fl-172745114/#bbbonlineclick" title="Beachmall.com BBB Business Review">
+            	<div class='bbbBadge'><img src="https://seal-northeastflorida.bbb.org/seals/blue-seal-200-42-beachmall-com- 172745114.png" style="border: 0;" alt="Beachmall.com BBB Business Review"></div>
+            </a>
+            <div class='googleTrustedBadge'>
+
+<!-- BEGIN: Google Trusted Store -->
+<!--				<script type="text/javascript">
+					var gts = gts || [];
+					gts.push(["id", "3253696"]);
+					gts.push(["google_base_offer_id", "%PRODUCT%"]);
+					gts.push(["google_base_subaccount_id", "3253696"]);
+					gts.push(["google_base_country", "US"]);
+					gts.push(["google_base_language", "EN"]);
+					(function() {
+						var scheme = (("https:" == document.location.protocol) ? "https://" : "http://");
+						var gts = document.createElement("script");
+						gts.type = "text/javascript";
+						gts.async = true;
+						gts.src = scheme + "www.googlecommerce.com/trustedstores/gtmp_compiled.js";
+						var s = document.getElementsByTagName("script")[0];
+						s.parentNode.insertBefore(gts, s);
+					})();
+                </script>
+                <!-- END: Google Trusted Store -->
+                
+                <!-- JavaScript Checkout Tracking Code (HTML): -->
+                <!-- START Trusted Stores Order -->
+<!--                <div id="gts-order" style="display:none;">
+                <!-- start order and merchant information -->
+<!--                  <span id="gts-o-id">%ORDERID%</span>
+                  <span id="gts-o-domain">%SDOMAIN%</span>
+                  <span id="gts-o-email">%BILLEMAIL%</span>
+                  <span id="gts-o-country">%BILLCOUNTRY%</span>
+                  <span id="gts-o-currency">USD</span>
+                  <span id="gts-o-total">%GRANDTOTAL%</span>
+                  <span id="gts-o-discounts">%TOTAL_DISCOUNTS%</span>
+                  <span id="gts-o-shipping-total">%SHIPPING%</span>
+                  <span id="gts-o-tax-total">%TOTALTAX%</span>
+                  <span id="gts-o-est-ship-date">%EST_SHIP_YYYY_MM_DD%</span>
+                  <span id="gts-o-has-preorder">%HAS_PREBACKDELAY_YN%</span>
+                  <span id="gts-o-has-digital">%HAS_DOWNLOAD_YN%</span>
+                <!-- end order and merchant information -->
+                
+                <!-- start repeated item specific information -->
+                <!-- item example: this area repeated for each item in the order -->
+                <!-- %GOOGLE_TRUSTED_STORES_ITEM_SPANS% -->
+                <!-- end repeated item specific information -->
+
+<!--				</div>
+<!-- END Trusted Stores -->
+
+            </div>
+            <div class='footerPhoneChat'>
+            	<div class='floatRight liveHelp marginRight hideMed'>
+                <!-- BEGIN ProvideSupport.com Text Chat Link Code -->
+                    <div id="ciyXFh" style="z-index:100;position:absolute"></div>
+                    <div id="scyXFh" style="display:inline"></div>
+                    <div id="sdyXFh" style="display:none"></div>
+                    <script type="text/javascript">var seyXFh=document.createElement("script");seyXFh.type="text/javascript";var seyXFhs=(location.protocol.indexOf("https")==0?"https":"http")+"://image.providesupport.com/js/1qaxuqjnvcj4w1csevb7u0l3tc/safe-textlink.js?ps_h=yXFh&ps_t="+new Date().getTime()+"&online-link-html=Live%20Chat%20Online&offline-link-html=Live%20Chat%20Offline";setTimeout("seyXFh.src=seyXFhs;document.getElementById('sdyXFh').appendChild(seyXFh)",1)</script>
+                    <noscript><div style="display:inline"><a href="http://www.providesupport.com?messenger=1qaxuqjnvcj4w1csevb7u0l3tc">CHAT LIVE!</a></div></noscript>
+                <!-- END ProvideSupport.com Text Chat Link Code -->	
+        		</div>
+				<span>(888) 975-6555 <h6> or</h6></span>
+            </div>
+        </div>
+    </section>
+
+</footer>
+<div class='copyright'>
+    <span onClick="return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beach-umbrellas-shelter.beach-umbrella'}}]}}});">Beachmall</span> Copyright 2013. All Rights Reserved. E-commerce Solution by <span><a target='_blank' href="http://www.zoovy.com/">Zoovy</a></span>
+    <!-- START SCANALERT CODE -->
+        <a class='mcAfee' target="_blank" href="https://www.mcafeesecure.com/RatingVerify?ref=www.beachmall.com"><img width="115" height="30" border="0" src="https://images.scanalert.com/meter/www.beachmall.com/32.gif" alt="McAfee Secure sites help keep you safe from identity theft, credit card fraud, spyware, spam, viruses and online scams" oncontextmenu="alert('Copying Prohibited by Law - McAfee Secure is a Trademark of McAfee, Inc.'); return false;"></a>
+    <!-- END SCANALERT CODE -->
+</div>
+
+
 <!-- ... your html ends -->
 <!-- /VIEW CONTENT -->
 </div>
