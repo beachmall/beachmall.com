@@ -1439,10 +1439,10 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 	<img class='floatLeft' src='images/shop-umbrellas_160x105.jpg' />
 	<img class='floatLeft' src='images/shop_beachwear_160x105.jpg' />
 </div>
-			<ul data-bind="var: category(@subcategoryDetail); format: categoryList; bgcolor: TTTTTT; extension: store_navcats; loadsTemplate: categoryListHomeTemplate; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin'></ul>
+			<ul data-tlc="bind $var '.@subcategoryDetail'; store_navcats#categorylist  --detail='max' --templateid='categoryListHomeTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin"></ul>
 		</div>
 	</div>
-<!--    
+    
     <div class='CarouselContainer featuredProductsCarouselContainer'>
     	<div class='carouselTitles yellowBkgrd'>
         	<div class='carouselTitleTextContainer floatLeft'>FEATURED PRODUCTS</div>
@@ -1453,12 +1453,13 @@ the homepageTemplate template is loaded into mainContentArea by default when the
         	<a class="carouselButtonDkBlue featCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
 			<a class="carouselButtonDkBlue featCarouselNext carouselButtonDkBlueNext" href="#">next</a>
         	
-        	<!--non filtered search: <ul id='homeProdSearchFeatured' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"or":{"filters":[{"term":{"tags":"IS_USER4"}},{"term":{"tags":"IS_COLORFUL"}},{"term":{"tags":"IS_USER5"}},{"term":{"user:prod_promo":"IS_USER4"}}]}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>-->
-<!--        	<ul id='homeProdSearchFeatured' data-bind='var: elastic-native({"size":"28","mode":"elastic-native","filter":{"and":{"filters":[{"or":{"filters":[{"term":{"tags":"IS_USER4"}},{"term":{"tags":"IS_COLORFUL"}},{"term":{"tags":"IS_USER5"}},{"term":{"user:prod_promo":"IS_USER4"}}]}},{"not":{"term":{"tags":"IS_DISCONTINUED"}}}]}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>
-        </div>
+        	<!--non filtered search: <ul id='homeProdSearchFeatured' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"or":{"filters":[{"term":{"tags":"IS_USER4"}},{"term":{"tags":"IS_COLORFUL"}},{"term":{"tags":"IS_USER5"}},{"term":{"user:prod_promo":"IS_USER4"}}]}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul> 
+        	<ul id='homeProdSearchFeatured' data-bind='var: elastic-native({"size":"28","mode":"elastic-native","filter":{"and":{"filters":[{"or":{"filters":[{"term":{"tags":"IS_USER4"}},{"term":{"tags":"IS_COLORFUL"}},{"term":{"tags":"IS_USER5"}},{"term":{"user:prod_promo":"IS_USER4"}}]}},{"not":{"term":{"tags":"IS_DISCONTINUED"}}}]}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall homeProdSearchFeatured'></ul> -->
+			<ul data-tlc="quickstart#searchbytag --tag='IS_BESTSELLER' --size='8' --templateid='productListTemplateResultsCustomSmaller';" class='listStyleNone fluidList clearfix noPadOrMargin productList homepageResults productListSmall homeProdSearchFeatured'></ul> 	
+		</div>
         <div id='featCarPagenation' class='standardCarouselPagenation'></div>
     </div>
-    
+<!--    
     <div class='CarouselContainer bestSellersCarouselContainer'>
     	<div class='carouselTitles'>
         	<div class='carouselTitleTextContainer floatLeft'>BEST SELLERS</div>
@@ -1603,6 +1604,18 @@ don't modify the 'data-templateid' unless you are changing template names and up
 	</a>
 </li>
 
+
+<li id='categoryListHomeTemplate' class='catListTemp'>
+	<div onClick="showContent('category',{'navcat':$(this).parent().attr('data-catsafeid')}); items_per_page: 25" class='catTemplateContainer pointer'>
+		<div class='catBorderContainer'>
+			<div class='catName white2LGray'><span data-tlc="bind $var '.pretty'; quickstart#cattext  --legacy;"></span></div>
+        </div>
+		<div class='thumbContainer'><img src='blank.gif' class='catThumb' data-tlc="bind $var '.%meta.CAT_THUMB'; if (is $var --notblank){{apply --img --media=$var --width=162 --height=105 --bgcolor='#ffffff' --replace;}};"> <!--height='105'-->
+        	<div class='moreDetailsSmall catHomeDetails'>SHOP NOW</div>
+        </div>
+	</div>
+</li>
+
 </ul>
 
 
@@ -1739,7 +1752,7 @@ SANITY -> if you change the height and width of this image, change the .minimalM
 <li id='productListTemplateResultsCustom' class='loadingBG searchResultsProduct ' >
 	<div onClick="return showContent('product', {'pid' : $(this).parent().attr('data-pid')});" class='pointer'>
 		<div class='prodThumbContainer myProdThumb'>
-			<img data-useparentdata='1' data-tlc="beachmall_store#appthumb --legacy; apply --append;" src='blank.gif" class='prodThumb push' width='290' height='210' />
+			<img data-useparentdata='1' data-tlc="beachmall_store#appthumb --legacy; apply --append;" src="blank.gif" class='prodThumb push' width='210' height='210'>
             <div class='prodTextContainer'>   
 				<h6 data-tlc="bind $var '.base_price';  if (is $var --notblank;) {{format --currency='USD'; apply --append;}};" class="price hideInMinimalMode floatLeft prodPrice"></h6>
 				<div class='hideInMinimalMode floatRight pointer moreDetails'>VIEW DETAILS</div> 
@@ -1747,6 +1760,52 @@ SANITY -> if you change the height and width of this image, change the .minimalM
             </div>
         </div>
     </div>  
+</li>
+
+
+<li id='productListTemplateResultsCustomSmaller' class='loadingBG searchResultsProduct ' >
+	<div onClick="return showContent('product', {'pid' : $(this).parent().attr('data-pid')});" class='pointer productListSmall'>
+		<div class='prodHoverContainer'>	
+			<div data-useparentdata='1'  data-tlc="beachmall_store#showprodmodifier --legacy; apply --append;" class="prodModifierContainer sprite displayNone"></div>
+			<!-- CORNER SHADOW DIVS -->
+			<div class='topLeftCorner'></div><div class='leftTopCorner'></div><div class='topRightCorner'></div><div class='rightTopCorner'></div>
+			<div class='bottomLeftCorner'></div><div class='leftBottomCorner'></div><div class='bottomRightCorner'></div><div class='rightBottomCorner'></div> 
+			<!-- END CORNER SHADOWS -->
+			<div class='prodThumbContainer myProdThumbSmall'>
+				<img data-useparentdata='1' data-tlc="beachmall_store#appthumb --legacy; apply --append;" src="blank.gif" class='prodThumb' width='208' height='208'>
+		    </div>
+            <div class='prodTextContainerSmall'>
+				<h6 data-tlc="bind $var '.base_price';  if (is $var --notblank;) {{format --currency='USD'; apply --append;}};" class="price hideInMinimalMode floatLeft prodPriceSmall"></h6>
+				<div data-tlc="bind $var '.%attribs.user:prod_promo'; if(is $var --notblank;) {{apply --show;}};" class="starBurst sprite displayNone">
+					<div class='starBurstTextOuter'>
+						<div data-tlc="bind $var '.%attribs.user:prod_promo'; if(is $var --notblank;) {{apply --append;}};" class="starBurstTextInner"></div>
+					</div>
+				</div>
+				<div class='hideInMinimalMode floatRight pointer moreDetailsSmall'>VIEW DETAILS</div> 
+                <h5 data-tlc="bind $var '.prod_name'; if(is $var --notblank;) {{apply --append;}};" class="hideInMinimalMode clearfix prodDescSmall"></h5>
+			</div>
+		</div>
+	</div>
+<!--for sibling color images (future)	<div class='clearfix prodSiblings'>
+		<ul class='listStyleNone noPadOrMargin fluidList clearfix' data-bind="var: product(user:grp_siblings); format:productList; extension:store_prodlist;loadsTemplate:productListTemplateThumb;hide_multipage:true;before:<b>Available Colors:</b> <span class='zhint'>(click image to select)</span> ; withInventory:1; withVariations:1;"></ul> <!-- id='prodlistSiblings' -->
+<!--	</div>-->
+<!-- THIS HAS BEEN REPLACED AND SHOULD BE REMOVED ONCE IT HAS HAD MORE TESTING	
+	<div class='clearfix prodSiblings pointer displayNone' data-bind='var:product(options); format:optionsCount; extension:store_filter;' onClick="quickView('product',{'templateID':'productTemplateQuickView','pid':$(this).closest('[data-pid]').attr('data-pid')});"></div>
+	<div class='seeColors displayNone' data-bind='useParentData: true; format: moreColors; extension: store_filter;'>
+		<div class='showColors pointer' onClick="quickView('product',{'templateID':'productTemplateQuickView','pid':$(this).closest('[data-pid]').attr('data-pid')});">MORE COLORS</div>
+	</div>
+	<div data-bind='useParentData: true; format:noReviews; extension: store_filter;'>
+		<div class='reviewsStarsCount homeCars' data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews_reviews;'></div><!-- BCERO271 MARK--> 
+<!--    </div>
+MARK --> 	
+		<div class='searchReviewSiblingsCont'>
+			
+			<div data-tlc="bind $var '.pid'; powerreviews_reviews#reviewsnippet --minreview='1' --legacy; apply --append;" class="reviewsStarsCount"></div><!-- BCERO271 MARK-->
+			<form data-bind='var: product(pid); format:atcForm; extension:store_product;' class='prodViewerAddToCartForm clearfix' action='#'>
+				<button class='prodViewerAddToCartButton' data-bind='format:addToCartButton; extension:myRIA; useParentData:true; isElastic:1;'></button>
+			</form>
+		</div>
+		<div class='prodNum stid' data-bind='var: product(pid); format:text; pretext: ITEM &nbsp #: &nbsp ;'></div>
 </li>
 
 

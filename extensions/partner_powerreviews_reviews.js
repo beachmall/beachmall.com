@@ -56,7 +56,7 @@ This file is included in an iFrame for 'write review'
 */
 
 
-var powerReviews_reviews = function(_app) {
+var powerreviews_reviews = function(_app) {
 	return {
 		
 
@@ -81,17 +81,17 @@ var powerReviews_reviews = function(_app) {
 				onSuccess : function()	{
 //					_app.u.dump('BEGIN _app.ext.store_crm.init.onSuccess ');
 					var r;
-					if(_app.ext.powerReviews_reviews.vars.merchantID && _app.ext.powerReviews_reviews.vars.groupID)	{
+					if(_app.ext.powerreviews_reviews.vars.merchantID && _app.ext.powerreviews_reviews.vars.groupID)	{
 						r = true;
 						}
 					else	{
 						var msg = _app.u.errMsgObject("Uh Oh! It seems an error occured on our _app. PowerReviews may not load properly. We apologize for the inconvenience.");
 						msg.persistent = true;
 						_app.u.throwMessage(msg);
-						_app.u.dump("ERROR! powerReviews_reviews did not pass init. The following variables are all required:");
-						_app.u.dump(" -> _app.ext.powerReviews_reviews.vars.merchantID: "+_app.ext.powerReviews_reviews.vars.merchantID);
-						_app.u.dump(" -> _app.ext.powerReviews_reviews.vars.groupID: "+_app.ext.powerReviews_reviews.vars.groupID);
-						_app.u.dump(" -> _app.ext.powerReviews_reviews.vars.hash: "+_app.ext.powerReviews_reviews.vars.hash);
+						_app.u.dump("ERROR! powerreviews_reviews did not pass init. The following variables are all required:");
+						_app.u.dump(" -> _app.ext.powerreviews_reviews.vars.merchantID: "+_app.ext.powerreviews_reviews.vars.merchantID);
+						_app.u.dump(" -> _app.ext.powerreviews_reviews.vars.groupID: "+_app.ext.powerreviews_reviews.vars.groupID);
+						_app.u.dump(" -> _app.ext.powerreviews_reviews.vars.hash: "+_app.ext.powerreviews_reviews.vars.hash);
 						r = false;
 						}
 					return r;
@@ -104,11 +104,11 @@ var powerReviews_reviews = function(_app) {
 
 			startExtension : {
 				onSuccess : function(){
-					_app.u.dump("BEGIN powerReviews_reviews.callbacks.startExtension");
+					_app.u.dump("BEGIN powerreviews_reviews.callbacks.startExtension");
 // * JS moved to init to ensure it's loaded early enough in the process.
-//					_app.rq.push(['script',0,'http://cdn.powerreviews.com/repos/'+_app.ext.powerReviews_reviews.vars.merchantID+'/pr/pwr/engine/js/full.js']);
-					_app.rq.push(['css',0,'http://cdn.powerreviews.com/repos/'+_app.ext.powerReviews_reviews.vars.merchantID+'/pr/pwr/engine/pr_styles_review.css','prBaseStylesheet']);
-					_app.rq.push(['css',0,'http://cdn.powerreviews.com/aux/'+_app.ext.powerReviews_reviews.vars.merchantID+'/'+_app.ext.powerReviews_reviews.vars.groupID+'/css/powerreviews_express.css','prMerchantOverrideStylesheet']);
+//					_app.rq.push(['script',0,'http://cdn.powerreviews.com/repos/'+_app.ext.powerreviews_reviews.vars.merchantID+'/pr/pwr/engine/js/full.js']);
+					_app.rq.push(['css',0,'http://cdn.powerreviews.com/repos/'+_app.ext.powerreviews_reviews.vars.merchantID+'/pr/pwr/engine/pr_styles_review.css','prBaseStylesheet']);
+					_app.rq.push(['css',0,'http://cdn.powerreviews.com/aux/'+_app.ext.powerreviews_reviews.vars.merchantID+'/'+_app.ext.powerreviews_reviews.vars.groupID+'/css/powerreviews_express.css','prMerchantOverrideStylesheet']);
 					},
 				onError : function(d){}
 				}
@@ -122,10 +122,10 @@ var powerReviews_reviews = function(_app) {
 
 		renderFormats : {
 //pass is PID through bindData var:
-			reviewSnippet : function($tag,data)	{
+			reviewsnippet : function($tag,data)	{
 				if(document.location.protocol != 'https:')	{
-					
-/*BEACHMALL*/		var minimumReview = 0;
+				_app.u.dump('fjl;ksdajgk;dashklsdfhb;'); _app.u.dump(data.value); _app.u.dump($tag);
+/*BEACHMALL*/		var minimumReview = 1;
 /*BEACHMALL*/		if(data.bindData.minreview) {
 /*BEACHMALL*/			minimumReview = data.bindData.minreview;
 /*BEACHMALL*/		} else {}
@@ -133,7 +133,7 @@ var powerReviews_reviews = function(_app) {
 					POWERREVIEWS.display.snippet({ write : function(content) { $tag.append(content); } }, {
 /*BEACHMALL*/					pr_snippet_min_reviews : minimumReview, //shows reviews snippet based on qty of reviews
 						pr_page_id : data.value,
-						pr_write_review : "javascript:_app.ext.powerReviews_reviews.a.writeReview('"+data.value+"');",
+						pr_write_review : "javascript:_app.ext.powerreviews_reviews.a.writeReview('"+data.value+"');",
 /*BEACHMALL*/					pr_read_review : "javascript:_app.ext.store_filter.a.scrollToRevealTab('"+data.value+"' ,'#prodReviews');"
 						})
 					}
@@ -148,7 +148,7 @@ var powerReviews_reviews = function(_app) {
 	//						_app.u.dump(content);
 							}},{
 						pr_page_id : data.value,
-						pr_write_review : "javascript:_app.ext.powerReviews_reviews.a.writeReview('"+data.value+"');"
+						pr_write_review : "javascript:_app.ext.powerreviews_reviews.a.writeReview('"+data.value+"');"
 						});
 					}
 				}
@@ -175,7 +175,7 @@ var powerReviews_reviews = function(_app) {
 					$div.dialog('open');
 */					}
 				else	{
-					_app.u.dump("WARNING! - no pid was specified for powerReviews_reviews.a.writeReview");
+					_app.u.dump("WARNING! - no pid was specified for powerreviews_reviews.a.writeReview");
 					}
 				} //writeReview
 			}, //action

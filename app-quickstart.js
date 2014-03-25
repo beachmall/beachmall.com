@@ -27,12 +27,13 @@ var quickstart = function(_app) {
 //a list of the templates used by this extension.
 //if this is a custom extension and you are loading system extensions (prodlist, etc), then load ALL templates you'll need here.
 		"templates" : [
-		//	'categoryListHomeTemplate',
+			'categoryListHomeTemplate',
 		//	'categoryTemplateBrands',
 		//	'brandsProductListTemplate',
 		//	'categoryTemplateWithSpecialList',
 		//	'categoryTemplateBuyerGuide',
 			'productListTemplateResultsCustom',
+			'productListTemplateResultsCustomSmaller',
 		//	'productListTemplateToolTipThumb',
 		//	'cartAccListTemplateToolTipThumb',
 		//	'categoryTemplateSiteMap',

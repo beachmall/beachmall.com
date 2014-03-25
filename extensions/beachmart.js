@@ -1102,59 +1102,6 @@ var store_filter = function(_app) {
 					}
 					
 				}, //End prodPriceDesc
-
-				//sets the overhang tag and hides discontinued products in a product list.
-				showProdModifier : function($tag, data) {
-				//	if(data.bindData.isElastic){
-				//		app.u.dump(data.value);
-				//		}
-						
-					var zoovyIsTags = (data.bindData.isElastic) ? data.value.tags : data.value['%attribs']['zoovy:prod_is_tags'];
-					
-					//app.u.dump('*** IS_USER2 = '+newLowPrice);
-					if (zoovyIsTags.indexOf('IS_DISCONTINUED') >= 0) {
-						$tag.parent().parent().parent().hide().attr('data-discontinued',1);
-					}
-					else if (zoovyIsTags.indexOf('IS_USER3') >= 0) {
-						$tag.append('Closeout!').addClass('smallRed').show();
-					}
-					else if (zoovyIsTags.indexOf('IS_CLEARANCE') >= 0) {
-						$tag.append('Clearance').addClass('smallRed').show();
-					}
-					else if (zoovyIsTags.indexOf('IS_USER6') >= 0) {
-						$tag.append('Customer Favorite').show();
-					}
-					else if (zoovyIsTags.indexOf('IS_USER4') >= 0) {
-						$tag.append('Exclusive').addClass('smallTagBkgrnd').show();
-					}
-					else if (zoovyIsTags.indexOf('IS_USER5') >= 0) {
-						$tag.append('Exclusive').addClass('smallTagBkgrnd').show();
-					}
-					else if (zoovyIsTags.indexOf('IS_BESTSELLER') >= 0) {
-						$tag.append('Best Seller').addClass('smallBlue').show();
-					}
-					else if (zoovyIsTags.indexOf('IS_USER2') >= 0) {
-						$tag.append('New Low Price!').addClass('mediumTagBkgrnd').show();
-					}
-					else if (zoovyIsTags.indexOf('IS_NEWARRIVAL') >= 0) {
-						$tag.append('New Arrival').addClass('smallTagBkgrnd').show();
-					}
-					else if (zoovyIsTags.indexOf('IS_USER7') >= 0) {
-						$tag.append('Overstock Sale').addClass('mediumRed').show();
-					}
-		/*			else if (zoovyIsTags.indexOf('IS_DISCONTINUED') >= 0) {
-						$tag.append('Discontinued').addClass('mediumTagBkgrnd').show();
-					}
-		*/			else if (zoovyIsTags.indexOf('IS_PREORDER') >= 0) {
-						$tag.append('Back Order').addClass('smallTagBkgrnd').show();
-					}
-					/*else if (zoovyIsTags.indexOf('IS_SALE') >= 0) {
-						$tag.append('SALE!').addClass('smallTagBkgrnd').show();
-					}*/
-					else {
-						//add no tags
-					}
-				},
 				
 				//changes price description based on tag
 				priceFrom : function($tag, data) {

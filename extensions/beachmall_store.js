@@ -118,6 +118,56 @@ var beachmall_store = function(_app) {
 					$tag.attr('src',_app.u.makeImage(data.bindData));
 				}
 			}, //appThumb
+			
+			//sets the overhang tag and hides discontinued products in a product list.
+			showprodmodifier : function($tag, data) {
+				//_app.u.dump('-----showprodmodifier'); _app.u.dump(data.value.tags);
+/*MARK: needed?*/				//var zoovyIsTags = ($tag.data('prodmodifier') == 1) ? data.value.tags : data.value['%attribs']['zoovy:prod_is_tags'];
+				var zoovyIsTags = data.value.tags;
+
+				if (zoovyIsTags.indexOf('IS_DISCONTINUED') >= 0) {
+/*MARK: uncomment*/				//$tag.parent().parent().parent().hide().attr('data-discontinued',1);
+				}
+				else if (zoovyIsTags.indexOf('IS_USER3') >= 0) {
+					$tag.append('Closeout!').addClass('smallRed').show();
+				}
+				else if (zoovyIsTags.indexOf('IS_CLEARANCE') >= 0) {
+					$tag.append('Clearance').addClass('smallRed').show();
+				}
+				else if (zoovyIsTags.indexOf('IS_USER6') >= 0) {
+					$tag.append('Customer Favorite').show();
+				}
+				else if (zoovyIsTags.indexOf('IS_USER4') >= 0) {
+					$tag.append('Exclusive').addClass('smallTagBkgrnd').show();
+				}
+				else if (zoovyIsTags.indexOf('IS_USER5') >= 0) {
+					$tag.append('Exclusive').addClass('smallTagBkgrnd').show();
+				}
+				else if (zoovyIsTags.indexOf('IS_BESTSELLER') >= 0) {
+					$tag.append('Best Seller').addClass('smallBlue').show();
+				}
+				else if (zoovyIsTags.indexOf('IS_USER2') >= 0) {
+					$tag.append('New Low Price!').addClass('mediumTagBkgrnd').show();
+				}
+				else if (zoovyIsTags.indexOf('IS_NEWARRIVAL') >= 0) {
+					$tag.append('New Arrival').addClass('smallTagBkgrnd').show();
+				}
+				else if (zoovyIsTags.indexOf('IS_USER7') >= 0) {
+					$tag.append('Overstock Sale').addClass('mediumRed').show();
+				}
+	/*			else if (zoovyIsTags.indexOf('IS_DISCONTINUED') >= 0) {
+					$tag.append('Discontinued').addClass('mediumTagBkgrnd').show();
+				}
+	*/			else if (zoovyIsTags.indexOf('IS_PREORDER') >= 0) {
+					$tag.append('Back Order').addClass('smallTagBkgrnd').show();
+				}
+				/*else if (zoovyIsTags.indexOf('IS_SALE') >= 0) {
+					$tag.append('SALE!').addClass('smallTagBkgrnd').show();
+				}*/
+				else {
+					//add no tags
+				}
+			},
 
 		}, //renderFormats
 ////////////////////////////////////   UTIL [u]   \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
