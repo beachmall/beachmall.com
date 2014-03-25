@@ -27,6 +27,7 @@ myApp.rq.push(['extension',0,'quickstart','app-quickstart.js','startMyProgram'])
 
 myApp.rq.push(['extension',0,'beachmart','extensions/beachmart_custom.js']); // custom product page, built by JT based on old hybrid site
 myApp.rq.push(['extension',0,'store_filter','extensions/beachmart.js','startExtension']); 
+myApp.rq.push(['extension',0,'beachmall_carousel','extensions/beachmall_carousel.js','startExtension']); 
 myApp.rq.push(['extension',0,'beachmart_dropdown','extensions/beachmart_dropdown.js', 'startExtension']); // custom product getter for dropdowns Runs startExtension as well
 //myApp.rq.push(['extension',0,'beachmart_catsearch','extensions/beachmart_catsearch.js', 'startExtension']); // custom search of designated category and tag
 //myApp.rq.push(['extension',0,'beachmart_items_per_page','extensions/beachmart_items_per_page.js', 'startExtension']); // changes number of items displayed in current prodlist
@@ -37,8 +38,8 @@ myApp.rq.push(['extension',0,'beachmart_dropdown_image','extensions/beachmart_dr
 //myApp.rq.push(['extension',0,'beachmart_cartEmail','extensions/beachmart_cartEmail.js']); //handles sending user an e-mail of cart contents
 //myApp.rq.push(['extension',0,'beachmart_dates','extensions/beachmart_dates.js']); //handles various date based calculations
 //myApp.rq.push(['extension',0,'store_createAccount','extensions/store_createAccount.js']); //handles account creation actions
-//myAppapp.rq.push(['script',0,app.vars.baseURL+'resources/jquery.touchSwipe-1.3.3.min.js']); //used w/ carouFedSel.
-//myAppapp.rq.push(['script',0,app.vars.baseURL+'resources/jquery.carouFredSel-6.2.0.min.js']); //used for carousels.
+myApp.rq.push(['script',0,myApp.vars.baseURL+'resources/jquery.touchSwipe-1.3.3.min.js']); //used w/ carouFedSel.
+myApp.rq.push(['script',0,myApp.vars.baseURL+'resources/jquery.carouFredSel-6.2.0.min.js']); //used for carousels.
 
 //myApp.rq.push(['extension',1,'google_analytics','extensions/partner_google_analytics.js','startExtension']);
 //myApp.rq.push(['extension',1,'tools_ab_testing','extensions/tools_ab_testing.js']);
