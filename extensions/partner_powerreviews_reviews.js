@@ -124,7 +124,7 @@ var powerreviews_reviews = function(_app) {
 //pass is PID through bindData var:
 			reviewsnippet : function($tag,data)	{
 				if(document.location.protocol != 'https:')	{
-					_app.u.dump('------powrev'); _app.u.dump(data.bindData.minreview);
+					//_app.u.dump('------powrev'); _app.u.dump(data.bindData.minreview);
 /*BEACHMALL*/		var minimumReview = 0;
 /*BEACHMALL*/		if(data.bindData.minreview) {
 /*BEACHMALL*/			minimumReview = data.bindData.minreview;

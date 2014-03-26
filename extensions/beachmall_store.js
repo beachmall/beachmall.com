@@ -90,6 +90,23 @@ var beachmall_store = function(_app) {
 //actions are functions triggered by a user interaction, such as a click/tap.
 //these are going the way of the do do, in favor of app events. new extensions should have few (if any) actions.
 		a : {
+		
+				//add a class (first arg) to an element (third arg) and toggles the text on the 
+				//calling element (second arg) between the last two args. 
+			toggleMyClass : function(arg,$tag,$tagParent,primary,secondary) {
+				var which = $tag.text();
+				switch(which) {
+					case 'OFF':
+						$tagParent.addClass(arg);
+						$tag.text(secondary);
+						break;
+					case 'ON':
+						$tagParent.removeClass(arg);
+						$tag.text(primary);
+						break;
+				}
+			},
+		
 				//clears the order/prod id field in contact form to be sure it doesn't still 
 				//have showContactPID value still displayed (if form did not get submitted). 
 			resetContactPID : function() {

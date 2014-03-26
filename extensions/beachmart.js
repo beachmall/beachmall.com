@@ -360,22 +360,6 @@ var store_filter = function(_app) {
 
 		a : {
 		
-				//add a class (first arg) to an element (third arg) and toggles the text on the 
-				//calling element (second arg) between the last two args. 
-			toggleMyClass : function(arg,$tag,$tagParent,primary,secondary) {
-				var which = $tag.text();
-				switch(which) {
-					case 'OFF':
-						$tagParent.addClass(arg);
-						$tag.text(secondary);
-						break;
-					case 'ON':
-						$tagParent.removeClass(arg);
-						$tag.text(primary);
-						break;
-				}
-			},
-		
 				//sets prod image frame and view detail button to hover red on mouseenter of the other
 			resultsRedMouseIn : function($this) {
 				$('.myProdThumbSmall',$this.parent()).css('border','5px solid #e0463a');
