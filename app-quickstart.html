@@ -1402,10 +1402,11 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 				<a class="carouselButton new2CarouselPrev carouselButtonPrev" href="#">prev</a>
 				<a class="carouselButton new2CarouselNext carouselButtonNext" href="#">next</a>
 <!-- MARK THIS NEEDS ORIG ELASTIC SEARCH. TODO: HOW TO PASS SEARCH OBJECT WHEN TOO MANY QUOTES USED. -->
-				 <ul data-tlc="quickstart#searchbytag --tag='IS_BESTSELLER' --size='8' --templateid='productListTemplateResultsCustom';" class='listStyleNone fluidList clearfix noPadOrMargin productList homeProdSearchNewArrivals2'></ul> 	
+				<!-- <ul data-tlc="quickstart#searchbytag --tag='IS_BESTSELLER' --size='8' --templateid='productListTemplateResultsCustom';" class='listStyleNone fluidList clearfix noPadOrMargin productList homeProdSearchNewArrivals2'></ul> -->	
 				<!-- <ul data-tlc="beachmall_search#searchbytag --size='8' --templateid='productListTemplateResultsNoPreview';" data-filter='{"and":{"filters":[{"term":{"tags":"IS_NEWARRIVAL"}},{"not":{"term":{"tags":"IS_DISCONTINUED"}}}]}}' class='listStyleNone fluidList clearfix noPadOrMargin productList'></ul>		
-				<!-- <ul id='homeProdSearchNewArrivals2' data-bind='var: elastic-native({"size":"25","mode":"elastic-native","filter":{"and":{"filters":[{"term":{"tags":"IS_NEWARRIVAL"}},{"not":{"term":{"tags":"IS_DISCONTINUED"}}}]}}}); format: productSearch; extension: quickstart; loadsTemplate: productListTemplateResultsCustom;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList'></ul>
+				 <ul id='homeProdSearchNewArrivals2' data-bind='var: elastic-native({"size":"25","mode":"elastic-native","filter":{"and":{"filters":[{"term":{"tags":"IS_NEWARRIVAL"}},{"not":{"term":{"tags":"IS_DISCONTINUED"}}}]}}}); format: productSearch; extension: quickstart; loadsTemplate: productListTemplateResultsCustom;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList'></ul>
 				 non filtered search: <ul id='homeProdSearchNewArrivals2' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"term":{"tags":"IS_NEWARRIVAL"}}}); format: productSearch; extension: quickstart; loadsTemplate: productListTemplateResultsCustom;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList'></ul>-->
+				<ul data-tlc="beachmall_search#searchbytag --filter='{&quot;size&quot;:&quot;25&quot;,&quot;mode&quot;:&quot;elastic-native&quot;,&quot;filter&quot;:{&quot;and&quot;:{&quot;filters&quot;:[{&quot;term&quot;:{&quot;tags&quot;:&quot;IS_NEWARRIVAL&quot;}},{&quot;not&quot;:{&quot;term&quot;:{&quot;tags&quot;:&quot;IS_DISCONTINUED&quot;}}}]}}}' --size='8'  --templateid='productListTemplateResultsCustom';" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchNewArrivals2"></ul>
 			</div>
 		</div>
     
@@ -1452,14 +1453,12 @@ the homepageTemplate template is loaded into mainContentArea by default when the
         <div class='Carousel'>
         	<a class="carouselButtonDkBlue featCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
 			<a class="carouselButtonDkBlue featCarouselNext carouselButtonDkBlueNext" href="#">next</a>
-        	
-        	<!--non filtered search: <ul id='homeProdSearchFeatured' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"or":{"filters":[{"term":{"tags":"IS_USER4"}},{"term":{"tags":"IS_COLORFUL"}},{"term":{"tags":"IS_USER5"}},{"term":{"user:prod_promo":"IS_USER4"}}]}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul> 
-        	<ul id='homeProdSearchFeatured' data-bind='var: elastic-native({"size":"28","mode":"elastic-native","filter":{"and":{"filters":[{"or":{"filters":[{"term":{"tags":"IS_USER4"}},{"term":{"tags":"IS_COLORFUL"}},{"term":{"tags":"IS_USER5"}},{"term":{"user:prod_promo":"IS_USER4"}}]}},{"not":{"term":{"tags":"IS_DISCONTINUED"}}}]}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall homeProdSearchFeatured'></ul> -->
-			<ul data-tlc="quickstart#searchbytag --tag='IS_BESTSELLER' --size='8' --templateid='productListTemplateResultsCustomSmaller';" class='listStyleNone fluidList clearfix noPadOrMargin productList homepageResults productListSmall homeProdSearchFeatured'></ul> 	
+        	<!--non filtered search: <ul id='homeProdSearchFeatured' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"or":{"filters":[{"term":{"tags":"IS_USER4"}},{"term":{"tags":"IS_COLORFUL"}},{"term":{"tags":"IS_USER5"}},{"term":{"user:prod_promo":"IS_USER4"}}]}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul> -->
+        	<ul data-tlc="beachmall_search#searchbytag --filter='{&quot;size&quot;:&quot;28&quot;,&quot;mode&quot;:&quot;elastic-native&quot;,&quot;filter&quot;:{&quot;and&quot;:{&quot;filters&quot;:[{&quot;or&quot;:{&quot;filters&quot;:[{&quot;term&quot;:{&quot;tags&quot;:&quot;IS_USER4&quot;}},{&quot;term&quot;:{&quot;tags&quot;:&quot;IS_COLORFUL&quot;}},{&quot;term&quot;:{&quot;tags&quot;:&quot;IS_USER5&quot;}},{&quot;term&quot;:{&quot;user:prod_promo&quot;:&quot;IS_USER4&quot;}}]}},{&quot;not&quot;:{&quot;term&quot;:{&quot;tags&quot;:&quot;IS_DISCONTINUED&quot;}}}]}}}' --size='8'  --templateid='productListTemplateResultsCustomSmaller';" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall homeProdSearchFeatured"></ul>
 		</div>
-        <div id='featCarPagenation' class='standardCarouselPagenation'></div>
+        <div class='standardCarouselPagenation featCarPagenation'></div>
     </div>
-<!--    
+    
     <div class='CarouselContainer bestSellersCarouselContainer'>
     	<div class='carouselTitles'>
         	<div class='carouselTitleTextContainer floatLeft'>BEST SELLERS</div>
@@ -1471,13 +1470,12 @@ the homepageTemplate template is loaded into mainContentArea by default when the
         <div class='Carousel'>
         	<a class="carouselButtonDkBlue bestCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
 			<a class="carouselButtonDkBlue bestCarouselNext carouselButtonDkBlueNext" href="#">next</a>
-        	
         <!--non filtered search: <ul id='homeProdSearchBestSellers' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"term":{"tags":"IS_BESTSELLER"}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>-->
-<!--        	<ul id='homeProdSearchBestSellers' data-bind='var: elastic-native({"size":"28","mode":"elastic-native","filter":{"and":{"filters":[{"term":{"tags":"IS_BESTSELLER"}},{"not":{"term":{"tags":"IS_DISCONTINUED"}}}]}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>
-        </div>																																																	
-        <div id='bestCarPagenation' class='standardCarouselPagenation'></div>
+			<ul data-tlc="beachmall_search#searchbytag --filter='{&quot;size&quot;:&quot;28&quot;,&quot;mode&quot;:&quot;elastic-native&quot;,&quot;filter&quot;:{&quot;and&quot;:{&quot;filters&quot;:[{&quot;term&quot;:{&quot;tags&quot;:&quot;IS_BESTSELLER&quot;}},{&quot;not&quot;:{&quot;term&quot;:{&quot;tags&quot;:&quot;IS_DISCONTINUED&quot;}}}]}}}' --size='8'  --templateid='productListTemplateResultsCustomSmaller';" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall homeProdSearchBestSellers"></ul>
+		</div>																																																	
+        <div class='standardCarouselPagenation bestCarPagenation'></div>
     </div>
--->	
+	
     <div class='categoryDescriptionContainer'>
     	<div class='catDescStd catDescStd1 floatLeft'>
         	<h1>Beach Gear</h1>
@@ -1798,14 +1796,13 @@ SANITY -> if you change the height and width of this image, change the .minimalM
 		<div class='reviewsStarsCount homeCars' data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews_reviews;'></div><!-- BCERO271 MARK--> 
 <!--    </div>
 MARK --> 	
-		<div class='searchReviewSiblingsCont'>
-			
-			<div data-tlc="bind $var '.pid'; powerreviews_reviews#reviewsnippet --minreview='1' --legacy; apply --append;" class="reviewsStarsCount"></div><!-- BCERO271 MARK-->
-			<form data-bind='var: product(pid); format:atcForm; extension:store_product;' class='prodViewerAddToCartForm clearfix' action='#'>
-				<button class='prodViewerAddToCartButton' data-bind='format:addToCartButton; extension:myRIA; useParentData:true; isElastic:1;'></button>
-			</form>
-		</div>
-		<div class='prodNum stid' data-bind='var: product(pid); format:text; pretext: ITEM &nbsp #: &nbsp ;'></div>
+	<div class='searchReviewSiblingsCont'>
+		<div data-tlc="bind $var '.pid'; powerreviews_reviews#reviewsnippet --minreview='1' --legacy; apply --append;" class="reviewsStarsCount"></div><!-- BCERO271 MARK-->
+		<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy;" class="prodViewerAddToCartForm clearfix" action="#">
+			<button data-tlc="bind $var '.'; quickstart#addtocartbutton  --iselastic='1' --legacy;" data-legacy-useparentdata="true" class="prodViewerAddToCartButton"></button>
+		</form>
+	</div>
+	<div data-tlc="bind $var '.pid'; if (is $var --notblank;) {{format --prepend='ITEM &nbsp; #: &nbsp; '; apply --append;}};" class="prodNum stid"></div>
 </li>
 
 

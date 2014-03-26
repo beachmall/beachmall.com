@@ -49,7 +49,9 @@ var beachmall_carousel = function(_app) {
 		startExtension : {
 			onSuccess : function() {
 				_app.templates.homepageTemplate.on('complete.beachmall_carousel',function(event,$ele,P) {
-					_app.ext.beachmall_carousel.u.runHomeCarousels($ele);
+					_app.ext.beachmall_carousel.u.runHomeSmallCarousel($ele);
+					_app.ext.beachmall_carousel.u.runHomeFeaturedCarousel($ele);
+					_app.ext.beachmall_carousel.u.runHomeBestCarousel($ele);
 				})
 			},
 			onError : function() {
@@ -83,8 +85,9 @@ var beachmall_carousel = function(_app) {
 //any functions that are recycled should be here.
 		u : {
 		
-			runHomeCarousels : function($context) {
+			runHomeSmallCarousel : function($context) {
 				_app.u.dump('----Running homepage carousels');
+				
 				//HOMEPAGE FEATURED CAROUSEL	
 				var $target = $('.homeProdSearchNewArrivals2',$context);
 				if($target.data('isCarousel'))	{} //only make it a carousel once.
@@ -108,10 +111,69 @@ var beachmall_carousel = function(_app) {
 						});
 					},2000); 
 				} //HOMEPAGE FEATURED CAROUSEL	
-				_app.u.dump('----Done running homepage carousels');
+			},
+
+			runHomeFeaturedCarousel : function($context) {		
+				//HOMEPAGE FEATURED PRODUCTS CAROUSEL
+				var $target = $('.homeProdSearchFeatured',$context);
+				if($target.data('isCarousel'))	{} //only make it a carousel once.
+				else {
+					$target.data('isCarousel',true);
+					//for whatever reason, caroufredsel needs to be executed after a moment.
+					setTimeout(function(){
+						$target.carouFredSel({
+							items: {
+								start: 8,
+							},
+							auto:false, //{
+					//			pauseOnHover: "immediate"
+					//		},
+							prev: '.featCarouselPrev',
+							next: '.featCarouselNext',
+							height: 405,
+							width: 960,
+							pagination: '.featCarPagenation',
+							scroll: 4,
+					//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
+							swipe: {
+								onMouse: true,
+								onTouch: true
+							}
+						});
+					},2000); 
+				} //HOMEPAGE FEATURED PRODUCTS CAROUSEL
+			},
+				
+			runHomeBestCarousel : function($context) {
+				//HOMEPAGE BESTSELLERS PRODCUTS CAROUSEL
+				var $target = $('.homeProdSearchBestSellers');
+				if($target.data('isCarousel'))	{} //only make it a carousel once.
+				else	{
+					$target.data('isCarousel',true);
+					//for whatever reason, caroufredsel needs to be executed after a moment.
+					setTimeout(function(){
+						$target.carouFredSel({
+							auto: {
+								pauseOnHover: "immediate"
+							},
+							prev: '.bestCarouselPrev',
+							next: '.bestCarouselNext',
+							height: 405,
+							width: 960,
+							pagination: '.bestCarPagenation',
+							scroll: 4,
+					//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
+							swipe: {
+								onMouse: true,
+								onTouch: true
+							}
+						});
+					},2000);
+				}			
+			_app.u.dump('----Done running homepage carousels');
 			}
-		
-			}, //u [utilities]
+			
+		}, //u [utilities]
 
 //app-events are added to an element through data-app-event="extensionName|functionName"
 //right now, these are not fully supported, but they will be going forward. 

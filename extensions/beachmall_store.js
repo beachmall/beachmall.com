@@ -50,7 +50,7 @@ var beachmall_store = function(_app) {
 		startExtension : {
 			onSuccess : function() {
 				_app.templates.homepageTemplate.on('complete.beachmall_store',function(event,$ele,P) {
-					
+					$('.floatingBar',$ele).show(); //shows floating bar upon return to hompage if it's been closed.
 				});
 				
 				_app.templates.categoryTemplate.on('complete.beachmall_store',function(event,$ele,P) {

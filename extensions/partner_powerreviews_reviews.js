@@ -124,17 +124,17 @@ var powerreviews_reviews = function(_app) {
 //pass is PID through bindData var:
 			reviewsnippet : function($tag,data)	{
 				if(document.location.protocol != 'https:')	{
-				_app.u.dump('fjl;ksdajgk;dashklsdfhb;'); _app.u.dump(data.value); _app.u.dump($tag);
-/*BEACHMALL*/		var minimumReview = 1;
+					_app.u.dump('------powrev'); _app.u.dump(data.bindData.minreview);
+/*BEACHMALL*/		var minimumReview = 0;
 /*BEACHMALL*/		if(data.bindData.minreview) {
 /*BEACHMALL*/			minimumReview = data.bindData.minreview;
 /*BEACHMALL*/		} else {}
 				
 					POWERREVIEWS.display.snippet({ write : function(content) { $tag.append(content); } }, {
-/*BEACHMALL*/					pr_snippet_min_reviews : minimumReview, //shows reviews snippet based on qty of reviews
+/*BEACHMALL*/			pr_snippet_min_reviews : minimumReview, //shows reviews snippet based on qty of reviews
 						pr_page_id : data.value,
 						pr_write_review : "javascript:_app.ext.powerreviews_reviews.a.writeReview('"+data.value+"');",
-/*BEACHMALL*/					pr_read_review : "javascript:_app.ext.store_filter.a.scrollToRevealTab('"+data.value+"' ,'#prodReviews');"
+/*BEACHMALL*/			pr_read_review : "javascript:_app.ext.store_filter.a.scrollToRevealTab('"+data.value+"' ,'#prodReviews');"
 						})
 					}
 				}, //reviewSnippet

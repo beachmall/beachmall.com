@@ -62,16 +62,15 @@ var beachmall_search = function(_app) {
 			
 		tlcFormats : {
 		
-			searchbytag : function(data,thisTLC)	{
-				_app.u.dump('----This got called');
-				//var filterObj = thisTLC.attr('filter'); 
-				_app.u.dump($(this));
+			searchbytag : function(data,thisTLC) {
 				var argObj = thisTLC.args2obj(data.command.args,data.globals); //this creates an object of the args
-				var query = {"size":(argObj.size || 4),"mode":"elastic-native","filter":{"term":{"tags":argObj.tag}}};
+				//_app.u.dump(argObj.filter);
+				var query = JSON.parse(argObj.filter);
+				//_app.u.dump(query);
 				_app.ext.store_search.calls.appPublicProductSearch.init(query,$.extend({'datapointer':'appPublicSearch|tag|'+argObj.tag,'templateID':argObj.templateid,'extension':'store_search','callback':'handleElasticResults','list':data.globals.tags[data.globals.focusTag]},argObj));
 				_app.model.dispatchThis('mutable');
 				return false; //in this case, we're off to do an ajax request. so we don't continue the statement.
-				}
+			}
 
 		},
 			
@@ -81,8 +80,19 @@ var beachmall_search = function(_app) {
 //on a data-bind, format: is equal to a renderformat. extension: tells the rendering engine where to look for the renderFormat.
 //that way, two render formats named the same (but in different extensions) don't overwrite each other.
 		renderFormats : {
+		
+			searchbytag : function(data,thisTLC)	{
+				_app.u.dump('----This got called');
+				//var filterObj = thisTLC.attr('filter'); 
+				_app.u.dump(data.value); _app.u.dump(argObj);
+				var argObj = thisTLC.args2obj(data.command.args,data.globals); //this creates an object of the args
+				var query = {"size":(argObj.size || 4),"mode":"elastic-native","filter":{"term":{"tags":argObj.tag}}};
+				_app.ext.store_search.calls.appPublicProductSearch.init(query,$.extend({'datapointer':'appPublicSearch|tag|'+argObj.tag,'templateID':argObj.templateid,'extension':'store_search','callback':'handleElasticResults','list':data.globals.tags[data.globals.focusTag]},argObj));
+				_app.model.dispatchThis('mutable');
+				return false; //in this case, we're off to do an ajax request. so we don't continue the statement.
+			}		
 
-			}, //renderFormats
+		}, //renderFormats
 ////////////////////////////////////   UTIL [u]   \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 //utilities are typically functions that are exected by an event or action.
