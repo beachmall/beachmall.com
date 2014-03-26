@@ -138,21 +138,11 @@ var store_filter = function(_app) {
 //the callback is auto-executed as part of the extensions loading process.
 		init : {
 			onSuccess : function()	{
-			
-				_app.ext.store_filter.u.bindOnclick();
-			
-				_app.ext.store_filter.u.runCarousels();
-				
+
 				//_app.rq.push(['script',0,'http://path.to.script.js/', function(){
 					//This function is called when the script has finished loading
 					//for provide support- add stuff to the DOM here
 				//	}]);
-				
-				_app.rq.push(['templateFunction','homepageTemplate','onCompletes',function(infoObj) {
-					var $context = $(_app.u.jqSelector('#'+infoObj.parentID));
-					$('.floatingBar',$context).show(); //shows floating bar upon return to hompage if it's been closed.
-					//_app.ext.store_filter.u.runPhoneChatLive();
-				}]);
 				
 				_app.rq.push(['templateFunction','categoryTemplate','onCompletes',function(infoObj) {
 					var $context = $(_app.u.jqSelector('#'+infoObj.parentID));

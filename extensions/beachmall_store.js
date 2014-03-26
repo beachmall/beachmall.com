@@ -36,6 +36,9 @@ var beachmall_store = function(_app) {
 				var r = false; //return false if extension won't load for some reason (account config, dependencies, etc).
 
 				//if there is any functionality required for this extension to load, put it here. such as a check for async google, the FB object, etc. return false if dependencies are not present. don't check for other extensions.
+				
+				_app.ext.store_filter.u.bindOnclick();
+				
 				r = true;
 
 				return r;
