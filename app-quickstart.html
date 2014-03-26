@@ -185,7 +185,8 @@ ANIMATION TESTING
 		<div class='phoneIcon sprite floatRight'></div>
     </div>
 	<nav class='floatRight'>
-        <div class='cartIcon sprite pointer' onClick="return showContent('cart',{});"><span class='cartItemCount'>0</span></div>
+        <!-- <div class='cartIcon sprite pointer' onClick="return showContent('cart',{});"><span class='cartItemCount'>0</span></div> this will go to inline cart -->
+        <div class='cartIcon sprite pointer' onClick="myApp.ext.quickstart.u.showCartInModal({'templateID':'cartTemplate'});"><span class='cartItemCount'>0</span></div>
 	</nav>
     <nav class='topNavLinks floatRight openSansFontBold fontSize12' onMouseOver="myApp.ext.beachmart_dropdown.a.showDropdown($(this),100);" onMouseOut="myApp.ext.beachmart_dropdown.a.hideDropdown($(this));">
         <a href="#" onClick="return showContent('customer',{'show':'myaccount'});">My Account</a> 
@@ -1365,7 +1366,7 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 	<div class='floatingBar'>
     	<div class='backToTop pointer' onClick="myApp.ext.beachmall_store.u.scrollToTop()">&#187 BACK TO TOP</div>
         <div class='recentlyViewed pointer' onClick="return showContent('company',{'show':'recent'});"><span>Recently Viewed Item(s)&nbsp </span><span class='numRecentlyViewed displayNone'>0</span><!--<span class='fontWhite recentCarat'> &#187 </span><span class='fontYellow recentViewItems'><a class='bindByAnchor' href='#!company?show=recent'> VIEW ITEM(S)</a></span>--></div>
-        <div class='cartIcon sprite pointer' onClick="return showContent('cart',{});"><span class='cartItemCount'>0</span><p><span class='fontWhite'>&#187 </span><span class='fontYellow'>SHOPPING CART</span></p></div>
+        <div class='cartIcon sprite pointer' onClick="myApp.ext.quickstart.u.showCartInModal({'templateID':'cartTemplate'});"><span class='cartItemCount'>0</span><p><span class='fontWhite'>&#187 </span><span class='fontYellow'>SHOPPING CART</span></p></div>
         <button class='checkoutButton' onClick="showContent('checkout',{});">CHECK OUT</button>
         <button class='floatingBarClose sprite' onclick="$('.floatingBar').hide(); return false;"></button>
     </div>
