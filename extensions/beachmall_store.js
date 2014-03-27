@@ -60,6 +60,10 @@ var beachmall_store = function(_app) {
 					_app.ext.beachmall_store.u.backToTop($ele);
 				});
 				
+				_app.templates.categoryTemplateBrands.on('complete.beachmall_store',function(event,$ele,P) {
+					_app.ext.beachmall_store.u.tabify($ele,".brandsTabs");
+				});
+				
 				_app.templates.searchTemplate.on('complete.beachmall_store',function(event,$ele,P) {
 					_app.ext.beachmall_store.u.backToTop($ele);
 				});
@@ -195,6 +199,20 @@ var beachmall_store = function(_app) {
 //utilities are typically functions that are exected by an event or action.
 //any functions that are recycled should be here.
 		u : {
+		
+				//will add tabs to the selector in the context passed
+			tabify : function($context,selector) {
+				var $tabContainer = $(selector,$context);
+				if($tabContainer.length)	{
+					if($tabContainer.data("widget") == 'anytabs'){} //tabs have already been instantiated. no need to be redundant.
+					else	{
+						$tabContainer.anytabs();
+					}
+				}
+				else	{
+					_app.u.dump("WARNING! could not find selector for brand tab items");
+				} //couldn't find the tab to tabificate.
+			},
 		
 			backToTop : function($context) {
 				$($context).append('<div class="appBackToTop pointer" onClick="myApp.ext.beachmall_store.u.scrollToTop()"><span class="sprite"></span>Back to Top</div>')

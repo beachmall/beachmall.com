@@ -599,48 +599,6 @@ RenderFormats
 		renderFormats: {
 			
 			
-			prodSearchFeaturedByBrand : function($tag,data)	{
-				_app.u.dump('---- data.value featured Brands:'); _app.u.dump(data.value);
-				//data.value will be the brand.
-				var query = {
-					"mode":"elastic-native",
-					"filter":{
-						"or":{
-							"filters":[
-								{"term":{"prod_mfg":data.value}},
-								{"term":{"tags":"IS_USER4"}},
-								{"term":{"tags":"IS_COLORFUL"}},
-								{"term":{"tags":"IS_USER5"}},
-								{"term":{"user:prod_promo":"IS_USER4"}}
-								]
-							}
-						}
-					}
-				
-				_app.ext.beachmart.u.handleBrandSearches($tag,data,query);
-
-
-				},			
-			
-			prodSearchBestSellersByBrand : function($tag,data)	{
-				_app.u.dump('---- data.value bestSeller Brands:'); _app.u.dump(data.value);
-				//data.value will be the brand.
-				var query = {
-					"size": data.bindData.size || "24",
-					"mode":"elastic-native",
-					"filter":{
-						"and":{
-							"filters":[
-								{"term":{"prod_mfg":data.value}},
-								{"term":{"tags":"IS_BESTSELLER"}}
-								]
-							}
-						}
-					}
-				_app.ext.beachmart.u.handleBrandSearches($tag,data,query);
-				},
-			
-			
 //needed more control over the size.		
 			youtubeVideo : function($tag,data){
 				var r = "<iframe style='z-index:1;' width='380' height='214' src='https://www.youtube.com/embed/"+data.value+"' frameborder='0' allowfullscreen></iframe>";
@@ -907,22 +865,7 @@ uities
 
 		u: {
 
-			handleBrandSearches : function($tag,data,query)	{
-
-				var elasticsearch = _app.ext.store_search.u.buildElasticRaw(query);
-				elasticsearch.size = data.bindData.size || "24"; 
-
-				var _tag = {'callback':'handleElasticResults','extension':'store_search','templateID':'productListTemplateResults','list':$tag};
-				_tag.datapointer = "appPublicSearch|"+JSON.stringify(elasticsearch);
-				
-//				_app.ext.store_search.u.updateDataOnListElement($tag,elasticsearch,1);
-				_app.ext.store_search.calls.appPublicSearch.init(elasticsearch,_tag);
-				_app.model.dispatchThis();
-
-				},
-
-			initEstArrival : function(infoObj){
-
+		
 _app.u.dump("BEGIN beachmart.u.initEstArrival");
 window.SKU = infoObj.pid; _app.u.dump("GLOBAL SKU IS A TEMPORARY SOLUTION!!!",'warn'); //was originally written in a hybrid store. need to get this more app friendly.
 var zip;

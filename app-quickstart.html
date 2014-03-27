@@ -220,7 +220,7 @@ ANIMATION TESTING
 
 <header id='mastHead'>
 	
-	<div class='floatLeft logo pointer' onClick="return showContent('category',{'navcat':'.'});"><img src='images/beachmall-logo-wide_220x65.jpg' width='220' height='65' alt='beachmall.com' /></div>
+	<a class='floatLeft logo pointer' href="#!home"><img src='images/beachmall-logo-wide_220x65.jpg' width='220' height='65' alt='beachmall.com' /></a>
 	
 	<div class='headerRightContainer floatRight'>    
         <div class='searchContainer floatRight'>
@@ -1413,26 +1413,27 @@ the homepageTemplate template is loaded into mainContentArea by default when the
     
 		<div class='homepageCategories'>
 			<div class='additionalHompageCatsContainer'>
-				<div class='additionalHompageCats floatLeft pointer' onClick="return showContent('category',{'navcat':'.beach-accessories.beach-cart'});">
+				<a href="#!category/.beach-accessories.beach-cart/Accessories%20and%20Carts" class="additionalHompageCats floatLeft pointer">
 					<div class='addCatArrow sprite floatRight'></div>
 					<span>SHOP</span>
 					<span>BEACH CARTS</span>
-				</div>
-				<div class='additionalHompageCats floatLeft pointer' onClick="return showContent('category',{'navcat':'.beach-umbrellas-shelter.beach-tent-shelters'});">
+				</a>
+				<a href="#!category/.beach-umbrellas-shelter.beach-tent-shelters/Tents%20and%20Shelters" class="additionalHompageCats floatLeft pointer">
 					<div class='addCatArrow sprite floatRight'></div>
 					<span>SHOP</span>
 					<span>BEACH TENTS</span>
-				</div>
-				<div class='additionalHompageCats floatLeft pointer' onClick="return showContent('category',{'navcat':'.beach-accessories.beach-bags-totes'});">
+				</a>
+				<a href="#!category/.beach-accessories.beach-bags-totes" class="additionalHompageCats floatLeft pointer">
 					<div class='addCatArrow sprite floatRight'></div>
 					<span>SHOP</span>
 					<span>BEACH BAGS</span>
-				</div>
-				<div class='additionalHompageCats floatLeft pointer' onClick="return showContent('category',{'navcat':'.beach-chairs.beach-gear'});">
+				</a>
+				<a href="#!category/.beach-chairs.beach-gear/Brands" class="additionalHompageCats floatLeft pointer"> 
+				<!-- <div class='additionalHompageCats floatLeft pointer' onClick="return showContent('category',{'navcat':'.beach-chairs.beach-gear'});">  -->
 					<div class='addCatArrow sprite floatRight'></div>
 					<span>SHOP</span>
 					<span>BY BRAND</span>
-				</div>
+				</a>
 			</div>
 <div class='tempCatImages'>
 	<img class='floatLeft' src='images/shop_beach-accessories_160x105.jpg' />
@@ -1585,7 +1586,6 @@ don't modify the 'data-templateid' unless you are changing template names and up
 				<div class="countableProdList">
 <!-- original product list<ul data-app-role='productList' data-bind="var: category(@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: productListTemplate; withReviews:1; items_per_page: 24;" class='listStyleNone fluidList clearfix noPadOrMargin prodMargin productList'>-->
 					<ul data-tlc="bind $var '.@products'; prodlist_infinite#infiniteproductlist  --withreviews='1' --withinventory='1' --withvariations='1' --itemsperpage='12' --templateid='productListTemplate'  --legacy;" data-app-role="productList" class="listStyleNone fluidList clearfix noPadOrMargin prodMargin productList">
-						
 						<!-- Removed until better placement can be acheived in future deploy <div class='catTitle floatLeft' data-bind='var: category(pretty); format:catText; extension: myRIA;'></div> -->
 						<div class="buyerGuides floatLeft pointer" onclick="return showContent('category',{'navcat':'.buyer_guides'});"><h4>VIEW BUYER GUIDES</h4><span>Learn how to shop for these items</span></div>
 						<div class="photosOnly">
@@ -1604,6 +1604,116 @@ don't modify the 'data-templateid' unless you are changing template names and up
 </div>
 
 
+
+
+<div id='categoryTemplateBrands' class='loadingBG categoryTemplate' data-app-role='categoryPage'>
+
+	<div data-tlc="bind $var '.%page.coupon_code'; if(is $var --notblank;) {{ apply --show; }}; " class="brandsPromoBanner floatLeft">
+		<div>SPECIAL OFFER!</div>
+		<div><span>TAKE AN EXTRA</span><br>10% OFF ALL <span data-tlc="bind $var '.%page.mfg'; if (is $var --notblank;) {{apply --append;}};"></span> GEAR</div>
+		<div>PROMO CODE: <span data-tlc="bind $var '.%page.coupon_code'; if (is $var --notblank;) {{apply --append;}};"></span> <span>See Details</span></div>
+	</div>
+	
+	<ul data-tlc="bind $var '.id'; store_navcats#breadcrumb  --templateid='breadcrumbTemplate'  --legacy;" class="breadcrumb clearfix noPadOrMargin fluidList"></ul>
+
+		
+		
+	<div data-tlc="bind $var '.%page.description'; if(is $var --notblank;) {{ apply --show; }}; " class="displayNone">
+		<div class='brandsCatContainer'> 
+			
+			<ul>
+				<li class="brandsHeader listStyleNone">
+					<img data-tlc="bind $var '.%page.banner1'; quickstart#banner  --height='250' --width='750' --legacy;">
+					<ul>
+				   <!-- <p data-bind="var: category(%page.description2); format:wiki; wikiFormats:myRIA; editor: textarea;"></p> -->
+						<li><span data-tlc="bind $var '.%page.header'; if (is $var --notblank;) {{apply --append;}};"></span>
+						<br><div data-tlc="bind $var '.%page.description2'; if (is $var --notblank;) {{render --wiki='undefined'; apply --append;}};"></div>
+						</li>
+						<!--<li><img data-bind="var: category(%page.mfg_logo); format: banner; editor: banner; height:250; width:750; extension: myRIA;" /><BR><BR><BR>AUTHORIZED DEALER</li>-->
+						<li><img data-tlc="bind $var '.%meta.CAT_THUMB'; if (is $var --notblank;) {{ apply --img --media=$var --width=140 --height=90 --bgcolor='#ffffff' --replace;}};" height="90" width="140">AUTHORIZED DEALER</li>
+					</ul>
+				</li>
+			</ul>
+			
+			<div class='brandsTabs'>
+				<ul class='tabs'>
+					<li class='tabFeatured'><a href="#featuredProdsTab">Featured</a></li>
+					<li class='tabBest' ><a href="#bestSellersTab">Best Sellers</a></li>
+					<li class='tabViewAll'><a href="#viewAllProductsTab">View All</a></li>
+				</ul>
+			
+
+				<div data-anytab-content='featuredProdsTab'>
+					<div class='CarouselContainer featuredProductsCarouselContainer'>
+						<div class='carouselTitles yellowBkgrd'>
+							<div href="#" class='pointer' onClick="showContent('category',{'navcat':$(this).closest('[data-catsafeid]').data('catsafeid'),'templateID':'categoryTemplateBrandsFeatured'});">
+								<div class='brandCarouselLinkContainer floatRight' >View all featured product</div>
+								<div class='carouselArrowContainer floatRight sprite'></div>
+							</div>
+						</div>
+						<div class='Carousel'>
+							<!-- <a class="carouselButtonDkBlue featCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
+							<a class="carouselButtonDkBlue featCarouselNext carouselButtonDkBlueNext" href="#">next</a> -->
+							
+<!-- MARK					<ul data-tlc="bind $var '.%page.mfg'; if(is $var --blank;) {{bind var 'ujena';}}; beachmart#prodsearchfeaturedbybrand  --defaultvalue='ujena' --size='24' --templateid='productListTemplateResults'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall"></ul> 
+<!-- MARK					<ul data-tlc="bind $var '.%meta.CAT_THUMB'; if(is $var --blank;) {{bind var 'ujena';}}; beachmall_search#searchbytag  --replacify='true' --templateid='productListTemplateResults' --filter='{&quot;size&quot;:&quot;25&quot;,&quot;mode&quot;:&quot;elastic-native&quot;,&quot;filter&quot;:{&quot;and&quot;:{&quot;filters&quot;:[{&quot;term&quot;:{&quot;prod_mfg&quot;:&quot;replacify&quot;}},{&quot;term&quot;:{&quot;tags&quot;:&quot;IS_BESTSELLER&quot;}}]}}}';" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall"></ul> -->
+<!-- MARK -->				<ul data-tlc="bind $var '.@products'; prodlist_infinite#infiniteproductlist  --withreviews='1' --withinventory='1' --withvariations='1' --itemsperpage='12' --templateid='productListTemplate'  --legacy;" data-app-role="productList" class="listStyleNone fluidList clearfix noPadOrMargin prodMargin productList">
+						</div>
+						<!-- <div class='standardCarouselPagenation'></div> -->
+					</div>
+				</div>
+				
+				<div data-anytab-content='bestSellersTab'>
+					<div class='CarouselContainer bestSellersCarouselContainer'>
+						<div class='carouselTitles'>
+							<div href="#" class='pointer' onClick="showContent('category',{'navcat':$(this).closest('[data-catsafeid]').data('catsafeid'),'templateID':'categoryTemplateBrandsBestSellers'});">
+								<div class='carouselLinkContainer floatRight' >View Best Sellers</div>
+								<div class='carouselArrowContainer floatRight sprite'></div>
+							</div>
+						</div>
+						<div class='Carousel'>
+							<!-- <a class="carouselButtonDkBlue bestCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
+							<a class="carouselButtonDkBlue bestCarouselNext carouselButtonDkBlueNext" href="#">next</a> -->
+							
+<!-- MARK					<ul data-tlc="bind $var '.%page.mfg'; beachmart#prodsearchbestsellersbybrand  --size='24' --templateid='productListTemplateResultsCustomSmaller'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall"></ul> <!-- defaultValue:ujena; --> 
+<!-- MARK this will need correct filter object added if used					<ul data-tlc="bind $var '.%meta.CAT_THUMB'; if(is $var --blank;) {{bind var 'ujena';}}; beachmall_search#searchbytag  --replacify='true' --templateid='productListTemplateResults' --filter='{&quot;size&quot;:&quot;25&quot;,&quot;mode&quot;:&quot;elastic-native&quot;,&quot;filter&quot;:{&quot;and&quot;:{&quot;filters&quot;:[{&quot;term&quot;:{&quot;prod_mfg&quot;:&quot;replacify&quot;}},{&quot;term&quot;:{&quot;tags&quot;:&quot;IS_BESTSELLER&quot;}}]}}}';" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall"></ul> -->
+<!-- MARK -->				<ul data-tlc="bind $var '.@products'; prodlist_infinite#infiniteproductlist  --withreviews='1' --withinventory='1' --withvariations='1' --itemsperpage='12' --templateid='productListTemplate'  --legacy;" data-app-role="productList" class="listStyleNone fluidList clearfix noPadOrMargin prodMargin productList">
+						</div>
+						<!-- <div class='standardCarouselPagenation'></div> -->
+					</div>
+				</div>
+	
+				<div data-anytab-content='viewAllProductsTab' class='viewAllProductsTabContainer'>
+					<div class='CarouselContainer bestSellersCarouselContainer'>
+						<div class='carouselTitles'>
+							<div href="#" class='pointer' onClick="showContent('category',{'navcat':$(this).closest('[data-catsafeid]').data('catsafeid'),'templateID':'categoryTemplateBrandsBestSellers'});">
+								<div class='brandCarouselLinkContainer viewAllProductsTab floatRight' >View All</div>
+								<div class='carouselArrowContainer floatRight sprite'></div>
+							</div>
+						</div>
+						<div class='Carousel'>
+							<!-- <a class="carouselButtonDkBlue bestCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
+							<a class="carouselButtonDkBlue bestCarouselNext carouselButtonDkBlueNext" href="#">next</a> -->
+							
+							<ul data-tlc="bind $var '.@products'; prodlist_infinite#infiniteproductlist  --withreviews='1' --withinventory='1' --withvariations='1' --itemsperpage='12' --hidesummary='true' --templateid='productListTemplate'  --legacy;" data-app-role="productList" class="listStyleNone fluidList clearfix noPadOrMargin brandsProductList"></ul>
+
+						</div>
+						<!-- <div class='standardCarouselPagenation'></div> -->
+					</div>
+					
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
+	<div class='brandsTopCatContainer'>
+		<ul data-tlc="bind $var '.@subcategoryDetail'; store_navcats#categorylist  --detail='max' --templateid='brandsCategoryListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin categoryList"></ul><!-- outputs a list of subcategories -->
+		<!-- <ul data-bind="var: category(@subcategoryDetail); format: categoryList; extension: store_navcats; loadsTemplate: categoryListTemplate; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin categoryList'></ul><!-- outputs a list of subcategories -->
+	</div>
+
+</div> <!-- //categoryTemplateBrands -->
 
 
 
@@ -1633,14 +1743,22 @@ don't modify the 'data-templateid' unless you are changing template names and up
 
 
 <li id='categoryListHomeTemplate' class='catListTemp'>
-	<div onClick="showContent('category',{'navcat':$(this).parent().attr('data-catsafeid')}); items_per_page: 25" class='catTemplateContainer pointer'>
+	<a data-tlc="bind $var '.'; store_routing#seoanchor --type='category' --seo; apply --attrib='href';" class='catTemplateContainer pointer'>
 		<div class='catBorderContainer'>
 			<div class='catName white2LGray'><span data-tlc="bind $var '.pretty'; quickstart#cattext  --legacy;"></span></div>
         </div>
 		<div class='thumbContainer'><img src='blank.gif' class='catThumb' data-tlc="bind $var '.%meta.CAT_THUMB'; if (is $var --notblank){{apply --img --media=$var --width=162 --height=105 --bgcolor='#ffffff' --replace;}};"> <!--height='105'-->
         	<div class='moreDetailsSmall catHomeDetails'>SHOP NOW</div>
         </div>
-	</div>
+	</a>
+</li>
+
+
+<li id="brandsCategoryListTemplate" class="catListBrand">
+	<a data-tlc="bind $var '.'; store_routing#seoanchor --type='category' --seo; apply --attrib='href';" class="catTemplateContainer pointer">
+        <div class="brandThumbContainer"><img data-tlc="bind $var '.%meta.CAT_THUMB'; if (is $var --notblank;) {{ apply --img --media=$var --width=152 --height=152 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class="brandCatThumb" height="152" width="152"></div>
+		<div class="brandsCatName white2LGray"><span data-tlc="bind $var '.pretty'; quickstart#cattext  --legacy;"></span></div>
+	</a>
 </li>
 
 </ul>

@@ -28,7 +28,7 @@ myApp.rq.push(['extension',0,'quickstart','app-quickstart.js','startMyProgram'])
 myApp.rq.push(['extension',0,'beachmall_store','extensions/beachmall_store.js','startExtension']); 
 myApp.rq.push(['extension',0,'beachmart','extensions/beachmart_custom.js']); // custom product page, built by JT based on old hybrid site
 myApp.rq.push(['extension',0,'store_filter','extensions/beachmart.js','startExtension']); 
-myApp.rq.push(['extension',0,'beachmall_search','extensions/beachmall_search.js','startExtension']); //new place to seperate search features out to. 
+myApp.rq.push(['extension',0,'beachmall_search','extensions/beachmall_search.js']); //new place to seperate search features out to. 
 myApp.rq.push(['extension',0,'beachmall_carousel','extensions/beachmall_carousel.js','startExtension']); 
 myApp.rq.push(['extension',0,'beachmart_dropdown','extensions/beachmart_dropdown.js', 'startExtension']); // custom product getter for dropdowns Runs startExtension as well
 //myApp.rq.push(['extension',0,'beachmart_catsearch','extensions/beachmart_catsearch.js', 'startExtension']); // custom search of designated category and tag

@@ -28,7 +28,7 @@ var quickstart = function(_app) {
 //if this is a custom extension and you are loading system extensions (prodlist, etc), then load ALL templates you'll need here.
 		"templates" : [
 			'categoryListHomeTemplate',
-		//	'categoryTemplateBrands',
+			'categoryTemplateBrands',
 		//	'brandsProductListTemplate',
 		//	'categoryTemplateWithSpecialList',
 		//	'categoryTemplateBuyerGuide',
