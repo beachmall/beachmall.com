@@ -1587,7 +1587,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 <!-- original product list<ul data-app-role='productList' data-bind="var: category(@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: productListTemplate; withReviews:1; items_per_page: 24;" class='listStyleNone fluidList clearfix noPadOrMargin prodMargin productList'>-->
 					<ul data-tlc="bind $var '.@products'; prodlist_infinite#infiniteproductlist  --withreviews='1' --withinventory='1' --withvariations='1' --itemsperpage='12' --templateid='productListTemplate'  --legacy;" data-app-role="productList" class="listStyleNone fluidList clearfix noPadOrMargin prodMargin productList">
 						<!-- Removed until better placement can be acheived in future deploy <div class='catTitle floatLeft' data-bind='var: category(pretty); format:catText; extension: myRIA;'></div> -->
-						<div class="buyerGuides floatLeft pointer" onclick="return showContent('category',{'navcat':'.buyer_guides'});"><h4>VIEW BUYER GUIDES</h4><span>Learn how to shop for these items</span></div>
+						<a class="buyerGuides floatLeft pointer" href="#!category/.buyer_guides"><h4>VIEW BUYER GUIDES</h4><span>Learn how to shop for these items</span></a>
 						<div class="photosOnly">
 							<span>Photos Only:</span>
 							<button onclick="myApp.ext.beachmall_store.a.toggleMyClass('photophy',$(this),$(this).parent().parent(),'OFF','ON');">OFF</button>
@@ -1717,6 +1717,71 @@ don't modify the 'data-templateid' unless you are changing template names and up
 
 
 
+<!-- MARK THESE STILL NEED CONVERTING, DEPENDING ON HOW BRANDS CATEGORY TABS ARE HANDLED (WITH SEARCH OR NOT)
+<div id='categoryTemplateBrandsFeatured' class='loadingBG categoryTemplate' data-app-role='categoryPage'>
+
+	<div class='brandsPromoBanner floatLeft'>
+		<div>SPECIAL OFFER!</div>
+		<div><span>TAKE AN EXTRA</span><br>10% OFF ALL COPA GEAR</div>
+		<div>PROMO CODE: 10COPA <span>See Details</span></div>
+	</div>
+
+	<ul class='breadcrumb clearfix noPadOrMargin fluidList' data-bind='var: category(id); format:breadcrumb; extension:store_navcats; loadsTemplate: breadcrumbTemplate;'></ul>
+	<ul  data-bind='var: category(%page.mfg); defaultValue:ujena; format: prodSearchFeaturedByBrand; extension: beachmart; size:250; loadsTemplate: productListTemplate;' class='listStyleNone fluidList clearfix noPadOrMargin prodMargin productList'></ul>
+
+</div>
+<div id='categoryTemplateBrandsBestSellers' class='loadingBG categoryTemplate' data-app-role='categoryPage'>
+
+	<div class='brandsPromoBanner floatLeft'>
+		<div>SPECIAL OFFER!</div>
+		<div><span>TAKE AN EXTRA</span><br>10% OFF ALL COPA GEAR</div>
+		<div>PROMO CODE: 10COPA <span>See Details</span></div>
+	</div>
+
+	<ul class='breadcrumb clearfix noPadOrMargin fluidList' data-bind='var: category(id); format:breadcrumb; extension:store_navcats; loadsTemplate: breadcrumbTemplate;'></ul>
+	
+	<ul  data-bind='var: category(%page.mfg); defaultValue:ujena; format: prodSearchBestSellersByBrand; extension: beachmart; size:24; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>
+</div>
+<div id='categoryTemplateBrandsViewAll' class='loadingBG categoryTemplate' data-app-role='categoryPage'>
+
+	<div class='brandsPromoBanner floatLeft'>
+		<div>SPECIAL OFFER!</div>
+		<div><span>TAKE AN EXTRA</span><br>10% OFF ALL COPA GEAR</div>
+		<div>PROMO CODE: 10COPA <span>See Details</span></div>
+	</div>
+
+	<ul class='breadcrumb clearfix noPadOrMargin fluidList' data-bind='var: category(id); format:breadcrumb; extension:store_navcats; loadsTemplate: breadcrumbTemplate;'></ul>
+	
+	<ul data-bind="var: category(@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: brandsProductListTemplate; withReviews:1; items_per_page: 24; hide_summary:true;" class='listStyleNone fluidList clearfix noPadOrMargin brandsProductList'></ul>
+	
+</div>
+<div id='categoryTemplateWithSpecialList' class='loadingBG categoryTemplate'>
+	<ul data-bind="var: list($featured_list.@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: productListTemplate; withReviews:1; items_per_page: 25;"></ul>
+</div>
+-->
+
+
+
+<div id="categoryTemplateBuyerGuide" class="loadingBG categoryTemplate buyerGuideTemplate">
+	
+        <ul data-tlc="bind $var '.id'; store_navcats#breadcrumb  --templateid='breadcrumbTemplate'  --legacy;" class="breadcrumb clearfix noPadOrMargin fluidList"></ul>
+
+        <img data-tlc="bind $var '.%page.banner1'; quickstart#banner  --height='250' --width='750' --legacy;">
+        
+        <h2 data-tlc="bind $var '.%page.header'; if (is $var --notblank;) {{apply --append;}};" class="blah5"></h2>
+		
+		<p data-tlc="bind $var '.%page.description'; if (is $var --notblank;) {{render --wiki='quickstart'; apply --append;}};" class="buyerDesc"></p>
+		
+		<p data-tlc="bind $var '.%page.description2'; if (is $var --notblank;) {{render --wiki='quickstart'; apply --append;}};" class="buyerDesc"></p>
+
+		<ul data-tlc="bind $var '.@subcategoryDetail'; store_navcats#categorylist  --detail='max' --templateid='categoryListTemplateBuyerGuide'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin categoryList"></ul><!-- outputs a list of subcategories -->
+    
+		<ul data-tlc="bind $var '.@products'; store_prodlist#productlist  --withreviews='1' --itemsperpage='24' --templateid='productListTemplate'  --legacy;" data-app-role="productList" class="listStyleNone fluidList clearfix noPadOrMargin prodMargin productList">
+			<a class="buyerGuides floatLeft pointer" href="#!category/.buyer_guides"><h4>VIEW BUYER GUIDES</h4><span>Learn how to shop for these items</span></a>
+		</ul><!-- outputs the product list -->
+
+</div><!-- /categoryTemplate -->
+
 
 
 <!-- used to display a category within a 'list', usually in the body of a category or the homepage. -->
@@ -1758,6 +1823,19 @@ don't modify the 'data-templateid' unless you are changing template names and up
 	<a data-tlc="bind $var '.'; store_routing#seoanchor --type='category' --seo; apply --attrib='href';" class="catTemplateContainer pointer">
         <div class="brandThumbContainer"><img data-tlc="bind $var '.%meta.CAT_THUMB'; if (is $var --notblank;) {{ apply --img --media=$var --width=152 --height=152 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class="brandCatThumb" height="152" width="152"></div>
 		<div class="brandsCatName white2LGray"><span data-tlc="bind $var '.pretty'; quickstart#cattext  --legacy;"></span></div>
+	</a>
+</li>
+
+
+<li id="categoryListTemplateBuyerGuide" class="catListTemp">
+	<a data-tlc="bind $var '.'; store_routing#seoanchor --type='category' --seo; apply --attrib='href';" class="catTemplateContainer pointer">
+		<div class="prodHoverContainer">
+			<div class="catBorderContainer">
+				<div class="catName white2LGray"><span data-tlc="bind $var '.pretty'; quickstart#cattext  --legacy;"></span></div>
+			</div>
+			<div class="thumbContainer"><img data-tlc="bind $var '.%meta.CAT_THUMB'; if (is $var --notblank;) {{ apply --img --media=$var --width=210 --height=210 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class="catThumb" height="210" width="210"></div>
+			<div class="moreDetailsSmall catDetails">VIEW GUIDE</div>
+		</div>
 	</a>
 </li>
 
