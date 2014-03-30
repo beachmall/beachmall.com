@@ -37,6 +37,7 @@ var store_filter = function(_app) {
 //key is safe id. value is name of the filter form.
 	filterMap : {
 
+/* UMBRELLA FORMS */
 		".beach-umbrellas-shelter.beach-umbrella":{
 			"filter": "UmbrellasForm",
 			"exec" : function($form,infoObj){
@@ -281,23 +282,21 @@ var store_filter = function(_app) {
 			
 			startExtension : {
 				onSuccess : function() {
-					if(_app.ext.quickstart && _app.ext.quickstart.template && _app.ext.powerReviews_reviews && handlePogs){
-		/*				app.u.dump('*** Power Reviews is Loaded');
-						app.rq.push(['templateFunction','homepageTemplate','onDeparts',function(infoObj) {
-							var $context = $(app.u.jqSelector('#'+infoObj.parentID));
-							app.ext.store_filter.u.noReviews($context);
-						}]);
-		*/				
-			//			app.u.dump("beachmart Extension Started");
+					if(_app.ext.quickstart && handlePogs){ //used to be check for '_app.ext.quickstart.template' here, find out for sure if not needed anymore. 
+			//			_app.u.dump("beachmart Extension Started");
 						$.extend(handlePogs.prototype,_app.ext.store_filter.variations);
-						//app.u.dump('*** Extending Pogs');
+			//			_app.u.dump('*** Extending Pogs');
+						
+						_app.templates.categoryTemplate.on('complete.beachmall_store',function(event,$ele,P) {
+							_app.ext.store_filter.u.startFilterSearch($ele,P);
+						});
 		
 					} else	{
 						setTimeout(function(){_app.ext.store_filter.callbacks.startExtension.onSuccess()},250);
 					}
 				},
 				onError : function (){
-					_app.u.dump('BEGIN app.ext.store_filter.callbacks.startExtension.onError');
+					_app.u.dump('BEGIN _app.ext.store_filter.callbacks.startExtension.onError');
 				}
 			},
 			
@@ -331,23 +330,23 @@ var store_filter = function(_app) {
 						}
 					}
 				else	{
-					app.u.dump("WARNING! could not detect .ui-slider class within fieldset for slider filter.");
+					_app.u.dump("WARNING! could not detect .ui-slider class within fieldset for slider filter.");
 					}
 				return r;
 				}, //slider
 
 			hidden : function($fieldset){
-				return app.ext.store_filter.u.buildElasticTerms($("input:hidden",$fieldset),$fieldset.attr('data-elastic-key'));
+				return _app.ext.store_filter.u.buildElasticTerms($("input:hidden",$fieldset),$fieldset.attr('data-elastic-key'));
 				},
 			hiddenOr : function($fieldset){
 				var r = {"or":[]};
 				$("input:hidden",$fieldset).each(function(){
-					r.or.push(app.ext.store_filter.u.buildElasticTerms($(this),$fieldset.attr('data-elastic-key')));
+					r.or.push(_app.ext.store_filter.u.buildElasticTerms($(this),$fieldset.attr('data-elastic-key')));
 					});
 				return r;
 				},
 			checkboxes : function($fieldset)	{
-				return app.ext.store_filter.u.buildElasticTerms($(':checked',$fieldset),$fieldset.attr('data-elastic-key'));
+				return _app.ext.store_filter.u.buildElasticTerms($(':checked',$fieldset),$fieldset.attr('data-elastic-key'));
 				} //checkboxes
 
 			}, //getFilterObj
@@ -394,41 +393,41 @@ var store_filter = function(_app) {
 			
 			execFilter : function($form,$page){
 
-				app.u.dump("BEGIN store_filter.a.filter");
+				_app.u.dump("BEGIN store_filter.a.filter");
 				var $prodlist = $("[data-app-role='productList']",$page).first().empty();
 
 
 				$('.categoryList',$page).hide(); //hide any subcategory lists in the main area so customer can focus on results
 				$('.categoryText',$page).hide(); //hide any text blocks.
 
-				if(app.ext.store_filter.u.validateFilterProperties($form))	{
-				//	app.u.dump(" -> validated Filter Properties.")
+				if(_app.ext.store_filter.u.validateFilterProperties($form))	{
+				//	_app.u.dump(" -> validated Filter Properties.")
 					var query = {
 						"mode":"elastic-native",
 						"size":50,
-						"filter" : app.ext.store_filter.u.buildElasticFilters($form)
+						"filter" : _app.ext.store_filter.u.buildElasticFilters($form)
 						}//query
-				//	app.u.dump(" -> Query: "); app.u.dump(query);
+				//	_app.u.dump(" -> Query: "); _app.u.dump(query);
 					if(query.filter.and.length > 0)	{
 						$prodlist.addClass('loadingBG');
-						app.ext.store_search.calls.appPublicProductSearch.init(query,{'callback':function(rd){
+						_app.ext.store_search.calls.appPublicProductSearch.init(query,{'callback':function(rd){
 
-							if(app.model.responseHasErrors(rd)){
+							if(_app.model.responseHasErrors(rd)){
 								$page.anymessage({'message':rd});
 								}
 							else	{
-								var L = app.data[rd.datapointer]['_count'];
+								var L = _app.data[rd.datapointer]['_count'];
 								$prodlist.removeClass('loadingBG')
 								if(L == 0)	{
 									$page.anymessage({"message":"Your query returned zero results."});
 									}
 								else	{
-									$prodlist.append(app.ext.store_search.u.getElasticResultsAsJQObject(rd));
+									$prodlist.append(_app.ext.store_search.u.getElasticResultsAsJQObject(rd));
 									}
 								}
 
 							},'datapointer':'appPublicSearch|elasticFiltering','templateID':'productListTemplateResultsNoPreview'});
-						app.model.dispatchThis();
+						_app.model.dispatchThis();
 						}
 					else	{
 						$page.anymessage({'message':"Please make some selections from the list of filters"});
@@ -461,6 +460,37 @@ var store_filter = function(_app) {
 //on a data-bind, format: is equal to a renderformat. extension: tells the rendering engine where to look for the renderFormat.
 //that way, two render formats named the same (but in different extensions) don't overwrite each other.
 		renderFormats : {
+		
+			//pre-checks the entire form before filters are built to indicate whether or not to use OR query 
+				//returns true if OR structure is needed, false if not.
+			checkElasticForm : function($form) {
+			
+					//check each fieldset in the form to see if it's elastic key has more than one attribute
+				var count = 0;
+				$('fieldset',$form).each(function() {
+					var $fieldset = $(this);
+					var multipleKey = $fieldset.attr('data-elastic-key').split(" ").length;
+						//if a multiple elastic key is found increment the count for later examination under oath
+//					_app.u.dump('checkElasticForm var multipleKey'); _app.u.dump(multipleKey);					
+					if($("input[type='checkbox']",$fieldset).is(":checked") && multipleKey > 1) {
+						count++;
+					}	
+					else if ($("input[type='hidden']",$fieldset) && multipleKey > 1) {
+						count++
+					}
+				});
+				
+//				_app.u.dump('checkElasticForm var count'); _app.u.dump(count);
+					//if the count has been incremented, there is a multiple key and the filter will be constructed accordingly
+				if(count != 0) { 
+//				_app.u.dump('returned true');
+					return true;
+				}
+				else {
+//				_app.u.dump('returned false');
+					return false;
+				}
+			},
 		
 			testers : function($tag,data) {
 				app.u.dump('--> test'); app.u.dump();
@@ -1167,8 +1197,47 @@ var store_filter = function(_app) {
 
 
 		u : {
-//pass in form as object.  This function will verify that each fieldset has the appropriate attributes.
-//will also verify that each filterType has a getElasticFilter function.
+		
+			startFilterSearch : function($context,infoObj) {
+				_app.u.dump("BEGIN categoryTemplate onCompletes for filtering");
+				if(_app.ext.store_filter.filterMap[infoObj.navcat])	{
+					_app.u.dump(" -> safe id DOES have a filter.");
+
+					var $page = $(_app.u.jqSelector('#',infoObj.parentID));
+					_app.u.dump(" -> $page.length: "+$page.length);
+					if($page.data('filterAdded'))	{_app.u.dump("filter exists skipping form add");} //filter is already added, don't add again.
+					else {
+						$page.data('filterAdded',true)
+						var $form = $("[name='"+_app.ext.store_filter.filterMap[infoObj.navcat].filter+"']",'#appFilters').clone().appendTo($('.filterContainer',$page));
+						$form.on('submit.filterSearch',function(event){
+							event.preventDefault()
+							_app.u.dump(" -> Filter form submitted.");
+							_app.ext.store_filter.a.execFilter($form,$page);
+								//put a hold on infinite product list and hide loadingBG for it
+							$page.find("[data-app-role='productList']").data('filtered',true);
+							$page.find("[data-app-role='infiniteProdlistLoadIndicator']").hide();
+						});
+
+						if(typeof _app.ext.store_filter.filterMap[infoObj.navcat].exec == 'function') {
+							_app.ext.store_filter.filterMap[infoObj.navcat].exec($form,infoObj)
+						}
+
+						//make all the checkboxes auto-submit the form.
+						$(":checkbox",$form).off('click.formSubmit').on('click.formSubmit',function() {
+							$form.submit();      
+						});
+					}
+				}
+					
+				//selector for reset button to reload page
+				$('.resetButton', $context).click(function(){
+					$context.empty().remove();
+					showContent('category',{'navcat':P.navcat});
+				});
+			},
+		
+			//pass in form as object.  This function will verify that each fieldset has the appropriate attributes.
+			//will also verify that each filterType has a getElasticFilter function.
 			validateFilterProperties : function($form)	{
 				var r = true, //what is returned. false if form doesn't validate.
 				$fieldset, filterType; //recycled.
@@ -1180,9 +1249,9 @@ var store_filter = function(_app) {
 						r = false;
 						$form.anymessage({"message":"In store_filters.u.validateFilterProperties,  no data-filtertype set on fieldset. can't include as part of query. [index: "+index+"]",gMessage:true});
 						}
-					else if(typeof app.ext.store_filter.getElasticFilter[filterType] != 'function')	{
+					else if(typeof _app.ext.store_filter.getElasticFilter[filterType] != 'function')	{
 						r = false;
-						$form.anymessage({"message":"WARNING! type ["+filterType+"] has no matching getElasticFilter function. [typoof: "+typeof app.ext.store_filter.getElasticFilter[filterType]+"]",gMessage:true});
+						$form.anymessage({"message":"WARNING! type ["+filterType+"] has no matching getElasticFilter function. [typoof: "+typeof _app.ext.store_filter.getElasticFilter[filterType]+"]",gMessage:true});
 						}
 					else if(!$fieldset.attr('data-elastic-key'))	{
 						r = false;
@@ -1198,29 +1267,28 @@ var store_filter = function(_app) {
 
 			buildElasticFilters : function($form)	{
 
-var filters = {
-	"and" : [] //push on to this the values from each fieldset.
-	}//query
+				var filters = {
+					"and" : [] //push on to this the values from each fieldset.
+				}//query
 
-
-$('fieldset',$form).each(function(){
-	var $fieldset = $(this),
-	filter = app.ext.store_filter.getElasticFilter[$fieldset.attr('data-filtertype')]($fieldset);
-	if(filter)	{
-		filters.and.push(filter);
-		}
-	});
-// 20120701 -> do not want discontinued items in the layered search results. JT.
-	filters.and.push({"not" : {"term" : {"tags":"IS_DISCONTINUED"}}});
-	
-//and requires at least 2 inputs, so add a match_all.
-//if there are no filters, don't add it. the return is also used to determine if any filters are present
-	if(filters.and.length == 1)	{
-		filters.and.push({match_all:{}})
-		}
-return filters;				
-
-				},
+				$('fieldset',$form).each(function(){
+					var $fieldset = $(this),
+					filter = _app.ext.store_filter.getElasticFilter[$fieldset.attr('data-filtertype')]($fieldset);
+					if(filter) {
+						filters.and.push(filter);
+					}
+				});
+				// 20120701 -> do not want discontinued items in the layered search results. JT.
+				filters.and.push({"not" : {"term" : {"tags":"IS_DISCONTINUED"}}});
+					
+				//and requires at least 2 inputs, so add a match_all.
+				//if there are no filters, don't add it. the return is also used to determine if any filters are present
+				if(filters.and.length == 1)	{
+					filters.and.push({match_all:{}})
+				}
+				
+				return filters;				
+			}, //buildElasticFilters
 
 //pass in a jquery object or series of objects for form inputs (ex: $('input:hidden')) and a single term or a terms object will be returned.
 //false is returned in nothing is checked/selected.
@@ -1265,7 +1333,7 @@ return filters;
 				//adds hidden field to limit filter results to category filter is in
 			renderHiddenField : function($form, infoObj) {
 				if(infoObj && infoObj.navcat) {
-					app.u.dump('--> Hidden field navcat'); app.u.dump(infoObj.navcat);	
+					_app.u.dump('--> Hidden field navcat'); _app.u.dump(infoObj.navcat);	
 					var thisNavCat = infoObj.navcat;
 					var $fieldset = "<fieldset data-elastic-key='app_category' data-filtertype='hidden'><input type='hidden' name='app_category' value='"+thisNavCat+"' /></fieldset>";
 					$form.append($fieldset);

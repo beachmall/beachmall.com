@@ -130,7 +130,7 @@ the padding is to compensate for the spacing between the main nav.
 .topNav .localizedBox:hover .arrowContainer {height:11px; width:27px; background-image:url(images/dropdown-arrow-27x11.png); position:absolute; bottom:-3px; left:96px;}
 .topNav .localizedClose {background-position:-1px -96px; border:none; height:20px; width:20px; float:right; margin:5px -15px 0 0;}
 
-.geoDropdown {height:0px; width:460px; background-color:#f8c301; padding:0px 20px; line-height:31px; position:relative; top:11px; left:-42px; z-index:6; overflow:hidden; text-align:left; font-family:"Open Sans"; font-size:12px; color#000000;}
+.geoDropdown {height:0px; width:460px; background-color:#f8c301; padding:0px 20px; line-height:31px; position:relative; top:8px; left:-42px; z-index:6; overflow:hidden; text-align:left; font-family:"Open Sans"; font-size:12px; color#000000;}
 .geoDropdown h1 {font-family:Oswald; font-size:18px; color:#e0463a; padding-top:20px;}
 .geoDropdown span {font-weight:bold;}
 .geoDropdown form {height:40px; width:433px;}
