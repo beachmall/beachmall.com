@@ -2060,7 +2060,7 @@ container ul should have lineItemProdlist class on it instead of productList
 </li>
 
 
-<li data-tlc="bind $var '.pid'; beachmall_store#hideifnotpurchaseable  --legacy;" id="productListTemplateToolTipThumb" class="loadingBG ">
+<li id="productListTemplateToolTipThumb" data-tlc="bind $var '.pid'; beachmall_store#hideifnotpurchaseable  --legacy;" class="loadingBG ">
 	<div data-tlc="bind $var '.pid'; apply --attrib='data-pid'; " class="prodThumbContainer pointer targetElement" data-tooltipthumb="data-toolTipThumb">
 		<a data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';">
 			<img data-tlc="bind $var '.%attribs.zoovy:prod_image1'; if (is $var --notblank;) {{ apply --img --media=$var --width=30 --height=30 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class="prodThumb" height="30" width="30">
@@ -2089,32 +2089,93 @@ remember to NOT put the button inside the 'onclick' container or two events will
 
 SANITY -> if you change the height and width of this image, change the .minimalMode .searchResultsProduct in qs_styles.css to match
 -->
-<li id="productListTemplateResults" class="loadingBG searchResultsProduct ">
-	<div data-app-click="quickstart|inlineProductPreviewShow" class="pointer">
-		<div class="prodThumbContainer">
-		<img data-tlc="bind $var '.images.0'; apply --img --media=$var --width=120 --height=120 --bgcolor='#ffffff' --replace;" src="blank.gif" class="prodThumb" alt="" height="120" width="120">
+<li id="productListTemplateResults" class="loadingBG searchResultsProduct products product floatLeft productListTemplateResults">
+	<div data-app-click="quickstart|inlineProductPreviewShow" class="pointer productListSmall" onMouseover='app.ext.beachmall_store.a.resultsredmousein($(this));' onMouseout='app.ext.beachmall_store.a.resultsredmouseout($(this));'>
+		<div class='prodHoverContainer prodShadowFix'>
+			<!-- CORNER SHADOW DIVS -->
+			<div class='topLeftCorner'></div><div class='leftTopCorner'></div><div class='topRightCorner'></div><div class='rightTopCorner'></div>
+			<div class='bottomLeftCorner'></div><div class='leftBottomCorner'></div><div class='bottomRightCorner'></div><div class='rightBottomCorner'></div> 
+			<!-- END CORNER SHADOWS -->
+			<div class="prodThumbContainer myProdThumbSmall">
+				<img data-tlc="bind $var '.'; beachmall_store#appthumb  --iselastic='1' --legacy;" data-legacy-useparentdata="true" src="blank.gif" class="prodThumb imgBorder" height="208" width="208">
+			</div>
 		</div>
-
-		<h5 data-tlc="bind $var '.prod_name'; if (is $var --notblank;) {{apply --append;}};" class="hideInMinimalMode"></h5>
-
-		<h6 data-tlc="bind $var '.base_price';  if (is $var --notblank;) {{format --currency='USD'; format --prepend='Our Price: ';  apply --append;}};" class="hideInMinimalMode"></h6>
-		
 	</div>
-	<a class="hideInMinimalMode pointer moreDetails" data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';">more details</a>
-</li>
-
-<li id="productListTemplateResultsNoPreview" class="loadingBG searchResultsProduct ">
-	<a data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';" class="pointer">
-		<div class="prodThumbContainer">
-		<img data-tlc="bind $var '.images.0'; if (is $var --notblank;) {{apply --img --media=$var --width=120 --height=120 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class="prodThumb" alt="" height="120" width="120">
+	<a class="hideInMinimalMode pointer moreDetailsSmall floatRight" data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';" onMouseover='app.ext.beachmall_store.a.resultsredmousein($(this));' onMouseout='app.ext.beachmall_store.a.resultsredmouseout($(this));'>VIEW DETAILS</a>
+	<div class='prodTextContainerSmall'>
+		<h6 data-tlc="bind $var '.base_price';  if (is $var --notblank;) {{format --currency='USD'; apply --append;}};" class="hideInMinimalMode floatLeft prodPriceSmall price"></h6>
+<!--Bug#3   <span class='prodPriceDesc' data-bind='format:prodPriceDesc; extension:store_filter; useParentData:true; isElastic:1;'></span>-->		
+		<h5 data-tlc="bind $var '.prod_name'; if (is $var --notblank;) {{apply --append;}};" class="hideInMinimalMode clearfix prodDescSmall"></h5>
+		<div data-tlc="bind $var '.%attribs.zoovy:prod_msrp'; if(is $var --notblank;) {{ apply --show; }}; " class="regularPriceContainer floatLeft displayNone">
+			<div data-tlc="bind $var '.%attribs.zoovy:prod_msrp'; if (is $var --notblank;) {{format --currency='USD'; apply --append;}};" class="regularPrice"> </div>
+			<div class="regularPriceDesc">Regular Price</div>
 		</div>
-
-		<h5 data-tlc="bind $var '.prod_name'; if (is $var --notblank;) {{apply --append;}};" class="hideInMinimalMode"></h5>
-
-		<h6 data-tlc="bind $var '.base_price';  if (is $var --notblank;) {{format --currency='USD'; format --prepend='Our Price: ';  apply --append;}};" class="hideInMinimalMode"></h6>
-	</a>
-	<a class="hideInMinimalMode pointer moreDetails" data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';">more details</a>
+		<div class="shipContainer floatLeft"> 
+<!--Bug#5-->	<div data-tlc="bind $var '.'; beachmall_store#showfreeshippingtag  --iselastic='1' --legacy;" data-legacy-useparentdata="true" class="shipCost sprite displayNone"></div>
+<!--Bug#6		<div data-bind='var: product(user:prod_shipping_msg); format:showIfSet;'>
+					<div class='shipTime latency' data-bind='var: product(user:prod_shipping_msg); format:text; isElastic:1;'></div>
+				</div>
+END BUG6-->			
+<!--!!--></div>
+		<div class="searchReviewSiblingsCont">
+			<div data-tlc="bind $var '.pid'; powerreviews_reviews#reviewsnippet  --minreview='1' --legacy;" class="reviewsStarsCount"></div><!-- BCERO271 MARK-->
+			<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy;" class="prodViewerAddToCartForm clearfix" action="#">
+				<button data-tlc="bind $var '.'; quickstart#addtocartbutton  --iselastic='1' --legacy;" data-legacy-useparentdata="true" class="prodViewerAddToCartButton"></button>
+			</form>
+			<!-- <div class='clearfix searchProdSiblings displayNone' data-bind='var:product(options); format:optionsCount; extension:store_filter;'></div> -->
+		</div>
+		<div data-tlc="bind $var '.pid'; if (is $var --notblank;) {{format --prepend='ITEM &nbsp; #: &nbsp; '; apply --append;}};" class="prodNum stid clearfix"></div>
+	</div>
+	<div class='productSeperationBar'></div>
 </li>
+
+
+<li id="productListTemplateResultsNoPreview" class="loadingBG products product floatLeft productListTemplateResultsNoPreview">
+	<a data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';" class="pointer productListSmall">
+		<div class='prodHoverContainer prodShadowFix'>
+			<!-- CORNER SHADOW DIVS -->
+			<div class='topLeftCorner'></div><div class='leftTopCorner'></div><div class='topRightCorner'></div><div class='rightTopCorner'></div>
+			<div class='bottomLeftCorner'></div><div class='leftBottomCorner'></div><div class='bottomRightCorner'></div><div class='rightBottomCorner'></div> 
+			<!-- END CORNER SHADOWS -->
+			<div class="prodThumbContainer myProdThumbSmall">
+				<img data-tlc="bind $var '.'; beachmall_store#appthumb  --iselastic='1' --legacy;" data-legacy-useparentdata="true" src="blank.gif" class="prodThumb imgBorder" height="208" width="208">
+			</div>
+			<div data-tlc="bind $var '.%attribs.user:prod_promo'; if(is $var --notblank;) {{ apply --show; }}; " class="starBurst sprite displayNone">
+            	<div class="starBurstTextOuter">
+                	<div data-tlc="bind $var '.%attribs.user:prod_promo'; if (is $var --notblank;) {{apply --append;}};" class="starBurstTextInner"></div>
+                </div>
+            </div>
+			<a class="hideInMinimalMode pointer moreDetailsSmall floatRight" data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';">VIEW DETAILS</a>
+		</div>
+	</a>
+		
+	<div class='prodTextContainerSmall'>
+		<h6 data-tlc="bind $var '.base_price';  if (is $var --notblank;) {{format --currency='USD'; apply --append;}};" class="hideInMinimalMode floatLeft prodPriceSmall price"></h6>
+<!--Bug#3   <span class='prodPriceDesc' data-bind='format:prodPriceDesc; extension:store_filter; useParentData:true; isElastic:1;'></span>-->		
+		<h5 data-tlc="bind $var '.prod_name'; if (is $var --notblank;) {{apply --append;}};" class="hideInMinimalMode clearfix prodDescSmall"></h5>
+		<div data-tlc="bind $var '.%attribs.zoovy:prod_msrp'; if(is $var --notblank;) {{ apply --show; }}; " class="regularPriceContainer floatLeft displayNone">
+			<div data-tlc="bind $var '.%attribs.zoovy:prod_msrp'; if (is $var --notblank;) {{format --currency='USD'; apply --append;}};" class="regularPrice"> </div>
+			<div class="regularPriceDesc">Regular Price</div>
+		</div>
+		<div class="shipContainer floatLeft"> 
+<!--Bug#5-->	<div data-tlc="bind $var '.'; beachmall_store#showfreeshippingtag  --iselastic='1' --legacy;" data-legacy-useparentdata="true" class="shipCost sprite displayNone"></div>
+<!--Bug#6		<div data-bind='var: product(user:prod_shipping_msg); format:showIfSet;'>
+					<div class='shipTime latency' data-bind='var: product(user:prod_shipping_msg); format:text; isElastic:1;'></div>
+				</div>
+END BUG6-->			
+<!--!!--></div>
+		<div class="searchReviewSiblingsCont">
+			<div data-tlc="bind $var '.pid'; powerreviews_reviews#reviewsnippet  --minreview='1' --legacy;" class="reviewsStarsCount"></div><!-- BCERO271 MARK-->
+			<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy;" class="prodViewerAddToCartForm clearfix" action="#">
+				<button data-tlc="bind $var '.'; quickstart#addtocartbutton  --iselastic='1' --legacy;" data-legacy-useparentdata="true" class="prodViewerAddToCartButton"></button>
+			</form>
+			<!-- <div class='clearfix searchProdSiblings displayNone' data-bind='var:product(options); format:optionsCount; extension:store_filter;'></div> -->
+		</div>
+		<div data-tlc="bind $var '.pid'; if (is $var --notblank;) {{format --prepend='ITEM &nbsp; #: &nbsp; '; apply --append;}};" class="prodNum stid clearfix"></div>
+	</div>
+	<div class='productSeperationBar'></div>
+</li>
+
 
 <!-- used on homepage for small carousel to the right of the main banner -->
 <li id='productListTemplateResultsCustom' class='loadingBG searchResultsProduct ' >
@@ -2132,9 +2193,9 @@ SANITY -> if you change the height and width of this image, change the .minimalM
 
 
 <li id='productListTemplateResultsCustomSmaller' class='loadingBG searchResultsProduct'>
-	<div onClick="return showContent('product', {'pid' : $(this).parent().attr('data-pid')});" class='pointer productListSmall'>
+	<a data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';" class="pointer productListSmall">
 		<div class='prodHoverContainer'>	
-			<div data-useparentdata='1'  data-tlc="beachmall_store#showprodmodifier --legacy; apply --append;" data-iselastic='1' class="prodModifierContainer sprite displayNone"></div>
+			<div data-useparentdata='1'  data-tlc="beachmall_store#showprodmodifier --iselastic='1' --legacy; apply --append;" class="prodModifierContainer sprite displayNone"></div>
 			<!-- CORNER SHADOW DIVS -->
 			<div class='topLeftCorner'></div><div class='leftTopCorner'></div><div class='topRightCorner'></div><div class='rightTopCorner'></div>
 			<div class='bottomLeftCorner'></div><div class='leftBottomCorner'></div><div class='bottomRightCorner'></div><div class='rightBottomCorner'></div> 
@@ -2153,7 +2214,7 @@ SANITY -> if you change the height and width of this image, change the .minimalM
                 <h5 data-tlc="bind $var '.prod_name'; if(is $var --notblank;) {{apply --append;}};" class="hideInMinimalMode clearfix prodDescSmall"></h5>
 			</div>
 		</div>
-	</div>
+	</a>
 <!--for sibling color images (future)	<div class='clearfix prodSiblings'>
 		<ul class='listStyleNone noPadOrMargin fluidList clearfix' data-bind="var: product(user:grp_siblings); format:productList; extension:store_prodlist;loadsTemplate:productListTemplateThumb;hide_multipage:true;before:<b>Available Colors:</b> <span class='zhint'>(click image to select)</span> ; withInventory:1; withVariations:1;"></ul> <!-- id='prodlistSiblings' -->
 <!--	</div>-->

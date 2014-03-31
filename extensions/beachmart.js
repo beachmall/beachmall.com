@@ -292,18 +292,6 @@ var store_filter = function(_app) {
 
 
 		a : {
-		
-				//sets prod image frame and view detail button to hover red on mouseenter of the other
-			resultsRedMouseIn : function($this) {
-				$('.myProdThumbSmall',$this.parent()).css('border','5px solid #e0463a');
-				$('.moreDetailsSmall',$this.parent()).css('background-color','#e0463a');
-			},
-			
-				//sets prod image frame and view detail button to default state on mouseleave of the other
-			resultsRedMouseOut : function($this) {
-				$('.myProdThumbSmall',$this.parent()).css('border','5px solid #ffffff');
-				$('.moreDetailsSmall',$this.parent()).css('background-color','#3bb3c3');
-			},
 				
 				//Q&A link on product page will populate the order/prod id field on contact form w/ pid
 			showContactPID : function (pid) {
@@ -953,7 +941,7 @@ var store_filter = function(_app) {
 				//selector for reset button to reload page
 				$('.resetButton', $context).click(function(){
 					$context.empty().remove();
-					showContent('category',{'navcat':P.navcat});
+					showContent('category',{'navcat':infoObj.navcat});
 				});
 			},
 		

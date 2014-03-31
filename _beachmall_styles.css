@@ -693,7 +693,7 @@ label.break	{display:block; margin:0 0 4px 6px;}
 .productPriceContainer {height:50px; width:120px;}
 .prodPriceDesc {height:20px; width:125px; color:#e0463a; text-align:center; font-family:"Open Sans"; font-size:10px; font-weight:bold; display:block; float:left;}
 
-.products.product .productListSmall .prodTextContainerSmall .prodPriceSmall, .productList h6, .categoryList h6 {heigth:25px; width:120px; text-align:center; margin:0px;}
+.products.product .productListSmall .prodTextContainerSmall .prodPriceSmall, .productList h6, .categoryList h6 {heigth:25px; width:120px; text-align:center; margin:0px; color:#000000;}
 
 .prodViewerAddToCartForm {height:30px; width:auto; margin-bottom:0 4% 0 0;}
 .prodViewerAddToCartButton.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-only {

@@ -176,6 +176,20 @@ var beachmall_store = function(_app) {
 						break;
 				}
 			},
+			
+		/**PRODUCT LIST FUNCTIONS */
+				//sets prod image frame and view detail button to hover red on mouseenter of the other
+			resultsredmousein : function($this) {
+				$('.myProdThumbSmall',$this.parent()).css('border','5px solid #e0463a');
+				$('.moreDetailsSmall',$this.parent()).css('background-color','#e0463a');
+			},
+			
+				//sets prod image frame and view detail button to default state on mouseleave of the other
+			resultsredmouseout : function($this) {
+				$('.myProdThumbSmall',$this.parent()).css('border','5px solid #ffffff');
+				$('.moreDetailsSmall',$this.parent()).css('background-color','#3bb3c3');
+			},
+			
 		/**CUSTOMER ARTICLE FUNCTIONS */
 				//clears the order/prod id field in contact form to be sure it doesn't still 
 				//have showContactPID value still displayed (if form did not get submitted). 
@@ -213,9 +227,7 @@ var beachmall_store = function(_app) {
 			//sets the overhang tag and hides discontinued products in a product list.
 			showprodmodifier : function($tag, data) {
 				//_app.u.dump('-----showprodmodifier'); _app.u.dump(data.value); //_app.u.dump(data.globals.tags[data.globals.focusTag]);
-/*MARK: needed?*/				//var zoovyIsTags = ($tag.data('prodmodifier') == 1) ? data.value.tags : data.value['%attribs']['zoovy:prod_is_tags'];
-				//var zoovyIsTags = data.value.tags;
-				var zoovyIsTags = data.value['%attribs']['zoovy:prod_is_tags'];
+				var zoovyIsTags = (data.bindData.iselastic) ? data.value.tags : data.value['%attribs']['zoovy:prod_is_tags'];
 
 				if (zoovyIsTags.indexOf('IS_DISCONTINUED') >= 0) {
 /*MARK: uncomment*/				//$tag.parent().parent().parent().hide().attr('data-discontinued',1);
@@ -302,9 +314,8 @@ var beachmall_store = function(_app) {
 			}, //End prodPriceDesc
 			
 			//shows free shipping statement in product list if value is set
-			showfreeshippingtag: function($tag, data) {
-				//var isShipFree = data.value['%attribs']['zoovy:prod_is_tags'];
-				var isShipFree = (data.bindData.isElastic) ? data.value.tags : data.value['%attribs']['zoovy:prod_is_tags'];
+			showfreeshippingtag : function($tag, data) {
+				var isShipFree = (data.bindData.iselastic) ? data.value.tags : data.value['%attribs']['zoovy:prod_is_tags'];
 				if(isShipFree) {
 					if(isShipFree.indexOf('IS_SHIPFREE') >= 0) {
 						$tag.show();
