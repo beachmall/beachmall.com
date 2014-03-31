@@ -1961,6 +1961,48 @@ remember to NOT put the button inside the 'onclick' container or two events will
 </li>
 
 
+<li id="brandsProductListTemplate" class="loadingBG  products product floatLeft" onmouseover="$('.quickView',$(this)).show();" onmouseout="$('.quickView').hide();">
+	 
+	<button class="floatRight pointer quickView displayNone" onclick="quickView('product',{'templateID':'productTemplateQuickView','pid':$(this).closest('[data-pid]').attr('data-pid')});">Quickview</button>
+		
+    <div data-tlc="bind $var '.pid'; apply --attrib='data-pid'; " class="pointer productListSmall">
+		<a data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';">
+			<div class="prodHoverContainer">		
+				<div data-tlc="bind $var '.pid'; quickstart#addpicslider  --legacy;" class="prodThumbContainer myProdThumbSmall">
+					<img data-tlc="bind $var '.%attribs.zoovy:prod_image1'; if (is $var --notblank;) {{ apply --img --media=$var --width=210 --height=210 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class="prodThumb" height="210" width="210">
+				</div> 
+												   <!-- sprite zoovy:prod_is_tags-->
+				<!-- <div class='starBurst sprite' data-bind='var: product(user:prod_promo); format:text;'></div> -->
+				<div class="floatRight pointer moreDetailsSmall">more details</div>
+			</div>
+			<div class="prodTextContainerSmall">
+					<div class="productPriceContainer">
+						<h6 data-tlc="bind $var '.%attribs.zoovy:base_price'; if (is $var --notblank;) {{format --currency='USD'; apply --add --class='price'; apply --append;}};" class="floatLeft prodPriceSmall"></h6>
+						<div class="prodPriceDesc">DESC OF PRICE</div>
+					</div>
+					<h5 data-tlc="bind $var '.%attribs.zoovy:prod_name'; if (is $var --notblank;) {{apply --append;}};" class="clearfix prodDescSmall"></h5>
+					<span data-tlc="bind $var '.reviews.average'; if(is $var --notblank;) {{ apply --class='review_'; }}; if (is $var --notblank;) {{apply --add --class='review_'; apply --append;}};" class="reviewSprite"></span>
+					<!-- Need Color Options here, will work w/ form to show product, or colors pop up -->
+					<div data-tlc="bind $var '.%attribs.zoovy:prod_msrp'; if(is $var --notblank;) {{ apply --show; }}; " class="regularPriceContainer floatLeft displayNone">
+						<div data-tlc="bind $var '.%attribs.zoovy:prod_msrp'; if (is $var --notblank;) {{format --currency='USD'; apply --append;}};" class="regularPrice"> </div>
+						<div class="regularPriceDesc">Regular Price</div>
+					</div>
+					<div class="shipContainer floatLeft">
+						<div data-tlc="bind $var '.%attribs.zoovy:prod_promoclass'; if (is $var --notblank;) {{apply --append;}};" class="shipCost"></div>
+						<div data-tlc="bind $var '.%attribs.user:prod_shipping_msg'; if(is $var --notblank;) {{ apply --show; }}; ">
+							<div data-tlc="bind $var '.%attribs.user:prod_shipping_msg'; if (is $var --notblank;) {{apply --append;}};" class="shipTime latency"></div>
+						</div>
+					</div>
+					<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy;" class="prodViewerAddToCartForm clearfix" action="#">
+						<button data-tlc="bind $var '.'; quickstart#addtocartbutton  --legacy;" data-legacy-useparentdata="true" class="prodViewerAddToCartButton">more details</button>
+					</form>
+					<div data-tlc="bind $var '.pid'; if (is $var --notblank;) {{format --prepend='ITEM &nbsp; #: &nbsp; '; apply --append;}};" class="prodNum stid"></div>
+			  <!-- 	<span data-bind='var: reviews(reviews.total); format:text; pretext: from ;posttext: reviews; className:numReviews;'></span> -->
+			</div>  
+		<a/>
+	</div>
+</li>
+
 
 <!--
 for product lists with addToCart feature (accessories, for example)
@@ -2030,7 +2072,13 @@ container ul should have lineItemProdlist class on it instead of productList
 </ul>
 
 
-
+<table>
+	<tbody><tr id="shipGridTemplate">
+		<td><span data-tlc="bind $var '.carrier'; if(is $var --notblank;) {{ apply --class='carrier_'; }}; if (is $var --notblank;) {{apply --add --class='carrier_'; apply --append;}};"></span></td>
+		<td><span data-tlc="bind $var '.method'; if (is $var --notblank;) {{apply --append;}};"></span></td>
+		<td><span data-tlc="bind $var '.arrival_yyyymmdd'; beachmart#ymdpretty  --legacy;"></span></td>
+	</tr></tbody>
+</table>
 
 
 <ul>
