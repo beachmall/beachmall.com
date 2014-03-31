@@ -1826,10 +1826,25 @@ don't modify the 'data-templateid' unless you are changing template names and up
 
 
 <li id="categoryListTemplateRootCats">
+	<div class="rootCatThumb"><img data-tlc="bind $var '.%meta.CAT_THUMB'; if (is $var --notblank;) {{ apply --img --media=$var --width=300 --height=300 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class="catThumb" height="300" width="300"></div>
+	<a data-tlc="bind $var '.'; store_routing#seoanchor --type='category' --seo; apply --attrib='href';" class="rootCatHref"></a>
+	<div class="catMenu">
+		<ul data-tlc="bind $var '.@subcategoryDetail'; store_navcats#subcategorylevellist  --legacy;" class="child_menu"></ul>
+		<div class="catMenuImg"><img data-tlc="bind $var '.%meta.CAT_THUMB'; if (is $var --notblank;) {{ apply --img --media=$var --width=200 --height=200 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class="catThumb" height="200" width="200"></div>
+		<div class="clearfix catMenuMenu">
+			<a data-tlc="bind $var '.'; store_routing#seoanchor --type='category' --seo; apply --attrib='href';">All <span data-tlc="bind $var '.pretty'; if (is $var --notblank;) {{apply --append;}};"></span></a> | 
+			<a href="#">Best Sellers</a> | 
+			<a href="#">Clearance</a> | 
+			<a href="#">New <span data-tlc="bind $var '.pretty'; if (is $var --notblank;) {{apply --append;}};"></span></a>
+		</div>
+	</div>
+
+<!-- ORIG ROOT CAT TEMPLATE:
 	<a data-tlc="bind $var '.'; store_routing#seoanchor --type='category' --seo; apply --attrib='href';">
 		<div class="thumbContainer"><img data-tlc="bind $var '.%meta.CAT_THUMB'; if (is $var --notblank){{apply --img --media=$var --width=35 --height=35 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class="catThumb" alt="" height="35" width="35"></div>
 		<div class="catName"><span data-tlc="bind $var '.pretty'; quickstart#cattext  --legacy; apply --append;"></span></div>
 	</a>
+-->
 </li>
 
 
@@ -1875,29 +1890,76 @@ Used for the product in a product list (prodlist), usually in the body of a cate
 the loadingBG class is removed (must be that classname) when the template is translated.
 remember to NOT put the button inside the 'onclick' container or two events will occur onclick.
 -->
-<li id="productListTemplate" class="loadingBG  " onmouseover="$('.quickView',$(this)).show();" onmouseout="$('.quickView').hide();">
-
-	<button class="floatRight pointer quickView displayNone" data-app-click="quickstart|quickviewShow" data-loadstemplate="productTemplateQuickView">Quickview</button>
-	
-	<a data-tlc="bind $pid '.pid'; bind $seo '.%attribs.zoovy:prod_name'; bind $href ''; store_routing#productlink --pid=$pid --seo=$seo; apply --attrib='href';" class="blockLink">
-		<div data-tlc="bind $var '.pid'; quickstart#addpicslider  --legacy; apply --append;" class="prodThumbContainer">
-		<img data-tlc="bind $var '.%attribs.zoovy:prod_thumb'; if(is $var --blank;){{bind $var '.%attribs.zoovy:prod_image1';}}; if(is $var --notblank;){{apply --img --media=$var --width=120 --height=120 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class="prodThumb" alt="" height="120" width="120">
-		</div>
-
-		<h5 data-tlc="bind $var '.%attribs.zoovy:prod_name'; if (is $var --notblank;) {{apply --append;}};"></h5>
-
-		<h6 data-tlc="bind $var '.%attribs.zoovy:base_price'; if (is $var --notblank;) {{ format --currency='USD';  format --prepend='Our Price: '; apply --append;}};"></h6>
+<li id="productListTemplate" data-tlc="bind $var '.'; beachmall_store#inventoryhide  --legacy;" data-legacy-useparentdata="true" class="loadingBG  products product floatLeft" onmouseover="$('.quickView',$(this)).show();" onmouseout="$('.quickView').hide();">
+	 
+	<button class="floatRight pointer quickView displayNone" onclick="quickView('product',{'templateID':'productTemplateQuickView','pid':$(this).closest('[data-pid]').attr('data-pid')});">Quickview</button>
 		
-		<span data-tlc="bind $var '.reviews.average'; if(is $var --notblank) {{format --prepend='review_'; apply --add --class=$var; }};" class="reviewSprite"></span>
-<!-- 	<span data-bind='var: reviews(reviews.total); format:text; pretext: from ;posttext: reviews; className:numReviews;'></span> -->
-	</a>
-	
-	<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy; apply --append;" class="prodViewerAddToCartForm clearfix" action="#" onsubmit="return false" data-app-submit="quickstart|productAdd2Cart" data-show="modal">
-		<input name="qty" value="1" type="hidden">
-		<button data-tlc="quickstart#addtocartbutton  --legacy; apply --append;" data-bind="format:addtocartbutton; extension:quickstart; useParentData:true;" class='applyButton'>more details</button>
-	</form>
+    <div data-tlc="bind $var '.pid'; apply --attrib='data-pid';" class="pointer productListSmall">
+		<a data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';">
+			<div class="prodHoverContainer prodShadowFix">
+				<div data-tlc="bind $var '.'; beachmall_store#showprodmodifier  --legacy;" data-legacy-useparentdata="true" class="prodModifierContainer sprite displayNone"></div> 
+				<div data-tlc="bind $var '.%attribs.user:prod_promo'; if(is $var --notblank;) {{ apply --show; }}; " class="starBurst sprite displayNone">
+					<div class="starBurstTextOuter">
+						<div data-tlc="bind $var '.%attribs.user:prod_promo'; if (is $var --notblank;) {{apply --append;}};" class="starBurstTextInner"></div>
+					</div>
+				</div>
+				<!-- CORNER SHADOW DIVS -->
+				<div class="topLeftCorner"></div><div class="leftTopCorner"></div><div class="topRightCorner"></div><div class="rightTopCorner"></div>
+				<div class="bottomLeftCorner"></div><div class="leftBottomCorner"></div><div class="bottomRightCorner"></div><div class="rightBottomCorner"></div> 
+				<!-- END CORNER SHADOWS -->
+				<div data-tlc="bind $var '.pid'; quickstart#addpicslider  --legacy;" class="prodThumbContainer myProdThumbSmall">
+					<img data-tlc="bind $var '.%attribs.zoovy:prod_image1'; if (is $var --notblank;) {{ apply --img --media=$var --width=210 --height=210 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class="prodThumb" height="210" width="210">
+				</div> 
 
+				<div class="floatRight pointer moreDetailsSmall">VIEW DETAILS</div>
+			</div>
+			<div class="prodTextContainerSmall">
+				<div class="productPriceContainer">
+					<h6 data-tlc="bind $var '.%attribs.zoovy:base_price'; if (is $var --notblank;) {{format --currency='USD'; apply --add --class='price'; apply --append;}};" class="floatLeft prodPriceSmall"></h6>
+					<span data-tlc="bind $var '.'; beachmall_store#prodpricedesc  --legacy;" data-legacy-useparentdata="true" class="prodPriceDesc hideMe"></span>
+				</div>
+				<h5 data-tlc="bind $var '.%attribs.zoovy:prod_name'; if (is $var --notblank;) {{apply --append;}};" class="clearfix prodDescSmall"></h5>
+				<span data-tlc="bind $var '.reviews.average'; if(is $var --notblank;) {{ apply --class='review_'; }}; if (is $var --notblank;) {{apply --add --class='review_'; apply --append;}};" class="reviewSprite"></span>
+				<!-- Need Color Options here, will work w/ form to show product, or colors pop up -->
+			<div class="hideMe">
+				<div data-tlc="bind $var '.%attribs.zoovy:prod_msrp'; if(is $var --notblank;) {{ apply --show; }}; " class="regularPriceContainer floatLeft displayNone">
+					<div data-tlc="bind $var '.%attribs.zoovy:prod_msrp'; if (is $var --notblank;) {{format --currency='USD'; apply --append;}};" class="regularPrice"> </div>
+					<div class="regularPriceDesc">Regular Price</div>
+				</div>
+				<div class="shipContainer floatLeft">
+					<div data-tlc="bind $var '.'; beachmall_store#showfreeshippingtag  --legacy;" data-legacy-useparentdata="true" class="shipCost sprite displayNone"></div>
+					<div data-tlc="bind $var '.'; beachmall_store#showshiplatency  --legacy;" data-legacy-useparentdata="true" class="shipTime latency">
+						<div class="shipTime latency displayNone"></div>
+					</div>
+					<!--<div data-bind='var: product(user:prod_shipping_msg); format:showIfSet;'>
+						<div class='shipTime latency' data-bind='var: product(user:prod_shipping_msg); format:text;'></div>
+					</div>
+					-->
+				</div>
+				
+				<!-- <div class='prodListMiniThumb' data-bind='var: product(pid); format: productListThumbnails; extension: store_filter;'></div> --> 
+				<!-- <div class='prodListMiniVariation' data-bind='var: product(pid); format:atcVariations; extension:store_product;'></div> -->
+				<div data-tlc="bind $var '.%attribs.user:grp_siblings'; if(is $var --notblank;) {{ apply --show; }}; " class="displayNone">
+					<div data-tlc="bind $var '.pid'; apply --attrib='data-pid'; " class="clearfix prodListSibs">
+						<ul data-tlc="bind $var '.%attribs.user:grp_siblings'; beachmall_store#siblingproductlist --hidesummary='true' --before='<b>Available Colors:</b> <span class=&quot;zhint&quot;>(click image to select)</span>' --withinventory='1' --withvariations='1' --templateid='productListTemplateToolTipThumb'  --legacy;" class="listStyleNone noPadOrMargin fluidList"></ul>
+	<!-- MARK wasn't this replaced?? 					<div data-tlc="bind $var '.'; beachmall_store#siblingcount  --legacy;" data-legacy-useparentdata="true" class="prodListSibsText displayNone">More Colors Available!</div> -->
+					</div>
+				</div>
+				
+				<div data-tlc="bind $var '.pid'; powerreviews_reviews#reviewsnippet  --minreview='1' --legacy;" class="reviewsStarsCount"></div><!-- BCERO271 MARK-->
+
+				<div data-tlc="bind $var '.pid'; if (is $var --notblank;) {{format --prepend='ITEM#:<br> '; apply --append;}};" class="prodNum stid floatLeft clearfix"></div>
+				<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy;" class="prodViewerAddToCartForm floatRight" action="#" onsubmit="app.ext.myRIA.u.addItemToCart($(this),{'action':'modal'}); return false;">
+					<button data-tlc="bind $var '.'; quickstart#addtocartbutton  --legacy;" data-legacy-useparentdata="true" class="prodViewerAddToCartButton"></button>
+				</form>
+			  <!-- 	<span data-bind='var: reviews(reviews.total); format:text; pretext: from ;posttext: reviews; className:numReviews;'></span> -->
+			</div> 
+			</div>  
+		</a>
+	</div>
+	<div class="productSeperationBar"></div>
 </li>
+
 
 
 <!--
@@ -1952,6 +2014,15 @@ container ul should have lineItemProdlist class on it instead of productList
 		<h6 data-tlc="bind $var '.%attribs.zoovy:base_price';  if (is $var --notblank;) {{format --currency='USD'; format --prepend='Our Price: ';  apply --append;}};"></h6>
 
 
+	</div>
+</li>
+
+
+<li data-tlc="bind $var '.pid'; beachmall_store#hideifnotpurchaseable  --legacy;" id="productListTemplateToolTipThumb" class="loadingBG ">
+	<div data-tlc="bind $var '.pid'; apply --attrib='data-pid'; " class="prodThumbContainer pointer targetElement" data-tooltipthumb="data-toolTipThumb">
+		<a data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';">
+			<img data-tlc="bind $var '.%attribs.zoovy:prod_image1'; if (is $var --notblank;) {{ apply --img --media=$var --width=30 --height=30 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class="prodThumb" height="30" width="30">
+		</a>
 	</div>
 </li>
 
@@ -2012,10 +2083,10 @@ SANITY -> if you change the height and width of this image, change the .minimalM
 </li>
 
 
-<li id='productListTemplateResultsCustomSmaller' class='loadingBG searchResultsProduct ' >
+<li id='productListTemplateResultsCustomSmaller' class='loadingBG searchResultsProduct'>
 	<div onClick="return showContent('product', {'pid' : $(this).parent().attr('data-pid')});" class='pointer productListSmall'>
 		<div class='prodHoverContainer'>	
-			<div data-useparentdata='1'  data-tlc="beachmall_store#showprodmodifier --legacy; apply --append;" class="prodModifierContainer sprite displayNone"></div>
+			<div data-useparentdata='1'  data-tlc="beachmall_store#showprodmodifier --legacy; apply --append;" data-iselastic='1' class="prodModifierContainer sprite displayNone"></div>
 			<!-- CORNER SHADOW DIVS -->
 			<div class='topLeftCorner'></div><div class='leftTopCorner'></div><div class='topRightCorner'></div><div class='rightTopCorner'></div>
 			<div class='bottomLeftCorner'></div><div class='leftBottomCorner'></div><div class='bottomRightCorner'></div><div class='rightBottomCorner'></div> 
