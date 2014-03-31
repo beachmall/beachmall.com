@@ -225,10 +225,12 @@ the padding is to compensate for the spacing between the main nav.
 .defaultDDImage, #mastHead .dropout.out .defaultDOImage {height:526px; width:237px; margin:5px; position:absolute; top:-0.5px; right:2px; z-index:1;}
 #mastHead .dropout.out .defaultDOImage {width:238px; right:-5px; top:-5px;}
 /*.stockImageContainer {height: 210px; width:100%;}*/
-.stockImageContainer  {height:210px; width:210px; background:#777; margin:10px auto; border:5px solid #ffffff; cursor:pointer; position:relative; z-index:1;}
+.stockImageContainer  {height:210px; width:210px; background:#777; margin:10px auto; border:5px solid #ffffff; cursor:pointer; position:relative; z-index:1; display:block;}
 .stockImageContainer:hover {border:5px solid #e0463a;}
 .hoverProductContainer .catSearchHomeDropdown {height:30px; width:150px; margin:10px 45px; border:none; background:#3bb3c3; color:#ffffff; position:relative; z-index:1;}
 .hoverProductContainer .catSearchHomeDropdown:hover {background:#e0463a;}
+#mastHead .hoverProductContainer a.catSearchHomeDropdown {color:#ffffff; display:block; text-align:center; font-size:13px; line-height:28px;}
+#mastHead .hoverProductContainer a.catSearchHomeDropdown:hover {background:#e0463a; color:#ffffff;}
 
 .dropdownBGLeft {height:525px; width:242px; position:absolute; top:0; left:0; z-index:0; background:#f8c301; border-top:5px solid #e0463a; border-bottom:#e0463a;}
 .dropdownBGRight {height:535px; width:240px; background:#f7f7f7; position:absolute; top:0; left:0; opacity:0.9; z-index:0;}
