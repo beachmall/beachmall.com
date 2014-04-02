@@ -1029,6 +1029,8 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 
 .fullWidth .tipifyGuarantee {margin-left:63px;}
 .productFreeShipping {height:17px; width:108px; overflow:hidden; background-position:-67px -56px;}
+.zipLink {color:#3bb3c3;}
+.zipLink:hover {color:#e0463a;}
 .fullWidth .mainProdColumn .mpNoShow {display:none;}
 /*.fullWidth .prodViewerAddToCartForm .addToCartButton {height:30px; width:120px; color:#fff; background:#E0463A; border:none; border-radius:0px; clear:both;}*/
 .fullWidth .prodViewerAddToCartForm .shipTime.latency.floatLeft {margin:20px 0 0 0;}
@@ -1120,6 +1122,7 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 .youMayLikeAccessories .tabbedProductListsTD .tabbedProductLists .ui-widget-content .testNext2{height:30px; width:102px; position:relative; top:-556px; left:54px;  background:#444444;color:#f5f1de; text-align:center; line-height:30px; margin-left:74px;}
 
 /*RECENTLY VIEWED CAROUSEL*/
+.recentlyViewedItemsContainer  .mpControlContainer {display:none;}
 .recentlyViewedItemsContainer.CarouselContainer {height:560px;}
 .recentlyViewedItemsContainer .Carousel {height:485px;}
 .Carousel .prodListSibs img {border:none;}

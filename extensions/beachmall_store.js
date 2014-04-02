@@ -70,6 +70,9 @@ var beachmall_store = function(_app) {
 				
 				_app.templates.productTemplate.on('complete.beachmall_store',function(event,$ele,P) {
 					_app.ext.beachmall_store.u.backToTop($ele);
+					_app.ext.beachmall_store.u.tabify($ele,"[data-app-role='xsellTabContainer']");
+					_app.ext.beachmall_store.u.tabify($ele,".tabbedProductContent");
+					_app.ext.beachmall_store.u.handleToolTip();
 				});
 				
 				_app.templates.companyTemplate.on('complete.beachmall_store',function(event,$ele,P) {
@@ -149,7 +152,18 @@ var beachmall_store = function(_app) {
 			onError : function() {
 				_app.u.dump('START beachmall_store.callbacks.startExtension.onError');
 			}
-		}
+		},
+		
+		//renders redirect product on the product page
+		renderRedirectProduct : {
+			onSuccess:function(responseData){	
+				_app.u.dump(' -> renderRedirectProduct');
+				responseData.$container.anycontent({"templateID":responseData.loadsTemplate,"datapointer":responseData.datapointer}); 
+			},
+			onError:function(responseData){	
+				_app.u.dump('Error in extension: store_filter renderRedirectProduct');
+			}
+		},
 			
 	}, //callbacks
 
@@ -160,7 +174,7 @@ var beachmall_store = function(_app) {
 //actions are functions triggered by a user interaction, such as a click/tap.
 //these are going the way of the do do, in favor of app events. new extensions should have few (if any) actions.
 		a : {
-		/**CATEGORY FUNCTIONS */
+/**CATEGORY FUNCTIONS */
 				//add a class (first arg) to an element (third arg) and toggles the text on the 
 				//calling element (second arg) between the last two args. 
 			toggleMyClass : function(arg,$tag,$tagParent,primary,secondary) {
@@ -177,7 +191,7 @@ var beachmall_store = function(_app) {
 				}
 			},
 			
-		/**PRODUCT LIST FUNCTIONS */
+/**PRODUCT LIST FUNCTIONS */
 				//sets prod image frame and view detail button to hover red on mouseenter of the other
 			resultsredmousein : function($this) {
 				$('.myProdThumbSmall',$this.parent()).css('border','5px solid #e0463a');
@@ -190,15 +204,33 @@ var beachmall_store = function(_app) {
 				$('.moreDetailsSmall',$this.parent()).css('background-color','#3bb3c3');
 			},
 			
-		/**CUSTOMER ARTICLE FUNCTIONS */
+/**PRODUCT PAGE FUNCTIONS */			
+			scrollToRevealTab : function(pid, href) {
+				var $context = $(_app.u.jqSelector("#","productTemplate_"+pid));
+				var $prodSizing = $(".tabbedProductContent",$context);
+				setTimeout(function(){
+					$("a[href="+href+"]",$context).mouseenter();
+					$('html, body').animate({
+						scrollTop: $prodSizing.offset().top
+					}, 2000);
+				},500);
+			},
+			
+				//Q&A link on product page will populate the order/prod id field on contact form w/ pid
+			showContactPID : function (pid) {
+				//app.u.dump('the pid is: '); app.u.dump(pid);
+				setTimeout(function(){$('#contactFormOID','#mainContentArea_company').val('SKU: '+pid)},1000);
+			},
+
+/**CUSTOMER ARTICLE FUNCTIONS */
 				//clears the order/prod id field in contact form to be sure it doesn't still 
 				//have showContactPID value still displayed (if form did not get submitted). 
 			resetContactPID : function() {
 				var $field = $('#contactFormOID','#mainContentArea_company');
 				$field.val('');
 				//$field.attr('placeholder', 'Order Number (if applicable)');
-			}
-
+			},
+			
 		}, //Actions
 
 ////////////////////////////////////   RENDERFORMATS    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -207,7 +239,7 @@ var beachmall_store = function(_app) {
 //on a data-bind, format: is equal to a renderformat. extension: tells the rendering engine where to look for the renderFormat.
 //that way, two render formats named the same (but in different extensions) don't overwrite each other.
 		renderFormats : {
-		/**LIST FORMATS */
+/**LIST FORMATS */
 				//creates image for search results lists from user:app_thumb (a copy of image1) to prevent
 				//banner/icon images that had been getting indexed from being used for the list image.
 			appthumb : function($tag, data) {
@@ -222,8 +254,7 @@ var beachmall_store = function(_app) {
 					$tag.attr('src',_app.u.makeImage(data.bindData));
 				}
 			}, //appThumb
-			
-		/**LIST FORMATS */
+
 			//sets the overhang tag and hides discontinued products in a product list.
 			showprodmodifier : function($tag, data) {
 				//_app.u.dump('-----showprodmodifier'); _app.u.dump(data.value); //_app.u.dump(data.globals.tags[data.globals.focusTag]);
@@ -324,8 +355,9 @@ var beachmall_store = function(_app) {
 			}, //End showFreeShippingTag
 			
 			//shows ships on/in message if data is set, takes into account when the message is displayed
+			//also used on product page
 			showshiplatency : function ($tag, data) {
-				//app.u.dump('***TEST '); app.u.dump(data.value);
+				//_app.u.dump('***TEST '); _app.u.dump(data.value);
 				setTimeout(function(){
 						//set the vars needed to determine message
 					if($tag.attr('data-cart')) {	//if is for cart prod list
@@ -333,7 +365,7 @@ var beachmall_store = function(_app) {
 							return; //if this is an assembly product in the cart, skip the time in trans altogether
 						}
 						else if(data.value.product) {
-							var prod = app.data['appProductGet|'+app.u.makeSafeHTMLId(data.value.product)];
+							var prod = _app.data['appProductGet|'+_app.u.makeSafeHTMLId(data.value.product)];
 							//possible for this user:prod_shipping_msg to be present but not set, make it a blank string to prevent undefined. 
 							var userProdShipMsg = prod['%attribs']['user:prod_shipping_msg'] ? prod['%attribs']['user:prod_shipping_msg'] : "" ;
 							var us1ts = prod['%attribs']['us1:ts'];
@@ -341,19 +373,19 @@ var beachmall_store = function(_app) {
 							var zoovyIsPreOrder = prod['%attribs']['zoovy:prod_is_tags'];
 							var zoovyPreOrder = prod['%attribs']['is:preorder'];
 							var zoovyIsUser1 = prod['%attribs']['is:user1'];
-						} else {app.u.dump('Problem w/ data.value in beachmart.js: renderformats.showShipLatency. Data follows:'); app.u.dump(data.value);}
+						} else {_app.u.dump('Problem w/ data.value in beachmart.js: renderformats.showShipLatency. Data follows:'); _app.u.dump(data.value);}
 						
 						if(data.value.product) {
-							var prod = app.data['appProductGet|'+app.u.makeSafeHTMLId(data.value.product)];
+							var prod = _app.data['appProductGet|'+_app.u.makeSafeHTMLId(data.value.product)];
 							if(prod['%attribs'] && prod['%attribs']['user:is_dropship'] && prod['%attribs']['user:is_dropship'] == 1) {
 									//don't start time in transit, hide loadingBG and insert message
 								$('.cartPutLoadingHere',$tag.parent()).removeClass('loadingBG').text('Expedited shipping not available for this item');
 							} else {
 									//pass stid so each item can be found in cart later when time in transit info gets added
-								var stid = app.u.makeSafeHTMLId($tag.parent().parent().parent().attr('data-stid'));
-								app.ext.beachmart_cartEstArrival.u.initEstArrival(prod, stid);
+								var stid = _app.u.makeSafeHTMLId($tag.parent().parent().parent().attr('data-stid'));
+								_app.ext.beachmall_cartEstArrival.u.initEstArrival(prod, stid);
 							}
-						} else {app.u.dump('Problem w/ data.value in beachmart.js: renderformats.showShipLatency. Data follows:'); app.u.dump(data.value);}
+						} else {_app.u.dump('Problem w/ data.value in beachmart.js: renderformats.showShipLatency. Data follows:'); _app.u.dump(data.value);}
 					}
 					else {	//else is for not cart prod list
 						//possible for this user:prod_shipping_msg to be present but not set, make it a blank string to prevent undefined.
@@ -375,11 +407,11 @@ var beachmall_store = function(_app) {
 					//Item is preorder, get back to the future Marty! (when it will be shipped)
 					if ((zoovyPreOrder || zoovyIsUser1 || zoovyIsPreOrder || zoovyIsPreOrder.indexOf('IS_PREORDER') > -1) && ([zoovyProdSalesRank > -1 || zoovyProdSalesRank != undefined] && zoovyProdSalesRank > date) ) {
 						//var outputDate =  zoovyProdSalesRank.substring(5,6) + '/' + zoovyProdSalesRank.substring(7,8) + '/' + zoovyProdSalesRank.substring(0,4);
-						//app.u.dump('*** '+outputDate);
-						$tag.empty().append('Backorder: Will ship on '+app.ext.beachmart.u.yyyymmdd2Pretty(zoovyProdSalesRank));
+						//_app.u.dump('*** '+outputDate);
+						$tag.empty().append('Backorder: Will ship on '+_app.ext.beachmart.u.yyyymmdd2Pretty(zoovyProdSalesRank));
 						$tag.attr('data-cart') ? $tag.css('color','#e0463a') : $tag.css('color','blue');
 /*should be for cart only?*/$tag.parent().parent().attr('data-backorder',zoovyProdSalesRank); //used to mod time in transit arrival date for backorder items 
-							//set groundonall to indicate for all cart shipping items to be ground in beachmart_cartEstArrival showTransitTimes.
+							//set groundonall to indicate for all cart shipping items to be ground in beachmall_cartEstArrival showTransitTimes.
 							//will also ensure expedited shipping not available message will be shown for this item. 
 /*should be for cart only?*/$('#cartTemplateShippingContainer').attr('groundonall',1); 
 					}
@@ -486,6 +518,182 @@ var beachmall_store = function(_app) {
 //					_app.u.dump('TAG HIDDEN!!');
 				}
 			}, //hideIfNotPurchaseable
+			
+/**PRODUCT PAGE FORMATS */	
+			//hides geo location/time in transit and add to cart button if product is discontinued or not purchasable
+			hidegeoelements : function($tag, data) {
+				//_app.u.dump('*********************'); _app.u.dump(data.value.pid); 
+				if(data.value['%attribs']['zoovy:prod_is_tags']
+					&& data.value['%attribs']['zoovy:prod_is_tags'].indexOf('IS_DISCONTINUED') > 0) {
+					$tag.hide();
+					if($('.addToCartButton',$tag.parent())) {
+						$('.addToCartButton',$tag.parent()).hide();
+					}
+				}
+				else if (!_app.ext.store_product.u.productIsPurchaseable(data.value.pid)){
+					$tag.hide();	
+					if($('.addToCartButton',$tag.parent())) {
+						$('.addToCartButton',$tag.parent()).hide();
+					}
+				}
+			},
+			
+			//if a product is discontinued, will add minimal info about the replacement and provide a link to it.
+			addredirectproduct : function($tag, data) {
+				if(data.value) {
+					var obj = {
+						pid : _app.u.makeSafeHTMLId(data.value),
+						"withVariations":1,
+						"withInventory":1
+					};
+					
+					var _tag = {								
+						"callback":"renderRedirectProduct",		
+						"extension":"beachmall_store",			
+						"$container" : $tag,
+						"loadsTemplate" : data.bindData.loadsTemplate
+					};
+					_app.calls.appProductGet.init(obj, _tag, 'immutable');
+				
+					//execute calls
+					_app.model.dispatchThis('immutable');
+				}
+			},
+			
+			//Will add a message that current product is discontinued, and provide a link to a replacement
+			addRedirectURL : function($tag, data) {
+				//app.u.dump('Replacement Product: '); app.u.dump(data.value['%attribs']['user:replacement_product']);
+				if(data.value['%attribs']['user:replacement_product']) {
+					//$tag.append('THIS PRODUCT IS DISCONTINUED,<br><a class="pointer" title="new product" data-onclick="#!product?pid='+data.value['%attribs']['user:replacement_product']+'">CLICK HERE TO SEE</a><BR>THE NEW VERSION!');
+					//$tag.append('THIS PRODUCT IS DISCONTINUED,<br><a class="pointer" title="new product" onClick="return showContent(\'product\',{\'pid\':\''+data.value['%attribs']['user:replacement_product']+'\'});">CLICK HERE TO SEE</a><BR>THE NEW VERSION!');
+					$tag.append('THIS PRODUCT IS DISCONTINUED,<br><a class="pointer" title="new product" href="#!/product/'+data.value['%attribs']['user:replacement_product']+'">CLICK HERE TO SEE</a><BR>THE NEW VERSION!');
+				}																						 //onClick="return showContent('product',{'pid':'wridt'});"
+			},
+			
+			//hides time in transit/geo location section if item is a drop-shipped item
+			//time in transit code checks this attrib also, and doesn't run if it's set.
+			hideifdropship : function($tag, data) {
+				if(data.value) {
+					$tag.before('<div>Expedited shipping not available for this item</div>');
+					$tag.hide().css('display','none');
+				}
+			},
+			
+			//hides ships on/in message on product page if product isn't purchaseable
+			hideshiplatency : function($tag, data) {
+				var pid = data.value.pid;
+//					app.u.dump('***PID'); app.u.dump(pid);
+				if(!_app.ext.store_product.u.productIsPurchaseable(pid)) {
+					$tag.addClass('displayNone');
+				}
+			},
+			
+			//showshiplatency listed in LIST FORMATS SECTION
+			
+			//opens e-mail in default mail provider (new window if web-based)
+			//if info is available will populate subject and body w/ prod name, mfg, & price
+			//if only name, subject will have name, body will be empty. If no content, no subject or body
+			bindmailto : function($tag, data){
+	//			_app.u.dump('data.value:'); _app.u.dump(data.value);
+				if(data.value['%attribs'] && data.value['%attribs']['zoovy:prod_name']) {
+					
+					var name = data.value['%attribs']['zoovy:prod_name'];
+					
+						//if all the info is present, add it all to the message
+					if(data.value['%attribs']['zoovy:prod_mfg'] && data.value['%attribs']['zoovy:prod_msrp']) {
+						var MFG = data.value['%attribs']['zoovy:prod_mfg'];
+						var price = data.value['%attribs']['zoovy:prod_msrp'];
+						$tag.on("click", function() {
+							var eWindow = window.open("mailto:?subject="+name+"%20I%20found%20on%20beachmall.com&body="+name+",%20by%20"+MFG+",%20for%20only%20"+price+"%20"+window.location+""); //+window.location
+						
+								//window object has an array of content if something loaded in it.
+								//the timeout was necessary to access the data to determine whether or not to close.
+								//test thoroughly to determine the reliability of this method!!
+								
+								//the window is set, check if it's filled, and kill it if not
+							setTimeout(function(){
+								//_app.u.dump('WindowObjectReference'); _app.u.dump(eWindow.WindowObjectReference); //Security issues? check for later possibility of cleaner implementation 
+								if(eWindow[0]) {//app.u.dump('Webmail, window has content don't close');
+								}
+								else {
+									//_app.u.dump('Outlook-esq, window has no content'); 
+									eWindow.close();
+								}
+							},5000);
+						});
+					}
+					else {
+						$tag.on("click", function() {
+							var eWindow = window.open("mailto:?subject="+name+"%20I%20found%20on%20beachmall.com&body=%20"+window.location+"");
+							setTimeout(function(){if(eWindow[0]) {} else {eWindow.close();}	},5000);
+						});
+					}
+				}
+				else {
+					$tag.on("click", function() {
+						var eWindow = window.open("mailto:?body="+window.location+"");
+						setTimeout(function(){if(eWindow[0]) {} else {eWindow.close();}	},5000);
+					});
+				}
+			}, //bindMailto
+			
+			//shows container w/ accessories/similar tabbed content if one of them has values set
+			showtabsifset : function($tag, data) {
+				setTimeout(function(){ //timeout here to allow time for data to get added to dom before this is run
+					var attribs = data.value['%attribs'] ? data.value['%attribs'] : false; 
+					if(!attribs) return; //if no attribs, run for it Marty!
+					var relatedProds = attribs['zoovy:related_products'] ? attribs['zoovy:related_products'] : false;
+					var accessoryProds = attribs['zoovy:accessory_products'] ? attribs['zoovy:accessory_products'] : false;
+					var L, relatedIsDiscontinued, accessoryIsDiscontinued; //used for length of attrib lists and to hold whether list is discontinued or not
+					var listList = [];
+					listList.push(relatedProds,accessoryProds);
+				//	_app.u.dump('--> List of lists'); _app.u.dump(listList); 
+					
+					for(j=0;j<listList.length;j++) {
+						if(listList[j]) {
+							var count = 0; //used to compare # discontinued items to list lengths
+							prodAttribList = listList[j].split(',');
+							L = prodAttribList.length;
+						
+								//check for any empty strings in array. Remove and adjust length if found
+							var p = L;
+							for(k=0;k<p;k++) {
+								if(prodAttribList[k] == "" || prodAttribList[k] == " ") {
+									L -= 1;
+									prodAttribList.splice(k,1);
+								}
+							}
+
+								//check for discontinued and adjust count if found
+							var tempProd; //used in loop
+				//			_app.u.dump('--> prodAttribList'+j+'---'); _app.u.dump(prodAttribList);
+							for(i=0;i<L;i++) {
+								tempProd = _app.data['appProductGet|'+_app.u.makeSafeHTMLId(prodAttribList[i])];
+								if(tempProd['%attribs'] && tempProd['%attribs']['zoovy:prod_is_tags']) {
+									tempProd['%attribs']['zoovy:prod_is_tags'].indexOf('IS_DISCONTINUED') == -1 ? count = count : count += 1;
+								}
+							}
+							L == count ? listList[j] = false : listList[j] = true; //if length is same as count, all prods in list are not show-able
+						}
+					}
+						//check the findings for each list and set discontinued accordingly
+					listList[0] == true ? relatedIsDiscontinued = false : relatedIsDiscontinued = true;
+					listList[1] == true ? accessoryIsDiscontinued = false : accessoryIsDiscontinued = true;
+					 
+		//			_app.u.dump('--> Lots to look at'); _app.u.dump(relatedProds); _app.u.dump(relatedIsDiscontinued); _app.u.dump(accessoryProds); _app.u.dump(accessoryIsDiscontinued);
+				
+					if( (relatedProds && !relatedIsDiscontinued) || (accessoryProds && !accessoryIsDiscontinued) ) {
+						$tag.show();
+					}
+					
+					if( (accessoryProds && !accessoryIsDiscontinued) && ( (!relatedProds) || (relatedProds && relatedIsDiscontinued) ) ) {
+						$('.accTab',$tag).addClass('ui-state-active').addClass('ui-tabs-active');
+						setTimeout(function(){
+							$('.accAnch','.accTab',$tag).mouseenter();},500);
+		//				_app.u.dump('got past trigger');
+					}
+				},1000);	
+			},
 
 		}, //renderFormats
 ////////////////////////////////////   UTIL [u]   \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -493,28 +701,63 @@ var beachmall_store = function(_app) {
 //utilities are typically functions that are exected by an event or action.
 //any functions that are recycled should be here.
 		u : {
-		/**GENERAL UTILS */
+/**GENERAL UTILS */
 				//will add tabs to the selector in the context passed
 			tabify : function($context,selector) {
 				var $tabContainer = $(selector,$context);
 				if($tabContainer.length)	{
 					if($tabContainer.data("widget") == 'anytabs'){} //tabs have already been instantiated. no need to be redundant.
 					else	{
-						$tabContainer.anytabs();
+						$tabContainer.anytabs(); _app.u.dump($("ul li",$tabContainer));
+	//TO DO: ADD THIS HOVER TO VIDEO TABS TOO
+						$("[data-app-role='hoverTab']",$tabContainer).each(function() {
+							$(this).mouseenter(function() {
+								$(this).trigger('click');
+							});
+						});
 					}
 				}
 				else	{
-					_app.u.dump("WARNING! could not find selector for brand tab items");
+					_app.u.dump("WARNING! could not find selector "+selector+" for tab items");
 				} //couldn't find the tab to tabificate.
 			},
-		
+			
+				//adds static button w/ scrollTop function to page 
 			backToTop : function($context) {
 				$($context).append('<div class="appBackToTop pointer" onClick="myApp.ext.beachmall_store.u.scrollToTop()"><span class="sprite"></span>Back to Top</div>')
 			},
 			
+				//returns view to top of page
 			scrollToTop : function() {
 				$('html,body').animate({ scrollTop: 0 }, 'slow');
-			}
+			},
+			
+/**PRODUCT PAGE UTILS */
+				//checks for product youtube video and adds tab for it to main prod image
+			videotabify : function($context, infoObj) {
+				if(_app.data[infoObj.datapointer] &&  _app.data[infoObj.datapointer]['%attribs'])	{
+					if(_app.data[P.datapointer]['%attribs']['youtube:videoid'])	{
+						tabify($context,".imageAndVideoTabs");
+					}
+					else {
+						app.u.dump("youtube:videoid NOT set. no video.");
+					}
+				}
+				else {
+					//video ID not set for this product.
+					app.u.dump("Issue w/ the product data. can't reach attribs.");
+				}
+			}, //videotabify
+			
+			//shows tool tip on product page. Uses fade out to allow for click on link in tool tip pop up
+			handleToolTip : function()	{
+			_app.u.dump("BEGIN beachmart.u.handleToolTip.");
+				$('.tipify',$('#appView')).each(function(){
+					var $this = $(this);
+					$this.parent().css('position','relative'); //this is what makes the tooltip appear next to the link instead of off in space.
+					$this.mouseover(function(){	$('.toolTip',$this.parent()).show();}).mouseout(function(){	$('.toolTip',$this.parent()).fadeOut(3000);});
+				});
+			},
 		
 		}, //u [utilities]
 
@@ -524,7 +767,149 @@ var beachmall_store = function(_app) {
 //while no naming convention is stricly forced, 
 //when adding an event, be sure to do off('click.appEventName') and then on('click.appEventName') to ensure the same event is not double-added if app events were to get run again over the same template.
 		e : {
-			} //e [app Events]
-		} //r object.
+			}, //e [app Events]
+			
+			
+////////////////////////////////////   VARIATIONS    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\			
+			
+		variations : {
+				//**turned off** adds same functionality as custom image select render option to image grid options
+			renderOptionCUSTOMIMGGRID : function(pog) {
+				var pogid = pog.id;
+				var $parentDiv = $("<span \/>");
+				if(pog['ghint']) {$parentDiv.append(pogs.showHintIcon(pogid,pog['ghint']))}
+				
+				var $radioInput; //used to create the radio button element.
+				var radioLabel; //used to create the radio button label.
+				var thumbnail; //guess what this holds
+				var thumbnailTag; //tag created manually to add jquery tool tip attribs
+				var i = 0;
+				var len = pog['@options'].length;
+				while (i < len) {
+					thumbnail = _app.u.makeImage({"w":pog.width,"h":pog.height,"name":pog['@options'][i]['img'],"b":"FFFFFF","lib":app.username});
+					thumbnailTag = "<img src='"+thumbnail+"' width='"+pog.width+"' height='"+pog.height+"' name='"+pog['@options'][i]['img']+"' data-grid-img='"+thumbnail+"' data-tooltip-title='"+pog['@options'][i]['prompt']+"'>";
+				//	app.u.dump('----thumbnail'); app.u.dump(thumbnail); app.u.dump(thumbnailTag);
+					radioLabel = "<label>"+pog['@options'][i]['prompt']+"<\/label>";
+					$radioInput = $('<input>').attr({type: "radio", name: pogid, value: pog['@options'][i]['v']});
+					$parentDiv.append(thumbnailTag).append($radioInput).append(radioLabel).wrap("<div class='floatLeft'><\/div>");;
+					i++
+					}
+				
+				return $parentDiv;
+			},
+			
+			//puts color options on product page as image selectable select list. Also adds jquery tool tip pop up of image for zoom
+			renderOptionCUSTOMIMGSELECT: function(pog) {
+
+//				app.u.dump('POG -> '); app.u.dump(pog);
+				
+				var $parent = $('<div class="optionsParent" />');
+				var $select = $("<select class='optionsSelect' name="+pog.id+" />");
+				var $hint = $('<div class="zhint">mouse over thumbnail to see larger swatches</div>');
+				var $hint = $('<div class="zhint">mouse over thumbnail to see larger swatches</div>');
+				$parent.append($hint);
+
+				var len = pog['@options'].length;				
+				if(len > 0) {
+					optionTxt = (pog['optional'] == 1) ? "" : "Please choose (required)";
+					selOption = "<option value='' disabled='disabled' selected='selected'>"+optionTxt+"<\/option>";
+					$select.append(selOption);
+				}
+				
+				var $option;
+				for (var index in pog['@options']) {
+					var option = pog['@options'][index];
+//					app.u.dump('IMG: '); app.u.dump(option.img);
+					$option = $("<option value="+option.v+">"+option.prompt+"</option>");
+					$select.append($option);
+					var thumbImg = _app.u.makeImage({"w":pog.width,"h":pog.height,"name":option.img,"b":"FFFFFF","tag":false,"lib":app.username});
+					var bigImg = _app.u.makeImage({"w":400,"h":400,"name":option.img,"b":"FFFFFF","tag":false,"lib":app.username});																									//need to try moving these to be appended
+					
+					var $imgContainer = $('<div class="floatLeft optionImagesCont" data-pogval="'+option.v+'" />');
+					/*var $mzpLink = $('<a id="imgGridHref_'+pog.id+'_'+option.v+'" alt="'+option.prompt+'" class="MagicZoom" title="'+option.prompt+'" rel="hint:false; show-title:top; title-source=#id;" href="'+mzBigImg+'" />');
+					
+					$mzpLink.click(function(){
+						var pogval = $(this).parent().attr('data-pogval');
+						
+						$select.val(pogval);
+						app.u.dump(pogval);
+						app.u.dump(pogval);
+						app.u.dump(pogval);
+						app.u.dump(pogval);
+						$('.optionImagesCont', $parent).each(function(){
+							if($(this).hasClass('selected')){ 
+								$(this).removeClass('selected'); 
+								}
+							if($(this).attr('data-pogval') == pogval){ 
+								$(this).addClass('selected'); 
+								}
+							});	
+						});
+						
+					$mzpLink.append($('<img src='+thumbImg+' title="'+pog.prompt+'" data-pogval="'+option.v+'"/>'));
+					$imgContainer.append($mzpLink);*/
+
+						//add selected indicator to image, and change select list option to match
+					$imgContainer.click(function(){
+						var pogval = $(this).attr('data-pogval');	//value of image clicked
+						
+						$select.val(pogval); 	//change select list to clicked image value
+							//remove the selected indicator from all images
+						$('.optionImagesCont', $parent).each(function(){
+							if($(this).hasClass('selected')){ 
+								$(this).removeClass('selected'); 
+								}	//add selected indicator to clicked image
+							if($(this).attr('data-pogval') == pogval){ 
+								$(this).addClass('selected'); 
+								}
+							});	
+						});
+					
+					$img = $('<img src="'+thumbImg+'" data-big-img="'+bigImg+'" data-tooltip-title="'+option.prompt+'"/>')
+					
+					//Tooltip called in init
+					
+					$imgContainer.append($img);
+					$parent.append($imgContainer);
+					
+	//				to add description info to label for
+	//				$mzpLink.mouseover(function() {
+	//					$('.optionImagesCont', $parent).each(function(){
+	//						$('label[value="Fabric"]').empty().text('Fabric: '+option.prompt+'');
+	//						app.u.dump(option.prompt);
+	//					});		
+	//				});
+	
+				} // END for
+				
+					//add selected indicator on image when variation is selected w/ select list
+				$select.change(function() {
+					var selected = $(this).val();	//the option selected in select list
+				
+						//remove selected indicator from all images
+					$('.optionImagesCont', $parent).each(function(){
+						if($(this).hasClass('selected')){ 
+							$(this).removeClass('selected'); 
+						}	//add it back to the value of select list option if one matches
+						if($(this).attr('data-pogval') == selected){ 
+							$(this).addClass('selected'); 
+						}
+					});
+				});
+
+				$parent.append($select);
+				return $parent;
+			}, // END renderOptionCUSTOMIMGSELECT
+			
+			xinit : function(){
+				this.addHandler("type","imggrid","renderOptionCUSTOMIMGGRID");
+				this.addHandler("type","imgselect","renderOptionCUSTOMIMGSELECT");
+				_app.u.dump("--- RUNNING XINIT");
+			}
+			
+		} //variations
+			
+			
+	} //r object.
 	return r;
-	}
+}

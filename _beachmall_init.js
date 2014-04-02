@@ -26,7 +26,7 @@ myApp.rq.push(['extension',0,'quickstart','app-quickstart.js','startMyProgram'])
 //myApp.rq.push(['extension',0,'tools_animation','extensions/tools_animation.js']);
 
 myApp.rq.push(['extension',0,'beachmall_store','extensions/beachmall_store.js','startExtension']); 
-myApp.rq.push(['extension',0,'beachmart','extensions/beachmart_custom.js']); // custom product page, built by JT based on old hybrid site
+myApp.rq.push(['extension',0,'beachmart','extensions/beachmart_custom.js','startMyProgram']); // custom product page, built by JT based on old hybrid site
 myApp.rq.push(['extension',0,'store_filter','extensions/beachmart.js','startExtension']); 
 myApp.rq.push(['extension',0,'beachmall_search','extensions/beachmall_search.js']); //new place to seperate search features out to. 
 myApp.rq.push(['extension',0,'beachmall_carousel','extensions/beachmall_carousel.js','startExtension']); 
@@ -36,20 +36,21 @@ myApp.rq.push(['extension',0,'beachmart_dropdown','extensions/beachmart_dropdown
 myApp.rq.push(['extension',0,'beachmall_banner','extensions/beachmall_banner.js','startExtension']); // add banner to homepage that can be changed in _banners.json file 
 myApp.rq.push(['extension',0,'beachmart_dropdown_image','extensions/beachmart_dropdown_image.js']); // add images to dropdowns that can be changed in _dropdownimages.json file 
 myApp.rq.push(['extension',0,'prodlist_infinite','extensions/prodlist_infinite.js']); //removes pagination in product lists and allows population w/ scroll
-//myApp.rq.push(['extension',0,'beachmart_cartEstArrival','extensions/beachmart_cartEstArrival.js']); //estimates shipping/arrival times for cart items
+myApp.rq.push(['extension',0,'beachmall_cartEstArrival','extensions/beachmall_cartEstArrival.js']); //estimates shipping/arrival times for cart items
 //myApp.rq.push(['extension',0,'beachmart_cartEmail','extensions/beachmart_cartEmail.js']); //handles sending user an e-mail of cart contents
 //myApp.rq.push(['extension',0,'beachmart_dates','extensions/beachmart_dates.js']); //handles various date based calculations
 //myApp.rq.push(['extension',0,'store_createAccount','extensions/store_createAccount.js']); //handles account creation actions
+myApp.rq.push(['extension',0,'beachmall_recentlyviewed','extensions/beachmall_recentlyviewed.js','startExtension']); //handles account creation actions
 myApp.rq.push(['script',0,myApp.vars.baseURL+'resources/jquery.touchSwipe-1.3.3.min.js']); //used w/ carouFedSel.
 myApp.rq.push(['script',0,myApp.vars.baseURL+'resources/jquery.carouFredSel-6.2.0.min.js']); //used for carousels.
 
 //myApp.rq.push(['extension',1,'google_analytics','extensions/partner_google_analytics.js','startExtension']);
 //myApp.rq.push(['extension',1,'tools_ab_testing','extensions/tools_ab_testing.js']);
-//myApp.rq.push(['extension',0,'partner_addthis','extensions/partner_addthis.js']);
+myApp.rq.push(['extension',0,'partner_addthis','extensions/partner_addthis.js','startExtension']);
 //myApp.rq.push(['extension',1,'resellerratings_survey','extensions/partner_buysafe_guarantee.js','startExtension']); /// !!! needs testing.
 //myApp.rq.push(['extension',1,'buysafe_guarantee','extensions/partner_buysafe_guarantee.js','startExtension']);
 myApp.rq.push(['extension',0,'powerreviews_reviews','extensions/partner_powerReviews_reviews.js','startExtension']);
-//myApp.rq.push(['extension',0,'magicToolBox_mzp','extensions/partner_magictoolbox_mzp.js','startExtension']); // (not working yet - ticket in to MTB)
+myApp.rq.push(['extension',0,'magictoolbox_mzp','extensions/partner_magictoolbox_mzp.js','startExtension']); // (not working yet - ticket in to MTB)
 
 // ** moved here from extension to make sure it gets loaded early enough.
 //myApp.rq.push(['script',0,'http://cdn.powerreviews.com/repos/11531/pr/pwr/engine/js/full.js']); old user id "11531"

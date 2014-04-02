@@ -252,7 +252,7 @@ If the data is not there, or there's no data to be retrieved (a Set, for instanc
 //required params: obj.pid.
 //optional params: obj.withInventory and obj.withVariations
 		appProductGet : {
-			init : function(obj,_tag,Q)	{
+			init : function(obj,_tag,Q)	{_app.u.dump('app prod get'); _app.u.dump(obj); _app.u.dump(_tag); _app.u.dump(Q);
 				var r = 0; //will return 1 if a request is needed. if zero is returned, all data needed was in local.
 				if(obj && obj.pid)	{
 					if(typeof obj.pid === 'string')	{obj.pid = obj.pid.toUpperCase();} //will error if obj.pid is a number.

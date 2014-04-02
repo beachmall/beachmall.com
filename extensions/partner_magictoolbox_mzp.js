@@ -32,7 +32,7 @@ EX: <img src='images/blank.gif' data-bind='var: product(zoovy:prod_image1); form
 */
 
 
-var magicToolBox_mzp = function(_app) {
+var magictoolbox_mzp = function(_app) {
 	return {
 		
 
@@ -87,8 +87,8 @@ MagicZoomPlus.options = {
 
 
 		renderFormats : {
-
-			magicZoomPlus : function($tag,data)	{
+			
+			magiczoomplus : function($tag,data)	{
 				_app.u.dump('BEGIN quickstart.renderFormats.magicZoomPlus');
 				var bgcolor = data.bindData.bgcolor ? data.bindData.bgcolor : 'ffffff'
 /*BEACHMALL*/	var fileName = data.value['%attribs']['zoovy:prod_image1'];
@@ -101,29 +101,29 @@ MagicZoomPlus.options = {
 /*BEACHMALL*/		$tag.wrap("<a href='"+_app.u.makeImage({'tag':0,'name':fileName,'b':bgcolor})+"' class='MagicZoomPlus' id='prodBigImage_href_"+pid+"' rel='selectors-change: mouseover; zoom-width:450; zoom-height:450; hint: false;' />")
 					}
 				else	{
-					$tag.style('display','none'); //if there is no image, hide the src.  !!! added 1/26/2012. this a good idea?
+					$tag.css('display','none'); //if there is no image, hide the src.  !!! added 1/26/2012. this a good idea?
 					}
 				},
 
-			magicThumb : function($tag,data)	{
+			magicthumb : function($tag,data)	{
 				_app.u.dump('BEGIN quickstart.renderFormats.magicThumb');
 				var bgcolor = data.bindData.bgcolor ? data.bindData.bgcolor : 'ffffff'
 				if(data.value)	{
 					var imgSrc = _app.u.makeImage({'tag':0,'w':$tag.attr('width'),'h':$tag.attr('height'),'name':data.value,'b':bgcolor});
 //					_app.u.dump('IMGSRC => '+imgSrc);
 					$tag.attr('src',imgSrc);
-					$tag.wrap("<a href='"+_app.u.makeImage({'tag':0,'name':data.value,'b':bgcolor})+"' rev='"+_app.u.makeImage({'tag':0,'w':350,'h':350,'name':data.value,'b':bgcolor})+"' class='MagicThumb Selector MagicThumb-swap'  />")
+					$tag.wrap("<a href='"+_app.u.makeImage({'tag':0,'name':data.value,'b':bgcolor})+"' rev='"+_app.u.makeImage({'tag':0,'w':350,'h':350,'name':data.value,'b':bgcolor})+"' class='MagicThumb Selector MagicThumb-swap' rel='hint: false;' />")
 					// makes shit blow up: rel='zoom-id:bigAssImage_href; selectors-change:mouseover;'
 					}
 				else	{
-					$tag.style('display','none'); //if there is no image, hide the src.  !!! added 1/26/2012. this a good idea?
+					$tag.css('display','none'); //if there is no image, hide the src.  !!! added 1/26/2012. this a good idea?
 					}
 				},
 			
 
 // used to display product image 1 thru X where X is the last image. checks spot 1 - 50
 // product id should be used as var
-			productImages : function($tag,data)	{
+			productimages : function($tag,data)	{
 //				_app.u.dump("BEGIN quickstart.renderFormats.productImages ["+data.value+"]");
 				var pdata = _app.data['appProductGet|'+data.value]['%attribs']; //short cut to product object in memory.
 				var imgs = ''; //all the html for all the images. appended to $tag after loop.

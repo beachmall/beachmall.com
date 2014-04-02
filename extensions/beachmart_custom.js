@@ -29,16 +29,6 @@ var beachmart = function(_app) {
 				onSuccess : function()	{
 					var r = true; //return false if extension won't load for some reason (account config, dependencies, etc).
 
-					// load the google map api lib
-					var script = document.createElement("script");
-					script.type = "text/javascript";
-					script.src = ((document.location.protocol == 'https:') ? 'https:' : 'http:') + "//maps.googleapis.com/maps/api/js?key=AIzaSyAW4uPPdoxArUsCy2SvCchNQmhX328T2oY&sensor=false&callback=myApp.ext.beachmart.u.instantiateGeoCoder";
-					document.body.appendChild(script);
-
-					// get the estimate arrival code running. works passively.
-					_app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {
-						_app.ext.beachmart.u.initEstArrival(P);
-						}]);
 
 					return r;
 					},
@@ -53,6 +43,16 @@ var beachmart = function(_app) {
 				onSuccess : function()	{
 					_app.u.dump("BEGIN beachmart.callbacks.startMyProgram"); // will write to console, if console is enabled.
 
+					// load the google map api lib
+					var script = document.createElement("script");
+					script.type = "text/javascript";
+					script.src = ((document.location.protocol == 'https:') ? 'https:' : 'http:') + "//maps.googleapis.com/maps/api/js?key=AIzaSyAW4uPPdoxArUsCy2SvCchNQmhX328T2oY&sensor=false&callback=myApp.ext.beachmart.u.instantiateGeoCoder";
+					document.body.appendChild(script);
+					
+					// get the estimate arrival code running. works passively.
+					_app.templates.productTemplate.on('complete.beachmall_store',function(event,$ele,P) {
+						_app.ext.beachmart.u.initEstArrival(P);
+					});
 /*
 					if(_app.u.isSet(SKU))	{
 						var parentID = 'productContainer';
@@ -142,7 +142,7 @@ _app.ext.beachmart.u.initEstArrival();
 			handleWhereAmI : {
 				
 				onSuccess : function(tagObj){
-var data = _app.data[tagObj.datapointer];
+var data = _app.data[tagObj.datapointer]; _app.u.dump('----handleWhereAmI:'); _app.u.dump(data);
 if(data.city)	{
 	_app.data.cartDetailship.city = data.city;
 	_app.ext.cco.calls.cartSet.init({"ship/city":data.city},{},'passive');
@@ -158,12 +158,12 @@ _app.ext.beachmart.u.getShipQuotes(_app.data[tagObj.datapointer].zip);
 
 					},
 				onError : function(responseData)	{
-					var $container = $(_app.u.jqSelector('#',_app.ext.myRIA.vars.hotw[0].parentID));
+					var $container = $(_app.u.jqSelector('#',_app.ext.quickstart.vars.hotw[0].parentID));
 					//reset all the spans
 					$('.putLoadingHere',$container).removeClass('loadingBG');
 					$('.loadingText',$container).hide();
 					$('.shipMessage, .estimatedArrivalDate, .deliveryLocation, .deliveryMethod',$container).empty()
-					$('.timeInTransitMessaging',$container).empty().append("Unable to determine your zip code for estimated arrival date. <a href='#' onClick='_app.ext.beachmart.a.showZipDialog(); return false;'>click here</a> to enter zip.").show();
+					$('.timeInTransitMessaging',$container).empty().append("Unable to determine your zip code for estimated arrival date. <span class='pointer zipLink' onClick='myApp.ext.beachmart.a.showZipDialog(); return false;'>click here</span> to enter zip.").show();
 					}
 				}, //checkForOrGetShipZip
 			
@@ -311,7 +311,28 @@ var vertCarouselOptions = {
 				dispatch : function(tagObj,Q)	{
 					_app.model.addDispatchToQ({"_cmd":"time","_tag":tagObj},Q);	
 					}
-				}//appShippingTransitEstimate
+				}, //appShippingTransitEstimate
+				
+			whereAmI : {
+				init : function(_tag,Q)	{
+					var r = 0;
+					_tag = $.isEmptyObject(_tag) ? {} : _tag; 
+					_tag.datapointer = "whereAmI"
+					if(_app.model.fetchData('whereAmI') == false)	{
+						r = 1;
+						this.dispatch(_tag,Q);
+						}
+					else	{
+	//					_app.u.dump(' -> data is local');
+						_app.u.handleCallback(_tag);
+						}
+					return r;
+					},
+				dispatch : function(_tag,Q)	{
+					_app.model.addDispatchToQ({"_cmd":"whereAmI","_tag" : _tag},Q || 'mutable');	
+					} 
+				},//whereAmI
+			
 			}, //calls
 
 
@@ -331,7 +352,7 @@ Action
 			
 //Data must already be in memory to execute this action.
 //added as a .click to the shipping method
-			showShipGridInModal : function(datapointerS, datapointerM, cart){
+			showShipGridInModal : function(datapointer, cart){
 	//_app.u.dump('----> showShipGridInModal datapointer'); _app.u.dump(datapointer);
 				var $parent = $('#modalShipGrid').empty();
 //the modal opens as quick as possible so users know something is happening.
@@ -343,12 +364,13 @@ Action
 //empty the existing cart and add a loadingBG so that the user sees something is happening.
 				$parent.dialog('open').addClass('loadingBG');
 					
-				if(datapointerS && datapointerM && !$.isEmptyObject(_app.data[datapointerS]) && !$.isEmptyObject(_app.data[datapointerM]))	{
+				if(datapointer && !$.isEmptyObject(_app.data[datapointer]))	{
 					var $table = $("<table />").addClass('center');
 					$table.append("<tr class='ztable_row_head'><td></td><td>Method</td><td>Est. Arrival</td></tr>");
-					var services = _app.data[datapointerS]['@Services']
+					var services = _app.data[datapointer]['@Services']
 					var L = services.length;
 //					_app.u.dump(" -> @Services.length: "+L);
+//MARK TO DO: FIND OUT IF EACH PRODUCT'S SHIPPING METHODS CAN BE ATTAINED HERE TO BE SURE NO PRODUCT SPECIFIC UNAVAILABLE METHODS ARE SHOWN
 					for(var i = 0; i < L; i += 1)	{
 						if(cart) { //if this is in the cart, only show methods that match what is available in the cart shipping area
 //							_app.u.dump('-->'); _app.u.dump($('.cartShipMethods').text()); _app.u.dump(services[i].method);
@@ -359,7 +381,8 @@ Action
 						}
 						else {
 //							_app.u.dump(" S -> "+i+") id: "+services[i].id);
-							var methods = _app.data[datapointerM]['@methods'];
+							//var methods = _app.data[datapointer]['@methods']; MARK: THIS MAY STILL WORK, WON'T KNOW TILL CART OPERATES...
+							var methods = _app.data[datapointer]['@Services'][i].method;
 							var methL = methods.length;
 							//_app.u.dump(" S -> "+i+") id: "+services[i].method);
 							//if(methods[i]) _app.u.dump(" M -> "+i+") id: "+methods[i].method);
@@ -410,10 +433,10 @@ Action
 								$('#globalMessaging').anymessage({'message':rd});
 								}
 							else	{
-								if(_app.ext.myRIA.vars.hotw && _app.ext.myRIA.vars.hotw[0] && _app.ext.myRIA.vars.hotw[0].pageType == 'product')	{
+								if(_app.ext.quickstart.vars.hotw && _app.ext.quickstart.vars.hotw[0] && _app.ext.quickstart.vars.hotw[0].pageType == 'product')	{
 									//update the time in transit.
 
-									var $container = $(_app.u.jqSelector('#',_app.ext.myRIA.vars.hotw[0].parentID));
+									var $container = $(_app.u.jqSelector('#',_app.ext.quickstart.vars.hotw[0].parentID));
 									_app.ext.beachmart.u.getShipQuotes(postal);
 									$('.shipPostal').text(postal);
 									//reset all the spans
@@ -550,12 +573,13 @@ Action
 						_app.u.dump("BEGIN showZipDialog .click event. zip: '"+zip+"'");
 
 						if(zip && zip.length >= 5 && !isNaN(zip))	{
-
+_app.u.dump('----CART ID:'); _app.u.dump(_app.model.fetchCartID());
+							var varsCart = _app.model.fetchCartID();
 //reset these vars so getShipQuotes doesn't use them.
-							if(_app.data.cartDetail.ship)	{
-								_app.data.cartDetail.ship.city = ""; 
-								_app.data.cartDetail.ship.postal = zip; 
-								_app.data.cartDetail.ship.region = "";
+							if(_app.data["cartDetail|"+varsCart].ship)	{
+								_app.data["cartDetail|"+varsCart].ship.city = ""; 
+								_app.data["cartDetail|"+varsCart].ship.postal = zip; 
+								_app.data["cartDetail|"+varsCart].ship.region = "";
 								}
 							_app.ext.cco.calls.cartSet.init({"ship/postal":zip,"ship/city":"","ship/region":""},{},'passive');
 //if you destroy the cartDetail call, you'll break time in transit.
@@ -647,7 +671,7 @@ RenderFormats
 
 //pass in the sku for the bindata.value so that the original data object can be referenced for additional fields.
 // will show price, then if the msrp is MORE than the price, it'll show that and the savings/percentage.
-			priceRetailSavingsDifference : function($tag,data)	{
+			priceRetailsavingsdifference : function($tag,data)	{
 				var o; //output generated.
 				var pData = _app.data['appProductGet|'+data.value]['%attribs'];
 	//use original pdata vars for display of price/msrp. use parseInts for savings computation only.
@@ -665,7 +689,7 @@ RenderFormats
 
 //pass in the sku for the bindata.value so that the original data object can be referenced for additional fields.
 // will show price, then if the msrp is MORE than the price, it'll show that and the savings/percentage.
-			priceRetailSavingsPercentage : function($tag,data)	{
+			priceRetailsavingspercentage : function($tag,data)	{
 				var o; //output generated.
 				var pData = _app.data['appProductGet|'+data.value]['%attribs'];
 	//use original pdata vars for display of price/msrp. use parseInts for savings computation only.
@@ -685,7 +709,7 @@ RenderFormats
 
 //pass in the sku for the bindata.value so that the original data object can be referenced for additional fields.
 // will show price, then if the msrp is MORE than the price, it'll show that and the savings/percentage.
-			priceRetailSavings : function($tag,data)	{
+			priceretailsavings : function($tag,data)	{
 //				_app.u.dump("BEGIN beachmart.s.priceRetailsSavings ["+data.value+"]");
 				var o = ''; //output generated.
 				var pData = _app.data['appProductGet|'+data.value]['%attribs'];
@@ -726,7 +750,7 @@ RenderFormats
 
 
 //will remove the add to cart button if the item is not purchaseable.
-			addToCartButton : function($tag,data)	{
+			addtocartbutton : function($tag,data)	{
 //				_app.u.dump("BEGIN store_product.renderFunctions.addToCartButton");
 //				_app.u.dump(" -> ID before any manipulation: "+$tag.attr('id'));
 				var pid = data.value;
@@ -870,8 +894,9 @@ uities
 _app.u.dump("BEGIN beachmart.u.initEstArrival");
 window.SKU = infoObj.pid; _app.u.dump("GLOBAL SKU IS A TEMPORARY SOLUTION!!!",'warn'); //was originally written in a hybrid store. need to get this more app friendly.
 var zip;
-if(_app.data.cartDetail && _app.data.cartDetail.ship && _app.data.cartDetail.ship.postal)	{
-	zip = _app.data.cartDetail.ship.postal;
+var varsCart = _app.data["cartDetail|"+_app.model.fetchCartID()];
+if(varsCart && varsCart.ship && varsCart.ship.postal)	{
+	zip = varsCart.ship.postal;
 	}
 /*
 navigator.geolocation is crappily supported. appears there's no 'if user hits no' support to execute an alternative. at least in FF.
@@ -885,7 +910,7 @@ if(zip)	{
 else	{
 	_app.u.dump(" -> no zip code entered. request via whereAmI");
 
-	_app.calls.whereAmI.init({'callback':'handleWhereAmI','extension':'beachmart'},'passive');
+	_app.ext.beachmart.calls.whereAmI.init({'callback':'handleWhereAmI','extension':'beachmart'},'passive');
 	_app.model.dispatchThis('mutable');
 	}
 
@@ -960,16 +985,17 @@ else if(zip)	{
 //	_app.u.dump(" -> zip: "+zip);
 //if the city or the state is already available, don't waste a call to get additional info.
 //this block is also executed for zip update, so allow reset.
-	if(_app.data.cartDetail && _app.data.cartDetail.ship && (!_app.data.cartDetail.ship.city && !_app.data.cartDetail.ship.region))	{
+	var varsCart = _app.data["cartDetail|"+_app.model.fetchCartID()];
+	if(varsCart && varsCart.ship && (!varsCart.ship.city && !varsCart.ship.region))	{
 		_app.ext.beachmart.u.fetchLocationInfoByZip(zip);
 		}
 	var prodArray = new Array();
 	prodArray.push(SKU);
-	if(_app.data.cartDetail.ship)	{
-		_app.data.cartDetail.ship.postal = zip; //update local object so no request for full cart needs to be made for showTransitTimes to work right.
+	if(varsCart.ship)	{
+		varsCart.ship.postal = zip; //update local object so no request for full cart needs to be made for showTransitTimes to work right.
 		}
 	else	{
-		_app.data.cartDetail.ship = {'postal' : zip};
+		varsCart.ship = {'postal' : zip};
 		}
 	_app.ext.cco.calls.cartSet.init({"ship/postal":zip},{},'passive');
 	_app.ext.beachmart.calls.time.init({},'passive');
@@ -1010,9 +1036,10 @@ else	{
 							var state = _app.ext.beachmart.u.getStateFromAddressComponents(results[0].address_components);
 //update the local cart object right away, in addition to the server side cart, so that vars are available globally right away.
 							
-							if(_app.data.cartDetail && _app.data.cartDetail.ship)	{
-								_app.data.cartDetail.ship.city = city;
-								_app.data.cartDetail.ship.region = state;
+							var varsCart = _app.data["cartDetail|"+_app.model.fetchCartID()];
+							if(varsCart && varsCart.ship)	{
+								varsCart.ship.city = city;
+								varsCart.ship.region = state;
 								}
 							_app.ext.cco.calls.cartSet.init({"ship/city":city,"ship/region":state},{},'passive');
 							$('.shipCity').text(city || "");
@@ -1177,7 +1204,8 @@ _app.templates[P.templateID].find('[data-bind]').each(function()	{
 			handleCartUpSell : function()	{
 				_app.u.dump("BEGIN beachmart.u.handleCartUpSell");
 //orig var		var stuff = _app.data.cartDetail.stuff;
-				var stuff = _app.data.cartDetail['@ITEMS'];
+				var varsCart = _app.data["cartDetail|"+_app.model.fetchCartID()];
+				var stuff = varsCart['@ITEMS'];
 				var L = stuff.length;
 
 				_app.u.dump(" -> L: "+L);
@@ -1241,7 +1269,8 @@ The bulk of the accessories display code is here so that this function can be ex
 //						_app.u.dump(_app.data.cartDetail.stuff[stuffIndex].full_product['zoovy:accessory_products']);
 						if(stuffIndex >= 0)	{
 //							_app.u.dump("GOT HERE");
-							prodArray = _app.data.cartDetail.stuff[stuffIndex].full_product['zoovy:accessory_products'].split(',');
+							var varsCart = _app.data["cartDetail|"+_app.model.fetchCartID()];
+							prodArray = varsCart.stuff[stuffIndex].full_product['zoovy:accessory_products'].split(',');
 //							_app.u.dump(" -> prodArray:"); _app.u.dump(prodArray);
 
 							}
@@ -1436,7 +1465,7 @@ if(prodAttribs['user:prod_ship_expavail'] && prodAttribs['user:prod_ship_expavai
 //if expedited shipping is not available, no other methods show up (will ship ground)
 	$('.deliveryMethod',$r).append(data['@Services'][index]['method'])
 	$('.deliveryMethod',$r).append(" <span class='zlink'>(Need it faster?)</span>").addClass('pointer').click(function(){
-		_app.ext.beachmart.a.showShipGridInModal('appShippingTransitEstimate','cartShippingMethods');
+		_app.ext.beachmart.a.showShipGridInModal('appShippingTransitEstimate');
 		//_app.ext.beachmart.a.showShipGridInModal('cartShippingMethods');
 		});
 	}
@@ -1455,15 +1484,15 @@ if(backorder == 1) {
 	$('.estimatedArrivalDate',$r).append(_app.ext.beachmart.u.yyyymmdd2Pretty(data['@Services'][index]['arrival_yyyymmdd'])+" to");
 }
 
-
-if(_app.data.cartDetail && _app.data.cartDetail.ship.city && backorder != 2)	{
-	$('.deliveryLocation',$r).append(" "+_app.data.cartDetail.ship.city);
+var varsCart = _app.data["cartDetail|"+_app.model.fetchCartID()];
+if(varsCart && varsCart.ship.city && backorder != 2)	{
+	$('.deliveryLocation',$r).append(" "+varsCart.ship.city);
 	}
-if(_app.data.cartDetail && _app.data.cartDetail.ship.region && backorder != 2)	{
-	$('.deliveryLocation',$r).append(" "+_app.data.cartDetail.ship.region);
+if(varsCart && varsCart.ship.region && backorder != 2)	{
+	$('.deliveryLocation',$r).append(" "+varsCart.ship.region);
 	}
-if	(_app.data.cartDetail && _app.data.cartDetail.ship.postal && backorder != 2)	{
-	$('.deliveryLocation',$r).append(" "+_app.data.cartDetail.ship.postal+" (change)")
+if	(varsCart && varsCart.ship.postal && backorder != 2)	{
+	$('.deliveryLocation',$r).append(" "+varsCart.ship.postal+" (change)")
 	}
 else if (backorder != 2){
 	$('.deliveryLocation',$r).append(" (enter zip) ")

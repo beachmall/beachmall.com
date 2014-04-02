@@ -133,13 +133,13 @@ var powerreviews_reviews = function(_app) {
 					POWERREVIEWS.display.snippet({ write : function(content) { $tag.append(content); } }, {
 /*BEACHMALL*/			pr_snippet_min_reviews : minimumReview, //shows reviews snippet based on qty of reviews
 						pr_page_id : data.value,
-						pr_write_review : "javascript:_app.ext.powerreviews_reviews.a.writeReview('"+data.value+"');",
-/*BEACHMALL*/			pr_read_review : "javascript:_app.ext.store_filter.a.scrollToRevealTab('"+data.value+"' ,'#prodReviews');"
+						pr_write_review : "javascript:myApp.ext.powerreviews_reviews.a.writeReview('"+data.value+"');",
+/*BEACHMALL*/			pr_read_review : "javascript:myApp.ext.beachmall_store.a.scrollToRevealTab('"+data.value+"' ,'#prodReviews');"
 						})
 					}
 				}, //reviewSnippet
 			
-			reviewEngine : function ($tag,data)	{
+			reviewengine : function ($tag,data)	{
 //				_app.u.dump("BEGIN powerreviews.renderFormats.reviewEngine ["+data.value+"]");
 				if(document.location.protocol != 'https:')	{
 					POWERREVIEWS.display.engine({
