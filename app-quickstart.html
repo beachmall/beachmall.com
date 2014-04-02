@@ -1950,8 +1950,12 @@ remember to NOT put the button inside the 'onclick' container or two events will
 				<div data-tlc="bind $var '.pid'; powerreviews_reviews#reviewsnippet  --minreview='1' --legacy;" class="reviewsStarsCount"></div><!-- BCERO271 MARK-->
 
 				<div data-tlc="bind $var '.pid'; if (is $var --notblank;) {{format --prepend='ITEM#:<br> '; apply --append;}};" class="prodNum stid floatLeft clearfix"></div>
-				<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy;" class="prodViewerAddToCartForm floatRight" action="#" onsubmit="app.ext.myRIA.u.addItemToCart($(this),{'action':'modal'}); return false;">
-					<button data-tlc="bind $var '.'; quickstart#addtocartbutton  --legacy;" data-legacy-useparentdata="true" class="prodViewerAddToCartButton"></button>
+			
+				
+			
+				<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy; apply --append;" class="prodViewerAddToCartForm floatRight" action="#" onsubmit="return false" data-app-submit="quickstart|productAdd2Cart" data-show="modal">
+					<input name="qty" value="1" type="hidden">
+					<button data-tlc="quickstart#addtocartbutton  --legacy; apply --append;" data-bind="format:addtocartbutton; extension:quickstart; useParentData:true;" class="prodViewerAddToCartButton applyButton" role="button" aria-disabled="false">MORE DETAILS</button>
 				</form>
 			  <!-- 	<span data-bind='var: reviews(reviews.total); format:text; pretext: from ;posttext: reviews; className:numReviews;'></span> -->
 			</div> 
@@ -1994,8 +1998,10 @@ remember to NOT put the button inside the 'onclick' container or two events will
 							<div data-tlc="bind $var '.%attribs.user:prod_shipping_msg'; if (is $var --notblank;) {{apply --append;}};" class="shipTime latency"></div>
 						</div>
 					</div>
-					<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy;" class="prodViewerAddToCartForm clearfix" action="#">
-						<button data-tlc="bind $var '.'; quickstart#addtocartbutton  --legacy;" data-legacy-useparentdata="true" class="prodViewerAddToCartButton">more details</button>
+				
+					<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy; apply --append;" class="prodViewerAddToCartForm clearfix" action="#" onsubmit="return false" data-app-submit="quickstart|productAdd2Cart" data-show="modal">
+						<input name="qty" value="1" type="hidden">
+						<button data-tlc="quickstart#addtocartbutton  --legacy; apply --append;" class="prodViewerAddToCartButton applyButton" role="button" aria-disabled="false">VIEW DETAILS</button>
 					</form>
 					<div data-tlc="bind $var '.pid'; if (is $var --notblank;) {{format --prepend='ITEM &nbsp; #: &nbsp; '; apply --append;}};" class="prodNum stid"></div>
 			  <!-- 	<span data-bind='var: reviews(reviews.total); format:text; pretext: from ;posttext: reviews; className:numReviews;'></span> -->
@@ -2120,8 +2126,10 @@ END BUG6-->
 <!--!!--></div>
 		<div class="searchReviewSiblingsCont">
 			<div data-tlc="bind $var '.pid'; powerreviews_reviews#reviewsnippet  --minreview='1' --legacy;" class="reviewsStarsCount"></div><!-- BCERO271 MARK-->
-			<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy;" class="prodViewerAddToCartForm clearfix" action="#">
-				<button data-tlc="bind $var '.'; quickstart#addtocartbutton  --iselastic='1' --legacy;" data-legacy-useparentdata="true" class="prodViewerAddToCartButton"></button>
+		
+			<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy; apply --append;" class="prodViewerAddToCartForm clearfix" action="#" onsubmit="return false" data-app-submit="quickstart|productAdd2Cart" data-show="modal">
+				<input name="qty" value="1" type="hidden">
+				<button data-tlc="quickstart#addtocartbutton  --iselastic='1' --legacy; apply --append;" class="prodViewerAddToCartButton applyButton" role="button" aria-disabled="false">VIEW DETAILS</button>
 			</form>
 			<!-- <div class='clearfix searchProdSiblings displayNone' data-bind='var:product(options); format:optionsCount; extension:store_filter;'></div> -->
 		</div>
@@ -2167,8 +2175,12 @@ END BUG6-->
 <!--!!--></div>
 		<div class="searchReviewSiblingsCont">
 			<div data-tlc="bind $var '.pid'; powerreviews_reviews#reviewsnippet  --minreview='1' --legacy;" class="reviewsStarsCount"></div><!-- BCERO271 MARK-->
-			<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy;" class="prodViewerAddToCartForm clearfix" action="#">
-				<button data-tlc="bind $var '.'; quickstart#addtocartbutton  --iselastic='1' --legacy;" data-legacy-useparentdata="true" class="prodViewerAddToCartButton"></button>
+			
+			</form>
+			
+			<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy; apply --append;" class="prodViewerAddToCartForm clearfix" action="#" onsubmit="return false" data-app-submit="quickstart|productAdd2Cart" data-show="modal">
+				<input name="qty" value="1" type="hidden">
+				<button data-tlc="quickstart#addtocartbutton  --iselastic='1' --legacy; apply --append;" class="prodViewerAddToCartButton applyButton" role="button" aria-disabled="false">VIEW DETAILS</button>
 			</form>
 			<!-- <div class='clearfix searchProdSiblings displayNone' data-bind='var:product(options); format:optionsCount; extension:store_filter;'></div> -->
 		</div>
@@ -2230,8 +2242,9 @@ END BUG6-->
 MARK --> 	
 	<div class='searchReviewSiblingsCont'>
 		<div data-tlc="bind $var '.pid'; powerreviews_reviews#reviewsnippet --minreview='1' --legacy; apply --append;" class="reviewsStarsCount"></div><!-- BCERO271 MARK-->
-		<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy;" class="prodViewerAddToCartForm clearfix" action="#">
-			<button data-tlc="bind $var '.'; quickstart#addtocartbutton  --iselastic='1' --legacy;" data-legacy-useparentdata="true" class="prodViewerAddToCartButton"></button>
+		<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy; apply --append;" class="prodViewerAddToCartForm clearfix" action="#" onsubmit="return false" data-app-submit="quickstart|productAdd2Cart" data-show="modal">
+			<input name="qty" value="1" type="hidden">
+			<button data-tlc="quickstart#addtocartbutton  --iselastic='1' --legacy; apply --append;" class="prodViewerAddToCartButton applyButton" role="button" aria-disabled="false">VIEW DETAILS</button>
 		</form>
 	</div>
 	<div data-tlc="bind $var '.pid'; if (is $var --notblank;) {{format --prepend='ITEM &nbsp; #: &nbsp; '; apply --append;}};" class="prodNum stid"></div>
@@ -2387,12 +2400,13 @@ this will likely become more flexible in the future. ###
 		</div>
 	</form>
 -->
-	<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy;" class="prodViewerAddToCartForm clearfix" action="#" onsubmit="app.ext.myRIA.u.addItemToCart($(this)); return false;">
+
+	<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy; apply --append;" class="prodViewerAddToCartForm clearfix" action="#" data-app-submit="quickstart|productAdd2Cart" data-show="modal">
 		<div data-tlc="bind $var '.pid'; apply --attrib='data-pid'; ">
-			<fieldset data-tlc="bind $var '.pid'; store_product#atcvariations  --legacy;" class="borderNone"></fieldset>
+			<fieldset data-tlc="bind $var '.pid'; store_product#atcvariations  --legacy; apply --append;" class="borderNone"></fieldset>
 		</div>
 		<!--<fieldset data-bind='var: product(pid); format:atcCustomVariations; extension:store_filter;' class='borderNone'></fieldset>-->
-		<fieldset data-tlc="bind $var '.'; if(is $var --blank;) {{bind var '1';}}; store_product#atcquantityinput  --defaultvalue='1' --legacy;" data-legacy-useparentdata="true" class="borderNone floatRight"></fieldset>
+		<fieldset data-tlc="bind $var '.'; store_product#atcquantityinput  --defaultvalue='1' --legacy;" class="borderNone floatRight"></fieldset>
 	<!--	<fieldset data-bind='var: product(pid); format:atcQuantityInput; defaultValue:1; extension:store_product; pretext:Quantity: ;' class='borderNone'></fieldset>-->
 		<div>
 			<input data-tlc="bind $var '.pid'; beachmart#addtocartbutton  --legacy;" value="Add to Cart" class="floatRight ui-button ui-button-text ui-corner-all ui-state-default displayNone" type="submit">
