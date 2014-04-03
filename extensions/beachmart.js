@@ -586,19 +586,7 @@ var store_filter = function(_app) {
 					else {$tag.addClass('displayNone');}
 				}, //beachMoney
 
-				//changes price description based on tag
-				priceFrom : function($tag, data) {
-					var priceModifier = data.value['%attribs']['user:prod_has_price_modifiers'];
-					//app.u.dump('*** '+priceModifier);
-					
-					if(priceModifier < 1) {
-						$tag.append('Our Price: ');
-					} else {
-						$tag.append('Our Price From: ');
-					}
-				},
-
-					//shows a message that an item has the is_colorful tag set, usually in a product list
+				//shows a message that an item has the is_colorful tag set, usually in a product list
 				moreColors : function($tag, data) {
 					var pid = data.value.pid,
 						//isColorful = (data.bindData.isElastic) ? data.value.tags : data.value['%attribs']['zoovy:prod_is_tags'];
@@ -622,22 +610,7 @@ var store_filter = function(_app) {
 						$tag.show();
 					}
 				},
-				
-				productImages : function($tag,data)	{
-	//				app.u.dump("BEGIN myRIA.renderFormats.productImages ["+data.value+"]");
-					var pdata = app.data['appProductGet|'+data.value]['%attribs']; //short cut to product object in memory.
-					var imgs = ''; //all the html for all the images. appended to $tag after loop.
-					var imgName; //recycled in loop.
-					for(i = 1; i < 30; i += 1)	{
-						imgName = pdata['zoovy:prod_image'+i];
-	//					app.u.dump(" -> "+i+": "+imgName);
-						if(app.u.isSet(imgName)) {
-							imgs += "<li><a data-pid="+data.value+" data-toolTipQuickview='data-toolTipQuickview' data-toolTipName='"+imgName+"'class='MagicThumb-swap' rel='zoom-id: prodBigImage_href_"+data.value+"; hint: false;' rev='"+app.u.makeImage({'tag':0,'w':380,'h':380,'name':imgName,'b':'ffffff'})+"' href='"+app.u.makeImage({'tag':0,'w':'','h':'','name':imgName,'b':'ffffff'})+"'><img src='"+app.u.makeImage({'tag':0,'w':50,'h':50,'name':imgName,'b':'ffffff'})+"' \/><\/a><\/li>";
-							}
-						}
-					$tag.append(imgs);
-				}, //productImages
-				
+
 				productListThumbnails : function($tag,data)	{
 					var pdata = app.data['appProductGet|'+data.value]['%attribs']; //short cut to product object in memory.
 					var imgs = ''; //all the html for all the images. appended to <ul> "list" after loop.

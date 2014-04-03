@@ -140,7 +140,7 @@ var beachmall_recentlyviewed = function(_app) {
 				}
 				else {
 					//the item is already in the list. move it to the front.
-					_app.ext.quickstart.vars.session.recentlyViewedItems.splice(0, 0, _app.ext.quickstart.vars.session.recentlyViewedItems.splice(app.ext.myRIA.vars.session.recentlyViewedItems.indexOf(pid), 1)[0]);
+					_app.ext.quickstart.vars.session.recentlyViewedItems.splice(0, 0, _app.ext.quickstart.vars.session.recentlyViewedItems.splice(_app.ext.quickstart.vars.session.recentlyViewedItems.indexOf(pid), 1)[0]);
 				}
 			}, //addRecentlyViewedItems
 		

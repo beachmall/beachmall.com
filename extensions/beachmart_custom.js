@@ -573,7 +573,7 @@ Action
 						_app.u.dump("BEGIN showZipDialog .click event. zip: '"+zip+"'");
 
 						if(zip && zip.length >= 5 && !isNaN(zip))	{
-_app.u.dump('----CART ID:'); _app.u.dump(_app.model.fetchCartID());
+							//_app.u.dump('----CART ID:'); _app.u.dump(_app.model.fetchCartID());
 							var varsCart = _app.model.fetchCartID();
 //reset these vars so getShipQuotes doesn't use them.
 							if(_app.data["cartDetail|"+varsCart].ship)	{
