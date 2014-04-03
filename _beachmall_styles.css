@@ -1829,7 +1829,9 @@ CUSTOMER ARTICLES
 .custArticle h4 {color:#3BB3C3;}
 .custArticle h5 {margin:0 0 10px 0;}
 .custArticle ul {padding:10px 0 10px 40px;}
-#contactForm {height:auto; width:280px; float:left; margin:20px 0;}
+.contactForm {height:auto; width:560px; float:left; margin:20px 0;}
+.contactForm fieldset {padding:10px;}
+.contactForm input {margin:3px 0;}
 .custArticle #faqContent {color:#3BB3C3; margin:10px 0;}
 .custArticle .privacyDisclaimer {color:#e0463a; margin:10px 0 0 0;}
 .custArticle a {color:#e0463a;}

@@ -99,7 +99,7 @@ var beachmall_recentlyviewed = function(_app) {
 			}, //renderFormats
 ////////////////////////////////////   UTIL [u]   \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-//utilities are typically functions that are exected by an event or action.
+//utilities are typically functions that are executed by an event or action.
 //any functions that are recycled should be here.
 		u : {
 		
