@@ -194,7 +194,7 @@ ANIMATION TESTING
 		<div class='arrowContainer'></div>
     	<div class='dropdown myAcctDropdown'>
         	<ul class='listStyleNone'>
-            	<li><a href="#!customer/myaccount">Sign In</a> / <a href="#!customer/logout">Sign Out</a></li>
+            	<li><span onclick="myApp.ext.quickstart.u.showLoginModal();" class='headerSignIn'>Sign In</span><span class='headerSignedIn'>Sign In</span> / <a href="#!customer/logout" class='headerSignOut'>Sign Out</a><span class='headerSignedOut'>Sign Out</span></li>
                 <li><a href="#!customer/createaccount">Create An Account</a></li>
                 <li><a href="#!customer/orders">Track Your Order</a></li>
             </ul>
@@ -1165,7 +1165,7 @@ ANIMATION TESTING
         </ul>
         <ul>
         	<li>ACCOUNT SERVICES</li>
-            <li><a href='#!customer/myaccount'>Log&#45in or Create Account</a></li>
+            <li><a href='#!customer/createaccount'>Log&#45in or Create Account</a></li>
             <li><a href="#!customer/logout">Log out</a></li>
             <li><a href='#!customer/cart'>View Shopping Cart</a></li>
             <li><a href='#!customer/orders'>Order Status</a></li>
@@ -3124,72 +3124,181 @@ if you change these, you should move them above this comment so that when you (o
 
 <div id="customerTemplate" class="clearfix">
 
-	<div class="sideline">
-	<nav id="customerNav">
-	<ul class="listStyleNone noPadOrMargin">
-<!-- before restoring this, test cuz news form on left was causing some conflicts
-		<li><a href='#customer?show=subscriberLists'>Newsletter Subscription</a></li> -->
-		<li><a href="#!customer/myaccount">My Account</a></li>
-		<li><a href="#!customer/changepassword">Change Password</a></li>
-		<li><a href="#!customer/orders">Order History</a></li>
-		<li><a href="#!customer/lists">Manage Lists</a></li>
-		<li class="hideIfLoggedOut"><a href="#!customer/logout">Log Out</a></li>
-	</ul>
-	</nav>
+	<div class="sideline customerSideline">
+		<nav id="customerNav">
+			<ul class="listStyleNone noPadOrMargin">
+		<!-- before restoring this, test cuz news form on left was causing some conflicts
+				<li><a href='#customer?show=subscriberLists'>Newsletter Subscription</a></li> -->
+				<li><a href="#!customer/myaccount">My Account</a></li>
+				<li><a href="#!customer/changepassword">Change Password</a></li>
+				<li><a href="#!customer/orders">Order History</a></li>
+				<li><a href="#!customer/lists">Manage Lists</a></li>
+				<li class="hideIfLoggedOut"><a href="#!customer/logout">Log Out</a></li>
+			</ul>
+		</nav>
 	</div>
 
 	<div class="mainColumn">
-<!-- .textContentArea is used as a selector because IE8 doesn't play well  with tag type article as a selector -->
+		<!-- .textContentArea is used as a selector because IE8 doesn't play well  with tag type article as a selector -->
 
-<!--
-newsletterArticle is used for buyers who are not logged in or do not have an account.
-subscribeListsArticle is used for authenticated buyers
--->
+		<!--
+		newsletterArticle is used for buyers who are not logged in or do not have an account.
+		subscribeListsArticle is used for authenticated buyers
+		-->
 		<div id="newsletterArticle" class="displayNone textContentArea">
 			<h1>Subscribe to our Newsletter and Save!</h1>
 			<div data-tlc="bind $var '.'; transmogrify --dataset=$var --templateid='subscribeFormTemplate'; apply --append;"></div>
 		</div>
 
+		
 		<div id="subscriberListsArticle" class="displayNone textContentArea">
 			<h1>Manage your Subscriptions</h1>
-<!-- save onchange -->
-<form action="#" name="subscribeFrm">
-
-<fieldset data-tlc="bind $var '.@lists'; store_crm#subscribecheckboxes  --legacy; apply --append;" class="borderNone subscriberLists"></fieldset>
-
-</form>
-
+			<!-- save onchange -->
+			<form action="#" name="subscribeFrm">
+				<fieldset data-tlc="bind $var '.@lists'; store_crm#subscribecheckboxes  --legacy; apply --append;" class="borderNone subscriberLists"></fieldset>
+			</form>
 		</div>
 		
-		<div id='createaccountArticle'>
-			<h1>Welcome Back</h1>
+		
+		<div id='createaccountArticle' class="displayNone textContentArea">
+			<p id='loginMessagingInline' class='marginBottom appMessaging loginMessaging'></p>
+			<div class="creatAccount">
+				<div id="gotAccountInline"> 
+					<h1>WELCOME BACK</h1>
+					<!-- Third parameter is id of message destination -->
+					<form action='#' data-app-submit='store_createaccount|accountLoginSubmit' id='modalLoginForm1'> 
+						<input type='hidden' name='method' value='unsecure'>
+						<input type='hidden' name='loginCallback' id='loginCallback' value=''><!-- used to save a callback action in -->
+						<fieldset>
+							<input type='email' class='zform_textbox zform_email' required='required' name='login' value='' size='39' placeholder='E-mail address' id='modalLoginLogin'>
+							<input type='password' class='zform_textbox zform_password' required='required' name='password' value='' size='39' placeholder='Password' id='modalLoginpassword'>
+							<input type='submit' value='SIGN IN' class='applyButton'>
+						</fieldset>
+					</form>
+					<div id='recoverPasswordContainer' class='marginBottom recoverPasswordContainer'>
+						<div id='recoverPasswordMessaging' class='appMessaging recoverPasswordMessaging'></div>
+						<form action='#' data-app-submit='quickstart|accountPasswordRecoverSubmit'>
+							<fieldset>
+								<legend onclick="myApp.ext.store_createaccount.a.togglerecover($(this));">Recover Password</legend>
+								<div data-slide='toggle'>
+									<div class='marginBottom'>
+										<label>
+											<span>Enter your e-mail address:</span>
+											<input type='text' name='login' required='required' size='25'>
+										</label>
+									</div>
+									<div><input type='submit' class='applyButton' value='Email Password to Me'></div>
+								</div>
+							</fieldset>
+						</form>
+					</div><!-- /recoverPasswordContainer -->
+				</div>
+				<div class="Account" >
+					<!-- <form action='#' class='inputsAsBreaks'  onSubmit="app.ext.store_createAccount.u.handleAppLoginCreate($(this)); return false;"> -->
+					<form action='#' submit="return false;" class='inputsAsBreaks'>
+						<input type="hidden" name="vendor" value="beachmall"/>
+						<h1>First Time With Us?</h1><input type='hidden' name='form' value='wholesale' />
+						<div class="fieldM"><span class="field">First Name</span> <input name='firstname' type='text' size='30' class='textfname' placeholder='First Name' required='required' />
+						<b>Last Name</b> <input name='lastname' type='text' size='30' placeholder='Last Name' required='required' class='textflast'/></div>
+						<!--<div class="passwordInput"><b>Password</b><input name="password" size="30" placeholder="Password" required /></div>-->
+						<div class="fieldM"><span class="field">Address</span> <input name='address1' type='text' size='30' placeholder='Address' class='textfadd' required='required' /> 
+						<input name='address2' type='text' size='30' placeholder='Address (Line 2)' class='textfadd1'/></div>
+						<div class="fieldM stateFix"><span class="field">City</span> <input name='city' type='text' size='30' placeholder='City' required='required' class='textfcity'/> 	
+							<b>State</b> 
+							<div class='selectWrapperS'>
+								<select name='region' class='textfstate sprite'>
+									<option value='AL'>AL</option>
+									<option value='AK'>AK</option>
+									<option value='AZ'>AZ</option>
+									<option value='AR'>AR</option>
+									<option value='CA'>CA</option>
+									<option value='CO'>CO</option>
+									<option value='CT'>CT</option>
+									<option value='DE'>DE</option>
+									<option value='DC'>DC</option>
+									<option value='FL'>FL</option>
+									<option value='GA'>GA</option>
+									<option value='HI'>HI</option>
+									<option value='ID'>ID</option>
+									<option value='IL'>IL</option>
+									<option value='IN'>IN</option>
+									<option value='IA'>IA</option>
+									<option value='KS'>KS</option>
+									<option value='KY'>KY</option>
+									<option value='LA'>LA</option>
+									<option value='ME'>ME</option>
+									<option value='MD'>MD</option>
+									<option value='MA'>MA</option>
+									<option value='MI'>MI</option>
+									<option value='MN'>MN</option>
+									<option value='MS'>MS</option>
+									<option value='MO'>MO</option>
+									<option value='MT'>MT</option>
+									<option value='NE'>NE</option>
+									<option value='NV'>NV</option>
+									<option value='NH'>NH</option>
+									<option value='NJ'>NJ</option>
+									<option value='NM'>NM</option>
+									<option value='NY'>NY</option>
+									<option value='NC'>NC</option>
+									<option value='ND'>ND</option>
+									<option value='OH'>OH</option>
+									<option value='OK'>OK</option>
+									<option value='OR'>OR</option>
+									<option value='PA'>PA</option>
+									<option value='RI'>RI</option>
+									<option value='SC'>SC</option>
+									<option value='SD'>SD</option>
+									<option value='TN'>TN</option>
+									<option value='TX'>TX</option>
+									<option value='UT'>UT</option>
+									<option value='VT'>VT</option>
+									<option value='VA'>VA</option>
+									<option value='WA'>WA</option>
+									<option value='WV'>WV</option>
+									<option value='WI'>WI</option>
+									<option value='WY'>WY</option>
+								</select>
+							</div>
+							<b>Zip</b> <input name='postal' type='text' size='10' placeholder='00000-0000' class='textfzip'/>
+						</div>
+						<div class="fieldM">
+							<div class="field selectField">Country</div> 
+							<div class='selectWrapperC'>
+								<select name="country" class="textfcountry sprite">
+									<option value='USA'>United States of America</option>
+								</select>
+							</div>
+						</div>
+						<div class="fieldM"><span class="field">E-mail</span> <input name='email' type='email' size='30' class='textfmail' placeholder='E-mail Address' required='required' /> <b>Phone Number</b> <input name='phone' type='tel' size='12' placeholder='Phone Number' class='textfphone' required='required'/> </div>
+						<div class="fieldM"><span class="field">Password</span> <input name='pass' type='password' size='30' class='textfpass' placeholder='7-18 Characters' required='required' /> <b>Confirm Password</b> <input name='pass2' type='password' size='12' placeholder='Must be a match' class='textfphone' required='required'/> </div>
+						<!-- <input type="submit" value="Create an Account" class="createButton ui-button"></input> -->
+						<button onclick="myApp.ext.store_createaccount.u.handleAppLoginCreate($(this).parent());" class="createButton ui-button">Create an Account</button>
+					</form>
+				</div>
+			</div>
 		</div>
 
+		
 		<div id="myaccountArticle" class="displayNone textContentArea">
 			<h1>My Account</h1>
-
 			<section>
+				<div class="billAddressContainer" data-app-role="addressContainer" data-app-addresstype="bill">
+					<div class="marginBottom">
+						<button class="floatRight applyButton" data-icon-primary="ui-icon-plus" data-app-click="quickstart|showBuyerAddressAdd">New Billing Address</button>
+						<h2>Billing Address(es)</h2>
+					</div>
+					<div data-tlc="bind $var '.@bill'; controller#loop --templateid='billAddressTemplate'; if (is $var --notblank;) {{apply --append;}};" class="billAddresses"></div>
+				</div>
 
-<div class="billAddressContainer" data-app-role="addressContainer" data-app-addresstype="bill">
-	<div class="marginBottom">
-		<button class="floatRight applyButton" data-icon-primary="ui-icon-plus" data-app-click="quickstart|showBuyerAddressAdd">New Billing Address</button>
-		<h2>Billing Address(es)</h2>
-	</div>
-	<div data-tlc="bind $var '.@bill'; controller#loop --templateid='billAddressTemplate'; if (is $var --notblank;) {{apply --append;}};" class="billAddresses"></div>
-</div>
-
-<div class="shipAddressContainer" data-app-role="addressContainer" data-app-addresstype="ship">
-	<div class="marginBottom">
-		<button class="floatRight applyButton" data-icon-primary="ui-icon-plus" data-app-click="quickstart|showBuyerAddressAdd">New Shipping Address</button>
-		<h2>Shipping Address(es)</h2>
-	</div>
-	<div data-tlc="bind $var '.@ship'; controller#loop --templateid='shipAddressTemplate'; if (is $var --notblank;) {{apply --append;}};" class="billAddresses"></div>
-</div>
-
-
+				<div class="shipAddressContainer" data-app-role="addressContainer" data-app-addresstype="ship">
+					<div class="marginBottom">
+						<button class="floatRight applyButton" data-icon-primary="ui-icon-plus" data-app-click="quickstart|showBuyerAddressAdd">New Shipping Address</button>
+						<h2>Shipping Address(es)</h2>
+					</div>
+					<div data-tlc="bind $var '.@ship'; controller#loop --templateid='shipAddressTemplate'; if (is $var --notblank;) {{apply --append;}};" class="billAddresses"></div>
+				</div>
 			</section>
-
-
 		</div>
 
 
@@ -3204,30 +3313,25 @@ subscribeListsArticle is used for authenticated buyers
 		</div>
 
 
-
 		<div id="changepasswordArticle" class="displayNone textContentArea">
 			<h1>Change Password</h1>
 			<div id="changepasswordContainer">
-
 				<form action="#" name="changePasswordForm" data-app-submit="quickstart|passwordChangeSubmit">
 				<fieldset class="borderNone">
 				<div class="messaging"></div>
 				<div class="marginBottom"><label><span class="prompt">Password</span><input name="password" size="35" required type="password"></label></div>
 				<div class="marginBottom"><label><span class="prompt">Confirm Password</span><input name="password2" required size="35" type="password"></label></div>
 				<div class="marginBottom"><input value="Change Password" class="loadingButton applyButton" type="submit"></div>
-				
 				</fieldset>
 				</form>
-
 			</div>
 		</div>
 
+		
 		<div id="listsArticle" class="displayNone textContentArea">
 			<h1>List Manager</h1>
 			<div id="listsContainer" class="prodlist "></div>
-
 			<div id="listEditorContainer" class="displayNone "></div><!-- editor for a given list gets added here -->
-
 		</div>
 
 		<div id="forgetmeArticle" class="displayNone textContentArea">
@@ -3748,62 +3852,44 @@ The 'data-action' attribute is used to assign an onclick.
 
 
 <div id='loginFormForModal' class='loginOption displayNone seoStrip' title='Please log in'>
-
 <!-- the contents of this div/id are toggled on/off when login/logout occurs. don't change the ID -->
+	<p class='marginBottom appMessaging loginMessaging'></p>
 
-
-	<p id='loginMessaging' class='marginBottom appMessaging'></p>
-
-	<div id='loginFormContainer'>
-		<form action='#' data-app-submit='quickstart|accountLoginSubmit' class='marginBottom'>
-		<input type='hidden' name='method' value='unsecure' />
-		<input type='hidden' name='loginCallback' id='loginCallback' value='' /><!-- used to save a callback action in -->
-			<fieldset>
-			<legend>Account Login</legend>
-			<div>
-			<label>
-				<span class='prompt'>Login/Email</span>
-				<input type='email' class='zform_textbox zform_email' required='required'  name='login' value='' size='25' />
-			</label>
-			</div>
-		
-			<div>
-			<label>
-				<span class='prompt'>Password</span>
-				<input type='password' class='zform_textbox zform_password' required='required'  name='password' value='' size='25' />	
-			</label>
-			</div>
-		
-			<div>
-			<input type='submit' value='log in' class='applyButton ' />
-			</div>
-			</fieldset>
-		</form>
-
-		<div id='recoverPasswordContainer' class='marginBottom'>
-			<div id='recoverPasswordMessaging' class='appMessaging'></div>
-			<form action='#' data-app-submit='quickstart|accountPasswordRecoverSubmit'>
-			<fieldset>
-			<legend>Recover Password</legend>
-			<div class='marginBottom'>
-			<label>
-				<span class='prompt'>Login/Email</span>
-				<input type='text' name='login' required='required' size='25' />
-			</label>
-			</div>
-			
-			<div><input type='submit' class='applyButton' value='Email Password to Me' /></div>
-			
-			</fieldset>
+	<div class='loginFormContainer'>
+		<div class='createAccount'>
+			<h1>First Time With Us?</h1>
+			<p>If you have never made a purchase at this web site and have never subscribed to this store's mailing list,
+				please choose this option.</p>
+			<a href="#!customer/createaccount" class='modalCreateButton button borderRound'>Create an Account</a>
+		</div>
+		<div id="gotAccount">
+			<h1>Welcome Back</h1>
+			<form action='#' data-app-submit='quickstart|accountLoginSubmit' class='marginBottom'>
+				<input type='hidden' name='method' value='unsecure'>
+				<input type='hidden' name='loginCallback' id='loginCallback' value=''><!-- used to save a callback action in -->
+				<input type='email' class='zform_textbox zform_email' required='required'  name='login' value='' size='25' placeholder='E-mail address'>
+				<input type='password' class='zform_textbox zform_password' required='required'  name='password' value='' size='25' placeholder='Password'>	
+				<input type='submit' value='Log In' class='applyButton pointer'>
 			</form>
-			
-		</div><!-- /recoverPasswordContainer -->
-
-		<div>
-		<a class='applyButton' href='#!customer/newsletter'>Create Account</a>
+			<div class='marginBottom recoverPasswordContainer'>
+				<div class='appMessaging recoverPasswordMessaging'></div>
+				<form action='#' data-app-submit='quickstart|accountPasswordRecoverSubmit'>
+					<fieldset>
+						<legend onclick="myApp.ext.store_createaccount.a.togglerecover($(this));">Recover Password</legend>
+						<div data-slide='toggle'>
+							<div class='marginBottom'>
+								<label>
+									<span>Enter your e-mail address:</span>
+									<input type='text' name='login' required='required' size='25'>
+								</label>
+							</div>
+							<div><input type='submit' class='applyButton' value='Email Password to Me'></div>
+						</div>
+					</fieldset>
+				</form>
+			</div><!-- /recoverPasswordContainer -->
 		</div>
 	</div>
-
 <!-- this div will appear after a successful login. if you bind a new action to the button, best to empty the div and re-add the button, so the actions don't statck. -->
 	<div id='loginSuccessContainer' class='center displayNone'>
 		<button class='applyButton' id='modalLoginContinueButton' data-app-click="quickstart|dialogCloseExec">Continue</button>

@@ -20,7 +20,7 @@
 
 
 
-var store_createAccount = function() {
+var store_createaccount = function(_app) {
 	var theseTemplates = new Array('');
 	var r = {
 
@@ -35,16 +35,6 @@ var store_createAccount = function() {
 			onSuccess : function()	{
 				var r = false; //return false if extension won't load for some reason (account config, dependencies, etc).
 				
-				app.rq.push(["templateFunction","customerTemplate","onCompletes",function(infoObj){
-					var $sideline = $('.customerSideline', $(app.u.jqSelector('#',infoObj.parentID)));
-					if(infoObj.show == "createaccount"){
-						$sideline.hide();
-					}
-					else {
-						$sideline.show();
-					}
-				}]);
-				
 				//if there is any functionality required for this extension to load, put it here. such as a check for async google, the FB object, etc. return false if dependencies are not present. don't check for other extensions.
 				r = true;
 
@@ -53,9 +43,23 @@ var store_createAccount = function() {
 			onError : function()	{
 //errors will get reported for this callback as part of the extensions loading.  This is here for extra error handling purposes.
 //you may or may not need it.
-				app.u.dump('BEGIN admin_orders.callbacks.init.onError');
+				_app.u.dump('BEGIN store_accountcreate.callbacks.init.onError');
 				}
-			}
+			},
+			
+			startExtension : {
+				onSuccess : function() {
+					_app.templates.customerTemplate.on('complete.store_accountcreate',function(event,$ele,infoObj) {
+						var $sideline = $('.customerSideline', $ele);
+						if(infoObj.show == "createaccount"){ $sideline.hide(); }
+						else { $sideline.show(); }
+					});
+				},
+				onError : function() {
+					_app.u.dump('START store_accountcreate.callbacks.startExtension.onError');
+				}
+			},
+
 		}, //callbacks
 
 
@@ -66,30 +70,11 @@ var store_createAccount = function() {
 //these are going the way of the do do, in favor of app events. new extensions should have few (if any) actions.
 		a : {
 		
-				//copied from app-quickstart.js so additional parameter could be used to assign the error location (for diff. login screens)
-			loginFrmSubmit : function(email,password,errorDiv)	{
-				var errors = '';
-				$errorDiv = errorDiv.empty(); //make sure error screen is empty. do not hide or callback errors won't show up.
-
-				if(app.u.isValidEmail(email) == false){
-					errors += "Please provide a valid email address<br \/>";
-					}
-				if(!password)	{
-					errors += "Please provide your password<br \/>";
-					}
-				if(errors == ''){
-					app.calls.appBuyerLogin.init({"login":email,"password":password},{'callback':'authenticateBuyer','extension':'myRIA'});
-					app.calls.refreshCart.init({},'immutable'); //cart needs to be updated as part of authentication process.
-//					app.calls.buyerProductLists.init('forgetme',{'callback':'handleForgetmeList','extension':'store_prodlist'},'immutable');
-					app.model.dispatchThis('immutable');
-					}
-				else {
-					$errorDiv.anymessage({'message':errors});
-					}
-				showContent('customer',{'show':'myaccount'})
-			}, //loginFrmSubmit
-
-		}, //Actions
+			togglerecover : function($tag) {dump('your feet');
+				$("[data-slide='toggle']",$tag.parent()).slideToggle();
+			}
+		
+			}, //Actions
 
 ////////////////////////////////////   RENDERFORMATS    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
@@ -97,8 +82,10 @@ var store_createAccount = function() {
 //on a data-bind, format: is equal to a renderformat. extension: tells the rendering engine where to look for the renderFormat.
 //that way, two render formats named the same (but in different extensions) don't overwrite each other.
 		renderFormats : {
+		
+			
 
-			}, //renderFormats
+		}, //renderFormats
 ////////////////////////////////////   UTIL [u]   \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 //utilities are typically functions that are exected by an event or action.
@@ -110,25 +97,25 @@ var store_createAccount = function() {
 					var formObj = $form.serializeJSON();
 					
 					if(formObj.pass !== formObj.pass2) {
-						app.u.throwMessage('Sorry, your passwords do not match! Please re-enter your password');
+						_app.u.throwMessage('Sorry, your passwords do not match! Please re-enter your password');
 						return;
 					}
 					
 					var tagObj = {
 						'callback':function(rd) {
-							if(app.model.responseHasErrors(rd)) {
+							if(_app.model.responseHasErrors(rd)) {
 								$form.anymessage({'message':rd});
 							}
 							else {
 								showContent('customer',{'show':'myaccount'});
-								app.u.throwMessage(app.u.successMsgObject("Your account has been created!"));
+								_app.u.throwMessage(_app.u.successMsgObject("Your account has been created!"));
 							}
 						}
 					}
 					
 					formObj._vendor = "beachmall";
-					app.calls.appBuyerCreate.init(formObj,tagObj,'immutable');
-					app.model.dispatchThis('immutable');
+					_app.calls.appBuyerCreate.init(formObj,tagObj,'immutable');
+					_app.model.dispatchThis('immutable');
 				}
 				else {
 					$('#globalMessaging').anymessage({'message':'$form not passed into store_createAccount.u.handleBuyerAccountCreate','gMessage':true});
@@ -143,7 +130,25 @@ var store_createAccount = function() {
 //while no naming convention is stricly forced, 
 //when adding an event, be sure to do off('click.appEventName') and then on('click.appEventName') to ensure the same event is not double-added if app events were to get run again over the same template.
 		e : {
-			} //e [app Events]
+		
+			//showContent at end was necessary to show login success container on second login form, all else is same as form in quickstart.
+			accountLoginSubmit : function($ele,p)	{
+				p.preventDefault();
+				if(_app.u.validateForm($ele))	{
+					var sfo = $ele.serializeJSON();
+					_app.ext.cco.calls.cartSet.init({"bill/email":sfo.login,"_cartid":_app.model.fetchCartID()}) //whether the login succeeds or not, set bill/email in the cart.
+					sfo._cmd = "appBuyerLogin";
+					sfo.method = 'unsecure';
+					sfo._tag = {"datapointer":"appBuyerLogin",'callback':'authenticateBuyer','extension':'quickstart'}
+					_app.model.addDispatchToQ(sfo,"immutable");
+					_app.calls.refreshCart.init({},'immutable'); //cart needs to be updated as part of authentication process.
+					_app.model.dispatchThis('immutable');
+					showContent('customer',{'show':'myaccount'})
+				}
+				else	{} //validateForm will handle the error display.
+			},
+		
+		} //e [app Events]
 		} //r object.
 	return r;
 	}
