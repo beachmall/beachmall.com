@@ -146,6 +146,11 @@ var beachmall_store = function(_app) {
 							var productImg = _app.u.makeImage({"w":400,"h":400,"b":"ffffff",tag:0,"name":imgName});
 							return '<div class="toolTipWrapper"><span class="quickviewZoom">'+prodName+'</span><img src="'+productImg+'" width="400" height="400" /></div>';
 							}
+						},
+						tooltipClass : "toolTipBG",
+						open : function(event,ui){
+							_app.u.dump('----It opened');
+							$('.ui-tooltip').css({'border':'none','background':'transparent'});
 						}
 					});
 			},

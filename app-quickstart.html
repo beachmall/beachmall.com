@@ -117,7 +117,6 @@ $(document).ready(function(){
 <div id='appView' class='displayNone'>
 
 <!-- MARK these need to be removed once the templates have been added -->
-<li id='productListTemplateThumb'></li>
 <li id='categoryTemplateBrandsBestSellers'></li>
 <li id='categoryTemplateBrandsViewAll'></li>
 <li id='categoryTemplateBrandsFeatured'></li>
@@ -2199,7 +2198,7 @@ END BUG6-->
 
 <!-- used on homepage for small carousel to the right of the main banner -->
 <li id='productListTemplateResultsCustom' class='loadingBG searchResultsProduct ' >
-	<div onClick="return showContent('product', {'pid' : $(this).parent().attr('data-pid')});" class='pointer'>
+	<a data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';">
 		<div class='prodThumbContainer myProdThumb'>
 			<img data-useparentdata='1' data-tlc="beachmall_store#appthumb --legacy; apply --append;" src="blank.gif" class='prodThumb push' width='210' height='210'>
             <div class='prodTextContainer'>   
@@ -2208,7 +2207,7 @@ END BUG6-->
                 <h5 data-tlc="bind $var '.prod_name'; if (is $var --notblank;) {{apply --append;}};" class="hideInMinimalMode clearfix prodDesc"></h5>
             </div>
         </div>
-    </div>  
+    </a>  
 </li>
 
 
@@ -2633,7 +2632,7 @@ this will likely become more flexible in the future. ###
 		<div class="floatLeft marginBottom">
 			<div data-tlc="bind $var '.%attribs.user:grp_siblings'; if(is $var --notblank;) {{ apply --show; }}; " class="displayNone">
 				<span class="moreColors">More Colors Available:</span>
-				<div data-tlc="bind $var '.%attribs.user:grp_siblings'; store_prodlist#productlist  --hidePagination='true' --hideSummary='true' --withInventory='1' --withVariations='1' --templateid='productListTemplateThumb'  --legacy; apply --append" class="quickViewColorSib listStyleNone"></div>
+				<div data-tlc="bind $var '.%attribs.user:grp_siblings'; store_prodlist#productlist  --hidePagination='true' --hideSummary='true' --withInventory='1' --withVariations='1' --templateid='productListTemplateThumb'  --legacy; apply --append" data-app-role="productList" class="quickViewColorSib listStyleNone"></div>
 			</div>
 				<div data-tlc="bind $var '.pid'; store_product#atcvariations  --legacy; apply --append;" class="marginLeft borderNone"></div>
 			</div>
