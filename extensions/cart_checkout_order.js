@@ -1265,15 +1265,16 @@ in a reorder, that data needs to be converted to the variations format required 
 				
 				if(amount * 1 <= 0){
 //					_app.u.dump(' -> '+amount+' <= zero ');
-					o += data.bindData.currencySign ? data.bindData.currencySign : '$';
+					o += data.bindData.currencysign ? data.bindData.currencysign : '$';
 					o += '0.00';
 					}
 				else	{
 //					_app.u.dump(' -> '+amount+' > zero ');
-					o += _app.u.formatMoney(amount,data.bindData.currencySign,'',data.bindData.hideZero);
+/*beachmall*/		o += _app.u.formatMoney(amount,data.bindData.currencysign,'',data.bindData.hidezero); //*was still using camel case
 					}
 				
-				$tag.text("Balance due: "+o);  //update DOM.
+/*beachmall*/	//$tag.append("Balance due: "+o);  //update DOM. 
+/*beachmall*/	$tag.append("<h6>Estimated Total: </h6>"+o);  //update DOM. *needed to change output text
 //				_app.u.dump('END _app.renderFunctions.format.orderBalance()');
 				}, //orderBalance
 

@@ -145,12 +145,6 @@ var store_filter = function(_app) {
 					//for provide support- add stuff to the DOM here
 				//	}]);
 
-				_app.rq.push(['templateFunction','cartTemplate','onCompletes',function(infoObj) {
-					var $context = $(_app.u.jqSelector('#'+infoObj.parentID));
-					_app.ext.store_filter.u.handleCartToolTip($context);
-					_app.ext.store_filter.u.execCouponAdd($('.cartCouponButton',$context));
-				}]);
-
 		//			for(i = 1; i < 30; i += 1)	{
 		//			imgName = pdata['zoovy:prod_image'+i];
 //					app.u.dump(" -> "+i+": "+imgName);
@@ -437,12 +431,6 @@ var store_filter = function(_app) {
 					$tag.append(data.value); 
 				},
 				
-				//Changes header in shipping section based on whether or not a zip code has been entered there
-				displayOrShippingText : function($tag) {
-					if(app.data.cartDetail && app.data.cartDetail.ship && app.data.cartDetail.ship.postal) {$tag.append('Shipping:');}
-					else {$tag.append('Delivery:');}
-				},
-				
 				showShipLatencyCart : function($tag, data) {
 					var products = [];
 					for(var index in data.value){
@@ -478,113 +466,6 @@ var store_filter = function(_app) {
 						}
 					if(numRequests > 0){app.model.dispatchThis('immutable');}
 				},
-		
-				//Puts message indicating expedited shipping isn't available in cart if applicable to any items there
-				expShipMessage : function($tag, data) {
-					var products = [];
-					for(var index in data.value){
-						if(data.value[index].product[0] != '%') {
-							products.push(data.value[index].product);
-						}
-					}
-//					app.u.dump('---------->'); app.u.dump(data.value);
-					var numRequests = 0;
-					for(var index in products){
-						var _tag = {
-							'callback':function(rd){
-								if(app.model.responseHasErrors(rd)){
-									//If an item in your cart gets an error, you're gonna have a bad time...
-									app.u.throwMessage(rd);
-									}
-								else{
-									if(app.data[rd.datapointer]['%attribs']['user:prod_ship_expavail'] && app.data[rd.datapointer]['%attribs']['user:prod_ship_expavail'] == 1){
-										//do nothing, expedited shipping is available.
-									}
-									else {	//if the attrib isn't set, expedited shipping is not available
-										$tag.text('Expedited shipping not available for this order');
-											//if one item has no expedited shipping no items have it, hide time in transit
-										$tag.parent().attr('groundonall',1);
-								/*		$('.shipMessage','#cartTemplateForm').hide();
-										$('.estimatedArrivalDate','#cartTemplateForm').hide();
-										$('.deliveryLocation','#cartTemplateForm').hide();
-										$('.deliveryMethod','#cartTemplateForm').hide();
-								*/	}
-						//			if(app.data[rd.datapointer]['%attribs']['zoovy:base_price'] > 200){
-						//				$tag.text('The rent is too damn high!');
-						//				}
-									}
-								}
-							};	
-						numRequests += app.ext.store_prodlist.calls.appProductGet.init({'pid':products[index]},_tag, 'immutable');
-						//app.u.dump('HERE'); app.u.dump(numRequests);
-						}
-					if(numRequests > 0){app.model.dispatchThis('immutable');}
-				},
-				
-				//Puts shipping surcharge text (which will have a tool tip on it) in cart if applicable to any items there
-				shipSurMessage : function($tag, data) {
-					var products = [];
-					for(var index in data.value) {
-						if(data.value[index].product[0] != '%') {
-							products.push(data.value[index].product);
-						}
-					}
-					//app.u.dump(products);
-					var numRequests = 0;
-					for(var index in products) {
-						var _tag = {
-							'callback':function(rd) {
-								if(app.model.responseHasErrors(rd)) {
-									app.u.throwMessage(rd);
-								}
-								else {
-									if(app.data[rd.datapointer]['%attribs']['user:prod_shipping'] && app.data.cartDetail['@SHIPMETHODS'] && app.data.cartDetail['@SHIPMETHODS'][0] && app.data.cartDetail['@SHIPMETHODS'][0].amount) {
-										$tag.text('Shipping Surcharge');
-										setTimeout(function(){
-											$('.orderShipMethod','#modalCartContents')
-												.empty()
-												.css('position','relative')
-												.append("<a class='floatLeft clearfix tipifyCart' href='#'><span class='surcharge'>Surcharge</span> / Shipping: </a>")
-												.append("<div class='toolTip2 displayNone'>"
-														+	"If the calculated shipping cost is not zero, then shipping surcharge is applied for "
-														+	"items and destinations applicable. More details of this charge is stated on the shipping tab of the product page"
-													+	"</div>");
-											},250);
-										setTimeout(function(){$('.orderShipMethod','#modalCartContents').mouseenter(function(){	$('.toolTip2','#modalCartContents').show();}).mouseleave(function(){	$('.toolTip2','#modalCartContents').hide();});},250);
-									}
-								}
-							}
-						};
-						numRequests += app.ext.store_prodlist.calls.appProductGet.init({'pid':products[index]},_tag,'immutable');
-					}
-					if(numRequests > 0){app.model.dispatchThis('immutable');}
-				},
-				
-				beachMoney : function($tag,data)	{
-			
-					app.u.dump('BEGIN view.formats.beachMoney');
-					var amount = data.bindData.isElastic ? (data.value / 100) : data.value;
-					app.u.dump('amount:'); app.u.dump(amount);
-					if(amount)	{
-						var r,o,sr;
-						r = app.u.formatMoney(amount,data.bindData.currencySign,'',data.bindData.hideZero);
-		//					app.u.dump(' -> attempting to use var. value: '+data.value);
-		//					app.u.dump(' -> currencySign = "'+data.bindData.currencySign+'"');
-
-		//if the value is greater than .99 AND has a decimal, put the 'change' into a span to allow for styling.
-						if(r.indexOf('.') > 0)	{
-		//					app.u.dump(' -> r = '+r);
-							sr = r.split('.');
-							o = sr[0];
-							if(sr[1])	{o += '<span class="cents">.'+sr[1]+'<\/span>'}
-							$tag.html(o);
-							}
-						else	{
-							$tag.html(r);
-							}
-						}
-					else {$tag.addClass('displayNone');}
-				}, //beachMoney
 
 				//shows a message that an item has the is_colorful tag set, usually in a product list
 				moreColors : function($tag, data) {
@@ -780,19 +661,7 @@ var store_filter = function(_app) {
 					$form.append($fieldset);
 				}
 			},
-	
-				
-					
-				//shows tool tip in cart	
-				handleCartToolTip : function($context) {	
-					$('.tipifyCart', $context).each(function(){
-						var $this = $(this);
-						$this.parent().css('position','relative'); //this is what makes the tooltip appear next to the link instead of off in space.
-						$this.mouseover(function(){	$('.toolTip',$this.parent()).show();}).mouseout(function(){	$('.toolTip',$this.parent()).hide();});
-						});
-				},
-				
-				
+
 				//replacement for bindByAnchor href to make crawlable links. Currently used mainly on sitemap
 				bindOnclick : function() {
 					$('body').off('click', 'a[data-onclick]').on('click', 'a[data-onclick]', function(event){
@@ -801,38 +670,7 @@ var store_filter = function(_app) {
 						 return _app.ext.quickstart.a.showContent('',P);
 					});
 				},
-				
-				execCouponAdd : function($btn)	{
-					app.u.dump($btn.text());
-					//$btn.button();
-					$btn.off('click.app.ext.store_filter.a.execCouponAdd').on('click.app.ext.store_filter.a.execCouponAdd',function(event){
-						event.preventDefault();
-						
-						var $fieldset = $btn.closest('fieldset'),
-						$form = $btn.closest('form'),
-						$input = $("[name='coupon']",$fieldset);
-						
-						//$btn.button('disable');
-	//update the panel only on a successful add. That way, error messaging is persistent. success messaging gets nuked, but coupon will show in cart so that's okay.
-						app.ext.cco.calls.cartCouponAdd.init($input.val(),{"callback":function(rd){
-
-							if(app.model.responseHasErrors(rd)){
-								$fieldset.anymessage({'message':rd});
-							}
-							else	{
-								$input.val(''); //reset input only on success.  allows for a typo to be corrected.
-								$fieldset.anymessage(app.u.successMsgObject('Your coupon has been added.'));
-								//app.ext.orderCreate.u.handlePanel($form,'chkoutCartItemsList',['empty','translate','handleDisplayLogic','handleAppEvents']);
-	//							_gaq.push(['_trackEvent','Checkout','User Event','Cart updated - coupon added']);
-							}
-
-						}});
-						//app.ext.orderCreate.u.handleCommonPanels($form);
-						app.ext.store_cart.u.updateCartSummary();
-						app.model.dispatchThis('immutable');
-					})
-				}, //execCouponAdd
-				
+	
 				pidFromStid : function(stid) {
 					if(stid.indexOf(':') != -1) {
 						var pid = stid.split(':');

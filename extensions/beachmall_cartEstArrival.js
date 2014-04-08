@@ -221,7 +221,7 @@ var beachmall_cartEstArrival = function() {
 					$('.timeInTransitMessaging',$context).append("Inventory not available.");
 					}
 				else if(_app.data['appProductGet|'+pid] && _app.data['appProductGet|'+pid]['%attribs']['is:preorder'])	{
-					this.handlePreorderShipDate();
+					_app.ext.beachmall_cartEstArrival.u.handlePreorderShipDate();
 					}
 				else if(zip) {
 					//_app.u.dump(" -> zip: "+zip);
@@ -255,6 +255,24 @@ var beachmall_cartEstArrival = function() {
 				}
 				
 			}, //getShipQuotes
+			
+			//shows the date a preorder item will ship on in the cart.
+			handlePreorderShipDate : function(){
+				_app.u.dump("BEGIN beachmart.u.handlePreorderShipDate");
+				_app.u.dump("SANITY! this item is a preorder.");
+				var message;
+				var product = _app.data['appProductGet|'+SKU];
+				//if no date is set in salesrank, don't show any shipping info.
+				if(product['%attribs']['zoovy:prod_salesrank'])
+					message = "Will ship on "+this.yyyymmdd2Pretty(_app.data['appProductGet|'+SKU]['%attribs']['zoovy:prod_salesrank'])
+
+				//var $container = $("#productContainer")
+				var $container = $("#modalCart");
+				
+				$('.putLoadingHere',$container).removeClass('loadingBG');
+				$('.loadingText',$container).hide();
+				$('.transitContainer',$container).text(message);
+			},
 			
 			
 			getTransitInfo : function(tagObj,data,index,ground)	{

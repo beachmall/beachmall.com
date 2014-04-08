@@ -20,7 +20,7 @@
 
 
 
-var beachmart_cartEmail = function() {
+var beachmall_cartemail = function(_app) {
 	var theseTemplates = new Array('');
 	var r = {
 
@@ -34,7 +34,7 @@ var beachmart_cartEmail = function() {
 				this.dispatch(params,_tag,Q);
 			},
 			dispatch : function(params,_tag,Q)	{
-				app.model.addDispatchToQ($.extend({"_cmd":"appMashUpSMTP","_tag" : _tag},Q || 'immutable'),params);	
+				_app.model.addDispatchToQ($.extend({"_cmd":"_appMashUpSMTP","_tag" : _tag},Q || 'immutable'),params);	
 			}			
 		}, //cartEmailMashup
 	
@@ -50,7 +50,7 @@ var beachmart_cartEmail = function() {
 			onSuccess : function()	{
 				var r = false; //return false if extension won't load for some reason (account config, dependencies, etc).
 				
-				//app.u.dump('--> Extension beachmart_cartEmail started');
+				//_app.u.dump('--> Extension beachmall_cartEmail started');
 				
 				//if there is any functionality required for this extension to load, put it here. such as a check for async google, the FB object, etc. return false if dependencies are not present. don't check for other extensions.
 				r = true;
@@ -60,7 +60,7 @@ var beachmart_cartEmail = function() {
 			onError : function()	{
 //errors will get reported for this callback as part of the extensions loading.  This is here for extra error handling purposes.
 //you may or may not need it.
-				app.u.dump('BEGIN beachmart_cartEmail.callbacks.init.onError');
+				_app.u.dump('BEGIN beachmall_cartEmail.callbacks.init.onError');
 				}
 			}
 		}, //callbacks
@@ -74,11 +74,12 @@ var beachmart_cartEmail = function() {
 		a : {
 		
 				//processes cart e-mail form and calls appMashUpSMTP for it
-			emailCart : function($form) {
+			emailcart : function($form) {
 				var uName = $('input[type="text"]',$form).val();
 				var eAddress = $('input[type="email"]',$form).val();
 				var newsletter = $('input[type="checkbox"]',$form).is(':checked');
-				var products = app.data['cartDetail']['@ITEMS'];
+				var cartID = _app.model.fetchCartID();
+				var products = _app.data['cartDetail|'+cartID]['@ITEMS'];
 				var body = "This is the contents of your Beachmall.com cart. It was e-mailed to you at your request. "
 					+		"Please come see us again soon!"; 
 				
@@ -91,31 +92,31 @@ var beachmart_cartEmail = function() {
 					"body"			: body
 				};
 		/*		
-				app.ext.beachmart_cartEmail.calls.cartEmailMashup.init(params,{"callback":function(rd){
-					if(app.model.responseHasErrors(rd)){
+				_app.ext.beachmall_cartEmail.calls.cartEmailMashup.init(params,{"callback":function(rd){
+					if(_app.model.responseHasErrors(rd)){
 						$form.anymessage({'message':rd});
 					}
 					else	{
-						$form.anymessage(app.u.successMsgObject('Your message has been sent.'));
+						$form.anymessage(_app.u.successMsgObject('Your message has been sent.'));
 //							_gaq.push(['_trackEvent','Cart','User Event','Cart e-mailed']);
 					}
 				}});
 		*/		
 		
-		//		app.u.dump('--> All that stuff from the e-mail form:'); 
-		//		app.u.dump(uName); 
-		//		app.u.dump(eAddress); 
-		//		app.u.dump(newsletter);
-		//		app.u.dump(products);
-		//		app.u.dump(params);
-		//		app.u.dump(body);
+		//		_app.u.dump('--> All that stuff from the e-mail form:'); 
+		//		_app.u.dump(uName); 
+		//		_app.u.dump(eAddress); 
+		//		_app.u.dump(newsletter);
+		//		_app.u.dump(products);
+		//		_app.u.dump(params);
+		//		_app.u.dump(body);
 	
 			//HIDDEN FOR EASE OF TESTING, UNCOMMENT WHEN DONE
 			//	if(newsletter) {
-			//		app.ext.store_crm.u.handleSubscribe($form);
+			//		_app.ext.store_crm.u.handleSubscribe($form);
 			//	}
 			//	setTimeout(function() {
-			//		app.ext.beachmart_cartEmail.a.hideCartEmail($('span',$form),$form);
+			//		_app.ext.beachmall_cartEmail.a.hideCartEmail($('span',$form),$form);
 			//	},5000);
 			},
 		
@@ -128,7 +129,7 @@ var beachmart_cartEmail = function() {
 			
 				//animates cart e-mail form out of view, hides close button in form
 			hideCartEmail : function($this, $form) {
-				$form.animate({'height':'19px','width':'80px'},500);
+				$form.animate({'height':'21px','width':'80px'},500);
 				setTimeout(function() {
 					$form.removeClass('noHover');
 					$this.css('display','none');
@@ -137,7 +138,7 @@ var beachmart_cartEmail = function() {
 			}, //hideCartEmail
 			
 				//animates scroll from top e-mail cart button to lower e-mail cart form, and opens form. 
-			scrollToEmailCart : function() {
+			scrolltoemailcart : function() {
 				var $context = $(".cartSummaryTotalsContainer","#modalCart");
 				var $emailCart = $(".cartBar",$context);
 				setTimeout(function(){
@@ -163,12 +164,13 @@ var beachmart_cartEmail = function() {
 		u : {
 		
 				//text function to call from console. Call w/:
-				// app.ext.beachmart_cartEmail.u.runMashupTest($('form.noHover','#modalCart'));
+				// _app.ext.beachmall_cartEmail.u.runMashupTest($('form.noHover','#modalCart'));
 			runMashupTest : function($form) {
 				var uName = $('input[type="text"]',$form).val();
 				var eAddress = $('input[type="email"]',$form).val();
 				var newsletter = $('input[type="checkbox"]',$form).is(':checked');
-				var products = app.data['cartDetail']['@ITEMS'];
+				var cartID = _app.model.fetchCartID();
+				var products = _app.data['cartDetail|'+cartID]['@ITEMS'];
 				var body = "Something to see as the e-mail body";
 		/*		var products = [
 				{
@@ -222,14 +224,14 @@ var beachmart_cartEmail = function() {
 					"body"			: "Something to see as the e-mail body"
 				};
 				
-				//app.u.dump('--> PARAMS'); app.u.dump(params);
+				//_app.u.dump('--> PARAMS'); _app.u.dump(params);
 				
-		/*		app.ext.beachmart_cartEmail.calls.cartEmailMashup.init(params,{"callback":function(rd){
-					if(app.model.responseHasErrors(rd)){
+		/*		_app.ext.beachmall_cartEmail.calls.cartEmailMashup.init(params,{"callback":function(rd){
+					if(_app.model.responseHasErrors(rd)){
 						$form.anymessage({'message':rd});
 					}
 					else	{
-						$form.anymessage(app.u.successMsgObject('Your message has been sent.'));
+						$form.anymessage(_app.u.successMsgObject('Your message has been sent.'));
 //							_gaq.push(['_trackEvent','Cart','User Event','Cart e-mailed']);
 					}
 				}});
