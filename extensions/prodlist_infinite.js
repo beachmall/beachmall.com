@@ -145,11 +145,11 @@ It is run once, executed by the renderFormat.
 
 			addProductToPage : function($tag)	{
 				_app.u.dump("BEGIN prodlist_infinite.u.addProductToPage");
-				
+/*beachmall*/			
 				if($tag.data('filtered')) {
 					return;
 				}
-				
+/*beachmall*/			
 				$tag.data('isDispatching',true);
 				
 				var plObj = _app.ext.store_prodlist.u.setProdlistVars($tag.data('bindData')),

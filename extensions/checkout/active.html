@@ -280,12 +280,12 @@ the defaultVar on prodName & image is for promotions, which have a 'description'
 -->
 <table>
 <tbody><tr id="chkoutCartItemTemplate">
-	<td class='pic'><img data-tlc="bind $var '.%attribs.zoovy:prod_thumb'; if(is $var --blank;) {{bind $var '.%attribs.zoovy:prod_image1'; }}; if (is $var --notblank;) {{ apply --img --media=$var --width=50 --height=50 --bgcolor='#ffffff' --replace;}};" class="prodThumb" height="50" width="50"></td>
-	<td class='text'>
+	<td><img data-tlc="bind $var '.%attribs.zoovy:prod_thumb'; if(is $var --blank;) {{bind $var '.%attribs.zoovy:prod_image1'; }}; if (is $var --notblank;) {{ apply --img --media=$var --width=50 --height=50 --bgcolor='#ffffff' --replace;}};" class="prodThumb" height="50" width="50"></td>
+	<td>
 	<div data-tlc="bind $var '.prod_name'; if(is $var --blank;) {{bind $var '.description'; }}; if (is $var --notblank;) {{apply --append;}};" class="prodName"></div>
 	<div data-tlc="bind $var '.sku'; if (is $var --notblank;) {{format --prepend='Sku: '; apply --add --class='stid'; apply --append;}};" class="stid"></div>
 	<div data-tlc="bind $var '.%attribs.zoovy:ship_latency'; if (is $var --notblank;) {{format --prepend='Normally ships in '; format --append=' day(s)'; apply --append;}};" class="prodLatency"></div>
-	<div data-tlc="bind $var '.%options'; controller#optionsfromlist --legacy; " class="prodOptions"></div>
+	<div data-tlc="bind $var '.%options'; controller#selectedoptionsdisplay --legacy; " class="prodOptions"></div>
 	</td>
 	<td class="alignRight qty"><span data-tlc="bind $var '.qty'; if (is $var --notblank;) {{apply --append;}};"></span></span></td>
 	<td class="alignRight smallCol"><span data-tlc="bind $var '.price'; if (is $var --notblank;) {{format --currency='USD'; format --prepend='x '; apply --append;}};"></span></td>
@@ -423,7 +423,7 @@ do NOT change the input name or id or checkout will likely break.
 			<div data-tlc="bind $var '.payment_status_msg'; if (is $var --notblank;) {{apply --append;}};" class="zwarn"></div><!-- displays payment issues/errors -->
 		</div>
 		<div data-tlc="bind $var '.payment_status_detail'; if (is $var --notblank;) {{apply --append;}};" class="marginBottom"></div>
-		<div>You will receive an order confirmation email with details of your order</div>
+		<div>You will receive an order confirmation email with details of your order.</div>
 	</div>
 
 
@@ -556,7 +556,7 @@ If this gets recycled, test in order history after making changes.
 	<span data-tlc="bind $var '.price'; if (is $var --notblank;) {{format --currency='USD'; format --prepend='x '; apply --append;}};"></span>
 	<span data-tlc="bind $var '.extended'; if (is $var --notblank;) {{format --currency='USD'; format --prepend='= '; apply --append;}};"></span>
 	</div>
-	<div data-tlc="bind $var '.%options'; controller#optionsfromlist --legacy; " class="ztable_row_small prodOptions"></div>
+	<div data-tlc="bind $var '.%options'; controller#selectedoptionsdisplay --legacy; " class="ztable_row_small prodOptions"></div>
 	
 </div>
 	</td>

@@ -59,7 +59,7 @@ https://developers.google.com/speed/articles/include-scripts-properly -> section
 $(document).ready(function(){
 	window.adminApp = new initApp({
 		/////////////////////////////////\
-		"release":"201402.d",   ///|> Increment this with each change. model version followed by each deployed update getting a new letter in the alphabet.
+		"release":"201402.q",   ///|> Increment this with each change. model version followed by each deployed update getting a new letter in the alphabet.
 		//////////////////////////////////
 		"thisSessionIsAdmin": true,
 		"checkoutAuthMode" : 'order_create', //used to load the appropriate checkout/order create template file
@@ -68,14 +68,15 @@ $(document).ready(function(){
 		"username": "", //needs to be set for header and media library. gets set in admin.initUserInterface
 		"baseURL" : baseURL,
 		"addjQueryPointer" : true,
-		"initComplete" : function(t){
-			t.u.loadScript('app-admin-init.js',function(){
-				var progress = t.u.loadResources();
+		"initComplete" : function(){
+			adminApp.u.loadScript('app-admin-init.js',function(){
+				var progress = adminApp.u.loadResources();
 				adminApp.u.showProgress(progress);
 				});
-			$('#appversion').text(t.vars.release);
+			$('#appversion').text(adminApp.vars.release);
 			}
 		});
+	adminApp.vars.initComplete();
 	});
 </script>
 
@@ -203,9 +204,7 @@ $(document).ready(function(){
 		<div class='headerTop'>
 			<div class='logo pointer alignCenter' onClick="navigateTo('#!dashboard');" title='home'><img src='app-admin/images/zoovy_logo-173x30.png' width='173' height='30' alt='zoovy' /></div>
 			<div class='menu floatRight'>
-				<span class='pointer lookLikeLink showForZoovyOnly' onClick="return navigateTo('#!downloads');" title='Use our windows clients for managing orders and product'>Downloads</span>
-				| <span class='pointer lookLikeLink' onClick="return navigateTo('#!help')">Help</span>
-				| <span class='pointer lookLikeLink' onClick="return navigateTo('#!showPlatformInfo');">About</span>
+				<span class='pointer lookLikeLink' onClick="return navigateTo('#!showPlatformInfo');">About</span>
 				| <span class='pointer lookLikeLink' onClick="return navigateTo('#!ext/admin_task/showTaskManager');" title='view and edit your task list'>Tasks</span>
 				| <span class='pointer lookLikeLink' onClick="return navigateTo('#!logout');" title='log out of your account' >Exit</span>
 			</div>
@@ -312,7 +311,6 @@ $(document).ready(function(){
 		<div id='homeContent' class='displayNone tabContent' data-section='home'></div><!-- home acts as a default as well -->
 		<div id='setupContent' class='displayNone tabContent' data-section='setup'></div>
 		<div id='sitesContent' class='displayNone tabContent' data-section='sites'></div>
-		<div id='productContent' class='displayNone tabContent' data-section='product'></div>
 		<div id='ordersContent' class='displayNone tabContent' data-section='orders'></div>
 		<div id='crmContent' class='displayNone tabContent' data-section='crm'></div>
 		<div id='syndicationContent' class='displayNone tabContent' data-section='syndication'></div>
@@ -322,6 +320,8 @@ $(document).ready(function(){
 		<div id='supportContent' class='displayNone tabContent' data-section='support'></div><!-- used for new support app -->
 		<div id='launchpadContent' class='displayNone tabContent' data-section='launchpad'></div>
 		<div id='jtContent' class='displayNone tabContent' data-section='jt'></div><!-- for testing -->
+		
+		<div id='productContent' class='displayNone tabContent' data-section='product'></div>
 
 	</div>
 

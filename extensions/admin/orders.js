@@ -255,11 +255,13 @@ else	{
 							}
 						catch(e)	{
 							$("li[data-orderid='"+_rtag.orders[i]+"']",_rtag.jqObj).find('.status').text('Error! '+e);
+							dump(" -> Error thrown by print: "); dump(e);
 							}
 						}
 					
 					if(printables)	{
-						_app.u.printByjqObj($printme);
+						_app.u.printByjqObj($printme); //commented out for testin.
+//						$(document.body).append($printme);
 						}
 					}
 				}
@@ -657,7 +659,28 @@ else	{
 			else if(data.value == 2 || _app.u.isThisBitOn(2,data.value))	{$tag.addClass('green')}
 			else	{} //do nothing.
 			},
-		
+		transactionAcctInfo : function($tag,data)	{
+			if(data.value)	{
+				var acctArr = data.value.split('|');
+				var cc,mm='',yy='';
+				for(var i = 0; i < acctArr.length; i += 1)	{
+					var itemArr = acctArr[i].split(':');
+					if(itemArr[0] == 'CM')	{
+						cc = itemArr[1];
+						}
+					else if(itemArr[0] == 'YY')	{
+						yy = itemArr[1];
+						}
+					else if(itemArr[0] == 'MM')	{
+						mm = itemArr[1];
+						}
+					else	{}
+					}
+				if(cc)	{
+					$tag.append("CC: "+cc+"<br>CC Exp: "+mm+"/"+yy);
+					}
+				}
+			},
 		orderFlagsAsSpans : function($tag,data)	{
 			var flags = _app.ext.admin_orders.u.getOrderFlagsAsArray(data.value),
 			L = flags.length;
@@ -997,7 +1020,7 @@ if giftcard is on there, no paypal will appear.
 						break;
 					
 					case 'customer_blast':
-						_app.ext.admin_blast.u.showBlastToolInDialog({'OBJECT':'ORDER','PRT':$row.data('prt'),'RECEIVER':'CUSTOMER','CID':$row.data('cid')});
+						_app.ext.admin_blast.u.showBlastToolInDialog({'OBJECT':'ORDER','PRT':$row.data('prt'),'RECEIVER':'CUSTOMER','CID':$row.data('cid'),'ORDERID':$row.data('orderid')});
 						break;
 					
 					case 'order_flagaspaid':
@@ -1413,20 +1436,26 @@ else	{
 
 //used in the order editor. executed whenever a change is made to update the number of changes in the 'save' button.
 			updateOrderChangeCount : function($t)	{
-				_app.u.dump("BEGIN admin_orders.u.updateOrderChangeCount");
-				var $dialog = $t.closest("[data-orderid]"); //container dialog.
-				if($dialog.length)	{
-					_app.u.dump(" -> FOUND PARENT!");
-					var numEdits = $('.edited',$dialog).length;
-					_app.u.dump(" -> numEdits: "+numEdits);
-					var $count = $('.changeCount',$dialog);
-					$count.text(numEdits);
-					//enable or disable the save button based on whether or not any changes have been made. count is the span, parent is the button around it.
-					if(numEdits > 0)	{$dialog.find("[data-app-event='admin_orders|orderUpdateSave']").prop('disabled',false).addClass('ui-state-highlight')}
-					else	{$dialog.find("[data-app-event='admin_orders|orderUpdateSave']").prop('disabled','disabled').removeClass('ui-state-highlight')}
+				var numEdits = '';
+				if($t instanceof jQuery)	{
+					_app.u.dump("BEGIN admin_orders.u.updateOrderChangeCount");
+					var $dialog = $t.closest("[data-orderid]"); //container dialog.
+					if($dialog.length)	{
+						_app.u.dump(" -> FOUND PARENT!");
+						numEdits = $('.edited',$dialog).length;
+						_app.u.dump(" -> numEdits: "+numEdits);
+						var $count = $('.changeCount',$dialog);
+						$count.text(numEdits);
+						//enable or disable the save button based on whether or not any changes have been made. count is the span, parent is the button around it.
+						if(numEdits > 0)	{$dialog.find("[data-app-event='admin_orders|orderUpdateSave']").prop('disabled',false).addClass('ui-state-highlight')}
+						else	{$dialog.find("[data-app-event='admin_orders|orderUpdateSave']").prop('disabled','disabled').removeClass('ui-state-highlight')}
+						}
+					else	{
+						$("#globalMessaging").anymessage({"message":"In admin_orders.u.updateOrderChangeCount, unable to determine orderID for display logic. Edit and save features 'may' not be impacted.","gMessage":true});
+						}
 					}
 				else	{
-					_app.u.throwGMessage("In admin_orders.u.updateOrderChangeCount, unable to determine orderID for display logic. Edit and save features 'may' not be impacted.");
+					$("#globalMessaging").anymessage({"message":"In admin_orders.u.updateOrderChangeCount, $t is not an instance of jQuery.","gMessage":true});
 					}
 				
 				return numEdits;
@@ -1575,7 +1604,7 @@ handleOrder(orders[i]);
 							}
 //now fetch the printable message for each partition being used.
 						_app.model.addDispatchToQ({"_cmd":"ping","_tag":{"callback":function(rd){
-							dump(" -> Got to ping callback");
+//							dump(" -> Got to ping callback");
 							if(okOrders.length)	{
 								//no orders came back without errors.
 								for(var i = 0; i < prts.length; i += 1)	{
@@ -2128,7 +2157,7 @@ handleOrder(orders[i]);
 					var orderID = $btn.closest("[data-orderid]").data('orderid');
 
 					if(orderID && _app.data['adminOrderDetail|'+orderID])	{
-						var partition = _app.vars.partition;
+						var partition;
 						var email = _app.data['adminOrderDetail|'+orderID].bill.email || _app.data['adminOrderDetail|'+orderID].customer.login || "";
 						var CID = _app.data['adminOrderDetail|'+orderID].customer.cid;
 						var domain = _app.data['adminOrderDetail|'+orderID].our.domain; //used to fetch the partition.
@@ -2138,7 +2167,11 @@ handleOrder(orders[i]);
 						else	{
 							_app.u.dump(" -> could not ascertain domain for order. using partition in focus.");
 							}
-						_app.ext.admin_blast.u.showBlastToolInDialog({'OBJECT':'ORDER','PRT':partition,'EMAIL':email,'RECEIVER':'EMAIL','CID':CID});
+						//if no partition could be found from the domain, use the partition in focus.
+						//is after the domain lookup because it could return false or undef.
+						partition = partition || _app.vars.partition;
+						_app.u.dump(" -> partition: "+partition);
+						_app.ext.admin_blast.u.showBlastToolInDialog({'OBJECT':'ORDER','PRT':partition,'EMAIL':email,'RECEIVER':'EMAIL','CID':CID,'ORDERID':orderID});
 						}
 					else	{
 						_app.u.dump(" -> could not ascertain orderid for order or the order is not in memory.",'error');
@@ -2157,30 +2190,31 @@ handleOrder(orders[i]);
 					query;
 				
 				if(frmObj.keyword)	{
+					var keyword = $.trim(frmObj.keyword);
 					$('#orderListTableBody').empty();
 					$('.noOrdersMessage','#orderListTableContainer').empty().remove(); //get rid of any existing no orders messages.
 					$mainCol.showLoading({'message':'Searching orders...'});
 					if(frmObj.isDetailedSearch == 'on')	{
 						query = {'size':Number(frmObj.size) || 30,'filter' : {
 						'or' : [
-						{'has_child' : {'query' : {'query_string' : {'query' : frmObj.keyword,'default_operator':'AND'}},'type' : ['order/address']}},
-						{'has_child' : {'query' : {'query_string' : {'query' : frmObj.keyword,'default_operator':'AND'}},'type' : ['order/payment']}},
-						{'has_child' : {'query' : {'query_string' : {'query' : frmObj.keyword,'default_operator':'AND'}},'type' : ['order/shipment']}},
-						{'has_child' : {'query' : {'query_string' : {'query' : frmObj.keyword,'default_operator':'AND'}},'type' : ['order/item']}},
-						{'query' : {'query_string' : {'query' : frmObj.keyword,'default_operator':'AND'}}}
+						{'has_child' : {'query' : {'query_string' : {'query' : keyword,'default_operator':'AND'}},'type' : ['order/address']}},
+						{'has_child' : {'query' : {'query_string' : {'query' : keyword,'default_operator':'AND'}},'type' : ['order/payment']}},
+						{'has_child' : {'query' : {'query_string' : {'query' : keyword,'default_operator':'AND'}},'type' : ['order/shipment']}},
+						{'has_child' : {'query' : {'query_string' : {'query' : keyword,'default_operator':'AND'}},'type' : ['order/item']}},
+						{'query' : {'query_string' : {'query' : keyword,'default_operator':'AND'}}}
 						]},'type' : ['order'],'explain' : 1}
 						}
 					else	{
 						query = { 'filter' : {
 						  'or' : [
-							 { 'term': { 'references': frmObj.keyword  } },
-							 { 'term' : { 'email': frmObj.keyword } },
-							 { 'term' : { 'orderid': frmObj.keyword } }
+							 { 'term': { 'references': keyword  } },
+							 { 'term' : { 'email': keyword } },
+							 { 'term' : { 'orderid': keyword } }
 							 ]
 						  }}
 						}
 					
-					_app.ext.admin.calls.adminOrderSearch.init(query,{'callback':'listOrders','extension':'admin_orders','templateID':'adminOrdersOrderLineItem','keyword':frmObj.keyword},'immutable');
+					_app.ext.admin.calls.adminOrderSearch.init(query,{'callback':'listOrders','extension':'admin_orders','templateID':'adminOrdersOrderLineItem','keyword':keyword},'immutable');
 
 					_app.model.dispatchThis('immutable');
 					}
@@ -2331,22 +2365,22 @@ handleOrder(orders[i]);
 						errors = (typeof _app.ext.cco.validate[formJSON.tender] === 'function') ? _app.ext.cco.validate[formJSON.tender](formJSON) : false; //if a validation function exists for this payment type, such as credit or echeck, then check for errors. otherwise, errors is false.
 
 						_app.u.dump('errors'); _app.u.dump(errors);
-						$paymentContainer.find('.mandatory').removeClass('mandatory'); //remove css from previously failed inputs to avoid confusion.
+						$paymentContainer.find('.ui-state-error').removeClass('ui-state-error'); //remove css from previously failed inputs to avoid confusion.
 						
 
-//the mandatory class gets added to the parent of the input, so that the input, label and more get styled.
+//the ui-state-error class gets added to the parent of the input, so that the input, label and more get styled.
 						if(!formJSON.amt)	{
 							var msgObj = _app.u.errMsgObject("Please set an amount");
 							msgObj.parentID = 'adminOrdersPaymentMethodsContainer';
 							_app.u.throwMessage(msgObj);
-							$("[name='amt']",$paymentContainer).parent().addClass('mandatory');
+							$("[name='amt']",$paymentContainer).addClass('ui-state-error');
 							}
 						else if(errors)	{
 							var msgObj = _app.u.errMsgObject("Some required field(s) are missing or invalid. (indicated in red)");
 							msgObj.parentID = 'adminOrdersPaymentMethodsContainer';
 							_app.u.throwMessage(msgObj);
 							for(var index in errors)	{
-								$("[name='"+errors[index]+"']",$paymentContainer).parent().addClass('mandatory');
+								$("[name='"+errors[index]+"']",$paymentContainer).addClass('ui-state-error');
 								}
 							}
 						else	{

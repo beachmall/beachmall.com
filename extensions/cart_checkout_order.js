@@ -215,11 +215,11 @@ calls should always return the number of dispatches needed. allows for cancellin
 				var extras = "";
 				if(window.debug1pc)	{extras = "&sender=jcheckout&fl=checkout-"+_app.model.version+debug1pc} //set debug1pc to a,p or r in console to force this versions 1pc layout on return from paypal
 				obj._cmd = "cartPaypalSetExpressCheckout";
-				obj.cancelURL = (_app.vars._clientid == '1pc') ? zGlobals.appSettings.https_app_url+"c="+_app.model.fetchCartID()+"/cart.cgis?parentID="+parentID+extras : zGlobals.appSettings.https_app_url+"?_session="+_app.vars._session+"parentID="+parentID+"&cartID="+_app.model.fetchCartID()+"#cart?show=inline";
-				obj.returnURL =  (_app.vars._clientid == '1pc') ? zGlobals.appSettings.https_app_url+"c="+_app.model.fetchCartID()+"/checkout.cgis?parentID="+parentID+extras : zGlobals.appSettings.https_app_url+"?_session="+_app.vars._session+"parentID="+parentID+"&cartID="+_app.model.fetchCartID()+"#checkout?show=checkout";
+				obj.cancelURL = (_app.vars._clientid == '1pc') ? zGlobals.appSettings.https_app_url+"c="+_app.model.fetchCartID()+"/cart.cgis?parentID="+parentID+extras : zGlobals.appSettings.https_app_url+"?_session="+_app.vars._session+"&parentID="+parentID+"&cartID="+_app.model.fetchCartID()+"#!cart";
+				obj.returnURL =  (_app.vars._clientid == '1pc') ? zGlobals.appSettings.https_app_url+"c="+_app.model.fetchCartID()+"/checkout.cgis?parentID="+parentID+extras : zGlobals.appSettings.https_app_url+"?_session="+_app.vars._session+"&parentID="+parentID+"&cartID="+_app.model.fetchCartID()+"#!checkout?"; //? at end because paypal is going to add key value pairs to this url.
 				
 				obj._tag.datapointer = "cartPaypalSetExpressCheckout";
-				
+				dump(" -> cartPaypalSetExpressCheckout obj: "); dump(obj);
 				_app.model.addDispatchToQ(obj,Q || 'immutable');
 				}
 			}, //cartPaypalSetExpressCheckout	
@@ -867,8 +867,10 @@ note - dispatch isn't IN the function to give more control to developer. (you ma
 					else if(formObj['want/bill_to_ship'] && formObj['bill/shortcut'])	{
 						populateAddressFromShortcut('bill','ship');	
 						}
-//bill to ship, but no short cut (not logged in)
-					else if(formObj['want/bill_to_ship'])	{
+//bill to ship, but no short cut (not logged in).
+// ** 201402 -> was hitting on else if((formObj['want/bill_to_ship']) so > 0 added.
+					else if(formObj['want/bill_to_ship'] > 0)	{
+						dump(" -> want/bill_to_ship = "+formObj['want/bill_to_ship']);
 						for(var index in formObj)	{
 //copy billing fields into shipping. not email tho.
 							if(index.indexOf('bill/') == 0 && index != 'bill/email')	{ 
@@ -1195,10 +1197,11 @@ in a reorder, that data needs to be converted to the variations format required 
 			paypalecbutton : function($tag,data)	{
 	
 				if(zGlobals.checkoutSettings.paypalCheckoutApiUser)	{
-					var payObj = _app.ext.cco.u.which3PCAreAvailable();
+					var payObj = _app.ext.cco.u.which3PCAreAvailable(data.value);
 					if(payObj.paypalec)	{
 						$tag.empty().append("<img width='145' id='paypalECButton' height='42' border='0' src='"+(document.location.protocol === 'https:' ? 'https:' : 'http:')+"//www.paypal.com/en_US/i/btn/btn_xpressCheckoutsm.gif' alt='' />").addClass('pointer').off('click.paypal').on('click.paypal',function(){
-							_app.ext.cco.calls.cartPaypalSetExpressCheckout.init({'getBuyerAddress':1},{'callback':function(rd){
+//***201402 Must pass cartid parameter on the call itself -mc
+							_app.ext.cco.calls.cartPaypalSetExpressCheckout.init({'getBuyerAddress':1, '_cartid':_app.model.fetchCartID()},{'callback':function(rd){
 								$('body').showLoading({'message':'Obtaining secure PayPal URL for transfer...','indicatorID':'paypalShowLoading'});
 								if(_app.model.responseHasErrors(rd)){
 									$(this).removeClass('disabled').attr('disabled','').removeAttr('disabled');
@@ -1256,26 +1259,24 @@ in a reorder, that data needs to be converted to the variations format required 
 //for displaying order balance in checkout order totals.
 //changes value to 0 for negative amounts. Yes, this can happen.			
 			orderbalance : function($tag,data)	{
-				var o = '';
-				var amount = data.value;
-//				_app.u.dump('BEGIN _app.renderFunctions.format.orderBalance()');
-//				_app.u.dump('amount * 1 ='+amount * 1 );
+				if(data.value)	{
+					var o = '';
+					var amount = data.value;
 //if the total is less than 0, just show 0 instead of a negative amount. zero is handled here too, just to avoid a formatMoney call.
 //if the first character is a dash, it's a negative amount.  JS didn't like amount *1 (returned NAN)
 				
 				if(amount * 1 <= 0){
-//					_app.u.dump(' -> '+amount+' <= zero ');
 					o += data.bindData.currencysign ? data.bindData.currencysign : '$';
 					o += '0.00';
 					}
 				else	{
-//					_app.u.dump(' -> '+amount+' > zero ');
 /*beachmall*/		o += _app.u.formatMoney(amount,data.bindData.currencysign,'',data.bindData.hidezero); //*was still using camel case
 					}
 				
 /*beachmall*/	//$tag.append("Balance due: "+o);  //update DOM. 
 /*beachmall*/	$tag.append("<h6>Estimated Total: </h6>"+o);  //update DOM. *needed to change output text
 //				_app.u.dump('END _app.renderFunctions.format.orderBalance()');
+					}
 				}, //orderBalance
 
 //displays the shipping method followed by the cost.
@@ -1400,7 +1401,7 @@ in a reorder, that data needs to be converted to the variations format required 
 				_app.ext.cco.calls.cartSet.init({'ship/postal':$ele.val(), 'ship/region':'','_cartid': $ele.closest("[data-template-role='cart']").data('cartid')},{},'immutable');
 				$ele.closest("[data-template-role='cart']").trigger('fetch',{'Q':'immutable'});
 				_app.model.dispatchThis('immutable');
-				}, //cartZipUpdateExec
+				} //cartZipUpdateExec
 
 			}
 		

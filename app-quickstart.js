@@ -66,6 +66,8 @@ var quickstart = function(_app) {
 			'subscribeFormTemplate',
 			'orderLineItemTemplate',
 			'invoiceTemplate',
+			'buyerListTemplate',
+			'buyerListProdlistContainerTemplate',
 			'faqTopicTemplate',
 			'faqQnATemplate',
 			'billAddressTemplate',
@@ -130,6 +132,9 @@ var quickstart = function(_app) {
 				else if(cartID = _app.model.fetchCartID())	{
 					dump(" -> cartID obtained from fetchCartID. cartid: "+cartID);
 					//no need to add this cartID to the session/vars.carts, because that's where fetch gets it from.
+					}
+				else if(!$.support.localStorage)	{
+					cartID = _app.model.readCookie('_cart'); //support browsers w/out localstorage
 					}
 				else	{}
 
@@ -224,11 +229,16 @@ document.write = function(v){
 						
 						_app.ext.quickstart.u.bindAppNav(); //adds click handlers for the next/previous buttons (product/category feature).
 	
-						if(typeof _app.u.appInitComplete == 'function'){_app.u.appInitComplete()}; //gets run after app has been init
+//						if(typeof _app.u.appInitComplete == 'function'){_app.u.appInitComplete()}; //gets run after app has been init
 						_app.ext.quickstart.thirdParty.init();
 						
 						}}},"mutable"); //used to determine if user is logged in or not.
 					_app.model.dispatchThis('mutable');
+
+					if(!$.support.localStorage)	{
+						_app.model.writeCookie('_cart',cartID); //support browsers w/ localstorage disabled.
+						}
+
 					}
 				
 				}
@@ -323,14 +333,6 @@ document.write = function(v){
 				}
 			}, //handleBuyerAddressUpdate
 
-//used in /customer to show the lists of addresses. This displays on the my account page.
-		showAddresses : {
-			onSuccess : function(_tag)	{
-				var $myAccountPage = $('#myaccountArticle');
-				$myAccountPage.tlc({'dataset':_app.data.buyerAddressList});
-				_app.u.handleButtons($myAccountPage);
-				}
-			}, //showAddresses
 
 //used as part of showContent for the home and category pages. goes and gets all the data.
 		fetchPageContent : {
@@ -362,7 +364,7 @@ document.write = function(v){
 //					dump("BEGIN quickstart.callbacks.showPageContent ["+tagObj.navcat+"]");
 					tagObj.dataset = {};
 					//if no %page vars were requested, this datapointer won't be set and this would error.
-					if(_app.u.thisNestedExists("data.appPageGet|"+tagObj.navcat+".%page",_app))	{
+					if(_app.data["appPageGet|"+tagObj.navcat] && _app.data["appPageGet|"+tagObj.navcat]['%page'])	{
 						tagObj.dataset = {'%page' : _app.data['appPageGet|'+tagObj.navcat]['%page']};
 						}
 					//deep extend so any non-duplicates in %page are preserved.
@@ -406,7 +408,8 @@ document.write = function(v){
 					}
 
 				tagObj.state = 'complete'; //needed for handleTemplateEvents.
-
+				_app.u.handleButtons(tagObj.jqObj);
+				_app.u.handleCommonPlugins(tagObj.jqObj);
 				_app.renderFunctions.handleTemplateEvents((tagObj.jqObj || $(_app.u.jqSelector('#',tagObj.parentID))),tagObj);
 				},
 			onError : function(responseData,uuid)	{
@@ -414,35 +417,6 @@ document.write = function(v){
 				_app.u.throwMessage(responseData);
 				}
 			}, //showPageContent
-
-//this is used for showing a customer list of product, such as wish or forget me lists
-		showBuyerLists : {
-			onSuccess : function(tagObj)	{
-//				dump('BEGIN _app.ext.quickstart.showList.onSuccess ');
-var $parent = $('#'+tagObj.parentID).removeClass('loadingBG');
-//if the page gets reloaded, de-tab so that running tabs() later re-inits properly.
-if($parent.hasClass("ui-tabs"))	{
-	$parent.anytabs('destroy').empty();
-	}
-if(_app.data[tagObj.datapointer]['@lists'].length > 0)	{
-	var $ul = _app.ext.store_crm.u.getBuyerListsAsUL(tagObj.datapointer);
-	var numRequests = 0;
-	$ul.children().each(function(){
-		var $li = $(this);
-		var listID = $li.data('buyerlistid');
-		$li.wrapInner("<a href='#"+listID+"Contents'></a>"); //adds href for tab selection
-		$parent.append($("<div>").attr({'data-anytab-content':listID+'Contents','data-buyerlistid':listID}).append($("<ul>").addClass('listStyleNone clearfix noPadOrMargin lineItemProdlist').attr('id','prodlistBuyerList_'+listID))); //containers for list contents and ul for productlist
-		numRequests += _app.calls.buyerProductListDetail.init(listID,{'callback':'buyerListAsProdlist','extension':'quickstart','parentID':'prodlistBuyerList_'+listID})
-		});
-	$parent.prepend($ul).anytabs();
-	_app.model.dispatchThis('mutable');
-	}
-else	{
-	$parent.append("You have no lists at this time. Add an item to your wishlist to get started...");
-	}
-				}
-			}, //showBuyerList
-
 
 
 //this is used for showing a customer list of product, such as wish or forget me lists
@@ -454,11 +428,12 @@ else	{
 				var prods = _app.ext.store_crm.u.getSkusFromBuyerList(listID);
 				if(prods.length < 1)	{
 //list is empty.
-					$(_app.u.jqSelector('#',tagObj.parentID)).anymessage({'message':'This list ('+listID+') appears to be empty.'});
+					tagObj.jqObj.parent().anymessage({'message':'This list ('+listID+') appears to be empty.'});
 					}
 				else	{
 //					dump(prods);
-					_app.ext.store_prodlist.u.buildProductList({"loadsTemplate":"productListTemplateBuyerList","withInventory":1,"withVariations":1,"parentID":tagObj.parentID,"csv":prods,"hide_summary":1,"hide_pagination":1},$(_app.u.jqSelector('#',tagObj.parentID)));
+//					tagObj.jqObj.tlc({'verb':'translate','datapointer':tagObj.datapointer});
+					_app.ext.store_prodlist.u.buildProductList({"loadsTemplate":"productListTemplateBuyerList","withInventory":1,"withVariations":1,"parentID":tagObj.parentID,"csv":prods,"hide_summary":1,"hide_pagination":1},tagObj.jqObj);
 					_app.model.dispatchThis();
 					}
 				}
@@ -482,7 +457,6 @@ else	{
 
 		authenticateBuyer : {
 			onSuccess : function(tagObj)	{
-			dump('----tagObj'); dump(tagObj);
 				_app.vars.cid = _app.data[tagObj.datapointer].cid; //save to a quickly referencable location.
 				$('#loginSuccessContainer').show(); //contains 'continue' button.
 /*beachmall: below id's changed to classes because there are two login forms*/
@@ -544,12 +518,17 @@ need to be customized on a per-ria basis.
 
 		pageTransition : function($o,$n)	{
 //if $o doesn't exist, the animation doesn't run and the new element doesn't show up, so that needs to be accounted for.
-			if($o.length)	{
+//$o MAY be a jquery instance but have no length, so check both.
+			if($o instanceof jQuery && $o.length)	{
 				dump(" -> got here.  n.is(':visible'): "+$n.is(':visible'));
 				$o.fadeOut(1000, function(){$n.fadeIn(1000)}); //fade out old, fade in new.
 				}
+			else if($n instanceof jQuery)	{
+				$n.fadeIn(1000);
+				}
 			else	{
-				$n.fadeIn(1000)
+				//hhmm  not sure how or why we got here.
+				dump("WARNING! in pageTransition, neither $o nor $n were instances of jQuery.  how odd.",'warn');
 				}
 			}, //pageTransition
 
@@ -564,7 +543,6 @@ need to be customized on a per-ria basis.
 				_app.model.dispatchThis('mutable');
 				return false; //in this case, we're off to do an ajax request. so we don't continue the statement.
 				}
-
 			},
 
 
@@ -609,62 +587,53 @@ need to be customized on a per-ria basis.
 //set bind-data to val: product(zoovy:prod_is_tags) which is a comma separated list
 //used for displaying a  series of tags, such as on the product detail page. Will show any tag enabled.
 //on bind-data, set maxTagsShown to 1 to show only 1 tag
-		tags : function($tag,data)	{
-			var whitelist = new Array('IS_PREORDER','IS_DISCONTINUED','IS_SPECIALORDER','IS_SALE','IS_CLEARANCE','IS_NEWARRIVAL','IS_BESTSELLER','IS_USER1','IS_USER2','IS_USER3','IS_USER4','IS_USER5','IS_USER6','IS_USER7','IS_USER8','IS_USER9','IS_FRESH','IS_SHIPFREE');
-//			var csv = data.value.split(',');
-			var L = whitelist.length;
-			var tagsDisplayed = 0;
-			var maxTagsShown = _app.u.isSet(data.bindData.maxTagsShown) ? data.bindData.maxTagsShown : whitelist.length; //default to showing all enabled tags.
-			var spans = ""; //1 or more span tags w/ appropriate tag class applied
-			for(var i = 0; i < L; i += 1)	{
-				if(data.value.indexOf(whitelist[i]) >= 0 && (tagsDisplayed <= maxTagsShown))	{
-					spans += "<span class='tagSprite "+whitelist[i].toLowerCase()+"'><\/span>";
-					tagsDisplayed += 1;
+			tags : function($tag,data)	{
+				var whitelist = new Array('IS_PREORDER','IS_DISCONTINUED','IS_SPECIALORDER','IS_SALE','IS_CLEARANCE','IS_NEWARRIVAL','IS_BESTSELLER','IS_USER1','IS_USER2','IS_USER3','IS_USER4','IS_USER5','IS_USER6','IS_USER7','IS_USER8','IS_USER9','IS_FRESH','IS_SHIPFREE');
+	//			var csv = data.value.split(',');
+				var L = whitelist.length;
+				var tagsDisplayed = 0;
+				var maxTagsShown = _app.u.isSet(data.bindData.maxTagsShown) ? data.bindData.maxTagsShown : whitelist.length; //default to showing all enabled tags.
+				var spans = ""; //1 or more span tags w/ appropriate tag class applied
+				for(var i = 0; i < L; i += 1)	{
+					if(data.value.indexOf(whitelist[i]) >= 0 && (tagsDisplayed <= maxTagsShown))	{
+						spans += "<span class='tagSprite "+whitelist[i].toLowerCase()+"'><\/span>";
+						tagsDisplayed += 1;
+						}
+					if(tagsDisplayed >= maxTagsShown)	{break;} //exit early once enough tags are displayed.
 					}
-				if(tagsDisplayed >= maxTagsShown)	{break;} //exit early once enough tags are displayed.
-				}
-			$tag.append(spans);
-			}, //tags
+				$tag.append(spans);
+				}, //tags
 
 //if first char is a !, hide that char, then render as text. used in breadcrumb
 //likely to be used in prodcats if/when it's built.s
 //here, on 'could' disable the display if they didn't want hidden cats to show in the breadcrumb.
 			cattext : function($tag,data)	{
 //				dump(" -> value: "); dump(data.value);
-				if(data.value[0] == '!')	{data.value = data.value.substring(1)}
+				if(data.value && data.value[0] == '!')	{
+					data.value = data.value.substring(1)
+					}
 				_app.renderFormats.text($tag,data);
 				},
 
-//### later, we could make this more advanced to actually search the attribute. add something like elasticAttr:prod_mfg and if set, key off that.
-			searchlink : function($tag,data){
-				var keywords = data.value.replace(/ /g,"+"),
-				infoObj = {'KEYWORDS':keywords}
-				if(data.bindData.elasticAttr){
-					infoObj.ATTRIBUTES = data.bindData.elasticAttr.split(" ");
-					}
-				$tag.append("<span class='underline pointer'>"+data.value+"<\/span>").bind('click',function(){
-					showContent('search',infoObj)
-					});
-				}, //searchLink
 
 			cpsiawarning : function($tag,data)	{
-
-				var warnings = {
-					'choking_hazard_balloon' : 'Choking Hazard Balloon',
-					'choking_hazard_contains_a_marble' : 'Choking Hazard contains a marble',
-					'choking_hazard_contains_small_ball' : 'Choking Hazard contains a small ball',
-					'choking_hazard_is_a_marble' : 'Choking Hazard is a marble', 
-					'choking_hazard_is_a_small_ball' : 'Choking Hazard is a small ball',
-					'choking_hazard_small_parts' : 'Choking Hazard small parts',
-					'no_warning_applicable' : 'No Warning Applicable'
-					};
-				if(warnings[data.value])	{
-					$tag.append(warnings[data.value]);
+				if(data.value)	{
+					var warnings = {
+						'choking_hazard_balloon' : 'Choking Hazard Balloon',
+						'choking_hazard_contains_a_marble' : 'Choking Hazard contains a marble',
+						'choking_hazard_contains_small_ball' : 'Choking Hazard contains a small ball',
+						'choking_hazard_is_a_marble' : 'Choking Hazard is a marble', 
+						'choking_hazard_is_a_small_ball' : 'Choking Hazard is a small ball',
+						'choking_hazard_small_parts' : 'Choking Hazard small parts',
+						'no_warning_applicable' : 'No Warning Applicable'
+						};
+					if(warnings[data.value])	{
+						$tag.append(warnings[data.value]);
+						}
+					else	{
+						$tag.append(data.value);
+						}
 					}
-				else	{
-					$tag.append(data.value);
-					}
-
 				},
 
 			addpicslider : function($tag,data)	{
@@ -872,10 +841,7 @@ fallback is to just output the value.
 							})
 						}
 					else	{
-						$tag.on('click.detailsOrAdd',function(event){
-							event.preventDefault();
-							showContent('product',{'pid':pid}); 
-							})
+						$tag.attr({'data-hash':'#!product/'+pid,'data-app-click':'quickstart|showContent'});
 						}
 					}
 //				dump(" -> ID at end: "+$tag.attr('id'));
@@ -1027,7 +993,7 @@ for legacy browsers. That means old browsers will use the anchor to retain 'back
 // * changed from 'empty' to showLoading because empty could be a heavy operation if mainContentArea has a lot of content.
 							$('body').showLoading({'message':'Transferring to secure login'});							
 							var SSLlocation = _app.vars.secureURL+"?cartID="+_app.model.fetchCartID();
-							SSLlocation += "#customer?show="+infoObj.show
+							SSLlocation += "#!customer/"+infoObj.show
 							_gaq.push(['_link', SSLlocation]); //for cross domain tracking.
 							document.location = SSLlocation; //redir to secure url.
 							}
@@ -1049,7 +1015,7 @@ for legacy browsers. That means old browsers will use the anchor to retain 'back
 // * use showloading instead of .html (which could be heavy)
 //							$('#mainContentArea').addClass('loadingBG').html("<h1>Transferring you to a secure session for checkout.<\/h1><h2>Our app will reload shortly...<\/h2>");
 							$('body').showLoading({'message':'Transferring you to a secure session for checkout'});
-							var SSLlocation = zGlobals.appSettings.https_app_url+"?cartID="+_app.model.fetchCartID()+"&_session="+_app.vars._session+"#checkout?show=checkout";
+							var SSLlocation = zGlobals.appSettings.https_app_url+"?cartID="+_app.model.fetchCartID()+"&_session="+_app.vars._session+"#!checkout";
 							_gaq.push(['_link', SSLlocation]); //for cross domain tracking.
 							document.location = SSLlocation;
 							}
@@ -1094,8 +1060,7 @@ for legacy browsers. That means old browsers will use the anchor to retain 'back
 					}
 //this is low so that the individual 'shows' above can set a different default and if nothing is set, it'll default to true here.
 				infoObj.performJumpToTop = (infoObj.performJumpToTop === false) ? false : true; //specific instances jump to top. these are passed in (usually related to modals).
-
-				if(infoObj.performJumpToTop)	{$('html, body').animate({scrollTop : 0},1000)} //new page content loading. scroll to top.				
+		
 //transition appPreView out on init.
 				if($('#appPreView').is(':visible'))	{
 //					_app.ext.quickstart.pageTransition($('#appPreView'),$('#appView'));
@@ -1111,9 +1076,9 @@ for legacy browsers. That means old browsers will use the anchor to retain 'back
 						});
 					}
 				else if(infoObj.performTransition == false)	{
-					
 					}
 				else if(typeof _app.ext.quickstart.pageTransition == 'function')	{
+
 //					dump(" -> parentID.length: "+$(_app.u.jqSelector('#',infoObj.parentID)).length);
 					_app.ext.quickstart.pageTransition($old,$new);
 					}
@@ -1125,7 +1090,8 @@ for legacy browsers. That means old browsers will use the anchor to retain 'back
 				else	{
 					dump("WARNING! in showContent and no parentID is set for the element being translated.");
 					}
-
+				//if a header is defined in the appview, the height of that header will be the jumpto point, which effectively 'chops' off the header w/ each page load.
+				if(infoObj.performJumpToTop)	{$('html, body').animate({scrollTop : ($('header','#appView').length ? $('header','#appView').first().height() : 0)},1000)} //new page content loading. scroll to top.
 //NOT POSTING THIS MESSAGE AS ASYNC BEHAVIOR IS NOT CURRENTLY QUANTIFIABLE					
 				//Used by the SEO generation utility to signal that a page has finished loading. 
 				//parent.postMessage("renderFinished","*");
@@ -1694,7 +1660,7 @@ beachmart*/
 
 //executed on initial app load AND in some elements where user/merchant defined urls are present (banners).
 // Determines what page is in focus and returns appropriate object (r.pageType)
-// if no page content can be determined based on the url, the hash is examined and if appropriately formed, used (ex: #company?show=contact or #category?navcat=.something)
+// if no page content can be determined based on the url, the hash is examined and if appropriately formed, used (ex: #company/contact or #category/.something)
 // should be renamed getPageInfoFromURL
 			detectRelevantInfoToPage : function(URL)	{
 //				dump("BEGIN quickstart.u.detectRelevantInfoToPage. url: "+URL);
@@ -2130,7 +2096,7 @@ effects the display of the nav buttons only. should be run just after the handle
 				
 //Show one of the company pages. This function gets executed by showContent.
 //handleTemplateEvents gets executed in showContent, which should always be used to execute this function.
-// ** 201346 -> The company navlinks are now generated based on what articles are present and not disabled. built to allow for wizard to easily add new pages.
+//The company navlinks are generated based on what articles are present and not disabled. built to allow for wizard to easily add new pages.
 			showCompany : function(infoObj)	{
 				infoObj.show = infoObj.show || 'about'; //what page to put into focus. default to 'about us' page
 				var parentID = 'mainContentArea_company'; //this is the id that will be assigned to the companyTemplate instance.
@@ -2431,12 +2397,29 @@ either templateID needs to be set OR showloading must be true. TemplateID will t
 									}},"mutable");
 								break;
 							case 'lists':
-								_app.model.addDispatchToQ({"_cmd":"buyerProductLists","_tag":{"datapointer":"buyerProductLists",'parentID':'listsContainer','callback':'showBuyerLists','extension':'quickstart'}},"mutable");
+//								_app.model.addDispatchToQ({"_cmd":"buyerProductLists","_tag":{"datapointer":"buyerProductLists",'parentID':'listsContainer','callback':'showBuyerLists','extension':'quickstart'}},"mutable");
+								_app.model.addDispatchToQ({"_cmd":"buyerProductLists","_tag":{"datapointer":"buyerProductLists",'verb':'translate','jqObj': $('#listsArticle',$customer),'callback':'tlc',onComplete : function(rd){
+//data formatting on lists is unlike any other format for product, so a special handler is used.				
+									function populateBuyerProdlist(listID,$context)	{
+										//add the product list ul here because tlc statement has list ID for bind.
+										$("[data-buyerlistid='"+listID+"']",$customer).append("<ul data-tlc=\"bind $var '.@"+listID+"'; store_prodlist#productlist  --hideSummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplateBuyerList'  --legacy;\" class='listStyleNone fluidList clearfix noPadOrMargin productList'></ul>");
+										_app.model.addDispatchToQ({"_cmd":"buyerProductListDetail","listid":listID,"_tag" : {'datapointer':'buyerProductListDetail|'+listID,"listid":listID,'callback':'buyerListAsProdlist','extension':'quickstart','jqObj':$("[data-buyerlistid='"+listID+"'] ul",$context)}},'mutable');
+										}
+									
+									var data = _app.data[rd.datapointer]['@lists']; //shortcut
+									var L = data.length;
+									var numRequests = 0;
+									for(var i = 0; i < L; i += 1)	{
+										populateBuyerProdlist(data[i].id,rd.jqObj)
+										}
+									_app.model.dispatchThis('mutable');
+									$('.applyAccordion',rd.jqObj).accordion({heightStyle: "content"});
+									}}},"mutable");
 								break;
 							case 'myaccount':
 	//							dump(" -> myaccount article loaded. now show addresses...");
-								_app.ext.cco.calls.appCheckoutDestinations.init({},'mutable'); //needed for country list in address editor.
-								_app.calls.buyerAddressList.init({'callback':'showAddresses','extension':'quickstart'},'mutable');
+								_app.ext.cco.calls.appCheckoutDestinations.init(_app.model.fetchCartID(),{},'mutable'); //needed for country list in address editor.
+								_app.model.addDispatchToQ({"_cmd":"buyerAddressList","_tag":{'callback':'tlc','jqObj':$customer,'verb':'translate','datapointer':'buyerAddressList'}},'mutable');
 								break;
 /*beachmall*/				case 'createaccount':
 /*beachmall*/					_app.ext.cco.calls.appCheckoutDestinations.init({},'mutable'); //needed for country list in address entry.
@@ -2444,7 +2427,6 @@ either templateID needs to be set OR showloading must be true. TemplateID will t
 /*beachmall*/					break;
 							
 							case 'logout':
-								dump(" --------> got to here");
 								$(document.body).removeClass('buyerLoggedIn');
 								$('.username').empty();
 								_app.u.logBuyerOut();
@@ -2928,6 +2910,7 @@ else	{
 					_app.model.dispatchThis('immutable');
 					}
 				else	{} //validateForm will handle the error display.
+				return false;
 				},
 
 			accountPasswordRecoverSubmit : function($ele,p)	{
@@ -2948,13 +2931,16 @@ else	{
 					_app.model.dispatchThis('immutable');
 					}
 				else	{} //validateForm will handle the error display.
+				return false;
 				},
 	
 			cartShipMethodSelect : function($ele,P)	{
+				P.preventDefault();
 				var $cart = $ele.closest("[data-template-role='cart']");
 				_app.ext.cco.calls.cartSet.init({'_cartid':$cart.data('cartid'),'want/shipping_id':$ele.val()},{},'immutable');
 				$cart.trigger('fetch',{'Q':'immutable'});
 				_app.model.dispatchThis('immutable');
+				return false;
 				},
 			
 			cartMessagePageSend : function($ele,p)	{
@@ -2974,17 +2960,22 @@ else	{
 						}
 					}},'passive');
 				_app.model.dispatchThis('passive');
+				return false;
 				},
 			
 			dialogCloseExec : function($ele,p)	{
 				$ele.closest('.ui-dialog-content').dialog('close');
+				return false;
 				},
 			
 			faqDetailShow : function($ele,p)	{
+				p.preventDefault();
 				_app.ext.quickstart.a.showFAQbyTopic($ele.closest('[data-topicid]').data('topicid'));
+				return false;
 				},
 			
 			execOrder2Cart : function($ele,p)	{
+				p.preventDefault();
 				var orderID = $ele.closest("[data-orderid]").data('orderid');
 				if(orderID)	{
 					_app.ext.cco.u.appendOrderItems2Cart({orderid:orderID,cartid:_app.model.fetchCartID()},function(rd){
@@ -2999,14 +2990,30 @@ else	{
 				else	{
 					$('#globalMessaging').anymessage({'message':"In quickstart.e.execOrder2Cart, unable to determine orderID",'gMessage':true});
 					}
+				return false;
 				}, //execOrder2Cart
 
 			orderDetailShow : function($ele,p)	{
+				p.preventDefault();
 				_app.ext.quickstart.u.showOrderDetails($ele.closest("[data-app-role='orderLineitemContainer']"));
+				return false;
 				},
 
 			inlineProductPreviewShow : function($ele,p)	{
+				p.preventDefault();
 				_app.ext.quickstart.a.handleProdPreview($ele.closest("[data-pid]").data('pid'));
+				return false;
+				},
+
+			showContent : function($ele,p)	{
+				p.preventDefault();p
+				if($ele.data('hash'))	{
+					document.location.hash = $ele.data('hash');
+					}
+				else	{
+					$("#globalMessaging").anymessage({"message":"In quickstart.e.showContent, no data-hash set on trigger element.","gMessage":true});
+					}
+				return false;
 				},
 
 			passwordChangeSubmit : function($ele,p)	{
@@ -3015,6 +3022,7 @@ else	{
 					_app.ext.store_crm.u.handleChangePassword($ele,{'callback':'showMessaging','message':'Thank you, your password has been changed','jqObj':$ele});
 					}
 				else	{}
+				return false;
 				},
 
 			productAdd2Cart : function($ele,p)	{
@@ -3034,8 +3042,12 @@ else	{
 							$('#globalMessaging').anymessage({'message':rd});
 							}
 						else	{
-							_app.ext.quickstart.u.showCartInModal({'templateID':'cartTemplate'});
-							dump(" ->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+							if($ele.data('show') == 'inline')	{
+								document.location.hash = '#!cart';
+								}
+							else	{
+								_app.ext.quickstart.u.showCartInModal({'templateID':'cartTemplate'});
+								}
 							cartMessagePush(cartObj._cartid,'cart.itemAppend',_app.u.getWhitelistedObject(cartObj,['sku','pid','qty','quantity','%variations']));
 							}
 						}},'immutable');
@@ -3043,8 +3055,10 @@ else	{
 					
 					}
 				else	{} //do nothing, the validation handles displaying the errors.
+				return false;
 				},
 			productAdd2List : function($ele,p)	{
+				p.preventDefault();
 				var pid = $ele.closest("[data-pid]").data('pid');
 				if($ele.data('listid') && pid)	{
 					_app.ext.quickstart.a.add2BuyerList({sku:pid,'listid':$ele.data('listid')});
@@ -3052,24 +3066,33 @@ else	{
 				else	{
 					$('#globalMessaging').anymessage({"message":"In admin_crm.e.productAdd2List, unable to ascertain pid ["+pid+"] or data-listid was not set on trigger element.","gMessage":true});
 					}
+				return false;
 				},
 				
 			productPicsInModalShow : function($ele,p){
+				p.preventDefault();
 				_app.ext.store_product.u.showPicsInModal({"pid":$ele.closest("[data-pid]").data('pid')});
+				return false;
 				},
 
 			subscribeSubmit : function($ele,p)	{
 				p.preventDefault();
 				_app.ext.store_crm.u.handleSubscribe($ele.attr('id'));
+				return false;
 				},
 
 //add to form element. input name='KEYWORDS' is required for this simple search.
 			searchFormSubmit : function($ele,p)	{
 				p.preventDefault();
-				showContent('search',$ele.serializeJSON($ele));
+				var sfo = $ele.serializeJSON($ele);
+				if(sfo.KEYWORDS)	{
+					document.location.hash = '#!search/keywords/'+sfo.KEYWORDS;
+					}
+				return false;
 				},
 
 			showBuyerAddressUpdate : function($ele,p)	{
+				p.preventDefault();
 				_app.ext.store_crm.u.showAddressEditModal({
 					'addressID' : $ele.closest("address").data('_id'),
 					'addressType' : $ele.closest("[data-app-addresstype]").data('app-addresstype')
@@ -3077,26 +3100,31 @@ else	{
 					$('#mainContentArea_customer').empty().remove(); //kill so it gets regenerated. this a good idea?
 					showContent('customer',{'show':'myaccount'});
 					});
+				return false;
 				}, //showBuyerAddressUpdate
 
 			showBuyerAddressAdd : function($ele,p)	{
+				p.preventDefault();
 				_app.ext.store_crm.u.showAddressAddModal({
 					'addressType' : $ele.closest("[data-app-addresstype]").data('app-addresstype')
 					},function(rd){
 					$('#mainContentArea_customer').empty().remove(); //kill so it gets regenerated. this a good idea?
 					showContent('customer',{'show':'myaccount'});
-					})
+					});
+				return false;
 				}, //showBuyerAddressAdd
 
 			quickviewShow : function($ele,p)	{
+				p.preventDefault();
 				var PID = $ele.data('pid') || $ele.closest('[data-pid]').attr('data-pid');
 				var templateID = $ele.data('loadstemplate');
 				if(PID && templateID)	{
 					quickView('product',{'templateID':templateID,'pid':PID});
 					}
 				else	{
-					$('#globalMessaging').anymessage({"message":"In quickstart.e.quickviewShow, unable to ascertain PID ["+PID+"] or no data-templateID set on trigger element.","gMessage":true});
+					$('#globalMessaging').anymessage({"message":"In quickstart.e.quickviewShow, unable to ascertain PID ["+PID+"] or no data-loadstemplate set on trigger element.","gMessage":true});
 					}
+				return false;
 				}
 
 			}, // e/events

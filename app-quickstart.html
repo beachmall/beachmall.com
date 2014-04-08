@@ -60,7 +60,7 @@ css files should be included before any .js file to ensure they are downloaded i
 
 <!-- ### TODO -> test how the load process goes w/ these in init. if includes is moved, move the new Parse  -->
 <script src="resources/jquery.ui.anyplugins.js"></script>
-<script type="text/javascript" src="includes.js"></script>
+<script type="text/javascript" src="includes.js"></script><!-- contains some polyfills and should be loaded early -->
 
 
 <script type="text/javascript">
@@ -73,15 +73,16 @@ $(document).ready(function(){
 		"checkoutAuthMode" : "active",//can be passive, active or required
 		"testURL":"http://www.81a72f.hoth.zoovy.net/", //used ONLY if protocol is file: (for testing)
 		"addjQueryPointer" : true,
-		"initComplete" : function(t){
+		"initComplete" : function(){
 			dump(" -> init is complete");
-			t.u.loadScript('_beachmall_init.js',function(){
-				var progress = t.u.loadResources(); //the object returns by loadResources will get updated as the resources finish loading.
-				t.u.showProgress(progress);
+			myApp.u.loadScript('_beachmall_init.js',function(){
+				var progress = myApp.u.loadResources(); //the object returns by loadResources will get updated as the resources finish loading.
+				myApp.u.showProgress(progress);
 				});
-			$('#appversion').text(t.vars.release);
+			$('#appversion').text(myApp.vars.release);
 			}
 		});
+	myApp.vars.initComplete();
 	myCreole = new Parse.Simple.Creole();
 	});
 </script>
@@ -1560,11 +1561,11 @@ used to organize content when a category is clicked.
 each of the 'sections' are used to load another template. don't change the id.
 don't modify the 'data-templateid' unless you are changing template names and updating everywhere appropriate.
 -->
-<div id="categoryTemplate" class="loadingBG categoryTemplate">
+<div id="categoryTemplate" class="categoryTemplate">
 
 	<ul data-tlc="bind $var '.path'; store_navcats#breadcrumb  --templateid='breadcrumbTemplate'  --legacy;" class="breadcrumb clearfix noPadOrMargin fluidList"></ul>
 
-	<img data-tlc="bind $var '.%page.banner1'; quickstart#banner  --height='250' --width='750' --legacy;">
+	<img data-tlc="bind $var '.%page.banner1'; quickstart#banner  --height='250' --width='750' --legacy;" src="images/blank.gif" alt="">
 	
 	<h2 data-tlc="bind $var '.%page.header'; if (is $var --notblank;) {{apply --append;}};" class="blah5"></h2>
 	
@@ -2315,7 +2316,7 @@ this will likely become more flexible in the future. ###
 
 
 <div data-tlc="bind $var '.pid'; apply --attrib='data-pid';" id="productTemplate" class="productTemplate productPage">
-	<div data-tlc="set $bob '1234';"></div>
+
 	<ul data-tlc="bind $var '.recentCategories.0'; store_navcats#breadcrumb  --templateid='breadcrumbTemplate'  --legacy; apply --append;" class="clearfix noPadOrMargin fluidList breadcrumb"></ul>
 
 <table class="fullWidth floatLeft">
@@ -2759,11 +2760,10 @@ if you change these, you should move them above this comment so that when you (o
 				</div>
 			</fieldset>
 			</form>
-			<!-- <div data-tlc="bind $var '.zoovy:contact'; render --wiki='quickstart'; if (is $var --notblank;) {{apply --append;}};" id="contactContent"></div> orig dynamic call-->
 		</div>
 
 
-
+		<!-- faq are generated through the faq manager in the admin UI. do not add content in the faqContent area -->
 		<div id="faqArticle" class="displayNone textContentArea custArticle">
 			<h1>Frequently Asked Questions</h1>
 			<div id="faqContent" class=" ui-accordion ui-widget ui-helper-reset ui-accordion-icons appAccordianesque"></div>
@@ -3317,9 +3317,10 @@ if you change these, you should move them above this comment so that when you (o
 			<div id="changepasswordContainer">
 				<form action="#" name="changePasswordForm" data-app-submit="quickstart|passwordChangeSubmit">
 				<fieldset class="borderNone">
+				<p>For passwords, we recommend using mixed case, at least one number and one special character.</p>
 				<div class="messaging"></div>
-				<div class="marginBottom"><label><span class="prompt">Password</span><input name="password" size="35" required type="password"></label></div>
-				<div class="marginBottom"><label><span class="prompt">Confirm Password</span><input name="password2" required size="35" type="password"></label></div>
+				<div class="marginBottom"><label><span class="prompt">Password</span><input name="password" size="35" required type="password" data-minlength='8'></label></div>
+				<div class="marginBottom"><label><span class="prompt">Confirm Password</span><input name="password2" required size="35" type="password" data-minlength='8'></label></div>
 				<div class="marginBottom"><input value="Change Password" class="loadingButton applyButton" type="submit"></div>
 				</fieldset>
 				</form>
@@ -3329,8 +3330,9 @@ if you change these, you should move them above this comment so that when you (o
 		
 		<div id="listsArticle" class="displayNone textContentArea">
 			<h1>List Manager</h1>
-			<div id="listsContainer" class="prodlist "></div>
-			<div id="listEditorContainer" class="displayNone "></div><!-- editor for a given list gets added here -->
+
+			<div class='applyAccordion' data-tlc="apply --empty; bind $var '.@lists'; controller#loop --templateid='buyerListTemplate'; apply --append; bind $content '.@lists'; controller#loop --templateid='buyerListProdlistContainerTemplate'; apply --append;"></div>
+
 		</div>
 
 		<div id="forgetmeArticle" class="displayNone textContentArea">
@@ -3345,6 +3347,16 @@ if you change these, you should move them above this comment so that when you (o
 </div>
 
 
+<h2 id='buyerListTemplate' data-tlc="bind $id '.id'; apply --append; bind $items '.items'; if (is $items --notblank;) {{format --prepend=' (' --append=')'; apply --append;}};"></h2>
+
+
+
+<div id='buyerListProdlistContainerTemplate' class='buyerList' data-tlc="bind $id '.id'; apply --attrib='data-buyerlistid';">
+	<!--
+	the UL is generated automatically because the tlc bind is specific to the list id. trying to use tlc to generate tlc would probably get me committed.
+	the div is NOT added dynamically so the accordion can be generated.
+	-->
+</div>
 
 
 
@@ -3815,17 +3827,17 @@ The 'data-action' attribute is used to assign an onclick.
 <address id="billAddressTemplate" class="ui-widget ui-widget-content ui-corner-all marginBottom ">
 	<button data-app-click="quickstart|showBuyerAddressUpdate" class="floatRight applyButton">edit</button>
 	<div class="addressFullname">
-		<span data-tlc="bind $var '.bill.firstname'; if (is $var --notblank;) {{apply --append;}};" title="first name"></span>
-		<span data-tlc="bind $var '.bill.lastname'; if (is $var --notblank;) {{apply --append;}};" title="last name"></span>
+		<span data-tlc="bind $var '.bill/firstname'; if (is $var --notblank;) {{apply --append;}};" title="first name"></span>
+		<span data-tlc="bind $var '.bill/lastname'; if (is $var --notblank;) {{apply --append;}};" title="last name"></span>
 	</div>
 	<div class="address">
-		<div data-tlc="bind $var '.bill.address1'; if (is $var --notblank;) {{apply --append;}};" title="address"></div>
-		<div data-tlc="bind $var '.bill.address2'; if (is $var --notblank;) {{apply --append;}};" title="address 2"></div>
+		<div data-tlc="bind $var '.bill/address1'; if (is $var --notblank;) {{apply --append;}};" title="address"></div>
+		<div data-tlc="bind $var '.bill/address2'; if (is $var --notblank;) {{apply --append;}};" title="address 2"></div>
 
-		<span data-tlc="bind $var '.bill.city'; if (is $var --notblank;) {{format --append=', '; apply --append;}};" title="city"></span>,
-		<span data-tlc="bind $var '.bill.region'; if (is $var --notblank;) {{format --append='. '; apply --append;}};" title="state"></span>.
-		<span data-tlc="bind $var '.bill.postal'; if (is $var --notblank;) {{apply --append;}};" title="zip"></span>
-		<div data-tlc="bind $var '.bill.countrycode'; if (is $var --notblank;) {{apply --append;}};" title="country"></div>
+		<span data-tlc="bind $var '.bill/city'; if (is $var --notblank;) {{format --append=', '; apply --append;}};" title="city"></span>
+		<span data-tlc="bind $var '.bill/region'; if (is $var --notblank;) {{format --append='. '; apply --append;}};" title="state"></span>
+		<span data-tlc="bind $var '.bill/postal'; if (is $var --notblank;) {{apply --append;}};" title="zip"></span>
+		<div data-tlc="bind $var '.bill/countrycode'; if (is $var --notblank;) {{apply --append;}};" title="country"></div>
 	</div>
 
 </address>
@@ -3835,17 +3847,17 @@ The 'data-action' attribute is used to assign an onclick.
 <address id="shipAddressTemplate" class="ui-widget ui-widget-content ui-corner-all marginBottom ">
 	<button data-app-click="quickstart|showBuyerAddressUpdate" class="floatRight applyButton">edit</button>
 	<div class="addressFullname">
-		<span data-tlc="bind $var '.ship.firstname'; if (is $var --notblank;) {{apply --append;}};" title="first name"></span>
-		<span data-tlc="bind $var '.ship.lastname'; if (is $var --notblank;) {{apply --append;}};" title="last name"></span>
+		<span data-tlc="bind $var '.ship/firstname'; if (is $var --notblank;) {{apply --append;}};" title="first name"></span>
+		<span data-tlc="bind $var '.ship/lastname'; if (is $var --notblank;) {{apply --append;}};" title="last name"></span>
 	</div>
 	<div class="address">
-		<div data-tlc="bind $var '.ship.address1'; if (is $var --notblank;) {{apply --append;}};" title="address"></div>
-		<div data-tlc="bind $var '.ship.address2'; if (is $var --notblank;) {{apply --append;}};" title="address 2"></div>
+		<div data-tlc="bind $var '.ship/address1'; if (is $var --notblank;) {{apply --append;}};" title="address"></div>
+		<div data-tlc="bind $var '.ship/address2'; if (is $var --notblank;) {{apply --append;}};" title="address 2"></div>
 
-		<span data-tlc="bind $var '.ship.city'; if (is $var --notblank;) {{format --append=', '; apply --append;}};" title="city"></span>,
-		<span data-tlc="bind $var '.ship.region'; if (is $var --notblank;) {{format --append='. '; apply --append;}};" title="state"></span>.
-		<span data-tlc="bind $var '.ship.postal'; if (is $var --notblank;) {{apply --append;}};" title="zip"></span>
-		<div data-tlc="bind $var '.ship.countrycode'; if (is $var --notblank;) {{apply --append;}};" title="country"></div>
+		<span data-tlc="bind $var '.ship/city'; if (is $var --notblank;) {{format --append=', '; apply --append;}};" title="city"></span>
+		<span data-tlc="bind $var '.ship/region'; if (is $var --notblank;) {{format --append='. '; apply --append;}};" title="state"></span>
+		<span data-tlc="bind $var '.ship/postal'; if (is $var --notblank;) {{apply --append;}};" title="zip"></span>
+		<div data-tlc="bind $var '.ship/countrycode'; if (is $var --notblank;) {{apply --append;}};" title="country"></div>
 
 	</div>
 
@@ -3903,7 +3915,7 @@ The 'data-action' attribute is used to assign an onclick.
 	</section>
 
 	<section class="orderContentsProdlistContainer">
-	<ul data-tlc="bind $var '.order.tracking'; store_crm#ordertrackinglinks  --before='<h4>Shipping:</h4>' --legacy; apply --append;" class="displayNone noListStyle marginBottom"></ul>
+	<ul data-tlc="bind $var '.order.tracking'; store_crm#ordertrackinglinks  --legacy; apply --append;" class="displayNone noListStyle marginBottom"></ul>
 	<table class="listStyleNone lineItemProdlist">
 		<tbody data-tlc="bind $var '.order.@ITEMS'; controller#loop --templateid='chkoutInvoiceItemTemplate'; if (is $var --notblank;) {{apply --append;}};"></tbody>
 	</table>
