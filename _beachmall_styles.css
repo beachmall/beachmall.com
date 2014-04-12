@@ -1034,6 +1034,7 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 
 .fullWidth .tipifyGuarantee {margin-left:63px;}
 .productFreeShipping {height:17px; width:108px; overflow:hidden; background-position:-67px -56px;}
+.productTemplate .shipCity, .productTemplate .shipRegion, .productTemplate .shipPostal, .productTemplate .shipZip, .productTemplate .deliveryMethod {margin:0 0 0 5px;}
 .zipLink {color:#3bb3c3;}
 .zipLink:hover {color:#e0463a;}
 .fullWidth .mainProdColumn .mpNoShow {display:none;}
@@ -1670,17 +1671,18 @@ PRODUCTLISTTEMPLATECART
 ****************************************************************************/
 #modalCart .lineItemProdlist li	{height:auto; width:100%; font-family:"Open Sans"; padding:0;} /* padding:0 0 1.5% 0; margin:0 0 1.5% 0; border-bottom:1px dashed #FFCC66;*/
 
-#modalCart .cartItemWrapper {height:160px; width:97.8%; padding:1.6%; background-color:#f5f1de; border-left:1px solid #999999; border-right:1px solid #999999; border-bottom:1px solid #999999;}
+#modalCart .cartItemWrapper {height:200px; width:100%; padding:1.6% 0; background-color:#f5f1de; border-left:1px solid #999999; border-right:1px solid #999999; border-bottom:1px solid #999999; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; box-sizing:border-box;}
 
-#modalCart .cartHeader {height:30px; width:100%; background:#3bb3c3; color:#ffffff; padding:0; text-align:center; line-height:30px;}
+#modalCart .cartHeader {height:30px; width:100%; background:#3bb3c3; color:#ffffff; padding:0; text-align:center; line-height:30px; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; box-sizing:border-box;}
 #modalCart .cartHeader .cartDesc {border:none;}
 
 #modalCart .cartImg {height:100%; width:21%;}
-#modalCart .cartImg img {max-width:100%; margin:0;}
-#modalCart .cartImg .stid {height:15px; width:90%; text-align:center; margin:3px 0 0 0; font-size:12px;}
-#modalCart .cartDesc {height:100%; width:44%; border-left:1px solid #999999;}
-#modalCart .cartDesc h4 {font-size:12px; margin:0 0 2% 0; padding:0 1.5%; text-decoration:underline;}
-#modalCart .cartDesc h4:hover {color:#e0463a;}
+#modalCart .cartImg img {max-width:100%; margin:0 auto; display:block;}
+#modalCart .cartImg .stid {height:15px; width:100%; text-align:center; margin:3px 0 0 0; font-size:12px;}
+#modalCart .cartDesc {height:100%; width:45%; border-left:1px solid #999999;}
+#modalCart .cartDesc h4 {font-size:12px; margin:0 0 2% 0; padding:0 1.5%;}
+#modalCart .cartDesc a {font-size:12px; margin:0 0 2% 0; padding:0 1.5%; text-decoration:underline; font-weight:bold; display:block;}
+#modalCart .cartDesc a:hover {color:#e0463a;}
 #modalCart .cartDesc .ztable_row_small, #modalCart .cartDesc .ztable_row_small.stid .cartSku {font-size:1.2em; margin:0 0 2% 0; padding:0 0 0 1.5%;}
 #modalCart .cartDesc .ztable_row_small.stid {font-size:12px;}
 #modalCart .cartDesc .cartLatency, #modalCart .cartDesc .transitContainer, #modalCart .cartDesc .cartPutLoadingHere {margin:0 0 2% 0; padding:0 1.5%;}

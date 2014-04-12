@@ -36,7 +36,7 @@ var quickstart = function(_app) {
 			'productListTemplateResultsCustomSmaller',
 			'categoryListTemplateBuyerGuide',
 			'productListTemplateToolTipThumb',
-		//	'cartAccListTemplateToolTipThumb',
+			'cartAccListTemplateToolTipThumb',
 		//	'categoryTemplateSiteMap',
 		//	'redirectProductTemplate',
 //above here are custom beachmart templates			

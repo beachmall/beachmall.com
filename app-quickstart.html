@@ -2104,7 +2104,7 @@ remember to NOT put the button inside the 'onclick' container or two events will
 SANITY -> if you change the height and width of this image, change the .minimalMode .searchResultsProduct in qs_styles.css to match
 -->
 <li id="productListTemplateResults" class="loadingBG searchResultsProduct products product floatLeft productListTemplateResults">
-	<div data-app-click="quickstart|inlineProductPreviewShow" class="pointer productListSmall" onMouseover='app.ext.beachmall_store.a.resultsredmousein($(this));' onMouseout='app.ext.beachmall_store.a.resultsredmouseout($(this));'>
+	<div data-app-click="quickstart|inlineProductPreviewShow" class="pointer productListSmall" onMouseover='myApp.ext.beachmall_store.a.resultsredmousein($(this));' onMouseout='myApp.ext.beachmall_store.a.resultsredmouseout($(this));'>
 		<div class='prodHoverContainer prodShadowFix'>
 			<!-- CORNER SHADOW DIVS -->
 			<div class='topLeftCorner'></div><div class='leftTopCorner'></div><div class='topRightCorner'></div><div class='rightTopCorner'></div>
@@ -2115,7 +2115,7 @@ SANITY -> if you change the height and width of this image, change the .minimalM
 			</div>
 		</div>
 	</div>
-	<a class="hideInMinimalMode pointer moreDetailsSmall floatRight" data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';" onMouseover='app.ext.beachmall_store.a.resultsredmousein($(this));' onMouseout='app.ext.beachmall_store.a.resultsredmouseout($(this));'>VIEW DETAILS</a>
+	<a class="hideInMinimalMode pointer moreDetailsSmall floatRight" data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';" onMouseover='myApp.ext.beachmall_store.a.resultsredmousein($(this));' onMouseout='myApp.ext.beachmall_store.a.resultsredmouseout($(this));'>VIEW DETAILS</a>
 	<div class='prodTextContainerSmall'>
 		<h6 data-tlc="bind $var '.base_price';  if (is $var --notblank;) {{format --currency='USD'; apply --append;}};" class="hideInMinimalMode floatLeft prodPriceSmall price"></h6>
 <!--Bug#3   <span class='prodPriceDesc' data-bind='format:prodPriceDesc; extension:store_filter; useParentData:true; isElastic:1;'></span>-->		
@@ -3512,7 +3512,7 @@ This is the template used both within a dialog and inline, unless implicitly ove
 							<label for="data-ship_zip">Zip/Postal Code:</label>
 <!-- MARK cartShippingMethodsWithUpdate REMOVED, determine new function for this <input data-tlc="bind $var '.ship.postal'; if(is $var --blank) {{bind $var '.bill.postal'; }}; apply --select=$var; " size="6" name="ship/postal" value="" maxlength="10" data-app-blur="cco|cartZipUpdateExec" type="text" onchange="myApp.ext.store_cart.calls.cartShippingMethodsWithUpdate.init();
 									myApp.model.dispatchThis('immutable');"> -->
-							<input data-tlc="bind $var '.ship.postal'; if(is $var --blank) {{bind $var '.bill.postal'; }}; apply --select=$var; " size="6" name="ship/postal" value="" maxlength="10" data-app-blur="cco|cartZipUpdateExec" type="text">
+							<input data-tlc="bind $var '.ship.postal'; if(is $var --blank) {{bind $var '.bill.postal'; }}; apply --select=$var; " size="6" name="ship/postal" value="" maxlength="10" onchange="myApp.ext.beachmart.a.updateShipPostal($(this).parent()); " data-app-blur="cco|cartZipUpdateExec" type="text">
 							<div><span class='shipCity'></span><span class='shipRegion'></span></div>
 							<input class='cartLineButton ui-state-default updateButton zipButton pointer' type='button' value='Update Location'>
 
@@ -3599,44 +3599,64 @@ This is the template used both within a dialog and inline, unless implicitly ove
 		</div>
 	</form>
 </div>
-
-
-
 <!-- /cartTemplate -->
-
-
-
-
-
 
 
 
 <!-- cart line-item template -->
 <ul>
-	<li id="productListTemplateCart" class="padMargBorderBottom clearfix">
+	<li id="productListTemplateCart" class="padMargBorderBottom clearfix productListTemplateCart">
 
-		<button data-tlc="cco#cartitemremovebutton  --legacy;" class="floatRight removeButton" data-bind="format:cartitemremovebutton; extension:cco; useParentData:true;" data-app-click="cco|cartItemRemove">Remove Item From Cart</button>
-		<button data-tlc="quickstart#movetowishlistbutton  --legacy;" class="floatRight moveToWishlist marginRight" data-bind="format:moveToWishlistButton; extension:quickstart; useParentData:true;">Move to Wishlist</button>
-
-
-		<div class="floatLeft"><img data-tlc="bind $var '.%attribs.zoovy:prod_thumb'; if(is $var --blank;){{bind $var '.%attribs.zoovy:prod_image1';}}; if(is $var --notblank;){{apply --img --media=$var --width=75 --height=75 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class="prodThumb" alt="" height="75" width="75"></div>
-
-		<h4 data-tlc="bind $var '.prod_name'; if (is $var --notblank;) {{apply --append;}};"></h4>
-
-		<div data-tlc="bind $var '.sku'; format --prepend='Sku: '; if (is $var --notblank;) {{apply --append;}};" class="ztable_row_small stid"></div>
-
-		<div>
-		qty: <input data-tlc="cco#cartitemqty  --legacy;" class="qtyInput numberInput" data-app-change="cco|cartItemUpdateExec" data-bind="format:cartItemQty;extension:cco;useParentData:true;" name="quantity" type="number">
-		<button class="displayNone">update</button><!-- here to stop 'enter' in input above from closing modal -->
-		<span data-tlc="bind $var '.price'; format --prepend='x '; format --currency='USD'; if (is $var --notblank;) {{apply --append;}};"></span>
-		<span data-tlc="bind $var '.extended'; format --prepend='= '; format --currency='USD'; if (is $var --notblank;) {{apply --append;}};"></span>
-
+		<div data-tlc="bind $var '.'; beachmall_cartestarrival#safestid  --legacy;" class="cartItemWrapper">
+			
+			<div class='floatLeft cartImg'>
+				<img data-tlc="bind $var '.%attribs.zoovy:prod_thumb'; if(is $var --blank;){{bind $var '.%attribs.zoovy:prod_image1';}}; if(is $var --notblank;){{apply --img --media=$var --width=150 --height=150 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class="prodThumb" alt="" height="150" width="150">
+				<div data-tlc="bind $var '.sku'; format --prepend='SKU: '; if (is $var --notblank) {{apply --append;}};" class='ztable_row_small stid floatLeft'></div>
+			</div>
+			<div class='floatLeft cartDesc'>
+				<a href="" data-tlc="bind $var '.'; beachmall_cart#cartprodname --legacy;" class="carProdLink"></a>
+				<div data-tlc="bind $var '.%options'; controller#selectedoptionsdisplay --legacy;  if (is $var --notblank;) {{apply --append;}};" class="ztable_row_small prodOptions"></div>
+				<div data-cart='1' data-tlc="bind $var '.'; beachmall_store#showshiplatency --legacy" class='cartLatency floatRight'>
+					<div class='shipTime'></div>
+				</div>
+				<div data-tlc="bind $var '.'; beachmall_cart#hideifasm --legacy" data-included='0'  class='cartShippingInformation clearfix'>
+					<div class='cartTimeInTransitMessaging'></div>
+					<div class='cartPutLoadingHere loadingBG'>
+						<div class='transitContainer'></div>
+					</div>
+				</div>
+				<div>
+					<button class='floatRight cartShowAccButton displayNone' onClick='myApp.ext.beachmall_cart.a.showCartAcc($(this));'>View Recommended Accessories</button>
+					<button class='floatRight cartHideAccButton displayNone' onClick='myApp.ext.beachmall_cart.a.hideCartAcc($(this));'>Hide Recommended Accesories</button>
+					<ul data-tlc="bind $var '.'; beachmall_cart#accessoryproductlist --legacy;" class='cartAccList floatRight' data-loadsTemplate='cartAccListTemplateToolTipThumb' data-withInventory=1 data-withVariations=1 data-hide_pagination='true'></ul> <!-- withInventory:1; withVariations:1;" -->
+				</div>
+			</div>
+			<div class='floatLeft cartPQT'>
+				<div class='cartQtyInput cartPQT floatLeft'>
+					<input data-tlc="cco#cartitemqty  --legacy;" class="qtyInput numberInput" data-app-change="cco|cartItemUpdateExec" data-bind="format:cartItemQty;extension:cco;useParentData:true;" name="quantity" type="number" maxlength='3'>
+					<button data-tlc="bind $var '.'; beachmall_cart#hideifasm --legacy" data-included='1' class='updateButton cartLineButton ui-state-default'>Update</button><!-- here to stop 'enter' in input above from closing modal -->
+					<button data-tlc="quickstart#movetowishlistbutton  --legacy;" class="moveToWishlist cartLineButton" data-bind="format:moveToWishlistButton; extension:quickstart; useParentData:true;">Wishlist</button>
+					<button data-tlc="cco#cartitemremovebutton  --legacy;" class="cartLineButton removeButton" data-bind="format:cartitemremovebutton; extension:cco; useParentData:true;" data-app-click="cco|cartItemRemove">Remove</button>
+				</div>
+				<div data-tlc="bind $var '.sku'; beachmall_cart#redmoney --legacy;" class='cartItemPrice cartPQT floatLeft'>
+					<span data-tlc="bind $var '.price'; format --currency='USD'; if (is $var --notblank;) {{apply --append;}};"></span>
+				</div>
+				<div data-tlc="bind $var '.sku'; beachmall_cart#redmoney --legacy;" class='cartItemTotal cartPQT floatLeft'>
+					<span data-tlc="bind $var '.extended'; format --currency='USD'; if (is $var --notblank;) {{apply --append;}};"></span>
+				</div>	
+			</div>
 		</div>
-
-		<div data-tlc="bind $var '.%options'; controller#selectedoptionsdisplay --legacy;  if (is $var --notblank;) {{apply --append;}};" class="ztable_row_small prodOptions"></div>
 	</li>
 </ul>
 
+<!-- used for a list of accessory products on items in the cart list -->
+<ul>
+	<li id='cartAccListTemplateToolTipThumb' class='loadingBG' data-tlc="bind $var '.pid'; beachmall_store#hideifnotpurchaseable --legacy;">
+		<a data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';" data-cartToolTipThumb="data-cartToolTipThumb" class='prodThumbContainer pointer targetElement'>
+			<img data-tlc="bind $var'.%attribs.zoovy:prod_image1'; apply --img --media=$var --width=30 --height=30 --bgcolor='#ffffff' --replace;" data-bind='var: product(zoovy:prod_image1); format:imageURL;' class='prodThumb' alt="" src='blank.gif' width='30' height='30' />
+		</a>
+	</li>
+</ul>
 
 
 

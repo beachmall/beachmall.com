@@ -68,7 +68,21 @@ var beachmall_cart = function(_app) {
 //these are going the way of the do do, in favor of app events. new extensions should have few (if any) actions.
 		a : {
 		
-			}, //Actions
+				//reveals recommended accessories list, hides itself, shows "hide" accessories button
+			showCartAcc : function($this) {
+				$this.hide().css('opacity','0');
+				$('.cartHideAccButton',$this.parent()).animate({'opacity':'1'}).show();
+				$('.cartAccList',$this.parent()).animate({'height':'40px'});
+			},
+			
+				//hides recommended accessories list, hides itself, show "reveal" accessories button
+			hideCartAcc : function($this) {
+				$this.hide().css('opacity','0');
+				$('.cartShowAccButton',$this.parent()).animate({'opacity':'1'}).show();
+				$('.cartAccList',$this.parent()).animate({'height':'0px'});
+			},
+		
+		}, //Actions
 
 ////////////////////////////////////   RENDERFORMATS    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
@@ -77,8 +91,8 @@ var beachmall_cart = function(_app) {
 //that way, two render formats named the same (but in different extensions) don't overwrite each other.
 		renderFormats : {
 		
+			//needed to format money outside of standard call for some reason...
 			beachmoney : function($tag,data)	{
-			
 	//			_app.u.dump('BEGIN view.formats.beachMoney');
 				var amount = data.bindData.isElastic ? (data.value / 100) : data.value;
 	//			_app.u.dump('amount:'); _app.u.dump(amount);
@@ -106,7 +120,7 @@ var beachmall_cart = function(_app) {
 			
 			//Changes header in shipping section based on whether or not a zip code has been entered there
 			displayorshippingtext : function($tag) {
-				var thisCartDetail = _app.data['cartDetail|'+_app.model.fetchCartID()]
+				var thisCartDetail = _app.data['cartDetail|'+_app.model.fetchCartID()];
 				if(_app.data.thisCartDetail && _app.data.thisCartDetail.ship && _app.data.thisCartDetail.ship.postal) {$tag.append('Shipping:');}
 				else {$tag.append('Delivery:');}
 			},
@@ -192,7 +206,118 @@ var beachmall_cart = function(_app) {
 					numRequests += _app.ext.store_prodlist.calls.appProductGet.init({'pid':products[index]},_tag,'immutable');
 				}
 				if(numRequests > 0){_app.model.dispatchThis('immutable');}
-			} //shipSurMessage
+			}, //shipSurMessage
+			
+				//adds product name on cart list item and puts a link on it by 
+				//converting stid into pid and doing show content on it.
+			cartprodname : function ($tag, data) {
+					//get the product name and bind data if any show on the line item in the cart
+				var o = '';
+				if(data.value.prod_name) {
+					if(jQuery.isEmptyObject(data.bindData))	{o = data.value.prod_name}
+					else {o += data.value.prod_name;}
+				}
+				
+				var stid = data.value.stid
+		//		_app.u.dump('Who is this is?'); _app.u.dump(stid);
+					//if it's an assembly or a promo kill the anchor and replace w/ an h4
+				if((stid && stid[0] == '%') || data.value.asm_master)	{
+					$tag.before('<h4>'+o+'</h4>');
+					$tag.remove();
+				}
+				else { //isn't a promo or assembly, add a the link
+					if (stid.indexOf('/') != -1 || (stid.indexOf('/') != -1 && stid.indexOf(':') !== -1)) {
+						var pid = _app.u.makeSafeHTMLId(stid.split('/')[0]);
+					}
+					else if(stid.indexOf(':') != -1) {
+						var pid = _app.u.makeSafeHTMLId(stid.split(':')[0]);
+					}
+					else {
+						pid = _app.u.makeSafeHTMLId(stid);
+					}
+					$tag.text(o); 
+					$tag.attr('href','#!product/'+pid+'/')
+				}
+			}, //showContentSTID
+			
+			//gets each cart item and displays a non-expedite message on it if user:prod_ship_expavail isn't set.
+			//Possible that showshiplatency in beachmall_store ext will replace this altogether. 
+			showshiplatencycart : function($tag, data) {
+				var products = [];
+				for(var index in data.value){
+					if(data.value[index].product[0] != '%') {
+						products.push(data.value[index].product);
+					}
+				}
+				//_app.u.dump('---------->'); _app.u.dump(data.value);
+				
+				var numRequests = 0;
+				for(var index in products){
+					var _tag = {
+						'callback':function(rd){
+							if(_app.model.responseHasErrors(rd)){
+								//If an item in your cart gets an error, you're gonna have a bad time...
+								_app.u.throwMessage(rd);
+								}
+							else{
+							//user:prod_shipping_msg'];
+							//var us1ts = data.value['%attribs']['us1:ts'
+									//if user:prod_ship_expavail is present and checked (set to 1) expedited shipping is available, show no message.
+								if(_app.data[rd.datapointer]['%attribs']['user:prod_ship_expavail'] && _app.data[rd.datapointer]['%attribs']['user:prod_ship_expavail'] == 1){}
+								else {	//the attribute is zero or not set, but either way no expedited shipping is available, show the message
+									$tag.text('Expedited shipping not available');
+								}
+					//			if(_app.data[rd.datapointer]['%attribs']['zoovy:base_price'] > 200){
+					//				$tag.text('The rent is too damn high!');
+					//				}
+								}
+							}
+						};	
+					numRequests += _app.ext.store_prodlist.calls.appProductGet.init({'pid':products[index]},_tag, 'immutable');
+					}
+				if(numRequests > 0){_app.model.dispatchThis('immutable');}
+			},
+			
+				//hide the update button on assembly products, put "(included)" text in it's place
+			hideifasm : function($tag, data) {
+				if((data.value.stid && data.value.stid[0] == '%') || data.value.asm_master)	{
+					$tag.hide()
+					if($tag.attr('data-included') == 1) {
+						$tag.after('(included)');
+					}
+				}
+			},
+			
+				//gets list of accessories from product (if present) and makes a list of them
+			accessoryproductlist : function($tag, data) {
+				if(data.value.stid && data.value.stid[0] == '%' || data.value.asm_master) {
+					return; //promos and assembly items don't get accessories list
+				}
+				else {
+					var pid = _app.ext.beachmall_cart.u.pidFromStid(data.value.stid);
+					var stid = _app.u.makeSafeHTMLId(data.value.stid);
+					setTimeout(function(){ //time out because appProductGet was coming back undefined
+						var prod = _app.data['appProductGet|'+pid];
+						if(prod && prod['%attribs'] && prod['%attribs']['zoovy:accessory_products']) {
+							$('.cartShowAccButton',$tag.parent()).removeClass('displayNone'); //show button to reveal list
+							$('.cartItemWrapper[data-geostid='+stid+']').css('height','200px'); //make line item taller to fit list & button
+							data.bindData.csv = prod['%attribs']['zoovy:accessory_products']; //add list to bindData
+							data.bindData.loadsTemplate = $tag.attr('data-loadsTemplate');
+							data.bindData.withInventory = $tag.attr('data-withInventory');
+							data.bindData.withVariations = $tag.attr('data-withVariations');
+							data.bindData.hide_pagination = $tag.attr('data-hide_pagination');
+							_app.ext.store_prodlist.u.buildProductList(data.bindData,$tag); //make list
+						}
+					},1000);
+				}
+			}, //accessoryProductList
+			
+				//checks for % at beginning of sku to see if item is a promo, sets css to red if so. 
+			redmoney : function($tag, data) {
+				if(data.value && data.value[0] == '%') {
+					$tag.css('color','#e0463a');
+				} else {}
+			}
 
 		}, //renderFormats
 ////////////////////////////////////   UTIL [u]   \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -246,7 +371,22 @@ var beachmall_cart = function(_app) {
 				_app.calls.refreshCart.init({'callback':'translateTemplate','parentID':'modalCartContents'},'immutable');
 				_app.ext.beachmall_cart.u.handleCartToolTip($('#modalCart'));
 				//don't set this up with a getShipping because we don't always need it.  Add it to parent functions when needed.
-			}
+			},
+			
+			//separates pid out of stid for use in cart
+			pidFromStid : function(stid) {
+					if (stid.indexOf('/') != -1 || (stid.indexOf('/') != -1 && stid.indexOf(':') != -1)) {
+						var pid = _app.u.makeSafeHTMLId(stid.split('/')[0]);
+					}
+					else if(stid.indexOf(':') != -1) {
+						var pid = stid.split(':')[0];
+						pid = _app.u.makeSafeHTMLId(pid[0]);
+					}
+					else {
+						pid = _app.u.makeSafeHTMLId(stid);
+					}
+					return pid;
+				},
 		
 		}, //u [utilities]
 

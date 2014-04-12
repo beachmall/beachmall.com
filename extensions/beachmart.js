@@ -233,20 +233,6 @@ var store_filter = function(_app) {
 
 
 		a : {
-		
-				//reveals recommended accessories list, hides itself, shows "hide" accessories button
-			showCartAcc : function($this) {
-				$this.hide().css('opacity','0');
-				$('.cartHideAccButton',$this.parent()).animate({'opacity':'1'}).show();
-				$('.cartAccList',$this.parent()).animate({'height':'40px'});
-			},
-			
-				//hides recommended accessories list, hides itself, show "reveal" accessories button
-			hideCartAcc : function($this) {
-				$this.hide().css('opacity','0');
-				$('.cartShowAccButton',$this.parent()).animate({'opacity':'1'}).show();
-				$('.cartAccList',$this.parent()).animate({'height':'0px'});
-			},
 			
 			execFilter : function($form,$page){
 
@@ -343,81 +329,6 @@ var store_filter = function(_app) {
 				//<div data-bind='useParentData:true; format:testers; extension:store_filter;'></div>
 			},
 
-				//adds product name on cart list item and puts a link on it by 
-				//converting stid into pid and doing show content on it.
-			cartProdName : function ($tag, data) {
-			
-					//get the product name and bind data if any show on the line item in the cart
-				var o = '';
-				if(data.value.prod_name) {
-					if(jQuery.isEmptyObject(data.bindData))	{o = data.value.prod_name}
-					else	{
-						o += data.value.prod_name;
-						}
-				}
-				$tag.html(o);
-			
-			//	app.u.dump('Who is this is?'); app.u.dump(stid);
-				var stid = data.value.stid
-				if((stid && stid[0] == '%') || data.value.asm_master)	{
-					$tag.css({'text-decoration':'none','cursor':'text'});
-				}
-				else { //isn't a promo or assembly, add a the link
-					if(stid.indexOf(':') != -1) {
-						var pid = stid.split(':');
-						pid = pid[0];
-					}
-					else if (stid.indexOf('/') != -1) {
-						var pid = stid.split('/');
-						pid = pid[0];
-					}
-					else {
-						pid = stid;
-					}
-					
-					$tag.off('click').on('click',function() {
-						showContent('product',{'pid':pid});
-					});
-				}
-			}, //showContentSTID
-				
-				//hide the update button on assembly products, put "(included)" text in it's place
-			hideIfASM : function($tag, data) {
-				if((data.value.stid && data.value.stid[0] == '%') || data.value.asm_master)	{
-					$tag.hide()
-					if($tag.attr('data-included') == 1) {
-						$tag.after('(included)');
-					}
-				}
-			},
-			
-				//checks for % at beginning of sku to see if item is a promo, sets css to red if so. 
-			redMoney : function($tag, data) {
-				if(data.value && data.value[0] == '%') {
-					$tag.css('color','#e0463a');
-				} else {}
-			},
-
-				//gets list of accessories from product (if present) and makes a list of them
-			accessoryProductList : function($tag, data) {
-				if(data.value.stid && data.value.stid[0] == '%' || data.value.asm_master) {
-					return; //promos and assembly items don't get accessories list
-				}
-				else {
-					var pid = app.ext.store_filter.u.pidFromStid(data.value.stid);
-					var stid = app.u.makeSafeHTMLId(data.value.stid);
-					setTimeout(function(){ //time out because appProductGet was coming back undefined
-						var prod = app.data['appProductGet|'+pid];
-						if(prod && prod['%attribs'] && prod['%attribs']['zoovy:accessory_products']) {
-							$('.cartShowAccButton',$tag.parent()).removeClass('displayNone'); //show button to reveal list
-							$('.cartItemWrapper[data-geostid='+stid+']').css('height','200px'); //make line item taller to fit list & button
-							data.bindData.csv = prod['%attribs']['zoovy:accessory_products']; //add list to bindData
-							app.ext.store_prodlist.u.buildProductList(data.bindData,$tag); //make list
-						}
-					},1000);
-				}
-			}, //accessoryProductList
-
 					//get product inventory and display in tag
 				showInv :function($tag, data) {
 					var pid = app.u.makeSafeHTMLId(data.value.pid);
@@ -429,42 +340,6 @@ var store_filter = function(_app) {
 				showShipRegion : function($tag, data) {
 					//app.u.dump('--------->'); app.u.dump(data.value);
 					$tag.append(data.value); 
-				},
-				
-				showShipLatencyCart : function($tag, data) {
-					var products = [];
-					for(var index in data.value){
-						if(data.value[index].product[0] != '%') {
-							products.push(data.value[index].product);
-						}
-					}
-					//app.u.dump('---------->'); app.u.dump(data.value);
-					
-					var numRequests = 0;
-					for(var index in products){
-						var _tag = {
-							'callback':function(rd){
-								if(app.model.responseHasErrors(rd)){
-									//If an item in your cart gets an error, you're gonna have a bad time...
-									app.u.throwMessage(rd);
-									}
-								else{
-								//user:prod_shipping_msg'];
-								//var us1ts = data.value['%attribs']['us1:ts'
-										//if user:prod_ship_expavail is present and checked (set to 1) expedited shipping is available, show no message.
-									if(app.data[rd.datapointer]['%attribs']['user:prod_ship_expavail'] && app.data[rd.datapointer]['%attribs']['user:prod_ship_expavail'] == 1){}
-									else {	//the attribute is zero or not set, but either way no expedited shipping is available, show the message
-										$tag.text('Expedited shipping not available');
-									}
-						//			if(app.data[rd.datapointer]['%attribs']['zoovy:base_price'] > 200){
-						//				$tag.text('The rent is too damn high!');
-						//				}
-									}
-								}
-							};	
-						numRequests += app.ext.store_prodlist.calls.appProductGet.init({'pid':products[index]},_tag, 'immutable');
-						}
-					if(numRequests > 0){app.model.dispatchThis('immutable');}
 				},
 
 				//shows a message that an item has the is_colorful tag set, usually in a product list
@@ -670,23 +545,8 @@ var store_filter = function(_app) {
 						 return _app.ext.quickstart.a.showContent('',P);
 					});
 				},
-	
-				pidFromStid : function(stid) {
-					if(stid.indexOf(':') != -1) {
-						var pid = stid.split(':');
-						pid = app.u.makeSafeHTMLId(pid[0]);
-					}
-					else if (stid.indexOf('/') != -1) {
-						var pid = stid.split('/');
-						pid = app.u.makeSafeHTMLId(pid[0]);
-					}
-					else {
-						pid = app.u.makeSafeHTMLId(stid);
-					}
-					return pid;
-				},
 
-	/*			showShipRegion : function($context) {
+				/*			showShipRegion : function($context) {
 					$('.cartRegion', $context).each(function() {
 						var $this = $(this);
 						app.u.dump('--------->'); app.u.dump($context);					

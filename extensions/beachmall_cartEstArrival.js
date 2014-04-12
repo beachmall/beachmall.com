@@ -18,7 +18,7 @@
 
 
 
-var beachmall_cartEstArrival = function() {
+var beachmall_cartestarrival = function(_app) {
 	var theseTemplates = new Array('');
 	var r = {
 
@@ -45,70 +45,82 @@ var beachmall_cartEstArrival = function() {
 				}
 			},
 			
-			showTransitTimes : {
-				
-				onSuccess : function(tagObj) {
-					_app.u.dump("BEGIN beachmart_cartEstArrival.callbacks.showTransitTimes");
-					var $container = false; //transit info. will end up here
-						//use cutoff from response, not product
-						//but find $container by matching stid added to it in index w/ response stid
-					$('.cartItemWrapper','#modalCart').each(function(){ //look at each cartItemWrapper in cart
-						tagObj.backorder = $(this).attr('data-backorder'); //add backorder attrib to tagObj for use in getTransitInfo later
-						var geoSTID = $(this).attr('data-geostid'); //record its geostid value
-							//check if this geostid value matches the response value, and set container if it does
-						if (geoSTID.indexOf(_app.u.makeSafeHTMLId(tagObj.stid)) != -1) {
-							$container = $(this);
-							$('.cartPutLoadingHere',$container).removeClass('loadingBG'); //may want to remove this later on...
-							return false; //there is only one, once it's found no need to continue
-						}
-					});
-						//if $container is still false here, then the stid couldn't be matched for some reason
-					if(!$container ) {
-						_app.u.dump('This line item shipping info. could not be determined: '+tagObj);
-					}
+/*		startExtension : {
+			onSuccess : function() {
+				_app.templates.productTemplate.on('complete.beachmall_store',function(event,$ele,P) {
+							_app.ext.beachmart.u.initEstArrival(P);
+				});
+			}
+			onError : {
+				_app.u.dump(
+			}
+		},
+*/			
+		showTransitTimes : {
 			
-					var data = _app.data[tagObj.datapointer]; //shortcut.	
+			onSuccess : function(tagObj) {
+				_app.u.dump("BEGIN beachmall_cartestarrival.callbacks.showTransitTimes");
+				var $container = false; //transit info. will end up here
+					//use cutoff from response, not product
+					//but find $container by matching stid added to it in index w/ response stid
+				$('.cartItemWrapper','#modalCart').each(function(){ //look at each cartItemWrapper in cart
+					tagObj.backorder = $(this).attr('data-backorder'); //add backorder attrib to tagObj for use in getTransitInfo later
+					var geoSTID = $(this).attr('data-geostid'); //record its geostid value
+						//check if this geostid value matches the response value, and set container if it does
+					if (geoSTID.indexOf(_app.u.makeSafeHTMLId(tagObj.stid)) != -1) {
+						$container = $(this);
+						$('.cartPutLoadingHere',$container).removeClass('loadingBG'); //may want to remove this later on...
+						return false; //there is only one, once it's found no need to continue
+					}
+				});
+					//if $container is still false here, then the stid couldn't be matched for some reason
+				if(!$container ) {
+					_app.u.dump('This line item shipping info. could not be determined: '+tagObj);
+				}
 		
-						//if ground on all set to 1, an item has no expedited shipping (and/or is backorder), make all methods ground
-					if($('#cartTemplateShippingContainer').attr('groundonall') == 1) {
-						index = _app.ext.beachmart.u.getSlowestShipMethod(data['@Services']);
-						var ground = true; //true will bypass additional shipping methods later
-						_app.u.dump(" -> index: "+index);
-					}
-					else {
-						var ground = false;
-						_app.u.dump(" -> $container.length: "+$container.length);
-						if(!$.isEmptyObject(data['@Services'])) {
-							_app.u.dump(" -> @Services is not empty");
-							var index = _app.ext.beachmart_cartEstArrival.u.getShipMethodByID(data['@Services'],_app.data.cartDetail.want.shipping_id);
-							_app.u.dump(_app.data.cartDetail.want.shipping_id);
-							_app.u.dump(index);
-			 				if(!index) {
-							//	index = _app.ext.beachmart.u.getFastestShipMethod(data['@Services']);
-								index = _app.ext.beachmart.u.getSlowestShipMethod(data['@Services']);
-							}
-							_app.u.dump(" -> index: "+index);
-							
+				var data = _app.data[tagObj.datapointer]; //shortcut.	
+	
+					//if ground on all set to 1, an item has no expedited shipping (and/or is backorder), make all methods ground
+				if($('#cartTemplateShippingContainer').attr('groundonall') == 1) {
+					index = _app.ext.beachmart.u.getSlowestShipMethod(data['@Services']);
+					var ground = true; //true will bypass additional shipping methods later
+					_app.u.dump(" -> index: "+index);
+				}
+				else {
+					var ground = false;
+					var thisCartDetail = _app.data['cartDetail|'+_app.model.fetchCartID()];
+					_app.u.dump(" -> $container.length: "+$container.length);
+					if(!$.isEmptyObject(data['@Services'])) {
+						_app.u.dump(" -> @Services is not empty");
+						var index = _app.ext.beachmall_cartestarrival.u.getShipMethodByID(data['@Services'],thisCartDetail.want.shipping_id);
+						_app.u.dump(thisCartDetail.want.shipping_id);
+						_app.u.dump(index);
+						if(!index) {
+						//	index = _app.ext.beachmart.u.getFastestShipMethod(data['@Services']);
+							index = _app.ext.beachmart.u.getSlowestShipMethod(data['@Services']);
 						}
+						_app.u.dump(" -> index: "+index);
+						
 					}
-						//index could be false if no methods were available. or could be int starting w/ 0
-					if(index >= 0) {
-/*prob w/ $container selector*/						$('.transitContainer',$container).empty().append(_app.ext.beachmart_cartEstArrival.u.getTransitInfo(tagObj,data,index,ground)); //empty first so when reset by zip change, no duplicate info is displayed.
-					}
-					
-					//$('.cartShippingInformation .loadingBG',$container).removeClass('loadingBG');
-					$('.loadingText',$container).hide();
-				},
-				onError : function(responseData,uuid) {
-//					alert("got here");
-//error handling is a case where the response is delivered (unlike success where datapointers are used for recycling purposes)
-					_app.u.handleErrors(responseData,uuid); //a default error handling function that will try to put error message in correct spot or into a globalMessaging element, if set. Failing that, goes to modal.
+				}
+					//index could be false if no methods were available. or could be int starting w/ 0
+				if(index >= 0) {
+/*prob w/ $container selector*/						$('.transitContainer',$container).empty().append(_app.ext.beachmall_cartestarrival.u.getTransitInfo(tagObj,data,index,ground)); //empty first so when reset by zip change, no duplicate info is displayed.
 				}
 				
-				
-			}, //showTransitTimes
+				//$('.cartShippingInformation .loadingBG',$container).removeClass('loadingBG');
+				$('.loadingText',$container).hide();
+			},
+			onError : function(responseData,uuid) {
+//					alert("got here");
+//error handling is a case where the response is delivered (unlike success where datapointers are used for recycling purposes)
+				_app.u.handleErrors(responseData,uuid); //a default error handling function that will try to put error message in correct spot or into a globalMessaging element, if set. Failing that, goes to modal.
+			}
 			
-		}, //callbacks
+			
+		}, //showTransitTimes
+			
+	}, //callbacks
 
 
 
@@ -127,7 +139,7 @@ var beachmall_cartEstArrival = function() {
 //that way, two render formats named the same (but in different extensions) don't overwrite each other.
 		renderFormats : {
 		
-			safeSTID : function($tag, data) {
+			safestid : function($tag, data) {
 				if(data.value && data.value.stid) {
 					$tag.attr('data-geoSTID',_app.u.makeSafeHTMLId(data.value.stid));
 				}
@@ -139,7 +151,7 @@ var beachmall_cartEstArrival = function() {
 //utilities are typically functions that are exected by an event or action.
 //any functions that are recycled should be here.
 		u : {
-		
+			
 			//pass in the @services object in a appShippingTransitEstimate and the index in that object of the fastest shipping method will be returned.
 			getShipMethodByID : function(servicesObj,ID,useProdPage)	{
 				var r = false; //what is returned. will be index of data object
@@ -182,13 +194,16 @@ var beachmall_cartEstArrival = function() {
 		
 			initEstArrival : function(infoObj, stid){
 
-				_app.u.dump("BEGIN beachmart_cartEstArrival.u.initEstArrival");
+				_app.u.dump("BEGIN beachmall_cartestarrival.u.initEstArrival");
 				//window.SKU = infoObj.pid; _app.u.dump("GLOBAL SKU IS A TEMPORARY SOLUTION!!!",'warn'); //was originally written in a hybrid store. need to get this more app friendly.
 				var pid = infoObj.pid;
 				var zip;
-				if(_app.data.cartDetail && _app.data.cartDetail.ship && _app.data.cartDetail.ship.postal) {
-					zip = _app.data.cartDetail.ship.postal;
+				var thisCartDetail = _app.data['cartDetail|'+_app.model.fetchCartID()];
+				if(thisCartDetail && thisCartDetail.ship && thisCartDetail.ship.postal) {
+					dump('----in if zip');
+					zip = thisCartDetail.ship.postal;
 				}
+				dump('----Why no zip'); dump(thisCartDetail); dump(thisCartDetail.ship); dump(thisCartDetail.ship.postal); dump(zip);
 				/*
 				navigator.geolocation is crappily supported. appears there's no 'if user hits no' support to execute an alternative. at least in FF.
 				look at a pre-20120815 copy of this lib for geocoding
@@ -196,7 +211,7 @@ var beachmall_cartEstArrival = function() {
 					//if there is a zip, getShipQuotes, otherwise tell user to enter their zip
 				if(zip) {	
 					_app.u.dump(" -> zip code is cart ["+zip+"]. Use it");
-					_app.ext.beachmart_cartEstArrival.u.getShipQuotes(zip, pid, stid); //function also gets city/state from googleapi
+					_app.ext.beachmall_cartestarrival.u.getShipQuotes(zip, pid, stid); //function also gets city/state from googleapi
 				}
 				else {
 					_app.u.dump(" -> no zip code entered. Info will be added when zip is entered.");
@@ -210,38 +225,42 @@ var beachmall_cartEstArrival = function() {
 			},
 			
 			getShipQuotes : function(zip, pid, stid)	{
-				_app.u.dump("BEGin beachmart_cartEstArrival.u.getShipQuotes");
-				var $context = $(_app.u.jqSelector('#','cartStuffList_'+stid));
+				_app.u.dump("BEGin beachmall_cartestarrival.u.getShipQuotes");
+			//	var $context = $(_app.u.jqSelector('#','cartStuffList_'+stid));
+				var $context = $(_app.u.jqSelector('.productListTemplateCart[data-stid="'+stid+'"]'));
+		dump('selector'); dump(stid); dump($context); $context.css('background','blue'); $context.attr('howdyDoodyTime','yes!');
 				//here, inventory check is done instead of isProductPurchaseable, because is used specifically to determine whether or not to show shipping.
 				// the purchaseable function takes into account considerations which have no relevance here (is parent, price, etc).
 //				_app.u.dump(_app.data['appProductGet|'+pid]);
-				if(_app.ext.store_product.u.getProductInventory(pid) <= 0){
+				if(_app.ext.store_product.u.getProductInventory(pid) <= 0){ dump('---if 0 inventory');
 					//no inventory. Item not purchaseable. Don't get shipping info
 					$('.cartShippingInformation .cartPutLoadingHere',$context).removeClass('loadingBG').hide();
 					$('.timeInTransitMessaging',$context).append("Inventory not available.");
 					}
-				else if(_app.data['appProductGet|'+pid] && _app.data['appProductGet|'+pid]['%attribs']['is:preorder'])	{
-					_app.ext.beachmall_cartEstArrival.u.handlePreorderShipDate();
+				else if(_app.data['appProductGet|'+pid] && _app.data['appProductGet|'+pid]['%attribs']['is:preorder'])	{ dump('---else if (preorder)');
+					myApp.ext.beachmall_cartestarrival.u.handlePreorderShipDate($context,pid);
 					}
-				else if(zip) {
+				else if(zip) { dump('----- else if (zip)');
+					var thisCartDetail = _app.data['cartDetail|'+_app.model.fetchCartID()];
 					//_app.u.dump(" -> zip: "+zip);
 				//if the city or the state is already available, don't waste a call to get additional info.
 				//this block is also executed for zip update, so allow reset.
-					if(_app.data.cartDetail && _app.data.cartDetail.ship && (!_app.data.cartDetail.ship.city && !_app.data.cartDetail.ship.region))	{
+					if(thisCartDetail && thisCartDetail.ship && (!thisCartDetail.ship.city && !thisCartDetail.ship.region))	{
 						_app.ext.beachmart.u.fetchLocationInfoByZip(zip);
 					}
 					var prodArray = new Array();
 					prodArray.push(pid);
-					if(_app.data.cartDetail.ship) {
-						_app.data.cartDetail.ship.postal = zip; //update local object so no request for full cart needs to be made for showTransitTimes to work right.
+					if(thisCartDetail.ship) {
+						thisCartDetail.ship.postal = zip; //update local object so no request for full cart needs to be made for showTransitTimes to work right.
 					}
 					else {
-						_app.data.cartDetail.ship = {'postal' : zip};
+						thisCartDetail.ship = {'postal' : zip};
 					}
-					_app.calls.cartSet.init({"ship/postal":zip},{},'passive');
+					_app.ext.cco.calls.cartSet.init({"ship/postal":zip,"_cartid":_app.model.fetchCartID()});
+					//_app.calls.cartSet.init({"ship/postal":zip},{},'passive');
 					_app.ext.beachmart.calls.time.init({},'passive');
-					_app.ext.beachmart.calls.appShippingTransitEstimate.init({"@products":prodArray,"ship_postal":zip,"ship_country":"US"},{'callback':'showTransitTimes','extension':'beachmart_cartEstArrival','stid':stid,'pid':pid},'passive');
-				//	_app.data.cartDetail['data.ship_zip'] = _app.data[tagObj.datapointer].zip; //need this local for getShipQuotes's callback.
+					_app.ext.beachmart.calls.appShippingTransitEstimate.init({"@products":prodArray,"ship_postal":zip,"ship_country":"US"},{'callback':'showTransitTimes','extension':'beachmall_cartestarrival','stid':stid,'pid':pid},'passive');
+				//	thisCartDetail['data.ship_zip'] = _app.data[tagObj.datapointer].zip; //need this local for getShipQuotes's callback.
 
 					_app.model.dispatchThis('passive'); //potentially a slow request that should interfere with the rest of the load.
 					
@@ -257,29 +276,28 @@ var beachmall_cartEstArrival = function() {
 			}, //getShipQuotes
 			
 			//shows the date a preorder item will ship on in the cart.
-			handlePreorderShipDate : function(){
+			handlePreorderShipDate : function($context,pid){
 				_app.u.dump("BEGIN beachmart.u.handlePreorderShipDate");
 				_app.u.dump("SANITY! this item is a preorder.");
 				var message;
-				var product = _app.data['appProductGet|'+SKU];
+				var product = _app.data['appProductGet|'+pid];
+				dump(product);
 				//if no date is set in salesrank, don't show any shipping info.
 				if(product['%attribs']['zoovy:prod_salesrank'])
-					message = "Will ship on "+this.yyyymmdd2Pretty(_app.data['appProductGet|'+SKU]['%attribs']['zoovy:prod_salesrank'])
+					message = "Will ship on "+_app.ext.beachmart.u.yyyymmdd2Pretty(product['%attribs']['zoovy:prod_salesrank'])
 
-				//var $container = $("#productContainer")
-				var $container = $("#modalCart");
-				
-				$('.putLoadingHere',$container).removeClass('loadingBG');
-				$('.loadingText',$container).hide();
-				$('.transitContainer',$container).text(message);
+				$('.cartPutLoadingHere',$context).removeClass('loadingBG');
+				//$('.loadingText',$container).hide();
+				$('.transitContainer',$context).text(message);
 			},
 			
 			
 			getTransitInfo : function(tagObj,data,index,ground)	{
-				_app.u.dump("BEGIN beachmart_cartEstArrival.u.getTransitInfo");
+				_app.u.dump("BEGIN beachmall_cartestarrival.u.getTransitInfo");
 
 				var pid = tagObj.pid;
 				var prodAttribs = _app.data['appProductGet|'+pid]['%attribs'];
+				var thisCartDetail = _app.data['cartDetail|'+_app.model.fetchCartID()];
 
 				var $r = $("<div class='shipSummaryContainer' \/>"); //what is returned. jquery object of shipping info.
 				$r.append("<span class='shipMessage'></span></span><span class='estimatedArrivalDate'></span><span class='shipCity'></span><span class='shipRegion'></span><span class='shipPostal'></span><span class='deliveryMethod'></span>");
@@ -310,7 +328,7 @@ var beachmall_cartEstArrival = function() {
 					var $shipMethodsUL = $('.cartShipMethods', '#modalCart');
 					if(_app.data.appShippingTransitEstimate && _app.data.appShippingTransitEstimate['@Services'] && !$shipMethodsUL.data('transitized')) {
 						//_app.u.dump('@services: ----------------->'); _app.u.dump(_app.data.appShippingTransitEstimate['@Services']);
-						_app.ext.beachmart_cartEstArrival.u.addDatesToRadioButtons(_app.data.appShippingTransitEstimate['@Services'], $shipMethodsUL);
+						_app.ext.beachmall_cartestarrival.u.addDatesToRadioButtons(_app.data.appShippingTransitEstimate['@Services'], $shipMethodsUL);
 						}
 				}
 				else	{
@@ -335,7 +353,7 @@ var beachmall_cartEstArrival = function() {
 					$('.estimatedArrivalDate',$r).append(_app.ext.beachmart.u.yyyymmdd2Pretty(data['@Services'][index]['arrival_yyyymmdd'])+" to");
 				}
 					
-				_app.ext.beachmart.u.fetchLocationInfoByZip(_app.data.cartDetail.ship.postal);
+				_app.ext.beachmart.u.fetchLocationInfoByZip(thisCartDetail.ship.postal);
 				
 				return $r;
 			}, //getTransitInfo

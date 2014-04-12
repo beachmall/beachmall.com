@@ -150,7 +150,7 @@ var beachmall_store = function(_app) {
 						tooltipClass : "toolTipBG",
 						open : function(event,ui){
 							_app.u.dump('----It opened');
-							$('.ui-tooltip').css({'border':'none','background':'transparent'});
+							$('.ui-tooltip').css({'border':'solid 0 red','background':'transparent','border-radius':'0'});
 						}
 					});
 			},
@@ -388,7 +388,7 @@ var beachmall_store = function(_app) {
 							} else {
 									//pass stid so each item can be found in cart later when time in transit info gets added
 								var stid = _app.u.makeSafeHTMLId($tag.parent().parent().parent().attr('data-stid'));
-								_app.ext.beachmall_cartEstArrival.u.initEstArrival(prod, stid);
+								_app.ext.beachmall_cartestarrival.u.initEstArrival(prod, stid);
 							}
 						} else {_app.u.dump('Problem w/ data.value in beachmart.js: renderformats.showShipLatency. Data follows:'); _app.u.dump(data.value);}
 					}
