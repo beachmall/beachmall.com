@@ -29,14 +29,14 @@ var beachmall_cartemail = function(_app) {
 	
 	calls : {	
 	
-		cartEmailMashup: {
+		cartemailmashup: {
 			init : function(params,_tag,Q)	{
 				this.dispatch(params,_tag,Q);
 			},
 			dispatch : function(params,_tag,Q)	{
-				_app.model.addDispatchToQ($.extend({"_cmd":"_appMashUpSMTP","_tag" : _tag},Q || 'immutable'),params);	
+				_app.model.addDispatchToQ($.extend({"_cmd":"_appMashUpRedis","_tag" : _tag},Q || 'immutable'),params);	
 			}			
-		}, //cartEmailMashup
+		}, //cartemailmashup
 	
 	}, //calls
 	
@@ -50,7 +50,7 @@ var beachmall_cartemail = function(_app) {
 			onSuccess : function()	{
 				var r = false; //return false if extension won't load for some reason (account config, dependencies, etc).
 				
-				//_app.u.dump('--> Extension beachmall_cartEmail started');
+				//_app.u.dump('--> Extension beachmall_cartemail started');
 				
 				//if there is any functionality required for this extension to load, put it here. such as a check for async google, the FB object, etc. return false if dependencies are not present. don't check for other extensions.
 				r = true;
@@ -84,15 +84,21 @@ var beachmall_cartemail = function(_app) {
 					+		"Please come see us again soon!"; 
 				
 				var params = {
-					"permission"	: "_mashups/cartEmailPermissions",
-					"sender"		: "help@beachmall.com",
+					'_cartid' 	: _app.model.fetchCartID(),
+					'platform' 	: 'appMashUpRedis-EMAILCART.json',
+					'%vars' : [
+						'email':eAddress,
+						'fullname':uName,
+					    ]
+				//	"permission"	: "_mashups/cartEmailPermissions",
+				//	"sender"		: "help@beachmall.com",
 					"recipient"		: eAddress,
-					"subject"		: "Your Beachmall.com cart contents",
-					"products"		: products,
-					"body"			: body
+				//	"subject"		: "Your Beachmall.com cart contents",
+				//	"products"		: products,
+				//	"body"			: body
 				};
-		/*		
-				_app.ext.beachmall_cartEmail.calls.cartEmailMashup.init(params,{"callback":function(rd){
+				
+				_app.ext.beachmall_cartemail.calls.cartemailmashup.init(params,{"callback":function(rd){
 					if(_app.model.responseHasErrors(rd)){
 						$form.anymessage({'message':rd});
 					}
@@ -101,7 +107,7 @@ var beachmall_cartemail = function(_app) {
 //							_gaq.push(['_trackEvent','Cart','User Event','Cart e-mailed']);
 					}
 				}});
-		*/		
+			
 		
 		//		_app.u.dump('--> All that stuff from the e-mail form:'); 
 		//		_app.u.dump(uName); 
@@ -226,7 +232,7 @@ var beachmall_cartemail = function(_app) {
 				
 				//_app.u.dump('--> PARAMS'); _app.u.dump(params);
 				
-		/*		_app.ext.beachmall_cartEmail.calls.cartEmailMashup.init(params,{"callback":function(rd){
+		/*		_app.ext.beachmall_cartemail.calls.cartemailmashup.init(params,{"callback":function(rd){
 					if(_app.model.responseHasErrors(rd)){
 						$form.anymessage({'message':rd});
 					}
