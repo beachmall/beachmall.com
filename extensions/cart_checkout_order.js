@@ -1340,8 +1340,11 @@ in a reorder, that data needs to be converted to the variations format required 
 						'message' : 'Item '+stid+' removed from your cart',
 						'jqObj' : $ele.closest('form')
 						},'immutable');
-					$ele.closest('[data-stid]').intervaledEmpty();
+				
+					// these needs to be before the empty below OR the button can't look up the foodchain for the cart container.
 					$ele.closest("[data-template-role='cart']").trigger('fetch',{'Q':'immutable'}); //will work if getCartAsJqObj was used to create the cart.
+					
+					$ele.closest('[data-stid]').intervaledEmpty();
 					_app.model.dispatchThis('immutable');
 					}
 				else	{
