@@ -81,7 +81,7 @@ var beachmall_cartestarrival = function(_app) {
 				var data = _app.data[tagObj.datapointer]; //shortcut.	
 	
 					//if ground on all set to 1, an item has no expedited shipping (and/or is backorder), make all methods ground
-				if($('#cartTemplateShippingContainer').attr('groundonall') == 1) {
+				if($('.cartTemplateShippingContainer').attr('groundonall') == 1) {
 					index = _app.ext.beachmart.u.getSlowestShipMethod(data['@Services']);
 					var ground = true; //true will bypass additional shipping methods later
 					_app.u.dump(" -> index: "+index);
@@ -238,7 +238,7 @@ var beachmall_cartestarrival = function(_app) {
 					$('.timeInTransitMessaging',$context).append("Inventory not available.");
 					}
 				else if(_app.data['appProductGet|'+pid] && _app.data['appProductGet|'+pid]['%attribs']['is:preorder'])	{ dump('---else if (preorder)');
-					myApp.ext.beachmall_cartestarrival.u.handlePreorderShipDate($context,pid);
+					_app.ext.beachmall_cartestarrival.u.handlePreorderShipDate($context,pid);
 					}
 				else if(zip) { dump('----- else if (zip)');
 					var thisCartDetail = _app.data['cartDetail|'+_app.model.fetchCartID()];
@@ -250,14 +250,15 @@ var beachmall_cartestarrival = function(_app) {
 					}
 					var prodArray = new Array();
 					prodArray.push(pid);
-					if(thisCartDetail.ship) {
-						thisCartDetail.ship.postal = zip; //update local object so no request for full cart needs to be made for showTransitTimes to work right.
-					}
-					else {
-						thisCartDetail.ship = {'postal' : zip};
-					}
-					_app.ext.cco.calls.cartSet.init({"ship/postal":zip,"_cartid":_app.model.fetchCartID()});
-					//_app.calls.cartSet.init({"ship/postal":zip},{},'passive');
+						//removed this, at this point there should already be a zip in the cartDetail...
+			//		if(thisCartDetail.ship) {
+			//			thisCartDetail.ship.postal = zip; //update local object so no request for full cart needs to be made for showTransitTimes to work right.
+			//		}
+			//		else {
+			//			thisCartDetail.ship = {'postal' : zip};
+			//		}
+			//		_app.ext.cco.calls.cartSet.init({"ship/postal":zip,"_cartid":_app.model.fetchCartID()});
+					
 					_app.ext.beachmart.calls.time.init({},'passive');
 					_app.ext.beachmart.calls.appShippingTransitEstimate.init({"@products":prodArray,"ship_postal":zip,"ship_country":"US"},{'callback':'showTransitTimes','extension':'beachmall_cartestarrival','stid':stid,'pid':pid},'passive');
 				//	thisCartDetail['data.ship_zip'] = _app.data[tagObj.datapointer].zip; //need this local for getShipQuotes's callback.

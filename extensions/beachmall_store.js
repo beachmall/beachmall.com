@@ -377,7 +377,7 @@ var beachmall_store = function(_app) {
 							var zoovyIsPreOrder = prod['%attribs']['zoovy:prod_is_tags'];
 							var zoovyPreOrder = prod['%attribs']['is:preorder'];
 							var zoovyIsUser1 = prod['%attribs']['is:user1'];
-						} else {_app.u.dump('Problem w/ data.value in beachmart.js: renderformats.showShipLatency. Data follows:'); _app.u.dump(data.value);}
+						} else {_app.u.dump('Problem w/ data.value in beachmall_store.js: renderformats.showShipLatency. Data follows:'); _app.u.dump(data.value);}
 						
 						if(data.value.product) {
 							var prod = _app.data['appProductGet|'+_app.u.makeSafeHTMLId(data.value.product)];
