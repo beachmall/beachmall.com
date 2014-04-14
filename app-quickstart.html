@@ -1543,11 +1543,11 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 
 <!-- ORIG HOMEPAGE TLC'S
 	<ul data-tlc="bind $var '.@subcategoryDetail'; store_navcats#categorylist  --detail='max' --templateid='categoryListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin categoryList"></ul>
-	<ul data-tlc="bind $var '.@products'; store_prodlist#productlist  --hidesummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin productList"></ul>
+	<ul data-tlc="bind $var '.@products'; store_prodlist#productlist  --hideSummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin productList"></ul>
 	<p data-tlc="bind $var '.%page.description'; if (is $var --notblank;) {{ render --wiki='quickstart'; apply --append;}};"></p>
 	<ul data-tlc="quickstart#searchbytag --tag='IS_BESTSELLER' --title='Best Sellers' --size='8' --templateid='productListTemplateResultsNoPreview';" class='listStyleNone fluidList clearfix noPadOrMargin productList'></ul>
 	<!--
-	<ul data-tlc="bind $var '.$listName.@products'; store_prodlist#productlist  --hidesummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin productList"></ul>
+	<ul data-tlc="bind $var '.$listName.@products'; store_prodlist#productlist  --hideSummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin productList"></ul>
 	-->
 
 </div> <!-- END HOMEPAGE TEMPLATE -->
@@ -1584,7 +1584,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 			<td class="productColumn">
 				<div class="countableProdList">
 <!-- original product list<ul data-app-role='productList' data-bind="var: category(@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: productListTemplate; withReviews:1; items_per_page: 24;" class='listStyleNone fluidList clearfix noPadOrMargin prodMargin productList'>-->
-					<ul data-tlc="bind $var '.@products'; prodlist_infinite#infiniteproductlist  --withreviews='1' --withinventory='1' --withvariations='1' --itemsperpage='12' --templateid='productListTemplate'  --legacy;" data-app-role="productList" class="listStyleNone fluidList clearfix noPadOrMargin prodMargin productList">
+					<ul data-tlc="bind $var '.@products'; prodlist_infinite#infiniteproductlist  --withreviews='1' --withInventory='1' --withVariations='1' --itemsperpage='12' --templateid='productListTemplate'  --legacy;" data-app-role="productList" class="listStyleNone fluidList clearfix noPadOrMargin prodMargin productList">
 						<!-- Removed until better placement can be acheived in future deploy <div class='catTitle floatLeft' data-bind='var: category(pretty); format:catText; extension: myRIA;'></div> -->
 						<a class="buyerGuides floatLeft pointer" href="#!category/.buyer_guides"><h4>VIEW BUYER GUIDES</h4><span>Learn how to shop for these items</span></a>
 						<div class="photosOnly">
@@ -1656,7 +1656,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 							
 <!-- MARK					<ul data-tlc="bind $var '.%page.mfg'; if(is $var --blank;) {{bind var 'ujena';}}; beachmart#prodsearchfeaturedbybrand  --defaultvalue='ujena' --size='24' --templateid='productListTemplateResults'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall"></ul> 
 <!-- MARK					<ul data-tlc="bind $var '.%meta.CAT_THUMB'; if(is $var --blank;) {{bind var 'ujena';}}; beachmall_search#searchbytag  --replacify='true' --templateid='productListTemplateResults' --filter='{&quot;size&quot;:&quot;25&quot;,&quot;mode&quot;:&quot;elastic-native&quot;,&quot;filter&quot;:{&quot;and&quot;:{&quot;filters&quot;:[{&quot;term&quot;:{&quot;prod_mfg&quot;:&quot;replacify&quot;}},{&quot;term&quot;:{&quot;tags&quot;:&quot;IS_BESTSELLER&quot;}}]}}}';" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall"></ul> -->
-<!-- MARK -->				<ul data-tlc="bind $var '.@products'; prodlist_infinite#infiniteproductlist  --withreviews='1' --withinventory='1' --withvariations='1' --itemsperpage='12' --templateid='productListTemplate'  --legacy;" data-app-role="productList" class="listStyleNone fluidList clearfix noPadOrMargin prodMargin productList">
+<!-- MARK -->				<ul data-tlc="bind $var '.@products'; prodlist_infinite#infiniteproductlist  --withreviews='1' --withInventory='1' --withVariations='1' --itemsperpage='12' --templateid='productListTemplate'  --legacy;" data-app-role="productList" class="listStyleNone fluidList clearfix noPadOrMargin prodMargin productList">
 						</div>
 						<!-- <div class='standardCarouselPagenation'></div> -->
 					</div>
@@ -1676,7 +1676,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 							
 <!-- MARK					<ul data-tlc="bind $var '.%page.mfg'; beachmart#prodsearchbestsellersbybrand  --size='24' --templateid='productListTemplateResultsCustomSmaller'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall"></ul> <!-- defaultValue:ujena; --> 
 <!-- MARK this will need correct filter object added if used					<ul data-tlc="bind $var '.%meta.CAT_THUMB'; if(is $var --blank;) {{bind var 'ujena';}}; beachmall_search#searchbytag  --replacify='true' --templateid='productListTemplateResults' --filter='{&quot;size&quot;:&quot;25&quot;,&quot;mode&quot;:&quot;elastic-native&quot;,&quot;filter&quot;:{&quot;and&quot;:{&quot;filters&quot;:[{&quot;term&quot;:{&quot;prod_mfg&quot;:&quot;replacify&quot;}},{&quot;term&quot;:{&quot;tags&quot;:&quot;IS_BESTSELLER&quot;}}]}}}';" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall"></ul> -->
-<!-- MARK -->				<ul data-tlc="bind $var '.@products'; prodlist_infinite#infiniteproductlist  --withreviews='1' --withinventory='1' --withvariations='1' --itemsperpage='12' --templateid='productListTemplate'  --legacy;" data-app-role="productList" class="listStyleNone fluidList clearfix noPadOrMargin prodMargin productList">
+<!-- MARK -->				<ul data-tlc="bind $var '.@products'; prodlist_infinite#infiniteproductlist  --withreviews='1' --withInventory='1' --withVariations='1' --itemsperpage='12' --templateid='productListTemplate'  --legacy;" data-app-role="productList" class="listStyleNone fluidList clearfix noPadOrMargin prodMargin productList">
 						</div>
 						<!-- <div class='standardCarouselPagenation'></div> -->
 					</div>
@@ -1694,7 +1694,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 							<!-- <a class="carouselButtonDkBlue bestCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
 							<a class="carouselButtonDkBlue bestCarouselNext carouselButtonDkBlueNext" href="#">next</a> -->
 							
-							<ul data-tlc="bind $var '.@products'; prodlist_infinite#infiniteproductlist  --withreviews='1' --withinventory='1' --withvariations='1' --itemsperpage='12' --hidesummary='true' --templateid='productListTemplate'  --legacy;" data-app-role="productList" class="listStyleNone fluidList clearfix noPadOrMargin brandsProductList"></ul>
+							<ul data-tlc="bind $var '.@products'; prodlist_infinite#infiniteproductlist  --withreviews='1' --withInventory='1' --withVariations='1' --itemsperpage='12' --hideSummary='true' --templateid='productListTemplate'  --legacy;" data-app-role="productList" class="listStyleNone fluidList clearfix noPadOrMargin brandsProductList"></ul>
 
 						</div>
 						<!-- <div class='standardCarouselPagenation'></div> -->
@@ -1942,7 +1942,7 @@ remember to NOT put the button inside the 'onclick' container or two events will
 				<!-- <div class='prodListMiniVariation' data-bind='var: product(pid); format:atcVariations; extension:store_product;'></div> -->
 				<div data-tlc="bind $var '.%attribs.user:grp_siblings'; if(is $var --notblank;) {{ apply --show; }}; " class="displayNone">
 					<div data-tlc="bind $var '.pid'; apply --attrib='data-pid'; " class="clearfix prodListSibs">
-						<ul data-tlc="bind $var '.%attribs.user:grp_siblings'; beachmall_store#siblingproductlist --hidesummary='true' --before='<b>Available Colors:</b> <span class=&quot;zhint&quot;>(click image to select)</span>' --withinventory='1' --withvariations='1' --templateid='productListTemplateToolTipThumb'  --legacy;" class="listStyleNone noPadOrMargin fluidList"></ul>
+						<ul data-tlc="bind $var '.%attribs.user:grp_siblings'; beachmall_store#siblingproductlist --hideSummary='true' --before='<b>Available Colors:</b> <span class=&quot;zhint&quot;>(click image to select)</span>' --withInventory='1' --withVariations='1' --templateid='productListTemplateToolTipThumb'  --legacy;" class="listStyleNone noPadOrMargin fluidList"></ul>
 	<!-- MARK wasn't this replaced?? 					<div data-tlc="bind $var '.'; beachmall_store#siblingcount  --legacy;" data-legacy-useparentdata="true" class="prodListSibsText displayNone">More Colors Available!</div> -->
 					</div>
 				</div>
@@ -2388,7 +2388,7 @@ this will likely become more flexible in the future. ###
 	<img data-tlc="bind $var '.%attribs.zoovy:prod_image99'; magictoolbox_mzp#magicthumb  --legacy;" src="blank.gif" alt="" height="85" width="300">
 
 	<div id="prodSiblings" class="clearfix">
-		<ul data-tlc="bind $var '.%attribs.user:grp_siblings'; store_prodlist#productlist  --hidemultipage='true' --before='<b>Available Colors:</b> <span class=&quot;zhint&quot;>(click image to select)</span>' --withinventory='1' --withvariations='1' --templateid='productListTemplateToolTipThumb'  --legacy;" class="listStyleNone noPadOrMargin fluidList clearfix"></ul> <!-- id='prodlistSiblings' -->
+		<ul data-tlc="bind $var '.%attribs.user:grp_siblings'; store_prodlist#productlist  --hidemultipage='true' --before='<b>Available Colors:</b> <span class=&quot;zhint&quot;>(click image to select)</span>' --withInventory='1' --withVariations='1' --templateid='productListTemplateToolTipThumb'  --legacy;" class="listStyleNone noPadOrMargin fluidList clearfix"></ul> <!-- id='prodlistSiblings' -->
 	</div>
 
 <!--<form data-bind='var: product(pid); format:atcForm; extension:store_product;' class='prodViewerAddToCartForm clearfix' action='#' onSubmit="app.ext.myRIA.u.addItemToCart($(this)); return false;">
@@ -2486,11 +2486,11 @@ this will likely become more flexible in the future. ###
 			</div>
 			
 			<div class="tabBody" data-anytab-content="prodBundle">
-				<ul data-tlc="bind $var '.%attribs.zoovy:asm_bundle_products'; store_prodlist#productlist  --hidesummary='true' --withinventory='1' --withvariations='1' --templateid='productListTemplateBundle'  --legacy;" class="productList listStyleNone noPadOrMargin fluidList clearfix bundleProdlist"></ul>
+				<ul data-tlc="bind $var '.%attribs.zoovy:asm_bundle_products'; store_prodlist#productlist  --hideSummary='true' --withInventory='1' --withVariations='1' --templateid='productListTemplateBundle'  --legacy;" class="productList listStyleNone noPadOrMargin fluidList clearfix bundleProdlist"></ul>
 			</div>
 			
 			<div class="tabBody" data-anytab-content="prodColors">
-				<ul data-tlc="bind $var '.%attribs.user:prod_colors'; store_prodlist#productlist  --hidesummary='true' --templateid='productListTemplateBundle'  --legacy;" class="productList listStyleNone noPadOrMargin fluidList clearfix bundleProdlist"></ul>
+				<ul data-tlc="bind $var '.%attribs.user:prod_colors'; store_prodlist#productlist  --hideSummary='true' --templateid='productListTemplateBundle'  --legacy;" class="productList listStyleNone noPadOrMargin fluidList clearfix bundleProdlist"></ul>
 			</div>
 			
 			<div data-anytab-content="prodReviews" class="tabbedProductList tabbedPowerReview tabBody">
@@ -2547,7 +2547,7 @@ this will likely become more flexible in the future. ###
 				<div data-tlc="bind $var '.%attribs.zoovy:related_products'; if(is $var --notblank;) {{ apply --show; }}; " class="displayNone">
 					<div class="testCarCont" data-anytab-content="prodlistRelated">
 						<div class="testCar">
-							<ul data-tlc="bind $var '.%attribs.zoovy:related_products'; store_prodlist#productlist  --hidesummary='true' --withinventory='1' --withvariations='1' --templateid='productListTemplate'  --legacy;" class="testUL listStyleNone"></ul>
+							<ul data-tlc="bind $var '.%attribs.zoovy:related_products'; store_prodlist#productlist  --hideSummary='true' --withInventory='1' --withVariations='1' --templateid='productListTemplate'  --legacy;" class="testUL listStyleNone"></ul>
 						</div>
 						<div class="testPrev pointer displayNone">PREVIOUS</div>
 						<div class="testNext pointer displayNone">NEXT</div>
@@ -2557,7 +2557,7 @@ this will likely become more flexible in the future. ###
 				<div data-tlc="bind $var '.%attribs.zoovy:accessory_products'; if(is $var --notblank;) {{ apply --show; }}; " class="displayNone">
 					<div class="testCarCont2 displayNone" data-anytab-content="prodlistAccessories">
 						<div class="testCar2">
-							<ul data-tlc="bind $var '.%attribs.zoovy:accessory_products'; store_prodlist#productlist  --hidesummary='true' --withinventory='1' --withvariations='1' --templateid='productListTemplate'  --legacy;" class="testUL2 listStyleNone"></ul>
+							<ul data-tlc="bind $var '.%attribs.zoovy:accessory_products'; store_prodlist#productlist  --hideSummary='true' --withInventory='1' --withVariations='1' --templateid='productListTemplate'  --legacy;" class="testUL2 listStyleNone"></ul>
 						</div>	
 						<div class="testPrev2 pointer displayNone">PREVIOUS</div>
 						<div class="testNext2 pointer displayNone">NEXT</div>

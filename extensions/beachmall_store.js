@@ -477,8 +477,8 @@ var beachmall_store = function(_app) {
 				//gets list of siblings from product (if present) and puts first two on product list
 				//the one that doesn't match the product is set first
 			siblingproductlist : function($tag,data)	{
-			//	_app.u.dump("BEGIN beachmall_store.renderFormats.siblingProductList");
-			//	_app.u.dump(" -> data.bindData: "); _app.u.dump(data.bindData); _app.u.dump(data.value); 
+//				_app.u.dump("BEGIN beachmall_store.renderFormats.siblingProductList");
+//				_app.u.dump(" -> data.bindData: "); _app.u.dump(data.bindData); _app.u.dump(data.value); 
 				var pid = _app.u.makeSafeHTMLId($tag.parent().attr('data-pid'));
 		
 				if(_app.u.isSet(data.value))	{
