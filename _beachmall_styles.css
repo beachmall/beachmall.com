@@ -1339,10 +1339,9 @@ h1.prodName	{font-size:21px; font-weight:normal; text-rendering:optimizelegibili
 .variation.pogType_imgselect, .variation.variation_imgselect {float:left;}
 .optionsSelect {clear:both; display:block;}
 .optionsParent .zhint {margin:3px 0; font-family:"Open Sans"; font-weight:normal; font-size:10px; text-align:left; color:#777777; clear:both;}
-.ui-tooltip {background:transparent; border:none; border-radius:0; box-shadow:0; padding:0; position:relative;}
+.ui-tooltip {background:transparent !important; border:none !important; border-radius:0; box-shadow:0; padding:0;}
 .ui-tooltip-content: {position:relative;}
-.toolTipWrapper {width:400px; background:#777777; border:none; border-radius:0; padding:4px; position:absoloute; top:500px; left:500px;}
-.toolTipWrapper:before {width:10px;}
+.toolTipWrapper {width:400px; background:#777777; border:none; border-radius:0; padding:4px;}
 .ui-tooltip  span.optionsZoom {width:400px; padding:5px 0 10px 0; text-align:center; background:#777777; color:#ffffff; display:block; font-family:"Open Sans"; border:none;}
 .ui-tooltip  .toolTipWrapper .optionsZoomThumb {margin:5px auto 0 auto;}
 .ui-tooltip  .toolTipWrapper .optionsZoomThumb img {margin:0 10px 0 0;}
