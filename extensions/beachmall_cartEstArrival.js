@@ -228,7 +228,7 @@ var beachmall_cartestarrival = function(_app) {
 				_app.u.dump("BEGin beachmall_cartestarrival.u.getShipQuotes");
 			//	var $context = $(_app.u.jqSelector('#','cartStuffList_'+stid));
 				var $context = $(_app.u.jqSelector('.productListTemplateCart[data-stid="'+stid+'"]'));
-		dump('selector'); dump(stid); dump($context); $context.css('background','blue'); $context.attr('howdyDoodyTime','yes!');
+				
 				//here, inventory check is done instead of isProductPurchaseable, because is used specifically to determine whether or not to show shipping.
 				// the purchaseable function takes into account considerations which have no relevance here (is parent, price, etc).
 //				_app.u.dump(_app.data['appProductGet|'+pid]);

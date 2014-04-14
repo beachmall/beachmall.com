@@ -147,11 +147,10 @@ var beachmall_store = function(_app) {
 							return '<div class="toolTipWrapper"><span class="quickviewZoom">'+prodName+'</span><img src="'+productImg+'" width="400" height="400" /></div>';
 							}
 						},
-						tooltipClass : "toolTipBG",
-						open : function(event,ui){
-							_app.u.dump('----It opened');
-							$('.ui-tooltip').css({'border':'solid 0 red','background':'transparent','border-radius':'0'});
-						}
+					//	tooltipClass : "toolTipBG",
+					//	open : function(event,ui){
+					//		_app.u.dump('----It opened');
+					//	}
 					});
 			},
 			onError : function() {
@@ -674,7 +673,7 @@ var beachmall_store = function(_app) {
 				//			_app.u.dump('--> prodAttribList'+j+'---'); _app.u.dump(prodAttribList);
 							for(i=0;i<L;i++) {
 								tempProd = _app.data['appProductGet|'+_app.u.makeSafeHTMLId(prodAttribList[i])];
-								if(tempProd['%attribs'] && tempProd['%attribs']['zoovy:prod_is_tags']) {
+								if(tempProd && tempProd['%attribs'] && tempProd['%attribs']['zoovy:prod_is_tags']) {
 									tempProd['%attribs']['zoovy:prod_is_tags'].indexOf('IS_DISCONTINUED') == -1 ? count = count : count += 1;
 								}
 							}

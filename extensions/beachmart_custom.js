@@ -1124,7 +1124,7 @@ uities
  
 							//calls to fetchLocationInfoByZip by updateShipPostal will have a callback to check if a product page needs time in transit updated
 							typeof(callback) == "function" ? _app.ext.cco.calls.cartSet.init({"ship/city":city,"ship/region":state,"ship/postal":zip,"_cartid":_app.model.fetchCartID()},{"callback":callback,"zip":zip},'passive') :
-								_app.ext.cco.calls.cartSet.init({"ship/city":city,"ship/region":state,"ship/postal":zip},{},'passive'); 
+								_app.ext.cco.calls.cartSet.init({"ship/city":city,"ship/region":state,"ship/postal":zip,"_cartid":_app.model.fetchCartID()},{},'passive'); 
 							
 							$('.shipCity').each(function(){$(this).text(city || "");});//dump(city);
 							$('.shipRegion').each(function(){$(this).text(state || "");});
