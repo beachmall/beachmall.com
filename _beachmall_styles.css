@@ -877,7 +877,7 @@ HOMEPAGE
 .floatingBar .cartIcon p {height:20px; width:133px; position:absolute; left:62px; top:9px;}
 .floatingBar .cartIcon a {color:#ffffff;}
 .floatingBar .cartItemCount {height:20px; width:21px; text-align:center; color:#ffffff; display:inline-block; background:#A8342B; border-radius:10px; line-height:19px;}
-.floatingBar .checkoutButton {height:40px; width:100px; background-color:#f8c301; position:absolute; right:94px; top:4px; border:none; color:#ffffff; font-family:Oswald; font-size:14px; font-weight:bold; padding-bottom:3px;}
+.floatingBar .checkoutButton {background-color:#f8c301; position:absolute; right:94px; top:4px; border:none; color:#ffffff; font-family:Oswald; font-size:14px; font-weight:bold; padding:6px 18px 7px 18px;}
 .floatingBar .floatingBarClose {height:20px; width:20px; background-color:#a8342b; position:absolute; right:10px; top:10px; border:none; background-position:-23px -96px;}
 
 .homeTemplate {position:relative;}

@@ -1364,9 +1364,9 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 
 	<div class='floatingBar'>
     	<div class='backToTop pointer' onClick="myApp.ext.beachmall_store.u.scrollToTop()">&#187 BACK TO TOP</div>
-        <div class='recentlyViewed pointer' onClick="return showContent('company',{'show':'recent'});"><span>Recently Viewed Item(s)&nbsp; </span><span class='numRecentlyViewed displayNone'>0</span><!--<span class='fontWhite recentCarat'> &#187 </span><span class='fontYellow recentViewItems'><a class='bindByAnchor' href='#!company?show=recent'> VIEW ITEM(S)</a></span>--></div>
+        <a class='recentlyViewed pointer' href="#!company/recent"><span>Recently Viewed Item(s)&nbsp; </span><span class='numRecentlyViewed displayNone'>0</span><!--<span class='fontWhite recentCarat'> &#187 </span><span class='fontYellow recentViewItems'><a class='bindByAnchor' href='#!company?show=recent'> VIEW ITEM(S)</a></span>--></a>
         <div class='cartIcon sprite pointer' onClick="myApp.ext.quickstart.u.showCartInModal({'templateID':'cartTemplate'});"><span class='cartItemCount'>0</span><p><span class='fontWhite'>&#187 </span><span class='fontYellow'>SHOPPING CART</span></p></div>
-        <button class='checkoutButton' onClick="showContent('checkout',{});">CHECK OUT</button>
+        <a class='checkoutButton' href="#!checkout">CHECK OUT</a>
         <button class='floatingBarClose sprite' onclick="$('.floatingBar').hide(); return false;"></button>
     </div>
 
