@@ -386,7 +386,7 @@ Action
 							var methods = _app.data[datapointer]['@Services'][i].method;
 							var methL = methods.length;
 							//_app.u.dump(" S -> "+i+") id: "+services[i].method);
-							//if(methods[i]) _app.u.dump(" M -> "+i+") id: "+methods[i].method);
+							//if(methods[i]) _app.u.dump(" M -> "+i+") id: "+methods);
 							for(var j=0; j < methL; j +=1) {
 								if(services[i].method == methods[j].method) {
 									$table.append(_app.renderFunctions.transmogrify({'id':'service_'+services[i].id},"shipGridTemplate",services[i]));
@@ -1555,10 +1555,11 @@ else	{
 if(prodAttribs['user:prod_ship_expavail'] && prodAttribs['user:prod_ship_expavail'] == 1 && backorder == 0)	{
 //if expedited shipping is not available, no other methods show up (will ship ground)
 	$('.deliveryMethod',$r).append(data['@Services'][index]['method'])
-	$('.deliveryMethod',$r).append(" <span class='zlink'>(Need it faster?)</span>").addClass('pointer').click(function(){
-		_app.ext.beachmart.a.showShipGridInModal('appShippingTransitEstimate');
+// MARK wants only available shipping methods for product to show, but they aren't listed in the product record, will need another call to grab this info.
+//	$('.deliveryMethod',$r).append(" <span class='zlink'>(Need it faster?)</span>").addClass('pointer').click(function(){
+//		_app.ext.beachmart.a.showShipGridInModal('appShippingTransitEstimate');
 		//_app.ext.beachmart.a.showShipGridInModal('cartShippingMethods');
-		});
+//		});
 	}
 else	{
 	_app.u.dump(" -> prodAttribs['user:prod_ship_expavail']: "+prodAttribs['user:prod_ship_expavail']);
