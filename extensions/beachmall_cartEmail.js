@@ -106,6 +106,7 @@ var beachmall_cartemail = function(_app) {
 
 				params._cmd = 'appMashUpRedis';
 				_app.model.addDispatchToQ(params,'immutable');
+				_app.model.dispatchThis('immutable');
 				
 				 //_app.ext.beachmall_cartemail.calls.cartemailmashup.init(params,{"callback":function(rd){				
 				//	if(_app.model.responseHasErrors(rd)){
