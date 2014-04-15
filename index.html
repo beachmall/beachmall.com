@@ -2088,9 +2088,14 @@ container ul should have lineItemProdlist class on it instead of productList
 
 <table>
 	<tbody><tr id="shipGridTemplate">
+<!--
 		<td><span data-tlc="bind $var '.carrier'; if(is $var --notblank;) {{ apply --class='carrier_'; }}; if (is $var --notblank;) {{apply --add --class='carrier_'; apply --append;}};"></span></td>
 		<td><span data-tlc="bind $var '.method'; if (is $var --notblank;) {{apply --append;}};"></span></td>
 		<td><span data-tlc="bind $var '.arrival_yyyymmdd'; beachmart#ymdpretty  --legacy;"></span></td>
+ MARK : why are the data binds below still working? -->	
+		<td><span data-bind="var: services(carrier); format:addClass; className:carrier_;"></span></td>
+		<td><span data-bind="var: services(method); format:text;"></span></td>
+		<td><span data-bind="var: services(arrival_yyyymmdd); format:ymd2Pretty; extension:beachmart;"></span></td>
 	</tr></tbody>
 </table>
 

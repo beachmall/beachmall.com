@@ -155,12 +155,14 @@ var beachmall_cartestarrival = function(_app) {
 			//pass in the @services object in a appShippingTransitEstimate and the index in that object of the fastest shipping method will be returned.
 			getShipMethodByID : function(servicesObj,ID,useProdPage)	{
 				var r = false; //what is returned. will be index of data object
-				
-				if(_app.data.cartShippingMethods && _app.data.cartShippingMethods["@methods"]){
+				var thisCartDetail = _app.data['cartDetail|'+_app.model.fetchCartID()];
+				dump('-----SHIPMETHODS:'); dump(thisCartDetail["@SHIPMETHODS"]);
+				if(thisCartDetail && thisCartDetail["@SHIPMETHODS"]){
+				//if(_app.data.cartShippingMethods && _app.data.cartShippingMethods["@methods"]){
 					var method = false;
-					for(var i=0; i < _app.data.cartShippingMethods["@methods"].length; i++){
-						if(_app.data.cartShippingMethods["@methods"][i].id == ID){
-							method = _app.data.cartShippingMethods["@methods"][i].method;
+					for(var i=0; i < thisCartDetail["@SHIPMETHODS"].length; i++){
+						if(thisCartDetail["@SHIPMETHODS"][i].id.split(':')[1] == ID){
+							method = thisCartDetail["@SHIPMETHODS"][i].method;
 							break;
 							}
 						}

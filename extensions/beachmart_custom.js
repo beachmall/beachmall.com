@@ -353,7 +353,7 @@ Action
 //Data must already be in memory to execute this action.
 //added as a .click to the shipping method
 			showShipGridInModal : function(datapointer, cart){
-	//_app.u.dump('----> showShipGridInModal datapointer'); _app.u.dump(datapointer);
+	_app.u.dump('----> showShipGridInModal datapointer'); _app.u.dump(datapointer);
 				var $parent = $('#modalShipGrid').empty();
 //the modal opens as quick as possible so users know something is happening.
 //open if it's been opened before so old data is not displayed. placeholder content (including a loading graphic, if set) will be populated pretty quick.
@@ -369,12 +369,13 @@ Action
 					$table.append("<tr class='ztable_row_head'><td></td><td>Method</td><td>Est. Arrival</td></tr>");
 					var services = _app.data[datapointer]['@Services']
 					var L = services.length;
-//					_app.u.dump(" -> @Services.length: "+L);
+					_app.u.dump(" -> @Services.length: "+L);
 //MARK TO DO: FIND OUT IF EACH PRODUCT'S SHIPPING METHODS CAN BE ATTAINED HERE TO BE SURE NO PRODUCT SPECIFIC UNAVAILABLE METHODS ARE SHOWN
 					for(var i = 0; i < L; i += 1)	{
 						if(cart) { //if this is in the cart, only show methods that match what is available in the cart shipping area
 //							_app.u.dump('-->'); _app.u.dump($('.cartShipMethods').text()); _app.u.dump(services[i].method);
 							var shipMethods = $('.cartShipMethods').text();
+						dump(shipMethods); _app.u.dump(services[i].method);
 							if(shipMethods.indexOf(services[i].method) != -1 && services[i].method != 'UPS Next Day Air') {
 								$table.append(_app.renderFunctions.transmogrify({'id':'service_'+services[i].id},"shipGridTemplate",services[i]));
 							}
