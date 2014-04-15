@@ -649,7 +649,8 @@
       "num_options_display" : "4",
       "brand_banner2" : "coppertone/coppertone_conti_spray_50_combo",
       "coupon_code" : "hazaah",
-      "banner1_link" : "%SESSION%/product/PA245"
+      "banner1_link" : "%SESSION%/product/PA245",
+	  "mfg" : "BeachMall"
    },
    ".beachwear.beach-swimwear.kids-swimsuit" : {
       "meta_keywords" : "beachwear beach wear kids boys girls babies board shorts swimwear swimsuits gear beach apparel apparels clothing",
