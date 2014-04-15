@@ -593,7 +593,51 @@ This one block should get called for both img and imageurl but obviously, imageu
 //passing the command into this will verify that the format exists (whether it be core or not)
 
 	this.format_currency = function(argObj,globals)	{
-		var r = "$"+globals.binds[argObj.bind]; //+" ("+arg.value.value+")";
+		//var r = "$"+globals.binds[argObj.bind]; //+" ("+arg.value.value+")";	
+		
+/*beachmall everything until the next "beachmall" comment is custom (ok, from 201346)*/
+		var decimalPlace = 2;
+		var r;
+		var a = new Number(globals.binds.var);
+
+		var isNegative = false;
+//only deal with positive numbers. makes the math work easier. add - sign at end.
+//if this is changed, the a+b.substr(1) line later needs to be adjusted for negative numbers.
+		if(a < 0)	{
+			a = a * -1;
+			isNegative = true;
+			}
+		
+		var b = a.toFixed(decimalPlace); //get 12345678.90
+		//dump(" -> b = "+b);
+		a = parseInt(a); // get 12345678
+		b = (b-a).toPrecision(decimalPlace); //get 0.90
+		b = parseFloat(b).toFixed(decimalPlace); //in case we get 0.0, we pad it out to 0.00
+		a = a.toLocaleString();//put in commas - IE also puts in .00, so we'll get 12,345,678.00
+		//dump(" -> a = "+a);
+		//if IE (our number ends in .00)
+		if(a.indexOf('.00') > 0)	{
+			a=a.substr(0, a.length-3); //delete the .00
+			_app.u.dump(" -> trimmed. a. a now = "+a);
+			}
+		r = a+b.substr(1);//remove the 0 from b, then return a + b = 12,345,678.90
+
+		//if the character before the decimal is just a zero, remove it.
+		if(r.split('.')[0] == 0){
+			r = '.'+r.split('.')[1]
+			}
+		
+		//dump(" -> r = "+r);
+		r = "$" + r;
+		
+		if(isNegative) {
+			r = "-"+r;
+		}
+		
+		var cents = r.split('.')[1]; dump('----cents'); dump(cents);
+		r = r.split('.')[0]+".<span class='cents'>"+cents+"</span>";
+/*beachmall*/			
+
 		return r;
 		} //currency
 

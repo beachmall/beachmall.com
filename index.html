@@ -2122,7 +2122,7 @@ SANITY -> if you change the height and width of this image, change the .minimalM
 	</div>
 	<a class="hideInMinimalMode pointer moreDetailsSmall floatRight" data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';" onMouseover='myApp.ext.beachmall_store.a.resultsredmousein($(this));' onMouseout='myApp.ext.beachmall_store.a.resultsredmouseout($(this));'>VIEW DETAILS</a>
 	<div class='prodTextContainerSmall'>
-		<h6 data-tlc="bind $var '.base_price';  if (is $var --notblank;) {{format --currency='USD'; apply --append;}};" class="hideInMinimalMode floatLeft prodPriceSmall price"></h6>
+		<h6 data-tlc="bind $var '.base_price';  if (is $var --notblank;) {{math --div='100'; format --currency='USD'; apply --append;}};" class="hideInMinimalMode floatLeft prodPriceSmall price"></h6>
 <!--Bug#3   <span class='prodPriceDesc' data-bind='format:prodPriceDesc; extension:store_filter; useParentData:true; isElastic:1;'></span>-->		
 		<h5 data-tlc="bind $var '.prod_name'; if (is $var --notblank;) {{apply --append;}};" class="hideInMinimalMode clearfix prodDescSmall"></h5>
 		<div data-tlc="bind $var '.%attribs.zoovy:prod_msrp'; if(is $var --notblank;) {{ apply --show; }}; " class="regularPriceContainer floatLeft displayNone">
@@ -2171,7 +2171,7 @@ END BUG6-->
 	</a>
 		
 	<div class='prodTextContainerSmall'>
-		<h6 data-tlc="bind $var '.base_price';  if (is $var --notblank;) {{format --currency='USD'; apply --append;}};" class="hideInMinimalMode floatLeft prodPriceSmall price"></h6>
+		<h6 data-tlc="bind $var '.base_price';  if (is $var --notblank;) {{math --div='100'; format --currency='USD'; apply --append;}};" class="hideInMinimalMode floatLeft prodPriceSmall price"></h6>
 <!--Bug#3   <span class='prodPriceDesc' data-bind='format:prodPriceDesc; extension:store_filter; useParentData:true; isElastic:1;'></span>-->		
 		<h5 data-tlc="bind $var '.prod_name'; if (is $var --notblank;) {{apply --append;}};" class="hideInMinimalMode clearfix prodDescSmall"></h5>
 		<div data-tlc="bind $var '.%attribs.zoovy:prod_msrp'; if(is $var --notblank;) {{ apply --show; }}; " class="regularPriceContainer floatLeft displayNone">
@@ -2208,7 +2208,7 @@ END BUG6-->
 		<div class='prodThumbContainer myProdThumb'>
 			<img data-useparentdata='1' data-tlc="beachmall_store#appthumb --legacy; apply --append;" src="blank.gif" class='prodThumb push' width='210' height='210'>
             <div class='prodTextContainer'>   
-				<h6 data-tlc="bind $var '.base_price';  if (is $var --notblank;) {{format --currency='USD'; apply --append;}};" class="price hideInMinimalMode floatLeft prodPrice"></h6>
+				<h6 data-tlc="bind $var '.base_price';  if (is $var --notblank;) {{math --div='100'; format --currency='USD'; apply --append;}};" class="price hideInMinimalMode floatLeft prodPrice"></h6>
 				<div class='hideInMinimalMode floatRight pointer moreDetails'>VIEW DETAILS</div> 
                 <h5 data-tlc="bind $var '.prod_name'; if (is $var --notblank;) {{apply --append;}};" class="hideInMinimalMode clearfix prodDesc"></h5>
             </div>
@@ -2229,7 +2229,7 @@ END BUG6-->
 				<img data-useparentdata='1' data-tlc="beachmall_store#appthumb --legacy; apply --append;" src="blank.gif" class='prodThumb' width='208' height='208'>
 		    </div>
             <div class='prodTextContainerSmall'>
-				<h6 data-tlc="bind $var '.base_price';  if (is $var --notblank;) {{format --currency='USD'; apply --append;}};" class="price hideInMinimalMode floatLeft prodPriceSmall"></h6>
+				<h6 data-tlc="bind $var '.base_price';  if (is $var --notblank;) {{math --div='100'; format --currency='USD'; apply --append;}};" class="price hideInMinimalMode floatLeft prodPriceSmall"></h6>
 				<div data-tlc="bind $var '.%attribs.user:prod_promo'; if(is $var --notblank;) {{apply --show;}};" class="starBurst sprite displayNone">
 					<div class='starBurstTextOuter'>
 						<div data-tlc="bind $var '.%attribs.user:prod_promo'; if(is $var --notblank;) {{apply --append;}};" class="starBurstTextInner"></div>
