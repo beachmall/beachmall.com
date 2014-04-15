@@ -34,7 +34,12 @@ var beachmall_cartemail = function(_app) {
 				this.dispatch(params,_tag,Q);
 			},
 			dispatch : function(params,_tag,Q)	{
-				_app.model.addDispatchToQ($.extend({"_cmd":"_appMashUpRedis","_tag" : _tag},Q || 'immutable'),params);	
+				_app.model.addDispatchToQ( $.extend(true,{
+				    '_cmd':'appMashUpRedis',
+					'_tag':_tag,
+				    }, params) , 'immutable');
+				
+			dump('---Q'); dump(Q);
 			}			
 		}, //cartemailmashup
 	
@@ -49,7 +54,7 @@ var beachmall_cartemail = function(_app) {
 		init : {
 			onSuccess : function()	{
 				var r = false; //return false if extension won't load for some reason (account config, dependencies, etc).
-				
+				dump('------Start beachmall_cartemail.js...');
 				//_app.u.dump('--> Extension beachmall_cartemail started');
 				
 				//if there is any functionality required for this extension to load, put it here. such as a check for async google, the FB object, etc. return false if dependencies are not present. don't check for other extensions.
@@ -75,6 +80,7 @@ var beachmall_cartemail = function(_app) {
 		
 				//processes cart e-mail form and calls appMashUpSMTP for it
 			emailcart : function($form) {
+			dump('-----start email cart...');
 				var uName = $('input[type="text"]',$form).val();
 				var eAddress = $('input[type="email"]',$form).val();
 				var newsletter = $('input[type="checkbox"]',$form).is(':checked');
@@ -86,27 +92,30 @@ var beachmall_cartemail = function(_app) {
 				var params = {
 					'_cartid' 	: _app.model.fetchCartID(),
 					'platform' 	: 'appMashUpRedis-EMAILCART.json',
-					'%vars' : [
+					'%vars' : {
 						'email':eAddress,
-						'fullname':uName,
-					    ]
+						'fullname':uName
+					    }
 				//	"permission"	: "_mashups/cartEmailPermissions",
 				//	"sender"		: "help@beachmall.com",
-					"recipient"		: eAddress,
+				//	"recipient"		: eAddress,
 				//	"subject"		: "Your Beachmall.com cart contents",
 				//	"products"		: products,
 				//	"body"			: body
 				};
+
+				params._cmd = 'appMashUpRedis';
+				_app.model.addDispatchToQ(params,'immutable');
 				
-				_app.ext.beachmall_cartemail.calls.cartemailmashup.init(params,{"callback":function(rd){
-					if(_app.model.responseHasErrors(rd)){
-						$form.anymessage({'message':rd});
-					}
-					else	{
-						$form.anymessage(_app.u.successMsgObject('Your message has been sent.'));
-//							_gaq.push(['_trackEvent','Cart','User Event','Cart e-mailed']);
-					}
-				}});
+				 //_app.ext.beachmall_cartemail.calls.cartemailmashup.init(params,{"callback":function(rd){				
+				//	if(_app.model.responseHasErrors(rd)){
+				//		$form.anymessage({'message':rd});
+				//	}
+				//	else	{
+				//		$form.anymessage(_app.u.successMsgObject('Your message has been sent.'));
+//				//			_gaq.push(['_trackEvent','Cart','User Event','Cart e-mailed']);
+				//	}
+				//}});
 			
 		
 		//		_app.u.dump('--> All that stuff from the e-mail form:'); 
