@@ -2648,7 +2648,7 @@ buyer to 'take with them' as they move between  pages.
 						infoObj.templateID = 'homepageTemplate'
 						}
 					//special page handling for brands category	
-/*<--BEACHMART*/			else if(catSafeID.indexOf('.beach-chairs.beach-gear') == 0)  {
+/*<--BEACHMART*/			else if(catSafeID.indexOf('.beach-chairs.beach-gear') == 0 || catSafeID.indexOf('.test') == 0)  {
 						infoObj.templateID='categoryTemplateBrands';
 						}
 					//special page handling for buyer guides category	

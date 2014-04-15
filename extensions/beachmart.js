@@ -325,7 +325,7 @@ var store_filter = function(_app) {
 			},
 		
 			testers : function($tag,data) {
-				app.u.dump('--> test'); app.u.dump();
+				dump('--> test'); dump(data.value);
 				//<div data-bind='useParentData:true; format:testers; extension:store_filter;'></div>
 			},
 

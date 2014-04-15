@@ -327,6 +327,7 @@ BRANDS CATEGORY PAGE
 .brandsPromoBanner div:nth-child(2) {height:60px; width:440px; margin:-4px 0 0 10px; text-align:center; font-size:30px; float:Left; line-height:25px;}
 .brandsPromoBanner div:nth-child(2) span {font-size:18px; line-height:27px;}
 .brandsPromoBanner div:nth-child(3) {height:60px; width:230px; font-size:24px; float:Right; margin:0 40px 0 0; padding:12px 0 0 0; line-height:17px;}
+.brandsPromoBanner div:nth-child(3) h3 {float:Right; color:#e0463a;}
 .brandsPromoBanner div:nth-child(3) span {font-family:"Open Sans"; font-size:14px; font-weight:bold; color:#e0463a; display:block; margin:7px 0 0 0; text-align:center;}
 
 .brandsTopCatContainer {height:auto; width:960px; padding:0px 30px;}

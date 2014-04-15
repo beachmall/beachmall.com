@@ -1428,6 +1428,7 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 					<span>BEACH BAGS</span>
 				</a>
 				<a href="#!category/.beach-chairs.beach-gear/Brands" class="additionalHompageCats floatLeft pointer"> 
+				<a href="#!category/.test" class="additionalHompageCats floatLeft pointer"> 
 				<!-- <div class='additionalHompageCats floatLeft pointer' onClick="return showContent('category',{'navcat':'.beach-chairs.beach-gear'});">  -->
 					<div class='addCatArrow sprite floatRight'></div>
 					<span>SHOP</span>
@@ -1610,7 +1611,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 	<div data-tlc="bind $var '.%page.coupon_code'; if(is $var --notblank;) {{ apply --show; }}; " class="brandsPromoBanner floatLeft">
 		<div>SPECIAL OFFER!</div>
 		<div><span>TAKE AN EXTRA</span><br>10% OFF ALL <span data-tlc="bind $var '.%page.mfg'; if (is $var --notblank;) {{apply --append;}};"></span> GEAR</div>
-		<div>PROMO CODE: <span data-tlc="bind $var '.%page.coupon_code'; if (is $var --notblank;) {{apply --append;}};"></span> <span>See Details</span></div>
+		<div>PROMO CODE: <h3 data-tlc="bind $var '.%page.coupon_code'; if (is $var --notblank;) {{apply --append;}};"></h3> <span>See Details</span></div>
 	</div>
 	
 	<ul data-tlc="bind $var '.id'; store_navcats#breadcrumb  --templateid='breadcrumbTemplate'  --legacy;" class="breadcrumb clearfix noPadOrMargin fluidList"></ul>
@@ -1618,11 +1619,13 @@ don't modify the 'data-templateid' unless you are changing template names and up
 		
 		
 	<div data-tlc="bind $var '.%page.description'; if(is $var --notblank;) {{ apply --show; }}; " class="displayNone">
+	<div data-tlc="bind $var '.%page.description'; store_filter#testers --legacy;"></div>
 		<div class='brandsCatContainer'> 
 			
 			<ul>
 				<li class="brandsHeader listStyleNone">
-					<img data-tlc="bind $var '.%page.banner1'; quickstart#banner  --height='250' --width='750' --legacy;">
+					<!-- <img data-tlc="bind $var '.%page.banner1'; quickstart#banner  --height='250' --width='750' --legacy;"> -->
+					<img data-tlc="bind $var '.%page.banner1'; if(is $var --notblank;) {{apply --img --media=$var --height='250' --width='500' --bgcolor=#ffffff --replace;}};" height='250' width='500'>
 					<ul>
 				   <!-- <p data-bind="var: category(%page.description2); format:wiki; wikiFormats:myRIA; editor: textarea;"></p> -->
 						<li><span data-tlc="bind $var '.%page.header'; if (is $var --notblank;) {{apply --append;}};"></span>
@@ -1655,8 +1658,9 @@ don't modify the 'data-templateid' unless you are changing template names and up
 							<a class="carouselButtonDkBlue featCarouselNext carouselButtonDkBlueNext" href="#">next</a> -->
 							
 <!-- MARK					<ul data-tlc="bind $var '.%page.mfg'; if(is $var --blank;) {{bind var 'ujena';}}; beachmart#prodsearchfeaturedbybrand  --defaultvalue='ujena' --size='24' --templateid='productListTemplateResults'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall"></ul> 
+<!-- MARK -->				<ul data-tlc="bind $var '.%page.mfg'; beachmall_search#searchbytag  --replacify='true' --templateid='productListTemplateResults' --filter='{&quot;size&quot;:&quot;25&quot;,&quot;mode&quot;:&quot;elastic-native&quot;,&quot;filter&quot;:{&quot;and&quot;:{&quot;filters&quot;:[{&quot;term&quot;:{&quot;prod_mfg&quot;:&quot;replacify&quot;}},{&quot;term&quot;:{&quot;tags&quot;:&quot;IS_BESTSELLER&quot;}}]}}}';" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall"></ul> 
 <!-- MARK					<ul data-tlc="bind $var '.%meta.CAT_THUMB'; if(is $var --blank;) {{bind var 'ujena';}}; beachmall_search#searchbytag  --replacify='true' --templateid='productListTemplateResults' --filter='{&quot;size&quot;:&quot;25&quot;,&quot;mode&quot;:&quot;elastic-native&quot;,&quot;filter&quot;:{&quot;and&quot;:{&quot;filters&quot;:[{&quot;term&quot;:{&quot;prod_mfg&quot;:&quot;replacify&quot;}},{&quot;term&quot;:{&quot;tags&quot;:&quot;IS_BESTSELLER&quot;}}]}}}';" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall"></ul> -->
-<!-- MARK -->				<ul data-tlc="bind $var '.@products'; prodlist_infinite#infiniteproductlist  --withreviews='1' --withInventory='1' --withVariations='1' --itemsperpage='12' --templateid='productListTemplate'  --legacy;" data-app-role="productList" class="listStyleNone fluidList clearfix noPadOrMargin prodMargin productList">
+<!-- MARK 				<ul data-tlc="bind $var '.@products'; prodlist_infinite#infiniteproductlist  --withreviews='1' --withInventory='1' --withVariations='1' --itemsperpage='12' --templateid='productListTemplate'  --legacy;" data-app-role="productList" class="listStyleNone fluidList clearfix noPadOrMargin prodMargin productList"> -->
 						</div>
 						<!-- <div class='standardCarouselPagenation'></div> -->
 					</div>

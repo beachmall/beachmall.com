@@ -634,7 +634,7 @@ This one block should get called for both img and imageurl but obviously, imageu
 			r = "-"+r;
 		}
 		
-		var cents = r.split('.')[1]; dump('----cents'); dump(cents);
+		var cents = r.split('.')[1];
 		r = r.split('.')[0]+".<span class='cents'>"+cents+"</span>";
 /*beachmall*/			
 
