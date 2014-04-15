@@ -190,7 +190,7 @@ ANIMATION TESTING
         <div class='cartIcon sprite pointer' onClick="myApp.ext.quickstart.u.showCartInModal({'templateID':'cartTemplate'});"><span class='cartItemCount'>0</span></div>
 	</nav>
     <nav class='topNavLinks floatRight openSansFontBold fontSize12' onMouseOver="myApp.ext.beachmart_dropdown.a.showDropdown($(this),100);" onMouseOut="myApp.ext.beachmart_dropdown.a.hideDropdown($(this));">
-        <a href="#" onClick="return showContent('customer',{'show':'myaccount'});">My Account</a> 
+        <a href="#!customer/myaccount">My Account</a> 
 		<div class='arrowContainer'></div>
     	<div class='dropdown myAcctDropdown'>
         	<ul class='listStyleNone'>
@@ -201,7 +201,7 @@ ANIMATION TESTING
         </div>
     </nav> 
     <nav class='topNavLinks floatRight openSansFont fontSize12' onMouseOver="myApp.ext.beachmart_dropdown.a.showDropdown($(this),150);" onMouseOut="myApp.ext.beachmart_dropdown.a.hideDropdown($(this));">
-		<a href="#" onClick="return showContent('company',{'show':'contact'});">Customer Care</a> |
+		<a href="#!company/contact">Customer Care</a> |
         <div class='arrowContainer2'></div>
 		<div class='dropdown custCareDropdown'>
         	<ul class='listStyleNone'>
@@ -1157,11 +1157,11 @@ ANIMATION TESTING
 	<section class='footerLinksContainer'>
     	<ul>
         	<li>CATEGORIES</li>
-            <li><a data-onclick='#!category?navcat=.beach-accessories' href='#!category?navcat=.beach-accessories'>Beach Accesories</a></li>
-            <li><a data-onclick='#!category?navcat=.beach-chair' href='#!category?navcat=.beach-chair'>Beach Chairs</a></li>
-            <li><a data-onclick='#!category?navcat=.beach-sports' href='#!category?navcat=.beach-sports'>Recreation</a></li>
-            <li><a data-onclick='#!category?navcat=.beach-umbrellas-shelter' href='#!category?navcat=.beach-umbrellas-shelter'>Umbrellas &#38 Shelter</a></li>
-            <li><a data-onclick='#!category?navcat=.beachwear' href='#!category?navcat=.beachwear'>Beach Wear</a></li>
+            <li><a href='#!category/.beach-accessories'>Beach Accesories</a></li>
+            <li><a href='#!category/.beach-chair'>Beach Chairs</a></li>
+            <li><a href='#!category/.beach-sports'>Recreation</a></li>
+            <li><a href='#!category/.beach-umbrellas-shelter'>Umbrellas &#38 Shelter</a></li>
+            <li><a href='#!category/.beachwear'>Beach Wear</a></li>
         </ul>
         <ul>
         	<li>ACCOUNT SERVICES</li>
@@ -1172,7 +1172,7 @@ ANIMATION TESTING
         </ul>
         <ul>
        	  <li>NAVIGATE</li>
-            <li><a data-onclick='#!category?navcat=.' href='#!category?navcat=.'>Home</a></li>
+            <li><a href='#!category/.'>Home</a></li>
             <li><a href="#!company/about">About Us</a></li>
             <li><a href="#!company/contact" onClick="myApp.ext.beachmall_store.a.resetContactPID();">Contact Us</a></li>
             <li><a href="#!company/faq">FAQ</a></li>
@@ -1184,9 +1184,9 @@ ANIMATION TESTING
         </ul>
         <ul>
         	<li>ADDITIONAL LINKS</li>
-            <li><a data-onclick='#!category?navcat=.buyer_guides' href='#!category?navcat=.buyer_guides'>Buying Guides</a></li>
+            <li><a href='#!category/.buyer_guides'>Buying Guides</a></li>
             <li><a href="#!company/contact" onClick="myApp.ext.beachmall_store.a.resetContactPID();">Wholesale</a></li>
-            <li><a data-onclick='#!category?navcat=.affiliates' href='#!category?navcat=.affiliates'>Affiliates</a></li>
+            <li><a href='#!category/.affiliates'>Affiliates</a></li>
             <li><a href="https://www.facebook.com/BeachMall" target="_blank">Facebook</a></li>
             <li><a href="https://twitter.com/Beachmall" target="_blank">Twitter</a></li>
             <li><a href="https://plus.google.com/104451134911916367843/posts" target="_blank">Google Plus</a></li>
@@ -1263,7 +1263,7 @@ ANIMATION TESTING
 
 </footer>
 <div class='copyright'>
-    <span onClick="return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beach-umbrellas-shelter.beach-umbrella'}}]}}});">Beachmall</span> Copyright 2013. All Rights Reserved. E-commerce Solution by <span><a target='_blank' href="http://www.zoovy.com/">Zoovy</a></span>
+    <span>Beachmall</span> Copyright 2013. All Rights Reserved. E-commerce Solution by <span><a target='_blank' href="http://www.zoovy.com/">Zoovy</a></span>
     <!-- START SCANALERT CODE -->
         <a class='mcAfee' target="_blank" href="https://www.mcafeesecure.com/RatingVerify?ref=www.beachmall.com"><img width="115" height="30" border="0" src="https://images.scanalert.com/meter/www.beachmall.com/32.gif" alt="McAfee Secure sites help keep you safe from identity theft, credit card fraud, spyware, spam, viruses and online scams" oncontextmenu="alert('Copying Prohibited by Law - McAfee Secure is a Trademark of McAfee, Inc.'); return false;"></a>
     <!-- END SCANALERT CODE -->
