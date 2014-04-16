@@ -53,7 +53,9 @@ var store_routing = function(_app) {
 				_app.router.appendHash({'type':'exact','route':'home','callback':'homepage'});
 				_app.router.appendHash({'type':'exact','route':'','callback':'homepage'});
 				_app.router.appendHash({'type':'match','route':'category/{{navcat}}*','callback':'category'});
+					_app.router.appendHash({'type':'match','route':'{{seo}}/c/{{navcat}}','callback':'category'});
 				_app.router.appendHash({'type':'match','route':'product/{{pid}}/{{name}}*','callback':'product'});
+					_app.router.appendHash({'type':'match','route':'{{seo}}/p/{{pid}}','callback':'product'});
 				_app.router.appendHash({'type':'match','route':'product/{{pid}}*','callback':'product'});
 				_app.router.appendHash({'type':'match','route':'company/{{show}}*','callback':'company'});
 				_app.router.appendHash({'type':'exact','route':'company','callback':'company'});
@@ -180,13 +182,15 @@ optional params:
 						r = true;
 						var seoname = '';
 						if(args.seo)	{
-							seoname = data.value['zoovy:prod_seo_title'] || data.value['zoovy:prod_name'];
+							//#!title&p=xyz
+							seoname = data.value['%attribs']['zoovy:prod_seo_title'] || data.value['%attribs']['zoovy:prod_name'];
 							}
 						data.globals.binds[data.globals.focusBind] = _app.ext.store_routing.u.productAnchor(data.value.pid, seoname);
 						break;
 					
 					case 'category':
 						r = true;
+						dump('----DATA.VALUE:'); dump(data.value);
 						data.globals.binds[data.globals.focusBind] = _app.ext.store_routing.u.categoryAnchor(data.value.path, (args.seo ? data.value.pretty : ''));
 						break;
 					
@@ -224,10 +228,14 @@ optional params:
 					}
 				},
 			productAnchor : function(pid, seo){
-				return "#!product/"+pid+"/"+(seo ? encodeURI(seo) : '');
+				//return "#!product/"+pid+"/"+(seo ? encodeURI(seo) : '');
+				if(seo)	return "#!"+encodeURI(seo)+"/p/"+pid;
+				else return "#!product/"+pid;
 				},
 			categoryAnchor : function(path,seo)	{
-				return "#!category/"+path+((seo) ? "/"+encodeURI(seo) : '');
+				//return "#!category/"+path+((seo) ? "/"+encodeURI(seo) : '');
+				if(seo) return "#!"+encodeURI(seo)+"/c/"+path;
+				else return "#!category/"+path;
 				},
 			searchAnchor : function(type,value)	{
 				var r;

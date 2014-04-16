@@ -1563,11 +1563,12 @@ each of the 'sections' are used to load another template. don't change the id.
 don't modify the 'data-templateid' unless you are changing template names and updating everywhere appropriate.
 -->
 <div id="categoryTemplate" class="categoryTemplate">
-	<span class="displayNone" data-tlc="bind $navcat '.navcat'; bind $seo '.pretty'; bind $hash ''; store_routing#categorylink --navcat=$navcat --seo=$seo; apply --attrib='data-routing-hash';"></span>
+	<!-- <span class="displayNone" data-tlc="bind $navcat '.navcat'; bind $seo '.pretty'; bind $hash ''; store_routing#categorylink --navcat=$navcat --seo=$seo; apply --attrib='data-routing-hash';"></span> -->
+	<span class="displayNone" data-tlc="store_routing#seoanchor --seo='1' apply --attrib='data-routing-hash';"></span>
 
 	<ul data-tlc="bind $var '.path'; store_navcats#breadcrumb  --templateid='breadcrumbTemplate'  --legacy;" class="breadcrumb clearfix noPadOrMargin fluidList"></ul>
 
-	<img data-tlc="bind $var '.%page.banner1'; quickstart#banner  --height='250' --width='750' --legacy;" src="images/blank.gif" alt="">
+	<!-- <img data-tlc="bind $var '.%page.banner1'; quickstart#banner  --height='250' --width='750' --legacy;" src="images/blank.gif" alt=""> -->
 	
 	<h2 data-tlc="bind $var '.%page.header'; if (is $var --notblank;) {{apply --append;}};" class="blah5"></h2>
 	
@@ -2326,7 +2327,8 @@ this will likely become more flexible in the future. ###
 
 <div data-tlc="bind $var '.pid'; apply --attrib='data-pid';" id="productTemplate" class="productTemplate productPage">
 
-	<span class="displayNone" data-tlc="bind $pid '.pid'; bind $seo '.%attribs.zoovy:prod_name'; bind $href ''; store_routing#productlink --pid=$pid --seo=$seo; apply --attrib='data-routing-hash';"></span>
+	<!-- <span class="displayNone" data-tlc="bind $pid '.pid'; bind $seo '.%attribs.zoovy:prod_name'; bind $href ''; store_routing#productlink --pid=$pid --seo=$seo; apply --attrib='data-routing-hash';"></span> -->
+	<span class="displayNone" data-tlc="store_routing#seoanchor --seo='1' apply --attrib='data-routing-hash';"></span>
 	
 	<ul data-tlc="bind $var '.recentCategories.0'; store_navcats#breadcrumb  --templateid='breadcrumbTemplate'  --legacy; apply --append;" class="clearfix noPadOrMargin fluidList breadcrumb"></ul>
 
@@ -2370,7 +2372,7 @@ this will likely become more flexible in the future. ###
 	<h1 data-tlc="bind $var '.%attribs.zoovy:prod_name'; if (is $var --notblank;) {{apply --append;}};" class="prodName"></h1>
 	<div class="prodStidAndMfg clearfix">
 		<span data-tlc="bind $var '.pid'; if (is $var --notblank;) {{format --prepend='Item No: '; apply --append;}};"></span>
-		<span data-tlc="bind $var '.%attribs.zoovy:prod_mfg'; quickstart#searchlink  --legacy;"></span>
+		<span data-tlc="bind $var '.%attribs.zoovy:prod_mfg'; if (is $var --notblank;) {{apply --show;}}; beachmart#searchlink  --legacy;">Manufacturer: </span>
 	</div>
 	<div data-tlc="bind $var '.pid'; beachmart#priceretailsavings  --legacy;" class="priceContainer clearfix"></div>
 	
@@ -2538,7 +2540,7 @@ this will likely become more flexible in the future. ###
 	
 		<div class="rightColumn floatRight clearfix">
 			<div data-tlc="bind $var '.pid'; powerreviews_reviews#reviewsnippet  --legacy;" class=""></div>
-			<div data-tlc="bind $var '.%attribs.zoovy:prod_mfg'; format --prepend='&#187 View All '; format --append=' Product'; quickstart#searchlink  --legacy;" class="prodPageMfgForward"></div>
+			<div data-tlc="bind $var '.%attribs.zoovy:prod_mfg'; format --prepend='&#187 View All '; format --append=' Product'; beachmart#searchlink  --legacy;" class="prodPageMfgForward"></div>
 		</div>
 	</td>	
 </tr>

@@ -672,10 +672,11 @@ RenderFormats
 				},
 
 
-			searchLink : function($tag,data){
+			searchlink : function($tag,data){
 				var keywords = data.value.replace(/ /g,"+");
 				var domain = document.location.protocol == 'https:' ? zGlobals.appSettings.https_app_url : zGlobals.appSettings.http_app_url;
-				$tag.append("<a href='"+domain+"results.cgis?KEYWORDS="+keywords+"&amp;CATALOG=MFG'>"+data.value+"<\/a>");
+				$tag.append("<a class='underline' href='#!search?KEYWORDS="+keywords+"&amp;CATALOG=MFG'>"+data.value+"<\/a>");
+			//	$tag.append("<a class='underline' href='"+domain+"results.cgis?KEYWORDS="+keywords+"&amp;CATALOG=MFG'>"+data.value+"<\/a>");
 				}, //searchLink
 
 
