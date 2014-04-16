@@ -372,7 +372,7 @@ var beachmall_cartestarrival = function(_app) {
 						if(shipMeth[0] == services[i].method) { //if there is a match, append the date to the li
 							var $container = $('<span class="radioShipTime">(arrival on '+_app.ext.beachmart.u.yyyymmdd2Pretty(services[i]["arrival_yyyymmdd"])+')</span>');
 							$(this).append($container);
-							$('#cartTemplateShippingContainer').css('width','54%'); //make the shipping section wider to keep it all on one line
+							$('.cartTemplateShippingContainer').css('width','54%'); //make the shipping section wider to keep it all on one line
 							$shipMethodsUL.data('transitized',true); //set data so this doesn't have to get called multiple times
 							break; //once a match is found, no need to keep going
 						}

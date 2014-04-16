@@ -67,7 +67,7 @@ css files should be included before any .js file to ensure they are downloaded i
 $(document).ready(function(){
 
 	window.myApp = new initApp({
-		"release":"201402.20140415110300",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+		"release":"201402.20140415213400",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 		"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 		"baseURL":baseURL, //used in non-local mode.
 		"checkoutAuthMode" : "active",//can be passive, active or required
@@ -3501,7 +3501,7 @@ This is the template used both within a dialog and inline, unless implicitly ove
 						<div data-tlc="bind $var '.sum.gfc_total'; beachmall_cart#beachmoney --classname='orderGiftcardTotal' --hidezero='true' --currencysign='$' --prepend='<h6>Giftcard(s): </h6>' --legacy;"></div>
 						<div data-tlc="bind $var '.sum.pnt_total'; beachmall_cart#beachmoney --classname='rewardPointsTotal' --hidezero='true' --currencysign='$' --prepend='<h6>Reward Points: </h6>' --legacy;"></div>
 						<div data-tlc="bind $var '.sum.rmc_total'; beachmall_cart#beachmoney --classname='returnsCreditTotal' --hidezero='true' --currencysign='$' --prepend='<h6>Returns Credit: </h6>' --legacy;"></div>
-						<div data-tlc="bind $var '.sum.balance_due_total'; cco#orderbalance  --classname='orderBalanceDue' --hidezero='false' --currencysign='$' --prepend='<h6>Estimated Total: </h6>' --legacy;"></div>
+						<div data-tlc="bind $var '.sum.balance_due_total'; cco#orderbalance  --classname='orderBalanceDue' --hidezero='false' --currencysign='$' --prepend='<h6>Estimated Total: </h6>' --legacy;" class="orderBalanceDue"></div>
 
 						<div class='couponEntryContainer' data-app-role='couponContainer'>
 							<!-- runs with execCouponAdd from beachmart.js  -->

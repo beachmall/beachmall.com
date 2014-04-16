@@ -2196,7 +2196,13 @@ _app.model.dispatchThis('passive');
 					L = sMethods.length;
 					for(var i = 0; i < L; i += 1)	{
 						o += "<li class='headerPadding'><label><input type='radio'  name='want/shipping_id' value='"+sMethods[i].id+"' ";
-						o += "/>"+(sMethods[i].pretty ? sMethods[i].pretty : sMethods[i].name)+": <span >"+_app.u.formatMoney(sMethods[i].amount,'$','',false)+"<\/span><\/label><\/li>";
+/*beachmall display "FREE" instead of zero if no shipping cost */
+/*beachmall*/			if(sMethods[i].amount == 0) {
+/*beachmall*/				o += "/>"+(sMethods[i].pretty ? sMethods[i].pretty : sMethods[i].name)+": <span class='cartFree'>FREE<\/span><\/label><\/li>";
+/*beachmall*/				}
+/*beachmall*/			else {	
+							o += "/>"+(sMethods[i].pretty ? sMethods[i].pretty : sMethods[i].name)+": <span >"+_app.u.formatMoney(sMethods[i].amount,'$','',false)+"<\/span><\/label><\/li>";
+/*beachmall*/				}
 						}
 					}
 				else	{

@@ -1291,18 +1291,34 @@ in a reorder, that data needs to be converted to the variations format required 
 						if(shipMethods[i].id == data.value.want.shipping_id)	{
 							//sometimes pretty isn't set. also, ie didn't like .pretty, but worked fine once ['pretty'] was used.
 							o = "<span class='orderShipMethod'>"+(shipMethods[i]['pretty'] ? shipMethods[i]['pretty'] : shipMethods[i]['name'])+": <\/span>";
-	//only show amount if not blank.
-							if(shipMethods[i].amount)	{
-								o += "<span class='orderShipAmount'>"+_app.u.formatMoney(shipMethods[i].amount,' $',2,false)+"<\/span>";
-								}
+	//only show amount if not blank. 
+							if(shipMethods[i].amount || shipMethods[i].amount == 0)	{
+/*beachmall*/					if (shipMethods[i].amount == 0) {
+/*beachmall*/						o += "<span class='orderShipAmount cartFree'>FREE<\/span>";
+/*beachmall*/						}
+/*beachmall*/					else {
+/*beachmall*/						var r = _app.u.formatMoney(shipMethods[i].amount,' $',2,false);
+/*beachmall*/						if (r.indexOf('.') > 0) {
+/*beachmall*/							var sr = r.split('.');
+/*beachmall*/							o = "<span class='orderShipMethod'>"+(shipMethods[i]['pretty'] ? shipMethods[i]['pretty'] : shipMethods[i]['name'])+": <\/span><span class='orderShipDollars'>"+sr[0]+"<\/span>";
+/*beachmall*/							if(sr[1]) {o += "<span class='cents'>."+sr[1]+"<\/span>"}
+/*beachmall*/						}
+/*beachmall*/						else {
+/*beachmall*/							 o += "<span class='orderShipAmount'>"+r+"<\/span>";
+/*beachmall*/							}
+									}
 							break; //once we hit a match, no need to continue. at this time, only one ship method/price is available.
+								}	
 							}
 						}
 					}
 				else	{
 					//shipMethods is empty. this may be perfectly normal (admin UI -> new order -> no product in cart yet. store -> no zip or state.)
-					}
+					}	
 				$tag.html(o);
+/*beachmall*/	$tag.removeClass('displayNone').css('height','20px');
+/*beachmall*/		//hide estimated total if shipping zip is present (and therefore tax has been calculated).
+/*beachmall*/	setTimeout(function(){$('.orderBalanceDue',$tag.parent()).hide();},500);				
 				}, //shipinfobyid
 
 			walletnameintoicon : function($tag,data)	{

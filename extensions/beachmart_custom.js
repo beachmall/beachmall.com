@@ -101,11 +101,11 @@ _app.ext.beachmart.u.initEstArrival();
 			showTransitTimes : {
 				
 				onSuccess : function(tagObj){
-					_app.u.dump("BEGIN beachmart.callbacks.showTransitTimes");
-					_app.u.dump(tagObj);
+//					_app.u.dump("BEGIN beachmart.callbacks.showTransitTimes");
+//					_app.u.dump(tagObj);
 					//use cutoff from response, not product.
 					var $container = $('#productTemplate_'+_app.u.makeSafeHTMLId(SKU));
-					_app.u.dump(" -> $container.length: "+$container.length);
+//					_app.u.dump(" -> $container.length: "+$container.length);
 					var data = _app.data[tagObj.datapointer]; //shortcut.
 					
 					if(!$.isEmptyObject(data['@Services']))	{
@@ -114,7 +114,7 @@ _app.ext.beachmart.u.initEstArrival();
 						if(!index) {
 							index = _app.ext.beachmart.u.getFastestShipMethod(data['@Services']);
 						}
-						_app.u.dump(" -> index: "+index);
+//						_app.u.dump(" -> index: "+index);
 //index could be false if no methods were available. or could be int starting w/ 0
 						if(index >= 0)	{
 							$('.transitContainer',$container).empty().append(_app.ext.beachmart.u.getTransitInfo(SKU,data,index)); //empty first so when reset by zip change, no duplicate info is displayed.
@@ -288,7 +288,7 @@ var vertCarouselOptions = {
 			
 			appShippingTransitEstimate : {
 				init : function(cmdObj,tagObj,Q)	{
-					_app.u.dump("BEGIN beachmart.calls.appShippingTransitEstimate.  [Q: "+Q+"]"); dump(tagObj);
+					//_app.u.dump("BEGIN beachmart.calls.appShippingTransitEstimate.  [Q: "+Q+"]"); dump(tagObj);
 					tagObj = $.isEmptyObject(tagObj) ? {} : tagObj; 
 					tagObj.datapointer = "appShippingTransitEstimate";
 					this.dispatch(cmdObj,tagObj,Q);
