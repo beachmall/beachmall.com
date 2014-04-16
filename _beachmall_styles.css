@@ -352,13 +352,14 @@ BRANDS CATEGORY PAGE
 .brandCarouselLinkContainer {height:20px; width:auto; font-family:"Open Sans"; font-size:14px; font-weight:bold; margin:0 40px 0 5px; padding-top:7px; height:auto; text-align:right;}
 .featuredProdsTab .brandCarouselLinkContainer {height:auto; width:203px;}
 /*.viewAllProductsTab.brandCarouselLinkContainer {height:auto; width:70px;}*/
-.brandsCatContainer .CarouselContainer {height:438px;}
-.brandsCatContainer .CarouselContainer .Carousel {height:400px;}
+.brandsCatContainer .CarouselContainer {height:518px;}
+.brandsCatContainer .CarouselContainer .Carousel {height:482px;}
 .brandsCatContainer .CarouselContainer .productSeperationBar{display:none;}
-.brandsCatContainer .viewAllProductsTabContainer  .CarouselContainer {height:491px;}
-.brandsCatContainer .viewAllProductsTabContainer .CarouselContainer .Carousel {height:453px; padding:0 0 0 28px;}
+/*.brandsCatContainer .viewAllProductsTabContainer  .CarouselContainer {height:491px;}
+.brandsCatContainer .viewAllProductsTabContainer .CarouselContainer .Carousel {height:453px; padding:0 0 0 28px;}*/
 .viewAllProductsTabContainer .moreDetailsSmall {width:100px;}
 .brandsTabs .Carousel {width:1020px; padding:0;}
+.brandsProductList > li {position:relative;}
 .categoryList > .catListBrand {height:190px; width:220px; margin:10px;}
 .brandThumbContainer {height:152px; width:152px; box-shadow:0px 0px 3px 2px #3bb3c3; padding:0px 34px;}
 .brandsCatName {height:25px; width:100%; color:#3BB3C3; font-family:"Open Sans"; font-size:14px; font-weight:bold; text-align:center; padding-top:10px;}

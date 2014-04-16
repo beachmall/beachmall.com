@@ -117,10 +117,7 @@ $(document).ready(function(){
 
 <div id='appView' class='displayNone'>
 
-<!-- MARK these need to be removed once the templates have been added -->
-<li id='categoryTemplateBrandsBestSellers'></li>
-<li id='categoryTemplateBrandsViewAll'></li>
-<li id='categoryTemplateBrandsFeatured'></li>
+
 
 <!--
 ANIMATION TESTING
@@ -1657,9 +1654,10 @@ don't modify the 'data-templateid' unless you are changing template names and up
 							<a class="carouselButtonDkBlue featCarouselNext carouselButtonDkBlueNext" href="#">next</a> -->
 <!-- MARK					<ul data-tlc="bind $var '.%page.mfg'; if(is $var --blank;) {{bind var 'ujena';}}; beachmart#prodsearchfeaturedbybrand  --defaultvalue='ujena' --size='24' --templateid='productListTemplateResults'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall"></ul> 
 							<ul data-tlc="beachmall_search#searchbytag --filter='{&quot;size&quot;:&quot;8&quot;,&quot;mode&quot;:&quot;elastic-native&quot;,&quot;filter&quot;:{&quot;and&quot;:{&quot;filters&quot;:[{&quot;term&quot;:{&quot;tags&quot;:&quot;IS_NEWARRIVAL&quot;}},{&quot;not&quot;:{&quot;term&quot;:{&quot;tags&quot;:&quot;IS_DISCONTINUED&quot;}}}]}}}' --size='8'  --templateid='productListTemplateResults';" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchNewArrivals2"></ul>
-<!-- MARK -->				<ul data-tlc="bind $var '.%page.mfg'; beachmall_search#searchbytag  --replacify='true' --templateid='productListTemplateResults' --filter='{&quot;size&quot;:&quot;25&quot;,&quot;mode&quot;:&quot;elastic-native&quot;,&quot;filter&quot;:{&quot;and&quot;:{&quot;filters&quot;:[{&quot;term&quot;:{&quot;prod_mfg&quot;:&quot;replacify&quot;}},{&quot;term&quot;:{&quot;tags&quot;:&quot;IS_BESTSELLER&quot;}}]}}}';" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall"></ul> 
+<!-- MARK 				<ul data-tlc="bind $var '.%page.mfg'; beachmall_search#searchbytag  --replacify='true' --templateid='productListTemplateResults' --filter='{&quot;size&quot;:&quot;25&quot;,&quot;mode&quot;:&quot;elastic-native&quot;,&quot;filter&quot;:{&quot;and&quot;:{&quot;filters&quot;:[{&quot;term&quot;:{&quot;prod_mfg&quot;:&quot;replacify&quot;}},{&quot;term&quot;:{&quot;tags&quot;:&quot;IS_BESTSELLER&quot;}}]}}}';" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall"></ul> 
 <!-- MARK					<ul data-tlc="bind $var '.%meta.CAT_THUMB'; if(is $var --blank;) {{bind var 'ujena';}}; beachmall_search#searchbytag  --replacify='true' --templateid='productListTemplateResults' --filter='{&quot;size&quot;:&quot;25&quot;,&quot;mode&quot;:&quot;elastic-native&quot;,&quot;filter&quot;:{&quot;and&quot;:{&quot;filters&quot;:[{&quot;term&quot;:{&quot;prod_mfg&quot;:&quot;replacify&quot;}},{&quot;term&quot;:{&quot;tags&quot;:&quot;IS_BESTSELLER&quot;}}]}}}';" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall"></ul> -->
-<!-- MARK 				<ul data-tlc="bind $var '.@products'; prodlist_infinite#infiniteproductlist  --withreviews='1' --withInventory='1' --withVariations='1' --itemsperpage='12' --templateid='productListTemplate'  --legacy;" data-app-role="productList" class="listStyleNone fluidList clearfix noPadOrMargin prodMargin productList"> -->
+<!-- MARK 	-->				<ul data-tlc="bind $var '.@products'; prodlist_infinite#infiniteproductlist  --withreviews='1' --withInventory='1' --withVariations='1' --itemsPerPage='4' --templateid='productListTemplate'  --legacy;" data-app-role="productList" data-brand-filter="featured" class="listStyleNone fluidList clearfix noPadOrMargin prodMargin productList"></ul>
+							<div style='padding:20px;text-align:center;'>Sorry, there are no Featured Items to show at this time. Check back later!</div>
 						</div>
 						<!-- <div class='standardCarouselPagenation'></div> -->
 					</div>
@@ -1679,7 +1677,8 @@ don't modify the 'data-templateid' unless you are changing template names and up
 							
 <!-- MARK					<ul data-tlc="bind $var '.%page.mfg'; beachmart#prodsearchbestsellersbybrand  --size='24' --templateid='productListTemplateResultsCustomSmaller'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall"></ul> <!-- defaultValue:ujena; --> 
 <!-- MARK this will need correct filter object added if used					<ul data-tlc="bind $var '.%meta.CAT_THUMB'; if(is $var --blank;) {{bind var 'ujena';}}; beachmall_search#searchbytag  --replacify='true' --templateid='productListTemplateResults' --filter='{&quot;size&quot;:&quot;25&quot;,&quot;mode&quot;:&quot;elastic-native&quot;,&quot;filter&quot;:{&quot;and&quot;:{&quot;filters&quot;:[{&quot;term&quot;:{&quot;prod_mfg&quot;:&quot;replacify&quot;}},{&quot;term&quot;:{&quot;tags&quot;:&quot;IS_BESTSELLER&quot;}}]}}}';" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall"></ul> -->
-<!-- MARK -->				<ul data-tlc="bind $var '.@products'; prodlist_infinite#infiniteproductlist  --withreviews='1' --withInventory='1' --withVariations='1' --itemsperpage='12' --templateid='productListTemplate'  --legacy;" data-app-role="productList" class="listStyleNone fluidList clearfix noPadOrMargin prodMargin productList">
+<!-- MARK -->				<ul data-tlc="bind $var '.@products'; prodlist_infinite#infiniteproductlist  --withreviews='1' --withInventory='1' --withVariations='1' --itemsperpage='4' --templateid='productListTemplate'  --legacy;" data-app-role="productList" data-brand-filter="bestseller" class="listStyleNone fluidList clearfix noPadOrMargin prodMargin productList"></ul>
+							<div style='padding:20px;text-align:center;'>Sorry, there are no Best Selling Items to show at this time. Check back later!</div>
 						</div>
 						<!-- <div class='standardCarouselPagenation'></div> -->
 					</div>
@@ -1697,8 +1696,8 @@ don't modify the 'data-templateid' unless you are changing template names and up
 							<!-- <a class="carouselButtonDkBlue bestCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
 							<a class="carouselButtonDkBlue bestCarouselNext carouselButtonDkBlueNext" href="#">next</a> -->
 							
-							<ul data-tlc="bind $var '.@products'; prodlist_infinite#infiniteproductlist  --withreviews='1' --withInventory='1' --withVariations='1' --itemsperpage='12' --hideSummary='true' --templateid='productListTemplate'  --legacy;" data-app-role="productList" class="listStyleNone fluidList clearfix noPadOrMargin brandsProductList"></ul>
-
+							<ul data-tlc="bind $var '.@products'; prodlist_infinite#infiniteproductlist  --withreviews='1' --withInventory='1' --withVariations='1' --itemsperpage='4' --hideSummary='true' --templateid='productListTemplate'  --legacy;" data-app-role="productList" class="listStyleNone fluidList clearfix prodMargin brandsProductList"></ul>
+							<div style='padding:20px;text-align:center;'>Sorry, there are no Items to show at this time. Check back later!</div>
 						</div>
 						<!-- <div class='standardCarouselPagenation'></div> -->
 					</div>
@@ -1719,48 +1718,50 @@ don't modify the 'data-templateid' unless you are changing template names and up
 
 
 
-<!-- MARK THESE STILL NEED CONVERTING, DEPENDING ON HOW BRANDS CATEGORY TABS ARE HANDLED (WITH SEARCH OR NOT)
+
 <div id='categoryTemplateBrandsFeatured' class='loadingBG categoryTemplate' data-app-role='categoryPage'>
 
-	<div class='brandsPromoBanner floatLeft'>
+	<div data-tlc="bind $var '.%page.coupon_code'; if(is $var --notblank;) {{ apply --show; }}; " class="brandsPromoBanner floatLeft">
 		<div>SPECIAL OFFER!</div>
-		<div><span>TAKE AN EXTRA</span><br>10% OFF ALL COPA GEAR</div>
-		<div>PROMO CODE: 10COPA <span>See Details</span></div>
+		<div><span>TAKE AN EXTRA</span><br>10% OFF ALL <span data-tlc="bind $var '.%page.mfg'; if (is $var --notblank;) {{apply --append;}};"></span> GEAR</div>
+		<div>PROMO CODE: <h3 data-tlc="bind $var '.%page.coupon_code'; if (is $var --notblank;) {{apply --append;}};"></h3> <span>See Details</span></div>
 	</div>
 
-	<ul class='breadcrumb clearfix noPadOrMargin fluidList' data-bind='var: category(id); format:breadcrumb; extension:store_navcats; loadsTemplate: breadcrumbTemplate;'></ul>
+	<!-- <ul class='breadcrumb clearfix noPadOrMargin fluidList' data-bind='var: category(id); format:breadcrumb; extension:store_navcats; loadsTemplate: breadcrumbTemplate;'></ul> -->
+	<ul data-tlc="bind $var '.@products'; prodlist_infinite#infiniteproductlist  --withreviews='1' --withInventory='1' --withVariations='1' --itemsperpage='12' --templateid='productListTemplate'  --legacy;" data-app-role="productList" data-brand-filter="featured" class="listStyleNone fluidList clearfix noPadOrMargin prodMargin productList">
 	<ul  data-bind='var: category(%page.mfg); defaultValue:ujena; format: prodSearchFeaturedByBrand; extension: beachmart; size:250; loadsTemplate: productListTemplate;' class='listStyleNone fluidList clearfix noPadOrMargin prodMargin productList'></ul>
-
 </div>
+
 <div id='categoryTemplateBrandsBestSellers' class='loadingBG categoryTemplate' data-app-role='categoryPage'>
 
-	<div class='brandsPromoBanner floatLeft'>
+	<div data-tlc="bind $var '.%page.coupon_code'; if(is $var --notblank;) {{ apply --show; }}; " class="brandsPromoBanner floatLeft">
 		<div>SPECIAL OFFER!</div>
-		<div><span>TAKE AN EXTRA</span><br>10% OFF ALL COPA GEAR</div>
-		<div>PROMO CODE: 10COPA <span>See Details</span></div>
+		<div><span>TAKE AN EXTRA</span><br>10% OFF ALL <span data-tlc="bind $var '.%page.mfg'; if (is $var --notblank;) {{apply --append;}};"></span> GEAR</div>
+		<div>PROMO CODE: <h3 data-tlc="bind $var '.%page.coupon_code'; if (is $var --notblank;) {{apply --append;}};"></h3> <span>See Details</span></div>
 	</div>
 
 	<ul class='breadcrumb clearfix noPadOrMargin fluidList' data-bind='var: category(id); format:breadcrumb; extension:store_navcats; loadsTemplate: breadcrumbTemplate;'></ul>
-	
-	<ul  data-bind='var: category(%page.mfg); defaultValue:ujena; format: prodSearchBestSellersByBrand; extension: beachmart; size:24; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>
+	<!-- <ul  data-bind='var: category(%page.mfg); defaultValue:ujena; format: prodSearchBestSellersByBrand; extension: beachmart; size:24; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul> -->
+	<ul data-tlc="bind $var '.@products'; prodlist_infinite#infiniteproductlist  --withreviews='1' --withInventory='1' --withVariations='1' --itemsperpage='12' --templateid='productListTemplate'  --legacy;" data-app-role="productList" data-brand-filter="bestseller" class="listStyleNone fluidList clearfix noPadOrMargin prodMargin productList">
 </div>
+
 <div id='categoryTemplateBrandsViewAll' class='loadingBG categoryTemplate' data-app-role='categoryPage'>
 
-	<div class='brandsPromoBanner floatLeft'>
+	<div data-tlc="bind $var '.%page.coupon_code'; if(is $var --notblank;) {{ apply --show; }}; " class="brandsPromoBanner floatLeft">
 		<div>SPECIAL OFFER!</div>
-		<div><span>TAKE AN EXTRA</span><br>10% OFF ALL COPA GEAR</div>
-		<div>PROMO CODE: 10COPA <span>See Details</span></div>
+		<div><span>TAKE AN EXTRA</span><br>10% OFF ALL <span data-tlc="bind $var '.%page.mfg'; if (is $var --notblank;) {{apply --append;}};"></span> GEAR</div>
+		<div>PROMO CODE: <h3 data-tlc="bind $var '.%page.coupon_code'; if (is $var --notblank;) {{apply --append;}};"></h3> <span>See Details</span></div>
 	</div>
 
 	<ul class='breadcrumb clearfix noPadOrMargin fluidList' data-bind='var: category(id); format:breadcrumb; extension:store_navcats; loadsTemplate: breadcrumbTemplate;'></ul>
-	
-	<ul data-bind="var: category(@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: brandsProductListTemplate; withReviews:1; items_per_page: 24; hide_summary:true;" class='listStyleNone fluidList clearfix noPadOrMargin brandsProductList'></ul>
-	
+	<!-- <ul data-bind="var: category(@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: brandsProductListTemplate; withReviews:1; items_per_page: 24; hide_summary:true;" class='listStyleNone fluidList clearfix noPadOrMargin brandsProductList'></ul> -->
+	<ul data-tlc="bind $var '.@products'; prodlist_infinite#infiniteproductlist  --withreviews='1' --withInventory='1' --withVariations='1' --itemsperpage='12' --templateid='productListTemplate'  --legacy;" data-app-role="productList" data-brand-filter="bestseller" class="listStyleNone fluidList clearfix noPadOrMargin prodMargin productList">
 </div>
+
 <div id='categoryTemplateWithSpecialList' class='loadingBG categoryTemplate'>
 	<ul data-bind="var: list($featured_list.@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: productListTemplate; withReviews:1; items_per_page: 25;"></ul>
 </div>
--->
+
 
 
 
@@ -1895,9 +1896,9 @@ the loadingBG class is removed (must be that classname) when the template is tra
 remember to NOT put the button inside the 'onclick' container or two events will occur onclick.
 -->
 <li id="productListTemplate" data-tlc="bind $var '.'; beachmall_store#inventoryhide  --legacy;" data-legacy-useparentdata="true" class="loadingBG  products product floatLeft" onmouseover="$('.quickView',$(this)).show();" onmouseout="$('.quickView').hide();">
-	 
+	
 	<button class="floatRight pointer quickView displayNone" onclick="quickView('product',{'templateID':'productTemplateQuickView','pid':$(this).closest('[data-pid]').attr('data-pid')});">Quickview</button>
-		
+	<div data-tlc="beachmall_store#brandslistfilter --legacy;"></div>	
     <div data-tlc="bind $var '.pid'; apply --attrib='data-pid';" class="pointer productListSmall">
 		<a data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';">
 			<div class="prodHoverContainer prodShadowFix">

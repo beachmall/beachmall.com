@@ -523,6 +523,40 @@ var beachmall_store = function(_app) {
 				}
 			}, //hideIfNotPurchaseable
 			
+			//will look at a data attrib on the ul for the list item, then perform a search for attributes based on that attrib. Hides if no hits on attribs.
+			brandslistfilter : function($tag,data) {
+				if($tag.parent().parent().attr('data-brand-filter')) {
+					var filterType = $tag.parent().parent().attr('data-brand-filter');
+//					dump('The brand filter was found.'); dump(filterType);//data-brand-filter="bestseller
+					
+					switch (filterType) {
+						case 'featured' :
+							if(data.value && data.value['%attribs']) {
+//								dump('in brandslistfilter featured');
+								if(data.value['%attribs']['zoovy:prod_is_tags'] && (data.value['%attribs']['zoovy:prod_is_tags'].indexOf('IS_USER2') != -1 || data.value['%attribs']['zoovy:prod_is_tags'].indexOf('IS_USER3') != -1 || data.value['%attribs']['zoovy:prod_is_tags'].indexOf('IS_USER6') != -1)) {
+									 /*this is a featured item, it should be in the list*/
+								}
+								else if(data.value['%attribs']['user:prod_promo'] && data.value['%attribs']['user:prod_promo'].indexOf('IS_USER4') != -1) { /*same as above*/ }
+								else { $tag.parent().hide(); /*this product isn't a featured item, don't show it.*/ }
+							}
+							else { $tag.parent().hide(); dump('featured hidden...'); dump(data.value.pid) /*no tags or prod_promo attrib means it's definitely not a featured item*/ }
+							break;
+						case 'bestseller' :
+							if(data.value && data.value['%attribs'] && data.value['%attribs']['zoovy:prod_is_tags']) {
+//								dump('in brandslistfilter bestseller');
+								if(data.value['%attribs']['zoovy:prod_is_tags'].indexOf('IS_BESTSELLER') == -1) {
+									$tag.parent().hide(); //this product isn't a best seller, don't show it.
+								}
+								else { /*this is a best seller, it should be in the list*/ }
+							}
+							break;
+						default :
+//							dump('in brandslistfilter default');
+					}
+				}
+				else { /*this isn't a brands category product list no need for this rubbish.*/ }
+			}, //brandslistfilter
+			
 /**PRODUCT PAGE FORMATS */	
 			//hides geo location/time in transit and add to cart button if product is discontinued or not purchasable
 			hidegeoelements : function($tag, data) {
