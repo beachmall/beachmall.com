@@ -699,6 +699,16 @@ var beachmall_store = function(_app) {
 				},1000);	
 			},
 			
+		/*	TO DO: SET UP WAY TO SELECT TAB AND HIDE IF NOT RESULTS, AND, MAKE SEQUENTIAL SO THAT ALL TABS ARE CHECKED ON AFTER THE OTHER TO PREVENT NO CONTENT SHOWING.
+			brandstabhider : function($tag, data) { 
+				setTimeout(function(){
+					dump('-----brandstabhider'); dump($('.productListSmall',$tag).text());
+					if($('.productListSmall',$tag).text().indexOf('Your query returned zero results') != -1) {
+						$tag.css('display','none');
+					}
+				},1000);
+			},
+		*/	
 /**QUICKVIEW FORMATS */ 
 			//grabs additional product images and sets them under the main in the quickview template
 			productimages : function($tag,data)	{
