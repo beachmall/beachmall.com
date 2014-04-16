@@ -2371,7 +2371,7 @@ this will likely become more flexible in the future. ###
 	<h1 data-tlc="bind $var '.%attribs.zoovy:prod_name'; if (is $var --notblank;) {{apply --append;}};" class="prodName"></h1>
 	<div class="prodStidAndMfg clearfix">
 		<span data-tlc="bind $var '.pid'; if (is $var --notblank;) {{format --prepend='Item No: '; apply --append;}};"></span>
-		<span data-tlc="bind $var '.%attribs.zoovy:prod_mfg'; if (is $var --notblank;) {{apply --show;}}; beachmart#searchlink  --legacy;">Manufacturer: </span>
+		<span data-tlc="bind $var '.%attribs.zoovy:prod_mfg'; if (is $var --notblank;) {{apply --show;}}; beachmall_store#searchlink  --legacy;">Manufacturer: </span>
 	</div>
 	<div data-tlc="bind $var '.pid'; beachmart#priceretailsavings  --legacy;" class="priceContainer clearfix"></div>
 	
@@ -2539,7 +2539,11 @@ this will likely become more flexible in the future. ###
 	
 		<div class="rightColumn floatRight clearfix">
 			<div data-tlc="bind $var '.pid'; powerreviews_reviews#reviewsnippet  --legacy;" class=""></div>
-			<div data-tlc="bind $var '.%attribs.zoovy:prod_mfg'; format --prepend='&#187 View All '; format --append=' Product'; beachmart#searchlink  --legacy;" class="prodPageMfgForward"></div>
+			<div data-tlc="bind $var'.%attribs.zoovy:prod_mfg'; if (is $var --notblank;) {{apply --show}};" class="prodPageMfgForward">
+				&#187 View All 
+				<span data-tlc="bind $var '.%attribs.zoovy:prod_mfg'; if (is $var --notblank;) {{apply --show;}}; beachmall_store#searchlink  --legacy;"></span>
+				 Product
+			</div>
 		</div>
 	</td>	
 </tr>
