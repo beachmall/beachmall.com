@@ -47,15 +47,16 @@ var store_routing = function(_app) {
 				_app.router.addAlias('checkout', 	function(routeObj){showContent('checkout',	routeObj.params);});
 
 				_app.router.addAlias('search', 		function(routeObj){showContent('search',	routeObj.params);});
-
-
+				//custom alias
+				_app.router.addAlias('bestsellers', function(routeObj){showContent('search',	{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':routeObj.params.navcat}}]}}});});
+				_app.router.addAlias('featured',	function(routeObj){showContent('search',	{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'prod_promo':'IS_USER4'}},{'term':{'app_category':routeObj.params.navcat}}]}}});});
+				_app.router.addAlias('clearance',	function(routeObj){showContent('search',	{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beach-chair.adirondack-furniture'}}]}}});});
+				
 				_app.router.appendHash({'type':'exact','route':'cart','callback':function(routeObj){showContent('cart',routeObj.params);}});
 				_app.router.appendHash({'type':'exact','route':'home','callback':'homepage'});
 				_app.router.appendHash({'type':'exact','route':'','callback':'homepage'});
 				_app.router.appendHash({'type':'match','route':'category/{{navcat}}*','callback':'category'});
-					_app.router.appendHash({'type':'match','route':'{{seo}}/c/{{navcat}}','callback':'category'});
 				_app.router.appendHash({'type':'match','route':'product/{{pid}}/{{name}}*','callback':'product'});
-					_app.router.appendHash({'type':'match','route':'{{seo}}/p/{{pid}}','callback':'product'});
 				_app.router.appendHash({'type':'match','route':'product/{{pid}}*','callback':'product'});
 				_app.router.appendHash({'type':'match','route':'company/{{show}}*','callback':'company'});
 				_app.router.appendHash({'type':'exact','route':'company','callback':'company'});
@@ -64,8 +65,13 @@ var store_routing = function(_app) {
 				_app.router.appendHash({'type':'match','route':'checkout*','callback':'checkout'});
 				_app.router.appendHash({'type':'match','route':'search/tag/{{tag}}*','callback':'search'});
 				_app.router.appendHash({'type':'match','route':'search/keywords/{{KEYWORDS}}*','callback':'search'});
-
-
+				//custom append
+				_app.router.appendHash({'type':'match','route':'{{seo}}/c/{{navcat}}','callback':'category'});
+				_app.router.appendHash({'type':'match','route':'{{seo}}/p/{{pid}}','callback':'product'});
+				_app.router.appendHash({'type':'match','route':'bestsellers/{{navcat}}*','callback':'bestsellers'});
+				_app.router.appendHash({'type':'match','route':'featured/{{navcat}}*','callback':'featured'});
+				_app.router.appendHash({'type':'match','route':'clearance/{{navcat}}*','callback':'clearance'});
+				
 /*
 some other things we could do
 _app.router.appendHash({'type':'match','route':'quickview/product/{{pid}}*','callback':function(routeObj){

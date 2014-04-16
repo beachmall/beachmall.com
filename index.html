@@ -264,12 +264,10 @@ ANIMATION TESTING
 									</a>
 									<ul class='hoverProductContainer hoverout listStyleNone'>
 										<a class='stockImageContainer' href='#!category/.beach-chair.adirondack-furniture' data-navcat='.adirondack-furniture' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"></a>
-									<!--<button class='catSearchHomeDropdown' onClick='myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent()); myApp.ext.beachmart_catsearch.a.catSearch("IS_BESTSELLER", "beach chair adirondack furniture");'>Best Selling Items</button>-->
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beach-chair.adirondack-furniture'}}]}}});">Best Selling Items</button>
-									<!--<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('category',{'navcat':'.beach_chair', 'templateID':'categoryTemplateWithSpecialList'});">Best Selling Items</button>-->
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'prod_promo':'IS_USER4'}},{'term':{'app_category':'.beach-chair.adirondack-furniture'}}]}}});">Featured Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beach-chair.adirondack-furniture'}}]}}});">Clearance Items</button>
-										<a class='catSearchHomeDropdown' href='#!category/.beach-chair.adirondack-furniture' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</a>
+<!--										<a href="#!bestsellers/.beach-chair.adirondack-furniture" class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">Best Selling Items</a>
+										<a href="#!featured/.beach-chair.adirondack-furniture" class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">Featured Items</a>
+										<a href="#!clearance/.beach-chair.adirondack-furniture" class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">Clearance Items</a>
+-->										<a href='#!category/.beach-chair.adirondack-furniture' class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</a>
 										<div class='dropdownBGRight'></div>
 									</ul>	
 								</li>
