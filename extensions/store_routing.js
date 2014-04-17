@@ -187,9 +187,15 @@ optional params:
 					case 'product':
 						r = true;
 						var seoname = '';
-						if(args.seo)	{
-							//#!title&p=xyz
+						if(args.seoname) {
+							seoname = args.seoname;
+							}
+						//seoname isn't clearly defined, so we go into some dwiw guesswork.
+						else if(args.seo && data.value['%attribs'])	{
 							seoname = data.value['%attribs']['zoovy:prod_seo_title'] || data.value['%attribs']['zoovy:prod_name'];
+							}
+						else if(args.seo && data.value.prod_name) {
+							seoname = data.value.prod_name; //this would be for elastic search results.
 							}
 						data.globals.binds[data.globals.focusBind] = _app.ext.store_routing.u.productAnchor(data.value.pid, seoname);
 						break;
