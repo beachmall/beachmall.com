@@ -1233,6 +1233,7 @@ global app styles
 .homeTemplate .moreDetailsSmall.catDetails {position:relative; bottom:30px; right:-87px; z-index:2;}
 .moreDetailsSmall.catDetails {width:80px; position:relative; bottom:30px; right:-140px; z-index:2;}
 .searchResultsProduct .moreDetailsSmall, .searchResultsProduct.products.product .moreDetailsSmall {width:100px;} 
+.searchResultsProduct .moreDetailsSmall, .searchResultsProduct.products.product .moreDetailsSmall:hover {color:#ffffff;} 
 
 .productListTall li {float: left;  margin: 0px 5px 0px 5px;}
 newArrivalsCarouselRight, .productList li {height:300px; width:300px; float:left; margin:0px;}
