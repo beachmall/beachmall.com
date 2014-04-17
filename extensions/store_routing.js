@@ -72,9 +72,6 @@ var store_routing = function(_app) {
 				_app.router.appendHash({'type':'match','route':'featured/{{navcat}}*','callback':'featured'});
 				_app.router.appendHash({'type':'match','route':'clearance/{{navcat}}*','callback':'clearance'});
 				
-			//	#!Extra-Large---High-Seat-Heavy-Duty-Beach-Chair-w/-Drink-Holder/p/AWCP353.html
-			//	#!Wide-Wheels-Utility-Cart-with-Tote(included)%2C-and-Surf-/p/BCHCDYT1.html
-				
 /*
 some other things we could do
 _app.router.appendHash({'type':'match','route':'quickview/product/{{pid}}*','callback':function(routeObj){
@@ -195,7 +192,8 @@ optional params:
 							}
 						//seoname isn't clearly defined, so we go into some dwiw guesswork.
 						else if(args.seo && data.value['%attribs'])	{
-							seoname = data.value['%attribs']['zoovy:prod_seo_title'] || data.value['%attribs']['zoovy:prod_name'];
+							//seoname = data.value['%attribs']['zoovy:prod_seo_title'] || data.value['%attribs']['zoovy:prod_name'];
+							seoname = data.value['%attribs']['zoovy:prod_name']; //wants prod_name in hash, not seo_title
 							}
 						else if(args.seo && data.value.prod_name) {
 							seoname = data.value.prod_name; //this would be for elastic search results.
@@ -244,6 +242,10 @@ optional params:
 				},
 			productAnchor : function(pid, seo){
 				//return "#!product/"+pid+"/"+(seo ? encodeURIComponent(seo) : '');
+				seo = seo.replace('/',''); dump('productAnchor'); dump(seo); //doesn't want any "/" in seo hash
+				seo = seo.replace('+',''); dump('productAnchor'); dump(seo); //doesn't want any "/" in seo hash
+				seo = seo.replace('&',''); dump('productAnchor'); dump(seo); //doesn't want any "/" in seo hash
+				seo = seo.replace(' - ',' '); dump('productAnchor'); dump(seo); //wants all " " converted to "-", but " - " comes out as "---", no bueno.
 				if(seo)	return "#!"+encodeURIComponent(seo).replace(/%20/g, "-")+"/p/"+pid+".html";
 				else return "#!product/"+pid;
 				},
