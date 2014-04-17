@@ -67,10 +67,13 @@ var store_routing = function(_app) {
 				_app.router.appendHash({'type':'match','route':'search/keywords/{{KEYWORDS}}*','callback':'search'});
 				//custom append
 				_app.router.appendHash({'type':'match','route':'{{seo}}/c/{{navcat}}','callback':'category'});
-				_app.router.appendHash({'type':'match','route':'{{seo}}/p/{{pid}}','callback':'product'});
+				_app.router.appendHash({'type':'match','route':'{{seo}}/p/{{pid}}.html','callback':'product'});
 				_app.router.appendHash({'type':'match','route':'bestsellers/{{navcat}}*','callback':'bestsellers'});
 				_app.router.appendHash({'type':'match','route':'featured/{{navcat}}*','callback':'featured'});
 				_app.router.appendHash({'type':'match','route':'clearance/{{navcat}}*','callback':'clearance'});
+				
+			//	#!Extra-Large---High-Seat-Heavy-Duty-Beach-Chair-w/-Drink-Holder/p/AWCP353.html
+			//	#!Wide-Wheels-Utility-Cart-with-Tote(included)%2C-and-Surf-/p/BCHCDYT1.html
 				
 /*
 some other things we could do
@@ -240,8 +243,8 @@ optional params:
 					}
 				},
 			productAnchor : function(pid, seo){
-				//return "#!product/"+pid+"/"+(seo ? encodeURI(seo) : '');
-				if(seo)	return "#!"+encodeURIComponent(seo)+"/p/"+pid;
+				//return "#!product/"+pid+"/"+(seo ? encodeURIComponent(seo) : '');
+				if(seo)	return "#!"+encodeURIComponent(seo).replace(/%20/g, "-")+"/p/"+pid+".html";
 				else return "#!product/"+pid;
 				},
 			categoryAnchor : function(path,seo)	{

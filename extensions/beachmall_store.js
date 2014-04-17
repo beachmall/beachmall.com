@@ -790,14 +790,14 @@ var beachmall_store = function(_app) {
 			//TODO: support for hiding links that have no results. Individualizing the <a>'s and placing a data- indicator of whether or 
 			//not to add that tag on the ul is on solution. 
 			makedropdownlinks : function() {
-				dump('START beachmall_store.u.makedropdownlinks');
+//				dump('START beachmall_store.u.makedropdownlinks');
 				$('[data-dropdown-link]','.dropdownsContainer').each(function(){
 					var $this = $(this);
 					var navcat = $this.attr('data-dropdown-link');
 					var stockL = navcat.split('.').length;
 					var stockNavcat = "."+navcat.split('.')[stockL-1];
-					if($this.attr('data-second-tier')) {dump('data-second-tier found'); var thisClick =  "onClick='myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());'"}
-					else {dump('data-second-tier NOT found'); var thisClick = "onClick='myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());'" }
+					if($this.attr('data-second-tier')) { var thisClick =  "onClick='myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());'"}
+					else { var thisClick = "onClick='myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());'" }
 					
 					$this.append(
 							"<a href='#!category/"+navcat+"' class='stockImageContainer' data-navcat='"+stockNavcat+"' "+thisClick+"></a>"
@@ -808,7 +808,7 @@ var beachmall_store = function(_app) {
 						+	"<div class='dropdownBGRight'></div>"
 					);
 					
-					dump('----Link to this dropdown category'); dump($(this).attr('data-dropdown-link'));
+//					dump('----Link to this dropdown category'); dump($(this).attr('data-dropdown-link'));
 				});
 			},
 			
