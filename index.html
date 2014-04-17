@@ -259,53 +259,26 @@ ANIMATION TESTING
 									<a href='#!category/.beach-chair.adirondack-furniture' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Adirondack
 									</a>
-									<ul class='hoverProductContainer hoverout listStyleNone'>
-										<a class='stockImageContainer' href='#!category/.beach-chair.adirondack-furniture' data-navcat='.adirondack-furniture' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"></a>
-<!--										<a href="#!bestsellers/.beach-chair.adirondack-furniture" class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">Best Selling Items</a>
-										<a href="#!featured/.beach-chair.adirondack-furniture" class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">Featured Items</a>
-										<a href="#!clearance/.beach-chair.adirondack-furniture" class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">Clearance Items</a>
--->										<a href='#!category/.beach-chair.adirondack-furniture' class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</a>
-										<div class='dropdownBGRight'></div>
-									</ul>	
+<!-- links in the ul for each item are built with beachmall_store.u.makedropdownlinks(). Add the category to link to in data-dropdown-link. For second tier dropouts also add data-second-tier="1"  -->
+									<ul data-dropdown-link=".beach-chair.adirondack-furniture" class='hoverProductContainer hoverout listStyleNone'></ul>	
 								</li>
 								<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'>
 									<a href='#!category/.beach-chair.backpack-chair' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Backpack Chairs
 									</a>
-									<ul class='hoverProductContainer hoverout listStyleNone dropout2'>
-										<a class='stockImageContainer' href='#!category/.beach-chair.backpack-chair' data-navcat='.backpack-chair' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"></a>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beach-chair.backpack-chair'}}]}}});">Best Selling Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beach-chair.backpack-chair'}}]}}});">Featured Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beach-chair.backpack-chair'}}]}}});">Clearance Items</button>
-										<a class='catSearchHomeDropdown' href='#!category/.beach-chair.backpack-chair' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</a>
-										<div class='dropdownBGRight'></div>
-									</ul>
+									<ul data-dropdown-link=".beach-chair.backpack-chair" class='hoverProductContainer hoverout listStyleNone dropout2'></ul>
 								</li>
                                 <li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'>
 									<a href='#!category/.beach-chair.beach-chairs' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Cup Holder Chairs
 									</a>
-									<ul class='hoverProductContainer hoverout listStyleNone dropout3'>
-										<a class='stockImageContainer' href='#!category/.beach-chair.beach-chairs' data-navcat='.beach-chairs' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"></a>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beach-chair.beach-chairs'}}]}}});">Best Selling Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beach-chair.beach-chairs'}}]}}});">Featured Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beach-chair.beach-chairs'}}]}}});">Clearance Items</button>
-										<a class='catSearchHomeDropdown' href='#!category/.beach-chair.beach-chairs' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</a>
-										<div class='dropdownBGRight'></div>
-									</ul>
+									<ul data-dropdown-link=".beach-chair.beach-chairs" class='hoverProductContainer hoverout listStyleNone dropout3'></ul>
 								</li>
                                 <li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'>
 									<a href='#!category/.beach-chair.beach-chaise' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Beach Chaises
 									</a>
-									<ul class='hoverProductContainer hoverout listStyleNone dropout4'>
-										<a class='stockImageContainer' href='#!category/.beach-chair.beach-chaise' data-navcat='.beach-chaise' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"></a>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beach-chair.beach-chaise'}}]}}});">Best Selling Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beach-chair.beach-chaise'}}]}}});">Featured Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beach-chair.beach-chaise'}}]}}});">Clearance Items</button>
-										<a class='catSearchHomeDropdown' href='#!category/.beach-chair.beach-chaise' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</a>
-										<div class='dropdownBGRight'></div>
-									</ul>
+									<ul data-dropdown-link=".beach-chair.beach-chaise" class='hoverProductContainer hoverout listStyleNone dropout4'></ul>
 								</li>
                                 <li class='noArrow' onMouseOver="myApp.ext.beachmart_dropdown.a.showDropout($(this), $(this).parent().parent(), $(this).parent(), 480)" 
 									onMouseOut="myApp.ext.beachmart_dropdown.a.hideDropout($(this), $(this).parent().parent(), $(this).parent())">
@@ -322,27 +295,13 @@ ANIMATION TESTING
 												<a href='#!category/.beach-chair.beach-lounges.beach-recliner' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
 													Beach Lounges
 												</a>
-												<ul class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout1'>
-													<a class='stockImageContainer' href='#!category/.beach-chair.beach-lounges.beach-recliner' data-navcat='.beach-recliner' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());"></a>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beach-chair.beach-lounges.beach-recliner'}}]}}});">Best Selling Items</button>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beach-chair.beach-lounges.beach-recliner'}}]}}});">Featured Items</button>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beach-chair.beach-lounges.beach-recliner'}}]}}});">Clearance Items</button>
-													<a class='catSearchHomeDropdown' href='#!category/.beach-chair.beach-lounges.beach-recliner' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());">See All Items</a>
-													<div class='dropdownBGRight'></div>
-												</ul>
+												<ul data-dropdown-link=".beach-chair.beach-lounges.beach-recliner" data-second-tier="1" class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout1'></ul>
 											</li>
                                             <li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout2($(this), $(this).parent().parent());'>
 												<a href='#!category/.beach-chair.beach-lounges.pool-floats' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
 													Pool Lounges
 												</a>
-												<ul class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout2'>
-													<a class='stockImageContainer' href='#!category/.beach-chair.beach-lounges.pool-floats' data-navcat='.pool-floats' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());"></a>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beach-chair.beach-lounges.pool-floats'}}]}}});">Best Selling Items</button>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beach-chair.beach-lounges.pool-floats'}}]}}});">Featured Items</button>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beach-chair.beach-lounges.pool-floats'}}]}}});">Clearance Items</button>
-													<a class='catSearchHomeDropdown' href='#!category/.beach-chair.beach-lounges.pool-floats' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());">See All Items</a>
-													<div class='dropdownBGRight'></div>
-												</ul>
+												<ul data-dropdown-link=".beach-chair.beach-lounges.pool-floats" data-second-tier="1" class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout2'></ul>
 											</li>
 											<div class='dropdownBGLeft'></div>
                                         </ul>
@@ -352,105 +311,49 @@ ANIMATION TESTING
 									<a href='#!category/.beach-chair.canopy-beach-chair' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Canopy Beach Chairs
 									</a>
-									<ul class='hoverProductContainer hoverout listStyleNone dropout6'>
-										<a class='stockImageContainer' href='#!category/.beach-chair.canopy-beach-chair' data-navcat='.canopy-beach-chair' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"></a>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beach-chair.canopy-beach-chair'}}]}}});">Best Selling Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beach-chair.canopy-beach-chair'}}]}}});">Featured Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beach-chair.canopy-beach-chair'}}]}}});">Clearance Items</button>
-										<a class='catSearchHomeDropdown' href='#!category/.beach-chair.canopy-beach-chair' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</a>
-										<div class='dropdownBGRight'></div>
-									</ul>
+									<ul data-dropdown-link=".beach-chair.canopy-beach-chair" class='hoverProductContainer hoverout listStyleNone dropout6'></ul>
 								</li>
                                 <li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this), $(this).parent().parent());'>
 									<a href='#!category/.beach-chair.folding-beach-chairs' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Padded Beach Chairs
 									</a>
-									<ul class='hoverProductContainer hoverout listStyleNone dropout7'>
-										<a class='stockImageContainer' href='#!category/.beach-chair.folding-beach-chairs' data-navcat='.folding-beach-chairs' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"><a>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beach-chair.folding-beach-chairs'}}]}}});">Best Selling Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beach-chair.folding-beach-chairs'}}]}}});">Featured Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beach-chair.folding-beach-chairs'}}]}}});">Clearance Items</button>
-										<a class='catSearchHomeDropdown' href='#!category/.beach-chair.folding-beach-chairs' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</a>
-										<div class='dropdownBGRight'></div>
-									</ul>
+									<ul data-dropdown-link=".beach-chair.folding-beach-chairs" class='hoverProductContainer hoverout listStyleNone dropout7'></ul>
 								</li>
                                 <li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this), $(this).parent().parent());'>
 									<a href='#!category/.beach-chair.heavy-beach-chairs' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 										High&#45back Beach Chairs
 									</a>
-									<ul class='hoverProductContainer hoverout listStyleNone dropout8'>
-										<a class='stockImageContainer' href='#!category/.beach-chair.heavy-beach-chairs' data-navcat='.heavy-beach-chairs' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"></a>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beach-chair.heavy-beach-chairs'}}]}}});">Best Selling Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beach-chair.heavy-beach-chairs'}}]}}});">Featured Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beach-chair.heavy-beach-chairs'}}]}}});">Clearance Items</button>
-										<a class='catSearchHomeDropdown' href='#!category/.beach-chair.heavy-beach-chairs' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</a>
-										<div class='dropdownBGRight'></div>
-									</ul>
+									<ul data-dropdown-link=".beach-chair.heavy-beach-chairs" class='hoverProductContainer hoverout listStyleNone dropout8'></ul>
 								</li>
                                 <li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this), $(this).parent().parent());'>
 									<a href='#!category/.beach-chair.heavy-duty-beach-chairs' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Large Beach Chairs
 									</a>
-									<ul class='hoverProductContainer hoverout listStyleNone dropout9'>
-										<a class='stockImageContainer' href='#!category/.beach-chair.heavy-duty-beach-chairs' data-navcat='.heavy-duty-beach-chairs' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"></a>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beach-chair.heavy-duty-beach-chairs'}}]}}});">Best Selling Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beach-chair.heavy-duty-beach-chairs'}}]}}});">Featured Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beach-chair.heavy-duty-beach-chairs'}}]}}});">Clearance Items</button>
-										<a class='catSearchHomeDropdown' href='#!category/.beach-chair.heavy-duty-beach-chairs' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</a>
-										<div class='dropdownBGRight'></div>
-									</ul>
+									<ul data-dropdown-link=".beach-chair.heavy-duty-beach-chairs" class='hoverProductContainer hoverout listStyleNone dropout9'></ul>
 								</li>
                                 <li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this), $(this).parent().parent());'>
 									<a href='#!category/.beach-chair.high-beach-chair' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 										High Seat Beach Chairs
 									</a>
-									<ul class='hoverProductContainer hoverout listStyleNone dropout10'>
-										<a class='stockImageContainer' href='#!category/.beach-chair.high-beach-chair' data-navcat='.high-beach-chair' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"></a>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beach-chair.high-beach-chair'}}]}}});">Best Selling Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beach-chair.high-beach-chair'}}]}}});">Featured Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beach-chair.high-beach-chair'}}]}}});">Clearance Items</button>
-										<a class='catSearchHomeDropdown' href='#!category/.beach-chair.high-beach-chair' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</a>
-										<div class='dropdownBGRight'></div>
-									</ul>
+									<ul data-dropdown-link=".beach-chair.high-beach-chair" class='hoverProductContainer hoverout listStyleNone dropout10'></ul>
 								</li>
                                 <li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this), $(this).parent().parent());'>
 									<a href='#!category/.beach-chair.sand-chair' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Low Seat Beach Chairs
 									</a>
-									<ul class='hoverProductContainer hoverout listStyleNone dropout11'>
-										<a class='stockImageContainer' href='#!category/.beach-chair.sand-chair' data-navcat='.sand-chair' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"></a>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beach-chair.sand-chair'}}]}}});">Best Selling Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beach-chair.sand-chair'}}]}}});">Featured Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beach-chair.sand-chair'}}]}}});">Clearance Items</button>
-										<a class='catSearchHomeDropdown' href='#!category/.beach-chair.sand-chair' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</a>
-										<div class='dropdownBGRight'></div>
-									</ul>
+									<ul data-dropdown-link=".beach-chair.sand-chair" class='hoverProductContainer hoverout listStyleNone dropout11'></ul>
 								</li>
                                 <li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this), $(this).parent().parent());'>
 									<a href='#!category/.beach-chair.sand-chairs' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Lay Flat Beach Chairs
 									</a>
-									<ul class='hoverProductContainer hoverout listStyleNone dropout12'>
-										<a class='stockImageContainer' href='#!category/.beach-chair.sand-chairs' data-navcat='.sand-chairs' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"></a>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beach-chair.sand-chairs'}}]}}});">Best Selling Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beach-chair.sand-chairs'}}]}}});">Featured Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beach-chair.sand-chairs'}}]}}});">Clearance Items</button>
-										<a class='catSearchHomeDropdown' href='#!category/.beach-chair.sand-chairs' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</a>
-										<div class='dropdownBGRight'></div>
-									</ul>
+									<ul data-dropdown-link=".beach-chair.sand-chairs" class='hoverProductContainer hoverout listStyleNone dropout12'></ul>
 								</li>
                                 <li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this), $(this).parent().parent());'>
 									<a href='#!category/.beach-chair.wooden-beach-chairs' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Wooden Beach Chairs
 									</a>
-									<ul class='hoverProductContainer hoverout listStyleNone dropout13'>
-										<a class='stockImageContainer' href='#!category/.beach-chair.wooden-beach-chairs' data-navcat='.wooden-beach-chairs' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"></a>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beach-chair.wooden-beach-chairs'}}]}}});">Best Selling Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beach-chair.wooden-beach-chairs'}}]}}});">Featured Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beach-chair.wooden-beach-chairs'}}]}}});">Clearance Items</button>
-										<a class='catSearchHomeDropdown' href='#!category/.beach-chair.wooden-beach-chairs' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</a>
-										<div class='dropdownBGRight'></div>
-									</ul>
+									<ul data-dropdown-link=".beach-chair.wooden-beach-chairs" class='hoverProductContainer hoverout listStyleNone dropout13'></ul>
 								</li>
 								<div class='dropdownBGLeft'></div>
 							</ul>
@@ -472,66 +375,31 @@ ANIMATION TESTING
 									<a href='#!category/.beach-accessories.beach-bags-totes' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Beach Bags &#38 Totes
 									</a>
-									<ul class='hoverProductContainer hoverout listStyleNone'>
-										<a class='stockImageContainer' href='#!category/.beach-accessories.beach-bags-totes' data-navcat='.beach-bags-totes' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"></a>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beach-accessories.beach-bags-totes'}}]}}});">Best Selling Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beach-accessories.beach-bags-totes'}}]}}});">Featured Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beach-accessories.beach-bags-totes'}}]}}});">Clearance Items</button>
-										<a class='catSearchHomeDropdown' href='#!category/.beach-accessories.beach-bags-totes' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</a>
-										<div class='dropdownBGRight'></div>
-									</ul>
+									<ul data-dropdown-link=".beach-accessories.beach-bags-totes" class='hoverProductContainer hoverout listStyleNone'></ul>
 								</li>
                            		<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'>
 									<a href='#!category/.beach-accessories.beach-cart' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Beach Carts
 									</a>
-									<ul class='hoverProductContainer hoverout listStyleNone dropout2'>
-										<a class='stockImageContainer' href='#!category/.beach-accessories.beach-cart' data-navcat='.beach-cart' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"></a>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beach-accessories.beach-cart'}}]}}});">Best Selling Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beach-accessories.beach-cart'}}]}}});">Featured Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beach-accessories.beach-cart'}}]}}});">Clearance Items</button>
-										<a class='catSearchHomeDropdown' href='#!category/.beach-accessories.beach-cart' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</a>
-										<div class='dropdownBGRight'></div>
-									</ul>
+									<ul data-dropdown-link=".beach-accessories.beach-cart" class='hoverProductContainer hoverout listStyleNone dropout2'></ul>
 								</li>
 								<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'>
 									<a href='#!category/.beach-accessories.picnic-backpack' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Picnic Backpacks
 									</a>
-									<ul class='hoverProductContainer hoverout listStyleNone dropout3'>
-										<a class='stockImageContainer' href='#!category/.beach-accessories.picnic-backpack' data-navcat='.picnic-backpack' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"></a>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beach-accessories.picnic-backpack'}}]}}});">Best Selling Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beach-accessories.picnic-backpack'}}]}}});">Featured Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beach-accessories.picnic-backpack'}}]}}});">Clearance Items</button>
-										<a class='catSearchHomeDropdown' href='#!category/.beach-accessories.picnic-backpack' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</a>
-										<div class='dropdownBGRight'></div>
-									</ul>
+									<ul data-dropdown-link=".beach-accessories.picnic-backpack" class='hoverProductContainer hoverout listStyleNone dropout3'></ul>
 								</li>
 								<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'>
 									<a href='#!category/.beach-accessories.picnic-baskets' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Picnic Baskets
 									</a>
-									<ul class='hoverProductContainer hoverout listStyleNone dropout4'>
-										<a class='stockImageContainer' href='#!category/.beach-accessories.picnic-baskets' data-navcat='.picnic-baskets' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"></a>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beach-accessories.picnic-baskets'}}]}}});">Best Selling Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beach-accessories.picnic-baskets'}}]}}});">Featured Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beach-accessories.picnic-baskets'}}]}}});">Clearance Items</button>
-										<a class='catSearchHomeDropdown' href='#!category/.beach-accessories.picnic-baskets' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</a>
-										<div class='dropdownBGRight'></div>
-									</ul>
+									<ul data-dropdown-link=".beach-accessories.picnic-baskets" class='hoverProductContainer hoverout listStyleNone dropout4'></ul>
 								</li>
                                 <li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'>
 									<a href='#!category/.beach-accessories.picnic-cooler' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Coolers
 									</a>
-									<ul class='hoverProductContainer hoverout listStyleNone dropout5'>
-										<a class='stockImageContainer' href='#!category/.beach-accessories.picnic-cooler' data-navcat='.picnic-cooler' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"></a>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beach-accessories.picnic-cooler'}}]}}});">Best Selling Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beach-accessories.picnic-cooler'}}]}}});">Featured Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beach-accessories.picnic-cooler'}}]}}});">Clearance Items</button>
-										<a class='catSearchHomeDropdown' href='#!category/.beach-accessories.picnic-cooler' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</a>
-										<div class='dropdownBGRight'></div>
-									</ul>
+									<ul data-dropdown-link=".beach-accessories.picnic-cooler" class='hoverProductContainer hoverout listStyleNone dropout5'></ul>
 								</li>
 								<div class='dropdownBGLeft'></div>
                             </ul>
@@ -553,40 +421,19 @@ ANIMATION TESTING
 									<a href='#!category/.beach-sports.bodyboards' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Body Boards
 									</a>
-									<ul class='hoverProductContainer hoverout listStyleNone'>
-										<a class='stockImageContainer' href='#!category/.beach-sports.bodyboards' data-navcat='.bodyboards' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"></a>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beach-sports.bodyboards'}}]}}});">Best Selling Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beach-sports.bodyboards'}}]}}});">Featured Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beach-sports.bodyboards'}}]}}});">Clearance Items</button>
-										<a class='catSearchHomeDropdown' href='#!category/.beach-sports.bodyboards' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</a>
-										<div class='dropdownBGRight'></div>
-									</ul>
+									<ul data-dropdown-link=".beach-sports.bodyboards" class='hoverProductContainer hoverout listStyleNone'></ul>
 								</li>
 								<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'>
 									<a href='#!category/.beach-sports.pool-floats' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Pool Floats
 									</a>
-									<ul class='hoverProductContainer hoverout listStyleNone dropout2'>
-										<a class='stockImageContainer' href='#!category/.beach-sports.pool-floats' data-navcat='.pool-floats' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"></a>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beach-sports.pool-floats'}}]}}});">Best Selling Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beach-sports.pool-floats'}}]}}});">Featured Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beach-sports.pool-floats'}}]}}});">Clearance Items</button>
-										<a class='catSearchHomeDropdown' href='#!category/.beach-sports.pool-floats' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</a>
-										<div class='dropdownBGRight'></div>
-									</ul>
+									<ul data-dropdown-link=".beach-sports.pool-floats" class='hoverProductContainer hoverout listStyleNone dropout2'></ul>
 								</li>
 								<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'>
 									<a href='#!category/.beach-sports.skimboards' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Skimboards
 									</a>
-									<ul class='hoverProductContainer hoverout listStyleNone dropout3'>
-										<a class='stockImageContainer' href='#!category/.beach-sports.skimboards' data-navcat='.skimboards' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"></a>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beach-sports.skimboards'}}]}}});">Best Selling Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beach-sports.skimboards'}}]}}});">Featured Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beach-sports.skimboards'}}]}}});">Clearance Items</button>
-										<a class='catSearchHomeDropdown' href='#!category/.beach-sports.skimboards' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</a>
-										<div class='dropdownBGRight'></div>
-									</ul>
+									<ul data-dropdown-link=".beach-sports.skimboards" class='hoverProductContainer hoverout listStyleNone dropout3'></ul>
 								</li>
 								<div class='dropdownBGLeft'></div>
                             </ul>
@@ -608,79 +455,37 @@ ANIMATION TESTING
 									<a href='#!category/.beachwear.beach-hat.baby-hats' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Baby Hats
 									</a>
-									<ul class='hoverProductContainer hoverout listStyleNone'>
-										<a class='stockImageContainer' href='#!category/.beachwear.beach-hat.baby-hats' data-navcat='.baby-hats' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">Baby Hats</a>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beachwear.beach-hat.baby-hats'}}]}}});">Best Selling Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beachwear.beach-hat.baby-hats'}}]}}});">Featured Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beachwear.beach-hat.baby-hats'}}]}}});">Clearance Items</button>
-										<a class='catSearchHomeDropdown' href='#!category/.beachwear.beach-hat.baby-hats' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</a>
-										<div class='dropdownBGRight'></div>
-									</ul>	
+									<ul data-dropdown-link=".beachwear.beach-hat.baby-hats" class='hoverProductContainer hoverout listStyleNone'></ul>	
 								</li>
 								<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'>
 									<a href='#!category/.beachwear.beach-hat.kids-hats' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Kid&#39s Hats
 									</a>
-									<ul class='hoverProductContainer hoverout listStyleNone dropout2'>
-										<a class='stockImageContainer' href='#!category/.beachwear.beach-hat.kids-hats' data-navcat='.kids-hats' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">Kid&#39s Hats</a>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beachwear.beach-hat.kids-hats'}}]}}});">Best Selling Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beachwear.beach-hat.kids-hats'}}]}}});">Featured Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beachwear.beach-hat.kids-hats'}}]}}});">Clearance Items</button>
-										<a class='catSearchHomeDropdown' href='#!category/.beachwear.beach-hat.kids-hats' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</a>
-										<div class='dropdownBGRight'></div>
-									</ul>
+									<ul data-dropdown-link=".beachwear.beach-hat.kids-hats" class='hoverProductContainer hoverout listStyleNone dropout2'></ul>
 								</li>
 								<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'>
 									<a href='#!category/.beachwear.beach-swimwear.babies-swimsuit' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Babie&#39s Swimwear
 									</a>
-									<ul class='hoverProductContainer hoverout listStyleNone dropout3'>
-										<a class='stockImageContainer' href='#!category/.beachwear.beach-swimwear.babies-swimsuit' data-navcat='.babies-swimsuit' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">Babie&#39s Swimwear</a>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beachwear.beach-swimwear.babies-swimsuit'}}]}}});">Best Selling Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beachwear.beach-swimwear.babies-swimsuit'}}]}}});">Featured Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beachwear.beach-swimwear.babies-swimsuit'}}]}}});">Clearance Items</button>
-										<a class='catSearchHomeDropdown' href='#!category/.beachwear.beach-swimwear.babies-swimsuit' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</a>
-										<div class='dropdownBGRight'></div>
-									</ul>
+									<ul data-dropdown-link=".beachwear.beach-swimwear.babies-swimsuit" class='hoverProductContainer hoverout listStyleNone dropout3'></ul>
 								</li>
 								<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'>
 									<a href='#!category/.beachwear.beach-swimwear.beach-wear.boys-swimwear' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Boy&#39s Swimwear
 									</a>
-									<ul class='hoverProductContainer hoverout listStyleNone dropout4'>
-										<a class='stockImageContainer' href='#!category/.beachwear.beach-swimwear.beach-wear.boys-swimwear' data-navcat='.boys-swimwear' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">Boy&#39s Swimwear</a>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beachwear.beach-swimwear.beach-wear.boys-swimwear'}}]}}});">Best Selling Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beachwear.beach-swimwear.beach-wear.boys-swimwear'}}]}}});">Featured Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beachwear.beach-swimwear.beach-wear.boys-swimwear'}}]}}});">Clearance Items</button>
-										<a class='catSearchHomeDropdown' href='#!category/.beachwear.beach-swimwear.beach-wear.boys-swimwear' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</a>
-										<div class='dropdownBGRight'></div>
-									</ul>
+									<ul data-dropdown-link=".beachwear.beach-swimwear.beach-wear.boys-swimwear" class='hoverProductContainer hoverout listStyleNone dropout4'></ul>
 								</li>
 								<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'>
 									<a href='#!category/.beachwear.beach-swimwear.beach-wear.girls-swimwear' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Girl&#39s Swimwear
 									</a>
-									<ul class='hoverProductContainer hoverout listStyleNone dropout5'>
-										<a class='stockImageContainer' href='#!category/.beachwear.beach-swimwear.beach-wear.girls-swimwear' data-navcat='.girls-swimwear' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">Girl&#39s Swimwear</a>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beachwear.beach-swimwear.beach-wear.girls-swimwear'}}]}}});">Best Selling Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beachwear.beach-swimwear.beach-wear.girls-swimwear'}}]}}});">Featured Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beachwear.beach-swimwear.beach-wear.girls-swimwear'}}]}}});">Clearance Items</button>
-										<a class='catSearchHomeDropdown' href='#!category/.beachwear.beach-swimwear.beach-wear.girls-swimwear' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</a>
-										<div class='dropdownBGRight'></div>
-									</ul>
+									<ul data-dropdown-link=".beachwear.beach-swimwear.beach-wear.girls-swimwear" class='hoverProductContainer hoverout listStyleNone dropout5'></ul>
 								</li>
 								<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'>
 									<a href='#!category/.beachwear.beach-swimwear.kids-swimsuit' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Kid&#39s Swimwear
 									</a>
-									<ul class='hoverProductContainer hoverout listStyleNone dropout6'>
-										<a class='stockImageContainer' href='#!category/.beachwear.beach-swimwear.kids-swimsuit' data-navcat='.kids-swimsuit' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">Kid&#39s Swimwear</a>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beachwear.beach-swimwear.kids-swimsuit'}}]}}});">Best Selling Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beachwear.beach-swimwear.kids-swimsuit'}}]}}});">Featured Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beachwear.beach-swimwear.kids-swimsuit'}}]}}});">Clearance Items</button>
-										<a class='catSearchHomeDropdown' href='#!category/.beachwear.beach-swimwear.kids-swimsuit' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</a>
-										<div class='dropdownBGRight'></div>
-									</ul>
+									<ul data-dropdown-link=".beachwear.beach-swimwear.kids-swimsuit" class='hoverProductContainer hoverout listStyleNone dropout6'></ul>
 								</li>
 								<li class='noArrow' onMouseOver="myApp.ext.beachmart_dropdown.a.showDropout($(this), $(this).parent().parent(), $(this).parent(), 480)" 
 									onMouseOut="myApp.ext.beachmart_dropdown.a.hideDropout($(this), $(this).parent().parent(), $(this).parent())">
@@ -697,27 +502,13 @@ ANIMATION TESTING
 												<a href='#!category/.beachwear.beach-swimwear.board-shorts.boys-boardshorts' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
 													Boy&#39s Board Shorts
 												</a>
-												<ul class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout1'>
-													<a class='stockImageContainer' href='#!category/.beachwear.beach-swimwear.board-shorts.boys-boardshorts' data-navcat='.boys-boardshorts' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());">Boy&#39s Board Shorts</a>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beachwear.beach-swimwear.board-shorts.boys-boardshorts'}}]}}});">Best Selling Items</button>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beachwear.beach-swimwear.board-shorts.boys-boardshorts'}}]}}});">Featured Items</button>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beachwear.beach-swimwear.board-shorts.boys-boardshorts'}}]}}});">Clearance Items</button>
-													<a class='catSearchHomeDropdown' href='#!category/.beachwear.beach-swimwear.board-shorts.boys-boardshorts' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());">See All Items</a>
-													<div class='dropdownBGRight'></div>
-												</ul>
+												<ul data-dropdown-link=".beachwear.beach-swimwear.board-shorts.boys-boardshorts" data-second-tier="1" class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout1'></ul>
 											</li>
 											<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout2($(this), $(this).parent().parent());'>
 												<a href='#!category/.beachwear.beach-swimwear.board-shorts.girls-board-shorts' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
 													Girl&#39s Board Shorts
 												</a>
-												<ul class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout2'>
-													<a class='stockImageContainer' href='#!category/.beachwear.beach-swimwear.board-shorts.girls-board-shorts' data-navcat='.girls-board-shorts' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());">Girl&#39s Board Shorts</a>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beachwear.beach-swimwear.board-shorts.girls-board-shorts'}}]}}});">Best Selling Items</button>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beachwear.beach-swimwear.board-shorts.girls-board-shorts'}}]}}});">Featured Items</button>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beachwear.beach-swimwear.board-shorts.girls-board-shorts'}}]}}});">Clearance Items</button>
-													<a class='catSearchHomeDropdown' href='#!category/.beachwear.beach-swimwear.board-shorts.girls-board-shorts' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());">See All Items</a>
-													<div class='dropdownBGRight'></div>
-												</ul>
+												<ul data-dropdown-link=".beachwear.beach-swimwear.board-shorts.girls-board-shorts" data-second-tier="1" class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout2'></ul>
 											</li>
 								<!--
 											<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout2($(this), $(this).parent().parent());'>
@@ -768,27 +559,13 @@ ANIMATION TESTING
 												<a href='#!category/.beachwear.beach-swimwear.rashguard.girls-rash-guard' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
 													Girl&#39s Rash Guards
 												</a>
-												<ul class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout2'>
-													<a class='stockImageContainer' href='#!category/.beachwear.beach-swimwear.rashguard.girls-rash-guard' data-navcat='.girls-rash-guard' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());">Girl&#39s Rash Guards</a>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beachwear.beach-swimwear.rashguard.girls-rash-guard'}}]}}});">Best Selling Items</button>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beachwear.beach-swimwear.rashguard.girls-rash-guard'}}]}}});">Featured Items</button>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beachwear.beach-swimwear.rashguard.girls-rash-guard'}}]}}});">Clearance Items</button>
-													<a class='catSearchHomeDropdown' href='#!category/.beachwear.beach-swimwear.rashguard.girls-rash-guard' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());">See All Items</a>
-													<div class='dropdownBGRight'></div>
-												</ul>
+												<ul data-dropdown-link=".beachwear.beach-swimwear.rashguard.girls-rash-guard" data-second-tier="1" class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout1'></ul>
 											</li>
 											<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout2($(this), $(this).parent().parent());'>
 												<a href='#!category/.beachwear.beach-swimwear.rashguard.kids-rash-guard' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
 													Kid&#39s / Baby Rash Guards
 												</a>
-												<ul class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout3'>
-													<a class='stockImageContainer' href='#!category/.beachwear.beach-swimwear.rashguard.kids-rash-guard' data-navcat='.kids-rash-guard' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());">Kid&#39s / Baby Rash Guards</a>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beachwear.beach-swimwear.rashguard.kids-rash-guard'}}]}}});">Best Selling Items</button>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beachwear.beach-swimwear.rashguard.kids-rash-guard'}}]}}});">Featured Items</button>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beachwear.beach-swimwear.rashguard.kids-rash-guard'}}]}}});">Clearance Items</button>
-													<a class='catSearchHomeDropdown' href='#!category/.beachwear.beach-swimwear.rashguard.kids-rash-guard' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());">See All Items</a>
-													<div class='dropdownBGRight'></div>
-												</ul>
+												<ul data-dropdown-link=".beachwear.beach-swimwear.rashguard.kids-rash-guard" data-second-tier="1" class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout2'></ul>
 											</li>
 											<div class='dropdownBGLeft'></div>
 										</ul>
@@ -963,15 +740,8 @@ ANIMATION TESTING
 									<a href='#!category/.beach-umbrellas-shelter.beach-umbrella' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Beach Umbrellas
 									</a>
-									<ul class='hoverProductContainer hoverout listStyleNone'>
-										<a class='stockImageContainer' href='#!category/.beach-umbrellas-shelter.beach-umbrella' data-navcat='.beach-umbrella' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"></a>
+									<ul data-dropdown-link=".beach-umbrellas-shelter.beach-umbrella" class='hoverProductContainer hoverout listStyleNone'></ul>	
 										<!-- LIST USAGE NOT IMPLIMENTED <button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('category',{'navcat':'.beach-umbrellas-shelter.beach-umbrella', 'templateID':'categoryTemplateWithSpecialList'});">Best Selling Items</button>-->
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beach-umbrellas-shelter.beach-umbrella'}}]}}});">Best Selling Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beach-umbrellas-shelter.beach-umbrella'}}]}}});">Featured Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beach-umbrellas-shelter.beach-umbrella'}}]}}});">Clearance Items</button>
-										<a class='catSearchHomeDropdown' href='#!category/.beach-umbrellas-shelter.beach-umbrella' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</a>
-										<div class='dropdownBGRight'></div>
-									</ul>	
 								</li>
                                 <li class='noArrow' onMouseOver="myApp.ext.beachmart_dropdown.a.showDropout($(this), $(this).parent().parent(), $(this).parent(), 480)" 
 									onMouseOut="myApp.ext.beachmart_dropdown.a.hideDropout($(this), $(this).parent().parent(), $(this).parent())">
@@ -988,54 +758,25 @@ ANIMATION TESTING
 												<a href='#!category/.beach-umbrellas-shelter.patio-umbrella.6-foot-patio-umbrellas' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
 													6 Foot Umbrellas
 												</a>
-												<ul class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout1'>
-													<a class='stockImageContainer' href='#!category/.beach-umbrellas-shelter.patio-umbrella.6-foot-patio-umbrellas' data-navcat='.6-foot-patio-umbrellas' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());"></a>
-													<!--<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('category',{'navcat':'.beach-umbrellas-shelter.patio-umbrella.6-foot-patio-umbrellas', 'templateID':'categoryTemplateWithSpecialList'});">Best Selling Items</button>-->
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beach-umbrellas-shelter.patio-umbrella.6-foot-patio-umbrellas'}}]}}});">Best Selling Items</button>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beach-umbrellas-shelter.patio-umbrella.6-foot-patio-umbrellas'}}]}}});">Featured Items</button>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beach-umbrellas-shelter.patio-umbrella.6-foot-patio-umbrellas'}}]}}});">Clearance Items</button>
-													<a class='catSearchHomeDropdown' href='#!category/.beach-umbrellas-shelter.patio-umbrella.6-foot-patio-umbrellas' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());">See All Items</a>
-													<div class='dropdownBGRight'></div>
-												</ul>
+												<ul data-dropdown-link=".beach-umbrellas-shelter.patio-umbrella.6-foot-patio-umbrellas" data-second-tier="1" class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout1'></ul>
 											</li>
 											<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout2($(this), $(this).parent().parent());'>
 												<a href='#!category/.beach-umbrellas-shelter.patio-umbrella.7-foot-patio-umbrellas' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
 													7 Foot Umbrellas
 												</a>
-												<ul class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout2'>
-													<a class='stockImageContainer' href='#!category/.beach-umbrellas-shelter.patio-umbrella.7-foot-patio-umbrellas' data-navcat='.7-foot-patio-umbrellas' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());"></a>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beach-umbrellas-shelter.patio-umbrella.7-foot-patio-umbrellas'}}]}}});">Best Selling Items</button>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beach-umbrellas-shelter.patio-umbrella.7-foot-patio-umbrellas'}}]}}});">Featured Items</button>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beach-umbrellas-shelter.patio-umbrella.7-foot-patio-umbrellas'}}]}}});">Clearance Items</button>
-													<a class='catSearchHomeDropdown' href='#!category/.beach-umbrellas-shelter.patio-umbrella.7-foot-patio-umbrellas' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());">See All Items</a>
-													<div class='dropdownBGRight'></div>
-												</ul>
+												<ul data-dropdown-link=".beach-umbrellas-shelter.patio-umbrella.7-foot-patio-umbrellas" data-second-tier="1" class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout2'></ul>
 											</li>
 											<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout2($(this), $(this).parent().parent());'>
 												<a href='#!category/.beach-umbrellas-shelter.patio-umbrella.offset-umbrellas' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
 													9 Foot Umbrellas
 												</a>
-												<ul class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout3'>
-													<a class='stockImageContainer' href='#!category/.beach-umbrellas-shelter.patio-umbrella.offset-umbrellas' data-navcat='.offset-umbrellas' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());"></a>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beach-umbrellas-shelter.patio-umbrella.offset-umbrellas'}}]}}});">Best Selling Items</button>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beach-umbrellas-shelter.patio-umbrella.offset-umbrellas'}}]}}});">Featured Items</button>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beach-umbrellas-shelter.patio-umbrella.offset-umbrellas'}}]}}});">Clearance Items</button>
-													<a class='catSearchHomeDropdown' href='#!category/.beach-umbrellas-shelter.patio-umbrella.offset-umbrellas' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());">See All Items</a>
-													<div class='dropdownBGRight'></div>
-												</ul>
+												<ul data-dropdown-link=".beach-umbrellas-shelter.patio-umbrella.offset-umbrellas" data-second-tier="1" class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout3'></ul>
 											</li>
 											<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout2($(this), $(this).parent().parent());'>
 												<a href='#!category/.beach-umbrellas-shelter.patio-umbrella.market-umbrellas' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
 													11 Foot Umbrellas
 												</a>
-												<ul class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout4'>
-													<a class='stockImageContainer' href='#!category/.beach-umbrellas-shelter.patio-umbrella.market-umbrellas' data-navcat='.market-umbrellas' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());"></a>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beach-umbrellas-shelter.patio-umbrella.market-umbrellas'}}]}}});">Best Selling Items</button>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beach-umbrellas-shelter.patio-umbrella.market-umbrellas'}}]}}});">Featured Items</button>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beach-umbrellas-shelter.patio-umbrella.market-umbrellas'}}]}}});">Clearance Items</button>
-													<a class='catSearchHomeDropdown' href='#!category/.beach-umbrellas-shelter.patio-umbrella.market-umbrellas' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());">See All Items</a>
-													<div class='dropdownBGRight'></div>
-												</ul>
+												<ul data-dropdown-link=".beach-umbrellas-shelter.patio-umbrella.market-umbrellas" data-second-tier="1" class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout4'></ul>
 											</li>
 											<div class='dropdownBGLeft'></div>
                                         </ul>
@@ -1045,14 +786,7 @@ ANIMATION TESTING
 									<a href='#!category/.beach-umbrellas-shelter.umbrella-stand-stands-base' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Umbrella Accessories
 									</a>
-									<ul class='hoverProductContainer hoverout listStyleNone dropout3'>
-										<a class='stockImageContainer' href='#!category/.beach-umbrellas-shelter.umbrella-stand-stands-base' data-navcat='.umbrella-stand-stands-base' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"></a>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beach-umbrellas-shelter.umbrella-stand-stands-base'}}]}}});">Best Selling Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beach-umbrellas-shelter.umbrella-stand-stands-base'}}]}}});">Featured Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beach-umbrellas-shelter.umbrella-stand-stands-base'}}]}}});">Clearance Items</button>
-										<a class='catSearchHomeDropdown' href='#!category/.beach-umbrellas-shelter.umbrella-stand-stands-base' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</a>
-										<div class='dropdownBGRight'></div>
-									</ul>
+									<ul data-dropdown-link=".beach-umbrellas-shelter.umbrella-stand-stands-base" class='hoverProductContainer hoverout listStyleNone dropout3'></ul>
 								</li>
 								<div class='dropdownBGLeft'></div>
                             </ul>
@@ -1074,27 +808,13 @@ ANIMATION TESTING
 									<a href='#!category/.beach-umbrellas-shelter.beach-cabana' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Beach Cabanas
 									</a>
-									<ul class='hoverProductContainer hoverout listStyleNone'>
-										<a class='stockImageContainer' href='#!category/.beach-umbrellas-shelter.beach-cabana' data-navcat='.beach-cabana' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"></a>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beach-umbrellas-shelter.beach-cabana'}}]}}});">Best Selling Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beach-umbrellas-shelter.beach-cabana'}}]}}});">Featured Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beach-umbrellas-shelter.beach-cabana'}}]}}});">Clearance Items</button>
-										<a class='catSearchHomeDropdown' href='#!category/.beach-umbrellas-shelter.beach-cabana' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</a>
-										<div class='dropdownBGRight'></div>
-									</ul>	
+									<ul data-dropdown-link=".beach-umbrellas-shelter.beach-cabana" class='hoverProductContainer hoverout listStyleNone'></ul>	
 								</li>
                                 <li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'>
 									<a href='#!category/.beach-umbrellas-shelter.beach-tent-shelters' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Beach Tents
 									</a>
-									<ul class='hoverProductContainer hoverout listStyleNone dropout2'>
-										<a class='stockImageContainer' href='#!category/.beach-umbrellas-shelter.beach-tent-shelters' data-navcat='.beach-tent-shelters' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"></a>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beach-umbrellas-shelter.beach-tent-shelters'}}]}}});">Best Selling Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beach-umbrellas-shelter.beach-tent-shelters'}}]}}});">Featured Items</button>
-										<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beach-umbrellas-shelter.beach-tent-shelters'}}]}}});">Clearance Items</button>
-										<a class='catSearchHomeDropdown' href='#!category/.beach-umbrellas-shelter.beach-tent-shelters' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());">See All Items</a>
-										<div class='dropdownBGRight'></div>
-									</ul>
+									<ul data-dropdown-link=".beach-umbrellas-shelter.beach-tent-shelters" class='hoverProductContainer hoverout listStyleNone dropout2'></ul>
 								</li>
 								<div class='dropdownBGLeft'></div>
                             </ul>
