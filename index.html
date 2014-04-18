@@ -67,7 +67,7 @@ css files should be included before any .js file to ensure they are downloaded i
 $(document).ready(function(){
 
 	window.myApp = new initApp({
-		"release":"201402.20140417195000",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+		"release":"201402.20140418105700",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 		"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 		"baseURL":baseURL, //used in non-local mode.
 		"checkoutAuthMode" : "active",//can be passive, active or required
@@ -1164,7 +1164,7 @@ the homepageTemplate template is loaded into mainContentArea by default when the
     <div class='CarouselContainer featuredProductsCarouselContainer'>
     	<div class='carouselTitles yellowBkgrd'>
         	<div class='carouselTitleTextContainer floatLeft'>FEATURED PRODUCTS</div>
-            <div class='carouselLinkContainer floatRight featWidth pointer' onClick="return showContent('search',{'elasticsearch':{'filter':{'or':[{'term':{'tags':'IS_USER4'}},{'term':{'tags':'IS_COLORFUL'}},{'term':{'tags':'IS_USER5'}},{'term':{'user:prod_promo':'IS_USER4'}}]}}});">View All Featured Products</div>
+			<a href="#!homepagefeatured" class='carouselLinkContainer floatRight featWidth pointer'>View All Featured Products</a>
             <div class='carouselArrowContainer floatRight sprite'></div>
         </div>
         <div class='Carousel'>
@@ -1179,7 +1179,7 @@ the homepageTemplate template is loaded into mainContentArea by default when the
     <div class='CarouselContainer bestSellersCarouselContainer'>
     	<div class='carouselTitles'>
         	<div class='carouselTitleTextContainer floatLeft'>BEST SELLERS</div>
-            <a class="bindByAnchor" href="#!search?TAG=IS_BESTSELLER">
+            <a class="bindByAnchor" href="#!homepagebestseller">
                 <div class='carouselLinkContainer floatRight'>View Best Sellers</div>
                 <div class='carouselArrowContainer floatRight sprite'></div>
             </a>

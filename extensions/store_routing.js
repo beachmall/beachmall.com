@@ -51,6 +51,8 @@ var store_routing = function(_app) {
 				_app.router.addAlias('bestsellers', function(routeObj){showContent('search',	{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':routeObj.params.navcat}}]}}});});
 				_app.router.addAlias('featured',	function(routeObj){showContent('search',	{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}},{'term':{'prod_promo':'IS_USER4'}}]},{'term':{'app_category':routeObj.params.navcat}}]}}});});
 				_app.router.addAlias('clearance',	function(routeObj){showContent('search',	{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beach-chair.adirondack-furniture'}}]}}});});
+				_app.router.addAlias('homepagefeatured',	function(routeObj){showContent('search',	{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER4'}},{'term':{'tags':'IS_COLORFUL'}},{'term':{'tags':'IS_USER5'}},{'term':{'user:prod_promo':'IS_USER4'}}]},{'not':{'term':{'tags':'IS_DISCONTINUED'}}}]}}});});
+				_app.router.addAlias('homepagebestseller',	function(routeObj){showContent('search',	{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'not':{'term':{'tags':'IS_DISCONTINUED'}}}]}}});});
 				
 				_app.router.appendHash({'type':'exact','route':'cart','callback':function(routeObj){showContent('cart',routeObj.params);}});
 				_app.router.appendHash({'type':'exact','route':'home','callback':'homepage'});
@@ -71,6 +73,8 @@ var store_routing = function(_app) {
 				_app.router.appendHash({'type':'match','route':'bestsellers/{{navcat}}*','callback':'bestsellers'});
 				_app.router.appendHash({'type':'match','route':'featured/{{navcat}}*','callback':'featured'});
 				_app.router.appendHash({'type':'match','route':'clearance/{{navcat}}*','callback':'clearance'});
+				_app.router.appendHash({'type':'match','route':'homepagefeatured','callback':'homepagefeatured'});
+				_app.router.appendHash({'type':'match','route':'homepagebestseller','callback':'homepagebestseller'});
 				
 /*
 some other things we could do
