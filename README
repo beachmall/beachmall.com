@@ -16,3 +16,10 @@ API Calls Input/Output Reference:
 Examples are stored in examples sub-directory.
 Extensions are stored in the extensions sub-directory.
 
+Brands Category Content:
+To enter manufacturer name, coupon code, banner image, and page description for the top
+section in a brands category the layout should be switched to data entry:
+~category_dataentry_20130423
+The content can then be populated for the category. 
+Switch the layout back to the appropriate layout (previous layout) once the content has been added. 
+
