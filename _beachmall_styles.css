@@ -709,7 +709,7 @@ label.break	{display:block; margin:0 0 4px 6px;}
 	height:auto;
 	width:auto;
 	margin:6px auto 0px auto;
-	padding: 7px 0;
+	padding: 3px 7px;
 	color:#ffffff;
 	font-family:Oswald;
 	font-weight: normal;
@@ -929,7 +929,7 @@ HOMEPAGE
 .moreDetailsSmall.catHomeDetails.prodDetails {bottom:-75px;}
 .moreDetailsSmall.catHomeDetails {position:relative; bottom:20px; right:-87px; z-index:2; width:80px;}
 
-.CarouselContainer {height:435px; width:1020px; background:url(images/carousel-background_1020x370.jpg); margin-bottom:10px; border-bottom:5px solid #f8c301;}
+.CarouselContainer {height:568px; width:1020px; background:url(images/carousel-background_1020x370.jpg); margin-bottom:10px; border-bottom:5px solid #f8c301;}
 .carouselTitles {
 	height:35px; width:100%; color:#3bb3c3; 
 	background: #ffec9a; /* Old browsers */
@@ -944,7 +944,7 @@ HOMEPAGE
 .carouselTitleTextContainer {height:81%; width:400px; font-family:Montserrat; font-weight:normal; font-size:18px; margin-left:40px; padding-top:7px}
 .carouselArrowContainer {height:16px; width:16px; margin:9px 0px 0px 0px; padding-top:10px; background-position:-88px -218px;}
 .carouselLinkContainer {height:47; width:auto; font-family:"Open Sans"; font-weight:bold; font-size:14px; margin:0 40px 0 5px; padding-top:7px; text-align:right;}
-.Carousel {height:360px; width:960px; padding:0px 30px 0px 30px; position:relative; overflow:hidden;}
+.Carousel {height:485px; width:960px; padding:0px 30px 0px 30px; position:relative; overflow:hidden;}
 .Carousel img {border:1px solid #eee;}
 .standardCarouselPagenation {height:30px; width:100%; text-align:center; padding-top:10px;}
 .standardCarouselPagenation a {width:20px; height:20px; background:url(images/sprites-500x500.png); background-position:-63px -216px; margin:0 5.7px 1px 5.7px; display:inline-block;}
