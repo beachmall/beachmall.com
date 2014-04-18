@@ -242,10 +242,10 @@ optional params:
 				},
 			productAnchor : function(pid, seo){
 				//return "#!product/"+pid+"/"+(seo ? encodeURIComponent(seo) : '');
-				seo = seo.replace('/',''); dump('productAnchor'); dump(seo); //doesn't want any "/" in seo hash
-				seo = seo.replace('+',''); dump('productAnchor'); dump(seo); //doesn't want any "/" in seo hash
-				seo = seo.replace('&',''); dump('productAnchor'); dump(seo); //doesn't want any "/" in seo hash
-				seo = seo.replace(' - ',' '); dump('productAnchor'); dump(seo); //wants all " " converted to "-", but " - " comes out as "---", no bueno.
+				seo = seo.replace('/',''); //doesn't want any "/" in seo hash
+				seo = seo.replace('+',''); //doesn't want any "/" in seo hash
+				seo = seo.replace('&',''); //doesn't want any "/" in seo hash
+				seo = seo.replace(' - ',' '); //wants all " " converted to "-", but " - " comes out as "---", no bueno.
 				if(seo)	return "#!"+encodeURIComponent(seo).replace(/%20/g, "-")+"/p/"+pid+".html";
 				else return "#!product/"+pid;
 				},
