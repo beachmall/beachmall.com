@@ -37,7 +37,7 @@ var beachmart_dropdown_image = function(_app) {
 //				app.u.dump("fetching JSON");
 				$.getJSON("_dropdownimages.json?_v="+(new Date()).getTime(), function(json) {
 					_app.ext.beachmart_dropdown_image.vars.dropdownImages = json.dropdownImages
-					_app.ext.beachmart_dropdown_image.u.showDropdownImages();
+					//_app.ext.beachmart_dropdown_image.u.showDropdownImages();
 				}).fail(function(){_app.u.throwMessage("DROPDOWN IMAGES FAILED TO LOAD - there is a bug in _dropdown-image.json")});
 				//if there is any functionality required for this extension to load, put it here. such as a check for async google, the FB object, etc. return false if dependencies are not present. don't check for other extensions.
 				r = true;

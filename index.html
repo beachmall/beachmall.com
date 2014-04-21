@@ -260,10 +260,7 @@ ANIMATION TESTING
 										Adirondack
 									</a>
 <!-- links in the ul for each item are built with beachmall_store.u.makedropdownlinks(). Add the category to link to in data-dropdown-link. For second tier dropouts also add data-second-tier="1"  -->
-									<ul data-dropdown-link=".beach-chair.adirondack-furniture" class='hoverProductContainer hoverout listStyleNone'>
-										<a data-tlc="bind $seo '.pretty'; bind $var '.'; store_routing#seoanchor --type='category' --seo; apply --attrib='href';">
-										<a data-tlc="bind $seo '.pretty'; bind $var '.'; store_routing#seoanchor --type='category' --seo; apply --attrib='href';">
-									</ul>	
+									<ul data-dropdown-link=".beach-chair.adirondack-furniture" class='hoverProductContainer hoverout listStyleNone'></ul>	
 								</li>
 								<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'>
 									<a href='#!category/.beach-chair.backpack-chair' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
@@ -1448,6 +1445,9 @@ don't modify the 'data-templateid' unless you are changing template names and up
 
 		</div>
 	</div>
+	
+
+	
 
 	<div class='brandsTopCatContainer'>
 		<ul data-tlc="bind $var '.@subcategoryDetail'; store_navcats#categorylist  --detail='max' --templateid='brandsCategoryListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin categoryList"></ul><!-- outputs a list of subcategories -->
@@ -1850,6 +1850,14 @@ container ul should have lineItemProdlist class on it instead of productList
 		<td><span data-bind="var: services(arrival_yyyymmdd); format:ymd2Pretty; extension:beachmart;"></span></td>
 	</tr></tbody>
 </table>
+
+	<li id="dropdownAnchorListTemplate">
+		<a data-tlc="bind $seo '.pretty'; bind $var '.'; store_routing#seoanchor --type='category' --seo='$seo'; apply --attrib='href';" class='stockImageContainer'></a>
+		<a data-tlc="bind $seo '.pretty'; bind $var '.'; beachmart_dropdown#dropdownseoanchor --type='searchcategory' --searchtype='bestsellers' --seo='$seo'; apply --attrib='href';" class='catSearchHomeDropdown'>Best Selling Items</a>
+		<a data-tlc="bind $seo '.pretty'; bind $var '.'; beachmart_dropdown#dropdownseoanchor --type='searchcategory' --searchtype='featured' --seo='$seo'; apply --attrib='href';" class='catSearchHomeDropdown'>Featured Items</a>
+		<a data-tlc="bind $seo '.pretty'; bind $var '.'; beachmart_dropdown#dropdownseoanchor --type='searchcategory' --searchtype='clearance' --seo='$seo'; apply --attrib='href';" class='catSearchHomeDropdown'>Clearance Items</a>
+		<a data-tlc="bind $seo '.pretty'; bind $var '.'; store_routing#seoanchor --type='category' --seo='$seo'; apply --attrib='href';" class='catSearchHomeDropdown'>See All Items</a>									
+	</li>
 
 
 <ul>

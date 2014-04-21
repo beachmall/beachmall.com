@@ -72,9 +72,9 @@ var store_routing = function(_app) {
 				//custom append
 				_app.router.appendHash({'type':'match','route':'{{seo}}/c/{{navcat}}','callback':'category'});
 				_app.router.appendHash({'type':'match','route':'{{seo}}/p/{{pid}}.html','callback':'product'});
-				_app.router.appendHash({'type':'match','route':'bestsellers/{{navcat}}*','callback':'bestsellers'});
-				_app.router.appendHash({'type':'match','route':'featured/{{navcat}}*','callback':'featured'});
-				_app.router.appendHash({'type':'match','route':'clearance/{{navcat}}*','callback':'clearance'});
+				_app.router.appendHash({'type':'match','route':'{{seo}}/bestsellers/c/{{navcat}}*','callback':'bestsellers'});
+				_app.router.appendHash({'type':'match','route':'{{seo}}/featured/c/{{navcat}}*','callback':'featured'});
+				_app.router.appendHash({'type':'match','route':'{{seo}}/clearance/c/{{navcat}}*','callback':'clearance'});
 				_app.router.appendHash({'type':'match','route':'homepagefeatured','callback':'homepagefeatured'});
 				_app.router.appendHash({'type':'match','route':'homepagebestseller','callback':'homepagebestseller'});
 				_app.router.appendHash({'type':'exact','route':'viewallfeatured','callback':'homepagefeaturedviewall'});
@@ -214,7 +214,7 @@ optional params:
 						dump('----DATA.VALUE:'); dump(data.value);
 						data.globals.binds[data.globals.focusBind] = _app.ext.store_routing.u.categoryAnchor(data.value.path, (args.seo ? data.value.pretty : ''));
 						break;
-					
+
 					default:
 						dump("in tlcFormat.seolink, the type specified ["+args.type+"] is not recognized.");
 						r = false; //unrecognized 'type'
@@ -262,6 +262,11 @@ optional params:
 				if(seo) return "#!"+encodeURIComponent(seo)+"/c/"+path;
 				else return "#!category/"+path;
 				},
+/*beachmall*/
+			categorySearchAnchor : function(path,seo,type) {
+				if(seo)return "#!"+encodeURIComponent(seo)+"/"+type+"/c/"+path;
+				else return "#!category/"+type+"/"+path;
+/*beachmall*/	},
 			searchAnchor : function(type,value)	{
 				var r;
 				if(type == 'tag')	{

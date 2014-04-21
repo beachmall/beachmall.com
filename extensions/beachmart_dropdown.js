@@ -233,22 +233,36 @@ var beachmart_dropdown = function(_app) {
 		
 			}, //renderFormats
 			
+		tlcFormats : {
+			
+			dropdownseoanchor : function(data, thisTLC) {
+				var args = thisTLC.args2obj(data.command.args, data.globals);
+				data.globals.binds[data.globals.focusBind] = _app.ext.store_routing.u.categorySearchAnchor(data.value.path, (args.seo ? data.value.pretty : ''),args.searchtype);
+				return true;
+			}
+			
+		},
+			
 ////////////////////////////////////   UTIL    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 		
 		u : {
 		
 			//checks ul's in header for an assigned category name, then builds the image and search links that belong in each list item.
-			//TODO: support for hiding links that have no results. Individualizing the <a>'s and placing a data- indicator of whether or 
-			//not to add that tag on the ul is on solution. 
+			//TODO: support for hiding links that have no results.
 			makedropdownlinks : function() {
 //				dump('START beachmall_store.u.makedropdownlinks');
 				$('[data-dropdown-link]','.dropdownsContainer').each(function(){
 				var navcat = $(this).attr('data-dropdown-link');
+				var $this = $(this);
 				var _tag = { 
 					"callback": function(rd){
-						rd.$tag.tlc({'datapointer':rd.datapointer, verb:"translate"});
-						var p = rd.datapointer;
-						dump('----In the makedropdownlinks callback');
+						//rd.$tag.tlc({'datapointer':rd.datapointer, verb:"translate"}); //this way doesn't use a template
+						rd.$tag.tlc({'datapointer':rd.datapointer, verb:"transmogrify", templateid:"dropdownAnchorListTemplate"});
+						var stockL = navcat.split('.').length;
+						var stockNavcat = "."+navcat.split('.')[stockL-1];
+						//$('[data-stock-image]',$(this)).attr('data-navcat',stockNavcat);
+						$('.stockImageContainer',$this).removeClass('loadingBG').append(_app.ext.beachmart_dropdown_image.u.makeDropdownImage(_app.ext.beachmart_dropdown_image.vars.dropdownImages[stockNavcat],210,210,"ffffff"));
+						$this.append("<div class='dropdownBGRight'></div>");
 					},
 					"$tag":$(this)
 				}
