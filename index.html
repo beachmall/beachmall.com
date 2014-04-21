@@ -1157,7 +1157,7 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 					<span>BEACH BAGS</span>
 				</a>
 				<a href="#!category/.beach-chairs.beach-gear/Brands" class="additionalHompageCats floatLeft pointer"> 
-				<a href="#!category/.test" class="additionalHompageCats floatLeft pointer"> 
+				<!-- <a href="#!category/.test" class="additionalHompageCats floatLeft pointer"> 
 				<!-- <div class='additionalHompageCats floatLeft pointer' onClick="return showContent('category',{'navcat':'.beach-chairs.beach-gear'});">  -->
 					<div class='addCatArrow sprite floatRight'></div>
 					<span>SHOP</span>
@@ -1342,7 +1342,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 
 <div id='categoryTemplateBrands' class='loadingBG categoryTemplate' data-app-role='categoryPage'>
 
-	<div data-tlc="bind $var '.%page.coupon_code'; if(is $var --notblank;) {{ apply --show; }}; " class="brandsPromoBanner floatLeft">
+	<div data-tlc="bind $var '.%page.coupon_code'; if(is $var --notnull;) {{ apply --show; }}; if(is $var --blank;) {{apply --hide;}};" class="brandsPromoBanner floatLeft displayNone">
 		<div>SPECIAL OFFER!</div>
 		<div><span>TAKE AN EXTRA</span><br>10% OFF ALL <span data-tlc="bind $var '.%page.mfg'; if (is $var --notblank;) {{apply --append;}};"></span> GEAR</div>
 		<div>PROMO CODE: <h3 data-tlc="bind $var '.%page.coupon_code'; if (is $var --notblank;) {{apply --append;}};"></h3> <span>See Details</span></div>
@@ -1460,7 +1460,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 
 <div id='categoryTemplateBrandsFeatured' class='loadingBG categoryTemplate' data-app-role='categoryPage'>
 
-	<div data-tlc="bind $var '.%page.coupon_code'; if(is $var --notblank;) {{ apply --show; }}; " class="brandsPromoBanner floatLeft">
+	<div data-tlc="bind $var '.%page.coupon_code'; if(is $var --notnull;) {{ apply --show; }}; if(is $var --blank;) {{apply --hide;}};" class="brandsPromoBanner floatLeft displayNone">
 		<div>SPECIAL OFFER!</div>
 		<div><span>TAKE AN EXTRA</span><br>10% OFF ALL <span data-tlc="bind $var '.%page.mfg'; if (is $var --notblank;) {{apply --append;}};"></span> GEAR</div>
 		<div>PROMO CODE: <h3 data-tlc="bind $var '.%page.coupon_code'; if (is $var --notblank;) {{apply --append;}};"></h3> <span>See Details</span></div>
@@ -1473,7 +1473,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 
 <div id='categoryTemplateBrandsBestSellers' class='loadingBG categoryTemplate' data-app-role='categoryPage'>
 
-	<div data-tlc="bind $var '.%page.coupon_code'; if(is $var --notblank;) {{ apply --show; }}; " class="brandsPromoBanner floatLeft">
+	<div data-tlc="bind $var '.%page.coupon_code'; if(is $var --notnull;) {{ apply --show; }}; if(is $var --blank;) {{apply --hide;}};" class="brandsPromoBanner floatLeft displayNone">
 		<div>SPECIAL OFFER!</div>
 		<div><span>TAKE AN EXTRA</span><br>10% OFF ALL <span data-tlc="bind $var '.%page.mfg'; if (is $var --notblank;) {{apply --append;}};"></span> GEAR</div>
 		<div>PROMO CODE: <h3 data-tlc="bind $var '.%page.coupon_code'; if (is $var --notblank;) {{apply --append;}};"></h3> <span>See Details</span></div>
@@ -1486,7 +1486,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 
 <div id='categoryTemplateBrandsViewAll' class='loadingBG categoryTemplate' data-app-role='categoryPage'>
 
-	<div data-tlc="bind $var '.%page.coupon_code'; if(is $var --notblank;) {{ apply --show; }}; " class="brandsPromoBanner floatLeft">
+	<div data-tlc="bind $var '.%page.coupon_code'; if(is $var --notnull;) {{ apply --show; }}; if(is $var --blank;) {{apply --hide;}};" class="brandsPromoBanner floatLeft displayNone">
 		<div>SPECIAL OFFER!</div>
 		<div><span>TAKE AN EXTRA</span><br>10% OFF ALL <span data-tlc="bind $var '.%page.mfg'; if (is $var --notblank;) {{apply --append;}};"></span> GEAR</div>
 		<div>PROMO CODE: <h3 data-tlc="bind $var '.%page.coupon_code'; if (is $var --notblank;) {{apply --append;}};"></h3> <span>See Details</span></div>
