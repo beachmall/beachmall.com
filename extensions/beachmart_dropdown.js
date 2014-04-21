@@ -40,6 +40,7 @@ var beachmart_dropdown = function(_app) {
 			onSuccess : function()	{
 				
 //				_app.u.dump('BEGIN _app.ext.store_navcats.init.onSuccess ');
+				_app.ext.beachmart_dropdown.u.makedropdownlinks();
 				var r = true; //return false if extension won't load for some reason (account config, dependencies, etc).
 				return r;
 				},
@@ -225,11 +226,56 @@ var beachmart_dropdown = function(_app) {
 		
 		renderFormats : {
 		
+			headerdropdown : function($tag, data) {
+				data.value = data.value;
+				dump('-----START headerdropdown'); dump(data.value);
+			}
+		
 			}, //renderFormats
 			
 ////////////////////////////////////   UTIL    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 		
 		u : {
+		
+			//checks ul's in header for an assigned category name, then builds the image and search links that belong in each list item.
+			//TODO: support for hiding links that have no results. Individualizing the <a>'s and placing a data- indicator of whether or 
+			//not to add that tag on the ul is on solution. 
+			makedropdownlinks : function() {
+//				dump('START beachmall_store.u.makedropdownlinks');
+				$('[data-dropdown-link]','.dropdownsContainer').each(function(){
+				var navcat = $(this).attr('data-dropdown-link');
+				var _tag = { 
+					"callback": function(rd){
+						rd.$tag.tlc({'datapointer':rd.datapointer, verb:"translate"});
+						var p = rd.datapointer;
+						dump('----In the makedropdownlinks callback');
+					},
+					"$tag":$(this)
+				}
+				_app.calls.appNavcatDetail.init({"path":navcat,"deatil":"fast"},_tag);
+				});
+				_app.model.dispatchThis();
+			//?seorequest=1&pageType=product&pid=
+				
+	/*				var $this = $(this);
+					var navcat = $this.attr('data-dropdown-link');
+					var stockL = navcat.split('.').length;
+					var stockNavcat = "."+navcat.split('.')[stockL-1];
+					if($this.attr('data-second-tier')) { var thisClick =  "onClick='myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());'"}
+					else { var thisClick = "onClick='myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());'" }
+					
+					$this.append(
+							"<a href='#!category/"+navcat+"' class='stockImageContainer' data-navcat='"+stockNavcat+"' "+thisClick+"></a>"
+						+	"<a href='#!bestsellers/"+navcat+"' class='catSearchHomeDropdown' "+thisClick+">Best Selling Items</a>"	
+						+	"<a href='#!featured/"+navcat+"' class='catSearchHomeDropdown' "+thisClick+">Featured Items</a>"
+						+	"<a href='#!clearance/"+navcat+"' class='catSearchHomeDropdown' "+thisClick+">Clearance Items</a>"
+						+	"<a href='#!category/"+navcat+"' class='catSearchHomeDropdown' "+thisClick+">See All Items</a>"
+						+	"<div class='dropdownBGRight'></div>"
+					);
+					
+//					dump('----Link to this dropdown category'); dump($(this).attr('data-dropdown-link'));
+				});
+	*/		},
 		
 			loadHoverProducts : function(){
 				//obtain product list

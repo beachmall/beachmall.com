@@ -36,7 +36,6 @@ var beachmall_store = function(_app) {
 				var r = false; //return false if extension won't load for some reason (account config, dependencies, etc).
 
 				//if there is any functionality required for this extension to load, put it here. such as a check for async google, the FB object, etc. return false if dependencies are not present. don't check for other extensions.
-				_app.ext.beachmall_store.u.makedropdownlinks();
 				_app.ext.store_filter.u.bindOnclick();
 				
 				r = true;
@@ -785,33 +784,7 @@ var beachmall_store = function(_app) {
 //utilities are typically functions that are exected by an event or action.
 //any functions that are recycled should be here.
 		u : {
-		
-			//checks ul's in header for an assigned category name, then builds the image and search links that belong in each list item.
-			//TODO: support for hiding links that have no results. Individualizing the <a>'s and placing a data- indicator of whether or 
-			//not to add that tag on the ul is on solution. 
-			makedropdownlinks : function() {
-//				dump('START beachmall_store.u.makedropdownlinks');
-				$('[data-dropdown-link]','.dropdownsContainer').each(function(){
-					var $this = $(this);
-					var navcat = $this.attr('data-dropdown-link');
-					var stockL = navcat.split('.').length;
-					var stockNavcat = "."+navcat.split('.')[stockL-1];
-					if($this.attr('data-second-tier')) { var thisClick =  "onClick='myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());'"}
-					else { var thisClick = "onClick='myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());'" }
-					
-					$this.append(
-							"<a href='#!category/"+navcat+"' class='stockImageContainer' data-navcat='"+stockNavcat+"' "+thisClick+"></a>"
-						+	"<a href='#!bestsellers/"+navcat+"' class='catSearchHomeDropdown' "+thisClick+">Best Selling Items</a>"	
-						+	"<a href='#!featured/"+navcat+"' class='catSearchHomeDropdown' "+thisClick+">Featured Items</a>"
-						+	"<a href='#!clearance/"+navcat+"' class='catSearchHomeDropdown' "+thisClick+">Clearance Items</a>"
-						+	"<a href='#!category/"+navcat+"' class='catSearchHomeDropdown' "+thisClick+">See All Items</a>"
-						+	"<div class='dropdownBGRight'></div>"
-					);
-					
-//					dump('----Link to this dropdown category'); dump($(this).attr('data-dropdown-link'));
-				});
-			},
-			
+
 /**GENERAL UTILS */
 				//will add tabs to the selector in the context passed
 			tabify : function($context,selector) {

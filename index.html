@@ -260,7 +260,10 @@ ANIMATION TESTING
 										Adirondack
 									</a>
 <!-- links in the ul for each item are built with beachmall_store.u.makedropdownlinks(). Add the category to link to in data-dropdown-link. For second tier dropouts also add data-second-tier="1"  -->
-									<ul data-dropdown-link=".beach-chair.adirondack-furniture" class='hoverProductContainer hoverout listStyleNone'></ul>	
+									<ul data-dropdown-link=".beach-chair.adirondack-furniture" class='hoverProductContainer hoverout listStyleNone'>
+										<a data-tlc="bind $seo '.pretty'; bind $var '.'; store_routing#seoanchor --type='category' --seo; apply --attrib='href';">
+										<a data-tlc="bind $seo '.pretty'; bind $var '.'; store_routing#seoanchor --type='category' --seo; apply --attrib='href';">
+									</ul>	
 								</li>
 								<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'>
 									<a href='#!category/.beach-chair.backpack-chair' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
