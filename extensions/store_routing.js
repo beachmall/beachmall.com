@@ -53,6 +53,8 @@ var store_routing = function(_app) {
 				_app.router.addAlias('clearance',	function(routeObj){showContent('search',	{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beach-chair.adirondack-furniture'}}]}}});});
 				_app.router.addAlias('homepagefeatured',	function(routeObj){showContent('search',	{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER4'}},{'term':{'tags':'IS_COLORFUL'}},{'term':{'tags':'IS_USER5'}},{'term':{'user:prod_promo':'IS_USER4'}}]},{'not':{'term':{'tags':'IS_DISCONTINUED'}}}]}}});});
 				_app.router.addAlias('homepagebestseller',	function(routeObj){showContent('search',	{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'not':{'term':{'tags':'IS_DISCONTINUED'}}}]}}});});
+				_app.router.addAlias('homepagefeaturedviewall',	function(routeObj){showContent('category',{'navcat':'.', 'templateID':'categoryTemplateHomepageFeatured'});});
+				_app.router.addAlias('homepagebestsellerviewall',	function(routeObj){showContent('category',{'navcat':'.', 'templateID':'categoryTemplateHomepageBestseller'});});
 				
 				_app.router.appendHash({'type':'exact','route':'cart','callback':function(routeObj){showContent('cart',routeObj.params);}});
 				_app.router.appendHash({'type':'exact','route':'home','callback':'homepage'});
@@ -75,6 +77,8 @@ var store_routing = function(_app) {
 				_app.router.appendHash({'type':'match','route':'clearance/{{navcat}}*','callback':'clearance'});
 				_app.router.appendHash({'type':'match','route':'homepagefeatured','callback':'homepagefeatured'});
 				_app.router.appendHash({'type':'match','route':'homepagebestseller','callback':'homepagebestseller'});
+				_app.router.appendHash({'type':'exact','route':'viewallfeatured','callback':'homepagefeaturedviewall'});
+				_app.router.appendHash({'type':'exact','route':'viewallbestseller','callback':'homepagebestsellerviewall'});
 				
 /*
 some other things we could do
