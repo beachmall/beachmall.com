@@ -23,6 +23,24 @@
 var store_createaccount = function(_app) {
 	var theseTemplates = new Array('');
 	var r = {
+	
+////////////////////////////////////   CALLS    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+	
+	calls : {
+	
+		appBuyerCreate : {
+			init : function(obj,_tag)	{
+				this.dispatch(obj,_tag);
+				return 1;
+			},
+			dispatch : function(obj,_tag){
+				obj._tag = _tag || {};
+				obj._cmd = "appBuyerCreate";
+				_app.model.addDispatchToQ(obj,'immutable');
+			}
+		}, //appBuyerCreate
+		
+	}, //calls
 
 
 ////////////////////////////////////   CALLBACKS    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -114,7 +132,7 @@ var store_createaccount = function(_app) {
 					}
 					
 					formObj._vendor = "beachmall";
-					_app.calls.appBuyerCreate.init(formObj,tagObj,'immutable');
+					_app.ext.store_createaccount.calls.appBuyerCreate.init(formObj,tagObj,'immutable');
 					_app.model.dispatchThis('immutable');
 				}
 				else {
