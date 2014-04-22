@@ -67,7 +67,7 @@ css files should be included before any .js file to ensure they are downloaded i
 $(document).ready(function(){
 
 	window.myApp = new initApp({
-		"release":"201402.20140422115500",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+		"release":"201402.20140422145100",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 		"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 		"baseURL":baseURL, //used in non-local mode.
 		"checkoutAuthMode" : "active",//can be passive, active or required
@@ -2222,7 +2222,9 @@ SANITY -> if you change the height and width of this image, change the .minimalM
 	<div class='prodTextContainerSmall'>
 		<h6 data-tlc="bind $var '.base_price';  if (is $var --notblank;) {{math --div='100'; format --currency='USD'; apply --append;}};" class="hideInMinimalMode floatLeft prodPriceSmall price"></h6>
 <!--Bug#3   <span class='prodPriceDesc' data-bind='format:prodPriceDesc; extension:store_filter; useParentData:true; isElastic:1;'></span>-->		
-		<h5 data-tlc="bind $var '.prod_name'; if (is $var --notblank;) {{apply --append;}};" class="hideInMinimalMode clearfix prodDescSmall"></h5>
+		<a data-tlc="bind $seoname '.prod_name'; bind $var '.'; store_routing#seoanchor --type='product' --seo --seoname=$seoname; apply --attrib='href';">
+			<h5 data-tlc="bind $var '.prod_name'; if (is $var --notblank;) {{apply --append;}};" class="hideInMinimalMode clearfix prodDescSmall"></h5>
+		</a>
 		<div data-tlc="bind $var '.%attribs.zoovy:prod_msrp'; if(is $var --notblank;) {{ apply --show; }}; " class="regularPriceContainer floatLeft displayNone">
 			<div data-tlc="bind $var '.%attribs.zoovy:prod_msrp'; if (is $var --notblank;) {{format --currency='USD'; apply --append;}};" class="regularPrice"> </div>
 			<div class="regularPriceDesc">Regular Price</div>
