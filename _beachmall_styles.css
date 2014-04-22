@@ -277,10 +277,10 @@ FOOTER
 .footerSocialIcons .pintrest {background-position:-151px -182px;}
 .footerSocialIcons .email {background-position:-204px -182px;}
 
-.footerNewsletter {height:auto; width:auto; position:absolute; top:55px; right:40px; color:#000000;} /*height:60px; width:675px;*/
+.footerNewsletter {height:auto; width:auto; position:absolute; top:55px; right:310px; color:#000000;} /*height:60px; width:675px;*/
 .footerNewsletter .nameField{border:0; background:#ffffff; font-family:"Open Sans"; text-indent:.4em; height:40px; width:220px; margin:0px 20px 0px 8px; box-shadow:-2px 2px 2px #000000;}
 .footerNewsletter .emailField{border:0; background:#ffffff; font-family:"Open Sans"; text-indent:.4em; height:40px; width:140px;  box-shadow:-2px 2px 2px #000000;}
-.footerNewsletter .joinButton {background-color:#e0463a; border:none; text-align:center; font-family:Oswald; font-weight:bold; font-size: 14px; color:#ffffff; width:80px; height:40px; cursor:pointer;  box-shadow:-2px 2px 2px #000000;}
+.footerNewsletter .joinButton {background-color:#e0463a; border:none; text-align:center; font-family:Oswald; font-weight:bold; font-size: 14px; color:#ffffff; width:80px; height:30px; padding:10px 0 0 0; cursor:pointer;  box-shadow:-2px 2px 2px #000000;}
 .footerNewsletter h3 {font-family:Oswald; font-size:18px; font-weight:bold; line-height:16px; margin-top:6px; text-align:right;}
 .footerNewsletter span {font-family:"Open Sans"; font-size:12px;}
 
