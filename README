@@ -16,6 +16,16 @@ API Calls Input/Output Reference:
 Examples are stored in examples sub-directory.
 Extensions are stored in the extensions sub-directory.
 
+Homepage Main Banner:
+The main homepage banner is set with a JSON file in the root folder of the project: _banners.json
+Each attribute for the image can be changed by editing the content between the quotes to the right of 
+the : for that attribute. 
+Edit the image used by changing the path listed in the "src" object.
+Edit the alternate and title test by changing the text listed in the "alt" and "title" objects. 
+Edit the destination of the link by changing the hash listed in the "href" object.
+Stray characters, such as commas or spaces, will prevent the banner from displaying correctly. 
+Testing that any changes made were done correctly is highly recomended. 
+
 Brands Category Content:
 To enter manufacturer name, coupon code, banner image, and page description for the top
 section in a brands category the layout should be switched to data entry:
