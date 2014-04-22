@@ -1130,12 +1130,8 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 			<div class='newArrivalsCarouselRight floatLeft'>
 				<a class="carouselButton new2CarouselPrev carouselButtonPrev" href="#">prev</a>
 				<a class="carouselButton new2CarouselNext carouselButtonNext" href="#">next</a>
-<!-- MARK THIS NEEDS ORIG ELASTIC SEARCH. TODO: HOW TO PASS SEARCH OBJECT WHEN TOO MANY QUOTES USED. -->
-				<!-- <ul data-tlc="quickstart#searchbytag --tag='IS_BESTSELLER' --size='8' --templateid='productListTemplateResultsCustom';" class='listStyleNone fluidList clearfix noPadOrMargin productList homeProdSearchNewArrivals2'></ul> -->	
-				<!-- <ul data-tlc="beachmall_search#searchbytag --size='8' --templateid='productListTemplateResultsNoPreview';" data-filter='{"and":{"filters":[{"term":{"tags":"IS_NEWARRIVAL"}},{"not":{"term":{"tags":"IS_DISCONTINUED"}}}]}}' class='listStyleNone fluidList clearfix noPadOrMargin productList'></ul>		
-				 <ul id='homeProdSearchNewArrivals2' data-bind='var: elastic-native({"size":"25","mode":"elastic-native","filter":{"and":{"filters":[{"term":{"tags":"IS_NEWARRIVAL"}},{"not":{"term":{"tags":"IS_DISCONTINUED"}}}]}}}); format: productSearch; extension: quickstart; loadsTemplate: productListTemplateResultsCustom;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList'></ul>
-				 non filtered search: <ul id='homeProdSearchNewArrivals2' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"term":{"tags":"IS_NEWARRIVAL"}}}); format: productSearch; extension: quickstart; loadsTemplate: productListTemplateResultsCustom;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList'></ul>-->
-				<ul data-tlc="beachmall_search#searchbytag --filter='{&quot;size&quot;:&quot;25&quot;,&quot;mode&quot;:&quot;elastic-native&quot;,&quot;filter&quot;:{&quot;and&quot;:{&quot;filters&quot;:[{&quot;term&quot;:{&quot;tags&quot;:&quot;IS_NEWARRIVAL&quot;}},{&quot;not&quot;:{&quot;term&quot;:{&quot;tags&quot;:&quot;IS_DISCONTINUED&quot;}}}]}}}' --size='8'  --templateid='productListTemplateResultsCustom';" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchNewArrivals2"></ul>
+				<!--w/elastic search ul data-tlc="beachmall_search#searchbytag --filter='{&quot;size&quot;:&quot;25&quot;,&quot;mode&quot;:&quot;elastic-native&quot;,&quot;filter&quot;:{&quot;and&quot;:{&quot;filters&quot;:[{&quot;term&quot;:{&quot;tags&quot;:&quot;IS_NEWARRIVAL&quot;}},{&quot;not&quot;:{&quot;term&quot;:{&quot;tags&quot;:&quot;IS_DISCONTINUED&quot;}}}]}}}' --size='8'  --templateid='productListTemplateResultsCustom';" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchNewArrivals2"></ul> -->
+				<ul data-tlc="bind $var '.$app-site_home-page-new-item.@products'; store_prodlist#productlist  --hideSummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplateCustom'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchNewArrivals2"></ul>
 			</div>
 		</div>
     
@@ -1714,6 +1710,22 @@ remember to NOT put the button inside the 'onclick' container or two events will
 		</a>
 	</div>
 	<div class="productSeperationBar"></div>
+</li>
+
+
+<!-- used on homepage for small carousel to the right of the main banner (there is also a productListTemplateResultsCustom for user w/ elastic results in this location) -->
+<li id='productListTemplateCustom' class='loadingBG searchResultsProduct ' >
+	<!-- <a data-tlc="bind $seoname '.prod_name'; bind $var '.'; store_routing#seoanchor --type='product' --seo --seoname=$seoname; apply --attrib='href';"> -->
+	<a data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';">
+		<div class='prodThumbContainer myProdThumb'>
+			<img data-tlc="bind $var '.%attribs.zoovy:prod_image1'; if (is $var --notblank;) {{ apply --img --media=$var --width=210 --height=210 --bgcolor='#ffffff' --replace;}};" src="blank.gif"  class="prodThumb push" width="210" height="210">            
+			<div class='prodTextContainer'>   
+				<h6 data-tlc="bind $var '.%attribs.zoovy:base_price'; if (is $var --notblank;) {{format --currency='USD'; apply --append;}};" class="price hideInMinimalMode floatLeft prodPrice"></h6>
+				<div class='hideInMinimalMode floatRight pointer moreDetails'>VIEW DETAILS</div> 
+				<h5 data-tlc="bind $var '.%attribs.zoovy:prod_name'; if (is $var --notblank;) {{apply --append;}};" class="clearfix prodDesc"></h5>
+            </div>
+        </div>
+    </a>  
 </li>
 
 

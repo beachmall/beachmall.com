@@ -546,6 +546,9 @@ label.break	{display:block; margin:0 0 4px 6px;}
 .prodHoverContainer:hover .moreDetailsSmall {background-color:#e0463a;}
 .prodHoverContainer:hover .myProdThumbSmall {border:5px solid #e0463a;}
 
+/*special styles that are used only on homepage new arrival carousel list*/
+.homeProdSearchNewArrivals2 .carouselButton {top:32%;}
+ 
 /* EACH CORNER ADDS CORNER SHADOWING TO A DIV APPLIED TO PRODUCTS */
 .topLeftCorner {
 	z-index:1; 
@@ -1246,6 +1249,7 @@ newArrivalsCarouselRight, .productList li > div {width:300px;}
 newArrivalsCarouselRight, .myProdThumb {height:210px; width:290px; border:5px solid #3bb3c3; background-color:#ffffff;}
 .prodThumb.push {padding-left:40px;}
 newArrivalsCarouselRight, .myProdThumb:hover {border:5px solid #e0463a;}
+newArrivalsCarouselRight, .myProdThumb img {margin:0 40px;}
 newArrivalsCarouselRight, .prodTextContainer {height:auto; width:295px; margin-top:5px; font-family:Oswald; font-size:24px;}
 newArrivalsCarouselRight, .prodDesc, .productList h5, .categoryList h5 {color:#000000; font-family:"Open Sans"; font-size:13px; text-align:center; line-height:16px; padding:7px 10px 0px 7px;}
 newArrivalsCarouselRight, .prodPrice, .productList h6, .categoryList h6 {margin-left:15px;}

@@ -97,7 +97,7 @@ var beachmall_carousel = function(_app) {
 			runHomeSmallCarousel : function($context) {
 				_app.u.dump('----Running homepage carousels');
 				
-				//HOMEPAGE FEATURED CAROUSEL	
+				//HOMEPAGE NEW ARRIVAL CAROUSEL	
 				var $target = $('.homeProdSearchNewArrivals2',$context);
 				if($target.data('isCarousel'))	{} //only make it a carousel once.
 				else {
@@ -134,9 +134,9 @@ var beachmall_carousel = function(_app) {
 							items: {
 								start: 8,
 							},
-							auto:false, //{
-					//			pauseOnHover: "immediate"
-					//		},
+							auto: {
+								pauseOnHover: "immediate"
+							},
 							prev: '.featCarouselPrev',
 							next: '.featCarouselNext',
 							height: 485,
