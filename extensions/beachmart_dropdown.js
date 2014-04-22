@@ -178,7 +178,7 @@ var beachmart_dropdown = function(_app) {
 			
 			//SHOW GEO DROPDOWN MENU WITH CHECK FOR A TIMEOUT TO PREVENT RE-HOVER AFTER CLOSE BUTTON CLICK FROM KEEPING IT OPEN
 			showGeoDropdown : function ($tag, ht) {
-				dump('-----showdropdown data:'); dump($(".dropdown", $tag).data('timeout'));
+				//dump('-----showdropdown data:'); dump($(".dropdown", $tag).data('timeout'));
 				if(!$(".dropdown", $tag).data('timeout') || $(".dropdown", $tag).data('timeout') === 'false') {
 					var $dropdown = $(".dropdown", $tag);
 					var height = ht;
@@ -194,7 +194,7 @@ var beachmart_dropdown = function(_app) {
 				$(".dropdown", $tag).data('timeout','true');
 				$(".dropdown", $tag).stop().animate({"height":"0px"}, 500);
 				setTimeout(function(){$(".dropdown", $tag).data('timeout','false')}, 505);
-				dump('----hidedropdown data:'); dump($(".dropdown", $tag).data('timeout'));
+				//dump('----hidedropdown data:'); dump($(".dropdown", $tag).data('timeout'));
 			},
 			
 			
