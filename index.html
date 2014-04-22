@@ -890,11 +890,11 @@ ANIMATION TESTING
         </ul>
         <ul>
        	  <li>NAVIGATE</li>
-            <li><a href='#!category/.'>Home</a></li>
+            <li><a href='#!Home/c/.'>Home</a></li>
             <li><a href="#!company/about">About Us</a></li>
             <li><a href="#!company/contact" onClick="myApp.ext.beachmall_store.a.resetContactPID();">Contact Us</a></li>
             <li><a href="#!company/faq">FAQ</a></li>
-            <li><a href='#!category?navcat=.sitemap' data-onclick='#!category?navcat=.sitemap' class='pointer'>Site Map</a></li>
+            <li><a href='#!Site-Map/c/.sitemap'>Site Map</a></li>
 			<!--<li><a href="http://reviews.app.beachmall.com <http://reviews.app.beachmall.com/>">Product Reviews</a></li>-->
 			<!--<li><a href="http://reviews.beachmall.com <http://reviews.beachmall.com/>">Product Reviews</a></li>-->
             <li><a href="#!company/return">Returns &#38 Exchanges</a></li>
@@ -902,7 +902,7 @@ ANIMATION TESTING
         </ul>
         <ul>
         	<li>ADDITIONAL LINKS</li>
-            <li><a href='#!category/.buyer_guides'>Buying Guides</a></li>
+            <li><a href='#!Buyer-guides/c/.buyer_guides'>Buying Guides</a></li>
             <li><a href="#!company/contact" onClick="myApp.ext.beachmall_store.a.resetContactPID();">Wholesale</a></li>
             <li><a href='#!affiliates/c/.affiliates'>Affiliates</a></li>
             <li><a href="https://www.facebook.com/BeachMall" target="_blank">Facebook</a></li>
@@ -1155,7 +1155,7 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 					<span>SHOP</span>
 					<span>BEACH BAGS</span>
 				</a>
-				<a href="#!Shop-by-Brand/c/.beach-chairs.beach-gear/Brands" class="additionalHompageCats floatLeft pointer"> 
+				<a href="#!Shop-by-Brand/c/.beach-chairs.beach-gear" class="additionalHompageCats floatLeft pointer"> 
 				<!-- <a href="#!category/.test" class="additionalHompageCats floatLeft pointer"> 
 				<!-- <div class='additionalHompageCats floatLeft pointer' onClick="return showContent('category',{'navcat':'.beach-chairs.beach-gear'});">  -->
 					<div class='addCatArrow sprite floatRight'></div>
@@ -1559,6 +1559,330 @@ don't modify the 'data-templateid' unless you are changing template names and up
 
 </div>
 
+
+<div id='categoryTemplateSiteMap' class='categoryTemplate'>
+	<table width="98%" border="0"> 
+		<tr> 
+			<td colspan="4"> </td> 
+		</tr> 
+		<tr> 
+			<td width="3%"> </td> 
+			<td colspan="3"><a href="#!home/c/."><font size="2"><strong>Home</strong></font><strong></font></strong></a></td> 
+		</tr> 
+		<tr> 
+			<td> </td> 
+			<td width="4%"> </td> 
+			<td colspan="2"><a href="#!company/about"><font size="2">About Us </font></a></td> 
+		</tr> 
+		<tr> 
+			<td> </td> 
+			<td> </td> 
+			<td colspan="2"><a href="#!company/contact" onClick="myApp.ext.beachmall_store.a.resetContactPID();"><font size="2">Contact Us </font></a></td> 
+		</tr> 
+		<tr> 
+			<td> </td> 
+			<td> </td> 
+			<td colspan="2"><a href="#!company/faq"><font size="2">FAQ</font></a></td> 
+		</tr> 
+		<tr> 
+			<td> </td> 
+			<td> </td> 
+			<td colspan="2"><a href="#!company/contact" onClick="myApp.ext.beachmall_store.a.resetContactPID();"><font size="2">Wholesale </font></a></td> 
+		</tr> 
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td>
+			<td colspan="2"><a href="#!Affiliates/c/.affiliates"><font size="2">Affiliates </font></a></td> 
+		</tr> 
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td colspan="2"><a href="#!company/payment"><font size="2">Payment Policy</font></a></td> 
+		</tr> 
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td colspan="2"><a href="#!company/privacy"><font size="2">Privacy Policy</font></a></td> 
+		</tr> 
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td colspan="2"><a href="#!company/return"><font size="2">Return Policy</font></a></td> 
+		</tr> 
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td colspan="2"><a href="#!company/shipping"><font size="2">Shipping Policy</font></a></td> 
+		</tr> 
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td colspan="2"><a href="#!"class='pointer' onClick="myApp.ext.quickstart.u.showCartInModal({'templateID':'cartTemplate'});"><font size="2">Shopping Cart</font></a></td> 
+		</tr> 
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td colspan="2"><a href="#!Beach-Chairs/c/.beach-chair"><font size="2"><strong>Beach Chairs</strong></font></a></td> 
+		</tr> 
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td width="6%"> </td>
+			<td width="87%"><a href="#!Adirondack/c/.beach-chair.adirondack-furniture"><font size="2">Adirondack</font></a></td> 
+		</tr> 
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td width="6%"> </td> 
+			<td width="87%"><a href="#!Backpack-Chairs/c/.beach-chair.backpack-chair"><font size="2">BackPack Beach Chairs</font></a></td> 
+		</tr> 
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="#!Beach-Chaises/c/.beach-chair.beach-chaise"><font size="2">Beach Chaises</font></a></td> 
+		</tr>
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="#!Beach-Pool-Lounges/c/.beach-chair.beach-lounges"><font size="2">Beach And Pool Lounges</font></a></td> 
+		</tr> 
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="#!Canopy-Beach-Chairs/c/.beach-chair.canopy-beach-chair"><font size="2">Canopy Beach Chairs</font></a></td> 
+		</tr> 
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="#!Cup-Holder-Chairs/c/.beach-chair.beach-chairs"><font size="2">Cup Holder Beach Chairs</font></a></td> 
+		</tr> 
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="#!High-Seat-Beach-Chairs/c/.beach-chair.high-beach-chair"><font size="2">High Seat Beach Chairs</font></a></td> 
+		</tr> 
+		<!--MARK THIS CAT NOT IN NAVIGATION
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="#!Cup-Holder-Chairs/c/.beach-chair.beach-chairs"><font size="2">Kids Chairs</font></a></td> 
+		</tr> 
+		-->
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="#!Low-Seat-Beach-Chairs/c/.beach-chair.sand-chair"><font size="2">Sand Chairs</font></a></td> 
+		</tr> 
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="#!Low-Seat-Beach-Chairs/c/.beach-chair.sand-chair"><font size="2">Low Seat Beach Chairs</font></a></td> 
+		</tr> 
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="#!Padded-Beach-Chairs/c/.beach-chair.folding-beach-chairs"><font size="2">Folding Beach Chairs</font></a></td> 
+		</tr> 
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="#!Lafuma/c/.beach-chairs.beach-gear.lafuma-chair-recliner"><font size="2">Premium Chairs</font></a></td> 
+		</tr> 
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="#!Backpack-Chairs/c/.beach-chair.backpack-chair"><font size="2">Backpack Chairs</font></a></td> 
+		</tr> 
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="#!Wooden-Beach-Chairs/c/.beach-chair.wooden-beach-chairs"><font size="2">Wooden Beach Chairs</font></a></td> 
+		</tr> 
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td colspan="2"><a href="#!Beach-Accessories/c/.beach-accessories"><font size="2"><strong>Beach Accessories</strong></font></a></td> 
+		</tr> 
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="#!Beach-Bags-Totes/c/.beach-accessories.beach-bags-totes"><font size="2">Beach Bags Totes</font></a></td> 
+		</tr> 
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="#!Beach-Carts/c/.beach-accessories.beach-cart"><font size="2">Beach Carts</font></a></td> 
+		</tr> 
+		<!--MARK THIS CAT NOT IN NAVIGATION
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="#!Beach-Towels-Blankets/c/.beach-accessories.beach-blanket"><font size="2">Beach Towels</font></a></td> 
+		</tr> 
+		-->
+		<tr>
+			<td height="21"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="#!Coolers/c/.beach-accessories.picnic-cooler"><font size="2">Coolers</font></a></td> 
+		</tr> 
+		<!--MARK THIS CAT NOT IN NAVIGATION
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="#!Tailgating/c/.beach-accessories.tailgating"><font size="2">Tailgating</font></a></td> 
+		</tr> 
+		-->
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="#!Picnic-Baskets/c/.beach-accessories.picnic-baskets"><font size="2">Picnic Baskets</font></a></td> 
+		</tr> 
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td colspan="2"><a href="#!Beach-Wear/c/.beachwear"><font size="2"><strong>BeachWear</strong></font></a></td> 
+		</tr> 
+		<!--MARK THIS CAT NOT IN NAVIGATION
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="#!category?navcat=.beachwear.beach-hat"><font size="2">Beach Hats</font></a></td> 
+		</tr> 
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="#!category?navcat=.beachwear.beach-swimwear"><font size="2">Beach Swimwear</font></a></td> 
+		</tr> 
+		-->
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="#!Rash-Guards/c/.beachwear.beach-swimwear.rashguard"><font size="2">Rashguards</font></a></td> 
+		</tr> 
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="#!Girls-Beach-Wear/c/.beachwear.beach-swimwear.beach-wear.girls-swimwear"><font size="2">Girls Beachwear</font></a></td> 
+		</tr> 
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="#!category?navcat=.beachwear.beach-swimwear.kids-swimsuit"><font size="2">Kids Swimwear</font></a></td> 
+		</tr> 
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="#!Kids-Swim-Wear/c/.beachwear.beach-swimwear.kids-swimsuit"><font size="2">Babies Swimwear</font></a></td> 
+		</tr> 
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="#!Board-Shorts/c/.beachwear.beach-swimwear.board-shorts"><font size="2">Board Shorts</font></a></td> 
+		</tr> 
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td colspan="2"><a href="#!Recreation/c/.beach-sports"><font size="2"><strong>Beach Recreation</strong></font></a></td>
+		</tr> 
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td> </td>
+			<td><a href="#!BodyBoards/c/.beach-sports.bodyboards"><font size="2">BodyBoards </font></a></td> 
+		</tr>
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="#!Pool-Floats/c/.beach-sports.pool-floats"><font size="2">Pool Floats </font></a></td> 
+		</tr> 
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td>
+			<td> </td> 
+			<td><a href="#!SkimBoards/c/.beach-sports.skimboards"><font size="2">SkimBoards</font></a></td> 
+		</tr> 
+		<!--MARK THIS CAT NOT IN NAVIGATION
+		<tr>
+			<td height="21"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="#!category?navcat=.beach-sports.inflatables"><font size="2">Pool Inflatables</font></a></td> 
+		</tr> 
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="#!category?navcat=.beach-sports.water-towables"><font size="2">Water Towables</font></a></td> 
+		</tr> 
+		-->
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td colspan="2"><a href="#!Umbrellas-Shelters/c/.beach-umbrellas-shelter"><font size="2"><strong>Beach Umbrellas And Beach Shelters</strong></font></a></td> 
+		</tr> 
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="#!Beach-Umbrellas/c/.beach-umbrellas-shelter.beach-umbrella"><font size="2">Beach Umbrellas</font></a></td> 
+		</tr> 
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td>
+			<td> </td> 
+			<td><a href="#!Umbrella-Accessories/c/.beach-umbrellas-shelter.umbrella-stand-stands-base"><font size="2">Umbrella Stands and Bases</font></a></td> 
+		</tr> 
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="#!Market-Patio-Umbrellas/c/.beach-umbrellas-shelter.patio-umbrella"><font size="2">Outdoor Umbrellas</font></a></td> 
+		</tr> 
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td>
+			<td> </td> 
+			<td><a href="#!Beach-Tents-Shelters/c/.beach-umbrellas-shelter.beach-tent-shelters"><font size="2">Beach Tents </font></a></td> 
+		</tr> 
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td colspan="2"><a href="#!Beach-Cabanas/c/.beach-umbrellas-shelter.beach-cabana"><font size="2">Beach Cabanas</font></a></td> 
+		</tr> 
+		<tr> 
+			<td height="21"> </td> 
+			<td> </td> 
+			<td colspan="2"><a href="#!Directory/c/.directory"><font size="2"><strong>External Directory</strong></font></a></td> 
+		</tr>
+	</table>
+</div>
 
 
 <!-- used to display a category within a 'list', usually in the body of a category or the homepage. -->
