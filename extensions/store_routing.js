@@ -211,7 +211,6 @@ optional params:
 					
 					case 'category':
 						r = true;
-						dump('----DATA.VALUE:'); dump(data.value);
 						data.globals.binds[data.globals.focusBind] = _app.ext.store_routing.u.categoryAnchor(data.value.path, (args.seo ? data.value.pretty : ''));
 						break;
 

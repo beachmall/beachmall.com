@@ -110,7 +110,13 @@ var beachmall_banner = function(_app) {
 					alt		: bannerJSON.alt,
 					title	: bannerJSON.title
 				}));
-				if(bannerJSON.prodLink) {
+				if(bannerJSON.href) {
+					var $banner = $("<a></a>");
+					$banner.append($img);
+					$banner.attr('href',bannerJSON.href);
+					return $banner;
+				}
+				else if(bannerJSON.prodLink) {
 					$img.addClass('pointer').data('pid', bannerJSON.prodLink).click(function() {
 						showContent('product',{'pid':$(this).data('pid')});
 					});
