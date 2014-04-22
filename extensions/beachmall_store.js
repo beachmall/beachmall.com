@@ -842,6 +842,22 @@ var beachmall_store = function(_app) {
 					$this.mouseover(function(){	$('.toolTip',$this.parent()).show();}).mouseout(function(){	$('.toolTip',$this.parent()).fadeOut(3000);});
 				});
 			},
+/**HASH UTILS */
+
+		//takes the seo name and removes certain characters/spaces/patterns and returns the seo name
+		removeUnwantedChars : function(seo) {
+			seo = seo.replace(' / ',' '); //doesn't want any " / " in seo hash
+			seo = seo.replace('/',' '); //doesn't want any "/" in seo hash
+			seo = seo.replace('+',' '); //doesn't want any "+" in seo hash
+			seo = seo.replace(' & ',' '); //doesn't want any " & " in seo hash
+			seo = seo.replace('&',' '); //doesn't want any "/" in seo hash
+			seo = seo.replace(' - ',' '); //wants all " " converted to "-", but " - " comes out as "---", no bueno.
+			seo = seo.replace('--',' '); //just in case, some prod_names have two consecutive "-"
+			seo = seo.replace('---',' '); //just in case, some prod_names have three consecutive "-"
+			seo = seo.replace('  ',' '); //kill two consecutive spaces
+			seo = seo.replace('   ',' '); //kill three consecutive spaces
+			return seo;
+		}
 		
 		}, //u [utilities]
 

@@ -47,7 +47,7 @@ var store_routing = function(_app) {
 				_app.router.addAlias('checkout', 	function(routeObj){showContent('checkout',	routeObj.params);});
 
 				_app.router.addAlias('search', 		function(routeObj){showContent('search',	routeObj.params);});
-				//custom alias
+// beachmall custom alias
 				_app.router.addAlias('bestsellers', function(routeObj){showContent('search',	{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':routeObj.params.navcat}}]}}});});
 				_app.router.addAlias('featured',	function(routeObj){showContent('search',	{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}},{'term':{'prod_promo':'IS_USER4'}}]},{'term':{'app_category':routeObj.params.navcat}}]}}});});
 				_app.router.addAlias('clearance',	function(routeObj){showContent('search',	{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beach-chair.adirondack-furniture'}}]}}});});
@@ -69,7 +69,7 @@ var store_routing = function(_app) {
 				_app.router.appendHash({'type':'match','route':'checkout*','callback':'checkout'});
 				_app.router.appendHash({'type':'match','route':'search/tag/{{tag}}*','callback':'search'});
 				_app.router.appendHash({'type':'match','route':'search/keywords/{{KEYWORDS}}*','callback':'search'});
-				//custom append
+// beachmall custom append
 				_app.router.appendHash({'type':'match','route':'{{seo}}/c/{{navcat}}','callback':'category'});
 				_app.router.appendHash({'type':'match','route':'{{seo}}/p/{{pid}}.html','callback':'product'});
 				_app.router.appendHash({'type':'match','route':'{{seo}}/bestsellers/c/{{navcat}}*','callback':'bestsellers'});
@@ -250,21 +250,27 @@ optional params:
 				},
 			productAnchor : function(pid, seo){
 				//return "#!product/"+pid+"/"+(seo ? encodeURIComponent(seo) : '');
-				seo = seo.replace('/',''); //doesn't want any "/" in seo hash
-				seo = seo.replace('+',''); //doesn't want any "/" in seo hash
-				seo = seo.replace('&',''); //doesn't want any "/" in seo hash
-				seo = seo.replace(' - ',' '); //wants all " " converted to "-", but " - " comes out as "---", no bueno.
-				if(seo)	return "#!"+encodeURIComponent(seo).replace(/%20/g, "-")+"/p/"+pid+".html";
+				if(seo) {
+/*beachmall*/		seo = _app.ext.beachmall_store.u.removeUnwantedChars(seo);
+					return "#!"+encodeURIComponent(seo).replace(/%20/g, "-")+"/p/"+pid+".html";
+				}
 				else return "#!product/"+pid;
 				},
 			categoryAnchor : function(path,seo)	{
 				//return "#!category/"+path+((seo) ? "/"+encodeURI(seo) : '');
-				if(seo) return "#!"+encodeURIComponent(seo)+"/c/"+path;
+				
+				if(seo) {
+/*beachmall*/		seo = _app.ext.beachmall_store.u.removeUnwantedChars(seo);
+					return "#!"+encodeURIComponent(seo).replace(/%20/g, "-")+"/c/"+path;
+				}
 				else return "#!category/"+path;
 				},
 /*beachmall*/
 			categorySearchAnchor : function(path,seo,type) {
-				if(seo)return "#!"+encodeURIComponent(seo)+"/"+type+"/c/"+path;
+				if(seo) {
+					seo = _app.ext.beachmall_store.u.removeUnwantedChars(seo);
+					return "#!"+encodeURIComponent(seo)+"/"+type+"/c/"+path;
+				}
 				else return "#!category/"+type+"/"+path;
 /*beachmall*/	},
 			searchAnchor : function(type,value)	{
