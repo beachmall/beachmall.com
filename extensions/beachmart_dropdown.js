@@ -176,6 +176,27 @@ var beachmart_dropdown = function(_app) {
 				$('.defaultDOImage',$tag.parent()).animate({"opacity":"1"},0);
 			},
 			
+			//SHOW GEO DROPDOWN MENU WITH CHECK FOR A TIMEOUT TO PREVENT RE-HOVER AFTER CLOSE BUTTON CLICK FROM KEEPING IT OPEN
+			showGeoDropdown : function ($tag, ht) {
+				dump('-----showdropdown data:'); dump($(".dropdown", $tag).data('timeout'));
+				if(!$(".dropdown", $tag).data('timeout') || $(".dropdown", $tag).data('timeout') === 'false') {
+					var $dropdown = $(".dropdown", $tag);
+					var height = ht;
+					$dropdown.children().each(function(){
+						$(this).outerHeight(true);
+					});
+					$dropdown.stop().animate({"height":height+"px"}, 500);
+				}
+			},
+            
+			//ANIMATE RETRACTION OF HEADER GEO DROPDOWN MENU WITH TIMEOUT TO PREVENT ACCIDENTAL RE-HOVER FROM KEEPING IT OPEN
+			hideGeoDropdown : function ($tag) {
+				$(".dropdown", $tag).data('timeout','true');
+				$(".dropdown", $tag).stop().animate({"height":"0px"}, 500);
+				setTimeout(function(){$(".dropdown", $tag).data('timeout','false')}, 505);
+				dump('----hidedropdown data:'); dump($(".dropdown", $tag).data('timeout'));
+			},
+			
 			
 			
 			
