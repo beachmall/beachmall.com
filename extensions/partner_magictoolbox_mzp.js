@@ -63,16 +63,20 @@ var magictoolbox_mzp = function(_app) {
 			startExtension : {
 				onSuccess : function(){
 					_app.u.dump("BEGIN magictoolbox.callbacks.startExtension");
-					_app.rq.push(['css',0,'examples/magictoolbox/magiczoomplus.css','mzpStylesheet']);
-					_app.rq.push(['script',0,'examples/magictoolbox/magiczoomplus.js',function(){
+					_app.u.loadResourceFile(['css',0,'examples/magictoolbox/magiczoomplus.css','mzpStylesheet']);
+					_app.u.loadResourceFile(['script',0,'extensions/tools_zoom/zoom/js/jquery.zoom.min.js']);
+					_app.u.loadResourceFile(['script',0,'examples/magictoolbox/magiczoomplus.js',function(){
 						MagicZoomPlus.start();
+					}]);
 /*BEACHMALL*/						
 MagicZoomPlus.options = {
 	'hint' : 'false'
 	}
 
-						_app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {_app.u.dump("Refreshing MZP."); setTimeout(function(){MagicZoomPlus.refresh();},2000)}]);
-						}]);
+						_app.templates.productTemplate.on('complete.beachmall_store',function(event,$ele,P) {
+							_app.u.dump("Refreshing MZP."); setTimeout(function(){MagicZoomPlus.refresh();},2000);
+						});
+	
 //						_app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {_app.u.dump("Refreshing MZP."); MagicZoomPlus.refresh();}]);
 					
 					},
