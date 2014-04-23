@@ -67,7 +67,7 @@ css files should be included before any .js file to ensure they are downloaded i
 $(document).ready(function(){
 
 	window.myApp = new initApp({
-		"release":"201402.20140422160700",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+		"release":"201402.20140423131600",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 		"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 		"baseURL":baseURL, //used in non-local mode.
 		"checkoutAuthMode" : "active",//can be passive, active or required
@@ -2191,9 +2191,15 @@ container ul should have lineItemProdlist class on it instead of productList
 
 	<li id="dropdownAnchorListTemplate">
 		<a data-tlc="bind $seo '.pretty'; bind $var '.'; store_routing#seoanchor --type='category' --seo='$seo'; apply --attrib='href';" class='stockImageContainer'></a>
-		<a data-tlc="bind $seo '.pretty'; bind $var '.'; beachmart_dropdown#dropdownseoanchor --type='searchcategory' --searchtype='bestsellers' --seo='$seo'; apply --attrib='href';" class='catSearchHomeDropdown'>Best Selling Items</a>
-		<a data-tlc="bind $seo '.pretty'; bind $var '.'; beachmart_dropdown#dropdownseoanchor --type='searchcategory' --searchtype='featured' --seo='$seo'; apply --attrib='href';" class='catSearchHomeDropdown'>Featured Items</a>
-		<a data-tlc="bind $seo '.pretty'; bind $var '.'; beachmart_dropdown#dropdownseoanchor --type='searchcategory' --searchtype='clearance' --seo='$seo'; apply --attrib='href';" class='catSearchHomeDropdown'>Clearance Items</a>
+		<div data-tlc="bind $var '.path'; beachmart_dropdown#hideifexlcuded;" data-exclude='bestseller'>
+			<a data-tlc="bind $seo '.pretty'; bind $var '.'; beachmart_dropdown#dropdownseoanchor --type='searchcategory' --searchtype='bestsellers' --seo='$seo'; apply --attrib='href';" class='catSearchHomeDropdown'>Best Selling Items</a>
+		</div>
+		<div data-tlc="bind $var '.path'; beachmart_dropdown#hideifexlcuded;" data-exclude='featured'>
+			<a data-tlc="bind $seo '.pretty'; bind $var '.'; beachmart_dropdown#dropdownseoanchor --type='searchcategory' --searchtype='featured' --seo='$seo'; apply --attrib='href';" class='catSearchHomeDropdown'>Featured Items</a>
+		</div>
+		<div data-tlc="bind $var '.path'; beachmart_dropdown#hideifexlcuded;" data-exclude='clearance'>
+			<a data-tlc="bind $seo '.pretty'; bind $var '.'; beachmart_dropdown#dropdownseoanchor --type='searchcategory' --searchtype='clearance' --seo='$seo'; apply --attrib='href';" class='catSearchHomeDropdown'>Clearance Items</a>
+		</div>
 		<a data-tlc="bind $seo '.pretty'; bind $var '.'; store_routing#seoanchor --type='category' --seo='$seo'; apply --attrib='href';" class='catSearchHomeDropdown'>See All Items</a>									
 	</li>
 

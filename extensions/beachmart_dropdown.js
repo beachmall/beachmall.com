@@ -25,8 +25,7 @@ The functions here are designed to work with 'reasonable' size lists of categori
 var beachmart_dropdown = function(_app) {
 	var r = {
 
-	vars : {
-		},
+	vars : {},
 
 
 					////////////////////////////////////   CALLBACKS    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -40,7 +39,14 @@ var beachmart_dropdown = function(_app) {
 			onSuccess : function()	{
 				
 //				_app.u.dump('BEGIN _app.ext.store_navcats.init.onSuccess ');
-				_app.ext.beachmart_dropdown.u.makedropdownlinks();
+				
+				//get the json that lists which dropdown search buttons have results and save to var for access later.
+				$.getJSON("_dropdownsearches.json?_v="+(new Date()).getTime(), function(json) {
+					_app.ext.beachmart_dropdown.vars.dropdownsearches = json.dropdownsearches
+					_app.ext.beachmart_dropdown.u.makedropdownlinks();
+					//dump('----dropdown search exclusion list:'); dump(_app.ext.beachmart_dropdown.vars.dropdownsearches);
+				}).fail(function(){_app.u.throwMessage("DROPDOWN SEARCH LIST FAILED TO LOAD - there is a bug in _dropdownsearches.json")});
+			
 				var r = true; //return false if extension won't load for some reason (account config, dependencies, etc).
 				return r;
 				},
@@ -263,6 +269,21 @@ var beachmart_dropdown = function(_app) {
 				var args = thisTLC.args2obj(data.command.args, data.globals);
 				data.globals.binds[data.globals.focusBind] = _app.ext.store_routing.u.categorySearchAnchor(data.value.path, (args.seo ? data.value.pretty : ''),args.searchtype);
 				return true;
+			},
+			
+			//checks the var copied from _dropdownsearches.json for search buttons that have to results and removes them to prevent empty search pages from being made.
+			hideifexlcuded : function(data, thisTLC) {
+				//var args = thisTLC.args2obj(data.command.args, data.globals);
+				//dump('---hideifexlcuded args:'); dump(data.value);
+				//dump('---hideifexlcuded data-:'); dump(data.globals.tags[data.globals.focusTag].attr('data-exclude'));
+				var rootCat = "."+data.value.split('.')[1]; //dump('---root Cat'); dump(rootCat);
+				var searchType = data.globals.tags[data.globals.focusTag].attr('data-exclude');
+				var navCat = data.value; //dump(navCat);
+				var searchValue = _app.ext.beachmart_dropdown.vars.dropdownsearches[rootCat][navCat][searchType];
+
+				if(searchValue && searchValue == 0) { data.globals.tags[data.globals.focusTag].remove(); } 
+				else { /*this element is shown to return a result in beachmart_dropdown.vars.dropdownsearches*/ }
+					//dump('---dropdown var:'); dump(_app.ext.beachmart_dropdown.vars.dropdownsearches[navCat][searchType]); 
 			}
 			
 		},
