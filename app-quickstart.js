@@ -790,7 +790,7 @@ fallback is to just output the value.
 //				dump(" -> $form.length: "+$form.length);
 				
 //				if(_app.model.fetchData('appProductGet|'+pid))	{}
-				if(data.bindData.isElastic)	{
+				if(data.bindData.iselastic)	{
 					price = data.value.base_price;
 // ** 201332 indexOf changed to $.inArray for IE8 compatibility, since IE8 only supports the indexOf method on Strings
 					if($.inArray('IS_PREORDER', data.value.tags) > -1)	{buttonText = 'Preorder'; className = 'preorder';}
