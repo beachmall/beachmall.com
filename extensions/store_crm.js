@@ -272,17 +272,18 @@ obj['softauth'] = "order"; // [OPTIONAL]. if user is logged in, this gets ignore
 			ordertrackinglinks : function($tag,data)	{
 //				_app.u.dump("BEGIN quickstart.renderFormats.ordertrackinglinks");
 				_app.u.dump(data.value);
-				
-				var L = data.value.length;
-				var o = ''; //what is appended to tag. a compiled list of shipping lineitems.
-				for(var i = 0; i < L; i += 1)	{
-					// ### TODO -> need to get the link to quickstart out of here.
-					o += "<li><a href='"+_app.ext.quickstart.u.getTrackingURL(data.value[i].carrier,data.value[i].track)+"' target='"+data.value[i].carrier+"'>"+data.value[i].track+"</a>";
-					if(_app.u.isSet(data.value[i].cost))
-						o += " ("+_app.u.formatMoney(data.value[i].cost,'$',2,true)+")";
-					o += "<\/li>";
+ 				if(data.value)	{
+ 					var L = data.value.length;
+ 					var o = ''; //what is appended to tag. a compiled list of shipping lineitems.
+ 					for(var i = 0; i < L; i += 1)	{
+ 						// ### TODO -> need to get the link to quickstart out of here.
+ 						o += "<li><a href='"+_app.ext.quickstart.u.getTrackingURL(data.value[i].carrier,data.value[i].track)+"' target='"+data.value[i].carrier+"'>"+data.value[i].track+"</a>";
+ 						if(_app.u.isSet(data.value[i].cost))
+ 							o += " ("+_app.u.formatMoney(data.value[i].cost,'$',2,true)+")";
+ 						o += "<\/li>";
+ 						}
+ 					$tag.show().append("<h4>Tracking Number(s):</h4>").append(o);
 					}
-				$tag.show().append("<h4>Tracking Number(s):</h4>").append(o);
 				}
 
 			},
