@@ -82,6 +82,7 @@ var beachmall_store = function(_app) {
 					_app.ext.beachmall_store.u.backToTop($ele);
 				});
 				
+				$.extend(handlePogs.prototype,_app.ext.beachmall_store.variations);				
 				
 				//creates tool tip for variations and product sibling thumbnails
 				$( document ).tooltip({
@@ -876,6 +877,7 @@ var beachmall_store = function(_app) {
 				//**turned off** adds same functionality as custom image select render option to image grid options
 			renderOptionCUSTOMIMGGRID : function(pog) {
 				var pogid = pog.id;
+				dump('-----renderOptionCUSTOMIMGGRID pog.id'); dump(pog.id); dump(pog);
 				var $parentDiv = $("<span \/>");
 				if(pog['ghint']) {$parentDiv.append(pogs.showHintIcon(pogid,pog['ghint']))}
 				
@@ -886,9 +888,9 @@ var beachmall_store = function(_app) {
 				var i = 0;
 				var len = pog['@options'].length;
 				while (i < len) {
-					thumbnail = _app.u.makeImage({"w":pog.width,"h":pog.height,"name":pog['@options'][i]['img'],"b":"FFFFFF","lib":app.username});
+					thumbnail = _app.u.makeImage({"w":pog.width,"h":pog.height,"name":pog['@options'][i]['img'],"b":"FFFFFF","lib":_app.username});
 					thumbnailTag = "<img src='"+thumbnail+"' width='"+pog.width+"' height='"+pog.height+"' name='"+pog['@options'][i]['img']+"' data-grid-img='"+thumbnail+"' data-tooltip-title='"+pog['@options'][i]['prompt']+"'>";
-				//	app.u.dump('----thumbnail'); app.u.dump(thumbnail); app.u.dump(thumbnailTag);
+				//	_app.u.dump('----thumbnail'); _app.u.dump(thumbnail); _app.u.dump(thumbnailTag);
 					radioLabel = "<label>"+pog['@options'][i]['prompt']+"<\/label>";
 					$radioInput = $('<input>').attr({type: "radio", name: pogid, value: pog['@options'][i]['v']});
 					$parentDiv.append(thumbnailTag).append($radioInput).append(radioLabel).wrap("<div class='floatLeft'><\/div>");;
@@ -901,7 +903,7 @@ var beachmall_store = function(_app) {
 			//puts color options on product page as image selectable select list. Also adds jquery tool tip pop up of image for zoom
 			renderOptionCUSTOMIMGSELECT: function(pog) {
 
-//				app.u.dump('POG -> '); app.u.dump(pog);
+//				_app.u.dump('POG -> '); _app.u.dump(pog);
 				
 				var $parent = $('<div class="optionsParent" />');
 				var $select = $("<select class='optionsSelect' name="+pog.id+" />");
@@ -919,11 +921,11 @@ var beachmall_store = function(_app) {
 				var $option;
 				for (var index in pog['@options']) {
 					var option = pog['@options'][index];
-//					app.u.dump('IMG: '); app.u.dump(option.img);
+//					_app.u.dump('IMG: '); _app.u.dump(option.img);
 					$option = $("<option value="+option.v+">"+option.prompt+"</option>");
 					$select.append($option);
-					var thumbImg = _app.u.makeImage({"w":pog.width,"h":pog.height,"name":option.img,"b":"FFFFFF","tag":false,"lib":app.username});
-					var bigImg = _app.u.makeImage({"w":400,"h":400,"name":option.img,"b":"FFFFFF","tag":false,"lib":app.username});																									//need to try moving these to be appended
+					var thumbImg = _app.u.makeImage({"w":pog.width,"h":pog.height,"name":option.img,"b":"FFFFFF","tag":false,"lib":_app.username});
+					var bigImg = _app.u.makeImage({"w":400,"h":400,"name":option.img,"b":"FFFFFF","tag":false,"lib":_app.username});																									//need to try moving these to be appended
 					
 					var $imgContainer = $('<div class="floatLeft optionImagesCont" data-pogval="'+option.v+'" />');
 					/*var $mzpLink = $('<a id="imgGridHref_'+pog.id+'_'+option.v+'" alt="'+option.prompt+'" class="MagicZoom" title="'+option.prompt+'" rel="hint:false; show-title:top; title-source=#id;" href="'+mzBigImg+'" />');
