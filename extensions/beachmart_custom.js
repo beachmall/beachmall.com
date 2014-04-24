@@ -1264,7 +1264,7 @@ _app.templates[P.templateID].find('[data-bind]').each(function()	{
 
 
 				
-//_app.ext.beachmart.u.handleMinicartUpdate();			
+//_app.ext.beachmart.u.handleMinicartUpdate();	THIS IS OUTDATED. SEE SAME FUNCTION IN QUICKSTART.JS TO UPDATE IF NEEDED.		
 			handleMinicartUpdate : function(tagObj)	{
 
 				var itemCount = _app.u.isSet(_app.data[tagObj.datapointer].cart['data.item_count']) ? _app.data[tagObj.datapointer].cart['data.item_count'] : _app.data[tagObj.datapointer].cart['data.add_item_count']

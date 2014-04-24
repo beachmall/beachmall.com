@@ -25,6 +25,8 @@ var beachmall_cart = function(_app) {
 	var r = {
 
 
+	vars : {},
+	
 ////////////////////////////////////   CALLBACKS    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 
@@ -53,6 +55,11 @@ var beachmall_cart = function(_app) {
 						_app.ext.beachmall_cart.u.execCouponAdd($('.cartCouponButton','#modalCart'));
 						_app.ext.beachmall_cart.u.handleCartToolTip($('#modalCart'));
 					});
+					
+					//make sure minicart stays up to date. 
+					_app.ext.beachmall_cart.vars.mcSetInterval = setInterval(function(){
+						_app.ext.quickstart.u.handleMinicartUpdate({'datapointer':'cartDetail|'+_app.model.fetchCartID()});
+					},4000);
 				},
 				onError : function() {
 					_app.u.dump('START beachmall_cart.callbacks.startExtension.onError');
