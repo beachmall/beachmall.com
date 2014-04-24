@@ -3087,6 +3087,13 @@ else	{
 				p.preventDefault();
 				var sfo = $ele.serializeJSON($ele);
 				if(sfo.KEYWORDS)	{
+/*beachmall*/	//	dump('-----this is the search string'); dump(sfo); dump(sfo.KEYWORDS.indexOf("!"));
+/*beachmall*/	//	if(sfo.KEYWORDS.indexOf("!") == -1) {} //uncomment to allow for regular search and modified search by adding !
+/*beachmall*/	//	else { 
+/*beachmall*/	//		sfo.KEYWORDS = sfo.KEYWORDS.replace("!", ""); 
+						sfo.KEYWORDS = sfo.KEYWORDS.replace(/ /g, "+"); 
+/*beachmall*/	//	}
+				
 					document.location.hash = '#!search/keywords/'+sfo.KEYWORDS;
 					}
 				return false;
