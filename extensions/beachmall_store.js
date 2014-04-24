@@ -265,7 +265,7 @@ var beachmall_store = function(_app) {
 				var zoovyIsTags = (data.bindData.iselastic) ? data.value.tags : data.value['%attribs']['zoovy:prod_is_tags'];
 
 				if (zoovyIsTags.indexOf('IS_DISCONTINUED') >= 0) {
-					$tag.parent().parent().parent().hide().attr('data-discontinued',1);
+					$tag.parent().parent().parent().parent().hide().attr('data-discontinued',1);
 				}
 				else if (zoovyIsTags.indexOf('IS_USER3') >= 0) {
 					$tag.append('Closeout!').addClass('smallRed').show();
