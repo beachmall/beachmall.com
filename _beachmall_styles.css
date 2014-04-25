@@ -237,9 +237,11 @@ the padding is to compensate for the spacing between the main nav.
 #mastHead .hoverProductContainer a.catSearchHomeDropdown {color:#ffffff; display:block; text-align:center; font-size:13px; line-height:28px;}
 #mastHead .hoverProductContainer a.catSearchHomeDropdown:hover {background:#e0463a; color:#ffffff;}
 
-.dropdownBGLeft {height:525px; width:242px; position:absolute; top:0; left:0; z-index:0; background:#f8c301; border-top:5px solid #e0463a; border-bottom:#e0463a;}
+#mastHead .dropdown li.dropdownBGLeft, #mastHead .dropout.out li.dropdownBGLeft {height:525px; width:242px; position:absolute; top:0; left:0; z-index:0; background:#f8c301; border-top:5px solid #e0463a; border-bottom:#e0463a;   margin:0;}#
+#mastHead .dropdown li.dropdownBGLeft:hover, #mastHead .dropout.out li.dropdownBGLeft:hover {height:525px; width:242px; position:absolute; top:0; left:0; z-index:0; background:#f8c301; border-bottom:#e0463a;   margin:0;}
 .dropdownBGRight {height:535px; width:240px; background:#f7f7f7; position:absolute; top:0; left:0; opacity:0.9; z-index:0;}
-.dropout.out .dropdownBGLeft {border:none;}
+#mastHead .dropout.out li.dropdownBGLeft {border:none;}
+#mastHead .dropout.out li.dropdownBGLeft:hover {background:#f8c301; border:none; cursor:initial;}
 
 #mastHead .dropout.out {height:525px; width:0px; margin:0px 0px 0px 20px; position:relative; left:186px; overflow:hidden; z-index:5;} 
 #mastHead .dropout.out ul {height: 522px; width:225px; margin: 90px 0px 0px 0px; padding:0px 0px 0px 6px; border:0;}

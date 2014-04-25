@@ -259,7 +259,7 @@ ANIMATION TESTING
 									<a href='#!Adirondack/c/.beach-chair.adirondack-furniture' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Adirondack
 									</a>
-<!-- links in the ul for each item are built with beachmall_store.u.makedropdownlinks(). Add the category to link to in data-dropdown-link. For second tier dropouts also add data-second-tier="1"  -->
+<!-- links in the ul for each item are built with beachmart_dropdown.u.makedropdownlinks() using template dropdownAnchorListTemplate. Add the category to link to in data-dropdown-link. For second tier dropouts also add data-second-tier="1"  -->
 									<ul data-dropdown-link=".beach-chair.adirondack-furniture" class='hoverProductContainer hoverout listStyleNone'></ul>	
 								</li>
 								<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'>
@@ -287,10 +287,10 @@ ANIMATION TESTING
 									</a>
 									<div class='dropout out dropout5'>
                                     	<ul>
-											<div class='defaultDOImage'>
+											<li class='defaultDOImage'>
 												<a class='stockImageContainer' href='#!category/.beach-chair.beach-lounges' data-navcat='.beach-chair.beach-lounges' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());"></a> 
 												<div class='dropdownBGRight'></div>
-											</div>
+											</li>
                                         	<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout2($(this), $(this).parent().parent());'>
 												<a href='#!Beach-Lounges/c/.beach-chair.beach-lounges.beach-recliner' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
 													Beach Lounges
@@ -303,7 +303,7 @@ ANIMATION TESTING
 												</a>
 												<ul data-dropdown-link=".beach-chair.beach-lounges.pool-floats" data-second-tier="1" class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout2'></ul>
 											</li>
-											<div class='dropdownBGLeft'></div>
+											<li class='dropdownBGLeft'></li>
                                         </ul>
                                     </div>
 								</li>
@@ -355,7 +355,7 @@ ANIMATION TESTING
 									</a>
 									<ul data-dropdown-link=".beach-chair.wooden-beach-chairs" class='hoverProductContainer hoverout listStyleNone dropout13'></ul>
 								</li>
-								<div class='dropdownBGLeft'></div>
+								<li class='dropdownBGLeft'></li>
 							</ul>
                         </div>
                     </div>
@@ -401,7 +401,7 @@ ANIMATION TESTING
 									</a>
 									<ul data-dropdown-link=".beach-accessories.picnic-cooler" class='hoverProductContainer hoverout listStyleNone dropout5'></ul>
 								</li>
-								<div class='dropdownBGLeft'></div>
+								<li class='dropdownBGLeft'></li>
                             </ul>
 						</div>
                     </div>
@@ -435,7 +435,7 @@ ANIMATION TESTING
 									</a>
 									<ul data-dropdown-link=".beach-sports.skimboards" class='hoverProductContainer hoverout listStyleNone dropout3'></ul>
 								</li>
-								<div class='dropdownBGLeft'></div>
+								<li class='dropdownBGLeft'></li>
                             </ul>
                         </div>
                     </div>
@@ -494,10 +494,10 @@ ANIMATION TESTING
 									</a>
 									<div class='dropout out dropout7'>
                                     	<ul>
-											<div class='defaultDOImage'>
+											<li class='defaultDOImage'>
 												<a class='stockImageContainer' href='#!Board-Shorts/c/.beachwear.beach-swimwear.board-shorts' data-navcat='.beachwear.beach-swimwear.board-shorts' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());">Board Shorts</a> 
 												<div class='dropdownBGRight'></div>
-											</div>
+											</li>
 											<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout2($(this), $(this).parent().parent());'>
 												<a href='#!Boy-Board-Shorts/c/.beachwear.beach-swimwear.board-shorts.boys-boardshorts' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
 													Boy&#39;s Board Shorts
@@ -525,7 +525,7 @@ ANIMATION TESTING
 												</ul>
 											</li>
 								-->
-											<div class='dropdownBGLeft'></div>
+											<li class='dropdownBGLeft'></li>
 										</ul>
 									</div>
 								</li>
@@ -536,10 +536,10 @@ ANIMATION TESTING
 									</a>
 									<div class='dropout out dropout8'>
                                     	<ul>
-											<div class='defaultDOImage'>
+											<li class='defaultDOImage'>
 												<a class='stockImageContainer' href='#!Rash-Guards/c/.beachwear.beach-swimwear.rashguard' data-navcat='.beachwear.beach-swimwear.rashguard' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());">Rashguard</a> 
 												<div class='dropdownBGRight'></div>
-											</div>
+											</li>
 								<!--			
 											<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout2($(this), $(this).parent().parent());'>
 												<a data-onclick='#!category?navcat=.beachwear.beach-swimwear.rashguard.rashguards' href='#!category?navcat=.beachwear.beach-swimwear.rashguard.rashguards' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
@@ -567,7 +567,7 @@ ANIMATION TESTING
 												</a>
 												<ul data-dropdown-link=".beachwear.beach-swimwear.rashguard.kids-rash-guard" data-second-tier="1" class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout2'></ul>
 											</li>
-											<div class='dropdownBGLeft'></div>
+											<li class='dropdownBGLeft'></li>
 										</ul>
 									</div>
 								</li>
@@ -720,7 +720,7 @@ ANIMATION TESTING
 									</div>
 								</li>
 				-->
-								<div class='dropdownBGLeft'></div>
+								<li class='dropdownBGLeft'></li>
                             </ul>
                         </div>
                     </div>
@@ -750,10 +750,10 @@ ANIMATION TESTING
 									</a>
 									<div class='dropout out dropout2'>
                                         <ul>
-											<div class='defaultDOImage'>
+											<li class='defaultDOImage'>
 												<a class='stockImageContainer' href='#!Market-Patio-Umbrellas/c/.beach-umbrellas-shelter.patio-umbrella' data-navcat='.beach-umbrellas-shelter.patio-umbrella' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());"></a> 
 												<div class='dropdownBGRight'></div>
-											</div>
+											</li>
 											<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout2($(this), $(this).parent().parent());'>
 												<a href='#!6-foot-wide-Umbrellas/c/.beach-umbrellas-shelter.patio-umbrella.6-foot-patio-umbrellas' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
 													6 Foot Umbrellas
@@ -778,7 +778,7 @@ ANIMATION TESTING
 												</a>
 												<ul data-dropdown-link=".beach-umbrellas-shelter.patio-umbrella.market-umbrellas" data-second-tier="1" class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout4'></ul>
 											</li>
-											<div class='dropdownBGLeft'></div>
+											<li class='dropdownBGLeft'></li>
                                         </ul>
                                 	</div>
 								</li>
@@ -788,7 +788,7 @@ ANIMATION TESTING
 									</a>
 									<ul data-dropdown-link=".beach-umbrellas-shelter.umbrella-stand-stands-base" class='hoverProductContainer hoverout listStyleNone dropout3'></ul>
 								</li>
-								<div class='dropdownBGLeft'></div>
+								<li class='dropdownBGLeft'></li>
                             </ul>
                         </div>
                     </div>
@@ -816,7 +816,7 @@ ANIMATION TESTING
 									</a>
 									<ul data-dropdown-link=".beach-umbrellas-shelter.beach-tent-shelters" class='hoverProductContainer hoverout listStyleNone dropout2'></ul>
 								</li>
-								<div class='dropdownBGLeft'></div>
+								<li class='dropdownBGLeft'></li>
                             </ul>
                         </div>
                     </div>
