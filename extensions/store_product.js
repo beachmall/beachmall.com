@@ -395,10 +395,8 @@ $("<div \/>").attr('id','JSONpogErrors_'+pid).addClass('zwarn').appendTo($tag);
 var $display = $("<div \/>"); //holds all the pogs and is appended to at the end.
 
 pogs = new handlePogs(_app.data['appProductGet|'+pid]['@variations'],{"formId":formID,"sku":pid});
-var pog; dump('----before if for pog type:');  dump(typeof pogs.xinit); dump(pogs);
-if(typeof pogs.xinit === 'function')	{pogs.xinit()
-	dump('----Pog.xinit is a function'); dump(typeof pogs.xinit);
-}  //this only is needed if the class is being extended (custom sog style).
+var pog;
+if(typeof pogs.xinit === 'function')	{pogs.xinit()}  //this only is needed if the class is being extended (custom sog style).
 var ids = pogs.listOptionIDs();
 for ( var i=0, len=ids.length; i<len; ++i) {
 	pog = pogs.getOptionByID(ids[i]);

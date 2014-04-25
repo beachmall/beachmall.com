@@ -2309,7 +2309,7 @@ else	{} //no changes in sku attribs.
 				var keywords = $("[name='KEYWORDS']","#navTabs").val();
 				var query = {
 					'type' : 'product',
-					"mode" : "elastic-native",
+					"mode" : "elastic-search",
 					"size" : $("select[name='size']",'#navTabs').val() || 25,
 					"filter" : _app.ext.admin_prodedit.u.buildElasticFilters($ele.closest('form'))
 					}//query
@@ -3279,7 +3279,7 @@ function type2class(type)	{
 				$("[data-app-role='productManagerSearchResults']",$('#productContent')).showLoading({'message':'Performing search...'});
 
 				_app.model.addDispatchToQ({
-					"mode":"elastic-native",
+					"mode":"elastic-search",
 					"size":250,
 					"filter":{"term":{"pogs":varID}},
 					"_cmd":"appPublicSearch",
@@ -3466,7 +3466,7 @@ function type2class(type)	{
 				var $div = $("<div \/>").css({'width':200,'height':100}).appendTo($D);
 				$div.showLoading({"message":"Fetching # of items using this variation"});
 				_app.model.addDispatchToQ({
-					"mode":"elastic-native",
+					"mode":"elastic-search",
 					"size":3,
 					"filter":{"term":{"pogs":data.id}},
 					"_cmd":"appPublicSearch",
@@ -3589,9 +3589,8 @@ function type2class(type)	{
 					}
 				else if($ele.data('variationmode') == 'product')	{
 					var data, variationID = $ele.closest('tr').data('id'), pid = $ele.closest("[data-pid]").data('pid');
-					
+					dump(" -> pid: "+pid);
 					if(pid)	{
-
 
 						var L = _app.data['adminProductDetail|'+pid]['@variations'].length;
 // if isnew is true, that means this is a sog or pog that was just added to the product.

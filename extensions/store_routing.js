@@ -128,9 +128,6 @@ _app.router.appendHash({'type':'match','route':'modal/product/{{pid}}*','callbac
 					});
 					
 				_app.templates.productTemplate.on('complete.routing', function(event, $context, infoObj){
-					dump('here');
-					dump('here');
-					dump('here');
 					var hash = "";
 					var $routeEle = $('[data-routing-hash]',$context)
 					if($routeEle.length){
@@ -200,12 +197,13 @@ optional params:
 							}
 						//seoname isn't clearly defined, so we go into some dwiw guesswork.
 						else if(args.seo && data.value['%attribs'])	{
-							//seoname = data.value['%attribs']['zoovy:prod_seo_title'] || data.value['%attribs']['zoovy:prod_name'];
-							seoname = data.value['%attribs']['zoovy:prod_name']; //wants prod_name in hash, not seo_title
+/*beachmall*/						//seoname = data.value['%attribs']['zoovy:prod_seo_title'] || data.value['%attribs']['zoovy:prod_name'];
+/*beachmall*/						seoname = data.value['%attribs']['zoovy:prod_name']; //wants prod_name in hash, not seo_title
 							}
-						else if(args.seo && data.value.prod_name) {
-							seoname = data.value.prod_name; //this would be for elastic search results.
+						else if(args.seo && data.value.prod_name)	{
+							seoname = data.value.prod_name; //this would be an elastic search results.
 							}
+						else	{} //not defined. guesswork came back negative.
 						data.globals.binds[data.globals.focusBind] = _app.ext.store_routing.u.productAnchor(data.value.pid, seoname);
 						break;
 					
@@ -213,7 +211,7 @@ optional params:
 						r = true;
 						data.globals.binds[data.globals.focusBind] = _app.ext.store_routing.u.categoryAnchor(data.value.path, (args.seo ? data.value.pretty : ''));
 						break;
-
+					
 					default:
 						dump("in tlcFormat.seolink, the type specified ["+args.type+"] is not recognized.");
 						r = false; //unrecognized 'type'

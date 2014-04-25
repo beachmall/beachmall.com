@@ -527,6 +527,7 @@ _app.u.throwMessage(responseData); is the default error handler.
 //very similar to the original translate selector in the control and intented to replace it. 
 //This executes the handleAppEvents in addition to the normal translation.
 //jqObj is required and should be a jquery object.
+//tlc is a VERY common callback. To keep it tight but flexible, before and onComplete functions can be passed to handle special cases.
 		tlc : {
 			onMissing : function(rd)	{
 				rd._rtag.jqObj.anymessage(rd);
@@ -534,7 +535,10 @@ _app.u.throwMessage(responseData); is the default error handler.
 			onSuccess : function(_rtag)	{
 //				_app.u.dump("BEGIN callbacks.tlc ------------------------"); _app.u.dump(_rtag);
 				if(_rtag && _rtag.jqObj && typeof _rtag.jqObj == 'object')	{
-					
+//allows for the callback to perform a lot of the common handling, but to append a little extra functionality at the end of a success.
+					if(typeof _rtag.before == 'function')	{
+						_rtag.before(_rtag);
+						}					
 					var $target = _rtag.jqObj
 					$target.hideLoading(); //shortcut
 					if(_rtag.templateID && !_rtag.templateid)	{_rtag.templateid = _rtag.templateID} //anycontent used templateID. tlc uses templateid. rather than put this into the core tranlsator, it's here as a stopgap.
@@ -590,7 +594,6 @@ _app.u.throwMessage(responseData); is the default error handler.
 // use either delegated events OR app events, not both.
 //avoid using this. ### FUTURE -> get rid of these. the delegation should occur in the function that calls this. more control that way and things like dialogs being appendedTo a parent can be handled more easily.
 					if(_rtag.addEventDelegation)	{
-						_app.u.dump(" ------> using delegated events in anycontent, not app events ");
 						_app.u.addEventDelegation($target);
 						}
 					else if(_rtag.skipAppEvents)	{}
@@ -950,7 +953,7 @@ ex: whoAmI call executed during app init. Don't want "we have no idea who you ar
 			if(location.hash.indexOf('#!') == 0  && !_app.vars.ignoreHashChange)	{
 				// ### TODO -> test this with hash params set by navigateTo. may need to uri encode what is after the hash.
 // *** 201403 use .href.split instead of .hash for routing- Firefox automatically decodes the hash string, which breaks any URIComponent encoded characters, like "%2F" -> "/" -mc
-// http://stackoverflow.com/questions/4835784/firefox-automatically-decoding-encoded-parameter-in-url-does-not-happen-in-ie				
+// http://stackoverflow.com/questions/4835784/firefox-automatically-decoding-encoded-parameter-in-url-does-not-happen-in-ie
 				var routeObj = _app.router._getRouteObj(location.href.split('#!')[1],'hash'); //if we decide to strip trailing slash, use .replace(/\/$/, "")
 				if(routeObj)	{
 					routeObj.hash = location.hash;
@@ -1646,12 +1649,13 @@ URI PARAM
 	
 //turn a set of key value pairs (a=b&c=d) into an object. pass location.search.substring(1); for URI params or location.hash.substring(1) for hash based params
 			kvp2Array : function(s)	{
-				if(s.charAt(0) == '&')	{s = s.substring(1);} //regex below doesn't like the first char being an &.
 				var r = false;
-				if(s && s.indexOf('=') > -1)	{
-					r = s ? JSON['parse']('{"' + s.replace(/&/g, '","').replace(/=/g,'":"') + '"}',function(key, value) { return key===""?value:decodeURIComponent(value) }) : {};
+				if(s)	{
+					if(s.charAt(0) == '&')	{s = s.substring(1);} //regex below doesn't like the first char being an &.
+					if(s.indexOf('=') > -1)	{
+						r = s ? JSON['parse']('{"' + s.replace(/&/g, '","').replace(/=/g,'":"') + '"}',function(key, value) { return key===""?value:decodeURIComponent(value) }) : {};
+						}
 					}
-				else	{}
 				return r;
 				}, //kvp2Array
 		
@@ -1688,7 +1692,6 @@ AUTHENTICATION/USER
 				var r = false;
 				if(_app.data.whoAmI && _app.data.whoAmI.cid)	{r = true}
 				else if(_app.data.appBuyerLogin && _app.data.appBuyerLogin.cid)	{r = true}
-				dump("buyerIsAuthenticated: "+r);
 				return r;
 				}, //buyerIsAuthenticated
 

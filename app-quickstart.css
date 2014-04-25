@@ -170,7 +170,7 @@ and offMenu is toggle off, hiding the change button.
 
 .mainColumn	{width:75%;}
 .sideline	{float:right; width:20%; margin:0 0 2em 0;}
-.sideline a	{padding:1em 0; text-decoration:none; display:block;} /* recommend at least 5px vert padding for mobile/pad */
+.sideline a	{padding:.3em 0; text-decoration:none; display:block;} /* recommend at least 5px vert padding for mobile/pad */
 
 
 
@@ -433,30 +433,6 @@ CART
 
 
 
-
-
-
-
-/*
-
-CHECKOUT
-
-*/
-
-#paybySupplemental_CREDIT .ui-icon-help	{display:inline-block; margin-left:.5em;}
-
-
-.paybySupplemental {padding:1em; font-weight:normal; border-top-width:0;}
-.paybySupplemental select {margin-right:1em;}
-
-.addressList address	{float:left; margin:0 1em 1em 0;}
-
-.creditCardCVVIcon	{display:inline-block !important;}
-
-.checkoutFormContainer input, checkoutFormContainer select	{margin:.3em .5em .3em 0;}
-.checkoutFormContainer input[type='password']	{width:200px;} /* class affects both login password and create account passwords */
-
-.headerPadding label	{padding:.3em .5em;}
 
 /* Pure CSS3 Multi Level Drop Down Navigation Menu */
 /*             http://www.bloggermint.com/demos/darknavmenu/#            */

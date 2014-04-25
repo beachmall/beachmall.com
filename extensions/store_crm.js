@@ -271,18 +271,18 @@ obj['softauth'] = "order"; // [OPTIONAL]. if user is logged in, this gets ignore
 			
 			ordertrackinglinks : function($tag,data)	{
 //				_app.u.dump("BEGIN quickstart.renderFormats.ordertrackinglinks");
-				_app.u.dump(data.value);
- 				if(data.value)	{
- 					var L = data.value.length;
- 					var o = ''; //what is appended to tag. a compiled list of shipping lineitems.
- 					for(var i = 0; i < L; i += 1)	{
- 						// ### TODO -> need to get the link to quickstart out of here.
- 						o += "<li><a href='"+_app.ext.quickstart.u.getTrackingURL(data.value[i].carrier,data.value[i].track)+"' target='"+data.value[i].carrier+"'>"+data.value[i].track+"</a>";
- 						if(_app.u.isSet(data.value[i].cost))
- 							o += " ("+_app.u.formatMoney(data.value[i].cost,'$',2,true)+")";
- 						o += "<\/li>";
- 						}
- 					$tag.show().append("<h4>Tracking Number(s):</h4>").append(o);
+//				_app.u.dump(data.value);
+				if(data.value)	{
+					var L = data.value.length;
+					var o = ''; //what is appended to tag. a compiled list of shipping lineitems.
+					for(var i = 0; i < L; i += 1)	{
+						// ### TODO -> need to get the link to quickstart out of here.
+						o += "<li><a href='"+_app.ext.quickstart.u.getTrackingURL(data.value[i].carrier,data.value[i].track)+"' target='"+data.value[i].carrier+"'>"+data.value[i].track+"</a>";
+						if(_app.u.isSet(data.value[i].cost))
+							o += " ("+_app.u.formatMoney(data.value[i].cost,'$',2,true)+")";
+						o += "<\/li>";
+						}
+					$tag.show().append("<h4>Tracking Number(s):</h4>").append(o);
 					}
 				}
 
@@ -308,18 +308,19 @@ if the P.pid and data-pid do not match, empty the modal before openeing/populati
 					var $parent = $('#review-modal');
 //if no review modal has been created before, create one. 
 					if($parent.length == 0)	{
-						_app.u.dump(" -> modal window doesn't exist. create it.");
 						$parent = $("<div \/>").attr({"id":"review-modal",'data-pid':P.pid}).appendTo(document.body);
 						}
 					else	{
-						_app.u.dump(" -> use existing modal. empty it.");
 //this is a new product being displayed in the viewer.
 						$parent.empty();
 						}
 					$parent.dialog({modal: true,width: ($(window).width() > 500) ? 500 : '90%',height:500,autoOpen:false,"title":"Write a review for "+P.pid});
 //the only data needed in the reviews form is the pid.
 //the entire product record isn't passed in because it may not be available (such as in invoice or order history, or a third party site).
-					$parent.dialog('open').append(_app.renderFunctions.transmogrify({id:'review-modal_'+P.pid},P.templateID,{'pid':P.pid}));
+//					$parent.dialog('open').append(_app.renderFunctions.transmogrify({id:'review-modal_'+P.pid},P.templateID,{'pid':P.pid}));
+					$parent.tlc({'templateid' : P.templateID,'dataset' : {'pid':P.pid}});
+					$parent.dialog('open');
+					_app.u.handleButtons($parent);
 					}
 				},
 
@@ -627,9 +628,11 @@ This is used to get add an array of skus, most likely for a product list.
 				else	{
 					dump(" -> did not pass validation.");
 					} //validateForm handles error display.
+				return false;
 				},
 			
 			productBuyerListRemoveExec : function($ele,p)	{
+				p.preventDefault();
 				var pid = $ele.closest("[data-stid]").data('stid') || $ele.closest("[data-pid]").data('pid');
 				var listid = $ele.closest("[data-buyerlistid]").data('buyerlistid');
 				if(pid && listid)	{
@@ -654,6 +657,7 @@ This is used to get add an array of skus, most likely for a product list.
 				else	{
 					$('#globalMessaging').anymessage({"message":"In store_crm.e.productByerListRemoveExec, either unable to ascertain pid ["+pid+"] and/or buyerlistid ["+listid+"].","gMessage":true});
 					}
+				return false;
 				},
 			
 			//add this as submit action on the form.
@@ -677,17 +681,20 @@ This is used to get add an array of skus, most likely for a product list.
 						}
 					}
 				else	{} //validateForm will handle error display.
+				return false;
 				},
 			
 			productReviewShow : function($ele,p)	{
 				p.preventDefault();
-				var pid = $ele.closest("data-stid").data('stid') || $ele.closest("[data-pid]").data('pid'); //used on product page
+
+				var pid = $ele.data('pid') || $ele.closest("[data-pid]").data('pid'); //used on product page
 				if(pid)	{
 					_app.ext.store_crm.u.showReviewFrmInModal({"pid":pid,"templateID":"reviewFrmTemplate"});
 					}
 				else	{
 					$('#globalMessaging').anymessage({'message':'In store_crm.e.productReviewShow, unable to determine pid/stid','gMessage':true});
 					}
+				return false;
 				}
 
 			} //e/events

@@ -502,6 +502,7 @@ if no parentID is set, then this function gets the data into memory for later us
 							_tag = {'callback':'translateTemplate','extension':'store_prodlist','jqObj':magic.inspect('#'+this.getSkuSafeIdForList(plObj.parentID,pageCSV[i]))}
 							}
 						else if(plObj.parentID)	{
+//							_app.u.dump(" -> parentID is set.");
 /*beachmart*/				_tag = {'jqObj':$(plObj.placeholders[i]),'callback':'translateTemplate','extension':'store_prodlist','parentID':this.getSkuSafeIdForList(plObj.parentID,pageCSV[i])}
 							}
 						else	{

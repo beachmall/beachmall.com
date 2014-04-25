@@ -83,7 +83,6 @@ myApp.u.showProgress = function(progress)	{
 		if(progress.passZeroResourcesLength == progress.passZeroResourcesLoaded)	{
 			//All pass zero resources have loaded.
 			//the app will handle hiding the loading screen.
-			myApp.router.init();//instantiates the router.
 			myApp.u.appInitComplete();
 			}
 		else if(attempt > 150)	{
@@ -110,6 +109,11 @@ myApp.u.appInitComplete = function()	{
 	myApp.u.dump("Executing myAppIsLoaded code...");
 	
 	myApp.ext.order_create.checkoutCompletes.push(function(vars,$checkout){
+		dump(" -> begin checkoutCOmpletes code: "); dump(vars);
+		
+		var cartContentsAsLinks = myApp.ext.cco.u.cartContentsAsLinks(myApp.data[vars.datapointer].order);
+		dump(" -> cartContentsAsLinks: "+cartContentsAsLinks);
+		
 //append this to 
 		$("[data-app-role='thirdPartyContainer']",$checkout).append("<h2>What next?</h2><div class='ocm ocmFacebookComment pointer zlink marginBottom checkoutSprite  '></div><div class='ocm ocmTwitterComment pointer zlink marginBottom checkoutSprit ' ></div><div class='ocm ocmContinue pointer zlink marginBottom checkoutSprite'></div>");
 		$('.ocmTwitterComment',$checkout).click(function(){
@@ -144,10 +148,10 @@ myApp.router.appendInit({
 		dump(" -> triggered callback for appendInit");
 		g = g || {};
 		if(g.uriParams.seoRequest){
- 			showContent(g.uriParams.pageType, g.uriParams);
- 			}
+			showContent(g.uriParams.pageType, g.uriParams);
+			}
 		else if(document.location.hash)	{	
- 			myApp.u.dump('triggering handleHash');
+			myApp.u.dump('triggering handleHash');
 			myApp.router.handleHashChange();
 			}
 		else	{
