@@ -147,7 +147,8 @@ ANIMATION TESTING
 <div class='headerContainer'>
 				<!--	<div class='test' onClick="return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'tags':'.beach-chair.lafuma-recliner'}}]}}});"></div> -->
 <header class='clearfix topNav tanGradient'>
-	<div class='localizedBox fontBlack fontSize12 floatLeft' onmouseenter="myApp.ext.beachmart_dropdown.a.showGeoDropdown($(this),220);">
+	<div class='localizedBox fontBlack fontSize12 floatLeft' onmouseover="myApp.ext.beachmart_dropdown.a.showGeoDropdown($(this),220);">
+	<!-- <div class='localizedBox fontBlack fontSize12 floatLeft' onmouseenter="myApp.ext.beachmart_dropdown.a.showGeoDropdown($(this),220);"> -->
         <span class='oswaldFontBold  fontSize14'>LOCALIZED FOR &nbsp;</span><span class='oswaldFontBold fontTeal fontSize18 shipPostal' onClick="myApp.ext.beachmart_dropdown.a.showDropdown($(this).parent(),220);"></span><br>
         <span class='openSansFont shipCity'> </span> <span class='shipRegion'></span><span class='openSansFontBold pointer' onClick="myApp.ext.beachmart_dropdown.a.showDropdown($(this).parent(),220);">&nbsp; (Change)</span>
     	<div class='arrowContainer'></div>
@@ -979,7 +980,7 @@ ANIMATION TESTING
 		<span>Beachmall</span> Copyright 2013. All Rights Reserved. E-commerce Solution by <span><a target='_blank' href="http://www.zoovy.com/">Zoovy</a></span>
     </div>
 	<!-- START SCANALERT CODE -->
-        <a class='mcAfee' target="_blank" href="https://www.mcafeesecure.com/RatingVerify?ref=www.beachmall.com"><img width="115" height="30" border="0" src="https://images.scanalert.com/meter/www.beachmall.com/32.gif" alt="McAfee Secure sites help keep you safe from identity theft, credit card fraud, spyware, spam, viruses and online scams" oncontextmenu="alert('Copying Prohibited by Law - McAfee Secure is a Trademark of McAfee, Inc.'); return false;"></a>
+        <a class='mcAfee' target="_blank" href="https://www.mcafeesecure.com/RatingVerify?ref=www.beachmall.com"><img width="115" height="30" src="https://images.scanalert.com/meter/www.beachmall.com/32.gif" alt="McAfee Secure sites help keep you safe from identity theft, credit card fraud, spyware, spam, viruses and online scams" oncontextmenu="alert('Copying Prohibited by Law - McAfee Secure is a Trademark of McAfee, Inc.'); return false;"></a>
     <!-- END SCANALERT CODE -->
 </div>
 
@@ -1307,12 +1308,14 @@ don't modify the 'data-templateid' unless you are changing template names and up
 				<div class="countableProdList">
 <!-- original product list<ul data-app-role='productList' data-bind="var: category(@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: productListTemplate; withReviews:1; items_per_page: 24;" class='listStyleNone fluidList clearfix noPadOrMargin prodMargin productList'>-->
 					<ul data-tlc="bind $var '.@products'; prodlist_infinite#infiniteproductlist  --withreviews='1' --withInventory='1' --withVariations='1' --itemsperpage='12' --templateid='productListTemplate'  --legacy;" data-app-role="productList" class="listStyleNone fluidList clearfix noPadOrMargin prodMargin productList">
-						<!-- Removed until better placement can be acheived in future deploy <div class='catTitle floatLeft' data-bind='var: category(pretty); format:catText; extension: myRIA;'></div> -->
-						<a class="buyerGuides floatLeft pointer" href="#!category/.buyer_guides"><h4>VIEW BUYER GUIDES</h4><span>Learn how to shop for these items</span></a>
-						<div class="photosOnly">
-							<span>Photos Only:</span>
-							<button onclick="myApp.ext.beachmall_store.a.toggleMyClass('photophy',$(this),$(this).parent().parent(),'OFF','ON');">OFF</button>
-						</div>
+						<li class="buyerGuideCont">
+							<!-- Removed until better placement can be acheived in future deploy <div class='catTitle floatLeft' data-bind='var: category(pretty); format:catText; extension: myRIA;'></div> -->
+							<a class="buyerGuides floatLeft pointer" href="#!category/.buyer_guides"><h4>VIEW BUYER GUIDES</h4><span>Learn how to shop for these items</span></a>
+							<div class="photosOnly">
+								<span>Photos Only:</span>
+								<button onclick="myApp.ext.beachmall_store.a.toggleMyClass('photophy',$(this),$(this).parent().parent(),'OFF','ON');">OFF</button>
+							</div>
+						</li>
 					</ul><!-- outputs the product list -->
 				</div>
 				<div class="catDescription">
@@ -1515,7 +1518,9 @@ don't modify the 'data-templateid' unless you are changing template names and up
 		<ul data-tlc="bind $var '.@subcategoryDetail'; store_navcats#categorylist  --detail='max' --templateid='categoryListTemplateBuyerGuide'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin categoryList"></ul><!-- outputs a list of subcategories -->
     
 		<ul data-tlc="bind $var '.@products'; store_prodlist#productlist  --withreviews='1' --itemsperpage='24' --templateid='productListTemplate'  --legacy;" data-app-role="productList" class="listStyleNone fluidList clearfix noPadOrMargin prodMargin productList">
-			<a class="buyerGuides floatLeft pointer" href="#!category/.buyer_guides"><h4>VIEW BUYER GUIDES</h4><span>Learn how to shop for these items</span></a>
+			<li class="buyerGuideCont">
+				<a class="buyerGuides floatLeft pointer" href="#!category/.buyer_guides"><h4>VIEW BUYER GUIDES</h4><span>Learn how to shop for these items</span></a>
+			</li>
 		</ul><!-- outputs the product list -->
 
 </div><!-- //categoryTemplateBuyerGuide -->
@@ -2178,6 +2183,7 @@ container ul should have lineItemProdlist class on it instead of productList
 	</tr></tbody>
 </table>
 
+<ul>
 	<li id="dropdownAnchorListTemplate">
 		<a data-tlc="bind $seo '.pretty'; bind $var '.'; store_routing#seoanchor --type='category' --seo='$seo'; apply --attrib='href';" class='stockImageContainer'></a>
 		<div data-tlc="bind $var '.path'; beachmart_dropdown#hideifexlcuded;" data-exclude='bestseller'>
@@ -2191,7 +2197,7 @@ container ul should have lineItemProdlist class on it instead of productList
 		</div>
 		<a data-tlc="bind $seo '.pretty'; bind $var '.'; store_routing#seoanchor --type='category' --seo='$seo'; apply --attrib='href';" class='catSearchHomeDropdown'>See All Items</a>									
 	</li>
-
+</ul>
 
 <ul>
 <!--
