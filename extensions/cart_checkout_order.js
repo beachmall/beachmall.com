@@ -1378,6 +1378,10 @@ in a reorder, that data needs to be converted to the variations format required 
 			
 			//this can be used to update a store or admin session. the callback here is fixed and will update the cart IF the cart was generated using getCartAsJqObj
 			cartItemUpdateExec : function($ele,p){
+/*beachmall*/	if($ele.val() > 999) {
+/*beachmall*/		$ele.parent().anymessage({"message":"Quantity Cannot exceed 999"});
+/*beachmall*/		return;
+/*beachmall*/	}
 				var
 					$container = $ele.closest('[data-stid]'),
 					$cart = $ele.closest("[data-template-role='cart']"),
