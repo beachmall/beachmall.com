@@ -1499,7 +1499,8 @@ _app.u.handleButtons($chkContainer); //will handle buttons outside any of the fi
 				if($ele.closest('form').find("input[name='want/bill_to_ship']").is(':checked') && $ele.attr('name').indexOf('bill/') >= 0)	{
 					obj[$ele.attr('name').replace('bill/','ship/')] = $ele.val();
 					}
-				obj._cartid = $ele.closest("[data-app-role='checkout']").data('cartid');
+				//obj._cartid = $ele.closest("[data-app-role='checkout']").data('cartid');
+				obj._cartid = _app.model.fetchCartID();
 				_app.ext.cco.calls.cartSet.init(obj); //update the cart
 				_app.ext.order_create.u.handleCommonPanels($ele.closest('form'));
 				_app.model.dispatchThis('immutable');
@@ -2017,7 +2018,8 @@ _app.u.handleButtons($chkContainer); //will handle buttons outside any of the fi
 
 					var L = actions.length,
 					formObj = $context.is('form') ? $context.serializeJSON() : $("form",$context).serializeJSON(),
-					cartID = $context.closest("[data-app-role='checkout']").data('cartid'),
+					//cartID = $context.closest("[data-app-role='checkout']").data('cartid'),
+					cartID = _app.model.fetchCartID(),
 					$fieldset = $("[data-app-role='"+_app.u.jqSelector('',role)+"']",$context),
 					ao = {};
 
@@ -2059,7 +2061,8 @@ _app.u.handleButtons($chkContainer); //will handle buttons outside any of the fi
 //sets payment options, shipping options and cart summary to loading, then adds immutable dispatches/callbacks/etc for updating.
 //does NOT dispatch. That way, other requests can be piggy-backed.
 			handleCommonPanels : function($context)	{
-				var cartid = $context.closest("[data-app-role='checkout']").data('cartid');
+				//var cartid = $context.closest("[data-app-role='checkout']").data('cartid');
+				var cartid = _app.model.fetchCartID();
 //				_app.u.dump(" -> handleCommonPanels cartID: "+cartid);
 				if(cartid)	{
 					_app.ext.order_create.u.handlePanel($context,'chkoutMethodsShip',['showLoading']);
