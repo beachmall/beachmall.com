@@ -877,26 +877,70 @@ var beachmall_store = function(_app) {
 				//**turned off** adds same functionality as custom image select render option to image grid options
 			renderOptionCUSTOMIMGGRID : function(pog) {
 				var pogid = pog.id;
-				dump('-----renderOptionCUSTOMIMGGRID pog.id'); dump(pog.id); dump(pog);
-				var $parentDiv = $("<span \/>");
+//				dump('-----renderOptionCUSTOMIMGGRID pog.id'); dump(pog.id); dump(pog);
+				var $parentDiv = $("<div class='imgGridVariationWrapper floatLeft' \/>");
 				if(pog['ghint']) {$parentDiv.append(pogs.showHintIcon(pogid,pog['ghint']))}
 				
 				var $radioInput; //used to create the radio button element.
 				var radioLabel; //used to create the radio button label.
-				var thumbnail; //guess what this holds
+				var thumbnail; //holds nails shaped like thumbs
 				var thumbnailTag; //tag created manually to add jquery tool tip attribs
-				var i = 0;
-				var len = pog['@options'].length;
-				while (i < len) {
-					thumbnail = _app.u.makeImage({"w":pog.width,"h":pog.height,"name":pog['@options'][i]['img'],"b":"FFFFFF","lib":_app.username});
-					thumbnailTag = "<img src='"+thumbnail+"' width='"+pog.width+"' height='"+pog.height+"' name='"+pog['@options'][i]['img']+"' data-grid-img='"+thumbnail+"' data-tooltip-title='"+pog['@options'][i]['prompt']+"'>";
-				//	_app.u.dump('----thumbnail'); _app.u.dump(thumbnail); _app.u.dump(thumbnailTag);
-					radioLabel = "<label>"+pog['@options'][i]['prompt']+"<\/label>";
-					$radioInput = $('<input>').attr({type: "radio", name: pogid, value: pog['@options'][i]['v']});
-					$parentDiv.append(thumbnailTag).append($radioInput).append(radioLabel).wrap("<div class='floatLeft'><\/div>");;
-					i++
-					}
+				var $optionDiv; //holds the individual radio/label/img pack for each sku
+				var $imgDiv; //holds the group of images for each iteration/variation
+				var j = 0;
 				
+				//var skus = _app.data['appProductGet|'+pog.pid]['%SKUS'];
+				var skus = _app.data['appProductGet|PLY39AWTEST2']['%SKU'];
+				var skuLen = skus.length;
+				var options = pog['@options'];
+				var optLen = pog['@options'].length;
+//				dump('The lengths, o then s'); dump(optLen); dump(skuLen);
+				
+ 				for (var i=0; i < optLen; i++) {
+					$optionDiv = $("<div class='imgGridOptionWrapper'></div>");
+					$imgDiv = $("<div class='imgGridImgWrapper' data-pogval="+pog['@options'][i]['v']+"></div>");
+					$radioInput = $('<input>').attr({type: "radio", name: pogid, value: pog['@options'][i]['v'],"data-pogval":pog['@options'][i]['v']});
+					radioLabel = "<label>"+pog['@options'][i]['prompt']+"<\/label>";
+					$optionDiv.append($radioInput).append(radioLabel);
+					while (j < skuLen) {
+//						dump('----while i is '+i+' option value is: '+pog.id+options[i].v+', while j is '+j+' sku id is '+skus[j][0]);
+						if(skus[j][0].indexOf(pog.id+options[i].v) > -1) {
+							var images = skus[j][1];
+							for (var index in images) {
+//								dump('---image attrib = '+index+' and image path = '+images[index]);
+								if(index.indexOf('zoovy:prod_image') > -1) {
+//									dump('---image attrib = '+index+' and image path = '+images[index]);
+									thumbnail = _app.u.makeImage({"w":400,"h":400,"name":images[index],"b":"FFFFFF","lib":_app.username});
+									thumbnailTag = "<img src='"+thumbnail+"' width='40' height='40' name='"+pog['@options'][i]['img']+"' data-grid-img='"+thumbnail+"' data-tooltip-title='"+pog['@options'][i]['prompt']+"'>";
+									$imgDiv.append(thumbnailTag);
+								}
+							}
+							j++
+//							dump('----Meanwhile...'); dump(images); 
+							break;
+						} //k for
+						else {j++}
+					} //while
+					
+					//make clicking one of the images check the radio button and add a red glow to further indicate selection
+					$imgDiv.click(function(){
+						var pogval = $(this).attr('data-pogval');	//value of image clicked
+//						dump('you clicked');
+						$('.imgGridImgWrapper',$(this).parent().parent()).each(function(){
+							if($(this).hasClass('selected')){ 
+								$(this).removeClass('selected'); 
+							}	//add selected indicator to clicked image
+							if($(this).attr('data-pogval') == pogval){ 
+								$(this).addClass('selected'); 
+							}
+						});
+						$('input[type=radio]',$(this).parent()).attr('checked',true);
+					}); 
+					
+					$optionDiv.append($imgDiv);
+					$parentDiv.append($optionDiv);
+				} //i for
+	
 				return $parentDiv;
 			},
 			

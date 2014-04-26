@@ -76,6 +76,7 @@ var store_product = function(_app) {
 				var obj = {};
 				obj["_cmd"] = "appProductGet";
 				obj["withVariations"] = 1;
+/*beachmall*/	obj["withSKU"] = 1;
 //only get inventory if it matters. inv_mode of 1 means inventory is not important.
 				if(_app.u.thisIsAnAdminSession() || (typeof zGlobals == 'object' && zGlobals.globalSettings.inv_mode != 1))
 					obj["withInventory"] = 1;
