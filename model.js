@@ -481,7 +481,9 @@ QID is the dispatchQ ID (either passive, mutable or immutable. required for the 
 //if an iseerr occurs, than even in a pipelined request, errid will be returned on 'parent' and no individual responses are returned.
 				if(responseData && (responseData['_rcmd'] == 'err' || responseData.errid))	{
 					_app.u.dump(' -> API Response for '+QID+' Q contained an error at the top level (on the pipe)','warn');
-					$('.ui-showloading').hideLoading(); //make sure all the showLoadings go away.
+					if(typeof jQuery().hideLoading == 'function'){
+						$(".ui-showloading").hideLoading(); //kill all 'loading' gfx. otherwise, UI could become unusable.
+						}
 					//brian says that an error 10 will always ONLY be for admin. 2014-03-20
 					if(responseData.errid == 10)	{
 						_app.u.dump(" -> errid of 10 corresponds to an expired token. ");
@@ -521,7 +523,7 @@ QID is the dispatchQ ID (either passive, mutable or immutable. required for the 
 							_app.u.dump("ERROR! a high level error occured and the Q ID was unable to be determined.");
 							_app.u.throwMessage(responseData);
 							if(typeof jQuery().hideLoading == 'function'){
-								$(".loading-indicator-overlay").parent().hideLoading(); //kill all 'loading' gfx. otherwise, UI could become unusable.
+								$(".ui-showloading").hideLoading(); //kill all 'loading' gfx. otherwise, UI could become unusable.
 								}
 							}
 						}
