@@ -234,9 +234,15 @@ _app.ext.order_create.u.handlePanel($context,'chkoutMethodsPay',['empty','transl
 				//could get here from cartOrderStatus inquiry OR cartOrderCreate response.
 				//if a cart id is set, keep polling. could mean that one orderStatus call failed for some reason.
 				//but no order id likely means the cartOrderCreate call failed. show the errors.
+//				dump(" -> rd: "); dump(rd);
+				
+				function handleError()	{
+					$(document.body).hideLoading();
+					$("#globalMessaging").anymessage({"message":rd,"gMessage":true,"persistent":true}); //error messaging is persistent so that buyer has adequate time to read/copy it.
+					}
 				
 				if(rd._rtag)	{
-					if(_app.data[rd._rtag.datapointer].finished)	{
+					if(_app.data[rd._rtag.datapointer] && _app.data[rd._rtag.datapointer].finished)	{
 						_app.ext.order_create.a.checkoutComplete(_rtag);
 						}
 					else if(_app.data[rd._rtag.datapointer] && _app.data[rd._rtag.datapointer]['status-cartid'])	{
@@ -246,15 +252,23 @@ _app.ext.order_create.u.handlePanel($context,'chkoutMethodsPay',['empty','transl
 							_app.model.dispatchThis("mutable");
 							},2000);
 						}
+					else if(rd._rtag.datapointer.indexOf('cartOrderCreate') >= 0)	{
+						//if the error came back as part of cartOrderCreate, then we should show checkout again so the user has the chance to resubmit.
+						if(rd._rtag.parentID)	{
+							handleError();
+							$(_app.u.jqSelector('#',rd._rtag.parentID)).show();
+							}
+						else	{
+							handleError();
+							}
+						}
 					else	{
-						$(document.body).hideLoading();
-						$("#globalMessaging").anymessage({"message":rd,"gMessage":true});
+						handleError()
 						}
 					}
 				else	{
 					//if rd._rtag is not set, the error is pretty big, probably an ISE or ISEERR
-					$(document.body).hideLoading();
-					$("#globalMessaging").anymessage({"message":rd,"gMessage":true});
+					handleError()
 					}
 				}
 			}
@@ -1668,7 +1682,8 @@ _app.u.handleButtons($chkContainer); //will handle buttons outside any of the fi
 					}
 				else	{
 					if(_app.ext.order_create.validate.checkout($form))	{
-						$form.slideUp('fast',function(){
+						var $checkout = $form.closest("[data-app-role='checkout']");
+						$checkout.slideUp('fast',function(){
 							$('body').showLoading({'message':'Creating order...'});
 							});
 						_app.ext.cco.u.sanitizeAndUpdateCart($form);
@@ -1686,7 +1701,7 @@ _app.u.handleButtons($chkContainer); //will handle buttons outside any of the fi
 							'_cmd':'cartOrderCreate',
 							'@PAYMENTS' : payments,
 							'async' : 1,
-							'_tag':{'datapointer':'cartOrderCreate|'+cartid,'callback':'cartOrderStatus','extension':'order_create','parentID':$form.closest("[data-app-role='checkout']").attr('id')},
+							'_tag':{'datapointer':'cartOrderCreate|'+cartid,'callback':'cartOrderStatus','extension':'order_create','parentID':$checkout.attr('id')},
 							'iama':_app.vars.passInDispatchV, 
 							'domain' : (_app.vars.thisSessionIsAdmin ? 'www.'+_app.vars.domain : '')
 							},'immutable');
@@ -1834,7 +1849,7 @@ _app.u.handleButtons($chkContainer); //will handle buttons outside any of the fi
 				return false;
 				}, //execInvoicePrint
 
-			showBuyerAddressAdd : function($ele)	{
+			showBuyerAddressAdd : function($ele,p)	{
 				p.preventDefault();
 				var
 					$checkoutForm = $ele.closest('form'), //used in some callbacks later.
@@ -1847,25 +1862,25 @@ _app.u.handleButtons($chkContainer); //will handle buttons outside any of the fi
 					_app.ext.store_crm.u.showAddressAddModal({'addressType':addressType},function(rd,serializedForm){
 //by here, the new address has been created.
 //set appropriate address panel to loading.
-					_app.ext.order_create.u.handlePanel($checkoutForm,$checkoutAddrFieldset.data('app-role'),['showLoading']);
+						_app.ext.order_create.u.handlePanel($checkoutForm,$checkoutAddrFieldset.data('app-role'),['showLoading']);
 //update cart and set shortcut as address.
-					var updateObj = {'_cartid':$ele.closest("[data-app-role='checkout']").data('cartid')}
-					updateObj[addressType+'/shortcut'] = serializedForm.shortcut;
-					_app.ext.cco.calls.cartSet.init(updateObj,{},'immutable');
-
+						var updateObj = {'_cartid':$ele.closest("[data-app-role='checkout']").data('cartid')}
+						updateObj[addressType+'/shortcut'] = serializedForm.shortcut;
+						_app.ext.cco.calls.cartSet.init(updateObj,{},'immutable');
+	
 //update DOM/input for shortcut w/ new shortcut value.
-					$("[name='"+addressType+"/shortcut']",$checkoutForm);
-
+						$("[name='"+addressType+"/shortcut']",$checkoutForm);
+	
 //get the updated address list and update the address panel.
-					_app.model.destroy('buyerAddressList');
-					_app.calls.buyerAddressList.init({'callback':function(rd){
-						_app.ext.order_create.u.handlePanel($checkoutForm,$checkoutAddrFieldset.data('app-role'),['empty','translate','handleDisplayLogic']);
-						}},'immutable');
-
+						_app.model.destroy('buyerAddressList');
+						_app.calls.buyerAddressList.init({'callback':function(rd){
+							_app.ext.order_create.u.handlePanel($checkoutForm,$checkoutAddrFieldset.data('app-role'),['empty','translate','handleDisplayLogic']);
+							}},'immutable');
+	
 //update appropriate address panel plus big three.
-					_app.ext.order_create.u.handleCommonPanels($checkoutForm);
-					_app.model.dispatchThis('immutable');
-					});
+						_app.ext.order_create.u.handleCommonPanels($checkoutForm);
+						_app.model.dispatchThis('immutable');
+						});
 					}
 				return false;
 				}, //showBuyerAddressAdd
