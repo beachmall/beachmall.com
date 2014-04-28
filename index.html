@@ -67,7 +67,7 @@ css files should be included before any .js file to ensure they are downloaded i
 $(document).ready(function(){
 
 	window.myApp = new initApp({
-		"release":"201403.20140428154900",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+		"release":"201403.20140428161600",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 		"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 		"baseURL":baseURL, //used in non-local mode.
 		"checkoutAuthMode" : "active",//can be passive, active or required
@@ -135,7 +135,7 @@ ANIMATION TESTING
 	**				  INSTEAD PUT THEM INTO <div id='homepageTemplate'></div>
 	-->
 	
-<div id='globalMessaging' class='appMessaging'></div><!-- DO NOT REMOVE - used for some high level error handling (usually appears below breadcrumb nav or top bar) -->
+
 
 <!-- These add specific functionality for the app. In most cases, you want to leave them alone. -->
 <div id='appNav'>
@@ -830,6 +830,7 @@ ANIMATION TESTING
 
 </div> <!-- END HEADER CONTAINER -->
 
+<div id='globalMessaging' class='appMessaging'></div><!-- DO NOT REMOVE - used for some high level error handling (usually appears below breadcrumb nav or top bar) -->
 
 <div id='mainContentArea'></div><!-- DO NOT REMOVE - this is where the specific page (ex: homepage, product, category) content is going to go -->
 
