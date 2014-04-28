@@ -32,6 +32,7 @@ var quickstart = function(_app) {
 		//	'brandsProductListTemplate',
 		//	'categoryTemplateWithSpecialList',
 			'categoryTemplateBuyerGuide',
+			'productListTemplateCustom',
 			'productListTemplateResultsCustom',
 			'productListTemplateResultsCustomSmaller',
 			'categoryListTemplateBuyerGuide',

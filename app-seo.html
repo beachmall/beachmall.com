@@ -10,13 +10,17 @@
 		***************/
 		var domain = window.location.origin;
 		var pages = [
-			"/my/custom/page.html"
+			"company/about","company/contact"
 		];
 		var prodBlacklist = [
 			'WIKITEST'
 			];
 		var navcatBlacklist = [
-			'.michael'
+			//privacy, returns, faq articles are to be excluded (are not included to begin w/ though).
+			'.beach-chairs.best-sellers','.beach-chairs.hot-deals','.beach-chairs.packages','.beach-accessories.tailgating','.beach-chair.lafuma-recliner',
+			'.beach-sports.water-towables','.directory','.affiliates','.beach-umbrellas-shelter.patio-umbrella.6-foot-patio-umbrellas',
+			'.beach-umbrellas-shelter.patio-umbrella.7-foot-patio-umbrellas','.beach-umbrellas-shelter.patio-umbrella.market-umbrellas',
+			'.beach-umbrellas-shelter.patio-umbrella.offset-umbrellas','.beach-sports.water-towables','.beachwear.sun-dresses-women','.beachwear.swimwear-women'
 			];
 		/***************
 		SETUP
