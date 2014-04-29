@@ -1086,12 +1086,14 @@ _app.u.handleButtons($chkContainer); //will handle buttons outside any of the fi
 		
 //This will add a cart message. handy if the buyer and merchant are dialoging.
 						if(typeof cartMessagePush === 'function')	{
-							cartMessagePush(oldCartID,'cart.orderCreate',{'vars':{'orderid':orderID}});
+							//temporarily commented out by JT till issue can be diagnosed. 2014-04-28
+//							cartMessagePush(oldCartID,'cart.orderCreate',{'vars':{'orderid':orderID}});
 							}
 		
 //if a cart messenger is open, log the cart update.
 						if(_app.u.thisNestedExists('ext.cart_message.vars.carts.'+oldCartID,_app))	{
-							_app.model.addDispatchToQ({'_cmd':'cartMessagePush','what':'cart.update','orderid':orderID,'description':'Order created.','_cartid':oldCartID},'immutable');
+							//temporarily commented out by JT till issue can be diagnosed. 2014-04-28
+//							_app.model.addDispatchToQ({'_cmd':'cartMessagePush','what':'cart.update','orderid':orderID,'description':'Order created.','_cartid':oldCartID},'immutable');
 							}
 		
 						_app.u.handleButtons($checkout);
@@ -1103,6 +1105,7 @@ _app.u.handleButtons($chkContainer); //will handle buttons outside any of the fi
 //			passed to it in order to know which cart to fetch (no longer connected to the session!).  This resulted in a bug that multiple
 //			orders placed from the same computer in multiple sessions could have the same cart id attached.  Very bad.
 							_app.calls.appCartCreate.init({
+								"datapointer" : "appCartCreate",
 								"callback" : function(rd){
 									dump(" -----------> rd: "); dump(rd);
 									
