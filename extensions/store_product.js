@@ -401,6 +401,7 @@ if(typeof pogs.xinit === 'function')	{pogs.xinit()}  //this only is needed if th
 var ids = pogs.listOptionIDs();
 for ( var i=0, len=ids.length; i<len; ++i) {
 	pog = pogs.getOptionByID(ids[i]);
+	pog.pid = pid; /*beachmall used for renderOptionCUSTOMIMGGRID*/
 	$display.append(pogs.renderOption(pog,pid));
 	}
 $display.appendTo($tag);	

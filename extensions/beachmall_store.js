@@ -889,8 +889,9 @@ var beachmall_store = function(_app) {
 				var $imgDiv; //holds the group of images for each iteration/variation
 				var j = 0;
 				
-				//var skus = _app.data['appProductGet|'+pog.pid]['%SKUS'];
-				var skus = _app.data['appProductGet|PLY39AWTEST2']['%SKU'];
+				var skus = _app.data['appProductGet|'+pog.pid]['%SKU'];
+				//var skus = _app.data['appProductGet|PLY39AWTEST2']['%SKU'];
+				//var skus = _app.data['appProductGet|PL4S31']['%SKU'];
 				var skuLen = skus.length;
 				var options = pog['@options'];
 				var optLen = pog['@options'].length;
@@ -908,7 +909,7 @@ var beachmall_store = function(_app) {
 							var images = skus[j][1];
 							for (var index in images) {
 //								dump('---image attrib = '+index+' and image path = '+images[index]);
-								if(index.indexOf('zoovy:prod_image') > -1) {
+								if(index.indexOf('zoovy:prod_image') > -1 && images[index].length > 0) {
 //									dump('---image attrib = '+index+' and image path = '+images[index]);
 									thumbnail = _app.u.makeImage({"w":400,"h":400,"name":images[index],"b":"FFFFFF","lib":_app.username});
 									thumbnailTag = "<img src='"+thumbnail+"' width='40' height='40' name='"+pog['@options'][i]['img']+"' data-grid-img='"+thumbnail+"' data-tooltip-title='"+pog['@options'][i]['prompt']+"'>";
