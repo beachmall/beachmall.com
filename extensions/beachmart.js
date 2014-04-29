@@ -246,7 +246,7 @@ var store_filter = function(_app) {
 				if(_app.ext.store_filter.u.validateFilterProperties($form))	{
 				//	_app.u.dump(" -> validated Filter Properties.")
 					var query = {
-						"mode":"elastic-native",
+						"mode":"elastic-search",
 						"size":50,
 						"filter" : _app.ext.store_filter.u.buildElasticFilters($form)
 						}//query
