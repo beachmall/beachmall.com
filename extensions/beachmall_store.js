@@ -935,8 +935,27 @@ var beachmall_store = function(_app) {
 								$(this).addClass('selected'); 
 							}
 						});
-						$('input[type=radio]',$(this).parent()).attr('checked',true);
+						$('input[type=radio]',$(this).parent().parent()).prop('checked',false);
+						$('input[type=radio]',$(this).parent().parent()).each(function() {
+							if($(this).attr('data-pogval') == pogval) {
+								$(this).prop('checked',true);
+							}
+						});
 					}); 
+					
+					$radioInput.change(function() {
+						var selected = $(this).val();	//the option selected in select list
+					dump('---the radio'); dump(selected); 
+							//remove selected indicator from all images
+						$('.imgGridImgWrapper',$(this).parent().parent()).each(function(){
+							if($(this).hasClass('selected')){ 
+								$(this).removeClass('selected'); 
+							}	//add it back to the value of select list option if one matches
+							if($(this).attr('data-pogval') == selected){ 
+								$(this).addClass('selected'); 
+							}
+						});
+					});
 					
 					$optionDiv.append($imgDiv);
 					$parentDiv.append($optionDiv);
