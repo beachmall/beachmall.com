@@ -1368,12 +1368,31 @@ don't modify the 'data-templateid' unless you are changing template names and up
 			
 			<div class='brandsTabs'>
 				<ul class='tabs'>
+					<li class='tabViewAll'><a href="#viewAllProductsTab">View All</a></li>
 					<li class='tabFeatured'><a href="#featuredProdsTab">Featured</a></li>
 					<li class='tabBest' ><a href="#bestSellersTab">Best Sellers</a></li>
-					<li class='tabViewAll'><a href="#viewAllProductsTab">View All</a></li>
 				</ul>
+	
+				<div data-anytab-content='viewAllProductsTab' class='viewAllProductsTabContainer'>
+					<div class='CarouselContainer bestSellersCarouselContainer'>
+						<div class='carouselTitles'>
+							<div class='pointer' onClick="showContent('category',{'navcat':$(this).closest('[data-catsafeid]').data('catsafeid'),'templateID':'categoryTemplateBrandsViewAll'});">
+								<div class='brandCarouselLinkContainer viewAllProductsTab floatRight' >View All</div>
+								<div class='carouselArrowContainer floatRight sprite'></div>
+							</div>
+						</div>
+						<div class='Carousel'>
+							<!-- <a class="carouselButtonDkBlue bestCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
+							<a class="carouselButtonDkBlue bestCarouselNext carouselButtonDkBlueNext" href="#">next</a> -->
+							
+							<ul data-tlc="bind $var '.@products'; prodlist_infinite#infiniteproductlist  --withreviews='1' --withInventory='1' --withVariations='1' --itemsperpage='4' --hideSummary='true' --templateid='productListTemplate'  --legacy;" data-app-role="productList" class="listStyleNone fluidList clearfix prodMargin brandsProductList"></ul>
+							<div style='padding:20px;text-align:center;'>Sorry, there are no Items to show at this time. Check back later!</div>
+						</div>
+						<!-- <div class='standardCarouselPagenation'></div> -->
+					</div>
+					
+				</div>
 			
-
 				<div data-anytab-content='featuredProdsTab'> <!-- THIS IN PROGRESS: data-tlc="beachmall_store#brandstabhider --legacy;" -->
 					<div class='CarouselContainer featuredProductsCarouselContainer'>
 						<div class='carouselTitles yellowBkgrd'>
@@ -1415,26 +1434,6 @@ don't modify the 'data-templateid' unless you are changing template names and up
 						</div>
 						<!-- <div class='standardCarouselPagenation'></div> -->
 					</div>
-				</div>
-	
-				<div data-anytab-content='viewAllProductsTab' class='viewAllProductsTabContainer'>
-					<div class='CarouselContainer bestSellersCarouselContainer'>
-						<div class='carouselTitles'>
-							<div class='pointer' onClick="showContent('category',{'navcat':$(this).closest('[data-catsafeid]').data('catsafeid'),'templateID':'categoryTemplateBrandsViewAll'});">
-								<div class='brandCarouselLinkContainer viewAllProductsTab floatRight' >View All</div>
-								<div class='carouselArrowContainer floatRight sprite'></div>
-							</div>
-						</div>
-						<div class='Carousel'>
-							<!-- <a class="carouselButtonDkBlue bestCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
-							<a class="carouselButtonDkBlue bestCarouselNext carouselButtonDkBlueNext" href="#">next</a> -->
-							
-							<ul data-tlc="bind $var '.@products'; prodlist_infinite#infiniteproductlist  --withreviews='1' --withInventory='1' --withVariations='1' --itemsperpage='4' --hideSummary='true' --templateid='productListTemplate'  --legacy;" data-app-role="productList" class="listStyleNone fluidList clearfix prodMargin brandsProductList"></ul>
-							<div style='padding:20px;text-align:center;'>Sorry, there are no Items to show at this time. Check back later!</div>
-						</div>
-						<!-- <div class='standardCarouselPagenation'></div> -->
-					</div>
-					
 				</div>
 
 			</div>
