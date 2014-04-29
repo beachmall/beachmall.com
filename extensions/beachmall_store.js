@@ -874,93 +874,160 @@ var beachmall_store = function(_app) {
 ////////////////////////////////////   VARIATIONS    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\			
 			
 		variations : {
-				//**turned off** adds same functionality as custom image select render option to image grid options
+				//adds similar functionality as custom image select render option to image grid options
 			renderOptionCUSTOMIMGGRID : function(pog) {
 				var pogid = pog.id;
 //				dump('-----renderOptionCUSTOMIMGGRID pog.id'); dump(pog.id); dump(pog);
 				var $parentDiv = $("<div class='imgGridVariationWrapper floatLeft' \/>");
-				if(pog['ghint']) {$parentDiv.append(pogs.showHintIcon(pogid,pog['ghint']))}
-				
+				var skus = _app.data['appProductGet|'+pog.pid]['%SKU']; dump('-----SKUs?'); dump(skus[0][1]); dump(skus[0][1].length);
+				var skuLevel = false; //set to true if sku level image is found, will lead to sku render otherwise will lead to image render
 				var $radioInput; //used to create the radio button element.
 				var radioLabel; //used to create the radio button label.
-				var thumbnail; //holds nails shaped like thumbs
-				var thumbnailTag; //tag created manually to add jquery tool tip attribs
 				var $optionDiv; //holds the individual radio/label/img pack for each sku
 				var $imgDiv; //holds the group of images for each iteration/variation
-				var j = 0;
+				var thumbnail; //holds nails shaped like thumbs
+				var thumbnailTag; //tag created manually to add jquery tool tip attribs
 				
-				var skus = _app.data['appProductGet|'+pog.pid]['%SKU'];
-				//var skus = _app.data['appProductGet|PLY39AWTEST2']['%SKU'];
-				//var skus = _app.data['appProductGet|PL4S31']['%SKU'];
-				var skuLen = skus.length;
-				var options = pog['@options'];
-				var optLen = pog['@options'].length;
-//				dump('The lengths, o then s'); dump(optLen); dump(skuLen);
+				for(var index in skus[0][1]) {
+					if(index.indexOf('zoovy:prod_image') > -1) {
+					dump('0------There was an image!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+					skuLevel = true;
+					}
+				}
 				
- 				for (var i=0; i < optLen; i++) {
-					$optionDiv = $("<div class='imgGridOptionWrapper'></div>");
-					$imgDiv = $("<div class='imgGridImgWrapper' data-pogval="+pog['@options'][i]['v']+"></div>");
-					$radioInput = $('<input>').attr({type: "radio", name: pogid, value: pog['@options'][i]['v'],"data-pogval":pog['@options'][i]['v']});
-					radioLabel = "<label>"+pog['@options'][i]['prompt']+"<\/label>";
-					$optionDiv.append($radioInput).append(radioLabel);
-					while (j < skuLen) {
-//						dump('----while i is '+i+' option value is: '+pog.id+options[i].v+', while j is '+j+' sku id is '+skus[j][0]);
-						if(skus[j][0].indexOf(pog.id+options[i].v) > -1) {
-							var images = skus[j][1];
-							for (var index in images) {
-//								dump('---image attrib = '+index+' and image path = '+images[index]);
-								if(index.indexOf('zoovy:prod_image') > -1 && images[index].length > 0) {
-//									dump('---image attrib = '+index+' and image path = '+images[index]);
-									thumbnail = _app.u.makeImage({"w":400,"h":400,"name":images[index],"b":"FFFFFF","lib":_app.username});
-									thumbnailTag = "<img src='"+thumbnail+"' width='40' height='40' name='"+pog['@options'][i]['img']+"' data-grid-img='"+thumbnail+"' data-tooltip-title='"+pog['@options'][i]['prompt']+"'>";
-									$imgDiv.append(thumbnailTag);
+				//render sku level image group if zoovy:prod_image was found in %SKU
+				if(skuLevel) {
+					dump('0------in skuLevel if');
+					if(pog['ghint']) {$parentDiv.append(pogs.showHintIcon(pogid,pog['ghint']))}
+					
+					var j = 0;
+					
+					//var skus = _app.data['appProductGet|PLY39AWTEST2']['%SKU'];
+					//var skus = _app.data['appProductGet|PL4S31']['%SKU'];
+					var skuLen = skus.length;
+					var options = pog['@options'];
+					var optLen = pog['@options'].length;
+	//				dump('The lengths, o then s'); dump(optLen); dump(skuLen);
+					
+					for (var i=0; i < optLen; i++) {
+						$optionDiv = $("<div class='imgGridOptionWrapper'></div>");
+						$imgDiv = $("<div class='imgGridImgWrapper' data-pogval="+pog['@options'][i]['v']+"></div>");
+						$radioInput = $('<input>').attr({type: "radio", name: pogid, value: pog['@options'][i]['v'],"data-pogval":pog['@options'][i]['v']});
+						radioLabel = "<label>"+pog['@options'][i]['prompt']+"<\/label>";
+						$optionDiv.append($radioInput).append(radioLabel);
+						while (j < skuLen) {
+	//						dump('----while i is '+i+' option value is: '+pog.id+options[i].v+', while j is '+j+' sku id is '+skus[j][0]);
+							if(skus[j][0].indexOf(pog.id+options[i].v) > -1) {
+								var images = skus[j][1];
+								for (var index in images) {
+	//								dump('---image attrib = '+index+' and image path = '+images[index]);
+									if(index.indexOf('zoovy:prod_image') > -1 && images[index].length > 0) {
+	//									dump('---image attrib = '+index+' and image path = '+images[index]);
+										thumbnail = _app.u.makeImage({"w":400,"h":400,"name":images[index],"b":"FFFFFF","lib":_app.username});
+										thumbnailTag = "<img src='"+thumbnail+"' width='40' height='40' name='"+pog['@options'][i]['img']+"' data-grid-img='"+thumbnail+"' data-tooltip-title='"+pog['@options'][i]['prompt']+"'>";
+										$imgDiv.append(thumbnailTag);
+									}
 								}
-							}
-							j++
-//							dump('----Meanwhile...'); dump(images); 
-							break;
-						} //k for
-						else {j++}
-					} //while
-					
-					//make clicking one of the images check the radio button and add a red glow to further indicate selection
-					$imgDiv.click(function(){
-						var pogval = $(this).attr('data-pogval');	//value of image clicked
-//						dump('you clicked');
-						$('.imgGridImgWrapper',$(this).parent().parent()).each(function(){
-							if($(this).hasClass('selected')){ 
-								$(this).removeClass('selected'); 
-							}	//add selected indicator to clicked image
-							if($(this).attr('data-pogval') == pogval){ 
-								$(this).addClass('selected'); 
-							}
+								j++
+	//							dump('----Meanwhile...'); dump(images); 
+								break;
+							} //k for
+							else {j++}
+						} //while
+						
+						//make clicking one of the images check the radio button and add a red border to further indicate selection
+						$imgDiv.click(function(){
+							var pogval = $(this).attr('data-pogval');	//value of image clicked
+	//						dump('you clicked');
+							$('.imgGridImgWrapper',$(this).parent().parent()).each(function(){
+								if($(this).hasClass('selected')){ 
+									$(this).removeClass('selected'); 
+								}	//add selected indicator to clicked image
+								if($(this).attr('data-pogval') == pogval){ 
+									$(this).addClass('selected'); 
+								}
+							});
+							$('input[type=radio]',$(this).parent().parent()).prop('checked',false);
+							$('input[type=radio]',$(this).parent().parent()).each(function() {
+								if($(this).attr('data-pogval') == pogval) {
+									$(this).prop('checked',true);
+								}
+							});
+						}); 
+						
+						//make clicking the radio change the border like clicking the image does above
+						$radioInput.change(function() {
+							var selected = $(this).val();	//the option selected in select list
+						dump('---the radio'); dump(selected); 
+								//remove selected indicator from all images
+							$('.imgGridImgWrapper',$(this).parent().parent()).each(function(){
+								if($(this).hasClass('selected')){ 
+									$(this).removeClass('selected'); 
+								}	//add it back to the value of select list option if one matches
+								if($(this).attr('data-pogval') == selected){ 
+									$(this).addClass('selected'); 
+								}
+							});
 						});
-						$('input[type=radio]',$(this).parent().parent()).prop('checked',false);
-						$('input[type=radio]',$(this).parent().parent()).each(function() {
-							if($(this).attr('data-pogval') == pogval) {
-								$(this).prop('checked',true);
-							}
+						
+						$optionDiv.append($imgDiv);
+						$parentDiv.append($optionDiv);
+					} //i for
+				} //sku level render
+				
+				//do the regular custom thing w/out the sku level images
+				else {
+					var i = 0;
+					var len = pog['@options'].length;
+					while (i < len) {
+						$optionDiv = $("<div class='imgGridOptionWrapper'></div>");
+						$imgDiv = $("<div class='imgGridImgWrapper' data-pogval="+pog['@options'][i]['v']+"></div>");
+						$radioInput = $('<input>').attr({type: "radio", name: pogid, value: pog['@options'][i]['v'],"data-pogval":pog['@options'][i]['v']});
+						radioLabel = "<label>"+pog['@options'][i]['prompt']+"<\/label>";
+						thumbnail = _app.u.makeImage({"w":400,"h":400,"name":pog['@options'][i]['img'],"b":"FFFFFF","lib":_app.username});
+						thumbnailTag = "<img src='"+thumbnail+"' width='"+40+"' height='"+40+"' name='"+pog['@options'][i]['img']+"' data-grid-img='"+thumbnail+"' data-tooltip-title='"+pog['@options'][i]['prompt']+"'>";
+						$imgDiv.append(thumbnailTag);
+						$optionDiv.append($radioInput).append(radioLabel).append($imgDiv);
+						$parentDiv.append($optionDiv);
+						i++
+						
+						//make clicking one of the images check the radio button and add a red border to further indicate selection
+						$imgDiv.click(function(){
+							var pogval = $(this).attr('data-pogval');	//value of image clicked
+	//						dump('you clicked');
+							$('.imgGridImgWrapper',$(this).parent().parent()).each(function(){
+								if($(this).hasClass('selected')){ 
+									$(this).removeClass('selected'); 
+								}	//add selected indicator to clicked image
+								if($(this).attr('data-pogval') == pogval){ 
+									$(this).addClass('selected'); 
+								}
+							});
+							$('input[type=radio]',$(this).parent().parent()).prop('checked',false);
+							$('input[type=radio]',$(this).parent().parent()).each(function() {
+								if($(this).attr('data-pogval') == pogval) {
+									$(this).prop('checked',true);
+								}
+							});
+						}); 
+						
+						//make clicking the radio change the border like clicking the image does above
+						$radioInput.change(function() {
+							var selected = $(this).val();	//the option selected in select list
+						dump('---the radio'); dump(selected); 
+								//remove selected indicator from all images
+							$('.imgGridImgWrapper',$(this).parent().parent()).each(function(){
+								if($(this).hasClass('selected')){ 
+									$(this).removeClass('selected'); 
+								}	//add it back to the value of select list option if one matches
+								if($(this).attr('data-pogval') == selected){ 
+									$(this).addClass('selected'); 
+								}
+							});
 						});
-					}); 
-					
-					$radioInput.change(function() {
-						var selected = $(this).val();	//the option selected in select list
-					dump('---the radio'); dump(selected); 
-							//remove selected indicator from all images
-						$('.imgGridImgWrapper',$(this).parent().parent()).each(function(){
-							if($(this).hasClass('selected')){ 
-								$(this).removeClass('selected'); 
-							}	//add it back to the value of select list option if one matches
-							if($(this).attr('data-pogval') == selected){ 
-								$(this).addClass('selected'); 
-							}
-						});
-					});
-					
-					$optionDiv.append($imgDiv);
-					$parentDiv.append($optionDiv);
-				} //i for
-	
+					}
+
+				} //regular custom render
 				return $parentDiv;
 			},
 			

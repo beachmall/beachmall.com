@@ -1363,7 +1363,7 @@ h1.prodName	{font-size:21px; font-weight:normal; text-rendering:optimizelegibili
 .optionsSelect {clear:both; display:block;}
 .optionsParent .zhint {margin:3px 0; font-family:"Open Sans"; font-weight:normal; font-size:10px; text-align:left; color:#777777; clear:both;}
 .imgGridVariationWrapper {height:auto; width:100%; font-size:0.8em;}
-.imgGridOptionWrapper {height:70px; width:auto; border-top:1px solid #999999; margin:6px 15px 0 0; padding:5px 0 0 0; float:left;}
+.imgGridOptionWrapper {height:70px; width:auto; min-width:45%; border-top:1px solid #999999; margin:6px 15px 0 0; padding:5px 0 0 0; float:left;}
 .imgGridImgWrapper img {border:1px solid #999999; margin:1px; padding:1px;}
 .imgGridImgWrapper.selected img {border:1px solid #e63738;}
 .ui-tooltip {background:transparent !important; border:none !important; border-radius:0; box-shadow:0; padding:0;}
