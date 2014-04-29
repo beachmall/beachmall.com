@@ -56,7 +56,8 @@ myApp.rq.push(['extension',0,'magictoolbox_mzp','extensions/partner_magictoolbox
 
 // ** moved here from extension to make sure it gets loaded early enough.
 //myApp.rq.push(['script',0,'http://cdn.powerreviews.com/repos/11531/pr/pwr/engine/js/full.js']); old user id "11531"
-myApp.rq.push(['script',0,'https://cdn.powerreviews.com/repos/11024/pr/pwr/engine/js/full.js']);
+if(document.location.protocol == "https") { myApp.rq.push(['script',0,'https://cdn.powerreviews.com/repos/11024/pr/pwr/engine/js/full.js']); }
+else { myApp.rq.push(['script',0,'http://cdn.powerreviews.com/repos/11024/pr/pwr/engine/js/full.js']); }
 
 myApp.rq.push(['script',0,myApp.vars.baseURL+'resources/jquery.showloading-v1.0.jt.js']); //used pretty early in process..
 myApp.rq.push(['script',0,myApp.vars.baseURL+'resources/jquery.ui.anyplugins.js']); //in zero pass in case product page is first page.

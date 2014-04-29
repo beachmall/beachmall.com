@@ -107,8 +107,14 @@ var powerreviews_reviews = function(_app) {
 					_app.u.dump("BEGIN powerreviews_reviews.callbacks.startExtension");
 // * JS moved to init to ensure it's loaded early enough in the process.
 //					_app.rq.push(['script',0,'http://cdn.powerreviews.com/repos/'+_app.ext.powerreviews_reviews.vars.merchantID+'/pr/pwr/engine/js/full.js']);
-					_app.rq.push(['css',0,'http://cdn.powerreviews.com/repos/'+_app.ext.powerreviews_reviews.vars.merchantID+'/pr/pwr/engine/pr_styles_review.css','prBaseStylesheet']);
-					_app.rq.push(['css',0,'http://cdn.powerreviews.com/aux/'+_app.ext.powerreviews_reviews.vars.merchantID+'/'+_app.ext.powerreviews_reviews.vars.groupID+'/css/powerreviews_express.css','prMerchantOverrideStylesheet']);
+					if(document.location.protocol == "https") {
+						_app.rq.push(['css',0,'https://cdn.powerreviews.com/repos/'+_app.ext.powerreviews_reviews.vars.merchantID+'/pr/pwr/engine/pr_styles_review.css','prBaseStylesheet']);
+						_app.rq.push(['css',0,'https://cdn.powerreviews.com/aux/'+_app.ext.powerreviews_reviews.vars.merchantID+'/'+_app.ext.powerreviews_reviews.vars.groupID+'/css/powerreviews_express.css','prMerchantOverrideStylesheet']);
+						}
+					else {
+						_app.rq.push(['css',0,'http://cdn.powerreviews.com/repos/'+_app.ext.powerreviews_reviews.vars.merchantID+'/pr/pwr/engine/pr_styles_review.css','prBaseStylesheet']);
+						_app.rq.push(['css',0,'http://cdn.powerreviews.com/aux/'+_app.ext.powerreviews_reviews.vars.merchantID+'/'+_app.ext.powerreviews_reviews.vars.groupID+'/css/powerreviews_express.css','prMerchantOverrideStylesheet']);
+						}
 					},
 				onError : function(d){}
 				}
