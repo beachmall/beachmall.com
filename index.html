@@ -67,7 +67,7 @@ css files should be included before any .js file to ensure they are downloaded i
 $(document).ready(function(){
 
 	window.myApp = new initApp({
-		"release":"201403.20140430074200",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+		"release":"201403.20140430080200",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 		"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 		"baseURL":baseURL, //used in non-local mode.
 		"checkoutAuthMode" : "active",//can be passive, active or required
@@ -109,7 +109,7 @@ $(document).ready(function(){
 		</div>
 		<div class='appMessaging'></div>
 	
-		<div class='logo floatRight'><img src='images/beachmall-logo-anim-wide_220x65.gif' width='220' height='65' alt='beachmall.com' /></div>
+		<div class='logo floatRight'><img src='images/beachmall-logo-anim-wide_220x65.gif' width='220' height='65' alt='beachmall.com' data-apptimize="embed" /></div>
 	</div>
 </div>
 
@@ -219,7 +219,7 @@ ANIMATION TESTING
 
 <header id='mastHead'>
 	
-	<a class='floatLeft logo pointer' href="#!home"><img src='images/beachmall-logo-wide_220x65.jpg' width='220' height='65' alt='beachmall.com' /></a>
+	<a class='floatLeft logo pointer' href="#!home"><img src='images/beachmall-logo-wide_220x65.jpg' width='220' height='65' alt='beachmall.com' data-apptimize="embed" /></a>
 	
 	<div class='headerRightContainer floatRight'>    
         <div class='searchContainer floatRight'>
@@ -250,7 +250,7 @@ ANIMATION TESTING
 						</div>
 						<div class='beachChairsDD dropdown floatLeft'> 
 							<div class='defaultDDImage'>
-								<a class='stockImageContainer' href='#!Beach-Chairs/c/.beach-chair' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"><img src='http://www.81a72f.hoth.zoovy.net/media/img/beachmart/W210-H210-Bffffff/copa/2009_chairs_web/canopy_beach_chair_401a' width='210' height='210' alt='beach chairs' /></a> 
+								<a class='stockImageContainer' href='#!Beach-Chairs/c/.beach-chair' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"><img src='http://www.81a72f.hoth.zoovy.net/media/img/beachmart/W210-H210-Bffffff/copa/2009_chairs_web/canopy_beach_chair_401a' width='210' height='210' alt='beach chairs' data-apptimize="embed" /></a> 
 								<div class="dropdownBGRight"></div>
 							</div>
                             <ul class='listStyleNone floatLeft dropoutUL'>
