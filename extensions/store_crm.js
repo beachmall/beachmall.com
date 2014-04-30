@@ -321,6 +321,7 @@ if the P.pid and data-pid do not match, empty the modal before openeing/populati
 					$parent.tlc({'templateid' : P.templateID,'dataset' : {'pid':P.pid}});
 					$parent.dialog('open');
 					_app.u.handleButtons($parent);
+					_app.u.addEventDelegation($parent); //1PC doesn't have delegation on the body.
 					}
 				},
 
@@ -461,21 +462,19 @@ This is used to get add an array of skus, most likely for a product list.
 								'save' : function(event,ui) {
 									event.preventDefault();
 									var $form = $('form',$(this)).first();
-									
+									var $editor = $(this);
 									if(_app.u.validateForm($form))	{
 										$form.showLoading('Updating Address');
-										var serializedForm = $form.serializeJSON();
-//save and then refresh the page to show updated info.
-										_app.model.addDispatchToQ({
-											'_cmd':'buyerAddressAddUpdate',
-											'_tag':	{
+										var sfo = $form.serializeJSON();
+											sfo._cmd = 'buyerAddressAddUpdate',
+											sfo._tag =	{
 												'callback':function(rd){
 													$form.hideLoading(); //always hide loading, regardless of errors.
 													if(_app.model.responseHasErrors(rd)){
 														$form.anymessage({'message':rd});
 														}
 													else if(typeof onSuccessCallback === 'function')	{
-														onSuccessCallback(rd,serializedForm);
+														onSuccessCallback(rd,sfo);
 														$editor.dialog('close');
 														}
 													else	{
@@ -484,7 +483,9 @@ This is used to get add an array of skus, most likely for a product list.
 														}
 													}
 												}
-											},'immutable');
+										
+//save and then refresh the page to show updated info.
+										_app.model.addDispatchToQ(sfo,'immutable');
 //dump data in memory and local storage. get new copy up updated address list for display.
 										_app.model.destroy('buyerAddressList');
 										_app.calls.buyerAddressList.init({},'immutable');
@@ -523,15 +524,17 @@ This is used to get add an array of skus, most likely for a product list.
 					var $editor = $("<div \/>");
 					
 					$editor.append("<input type='hidden' name='type' value='"+vars.addressType.toUpperCase()+"' \/>");
-					$editor.tlc({'templateid':(vars.addressType == 'ship') ? 'chkoutAddressShipTemplate' : 'chkoutAddressBillTemplate','verb':'template'});
-//* 201338 -> the address id should be at the bottom of the form, not the top. isn't that important or required.
+// ** 201403 -> need to pass in a blank dataset so translation occurs. required for country dropdown.
+					$editor.tlc({'templateid':(vars.addressType == 'ship') ? 'chkoutAddressShipTemplate' : 'chkoutAddressBillTemplate','dataset':{}});
+//the address id should be at the bottom of the form, not the top. isn't that important or required.
 					$editor.append("<input type='text' maxlength='6' data-minlength='6' name='shortcut' placeholder='address id (6 characters)' \/>");
 					$editor.wrapInner('<form \/>'); //needs this for serializeJSON later.
 
-//** 201338 -> if the placeholder attribute on an input is not supported (thx IE8), then add labels.
+//if the placeholder attribute on an input is not supported (thx IE8), then add labels.
 					if(_app.ext.order_create)	{
 						_app.ext.order_create.u.handlePlaceholder($editor);
 						}
+//adds a tooltip which is displayed on focus. lets the user know what field they're working on once they start typing and placeholder goes away.
 					$(":input",$editor).each(function(index){
 						var $input = $(this);
 						if($input.attr('placeholder') && !$input.attr('title'))	{
