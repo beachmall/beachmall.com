@@ -53,8 +53,8 @@ css files should be included before any .js file to ensure they are downloaded i
 <!-- jquery and jquery ui are pivotal to the functionality of the app. load them early -->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
-<script src="controller.js" data-apptimize="embed"></script>
-<script src="model.js" data-apptimize="embed"></script>
+<script type="text/javascript"src="controller.js" data-apptimize="embed"></script>
+<script type="text/javascript"src="model.js" data-apptimize="embed"></script>
 
 <script type='text/javascript' src='examples/magictoolbox/magiczoomplus.js' data-apptimize="embed" ></script>
 
@@ -67,7 +67,7 @@ css files should be included before any .js file to ensure they are downloaded i
 $(document).ready(function(){
 
 	window.myApp = new initApp({
-		"release":"201403.20140430085800",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+		"release":"201403.20140430093700",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 		"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 		"baseURL":baseURL, //used in non-local mode.
 		"checkoutAuthMode" : "active",//can be passive, active or required
@@ -511,21 +511,6 @@ ANIMATION TESTING
 												</a>
 												<ul data-dropdown-link=".beachwear.beach-swimwear.board-shorts.girls-board-shorts" data-second-tier="1" class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout2'></ul>
 											</li>
-								<!--
-											<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout2($(this), $(this).parent().parent());'>
-												<a data-onclick='#!category?navcat=.beachwear.beach-swimwear.board-shorts.kids' href='#!category?navcat=.beachwear.beach-swimwear.board-shorts.kids' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
-													Kids&#39s Board Shorts
-												</a>
-												<ul class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout3'>
-													<div class='stockImageContainer bindByAnchor' data-navcat='.board-shorts.kids' href='#!category?navcat=.beachwear.beach-swimwear.board-shorts.kids' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent()); return showContent('category',{'navcat':''});">Kids&#39s Board Shorts</div>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beachwear.beach-swimwear.board-shorts.kids'}}]}}});">Best Selling Items</button>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beachwear.beach-swimwear.board-shorts.kids'}}]}}});">Featured Items</button>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beachwear.beach-swimwear.board-shorts.kids'}}]}}});">Clearance Items</button>
-													<button class='catSearchHomeDropdown bindByAnchor' href='#!category?navcat=.beachwear.beach-swimwear.board-shorts.kids' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());">See All Items</button>
-													<div class='dropdownBGRight'></div>
-												</ul>
-											</li>
-								-->
 											<li class='dropdownBGLeft'></li>
 										</ul>
 									</div>
@@ -541,21 +526,6 @@ ANIMATION TESTING
 												<a class='stockImageContainer' href='#!Rash-Guards/c/.beachwear.beach-swimwear.rashguard' data-navcat='.beachwear.beach-swimwear.rashguard' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());">Rashguard</a> 
 												<div class='dropdownBGRight'></div>
 											</li>
-								<!--			
-											<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout2($(this), $(this).parent().parent());'>
-												<a data-onclick='#!category?navcat=.beachwear.beach-swimwear.rashguard.rashguards' href='#!category?navcat=.beachwear.beach-swimwear.rashguard.rashguards' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
-													Boy&#39s Rash Guards
-												</a>
-												<ul class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout1'>
-													<div class='stockImageContainer bindByAnchor' data-navcat='.rashguard.rashguards' href='#!category?navcat=.beachwear.beach-swimwear.rashguard.rashguards' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent()); return showContent('category',{'navcat':''});">Boy&#39s Rash Guards</div>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beachwear.beach-swimwear.rashguard.rashguards'}}]}}});">Best Selling Items</button>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beachwear.beach-swimwear.rashguard.rashguards'}}]}}});">Featured Items</button>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beachwear.beach-swimwear.rashguard.rashguards'}}]}}});">Clearance Items</button>
-													<button class='catSearchHomeDropdown bindByAnchor' href='#!category?navcat=.beachwear.beach-swimwear.rashguard.rashguards' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());">See All Items</button>
-													<div class='dropdownBGRight'></div>
-												</ul>
-											</li>
-								-->
 											<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout2($(this), $(this).parent().parent());'>
 												<a href='#!Girls-Rash-Guards/c/.beachwear.beach-swimwear.rashguard.girls-rash-guard' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
 													Girl&#39;s Rash Guards
@@ -572,155 +542,6 @@ ANIMATION TESTING
 										</ul>
 									</div>
 								</li>
-					<!--
-								<li class='noArrow' onMouseOver="myApp.ext.beachmart_dropdown.a.showDropout($(this), $(this).parent().parent(), $(this).parent(), 480)" 
-									onMouseOut="myApp.ext.beachmart_dropdown.a.hideDropout($(this), $(this).parent().parent(), $(this).parent())">
-									<a data-onclick='#!category?navcat=.beachwear.sun-dresses-women' href='#!category?navcat=.beachwear.sun-dresses-women' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
-										Women&#39s Sundresses
-									</a>
-									<div class='dropout out dropout9'>
-                                    	<ul>
-											<div class='defaultDOImage'>
-												<div class='stockImageContainer bindByAnchor' data-navcat='.beachwear.sun-dresses-women' href='#!category?navcat=.beachwear.sun-dresses-women' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());">Women&#39s Sundresses</div> 
-												<div class='dropdownBGRight'></div>
-											</div>
-											<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout2($(this), $(this).parent().parent());'>
-												<a data-onclick='#!category?navcat=.beachwear.sun-dresses-women.beach-dresses' href='#!category?navcat=.beachwear.sun-dresses-women.beach-dresses' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
-													Casual
-												</a>
-												<ul class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout1'>
-													<div class='stockImageContainer bindByAnchor' data-navcat='.beach-dresses' href='#!category?navcat=.beachwear.sun-dresses-women.beach-dresses' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent()); return showContent('category',{'navcat':''});">Casual</div>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beachwear.sun-dresses-women.beach-dresses'}}]}}});">Best Selling Items</button>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beachwear.sun-dresses-women.beach-dresses'}}]}}});">Featured Items</button>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beachwear.sun-dresses-women.beach-dresses'}}]}}});">Clearance Items</button>
-													<button class='catSearchHomeDropdown bindByAnchor' href='#!category?navcat=.beachwear.sun-dresses-women.beach-dresses' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());">See All Items</button>
-													<div class='dropdownBGRight'></div>
-												</ul>
-											</li>
-											<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout2($(this), $(this).parent().parent());'>
-												<a data-onclick='#!category?navcat=.beachwear.sun-dresses-women.body-slimming' href='#!category?navcat=.beachwear.sun-dresses-women.body-slimming' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
-													Body Slimming
-												</a>
-												<ul class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout2'>
-													<div class='stockImageContainer bindByAnchor' data-navcat='.body-slimming' href='#!category?navcat=.beachwear.sun-dresses-women.body-slimming' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent()); return showContent('category',{'navcat':''});">Body Slimming</div>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beachwear.sun-dresses-women.body-slimming'}}]}}});">Best Selling Items</button>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beachwear.sun-dresses-women.body-slimming'}}]}}});">Featured Items</button>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beachwear.sun-dresses-women.body-slimming'}}]}}});">Clearance Items</button>
-													<button class='catSearchHomeDropdown bindByAnchor' href='#!category?navcat=.beachwear.sun-dresses-women.body-slimming' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());">See All Items</button>
-													<div class='dropdownBGRight'></div>
-												</ul>
-											</li>
-											<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout2($(this), $(this).parent().parent());'>
-												<a data-onclick='#!category?navcat=.beachwear.sun-dresses-women.evening' href='#!category?navcat=.beachwear.sun-dresses-women.evening' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
-													Evening
-												</a>
-												<ul class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout3'>
-													<div class='stockImageContainer bindByAnchor' data-navcat='.evening' href='#!category?navcat=.beachwear.sun-dresses-women.evening' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent()); return showContent('category',{'navcat':''});">Evening</div>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beachwear.sun-dresses-women.evening'}}]}}});">Best Selling Items</button>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beachwear.sun-dresses-women.evening'}}]}}});">Featured Items</button>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beachwear.sun-dresses-women.evening'}}]}}});">Clearance Items</button>
-													<button class='catSearchHomeDropdown bindByAnchor' href='#!category?navcat=.beachwear.sun-dresses-women.evening' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());">See All Items</button>
-													<div class='dropdownBGRight'></div>
-												</ul>
-											</li>
-											<div class='dropdownBGLeft'></div>
-										</ul>
-									</div>
-								</li>
-								<li class='noArrow' onMouseOver="myApp.ext.beachmart_dropdown.a.showDropout($(this), $(this).parent().parent(), $(this).parent(), 480)" 
-									onMouseOut="myApp.ext.beachmart_dropdown.a.hideDropout($(this), $(this).parent().parent(), $(this).parent())">
-									<a data-onclick='#!category?navcat=.beachwear.swimwear-women' href='#!category?navcat=.beachwear.swimwear-women' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
-										Women&#39s Swimwear
-									</a>
-									<div class='dropout out dropout10'>
-                                    	<ul>
-											<div class='defaultDOImage'>
-												<div class='stockImageContainer bindByAnchor' data-navcat='.beachwear.swimwear-women' href='#!category?navcat=.beachwear.swimwear-women' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent()); return showContent('category',{'navcat':''});">Women&#39s Swimwear</div> 
-												<div class='dropdownBGRight'></div>
-											</div>
-											<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout2($(this), $(this).parent().parent());'>
-												<a data-onclick='#!category?navcat=.beachwear.swimwear-women.bathing-suits' href='#!category?navcat=.beachwear.swimwear-women.bathing-suits' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
-													Monokinis
-												</a>
-												<ul class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout1'>
-													<div class='stockImageContainer bindByAnchor' data-navcat='.bathing-suits' href='#!category?navcat=.beachwear.swimwear-women.bathing-suits' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent()); return showContent('category',{'navcat':''});">Monokinis</div>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beachwear.swimwear-women.bathing-suits'}}]}}});">Best Selling Items</button>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beachwear.swimwear-women.bathing-suits'}}]}}});">Featured Items</button>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beachwear.swimwear-women.bathing-suits'}}]}}});">Clearance Items</button>
-													<button class='catSearchHomeDropdown bindByAnchor' href='#!category?navcat=.beachwear.swimwear-women.bathing-suits' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());">See All Items</button>
-													<div class='dropdownBGRight'></div>
-												</ul>
-											</li>
-											<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout2($(this), $(this).parent().parent());'>
-												<a data-onclick='#!category?navcat=.beachwear.swimwear-women.bikini-two-piece' href='#!category?navcat=.beachwear.swimwear-women.bikini-two-piece' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
-													Two Piece Bikinis
-												</a>
-												<ul class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout2'>
-													<div class='stockImageContainer bindByAnchor' data-navcat='.bikini-two-piece' href='#!category?navcat=.beachwear.swimwear-women.bikini-two-piece' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent()); return showContent('category',{'navcat':''});">Two Piece Bikinis</div>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beachwear.swimwear-women.bikini-two-piece'}}]}}});">Best Selling Items</button>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beachwear.swimwear-women.bikini-two-piece'}}]}}});">Featured Items</button>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beachwear.swimwear-women.bikini-two-piece'}}]}}});">Clearance Items</button>
-													<button class='catSearchHomeDropdown bindByAnchor' href='#!category?navcat=.beachwear.swimwear-women.bikini-two-piece' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());">See All Items</button>
-													<div class='dropdownBGRight'></div>
-												</ul>
-											</li>
-											<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout2($(this), $(this).parent().parent());'>
-												<a data-onclick='#!category?navcat=.beachwear.swimwear-women.cover-ups' href='#!category?navcat=.beachwear.swimwear-women.cover-ups' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
-													Cover Ups
-												</a>
-												<ul class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout3'>
-													<div class='stockImageContainer bindByAnchor' data-navcat='.swimwear-women.cover-ups' href='#!category?navcat=.beachwear.swimwear-women.cover-ups' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent()); return showContent('category',{'navcat':''});">Cover Ups</div>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beachwear.swimwear-women.cover-ups'}}]}}});">Best Selling Items</button>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beachwear.swimwear-women.cover-ups'}}]}}});">Featured Items</button>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beachwear.swimwear-women.cover-ups'}}]}}});">Clearance Items</button>
-													<button class='catSearchHomeDropdown bindByAnchor' href='#!category?navcat=.beachwear.swimwear-women.cover-ups' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());">See All Items</button>
-													<div class='dropdownBGRight'></div>
-												</ul>
-											</li>
-											<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout2($(this), $(this).parent().parent());'>
-												<a data-onclick='#!category?navcat=.beachwear.swimwear-women.monokinis-tankinis' href='#!category?navcat=.beachwear.swimwear-women.monokinis-tankinis' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
-													Tankinis
-												</a>
-												<ul class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout4'>
-													<div class='stockImageContainer bindByAnchor' data-navcat='.monokinis-tankinis' href='#!category?navcat=.beachwear.swimwear-women.monokinis-tankinis' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent()); return showContent('category',{'navcat':''});">Tankinis</div>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beachwear.swimwear-women.monokinis-tankinis'}}]}}});">Best Selling Items</button>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beachwear.swimwear-women.monokinis-tankinis'}}]}}});">Featured Items</button>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beachwear.swimwear-women.monokinis-tankinis'}}]}}});">Clearance Items</button>
-													<button class='catSearchHomeDropdown bindByAnchor' href='#!category?navcat=.beachwear.swimwear-women.monokinis-tankinis' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());">See All Items</button>
-													<div class='dropdownBGRight'></div>
-												</ul>
-											</li>
-											<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout2($(this), $(this).parent().parent());'>
-												<a data-onclick='#!category?navcat=.beachwear.swimwear-women.one-piece-swimsuits' href='#!category?navcat=.beachwear.swimwear-women.one-piece-swimsuits' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
-													One Piece
-												</a>
-												<ul class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout5'>
-													<div class='stockImageContainer bindByAnchor' data-navcat='.one-piece-swimsuits' href='#!category?navcat=.beachwear.swimwear-women.one-piece-swimsuits' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent()); return showContent('category',{'navcat':''});">One Piece</div>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beachwear.swimwear-women.one-piece-swimsuits'}}]}}});">Best Selling Items</button>
-													<button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beachwear.swimwear-women.one-piece-swimsuits'}}]}}});">Featured Items</button>
-													<button class='catSearchHomeDropdown' onClick="_app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beachwear.swimwear-women.one-piece-swimsuits'}}]}}});">Clearance Items</button>
-													<button class='catSearchHomeDropdown bindByAnchor' href='#!category?navcat=.beachwear.swimwear-women.one-piece-swimsuits' onClick="_app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());">See All Items</button>
-													<div class='dropdownBGRight'></div>
-												</ul>
-											</li>
-											<li onMouseOver='_app.ext.beachmart_dropdown.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='_app.ext.beachmart_dropdown.a.hideHoverout2($(this), $(this).parent().parent());'>
-												<a data-onclick='#!category?navcat=.beachwear.swimwear-women.plus-size-swimsuits' href='#!category?navcat=.beachwear.swimwear-women.plus-size-swimsuits' onClick="_app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
-													Plus Size
-												</a>
-												<ul class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout6'>
-													<div class='stockImageContainer bindByAnchor' data-navcat='.plus-size-swimsuits' href='#!category?navcat=.beachwear.swimwear-women.plus-size-swimsuits' onClick="_app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent()); return showContent('category',{'navcat':''});">Plus Size</div>
-													<button class='catSearchHomeDropdown' onClick="_app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':'.beachwear.swimwear-women.plus-size-swimsuits'}}]}}});">Best Selling Items</button>
-													<button class='catSearchHomeDropdown' onClick="_app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}}]},{'term':{'app_category':'.beachwear.swimwear-women.plus-size-swimsuits'}}]}}});">Featured Items</button>
-													<button class='catSearchHomeDropdown' onClick="_app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beachwear.swimwear-women.plus-size-swimsuits'}}]}}});">Clearance Items</button>
-													<button class='catSearchHomeDropdown bindByAnchor' href='#!category?navcat=.beachwear.swimwear-women.plus-size-swimsuits' onClick="_app.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());">See All Items</button>
-													<div class='dropdownBGRight'></div>
-												</ul>
-											</li>
-											<div class='dropdownBGLeft'></div>
-										</ul>
-									</div>
-								</li>
-				-->
 								<li class='dropdownBGLeft'></li>
                             </ul>
                         </div>
@@ -907,51 +728,7 @@ ANIMATION TESTING
             </a>
             <div class='googleTrustedBadge'>
 
-<!-- BEGIN: Google Trusted Store -->
-<!--				<script type="text/javascript">
-					var gts = gts || [];
-					gts.push(["id", "3253696"]);
-					gts.push(["google_base_offer_id", "%PRODUCT%"]);
-					gts.push(["google_base_subaccount_id", "3253696"]);
-					gts.push(["google_base_country", "US"]);
-					gts.push(["google_base_language", "EN"]);
-					(function() {
-						var scheme = (("https:" == document.location.protocol) ? "https://" : "http://");
-						var gts = document.createElement("script");
-						gts.type = "text/javascript";
-						gts.async = true;
-						gts.src = scheme + "www.googlecommerce.com/trustedstores/gtmp_compiled.js";
-						var s = document.getElementsByTagName("script")[0];
-						s.parentNode.insertBefore(gts, s);
-					})();
-                </script>
-                <!-- END: Google Trusted Store -->
-                
-                <!-- JavaScript Checkout Tracking Code (HTML): -->
-                <!-- START Trusted Stores Order -->
-<!--                <div id="gts-order" style="display:none;">
-                <!-- start order and merchant information -->
-<!--                  <span id="gts-o-id">%ORDERID%</span>
-                  <span id="gts-o-domain">%SDOMAIN%</span>
-                  <span id="gts-o-email">%BILLEMAIL%</span>
-                  <span id="gts-o-country">%BILLCOUNTRY%</span>
-                  <span id="gts-o-currency">USD</span>
-                  <span id="gts-o-total">%GRANDTOTAL%</span>
-                  <span id="gts-o-discounts">%TOTAL_DISCOUNTS%</span>
-                  <span id="gts-o-shipping-total">%SHIPPING%</span>
-                  <span id="gts-o-tax-total">%TOTALTAX%</span>
-                  <span id="gts-o-est-ship-date">%EST_SHIP_YYYY_MM_DD%</span>
-                  <span id="gts-o-has-preorder">%HAS_PREBACKDELAY_YN%</span>
-                  <span id="gts-o-has-digital">%HAS_DOWNLOAD_YN%</span>
-                <!-- end order and merchant information -->
-                
-                <!-- start repeated item specific information -->
-                <!-- item example: this area repeated for each item in the order -->
-                <!-- %GOOGLE_TRUSTED_STORES_ITEM_SPANS% -->
-                <!-- end repeated item specific information -->
 
-<!--				</div>
-<!-- END Trusted Stores -->
 
             </div>
             <div class='footerPhoneChat'>
@@ -1112,20 +889,9 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 -->
 				</div>
 			
-<!--		<div class='featuredCarousel floatLeft'>
-				<div class='featuredBannerText'>NEW<BR>ARRIVALS</div>
-				<button class='largeButton featuredBannerButton bindByAnchor' href="#!search?TAG=IS_NEWARRIVAL">SHOP NOW</button>
-				<div>
-					<div id='featuredCarouselPagination' class='featuredCarouselPagination'></div>
-						<!-- a sample of how to format an elastic native search in a data-bind -->
-<!--					<ul id='homeProdSearchNewArrivals' data-bind='var: elastic-native({"size":"20","mode":"elastic-native","filter":{"term":{"tags":"IS_NEWARRIVAL"}}}); format: productSearch; bgcolor: TTTTTT; extension: quickstart; loadsTemplate: productListTemplateResultsCustomTall;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productListTall'></ul>
-				</div>
-			</div>
--->
 			<div class='newArrivalsCarouselRight floatLeft'>
 				<a class="carouselButton new2CarouselPrev carouselButtonPrev" href="#">prev</a>
 				<a class="carouselButton new2CarouselNext carouselButtonNext" href="#">next</a>
-				<!--w/elastic search ul data-tlc="beachmall_search#searchbytag --filter='{&quot;size&quot;:&quot;25&quot;,&quot;mode&quot;:&quot;elastic-native&quot;,&quot;filter&quot;:{&quot;and&quot;:{&quot;filters&quot;:[{&quot;term&quot;:{&quot;tags&quot;:&quot;IS_NEWARRIVAL&quot;}},{&quot;not&quot;:{&quot;term&quot;:{&quot;tags&quot;:&quot;IS_DISCONTINUED&quot;}}}]}}}' --size='8'  --templateid='productListTemplateResultsCustom';" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchNewArrivals2"></ul> -->
 				<ul data-tlc="bind $var '.$app-site_home-page-new-item.@products'; store_prodlist#productlist  --hideSummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplateCustom'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchNewArrivals2"></ul>
 			</div>
 		</div>
@@ -1178,8 +944,7 @@ the homepageTemplate template is loaded into mainContentArea by default when the
         <div class='Carousel'>
         	<a class="carouselButtonDkBlue featCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
 			<a class="carouselButtonDkBlue featCarouselNext carouselButtonDkBlueNext" href="#">next</a>
-        	<!--non filtered search: <ul id='homeProdSearchFeatured' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"or":{"filters":[{"term":{"tags":"IS_USER4"}},{"term":{"tags":"IS_COLORFUL"}},{"term":{"tags":"IS_USER5"}},{"term":{"user:prod_promo":"IS_USER4"}}]}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul> 
-        	with filtered search: <ul data-tlc="beachmall_search#searchbytag --filter='{&quot;size&quot;:&quot;28&quot;,&quot;mode&quot;:&quot;elastic-native&quot;,&quot;filter&quot;:{&quot;and&quot;:{&quot;filters&quot;:[{&quot;or&quot;:{&quot;filters&quot;:[{&quot;term&quot;:{&quot;tags&quot;:&quot;IS_USER4&quot;}},{&quot;term&quot;:{&quot;tags&quot;:&quot;IS_COLORFUL&quot;}},{&quot;term&quot;:{&quot;tags&quot;:&quot;IS_USER5&quot;}},{&quot;term&quot;:{&quot;user:prod_promo&quot;:&quot;IS_USER4&quot;}}]}},{&quot;not&quot;:{&quot;term&quot;:{&quot;tags&quot;:&quot;IS_DISCONTINUED&quot;}}}]}}}' --size='8'  --templateid='productListTemplateResultsCustomSmaller';" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall homeProdSearchFeatured"></ul> -->
+        	<!--non filtered search: <ul id='homeProdSearchFeatured' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"or":{"filters":[{"term":{"tags":"IS_USER4"}},{"term":{"tags":"IS_COLORFUL"}},{"term":{"tags":"IS_USER5"}},{"term":{"user:prod_promo":"IS_USER4"}}]}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul> -->
 			<ul data-tlc="bind $var '.$app-site_home-page-featured.@products'; store_prodlist#productlist  --hideSummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchFeatured"></ul>
 		</div>
         <div class='standardCarouselPagenation featCarPagenation'></div>
@@ -1189,14 +954,13 @@ the homepageTemplate template is loaded into mainContentArea by default when the
     	<div class='carouselTitles'>
 			<div class='carouselTitleTextContainer floatLeft'>BEST SELLERS</div>
 			<a href="#!viewallbestseller" class='carouselLinkContainer floatRight featWidth pointer'>View Best Sellers</a>
-			<!-- <a onclick="return showContent('category',{'navcat':'.beach-umbrellas-shelter.beach-umbrella', 'templateID':'categoryTemplateHomepageBestSeller'});" class="bindByAnchor"></a> <!-- href="#!homepagebestseller" -->
+			<!-- <a onclick="return showContent('category',{'navcat':'.beach-umbrellas-shelter.beach-umbrella', 'templateID':'categoryTemplateHomepageBestSeller'});" class="bindByAnchor"></a>  href="#!homepagebestseller" -->
 			<div class='carouselArrowContainer floatRight sprite'></div>
         </div>
         <div class='Carousel'>
         	<a class="carouselButtonDkBlue bestCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
 			<a class="carouselButtonDkBlue bestCarouselNext carouselButtonDkBlueNext" href="#">next</a>
-        <!--non filtered search: <ul id='homeProdSearchBestSellers' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"term":{"tags":"IS_BESTSELLER"}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul>
-			<ul data-tlc="beachmall_search#searchbytag --filter='{&quot;size&quot;:&quot;28&quot;,&quot;mode&quot;:&quot;elastic-native&quot;,&quot;filter&quot;:{&quot;and&quot;:{&quot;filters&quot;:[{&quot;term&quot;:{&quot;tags&quot;:&quot;IS_BESTSELLER&quot;}},{&quot;not&quot;:{&quot;term&quot;:{&quot;tags&quot;:&quot;IS_DISCONTINUED&quot;}}}]}}}' --size='8'  --templateid='productListTemplateResultsCustomSmaller';" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall homeProdSearchBestSellers"></ul> -->
+        <!--non filtered search: <ul id='homeProdSearchBestSellers' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"term":{"tags":"IS_BESTSELLER"}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul> -->
 			<ul data-tlc="bind $var '.$app-site_home-page-best-sellers.@products'; store_prodlist#productlist  --hideSummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchBestSellers"></ul>
 		</div>																																																	
         <div class='standardCarouselPagenation bestCarPagenation'></div>
@@ -1265,15 +1029,6 @@ the homepageTemplate template is loaded into mainContentArea by default when the
         </div>        
     </div>
 
-<!-- ORIG HOMEPAGE TLC'S
-	<ul data-tlc="bind $var '.@subcategoryDetail'; store_navcats#categorylist  --detail='max' --templateid='categoryListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin categoryList"></ul>
-	<ul data-tlc="bind $var '.@products'; store_prodlist#productlist  --hideSummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin productList"></ul>
-	<p data-tlc="bind $var '.%page.description'; if (is $var --notblank;) {{ render --wiki='quickstart'; apply --append;}};"></p>
-	<ul data-tlc="quickstart#searchbytag --tag='IS_BESTSELLER' --title='Best Sellers' --size='8' --templateid='productListTemplateResultsNoPreview';" class='listStyleNone fluidList clearfix noPadOrMargin productList'></ul>
-	<!--
-	<ul data-tlc="bind $var '.$listName.@products'; store_prodlist#productlist  --hideSummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin productList"></ul>
-	-->
-
 </div> <!-- END HOMEPAGE TEMPLATE -->
 
 
@@ -1286,14 +1041,11 @@ each of the 'sections' are used to load another template. don't change the id.
 don't modify the 'data-templateid' unless you are changing template names and updating everywhere appropriate.
 -->
 <div id="categoryTemplate" class="categoryTemplate">
-	<!-- <span class="displayNone" data-tlc="bind $navcat '.navcat'; bind $seo '.pretty'; bind $hash ''; store_routing#categorylink --navcat=$navcat --seo=$seo; apply --attrib='data-routing-hash';"></span> -->
 	<span class="displayNone" data-tlc="store_routing#seoanchor --seo='1' apply --attrib='data-routing-hash';"></span>
 	<span class="displayNone" data-tlc="bind $var '.%page.page_title'; if(is $var --null;){{bind $var '.pretty';}}; if(is $var --blank;){{bind $var '.pretty';}}; apply --attrib='data-seo-title';"></span>
 	<span class="displayNone" data-tlc="bind $var '.%page.description'; if(is $var --null;){{bind $var '.%page.description2';}}; if(is $var --null;){{set $var '';}}; apply --attrib='data-seo-desc';"></span>
 
 	<ul data-tlc="bind $var '.path'; store_navcats#breadcrumb  --templateid='breadcrumbTemplate'  --legacy;" class="breadcrumb clearfix noPadOrMargin fluidList"></ul>
-
-	<!-- <img data-tlc="bind $var '.%page.banner1'; quickstart#banner  --height='250' --width='750' --legacy;" src="images/blank.gif" alt=""> -->
 	
 	<h2 data-tlc="bind $var '.%page.header'; if (is $var --notblank;) {{apply --append;}};" class="blah5"></h2>
 	
@@ -1353,7 +1105,6 @@ don't modify the 'data-templateid' unless you are changing template names and up
 			
 			<ul>
 				<li class="brandsHeader listStyleNone">
-					<!-- <img data-tlc="bind $var '.%page.banner1'; quickstart#banner  --height='250' --width='750' --legacy;"> -->
 					<img data-tlc="bind $var '.%page.banner1'; if(is $var --notblank;) {{apply --img --media=$var --height='250' --width='500' --bgcolor=#ffffff --replace;}};" src="images/blank.gif" alt="" height='250' width='500' data-apptimize="embed">
 					<ul>
 				   <!-- <p data-bind="var: category(%page.description2); format:wiki; wikiFormats:myRIA; editor: textarea;"></p> -->
@@ -1393,7 +1144,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 					
 				</div>
 			
-				<div data-anytab-content='featuredProdsTab'> <!-- THIS IN PROGRESS: data-tlc="beachmall_store#brandstabhider --legacy;" -->
+				<div data-anytab-content='featuredProdsTab'>
 					<div class='CarouselContainer featuredProductsCarouselContainer'>
 						<div class='carouselTitles yellowBkgrd'>
 							<div class='pointer' onClick="showContent('category',{'navcat':$(this).closest('[data-catsafeid]').data('catsafeid'),'templateID':'categoryTemplateBrandsFeatured'});">
@@ -1402,13 +1153,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 							</div>
 						</div>
 						<div class='Carousel'>
-							<!-- <a class="carouselButtonDkBlue featCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
-							<a class="carouselButtonDkBlue featCarouselNext carouselButtonDkBlueNext" href="#">next</a> -->
-<!-- MARK					<ul data-tlc="bind $var '.%page.mfg'; if(is $var --blank;) {{bind var 'ujena';}}; beachmart#prodsearchfeaturedbybrand  --defaultvalue='ujena' --size='24' --templateid='productListTemplateResults'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall"></ul> 
-							<ul data-tlc="beachmall_search#searchbytag --filter='{&quot;size&quot;:&quot;8&quot;,&quot;mode&quot;:&quot;elastic-native&quot;,&quot;filter&quot;:{&quot;and&quot;:{&quot;filters&quot;:[{&quot;term&quot;:{&quot;tags&quot;:&quot;IS_NEWARRIVAL&quot;}},{&quot;not&quot;:{&quot;term&quot;:{&quot;tags&quot;:&quot;IS_DISCONTINUED&quot;}}}]}}}' --size='8'  --templateid='productListTemplateResults';" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchNewArrivals2"></ul>
-<!-- MARK 				<ul data-tlc="bind $var '.%page.mfg'; beachmall_search#searchbytag  --replacify='true' --templateid='productListTemplateResults' --filter='{&quot;size&quot;:&quot;25&quot;,&quot;mode&quot;:&quot;elastic-native&quot;,&quot;filter&quot;:{&quot;and&quot;:{&quot;filters&quot;:[{&quot;term&quot;:{&quot;prod_mfg&quot;:&quot;replacify&quot;}},{&quot;term&quot;:{&quot;tags&quot;:&quot;IS_BESTSELLER&quot;}}]}}}';" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall"></ul> 
-<!-- MARK					<ul data-tlc="bind $var '.%meta.CAT_THUMB'; if(is $var --blank;) {{bind var 'ujena';}}; beachmall_search#searchbytag  --replacify='true' --templateid='productListTemplateResults' --filter='{&quot;size&quot;:&quot;25&quot;,&quot;mode&quot;:&quot;elastic-native&quot;,&quot;filter&quot;:{&quot;and&quot;:{&quot;filters&quot;:[{&quot;term&quot;:{&quot;prod_mfg&quot;:&quot;replacify&quot;}},{&quot;term&quot;:{&quot;tags&quot;:&quot;IS_BESTSELLER&quot;}}]}}}';" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall"></ul> -->
-<!-- MARK 	-->				<ul data-tlc="bind $var '.@products'; prodlist_infinite#infiniteproductlist  --withreviews='1' --withInventory='1' --withVariations='1' --itemsPerPage='4' --templateid='productListTemplate'  --legacy;" data-app-role="productList" data-brand-filter="featured" class="listStyleNone fluidList clearfix noPadOrMargin prodMargin productList"></ul>
+							<ul data-tlc="bind $var '.@products'; prodlist_infinite#infiniteproductlist  --withreviews='1' --withInventory='1' --withVariations='1' --itemsPerPage='4' --templateid='productListTemplate'  --legacy;" data-app-role="productList" data-brand-filter="featured" class="listStyleNone fluidList clearfix noPadOrMargin prodMargin productList"></ul>
 							<div style='padding:20px;text-align:center;'>Sorry, there are no Featured Items to show at this time. Check back later!</div>
 						</div>
 						<!-- <div class='standardCarouselPagenation'></div> -->
@@ -1426,10 +1171,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 						<div class='Carousel'>
 							<!-- <a class="carouselButtonDkBlue bestCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
 							<a class="carouselButtonDkBlue bestCarouselNext carouselButtonDkBlueNext" href="#">next</a> -->
-							
-<!-- MARK					<ul data-tlc="bind $var '.%page.mfg'; beachmart#prodsearchbestsellersbybrand  --size='24' --templateid='productListTemplateResultsCustomSmaller'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall"></ul> <!-- defaultValue:ujena; --> 
-<!-- MARK this will need correct filter object added if used					<ul data-tlc="bind $var '.%meta.CAT_THUMB'; if(is $var --blank;) {{bind var 'ujena';}}; beachmall_search#searchbytag  --replacify='true' --templateid='productListTemplateResults' --filter='{&quot;size&quot;:&quot;25&quot;,&quot;mode&quot;:&quot;elastic-native&quot;,&quot;filter&quot;:{&quot;and&quot;:{&quot;filters&quot;:[{&quot;term&quot;:{&quot;prod_mfg&quot;:&quot;replacify&quot;}},{&quot;term&quot;:{&quot;tags&quot;:&quot;IS_BESTSELLER&quot;}}]}}}';" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall"></ul> -->
-<!-- MARK -->				<ul data-tlc="bind $var '.@products'; prodlist_infinite#infiniteproductlist  --withreviews='1' --withInventory='1' --withVariations='1' --itemsperpage='4' --templateid='productListTemplate'  --legacy;" data-app-role="productList" data-brand-filter="bestseller" class="listStyleNone fluidList clearfix noPadOrMargin prodMargin productList"></ul>
+							<ul data-tlc="bind $var '.@products'; prodlist_infinite#infiniteproductlist  --withreviews='1' --withInventory='1' --withVariations='1' --itemsperpage='4' --templateid='productListTemplate'  --legacy;" data-app-role="productList" data-brand-filter="bestseller" class="listStyleNone fluidList clearfix noPadOrMargin prodMargin productList"></ul>
 							<div style='padding:20px;text-align:center;'>Sorry, there are no Best Selling Items to show at this time. Check back later!</div>
 						</div>
 						<!-- <div class='standardCarouselPagenation'></div> -->
@@ -1446,7 +1188,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 
 	<div class='brandsTopCatContainer'>
 		<ul data-tlc="bind $var '.@subcategoryDetail'; store_navcats#categorylist  --detail='max' --templateid='brandsCategoryListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin categoryList"></ul><!-- outputs a list of subcategories -->
-		<!-- <ul data-bind="var: category(@subcategoryDetail); format: categoryList; extension: store_navcats; loadsTemplate: categoryListTemplate; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin categoryList'></ul><!-- outputs a list of subcategories -->
+		<!-- <ul data-bind="var: category(@subcategoryDetail); format: categoryList; extension: store_navcats; loadsTemplate: categoryListTemplate; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin categoryList'></ul> outputs a list of subcategories -->
 	</div>
 
 </div> <!-- //categoryTemplateBrands -->
@@ -1931,13 +1673,6 @@ don't modify the 'data-templateid' unless you are changing template names and up
 			<a href="#">New <span data-tlc="bind $var '.pretty'; if (is $var --notblank;) {{apply --append;}};"></span></a>
 		</div>
 	</div>
-
-<!-- ORIG ROOT CAT TEMPLATE:
-	<a data-tlc="bind $var '.'; store_routing#seoanchor --type='category' --seo; apply --attrib='href';">
-		<div class="thumbContainer"><img data-tlc="bind $var '.%meta.CAT_THUMB'; if (is $var --notblank){{apply --img --media=$var --width=35 --height=35 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class="catThumb" alt="" height="35" width="35"></div>
-		<div class="catName"><span data-tlc="bind $var '.pretty'; quickstart#cattext  --legacy; apply --append;"></span></div>
-	</a>
--->
 </li>
 
 
@@ -2035,11 +1770,8 @@ remember to NOT put the button inside the 'onclick' container or two events will
 				<div data-tlc="bind $var '.%attribs.user:grp_siblings'; if(is $var --notblank;) {{ apply --show; }}; " class="displayNone">
 					<div data-tlc="bind $var '.pid'; apply --attrib='data-pid'; " class="clearfix prodListSibs">
 						<ul data-tlc="bind $var '.%attribs.user:grp_siblings'; beachmall_store#siblingproductlist --hideSummary='true' --before='<b>Available Colors:</b> <span class=&quot;zhint&quot;>(click image to select)</span>' --withInventory='1' --withVariations='1' --templateid='productListTemplateToolTipThumb'  --legacy;" class="listStyleNone noPadOrMargin fluidList"></ul>
-	<!-- MARK wasn't this replaced?? 					<div data-tlc="bind $var '.'; beachmall_store#siblingcount  --legacy;" data-legacy-useparentdata="true" class="prodListSibsText displayNone">More Colors Available!</div> -->
 					</div>
 				</div>
-				
-<!--				<div data-tlc="bind $var '.pid'; powerreviews_reviews#reviewsnippet  --minreview='1' --legacy;" class="reviewsStarsCount"></div><!-- BCERO271 MARK-->
 
 				<div data-tlc="bind $var '.pid'; if (is $var --notblank;) {{format --prepend='ITEM#:<br> '; apply --append;}};" class="prodNum stid floatLeft clearfix"></div>
 			
@@ -2060,7 +1792,6 @@ remember to NOT put the button inside the 'onclick' container or two events will
 
 <!-- used on homepage for small carousel to the right of the main banner (there is also a productListTemplateResultsCustom for user w/ elastic results in this location) -->
 <li id='productListTemplateCustom' class='loadingBG searchResultsProduct ' >
-	<!-- <a data-tlc="bind $seoname '.prod_name'; bind $var '.'; store_routing#seoanchor --type='product' --seo --seoname=$seoname; apply --attrib='href';"> -->
 	<a data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';">
 		<div class='prodThumbContainer myProdThumb'>
 			<img data-tlc="bind $var '.%attribs.zoovy:prod_image1'; if (is $var --notblank;) {{ apply --img --media=$var --width=210 --height=210 --bgcolor='#ffffff' --replace;}};" src="blank.gif"  class="prodThumb push" alt="" width="210" height="210" data-apptimize="embed">            
@@ -2196,11 +1927,6 @@ container ul should have lineItemProdlist class on it instead of productList
 
 <table>
 	<tbody><tr id="shipGridTemplate">
-<!--
-		<td><span data-tlc="bind $var '.carrier'; if(is $var --notblank;) {{ apply --class='carrier_'; }}; if (is $var --notblank;) {{apply --add --class='carrier_'; apply --append;}};"></span></td>
-		<td><span data-tlc="bind $var '.method'; if (is $var --notblank;) {{apply --append;}};"></span></td>
-		<td><span data-tlc="bind $var '.arrival_yyyymmdd'; beachmart#ymdpretty  --legacy;"></span></td>
- MARK : why are the data binds below still working? -->	
 		<td><span data-bind="var: services(carrier); format:addClass; className:carrier_;"></span></td>
 		<td><span data-bind="var: services(method); format:text;"></span></td>
 		<td><span data-bind="var: services(arrival_yyyymmdd); format:ymd2Pretty; extension:beachmart;"></span></td>
@@ -2262,7 +1988,6 @@ SANITY -> if you change the height and width of this image, change the .minimalM
 END BUG6-->			
 <!--!!--></div>
 		<div class="searchReviewSiblingsCont">
-<!--			<div data-tlc="bind $var '.pid'; powerreviews_reviews#reviewsnippet  --minreview='1' --legacy;" class="reviewsStarsCount"></div><!-- BCERO271 MARK-->
 		
 			<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy; apply --append;" class="prodViewerAddToCartForm clearfix" action="#" onsubmit="return false" data-app-submit="quickstart|productAdd2Cart" data-show="modal">
 				<input name="qty" value="1" type="hidden">
@@ -2291,7 +2016,6 @@ END BUG6-->
                 	<div data-tlc="bind $var '.%attribs.user:prod_promo'; if (is $var --notblank;) {{apply --append;}};" class="starBurstTextInner"></div>
                 </div>
             </div>
-			<!-- <a class="hideInMinimalMode pointer moreDetailsSmall floatRight" data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';">VIEW DETAILS</a> -->
 			<div class="hideInMinimalMode pointer moreDetailsSmall floatRight" data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';">VIEW DETAILS</div>
 		</div>
 	</a>
@@ -2312,7 +2036,6 @@ END BUG6-->
 END BUG6-->			
 <!--!!--></div>
 		<div class="searchReviewSiblingsCont">
-<!--			<div data-tlc="bind $var '.pid'; powerreviews_reviews#reviewsnippet  --minreview='1' --legacy;" class="reviewsStarsCount"></div><!-- BCERO271 MARK-->
 			
 			<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy; apply --append;" class="prodViewerAddToCartForm clearfix" action="#" onsubmit="return false" data-app-submit="quickstart|productAdd2Cart" data-show="modal">
 				<input name="qty" value="1" type="hidden">
@@ -2365,7 +2088,7 @@ END BUG6-->
 		</div>
 	</a>
 <!--for sibling color images (future)	<div class='clearfix prodSiblings'>
-		<ul class='listStyleNone noPadOrMargin fluidList clearfix' data-bind="var: product(user:grp_siblings); format:productList; extension:store_prodlist;loadsTemplate:productListTemplateThumb;hide_multipage:true;before:<b>Available Colors:</b> <span class='zhint'>(click image to select)</span> ; withInventory:1; withVariations:1;"></ul> <!-- id='prodlistSiblings' -->
+		<ul class='listStyleNone noPadOrMargin fluidList clearfix' data-bind="var: product(user:grp_siblings); format:productList; extension:store_prodlist;loadsTemplate:productListTemplateThumb;hide_multipage:true;before:<b>Available Colors:</b> <span class='zhint'>(click image to select)</span> ; withInventory:1; withVariations:1;"></ul> id='prodlistSiblings' -->
 <!--	</div>-->
 <!-- THIS HAS BEEN REPLACED AND SHOULD BE REMOVED ONCE IT HAS HAD MORE TESTING	
 	<div class='clearfix prodSiblings pointer displayNone' data-bind='var:product(options); format:optionsCount; extension:store_filter;' onClick="quickView('product',{'templateID':'productTemplateQuickView','pid':$(this).closest('[data-pid]').attr('data-pid')});"></div>
@@ -2373,11 +2096,10 @@ END BUG6-->
 		<div class='showColors pointer' onClick="quickView('product',{'templateID':'productTemplateQuickView','pid':$(this).closest('[data-pid]').attr('data-pid')});">MORE COLORS</div>
 	</div>
 	<div data-bind='useParentData: true; format:noReviews; extension: store_filter;'>
-		<div class='reviewsStarsCount homeCars' data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews_reviews;'></div><!-- BCERO271 MARK--> 
+		<div class='reviewsStarsCount homeCars' data-bind='var: product(pid); format:reviewSnippet; extension:powerReviews_reviews;'></div> BCERO271 MARK--> 
 <!--    </div>
 MARK --> 	
 	<div class='searchReviewSiblingsCont'>
-<!--		<div data-tlc="bind $var '.pid'; powerreviews_reviews#reviewsnippet --minreview='1' --legacy; apply --append;" class="reviewsStarsCount"></div><!-- BCERO271 MARK-->
 		<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy; apply --append;" class="prodViewerAddToCartForm clearfix" action="#" onsubmit="return false" data-app-submit="quickstart|productAdd2Cart" data-show="modal">
 			<input name="qty" value="1" type="hidden">
 			<button data-tlc="quickstart#addtocartbutton  --iselastic='1' --legacy; apply --append;" class="prodViewerAddToCartButton applyButton" role="button" aria-disabled="false">VIEW DETAILS</button>
@@ -2391,7 +2113,6 @@ MARK -->
 		
 <div class="prodThumbAndMT pointer" onmouseover="myControl.ext.myRIA.util.handleProdlistMagicThumb($(this));">
 	<div class="mtClickToZoom"><a data-tlc="bind $var '.%attribs.zoovy:prod_image1'; beachmart#sethreftoimageurl  --legacy;" href="#" class="MagicThumb"><img src="blank.gif" class="prodThumb" alt="" height="28" width="95" data-apptimize="embed"></a></div>
-	<!-- <div data-tlc="bind $var '.pid'; apply --attrib='data-pid'; " class="prodThumbContainer" onclick="showContent('product',{'pid':$(this).attr('data-pid')});"><img data-tlc="bind $var '.%attribs.zoovy:prod_image1'; if (is $var --notblank;) {{ apply --img --media=$var --width=120 --height=100 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class="prodThumb" height="100" width="120"></div> -->
 	<a data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';" class="prodThumbContainer"><img data-tlc="bind $var '.%attribs.zoovy:prod_image1'; if (is $var --notblank;) {{ apply --img --media=$var --width=120 --height=100 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class="prodThumb" alt="" height="100" width="120" data-apptimize="embed"></a>
 </div>
 
@@ -2399,7 +2120,7 @@ MARK -->
 	<h5 data-tlc="bind $var '.%attribs.zoovy:prod_name'; if (is $var --notblank;) {{apply --append;}};"></h5>
 
 	<div class="pr_snippet_category">
-<!--		<div data-tlc="bind $var '.pid'; powerReviews_reviews#reviewsnippet  --minreview='1' --legacy;"></div> -->
+
 	</div>
 
 	<div data-tlc="bind $var '.%attribs.sku'; if (is $var --notblank;) {{format --prepend='Sku: '; apply --append;}};" class="ztable_row_small stid"></div>
@@ -2447,7 +2168,6 @@ this will likely become more flexible in the future. ###
 <div data-tlc="bind $var '.pid'; apply --attrib='data-pid';" id="productTemplate" class="productTemplate productPage">
 
 	<ul data-tlc="bind $var '.recentCategories.0'; store_navcats#breadcrumb  --templateid='breadcrumbTemplate'  --legacy; apply --append;" class="clearfix noPadOrMargin fluidList breadcrumb"></ul>
-	<!-- <span class="displayNone" data-tlc="bind $pid '.pid'; bind $seo '.%attribs.zoovy:prod_name'; bind $href ''; store_routing#productlink --pid=$pid --seo=$seo; apply --attrib='data-routing-hash';"></span> -->
 	<span class="displayNone" data-tlc="store_routing#seoanchor --seo='1' apply --attrib='data-routing-hash';"></span>
 	<span class="displayNone" data-tlc="bind $var '.%attribs.zoovy:prod_seo_title'; if(is $var --blank;){{bind $var '.%attribs.zoovy:prod_name';}}; apply --attrib='data-seo-title';"></span>
 	<span class="displayNone" data-tlc="bind $var '.%attribs.zoovy:prod_desc'; apply --attrib='data-seo-desc';"></span>
@@ -2523,24 +2243,6 @@ this will likely become more flexible in the future. ###
 	<div id="prodSiblings" class="clearfix">
 		<ul data-tlc="bind $var '.%attribs.user:grp_siblings'; store_prodlist#productlist  --hidemultipage='true' --before='<b>Available Colors:</b> <span class=&quot;zhint&quot;>(click image to select)</span>' --withInventory='1' --withVariations='1' --templateid='productListTemplateToolTipThumb'  --legacy;" class="listStyleNone noPadOrMargin fluidList clearfix"></ul> <!-- id='prodlistSiblings' -->
 	</div>
-
-<!--<form data-bind='var: product(pid); format:atcForm; extension:store_product;' class='prodViewerAddToCartForm clearfix' action='#' onSubmit="app.ext.myRIA.u.addItemToCart($(this)); return false;">
-		<fieldset data-bind='var: product(pid); format:atcVariations; extension:store_product;' class='borderNone'></fieldset>
-		<div class='clearfix marginBottom'>
-			<div class='floatLeft'><!-- BUYSAFE KICKER --><!--</div>
-<!--			<div class='floatRight alignRight'>
-				<!-- orig actQuantityInput <fieldset data-bind='var: product(pid); format:atcQuantityInput; defaultValue:1; extension:store_product; pretext:Quantity: ;' class='borderNone'></fieldset>-->
-<!--				<fieldset data-bind='useParentData:true; format:atcQuantityInput; extension:store_product; pretext:Quantity: ; defaultValue:1;' class='borderNone'></fieldset>
-			</div>
-		</div>
-			<div class='alignRight'>
-			<input type='submit' value='Add to Cart' class='floatRight ui-button ui-button-text ui-corner-all ui-state-default addToCartButton displayNone' data-bind='var: product(pid); format:addToCartButton; extension:store_product;' id='addToCartBtn' />
-			<!-- anchor is for tab container so tabs are still visible when page jumps down -->
-	<!--		<span class='floatRight sizingChartLink displayNone' data-bind='var:product(user:prod_sizing_txt); format:showIfSet;'><a href='#tabbedProductContentTD'>Sizing Chart</a></span>   
-			<div class='displayNone zsmall alignRight' data-bind='var: product(user:prod_shipping); format:showIfSet;'><a href='#' onClick="app.ext.beachmart.a.showProdAttInDialog($(this).attr('data-pid'),'user:prod_shipping'); return false;" data-bind='var:product(pid);format:assignAttribute; attribute:data-pid;'>Shipping Surcharge May Apply</a></div>
-		</div>
-	</form>
--->
 
 	<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy; apply --append;" class="prodViewerAddToCartForm clearfix" action="#" data-app-submit="quickstart|productAdd2Cart" data-show="modal">
 		<div data-tlc="bind $var '.pid'; apply --attrib='data-pid'; ">
@@ -2626,9 +2328,7 @@ this will likely become more flexible in the future. ###
 				<ul data-tlc="bind $var '.%attribs.user:prod_colors'; store_prodlist#productlist  --hideSummary='true' --templateid='productListTemplateBundle'  --legacy;" class="productList listStyleNone noPadOrMargin fluidList clearfix bundleProdlist"></ul>
 			</div>
 			
-			<div data-anytab-content="prodReviews" class="tabbedProductList tabbedPowerReview tabBody">
-<!--				<div data-tlc="bind $var '.pid'; powerreviews_reviews#reviewengine  --legacy;" class="productList listStyleNone noPadOrMargin fluidList clearfix bundleProdlist"></div> -->
-			</div>
+			<div data-anytab-content="prodReviews" class="tabbedProductList tabbedPowerReview tabBody"></div>
 			
 		</div><!-- /tabbedProductContent -->
 
@@ -2659,7 +2359,6 @@ this will likely become more flexible in the future. ###
 		</div>
 	
 		<div class="rightColumn floatRight clearfix">
-<!--			<div data-tlc="bind $var '.pid'; powerreviews_reviews#reviewsnippet  --legacy;" class=""></div> -->
 			<div data-tlc="bind $var'.%attribs.zoovy:prod_mfg'; if (is $var --notblank;) {{apply --show}};" class="prodPageMfgForward">
 				&#187; View All 
 				<span data-tlc="bind $var '.%attribs.zoovy:prod_mfg'; if (is $var --notblank;) {{apply --show;}}; beachmall_store#searchlink  --legacy;"></span>
@@ -2750,7 +2449,6 @@ this will likely become more flexible in the future. ###
 	</td>
 
 	<td class="prodSummaryContainer marginBottom no_underline">
-		<!-- <h1 data-tlc="bind $var '.%attribs.zoovy:prod_name'; if (is $var --notblank;) {{apply --append;}};"></h1> no description, is already in title bar -->
 		<h6 data-tlc="bind $var '.pid'; if (is $var --notblank;) {{ format --prepend='Sku#: ';apply --append;}};" class="ztable_row_small stid"></h6>
 
 		<div class="priceContainer  clearfix floatLeft">
@@ -2873,7 +2571,6 @@ if you change these, you should move them above this comment so that when you (o
 				<br>Low Prices &#45; We comb the web to make sure our prices are the lowest anywhere. If you see an item 
 					for less, email us. We can get you a better deal almost every time and are proud to help you save 
 					money on the products you want.</p>
-			<!-- <div data-tlc="bind $var '.zoovy:about'; render --wiki='quickstart'; if (is $var --notblank;) {{apply --append;}};" id="aboutUsContent"></div> orig dynamic call-->
 		</div>
 
 
@@ -2944,7 +2641,6 @@ if you change these, you should move them above this comment so that when you (o
 				<li>This coupon may only be redeemed once during the promotion period.</li>
 				<li>Offer applies to merchandise purchases only.</li>
 			</ul>
-			<!-- <div data-tlc="bind $var '.zoovy:payment_policy'; render --wiki='quickstart'; if (is $var --notblank;) {{apply --append;}};" id="paymentContent"></div> orig dynamic call-->
 		</div>
 
 
@@ -3202,7 +2898,6 @@ if you change these, you should move them above this comment so that when you (o
 				event the manufacturer fails to do so. Consequently, BeachMall.com is not responsible for misleading 
 				information displayed on our site. If you discovered an error; please contact us and we will correct on 
 				the website
-			<!-- <div data-tlc="bind $var '.zoovy:return_policy'; render --wiki='quickstart'; if (is $var --notblank;) {{apply --append;}};" id="returnContent"></div> orig dynamic call-->
 		</div>
 
 
@@ -3239,8 +2934,7 @@ if you change these, you should move them above this comment so that when you (o
 			<h2>International Shipping:</h2>
 				We can only ship orders to destinations in the 48 contiguous US States by UPS or FedEx only. We don't ship 
 				any orders to APOs and FPOs, Hawaii, Alaska, Puerto Rico, Canada or other International Destinations.
-			<br><br>
-			<!-- <div data-tlc="bind $var '.zoovy:shipping_policy'; render --wiki='quickstart'; if (is $var --notblank;) {{apply --append;}};" id="shippingContent"></div> orig dynamic call-->
+			<br><br>2954
 		</div>
 		
 		
@@ -3647,8 +3341,6 @@ This is the template used both within a dialog and inline, unless implicitly ove
 						<h3 data-tlc="beachmall_cart#displayorshippingtext --legacy;"></h3>
 						<div class='cartShipOptions'>
 							<label for="ship/postal">Zip/Postal Code:</label>
-<!-- MARK cartShippingMethodsWithUpdate REMOVED, determine new function for this <input data-tlc="bind $var '.ship.postal'; if(is $var --blank) {{bind $var '.bill.postal'; }}; apply --select=$var; " size="6" name="ship/postal" value="" maxlength="10" data-app-blur="cco|cartZipUpdateExec" type="text" onchange="myApp.ext.store_cart.calls.cartShippingMethodsWithUpdate.init();
-									myApp.model.dispatchThis('immutable');"> -->
 							<input data-tlc="bind $var '.ship.postal'; if(is $var --blank) {{bind $var '.bill.postal'; }}; apply --select=$var; " size="6" name="ship/postal" id="ship/postal" value="" maxlength="10" onchange="myApp.ext.beachmart.a.updateShipPostal($(this).parent()); " data-app-blur="cco|cartZipUpdateExec" type="text">
 							<div><span class='shipCity'></span><span class='shipRegion'></span></div>
 							<input class='cartLineButton ui-state-default updateButton zipButton pointer' type='button' value='Update Location'>
