@@ -241,7 +241,7 @@ _app.ext.order_create.u.handlePanel($context,'chkoutMethodsPay',['empty','transl
 					$("#globalMessaging").anymessage({"message":rd,"gMessage":true,"persistent":true}); //error messaging is persistent so that buyer has adequate time to read/copy it.
 					}
 				
-				if(rd._rtag && rd._rtag.datapointer)	{
+				if(rd._rtag)	{
 					if(_app.data[rd._rtag.datapointer] && _app.data[rd._rtag.datapointer].finished)	{
 						_app.ext.order_create.a.checkoutComplete(_rtag);
 						}
@@ -689,6 +689,9 @@ an existing user gets a list of previous addresses they've used and an option to
 					if(_app.data['appCheckoutDestinations|'+cartID] && _app.data['appCheckoutDestinations|'+cartID]['@destinations'] && _app.data['appCheckoutDestinations|'+cartID]['@destinations'].length < 2)	{
 						$("[data-app-role='billCountry']",$fieldset).hide();
 						}
+//The template used for address input is shared w/ address edit for authenticated users. In edit, certain events are not desired. So the events are added here.
+					$("input[name='bill/address1'], input[name='bill/address2'], input[name='bill/city'], input[name='bill/region'], input[name='bill/postal']",$fieldset).attr('data-app-blur','order_create|execAddressUpdate');
+					$("select[name='bill/countrycode']",$fieldset).attr('data-app-change','order_create|execCountryUpdate');
 					}
 				_app.ext.order_create.u.handlePlaceholder($fieldset);
 				}, //chkoutAddressBill
@@ -732,6 +735,9 @@ an existing user gets a list of previous addresses they've used and an option to
 					if(_app.data['appCheckoutDestinations|'+cartID] && _app.data['appCheckoutDestinations|'+cartID]['@destinations'] && _app.data['appCheckoutDestinations|'+cartID]['@destinations'].length < 2)	{
 						$("[data-app-role='shipCountry']",$fieldset).hide();
 						}
+//The template used for address input is shared w/ address edit for authenticated users. In edit, certain events are not desired. So the events are added here.
+					$("input[name='ship/address1'], input[name='ship/address2'], input[name='ship/city'], input[name='ship/region'], input[name='ship/postal']",$fieldset).attr('data-app-blur','order_create|execAddressUpdate');
+					$("select[name='ship/countrycode']",$fieldset).attr('data-app-change','order_create|execCountryUpdate');
 					}
 				_app.ext.order_create.u.handlePlaceholder($fieldset);
 				}, //chkoutAddressShip
@@ -1086,14 +1092,12 @@ _app.u.handleButtons($chkContainer); //will handle buttons outside any of the fi
 		
 //This will add a cart message. handy if the buyer and merchant are dialoging.
 						if(typeof cartMessagePush === 'function')	{
-							//temporarily commented out by JT till issue can be diagnosed. 2014-04-28
-//							cartMessagePush(oldCartID,'cart.orderCreate',{'vars':{'orderid':orderID}});
+							cartMessagePush(oldCartID,'cart.orderCreate',{'vars':{'orderid':orderID}});
 							}
 		
 //if a cart messenger is open, log the cart update.
 						if(_app.u.thisNestedExists('ext.cart_message.vars.carts.'+oldCartID,_app))	{
-							//temporarily commented out by JT till issue can be diagnosed. 2014-04-28
-//							_app.model.addDispatchToQ({'_cmd':'cartMessagePush','what':'cart.update','orderid':orderID,'description':'Order created.','_cartid':oldCartID},'immutable');
+							_app.model.addDispatchToQ({'_cmd':'cartMessagePush','what':'cart.update','orderid':orderID,'description':'Order created.','_cartid':oldCartID},'immutable');
 							}
 		
 						_app.u.handleButtons($checkout);
@@ -1105,7 +1109,6 @@ _app.u.handleButtons($chkContainer); //will handle buttons outside any of the fi
 //			passed to it in order to know which cart to fetch (no longer connected to the session!).  This resulted in a bug that multiple
 //			orders placed from the same computer in multiple sessions could have the same cart id attached.  Very bad.
 							_app.calls.appCartCreate.init({
-								"datapointer" : "appCartCreate",
 								"callback" : function(rd){
 									dump(" -----------> rd: "); dump(rd);
 									
@@ -1517,7 +1520,8 @@ _app.u.handleButtons($chkContainer); //will handle buttons outside any of the fi
 					obj[$ele.attr('name').replace('bill/','ship/')] = $ele.val();
 					}
 				//obj._cartid = $ele.closest("[data-app-role='checkout']").data('cartid');
-				obj._cartid = _app.model.fetchCartID();
+/*beachmall*/	obj._cartid = _app.model.fetchCartID();
+
 				_app.ext.cco.calls.cartSet.init(obj); //update the cart
 				_app.ext.order_create.u.handleCommonPanels($ele.closest('form'));
 				_app.model.dispatchThis('immutable');
@@ -2037,7 +2041,8 @@ _app.u.handleButtons($chkContainer); //will handle buttons outside any of the fi
 					var L = actions.length,
 					formObj = $context.is('form') ? $context.serializeJSON() : $("form",$context).serializeJSON(),
 					//cartID = $context.closest("[data-app-role='checkout']").data('cartid'),
-					cartID = _app.model.fetchCartID(),
+/*beachmall*/		cartID = _app.model.fetchCartID(),
+
 					$fieldset = $("[data-app-role='"+_app.u.jqSelector('',role)+"']",$context),
 					ao = {};
 
