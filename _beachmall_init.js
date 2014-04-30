@@ -54,7 +54,7 @@ myApp.rq.push(['extension',0,'partner_addthis','extensions/partner_addthis.js','
 // ** moved here from extension to make sure it gets loaded early enough.
 //myApp.rq.push(['script',0,'http://cdn.powerreviews.com/repos/11531/pr/pwr/engine/js/full.js']); old user id "11531"
 //myApp.rq.push(['script',0,'http://cdn.powerreviews.com/repos/11024/pr/pwr/engine/js/full.js']);
-//myApp.rq.push(['extension',0,'powerreviews_reviews','extensions/partner_powerreviews_reviews.js','startExtension']);
+myApp.rq.push(['extension',0,'powerreviews_reviews','extensions/partner_powerreviews_reviews.js','startExtension']);
 myApp.rq.push(['extension',0,'magictoolbox_mzp','extensions/partner_magictoolbox_mzp.js','startExtension']); // (not working yet - ticket in to MTB)
 
 

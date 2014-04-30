@@ -67,7 +67,7 @@ css files should be included before any .js file to ensure they are downloaded i
 $(document).ready(function(){
 
 	window.myApp = new initApp({
-		"release":"201403.20140430101600",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+		"release":"201403.20140430104800",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 		"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 		"baseURL":baseURL, //used in non-local mode.
 		"checkoutAuthMode" : "active",//can be passive, active or required
@@ -1773,10 +1773,10 @@ remember to NOT put the button inside the 'onclick' container or two events will
 					</div>
 				</div>
 
-				<div data-tlc="bind $var '.pid'; if (is $var --notblank;) {{format --prepend='ITEM#:<br> '; apply --append;}};" class="prodNum stid floatLeft clearfix"></div>
-			
+				<div data-tlc="bind $var '.pid'; powerreviews_reviews#reviewsnippet  --minreview='1' --legacy;" class="reviewsStarsCount"></div>
 				
-			
+				<div data-tlc="bind $var '.pid'; if (is $var --notblank;) {{format --prepend='ITEM#:<br> '; apply --append;}};" class="prodNum stid floatLeft clearfix"></div>
+
 			  <!-- 	<span data-bind='var: reviews(reviews.total); format:text; pretext: from ;posttext: reviews; className:numReviews;'></span> -->
 			</div> 
 			</div>  
@@ -1989,6 +1989,8 @@ END BUG6-->
 <!--!!--></div>
 		<div class="searchReviewSiblingsCont">
 		
+			<div data-tlc="bind $var '.pid'; powerreviews_reviews#reviewsnippet  --minreview='1' --legacy;" class="reviewsStarsCount"></div>
+			
 			<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy; apply --append;" class="prodViewerAddToCartForm clearfix" action="#" onsubmit="return false" data-app-submit="quickstart|productAdd2Cart" data-show="modal">
 				<input name="qty" value="1" type="hidden">
 				<button data-tlc="quickstart#addtocartbutton  --iselastic='1' --legacy; apply --append;" class="prodViewerAddToCartButton applyButton" role="button" aria-disabled="false">VIEW DETAILS</button>
@@ -2036,6 +2038,8 @@ END BUG6-->
 END BUG6-->			
 <!--!!--></div>
 		<div class="searchReviewSiblingsCont">
+			
+			<div data-tlc="bind $var '.pid'; powerreviews_reviews#reviewsnippet  --minreview='1' --legacy;" class="reviewsStarsCount"></div>
 			
 			<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy; apply --append;" class="prodViewerAddToCartForm clearfix" action="#" onsubmit="return false" data-app-submit="quickstart|productAdd2Cart" data-show="modal">
 				<input name="qty" value="1" type="hidden">
@@ -2100,6 +2104,9 @@ END BUG6-->
 <!--    </div>
 MARK --> 	
 	<div class='searchReviewSiblingsCont'>
+	
+		<div data-tlc="bind $var '.pid'; powerreviews_reviews#reviewsnippet --minreview='1' --legacy; apply --append;" class="reviewsStarsCount">
+	
 		<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy; apply --append;" class="prodViewerAddToCartForm clearfix" action="#" onsubmit="return false" data-app-submit="quickstart|productAdd2Cart" data-show="modal">
 			<input name="qty" value="1" type="hidden">
 			<button data-tlc="quickstart#addtocartbutton  --iselastic='1' --legacy; apply --append;" class="prodViewerAddToCartButton applyButton" role="button" aria-disabled="false">VIEW DETAILS</button>
@@ -2120,7 +2127,7 @@ MARK -->
 	<h5 data-tlc="bind $var '.%attribs.zoovy:prod_name'; if (is $var --notblank;) {{apply --append;}};"></h5>
 
 	<div class="pr_snippet_category">
-
+		<div data-tlc="bind $var '.pid'; powerReviews_reviews#reviewsnippet  --minreview='1' --legacy;"></div>
 	</div>
 
 	<div data-tlc="bind $var '.%attribs.sku'; if (is $var --notblank;) {{format --prepend='Sku: '; apply --append;}};" class="ztable_row_small stid"></div>
@@ -2359,6 +2366,9 @@ this will likely become more flexible in the future. ###
 		</div>
 	
 		<div class="rightColumn floatRight clearfix">
+		
+			<div data-tlc="bind $var '.pid'; powerreviews_reviews#reviewsnippet  --legacy;" class=""></div>
+		
 			<div data-tlc="bind $var'.%attribs.zoovy:prod_mfg'; if (is $var --notblank;) {{apply --show}};" class="prodPageMfgForward">
 				&#187; View All 
 				<span data-tlc="bind $var '.%attribs.zoovy:prod_mfg'; if (is $var --notblank;) {{apply --show;}}; beachmall_store#searchlink  --legacy;"></span>
