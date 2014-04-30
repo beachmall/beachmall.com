@@ -38,9 +38,9 @@ document.getElementsByTagName('base')[0].href = baseURL;
 all css includes need to be after the js that changes the base url.
 css files should be included before any .js file to ensure they are downloaded in parallel
 -->
-<link rel="stylesheet" type="text/css" href="app-quickstart.css" />
+<link rel="stylesheet" type="text/css" href="app-quickstart.css" data-apptimize="embed" />
 <link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/themes/ui-lightness/jquery-ui.css" />
-<link rel="stylesheet" type="text/css" href="_beachmall_styles.css" />
+<link rel="stylesheet" type="text/css" href="_beachmall_styles.css" data-apptimize="embed" />
 
 <link rel="SHORTCUT ICON" href="images/favicon.ico" />
 <link rel="ICON" href="images/favicon.ico" />
@@ -53,21 +53,21 @@ css files should be included before any .js file to ensure they are downloaded i
 <!-- jquery and jquery ui are pivotal to the functionality of the app. load them early -->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
-<script src="controller.js"></script>
-<script src="model.js"></script>
+<script src="controller.js" data-apptimize="embed"></script>
+<script src="model.js" data-apptimize="embed"></script>
 
-<script type='text/javascript' src='examples/magictoolbox/magiczoomplus.js' ></script>
+<script type='text/javascript' src='examples/magictoolbox/magiczoomplus.js' data-apptimize="embed" ></script>
 
 <!-- ### TODO -> test how the load process goes w/ these in init. if includes is moved, move the new Parse  -->
-<script src="resources/jquery.ui.anyplugins.js"></script>
-<script type="text/javascript" src="includes.js"></script><!-- contains some polyfills and should be loaded early -->
+<script src="resources/jquery.ui.anyplugins.js" data-apptimize="embed"></script>
+<script type="text/javascript" src="includes.js" data-apptimize="embed"></script><!-- contains some polyfills and should be loaded early -->
 
 
 <script type="text/javascript">
 $(document).ready(function(){
 
 	window.myApp = new initApp({
-		"release":"201403.20140430082300",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+		"release":"201403.20140430084800",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 		"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 		"baseURL":baseURL, //used in non-local mode.
 		"checkoutAuthMode" : "active",//can be passive, active or required
@@ -2463,7 +2463,7 @@ this will likely become more flexible in the future. ###
 			<li data-app-role="hoverTab"><a href="#prodImages" class="ui-button-text-icon-primary imageTab"><span><img src="images/bm12_cameraicon-25x21.png" alt="" height="21" width="25" data-apptimize="embed"></span>Images</a></li>
 			<li data-app-role="hoverTab"><a href="#prodVideo" class="videoTab"><span><img src="images/bm12_videoicon-24x24.png" alt="" height="24" width="24" data-apptimize="embed"></span>Video</a></li>
 
-			<div class="prodPageImages" data-anytab-content="prodImages">
+			<li class="prodPageImages" data-anytab-content="prodImages">
 				<!--<img src='blank.gif' class='prodBigImage' rel='rel="selectors-change: mouseover' name='prodBigImage' data-bind='var: product(zoovy:prod_image1); format: magicZoomPlus; extension: magicToolBox_mzp;' width='310' height='310' />-->
 				<img data-tlc="bind $var '.'; magictoolbox_mzp#magiczoomplus  --legacy;" data-legacy-useparentdata="true" src="blank.gif" class="prodBigImage" alt="" rel="selectors-change: mouseover" height="310" width="310" data-apptimize="embed">
 				<div class="zhint">Mouse over main image to zoom in</div>
@@ -2474,11 +2474,11 @@ this will likely become more flexible in the future. ###
 					<a href="#" class="prodPageCarPrev sprite displayNone"><span>prev</span></a>
 					<a href="#" class="prodPageCarNext sprite displayNone"><span>next</span></a>
 				</div>
-			</div> <!-- END prodPageImages -->
+			</li> <!-- END prodPageImages -->
 		
-			<div data-anytab-content="prodVideo">
+			<li data-anytab-content="prodVideo">
 				<div data-tlc="bind $var '.%attribs.youtube:videoid'; if(is $var --notblank) {{ apply --show; }};"></div>  
-			</div>
+			</li>
 		</ul>
 
 	</div> <!-- END prodTabs -->

@@ -243,6 +243,18 @@ var beachmall_store = function(_app) {
 //on a data-bind, format: is equal to a renderformat. extension: tells the rendering engine where to look for the renderFormat.
 //that way, two render formats named the same (but in different extensions) don't overwrite each other.
 		renderFormats : {
+/** GENERAL FORMATS */
+			//decides whether or not to use http or https for hardcoded img src
+			hardImgSource : function($tag,data) {
+			
+				if(document.location.protocol == "http:") {
+					$tag.attr('src',"http:"+post);
+				}
+				else {
+					$tag.attr('src','https:'+post);
+				}
+			},
+		
 /**LIST FORMATS */
 				//creates image for search results lists from user:app_thumb (a copy of image1) to prevent
 				//banner/icon images that had been getting indexed from being used for the list image.
