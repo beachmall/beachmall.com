@@ -67,7 +67,7 @@ css files should be included before any .js file to ensure they are downloaded i
 $(document).ready(function(){
 
 	window.myApp = new initApp({
-		"release":"201403.20140430094800",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+		"release":"201403.20140430100000",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 		"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 		"baseURL":baseURL, //used in non-local mode.
 		"checkoutAuthMode" : "active",//can be passive, active or required
@@ -1777,14 +1777,14 @@ remember to NOT put the button inside the 'onclick' container or two events will
 			
 				
 			
-				<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy; apply --append;" class="prodViewerAddToCartForm floatRight" action="#" onsubmit="return false" data-app-submit="quickstart|productAdd2Cart" data-show="modal">
-					<input name="qty" value="1" type="hidden">
-					<button data-tlc="quickstart#addtocartbutton  --legacy; apply --append;" data-bind="format:addtocartbutton; extension:quickstart; useParentData:true;" class="prodViewerAddToCartButton applyButton" role="button" aria-disabled="false">MORE DETAILS</button>
-				</form>
 			  <!-- 	<span data-bind='var: reviews(reviews.total); format:text; pretext: from ;posttext: reviews; className:numReviews;'></span> -->
 			</div> 
 			</div>  
 		</a>
+		<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy; apply --append;" class="prodViewerAddToCartForm floatRight hideMe" action="#" onsubmit="return false" data-app-submit="quickstart|productAdd2Cart" data-show="modal">
+			<input name="qty" value="1" type="hidden">
+			<button data-tlc="quickstart#addtocartbutton  --legacy; apply --append;" data-bind="format:addtocartbutton; extension:quickstart; useParentData:true;" class="prodViewerAddToCartButton applyButton" role="button" aria-disabled="false">MORE DETAILS</button>
+		</form>
 	</div>
 	<div class="productSeperationBar"></div>
 </li>
@@ -1838,14 +1838,14 @@ remember to NOT put the button inside the 'onclick' container or two events will
 						</div>
 					</div>
 				
-					<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy; apply --append;" class="prodViewerAddToCartForm clearfix" action="#" onsubmit="return false" data-app-submit="quickstart|productAdd2Cart" data-show="modal">
-						<input name="qty" value="1" type="hidden">
-						<button data-tlc="quickstart#addtocartbutton  --legacy; apply --append;" class="prodViewerAddToCartButton applyButton" role="button" aria-disabled="false">VIEW DETAILS</button>
-					</form>
 					<div data-tlc="bind $var '.pid'; if (is $var --notblank;) {{format --prepend='ITEM &nbsp; #: &nbsp; '; apply --append;}};" class="prodNum stid"></div>
 			  <!-- 	<span data-bind='var: reviews(reviews.total); format:text; pretext: from ;posttext: reviews; className:numReviews;'></span> -->
 			</div>  
 		</a>
+		<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy; apply --append;" class="prodViewerAddToCartForm clearfix" action="#" onsubmit="return false" data-app-submit="quickstart|productAdd2Cart" data-show="modal">
+			<input name="qty" value="1" type="hidden">
+			<button data-tlc="quickstart#addtocartbutton  --legacy; apply --append;" class="prodViewerAddToCartButton applyButton" role="button" aria-disabled="false">VIEW DETAILS</button>
+		</form>
 	</div>
 </li>
 
