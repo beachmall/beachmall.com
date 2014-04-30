@@ -40,6 +40,7 @@ css files should be included before any .js file to ensure they are downloaded i
 -->
 <link rel="stylesheet" type="text/css" href="app-quickstart.css" data-apptimize="embed" />
 <link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/themes/ui-lightness/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="googleapis-libs-jqueryiu-1.10.2-theme-uilightnes-jqueryui.css" />
 <link rel="stylesheet" type="text/css" href="_beachmall_styles.css" data-apptimize="embed" />
 
 <link rel="SHORTCUT ICON" href="images/favicon.ico" />
@@ -51,8 +52,10 @@ css files should be included before any .js file to ensure they are downloaded i
 
 
 <!-- jquery and jquery ui are pivotal to the functionality of the app. load them early -->
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+<!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script> -->
+<script type="text/javascript" src="googleapis-libs-jquery-1.10.2-jquery-min.js"></script>
+<script type="text/javascript" src="googleapis-libs-jqueryui-1.10.2-jquery-ui-min.js"></script>
 <script type="text/javascript" src="controller.js" data-apptimize="embed"></script>
 <script type="text/javascript" src="model.js" data-apptimize="embed"></script>
 
@@ -67,7 +70,7 @@ css files should be included before any .js file to ensure they are downloaded i
 $(document).ready(function(){
 
 	window.myApp = new initApp({
-		"release":"201403.20140430104800",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+		"release":"201403.20140430151300",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 		"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 		"baseURL":baseURL, //used in non-local mode.
 		"checkoutAuthMode" : "active",//can be passive, active or required
@@ -250,7 +253,7 @@ ANIMATION TESTING
 						</div>
 						<div class='beachChairsDD dropdown floatLeft'> 
 							<div class='defaultDDImage'>
-								<a class='stockImageContainer' href='#!Beach-Chairs/c/.beach-chair' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"><img src='http://www.81a72f.hoth.zoovy.net/media/img/beachmart/W210-H210-Bffffff/copa/2009_chairs_web/canopy_beach_chair_401a' width='210' height='210' alt='beach chairs' data-apptimize="embed" /></a> 
+								<a class='stockImageContainer' href='#!Beach-Chairs/c/.beach-chair' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"><img src='' width='210' height='210' alt='beach chairs' data-hard-source="//www.81a72f.hoth.zoovy.net/media/img/beachmart/W210-H210-Bffffff/copa/2009_chairs_web/canopy_beach_chair_401a" data-apptimize="embed" /></a> 
 								<div class="dropdownBGRight"></div>
 							</div>
                             <ul class='listStyleNone floatLeft dropoutUL'>
