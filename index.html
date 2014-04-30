@@ -46,18 +46,20 @@ css files should be included before any .js file to ensure they are downloaded i
 <link rel="SHORTCUT ICON" href="images/favicon.ico" />
 <link rel="ICON" href="images/favicon.ico" />
 
-<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+<link data-apptimize="download;embed" href='https://fonts.googleapis.com/css?family=Open+Sans|Oswald|Montserrat' rel='stylesheet' type='text/css'>
 
 
 <!-- jquery and jquery ui are pivotal to the functionality of the app. load them early -->
 <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script> -->
-<script type="text/javascript" src="googleapis-libs-jquery-1.10.2-jquery-min.js"></script>
-<script type="text/javascript" src="googleapis-libs-jqueryui-1.10.2-jquery-ui-min.js"></script>
+<script type="text/javascript" src="googleapis-libs-jquery-1.10.2-jquery-min.js" data-apptimize="embed"></script>
+<script type="text/javascript" src="googleapis-libs-jqueryui-1.10.2-jquery-ui-min.js" data-apptimize="embed"></script>
 <script type="text/javascript" src="controller.js" data-apptimize="embed"></script>
 <script type="text/javascript" src="model.js" data-apptimize="embed"></script>
+<script type="text/javascript" src="resources/tlc.js" data-apptimize="embed"></script>
+<script type="text/javascript" src="resources/jquery.showloading-v1.0.jt.js" data-apptimize="embed"></script>
+<script type="text/javascript" src="resources/jquery.ui.anyplugins.js" data-apptimize="embed"></script>
+<script type="text/javascript" src="resources/anyplugins.css" data-apptimize="embed"></script>
 
 <script type='text/javascript' src='examples/magictoolbox/magiczoomplus.js' data-apptimize="embed" ></script>
 
