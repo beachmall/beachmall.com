@@ -105,13 +105,8 @@ var powerreviews_reviews = function(_app) {
 			startExtension : {
 				onSuccess : function(){
 					_app.u.dump("BEGIN powerreviews_reviews.callbacks.startExtension");
-// * JS moved to init to ensure it's loaded early enough in the process.
-					if(document.location.protocol == "https") {
-						_app.rq.push(['script',0,'https://cdn.powerreviews.com/repos/'+_app.ext.powerreviews_reviews.vars.merchantID+'/pr/pwr/engine/js/full.js']);
-						_app.rq.push(['css',0,'https://cdn.powerreviews.com/repos/'+_app.ext.powerreviews_reviews.vars.merchantID+'/pr/pwr/engine/pr_styles_review.css','prBaseStylesheet']);
-						_app.rq.push(['css',0,'https://cdn.powerreviews.com/aux/'+_app.ext.powerreviews_reviews.vars.merchantID+'/'+_app.ext.powerreviews_reviews.vars.groupID+'/css/powerreviews_express.css','prMerchantOverrideStylesheet']);
-						}
-					else {
+					if(document.location.protocol != "https:") {
+						//	power reviews doesn't work over secure
 						_app.rq.push(['script',0,'http://cdn.powerreviews.com/repos/'+_app.ext.powerreviews_reviews.vars.merchantID+'/pr/pwr/engine/js/full.js']);
 						_app.rq.push(['css',0,'http://cdn.powerreviews.com/repos/'+_app.ext.powerreviews_reviews.vars.merchantID+'/pr/pwr/engine/pr_styles_review.css','prBaseStylesheet']);
 						_app.rq.push(['css',0,'http://cdn.powerreviews.com/aux/'+_app.ext.powerreviews_reviews.vars.merchantID+'/'+_app.ext.powerreviews_reviews.vars.groupID+'/css/powerreviews_express.css','prMerchantOverrideStylesheet']);
@@ -173,14 +168,14 @@ var powerreviews_reviews = function(_app) {
 			writeReview : function(pid)	{
 				if(pid)	{
 					document.location = "/_powerreviews?verb=writereview&pr_page_id="+pid;
-/*					var $div = $('#powerReviewsModal');
+					var $div = $('#powerReviewsModal');
 					if($div.length == 0)	{
 						$div = $("<div />").attr({'id':'powerReviewsModal','title':'Write a review'}).appendTo('body');
 						$div.dialog({width:'90%',height:650,modal:true,autoOpen:false})
 						}
 					$div.html("<iframe src='/_powerreviews?verb=writereview&amp;pr_page_id="+pid+"' border='0' class='prIframe' style='min-width:700px; min-height:350px; height:100%; margin:0 auto; border:0;' />");
 					$div.dialog('open');
-*/					}
+					}
 				else	{
 					_app.u.dump("WARNING! - no pid was specified for powerreviews_reviews.a.writeReview");
 					}
