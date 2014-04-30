@@ -53,8 +53,8 @@ css files should be included before any .js file to ensure they are downloaded i
 <!-- jquery and jquery ui are pivotal to the functionality of the app. load them early -->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
-<script type="text/javascript"src="controller.js" data-apptimize="embed"></script>
-<script type="text/javascript"src="model.js" data-apptimize="embed"></script>
+<script type="text/javascript" src="controller.js" data-apptimize="embed"></script>
+<script type="text/javascript" src="model.js" data-apptimize="embed"></script>
 
 <script type='text/javascript' src='examples/magictoolbox/magiczoomplus.js' data-apptimize="embed" ></script>
 
@@ -67,7 +67,7 @@ css files should be included before any .js file to ensure they are downloaded i
 $(document).ready(function(){
 
 	window.myApp = new initApp({
-		"release":"201403.20140430093700",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+		"release":"201403.20140430094800",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 		"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 		"baseURL":baseURL, //used in non-local mode.
 		"checkoutAuthMode" : "active",//can be passive, active or required
@@ -915,7 +915,7 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 				</a>
 				<a href="#!Shop-by-Brand/c/.beach-chairs.beach-gear" class="additionalHompageCats floatLeft pointer"> 
 				<!-- <a href="#!category/.test" class="additionalHompageCats floatLeft pointer"> 
-				<!-- <div class='additionalHompageCats floatLeft pointer' onClick="return showContent('category',{'navcat':'.beach-chairs.beach-gear'});">  -->
+				<div class='additionalHompageCats floatLeft pointer' onClick="return showContent('category',{'navcat':'.beach-chairs.beach-gear'});">  -->
 					<div class='addCatArrow sprite floatRight'></div>
 					<span>SHOP</span>
 					<span>BY BRAND</span>
@@ -2648,7 +2648,7 @@ if you change these, you should move them above this comment so that when you (o
 			<h1 class='displayNone'>Privacy Policy</h1>
 			<h4>Privacy Policy - Beach Products & Accessories from Beachmall.com</h4>
 			<h2>Site Security:</h2>
-				Ordering online at Beachmall.com is safe and easy &#38; guaranteed&#33; Our secure servers will protect your 
+				Ordering online at Beachmall.com is safe and easy &#38; guaranteed&#33; secure servers will protect your 
 				information using the most advanced encryption and firewall technology throughout the ordering process. 
 				Our Web site protects the security of personal information transmitted to us by using Secure Sockets Layer 
 				(SSL) software, which encrypts the information you input during the transmission to us using a unique 
@@ -2714,7 +2714,7 @@ if you change these, you should move them above this comment so that when you (o
 				We are not responsible or liable for the privacy practices or content found on these websites. 
 			<h2>Special Promotion Emails&#58;</h2>
 				You may choose to receive special promotion emails during the order checkout process on our website, or by 
-				providing your email address in the &#34;Newsletter Sign Up&#34; box found on the bottom &#45; left side of our home 
+				providing your email address in the &#34;Newsletter Sign Up&#34; box found on the bottom &#45; left side of our home 
 				page. If you no longer wish to receive our promotional emails, you may opt out by logging into your 
 				Beachmall.com account. Please recognize that by unsubscribing, you'll miss our exclusive offers and notices 
 				on special savings. 
@@ -2742,7 +2742,7 @@ if you change these, you should move them above this comment so that when you (o
 			<h2 class='privacyDisclaimer'>DISCLAIMERS&#58;</h2>
 
 			<h2>Website Disclaimer&#58;</h2>
-				This website and the information provided herein are provided on an &#34;as is&#34; basis. Neither Beachmall.com 
+				This website and the information provided herein are provided on an &#34;as is&#34; basis. Neither Beachmall.com 
 				nor its parent company, affiliates, nor each of their respective officers, directors, employees, and agents, 
 				warrant that the use of the Beachmall.com site will not be interrupted or error&#45;free, nor do we warranty the 
 				accuracy, validity, completeness or reliability of the content provided on the site. 
