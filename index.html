@@ -67,7 +67,7 @@ css files should be included before any .js file to ensure they are downloaded i
 $(document).ready(function(){
 
 	window.myApp = new initApp({
-		"release":"201403.20140430100000",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+		"release":"201403.20140430101600",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 		"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 		"baseURL":baseURL, //used in non-local mode.
 		"checkoutAuthMode" : "active",//can be passive, active or required
@@ -3628,7 +3628,7 @@ used for store_crm.js
 
 <!-- used in the /customer section for order view -->
 
-<section data-tlc="bind $var '.ORDERID'; apply --attrib='data-orderid';" id="orderLineItemTemplate" class="appAccordianesque" data-app-role="orderLineitemContainer">
+<div data-tlc="bind $var '.ORDERID'; apply --attrib='data-orderid';" id="orderLineItemTemplate" class="appAccordianesque" data-app-role="orderLineitemContainer">
 
 	<div data-app-role="orderHeader" data-app-click="quickstart|orderDetailShow" class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-top ui-corner-bottom">
 	<span class="ui-icon ui-icon-triangle-1-e floatLeft marginRight"></span>
@@ -3638,7 +3638,7 @@ used for store_crm.js
 
 	<div data-app-role="orderContents" class="ui-accordion-content ui-helper-reset displayNone ui-widget-content "></div>
 
-</section>
+</div>
 
 
 
@@ -3647,7 +3647,7 @@ used for store_crm.js
 
 
 
-<section id="faqTopicTemplate">
+<div id="faqTopicTemplate">
 
 	<div class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-top ui-corner-bottom" data-app-click="quickstart|faqDetailShow">
 	<span class="ui-icon ui-icon-triangle-1-e floatLeft marginRight"></span>
@@ -3656,7 +3656,7 @@ used for store_crm.js
 
 	<div data-tlc="bind $var '.TOPIC_ID'; format --prepend='faqDetails4Topic_'; apply --attrib='id';" class="ui-accordion-content ui-helper-reset ui-widget-content displayNone"></div>
 
-</section>
+</div>
 
 
 <div id="faqQnATemplate">

@@ -33,7 +33,7 @@ input[type=radio] {
 }
 
 #appView {background:white; margin: 0px auto; height:auto; width: 1020px;}
-#appPreView {height:100%; width:100%; max-width:100%; background-image:url(images/preview-bkgrnd_1024x775.png); background-repeat:no-repeat; background-size:100% 100%; position:absolute; z-index:9999;} /*rgba(59,179,195,.5)*/
+#appPreView {height:100%; width:100%; max-width:100%; background-image:url(images/preview-bkgrnd_250x189.png); background-repeat:no-repeat; background-size:100% 100%; position:absolute; z-index:9999;} /*rgba(59,179,195,.5)*/
 .preViewWrapper {height:auto; width:495px; padding:1.0em; box-shadow:0 0 6px 3px #3bb3c3; border:3px solid #3bb3c3; border-radius:7px; background-color:#ffffff; margin:10% 0 0 50%; position:absolute; top:100px; left:-247px; z-index:10000;} /*#d2e9f6*/
 #appPreView h3 {text-align:center;}
 #appPreViewProgressBar {margin:20px 0 0 0;}
