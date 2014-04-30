@@ -52,7 +52,7 @@ var beachmall_cart = function(_app) {
 			startExtension : {
 				onSuccess : function() {
 					_app.templates.cartTemplate.on('complete.beachmall_cart',function(event,$ele,P) {
-						_app.ext.beachmall_cart.u.execCouponAdd($('.cartCouponButton','#modalCart'));
+						//_app.ext.beachmall_cart.u.execCouponAdd($('.cartCouponButton','#modalCart'));
 						_app.ext.beachmall_cart.u.handleCartToolTip($('#modalCart'));
 					});
 					
@@ -332,37 +332,6 @@ var beachmall_cart = function(_app) {
 //utilities are typically functions that are exected by an event or action.
 //any functions that are recycled should be here.
 		u : {
-		
-			execCouponAdd : function($btn)	{
-				_app.u.dump($btn.text());
-				//$btn.button();
-				$btn.off('click._app.ext.beachmall_cart.a.execCouponAdd').on('click._app.ext.beachmall_cart.a.execCouponAdd',function(event){
-					event.preventDefault();
-					
-					var $fieldset = $btn.closest('fieldset'),
-					$form = $btn.closest('form'),
-					$input = $("[name='coupon']",$fieldset);
-					
-					//$btn.button('disable');
-					//update the panel only on a successful add. That way, error messaging is persistent. success messaging gets nuked, but coupon will show in cart so that's okay.
-					_app.ext.cco.calls.cartCouponAdd.init($input.val(),{"callback":function(rd){
-
-						if(_app.model.responseHasErrors(rd)){
-							$fieldset.anymessage({'message':rd});
-						}
-						else	{
-							$input.val(''); //reset input only on success.  allows for a typo to be corrected.
-							$fieldset.anymessage(_app.u.successMsgObject('Your coupon has been added.'));
-							//_app.ext.orderCreate.u.handlePanel($form,'chkoutCartItemsList',['empty','translate','handleDisplayLogic','handleAppEvents']);
-//							_gaq.push(['_trackEvent','Checkout','User Event','Cart updated - coupon added']);
-						}
-
-					}});
-					//_app.ext.orderCreate.u.handleCommonPanels($form);
-					_app.ext.beachmall_cart.u.updateCartSummary();
-					_app.model.dispatchThis('immutable');
-				})
-			}, //execCouponAdd
 			
 			//shows tool tip in cart	
 			handleCartToolTip : function($context) {
@@ -403,6 +372,36 @@ var beachmall_cart = function(_app) {
 //while no naming convention is stricly forced, 
 //when adding an event, be sure to do off('click.appEventName') and then on('click.appEventName') to ensure the same event is not double-added if app events were to get run again over the same template.
 		e : {
+			execCouponAdd : function($btn, p){
+				p.preventDefault();
+				var $fieldset = $btn.closest('fieldset'),
+				$form = $btn.closest('form'),
+				$input = $("[name='coupon']",$fieldset);
+				
+				var $cart = $btn.closest('[data-template-role=cart]');
+				var cartid = $cart.data('cartid');
+				//$btn.button('disable');
+				//update the panel only on a successful add. That way, error messaging is persistent. success messaging gets nuked, but coupon will show in cart so that's okay.
+				_app.ext.cco.calls.cartCouponAdd.init($input.val(), cartid,{"callback":function(rd){
+
+					if(_app.model.responseHasErrors(rd)){
+						$fieldset.anymessage({'message':rd});
+					}
+					else	{
+						$input.val(''); //reset input only on success.  allows for a typo to be corrected.
+						$fieldset.anymessage(_app.u.successMsgObject('Your coupon has been added.'));
+						//_app.ext.orderCreate.u.handlePanel($form,'chkoutCartItemsList',['empty','translate','handleDisplayLogic','handleAppEvents']);
+//							_gaq.push(['_trackEvent','Checkout','User Event','Cart updated - coupon added']);
+					}
+
+				}}, 'immutable');
+				//_app.ext.orderCreate.u.handleCommonPanels($form);
+				
+				$cart.trigger('fetch', {'Q':'immutable'});
+				
+				_app.model.dispatchThis('immutable');
+					
+				}
 			} //e [app Events]
 		} //r object.
 	return r;
