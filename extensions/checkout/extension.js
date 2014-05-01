@@ -1088,7 +1088,7 @@ _app.u.handleButtons($chkContainer); //will handle buttons outside any of the fi
 //show post-checkout invoice and success messaging.
 						$checkout.empty().show();
 						$checkout.tlc({'templateid':'chkoutCompletedTemplate',dataset: checkoutData}); //show invoice
-		
+/*beachmall*/			$('#modalCart').empty().remove();
 		
 //This will add a cart message. handy if the buyer and merchant are dialoging.
 						if(typeof cartMessagePush === 'function')	{
