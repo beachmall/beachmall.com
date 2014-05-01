@@ -58,13 +58,12 @@ css files should be included before any .js file to ensure they are downloaded i
 <script type="text/javascript" src="model.js" data-apptimize="embed"></script>
 <script type="text/javascript" src="resources/tlc.js" data-apptimize="embed"></script>
 <script type="text/javascript" src="resources/jquery.showloading-v1.0.jt.js" data-apptimize="embed"></script>
-<script type="text/javascript" src="resources/jquery.ui.anyplugins.js" data-apptimize="embed"></script>
 <script type="text/javascript" src="resources/anyplugins.css" data-apptimize="embed"></script>
 
 <script type='text/javascript' src='examples/magictoolbox/magiczoomplus.js' data-apptimize="embed" ></script>
 
 <!-- ### TODO -> test how the load process goes w/ these in init. if includes is moved, move the new Parse  -->
-<script src="resources/jquery.ui.anyplugins.js" data-apptimize="embed"></script>
+<script type="text/javascript" src="resources/jquery.ui.anyplugins.js" data-apptimize="embed"></script>
 <script type="text/javascript" src="includes.js" data-apptimize="embed"></script><!-- contains some polyfills and should be loaded early -->
 
 
@@ -72,7 +71,7 @@ css files should be included before any .js file to ensure they are downloaded i
 $(document).ready(function(){
 
 	window.myApp = new initApp({
-		"release":"201403.20140501120300",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+		"release":"201403.20140501121300",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 		"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 		"baseURL":baseURL, //used in non-local mode.
 		"checkoutAuthMode" : "active",//can be passive, active or required
