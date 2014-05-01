@@ -168,14 +168,14 @@ var powerreviews_reviews = function(_app) {
 			writeReview : function(pid)	{
 				if(pid)	{
 					document.location = "/_powerreviews?verb=writereview&pr_page_id="+pid;
-					var $div = $('#powerReviewsModal');
+	/*				var $div = $('#powerReviewsModal');
 					if($div.length == 0)	{
 						$div = $("<div />").attr({'id':'powerReviewsModal','title':'Write a review'}).appendTo('body');
 						$div.dialog({width:'90%',height:650,modal:true,autoOpen:false})
 						}
 					$div.html("<iframe src='/_powerreviews?verb=writereview&amp;pr_page_id="+pid+"' border='0' class='prIframe' style='min-width:700px; min-height:350px; height:100%; margin:0 auto; border:0;' />");
 					$div.dialog('open');
-					}
+	*/				}
 				else	{
 					_app.u.dump("WARNING! - no pid was specified for powerreviews_reviews.a.writeReview");
 					}

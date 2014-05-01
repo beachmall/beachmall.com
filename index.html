@@ -72,7 +72,7 @@ css files should be included before any .js file to ensure they are downloaded i
 $(document).ready(function(){
 
 	window.myApp = new initApp({
-		"release":"201403.20140430151300",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+		"release":"201403.20140430171900",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 		"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 		"baseURL":baseURL, //used in non-local mode.
 		"checkoutAuthMode" : "active",//can be passive, active or required
@@ -2340,7 +2340,9 @@ this will likely become more flexible in the future. ###
 				<ul data-tlc="bind $var '.%attribs.user:prod_colors'; store_prodlist#productlist  --hideSummary='true' --templateid='productListTemplateBundle'  --legacy;" class="productList listStyleNone noPadOrMargin fluidList clearfix bundleProdlist"></ul>
 			</div>
 			
-			<div data-anytab-content="prodReviews" class="tabbedProductList tabbedPowerReview tabBody"></div>
+			<div data-anytab-content="prodReviews" class="tabbedProductList tabbedPowerReview tabBody">
+				<div data-tlc="bind $var '.pid'; powerreviews_reviews#reviewengine  --legacy;" class="productList listStyleNone noPadOrMargin fluidList clearfix bundleProdlist"></div>
+			</div>
 			
 		</div><!-- /tabbedProductContent -->
 
