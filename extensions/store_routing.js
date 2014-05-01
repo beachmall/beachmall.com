@@ -197,8 +197,8 @@ optional params:
 							}
 						//seoname isn't clearly defined, so we go into some dwiw guesswork.
 						else if(args.seo && data.value['%attribs'])	{
-/*beachmall*/						//seoname = data.value['%attribs']['zoovy:prod_seo_title'] || data.value['%attribs']['zoovy:prod_name'];
-/*beachmall*/						seoname = data.value['%attribs']['zoovy:prod_name']; //wants prod_name in hash, not seo_title
+/*beachmall*/						seoname = data.value['%attribs']['zoovy:prod_seo_title'] || data.value['%attribs']['zoovy:prod_name'];
+/*beachmall*/						//seoname = data.value['%attribs']['zoovy:prod_name']; //wants prod_name in hash, not seo_title
 							}
 						else if(args.seo && data.value.prod_name)	{
 							seoname = data.value.prod_name; //this would be an elastic search results.
