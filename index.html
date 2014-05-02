@@ -93,20 +93,15 @@ css files should be included before any .js file to ensure they are downloaded i
 <script data-apptimize="embed" type="text/javascript" src="extensions/store_createaccount.js"></script>
 <script data-apptimize="embed" type="text/javascript" src="extensions/beachmall_recentlyviewed.js"></script>
 
-
-
-
 <!-- SCRIPTS -->
 <script data-apptimize="embed" type="text/javascript" src="resources/jquery.showloading-v1.0.jt.js"></script>
 <script data-apptimize="embed" type="text/javascript" src="resources/jsonpath.0.8.0.js"></script>
 <script data-apptimize="embed" type="text/javascript" src="resources/tlc.js"></script>
 <script data-apptimize="embed" type="text/javascript" src="examples/magictoolbox/magiczoomplus.js"></script>
+<link data-apptimize="embed" type="text/javascript" src="examples/magictoolbox/magiczoomplus.css"></link>
 <link data-apptimize="embed" type="text/javascript" src="resources/anyplugins.css"></link>
-<!-- 
 <link data-apptimize="embed" type="text/javascript" src="extensions/checkout/styles.css"></link>
 <link data-apptimize="embed" type="text/javascript" src="extensions/cart_message/styles.css"></link>
-not sure about these yet 
--->
 
 <!-- ### TODO -> test how the load process goes w/ these in init. if includes is moved, move the new Parse  -->
 <script data-apptimize="embed" type="text/javascript" src="resources/jquery.ui.anyplugins.js"></script>
@@ -144,6 +139,7 @@ $(document).ready(function(){
 
 
 <!-- what is displayed onLoad until the view is loaded -->
+<!-- TO ADD BACK IN, UNCOMMENT: " if($('#appPreView').is(':visible'))	{ " in showContent in app-quickstart.js -->
 <div id='appPreView'>
 	<div class='preViewWrapper'>
 		<div id="loader">

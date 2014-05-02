@@ -63,7 +63,8 @@ var magictoolbox_mzp = function(_app) {
 			startExtension : {
 				onSuccess : function(){
 					_app.u.dump("BEGIN magictoolbox.callbacks.startExtension");
-					_app.u.loadResourceFile(['css',0,'examples/magictoolbox/magiczoomplus.css','mzpStylesheet']);
+					//this loaded in index w/ apptimize now: examples/magictoolbox/magiczoomplus.css
+					//_app.u.loadResourceFile(['css',0,'examples/magictoolbox/magiczoomplus.css','mzpStylesheet']);
 					_app.u.loadResourceFile(['script',0,'examples/magictoolbox/magiczoomplus.js',function(){
 						MagicZoomPlus.start();
 					}]);
