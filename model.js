@@ -1211,7 +1211,7 @@ will return false if datapointer isn't in _app.data or local (or if it's too old
 				_app.u.dump(' -> valid extension object containing '+extObj.length+' extensions');
 				var L = extObj.length;
 				r = L; //return the size of the extension object 
-				for(var i = 0; i < L; i += 1) { dump(extObj[i].namespace);
+				for(var i = 0; i < L; i += 1) {
 //					_app.u.dump(" -> i: "+i);
 //namespace and filename are required for any extension.
 /*beachmall*/		if(!extObj[i].namespace)	{

@@ -1166,7 +1166,6 @@ will load everything in the RQ will a pass <= [pass]. so pass of 10 loads everyt
 		// so instead, a generic callback function is added to track if the extension is done loading.
 		// which is why the extension is added to the extension Q (above).
 /*beachmall*/		if(_app.rq[i][3]){
-						dump('--LOADSCRIPT'); dump(_app.rq[i][3]); dump(_app.rq[i]);
 						_app.u.loadScript(_app.rq[i][3],callback,(_app.rq[i]));
 					}
 					else {
