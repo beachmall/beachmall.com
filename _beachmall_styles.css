@@ -269,7 +269,7 @@ the padding is to compensate for the spacing between the main nav.
 FOOTER
 *********************************************************************************/
 
-.footerContainer {height:685px; width:100%; background-image:url(images/footer-background-1020x685.png);}
+.footerContainer {height:685px; width:100%; background-image:url(images/footer-background-1020x685.jpg);}
 .footerInteractContainer {height:115px; width:100%; position:relative; top:229px; left:0px;}
 .footerSocialIcons {height:32px; width:250px; position:absolute; top:0px; right:148px;}
 .footerSocialIconContainers {height:32px; width:32px; float:left; padding:0px 9px 0px 9px;}
