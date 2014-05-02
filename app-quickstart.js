@@ -2863,11 +2863,12 @@ else	{
 					//cart not in memory yet. use defaults.
 					}
 //<-- BEACHMART** updates the city, postal and state in his header and on the detail pages
-				if(_app.data[tagObj.datapointer] && _app.data[tagObj.datapointer].ship)	{
-					$('.shipCity').text(_app.data[tagObj.datapointer].ship.city || "");
-					$('.shipRegion').text(_app.data[tagObj.datapointer].ship.region || "");
-					$('.shipPostal').text(_app.data[tagObj.datapointer].ship.postal || "");
-					}
+	//WAS INTERFERING WITH BEACHMART_CUSTOM SETTING THESE SAME VARS.
+//				if(_app.data[tagObj.datapointer] && _app.data[tagObj.datapointer].ship)	{
+//					$('.shipCity').text(_app.data[tagObj.datapointer].ship.city || "");
+//					$('.shipRegion').text(_app.data[tagObj.datapointer].ship.region || "");
+//					$('.shipPostal').text(_app.data[tagObj.datapointer].ship.postal || "hooha");
+//					}
 // BEACHMART -->				
 				$('.cartItemCount',$appView).text(itemCount);
 				$('.cartSubtotal',$appView).text(_app.u.formatMoney(subtotal,'$',2,false));
