@@ -9,44 +9,44 @@ myApp.rq.push(['script',0,(document.location.protocol == 'file:') ? myApp.vars.t
 	myApp.vars.jqurl = (document.location.protocol === 'file:') ? myApp.vars.testURL+'jsonapi/' : '/jsonapi/';
 	}]); //The config.js is dynamically generated.
 	
-myApp.rq.push(['extension',0,'order_create','']);
-myApp.rq.push(['extension',0,'cco','']);
+myApp.rq.push(['extension',0,'order_create','extensions/checkout/extension.js']);
+myApp.rq.push(['extension',0,'cco','extensions/cart_checkout_order.js']);
 
-myApp.rq.push(['extension',0,'store_routing','']);
+myApp.rq.push(['extension',0,'store_routing','extensions/store_routing.js']);
 myApp.rq.push(['extension',0,'store_seo','extensions/store_seo.js', 'attachHandlers']);
 
-myApp.rq.push(['extension',0,'store_prodlist','']);
-myApp.rq.push(['extension',0,'prodlist_infinite','']); //removes pagination in product lists and allows population w/ scroll
-myApp.rq.push(['extension',0,'store_navcats','']);
-myApp.rq.push(['extension',0,'store_search','']);
-myApp.rq.push(['extension',0,'store_product','']);
-myApp.rq.push(['extension',0,'cart_message','']);
-myApp.rq.push(['extension',0,'store_crm','']);
-myApp.rq.push(['extension',0,'quickstart','','startMyProgram']);
+myApp.rq.push(['extension',0,'store_prodlist','extensions/store_prodlist.js']);
+myApp.rq.push(['extension',0,'store_navcats','extensions/store_navcats.js']);
+myApp.rq.push(['extension',0,'store_search','extensions/store_search.js']);
+myApp.rq.push(['extension',0,'store_product','extensions/store_product.js']);
+myApp.rq.push(['extension',0,'cart_message','extensions/cart_message/extension.js']);
+myApp.rq.push(['extension',0,'store_crm','extensions/store_crm.js']);
+myApp.rq.push(['extension',0,'quickstart','app-quickstart.js','startMyProgram']);
 
 //myApp.rq.push(['extension',0,'entomologist','extensions/entomologist/extension.js']);
 //myApp.rq.push(['extension',0,'tools_animation','extensions/tools_animation.js']);
 
-myApp.rq.push(['extension',0,'beachmall_store','','startExtension']); 
-myApp.rq.push(['extension',0,'beachmart','','startMyProgram']); // custom product page, built by JT based on old hybrid site
-myApp.rq.push(['extension',0,'store_filter','','startExtension']); 
-myApp.rq.push(['extension',0,'beachmall_search','']); //new place to seperate search features out to. 
-myApp.rq.push(['extension',0,'beachmall_carousel','','startExtension']); 
-myApp.rq.push(['extension',0,'beachmart_dropdown','', 'startExtension']); // custom product getter for dropdowns Runs startExtension as well
+myApp.rq.push(['extension',0,'beachmall_store','extensions/beachmall_store.js','startExtension']); 
+myApp.rq.push(['extension',0,'beachmart','extensions/beachmart_custom.js','startMyProgram']); // custom product page, built by JT based on old hybrid site
+myApp.rq.push(['extension',0,'store_filter','extensions/beachmart.js','startExtension']); 
+myApp.rq.push(['extension',0,'beachmall_search','extensions/beachmall_search.js']); //new place to seperate search features out to. 
+myApp.rq.push(['extension',0,'beachmall_carousel','extensions/beachmall_carousel.js','startExtension']); 
+myApp.rq.push(['extension',0,'beachmart_dropdown','extensions/beachmart_dropdown.js', 'startExtension']); // custom product getter for dropdowns Runs startExtension as well
 //myApp.rq.push(['extension',0,'beachmart_catsearch','extensions/beachmart_catsearch.js', 'startExtension']); // custom search of designated category and tag
 //myApp.rq.push(['extension',0,'beachmart_items_per_page','extensions/beachmart_items_per_page.js', 'startExtension']); // changes number of items displayed in current prodlist
-myApp.rq.push(['extension',0,'beachmall_banner','','startExtension']); // add banner to homepage that can be changed in _banners.json file 
-myApp.rq.push(['extension',0,'beachmart_dropdown_image','']); // add images to dropdowns that can be changed in _dropdownimages.json file 
-myApp.rq.push(['extension',0,'beachmall_cartestarrival','']); //estimates shipping/arrival times for cart items
-myApp.rq.push(['extension',0,'beachmall_cartemail','']); //handles sending user an e-mail of cart contents
-myApp.rq.push(['extension',0,'beachmall_cart','','startExtension']); //handles sending user an e-mail of cart contents
+myApp.rq.push(['extension',0,'beachmall_banner','extensions/beachmall_banner.js','startExtension']); // add banner to homepage that can be changed in _banners.json file 
+myApp.rq.push(['extension',0,'beachmart_dropdown_image','extensions/beachmart_dropdown_image.js']); // add images to dropdowns that can be changed in _dropdownimages.json file 
+myApp.rq.push(['extension',0,'prodlist_infinite','extensions/prodlist_infinite.js']); //removes pagination in product lists and allows population w/ scroll
+myApp.rq.push(['extension',0,'beachmall_cartestarrival','extensions/beachmall_cartEstArrival.js']); //estimates shipping/arrival times for cart items
+myApp.rq.push(['extension',0,'beachmall_cartemail','extensions/beachmall_cartEmail.js']); //handles sending user an e-mail of cart contents
+myApp.rq.push(['extension',0,'beachmall_cart','extensions/beachmall_cart.js','startExtension']); //handles sending user an e-mail of cart contents
 //myApp.rq.push(['extension',0,'beachmart_dates','extensions/beachmart_dates.js']); //handles various date based calculations
-myApp.rq.push(['extension',0,'store_createaccount','','startExtension']); //handles account creation actions
-myApp.rq.push(['extension',0,'beachmall_recentlyviewed','','startExtension']); //handles account creation actions
-//myApp.rq.push(['script',0,myApp.vars.baseURL+'resources/jquery.touchSwipe-1.3.3.min.js']); //used w/ carouFedSel.
-//myApp.rq.push(['script',0,myApp.vars.baseURL+'resources/jquery.carouFredSel-6.2.0.min.js']); //used for carousels.
+myApp.rq.push(['extension',0,'store_createaccount','extensions/store_createaccount.js','startExtension']); //handles account creation actions
+myApp.rq.push(['extension',0,'beachmall_recentlyviewed','extensions/beachmall_recentlyviewed.js','startExtension']); //handles account creation actions
+myApp.rq.push(['script',0,myApp.vars.baseURL+'resources/jquery.touchSwipe-1.3.3.min.js']); //used w/ carouFedSel.
+myApp.rq.push(['script',0,myApp.vars.baseURL+'resources/jquery.carouFredSel-6.2.0.min.js']); //used for carousels.
 
-//myApp.rq.push(['extension',1,'google_analytics','','startExtension']);
+//myApp.rq.push(['extension',1,'google_analytics','extensions/partner_google_analytics.js','startExtension']);
 //myApp.rq.push(['extension',1,'tools_ab_testing','extensions/tools_ab_testing.js']);
 myApp.rq.push(['extension',0,'partner_addthis','extensions/partner_addthis.js','startExtension']);
 //myApp.rq.push(['extension',1,'resellerratings_survey','extensions/partner_buysafe_guarantee.js','startExtension']); /// !!! needs testing.
@@ -54,8 +54,8 @@ myApp.rq.push(['extension',0,'partner_addthis','extensions/partner_addthis.js','
 // ** moved here from extension to make sure it gets loaded early enough.
 //myApp.rq.push(['script',0,'http://cdn.powerreviews.com/repos/11531/pr/pwr/engine/js/full.js']); old user id "11531"
 //myApp.rq.push(['script',0,'http://cdn.powerreviews.com/repos/11024/pr/pwr/engine/js/full.js']);
-myApp.rq.push(['extension',0,'powerreviews_reviews','','startExtension']);
-myApp.rq.push(['extension',0,'magictoolbox_mzp','','startExtension']); // (not working yet - ticket in to MTB)
+myApp.rq.push(['extension',0,'powerreviews_reviews','extensions/partner_powerreviews_reviews.js','startExtension']);
+myApp.rq.push(['extension',0,'magictoolbox_mzp','extensions/partner_magictoolbox_mzp.js','startExtension']); // (not working yet - ticket in to MTB)
 
 
 //myApp.rq.push(['script',0,myApp.vars.baseURL+'resources/jquery.showloading-v1.0.jt.js']); //used pretty early in process..
@@ -63,7 +63,7 @@ myApp.rq.push(['extension',0,'magictoolbox_mzp','','startExtension']); // (not w
 //myApp.rq.push(['script',0,myApp.vars.baseURL+'resources/tlc.js']); //in zero pass in case product page is first page.
 //myApp.rq.push(['css',1,myApp.vars.baseURL+'resources/anyplugins.css']);
 
-//myApp.rq.push(['script',0,myApp.vars.baseURL+'resources/jsonpath.0.8.0.js']); //used pretty early in process..
+myApp.rq.push(['script',0,myApp.vars.baseURL+'resources/jsonpath.0.8.0.js']); //used pretty early in process..
 
 //once peg is loaded, need to retrieve the grammar file. Order is important there. This will validate the file too.
 myApp.u.loadScript(myApp.vars.baseURL+'resources/peg-0.8.0.js',function(){
