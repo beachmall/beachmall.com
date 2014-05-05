@@ -51,6 +51,9 @@ var beachmall_store = function(_app) {
 			
 		startExtension : {
 			onSuccess : function() {
+			
+				_app.ext.beachmall_store.u.hardImgSrc();
+			
 				_app.templates.homepageTemplate.on('complete.beachmall_store',function(event,$ele,P) {
 					$('.floatingBar',$ele).show(); //shows floating bar upon return to hompage if it's been closed.
 				});
@@ -243,18 +246,6 @@ var beachmall_store = function(_app) {
 //on a data-bind, format: is equal to a renderformat. extension: tells the rendering engine where to look for the renderFormat.
 //that way, two render formats named the same (but in different extensions) don't overwrite each other.
 		renderFormats : {
-/** GENERAL FORMATS */
-			//decides whether or not to use http or https for hardcoded img src
-			hardImgSource : function($tag,data) {
-			
-				if(document.location.protocol == "http:") {
-					$tag.attr('src',"http:"+post);
-				}
-				else {
-					$tag.attr('src','https:'+post);
-				}
-			},
-		
 /**LIST FORMATS */
 				//creates image for search results lists from user:app_thumb (a copy of image1) to prevent
 				//banner/icon images that had been getting indexed from being used for the list image.
@@ -857,20 +848,36 @@ var beachmall_store = function(_app) {
 			},
 /**HASH UTILS */
 
-		//takes the seo name and removes certain characters/spaces/patterns and returns the seo name
-		removeUnwantedChars : function(seo) {
-			seo = seo.replace(' / ',' '); //doesn't want any " / " in seo hash
-			seo = seo.replace('/',' '); //doesn't want any "/" in seo hash
-			seo = seo.replace('+',' '); //doesn't want any "+" in seo hash
-			seo = seo.replace(' & ',' '); //doesn't want any " & " in seo hash
-			seo = seo.replace('&',' '); //doesn't want any "/" in seo hash
-			seo = seo.replace(' - ',' '); //wants all " " converted to "-", but " - " comes out as "---", no bueno.
-			seo = seo.replace('--',' '); //just in case, some prod_names have two consecutive "-"
-			seo = seo.replace('---',' '); //just in case, some prod_names have three consecutive "-"
-			seo = seo.replace('  ',' '); //kill two consecutive spaces
-			seo = seo.replace('   ',' '); //kill three consecutive spaces
-			return seo;
-		}
+			//takes the seo name and removes certain characters/spaces/patterns and returns the seo name
+			removeUnwantedChars : function(seo) {
+				seo = seo.replace(' / ',' '); //doesn't want any " / " in seo hash
+				seo = seo.replace('/',' '); //doesn't want any "/" in seo hash
+				seo = seo.replace('+',' '); //doesn't want any "+" in seo hash
+				seo = seo.replace(' & ',' '); //doesn't want any " & " in seo hash
+				seo = seo.replace('&',' '); //doesn't want any "/" in seo hash
+				seo = seo.replace(' - ',' '); //wants all " " converted to "-", but " - " comes out as "---", no bueno.
+				seo = seo.replace('--',' '); //just in case, some prod_names have two consecutive "-"
+				seo = seo.replace('---',' '); //just in case, some prod_names have three consecutive "-"
+				seo = seo.replace('  ',' '); //kill two consecutive spaces
+				seo = seo.replace('   ',' '); //kill three consecutive spaces
+				seo = seo.toLowerCase();
+				return seo;
+			},
+/**Header UTILS */
+
+			//decides whether or not to use http or https for hardcoded img src
+			hardImgSrc : function() {
+			//dump('--------Got into hardImgSource');
+				$('[data-hard-source]','#mainDropdown').each(function() {
+					var post = $(this).attr('data-hard-source'); dump('----The post that was passed'); dump(post);
+					if(document.location.protocol == "http:") {
+						$(this).attr('src',"http:"+post); dump('----Should NOT be secure'); dump($(this).attr('src'));
+					}
+					else {
+						$(this).attr('src','https:'+post); dump('----Should be secure'); dump($(this).attr('src'));
+					}
+				});
+			}
 		
 		}, //u [utilities]
 
