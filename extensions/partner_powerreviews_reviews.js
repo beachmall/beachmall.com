@@ -125,7 +125,7 @@ var powerreviews_reviews = function(_app) {
 		renderFormats : {
 //pass is PID through bindData var:
 			reviewsnippet : function($tag,data)	{
-				if(document.location.protocol != 'https:')	{
+				if(document.location.protocol != 'https:')	{  //dump('---power reviews data.value:'); dump(data.value);
 					//_app.u.dump('------powrev'); _app.u.dump(data.bindData.minreview);
 /*BEACHMALL*/		var minimumReview = 0;
 /*BEACHMALL*/		if(data.bindData.minreview) {
@@ -135,6 +135,7 @@ var powerreviews_reviews = function(_app) {
 					POWERREVIEWS.display.snippet({ write : function(content) { $tag.append(content); } }, {
 /*BEACHMALL*/			pr_snippet_min_reviews : minimumReview, //shows reviews snippet based on qty of reviews
 						pr_page_id : data.value,
+						//pr_write_review : "javascript:myApp.ext.powerreviews_reviews.a.writeReview('"+data.value+"');",
 						pr_write_review : "javascript:myApp.ext.powerreviews_reviews.a.writeReview('"+data.value+"');",
 /*BEACHMALL*/			pr_read_review : "javascript:myApp.ext.beachmall_store.a.scrollToRevealTab('"+data.value+"' ,'#prodReviews');"
 						})
@@ -150,7 +151,7 @@ var powerreviews_reviews = function(_app) {
 	//						_app.u.dump(content);
 							}},{
 						pr_page_id : data.value,
-						pr_write_review : "javascript:_app.ext.powerreviews_reviews.a.writeReview('"+data.value+"');"
+						pr_write_review : "javascript:myApp.ext.powerreviews_reviews.a.writeReview('"+data.value+"');"
 						});
 					}
 				}
@@ -167,7 +168,8 @@ var powerreviews_reviews = function(_app) {
 		a : {
 			writeReview : function(pid)	{
 				if(pid)	{
-					document.location = "/_powerreviews?verb=writereview&pr_page_id="+pid;
+					document.location = "http://www.beachmall.com/_powerreviews?verb=writereview&pr_page_id="+pid;
+					dump('----Document location = '); dump(document.location); dump(pid);
 	/*				var $div = $('#powerReviewsModal');
 					if($div.length == 0)	{
 						$div = $("<div />").attr({'id':'powerReviewsModal','title':'Write a review'}).appendTo('body');
