@@ -2199,7 +2199,7 @@ effects the display of the nav buttons only. should be run just after the handle
 					   "filter":{
 						  "and" : [
 							 {"term":{"tags":infoObj.tag}},
-							 {"has_child":{"type":"sku","query": {"range":{"available":{"gte":100}}}}} //only return item w/ inventory
+							 {"has_child":{"type":"sku","query": {"range":{"available":{"gte":1}}}}} //only return item w/ inventory
 							 ]
 						  }});
 					}
@@ -2208,7 +2208,7 @@ effects the display of the nav buttons only. should be run just after the handle
 					   "filter":{
 						  "and" : [
 							 {"query":{"query_string":{"query":infoObj.KEYWORDS}}},
-							 {"has_child":{"type":"sku","query": {"range":{"available":{"gte":100}}}}} //only return item w/ inventory
+							 {"has_child":{"type":"sku","query": {"range":{"available":{"gte":1}}}}} //only return item w/ inventory
 							 ]
 						  }});
 					}
