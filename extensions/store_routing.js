@@ -343,7 +343,103 @@ _app.router.appendHash({'type':'match','route':'modal/product/{{pid}}*','callbac
 					}
 					_app.ext.store_routing.u.setHash(hash);
 					});
+//beachmall custom category templates:
+				_app.templates.categoryTemplateBrands.on('complete.routing', function(event, $context, infoObj){
+					var hash = "";
+					var $routeEle = $('[data-routing-hash]',$context)
+					if($routeEle.length){
+						hash = $routeEle.attr('data-routing-hash');
+						}
+					else {
+						hash = "#!/category/"+infoObj.navcat+"/";
+					}
+					_app.ext.store_routing.u.setHash(hash);
+					});
 					
+				_app.templates.categoryTemplateBrandsFeatured.on('complete.routing', function(event, $context, infoObj){
+					var hash = "";
+					var $routeEle = $('[data-routing-hash]',$context)
+					if($routeEle.length){
+						hash = $routeEle.attr('data-routing-hash');
+						}
+					else {
+						hash = "#!/category/"+infoObj.navcat+"/";
+					}
+					_app.ext.store_routing.u.setHash(hash);
+					});
+					
+				_app.templates.categoryTemplateBrandsBestSellers.on('complete.routing', function(event, $context, infoObj){
+					var hash = "";
+					var $routeEle = $('[data-routing-hash]',$context)
+					if($routeEle.length){
+						hash = $routeEle.attr('data-routing-hash');
+						}
+					else {
+						hash = "#!/category/"+infoObj.navcat+"/";
+					}
+					_app.ext.store_routing.u.setHash(hash);
+					});
+					
+				_app.templates.categoryTemplateBrandsViewAll.on('complete.routing', function(event, $context, infoObj){
+					var hash = "";
+					var $routeEle = $('[data-routing-hash]',$context)
+					if($routeEle.length){
+						hash = $routeEle.attr('data-routing-hash');
+						}
+					else {
+						hash = "#!/category/"+infoObj.navcat+"/";
+					}
+					_app.ext.store_routing.u.setHash(hash);
+					});
+					
+				_app.templates.categoryTemplateHomepageFeatured.on('complete.routing', function(event, $context, infoObj){
+					var hash = "";
+					var $routeEle = $('[data-routing-hash]',$context)
+					if($routeEle.length){
+						hash = $routeEle.attr('data-routing-hash');
+						}
+					else {
+						hash = "#!/category/"+infoObj.navcat+"/";
+					}
+					_app.ext.store_routing.u.setHash(hash);
+					});
+					
+				_app.templates.categoryTemplateHomepageBestseller.on('complete.routing', function(event, $context, infoObj){
+					var hash = "";
+					var $routeEle = $('[data-routing-hash]',$context)
+					if($routeEle.length){
+						hash = $routeEle.attr('data-routing-hash');
+						}
+					else {
+						hash = "#!/category/"+infoObj.navcat+"/";
+					}
+					_app.ext.store_routing.u.setHash(hash);
+					});
+					
+				_app.templates.categoryTemplateFilter.on('complete.routing', function(event, $context, infoObj){
+					var hash = "";
+					var $routeEle = $('[data-routing-hash]',$context)
+					if($routeEle.length){
+						hash = $routeEle.attr('data-routing-hash');
+						}
+					else {
+						hash = "#!/category/"+infoObj.navcat+"/";
+					}
+					_app.ext.store_routing.u.setHash(hash);
+					});
+					
+				_app.templates.categoryTemplateSiteMap.on('complete.routing', function(event, $context, infoObj){
+					var hash = "";
+					var $routeEle = $('[data-routing-hash]',$context)
+					if($routeEle.length){
+						hash = $routeEle.attr('data-routing-hash');
+						}
+					else {
+						hash = "#!/category/"+infoObj.navcat+"/";
+					}
+					_app.ext.store_routing.u.setHash(hash);
+					});
+//end beachmall custom cat templates					
 				_app.templates.productTemplate.on('complete.routing', function(event, $context, infoObj){
 					var hash = "";
 					var $routeEle = $('[data-routing-hash]',$context)
@@ -354,6 +450,18 @@ _app.router.appendHash({'type':'match','route':'modal/product/{{pid}}*','callbac
 						hash = "#!/product/"+infoObj.pid+"/";
 					}
 					dump(hash);
+					_app.ext.store_routing.u.setHash(hash);
+					});
+					
+				_app.templates.categoryTemplateBuyerGuide.on('complete.routing', function(event, $context, infoObj){
+					var hash = "";
+					var $routeEle = $('[data-routing-hash]',$context)
+					if($routeEle.length){
+						hash = $routeEle.attr('data-routing-hash');
+						}
+					else {
+						hash = "#!/category/"+infoObj.navcat+"/";
+					}
 					_app.ext.store_routing.u.setHash(hash);
 					});
 				
