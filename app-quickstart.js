@@ -38,7 +38,10 @@ var quickstart = function(_app) {
 			'categoryListTemplateBuyerGuide',
 			'productListTemplateToolTipThumb',
 			'cartAccListTemplateToolTipThumb',
-		//	'categoryTemplateSiteMap',
+			'categoryTemplateHomepageFeatured',
+			'categoryTemplateHomepageBestseller',
+			'categoryTemplateSiteMap',
+			'categoryTemplateFilter',
 		//	'redirectProductTemplate',
 //above here are custom beachmart templates			
 //the list of templates that are commonly edited (same order as they appear in appTemplates
