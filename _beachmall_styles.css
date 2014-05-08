@@ -1264,7 +1264,8 @@ newArrivalsCarouselRight, .productList li {height:300px; width:300px; float:left
 newArrivalsCarouselRight, .productList li > div {width:300px;}
 newArrivalsCarouselRight, .myProdThumb {height:210px; width:290px; border:5px solid #3bb3c3; background-color:#ffffff;}
 .prodThumb.push {padding-left:40px;}
-newArrivalsCarouselRight, .myProdThumb:hover {border:5px solid #e0463a;}
+/*newArrivalsCarouselRight, .myProdThumb:hover {border:5px solid #e0463a;}*/
+newArrivalsCarouselRight, .myProdThumb.jsHover {border:5px solid #e0463a;}
 newArrivalsCarouselRight, .myProdThumb img {margin:0 40px;}
 newArrivalsCarouselRight, .prodTextContainer {height:auto; width:295px; margin-top:5px; font-family:Oswald; font-size:24px;}
 newArrivalsCarouselRight, .prodDesc, .productList h5, .categoryList h5 {color:#000000; font-family:"Open Sans"; font-size:13px; text-align:center; line-height:16px; padding:7px 10px 0px 7px;}

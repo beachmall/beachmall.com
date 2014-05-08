@@ -53,6 +53,7 @@ var beachmall_store = function(_app) {
 			onSuccess : function() {
 			
 				_app.ext.beachmall_store.u.hardImgSrc();
+				_app.ext.beachmall_store.u.addHover();
 			
 				_app.templates.homepageTemplate.on('complete.beachmall_store',function(event,$ele,P) {
 					$('.floatingBar',$ele).show(); //shows floating bar upon return to hompage if it's been closed.
@@ -790,6 +791,30 @@ var beachmall_store = function(_app) {
 		u : {
 
 /**GENERAL UTILS */
+
+			/*			try this-
+Michael Chance: data-beachmall-hoverClass="hover"
+
+$(window).on('mouseenter', '[data-beachmall-hoverClass]', function(e){
+    $(this).addClass($(this).attr('data-beachmall-hoverClass');
+});
+
+$(window).on('mouseexit', '[data-beachmall-hoverClass]', function(e){
+    $(this).removeClass($(this).attr('data-beachmall-hoverClass');
+});*/
+			addHover : function() { dump('---START beachmall_store addHover');
+				setTimeout(function() {
+				//	$('[data-beachmall-hoverClass]').css('border','5px solid green');
+					$('body').on('mouseenter', '[data-beachmall-hoverClass]', function(e){
+						dump('---addHover add class this:'); dump($(this).attr('data-beachmall-hoverClass'));
+						$(this).addClass($(this).attr('data-beachmall-hoverClass'));
+					});
+					$('body').on('mouseleave', '[data-beachmall-hoverClass]', function(e){
+						$(this).removeClass($(this).attr('data-beachmall-hoverClass'));
+					});
+				},2000);
+			}, //addHover
+
 				//will add tabs to the selector in the context passed
 			tabify : function($context,selector) {
 				var $tabContainer = $(selector,$context);

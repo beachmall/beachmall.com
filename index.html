@@ -115,7 +115,7 @@ css files should be included before any .js file to ensure they are downloaded i
 $(document).ready(function(){
 
 	window.myApp = new initApp({	<!-- versionhere -->
-		"release":"201403.20140508121900",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+		"release":"201403.20140508163200",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 		"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 		"baseURL":baseURL, //used in non-local mode.
 		"checkoutAuthMode" : "active",//can be passive, active or required
@@ -1852,7 +1852,7 @@ remember to NOT put the button inside the 'onclick' container or two events will
 <!-- used on homepage for small carousel to the right of the main banner (there is also a productListTemplateResultsCustom for user w/ elastic results in this location) -->
 <li id='productListTemplateCustom' class='loadingBG searchResultsProduct ' >
 	<a data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';">
-		<div class='prodThumbContainer myProdThumb'>
+		<div class='prodThumbContainer myProdThumb' data-beachmall-hoverClass="jsHover">
 			<img data-tlc="bind $var '.%attribs.zoovy:prod_image1'; if (is $var --notblank;) {{ apply --img --media=$var --width=210 --height=210 --bgcolor='#ffffff' --replace;}};" src="blank.gif"  class="prodThumb push" alt="" width="210" height="210" data-apptimize="embed">            
 			<div class='prodTextContainer'>   
 				<h6 data-tlc="bind $var '.%attribs.zoovy:base_price'; if (is $var --notblank;) {{format --currency='USD'; apply --append;}};" class="price hideInMinimalMode floatLeft prodPrice"></h6>
