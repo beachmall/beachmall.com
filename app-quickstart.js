@@ -38,7 +38,6 @@ var quickstart = function(_app) {
 			'categoryListTemplateBuyerGuide',
 			'productListTemplateToolTipThumb',
 			'cartAccListTemplateToolTipThumb',
-			'categoryTemplateSiteMap',
 			'categoryTemplateHomepageFeatured',
 			'categoryTemplateHomepageBestseller',
 			'categoryTemplateSiteMap',
