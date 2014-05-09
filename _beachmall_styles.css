@@ -533,7 +533,7 @@ label.break	{display:block; margin:0 0 4px 6px;}
 .productListTemplateResultsNoPreview.products.product {height:420px;}
 .productListTemplateResultsNoPreview .prodNum {width:100%; margin:12px 0 0 0;}
 .quickView {background:#3bb3c3; border:none; color:#ffffff; padding:4px; font-family:"Open Sans";}
-.quickViewHover .quickView {display:inline-block;}
+.quickViewContainer:hover .quickView {display:inline-block;}
 
 .searchResultsProduct.products.product {height:380px; margin:20px 16.75px 7.5px;}
 .minimalMode .searchResultsProduct.products.product {height:222px; width:222px;}
@@ -1965,5 +1965,5 @@ ACCT CREATION
 
 /*MEDIA 768 8col*/
 @media screen and (max-width: 799px) {
-	.quickView {display:none !important;}
+	.quickViewContainer:hover .quickView {display:none !important;}
 }

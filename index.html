@@ -115,7 +115,7 @@ css files should be included before any .js file to ensure they are downloaded i
 $(document).ready(function(){
 
 	window.myApp = new initApp({	<!-- versionhere -->
-		"release":"201403.20140509124700",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+		"release":"201403.20140509140300",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 		"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 		"baseURL":baseURL, //used in non-local mode.
 		"checkoutAuthMode" : "active",//can be passive, active or required
@@ -1777,7 +1777,7 @@ Used for the product in a product list (prodlist), usually in the body of a cate
 the loadingBG class is removed (must be that classname) when the template is translated.
 remember to NOT put the button inside the 'onclick' container or two events will occur onclick.
 -->
-<li id="productListTemplate" data-tlc="bind $var '.'; beachmall_store#inventoryhide  --legacy;" data-legacy-useparentdata="true" class="loadingBG  products product floatLeft" data-beachmall-hoverClass="quickViewHover"> <!-- onmouseover="$('.quickView',$(this)).show();" onmouseout="$('.quickView').hide();"> -->
+<li id="productListTemplate" data-tlc="bind $var '.'; beachmall_store#inventoryhide  --legacy;" data-legacy-useparentdata="true" class="loadingBG  products product floatLeft quickViewContainer"> <!-- onmouseover="$('.quickView',$(this)).show();" onmouseout="$('.quickView').hide();"> -->
 	
 	<button class="floatRight pointer quickView displayNone" onclick="quickView('product',{'templateID':'productTemplateQuickView','pid':$(this).closest('[data-pid]').attr('data-pid')});">Quickview</button>
 	<div data-tlc="beachmall_store#brandslistfilter --legacy;"></div>	

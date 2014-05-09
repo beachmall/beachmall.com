@@ -791,25 +791,16 @@ var beachmall_store = function(_app) {
 		u : {
 
 /**GENERAL UTILS */
-
 			addHover : function() { dump('---START beachmall_store addHover');
 				setTimeout(function() {
 				//	$('[data-beachmall-hoverClass]').css('border','5px solid green');
 					$('body').on('touchstart', '[data-beachmall-hoverClass]', function(e){
-						if(screen.width > 799 && $(this).attr('data-beachmall-hoverClass') == 'quickViewHover') {
-							dump('touchstart screen > 799 and hoverClass=quickViewHover');
-							$(this).addClass($(this).attr('data-beachmall-hoverClass'));
-						}
-						else { dump('touchstart Screen width or class requirement not met.'); }
+							$(this).addClass($(this).attr('data-beachmall-hoverClass')); 
 					}).on('touchmove', '[data-beachmall-hoverClass]', function(e){
 						$(this).removeClass($(this).attr('data-beachmall-hoverClass'));
 					}).on('mouseenter', '[data-beachmall-hoverClass]', function(e){
 						//dump('---addHover add class this:'); dump($(this).attr('data-beachmall-hoverClass'));
-						if(screen.width > 799 && $(this).attr('data-beachmall-hoverClass') == 'quickViewHover') {
-							dump('mouseenter screen > 799 and hoverClass=quickViewHover');
-							$(this).addClass($(this).attr('data-beachmall-hoverClass'));
-						} 
-						else { dump('mouseenter Screen width or class requirement not met.'); }
+						$(this).addClass($(this).attr('data-beachmall-hoverClass'));
 					}).on('mouseleave', '[data-beachmall-hoverClass]', function(e){
 						$(this).removeClass($(this).attr('data-beachmall-hoverClass'));
 					}).on('click',  '[data-beachmall-hoverClass]',(function(e){
