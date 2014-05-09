@@ -792,31 +792,29 @@ var beachmall_store = function(_app) {
 
 /**GENERAL UTILS */
 
-			/*			try this-
-Michael Chance: data-beachmall-hoverClass="hover"
-
-$(window).on('mouseenter', '[data-beachmall-hoverClass]', function(e){
-    $(this).addClass($(this).attr('data-beachmall-hoverClass');
-});
-
-$(window).on('mouseexit', '[data-beachmall-hoverClass]', function(e){
-    $(this).removeClass($(this).attr('data-beachmall-hoverClass');
-});*/
 			addHover : function() { dump('---START beachmall_store addHover');
 				setTimeout(function() {
 				//	$('[data-beachmall-hoverClass]').css('border','5px solid green');
-					$('body').on('touchstart', function(e){
-						$(this).addClass($(this).attr('data-beachmall-hoverClass'));
-					}).on('touchmove', function(e){
+					$('body').on('touchstart', '[data-beachmall-hoverClass]', function(e){
+				//		if(screen.width > 799 && $(this).attr('data-beachmall-hoverClass') == 'quickViewHover') {
+				//			dump('touchstart screen > 799 and hoverClass=quickViewHover');
+							$(this).addClass($(this).attr('data-beachmall-hoverClass'));
+				//		}
+				//		else { dump('touchstart Screen width or class requirement not met.'); }
+					}).on('touchmove', '[data-beachmall-hoverClass]', function(e){
 						$(this).removeClass($(this).attr('data-beachmall-hoverClass'));
 					}).on('mouseenter', '[data-beachmall-hoverClass]', function(e){
-						dump('---addHover add class this:'); dump($(this).attr('data-beachmall-hoverClass'));
-						$(this).addClass($(this).attr('data-beachmall-hoverClass'));
+						//dump('---addHover add class this:'); dump($(this).attr('data-beachmall-hoverClass'));
+				//		if(screen.width > 799 && $(this).attr('data-beachmall-hoverClass') == 'quickViewHover') {
+				//			dump('mouseenter screen > 799 and hoverClass=quickViewHover');
+							$(this).addClass($(this).attr('data-beachmall-hoverClass'));
+				//		} 
+				//		else { dump('mouseenter Screen width or class requirement not met.'); }
 					}).on('mouseleave', '[data-beachmall-hoverClass]', function(e){
 						$(this).removeClass($(this).attr('data-beachmall-hoverClass'));
-					}).click(function(e){
+					}).on('click',  '[data-beachmall-hoverClass]',(function(e){
 						$(this).removeClass($(this).attr('data-beachmall-hoverClass'));
-					});
+					}));
 				},2000);
 			}, //addHover
 

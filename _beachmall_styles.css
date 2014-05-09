@@ -1294,7 +1294,7 @@ newArrivalsCarouselRight, .myProdThumb.jsHover .moreDetails {background-color:#e
 /*.myProdThumbSmall:hover {border:5px solid #e0463a;}*/
 .prodTextContainerSmall {height:auto; width:220px; font-family:Oswald; font-size:24px;}
 .prodDescSmall, .productList h5, .categoryList h5 {color:#000000; font-family:"Open Sans"; font-size:11px; font-weight:normal; text-align:center; line-height:13px; padding:7px 5px 0px 5px;}
-.prodDescSmall.jsHover {color:#e0463a; text-decoration:underline;}
+.prodDescSmall:hover {color:#e0463a; text-decoration:underline;}
 .prodPriceSmall, .productList h6, .categoryList h6 {margin-left:0px;}
 .moreDetailsSmall {height:25px; width:100px; color:#ffffff; font-family:Oswald; font-size:14px; text-align:center; line-height:24px; background-color:#3bb3c3; position:relative;}
 /*.myProdThumbSmall:hover .moreDetailsSmall {background-color:#e0463a;}*/
@@ -1961,3 +1961,9 @@ ACCT CREATION
 .Account .createButton {color:#ffffff; padding:5px 15px; margin:10px auto; display:block; font-family:Oswald; font-weight:normal; font-size:1.8em; border:none; background:#e0463a;}
 
 /*END ACCT CREATION*/
+
+
+/*MEDIA 768 8col*/
+@media screen and (max-width: 799px) {
+	.quickView {display:none !important;}
+}
