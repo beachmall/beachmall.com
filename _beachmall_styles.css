@@ -1,3 +1,8 @@
+/*
+In order to over come a double touch to activate link issue on touch devices, the class .jsHover often replaces :hover in this project.
+see beachmall_store.u.addHover for the workins.
+*/
+
 
 @viewport, @-o-viewport, @-moz-viewport, @-webkit-viewport {
     width: device-width;
@@ -149,7 +154,7 @@ the padding is to compensate for the spacing between the main nav.
 .topNav .liveHelp	{height:19px; width:145px; font-size:0.75em;}
 .topNav .liveHelp div.icon {background-position:0 -91px; width:25px; height:19px;float:left;}
 .topNav .liveHelp a {text-decoration:none; font-family:Oswald; font-weight:bold; font-size:18px;color:#000000;}
-.topNav .liveHelp a:hover {color:#e0463a;}
+.topNav .liveHelp #sd41TM.jsHover a , .topNav .liveHelp #sc41TM.jsHover a, .topNav .liveHelp #ci41TM.jsHover a {color:#e0463a;}
 .topNav .cartIcon {height:30px; width:57px; background-position:4px -40px; margin:0px 40px 0px 0px; padding: 15px 0px 0px 0px;}
 .topNav .cartIcon a {color:#ffffff;}
 .topNav .cartIcon .cartItemCount {height:17px; width:21px; text-align:center; display:inline-block; color:#ffffff;}
@@ -559,8 +564,8 @@ label.break	{display:block; margin:0 0 4px 6px;}
 
 /* Joins thumbborder and shop now text box to both hover at same time*/
 .prodHoverContainer {position:relative;}
-.prodHoverContainer:hover .moreDetailsSmall {background-color:#e0463a;}
-.prodHoverContainer:hover .myProdThumbSmall {border:5px solid #e0463a;}
+.prodHoverContainer.jsHover .moreDetailsSmall {background-color:#e0463a;}
+.prodHoverContainer.jsHover .myProdThumbSmall {border:5px solid #e0463a;}
 
 /*special styles that are used only on homepage new arrival carousel list*/
 .homeProdSearchNewArrivals2 .carouselButton {top:32%;}
@@ -748,7 +753,7 @@ label.break	{display:block; margin:0 0 4px 6px;}
 .searchResultsProduct .shipContainer {height:25px;}
 .shipContainer .shipCost {height:12px; width:98px; color:#e0463a; font-size:14px; font-weight:bold; background-position:-116px -219px; margin-left:15px;}
 .shipContainer .shipTime {height:15px; width:100%; color:#000000; font-size:8px; overflow:hidden;}
-.prodNum {height:10px; width:40%; font-family:"Open Sans"; font-size:10px; text-align:center; margin:4px 0 0 0;}
+.prodNum {height:10px; width:40%; font-family:"Open Sans"; font-size:10px; text-align:center; margin:4px 0 0 0; color:#3bb3c3;}
 .searchResultsProduct .prodNum {width:100%;}
 
 .thumbStarsContainer, .prodListMiniThumb ul {height:42px; width:100%; overflow:hidden; clear:both;}
@@ -1271,7 +1276,8 @@ newArrivalsCarouselRight, .prodTextContainer {height:auto; width:295px; margin-t
 newArrivalsCarouselRight, .prodDesc, .productList h5, .categoryList h5 {color:#000000; font-family:"Open Sans"; font-size:13px; text-align:center; line-height:16px; padding:7px 10px 0px 7px;}
 newArrivalsCarouselRight, .prodPrice, .productList h6, .categoryList h6 {margin-left:15px;}
 newArrivalsCarouselRight, .moreDetails {height:30px; width:100px; color:#ffffff; font-size:14px; text-align:center; line-height:25px; background-color:#3bb3c3;}
-newArrivalsCarouselRight, .myProdThumb:hover .moreDetails {background-color:#e0463a;}
+/*newArrivalsCarouselRight, .myProdThumb:hover .moreDetails {background-color:#e0463a;}*/
+newArrivalsCarouselRight, .myProdThumb.jsHover .moreDetails {background-color:#e0463a;}
 
 .productListSmall.productList li {height:303px; width:220px; float:left; margin:20px 10px 7.5px 10px;}
 .productListSmall.productList li > div {width:220px;}
@@ -1284,13 +1290,13 @@ newArrivalsCarouselRight, .myProdThumb:hover .moreDetails {background-color:#e04
 .productListSmall .prodShadowFix .bottomRightCorner {top:105%;}
 .productListSmall .prodShadowFix .rightBottomCorner {top:93%;}
 .myProdThumbSmall {height:210px; border:5px solid #ffffff; position:relative; z-index:2;} /*background-image:url(images/no-image-bkgrd.jpg);*/
-.myProdThumbSmall:hover {border:5px solid #e0463a;}
+/*.myProdThumbSmall:hover {border:5px solid #e0463a;}*/
 .prodTextContainerSmall {height:auto; width:220px; font-family:Oswald; font-size:24px;}
 .prodDescSmall, .productList h5, .categoryList h5 {color:#000000; font-family:"Open Sans"; font-size:11px; font-weight:normal; text-align:center; line-height:13px; padding:7px 5px 0px 5px;}
-.prodDescSmall:hover {color:#e0463a; text-decoration:underline;}
+.prodDescSmall.jsHover {color:#e0463a; text-decoration:underline;}
 .prodPriceSmall, .productList h6, .categoryList h6 {margin-left:0px;}
 .moreDetailsSmall {height:25px; width:100px; color:#ffffff; font-family:Oswald; font-size:14px; text-align:center; line-height:24px; background-color:#3bb3c3; position:relative;}
-.myProdThumbSmall:hover .moreDetailsSmall {background-color:#e0463a;}
+/*.myProdThumbSmall:hover .moreDetailsSmall {background-color:#e0463a;}*/
 .productListSmall.productList .prodSiblings, .searchProdSiblings {height:20px; width:73%; background:#3bb3c3; color:#ffffff; font-family:"Open Sans"; font-size:11px; line-height:19px; margin:auto; text-align:center;}
 .searchProdSiblings {margin:0px auto 4px auto;}
 .productListSmall.productList .prodSiblings:hover {background-color:#e0463a;}

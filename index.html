@@ -115,7 +115,7 @@ css files should be included before any .js file to ensure they are downloaded i
 $(document).ready(function(){
 
 	window.myApp = new initApp({	<!-- versionhere -->
-		"release":"201403.20140508163200",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+		"release":"201403.20140508184300",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 		"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 		"baseURL":baseURL, //used in non-local mode.
 		"checkoutAuthMode" : "active",//can be passive, active or required
@@ -218,9 +218,9 @@ ANIMATION TESTING
     	
     	<div class='floatRight liveHelp marginRight hideMed'>
     		<!-- BEGIN ProvideSupport.com Text Chat Link Code -->
-			<div id="ci41TM" style="z-index:100;position:absolute"></div>
-			<div id="sc41TM" style="display:inline"></div>
-			<div id="sd41TM" style="display:none"></div>
+			<div id="ci41TM" style="z-index:100;position:absolute" data-beachmall-hoverClass="jsHover"></div>
+			<div id="sc41TM" style="display:inline" data-beachmall-hoverClass="jsHover"></div>
+			<div id="sd41TM" style="display:none" data-beachmall-hoverClass="jsHover"></div>
 			<script type="text/javascript">var se41TM=document.createElement("script");se41TM.type="text/javascript";var se41TMs=(location.protocol.indexOf("https")==0?"https":"http")+"://image.providesupport.com/js/1qaxuqjnvcj4w1csevb7u0l3tc/safe-textlink.js?ps_h=41TM&ps_t="+new Date().getTime()+"&online-link-html=Live%20Chat%20Online&offline-link-html=Live%20Chat%20Offline";setTimeout("se41TM.src=se41TMs;document.getElementById('sd41TM').appendChild(se41TM)",1)</script>
 			<noscript>
 				<div style="display:inline">
@@ -1783,7 +1783,7 @@ remember to NOT put the button inside the 'onclick' container or two events will
 	<div data-tlc="beachmall_store#brandslistfilter --legacy;"></div>	
     <div data-tlc="bind $var '.pid'; apply --attrib='data-pid';" class="pointer productListSmall">
 		<a data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';">
-			<div class="prodHoverContainer prodShadowFix">
+			<div class="prodHoverContainer prodShadowFix" data-beachmall-hoverClass="jsHover">
 				<div data-tlc="bind $var '.'; beachmall_store#showprodmodifier  --legacy;" data-legacy-useparentdata="true" class="prodModifierContainer sprite displayNone"></div> 
 				<div data-tlc="bind $var '.%attribs.user:prod_promo'; if(is $var --notblank;) {{ apply --show; }}; " class="starBurst sprite displayNone">
 					<div class="starBurstTextOuter">
@@ -1805,7 +1805,7 @@ remember to NOT put the button inside the 'onclick' container or two events will
 					<h6 data-tlc="bind $var '.%attribs.zoovy:base_price'; if (is $var --notblank;) {{format --currency='USD'; apply --add --class='price'; apply --append;}};" class="floatLeft prodPriceSmall"></h6>
 					<span data-tlc="bind $var '.'; beachmall_store#prodpricedesc  --legacy;" data-legacy-useparentdata="true" class="prodPriceDesc hideMe"></span>
 				</div>
-				<h5 data-tlc="bind $var '.%attribs.zoovy:prod_name'; if (is $var --notblank;) {{apply --append;}};" class="clearfix prodDescSmall"></h5>
+				<h5 data-tlc="bind $var '.%attribs.zoovy:prod_name'; if (is $var --notblank;) {{apply --append;}};" data-beachmall-hoverClass="jsHover" class="clearfix prodDescSmall"></h5>
 				<span data-tlc="bind $var '.reviews.average'; if(is $var --notblank;) {{ apply --class='review_'; }}; if (is $var --notblank;) {{apply --add --class='review_'; apply --append;}};" class="reviewSprite"></span>
 				<!-- Need Color Options here, will work w/ form to show product, or colors pop up -->
 			<div class="hideMe">
@@ -2033,7 +2033,7 @@ SANITY -> if you change the height and width of this image, change the .minimalM
 		<h6 data-tlc="bind $var '.base_price';  if (is $var --notblank;) {{math --div='100'; format --currency='USD'; apply --append;}};" class="hideInMinimalMode floatLeft prodPriceSmall price"></h6>
 <!--Bug#3   <span class='prodPriceDesc' data-bind='format:prodPriceDesc; extension:store_filter; useParentData:true; isElastic:1;'></span>-->		
 		<a data-tlc="bind $seoname '.prod_name'; bind $var '.'; store_routing#seoanchor --type='product' --seo --seoname=$seoname; apply --attrib='href';">
-			<h5 data-tlc="bind $var '.prod_name'; if (is $var --notblank;) {{apply --append;}};" class="hideInMinimalMode clearfix prodDescSmall"></h5>
+			<h5 data-tlc="bind $var '.prod_name'; if (is $var --notblank;) {{apply --append;}};" data-beachmall-hoverClass="jsHover" class="hideInMinimalMode clearfix prodDescSmall"></h5>
 		</a>
 		<div data-tlc="bind $var '.%attribs.zoovy:prod_msrp'; if(is $var --notblank;) {{ apply --show; }}; " class="regularPriceContainer floatLeft displayNone">
 			<div data-tlc="bind $var '.%attribs.zoovy:prod_msrp'; if (is $var --notblank;) {{format --currency='USD'; apply --append;}};" class="regularPrice"> </div>
@@ -2064,7 +2064,7 @@ END BUG6-->
 
 <li id="productListTemplateResultsNoPreview" class="loadingBG products product floatLeft productListTemplateResultsNoPreview">
 	<a data-tlc="bind $seoname '.prod_name'; bind $var '.'; store_routing#seoanchor --type='product' --seo --seoname=$seoname; apply --attrib='href';" class="pointer productListSmall">
-		<div class='prodHoverContainer prodShadowFix'>
+		<div class='prodHoverContainer prodShadowFix' data-beachmall-hoverClass="jsHover">
 			<!-- CORNER SHADOW DIVS -->
 			<div class='topLeftCorner'></div><div class='leftTopCorner'></div><div class='topRightCorner'></div><div class='rightTopCorner'></div>
 			<div class='bottomLeftCorner'></div><div class='leftBottomCorner'></div><div class='bottomRightCorner'></div><div class='rightBottomCorner'></div> 
@@ -2084,7 +2084,9 @@ END BUG6-->
 	<div class='prodTextContainerSmall'>
 		<h6 data-tlc="bind $var '.base_price';  if (is $var --notblank;) {{math --div='100'; format --currency='USD'; apply --append;}};" class="hideInMinimalMode floatLeft prodPriceSmall price"></h6>
 <!--Bug#3   <span class='prodPriceDesc' data-bind='format:prodPriceDesc; extension:store_filter; useParentData:true; isElastic:1;'></span>-->		
-		<h5 data-tlc="bind $var '.prod_name'; if (is $var --notblank;) {{apply --append;}};" class="hideInMinimalMode clearfix prodDescSmall"></h5>
+		<a data-tlc="bind $seoname '.prod_name'; bind $var '.'; store_routing#seoanchor --type='product' --seo --seoname=$seoname; apply --attrib='href';">
+			<h5 data-tlc="bind $var '.prod_name'; if (is $var --notblank;) {{apply --append;}};" data-beachmall-hoverClass="jsHover" class="hideInMinimalMode clearfix prodDescSmall"></h5>
+		</a>
 		<div data-tlc="bind $var '.%attribs.zoovy:prod_msrp'; if(is $var --notblank;) {{ apply --show; }}; " class="regularPriceContainer floatLeft displayNone">
 			<div data-tlc="bind $var '.%attribs.zoovy:prod_msrp'; if (is $var --notblank;) {{format --currency='USD'; apply --append;}};" class="regularPrice"> </div>
 			<div class="regularPriceDesc">Regular Price</div>
