@@ -1866,9 +1866,9 @@ remember to NOT put the button inside the 'onclick' container or two events will
 </li>
 
 
-<li id="brandsProductListTemplate" class="loadingBG  products product floatLeft" onmouseover="$('.quickView',$(this)).show();" onmouseout="$('.quickView').hide();">
+<li id="brandsProductListTemplate" class="loadingBG  products product floatLeft quickViewContainer" onmouseover="$('.quickView',$(this)).show();" onmouseout="$('.quickView').hide();">
 	 
-	<button class="floatRight pointer quickView displayNone" onclick="quickView('product',{'templateID':'productTemplateQuickView','pid':$(this).closest('[data-pid]').attr('data-pid')});">Quickview</button>
+	<button class="floatRight pointer quickView" onclick="quickView('product',{'templateID':'productTemplateQuickView','pid':$(this).closest('[data-pid]').attr('data-pid')});">Quickview</button>
 		
     <div data-tlc="bind $var '.pid'; apply --attrib='data-pid'; " class="pointer productListSmall">
 		<a data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';">
