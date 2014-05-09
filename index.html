@@ -115,7 +115,7 @@ css files should be included before any .js file to ensure they are downloaded i
 $(document).ready(function(){
 
 	window.myApp = new initApp({	<!-- versionhere -->
-		"release":"201403.20140508184300",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+		"release":"201403.20140508193200",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 		"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 		"baseURL":baseURL, //used in non-local mode.
 		"checkoutAuthMode" : "active",//can be passive, active or required
@@ -1777,7 +1777,7 @@ Used for the product in a product list (prodlist), usually in the body of a cate
 the loadingBG class is removed (must be that classname) when the template is translated.
 remember to NOT put the button inside the 'onclick' container or two events will occur onclick.
 -->
-<li id="productListTemplate" data-tlc="bind $var '.'; beachmall_store#inventoryhide  --legacy;" data-legacy-useparentdata="true" class="loadingBG  products product floatLeft" onmouseover="$('.quickView',$(this)).show();" onmouseout="$('.quickView').hide();">
+<li id="productListTemplate" data-tlc="bind $var '.'; beachmall_store#inventoryhide  --legacy;" data-legacy-useparentdata="true" class="loadingBG  products product floatLeft" data-beachmall-hoverClass="quickViewHover"> <!-- onmouseover="$('.quickView',$(this)).show();" onmouseout="$('.quickView').hide();"> -->
 	
 	<button class="floatRight pointer quickView displayNone" onclick="quickView('product',{'templateID':'productTemplateQuickView','pid':$(this).closest('[data-pid]').attr('data-pid')});">Quickview</button>
 	<div data-tlc="beachmall_store#brandslistfilter --legacy;"></div>	
@@ -1800,46 +1800,48 @@ remember to NOT put the button inside the 'onclick' container or two events will
 
 				<div class="floatRight pointer moreDetailsSmall">VIEW DETAILS</div>
 			</div>
+		</a>
 			<div class="prodTextContainerSmall">
 				<div class="productPriceContainer">
 					<h6 data-tlc="bind $var '.%attribs.zoovy:base_price'; if (is $var --notblank;) {{format --currency='USD'; apply --add --class='price'; apply --append;}};" class="floatLeft prodPriceSmall"></h6>
 					<span data-tlc="bind $var '.'; beachmall_store#prodpricedesc  --legacy;" data-legacy-useparentdata="true" class="prodPriceDesc hideMe"></span>
 				</div>
-				<h5 data-tlc="bind $var '.%attribs.zoovy:prod_name'; if (is $var --notblank;) {{apply --append;}};" data-beachmall-hoverClass="jsHover" class="clearfix prodDescSmall"></h5>
+				<a data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';">
+					<h5 data-tlc="bind $var '.%attribs.zoovy:prod_name'; if (is $var --notblank;) {{apply --append;}};" data-beachmall-hoverClass="jsHover" class="clearfix prodDescSmall"></h5>
+				</a>
 				<span data-tlc="bind $var '.reviews.average'; if(is $var --notblank;) {{ apply --class='review_'; }}; if (is $var --notblank;) {{apply --add --class='review_'; apply --append;}};" class="reviewSprite"></span>
 				<!-- Need Color Options here, will work w/ form to show product, or colors pop up -->
-			<div class="hideMe">
-				<div data-tlc="bind $var '.%attribs.zoovy:prod_msrp'; if(is $var --notblank;) {{ apply --show; }}; " class="regularPriceContainer floatLeft displayNone">
-					<div data-tlc="bind $var '.%attribs.zoovy:prod_msrp'; if (is $var --notblank;) {{format --currency='USD'; apply --append;}};" class="regularPrice"> </div>
-					<div class="regularPriceDesc">Regular Price</div>
-				</div>
-				<div class="shipContainer floatLeft">
-					<div data-tlc="bind $var '.'; beachmall_store#showfreeshippingtag  --legacy;" data-legacy-useparentdata="true" class="shipCost sprite displayNone"></div>
-					<div data-tlc="bind $var '.'; beachmall_store#showshiplatency  --legacy;" data-legacy-useparentdata="true" class="shipTime latency">
-						<div class="shipTime latency displayNone"></div>
+				<div class="hideMe">
+					<div data-tlc="bind $var '.%attribs.zoovy:prod_msrp'; if(is $var --notblank;) {{ apply --show; }}; " class="regularPriceContainer floatLeft displayNone">
+						<div data-tlc="bind $var '.%attribs.zoovy:prod_msrp'; if (is $var --notblank;) {{format --currency='USD'; apply --append;}};" class="regularPrice"> </div>
+						<div class="regularPriceDesc">Regular Price</div>
 					</div>
-					<!--<div data-bind='var: product(user:prod_shipping_msg); format:showIfSet;'>
-						<div class='shipTime latency' data-bind='var: product(user:prod_shipping_msg); format:text;'></div>
+					<div class="shipContainer floatLeft">
+						<div data-tlc="bind $var '.'; beachmall_store#showfreeshippingtag  --legacy;" data-legacy-useparentdata="true" class="shipCost sprite displayNone"></div>
+						<div data-tlc="bind $var '.'; beachmall_store#showshiplatency  --legacy;" data-legacy-useparentdata="true" class="shipTime latency">
+							<div class="shipTime latency displayNone"></div>
+						</div>
+						<!--<div data-bind='var: product(user:prod_shipping_msg); format:showIfSet;'>
+							<div class='shipTime latency' data-bind='var: product(user:prod_shipping_msg); format:text;'></div>
+						</div>
+						-->
 					</div>
-					-->
-				</div>
-				
-				<!-- <div class='prodListMiniThumb' data-bind='var: product(pid); format: productListThumbnails; extension: store_filter;'></div> --> 
-				<!-- <div class='prodListMiniVariation' data-bind='var: product(pid); format:atcVariations; extension:store_product;'></div> -->
-				<div data-tlc="bind $var '.%attribs.user:grp_siblings'; if(is $var --notblank;) {{ apply --show; }}; " class="displayNone">
-					<div data-tlc="bind $var '.pid'; apply --attrib='data-pid'; " class="clearfix prodListSibs">
-						<ul data-tlc="bind $var '.%attribs.user:grp_siblings'; beachmall_store#siblingproductlist --hideSummary='true' --before='<b>Available Colors:</b> <span class=&quot;zhint&quot;>(click image to select)</span>' --withInventory='1' --withVariations='1' --templateid='productListTemplateToolTipThumb'  --legacy;" class="listStyleNone noPadOrMargin fluidList"></ul>
+					
+					<!-- <div class='prodListMiniThumb' data-bind='var: product(pid); format: productListThumbnails; extension: store_filter;'></div> --> 
+					<!-- <div class='prodListMiniVariation' data-bind='var: product(pid); format:atcVariations; extension:store_product;'></div> -->
+					<div data-tlc="bind $var '.%attribs.user:grp_siblings'; if(is $var --notblank;) {{ apply --show; }}; " class="displayNone">
+						<div data-tlc="bind $var '.pid'; apply --attrib='data-pid'; " class="clearfix prodListSibs">
+							<ul data-tlc="bind $var '.%attribs.user:grp_siblings'; beachmall_store#siblingproductlist --hideSummary='true' --before='<b>Available Colors:</b> <span class=&quot;zhint&quot;>(click image to select)</span>' --withInventory='1' --withVariations='1' --templateid='productListTemplateToolTipThumb'  --legacy;" class="listStyleNone noPadOrMargin fluidList"></ul>
+						</div>
 					</div>
-				</div>
 
-				<div data-tlc="bind $var '.pid'; powerreviews_reviews#reviewsnippet  --minreview='1' --legacy;" class="reviewsStarsCount"></div>
-				
-				<div data-tlc="bind $var '.pid'; if (is $var --notblank;) {{format --prepend='ITEM#:<br> '; apply --append;}};" class="prodNum stid floatLeft clearfix"></div>
+					<div data-tlc="bind $var '.pid'; powerreviews_reviews#reviewsnippet  --minreview='1' --legacy;" class="reviewsStarsCount"></div>
+					
+					<div data-tlc="bind $var '.pid'; if (is $var --notblank;) {{format --prepend='ITEM#:<br> '; apply --append;}};" class="prodNum stid floatLeft clearfix"></div>
 
-			  <!-- 	<span data-bind='var: reviews(reviews.total); format:text; pretext: from ;posttext: reviews; className:numReviews;'></span> -->
-			</div> 
+				  <!-- 	<span data-bind='var: reviews(reviews.total); format:text; pretext: from ;posttext: reviews; className:numReviews;'></span> -->
+				</div> 
 			</div>  
-		</a>
 		<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy; apply --append;" class="prodViewerAddToCartForm floatRight hideMe" action="#" onsubmit="return false" data-app-submit="quickstart|productAdd2Cart" data-show="modal">
 			<input name="qty" value="1" type="hidden">
 			<button data-tlc="quickstart#addtocartbutton  --legacy; apply --append;" data-bind="format:addtocartbutton; extension:quickstart; useParentData:true;" class="prodViewerAddToCartButton applyButton" role="button" aria-disabled="false">MORE DETAILS</button>
