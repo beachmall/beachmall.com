@@ -532,8 +532,8 @@ label.break	{display:block; margin:0 0 4px 6px;}
 .products.product > div {height:auto; width:220px;}
 .productListTemplateResultsNoPreview.products.product {height:420px;}
 .productListTemplateResultsNoPreview .prodNum {width:100%; margin:12px 0 0 0;}
-.quickView {background:#3bb3c3; border:none; color:#ffffff; padding:4px; font-family:"Open Sans";}
-.quickViewContainer:hover .quickView {display:inline-block;}
+.quickView {background:#3bb3c3; border:none; color:#ffffff; padding:4px; font-family:"Open Sans"; z-index:0;}
+.quickViewContainer:hover .quickView {z-index:1001;}
 
 .searchResultsProduct.products.product {height:380px; margin:20px 16.75px 7.5px;}
 .minimalMode .searchResultsProduct.products.product {height:222px; width:222px;}
@@ -1961,9 +1961,3 @@ ACCT CREATION
 .Account .createButton {color:#ffffff; padding:5px 15px; margin:10px auto; display:block; font-family:Oswald; font-weight:normal; font-size:1.8em; border:none; background:#e0463a;}
 
 /*END ACCT CREATION*/
-
-
-/*MEDIA 768 8col*/
-@media screen and (max-width: 799px) {
-	.quickViewContainer:hover .quickView {display:none !important;}
-}

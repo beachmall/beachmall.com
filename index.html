@@ -115,7 +115,7 @@ css files should be included before any .js file to ensure they are downloaded i
 $(document).ready(function(){
 
 	window.myApp = new initApp({	<!-- versionhere -->
-		"release":"201403.20140509141300",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+		"release":"201403.20140509150400",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 		"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 		"baseURL":baseURL, //used in non-local mode.
 		"checkoutAuthMode" : "active",//can be passive, active or required
@@ -198,7 +198,7 @@ ANIMATION TESTING
 <header class='clearfix topNav tanGradient'>
 	<div class='localizedBox fontBlack fontSize12 floatLeft' onmouseover="myApp.ext.beachmart_dropdown.a.showGeoDropdown($(this),220);">
 	<!-- <div class='localizedBox fontBlack fontSize12 floatLeft' onmouseenter="myApp.ext.beachmart_dropdown.a.showGeoDropdown($(this),220);"> -->
-        <span class='oswaldFontBold  fontSize14'>LOCALIZED FORE &nbsp;</span><span class='oswaldFontBold fontTeal fontSize18 shipPostal' onClick="myApp.ext.beachmart_dropdown.a.showDropdown($(this).parent(),220);"></span><br>
+        <span class='oswaldFontBold  fontSize14'>LOCALIZED FORS &nbsp;</span><span class='oswaldFontBold fontTeal fontSize18 shipPostal' onClick="myApp.ext.beachmart_dropdown.a.showDropdown($(this).parent(),220);"></span><br>
         <span class='openSansFont shipCity'> </span> <span class='shipRegion'></span><span class='openSansFontBold pointer' onClick="myApp.ext.beachmart_dropdown.a.showDropdown($(this).parent(),220);">&nbsp; (Change)</span>
     	<div class='arrowContainer'></div>
 		<div class='geoDropdown dropdown'>
@@ -1779,7 +1779,7 @@ remember to NOT put the button inside the 'onclick' container or two events will
 -->
 <li id="productListTemplate" data-tlc="bind $var '.'; beachmall_store#inventoryhide  --legacy;" data-legacy-useparentdata="true" class="loadingBG  products product floatLeft quickViewContainer"> <!-- onmouseover="$('.quickView',$(this)).show();" onmouseout="$('.quickView').hide();"> -->
 	
-	<button class="floatRight pointer quickView displayNone" onclick="quickView('product',{'templateID':'productTemplateQuickView','pid':$(this).closest('[data-pid]').attr('data-pid')});">Quickview</button>
+	<button class="floatRight pointer quickView" onclick="quickView('product',{'templateID':'productTemplateQuickView','pid':$(this).closest('[data-pid]').attr('data-pid')});">Quickview</button>
 	<div data-tlc="beachmall_store#brandslistfilter --legacy;"></div>	
     <div data-tlc="bind $var '.pid'; apply --attrib='data-pid';" class="pointer productListSmall">
 		<a data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';">
