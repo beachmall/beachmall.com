@@ -805,11 +805,16 @@ $(window).on('mouseexit', '[data-beachmall-hoverClass]', function(e){
 			addHover : function() { dump('---START beachmall_store addHover');
 				setTimeout(function() {
 				//	$('[data-beachmall-hoverClass]').css('border','5px solid green');
-					$('body').on('mouseenter', '[data-beachmall-hoverClass]', function(e){
+					$('body').on('touchstart', function(e){
+						$(this).addClass($(this).attr('data-beachmall-hoverClass'));
+					}).on('touchmove', function(e){
+						$(this).removeClass($(this).attr('data-beachmall-hoverClass'));
+					}).on('mouseenter', '[data-beachmall-hoverClass]', function(e){
 						dump('---addHover add class this:'); dump($(this).attr('data-beachmall-hoverClass'));
 						$(this).addClass($(this).attr('data-beachmall-hoverClass'));
-					});
-					$('body').on('mouseleave', '[data-beachmall-hoverClass]', function(e){
+					}).on('mouseleave', '[data-beachmall-hoverClass]', function(e){
+						$(this).removeClass($(this).attr('data-beachmall-hoverClass'));
+					}).click(function(e){
 						$(this).removeClass($(this).attr('data-beachmall-hoverClass'));
 					});
 				},2000);
