@@ -115,7 +115,7 @@ css files should be included before any .js file to ensure they are downloaded i
 $(document).ready(function(){
 
 	window.myApp = new initApp({	<!-- versionhere -->
-		"release":"201403.20140509150400",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+		"release":"201403.20140509234400",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 		"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 		"baseURL":baseURL, //used in non-local mode.
 		"checkoutAuthMode" : "active",//can be passive, active or required
@@ -1974,7 +1974,7 @@ container ul should have lineItemProdlist class on it instead of productList
 </li>
 
 
-<li id="productListTemplateToolTipThumb" data-tlc="bind $var '.pid'; beachmall_store#hideifnotpurchaseable  --legacy;" class="loadingBG ">
+<li id="productListTemplateToolTipThumb" data-tlc="bind $var '.pid'; beachmall_store#hideifnotpurchaseable  --legacy;" class="loadingBG">
 	<div data-tlc="bind $var '.pid'; apply --attrib='data-pid'; " class="prodThumbContainer pointer targetElement" data-tooltipthumb="data-toolTipThumb">
 		<a data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';">
 			<img data-tlc="bind $var '.%attribs.zoovy:prod_image1'; if (is $var --notblank;) {{ apply --img --media=$var --width=30 --height=30 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class="prodThumb" alt="" height="30" width="30" data-apptimize="embed">
@@ -2311,7 +2311,7 @@ this will likely become more flexible in the future. ###
 	<img data-tlc="bind $var '.%attribs.zoovy:prod_image99'; magictoolbox_mzp#magicthumb  --legacy;" src="blank.gif" alt="" height="85" width="300" data-apptimize="embed">
 
 	<div id="prodSiblings" class="clearfix">
-		<ul data-tlc="bind $var '.%attribs.user:grp_siblings'; store_prodlist#productlist  --hidemultipage='true' --before='<b>Available Colors:</b> <span class=&quot;zhint&quot;>(click image to select)</span>' --withInventory='1' --withVariations='1' --templateid='productListTemplateToolTipThumb'  --legacy;" class="listStyleNone noPadOrMargin fluidList clearfix"></ul> <!-- id='prodlistSiblings' -->
+		<ul data-tlc="bind $var '.%attribs.user:grp_siblings'; store_prodlist#productlist  --hidemultipage='true' --before='<b>Available Colors:</b> <span class=&quot;zhint&quot;>(click image to select)</span>' --withInventory='1' --withVariations='1' --templateid='productListTemplateToolTipThumb'  --legacy;" class="listStyleNone noPadOrMargin fluidList clearfix prodPageSiblings"></ul> <!-- id='prodlistSiblings' -->
 	</div>
 
 	<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy; apply --append;" class="prodViewerAddToCartForm clearfix" action="#" data-app-submit="quickstart|productAdd2Cart" data-show="modal">

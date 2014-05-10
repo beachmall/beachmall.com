@@ -767,10 +767,10 @@ label.break	{display:block; margin:0 0 4px 6px;}
 .prodListMiniVariation .optionsParent {height:50px; width:100%; overflow:hidden;}
 .prodListMiniVariation .optionImagesCont {height:30px; width:30px; margin:8px 0 6px 13px; padding:0;}
 .prodListMiniVariation .optionImagesCont img {height:30px; width:30px;}
-
 .prodListSibs .mpNoShow, .prodListSibs b, .prodListSibs span.zhint {display:none;}
 .prodListSibs ul {height:40px; width:100%; overflow:hidden; float:left;}
-.prodListSibs .fluidList li {height:30px; width:30px; margin:5px 5px 5px 5px; display:block; border:2px solid #3bb3c3;}
+.prodListSibs .fluidList li {height:30px; width:30px; margin:5px 5px 5px 5px; display:none; border:2px solid #3bb3c3;}
+
 .prodListSibs .fluidList li:hover {border:2px solid #e0463a;}
 .prodListSibs .fluidList li > div {height:30px; width:30px;}
 /*STYLE FOR ABOVE LISTS W/ MORE THAN ONE ITEM INSTEAD OF JUST THE 1st
@@ -1084,6 +1084,9 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 .disRedirect .pr-snippet-read-write,.disRedirect .pr-snippet-social-bar {display:none;}
 .disRedirect a {color:#3bb3c3; font-weight:bold; text-decoration:underline;}
 .disRedirect a:hover {color:#E63738;}
+
+.prodPageSiblings.fluidList li {display:none;}
+
 .fullWidth .prodViewerAddToCartForm .addToCartButton,
 .fullWidth .prodViewerAddToCartForm .atcButton {
 	height:50px;
