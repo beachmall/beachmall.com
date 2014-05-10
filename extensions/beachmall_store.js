@@ -267,8 +267,8 @@ var beachmall_store = function(_app) {
 			showprodmodifier : function($tag, data) {
 				//_app.u.dump('-----showprodmodifier'); _app.u.dump(data.value); //_app.u.dump(data.globals.tags[data.globals.focusTag]);
 				var zoovyIsTags = (data.bindData.iselastic) ? data.value.tags : data.value['%attribs']['zoovy:prod_is_tags'];
-
-				if (zoovyIsTags.indexOf('IS_DISCONTINUED') >= 0) {
+				
+				if (zoovyIsTags.indexOf('IS_DISCONTINUED') >= 0 || !_app.ext.store_product.u.productIsPurchaseable(data.value.pid)) {
 					$tag.parent().parent().parent().parent().hide().attr('data-discontinued',1);
 				}
 				else if (zoovyIsTags.indexOf('IS_USER3') >= 0) {
@@ -517,6 +517,7 @@ var beachmall_store = function(_app) {
 				//adds an attribute used for counting number of purchasable siblings if is purchasable
 			hideifnotpurchaseable : function($tag, data) {
 				if(_app.ext.store_product.u.productIsPurchaseable(data.value)) {
+					$tag.show();
 					$tag.attr('data-purchasable',true);
 //					_app.u.dump('Product is purchasable....');
 					//yay, you get to stay in the list!!
