@@ -53,6 +53,7 @@ var beachmall_store = function(_app) {
 			onSuccess : function() {
 			
 				_app.ext.beachmall_store.u.hardImgSrc();
+				_app.ext.beachmall_store.u.addHover();
 			
 				_app.templates.homepageTemplate.on('complete.beachmall_store',function(event,$ele,P) {
 					$('.floatingBar',$ele).show(); //shows floating bar upon return to hompage if it's been closed.
@@ -266,8 +267,8 @@ var beachmall_store = function(_app) {
 			showprodmodifier : function($tag, data) {
 				//_app.u.dump('-----showprodmodifier'); _app.u.dump(data.value); //_app.u.dump(data.globals.tags[data.globals.focusTag]);
 				var zoovyIsTags = (data.bindData.iselastic) ? data.value.tags : data.value['%attribs']['zoovy:prod_is_tags'];
-
-				if (zoovyIsTags.indexOf('IS_DISCONTINUED') >= 0) {
+				
+				if (zoovyIsTags.indexOf('IS_DISCONTINUED') >= 0 || !_app.ext.store_product.u.productIsPurchaseable(data.value.pid)) {
 					$tag.parent().parent().parent().parent().hide().attr('data-discontinued',1);
 				}
 				else if (zoovyIsTags.indexOf('IS_USER3') >= 0) {
@@ -516,6 +517,7 @@ var beachmall_store = function(_app) {
 				//adds an attribute used for counting number of purchasable siblings if is purchasable
 			hideifnotpurchaseable : function($tag, data) {
 				if(_app.ext.store_product.u.productIsPurchaseable(data.value)) {
+					$tag.show();
 					$tag.attr('data-purchasable',true);
 //					_app.u.dump('Product is purchasable....');
 					//yay, you get to stay in the list!!
@@ -790,6 +792,24 @@ var beachmall_store = function(_app) {
 		u : {
 
 /**GENERAL UTILS */
+			addHover : function() { dump('---START beachmall_store addHover');
+				setTimeout(function() {
+				//	$('[data-beachmall-hoverClass]').css('border','5px solid green');
+					$('body').on('touchstart', '[data-beachmall-hoverClass]', function(e){
+							$(this).addClass($(this).attr('data-beachmall-hoverClass')); 
+					}).on('touchmove', '[data-beachmall-hoverClass]', function(e){
+						$(this).removeClass($(this).attr('data-beachmall-hoverClass'));
+					}).on('mouseenter', '[data-beachmall-hoverClass]', function(e){
+						//dump('---addHover add class this:'); dump($(this).attr('data-beachmall-hoverClass'));
+						$(this).addClass($(this).attr('data-beachmall-hoverClass'));
+					}).on('mouseleave', '[data-beachmall-hoverClass]', function(e){
+						$(this).removeClass($(this).attr('data-beachmall-hoverClass'));
+					}).on('click',  '[data-beachmall-hoverClass]',(function(e){
+						$(this).removeClass($(this).attr('data-beachmall-hoverClass'));
+					}));
+				},2000);
+			}, //addHover
+
 				//will add tabs to the selector in the context passed
 			tabify : function($context,selector) {
 				var $tabContainer = $(selector,$context);
@@ -850,6 +870,7 @@ var beachmall_store = function(_app) {
 
 			//takes the seo name and removes certain characters/spaces/patterns and returns the seo name
 			removeUnwantedChars : function(seo) {
+				seo = seo.replace('_',' '); //doesn't want any "_" in seo hash
 				seo = seo.replace(' / ',' '); //doesn't want any " / " in seo hash
 				seo = seo.replace('/',' '); //doesn't want any "/" in seo hash
 				seo = seo.replace('+',' '); //doesn't want any "+" in seo hash

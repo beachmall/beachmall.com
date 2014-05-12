@@ -952,8 +952,9 @@ uities
 
 			
 			initEstArrival : function(infoObj,attempts){
-				attempts = Number(attempts) || 0;
 				_app.u.dump("BEGIN beachmart.u.initEstArrival");
+				attempts = Number(attempts) || 0;
+				dump(attempts);
 				window.SKU = infoObj.pid; _app.u.dump("GLOBAL SKU IS A TEMPORARY SOLUTION!!!",'warn'); //was originally written in a hybrid store. need to get this more app friendly.
 				var zip;
 				var thisCartDetail = _app.data["cartDetail|"+_app.model.fetchCartID()];
@@ -970,7 +971,7 @@ uities
 					_app.ext.beachmart.u.getShipQuotes(zip); //function also gets city/state from googleapi
 					}
 				//whereAmI may still be loading if page was loaded to product directly
-				else if(attmpts < 5) {
+				else if(attempts < 35) {
 					setTimeout(function(){ _app.ext.beachmart.u.initEstArrival(infoObj,attempts + 1 ); },200);
 				}
 				else	{
