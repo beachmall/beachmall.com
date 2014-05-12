@@ -971,7 +971,7 @@ uities
 					_app.ext.beachmart.u.getShipQuotes(zip); //function also gets city/state from googleapi
 					}
 				//whereAmI may still be loading if page was loaded to product directly
-				else if(attempts < 5) {
+				else if(attempts < 35) {
 					setTimeout(function(){ _app.ext.beachmart.u.initEstArrival(infoObj,attempts + 1 ); },200);
 				}
 				else	{
