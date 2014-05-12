@@ -28,7 +28,7 @@ var store_seo = function(_app) {
 	vars : {
 		defaultTitle : "Beach Gear", //Should not include any Prefix or Postfix
 		titlePrefix : "",
-		titlePostfix : " - Beachmall.com"
+		titlePostfix : "" // - Beachmall.com
 		},
 
 	callbacks : {
