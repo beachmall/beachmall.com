@@ -44,10 +44,12 @@ var beachmart = function(_app) {
 //					_app.u.dump("BEGIN beachmart.callbacks.startMyProgram"); // will write to console, if console is enabled.
 
 					// load the google map api lib
-					var script = document.createElement("script");
-					script.type = "text/javascript";
-					script.src = ((document.location.protocol == 'https:') ? 'https:' : 'http:') + "//maps.googleapis.com/maps/api/js?key=AIzaSyAW4uPPdoxArUsCy2SvCchNQmhX328T2oY&sensor=false&callback=myApp.ext.beachmart.u.instantiateGeoCoder";
-					document.body.appendChild(script);
+		//			var script = document.createElement("script");
+		//			script.type = "text/javascript";
+		//			script.src = ((document.location.protocol == 'https:') ? 'https:' : 'http:') + "//maps.googleapis.com/maps/api/js?key=AIzaSyAW4uPPdoxArUsCy2SvCchNQmhX328T2oY&sensor=false&callback=myApp.ext.beachmart.u.instantiateGeoCoder";
+		//			document.body.appendChild(script);
+					
+					_app.ext.beachmart.calls.whereAmI.init({'callback':'handleWhereAmI','extension':'beachmart'},'passive');
 					
 					// get the estimate arrival code running. works passively.
 					_app.templates.productTemplate.on('complete.beachmall_store',function(event,$ele,P) {
@@ -147,8 +149,8 @@ var beachmart = function(_app) {
 				onSuccess : function(tagObj){ 
 					dump('----handleWhereAmI'); dump(_app.data[tagObj.datapointer]);
 					var data = _app.data[tagObj.datapointer]; 
-		_app.ext.beachmart.u.fetchLocationInfoByZip(data.zip);
-	/*	REVISIT LATER, DOING IT WITH THIS MAY MAKE IT CLEANER, BUT WAS BREAKING DURING CONVERSION FROM GOOGLE API TO WHEREAMI
+	//	_app.ext.beachmart.u.fetchLocationInfoByZip(data.zip);
+	//	REVISIT LATER, DOING IT WITH THIS MAY MAKE IT CLEANER, BUT WAS BREAKING DURING CONVERSION FROM GOOGLE API TO WHEREAMI
 					var cartID = _app.model.fetchCartID();
 					var thisCartDetail = _app.data["cartDetail|"+cartID];
 					//_app.u.dump('----handleWhereAmI:'); _app.u.dump(data);
@@ -187,7 +189,18 @@ var beachmart = function(_app) {
 							_app.model.dispatchThis('passive');
 							}
 					}
-	*/				//_app.ext.beachmart.u.getShipQuotes(_app.data[tagObj.datapointer].zip);
+					
+					if(_app.ext.quickstart.vars.hotw && _app.ext.quickstart.vars.hotw[0] && _app.ext.quickstart.vars.hotw[0].pageType == 'product')	{				
+						var $container = $(_app.u.jqSelector('#',_app.ext.quickstart.vars.hotw[0].parentID));
+						$('.timeInTransitMessaging').empty(); //intentionally has no context. once a zip is entered, remove this anywhere it was displayed.
+						$('.putLoadingHere',$container).addClass('loadingBG').show();
+						$('.loadingText',$container).show();
+						$('.shipMessage, .estimatedArrivalDate, .deliveryLocation, .deliveryMethod',$container).empty()				
+						_app.ext.beachmart.u.getShipQuotes(data.zip);
+					}
+					else {} //not on a product page. do nothing
+					
+					//_app.ext.beachmart.u.getShipQuotes(_app.data[tagObj.datapointer].zip);
 
 				},
 				onError : function(responseData)	{
@@ -459,7 +472,7 @@ Action
 			updateShipPostal : function($form)	{
 				_app.u.dump("BEGIN beachmall.a.updateShipPostal.");
 				var postal = $("[name='ship/postal']",$form).val();
-				var thisCartDetail = _app.data["cartDetail|"+_app.model.fetchCartID()];
+				//var thisCartDetail = _app.data["cartDetail|"+_app.model.fetchCartID()];
 //the cartSet doesn't download a fresh copy of the cart, so update the local cart object manually.
 	/*			if(thisCartDetail)	{
 					if(thisCartDetail.ship)	{
@@ -473,7 +486,7 @@ Action
 					_app.u.dump(" -> postal set: "+postal);
 					//local cart object will be updated in fetchLocationInfoByZip, cartSet is also run there so that city, region, and zip are all updated
 					//
-					_app.ext.beachmart.calls.whereAmI.init({'callback':'testCallback','extension':'beachmart',zip:'92883'},'passive');
+					_app.ext.beachmart.calls.whereAmI.init({'callback':'handleWhereAmI','extension':'beachmart','zip':postal},'passive');
 	//				_app.ext.beachmart.u.fetchLocationInfoByZip(postal,0,_app.ext.beachmart.a.updateTimeInTransit);
 					//dump(thisCartDetail.ship.city); dump(thisCartDetail.ship.region); dump(thisCartDetail.ship.postal);
 			/*		_app.ext.cco.calls.cartSet.init({
@@ -1065,13 +1078,14 @@ uities
 				//	_app.u.dump(" -> zip: "+zip);
 				//if the city or the state is already available, don't waste a call to get additional info.
 				//this block is also executed for zip update, so allow reset.
-					var thisCartDetail = _app.data["cartDetail|"+_app.model.fetchCartID()];
-					if(thisCartDetail && thisCartDetail.ship && (!thisCartDetail.ship.city && !thisCartDetail.ship.region))	{
-						_app.ext.beachmart.u.fetchLocationInfoByZip(zip);
-						}
+	//whereAmI should be autosetting city, region, & zip so removed this until solution is worked up.
+	//				var thisCartDetail = _app.data["cartDetail|"+_app.model.fetchCartID()];
+	//				if(thisCartDetail && thisCartDetail.ship && (!thisCartDetail.ship.city && !thisCartDetail.ship.region))	{
+	//					_app.ext.beachmart.u.fetchLocationInfoByZip(zip);
+	//					}
 					var prodArray = new Array();
 					prodArray.push(SKU);
-						//removed this, at this point there should already be a zip in the cartDetail...
+			//removed this, at this point there should already be a zip in the cartDetail...
 			//		if(thisCartDetail.ship)	{
 			//			//thisCartDetail.ship.postal = zip; //update local object so no request for full cart needs to be made for showTransitTimes to work right.
 			//			}
@@ -1096,7 +1110,7 @@ uities
 
 
 			instantiateGeoCoder : function(){
-				geocoder = new google.maps.Geocoder();
+			//	geocoder = new google.maps.Geocoder();
 //				dump('---START instantiateGeoCoder');
 				//get user coordinates to set cart and geolocation classes with
 			//	_app.ext.beachmart.u.getGeoCoords();
