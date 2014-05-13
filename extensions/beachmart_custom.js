@@ -486,7 +486,8 @@ Action
 					_app.u.dump(" -> postal set: "+postal);
 					//local cart object will be updated in fetchLocationInfoByZip, cartSet is also run there so that city, region, and zip are all updated
 					//
-					_app.ext.beachmart.calls.whereAmI.init({'callback':'handleWhereAmI','extension':'beachmart','zip':postal},'passive');
+					_app.model.addDispatchToQ({"_cmd":"whereAmI", 'zip':postal, "_tag" : {'callback':'handleWhereAmI','extension':'beachmart', 'datapointer':'whereAmI'}},'mutable');
+					_app.model.dispatchThis('mutable');
 	//				_app.ext.beachmart.u.fetchLocationInfoByZip(postal,0,_app.ext.beachmart.a.updateTimeInTransit);
 					//dump(thisCartDetail.ship.city); dump(thisCartDetail.ship.region); dump(thisCartDetail.ship.postal);
 			/*		_app.ext.cco.calls.cartSet.init({
