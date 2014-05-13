@@ -531,15 +531,15 @@ need to be customized on a per-ria basis.
 				if(infoObj.performJumpToTop && $('html, body').scrollTop() > 0)	{
 					//new page content loading. scroll to top.
 					$('html, body').animate({scrollTop : ($('header','#appView').length ? $('header','#appView').first().height() : 0)},500,function(){
-						$o.fadeOut(1000, function(){$n.fadeIn(1000)}); //fade out old, fade in new.
+						$o.fadeOut(100, function(){$n.fadeIn(100)}); //fade out old, fade in new.
 						})
 					} 
 				else	{
-					$o.fadeOut(1000, function(){$n.fadeIn(1000)}); //fade out old, fade in new.
+					$o.fadeOut(100, function(){$n.fadeIn(100)}); //fade out old, fade in new.
 					}
 				}
 			else if($n instanceof jQuery)	{
-				$n.fadeIn(1000);
+				$n.fadeIn(100);
 				}
 			else	{
 				//hhmm  not sure how or why we got here.
