@@ -244,12 +244,12 @@ var beachmall_cartestarrival = function(_app) {
 					}
 				else if(zip) { dump('----- else if (zip)');
 					var thisCartDetail = _app.data['cartDetail|'+_app.model.fetchCartID()];
-					//_app.u.dump(" -> zip: "+zip);
+					dump(" -> zip: "+zip); dump(thisCartDetail.ship.city); dump(thisCartDetail.ship.region);
 				//if the city or the state is already available, don't waste a call to get additional info.
 				//this block is also executed for zip update, so allow reset.
-					if(thisCartDetail && thisCartDetail.ship && (!thisCartDetail.ship.city && !thisCartDetail.ship.region))	{
-						_app.ext.beachmart.u.fetchLocationInfoByZip(zip);
-					}
+	//				if(thisCartDetail && thisCartDetail.ship && (!thisCartDetail.ship.city || !thisCartDetail.ship.region))	{
+	//					_app.ext.beachmart.u.fetchLocationInfoByZip(zip);
+	//				}
 					var prodArray = new Array();
 					prodArray.push(pid);
 						//removed this, at this point there should already be a zip in the cartDetail...
@@ -296,15 +296,23 @@ var beachmall_cartestarrival = function(_app) {
 			
 			
 			getTransitInfo : function(tagObj,data,index,ground)	{
-				_app.u.dump("BEGIN beachmall_cartestarrival.u.getTransitInfo");
-
+				_app.u.dump("BEGIN beachmall_cartestarrival.u.getTransitInfo"); dump(tagObj); dump(data);
+				
 				var pid = tagObj.pid;
 				var prodAttribs = _app.data['appProductGet|'+pid]['%attribs'];
 				var thisCartDetail = _app.data['cartDetail|'+_app.model.fetchCartID()];
 
+//				dump('getTransitInfo cartDetail'); dump(thisCartDetail.ship.city); dump(thisCartDetail.ship.region); dump(thisCartDetail.postal);
 				var $r = $("<div class='shipSummaryContainer' \/>"); //what is returned. jquery object of shipping info.
-				$r.append("<span class='shipMessage'></span></span><span class='estimatedArrivalDate'></span><span class='shipCity'></span><span class='shipRegion'></span><span class='shipPostal'></span><span class='deliveryMethod'></span>");
-
+				if(thisCartDetail && thisCartDetail.ship && (thisCartDetail.ship.city || thisCartDetail.ship.region || thisCartDetail.postal)) {
+					var tempCity = thisCartDetail.ship.city ? thisCartDetail.ship.city : "";
+					var tempRegion = thisCartDetail.ship.region ? thisCartDetail.ship.region : "";
+					var tempPostal = thisCartDetail.ship.postal ? thisCartDetail.ship.postal : "";
+					$r.append("<span class='shipMessage'></span></span><span class='estimatedArrivalDate'></span><span class='shipCity'> "+tempCity+"</span><span class='shipRegion'> "+tempRegion+"</span><span class='shipPostal'> "+tempPostal+" </span><span class='deliveryMethod'></span>");
+				}
+				else {
+					$r.append("<span class='shipMessage'></span></span><span class='estimatedArrivalDate'></span><span class='shipCity'></span><span class='shipRegion'></span><span class='shipPostal'></span><span class='deliveryMethod'></span>");
+				}
 				var hour = Number(data.cutoff_hhmm.substring(0,2)) + 3; //add 3 to convert to EST.
 				var minutes = data.cutoff_hhmm.substring(2);
 
@@ -356,7 +364,8 @@ var beachmall_cartestarrival = function(_app) {
 					$('.estimatedArrivalDate',$r).append(_app.ext.beachmart.u.yyyymmdd2Pretty(data['@Services'][index]['arrival_yyyymmdd'])+" to");
 				}
 					
-				_app.ext.beachmart.u.fetchLocationInfoByZip(thisCartDetail.ship.postal);
+				//_app.ext.beachmart.u.fetchLocationInfoByZip(thisCartDetail.ship.postal);
+				
 				
 				return $r;
 			}, //getTransitInfo
