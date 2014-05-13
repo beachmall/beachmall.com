@@ -285,8 +285,8 @@ var store_routing = function(_app) {
 				_app.router.appendHash({'type':'match','route':'boys-rash-guards','callback':'.beachwear.beach-swimwear.rashguard.rashguards'});
 				_app.router.appendHash({'type':'match','route':'buyer-guides','callback':'.buyer_guides'});
 				_app.router.appendHash({'type':'match','route':'adirondack-chairs-buyer-guide','callback':'.buyer_guides.adirondack-chairs'});
-				_app.router.appendHash({'type':'match','route':'backpack-beach-chairs','callback':'.buyer_guides.backpack-beach-chairs'});
-				_app.router.appendHash({'type':'match','route':'beach-bags','callback':'.buyer_guides.beach-bags-beach-totes'});
+				_app.router.appendHash({'type':'match','route':'backpack-beach-chairs-buyer-guide','callback':'.buyer_guides.backpack-beach-chairs'});
+				_app.router.appendHash({'type':'match','route':'beach-bags-buyer-guide','callback':'.buyer_guides.beach-bags-beach-totes'});
 				_app.router.appendHash({'type':'match','route':'beach-cabanas-buyer-guide','callback':'.buyer_guides.beach-cabanas'});
 				_app.router.appendHash({'type':'match','route':'beach-carts-buyer-guide','callback':'.buyer_guides.beach-carts'});
 				_app.router.appendHash({'type':'match','route':'beach-chairs-buyer-guide','callback':'.buyer_guides.beach-chairs'});
