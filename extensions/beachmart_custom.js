@@ -145,7 +145,7 @@ var beachmart = function(_app) {
 			handleWhereAmI : {
 				
 				onSuccess : function(tagObj){ 
-//					dump('----handleWhereAmI'); dump(_app.data[tagObj.datapointer]);
+					dump('----handleWhereAmI'); dump(_app.data[tagObj.datapointer]);
 					var data = _app.data[tagObj.datapointer]; 
 		_app.ext.beachmart.u.fetchLocationInfoByZip(data.zip);
 	/*	REVISIT LATER, DOING IT WITH THIS MAY MAKE IT CLEANER, BUT WAS BREAKING DURING CONVERSION FROM GOOGLE API TO WHEREAMI
@@ -199,6 +199,20 @@ var beachmart = function(_app) {
 					$('.timeInTransitMessaging',$container).empty().append("Unable to determine your zip code for estimated arrival date. <span class='pointer zipLink' onClick='myApp.ext.beachmart.a.showZipDialog(); return false;'>click here</span> to enter zip.").show();
 					}
 				}, //handleWhereAmI
+				
+			testCallback : {
+				onSuccess : function(tagObj){
+					dump('----testCallback'); dump(tagObj); dump(_app.data[tagObj.datapointer]);
+					_app.ext.beachmart.a.updateTimeInTransit(_app.data[tagObj.datapointer]);
+	//			var data = _app.data[tagObj.datapointer]; 
+		//_app.ext.beachmart.u.fetchLocationInfoByZip(data.zip);
+
+
+				},
+				onError : function(responseData)	{
+					dump('----ERROR IN TEST CALLBACK!!!!!!!!!!!!!!')
+				} //testCallback
+			},
 			
 			magicRefresh : {
 				
@@ -349,7 +363,7 @@ var vertCarouselOptions = {
 			//returns: areacode, city, country, region, region_name, zip (among other data i didn't think was relevant)
 			whereAmI : {
 				init : function(_tag,Q)	{
-					dump('----START whereAmI');
+					dump('----START whereAmI'); dump(_tag); 
 					var r = 0;
 					_tag = $.isEmptyObject(_tag) ? {} : _tag; 
 					_tag.datapointer = "whereAmI"
@@ -364,6 +378,7 @@ var vertCarouselOptions = {
 					return r;
 					},
 				dispatch : function(_tag,Q)	{
+					dump('got into whereAmI dispatch');
 					_app.model.addDispatchToQ({"_cmd":"whereAmI","_tag" : _tag},Q || 'mutable');
 					} 
 				},//whereAmI
@@ -458,7 +473,8 @@ Action
 					_app.u.dump(" -> postal set: "+postal);
 					//local cart object will be updated in fetchLocationInfoByZip, cartSet is also run there so that city, region, and zip are all updated
 					//
-					_app.ext.beachmart.u.fetchLocationInfoByZip(postal,0,_app.ext.beachmart.a.updateTimeInTransit);
+					_app.ext.beachmart.calls.whereAmI.init({'callback':'testCallback','extension':'beachmart',zip:'92883'},'passive');
+	//				_app.ext.beachmart.u.fetchLocationInfoByZip(postal,0,_app.ext.beachmart.a.updateTimeInTransit);
 					//dump(thisCartDetail.ship.city); dump(thisCartDetail.ship.region); dump(thisCartDetail.ship.postal);
 			/*		_app.ext.cco.calls.cartSet.init({
 						'ship/postal':postal
@@ -492,10 +508,10 @@ Action
 				
 				},
 				
-			
 			//checks if a product page is open, and updates time in transit for that page created to be used as a callback to cartSet w/ zip from fetchLocationInfoByZip when called from updateShipPostal
 			updateTimeInTransit : function(rd) {
 				dump('START beachmart.a.updateTimeInTransit');
+				dump(rd); dump(rd.country); dump(rd.city); dump(rd.region);
 				if(_app.model.responseHasErrors(rd)) {
 					$('#globalMessaging').anymessage({'message':rd}); dump('beachmart.a.updateTimeInTransit response had errors');
 				}
