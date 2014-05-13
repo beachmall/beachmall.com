@@ -158,7 +158,7 @@ var beachmart = function(_app) {
 							//update local cart
 							thisCartDetail.ship.city = data.city;
 							thisCartDetail.ship.region = data.region;
-							thisCartDetail.ship.zip = data.zip;
+							thisCartDetail.ship.postal = data.zip;
 							//update display classes
 							$('.shipCity').text(data.city || "");
 							$('.shipRegion').text(data.region || "");
@@ -180,7 +180,7 @@ var beachmart = function(_app) {
 								}
 							if(data.zip) {
 								$('.shipPostal').text(data.zip || "");
-								thisCartDetail.ship.zip = data.zip;
+								thisCartDetail.ship.postal = data.zip;
 								_app.ext.cco.calls.cartSet.init({"ship/zip":data.zip,"_cartid":cartID},{},'passive');
 							}
 							if(data.city || data.region || data.zip)	{
@@ -192,7 +192,7 @@ var beachmart = function(_app) {
 					else {
 						thisCartDetail.ship.city = "";
 						thisCartDetail.ship.region = "";
-						thisCartDetail.ship.zip = "";
+						thisCartDetail.ship.postal = "";
 						//update display classes
 						$('.shipCity').text("Location unavailable");
 						$('.shipRegion').text("");
@@ -1009,8 +1009,8 @@ uities
 				window.SKU = infoObj.pid; _app.u.dump("GLOBAL SKU IS A TEMPORARY SOLUTION!!!",'warn'); //was originally written in a hybrid store. need to get this more app friendly.
 				var zip;
 				var thisCartDetail = _app.data["cartDetail|"+_app.model.fetchCartID()];
-				if(thisCartDetail && thisCartDetail.ship && thisCartDetail.ship.zip)	{
-					zip = thisCartDetail.ship.zip;
+				if(thisCartDetail && thisCartDetail.ship && thisCartDetail.ship.postal)	{
+					zip = thisCartDetail.ship.postal;
 					}
 				/*
 				navigator.geolocation is crappily supported. appears there's no 'if user hits no' support to execute an alternative. at least in FF.
@@ -1681,7 +1681,7 @@ if(varsCart && varsCart.ship.region && backorder != 2)	{
 	$('.deliveryLocation',$r).append(" "+varsCart.ship.region);
 	}
 if	(varsCart && varsCart.ship.postal && backorder != 2)	{
-	$('.deliveryLocation',$r).append(" "+varsCart.ship.zip+" (change)"); //change to zip from postal when whereAmI added back in
+	$('.deliveryLocation',$r).append(" "+varsCart.ship.postal+" (change)");
 	}
 else if (backorder != 2){
 	$('.deliveryLocation',$r).append(" (enter zip) ");
