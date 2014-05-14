@@ -437,7 +437,11 @@ _app.ext.order_create.u.handlePanel($context,'chkoutMethodsPay',['empty','transl
 				}, //chkoutPayOptionsFieldset
 
 			chkoutAddressBill: function($fieldset,formObj)	{
-				var valid = 0,  cartID = $fieldset.closest("[data-app-role='checkout']").data('cartid');
+				var valid = 0,  cartID = $fieldset.closest("[data-app-role='checkout']").data('cartid'), CID;
+				
+				if(_app.u.thisNestedExists("data.cartDetail|"+cartID+".customer.cid",_app) && _app.data['cartDetail|'+cartID].customer.cid > 0)	{
+					CID = _app.data['cartDetail|'+cartID].customer.cid;
+					}
 				if($fieldset && formObj)	{
 // *** 201338 -> some paypal orders not passing validation due to address wonkyness returned from paypal.
 //paypal address gets returned with as much as paypal needs/wants. trust what we already have (which may not be enough for OUR validation)
@@ -451,8 +455,8 @@ _app.ext.order_create.u.handlePanel($context,'chkoutMethodsPay',['empty','transl
 							$fieldset.anymessage({'message':'Please select the address you would like to use (push the checkmark button)'});
 							}
 						}
-//in an admin session w/ an existing user, make sure the address has been selected.
-					else if(_app.u.thisIsAnAdminSession() && _app.u.thisNestedExists("data.cartDetail|"+cartID+".customer.cid",_app) && _app.data['cartDetail|'+cartID].customer.cid > 0) {
+//in an admin session w/ an existing user, make sure the address has been selected IF the buyer has pre-defined addresses.
+					else if(_app.u.thisIsAnAdminSession() && CID  && _app.u.thisNestedExists("data.adminCustomerDetail|"+CID+".@BILL",_app) && _app.data['adminCustomerDetail|'+CID]['@BILL'].length ) {
 						if(formObj['bill/shortcut'])	{valid = 1}
 						else	{
 							$fieldset.anymessage({'message':'Please select the address you would like to use (push the checkmark button)'});
@@ -666,6 +670,7 @@ an existing user gets a list of previous addresses they've used and an option to
 					$("[data-app-role='addressExists']",$fieldset).hide();
 					$("[data-app-role='addressNew']",$fieldset).show();
 					$("[data-app-role='billToShipContainer']").hide(); //though locked below, we hide this to avoid confusion.
+
 					$("[name='want/bill_to_ship']",$fieldset).attr({'disabled':'disabled'}).removeAttr('checked'); //set val 
 					//name is provided by paypal and can't be changed.
 					$("[name='bill/firstname'], [name='bill/lastname']",$fieldset).attr('disabled','disabled');
@@ -1126,61 +1131,63 @@ _app.u.handleButtons($chkContainer); //will handle buttons outside any of the fi
 										}
 									}
 								}); //!IMPORTANT! after the order is created, a new cart needs to be created and used. the old cart id is no longer valid.
+							}
+						
+						if(typeof _gaq != 'undefined')	{
+							_gaq.push(['_trackEvent','Checkout','App Event','Order created']);
+							_gaq.push(['_trackEvent','Checkout','User Event','Order created ('+orderID+')']);
+							}
+	
 		
-							if(typeof _gaq != 'undefined')	{
-								_gaq.push(['_trackEvent','Checkout','App Event','Order created']);
-								_gaq.push(['_trackEvent','Checkout','User Event','Order created ('+orderID+')']);
+						if(_app.ext.order_create.checkoutCompletes)	{
+							var L = _app.ext.order_create.checkoutCompletes.length;
+							for(var i = 0; i < L; i += 1)	{
+								_app.ext.order_create.checkoutCompletes[i]({'cartID':previousCartid,'orderID':orderID,'datapointer':_rtag.datapointer},$checkout);
 								}
-		
-			
-							if(_app.ext.order_create.checkoutCompletes)	{
-								var L = _app.ext.order_create.checkoutCompletes.length;
-								for(var i = 0; i < L; i += 1)	{
-									_app.ext.order_create.checkoutCompletes[i]({'cartID':previousCartid,'orderID':orderID,'datapointer':_rtag.datapointer},$checkout);
-									}
+							}
+
+// ### TODO -> move this out of here. move it into the appropriate app init.
+						if(_app.vars._clientid == '1pc')	{
+						//GTS for apps is handled in google extension
+							if(typeof window.GoogleTrustedStore)	{
+								delete window.GoogleTrustedStore; //delete existing object or gts conversion won't load right.
+						//running this will reload the script. the 'span' will be added as part of html:roi
+						//if this isn't run in the time-out, the 'span' w/ order totals won't be added to DOM and this won't track as a conversion.
+								(function() {
+									var scheme = (("https:" == document.location.protocol) ? "https://" : "http://");
+									var gts = document.createElement("script");
+									gts.type = "text/javascript";
+									gts.async = true;
+									gts.src = scheme + "www.googlecommerce.com/trustedstores/gtmp_compiled.js";
+									var s = document.getElementsByTagName("script")[0];
+									s.parentNode.insertBefore(gts, s);
+									})();
 								}
+
 //This will handle the @trackers code.			
 							_app.ext.order_create.u.scripts2iframe(checkoutData['@TRACKERS']);
 
-// ### TODO -> move this out of here. move it into the appropriate app init.
-							if(_app.vars._clientid == '1pc')	{
-							//GTS for apps is handled in google extension
-								if(typeof window.GoogleTrustedStore)	{
-									delete window.GoogleTrustedStore; //delete existing object or gts conversion won't load right.
-							//running this will reload the script. the 'span' will be added as part of html:roi
-							//if this isn't run in the time-out, the 'span' w/ order totals won't be added to DOM and this won't track as a conversion.
-									(function() {
-										var scheme = (("https:" == document.location.protocol) ? "https://" : "http://");
-										var gts = document.createElement("script");
-										gts.type = "text/javascript";
-										gts.async = true;
-										gts.src = scheme + "www.googlecommerce.com/trustedstores/gtmp_compiled.js";
-										var s = document.getElementsByTagName("script")[0];
-										s.parentNode.insertBefore(gts, s);
-										})();
-									}
-							
-								}
-							else	{
-								_app.u.dump("Not 1PC.");
-//								_app.u.dump(" -> [data-app-role='paymentMessaging'],$checkout).length: "+("[data-app-role='paymentMessaging']",$checkout).length);
-								
-								//MUST destroy the cart. it has data-cartid set that would point to the wrong cart.
-								$('#modalCart').empty().remove(); 
-								$('#mainContentArea_cart').empty().remove();
-
-								//the code below is to disable any links in the payment messaging for apps. there may be some legacy links depending on the message.
-								$("[data-app-role='paymentMessaging'] a",$checkout).on('click',function(event){
-									event.preventDefault();
-									});
-								$("[data-app-role='paymentMessaging']",$checkout).on('click',function(event){
-									event.preventDefault();
-									//cart and order id are in uriParams to keep data locations in sync in showCustomer. uriParams is where they are when landing on this page directly.
-									showContent('customer',{'show':'invoice','uriParams':{'cartid':previousCartid,'orderid':orderID}});
-									});
-								}
-		
 							}
+						else	{
+//								_app.u.dump("Not 1PC.");
+//								_app.u.dump(" -> [data-app-role='paymentMessaging'],$checkout).length: "+("[data-app-role='paymentMessaging']",$checkout).length);
+							
+							//MUST destroy the cart. it has data-cartid set that would point to the wrong cart.
+							$('#modalCart').empty().remove(); 
+							$('#mainContentArea_cart').empty().remove();
+
+							//the code below is to disable any links in the payment messaging for apps. there may be some legacy links depending on the message.
+							$("[data-app-role='paymentMessaging'] a",$checkout).on('click',function(event){
+								event.preventDefault();
+								});
+							$("[data-app-role='paymentMessaging']",$checkout).on('click',function(event){
+								event.preventDefault();
+								//cart and order id are in uriParams to keep data locations in sync in showCustomer. uriParams is where they are when landing on this page directly.
+								showContent('customer',{'show':'invoice','uriParams':{'cartid':previousCartid,'orderid':orderID}});
+								});
+							}
+		
+
 						//outside the if/else above so that cartMessagesPush and cartCreate can share the same pipe.
 						_app.model.dispatchThis('immutable'); //these are auto-dispatched because they're essential.	
 						}
@@ -2211,23 +2218,41 @@ _app.u.handleButtons($chkContainer); //will handle buttons outside any of the fi
 					}
 				if(typeof arr == 'object' && !$.isEmptyObject(arr))	{
 
-	var L = arr.length;
-	for(var i = 0; i < L; i++)	{
-//adding to iframe gives us an isolation layer
-//data-script-id added so the iframe can be removed easily later.
-		arr[i].id = 'iframe_3ps_'+i
-		$("<iframe \/>",{'id':arr[i].id}).attr({'data-script-id':arr[i].owner,'height':1,'width':1}).css({'display':'none'}).appendTo('body'); // -> commented out for testing !!!
 /*
 the timeout is added for multiple reasons.
 1.  jquery needed a moment between adding the iframe to the DOM and accessing it's contents.
-2.  by adding some time between each interation (100 * 1), if there's a catastrophic error, the next code will still run.
+2.  by adding some time between each interation (100 * 1), if there's an exception in the tracker, the next code will still run.
 */
-  		setTimeout(function(thisArr){
+						for(var i = 0,  L = arr.length; i < L; i++)	{
+							setTimeout(function(thisArr){
+								try	{
+									$(document.body).append(thisArr.script);
+									}
+								catch(e)	{
+									scriptCallback(thisArr.owner,e)
+									}
+								},(200 * (i + 1)),arr[i]);
+							}
+
+/*
+left here in case we want to come back to this. It'll work IF each tracker can run in an isolated environment.
+unfortunately, too many of the tracker codes rely on scripts being loaded onLoad in the parent window and are not functioning
+ properly when isolated in an iframe.
+	var L = arr.length;
+	for(var i = 0; i < L; i++)	{
+adding to iframe gives us an isolation layer
+data-script-id added so the iframe can be removed easily later.
+		arr[i].id = 'iframe_3ps_'+i
+		$("<iframe \/>",{'id':arr[i].id}).attr({'data-script-id':arr[i].owner,'height':1,'width':1}).css({'display':'none'}).appendTo('body'); // -> commented out for testing !!!
+the timeout is added for multiple reasons.
+1.  jquery needed a moment between adding the iframe to the DOM and accessing it's contents.
+2.  by adding some time between each interation (100 * 1), if there's a catastrophic error, the next code will still run.
+ 		setTimeout(function(thisArr){
 			var $iframe = $('#'+thisArr.id).contents().find("html");
 			$iframe.append(thisArr.script);
-/// hhhmmm... some potential problems with this. non-script based output. sequence needs to be preserved for includes and inline.
+// hhhmmm... some potential problems with this. non-script based output. sequence needs to be preserved for includes and inline.
 
-/*			var $div = $("<div \/>").append(thisArr.script); //may contain multiple scripts.
+			var $div = $("<div \/>").append(thisArr.script); //may contain multiple scripts.
 			var scripts = ""; //all the non 'src' based script contents, in one giant lump. it's put into a 'try' to track code errors.
 			$div.find('script').each(function(){
 				var $s = $(this);
@@ -2240,9 +2265,9 @@ the timeout is added for multiple reasons.
 					}
 				});
 			$iframe.append("<script>try{"+scripts+"\n window.parent.scriptCallback('"+arr.owner+"','success');} catch(err){window.parent.scriptCallback('"+arr.owner+"','error: '+err);}<\/script>");
-*/			},(100 * (i + 1)),arr[i])
+			},(100 * (i + 1)),arr[i])
 		} 
-					}
+*/					}
 				else	{
 					//didn't get anything or what we got wasn't an array.
 					}
@@ -2289,6 +2314,7 @@ _app.model.dispatchThis('passive');
 								}
 							else if(!_app.vars.thisSessionIsAdmin && pMethods[i].id.indexOf("WALLET") === 0)	{
 								//wallets are in the 'stored payments' section already. If they're shown here too, the input name/value will be duplicated. This duplication causes usability issues.
+
 								}
 							else	{
 								//onClick event is added through an app-event. allows for app-specific events.
@@ -2314,7 +2340,8 @@ _app.model.dispatchThis('passive');
 							}
 						}
 					if(payby)	{
-						$("input[value='"+payby+"']",$r).prop('checked','checked').closest('label').addClass('selected ui-state-active')
+						dump("payby IS set. cb length: "+$("input[value='"+payby+"']",$r).length);
+						$("input[value='"+payby+"']",$r).prop('checked','checked').attr('checked','checked').closest('label').addClass('selected ui-state-active')
 						}	
 				return $r.children();
 				}
