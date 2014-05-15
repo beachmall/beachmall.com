@@ -187,6 +187,7 @@ var store_routing = function(_app) {
 // beachmall custom append
 				_app.router.appendHash({'type':'match','route':'{{seo}}/c/{{navcat}}','callback':'category'});
 				_app.router.appendHash({'type':'match','route':'{{seo}}/p/{{pid}}.html','callback':'product'});
+				_app.router.appendHash({'type':'match','route':'redirect/p/pid={{pid}}','callback':'product'});
 				_app.router.appendHash({'type':'match','route':'{{seo}}/bestsellers/c/{{navcat}}*','callback':'bestsellers'});
 				_app.router.appendHash({'type':'match','route':'{{seo}}/featured/c/{{navcat}}*','callback':'featured'});
 				_app.router.appendHash({'type':'match','route':'{{seo}}/clearance/c/{{navcat}}*','callback':'clearance'});
