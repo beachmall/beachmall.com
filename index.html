@@ -1137,7 +1137,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 
 
 
-<div id='categoryTemplateBrands' class='loadingBG categoryTemplate' data-app-role='categoryPage'>
+<div id='categoryTemplateBrands' class='categoryTemplate' data-app-role='categoryPage'>
 	<span class="displayNone" data-tlc="store_routing#seoanchor --seo='1' apply --attrib='data-routing-hash';"></span>
 	<span class="displayNone" data-tlc="bind $var '.%page.head_title'; if(is $var --null;){{bind $var '.page_title';}}; if(is $var --blank;){{bind $var '.pretty';}}; apply --attrib='data-seo-title';"></span>
 	<span class="displayNone" data-tlc="bind $var '.%page.meta_description'; if(is $var --null;){{bind $var '.%page.description';}}; if(is $var --null;){{set $var '';}}; apply --attrib='data-seo-desc';"></span>
@@ -1246,7 +1246,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 
 
 
-<div id='categoryTemplateBrandsFeatured' class='loadingBG categoryTemplate' data-app-role='categoryPage'>
+<div id='categoryTemplateBrandsFeatured' class='categoryTemplate' data-app-role='categoryPage'>
 	<span class="displayNone" data-tlc="store_routing#seoanchor --seo='1' apply --attrib='data-routing-hash';"></span>
 	<span class="displayNone" data-tlc="bind $var '.%page.head_title'; if(is $var --null;){{bind $var '.page_title';}}; if(is $var --blank;){{bind $var '.pretty';}}; apply --attrib='data-seo-title';"></span>
 	<span class="displayNone" data-tlc="bind $var '.%page.meta_description'; if(is $var --null;){{bind $var '.%page.description';}}; if(is $var --null;){{set $var '';}}; apply --attrib='data-seo-desc';"></span>
@@ -1263,7 +1263,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 	<!-- <ul  data-bind='var: category(%page.mfg); defaultValue:ujena; format: prodSearchFeaturedByBrand; extension: beachmart; size:250; loadsTemplate: productListTemplate;' class='listStyleNone fluidList clearfix noPadOrMargin prodMargin productList'></ul> -->
 </div>
 
-<div id='categoryTemplateBrandsBestSellers' class='loadingBG categoryTemplate' data-app-role='categoryPage'>
+<div id='categoryTemplateBrandsBestSellers' class='categoryTemplate' data-app-role='categoryPage'>
 	<span class="displayNone" data-tlc="store_routing#seoanchor --seo='1' apply --attrib='data-routing-hash';"></span>
 	<span class="displayNone" data-tlc="bind $var '.%page.head_title'; if(is $var --null;){{bind $var '.page_title';}}; if(is $var --blank;){{bind $var '.pretty';}}; apply --attrib='data-seo-title';"></span>
 	<span class="displayNone" data-tlc="bind $var '.%page.meta_description'; if(is $var --null;){{bind $var '.%page.description';}}; if(is $var --null;){{set $var '';}}; apply --attrib='data-seo-desc';"></span>
@@ -1280,7 +1280,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 	<ul data-tlc="bind $var '.@products'; prodlist_infinite#infiniteproductlist  --withreviews='1' --withInventory='1' --withVariations='1' --itemsperpage='12' --templateid='productListTemplate'  --legacy;" data-app-role="productList" data-brand-filter="bestseller" class="listStyleNone fluidList clearfix noPadOrMargin prodMargin productList"></ul>
 </div>
 
-<div id='categoryTemplateBrandsViewAll' class='loadingBG categoryTemplate' data-app-role='categoryPage'>
+<div id='categoryTemplateBrandsViewAll' class='categoryTemplate' data-app-role='categoryPage'>
 	<span class="displayNone" data-tlc="store_routing#seoanchor --seo='1' apply --attrib='data-routing-hash';"></span>
 	<span class="displayNone" data-tlc="bind $var '.%page.head_title'; if(is $var --null;){{bind $var '.page_title';}}; if(is $var --blank;){{bind $var '.pretty';}}; apply --attrib='data-seo-title';"></span>
 	<span class="displayNone" data-tlc="bind $var '.%page.meta_description'; if(is $var --null;){{bind $var '.%page.description';}}; if(is $var --null;){{set $var '';}}; apply --attrib='data-seo-desc';"></span>
@@ -1297,18 +1297,18 @@ don't modify the 'data-templateid' unless you are changing template names and up
 	<ul data-tlc="bind $var '.@products'; prodlist_infinite#infiniteproductlist  --withreviews='1' --withInventory='1' --withVariations='1' --itemsperpage='12' --templateid='productListTemplate'  --legacy;" data-app-role="productList" class="listStyleNone fluidList clearfix noPadOrMargin prodMargin productList"></ul>
 </div>
 
-<div id='categoryTemplateWithSpecialList' class='loadingBG categoryTemplate'>
+<div id='categoryTemplateWithSpecialList' class='categoryTemplate'>
 	<!-- <ul data-bind="var: list($featured_list.@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: productListTemplate; withReviews:1; items_per_page: 25;"></ul> -->
 </div>
 
-<div id='categoryTemplateHomepageFeatured' class='loadingBG categoryTemplate'>
+<div id='categoryTemplateHomepageFeatured' class='categoryTemplate'>
 	<span class="displayNone" data-tlc="store_routing#seoanchor --seo='1' apply --attrib='data-routing-hash';"></span>
 	<span class="displayNone" data-tlc="bind $var '.%page.head_title'; if(is $var --null;){{bind $var '.page_title';}}; if(is $var --blank;){{bind $var '.pretty';}}; apply --attrib='data-seo-title';"></span>
 	<span class="displayNone" data-tlc="bind $var '.%page.meta_description'; if(is $var --null;){{bind $var '.%page.description';}}; if(is $var --null;){{set $var '';}}; apply --attrib='data-seo-desc';"></span>
 	<ul data-tlc="bind $var '.$app-site_home-page-featured.@products'; prodlist_infinite#infiniteproductlist  --withreviews='1' --withInventory='1' --withVariations='1' --itemsperpage='12' --templateid='productListTemplate'  --legacy;" data-app-role="productList" class="listStyleNone fluidList clearfix noPadOrMargin prodMargin productList"></ul>
 </div>
 
-<div id='categoryTemplateHomepageBestseller' class='loadingBG categoryTemplate'>
+<div id='categoryTemplateHomepageBestseller' class='categoryTemplate'>
 	<span class="displayNone" data-tlc="store_routing#seoanchor --seo='1' apply --attrib='data-routing-hash';"></span>
 	<span class="displayNone" data-tlc="bind $var '.%page.head_title'; if(is $var --null;){{bind $var '.page_title';}}; if(is $var --blank;){{bind $var '.pretty';}}; apply --attrib='data-seo-title';"></span>
 	<span class="displayNone" data-tlc="bind $var '.%page.meta_description'; if(is $var --null;){{bind $var '.%page.description';}}; if(is $var --null;){{set $var '';}}; apply --attrib='data-seo-desc';"></span>
@@ -1319,7 +1319,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 
 
 
-<div id="categoryTemplateBuyerGuide" class="loadingBG categoryTemplate buyerGuideTemplate">
+<div id="categoryTemplateBuyerGuide" class="categoryTemplate buyerGuideTemplate">
 		<span class="displayNone" data-tlc="store_routing#seoanchor --seo='1' apply --attrib='data-routing-hash';"></span>
 		<span class="displayNone" data-tlc="bind $var '.%page.head_title'; if(is $var --null;){{bind $var '.page_title';}}; if(is $var --blank;){{bind $var '.pretty';}}; apply --attrib='data-seo-title';"></span>
 		<span class="displayNone" data-tlc="bind $var '.%page.meta_description'; if(is $var --null;){{bind $var '.%page.description';}}; if(is $var --null;){{set $var '';}}; apply --attrib='data-seo-desc';"></span>
