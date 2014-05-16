@@ -281,7 +281,7 @@ var beachmall_store = function(_app) {
 					$tag.append('Customer Favorite').show();
 				}
 				else if (zoovyIsTags.indexOf('IS_USER4') >= 0) {
-					$tag.append('Exclusive').addClass('smallTagBkgrnd').show();
+					$tag.append('Commercial Quality').addClass('mediumTagBkgrnd').show();
 				}
 				else if (zoovyIsTags.indexOf('IS_USER5') >= 0) {
 					$tag.append('Exclusive').addClass('smallTagBkgrnd').show();
