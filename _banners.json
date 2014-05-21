@@ -1,7 +1,9 @@
 {
 	"homepageBanners" : {
 		"main" : {
-			"src"		: "banners/2013_june_v1.jpg",  
+			"src"		: "banners/memorial_day_rev3.jpg",
+			"width"		: "576",
+			"height"	: "269",
 			"alt"		: "New Arrivals",
 			"title"		: "New Arrivals",
 			"href"		: "#!Beach-Chairs/c/.beach-chair"

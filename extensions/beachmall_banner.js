@@ -92,7 +92,10 @@ var beachmall_banner = function(_app) {
 				if(!$container.hasClass('bannersRendered')) {
 					if(_app.ext.beachmall_banner.vars.homepageBanners) {
 						$container.addClass('bannersRendered');
-						$('.main',$container).removeClass('loadingBG').append(_app.ext.beachmall_banner.u.makeBanner(_app.ext.beachmall_banner.vars.homepageBanners.main,620,300,"ffffff"));
+						var bannerWidth = _app.ext.beachmall_banner.vars.homepageBanners.main.width == "" ? 620 : _app.ext.beachmall_banner.vars.homepageBanners.main.width;
+						var bannerHeight = _app.ext.beachmall_banner.vars.homepageBanners.main.height == "" ? 300 : _app.ext.beachmall_banner.vars.homepageBanners.main.height;
+						//dump('BANNER WIDTH & HEIGHT'); dump(bannerWidth); dump(bannerHeight);
+						$('.main',$container).removeClass('loadingBG').append(_app.ext.beachmall_banner.u.makeBanner(_app.ext.beachmall_banner.vars.homepageBanners.main,bannerWidth,bannerHeight,"ffffff"));
 					}
 					else {
 						setTimeout(this.showHomepageBanners,250);
