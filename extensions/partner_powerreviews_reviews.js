@@ -170,7 +170,7 @@ var powerreviews_reviews = function(_app) {
 		a : {
 			writeReview : function(pid)	{
 				if(pid)	{
-					document.location = "http://www.beachmall.com/_powerreviews?verb=writereview&pr_page_id="+pid;
+					document.location = "http://www.beachmall.com/_powerreviews/writereview.html?pr_page_id="+pid;
 					dump('----Document location = '); dump(document.location); dump(pid);
 	/*				var $div = $('#powerReviewsModal');
 					if($div.length == 0)	{
