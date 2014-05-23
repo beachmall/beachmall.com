@@ -103,12 +103,12 @@ var store_seo = function(_app) {
 					case "company" :
 						if(infoObj.show == "about") { 
 							dump('ABOUT case worked.'); 
-							var baseTitle = $('[data-seo-title-about]', $context).attr('data-seo-title');
-							desc = $('[data-seo-desc-about]', $context).attr('data-seo-desc');
+							var baseTitle = $('[data-seo-title-about]', $context).attr('data-seo-title-about');
+							desc = $('[data-seo-desc-about]', $context).attr('data-seo-desc-about');
 						}
 						else if(infoObj.show == "contact") {
-							var baseTitle = $('[data-seo-title-contact]', $context).attr('data-seo-title');
-							desc = $('[data-seo-desc-contact]', $context).attr('data-seo-desc');
+							var baseTitle = $('[data-seo-title-contact]', $context).attr('data-seo-title-contact');
+							desc = $('[data-seo-desc-contact]', $context).attr('data-seo-desc-contact');
 						}
 						break;
 					case "customer" :
