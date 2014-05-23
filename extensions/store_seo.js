@@ -89,10 +89,11 @@ var store_seo = function(_app) {
 			generateMeta : function($context, infoObj){
 				var baseTitle = '';
 				var desc = '';
+//				dump('THE PAGE TYPE IS:'); dump(infoObj);
 				switch(infoObj.pageType){
 					case "homepage" :
-						//Use Default Title
-						break;
+						//empty and add break to use default title.
+						//seo title and desc have been hardcoded to homepage for now because pages.json isn't being populated for "."
 					case "category" :
 					case "product" :dump('------generateMeta:product');
 						//Grab from the titles and descriptions on the page
@@ -100,6 +101,15 @@ var store_seo = function(_app) {
 						desc = $('[data-seo-desc]', $context).attr('data-seo-desc');
 						break;
 					case "company" :
+						if(infoObj.show == "about") { 
+							dump('ABOUT case worked.'); 
+							var baseTitle = $('[data-seo-title-about]', $context).attr('data-seo-title');
+							desc = $('[data-seo-desc-about]', $context).attr('data-seo-desc');
+						}
+						else if(infoObj.show == "contact") {
+							var baseTitle = $('[data-seo-title-contact]', $context).attr('data-seo-title');
+							desc = $('[data-seo-desc-contact]', $context).attr('data-seo-desc');
+						}
 						break;
 					case "customer" :
 						break;

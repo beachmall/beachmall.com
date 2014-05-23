@@ -904,8 +904,12 @@ COMMONLY EDITED TEMPLATES
 the homepageTemplate template is loaded into mainContentArea by default when the application loads
 -->
 <div id='homepageTemplate' class='homeTemplate'>
+<!-- hardcoded for the time being. pages.json not getting homepage content for undetermined reason. 	
 	<span class="displayNone" data-tlc="bind $var '.%page.head_title'; if(is $var --null;){{bind $var '.page_title';}}; if(is $var --blank;){{bind $var '.pretty';}}; apply --attrib='data-seo-title';"></span>
 	<span class="displayNone" data-tlc="bind $var '.%page.meta_description'; if(is $var --null;){{bind $var '.%page.description';}}; if(is $var --null;){{set $var '';}}; apply --attrib='data-seo-desc';"></span>
+-->
+	<span class="displayNone" data-seo-title="Beach Chairs | Beach Chair Umbrella | Beach Cart | Cabanas & Gear"></span>
+	<span class="displayNone" data-seo-desc="Beach Chairs - Free Shipping & Easy Returns from our largest selection of folding beach chairs, beach cart, beach umbrella, patio umbrellas, beach gear & umbrella shelter accessories."></span>
 
 	<div class='floatingBar'>
     	<div class='backToTop pointer' onClick="myApp.ext.beachmall_store.u.scrollToTop()">&#187; BACK TO TOP</div>
@@ -2622,6 +2626,10 @@ if you change these, you should move them above this comment so that when you (o
 	<div class="mainColumn">
 <!-- .textContentArea is used as a selector in quickstart.js because article tag type isn't ie8 friendly -->
 		<div id="aboutArticle" class="textContentArea article custArticle">
+			<span class="displayNone" data-seo-title-about="About | Beachmall.com"></span>
+			<span class="displayNone" data-seo-desc-about="We have the largest selection of beach products in the largest variety of categories on the web 
+				for fun in the sun at the beach this summer by offering the most compelling combination of selection, 
+				value, service and convenience."></span>
 			<h4>Beach Chair &#124; Gear &#124; Patio Market Umbrellas &#124; Picnic Baskets at Super Low Prices</h4>
 			<h1>About Beachmall.com</h1>
 			<p>We have the largest selection of beach products in the largest variety of categories on the web 
@@ -2639,6 +2647,9 @@ if you change these, you should move them above this comment so that when you (o
 
 
 		<div id="contactArticle" class="displayNone textContentArea custArticle">
+			<span class="displayNone" data-seo-title-contact="Contact Us | Beachmall.com"></span>
+			<span class="displayNone" data-seo-desc-contact="Contact Us for Cheap Beach Products & Picnic Accessories."></span>
+		
 			<h1 class='displayNone'>Contact Us</h1>
 			<h4>Contact Us for Cheap Beach Products & Picnic Accessories</h4>
 			<div class="companyAddress">
