@@ -56,7 +56,7 @@ var beachmall_tracking = function(_app) {
 						if(infoObj && infoObj.datapointer && _app.data[infoObj.datapointer] && _app.data[infoObj.datapointer].order)	{
 							var $context = $(app.u.jqSelector('#'+infoObj.parentID));
 							dump('ParentID in conversion tracking extension is:'); dump(infoObj.parentID);
-							_app.ext.beachmall_tracking.u.addBing($context);
+							_app.ext.beachmall_tracking.u.addBing($context,{'bing_domain_id':'248869','bing_cp':'5050'});
 						}
 					});
 				
@@ -92,32 +92,47 @@ var beachmall_tracking = function(_app) {
 		u : {
 			
 			//loads Bing tracking info to checkoutTemplate
-			addBing : function($context) {
-					dump('LOADING BING TRACKING');
-					var $bingAds = $('[data-bingads]',$context);
-					var $info = $("<SCRIPT>"
-							+		 "microsoft_adcenterconversion_domainid = 248869;"
-							+		 "microsoft_adcenterconversion_cp = 5050;"
-							+ 	"</SCRIPT>");
-					
-					var script = document.createElement("script");
-					script.type = "text/javascript";
+			addBing : function($context,params) {
+				dump('LOADING BING TRACKING');
+				var $bingAds = $('[data-bingads]',$context);
+				
+				var frame = document.createElement("iframe");
+				$(frame).addClass("displayNone");
+				$("body").append(frame);
+				
+				frame.contentWindow.microsoft_adcenterconversion_domainid = params.bing_domain_id;
+				frame.contentWindow.microsoft_adcenterconversion_cp = params.bing_cp;
+				
+				setTimeout(function() {
+					var script = frame.contentWindow.document.createElement("script");
+					script.type = "text.javascript"
+					//check if script loads and show adcenter/bingads anchor if so
+					if (script.readyState){  //IE
+						script.onreadystatechange = function(){
+							if (script.readyState == "loaded" || script.readyState == "complete"){
+								script.onreadystatechange = null;
+								$bingAds.removeClass('displayNone');
+							}
+						};
+					}
+					else {
+						if(typeof callback == 'function')	{
+							script.onload = function(){ $bingAds.removeClass('displayNone'); }
+						}
+					}
 					script.src = "https://0.r.msn.com/scripts/microsoft_adcenterconversion.js";
-					$bingAds.append(script);
-					
+
 					var noscript = document.createElement("noscript");
 					var $img = $("<img width=1 height=1 src='https://248869.r.msn.com/?type=1&cp=1'\/>");
-					var $anchor = $("<a href='http://advertising.msn.com/MSNadCenter/LearningCenter/adtracker.asp' target='_blank'>::adCenter::</a>");
+					//var $anchor = $("<a href='http://advertising.msn.com/MSNadCenter/LearningCenter/adtracker.asp' target='_blank'>::adCenter::</a>");
 					
-					$bingAds.append(info);
 					noscript.append($img);
-					$bingAds.append(noscript);
-					$bingAds.append($anchor);					
-		//			document.body.appendChild(script);
+					frame.contentWindow.document.body.appendChild(script);
+					frame.contentWindow.document.body.appendChild(noscript);
+					
+				},250);
 			},
-			
-			
-		
+
 		}, //u [utilities]
 
 //app-events are added to an element through data-app-event="extensionName|functionName"
