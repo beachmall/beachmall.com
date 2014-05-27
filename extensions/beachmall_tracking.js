@@ -116,19 +116,19 @@ var beachmall_tracking = function(_app) {
 						};
 					}
 					else {
-						if(typeof callback == 'function')	{
-							script.onload = function(){ $bingAds.removeClass('displayNone'); }
-						}
+						script.onload = function(){ $bingAds.removeClass('displayNone'); }
 					}
 					script.src = "https://0.r.msn.com/scripts/microsoft_adcenterconversion.js";
-
-					var noscript = document.createElement("noscript");
-					var $img = $("<img width=1 height=1 src='https://248869.r.msn.com/?type=1&cp=1'\/>");
+					
+					//Removed "noscript" content, app runs on js so if it's not enabled nothing works...
+					//var noscript = document.createElement("noscript");
+					//var $img = $("<img width=1 height=1 src='https://248869.r.msn.com/?type=1&cp=1'\/>");
+					
 					//var $anchor = $("<a href='http://advertising.msn.com/MSNadCenter/LearningCenter/adtracker.asp' target='_blank'>::adCenter::</a>");
 					
-					noscript.append($img);
+					//noscript.append($img);
 					frame.contentWindow.document.body.appendChild(script);
-					frame.contentWindow.document.body.appendChild(noscript);
+					//frame.contentWindow.document.body.appendChild(noscript);
 					
 				},250);
 			},
