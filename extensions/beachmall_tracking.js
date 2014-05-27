@@ -49,20 +49,23 @@ var beachmall_tracking = function(_app) {
 			
 			startExtension : {
 				onSuccess : function(){
-					dump("BEGIN beachmall_tracking.callbacks.startExtension.onSuccess");
+					dump("START beachmall_tracking.callbacks.startExtension.onSuccess");
 
 					_app.ext.order_create.checkoutCompletes.push(function(infoObj){
-						dump("BEGIN beachmall_tracking code pushed on order_create.checkoutCompletes");
+						dump("START beachmall_tracking code pushed on order_create.checkoutCompletes");
 						if(infoObj && infoObj.datapointer && _app.data[infoObj.datapointer] && _app.data[infoObj.datapointer].order)	{
-							var $context = $(app.u.jqSelector('#'+infoObj.parentID));
-							dump('ParentID in conversion tracking extension is:'); dump(infoObj.parentID);
+							//var $context = $(_app.u.jqSelector('#'+infoObj.parentID));
+							dump('IN datapointer if for tracking checkoutcompletes');
+							var $context = $('.checkoutSuccess');
+							//dump('ParentID in conversion tracking extension is:'); dump(infoObj.parentID);
 							_app.ext.beachmall_tracking.u.addBing($context,{'bing_domain_id':'248869','bing_cp':'5050'});
 						}
+						else { dump('AHHHH! Problem w/ infoObj, infoObj.datapointer, _app.data[infoObj.datapointer], or _app.data[infoObj.datapointer].order!'); }
 					});
 				
 					
 				},
-				onError : function(){ dump('BEGIN _app.ext.beachmall_tracking.callbacks.startExtension.onError'); }
+				onError : function(){ dump('START _app.ext.beachmall_tracking.callbacks.startExtension.onError'); }
 			}
 			
 		}, //callbacks
@@ -100,10 +103,13 @@ var beachmall_tracking = function(_app) {
 				$(frame).addClass("displayNone");
 				$("body").append(frame);
 				
-				frame.contentWindow.microsoft_adcenterconversion_domainid = params.bing_domain_id;
-				frame.contentWindow.microsoft_adcenterconversion_cp = params.bing_cp;
+				//frame.contentWindow.microsoft_adcenterconversion_domainid = params.bing_domain_id;
+				//frame.contentWindow.microsoft_adcenterconversion_cp = params.bing_cp;
+				var data = "microsoft_adcenterconversion_domainid = "+params.bing_domain_id+"; microsoft_adcenterconversion_cp = "+params.bing_cp+";";
 				
 				setTimeout(function() {
+					var paramScript = frame.window.document.createElement("script");
+					paramScript.append(data);
 					var script = frame.contentWindow.document.createElement("script");
 					script.type = "text.javascript"
 					//check if script loads and show adcenter/bingads anchor if so
@@ -127,6 +133,7 @@ var beachmall_tracking = function(_app) {
 					//var $anchor = $("<a href='http://advertising.msn.com/MSNadCenter/LearningCenter/adtracker.asp' target='_blank'>::adCenter::</a>");
 					
 					//noscript.append($img);
+					frame.contentWindow.document.body.appendChild(paramScript);
 					frame.contentWindow.document.body.appendChild(script);
 					//frame.contentWindow.document.body.appendChild(noscript);
 					

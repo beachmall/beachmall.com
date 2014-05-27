@@ -45,7 +45,7 @@ myApp.rq.push(['extension',0,'store_createaccount','','startExtension']); //hand
 myApp.rq.push(['extension',0,'beachmall_recentlyviewed','','startExtension']); //handles account creation actions
 //myApp.rq.push(['script',0,myApp.vars.baseURL+'resources/jquery.touchSwipe-1.3.3.min.js']); //used w/ carouFedSel.
 //myApp.rq.push(['script',0,myApp.vars.baseURL+'resources/jquery.carouFredSel-6.2.0.min.js']); //used for carousels.
-myApp.rq.push(['extension',0,'beachmall_tracking','extensions/beachmall_tracking.js','startExtension']); //adds thirdparty tracking to app
+//myApp.rq.push(['extension',0,'beachmall_tracking','extensions/beachmall_tracking.js','startExtension']); //adds thirdparty tracking to app
 
 myApp.rq.push(['extension',0,'google_analytics','extensions/partner_google_analytics.js','startExtension']);
 myApp.rq.push(['extension',0,'google_adwords','extensions/partner_google_adwords.js','startExtension']);
