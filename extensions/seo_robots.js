@@ -27,7 +27,18 @@ var seo_robots = function(_app) {
 		pages : [],
 		pagesLoaded : false,
 		counter : 0,
-		counterReset : 50
+		counterReset : 50,
+		blacklistNavcats : ['.beach-chairs.best-sellers','.beach-chairs.hot-deals','.beach-chairs.packages','.beach-chair.lafuma-recliner',
+			'.beach-chair.lafuma-recliner.director-chairs','.beach-chairs.beach-gear.gift_baskets','.beach-chairs.beach-gear.picnic-basket-beyond',
+			'.beach-chairs.beach-gear.women-swimwear-bikinis','.beach-sports.inflatables','.beach-sports.water-towables',
+			'.beachwear.beach-hat.beach-hats','.beachwear.beach-swimwear.board-shorts.womens','.beachwear.beach-swimwear.rashguard.rash-guards',
+			'.beachwear.sun-dresses-women.beach-dresses','.beachwear.sun-dresses-women.body-slimming','.beachwear.sun-dresses-women.evening',
+			'.beachwear.swimwear-women','.beachwear.swimwear-women.bathing-suits','.beachwear.swimwear-women.bikini-two-piece','.beachwear.swimwear-women.cover-ups',
+			'.beachwear.swimwear-women.monokinis-tankinis','.beachwear.swimwear-women.one-piece-swimsuits','.beachwear.swimwear-women.plus-size-swimsuits',
+			'.directory','.affiliates','.beach-umbrellas-shelter.patio-umbrella.6-foot-patio-umbrellas',
+			'.beach-umbrellas-shelter.patio-umbrella.7-foot-patio-umbrellas','.beach-umbrellas-shelter.patio-umbrella.market-umbrellas',
+			'.beach-umbrellas-shelter.patio-umbrella.offset-umbrellas','.beachwear.sun-dresses-women'],
+		compiledBlacklist : []
 		},
 
 ////////////////////////////////////   CALLBACKS    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -183,11 +194,20 @@ var seo_robots = function(_app) {
 										});
 									break;
 								case "navcat" : 
-									_app.ext.seo_robots.vars.pages.push({
+									if(_app.ext.seo_robots.u.isBlacklistedCat(p.id)) {
+										dump('NAVCAT was found in blacklist:'); dump(p.id);
+							//			_app.ext.seo_robots.vars.compiledBlacklist.push(p.id);
+							//			dump(_app.ext.seo_robots.vars.compiledBlacklist);
+										break; //this category is blacklisted, don't index it.
+									}
+									else {
+//										dump('NOT a blacklisted navcat:'); dump(p.id);
+										_app.ext.seo_robots.vars.pages.push({
 										pageType : "category",
 										navcat : p.id
 										});
-									break;
+										break;
+									}
 								case "list" : 
 									dump("LIST "+p.id+" SKIPPED IN PAGE BUILDING");
 									break;
@@ -204,7 +224,27 @@ var seo_robots = function(_app) {
 				_app.model.dispatchThis('immutable');
 				
 				return "1.0";
-				}
+				},
+				
+				isBlacklistedCat : function(compare) {
+					var i = 0;
+					var r = false; //what is returned, false if no match is found
+//					dump('BLACKLIST LENGTH:'); dump(_app.ext.seo_robots.vars.blacklistNavcats.length);
+					while (i < _app.ext.seo_robots.vars.blacklistNavcats.length) {
+//						dump(_app.ext.seo_robots.vars.blacklistNavcats[i]); dump(compare);
+						if(_app.ext.seo_robots.vars.blacklistNavcats[i] == compare) { 
+//							dump('MATCH FOUND'); 
+							r = true;
+							return r;
+						}
+						else { 
+//							dump('NO MATCH'); //deosn't match this array item, move along
+						}
+						i++;
+					}
+					return r;
+				},
+		
 			}, //u [utilities]
 
 //app-events are added to an element through data-app-event="extensionName|functionName"

@@ -39,10 +39,10 @@
 ~path	^.*?/product/(.*?)/.*$	/index.html#!/product/$1
 ~path	^.*?/category/(.*?)/.*$	/index.html#!/category/$1
 #redirect company pages
-=path	/about_us.cgis	/#!company/about
-=path	/contact_us.cgis	/#!company/contact
-=path	/returns.cgis#faq	/#!company/faq
-=path	/returns.cgis	/#!company/return
-=path	/privacy.cgis	/#!company/privacy
+=path	/about_us.cgis	/#!company/about/
+=path	/contact_us.cgis	/#!company/contact/
+=path	/returns.cgis#faq	/#!company/faq/
+=path	/returns.cgis	/#!company/return/
+=path	/privacy.cgis	/#!company/privacy/
 #redirect homepage
-=uri	http://www.beachmall.com/	http://www.beachmall.com/#!home
+=uri	http://www.beachmall.com/	http://www.beachmall.com/#!/
