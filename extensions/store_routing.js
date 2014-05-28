@@ -172,7 +172,7 @@ var store_routing = function(_app) {
 				
 /*APPENDS*/				
 				_app.router.appendHash({'type':'exact','route':'cart','callback':function(routeObj){showContent('cart',routeObj.params);}});
-				_app.router.appendHash({'type':'exact','route':'homepage','callback':'homepage'});
+				_app.router.appendHash({'type':'exact','route':'homepage/','callback':'homepage'});
 				_app.router.appendHash({'type':'exact','route':'','callback':'homepage'});
 				_app.router.appendHash({'type':'match','route':'category/{{navcat}}*','callback':'category'});
 				_app.router.appendHash({'type':'match','route':'product/{{pid}}/{{name}}*','callback':'product'});
@@ -331,212 +331,67 @@ _app.router.appendHash({'type':'match','route':'modal/product/{{pid}}*','callbac
 			},
 		attachEventHandlers : {
 			onSuccess : function(){
-				_app.templates.homepageTemplate.on('complete.routing', function(event, $context, infoObj){_app.ext.store_routing.u.setHash("#!/");});
+				dump('START store_routing.callbacks.attachEventHandlers.onSuccess');
+				$.merge(_app.ext.seo_robots.vars.pages,[
+					"#!company/about/",
+					"#!company/contact/"
+				]);
+			
+				var callback = function(event, $context, infoObj) {
+					dump('--> store_routing complete event');
+					event.stopPropagation();
+					if(infoObj) {
+						var hash = "";
+						var $routeEle = $('[data-routing-hash]',$context);
+						if($routeEle.length){
+							hash = $routeEle.attr('data-routing-hash');
+						}
+						else {
+							switch(infoObj.pageType) {
+								case 'homepage':
+									hash = "#!/"
+									break;
+								case 'product':
+									hash = "#!/product/"+infoObj.pid+"/";
+									break;
+								case 'category':
+									hash = "#!/category/"+infoObj.navcat+"/";
+									break;
+								case 'static':
+									hash = window.location.hash;
+									break;
+								case 'search':
+										hash = window.location.hash; //"#!/search/"+encodeURIComponent(infoObj.KEYWORDS)+"/"
+									break;
+								case 'company':
+									hash = "#!company/"+infoObj.show+"/"
+									break;
+								case 'customer':
+									hash = "#!customer/"+infoObj.show+"/";
+									break;
+								case 'cart':
+									hash = "#!cart/";
+									break;
+								case 'checkout':
+									hash = "#!checkout/";
+									break;
+							}
+						}
+						_app.ext.store_routing.u.setHash(hash);
+					}
+				}	
+				for(var i in _app.templates) {
+					_app.templates[i].on('complete.routing',callback);
+				}
+				$('#appTemplates').children().each(function(){
+					$(this).on('complete.routing',callback);
+				});
+		
 				
-				_app.templates.categoryTemplate.on('complete.routing', function(event, $context, infoObj){
-					var hash = "";
-					var $routeEle = $('[data-routing-hash]',$context)
-					if($routeEle.length){
-						hash = $routeEle.attr('data-routing-hash');
-						}
-					else {
-						hash = "#!/category/"+infoObj.navcat+"/";
-					}
-					_app.ext.store_routing.u.setHash(hash);
-					});
-//beachmall custom category templates:
-				_app.templates.categoryTemplateBrands.on('complete.routing', function(event, $context, infoObj){
-					var hash = "";
-					var $routeEle = $('[data-routing-hash]',$context)
-					if($routeEle.length){
-						hash = $routeEle.attr('data-routing-hash');
-						}
-					else {
-						hash = "#!/category/"+infoObj.navcat+"/";
-					}
-					_app.ext.store_routing.u.setHash(hash);
-					});
-					
-				_app.templates.categoryTemplateBrandsFeatured.on('complete.routing', function(event, $context, infoObj){
-					var hash = "";
-					var $routeEle = $('[data-routing-hash]',$context)
-					if($routeEle.length){
-						hash = $routeEle.attr('data-routing-hash');
-						}
-					else {
-						hash = "#!/category/"+infoObj.navcat+"/";
-					}
-					_app.ext.store_routing.u.setHash(hash);
-					});
-					
-				_app.templates.categoryTemplateBrandsBestSellers.on('complete.routing', function(event, $context, infoObj){
-					var hash = "";
-					var $routeEle = $('[data-routing-hash]',$context)
-					if($routeEle.length){
-						hash = $routeEle.attr('data-routing-hash');
-						}
-					else {
-						hash = "#!/category/"+infoObj.navcat+"/";
-					}
-					_app.ext.store_routing.u.setHash(hash);
-					});
-					
-				_app.templates.categoryTemplateBrandsViewAll.on('complete.routing', function(event, $context, infoObj){
-					var hash = "";
-					var $routeEle = $('[data-routing-hash]',$context)
-					if($routeEle.length){
-						hash = $routeEle.attr('data-routing-hash');
-						}
-					else {
-						hash = "#!/category/"+infoObj.navcat+"/";
-					}
-					_app.ext.store_routing.u.setHash(hash);
-					});
-					
-//beachmall custom category templates:
-				_app.templates.categoryTemplateBrands.on('complete.routing', function(event, $context, infoObj){
-					var hash = "";
-					var $routeEle = $('[data-routing-hash]',$context)
-					if($routeEle.length){
-						hash = $routeEle.attr('data-routing-hash');
-						}
-					else {
-						hash = "#!/category/"+infoObj.navcat+"/";
-					}
-					_app.ext.store_routing.u.setHash(hash);
-					});
-					
-				_app.templates.categoryTemplateBrandsFeatured.on('complete.routing', function(event, $context, infoObj){
-					var hash = "";
-					var $routeEle = $('[data-routing-hash]',$context)
-					if($routeEle.length){
-						hash = $routeEle.attr('data-routing-hash');
-						}
-					else {
-						hash = "#!/category/"+infoObj.navcat+"/";
-					}
-					_app.ext.store_routing.u.setHash(hash);
-					});
-					
-				_app.templates.categoryTemplateBrandsBestSellers.on('complete.routing', function(event, $context, infoObj){
-					var hash = "";
-					var $routeEle = $('[data-routing-hash]',$context)
-					if($routeEle.length){
-						hash = $routeEle.attr('data-routing-hash');
-						}
-					else {
-						hash = "#!/category/"+infoObj.navcat+"/";
-					}
-					_app.ext.store_routing.u.setHash(hash);
-					});
-					
-				_app.templates.categoryTemplateBrandsViewAll.on('complete.routing', function(event, $context, infoObj){
-					var hash = "";
-					var $routeEle = $('[data-routing-hash]',$context)
-					if($routeEle.length){
-						hash = $routeEle.attr('data-routing-hash');
-						}
-					else {
-						hash = "#!/category/"+infoObj.navcat+"/";
-					}
-					_app.ext.store_routing.u.setHash(hash);
-					});
-					
-				_app.templates.categoryTemplateHomepageFeatured.on('complete.routing', function(event, $context, infoObj){
-					var hash = "";
-					var $routeEle = $('[data-routing-hash]',$context)
-					if($routeEle.length){
-						hash = $routeEle.attr('data-routing-hash');
-						}
-					else {
-						hash = "#!/category/"+infoObj.navcat+"/";
-					}
-					_app.ext.store_routing.u.setHash(hash);
-					});
-					
-				_app.templates.categoryTemplateHomepageBestseller.on('complete.routing', function(event, $context, infoObj){
-					var hash = "";
-					var $routeEle = $('[data-routing-hash]',$context)
-					if($routeEle.length){
-						hash = $routeEle.attr('data-routing-hash');
-						}
-					else {
-						hash = "#!/category/"+infoObj.navcat+"/";
-					}
-					_app.ext.store_routing.u.setHash(hash);
-					});
-					
-				_app.templates.categoryTemplateFilter.on('complete.routing', function(event, $context, infoObj){
-					var hash = "";
-					var $routeEle = $('[data-routing-hash]',$context)
-					if($routeEle.length){
-						hash = $routeEle.attr('data-routing-hash');
-						}
-					else {
-						hash = "#!/category/"+infoObj.navcat+"/";
-					}
-					_app.ext.store_routing.u.setHash(hash);
-					});
-					
-				_app.templates.categoryTemplateSiteMap.on('complete.routing', function(event, $context, infoObj){
-					var hash = "";
-					var $routeEle = $('[data-routing-hash]',$context)
-					if($routeEle.length){
-						hash = $routeEle.attr('data-routing-hash');
-						}
-					else {
-						hash = "#!/category/"+infoObj.navcat+"/";
-					}
-					_app.ext.store_routing.u.setHash(hash);
-					});
-					
-				_app.templates.categoryTemplateBuyerGuide.on('complete.routing', function(event, $context, infoObj){
-					var hash = "";
-					var $routeEle = $('[data-routing-hash]',$context)
-					if($routeEle.length){
-						hash = $routeEle.attr('data-routing-hash');
-						}
-					else {
-						hash = "#!/category/"+infoObj.navcat+"/";
-					}
-					_app.ext.store_routing.u.setHash(hash);
-					});
-//end beachmall custom cat templates					
-
-				_app.templates.productTemplate.on('complete.routing', function(event, $context, infoObj){
-					var hash = "";
-					var $routeEle = $('[data-routing-hash]',$context)
-					if($routeEle.length){
-						hash = $routeEle.attr('data-routing-hash');
-						}
-					else {
-						hash = "#!/product/"+infoObj.pid+"/";
-					}
-					dump(hash);
-					_app.ext.store_routing.u.setHash(hash);
-					});
-					
-				_app.templates.categoryTemplateBuyerGuide.on('complete.routing', function(event, $context, infoObj){
-					var hash = "";
-					var $routeEle = $('[data-routing-hash]',$context)
-					if($routeEle.length){
-						hash = $routeEle.attr('data-routing-hash');
-						}
-					else {
-						hash = "#!/category/"+infoObj.navcat+"/";
-					}
-					_app.ext.store_routing.u.setHash(hash);
-					});
-				
-				_app.templates.companyTemplate.on('complete.routing', function(event, $context, infoObj){_app.ext.store_routing.u.setHash("#!/company/"+infoObj.show+"/");});
-				_app.templates.customerTemplate.on('complete.routing', function(event, $context, infoObj){_app.ext.store_routing.u.setHash("#!/customer/"+infoObj.show+"/");});
-				_app.templates.searchTemplate.on('complete.routing', function(event, $context, infoObj){_app.ext.store_routing.u.setHash("#!/search/"+encodeURIComponent(infoObj.KEYWORDS)+"/");});
-				_app.templates.cartTemplate.on('complete.routing', function(event, $context, infoObj){if(infoObj.show == "inline"){_app.ext.store_routing.u.setHash("#!/cart/");}});
-				//_app.templates.checkoutTemplate.on('complete.routing', function(event, $context, infoObj){_app.ext.store_routing.u.setHash("#!/checkout/");});
-				},
+			},
 			onError : function(){}
-			}
-		}, //callbacks
+		}	
+	}, //callbacks
 
 
 
@@ -637,11 +492,20 @@ optional params:
 
 		u : {
 			setHash : function(hash){
-				if(_app.vars.showContentHashChange){
+				dump('setting hash to: '+hash);
+				var $canonical = $('link[rel=canonical]');
+				if(!$canonical.length){
+					dump('NO CANONICAL IN THE DOCUMENT'); dump(hash);
+					$canonical = $('<link rel="canonical" href="" />');
+					$('head').append($canonical);
+				}
+				$canonical.attr('href',hash);
+				if(_app.vars.showContentHashChange) {
 					dump('forcing a hash change');
 					window.location.href = window.location.href.split("#")[0]+hash;
-					}
-				},
+				}
+			},
+				
 			productAnchor : function(pid, seo){
 				//return "#!product/"+pid+"/"+(seo ? encodeURIComponent(seo) : '');
 				if(seo) {
