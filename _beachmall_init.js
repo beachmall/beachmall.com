@@ -42,7 +42,7 @@ myApp.rq.push(['extension',0,'beachmart_dropdown_image','']); // add images to d
 myApp.rq.push(['extension',0,'beachmall_cartestarrival','']); //estimates shipping/arrival times for cart items
 myApp.rq.push(['extension',0,'beachmall_cartemail','']); //handles sending user an e-mail of cart contents
 myApp.rq.push(['extension',0,'beachmall_cart','','startExtension']); //handles sending user an e-mail of cart contents
-//myApp.rq.push(['extension',0,'beachmart_dates','extensions/beachmart_dates.js']); //handles various date based calculations
+myApp.rq.push(['extension',0,'beachmart_dates','']); //handles various date based calculations
 myApp.rq.push(['extension',0,'store_createaccount','','startExtension']); //handles account creation actions
 myApp.rq.push(['extension',0,'beachmall_recentlyviewed','','startExtension']); //handles account creation actions
 //myApp.rq.push(['script',0,myApp.vars.baseURL+'resources/jquery.touchSwipe-1.3.3.min.js']); //used w/ carouFedSel.

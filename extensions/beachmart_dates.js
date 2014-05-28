@@ -20,7 +20,7 @@
 
 //    !!! ->   TODO: replace 'username' in the line below with the merchants username.     <- !!!
 
-var beachmart_dates = function() {
+var beachmart_dates = function(_app) {
 	var theseTemplates = new Array('');
 	var r = {
 
@@ -43,7 +43,7 @@ var beachmart_dates = function() {
 			onError : function()	{
 //errors will get reported for this callback as part of the extensions loading.  This is here for extra error handling purposes.
 //you may or may not need it.
-				app.u.dump('BEGIN admin_orders.callbacks.init.onError');
+				_app.u.dump('BEGIN admin_orders.callbacks.init.onError');
 				}
 			}
 		}, //callbacks
@@ -87,12 +87,12 @@ var beachmart_dates = function() {
 					if (str.substr(12,2)) {var sec = str.substr(12,2);}
 					else {var sec = 0;}
 					d.setFullYear(year, (month - 1), day);
-//					app.u.dump(" date obj: "); app.u.dump(d);
-//					app.u.dump(" -> YYYYMMDD2Pretty ["+str+"]: Y["+year+"]  Y["+month+"]  Y["+day+"] ");
+//					_app.u.dump(" date obj: "); _app.u.dump(d);
+//					_app.u.dump(" -> YYYYMMDD2Pretty ["+str+"]: Y["+year+"]  Y["+month+"]  Y["+day+"] ");
 					r = this.getMonthFromNumber(d.getMonth())+" "+day+", "+year+" "+hour+":"+min+":"+sec;
 				}
 				else	{
-					app.u.dump("WARNING! the parameter passed into YYYYMMDD2Pretty is not a number ["+str+"]");
+					_app.u.dump("WARNING! the parameter passed into YYYYMMDD2Pretty is not a number ["+str+"]");
 				}
 				return r;
 			}, //yyyymmdd2Pretty 
@@ -149,45 +149,45 @@ var beachmart_dates = function() {
 			
 				//returns millisecond time from YYYYMMDD
 			yyyymmddToMilliseconds : function(date) {
-		//		app.u.dump('---> yyyymmddToMilliseconds');// app.u.dump(date); 
+		//		_app.u.dump('---> yyyymmddToMilliseconds');// _app.u.dump(date); 
 				var year = date.slice(0,4);
 				var month = date.slice(4,6);
 				var day = date.slice(6,8);
-		//		app.u.dump(''+year+' '+month+' '+day);
+		//		_app.u.dump(''+year+' '+month+' '+day);
 				var milliseconds = new Date(year,month,day).getTime();
-//				app.u.dump('---> yyyymmddToMilliseconds'); app.u.dump(milliseconds);
+//				_app.u.dump('---> yyyymmddToMilliseconds'); _app.u.dump(milliseconds);
 				return milliseconds;
 			},	
 			
 			
 				//returns the sum of two YYYYMMDD dates (a date in the future)
 			getFutureDate : function(A, B) {
-//				app.u.dump('---> getFutureDate'); app.u.dump(A); app.u.dump(B);
-				var backorderDate = app.ext.beachmart_dates.u.yyyymmddToMilliseconds(A);
-				var presentShipDate = app.ext.beachmart_dates.u.yyyymmddToMilliseconds(B);
+//				_app.u.dump('---> getFutureDate'); _app.u.dump(A); _app.u.dump(B);
+				var backorderDate = _app.ext.beachmart_dates.u.yyyymmddToMilliseconds(A);
+				var presentShipDate = _app.ext.beachmart_dates.u.yyyymmddToMilliseconds(B);
 				var today = new Date().getTime();
 				var futureShipDate = (presentShipDate - today) + backorderDate;
 				
-//				app.u.dump(backorderDate); app.u.dump(presentShipDate); 
-//				app.u.dump(app.ext.beachmart_dates.u.millisecondsToYYYYMMDD(new Date(futureShipDate)));
-				futureShipDate = app.ext.beachmart_dates.u.noWeekends(futureShipDate);
-				return app.ext.beachmart_dates.u.millisecondsToYYYYMMDD(new Date(futureShipDate));
+//				_app.u.dump(backorderDate); _app.u.dump(presentShipDate); 
+//				_app.u.dump(_app.ext.beachmart_dates.u.millisecondsToYYYYMMDD(new Date(futureShipDate)));
+				futureShipDate = _app.ext.beachmart_dates.u.noWeekends(futureShipDate);
+				return _app.ext.beachmart_dates.u.millisecondsToYYYYMMDD(new Date(futureShipDate));
  			},
 			
 			
 				//makes sure date doesn't land on Sat or Sun (adds time to make Mon if so)
 			noWeekends : function(date) {
-//				app.u.dump('--> noWeekends'); app.u.dump(new Date(date).getDay());
+//				_app.u.dump('--> noWeekends'); _app.u.dump(new Date(date).getDay());
 				if(new Date(date).getDay() == 4) { return new Date().setTime(date + 172800000); } //it's sat, add two days
 				else if(new Date(date).getDay() == 5) { return new Date().setTime(date + 86400000); } //it's sun, add one day
 				else { return date; } //it's not sat or sun leave date alone.
 			},
 			
 			
-				//creates a new now time for app time
+				//creates a new now time for _app time
 			appTimeNow : function() {
-				if(app.data.time && app.data.time.unix)	{
-					return new Date(app.data.time.unix*1000);
+				if(_app.data.time && _app.data.time.unix)	{
+					return new Date(_app.data.time.unix*1000);
 				} else { return false; }
 			}
 			
