@@ -1125,6 +1125,7 @@ for legacy browsers. That means old browsers will use the anchor to retain 'back
 //no page transition specified. hide old content, show new. fancy schmancy.
 					$("#mainContentArea :visible:first").hide();
 					$new.show();
+					_app.ext.quickstart.vars.showContentFinished = true;
 					}
 				else	{
 					dump("WARNING! in showContent and no parentID is set for the element being translated.");
