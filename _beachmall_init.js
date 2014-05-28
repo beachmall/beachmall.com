@@ -24,6 +24,8 @@ myApp.rq.push(['extension',0,'cart_message','']);
 myApp.rq.push(['extension',0,'store_crm','']);
 myApp.rq.push(['extension',0,'quickstart','','startMyProgram']);
 
+myApp.rq.push(['extension',0,'seo_robots','']);
+
 //myApp.rq.push(['extension',0,'entomologist','extensions/entomologist/extension.js']);
 //myApp.rq.push(['extension',0,'tools_animation','extensions/tools_animation.js']);
 
