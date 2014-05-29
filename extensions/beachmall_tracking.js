@@ -68,7 +68,7 @@ var beachmall_tracking = function(_app) {
 							_app.ext.beachmall_tracking.u.addShopzilla('182786', orderID, orderTotal);
 							_app.ext.beachmall_tracking.u.addPronto('104759', orderID, orderTotal);
 							_app.ext.beachmall_tracking.u.addNextag('3865748', orderID, orderTotal);
-							_app.ext.beachmall_tracking.u.addPriceGrabber('10090');
+							_app.ext.beachmall_tracking.u.addPriceGrabber($context,'10090');
 							_app.ext.beachmall_tracking.u.addBecome('EC32A6A4ED7F110E', orderID, orderTotal);
 							_app.ext.beachmall_tracking.u.addAddThis($context);
 							_app.ext.beachmall_tracking.u.addFacebook('6009135221658');
@@ -255,11 +255,10 @@ var beachmall_tracking = function(_app) {
 			},
 			
 			
-			addPriceGrabber : function(merchantID) {
+			addPriceGrabber : function($context, merchantID) {
 				dump('START addPriceGrabber TRACKING');
 				var $img = $("<img src='https://www.pricegrabber.com/conversion.php?retid='"+merchantID+"'>");
-				//TODO: Add the tag below to checkoutComplete template
-				$(".priceGrabberConversion").append($img);
+				$("[data-pricegrabber]", $context).append($img);
 			},
 			
 			
