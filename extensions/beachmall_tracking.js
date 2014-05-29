@@ -306,7 +306,6 @@ var beachmall_tracking = function(_app) {
 
 					//$anchor.append($img);
 					
-					frame.contentWindow.document.body.appendChild(paramScript);
 					frame.contentWindow.document.body.appendChild(script);
 					
 					//check if script loads and show addThis anchor & img if so
