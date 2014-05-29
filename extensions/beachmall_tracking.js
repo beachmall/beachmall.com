@@ -62,6 +62,12 @@ var beachmall_tracking = function(_app) {
 						}
 						else { dump('AHHHH! Problem w/ infoObj, infoObj.datapointer, _app.data[infoObj.datapointer], or _app.data[infoObj.datapointer].order!'); }
 					});
+	
+	// FOR TESTING SCRIPT ADDITION
+	//				_app.templates.categoryTemplate.on('complete.beachmall_tracking',function(event,$ele,P) {
+	//				var $context = $('.trackingTestDiv');
+	//					_app.ext.beachmall_tracking.u.addBing($context,{'bing_domain_id':'248869','bing_cp':'5150'});
+	//				});
 				
 					
 				},
@@ -105,11 +111,11 @@ var beachmall_tracking = function(_app) {
 				
 				//frame.contentWindow.microsoft_adcenterconversion_domainid = params.bing_domain_id;
 				//frame.contentWindow.microsoft_adcenterconversion_cp = params.bing_cp;
-				var data = "microsoft_adcenterconversion_domainid = "+params.bing_domain_id+"; microsoft_adcenterconversion_cp = "+params.bing_cp+";";
 				
 				setTimeout(function() {
-					var paramScript = frame.window.document.createElement("script");
-					paramScript.append(data);
+					var paramScript = frame.contentWindow.document.createElement("script");
+					paramScript.text = "microsoft_adcenterconversion_domainid = "+params.bing_domain_id+"; microsoft_adcenterconversion_cp = "+params.bing_cp+";";
+//					dump(paramScript.text);
 					var script = frame.contentWindow.document.createElement("script");
 					script.type = "text.javascript"
 					//check if script loads and show adcenter/bingads anchor if so

@@ -1131,7 +1131,11 @@ don't modify the 'data-templateid' unless you are changing template names and up
 	<span class="displayNone" data-tlc="bind $var '.%page.meta_description'; if(is $var --null;){{bind $var '.%page.description';}}; if(is $var --null;){{set $var '';}}; apply --attrib='data-seo-desc';"></span>
 
 	<ul data-tlc="bind $var '.path'; store_navcats#breadcrumb  --templateid='breadcrumbTemplate'  --legacy;" class="breadcrumb clearfix noPadOrMargin fluidList"></ul>
-	
+<!-- HERE FOR TESTING ADCENTER SCRIPT ADDITION, REMOVE WHEN DONE ADDING ADCENTER. 
+	<div class='trackingTestDiv'>
+<div class='displayNone' data-bingads="1">HERE IS SOME STUFF TO SEE</div>
+</div>	
+-->	
 	<h2 data-tlc="bind $var '.%page.header'; if (is $var --notblank;) {{apply --append;}};" class="blah5"></h2>
 	
 	<div class="catContainer">
