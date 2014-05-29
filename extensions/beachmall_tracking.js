@@ -258,7 +258,7 @@ var beachmall_tracking = function(_app) {
 			
 			addPriceGrabber : function($context, merchantID) {
 				dump('START addPriceGrabber TRACKING');
-				var $img = $("<img src='https://www.pricegrabber.com/conversion.php?retid='"+merchantID+"'>");
+				var $img = $("<img src='https://www.pricegrabber.com/conversion.php?retid="+merchantID+">");
 				$("[data-pricegrabber]", $context).append($img);
 			},
 			
@@ -286,7 +286,7 @@ var beachmall_tracking = function(_app) {
 				},250);
 			},
 			
-			
+//MARK			
 			addAddThis : function($context) {
 				dump('START addAddThis TRACKING');
 				var frame = document.createElement("iframe");
@@ -323,7 +323,7 @@ var beachmall_tracking = function(_app) {
 				},250);
 			},
 			
-			
+//MARK			
 			addFacebook : function(pixelID) {
 				dump('START addFacebook TRACKING');
 				var frame = document.createElement("iframe");
