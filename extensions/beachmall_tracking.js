@@ -127,10 +127,11 @@ var beachmall_tracking = function(_app) {
 				
 				setTimeout(function() {
 					var paramScript = frame.contentWindow.document.createElement("script");
+					paramScript.type = "text/javascript";
 					paramScript.text = "microsoft_adcenterconversion_domainid = "+params.bing_domain_id+"; microsoft_adcenterconversion_cp = "+params.bing_cp+";";
 //					dump(paramScript.text);
 					var script = frame.contentWindow.document.createElement("script");
-					script.type = "text.javascript"
+					script.type = "text/javascript"
 					script.src = "https://0.r.msn.com/scripts/microsoft_adcenterconversion.js";
 					
 					//Removed "noscript" content, app runs on js so if it's not enabled nothing works...
@@ -169,13 +170,13 @@ var beachmall_tracking = function(_app) {
 				
 				setTimeout(function() {
 					var paramScript = frame.contentWindow.document.createElement("script");
-					paramScript.type = 	"text.javascript";
+					paramScript.type = 	"text/javascript";
 					paramScript.text = 	"var merchant_id 	= '"+merchantID+"';"
 									+	"var order_id 		= '"+orderID+"';"
 									+	"var order_amt 		= '"+orderTotal+"';";
 //					dump(paramScript.text);
 					var script = frame.contentWindow.document.createElement("script");
-					script.type = "text.javascript";
+					script.type = "text/javascript";
 					script.src = "https://stat.DealTime.com/ROI/ROI.js?mid="+merchantID;
 					
 					frame.contentWindow.document.body.appendChild(paramScript);
@@ -192,7 +193,7 @@ var beachmall_tracking = function(_app) {
 				
 				setTimeout(function() {
 					var paramScript = frame.contentWindow.document.createElement("script");
-					paramScript.type = 	"text.javascript";
+					paramScript.type = 	"text/javascript";
 					paramScript.text = 	"var mid 			= '"+merchantID+"';"
 									+	"var cust_type 		= '';"
 									+	"var order_value 	= '"+orderTotal+"';"
@@ -200,7 +201,7 @@ var beachmall_tracking = function(_app) {
 									+	"var units_ordered	= '';";
 //					dump(paramScript.text);
 					var script = frame.contentWindow.document.createElement("script");
-					script.type = "text.javascript";
+					script.type = "text/javascript";
 					script.src = "https://www.shopzilla.com/css/roi_tracker.js";
 					
 					frame.contentWindow.document.body.appendChild(paramScript);
@@ -217,13 +218,13 @@ var beachmall_tracking = function(_app) {
 				
 				setTimeout(function() {
 					var paramScript = frame.contentWindow.document.createElement("script");
-					paramScript.type = 	"text.javascript";
+					paramScript.type = 	"text/javascript";
 					paramScript.text = 	"var merchant_account_id	= '"+merchantID+"';"
 									+	"var order_id 				= '"+orderID+"';"
 									+	"var order_value 			= '"+orderTotal+"';";
 //					dump(paramScript.text);
 					var script = frame.contentWindow.document.createElement("script");
-					script.type = "text.javascript";
+					script.type = "text/javascript";
 					script.src = "https://merchant.pronto.com/js/roi.js";
 					
 					frame.contentWindow.document.body.appendChild(paramScript);
@@ -240,13 +241,13 @@ var beachmall_tracking = function(_app) {
 				
 				setTimeout(function() {
 					var paramScript = frame.contentWindow.document.createElement("script");
-					paramScript.type = 	"text.javascript";
+					paramScript.type = 	"text/javascript";
 					paramScript.text = 	"var id		= '"+merchantID+"';"
 									+	"var rev	= '"+orderTotal+"';"
 									+	"var order	= '"+orderID+"';";
 //					dump(paramScript.text);
 					var script = frame.contentWindow.document.createElement("script");
-					script.type = "text.javascript";
+					script.type = "text/javascript";
 					script.src = "https://imgsrv.nextag.com/imagefiles/includes/roitrack.js";
 					
 					frame.contentWindow.document.body.appendChild(paramScript);
@@ -270,13 +271,13 @@ var beachmall_tracking = function(_app) {
 				
 				setTimeout(function() {
 					var paramScript = frame.contentWindow.document.createElement("script");
-					paramScript.type = 	"text.javascript";
+					paramScript.type = 	"text/javascript";
 					paramScript.text = 	"var become_merchant_id	= '"+merchantID+"';"
 									+	"var become_order_num	= '"+orderID+"';"
 									+	"var become_order_id	= '"+orderTotal+"';";
 //					dump(paramScript.text);
 					var script = frame.contentWindow.document.createElement("script");
-					script.type = "text.javascript";
+					script.type = "text/javascript";
 					script.src = "https://partner.become.com/roi-tracker2/conversion.js";
 					//<noscript><img src="https://partner.become.com/roi-tracker2/t.gif?merchantid=EC32A6A4ED7F110E&order_id=%ORDERID%&order_value=%grandtotal%" style="display:none;border:0;"/></noscript>
 					
@@ -300,7 +301,7 @@ var beachmall_tracking = function(_app) {
 					//var $img = $("<img src='//s7.addthis.com/static/btn/lg-share-en.gif' width='125' height='16' alt='Bookmark and Share' style='border:0' />");
 					
 					var script = frame.contentWindow.document.createElement("script");
-					script.type = "text.javascript";
+					script.type = "text/javascript";
 					script.src = "//s7.addthis.com/js/250/addthis_widget.js?pub=beachmart";
 
 					//$anchor.append($img);
@@ -331,7 +332,7 @@ var beachmall_tracking = function(_app) {
 				
 				setTimeout(function() {
 					var script = frame.contentWindow.document.createElement("script");
-					script.type = 	"text.javascript";
+					script.type = 	"text/javascript";
 					script.text = 	"var fb_param 		= {};"
 								+	"fb_param.pixel_id 	= '"+pixelID+"';"
 								+	"fb_param.value 	= '0.00';"
