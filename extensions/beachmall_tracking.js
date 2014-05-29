@@ -55,10 +55,23 @@ var beachmall_tracking = function(_app) {
 						dump("START beachmall_tracking code pushed on order_create.checkoutCompletes");
 						if(infoObj && infoObj.datapointer && _app.data[infoObj.datapointer] && _app.data[infoObj.datapointer].order)	{
 							//var $context = $(_app.u.jqSelector('#'+infoObj.parentID));
-							dump('IN datapointer if for tracking checkoutcompletes');
 							var $context = $('.checkoutSuccess');
-							//dump('ParentID in conversion tracking extension is:'); dump(infoObj.parentID);
+							dump('BEACHMALL_TRACKING: infoObj, datapointer, _app.data datapointer, and order exist');
+							
+							var order = _app.data[infoObj.datapointer].order;
+							var orderTotal = order.sum.order_total;
+							var orderID = infoObj.orderID;
+							dump("TRACKING EXTENSION VARS: orderTotal, orderID, order:"); dump(orderTotal); dump(orderID); dump(order);
+							
 							_app.ext.beachmall_tracking.u.addBing($context,{'bing_domain_id':'248869','bing_cp':'5050'});
+							_app.ext.beachmall_tracking.u.addShopping('448218', orderID, orderTotal);
+							_app.ext.beachmall_tracking.u.addShopzilla('182786', orderID, orderTotal);
+							_app.ext.beachmall_tracking.u.addPronto('104759', orderID, orderTotal);
+							_app.ext.beachmall_tracking.u.addNextag('3865748', orderID, orderTotal);
+							_app.ext.beachmall_tracking.u.addPriceGrabber('10090');
+							_app.ext.beachmall_tracking.u.addBecome('EC32A6A4ED7F110E', orderID, orderTotal);
+							_app.ext.beachmall_tracking.u.addAddThis($context);
+							_app.ext.beachmall_tracking.u.addFacebook('6009135221658');
 						}
 						else { dump('AHHHH! Problem w/ infoObj, infoObj.datapointer, _app.data[infoObj.datapointer], or _app.data[infoObj.datapointer].order!'); }
 					});
@@ -102,7 +115,7 @@ var beachmall_tracking = function(_app) {
 			
 			//loads Bing tracking info to checkoutTemplate
 			addBing : function($context,params) {
-				dump('LOADING BING TRACKING');
+				dump('START BING TRACKING');
 				var $bingAds = $('[data-bingads]',$context);
 				
 				var frame = document.createElement("iframe");
@@ -118,6 +131,20 @@ var beachmall_tracking = function(_app) {
 //					dump(paramScript.text);
 					var script = frame.contentWindow.document.createElement("script");
 					script.type = "text.javascript"
+					script.src = "https://0.r.msn.com/scripts/microsoft_adcenterconversion.js";
+					
+					//Removed "noscript" content, app runs on js so if it's not enabled nothing works...
+					//var noscript = document.createElement("noscript");
+					//var $img = $("<img width=1 height=1 src='https://248869.r.msn.com/?type=1&cp=1'\/>");
+					//noscript.append($img);
+					
+					//anchor is in checkoutSuccess container and will be shown if script is found to load
+					//var $anchor = $("<a href='http://advertising.msn.com/MSNadCenter/LearningCenter/adtracker.asp' target='_blank'>::adCenter::</a>");
+					
+					frame.contentWindow.document.body.appendChild(paramScript);
+					frame.contentWindow.document.body.appendChild(script);
+					//frame.contentWindow.document.body.appendChild(noscript);
+					
 					//check if script loads and show adcenter/bingads anchor if so
 					if (script.readyState){  //IE
 						script.onreadystatechange = function(){
@@ -130,22 +157,200 @@ var beachmall_tracking = function(_app) {
 					else {
 						script.onload = function(){ $bingAds.removeClass('displayNone'); }
 					}
-					script.src = "https://0.r.msn.com/scripts/microsoft_adcenterconversion.js";
-					
-					//Removed "noscript" content, app runs on js so if it's not enabled nothing works...
-					//var noscript = document.createElement("noscript");
-					//var $img = $("<img width=1 height=1 src='https://248869.r.msn.com/?type=1&cp=1'\/>");
-					
-					//var $anchor = $("<a href='http://advertising.msn.com/MSNadCenter/LearningCenter/adtracker.asp' target='_blank'>::adCenter::</a>");
-					
-					//noscript.append($img);
-					frame.contentWindow.document.body.appendChild(paramScript);
-					frame.contentWindow.document.body.appendChild(script);
-					//frame.contentWindow.document.body.appendChild(noscript);
-					
 				},250);
 			},
+			
+			
+			addShopping : function(merchantID, orderID, orderTotal) {
+				dump('START addShopping TRACKING');
+				var frame = document.createElement("iframe");
+				$(frame).addClass("displayNone");
+				$("body").append(frame);
+				
+				setTimeout(function() {
+					var paramScript = frame.contentWindow.document.createElement("script");
+					paramScript.type = 	"text.javascript";
+					paramScript.text = 	"var merchant_id 	= '"+merchantID+"';"
+									+	"var order_id 		= '"+orderID+"';"
+									+	"var order_amt 		= '"+orderTotal+"';";
+//					dump(paramScript.text);
+					var script = frame.contentWindow.document.createElement("script");
+					script.type = "text.javascript";
+					script.src = "https://stat.DealTime.com/ROI/ROI.js?mid="+merchantID;
+					
+					frame.contentWindow.document.body.appendChild(paramScript);
+					frame.contentWindow.document.body.appendChild(script);
+				},250);
+			},
+			
+			
+			addShopzilla : function(merchantID, orderID, orderTotal) {
+				dump('START addShopzilla TRACKING');
+				var frame = document.createElement("iframe");
+				$(frame).addClass("displayNone");
+				$("body").append(frame);
+				
+				setTimeout(function() {
+					var paramScript = frame.contentWindow.document.createElement("script");
+					paramScript.type = 	"text.javascript";
+					paramScript.text = 	"var mid 			= '"+merchantID+"';"
+									+	"var cust_type 		= '';"
+									+	"var order_value 	= '"+orderTotal+"';"
+									+	"var order_id 		= '"+orderID+"';"
+									+	"var units_ordered	= '';";
+//					dump(paramScript.text);
+					var script = frame.contentWindow.document.createElement("script");
+					script.type = "text.javascript";
+					script.src = "https://www.shopzilla.com/css/roi_tracker.js";
+					
+					frame.contentWindow.document.body.appendChild(paramScript);
+					frame.contentWindow.document.body.appendChild(script);
+				},250);
+			},
+			
+			
+			addPronto : function(merchantID, orderID, orderTotal) {
+				dump('START addPronto TRACKING');
+				var frame = document.createElement("iframe");
+				$(frame).addClass("displayNone");
+				$("body").append(frame);
+				
+				setTimeout(function() {
+					var paramScript = frame.contentWindow.document.createElement("script");
+					paramScript.type = 	"text.javascript";
+					paramScript.text = 	"var merchant_account_id	= '"+merchantID+"';"
+									+	"var order_id 				= '"+orderID+"';"
+									+	"var order_value 			= '"+orderTotal+"';";
+//					dump(paramScript.text);
+					var script = frame.contentWindow.document.createElement("script");
+					script.type = "text.javascript";
+					script.src = "https://merchant.pronto.com/js/roi.js";
+					
+					frame.contentWindow.document.body.appendChild(paramScript);
+					frame.contentWindow.document.body.appendChild(script);
+				},250);
+			},
+			
+			
+			addNextag : function(merchantID, orderID, orderTotal) {
+				dump('START addNextag TRACKING');
+				var frame = document.createElement("iframe");
+				$(frame).addClass("displayNone");
+				$("body").append(frame);
+				
+				setTimeout(function() {
+					var paramScript = frame.contentWindow.document.createElement("script");
+					paramScript.type = 	"text.javascript";
+					paramScript.text = 	"var id		= '"+merchantID+"';"
+									+	"var rev	= '"+orderTotal+"';"
+									+	"var order	= '"+orderID+"';";
+//					dump(paramScript.text);
+					var script = frame.contentWindow.document.createElement("script");
+					script.type = "text.javascript";
+					script.src = "https://imgsrv.nextag.com/imagefiles/includes/roitrack.js";
+					
+					frame.contentWindow.document.body.appendChild(paramScript);
+					frame.contentWindow.document.body.appendChild(script);
+				},250);
+			},
+			
+			
+			addPriceGrabber : function(merchantID) {
+				dump('START addPriceGrabber TRACKING');
+				var $img = $("<img src='https://www.pricegrabber.com/conversion.php?retid='"+merchantID+"'>");
+				//TODO: Add the tag below to checkoutComplete template
+				$(".priceGrabberConversion").append($img);
+			},
+			
+			
+			addBecome : function(merchantID, orderID, orderTotal) {
+				dump('START addBecome TRACKING');
+				var frame = document.createElement("iframe");
+				$(frame).addClass("displayNone");
+				$("body").append(frame);
+				
+				setTimeout(function() {
+					var paramScript = frame.contentWindow.document.createElement("script");
+					paramScript.type = 	"text.javascript";
+					paramScript.text = 	"var become_merchant_id	= '"+merchantID+"';"
+									+	"var become_order_num	= '"+orderID+"';"
+									+	"var become_order_id	= '"+orderTotal+"';";
+//					dump(paramScript.text);
+					var script = frame.contentWindow.document.createElement("script");
+					script.type = "text.javascript";
+					script.src = "https://partner.become.com/roi-tracker2/conversion.js";
+					//<noscript><img src="https://partner.become.com/roi-tracker2/t.gif?merchantid=EC32A6A4ED7F110E&order_id=%ORDERID%&order_value=%grandtotal%" style="display:none;border:0;"/></noscript>
+					
+					frame.contentWindow.document.body.appendChild(paramScript);
+					frame.contentWindow.document.body.appendChild(script);
+				},250);
+			},
+			
+			
+			addAddThis : function($context) {
+				dump('START addAddThis TRACKING');
+				var frame = document.createElement("iframe");
+				$(frame).addClass("displayNone");
+				$("body").append(frame);
+				
+				setTimeout(function() {
+					var $addThisButton = $("[data-addthisbutton]",$context);
+				
+					//anchor and img are in checkoutSuccess container and will be shown if script is found to load
+					//var $anchor = $("<a href='http://www.addthis.com/bookmark.php?v=250&amp;pub=beachmart' onmouseover='return addthis_open(this, &quot;&quot;, &quot;http://www.beachmall.com&quot;, &quot;beachmall.com&quot;)' onmouseout='addthis_close()' onclick='return addthis_sendto()'></a>");
+					//var $img = $("<img src='//s7.addthis.com/static/btn/lg-share-en.gif' width='125' height='16' alt='Bookmark and Share' style='border:0' />");
+					
+					var script = frame.contentWindow.document.createElement("script");
+					script.type = "text.javascript";
+					script.src = "//s7.addthis.com/js/250/addthis_widget.js?pub=beachmart";
 
+					//$anchor.append($img);
+					
+					frame.contentWindow.document.body.appendChild(paramScript);
+					frame.contentWindow.document.body.appendChild(script);
+					
+					//check if script loads and show addThis anchor & img if so
+					if (script.readyState){  //IE
+						script.onreadystatechange = function(){
+							if (script.readyState == "loaded" || script.readyState == "complete"){
+								script.onreadystatechange = null;
+								$addThisButton.removeClass('displayNone');
+							}
+						};
+					}
+					else {
+						script.onload = function(){ $addThisButton.removeClass('displayNone'); }
+					}
+				},250);
+			},
+			
+			
+			addFacebook : function(pixelID) {
+				dump('START addFacebook TRACKING');
+				var frame = document.createElement("iframe");
+				$(frame).addClass("displayNone");
+				$("body").append(frame);
+				
+				setTimeout(function() {
+					var script = frame.contentWindow.document.createElement("script");
+					script.type = 	"text.javascript";
+					script.text = 	"var fb_param 		= {};"
+								+	"fb_param.pixel_id 	= '"+pixelID+"';"
+								+	"fb_param.value 	= '0.00';"
+								+	"fb_param.currency 	= 'USD';"
+								+	"(function(){"
+									+	"var fpw 	= document.createElement('script');"
+									+	"fpw.asyn 	= true;"
+									+	"fpw.src	= '//connect.facebook.net/en_US/fp.js';"
+									+	"var ref 	= document.getElementByTagName('script')[0];"
+									+	"ref.parentNode.insertBefore(fpw, ref);"
+								+	"})();";
+					//<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/offsite_event.php?id=6009135221658&amp;value=0&amp;currency=USD" /></noscript>
+					
+					frame.contentWindow.document.body.appendChild(script);
+				},250);
+			}
+				
 		}, //u [utilities]
 
 //app-events are added to an element through data-app-event="extensionName|functionName"
