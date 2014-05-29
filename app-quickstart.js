@@ -1535,7 +1535,10 @@ beachmart*/
 
 				},
 
-
+				updateDOMTitle : function(title)	{
+					title = (typeof title === "string") ? title : ""; //better blank than 'undefined' or 'object'.
+					document.title = title;
+					},
 
 //used in checkout to populate username: so either login or bill/email will work.
 //never use this to populate the value of an email form field because it may not be an email address.
@@ -2215,28 +2218,31 @@ effects the display of the nav buttons only. should be run just after the handle
 					
 //If raw elastic has been provided, use that.  Otherwise build a query.
 				if(infoObj.elasticsearch){
+					_app.ext.quickstart.u.updateDOMTitle("Search - advanced");
 					elasticsearch = _app.ext.store_search.u.buildElasticRaw(infoObj.elasticsearch);
 					}
 				else if(infoObj.tag)	{
+					_app.ext.quickstart.u.updateDOMTitle("Search - tag: "+infoObj.tag);
 					elasticsearch = _app.ext.store_search.u.buildElasticRaw({
 					   "filter":{
 						  "and" : [
-							 {"term":{"tags":infoObj.tag}},
+							 {"term":{"tags":decodeURIComponent(infoObj.tag)}},
 							 {"has_child":{"type":"sku","query": {"range":{"available":{"gte":1}}}}} //only return item w/ inventory
 							 ]
 						  }});
 					}
 				else if (infoObj.KEYWORDS) {
+					_app.ext.quickstart.u.updateDOMTitle("Search - keywords: "+infoObj.KEYWORDS);
 					elasticsearch = _app.ext.store_search.u.buildElasticRaw({
 					   "filter":{
 						  "and" : [
-							 {"query":{"query_string":{"query":infoObj.KEYWORDS}}},
+							 {"query":{"query_string":{"query":decodeURIComponent(infoObj.KEYWORDS), "fields":["prod_name^5","pid","prod_desc"]}}},
 							 {"has_child":{"type":"sku","query": {"range":{"available":{"gte":1}}}}} //only return item w/ inventory
 							 ]
 						  }});
 					}
 				else	{
-					
+					_app.ext.quickstart.u.updateDOMTitle("Search - error!");
 					}
 				dump(elasticsearch);
 /*
