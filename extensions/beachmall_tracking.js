@@ -61,7 +61,7 @@ var beachmall_tracking = function(_app) {
 							var order = _app.data[infoObj.datapointer].order;
 							var orderTotal = order.sum.order_total;
 							var orderID = infoObj.orderID;
-							dump("TRACKING EXTENSION VARS: orderTotal, orderID, order:"); dump(orderTotal); dump(orderID); dump(order);
+//							dump("TRACKING EXTENSION VARS: orderTotal, orderID, order:"); dump(orderTotal); dump(orderID); dump(order);
 							
 							_app.ext.beachmall_tracking.u.addBing($context,{'bing_domain_id':'248869','bing_cp':'5050'});
 							_app.ext.beachmall_tracking.u.addShopping('448218', orderID, orderTotal);
