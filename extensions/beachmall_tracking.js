@@ -115,7 +115,7 @@ var beachmall_tracking = function(_app) {
 			
 			//loads Bing tracking info to checkoutTemplate
 			addBing : function($context,params) {
-				dump('START BING TRACKING');
+				dump('START addBing TRACKING');
 				var $bingAds = $('[data-bingads]',$context);
 				
 				var frame = document.createElement("iframe");
@@ -258,7 +258,7 @@ var beachmall_tracking = function(_app) {
 			
 			addPriceGrabber : function($context, merchantID) {
 				dump('START addPriceGrabber TRACKING');
-				$("[data-pricegrabber]", $context).append("<img src='https://www.pricegrabber.com/conversion.php?retid="+merchantID+"'>");
+				$("[data-pricegrabber]", $context).append("<img src='https://www.pricegrabber.com/conversion.php?retid="+merchantID+"'>").removeClass('displayNone');
 			},
 			
 			
@@ -301,7 +301,8 @@ var beachmall_tracking = function(_app) {
 					
 					var script = frame.contentWindow.document.createElement("script");
 					script.type = "text/javascript";
-					script.src = "//s7.addthis.com/js/250/addthis_widget.js?pub=beachmart";
+					//script.src = "//s7.addthis.com/js/250/addthis_widget.js?pub=beachmart";
+					script.src = "https://s7.addthis.com/js/250/addthis_widget.js?pub=beachmart";
 
 					//$anchor.append($img);
 					
@@ -339,8 +340,9 @@ var beachmall_tracking = function(_app) {
 								+	"(function(){"
 									+	"var fpw 	= document.createElement('script');"
 									+	"fpw.asyn 	= true;"
-									+	"fpw.src	= '//connect.facebook.net/en_US/fp.js';"
-									+	"var ref 	= document.getElementByTagName('script')[0];"
+									//+	"fpw.src	= '//connect.facebook.net/en_US/fp.js';"
+									+	"fpw.src	= 'https://connect.facebook.net/en_US/fp.js';"
+									+	"var ref 	= document.getElementsByTagName('script')[0];"
 									+	"ref.parentNode.insertBefore(fpw, ref);"
 								+	"})();";
 					//<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/offsite_event.php?id=6009135221658&amp;value=0&amp;currency=USD" /></noscript>
