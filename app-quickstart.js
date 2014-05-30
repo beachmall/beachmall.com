@@ -2227,7 +2227,8 @@ effects the display of the nav buttons only. should be run just after the handle
 					   "filter":{
 						  "and" : [
 							 {"term":{"tags":decodeURIComponent(infoObj.tag)}},
-							 {"has_child":{"type":"sku","query": {"range":{"available":{"gte":1}}}}} //only return item w/ inventory
+							 {"has_child":{"type":"sku","query": {"range":{"available":{"gte":1}}}}}, //only return item w/ inventory
+/*beachmall*/				 {"not" : {"term" : {"tags":"IS_DISCONTINUED"}}} //don't show discontinued items
 							 ]
 						  }});
 					}
@@ -2237,7 +2238,8 @@ effects the display of the nav buttons only. should be run just after the handle
 					   "filter":{
 						  "and" : [
 							 {"query":{"query_string":{"query":decodeURIComponent(infoObj.KEYWORDS), "fields":["prod_name^5","pid","prod_desc"]}}},
-							 {"has_child":{"type":"sku","query": {"range":{"available":{"gte":1}}}}} //only return item w/ inventory
+							 {"has_child":{"type":"sku","query": {"range":{"available":{"gte":1}}}}}, //only return item w/ inventory
+/*beachmall*/				 {"not" : {"term" : {"tags":"IS_DISCONTINUED"}}} //don't show discontinued items
 							 ]
 						  }});
 					}
