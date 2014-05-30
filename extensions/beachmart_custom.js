@@ -224,12 +224,18 @@ var beachmart = function(_app) {
 						else {} //not on a product page. do nothing
 						//_app.ext.beachmart.u.getShipQuotes(_app.data[tagObj.datapointer].zip);
 					}
-					else if (attempts < 120){
+					else if (attempts < 8){
 						dump('cartDetail.ship null, running again. #of attempts so far:'); dump(attempts);
 						attempts++;
 						setTimeout(function() { _app.ext.beachmart.callbacks.handleWhereAmI.onSuccess(tagObj,attempts) },250);
 					}
-					else { dump('In _app.ext.beachmart.callbacks.handleWhereAmI.onSuccess and cartDetail.ship has taken more than 30 seconds to load, a problem has occured.','error') }
+					else if (attempts < 9){
+						dump('cartDetail.ship null, setting to blank object and running again. #of attempts so far:'); dump(attempts);
+						attempts++;
+						thisCartDetail.ship = {};
+						setTimeout(function() { _app.ext.beachmart.callbacks.handleWhereAmI.onSuccess(tagObj,attempts) },250);
+					}
+					else { dump('In _app.ext.beachmart.callbacks.handleWhereAmI.onSuccess and cartDetail.ship is not loading, a problem has occured.','error') }
 				},
 				onError : function(responseData)	{
 					var $container = $(_app.u.jqSelector('#',_app.ext.quickstart.vars.hotw[0].parentID));
