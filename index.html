@@ -2351,7 +2351,7 @@ this will likely become more flexible in the future. ###
 		<!--<fieldset data-bind='var: product(pid); format:atcCustomVariations; extension:store_filter;' class='borderNone'></fieldset>-->
 		<fieldset data-tlc="bind $var '.'; store_product#atcquantityinput  --defaultvalue='1' --legacy;" class="borderNone floatRight"></fieldset>
 	<!--	<fieldset data-bind='var: product(pid); format:atcQuantityInput; defaultValue:1; extension:store_product; pretext:Quantity: ;' class='borderNone'></fieldset>-->
-		<div>
+		<div data-tlc="bind $var '.%attribs.zoovy:prod_is_tags'; beachmall_store#discontinuedatc --legacy;">
 			<input data-tlc="bind $var '.pid'; beachmart#addtocartbutton  --legacy;" value="Add to Cart" class="floatRight ui-button ui-button-text ui-corner-all ui-state-default displayNone addToCartButton" type="submit">
 			<div data-tlc="bind $var '.'; beachmall_store#hideshiplatency  --legacy;" data-legacy-useparentdata="true">
 				<div data-tlc="bind $var '.'; beachmall_store#showshiplatency  --legacy;" data-legacy-useparentdata="true" class="shipTime latency floatLeft">

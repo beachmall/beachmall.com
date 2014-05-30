@@ -745,6 +745,15 @@ var beachmall_store = function(_app) {
 				},1000);	
 			},
 			
+			//will hide the add to cart button on product page if item has IS_DISCONTINUED tag
+			discontinuedatc : function($tag,data) {
+				dump('START hideatc'); dump(data.value);
+				if(data.value.indexOf('IS_DISCONTINUED') != -1) {
+					$tag.before("<div>Sorry! This item is not available for purchase.</div>");
+					$tag.addClass('displayNone');
+				} 
+			},
+			
 		/*	TO DO: SET UP WAY TO SELECT TAB AND HIDE IF NOT RESULTS, AND, MAKE SEQUENTIAL SO THAT ALL TABS ARE CHECKED ON AFTER THE OTHER TO PREVENT NO CONTENT SHOWING.
 			brandstabhider : function($tag, data) { 
 				setTimeout(function(){
