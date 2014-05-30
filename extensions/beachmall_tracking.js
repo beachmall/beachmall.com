@@ -285,7 +285,7 @@ var beachmall_tracking = function(_app) {
 				},250);
 			},
 			
-//MARK			
+			
 			addAddThis : function($context) {
 				dump('START addAddThis TRACKING');
 				var frame = document.createElement("iframe");
@@ -323,7 +323,7 @@ var beachmall_tracking = function(_app) {
 				},250);
 			},
 			
-//MARK			
+			
 			addFacebook : function(pixelID) {
 				dump('START addFacebook TRACKING');
 				var frame = document.createElement("iframe");
