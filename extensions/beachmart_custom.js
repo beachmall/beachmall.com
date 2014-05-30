@@ -145,81 +145,91 @@ var beachmart = function(_app) {
 //update the cart shippng fields appropriately.
 			handleWhereAmI : {
 				
-				onSuccess : function(tagObj){ 
+				onSuccess : function(tagObj,attempts){
+					attempts = Number(attempts) || 0;
+					dump('handleWhereAmI started. #of attempts till cartDetail.ship:'); dump(attempts); 
 					dump('----handleWhereAmI'); dump(_app.data[tagObj.datapointer]);
-					var data = _app.data[tagObj.datapointer]; 
 					var cartID = _app.model.fetchCartID();
 					var thisCartDetail = _app.data["cartDetail|"+cartID];
-					//_app.u.dump('----handleWhereAmI:'); _app.u.dump(data);
-					
-					if(data.zip) {
-						//all the data is there, send it in one shot
-						if(data.city && data.region && data.zip) {
-							//update local cart
-							thisCartDetail.ship.city = data.city;
-							thisCartDetail.ship.region = data.region;
-							thisCartDetail.ship.postal = data.zip;
+					//possible to get here before cartDetail.ship is set, rerun until set if so
+					if(thisCartDetail.ship) {
+						var data = _app.data[tagObj.datapointer]; 
+						//_app.u.dump('----handleWhereAmI:'); _app.u.dump(data);
+						
+						if(data.zip) {
+							//all the data is there, send it in one shot
+							if(data.city && data.region && data.zip) {
+								//update local cart
+								thisCartDetail.ship.city = data.city;
+								thisCartDetail.ship.region = data.region;
+								thisCartDetail.ship.postal = data.zip;
+								//update display classes
+								$('.shipCity').text(data.city || "");
+								$('.shipRegion').text(data.region || "");
+								$('.shipPostal').text(data.zip || "");
+								_app.ext.cco.calls.cartSet.init({"ship/city":data.city,"ship/region":data.region,"ship/postal":data.zip,"_cartid":cartID},{},'passive'); 
+								_app.model.dispatchThis('passive');
+							}
+							//only partial data (for what reason?) send it if it's there
+							else {
+								if(data.city)	{
+									thisCartDetail.ship.city = data.city;
+									$('.shipCity').text(data.city || "");
+									_app.ext.cco.calls.cartSet.init({"ship/city":data.city,"_cartid":cartID},{},'passive');
+									}
+								if(data.region)	{
+									$('.shipRegion').text(data.state || "");
+									thisCartDetail.ship.region = data.region;
+									_app.ext.cco.calls.cartSet.init({"ship/region":data.region,"_cartid":cartID},{},'passive');
+									}
+								if(data.zip) {
+									$('.shipPostal').text(data.zip || "");
+									thisCartDetail.ship.postal = data.zip;
+									_app.ext.cco.calls.cartSet.init({"ship/zip":data.zip,"_cartid":cartID},{},'passive');
+								}
+								if(data.city || data.region || data.zip)	{
+									_app.model.dispatchThis('passive');
+									}
+							}
+						}
+						//whereAmI didn't return a zip, set cart and make that obvious to user...
+						else {
+							thisCartDetail.ship.city = "";
+							thisCartDetail.ship.region = "";
+							thisCartDetail.ship.postal = "";
 							//update display classes
-							$('.shipCity').text(data.city || "");
-							$('.shipRegion').text(data.region || "");
-							$('.shipPostal').text(data.zip || "");
+							$('.shipCity').text("Location unavailable");
+							$('.shipRegion').text("");
+							$('.shipPostal').text("");
 							_app.ext.cco.calls.cartSet.init({"ship/city":data.city,"ship/region":data.region,"ship/postal":data.zip,"_cartid":cartID},{},'passive'); 
 							_app.model.dispatchThis('passive');
+							$('#globalMessaging').anymessage({'message':'Postal location could not be determined, you may try again at the top left of the screen'});
 						}
-						//only partial data (for what reason?) send it if it's there
-						else {
-							if(data.city)	{
-								thisCartDetail.ship.city = data.city;
-								$('.shipCity').text(data.city || "");
-								_app.ext.cco.calls.cartSet.init({"ship/city":data.city,"_cartid":cartID},{},'passive');
-								}
-							if(data.region)	{
-								$('.shipRegion').text(data.state || "");
-								thisCartDetail.ship.region = data.region;
-								_app.ext.cco.calls.cartSet.init({"ship/region":data.region,"_cartid":cartID},{},'passive');
-								}
-							if(data.zip) {
-								$('.shipPostal').text(data.zip || "");
-								thisCartDetail.ship.postal = data.zip;
-								_app.ext.cco.calls.cartSet.init({"ship/zip":data.zip,"_cartid":cartID},{},'passive');
-							}
-							if(data.city || data.region || data.zip)	{
-								_app.model.dispatchThis('passive');
-								}
+							
+						//if it's a product page, update the time in transit there. 
+						if(_app.ext.quickstart.vars.hotw && _app.ext.quickstart.vars.hotw[0] && _app.ext.quickstart.vars.hotw[0].pageType == 'product' && data.zip)	{				
+							var $container = $(_app.u.jqSelector('#',_app.ext.quickstart.vars.hotw[0].parentID));
+							$('.timeInTransitMessaging').empty(); //intentionally has no context. once a zip is entered, remove this anywhere it was displayed.
+							$('.putLoadingHere',$container).addClass('loadingBG').show();
+							$('.loadingText',$container).show();
+							$('.shipMessage, .estimatedArrivalDate, .deliveryLocation, .deliveryMethod',$container).empty()				
+							_app.ext.beachmart.u.getShipQuotes(data.zip);
 						}
+						else if (_app.ext.quickstart.vars.hotw && _app.ext.quickstart.vars.hotw[0] && _app.ext.quickstart.vars.hotw[0].pageType == 'product' && !data.zip) {
+							var $tryAgain = $("<span class='pointer'>Transit times could not be retrieved at the moment (Try again)</span>");
+							$('.transitContainer',$container).empty().append($tryAgain).click(function(){_app.ext.beachmart.a.showZipDialog()});
+							$('.shippingInformation .loadingBG',$container).removeClass('loadingBG');
+							$('.loadingText',$container).hide()
+						}
+						else {} //not on a product page. do nothing
+						//_app.ext.beachmart.u.getShipQuotes(_app.data[tagObj.datapointer].zip);
 					}
-					//whereAmI didn't return a zip, set cart and make that obvious to user...
-					else {
-						thisCartDetail.ship.city = "";
-						thisCartDetail.ship.region = "";
-						thisCartDetail.ship.postal = "";
-						//update display classes
-						$('.shipCity').text("Location unavailable");
-						$('.shipRegion').text("");
-						$('.shipPostal').text("");
-						_app.ext.cco.calls.cartSet.init({"ship/city":data.city,"ship/region":data.region,"ship/postal":data.zip,"_cartid":cartID},{},'passive'); 
-						_app.model.dispatchThis('passive');
-						$('#globalMessaging').anymessage({'message':'Postal location could not be determined, you may try again at the top left of the screen'});
+					else if (attempts < 120){
+						dump('cartDetail.ship null, running again. #of attempts so far:'); dump(attempts);
+						attempts++;
+						setTimeout(function() { _app.ext.beachmart.callbacks.handleWhereAmI.onSuccess(tagObj,attempts) },250);
 					}
-						
-					//if it's a product page, update the time in transit there. 
-					if(_app.ext.quickstart.vars.hotw && _app.ext.quickstart.vars.hotw[0] && _app.ext.quickstart.vars.hotw[0].pageType == 'product' && data.zip)	{				
-						var $container = $(_app.u.jqSelector('#',_app.ext.quickstart.vars.hotw[0].parentID));
-						$('.timeInTransitMessaging').empty(); //intentionally has no context. once a zip is entered, remove this anywhere it was displayed.
-						$('.putLoadingHere',$container).addClass('loadingBG').show();
-						$('.loadingText',$container).show();
-						$('.shipMessage, .estimatedArrivalDate, .deliveryLocation, .deliveryMethod',$container).empty()				
-						_app.ext.beachmart.u.getShipQuotes(data.zip);
-					}
-					else if (_app.ext.quickstart.vars.hotw && _app.ext.quickstart.vars.hotw[0] && _app.ext.quickstart.vars.hotw[0].pageType == 'product' && !data.zip) {
-						var $tryAgain = $("<span class='pointer'>Transit times could not be retrieved at the moment (Try again)</span>");
-						$('.transitContainer',$container).empty().append($tryAgain).click(function(){_app.ext.beachmart.a.showZipDialog()});
-						$('.shippingInformation .loadingBG',$container).removeClass('loadingBG');
-						$('.loadingText',$container).hide()
-					}
-					else {} //not on a product page. do nothing
-					//_app.ext.beachmart.u.getShipQuotes(_app.data[tagObj.datapointer].zip);
-
+					else { dump('In _app.ext.beachmart.callbacks.handleWhereAmI.onSuccess and cartDetail.ship has taken more than 30 seconds to load, a problem has occured.','error') }
 				},
 				onError : function(responseData)	{
 					var $container = $(_app.u.jqSelector('#',_app.ext.quickstart.vars.hotw[0].parentID));
