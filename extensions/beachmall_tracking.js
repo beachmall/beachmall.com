@@ -258,8 +258,7 @@ var beachmall_tracking = function(_app) {
 			
 			addPriceGrabber : function($context, merchantID) {
 				dump('START addPriceGrabber TRACKING');
-				var $img = $("<img src='https://www.pricegrabber.com/conversion.php?retid="+merchantID+">");
-				$("[data-pricegrabber]", $context).append($img);
+				$("[data-pricegrabber]", $context).append("<img src='https://www.pricegrabber.com/conversion.php?retid="+merchantID+"'>");
 			},
 			
 			
