@@ -115,7 +115,7 @@ var beachmart_dates = function(_app) {
 				//reformats millisecond time to YYYYMMDDHH
 			millisecondsToYYYYMMDDHH : function(dateObj) {
 				var year = dateObj.getFullYear();
-				var month = dateObj.getMonth()-1; 
+				var month = dateObj.getMonth()+1; 
 				var day = dateObj.getDate();
 				var hours = dateObj.getHours();
 				if (month < 10){month = '0'+month};
@@ -126,11 +126,11 @@ var beachmart_dates = function(_app) {
 			
 				//reformats millisecond time to YYYYMMDD
 			millisecondsToYYYYMMDD : function(dateObj) {
-				var year = dateObj.getFullYear();
-				var month = dateObj.getMonth()-1; 
+				var year = dateObj.getFullYear(); dump(year);
+				var month = dateObj.getMonth()+1; 
 				var day = dateObj.getDate();
-				if (month < 10){month = '0'+month};
-				if (day < 10){day = '0'+day};
+				if (month < 10){month = '0'+month}; dump(month);
+				if (day < 10){day = '0'+day}; dump(day);
 				return ""+year+month+day;
 			},
 				
@@ -152,8 +152,9 @@ var beachmart_dates = function(_app) {
 		//		_app.u.dump('---> yyyymmddToMilliseconds');// _app.u.dump(date); 
 				var year = date.slice(0,4);
 				var month = date.slice(4,6);
+				month = month - 1;
 				var day = date.slice(6,8);
-		//		_app.u.dump(''+year+' '+month+' '+day);
+				_app.u.dump(''+year+' '+month+' '+day);
 				var milliseconds = new Date(year,month,day).getTime();
 //				_app.u.dump('---> yyyymmddToMilliseconds'); _app.u.dump(milliseconds);
 				return milliseconds;
@@ -189,6 +190,16 @@ var beachmart_dates = function(_app) {
 				if(_app.data.time && _app.data.time.unix)	{
 					return new Date(_app.data.time.unix*1000);
 				} else { return false; }
+			},
+			
+			//checks date arg passed in and returns true if it is in the future, false if it is in the past. arg should be in YYYYMMDD format
+			dateAfterToday : function(compare) {
+				dump('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!compare startes out as:'); dump(compare);
+				var r = true; //what gets returned, false if compare date has already passed
+				var today = new Date().getTime(); //dump('today is:'); dump(today); dump(_app.ext.beachmart_dates.u.millisecondsToYYYYMMDD(new Date(today)));
+				compare = _app.ext.beachmart_dates.u.yyyymmddToMilliseconds(compare); //dump('the date to compare is:'); dump(compare); dump(_app.ext.beachmart_dates.u.millisecondsToYYYYMMDD(new Date(compare)));
+				r = compare < today ? false : true; //dump(r);
+				return r;
 			}
 			
 		}, //u [utilities]

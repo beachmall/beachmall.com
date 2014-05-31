@@ -888,10 +888,12 @@ RenderFormats
 // atcButton class is added as well, so that the addToCart call can disable and re-enable the buttons.
 				$tag.attr('id',$tag.attr('id')+'_'+pid).before("<div class='atcSuccessMessage' id='atcMessaging_"+pid+"'><\/div>");
 				var pData = _app.data['appProductGet|'+data.value]
+				var hasPreOrderPassed = pData['%attribs']['zoovy:prod_salesrank'] ? _app.ext.beachmart_dates.u.afterToday(pData['%attribs']['zoovy:prod_salesrank']) : true;
+				
 				if(pData && pData['%attribs'] && pData['%attribs']['is:user1']){
 					$tag.val("Back-Order Now").text("Back-Order Now").addClass('addToCartButton backorderButton');
 					}
-				else if(pData && pData['%attribs'] && pData['%attribs']['is:preorder']){
+				else if(pData && pData['%attribs'] && pData['%attribs']['is:preorder'] && hasPreOrderPassed){
 					$tag.addClass('preorderButton');
 					}
 				else	{
@@ -1645,7 +1647,8 @@ var backorder = 0;
 	//if item is backorder item, indicate w/ attr data-backorderdate on container for estimate date
 if(prodAttribs['is:user1'] == 1 || prodAttribs['is:preorder'] == 1 || prodAttribs['zoovy:prod_is_tags'].indexOf('IS_DISCONTINUED') != -1) {
 	if(_app.ext.beachmart_dates.u.appTimeNow()) { //set backorderdate value according to whether or not salesrank date can be determined
-		if( (prodAttribs['zoovy:prod_salesrank'] != undefined || prodAttribs['zoovy:prod_salesrank'] > -1)  && prodAttribs['zoovy:prod_salesrank'] > _app.ext.beachmart_dates.u.millisecondsToYYYYMMDD(_app.ext.beachmart_dates.u.appTimeNow())) {
+		//appTimeNow function broken because no _app.data.time.unix if( (prodAttribs['zoovy:prod_salesrank'] != undefined || prodAttribs['zoovy:prod_salesrank'] > -1)  && prodAttribs['zoovy:prod_salesrank'] > _app.ext.beachmart_dates.u.millisecondsToYYYYMMDD(_app.ext.beachmart_dates.u.appTimeNow())) {
+		if( (prodAttribs['zoovy:prod_salesrank'] != undefined || prodAttribs['zoovy:prod_salesrank'] > -1)  && prodAttribs['zoovy:prod_salesrank'] > _app.ext.beachmart_dates.u.millisecondsToYYYYMMDD(new Date(new Date().getTime()))) {
 			$('.shipMessage',$r).append("Order today for arrival on ");
 			backorder = 1; //if date, then = 1
 		} else {
