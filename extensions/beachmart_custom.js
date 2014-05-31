@@ -1292,13 +1292,15 @@ uities
 
 			handlePreorderShipDate : function(){
 				_app.u.dump("BEGIN beachmart.u.handlePreorderShipDate");
-				_app.u.dump("SANITY! this item is a preorder.");
+				_app.u.dump("SANITY! this item is (or was) a preorder.");
 				var message;
 				var product = _app.data['appProductGet|'+SKU];
 //if no date is set in salesrank, don't show any shipping info.
-				if(product['%attribs']['zoovy:prod_salesrank'])
-					message = "Will ship on "+this.yyyymmdd2Pretty(_app.data['appProductGet|'+SKU]['%attribs']['zoovy:prod_salesrank'])
-
+				if(product['%attribs']['zoovy:prod_salesrank']) {
+					if(_app.ext.beachmart_dates.u.dateAfterToday(product['%attribs']['zoovy:prod_salesrank']))
+						message = "Will ship on "+this.yyyymmdd2Pretty(_app.data['appProductGet|'+SKU]['%attribs']['zoovy:prod_salesrank'])
+					}
+					else { message = "" }
 				//var $container = $("#productContainer")
 				var $container = $("#productTemplate_"+product.pid)
 				
