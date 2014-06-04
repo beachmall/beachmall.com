@@ -1918,7 +1918,7 @@ LOGIN MODAL / INLINE LOGIN
 #loginFormForModal.loginOption.displayNone {	background:url("images/carousel-background_1020x370.jpg") repeat scroll 0 0 #FFFFFF; border: none;}
 .createAccount {height:270px; width:300px; float:left; font-family:"Open Sans"; font-size:14px; text-align:center; padding: 0;}
 .createAccount h1 {color: #e0463a; font-family: Oswald; font-size: 35px; margin: 33px 0 8px; text-align: center;}
-.modalCreateButton.button {padding: 5px; margin: 10px; width: auto; border:none; background:#e0463a; color:#ffffff; font-size:16px;}
+.modalCreateButton.button {padding: 5px; margin: 10px; width: auto; border:none; background:#e0463a; color:#ffffff; font-size:16px; display:inline-block;}
 #gotAccount, #gotAccountInline { width: 300px;	float: right; margin: 0 0 10px 0; text-align: center; box-shadow: 1px 1px 2px 2px #cccccc;} /*height: 270px;*/
 #gotAccountInline {padding: 10px; float: left; background:url("images/carousel-background_1020x370.jpg") repeat scroll 0 0 #FFFFFF;}
 #gotAccount h1, #gotAccountInline h1 {margin: 29px 0 0 0;	font-family: Oswald; font-size: 35px; font-weight: normal; color:#3bb3c3;}
