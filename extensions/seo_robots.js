@@ -183,25 +183,32 @@ var seo_robots = function(_app) {
 				request._tag = {
 					'datapointer' : 'appSEOFetch',
 					'callback' : function(rd){
+//						dump('ROBOTS RD:'); dump(rd); dump(rd.datapointer); 
 						for(var i in _app.data[rd.datapointer]['@OBJECTS']){
 							var p = _app.data[rd.datapointer]['@OBJECTS'][i];
 							
 							switch(p.type){
 								case "pid":
+								if(p.noindex && p.noindex == 1) {
+//									dump('This item should not be indexed: '+p.id);
+								}
+								else {
+//									dump('This item gets indexed: '+p.id); 
 									_app.ext.seo_robots.vars.pages.push({
 										pageType : "product",
 										pid : p.id
 										});
+								}
 									break;
 								case "navcat" : 
 									if(_app.ext.seo_robots.u.isBlacklistedCat(p.id)) {
-										dump('NAVCAT was found in blacklist:'); dump(p.id);
+//										dump('NAVCAT was found in blacklist: '+p.id);
 							//			_app.ext.seo_robots.vars.compiledBlacklist.push(p.id);
 							//			dump(_app.ext.seo_robots.vars.compiledBlacklist);
 										break; //this category is blacklisted, don't index it.
 									}
 									else {
-//										dump('NOT a blacklisted navcat:'); dump(p.id);
+//										dump('NOT a blacklisted navcat:'+p.id);
 										_app.ext.seo_robots.vars.pages.push({
 										pageType : "category",
 										navcat : p.id
