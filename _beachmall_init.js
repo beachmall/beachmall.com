@@ -50,7 +50,7 @@ myApp.rq.push(['extension',0,'beachmall_recentlyviewed','','startExtension']); /
 myApp.rq.push(['extension',0,'beachmall_tracking','extensions/beachmall_tracking.js','startExtension']); //adds thirdparty tracking to app
 
 myApp.rq.push(['extension',0,'google_analytics','extensions/partner_google_analytics.js','startExtension']);
-myApp.rq.push(['extension',0,'google_adwords','extensions/partner_google_adwords.js','startExtension']);
+//myApp.rq.push(['extension',0,'google_adwords','extensions/partner_google_adwords.js','startExtension']); //handled in beachmall_tracking extension
 //myApp.rq.push(['extension',1,'tools_ab_testing','extensions/tools_ab_testing.js']);
 myApp.rq.push(['extension',0,'partner_addthis','extensions/partner_addthis.js','startExtension']);
 //myApp.rq.push(['extension',1,'resellerratings_survey','extensions/partner_buysafe_guarantee.js','startExtension']); /// !!! needs testing.

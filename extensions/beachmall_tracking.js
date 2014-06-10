@@ -349,9 +349,9 @@ var beachmall_tracking = function(_app) {
 					
 					frame.contentWindow.document.body.appendChild(script);
 				},250);
-			}
+			},
 			
-			addAdwords : function(pixelID) {
+			addAdwords : function() {
 				dump('START addAdwords TRACKING');
 				var frame = document.createElement("iframe");
 				$(frame).addClass("displayNone");
@@ -362,7 +362,6 @@ var beachmall_tracking = function(_app) {
 					paramScript.type = 	"text/javascript";
 					paramScript.text = 	'var google_conversion_id = 1056650724'
 								+	'var google_conversion_language = "en";'
-								+	'var google_conversion_id = 1056650724;'
 								+	'var google_conversion_language = "en";'
 								+	'var google_conversion_format = "2";'
 								+	'var google_conversion_color = "ffffff";'
