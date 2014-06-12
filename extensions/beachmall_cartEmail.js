@@ -87,6 +87,7 @@ var beachmall_cartemail = function(_app) {
 								$form.anymessage(_app.u.successMsgObject('Your message has been sent.'));
 								setTimeout(function(){_app.ext.beachmall_cartemail.a.hideCartEmail($('span',$form),$form);},10000);
 //								_gaq.push(['_trackEvent','Cart','User Event','Cart e-mailed']);
+								window[_app.vars.analyticsPointer]('send', 'event','Checkout','User Event','Cart e-mailed');
 							}
 						}
 					}

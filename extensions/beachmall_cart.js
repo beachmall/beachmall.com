@@ -392,6 +392,7 @@ var beachmall_cart = function(_app) {
 						$fieldset.anymessage(_app.u.successMsgObject('Your coupon has been added.'));
 						//_app.ext.orderCreate.u.handlePanel($form,'chkoutCartItemsList',['empty','translate','handleDisplayLogic','handleAppEvents']);
 //							_gaq.push(['_trackEvent','Checkout','User Event','Cart updated - coupon added']);
+						window[_app.vars.analyticsPointer]('send', 'event','Checkout','User Event','Cart updated - coupon added');
 					}
 
 				}}, 'immutable');
