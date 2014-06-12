@@ -2297,9 +2297,9 @@ this will likely become more flexible in the future. ###
 <div class="imageContainer">
 	<div class="prodTabs tabbedProductContent ui-tabs ui-widget ui-widget-content ui-corner-all">
 
-		<ul class="imageAndVideoTabs displayNone">
-			<li data-app-role="hoverTab"><a href="#prodImages" class="ui-button-text-icon-primary imageTab"><span><img src="images/bm12_cameraicon-25x21.png" alt="" height="21" width="25" data-apptimize="embed"></span>Images</a></li>
-			<li data-app-role="hoverTab"><a href="#prodVideo" class="videoTab"><span><img src="images/bm12_videoicon-24x24.png" alt="" height="24" width="24" data-apptimize="embed"></span>Video</a></li>
+		<ul class="imageAndVideoTabs">
+			<li data-tlc="bind $var '.%attribs.zoovy:prod_image1'; if(is $var --notblank;) {{ apply --show; }};" data-app-role="hoverTab" class="displayNone"><a href="#prodImages" class="ui-button-text-icon-primary imageTab"><span><img src="images/bm12_cameraicon-25x21.png" alt="" height="21" width="25" data-apptimize="embed"></span>Images</a></li>
+			<li data-tlc="bind $var '.%attribs.youtube:videoid'; if(is $var --notblank;) {{ apply --show; }};" data-app-role="hoverTab" class="displayNone"><a href="#prodVideo" class="videoTab"><span><img src="images/bm12_videoicon-24x24.png" alt="" height="24" width="24" data-apptimize="embed"></span>Video</a></li>
 
 			<li class="prodPageImages" data-anytab-content="prodImages">
 				<!--<img src='blank.gif' class='prodBigImage' rel='rel="selectors-change: mouseover' name='prodBigImage' data-bind='var: product(zoovy:prod_image1); format: magicZoomPlus; extension: magicToolBox_mzp;' width='310' height='310' />-->
@@ -2315,7 +2315,7 @@ this will likely become more flexible in the future. ###
 			</li> <!-- END prodPageImages -->
 		
 			<li data-anytab-content="prodVideo">
-				<div data-tlc="bind $var '.%attribs.youtube:videoid'; if(is $var --notblank) {{ apply --show; }};"></div>  
+				<div data-tlc="bind $var '.%attribs.youtube:videoid'; controller#youtubevideo --width=310 --height=310 --legacy;"></div> 
 			</li>
 		</ul>
 
