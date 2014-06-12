@@ -492,9 +492,14 @@ P.parentID - The parent ID is used as the pointer in the multipage controls obje
 					query.mode = 'elastic-search';
 					query.size = 250;
 					query.query = { //{"query_string" : obj};
-/*BEACHMALL*/					"filtered": {
+/*BEACHMALL*/			"filtered": {
 							"query" : {"query_string" : obj},
-							"filter" : {"not" : {"term" : {"tags":"IS_DISCONTINUED"}}}
+							"filter" : {
+								"and" : [
+									{"has_child":{"type":"sku","query": {"range":{"available":{"gte":1}}}}}, //only return item w/ inventory
+									{"not" : {"term" : {"tags":"IS_DISCONTINUED"}}}
+								]
+							}
 						}
 					};
 				}

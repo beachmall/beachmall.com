@@ -477,6 +477,7 @@ var store_filter = function(_app) {
 				});
 				// 20120701 -> do not want discontinued items in the layered search results. JT.
 				filters.and.push({"not" : {"term" : {"tags":"IS_DISCONTINUED"}}});
+				filters.and.push({"has_child":{"type":"sku","query": {"range":{"available":{"gte":1}}}}});
 					
 				//and requires at least 2 inputs, so add a match_all.
 				//if there are no filters, don't add it. the return is also used to determine if any filters are present
