@@ -130,6 +130,7 @@
 	<td data-tlc="bind $var '.PRT'; apply --append;" class="isSearchable"></td>
 	<td></td>
 	<td class="alignRight">
+	<button data-app-click="admin_sites|adminDomainRemoveConfirm" class="applyButton" data-text="false" data-icon-primary="ui-icon-trash">Remove Domain</button>
 	<button data-app-click="admin_batchjob|adminBatchJobExec" class="applyButton" data-text="false" data-icon-primary="ui-icon-refresh" data-type="UTILITY/SITEMAP" data-whitelist="DOMAINNAME,PRT">Update Sitemap</button>
 	<button data-app-click="admin_sites|domainPutInFocus" class="applyButton" data-text="false" data-icon-primary="ui-icon-check" title="Use this domain">Use Domain</button>
 	<button data-app-click="admin_sites|adminDomainDetailShow" class="applyButton" data-text="false" data-icon-primary="ui-icon-pencil" title="Edit this domain">Details</button>
@@ -208,37 +209,37 @@
 
 
 <div id='domainCreateTemplate'>
-<form action='#' onSubmit='return false' data-app-submit='admin|submitForm'>
-
-<input type='hidden' name='_macrobuilder' value='admin_sites|adminDomainMacroCreate' />
-<input type='hidden' name='_tag/callback' value='showMessaging' />
-<input type='hidden' name='_tag/restoreInputsFromTrackingState' value='1' />
-<input type='hidden' name='_tag/removeFromDOMItemsTaggedForDelete' value='1' />
-<input type='hidden' name='_tag/jqObjEmpty' value='true' />
-<input type='hidden' name='_tag/message' value='The domain has been added.' />
+<!-- no validate is turned on because there are input flagged as 'required' that are conditionally required. validateForm handles these -->
+<form action='#' onSubmit='return false' data-app-submit='admin_sites|adminDomainCreateExec' novalidate='novalidate'>
 
 <fieldset class='labelsAsBreaks alignedLabels'>
 	
 	<label>
 		<span>Type</span>
 		<select name='domaintype' required='required' data-panel-selector=".domainCreateDomaintype" data-input-change="panel-selector">
-			<option value='DOMAIN-DELEGATE' data-show-panel='domainCreateDomaintypeDelegate'>Delegate domain</option>
-			<option value='DOMAIN-RESERVE'>Reserve test domain</option>
+			<option value='DOMAIN-CREATE' data-show-panel='domainCreateDomaintypeCreate'>I have a domain</option>
+			<option value='DOMAIN-RESERVE' data-show-panel='domainCreateDomaintypeReserve'>Create a temporary domain</option>
 		</select>
 	</label>
 
-	<div data-panel-id='domainCreateDomaintypeDelegate' class='displayNone domainCreateDomaintype'>
+	<div data-panel-id='domainCreateDomaintypeCreate' class='displayNone domainCreateDomaintype'>
 	<label>
 		<span>Domain</span>
 		<input type='text' required data-validation-rules='skipIfHidden' name='DOMAINNAME' value='' />
 	</label>
 	</div>
+	<div data-panel-id='domainCreateDomaintypeReserve' class='displayNone hint domainCreateDomaintype'>
+	If you do not already have a domain or are evaluating the platform, this is a good place to start.<br />
+	A temporary domain will be created and will expire after 90 days.
+	</div>
+
+
 	
 	
 </fieldset>
 
 <div class='buttonset alignRight'>
-	<button class='applyButton'>Save Domain</button>
+	<button class='applyButton'>Add Domain</button>
 </div>
 
 </form>
@@ -657,3 +658,18 @@ That's also why the template does not contain a form
 </form>
 
 </div>
+
+
+
+<!-- HOST CHOOSER -->
+
+<div id='hostChooserDomainListTemplate' data-tlc="bind $domains '.@DOMAINS'; controller#loop --templateid='hostChooserDomainTemplate'; apply --append;" class='hostChooser'></div>
+<div id='hostChooserDomainTemplate'>
+	<h5 data-tlc="bind $domain '.DOMAINNAME'; apply --append;"></h5>
+	<ul data-tlc="bind $hosts '.@HOSTS'; controller#loop --templateid='hostChooserHostTemplate'; apply --append;" class='hostChooserHostList'></ul>
+</div>
+
+<ul>
+	<li id='hostChooserHostTemplate'  class='hostChooserHostListItem' data-tlc="bind $hostname '.HOSTNAME'; apply --append; bind $chkout '.CHKOUT'; if(is $chkout --notblank;) {{format --prepend=' - '; apply --append; }}; "></li>
+</ul>
+

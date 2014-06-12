@@ -41,7 +41,7 @@ var cart_message = function(_app) {
 					
 					var addCMResponse = function(id,func){
 						//allow but notify if an existing response is overwritten.
-						if(_app.cmr[i][0]){
+						if(_app.cmr[i] && _app.cmr[i][0]){
 							_app.u.dump("Cart Messaging Response "+_app.cmr[i][0]+" is being overwritten","warn");
 							}
 						_app.ext.cart_message.cmResponse[id] = func;
@@ -52,7 +52,7 @@ var cart_message = function(_app) {
 						delete _app.cmr[i];
 						}
 					_app.cmr.push = addCMResponse; // all future pushes will get added immediately to the response list.
-					//this loaded in index w/ apptimize now: extensions/cart_message/styles.css
+/*beachmall*/				//this loaded in index w/ apptimize now: extensions/cart_message/styles.css
 					//_app.u.loadCSSFile(_app.vars.baseURL+"extensions/cart_message/styles.css","cart_messageCSS");
 					_app.model.fetchNLoadTemplates(_app.vars.baseURL+'extensions/cart_message/templates.html',theseTemplates);
 					//if there is any functionality required for this extension to load, put it here. such as a check for async google, the FB object, etc. return false if dependencies are not present. don't check for other extensions.
@@ -63,7 +63,7 @@ var cart_message = function(_app) {
 				onError : function()	{
 	//errors will get reported for this callback as part of the extensions loading.  This is here for extra error handling purposes.
 	//you may or may not need it.
-					_app.u.dump('BEGIN admin_orders.callbacks.init.onError');
+					_app.u.dump('BEGIN cart_message.callbacks.init.onError');
 					}
 				}, //init
 	
@@ -288,6 +288,7 @@ some defaults are present, but they can be overwritten by the app easily enough.
 					if(cartID)	{
 						var $UI = $("<div \/>");
 						$UI.attr({'title':'CM: '+cartID,'id':'CM_'+cartID,'data-cartid':cartID});
+						$UI.addClass('isCartMessengerDialog');
 						$UI.anycontent({'templateID':'adminCartMessageTemplate'}).showLoading({'message':'Fetching cart detail'});
 						_app.ext.cart_message.u.initCartMessenger(cartID,$("[data-app-role='cartMessenger']",$UI)); //starts the cart message polling. needs to be after the anycontent.
 						$UI.dialog({
@@ -430,6 +431,12 @@ That way cartmessages can be fetched without impacting the polling time, if desi
 //when adding an event, be sure to do off('click.appEventName') and then on('click.appEventName') to ensure the same event is not double-added if app events were to get run again over the same template.
 		e : {
 			adminCartInteract : function($ele,p)	{
+				//only 1 cart messenger instance can be open at a time.
+				$('.isCartMessengerDialog').each(function(){
+					$(this).dialog('close').dialog('destroy').intervaledEmpty();
+					cartMessagePush($(this).data('cartid'),'chat.exit');
+					});
+
 				var cartid = $ele.closest("[data-cartid]").data('cartid');
 				cartMessagePush(cartid,'chat.join');
 				_app.ext.cart_message.a.showAdminCMUI(cartid);

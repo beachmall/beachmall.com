@@ -1106,7 +1106,7 @@ uities
 
 				//here, inventory check is done instead of isProductPurchaseable, because is used specifically to determine whether or not to show shipping.
 				// the purchaseable function takes into account considerations which have no relevance here (is parent, price, etc).
-				if(_app.ext.store_product.u.getProductInventory(SKU) <= 0){
+				if(_app.ext.store_product.u.getProductInventory(_app.data['appProductGet|'+SKU]) <= 0){
 					//no inventory. Item not purchaseable. Don't get shipping info
 					$('.shippingInformation .putLoadingHere',$context).removeClass('loadingBG').hide();
 					$('.timeInTransitMessaging',$context).append("Inventory not available.");

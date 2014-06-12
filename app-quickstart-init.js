@@ -35,8 +35,8 @@ myApp.rq.push(['extension',0,'quickstart','app-quickstart.js','startMyProgram'])
 
 
 myApp.rq.push(['script',0,myApp.vars.baseURL+'resources/jquery.showloading-v1.0.jt.js']); //used pretty early in process..
-myApp.rq.push(['script',0,myApp.vars.baseURL+'resources/jquery.ui.anyplugins.js']); //in zero pass in case product page is first page.
-myApp.rq.push(['script',0,myApp.vars.baseURL+'resources/tlc.js']); //in zero pass in case product page is first page.
+myApp.rq.push(['script',0,myApp.vars.baseURL+'resources/jquery.ui.anyplugins.js']); //in zero pass because it's essential to rendering and error handling.
+myApp.rq.push(['script',0,myApp.vars.baseURL+'resources/tlc.js']); //in zero pass cuz you can't render a page without it..
 myApp.rq.push(['css',1,myApp.vars.baseURL+'resources/anyplugins.css']);
 
 myApp.rq.push(['script',0,myApp.vars.baseURL+'resources/jsonpath.0.8.0.js']); //used pretty early in process..
@@ -46,27 +46,7 @@ myApp.u.loadScript(myApp.vars.baseURL+'resources/peg-0.8.0.js',function(){
 	myApp.model.getGrammar(myApp.vars.baseURL+"resources/pegjs-grammar-20140203.pegjs");
 	}); // ### TODO -> callback on RQ.push wasn't getting executed. investigate.
 
-//Cart Messaging Responses.
-myApp.cmr.push(['chat.join',function(message){
-//	dump(" -> message: "); dump(message);
-	var $ui = myApp.ext.quickstart.a.showBuyerCMUI();
-	$("[data-app-role='messageInput']",$ui).show();
-	$("[data-app-role='messageHistory']",$ui).append("<p class='chat_join'>"+message.FROM+" has joined the chat.<\/p>");
-	$('.show4ActiveChat',$ui).show();
-	$('.hide4ActiveChat',$ui).hide();
-	}]);
 
-myApp.cmr.push(['goto',function(message,$context){
-	var $history = $("[data-app-role='messageHistory']",$context);
-	$P = $("<P>")
-		.addClass('chat_post')
-		.append("<span class='from'>"+message.FROM+"<\/span> has sent over a "+(message.vars.pageType || "")+" link for you within this store. <span class='lookLikeLink'>Click here<\/span> to view.")
-		.on('click',function(){
-			showContent(myApp.ext.quickstart.u.whatAmIFor(message.vars),message.vars);
-			});
-	$history.append($P);
-	$history.parent().scrollTop($history.height());
-	}]);
 
 
 //gets executed from app-admin.html as part of controller init process.
@@ -87,6 +67,7 @@ myApp.u.showProgress = function(progress)	{
 		else if(attempt > 150)	{
 			//hhhhmmm.... something must have gone wrong.
 			clearTimeout(progress.passZeroTimeout); //end the resource loading timeout.
+			$('.appMessaging','#appPreView').anymessage({'message':'Init failed to load all the resources within a reasonable number of attempts.','gMessage':true,'persistent':true});
 			}
 		else	{
 			var percentPerInclude = (100 / progress.passZeroResourcesLength);
@@ -105,7 +86,7 @@ myApp.u.showProgress = function(progress)	{
 //Any code that needs to be executed after the app init has occured can go here.
 //will pass in the page info object. (pageType, templateID, pid/navcat/show and more)
 myApp.u.appInitComplete = function()	{
-	myApp.u.dump("Executing myAppIsLoaded code...");
+//	myApp.u.dump("Executing myAppIsLoaded code...");
 	
 	myApp.ext.order_create.checkoutCompletes.push(function(vars,$checkout){
 		dump(" -> begin checkoutCOmpletes code: "); dump(vars);
@@ -128,6 +109,35 @@ myApp.u.appInitComplete = function()	{
 			}
 		else	{$('.ocmFacebookComment').hide()}
 		});
+	
+	//Cart Messaging Responses.
+	myApp.cmr.push(['chat.join',function(message){
+		if(message.FROM == 'ADMIN')	{
+			var $ui = myApp.ext.quickstart.a.showBuyerCMUI();
+			$("[data-app-role='messageInput']",$ui).show();
+			$("[data-app-role='messageHistory']",$ui).append("<p class='chat_join'>"+message.FROM+" has joined the chat.<\/p>");
+			$('.show4ActiveChat',$ui).show();
+			$('.hide4ActiveChat',$ui).hide();
+			}
+		}]);
+	
+	//the default behavior for an itemAppend is to show the chat portion of the dialog. that's an undesired behavior from the buyer perspective (chat only works if admin is actively listening).
+	myApp.cmr.push(['cart.itemAppend',function(message,$context)	{
+		$("[data-app-role='messageHistory']",$context).append("<p class='cart_item_append'>"+message.FROM+" has added item "+message.sku+" to the cart.<\/p>");
+		}]);
+	
+	myApp.cmr.push(['goto',function(message,$context){
+		var $history = $("[data-app-role='messageHistory']",$context);
+		$P = $("<P>")
+			.addClass('chat_post')
+			.append("<span class='from'>"+message.FROM+"<\/span> has sent over a "+(message.vars.pageType || "")+" link for you within this store. <span class='lookLikeLink'>Click here<\/span> to view.")
+			.on('click',function(){
+				showContent(myApp.ext.quickstart.u.whatAmIFor(message.vars),message.vars);
+				});
+		$history.append($P);
+		$history.parent().scrollTop($history.height());
+		}]);
+
 	}
 
 

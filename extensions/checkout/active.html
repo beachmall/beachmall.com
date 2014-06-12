@@ -114,7 +114,7 @@ item list and summary are separate just to give more control over location.
 			<label class="accountCreateContainer"><input name="want/create_customer" class="applyAnycb" data-app-change="order_create|tagAsAccountCreate" type="checkbox" >Create account</label>
 		</div>
 	
-		<div data-app-role="loginPasswordContainer" class="displayNone floatLeft passwordContainer">
+<!-- beachmall -->	<div data-app-role="loginPasswordContainer" class="displayNone floatLeft passwordContainer">
 			<div>If you have an account with us, please enter your password below to login</div>
 			<input placeholder="password" size="30" name="password" type="password"><button class="applyButton" data-app-click="order_create|execBuyerLogin">login</button>
 		</div>
@@ -291,9 +291,9 @@ the defaultVar on prodName & image is for promotions, which have a 'description'
 	<div data-tlc="bind $var '.%attribs.zoovy:ship_latency'; if (is $var --notblank;) {{format --prepend='Normally ships in '; format --append=' day(s)'; apply --append;}};" class="prodLatency"></div>
 	<div data-tlc="bind $var '.%options'; controller#selectedoptionsdisplay --legacy; " class="prodOptions"></div>
 	</td>
-	<td class="alignRight qty"><span data-tlc="bind $var '.qty'; if (is $var --notblank;) {{apply --append;}};"></span></span></td>
-	<td class="alignRight smallCol"><span data-tlc="bind $var '.price'; if (is $var --notblank;) {{format --currency='USD'; format --prepend='x '; apply --append;}};"></span></td>
-	<td class="alignRight smallCol"><span data-tlc="bind $var '.extended'; if (is $var --notblank;) {{format --currency='USD'; format --prepend='= '; apply --append;}};"></span></td>
+<!--	<td class="alignRight qty"><span data-tlc="bind $var '.qty'; if (is $var --notblank;) {{apply --append;}};"></span></span></td>
+beach	<td class="alignRight smallCol"><span data-tlc="bind $var '.price'; if (is $var --notblank;) {{format --currency='USD'; format --prepend='x '; apply --append;}};"></span></td>
+-->	<td class="alignRight smallCol"><span data-tlc="bind $var '.extended'; if (is $var --notblank;) {{format --currency='USD'; format --prepend='= '; apply --append;}};"></span></td>
 </tr>
 </tbody></table>
 
@@ -303,9 +303,9 @@ the defaultVar on prodName & image is for promotions, which have a 'description'
 <thead>
 <tr>
 	<th colspan="2" class="alignLeft">product information</th>
-	<th class="alignRight qty">qty</th>
-	<th class="alignRight smallCol">price</th>
-	<th class="alignRight smallCol">item total</th>
+<!--	<th class="alignRight qty">qty</th>
+beach	<th class="alignRight smallCol">price</th>
+-->	<th class="alignRight smallCol">item total</th>
 </tr>
 </thead>
 <tbody data-tlc="bind $var '.@ITEMS'; controller#loop --templateid='chkoutCartItemTemplate'; if (is $var --notblank;) {{apply --append;}};" data-app-role="cartItemsTbody"></tbody>
@@ -443,6 +443,7 @@ do NOT change the input name or id or checkout will likely break.
 	<button class="applyButton" data-text="false" data-icon-primary="ui-icon-print" data-app-click="order_create|execInvoicePrint">Print Invoice</button>
 	</div>
 	
+	<h2 data-tlc="bind $var '.order.our.orderid'; if (is $var --notblank;) {{apply --append;}};"></h2>
 	<h3 data-tlc="bind $var '.order.data.pool'; if (is $var --notblank;) {{format --prepend='Order Status: '; apply --append;}};"></h3>
 	
 		</td>
@@ -501,7 +502,7 @@ do NOT change the input name or id or checkout will likely break.
 	<tr>
 		<td>
 <!--				
-			<div class="marginTop">
+beachmall		<div class="marginTop">
 				<SCRIPT>
 					 microsoft_adcenterconversion_domainid = 248869;
 					 microsoft_adcenterconversion_cp = 5050;

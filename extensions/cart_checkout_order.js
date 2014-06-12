@@ -1208,22 +1208,19 @@ in a reorder, that data needs to be converted to the variations format required 
 				},
 
 			paypalecbutton : function($tag,data)	{
-	
 				if(zGlobals.checkoutSettings.paypalCheckoutApiUser)	{
 					var payObj = _app.ext.cco.u.which3PCAreAvailable(data.value);
 					if(payObj.paypalec)	{
 						$tag.empty().append("<img width='145' id='paypalECButton' height='42' border='0' src='"+(document.location.protocol === 'https:' ? 'https:' : 'http:')+"//www.paypal.com/en_US/i/btn/btn_xpressCheckoutsm.gif' alt='' />").addClass('pointer').off('click.paypal').on('click.paypal',function(){
-//***201402 Must pass cartid parameter on the call itself -mc
-							_app.ext.cco.calls.cartPaypalSetExpressCheckout.init({'getBuyerAddress':1, '_cartid':_app.model.fetchCartID()},{'callback':function(rd){
-								$('body').showLoading({'message':'Obtaining secure PayPal URL for transfer...','indicatorID':'paypalShowLoading'});
+							$(document.body).showLoading({'message':'Obtaining secure PayPal URL for transfer...'});
+							_app.ext.cco.calls.cartPaypalSetExpressCheckout.init({'getBuyerAddress':1, '_cartid':_app.model.fetchCartID(),'useMobile':($(document.body).width() < 500 ? 1 : 0)},{'callback':function(rd){
+								$(document.body).hideLoading();
 								if(_app.model.responseHasErrors(rd)){
-									$(this).removeClass('disabled').attr('disabled','').removeAttr('disabled');
 									$('#globalMessaging').anymessage({'message':rd});
 									}
 								else	{
 									if(_app.data[rd.datapointer] && _app.data[rd.datapointer].URL)	{
-										$('.ui-loading-message','#loading-indicator-paypalShowLoading').text("Transferring you to PayPal to authorize payment. See you soon!");
-										document.location = _app.data[rd.datapointer].URL;
+										document.location = _app.data[rd.datapointer].URL+'&useraction=commit'; //commit returns user to website for order confirmation. otherwise they stay on paypal.
 										}
 									else	{
 										$('#globalMessaging').anymessage({"message":"In paypalecbutton render format, dispatch to obtain paypal URL was successful, but no URL in the response.","gMessage":true});
@@ -1327,7 +1324,7 @@ in a reorder, that data needs to be converted to the variations format required 
 					}
 				else	{
 					//shipMethods is empty. this may be perfectly normal (admin UI -> new order -> no product in cart yet. store -> no zip or state.)
-					}	
+					}
 				$tag.html(o);
 /*beachmall*/	$tag.removeClass('displayNone').css('height','20px');
 /*beachmall*/		//hide estimated total if shipping zip is present (and therefore tax has been calculated).

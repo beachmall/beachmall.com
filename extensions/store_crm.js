@@ -103,20 +103,6 @@ obj['softauth'] = "order"; // [OPTIONAL]. if user is logged in, this gets ignore
 				}
 			}, //buyerOrderGet
 
-		setNewsletters : {
-			init : function(obj,tagObj)	{
-				_app.u.dump("BEGIN store_crm.calls.setNewsletters.init");
-				var r = 1;
-				this.dispatch(obj,tagObj);
-				return r;
-				},
-			dispatch : function(obj,tagObj)	{
-				obj['_tag'] = tagObj;
-				obj['_cmd'] = "setNewsletters";
-				_app.model.addDispatchToQ(obj);	
-				}
-			}, //setNewsletters
-
 		buyerAddressList : {
 			init : function(tagObj,Q)	{
 				tagObj = $.isEmptyObject(tagObj) ? {} : tagObj; 
@@ -174,7 +160,7 @@ obj['softauth'] = "order"; // [OPTIONAL]. if user is logged in, this gets ignore
 					if(L > 0)	{
 						for(var i = 0; i < L; i += 1)	{
 							topicID = _app.data[tagObj.datapointer]['@topics'][i]['TOPIC_ID']
-							_app.u.dump(" -> TOPIC ID = "+topicID);
+//							_app.u.dump(" -> TOPIC ID = "+topicID);
 // ** 201403 -> transmogrify is data-bind, so this didn't work.
 //							$parent.append(_app.renderFunctions.transmogrify({'id':topicID,'topicid':topicID},tagObj.templateID,_app.data[tagObj.datapointer]['@topics'][i]))
 							$parent.tlc({'templateid':tagObj.templateID,'dataset':_app.data[tagObj.datapointer]['@topics'][i],'dataAttribs':{'topicid':topicID}});
@@ -254,22 +240,22 @@ obj['softauth'] = "order"; // [OPTIONAL]. if user is logged in, this gets ignore
 
 			}, //validate
 
+		tlcFormats : {
+			
+			buyersubscribe : function(data,thisTLC)	{
+				dump(" -> data.globals.id: "+data.globals.binds.id);
+				if(_app.u.thisNestedExists("data.buyerDetail.%info.@TAGS",_app))	{
+					if($.inArray(data.globals.binds.id,_app.data.buyerDetail['%info']['@TAGS']) >= 0)	{
+						dump(" -> MATCH!");
+						data.globals.binds[data.globals.focusBind] = 'checked';
+						}
+					}
+				return true;
+				}
+			},
+
 
 		renderFormats : {
-//Displays a list of the merchants newsletters.
-			subscribecheckboxes : function($tag,data)	{
-//				_app.u.dump('BEGIN _app.ext.store_prodlist.renderFormats.mpPagesAsListItems');
-//				_app.u.dump(data);
-				var o = "";
-				for(var index in data.value)	{
-					o += "<div class='subscribeListItem'><label title='"+data.value[index].EXEC_SUMMARY+"'>";
-					o += "<input type='checkbox' checked='checked' name='newsletter-"+data.value[index].ID+"' \/>";
-					o += data.value[index].NAME+"<\/label><\/div>";
-					}
-				$tag.append(o);
-
-				},
-
 			
 			ordertrackinglinks : function($tag,data)	{
 //				_app.u.dump("BEGIN quickstart.renderFormats.ordertrackinglinks");
@@ -413,18 +399,24 @@ This is used to get add an array of skus, most likely for a product list.
 //				_app.u.dump("BEGIN store_crm.u.handleSubscribe");
 				if($form)	{
 //					_app.u.dump(" -> $form is set.");
-					frmObj = $form.serializeJSON();
+					var sfo = $form.serializeJSON();
 					if(_app.u.validateForm($form))	{
 //						_app.u.dump(" -> $form validated.");
-						_app.ext.store_crm.calls.setNewsletters.init(frmObj,{'callback':function(rd){
-							if(_app.model.responseHasErrors(rd)){
-								$form.anymessage({'message':rd});
+						sfo._cmd = 'appBuyerCreate';
+						sfo._tag = {
+							"datapointer":"appBuyerCreate",
+							"callback":function(rd){
+								if(_app.model.responseHasErrors(rd)){
+									$form.anymessage({'message':rd});
+									}
+								else	{
+//* 201404 -> to customize the 'success' message, add a hidden input w/ name of 'message' and set the value to what you want displayed.
+									$form.anymessage(_app.u.successMsgObject(sfo.message || "Thank you, you are now subscribed."));
+									}
 								}
-							else	{
-								$form.anymessage(_app.u.successMsgObject("Thank you, you are now subscribed."));
-								}
-							}});
-						_app.model.dispatchThis();
+							};
+						_app.model.addDispatchToQ(sfo,"immutable");
+						_app.model.dispatchThis('immutable');
 						}
 					else	{}
 					}
@@ -476,8 +468,8 @@ This is used to get add an array of skus, most likely for a product list.
 														$form.anymessage({'message':rd});
 														}
 													else if(typeof onSuccessCallback === 'function')	{
-														onSuccessCallback(rd,sfo);
 														$editor.dialog('close');
+														onSuccessCallback(rd,sfo);
 														}
 													else	{
 														//no callback defined 
@@ -529,7 +521,7 @@ This is used to get add an array of skus, most likely for a product list.
 // ** 201403 -> need to pass in a blank dataset so translation occurs. required for country dropdown.
 					$editor.tlc({'templateid':(vars.addressType == 'ship') ? 'chkoutAddressShipTemplate' : 'chkoutAddressBillTemplate','dataset':{}});
 //the address id should be at the bottom of the form, not the top. isn't that important or required.
-					$editor.append("<input type='text' maxlength='6' data-minlength='6' name='shortcut' placeholder='address id (6 characters)' \/>");
+					$editor.append("<input type='text' maxlength='6' data-minlength='6' name='shortcut' placeholder='address id (6 characters)' \/> <span class='hint'>A shortcut to identify this address (ex: office, myhome, etc)");
 					$editor.wrapInner('<form \/>'); //needs this for serializeJSON later.
 
 //if the placeholder attribute on an input is not supported (thx IE8), then add labels.
@@ -570,9 +562,9 @@ This is used to get add an array of skus, most likely for a product list.
 								
 								if(_app.u.validateForm($form))	{
 									$form.showLoading('Adding Address');
-									var serializedForm = $form.serializeJSON();
+									var sfo = $form.serializeJSON();
 //save and then refresh the page to show updated info.
-									_app.model.addDispatchToQ({
+									_app.model.addDispatchToQ($.extend({},sfo,{
 										'_cmd':'buyerAddressAddUpdate',
 										'_tag':	{
 											'callback':function(rd){
@@ -581,7 +573,7 @@ This is used to get add an array of skus, most likely for a product list.
 													$form.anymessage({'message':rd});
 													}
 												else if(typeof onSuccessCallback === 'function')	{
-													onSuccessCallback(rd,serializedForm);
+													onSuccessCallback(rd,sfo);
 													$editor.dialog('close');
 													}
 												else	{
@@ -590,7 +582,7 @@ This is used to get add an array of skus, most likely for a product list.
 													}
 												}
 											}
-										},'mutable');
+										}),'mutable');
 									_app.model.dispatchThis('mutable');
 //dump data in memory and local storage. get new copy up updated address list for display.
 									_app.model.destroy('buyerAddressList');
@@ -615,6 +607,32 @@ This is used to get add an array of skus, most likely for a product list.
 		
 		
 		e : {
+			//generic event, inteded to support more than tags through the use of the data-update-verb=
+			buyerUpdate : function($ele,p)	{
+				p.preventDefault();
+				if(_app.u.validateForm($ele))	{
+					var cmdObj = {
+						"_cmd":"buyerUpdate",
+						"@updates" : [],
+						"cartid" : _app.model.fetchCartID(),
+						"_tag":{
+							"datapointer":"",
+							"callback":function(rd){}
+							}
+						}
+					
+					$("[data-update-verb='tags']",$ele).find(":checkbox").each(function(){
+						var $cb = $(this);
+						cmdObj['@updates'].push(($cb.is(':checked') ? 'TAG-ADD' : 'TAG-CLEAR')+"?TAG="+$cb.attr('name'));
+						});
+					
+					
+					_app.model.addDispatchToQ(cmdObj,"mutable");
+					_app.model.dispatchThis("mutable");
+					}
+				else	{} //validateForm handles error display.
+				return false;
+				},
 			
 			contactFormSubmit : function($ele,p)	{
 				p.preventDefault();
@@ -668,6 +686,7 @@ This is used to get add an array of skus, most likely for a product list.
 			//add this as submit action on the form.
 			productReviewSubmit : function($ele,p)	{
 				p.preventDefault();
+				var $form = $ele.closest('form'); //this way, $ele can be a button within the form or a onSubmit action on the form itself.
 				if(_app.u.validateForm($ele))	{
 					var sfo = $form.serializeJSON();
 					if(sfo.pid)	{

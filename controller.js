@@ -140,24 +140,25 @@ _app.templates holds a copy of each of the templates declared in an extension bu
 		//in case localstorage is disabled.
 		else if(!$.support.localStorage)	{
 			_app.vars._session = _app.model.readCookie('_session');
+			dump("check cookie for _session: "+_app.vars._session);
 			}
 		else	{
 			_app.vars._session = _app.model.dpsGet('controller','_session');
-			dump("check localstorage for _session: "+_app.vars._session);
-			if(_app.vars._session)	{
-				_app.u.dump(" -> session found in DPS: "+_app.vars._session);
-				//use the local session id.
-				}
-			else	{
-				//create a new session id.
-				_app.vars._session = _app.u.guidGenerator();
-				_app.u.dump(" -> generated new session: "+_app.vars._session);
-				_app.model.dpsSet('controller','_session',_app.vars._session);
-				if(!$.support.localStorage)	{
-					_app.model.writeCookie('_session',_app.vars._session); //for browsers w/ localstorage disabled.
-					}
+			dump(" -> check localstorage for _session: "+_app.vars._session);
+			}
+
+		// *** 201403 -> moved this code from the else above to outside it so a session would ALWAYS be generated.
+		// this solved an obscure case where localStorage was supported but 'full' (unable to be written to).
+		if(!_app.vars._session)	{
+			//create a new session id.
+			_app.vars._session = _app.u.guidGenerator();
+			_app.u.dump(" -> generated new session: "+_app.vars._session);
+			_app.model.dpsSet('controller','_session',_app.vars._session);
+			if(!$.support.localStorage)	{
+				_app.model.writeCookie('_session',_app.vars._session); //for browsers w/ localstorage disabled.
 				}
 			}
+
 		}, //handleSession
 
 //This is run on init, BEFORE a user has logged in to see if login info is in localstorage or on URI.
@@ -279,7 +280,7 @@ If the data is not there, or there's no data to be retrieved (a Set, for instanc
 						this.dispatch(obj,_tag,Q);
 						}
 //if the product record is in memory BUT the inventory is zero, go get updated record in case it's back in stock.
-					else if(_app.ext.store_product && (_app.ext.store_product.u.getProductInventory(obj.pid) === 0))	{
+					else if(_app.ext.store_product && (_app.ext.store_product.u.getProductInventory(_app.data[_tag.datapointer]) === 0))	{
 						r = 1;
 						this.dispatch(obj,_tag,Q);
 						}
@@ -575,7 +576,12 @@ _app.u.throwMessage(responseData); is the default error handler.
 //jqObj is required and should be a jquery object.
 		anycontent : {
 			onMissing : function(rd)	{
+				dump(" -----------> rd: "); dump(rd);
 				rd._rtag.jqObj.anymessage(rd);
+				rd._rtag.jqObj.hideLoading();
+				if(typeof rd._rtag.onMissing === 'function')	{
+					rd._rtag.onMissing(rd);
+					}
 				},
 			onSuccess : function(_rtag)	{
 				_app.u.dump("BEGIN callbacks.anycontent"); // _app.u.dump(_rtag);
@@ -926,7 +932,7 @@ ex: whoAmI call executed during app init. Don't want "we have no idea who you ar
 					}
 		//this would get added at end of INIT. that way, init can modify the hash as needed w/out impacting.
 				if (window.addEventListener) {
-					console.log(" -> addEventListener is supported and added for hash change.");
+					dump(" -> addEventListener is supported and added for hash change.");
 					window.addEventListener("hashchange", _app.router.handleHashChange, false);
 					$(document.body).data('isRouted',true);
 					}
@@ -1361,7 +1367,7 @@ will load everything in the RQ will a pass <= [pass]. so pass of 10 loads everyt
 //What was the plugin was split into two pieces, the app-event based delegation is here.  The form based is in anyForm
 			addEventDelegation : function($t,vars)	{
 				vars = vars || {};
-				var supportedEvents = new Array("click","change","focus","blur","submit","keyup");
+				var supportedEvents = new Array("click","change","focus","blur","submit","keyup","keypress");
 
 				function destroyEvents($ele)	{
 					for(var i = 0; i < supportedEvents.length; i += 1)	{
@@ -1930,7 +1936,7 @@ VALIDATION
 // ## FUTURE -> if the field is required and no value is set and type != radio, add required to span and exit early. cuts out a big block of code for something fairly obvious. (need to take skipIfHidden into account)
 //				errors for each input should be an array. format-rules should return a string and not get passed span for an error.
 		validateForm : function($form)	{
-//			_app.u.dump("BEGIN admin.u.validateForm");
+			_app.u.dump("BEGIN admin.u.validateForm");
 			if($form && $form instanceof jQuery)	{
 
 				
@@ -1954,6 +1960,7 @@ VALIDATION
 
 //					_app.u.dump(" -> "+$input.attr('name')+" - required: "+$input.attr('required'));
 					if($input.is(':hidden') && $input.data('validation-rules') && $input.data('validation-rules').indexOf('skipIfHidden') >= 0)	{
+						dump(" -> skipIfHidden is enabled");
 						//allows for a form to allow hidden fields that are only validated if they're displayed. ex: support fieldset for topic based questions.
 						//indexOf instead of == means validation-rules (notice the plural) can be a space seperated list
 						}
@@ -2956,9 +2963,6 @@ return $r;
 
 							}
 						$ele.trigger(infoObj.state,[$ele,infoObj]);
-						if(infoObj.state == 'complete'){
-							_app.ext.quickstart.vars.showContentCompleteFired = true;
-							}
 						}
 					else	{
 						$ele.anymessage({'message':'_app.templateFunctions.handleTemplateEvents, infoObj.state ['+infoObj.state+'] is not valid. Only init, complete and depart are acceptable values.','gMessage':true});
@@ -3119,10 +3123,10 @@ $tag.append($tmp.html());
 $tmp.empty().remove();
 			},
 		
-		truncText : function($tag,data){
+		trunctext : function($tag,data){
 			var o = _app.u.truncate(data.value,data.bindData.numCharacters);
 			$tag.text(o);
-			}, //truncText
+			}, //trunctext
 
 //used in a cart or invoice spec to display which options were selected for a stid.
 		selectedoptionsdisplay : function($tag,data)	{

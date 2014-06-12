@@ -32,6 +32,20 @@ var admin_tools = function(_app) {
 			onSuccess : function()	{
 				var r = false; //return false if extension won't load for some reason (account config, dependencies, etc).
 				_app.model.fetchNLoadTemplates(_app.vars.baseURL+'extensions/admin/tools.html',theseTemplates);
+
+				_app.formatRules.validateJSON = function($input,$err){
+					var valid = true;
+					try	{
+						jQuery.parseJSON($input.val());
+						}
+					catch(e)	{
+						valid = false;
+						$err.append('Invalid JSON. error: '+e);
+						}
+					return valid;
+					}
+
+
 				//if there is any functionality required for this extension to load, put it here. such as a check for async google, the FB object, etc. return false if dependencies are not present. don't check for other extensions.
 				r = true;
 
@@ -67,20 +81,13 @@ var admin_tools = function(_app) {
 //				$("input",$picker).each(function(){});
 				},
 			
-			siteDebugger : function()	{
-				var $SD = $('#siteDebugger');
-				if($SD.length)	{
-					$SD.dialog('open');
-					}
-				else	{
-					$SD = $("<div \/>").attr({'id':'siteDebugger','title':'Site Debug Tools'}).anycontent({'templateID':'siteDebugTemplate','showLoading':false}).dialog({
-						width : '50%'
-						});
-					_app.u.handleButtons($SD);
-					_app.u.handleCommonPlugins($SD);
-					_app.u.addEventDelegation($SD);
-					$SD.anyform();
-					}
+			siteDebugger : function($target,P)	{
+				P = P || {};
+				$target.tlc({'templateid':'siteDebugTemplate','dataset':P})
+				_app.u.handleButtons($target);
+				_app.u.handleCommonPlugins($target);
+				_app.u.addEventDelegation($target);
+				$target.anyform();
 				},
 
 			showManageFlexedit : function($target)	{
@@ -869,6 +876,21 @@ var admin_tools = function(_app) {
 			//for forcing a product into the product task list
 			forcePIDIntoPTL : function($ele,p)	{
 				_app.ext.admin_prodedit.u.addProductAsTask({'pid':$ele.closest('form').find("[name='pid']").val(),'tab':'product','mode':'add'});
+				},
+			
+			siteDebugDialog : function($ele,p)	{
+				p.preventDefault();
+				var $SD = $('#siteDebugger');
+				if($SD.length)	{
+					$SD.empty().dialog('open');
+					}
+				else	{
+					$SD = $("<div \/>").attr({'id':'siteDebugger','title':'Site Debug Tools'}).dialog({
+						width : '50%'
+						});
+					}
+				adminApp.ext.admin_tools.a.siteDebugger($SD,{'verb':$ele.data('verb')});
+				return false;
 				}
 				
 			} //e [app Events]

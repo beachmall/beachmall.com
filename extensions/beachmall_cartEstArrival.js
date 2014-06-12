@@ -234,7 +234,7 @@ var beachmall_cartestarrival = function(_app) {
 				//here, inventory check is done instead of isProductPurchaseable, because is used specifically to determine whether or not to show shipping.
 				// the purchaseable function takes into account considerations which have no relevance here (is parent, price, etc).
 //				_app.u.dump(_app.data['appProductGet|'+pid]);
-				if(_app.ext.store_product.u.getProductInventory(pid) <= 0){ dump('---if 0 inventory');
+				if(_app.ext.store_product.u.getProductInventory(_app.data['appProductGet|'+pid]) <= 0){ dump('---if 0 inventory');
 					//no inventory. Item not purchaseable. Don't get shipping info
 					$('.cartShippingInformation .cartPutLoadingHere',$context).removeClass('loadingBG').hide();
 					$('.timeInTransitMessaging',$context).append("Inventory not available.");

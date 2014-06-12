@@ -56,7 +56,7 @@ var order_create = function(_app) {
 			onSuccess : function()	{
 //				_app.u.dump('BEGIN _app.ext.order_create.init.onSuccess');
 
-				//this loaded in index w/ apptimize now: extensions/checkout/styles.css
+//beachmall			this loaded in index w/ apptimize now: extensions/checkout/styles.css
 				//_app.u.loadCSSFile(_app.vars.baseURL+"extensions/checkout/styles.css","checkoutCSS");
 				if(_app.vars._clientid == '1pc')	{
 					_app.u.loadCSSFile(_app.vars.baseURL+"extensions/checkout/opc_styles.css","opcCheckoutCSS"); //loaded after checkoutCSS so that overrides can be set, if need be.
@@ -670,7 +670,6 @@ an existing user gets a list of previous addresses they've used and an option to
 					$("[data-app-role='addressExists']",$fieldset).hide();
 					$("[data-app-role='addressNew']",$fieldset).show();
 					$("[data-app-role='billToShipContainer']").hide(); //though locked below, we hide this to avoid confusion.
-
 					$("[name='want/bill_to_ship']",$fieldset).attr({'disabled':'disabled'}).removeAttr('checked'); //set val 
 					//name is provided by paypal and can't be changed.
 					$("[name='bill/firstname'], [name='bill/lastname']",$fieldset).attr('disabled','disabled');
@@ -1117,12 +1116,11 @@ _app.u.handleButtons($chkContainer); //will handle buttons outside any of the fi
 							_app.calls.appCartCreate.init({
 								"datapointer" : "appCartCreate",
 								"callback" : function(rd){
-									dump(" -----------> rd: "); dump(rd);
-									
+//									dump(" -----------> rd: "); dump(rd);
 									if(_app.model.responseHasErrors(rd)){
 										_app.u.throwMessage(rd);
 										}
-									else if(_app.data[rd.datapointer]._cartid) {
+									else if(_app.data[rd.datapointer] && _app.data[rd.datapointer]._cartid) {
 										_app.calls.cartDetail.init(_app.data[rd.datapointer]._cartid,{},'immutable');
 										_app.model.dispatchThis('immutable');
 										}
@@ -1131,8 +1129,9 @@ _app.u.handleButtons($chkContainer); //will handle buttons outside any of the fi
 										}
 									}
 								}); //!IMPORTANT! after the order is created, a new cart needs to be created and used. the old cart id is no longer valid.
-							}
-						
+							
+							} //ends the not admin/1pc if.
+		
 						if(typeof _gaq != 'undefined')	{
 							_gaq.push(['_trackEvent','Checkout','App Event','Order created']);
 							_gaq.push(['_trackEvent','Checkout','User Event','Order created ('+orderID+')']);
@@ -1144,6 +1143,11 @@ _app.u.handleButtons($chkContainer); //will handle buttons outside any of the fi
 							for(var i = 0; i < L; i += 1)	{
 								_app.ext.order_create.checkoutCompletes[i]({'cartID':previousCartid,'orderID':orderID,'datapointer':_rtag.datapointer},$checkout);
 								}
+							}
+
+//This will handle the @trackers code. Doesn't get run in admin.
+						if(!_app.u.thisIsAnAdminSession())	{
+							_app.ext.order_create.u.scripts2iframe(checkoutData['@TRACKERS']);
 							}
 
 // ### TODO -> move this out of here. move it into the appropriate app init.
@@ -1163,12 +1167,12 @@ _app.u.handleButtons($chkContainer); //will handle buttons outside any of the fi
 									s.parentNode.insertBefore(gts, s);
 									})();
 								}
-
-//This will handle the @trackers code.			
-							_app.ext.order_create.u.scripts2iframe(checkoutData['@TRACKERS']);
-
+							}
+						else if(_app.u.thisIsAnAdminSession())	{
+							//no special handling here.
 							}
 						else	{
+							//this is an 'app'.
 //								_app.u.dump("Not 1PC.");
 //								_app.u.dump(" -> [data-app-role='paymentMessaging'],$checkout).length: "+("[data-app-role='paymentMessaging']",$checkout).length);
 							
@@ -1185,9 +1189,8 @@ _app.u.handleButtons($chkContainer); //will handle buttons outside any of the fi
 								//cart and order id are in uriParams to keep data locations in sync in showCustomer. uriParams is where they are when landing on this page directly.
 								showContent('customer',{'show':'invoice','uriParams':{'cartid':previousCartid,'orderid':orderID}});
 								});
-							}
 		
-
+							}
 						//outside the if/else above so that cartMessagesPush and cartCreate can share the same pipe.
 						_app.model.dispatchThis('immutable'); //these are auto-dispatched because they're essential.	
 						}
@@ -1313,6 +1316,7 @@ _app.u.handleButtons($chkContainer); //will handle buttons outside any of the fi
 					_app.model.dispatchThis('immutable');
 					}});
 				_app.model.dispatchThis('immutable');
+				$('body').removeClass('buyerLoggedIn'); //allows for css changes to occur based on authentication
 				return false;
 				},
 
@@ -1379,14 +1383,13 @@ _app.u.handleButtons($chkContainer); //will handle buttons outside any of the fi
 					$container = $ele.closest("[data-app-role='customShipMethodContainer']"),
 					cartid = $ele.closest(":data(cartid)").data('cartid'),
 					sfo = $container.serializeJSON();
-					
 				$('.ui-state.error',$container).removeClass('ui-state-error'); //remove any previous errors.
 				if(sfo['sum/shp_carrier'] && sfo['sum/shp_method'] && sfo['sum/shp_total'])	{
 					_app.model.addDispatchToQ({
 						'_cmd':'adminCartMacro',
 						'_cartid' : cartid,
 						'_tag' : {},
-						"@updates" : ["SETSHIPPING?"+$.param(sfo)]
+						"@updates" : ["SETSHIPPING?"+_app.u.hash2kvp(sfo)]
 						},'immutable');
 					_app.ext.order_create.u.handleCommonPanels($ele.closest('form'));
 					_app.model.dispatchThis('immutable');
@@ -1631,6 +1634,7 @@ _app.u.handleButtons($chkContainer); //will handle buttons outside any of the fi
 						if(_app.model.responseHasErrors(rd)){$fieldset.anymessage({'message':rd})}
 						else	{
 							_app.u.dump(" -> no errors. user is logged in.");
+							$('body').addClass('buyerLoggedIn'); //allows for css changes based on auth.
 							var $form = $fieldset.closest('form'),
 							$fieldsets = $('fieldset',$form);
 //set all panels to loading.
@@ -1689,14 +1693,18 @@ _app.u.handleButtons($chkContainer); //will handle buttons outside any of the fi
 					$('body').showLoading({'message':'Transferring you to PayPal payment authorization'});
 //***201402 Must pass cartid parameter on the call itself -mc
 					var cartid = $ele.closest("[data-app-role='checkout']").data('cartid');
-					_app.ext.cco.calls.cartPaypalSetExpressCheckout.init({'getBuyerAddress': (_app.u.buyerIsAuthenticated()) ? 0 : 1, '_cartid':cartid},{'callback':function(rd){
+					_app.ext.cco.calls.cartPaypalSetExpressCheckout.init({
+						'getBuyerAddress': (_app.u.buyerIsAuthenticated()) ? 0 : 1, 
+						'_cartid':cartid,
+						'useMobile':($(document.body).width() < 500 ? 1 : 0)
+						},{'callback':function(rd){
 						if(_app.model.responseHasErrors(rd)){
 							$('body').hideLoading();
 							$('html, body').animate({scrollTop : $fieldset.offset().top},1000); //scroll to first instance of error.
 							$fieldset.anymessage({'message':rd});
 							}
 						else	{
-							window.location = _app.data[rd.datapointer].URL
+							window.location = _app.data[rd.datapointer].URL+'&useraction=commit'; //commit returns user to website for order confirmation. otherwise they stay on paypal.
 							}
 						},"extension":"order_create",'parentID': $ele.closest("[data-app-role='checkout']").attr('id')},'immutable');
 					_app.model.dispatchThis('immutable');
@@ -1875,7 +1883,7 @@ _app.u.handleButtons($chkContainer); //will handle buttons outside any of the fi
 				var
 					$checkoutForm = $ele.closest('form'), //used in some callbacks later.
 					$checkoutAddrFieldset = $ele.closest('fieldset'),
-					addressType = $ele.data('app-addresstype').toLowerCase();
+					addressType = $ele.attr('data-app-addresstype').toLowerCase();
 				if(_app.u.thisIsAnAdminSession())	{
 					var $D = _app.ext.admin_customer.a.createUpdateAddressShow({'mode':'create','show':'dialog','type':addressType});
 					}
@@ -2314,7 +2322,6 @@ _app.model.dispatchThis('passive');
 								}
 							else if(!_app.vars.thisSessionIsAdmin && pMethods[i].id.indexOf("WALLET") === 0)	{
 								//wallets are in the 'stored payments' section already. If they're shown here too, the input name/value will be duplicated. This duplication causes usability issues.
-
 								}
 							else	{
 								//onClick event is added through an app-event. allows for app-specific events.
@@ -2340,8 +2347,7 @@ _app.model.dispatchThis('passive');
 							}
 						}
 					if(payby)	{
-						dump("payby IS set. cb length: "+$("input[value='"+payby+"']",$r).length);
-						$("input[value='"+payby+"']",$r).prop('checked','checked').attr('checked','checked').closest('label').addClass('selected ui-state-active')
+						$("input[value='"+payby+"']",$r).prop('checked','checked').closest('label').addClass('selected ui-state-active')
 						}	
 				return $r.children();
 				}

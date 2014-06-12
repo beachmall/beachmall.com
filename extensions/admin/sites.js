@@ -242,19 +242,21 @@ used, but not pre-loaded.
 					'_tag':sfo._tag,
 					'@updates':[]
 					};
-				if(sfo.domaintype == 'DOMAIN-DELEGATE')	{
+				if(sfo.domaintype == 'DOMAIN-CREATE')	{
 					newSfo.DOMAINNAME = sfo.DOMAINNAME;
-					newSfo['@updates'].push("DOMAIN-DELEGATE");
+					newSfo['@updates'].push("DOMAIN-CREATE");
+					newSfo['@updates'].push("HOST-ADD?HOSTNAME=www&HOSTTYPE=APPTIMIZER");
 					}
 				else if(sfo.domaintype == 'DOMAIN-RESERVE')	{
 					newSfo['@updates'].push("DOMAIN-RESERVE");
-					newSfo['@updates'].push("HOST-ADD?HOSTNAME=www&HOSTTYPE=APPTIMIZER");					
+					newSfo['@updates'].push("HOST-ADD?HOSTNAME=www&HOSTTYPE=APPTIMIZER");
 					}
 				else	{
 					newSfo = false;
 					}
 				return newSfo;
 				},
+			
 
 			//executed when save is pressed within the general panel of editing a domain.
 			adminDomainMacroGeneral : function(sfo,$form)	{
@@ -305,6 +307,61 @@ used, but not pre-loaded.
 //utilities are typically functions that are exected by an event or action.
 //any functions that are recycled should be here.
 		u : {
+
+			hostChooser : function(opts)	{
+				opts = opts || {};
+				var $D = _app.ext.admin.i.dialogCreate({
+					title : "Choose Host(s)",
+					anycontent : false, //the dialogCreate params are passed into anycontent
+					handleAppEvents : false //defaults to true
+					});
+				$D.dialog('open');
+				$D.showLoading({'message':'Fetching updated list of domains and hosts.'});
+				_app.model.addDispatchToQ({
+					'_cmd':'adminDomainList',
+					'hosts' : true,
+					'_tag':	{
+						'datapointer' : 'adminDomainList',
+						'callback':function(rd)	{
+							$D.hideLoading();
+							if(_app.model.responseHasErrors(rd)){
+								$D.anymessage({'message':rd});
+								}
+							else	{
+								var dataset, templateid;
+								if(opts.filter)	{
+									dataset = _app.ext.admin.u.getValueByKeyFromArray(_app.data[rd.datapointer]['@DOMAINS'],opts.filter.by,opts.filter.for);
+									templateid = 'hostChooserDomainTemplate';
+									}
+								else	{
+									dataset = _app.data[rd.datapointer];
+									templateid = 'hostChooserDomainListTemplate';
+									}
+								
+								$D.tlc({'templateid':templateid,'dataset':dataset});
+								if(typeof opts.beforeSelectable === 'function')	{
+									opts.before($D);
+									}
+								
+								$D.selectable({'filter' : 'li'});
+								
+								if(typeof opts.afterSelectable === 'function')	{
+									opts.before($D);
+									}
+								
+								if(typeof opts.saveAction === 'function')	{
+									$("<button>").text('Save Hosts').button().on('click',function(){
+										opts.saveAction($D);
+										}).appendTo($D);
+									}
+								}
+							}
+						}
+					},'mutable');
+					_app.model.dispatchThis('mutable');
+
+
+				},
 
 //mode is required and can be create or update.
 //form is pretty self-explanatory.
@@ -468,6 +525,54 @@ used, but not pre-loaded.
 					}
 				},
 
+			adminDomainCreateExec : function($ele,p)	{
+				
+				var $form = $ele.closest('form');
+				if(_app.u.validateForm($form))	{
+					$form.showLoading({'message' : 'Adding Domain'});
+					var sfo = $form.serializeJSON();
+					sfo['@updates'] = new Array();
+					
+					if(sfo.domaintype == 'DOMAIN-CREATE')	{
+						sfo.DOMAINNAME = sfo.DOMAINNAME;
+						sfo['@updates'].push("DOMAIN-CREATE");
+						sfo['@updates'].push("HOST-ADD?HOSTNAME=www&HOSTTYPE=APPTIMIZER");
+						}
+					else if(sfo.domaintype == 'DOMAIN-RESERVE')	{
+						sfo['@updates'].push("DOMAIN-RESERVE");
+						sfo['@updates'].push("HOST-ADD?HOSTNAME=www&HOSTTYPE=APPTIMIZER");
+						}
+					else	{
+						
+						}
+					
+					if(sfo['@updates'].length)	{
+						sfo._cmd = 'adminDomainMacro';
+						sfo._tag = {
+							callback : function(rd)	{
+								$form.hideLoading();
+								if(_app.model.responseHasErrors(rd)){
+									$form.anymessage({'message':rd});
+									}
+								else	{
+									//sample action. success would go here.
+									$('#globalMessaging').anymessage(_app.u.successMsgObject('Your domain has been added.'));
+									navigateTo("#!ext/admin_sites/showDomainConfig");
+									$form.closest('.ui-dialog-content').dialog('close');
+									}
+								}
+							}
+						_app.model.addDispatchToQ(sfo,"immutable");
+						_app.model.dispatchThis("immutable");
+						}
+					else	{
+						$('#globalMessaging').anymessage({'message':'In adminDomainCreateExec, unrecognized domain type set in form.','gMessage':true});
+						}
+					}
+				else	{} //validateForm will handle error display.
+				
+				},
+
 			adminDomainCreateShow : function($ele,p)	{
 				var $D = _app.ext.admin.i.dialogCreate({
 					'title':'Add New Domain',
@@ -475,10 +580,51 @@ used, but not pre-loaded.
 					'showLoading':false //will get passed into anycontent and disable showLoading.
 					});
 				_app.u.handleButtons($D);
+				_app.u.addEventDelegation($D);
+				$D.dialog('option','width',($(document.body).width() > 500 ? 500 : '90%'));
 				$D.dialog('open');
 				$D.anyform();
 				}, //adminDomainCreateShow
 
+
+			adminDomainRemoveConfirm : function($ele,p)	{
+				p.preventDefault();
+				var domain = $ele.closest("[data-element='domain']").data('domainname');
+				if(domain)	{
+					var $D = _app.ext.admin.i.dialogConfirmRemove({
+						"message" : "Are you sure you wish to remove the domain "+domain+"? There is no undo for this action.",
+						"removeButtonText" : "Remove Domain", //will default if blank
+						"title" : "Remove Domain: "+domain, //will default if blank
+						"removeFunction" : function(p,$D){
+							$D.parent().showLoading({"message":"Removing domain "+domain+"..."});
+							_app.model.addDispatchToQ({
+								'_cmd':'adminDomainMacro',
+								'DOMAINNAME' : domain,
+								'@updates' : ["DOMAIN-REMOVE"],
+								'_tag':	{
+									'callback':function(rd){
+										$D.parent().hideLoading();
+										if(_app.model.responseHasErrors(rd)){
+											$D.anymessage({'message':rd});
+											}
+										else	{
+											$D.dialog('close');
+											$('#globalMessaging').anymessage(_app.u.successMsgObject('The domain '+domain+' has been removed'));
+											$ele.closest('tbody').hide().intervaledEmpty();
+											}
+										}
+									}
+								},'mutable');
+							_app.model.dispatchThis('mutable');
+							}
+						});
+					}
+				else	{
+					$("#globalMessaging").anymessage({"message":"In admin_sites.e.adminDomainRemoveConfirm, unable to ascertain domain.","gMessage":true});
+					}
+				
+				return false;
+				}, //adminDomainCreateShow
 
 //if(domain == _app.vars.domain)	{$ele.addClass('ui-state-highlight')}
 			domainPutInFocus : function($ele,p)	{
@@ -616,7 +762,7 @@ used, but not pre-loaded.
 							//success content goes here.
 							$("[data-panel-id='domainNewHostTypeSITEPTR']",$D).anycontent({'datapointer':rd.datapointer});
 							if($ele.data('mode') == 'update')	{
-								$("input[name='PROJECT']",$D).val(_app.data['adminDomainDetail|'+domain]['@HOSTS'][$ele.closest('tr').data('obj_index')].PROJECT)
+								$("select[name='PROJECT']",$D).val(_app.data['adminDomainDetail|'+domain]['@HOSTS'][$ele.closest('tr').data('obj_index')].PROJECT)
 								}
 							_app.u.handleButtons($D);
 							_app.u.handleCommonPlugins($D);
