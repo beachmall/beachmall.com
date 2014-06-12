@@ -22,11 +22,27 @@
 
 <script data-apptimize="minify" type="text/javascript">
 	//var _gaq = _gaq || {'push':function(){}} //here for testing. REPLACE BEFORE DEPLOYMENT!
-	var _gaq = _gaq || [];
-	_gaq.push(['_setAccount','UA-12032905-3']);
-	_gaq.push(['_trackPageview']);
+	//var _gaq = _gaq || [];
+	//_gaq.push(['_setAccount','UA-12032905-3']);
+	//_gaq.push(['_trackPageview']);
 
 	var myCreole, baseURL;
+	
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		// Replace the UA number below with the UA property to send tracking info to.
+		ga('create', 'UA-12032905-3', 'auto');
+		ga('set', {
+			// Replace name below
+			'appName' : 'Beachmall',
+			'appID' : 'ZMVC',
+			'appVersion' : '201404'
+			});
+		ga('send','pageview');
+		ga('send','screenview');
 
 	//set base url so images, css, js, etc all load from appropriate location once deployed.
 	//baseURL as blank lets loadScript function run off local copy when testing locally.
@@ -120,12 +136,13 @@ css files should be included before any .js file to ensure they are downloaded i
 $(document).ready(function(){
 
 	window.myApp = new initApp({	<!-- versionhere -->
-		"release":"201404.201406111181900",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+		"release":"201404.20140611193900",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 		"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 		"baseURL":baseURL, //used in non-local mode.
 		"checkoutAuthMode" : "active",//can be passive, active or required
 		"testURL":"http://www.81a72f.hoth.zoovy.net/", //used ONLY if protocol is file: (for testing)
 		"addjQueryPointer" : true,
+		"analyticsPointer" : "ga",
 		"initComplete" : function(){
 			dump(" -> init is complete");
 			myApp.u.loadScript('_beachmall_init.js',function(){

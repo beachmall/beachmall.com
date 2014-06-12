@@ -49,7 +49,7 @@ myApp.rq.push(['extension',0,'beachmall_recentlyviewed','','startExtension']); /
 //myApp.rq.push(['script',0,myApp.vars.baseURL+'resources/jquery.carouFredSel-6.2.0.min.js']); //used for carousels.
 myApp.rq.push(['extension',0,'beachmall_tracking','extensions/beachmall_tracking.js','startExtension']); //adds thirdparty tracking to app
 
-// 201405 Depreciated for Univeral Analytics
+//  201405 Depreciated for Univeral Analytics
 //myApp.rq.push(['extension',0,'google_analytics','extensions/partner_google_analytics.js','startExtension']);
 
 //myApp.rq.push(['extension',0,'google_adwords','extensions/partner_google_adwords.js','startExtension']); //handled in beachmall_tracking extension
