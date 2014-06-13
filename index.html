@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 
 <!-- do not populate or add meta data, the SEO layer will add it -->
-<title>Beachmall</title><!-- this will get populated by the SEO layer -->
-<meta name="description" content="" >
+<title>Beach Chairs | Beach Chair Umbrella | Beach Cart | Cabanas & Gear</title><!-- this will get populated by the SEO layer -->
+<meta name="description" content="Beach Chairs - Free Shipping & Easy Returns from our largest selection of folding beach chairs, beach cart, beach umbrella, patio umbrellas, beach gear & umbrella shelter accessories." >
 
 <!-- used for optional social media extensions -->
 <meta property="og:type" content="" id='ogType' >
@@ -136,7 +136,7 @@ css files should be included before any .js file to ensure they are downloaded i
 $(document).ready(function(){
 
 	window.myApp = new initApp({	<!-- versionhere -->
-		"release":"201404.20140612164900",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+		"release":"201404.20140613124600",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 		"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 		"baseURL":baseURL, //used in non-local mode.
 		"checkoutAuthMode" : "active",//can be passive, active or required
@@ -1149,11 +1149,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 	<span class="displayNone" data-tlc="bind $var '.%page.meta_description'; if(is $var --null;){{bind $var '.%page.description';}}; if(is $var --null;){{set $var '';}}; apply --attrib='data-seo-desc';"></span>
 
 	<ul data-tlc="bind $var '.path'; store_navcats#breadcrumb  --templateid='breadcrumbTemplate'  --legacy;" class="breadcrumb clearfix noPadOrMargin fluidList"></ul>
-<!-- HERE FOR TESTING ADCENTER SCRIPT ADDITION, REMOVE WHEN DONE ADDING ADCENTER. 
-	<div class='trackingTestDiv'>
-<div class='displayNone' data-bingads="1">HERE IS SOME STUFF TO SEE</div>
-</div>	
--->	
+
 	<h2 data-tlc="bind $var '.%page.header'; if (is $var --notblank;) {{apply --append;}};" class="blah5"></h2>
 	
 	<div class="catContainer">
