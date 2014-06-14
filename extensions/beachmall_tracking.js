@@ -72,6 +72,7 @@ var beachmall_tracking = function(_app) {
 							_app.ext.beachmall_tracking.u.addBecome('EC32A6A4ED7F110E', orderID, orderTotal);
 							_app.ext.beachmall_tracking.u.addAddThis($context);
 							_app.ext.beachmall_tracking.u.addFacebook('6009135221658');
+							_app.ext.beachmall_tracking.u.addAdwords();
 						}
 						else { dump('AHHHH! Problem w/ infoObj, infoObj.datapointer, _app.data[infoObj.datapointer], or _app.data[infoObj.datapointer].order!'); }
 					});
