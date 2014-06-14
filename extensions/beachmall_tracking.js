@@ -361,8 +361,7 @@ var beachmall_tracking = function(_app) {
 				setTimeout(function() {
 					var paramScript = frame.contentWindow.document.createElement("script");
 					paramScript.type = 	"text/javascript";
-					paramScript.text = 	'var google_conversion_id = 1056650724'
-								+	'var google_conversion_language = "en";'
+					paramScript.text = 	'var google_conversion_id = 1056650724;'
 								+	'var google_conversion_language = "en";'
 								+	'var google_conversion_format = "2";'
 								+	'var google_conversion_color = "ffffff";'
