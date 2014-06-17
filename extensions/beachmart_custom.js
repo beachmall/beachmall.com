@@ -851,10 +851,10 @@ RenderFormats
 //				_app.u.dump(" -> msrp: "+msrp);
 				if(price > .01)	{
 					if(priceModifier < 1) {
-						o += "<div class='basePrice'><span class='prompt pricePrompt'>Our Price: <\/span><span class='value'>";
+						o += "<div class='basePrice'><span class='prompt pricePrompt'>Our Price: <\/span><span class='value' itemprop='price'>";
 					}
 					else {
-						o += "<div class='basePrice'><span class='prompt pricePrompt'>Our Price From: <\/span><span class='value'>";
+						o += "<div class='basePrice'><span class='prompt pricePrompt'>Our Price From: <\/span><span class='value' itemprop='price'>";
 					}
 					o += _app.u.formatMoney(pData['zoovy:base_price'],'$',2,true)
 					o += "<\/span><\/div>";

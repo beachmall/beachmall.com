@@ -136,7 +136,7 @@ css files should be included before any .js file to ensure they are downloaded i
 $(document).ready(function(){
 
 	window.myApp = new initApp({	<!-- versionhere -->
-		"release":"201404.20140613124600",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+		"release":"201404.20140616165900",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 		"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 		"baseURL":baseURL, //used in non-local mode.
 		"checkoutAuthMode" : "active",//can be passive, active or required
@@ -2286,7 +2286,7 @@ this will likely become more flexible in the future. ###
 	<span class="displayNone" data-tlc="bind $var '.%attribs.zoovy:prod_seo_title'; if(is $var --blank;){{bind $var '.%attribs.zoovy:prod_name';}}; apply --attrib='data-seo-title';"></span>
 	<span class="displayNone" data-tlc="bind $var '.%attribs.zoovy:meta_desc'; if(is $var --blank;){{bind $var '.%attribs.zoovy:prod_desc';}}; apply --attrib='data-seo-desc';"></span>
 
-<table class="fullWidth floatLeft">
+<table class="fullWidth floatLeft" itemscope itemtype="http://schema.org/Product">
 <tbody><tr>
 	<td>
 
@@ -2299,7 +2299,7 @@ this will likely become more flexible in the future. ###
 
 			<li class="prodPageImages" data-anytab-content="prodImages">
 				<!--<img src='blank.gif' class='prodBigImage' rel='rel="selectors-change: mouseover' name='prodBigImage' data-bind='var: product(zoovy:prod_image1); format: magicZoomPlus; extension: magicToolBox_mzp;' width='310' height='310' />-->
-				<img data-tlc="bind $var '.'; magictoolbox_mzp#magiczoomplus  --legacy;" data-legacy-useparentdata="true" src="blank.gif" class="prodBigImage" alt="" rel="selectors-change: mouseover" height="310" width="310" data-apptimize="embed">
+				<img data-tlc="bind $var '.'; magictoolbox_mzp#magiczoomplus  --legacy;" data-legacy-useparentdata="true" src="blank.gif" class="prodBigImage" alt="" rel="selectors-change: mouseover" height="310" width="310" data-apptimize="embed" itemprop="image">
 				<div class="zhint">Mouse over main image to zoom in</div>
 				<div class="productPageCarouselContainer">
 					<div>
@@ -2323,12 +2323,12 @@ this will likely become more flexible in the future. ###
 
 <div data-tlc="bind $var '.pid'; apply --attrib='data-pid'; " class="mainProdColumn marginBottom">
 
-	<h1 data-tlc="bind $var '.%attribs.zoovy:prod_name'; if (is $var --notblank;) {{apply --append;}};" class="prodName"></h1>
+	<h1 data-tlc="bind $var '.%attribs.zoovy:prod_name'; if (is $var --notblank;) {{apply --append;}};" itemprop="name" class="prodName"></h1>
 	<div class="prodStidAndMfg clearfix">
-		<span data-tlc="bind $var '.pid'; if (is $var --notblank;) {{format --prepend='Item No: '; apply --append;}};"></span>
-		<span data-tlc="bind $var '.%attribs.zoovy:prod_mfg'; if (is $var --notblank;) {{apply --show;}}; beachmall_store#searchlink  --legacy;">Manufacturer: </span>
+		<span data-tlc="bind $var '.pid'; if (is $var --notblank;) {{format --prepend='Item No: '; apply --append;}};" itemprop="sku"></span>
+		<span data-tlc="bind $var '.%attribs.zoovy:prod_mfg'; if (is $var --notblank;) {{apply --show;}}; beachmall_store#searchlink  --legacy;" itemprop="manufacturer">Manufacturer: </span>
 	</div>
-	<div data-tlc="bind $var '.pid'; beachmart#priceretailsavings  --legacy;" class="priceContainer clearfix"></div>
+	<div data-tlc="bind $var '.pid'; beachmart#priceretailsavings  --legacy;" class="priceContainer clearfix" itemscope itemprop="offers" itemtype="http://schema.org/Offer"></div>
 	
 	<!-- <div class='disRedirect' data-bind="useParentData:true; format:addRedirectURL; extension:store_filter;"></div> -->
 	<div data-tlc="bind $var '.%attribs.user:replacement_product'; beachmall_store#addredirectproduct  --templateid='redirectProductTemplate'  --legacy;" class="disRedirect"></div>
@@ -2418,7 +2418,7 @@ this will likely become more flexible in the future. ###
 			</ul>
 					
 			<!-- tab content -->
-			<div data-tlc="bind $var '.%attribs.zoovy:prod_desc'; if (is $var --notblank;) {{render --wiki='quickstart'; apply --append;}};" class="tabBody" data-anytab-content="prodDesc"></div>
+			<div data-tlc="bind $var '.%attribs.zoovy:prod_desc'; if (is $var --notblank;) {{render --wiki='quickstart'; apply --append;}};" itemprop="description" class="tabBody" data-anytab-content="prodDesc"></div>
 			
 			<div data-tlc="bind $var '.%attribs.zoovy:prod_detail'; if (is $var --notblank;) {{render --wiki='quickstart'; apply --append;}};" class="tabBody" data-anytab-content="prodDetail"></div>
 			
