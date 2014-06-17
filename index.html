@@ -136,7 +136,7 @@ css files should be included before any .js file to ensure they are downloaded i
 $(document).ready(function(){
 
 	window.myApp = new initApp({	<!-- versionhere -->
-		"release":"201404.20140616165900",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+		"release":"201404.20140616201900",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 		"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 		"baseURL":baseURL, //used in non-local mode.
 		"checkoutAuthMode" : "active",//can be passive, active or required
@@ -2326,7 +2326,7 @@ this will likely become more flexible in the future. ###
 	<h1 data-tlc="bind $var '.%attribs.zoovy:prod_name'; if (is $var --notblank;) {{apply --append;}};" itemprop="name" class="prodName"></h1>
 	<div class="prodStidAndMfg clearfix">
 		<span data-tlc="bind $var '.pid'; if (is $var --notblank;) {{format --prepend='Item No: '; apply --append;}};" itemprop="sku"></span>
-		<span data-tlc="bind $var '.%attribs.zoovy:prod_mfg'; if (is $var --notblank;) {{apply --show;}}; beachmall_store#searchlink  --legacy;" itemprop="manufacturer">Manufacturer: </span>
+		<span data-tlc="bind $var '.%attribs.zoovy:prod_mfg'; if (is $var --notblank;) {{apply --show;}}; beachmall_store#searchlink  --legacy;" data-schema="1">Manufacturer: </span>
 	</div>
 	<div data-tlc="bind $var '.pid'; beachmart#priceretailsavings  --legacy;" class="priceContainer clearfix" itemscope itemprop="offers" itemtype="http://schema.org/Offer"></div>
 	

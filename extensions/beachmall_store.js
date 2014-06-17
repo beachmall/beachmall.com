@@ -566,8 +566,14 @@ var beachmall_store = function(_app) {
 
 			//appends an anchor tag with a keyword search for data.value to the calling tag
 			searchlink : function($tag,data) {
-				dump('START beachmall_store searchlink'); dump(data.value);
-				$tag.append("<a href=#!search/keywords/"+data.value+" class='underline'>"+data.value+"</a>");
+//				dump('START beachmall_store searchlink'); dump(data.value);
+				//check if schema attrib is needed and add if so.
+				if($tag.attr('data-schema') == 1) {
+					$tag.append("<a href=#!search/keywords/"+data.value+" itemprop='manufacturer' class='underline'>"+data.value+"</a>");
+				}
+				else {
+					$tag.append("<a href=#!search/keywords/"+data.value+" class='underline'>"+data.value+"</a>");
+				}
 			},
 			
 			//hides geo location/time in transit and add to cart button if product is discontinued or not purchasable
