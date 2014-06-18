@@ -922,11 +922,11 @@ var beachmall_store = function(_app) {
 //					dump('COUNT AND LIST TYPE'); dump(listType); dump(count);
 					if (listType == "#viewAllProductsTab" && count > 0) { $('.noBrandsItems',$context).hide(); }
 					if (listType == "#viewAllProductsTab" && count == 0) { $('.noBrandsItems',$context).show(); }
-					if (listType == "#featuredProdsTab" && count == 0) {
-						$('.tabFeatured',$context).hide();
+					if (listType == "#featuredProdsTab" && count > 0) {
+						$('.tabFeatured',$context).show();
 					}
-					if (listType == "#bestSellersTab" && count == 0) {
-						$('.tabBest',$context).hide();
+					if (listType == "#bestSellersTab" && count > 0) {
+						$('.tabBest',$context).show();
 					}
 				},500);
 			},
