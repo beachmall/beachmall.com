@@ -65,6 +65,9 @@ var beachmall_store = function(_app) {
 				
 				_app.templates.categoryTemplateBrands.on('complete.beachmall_store',function(event,$ele,P) {
 					_app.ext.beachmall_store.u.tabify($ele,".brandsTabs");
+					_app.ext.beachmall_store.u.countBrandsItems($ele,"#viewAllProductsTab");
+					_app.ext.beachmall_store.u.countBrandsItems($ele,"#featuredProdsTab");
+					_app.ext.beachmall_store.u.countBrandsItems($ele,"#bestSellersTab");
 				});
 				
 				_app.templates.searchTemplate.on('complete.beachmall_store',function(event,$ele,P) {
@@ -203,7 +206,7 @@ var beachmall_store = function(_app) {
 			//will change a class on the parent container of the brands product list tab to switch view to show all/featured/bestselling items. 
 			//works in conjunction with beachmall_store.renderFormats.brandslistfilter & countBrandsItems
 			brandTabSwitch : function($tag) {
-				dump('brandTabSwitch attribute: '); dump($('a',$tag).attr('href'));
+//				dump('brandTabSwitch attribute: '); dump($('a',$tag).attr('href'));
 				var $context = $('#categoryTemplateBrands_'+_app.u.makeSafeHTMLId($tag.parent().attr('data-brand-path')));
 				var thisHref = $('a',$tag).attr('href');
 				switch (thisHref) {
@@ -211,19 +214,19 @@ var beachmall_store = function(_app) {
 						$tag.parent().parent().removeClass('brandTabsF');
 						$tag.parent().parent().removeClass('brandTabsB');
 						$tag.parent().parent().addClass('brandTabsA');
-						_app.ext.beachmall_store.u.countBrandsItems($context,thisHref);
+			//			_app.ext.beachmall_store.u.countBrandsItems($context,thisHref);
 						break;
 					case "#featuredProdsTab" :
 						$tag.parent().parent().removeClass('brandTabsA');
 						$tag.parent().parent().removeClass('brandTabsB');
 						$tag.parent().parent().addClass('brandTabsF');
-						_app.ext.beachmall_store.u.countBrandsItems($context,thisHref);
+			//			_app.ext.beachmall_store.u.countBrandsItems($context,thisHref);
 						break;
 					case "#bestSellersTab" :
 						$tag.parent().parent().removeClass('brandTabsA');
 						$tag.parent().parent().removeClass('brandTabsF');
 						$tag.parent().parent().addClass('brandTabsB');
-						_app.ext.beachmall_store.u.countBrandsItems($context,thisHref);
+			//			_app.ext.beachmall_store.u.countBrandsItems($context,thisHref);
 						break;
 					default :
 						//if we got here, something isn't right... there are only three tabs.
@@ -904,10 +907,10 @@ var beachmall_store = function(_app) {
 				var count = 0;
 				setTimeout(function(){
 					$('.products',$context).each(function(){
-						dump('In .each function');
+//						dump('In .each function');
 						if(listType == "#viewAllProductsTab") { count++;	}
 						else if(listType == "#featuredProdsTab") {
-							dump('In featured tab condition');
+//							dump('In featured tab condition');
 							if($(this).hasClass('brandFeatured')) { count++; }
 						}
 						else if(listType == "#bestSellersTab") {
@@ -916,10 +919,16 @@ var beachmall_store = function(_app) {
 					});
 					//if something was counted, there must be an item to show for this list type, 
 					//otherwise let the user know there isn't anything to see
-					dump('COUNT AND LIST TYPE'); dump(listType); dump(count);
-					if (count > 0) { $('.noBrandsItems',$context).hide(); }
-					else { $('.noBrandsItems',$context).show(); }
-				},250);
+//					dump('COUNT AND LIST TYPE'); dump(listType); dump(count);
+					if (listType == "#viewAllProductsTab" && count > 0) { $('.noBrandsItems',$context).hide(); }
+					if (listType == "#viewAllProductsTab" && count == 0) { $('.noBrandsItems',$context).show(); }
+					if (listType == "#featuredProdsTab" && count == 0) {
+						$('.tabFeatured',$context).hide();
+					}
+					if (listType == "#bestSellersTab" && count == 0) {
+						$('.tabBest',$context).hide();
+					}
+				},500);
 			},
 			
 /**PRODUCT PAGE UTILS */

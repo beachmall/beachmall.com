@@ -136,7 +136,7 @@ css files should be included before any .js file to ensure they are downloaded i
 $(document).ready(function(){
 
 	window.myApp = new initApp({	<!-- versionhere -->
-		"release":"201404.20140616201900",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+		"release":"201404.20140618100000",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 		"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 		"baseURL":baseURL, //used in non-local mode.
 		"checkoutAuthMode" : "active",//can be passive, active or required
@@ -1223,7 +1223,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 			
 			<div class='brandsTabs'>
 				<ul class='tabs' data-tlc="bind $var '.path'; if(is $var --notblank;){{apply --attrib='data-brand-path'}};">
-					<!-- The brandsTabs will add/remove classes to change which products appear in the list. Standard anytabs functionality isn't used here (although the styling it affords is) -->
+					<!-- The brandsTabs will add/remove classes to change which products appear in the list (via href attrib). Standard anytabs functionality isn't used here (although the styling it affords is) -->
 					<li class='tabViewAll' onclick="myApp.ext.beachmall_store.a.brandTabSwitch($(this));"><a href="#viewAllProductsTab">View All</a></li>
 					<li class='tabFeatured' onclick="myApp.ext.beachmall_store.a.brandTabSwitch($(this));"><a href="#featuredProdsTab">Featured</a></li>
 					<li class='tabBest' onclick="myApp.ext.beachmall_store.a.brandTabSwitch($(this));"><a href="#bestSellersTab">Best Sellers</a></li>
