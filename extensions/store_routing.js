@@ -150,6 +150,7 @@ var store_routing = function(_app) {
 				_app.router.addAlias('.beachwear.beach-swimwear.rashguard.girls-rash-guard',	function(routeObj) { showContent('category',{'navcat':'.beachwear.beach-swimwear.rashguard.girls-rash-guard'}); } ); 
 				_app.router.addAlias('.beachwear.beach-swimwear.rashguard.kids-rash-guard',	function(routeObj) { showContent('category',{'navcat':'.beachwear.beach-swimwear.rashguard.kids-rash-guard'}); } ); 
 				_app.router.addAlias('.beachwear.beach-swimwear.rashguard.rashguards',	function(routeObj) { showContent('category',{'navcat':'.beachwear.beach-swimwear.rashguard.rashguards'}); } ); 
+				_app.router.addAlias('.beach-chairs.beach-gear.women-swimwear-bikinis',	function(routeObj) { showContent('category',{'navcat':'.beach-chairs.beach-gear.women-swimwear-bikinis'}); } );
 				_app.router.addAlias('.buyer_guides',	function(routeObj) { showContent('category',{'navcat':'.buyer_guides'}); } ); 
 				_app.router.addAlias('.buyer_guides.adirondack-chairs',	function(routeObj) { showContent('category',{'navcat':'.buyer_guides.adirondack-chairs'}); } ); 
 				_app.router.addAlias('.buyer_guides.backpack-beach-chairs',	function(routeObj) { showContent('category',{'navcat':'.buyer_guides.backpack-beach-chairs'}); } ); 
@@ -293,6 +294,7 @@ var store_routing = function(_app) {
 				_app.router.appendHash({'type':'match','route':'girls-rash-guards/','callback':'.beachwear.beach-swimwear.rashguard.girls-rash-guard'});
 				_app.router.appendHash({'type':'match','route':'kids-baby-rash-guards/','callback':'.beachwear.beach-swimwear.rashguard.kids-rash-guard'});
 				_app.router.appendHash({'type':'match','route':'boys-rash-guards/','callback':'.beachwear.beach-swimwear.rashguard.rashguards'});
+				_app.router.appendHash({'type':'match','route':'love-swimwear/','callback':'.beach-chairs.beach-gear.women-swimwear-bikinis'});
 				_app.router.appendHash({'type':'match','route':'buyer-guides/','callback':'.buyer_guides'});
 				_app.router.appendHash({'type':'match','route':'adirondack-chairs-buyer-guide/','callback':'.buyer_guides.adirondack-chairs'});
 				_app.router.appendHash({'type':'match','route':'backpack-beach-chairs-buyer-guide/','callback':'.buyer_guides.backpack-beach-chairs'});
