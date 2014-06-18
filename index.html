@@ -1845,7 +1845,7 @@ remember to NOT put the button inside the 'onclick' container or two events will
 	
 	<button class="floatRight pointer quickView" onclick="quickView('product',{'templateID':'productTemplateQuickView','pid':$(this).closest('[data-pid]').attr('data-pid')});">Quickview</button>
 	<div data-tlc="beachmall_store#brandslistfilter --legacy;"></div>	
-    <div data-tlc="bind $var '.pid'; apply --attrib='data-pid';" class="pointer productListSmall">
+    <div data-tlc="bind $var '.pid'; apply --attrib='data-pid';" class="productListSmall">
 		<a data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';">
 			<div class="prodHoverContainer prodShadowFix" data-beachmall-hoverClass="jsHover">
 				<div data-tlc="bind $var '.'; beachmall_store#showprodmodifier  --legacy;" data-legacy-useparentdata="true" class="prodModifierContainer sprite displayNone"></div> 
