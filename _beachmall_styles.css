@@ -374,11 +374,16 @@ BRANDS CATEGORY PAGE
 .brandCarouselLinkContainer {height:20px; width:auto; font-family:"Open Sans"; font-size:14px; font-weight:bold; margin:0 40px 0 5px; padding-top:7px; height:auto; text-align:right;}
 .featuredProdsTab .brandCarouselLinkContainer {height:auto; width:203px;}
 /*.viewAllProductsTab.brandCarouselLinkContainer {height:auto; width:70px;}*/
-.brandsCatContainer .CarouselContainer {height:518px;}
-.brandsCatContainer .CarouselContainer .Carousel {height:482px;}
-.brandsCatContainer .CarouselContainer .productSeperationBar{display:none;}
+.brandsCatContainer .CarouselContainer {height:auto;} /*height:518px;*/
+.brandsCatContainer .CarouselContainer .Carousel {height:auto;} /*height:482px;*/
+.brandsCatContainer .CarouselContainer .productSeperationBar{} /*display:none;*/
 /*.brandsCatContainer .viewAllProductsTabContainer  .CarouselContainer {height:491px;}
 .brandsCatContainer .viewAllProductsTabContainer .CarouselContainer .Carousel {height:453px; padding:0 0 0 28px;}*/
+.brandsTabs.brandTabsB .brandListItem, .brandsTabs.brandTabsB .brandFeatured  {display:none;}
+.brandsTabs.brandTabsB .brandBestSeller {display:block;}
+.brandsTabs.brandTabsF .brandListItem, .brandsTabs.brandTabF .brandBestSeller {display:none;}
+.brandsTabs.brandTabsF .brandFeatured {display:block;}
+.brandsTabs.brandTabsA .brandListItem{display:block}
 .viewAllProductsTabContainer .moreDetailsSmall {width:100px;}
 .brandsTabs .Carousel {width:1020px; padding:0;}
 .brandsProductList > li {position:relative;}
