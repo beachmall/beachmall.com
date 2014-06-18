@@ -851,12 +851,15 @@ RenderFormats
 //				_app.u.dump(" -> msrp: "+msrp);
 				if(price > .01)	{
 					if(priceModifier < 1) {
-						o += "<div class='basePrice'><span class='prompt pricePrompt'>Our Price: <\/span><span class='value'>";
+						o += "<div class='basePrice'><span class='prompt pricePrompt'>Our Price: <\/span><span class='value' itemprop='price'>";
 					}
 					else {
-						o += "<div class='basePrice'><span class='prompt pricePrompt'>Our Price From: <\/span><span class='value'>";
+						o += "<div class='basePrice'><span class='prompt pricePrompt'>Our Price From: <\/span><span class='value' itemprop='price'>";
 					}
-					o += _app.u.formatMoney(pData['zoovy:base_price'],'$',2,true)
+				// ORIG CALL BELOW, NEW CALL HAS $ SEPARATED AND GIVEN A SPAN W/ SCHEMA	ATTRIB. 
+				//	o += _app.u.formatMoney(pData['zoovy:base_price'],'$',2,true);
+					o += "<span itemprop='priceCurrency' content='USD'>$"+_app.u.formatMoney(pData['zoovy:base_price'],'$',2,true).substring(1)+"</span>";
+					_app.u.formatMoney(pData['zoovy:base_price'],'$',2,true)
 					o += "<\/span><\/div>";
 	//only show the msrp if it is greater than the price.
 					if(msrp > price)	{

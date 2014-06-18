@@ -65,6 +65,9 @@ var beachmall_store = function(_app) {
 				
 				_app.templates.categoryTemplateBrands.on('complete.beachmall_store',function(event,$ele,P) {
 					_app.ext.beachmall_store.u.tabify($ele,".brandsTabs");
+					_app.ext.beachmall_store.u.countBrandsItems($ele,"#viewAllProductsTab");
+					_app.ext.beachmall_store.u.countBrandsItems($ele,"#featuredProdsTab");
+					_app.ext.beachmall_store.u.countBrandsItems($ele,"#bestSellersTab");
 				});
 				
 				_app.templates.searchTemplate.on('complete.beachmall_store',function(event,$ele,P) {
@@ -200,6 +203,39 @@ var beachmall_store = function(_app) {
 			},
 			
 /**PRODUCT LIST FUNCTIONS */
+			//will change a class on the parent container of the brands product list tab to switch view to show all/featured/bestselling items. 
+			//works in conjunction with beachmall_store.renderFormats.brandslistfilter & countBrandsItems
+			brandTabSwitch : function($tag) {
+//				dump('brandTabSwitch attribute: '); dump($('a',$tag).attr('href'));
+				var $context = $('#categoryTemplateBrands_'+_app.u.makeSafeHTMLId($tag.parent().attr('data-brand-path')));
+				var thisHref = $('a',$tag).attr('href');
+				switch (thisHref) {
+					case "#viewAllProductsTab" :
+						$tag.parent().parent().removeClass('brandTabsF');
+						$tag.parent().parent().removeClass('brandTabsB');
+						$tag.parent().parent().addClass('brandTabsA');
+			//			_app.ext.beachmall_store.u.countBrandsItems($context,thisHref);
+						break;
+					case "#featuredProdsTab" :
+						$tag.parent().parent().removeClass('brandTabsA');
+						$tag.parent().parent().removeClass('brandTabsB');
+						$tag.parent().parent().addClass('brandTabsF');
+			//			_app.ext.beachmall_store.u.countBrandsItems($context,thisHref);
+						break;
+					case "#bestSellersTab" :
+						$tag.parent().parent().removeClass('brandTabsA');
+						$tag.parent().parent().removeClass('brandTabsF');
+						$tag.parent().parent().addClass('brandTabsB');
+			//			_app.ext.beachmall_store.u.countBrandsItems($context,thisHref);
+						break;
+					default :
+						//if we got here, something isn't right... there are only three tabs.
+						$tag.parent().parent().removeClass('brandTabsA');
+						$tag.parent().parent().removeClass('brandTabsF');
+						$tag.parent().parent().removeClass('brandTabsB');
+				}
+			},
+
 				//sets prod image frame and view detail button to hover red on mouseenter of the other
 			resultsredmousein : function($this) {
 				$('.myProdThumbSmall',$this.parent()).css('border','5px solid #e0463a');
@@ -528,36 +564,46 @@ var beachmall_store = function(_app) {
 				}
 			}, //hideIfNotPurchaseable
 			
-			//will look at a data attrib on the ul for the list item, then perform a search for attributes based on that attrib. Hides if no hits on attribs.
+			//will add classes to brand product list items for showing/hiding based on presence of all/featured/bestselling tags or attributes.
+			//works in conjunction with beachmall_store.a.brandTabSwitch
 			brandslistfilter : function($tag,data) {
 				if($tag.parent().parent().attr('data-brand-filter')) {
-					var filterType = $tag.parent().parent().attr('data-brand-filter');
+			//		var filterType = $tag.parent().parent().attr('data-brand-filter');
 //					dump('The brand filter was found.'); dump(filterType);//data-brand-filter="bestseller
-					
-					switch (filterType) {
-						case 'featured' :
+					$tag.parent().addClass('brandListItem');
+			//		switch (filterType) {
+			//			case 'featured' :
 							if(data.value && data.value['%attribs']) {
 //								dump('in brandslistfilter featured');
 								if(data.value['%attribs']['zoovy:prod_is_tags'] && (data.value['%attribs']['zoovy:prod_is_tags'].indexOf('IS_USER2') != -1 || data.value['%attribs']['zoovy:prod_is_tags'].indexOf('IS_USER3') != -1 || data.value['%attribs']['zoovy:prod_is_tags'].indexOf('IS_USER6') != -1)) {
 									 /*this is a featured item, it should be in the list*/
+									 $tag.parent().addClass('brandFeatured');
 								}
-								else if(data.value['%attribs']['user:prod_promo'] && data.value['%attribs']['user:prod_promo'].indexOf('IS_USER4') != -1) { /*same as above*/ }
-								else { $tag.parent().hide(); /*this product isn't a featured item, don't show it.*/ }
+								else if(data.value['%attribs']['user:prod_promo'] && data.value['%attribs']['user:prod_promo'].indexOf('IS_USER4') != -1) { 
+									/*same as above*/ 
+									$tag.parent().addClass('brandFeatured');
+								}
+								else { 
+			//						$tag.parent().hide(); /*this product isn't a featured item, don't show it.*/
+								}
 							}
-							else { $tag.parent().hide(); dump('featured hidden...'); dump(data.value.pid) /*no tags or prod_promo attrib means it's definitely not a featured item*/ }
-							break;
-						case 'bestseller' :
+			//				else { $tag.parent().hide(); dump('featured hidden...'); dump(data.value.pid) /*no tags or prod_promo attrib means it's definitely not a featured item*/ }
+			//				break;
+			//			case 'bestseller' :
 							if(data.value && data.value['%attribs'] && data.value['%attribs']['zoovy:prod_is_tags']) {
 //								dump('in brandslistfilter bestseller');
-								if(data.value['%attribs']['zoovy:prod_is_tags'].indexOf('IS_BESTSELLER') == -1) {
-									$tag.parent().hide(); //this product isn't a best seller, don't show it.
+								if(data.value['%attribs']['zoovy:prod_is_tags'].indexOf('IS_BESTSELLER') != -1) {
+									/*this is a best seller, it should be in the list*/
+									$tag.parent().addClass('brandBestSeller');
 								}
-								else { /*this is a best seller, it should be in the list*/ }
+								else { 
+			//						$tag.parent().hide(); //this product isn't a best seller, don't show it.
+								}
 							}
-							break;
-						default :
+			//				break;
+			//			default :
 //							dump('in brandslistfilter default');
-					}
+			//		}
 				}
 				else { /*this isn't a brands category product list no need for this rubbish.*/ }
 			}, //brandslistfilter
@@ -566,8 +612,14 @@ var beachmall_store = function(_app) {
 
 			//appends an anchor tag with a keyword search for data.value to the calling tag
 			searchlink : function($tag,data) {
-				dump('START beachmall_store searchlink'); dump(data.value);
-				$tag.append("<a href=#!search/keywords/"+data.value+" class='underline'>"+data.value+"</a>");
+//				dump('START beachmall_store searchlink'); dump(data.value);
+				//check if schema attrib is needed and add if so.
+				if($tag.attr('data-schema') == 1) {
+					$tag.append("<a href=#!search/keywords/"+data.value+" itemprop='manufacturer' class='underline'>"+data.value+"</a>");
+				}
+				else {
+					$tag.append("<a href=#!search/keywords/"+data.value+" class='underline'>"+data.value+"</a>");
+				}
 			},
 			
 			//hides geo location/time in transit and add to cart button if product is discontinued or not purchasable
@@ -847,6 +899,36 @@ var beachmall_store = function(_app) {
 				//returns view to top of page
 			scrollToTop : function() {
 				$('html,body').animate({ scrollTop: 0 }, 'slow');
+			},
+			
+/**PRODUCT LIST UTILS*/
+			//takes a count of items with the class that corresponds to the tab passed in the brands category template ($context) and shows a message if count is zero.
+			countBrandsItems : function($context, listType) {
+				var count = 0;
+				setTimeout(function(){
+					$('.products',$context).each(function(){
+//						dump('In .each function');
+						if(listType == "#viewAllProductsTab") { count++;	}
+						else if(listType == "#featuredProdsTab") {
+//							dump('In featured tab condition');
+							if($(this).hasClass('brandFeatured')) { count++; }
+						}
+						else if(listType == "#bestSellersTab") {
+							if($(this).hasClass('brandBestSeller')) { count++; }
+						}
+					});
+					//if something was counted, there must be an item to show for this list type, 
+					//otherwise let the user know there isn't anything to see
+//					dump('COUNT AND LIST TYPE'); dump(listType); dump(count);
+					if (listType == "#viewAllProductsTab" && count > 0) { $('.noBrandsItems',$context).hide(); }
+					if (listType == "#viewAllProductsTab" && count == 0) { $('.noBrandsItems',$context).show(); }
+					if (listType == "#featuredProdsTab" && count > 0) {
+						$('.tabFeatured',$context).show();
+					}
+					if (listType == "#bestSellersTab" && count > 0) {
+						$('.tabBest',$context).show();
+					}
+				},500);
 			},
 			
 /**PRODUCT PAGE UTILS */
