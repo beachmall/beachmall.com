@@ -22,6 +22,7 @@ myApp.rq.push(['extension',0,'store_search','']);
 myApp.rq.push(['extension',0,'store_product','']);
 myApp.rq.push(['extension',0,'cart_message','']);
 myApp.rq.push(['extension',0,'store_crm','']);
+myApp.rq.push(['extension',0,'store_tracking','','attachHandlers']);
 myApp.rq.push(['extension',0,'quickstart','','startMyProgram']);
 
 myApp.rq.push(['extension',0,'seo_robots','']);
