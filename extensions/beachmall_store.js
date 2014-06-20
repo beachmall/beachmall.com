@@ -962,6 +962,7 @@ var beachmall_store = function(_app) {
 
 			//takes the seo name and removes certain characters/spaces/patterns and returns the seo name
 			removeUnwantedChars : function(seo) {
+				seo = seo.replace('"','-inches'); //doesn't want any " (signifying "inches") in seo hash
 				seo = seo.replace('_',' '); //doesn't want any "_" in seo hash
 				seo = seo.replace(' / ',' '); //doesn't want any " / " in seo hash
 				seo = seo.replace('/',' '); //doesn't want any "/" in seo hash
