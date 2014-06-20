@@ -54,11 +54,9 @@ var beachmall_store = function(_app) {
 			
 				_app.ext.beachmall_store.u.hardImgSrc();
 				_app.ext.beachmall_store.u.addHover();
-				_app.ext.beachmall_store.u.addSymantec($(".nortonFooter"));
 			
 				_app.templates.homepageTemplate.on('complete.beachmall_store',function(event,$ele,P) {
 					$('.floatingBar',$ele).show(); //shows floating bar upon return to hompage if it's been closed.
-					_app.ext.beachmall_store.u.addSymantec($(".nortonFloatingBar",$ele));
 				});
 				
 				_app.templates.categoryTemplate.on('complete.beachmall_store',function(event,$ele,P) {
@@ -854,19 +852,8 @@ var beachmall_store = function(_app) {
 //any functions that are recycled should be here.
 		u : {
 
-/**GENERAL UTILS */
-
-			addSymantec : function($container) {
-				dump('START addSymantec'); 
-				//<script type="text/javascript" src="https://seal.verisign.com/getseal?host_name=www.beachmall.com&amp;size=XS&amp;use_flash=NO&amp;use_transparent=YES&amp;lang=en"></script>
-			
-				var script = document.createElement("script");
-				script.type = "text/javascript";
-				script.src = "https://seal.verisign.com/getseal?host_name=www.beachmall.com&amp;size=XS&amp;use_flash=NO&amp;use_transparent=YES&amp;lang=en";
-							//  https://seal.verisign.com/getseal?host_name=www.beachmall.com&amp;size=S&amp;use_flash=NO&amp;use_transparent=NO&amp;lang=en"
-				$container.append(script);
-			},
-
+/**GENERAL UTILS */	
+			//added as a alternate to css hover. Technically does the same thing differently.
 			addHover : function() { dump('---START beachmall_store addHover');
 				setTimeout(function() {
 				//	$('[data-beachmall-hoverClass]').css('border','5px solid green');

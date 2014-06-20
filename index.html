@@ -147,7 +147,7 @@ css files should be included before any .js file to ensure they are downloaded i
 $(document).ready(function(){
 
 	window.myApp = new initApp({	<!-- versionhere -->
-		"release":"201404.20140619195500",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+		"release":"201404.20140619100800",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 		"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 		"baseURL":baseURL, //used in non-local mode.
 		"checkoutAuthMode" : "active",//can be passive, active or required
@@ -860,8 +860,10 @@ ANIMATION TESTING
 <div class='copyright'>
 	<table class="nortonSecure" title="Click to Verify - This site chose Symantec SSL for secure e-commerce and confidential communications.">
 		<tr>
-		<td class="nortonFooter"> <!-- <script type="text/javascript" src="https://seal.verisign.com/getseal?host_name=www.beachmall.com&amp;size=S&amp;use_flash=NO&amp;use_transparent=NO&amp;lang=en"></script><br /> -->
-		<a href="http://www.symantec.com/verisign/ssl-certificates" target="_blank"  style="position:absolute; left:0; width:100%; color:#000000; text-decoration:none; font:bold 7px verdana,sans-serif; letter-spacing:.5px; text-align:center; margin:0px; padding:0px;">ABOUT SSL CERTIFICATES</a></td>
+			<td>
+				<script type="text/javascript" src="https://seal.verisign.com/getseal?host_name=www.beachmall.com&amp;size=S&amp;use_flash=NO&amp;use_transparent=NO&amp;lang=en"></script><br />
+				<a href="http://www.symantec.com/verisign/ssl-certificates" target="_blank"  style="position:absolute; left:0; width:100%; color:#000000; text-decoration:none; font:bold 7px verdana,sans-serif; letter-spacing:.5px; text-align:center; margin:0px; padding:0px;">ABOUT SSL CERTIFICATES</a>
+			</td>
 		</tr>
 	</table>
     <div class="copyrightText">
@@ -977,8 +979,10 @@ the homepageTemplate template is loaded into mainContentArea by default when the
         <div class='cartIcon sprite pointer' onClick="myApp.ext.quickstart.u.showCartInModal({'templateID':'cartTemplate'});"><span class='cartItemCount'>0</span><p><span class='fontWhite'>&#187; </span><span class='fontYellow'>SHOPPING CART</span></p></div>
 		<table class="nortonSecure" title="Click to Verify - This site chose Symantec SSL for secure e-commerce and confidential communications.">
 			<tr>
-			<td class='nortonFloatingBar'> <!-- <script type="text/javascript" src="https://seal.verisign.com/getseal?host_name=www.beachmall.com&amp;size=XS&amp;use_flash=NO&amp;use_transparent=YES&amp;lang=en"></script><br /> -->
-			<a href="http://www.symantec.com/verisign/ssl-certificates" target="_blank"  style="color:#000000; text-decoration:none; font:bold 7px verdana,sans-serif; letter-spacing:.5px; text-align:center; margin:0px; padding:0px; position:absolute; top:40px;">ABOUT SSL CERTIFICATES</a></td>
+				<td>
+					<script type="text/javascript" src="https://seal.verisign.com/getseal?host_name=www.beachmall.com&amp;size=XS&amp;use_flash=NO&amp;use_transparent=YES&amp;lang=en"></script><br />
+					<a href="http://www.symantec.com/verisign/ssl-certificates" target="_blank"  style="color:#000000; text-decoration:none; font:bold 7px verdana,sans-serif; letter-spacing:.5px; text-align:center; margin:0px; padding:0px; position:absolute; top:40px;">ABOUT SSL CERTIFICATES</a>
+				</td>
 			</tr>
 		</table>
 		<a class='checkoutButton' href="#!checkout/">CHECK OUT</a>
