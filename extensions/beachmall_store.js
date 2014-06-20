@@ -54,9 +54,11 @@ var beachmall_store = function(_app) {
 			
 				_app.ext.beachmall_store.u.hardImgSrc();
 				_app.ext.beachmall_store.u.addHover();
+				_app.ext.beachmall_store.u.addSymantec();
 			
 				_app.templates.homepageTemplate.on('complete.beachmall_store',function(event,$ele,P) {
 					$('.floatingBar',$ele).show(); //shows floating bar upon return to hompage if it's been closed.
+					_app.ext.beachmall_store.u.addSymantec();
 				});
 				
 				_app.templates.categoryTemplate.on('complete.beachmall_store',function(event,$ele,P) {
@@ -853,6 +855,27 @@ var beachmall_store = function(_app) {
 		u : {
 
 /**GENERAL UTILS */
+
+			addSymantec : function() {
+				dump('START addSymantec'); 
+				
+				var frame = document.createElement("iframe");
+				$(frame).addClass("displayNone");
+				$("body").append(frame);
+				
+				setTimeout(function() {
+					var script = document.createElement("script");
+					script.type = "text/javascript";
+					script.src = "https://seal.verisign.com/getseal?host_name=www.beachmall.com&amp;size=XS&amp;use_flash=NO&amp;use_transparent=YES&amp;lang=en";
+								//  https://seal.verisign.com/getseal?host_name=www.beachmall.com&amp;size=S&amp;use_flash=NO&amp;use_transparent=NO&amp;lang=en"
+					frame.contentWindow.document.body.appendChild(script);
+				},250);
+
+				//<script type="text/javascript" src="https://seal.verisign.com/getseal?host_name=www.beachmall.com&amp;size=XS&amp;use_flash=NO&amp;use_transparent=YES&amp;lang=en"></script>
+			
+//				$container.append(script);
+			},
+
 			addHover : function() { dump('---START beachmall_store addHover');
 				setTimeout(function() {
 				//	$('[data-beachmall-hoverClass]').css('border','5px solid green');
