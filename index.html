@@ -3,6 +3,17 @@
 <head>
 <meta charset="utf-8">
 
+<!-- USE THESE TERMS WITH A SEARCH FEATURE TO LOCATE THE CORRESPONDING TEXT AREAS FOR EDITING
+
+aboutArticle
+contactArticle
+paymentArticle
+privacyArticle
+returnArticle
+shippingArticle
+
+-->
+
 <!-- do not populate or add meta data, the SEO layer will add it -->
 <title>Beach Chairs | Beach Chair Umbrella | Beach Cart | Cabanas & Gear</title><!-- this will get populated by the SEO layer -->
 <meta name="description" content="Beach Chairs - Free Shipping & Easy Returns from our largest selection of folding beach chairs, beach cart, beach umbrella, patio umbrellas, beach gear & umbrella shelter accessories." >
@@ -136,7 +147,7 @@ css files should be included before any .js file to ensure they are downloaded i
 $(document).ready(function(){
 
 	window.myApp = new initApp({	<!-- versionhere -->
-		"release":"201404.20140618104700",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+		"release":"201404.20140620094400",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 		"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 		"baseURL":baseURL, //used in non-local mode.
 		"checkoutAuthMode" : "active",//can be passive, active or required
@@ -849,8 +860,10 @@ ANIMATION TESTING
 <div class='copyright'>
 	<table class="nortonSecure" title="Click to Verify - This site chose Symantec SSL for secure e-commerce and confidential communications.">
 		<tr>
-		<td><script type="text/javascript" src="https://seal.verisign.com/getseal?host_name=www.beachmall.com&amp;size=S&amp;use_flash=NO&amp;use_transparent=NO&amp;lang=en"></script><br />
-		<a href="http://www.symantec.com/verisign/ssl-certificates" target="_blank"  style="position:absolute; left:0; width:100%; color:#000000; text-decoration:none; font:bold 7px verdana,sans-serif; letter-spacing:.5px; text-align:center; margin:0px; padding:0px;">ABOUT SSL CERTIFICATES</a></td>
+			<td>
+				<script type="text/javascript" src="https://seal.verisign.com/getseal?host_name=www.beachmall.com&amp;size=S&amp;use_flash=NO&amp;use_transparent=NO&amp;lang=en"></script><br />
+				<a href="http://www.symantec.com/verisign/ssl-certificates" target="_blank"  style="position:absolute; left:0; width:100%; color:#000000; text-decoration:none; font:bold 7px verdana,sans-serif; letter-spacing:.5px; text-align:center; margin:0px; padding:0px;">ABOUT SSL CERTIFICATES</a>
+			</td>
 		</tr>
 	</table>
     <div class="copyrightText">
@@ -966,8 +979,10 @@ the homepageTemplate template is loaded into mainContentArea by default when the
         <div class='cartIcon sprite pointer' onClick="myApp.ext.quickstart.u.showCartInModal({'templateID':'cartTemplate'});"><span class='cartItemCount'>0</span><p><span class='fontWhite'>&#187; </span><span class='fontYellow'>SHOPPING CART</span></p></div>
 		<table class="nortonSecure" title="Click to Verify - This site chose Symantec SSL for secure e-commerce and confidential communications.">
 			<tr>
-			<td><script type="text/javascript" src="https://seal.verisign.com/getseal?host_name=www.beachmall.com&amp;size=XS&amp;use_flash=NO&amp;use_transparent=YES&amp;lang=en"></script><br />
-			<a href="http://www.symantec.com/verisign/ssl-certificates" target="_blank"  style="color:#000000; text-decoration:none; font:bold 7px verdana,sans-serif; letter-spacing:.5px; text-align:center; margin:0px; padding:0px; position:absolute; top:40px;">ABOUT SSL CERTIFICATES</a></td>
+				<td>
+					<script type="text/javascript" src="https://seal.verisign.com/getseal?host_name=www.beachmall.com&amp;size=XS&amp;use_flash=NO&amp;use_transparent=YES&amp;lang=en"></script><br />
+					<a href="http://www.symantec.com/verisign/ssl-certificates" target="_blank"  style="color:#000000; text-decoration:none; font:bold 7px verdana,sans-serif; letter-spacing:.5px; text-align:center; margin:0px; padding:0px; position:absolute; top:40px;">ABOUT SSL CERTIFICATES</a>
+				</td>
 			</tr>
 		</table>
 		<a class='checkoutButton' href="#!checkout/">CHECK OUT</a>
@@ -1845,7 +1860,7 @@ remember to NOT put the button inside the 'onclick' container or two events will
 	
 	<button class="floatRight pointer quickView" onclick="quickView('product',{'templateID':'productTemplateQuickView','pid':$(this).closest('[data-pid]').attr('data-pid')});">Quickview</button>
 	<div data-tlc="beachmall_store#brandslistfilter --legacy;"></div>	
-    <div data-tlc="bind $var '.pid'; apply --attrib='data-pid';" class="pointer productListSmall">
+    <div data-tlc="bind $var '.pid'; apply --attrib='data-pid';" class="productListSmall">
 		<a data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';">
 			<div class="prodHoverContainer prodShadowFix" data-beachmall-hoverClass="jsHover">
 				<div data-tlc="bind $var '.'; beachmall_store#showprodmodifier  --legacy;" data-legacy-useparentdata="true" class="prodModifierContainer sprite displayNone"></div> 

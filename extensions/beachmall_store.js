@@ -852,7 +852,8 @@ var beachmall_store = function(_app) {
 //any functions that are recycled should be here.
 		u : {
 
-/**GENERAL UTILS */
+/**GENERAL UTILS */	
+			//added as a alternate to css hover. Technically does the same thing differently.
 			addHover : function() { dump('---START beachmall_store addHover');
 				setTimeout(function() {
 				//	$('[data-beachmall-hoverClass]').css('border','5px solid green');
