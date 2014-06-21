@@ -77,6 +77,9 @@ var quickstart = function(_app) {
 			'shipAddressTemplate'],
 		"sotw" : {}, //state of the world. set to most recent page info object.
 		"hotw" : new Array(15), //history of the world. contains 15 most recent sotw objects.
+		"showContentFinished" : false,
+		"showContentCompleteFired" : false,
+		"cachedPageCount" : 20,
 		"session" : {
 			"recentSearches" : [],
 			"recentlyViewedItems" : [],
@@ -537,10 +540,12 @@ need to be customized on a per-ria basis.
 					//new page content loading. scroll to top.
 					$('html, body').animate({scrollTop : 0},'fast',function(){
 						$o.fadeOut(100, function(){$n.fadeIn(100)}); //fade out old, fade in new.
+						setTimeout(function(){_app.ext.quickstart.vars.showContentFinished = true;}, 600);
 						})
 					} 
 				else	{
 					$o.fadeOut(100, function(){$n.fadeIn(100)}); //fade out old, fade in new.
+					setTimeout(function(){_app.ext.quickstart.vars.showContentFinished = true;}, 600);
 					}
 				}
 			else if($n instanceof jQuery)	{
@@ -930,6 +935,8 @@ fallback is to just output the value.
 // -> unshift is used in the case of 'recent' so that the 0 spot always holds the most recent and also so the length can be maintained (kept to a reasonable #).
 // infoObj.back can be set to 0 to skip a URI update (will skip both hash state and popstate.) 
 			showContent : function(pageType,infoObj)	{
+				_app.ext.quickstart.vars.showContentFinished = false;
+				_app.ext.quickstart.vars.showContentCompleteFired = false;
 //				dump("BEGIN showContent ["+pageType+"]."); dump(infoObj);
 				infoObj = infoObj || {}; //could be empty for a cart or checkout
 /*
@@ -1107,6 +1114,7 @@ for legacy browsers. That means old browsers will use the anchor to retain 'back
 						});
 					}
 				else if(infoObj.performTransition == false)	{
+					_app.ext.quickstart.vars.showContentFinished = true;
 //beachmall			if(infoObj.performTransition == false)	{
 					_app.ext.quickstart.vars.showContentFinished = true;
 					}
@@ -1130,6 +1138,7 @@ for legacy browsers. That means old browsers will use the anchor to retain 'back
 					}
 				else	{
 					dump("WARNING! in showContent and no parentID is set for the element being translated.");
+					_app.ext.quickstart.vars.showContentFinished = true;
 					}
 
 //NOT POSTING THIS MESSAGE AS ASYNC BEHAVIOR IS NOT CURRENTLY QUANTIFIABLE					
