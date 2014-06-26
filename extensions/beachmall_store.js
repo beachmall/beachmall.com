@@ -1001,7 +1001,14 @@ var beachmall_store = function(_app) {
 //while no naming convention is stricly forced, 
 //when adding an event, be sure to do off('click.appEventName') and then on('click.appEventName') to ensure the same event is not double-added if app events were to get run again over the same template.
 		e : {
-			}, //e [app Events]
+		
+			toggleNav : function($ele, e) {
+				e.preventDefault();
+				dump('**toggleNav Ran');
+				$('#mastHead').toggleClass('expand');
+			}
+			
+		}, //e [app Events]
 			
 			
 ////////////////////////////////////   VARIATIONS    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\			
