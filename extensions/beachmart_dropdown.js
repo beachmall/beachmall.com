@@ -187,10 +187,20 @@ var beachmart_dropdown = function(_app) {
 				//dump('-----showdropdown data:'); dump($(".dropdown", $tag).data('timeout'));
 				if(!$(".dropdown", $tag).data('timeout') || $(".dropdown", $tag).data('timeout') === 'false') {
 					var $dropdown = $(".dropdown", $tag);
-					var height = ht;
-					$dropdown.children().each(function(){
-						$(this).outerHeight(true);
-					});
+					var height = ht || 0;
+			//		$dropdown.children().each(function(){ THIS WAS IN PLACE OF IF/ELSE BELOW WHEN ONLY USED A PASSED ARGUMENT FOR HEIGHT.
+			//			$(this).outerHeight(true);
+			//		});
+					if(height != 0){
+						$dropdown.children().each(function(){
+							$(this).outerHeight(true);
+						});
+					} else{
+						$dropdown.children().each(function(){
+								height += $(this).outerHeight();
+								$(this).outerHeight(true);
+						});
+					}
 					$dropdown.stop().animate({"height":height+"px"}, 500);
 				}
 			},
