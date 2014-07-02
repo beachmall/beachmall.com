@@ -329,14 +329,6 @@ var store_filter = function(_app) {
 				//<div data-bind='useParentData:true; format:testers; extension:store_filter;'></div>
 			},
 
-					//get product inventory and display in tag
-				showInv :function($tag, data) {
-					var pid = app.u.makeSafeHTMLId(data.value.pid);
-					if(data.value['@inventory'] && data.value['@inventory'][pid] && data.value['@inventory'][pid].inv) {
-						$tag.text("(" + data.value['@inventory'][pid].inv + ")");
-					}
-				}, //showInv
-
 				showShipRegion : function($tag, data) {
 					//app.u.dump('--------->'); app.u.dump(data.value);
 					$tag.append(data.value); 

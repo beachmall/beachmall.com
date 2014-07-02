@@ -167,12 +167,11 @@ var beachmall_store = function(_app) {
 		
 		//renders redirect product on the product page
 		renderRedirectProduct : {
-			onSuccess:function(responseData){	
-				_app.u.dump(' -> renderRedirectProduct');
-				responseData.$container.anycontent({"templateID":responseData.loadsTemplate,"datapointer":responseData.datapointer}); 
+			onSuccess:function(responseData){
+				responseData.$container.tlc({'datapointer':responseData.datapointer,verb:"transmogrify",templateid:responseData.loadsTemplate}); 
 			},
 			onError:function(responseData){	
-				_app.u.dump('Error in extension: store_filter renderRedirectProduct');
+				_app.u.dump('Error in extension: store_filter.callbacks.renderRedirectProduct, response data follows: '); dump(responseData);
 			}
 		},
 			
@@ -622,6 +621,16 @@ var beachmall_store = function(_app) {
 				}
 			},
 			
+			//get product inventory and display in tag
+			showinv :function($tag, data) {
+				var pid = _app.u.makeSafeHTMLId(data.value.pid);
+				dump('DATA.VALUE:********************************************************************'); dump(data.value);
+				if(data.value['@inventory'] && data.value['@inventory'][pid] && data.value['@inventory'][pid].AVAILABLE) {
+					dump(data.value['@inventory'][pid].AVAILABLE);
+					$tag.text("(" + data.value['@inventory'][pid].AVAILABLE+ ") In Stock");
+				}
+			}, //showInv
+			
 			//hides geo location/time in transit and add to cart button if product is discontinued or not purchasable
 			hidegeoelements : function($tag, data) {
 				//_app.u.dump('*********************'); _app.u.dump(data.value.pid); 
@@ -642,6 +651,7 @@ var beachmall_store = function(_app) {
 			
 			//if a product is discontinued, will add minimal info about the replacement and provide a link to it.
 			addredirectproduct : function($tag, data) {
+//				dump('REPLACEMENT PRODUCT: '); dump(data.value);
 				if(data.value) {
 					var obj = {
 						pid : _app.u.makeSafeHTMLId(data.value),
@@ -653,7 +663,7 @@ var beachmall_store = function(_app) {
 						"callback":"renderRedirectProduct",		
 						"extension":"beachmall_store",			
 						"$container" : $tag,
-						"loadsTemplate" : data.bindData.loadsTemplate
+						"loadsTemplate" : data.bindData.templateid
 					};
 					_app.calls.appProductGet.init(obj, _tag, 'immutable');
 				

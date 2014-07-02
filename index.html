@@ -2588,6 +2588,18 @@ this will likely become more flexible in the future. ###
 </div><!-- productTemplate -->
 
 
+<div id='redirectProductTemplate'>
+	<h2>There is a newer model of this item:</h2>
+	<a data-tlc="bind $pid '.pid'; bind $seo '.%attribs.zoovy:prod_name'; bind $href ''; store_routing#productlink --pid=$pid --seo=$seo; apply --attrib='href';">
+		<div class='imaginarium floatLeft'>
+			<img data-tlc="bind $var '.%attribs.zoovy:prod_image1'; if(is $var --notblank){{apply --img --media=$var --width=120 --height=120 --bgcolor='#ffffff' --replace;}};" src="blank.gif" alt="" height="120" width="120">
+		</div>
+		<h3 class='floatLeft' data-tlc="bind $var '.%attribs.zoovy:prod_name'; if (is $var --notblank;) {{apply --append;}};"></h3>
+	</a>
+	<h4 class='floatLeft' data-tlc="bind $var '.%attribs.zoovy:base_price'; if (is $var --notblank;) {{ format --currency='USD';  format --prepend='Our Price: '; apply --append;}};"></h4>
+	<div class='reviewtorium floatLeft'  data-tlc="bind $var '.pid'; powerreviews_reviews#reviewsnippet  --minreview='1' --legacy;"></div>
+	<div class='floatLeft' data-tlc="bind $var '.'; beachmall_store#showinv --legacy;"></div>
+</div>
 
 
 <!-- a template used for a quickview link off of a category page -->
