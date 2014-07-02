@@ -464,22 +464,22 @@ var beachmall_store = function(_app) {
 						$tag.children('.shipTime').empty().text(userProdShipMsg).show();
 						var n = d.getDay();
 						var t = d.getUTCHours();
-						if(date < 20131103) {
+						if(date < 20141102) {
 							t = t - 4;
 						}
-						else if (date > '20131102' && date < '20140309') {
+						else if (date > '20141101' && date < '20140308') {
 							t = t - 5;
 						}
 						else {
 							// posibly need further years calculated here
 						}
-						if(userProdShipMsg) {
-							if(userProdShipMsg.indexOf('Ships Today by 12 Noon EST') > -1){
-								if ( (t >= 12 && (n > 0 && n < 5)) || date == 20130704 || date == 20130902 || date == 20131225 || date == 20131231 || date == 20140101 || date == 20140526 || date == 20140704) {
+						if(userProdShipMsg) { dump('USER PRODUCT SHIPPING MESSAGE IS:'); dump(userProdShipMsg); dump(data.value);
+							if(userProdShipMsg.indexOf('Ships Today by 12 Noon EST') > -1){ //4th of July, Labor Day, Christmas, New Year Eve/Day, Memorial Day, 4th of July. 
+								if ( (t >= 12 && (n > 0 && n < 5)) || date == 20140704 || date == 20140901 || date == 20141225 || date == 20141231 || date == 20150101 || date == 20150526 || date == 20150704) {
 									//Time is after noon, day is Mon-Thurs, OR is a UPS holiday weekday
 									$tag.empty().append('Ships Next Business Day');
 								}
-								else if (((t >= 12 && n == 5) || (n > 5 && n < 1)) || date == 20131128 || date == 20131129) {
+								else if (((t >= 12 && n == 5) || (n > 5 && n < 1)) || date == 20141127 || date == 20141128) {
 									//Time is after noon, day is Fri (FUN FUN FUN FUN)
 									//OR it is the Weekend, OR is UPS Thanksgiving weekend
 									$tag.empty().append('Ships Monday by 12 Noon EST');
