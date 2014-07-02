@@ -473,7 +473,7 @@ var beachmall_store = function(_app) {
 						else {
 							// posibly need further years calculated here
 						}
-						if(userProdShipMsg) { dump('USER PRODUCT SHIPPING MESSAGE IS:'); dump(userProdShipMsg); dump(data.value);
+						if(userProdShipMsg) { //dump('USER PRODUCT SHIPPING MESSAGE IS:'); dump(userProdShipMsg); dump(data.value);
 							if(userProdShipMsg.indexOf('Ships Today by 12 Noon EST') > -1){ //4th of July, Labor Day, Christmas, New Year Eve/Day, Memorial Day, 4th of July. 
 								if ( (t >= 12 && (n > 0 && n < 5)) || date == 20140704 || date == 20140901 || date == 20141225 || date == 20141231 || date == 20150101 || date == 20150526 || date == 20150704) {
 									//Time is after noon, day is Mon-Thurs, OR is a UPS holiday weekday
@@ -482,7 +482,8 @@ var beachmall_store = function(_app) {
 								else if (((t >= 12 && n == 5) || (n > 5 && n < 1)) || date == 20141127 || date == 20141128) {
 									//Time is after noon, day is Fri (FUN FUN FUN FUN)
 									//OR it is the Weekend, OR is UPS Thanksgiving weekend
-									$tag.empty().append('Ships Monday by 12 Noon EST');
+									//$tag.empty().append('Ships Monday by 12 Noon EST'); old message (will use again?)
+									$tag.empty().append('Ships Next Business Day');
 								}
 								else {
 									//It is before noon on a Weekday, shipping message is perfectly fine
