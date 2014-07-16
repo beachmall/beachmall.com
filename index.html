@@ -151,7 +151,7 @@ $(document).ready(function(){
 	var paramStr = window.location.href.replace(window.location.hash, '').split('?')[1];
 	if(!paramStr || paramStr.indexOf('_escaped_fragment_') < 0){
 		window.myApp = new initApp({	<!-- versionhere -->
-			"release":"201404.20140716111300",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+			"release":"201404.20140716120800",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 			"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 			"baseURL":baseURL, //used in non-local mode.
 			"checkoutAuthMode" : "active",//can be passive, active or required
@@ -262,9 +262,10 @@ ANIMATION TESTING
 <div class='headerContainer'>
 				<!--	<div class='test' onClick="return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'tags':'.beach-chair.lafuma-recliner'}}]}}});"></div> -->
 <header class='clearfix topNav tanGradient'>
+<!--
 	<div class='localizedBox fontBlack fontSize12 floatLeft' onmouseover="myApp.ext.beachmart_dropdown.a.showGeoDropdown($(this),220);">
 	<!-- <div class='localizedBox fontBlack fontSize12 floatLeft' onmouseenter="myApp.ext.beachmart_dropdown.a.showGeoDropdown($(this),220);"> -->
-        <span class='oswaldFontBold  fontSize14'>LOCALIZED FOR &nbsp;</span><span class='oswaldFontBold fontTeal fontSize18 shipPostal' onClick="myApp.ext.beachmart_dropdown.a.showDropdown($(this).parent(),220);"></span><br>
+<!--        <span class='oswaldFontBold  fontSize14'>LOCALIZED FOR &nbsp;</span><span class='oswaldFontBold fontTeal fontSize18 shipPostal' onClick="myApp.ext.beachmart_dropdown.a.showDropdown($(this).parent(),220);"></span><br>
         <span class='openSansFont shipCity'> </span> <span class='shipRegion'></span><span class='openSansFontBold pointer' onClick="myApp.ext.beachmart_dropdown.a.showDropdown($(this).parent(),220);">&nbsp; (Change)</span>
     	<div class='arrowContainer'></div>
 		<div class='geoDropdown dropdown'>
@@ -280,6 +281,7 @@ ANIMATION TESTING
             <h2>BeachMall.com respects your privacy and will not share this information with anyone.</h2>
         </div>    
     </div>
+-->	
     <div class='phoneChatLive phone floatLeft'>
     	
     	<div class='floatRight liveHelp marginRight hideMed'>
