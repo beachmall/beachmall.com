@@ -151,7 +151,7 @@ $(document).ready(function(){
 	var paramStr = window.location.href.replace(window.location.hash, '').split('?')[1];
 	if(!paramStr || paramStr.indexOf('_escaped_fragment_') < 0){
 		window.myApp = new initApp({	<!-- versionhere -->
-			"release":"201404.20140716120800",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+			"release":"201404.20140702111300",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 			"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 			"baseURL":baseURL, //used in non-local mode.
 			"checkoutAuthMode" : "active",//can be passive, active or required
@@ -262,10 +262,9 @@ ANIMATION TESTING
 <div class='headerContainer'>
 				<!--	<div class='test' onClick="return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'tags':'.beach-chair.lafuma-recliner'}}]}}});"></div> -->
 <header class='clearfix topNav tanGradient'>
-<!--
 	<div class='localizedBox fontBlack fontSize12 floatLeft' onmouseover="myApp.ext.beachmart_dropdown.a.showGeoDropdown($(this),220);">
 	<!-- <div class='localizedBox fontBlack fontSize12 floatLeft' onmouseenter="myApp.ext.beachmart_dropdown.a.showGeoDropdown($(this),220);"> -->
-<!--        <span class='oswaldFontBold  fontSize14'>LOCALIZED FOR &nbsp;</span><span class='oswaldFontBold fontTeal fontSize18 shipPostal' onClick="myApp.ext.beachmart_dropdown.a.showDropdown($(this).parent(),220);"></span><br>
+        <span class='oswaldFontBold  fontSize14'>LOCALIZED FOR &nbsp;</span><span class='oswaldFontBold fontTeal fontSize18 shipPostal' onClick="myApp.ext.beachmart_dropdown.a.showDropdown($(this).parent(),220);"></span><br>
         <span class='openSansFont shipCity'> </span> <span class='shipRegion'></span><span class='openSansFontBold pointer' onClick="myApp.ext.beachmart_dropdown.a.showDropdown($(this).parent(),220);">&nbsp; (Change)</span>
     	<div class='arrowContainer'></div>
 		<div class='geoDropdown dropdown'>
@@ -281,7 +280,6 @@ ANIMATION TESTING
             <h2>BeachMall.com respects your privacy and will not share this information with anyone.</h2>
         </div>    
     </div>
--->	
     <div class='phoneChatLive phone floatLeft'>
     	
     	<div class='floatRight liveHelp marginRight hideMed'>
@@ -353,13 +351,13 @@ ANIMATION TESTING
 			<h6 class='displayNone'>Click for Detailed <span>Return Policy</span></h6>
         </a>
        
-<!--DROPDOWN PRODUCT SELECTION CLASS HERE! <div class="hoverproduct-PDADDC1"></div> 
+<!--DROPDOWN PRODUCT SELECTION CLASS HERE! <div class="hoverproduct-PDADDC1"></div> -->
         <div class='dropdownsContainer floatLeft'>
 
             <div id='mainDropdown'>
 
                 <!-- <div class='dropdownsContainer'> -->
-<!--					<div class='singleDropdown floatLeft sprite' onMouseOver="myApp.ext.beachmart_dropdown.a.showDropdown($(this),535);" onMouseOut="myApp.ext.beachmart_dropdown.a.hideDropdown($(this));">
+					<div class='singleDropdown floatLeft sprite' onMouseOver="myApp.ext.beachmart_dropdown.a.showDropdown($(this),535);" onMouseOut="myApp.ext.beachmart_dropdown.a.hideDropdown($(this));">
                     	<div class='dropdownBorderContainer'>
 							<div class='dropdownBorderMaker'>
 								<a href='#!beach-chairs/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent());">BEACH CHAIRS</a>
@@ -368,17 +366,17 @@ ANIMATION TESTING
 						<div class='beachChairsDD dropdown floatLeft'> 
 							<div class='defaultDDImage'>
 								<a class='stockImageContainer' href='#!beach-chairs/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"><img src="images/canopy_beach_chair_401a.jpg" width='210' height='210' alt='beach chairs' data-apptimize="embed" /></a>  <!-- https://www.beachmall.com/media/img/beachmart/W210-H210-Bffffff/copa/2009_chairs_web/canopy_beach_chair_401a -->
-<!--								<div class="dropdownBGRight"></div>
+								<div class="dropdownBGRight"></div>
 							</div>
                             <ul class='listStyleNone floatLeft dropoutUL'>
 							
                                <!-- <li class='noArrow'>BEACH CHAIRS</li>   -->
-<!--								<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'> <!--data-hoverproduct="PDADDC1"-->
-<!--									<a href='#!adirondack/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+								<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'> <!--data-hoverproduct="PDADDC1"-->
+									<a href='#!adirondack/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Adirondack
 									</a>
-	<!-- links in the ul for each item are built with beachmart_dropdown.u.makedropdownlinks() using template dropdownAnchorListTemplate. Add the category to link to in data-dropdown-link. For second tier dropouts also add data-second-tier="1"  -->
-<!--									<ul data-dropdown-link=".beach-chair.adirondack-furniture" class='hoverProductContainer hoverout listStyleNone'></ul>	
+<!-- links in the ul for each item are built with beachmart_dropdown.u.makedropdownlinks() using template dropdownAnchorListTemplate. Add the category to link to in data-dropdown-link. For second tier dropouts also add data-second-tier="1"  -->
+									<ul data-dropdown-link=".beach-chair.adirondack-furniture" class='hoverProductContainer hoverout listStyleNone'></ul>	
 								</li>
 								<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'>
 									<a href='#!backpack-chairs/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
@@ -486,7 +484,7 @@ ANIMATION TESTING
 						<div class='beachAccessoriesDD dropdown floatLeft'>
 							<div class='defaultDDImage'>
 								<a class='stockImageContainer' href='#!beach-accessories/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"><img src='images/ls_504_42_991.jpg' width='210' height='210' alt='beach accessories' data-apptimize="embed" /></a>  <!-- https://www.beachmall.com/media/img/beachmart/W210-H210-Bffffff/picnic_time/2010_lifestyle/ls_504_42_991 -->
-<!--								<div class="dropdownBGRight"></div>
+								<div class="dropdownBGRight"></div>
 							</div>
                             <ul class='listStyleNone floatLeft dropoutUL'>
                             	<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'>
@@ -532,7 +530,7 @@ ANIMATION TESTING
 						<div class='recreationDD dropdown floatLeft'>
 							<div class='defaultDDImage'>
 								<a class='stockImageContainer' href='#!recreation/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"><img src='images/wcpb707_no_logo.jpg' width='210' height='210' alt='recreation' data-apptimize="embed" /></a> <!-- https://www.beachmall.com/media/img/beachmart/W210-H210-Bffffff/copa/2012_bodyboard/wcpb707_no_logo -->
-<!--								<div class="dropdownBGRight"></div>
+								<div class="dropdownBGRight"></div>
 							</div>
                             <ul class='listStyleNone floatLeft dropoutUL'>
 								<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'>
@@ -566,11 +564,11 @@ ANIMATION TESTING
 						<div class='beachWearDD dropdown floatLeft'>
 							<div class='defaultDDImage'>
 								<a class='stockImageContainer' href='#!beach-wear/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"><img src='images/2760.jpg' width='210' height='210' alt='beachwear' data-apptimize="embed" /></a> <!-- https://www.beachmall.com/media/img/beachmart/W210-H210-Bffffff/snapper/2760 -->
-<!--								<div class="dropdownBGRight"></div>
+								<div class="dropdownBGRight"></div>
 							</div>
                             <ul class='listStyleNone floatLeft dropoutUL'>
 								<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'> <!--data-hoverproduct="PDADDC1"-->
-<!--									<a href='#!baby-hats/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+									<a href='#!baby-hats/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Baby Hats
 									</a>
 									<ul data-dropdown-link=".beachwear.beach-hat.baby-hats" class='hoverProductContainer hoverout listStyleNone'></ul>	
@@ -672,16 +670,16 @@ ANIMATION TESTING
 						<div class='umbrellasDD dropdown floatLeft'>
 							<div class='defaultDDImage'>
 								<a class='stockImageContainer' href='#!umbrellas-shelters/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"><img src='images/beach_umbrella_wtw760b.jpg' width='210' height='210' alt='umbrellas' data-apptimize="embed" /></a> <!-- https://www.beachmall.com/media/img/beachmart/W210-H210-Bffffff/twt/beach_umbrella_wtw760b -->
-<!--								<div class="dropdownBGRight"></div>
+								<div class="dropdownBGRight"></div>
 							</div>
                             <ul class='listStyleNone floatLeft dropoutUL'>
 								<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'> <!--data-hoverproduct="PDADDC1" onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent());" -->
-<!--									<a href='#!beach-umbrellas/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+									<a href='#!beach-umbrellas/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Beach Umbrellas
 									</a>
 									<ul data-dropdown-link=".beach-umbrellas-shelter.beach-umbrella" class='hoverProductContainer hoverout listStyleNone'></ul>	
 										<!-- LIST USAGE NOT IMPLIMENTED <button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('category',{'navcat':'.beach-umbrellas-shelter.beach-umbrella', 'templateID':'categoryTemplateWithSpecialList'});">Best Selling Items</button>-->
-<!--								</li>
+								</li>
                                 <li class='noArrow' onMouseOver="myApp.ext.beachmart_dropdown.a.showDropout($(this), $(this).parent().parent(), $(this).parent(), 480)" 
 									onMouseOut="myApp.ext.beachmart_dropdown.a.hideDropout($(this), $(this).parent().parent(), $(this).parent())">
 									<a href='#!market-patio-umbrellas/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
@@ -740,11 +738,11 @@ ANIMATION TESTING
 						<div class='shelterDD dropdown floatLeft'>
 							<div class='defaultDDImage'>
 								<a class='stockImageContainer' href='#!umbrellas-shelters/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"><img src='images/beach_umbrella_wtw760b.jpg' width='210' height='210' alt='shelters' data-apptimize="embed" /></a> <!-- https://www.beachmall.com/media/img/beachmart/W210-H210-Bffffff/twt/beach_umbrella_wtw760b -->
-<!--								<div class="dropdownBGRight"></div>
+								<div class="dropdownBGRight"></div>
 							</div>
                             <ul class='listStyleNone floatLeft dropoutUL'>
 								<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'> <!--data-hoverproduct="PDADDC1"-->
-<!--									<a href='#!beach-cabanas/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+									<a href='#!beach-cabanas/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Beach Cabanas
 									</a>
 									<ul data-dropdown-link=".beach-umbrellas-shelter.beach-cabana" class='hoverProductContainer hoverout listStyleNone'></ul>	
@@ -760,9 +758,9 @@ ANIMATION TESTING
                         </div>
                     </div>
                 <!-- </div> SECOND DROPDOWN CONTAINER? -->
-<!--			</div>
+			</div>
     	</div>
--->    </div>
+    </div>
 
 </header>
 
@@ -1015,15 +1013,12 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 				</div>
 			
 			<div class='newArrivalsCarouselRight floatLeft'>
-	<!--
 				<a class="carouselButton new2CarouselPrev carouselButtonPrev" href="#">prev</a>
 				<a class="carouselButton new2CarouselNext carouselButtonNext" href="#">next</a>
 				<ul data-tlc="bind $var '.$app-site_home-page-new-item.@products'; store_prodlist#productlist  --hideSummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplateCustom'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchNewArrivals2"></ul>
-	-->
 			</div>
-	
 		</div>
-<!--    
+    
 		<div class='homepageCategories'>
 			<div class='additionalHompageCatsContainer'>
 				<a href="#!beach-carts/" class="additionalHompageCats floatLeft pointer">
@@ -1041,7 +1036,9 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 					<span>SHOP</span>
 					<span>BEACH BAGS</span>
 				</a>
-				<a href="#!shop-by-brand/" class="additionalHompageCats floatLeft pointer">
+				<a href="#!shop-by-brand/" class="additionalHompageCats floatLeft pointer"> 
+				<!-- <a href="#!category/.test" class="additionalHompageCats floatLeft pointer"> 
+				<div class='additionalHompageCats floatLeft pointer' onClick="return showContent('category',{'navcat':'.beach-chairs.beach-gear'});">  -->
 					<div class='addCatArrow sprite floatRight'></div>
 					<span>SHOP</span>
 					<span>BY BRAND</span>
@@ -1056,9 +1053,9 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 	<img class='floatLeft' src='images/shop_beachwear_160x105.jpg' />
 </div>
 -->
-<!--				<ul data-tlc="bind $var '.@subcategoryDetail'; store_navcats#categorylist  --detail='max' --templateid='categoryListHomeTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin"></ul>
+		<ul data-tlc="bind $var '.@subcategoryDetail'; store_navcats#categorylist  --detail='max' --templateid='categoryListHomeTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin"></ul>
 		</div>
--->	</div>
+	</div>
     
     <div class='CarouselContainer featuredProductsCarouselContainer'>
     	<div class='carouselTitles yellowBkgrd'>
@@ -1067,15 +1064,13 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 			<!-- <a onclick="return showContent('category',{'navcat':'.beach-umbrellas-shelter.beach-umbrella', 'templateID':'categoryTemplateHomepageFeatured'});" class='carouselLinkContainer floatRight featWidth pointer'>View All Featured Products</a> -->
             <div class='carouselArrowContainer floatRight sprite'></div>
         </div>
-    <!--    
-		<div class='Carousel'>
+        <div class='Carousel'>
         	<a class="carouselButtonDkBlue featCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
 			<a class="carouselButtonDkBlue featCarouselNext carouselButtonDkBlueNext" href="#">next</a>
         	<!--non filtered search: <ul id='homeProdSearchFeatured' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"or":{"filters":[{"term":{"tags":"IS_USER4"}},{"term":{"tags":"IS_COLORFUL"}},{"term":{"tags":"IS_USER5"}},{"term":{"user:prod_promo":"IS_USER4"}}]}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul> -->
-<!--		<ul data-tlc="bind $var '.$app-site_home-page-featured.@products'; store_prodlist#productlist  --hideSummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchFeatured"></ul>
+			<ul data-tlc="bind $var '.$app-site_home-page-featured.@products'; store_prodlist#productlist  --hideSummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchFeatured"></ul>
 		</div>
-    -->    
-		<div class='standardCarouselPagenation featCarPagenation'></div>
+        <div class='standardCarouselPagenation featCarPagenation'></div>
     </div>
     
     <div class='CarouselContainer bestSellersCarouselContainer'>
@@ -1085,14 +1080,13 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 			<!-- <a onclick="return showContent('category',{'navcat':'.beach-umbrellas-shelter.beach-umbrella', 'templateID':'categoryTemplateHomepageBestSeller'});" class="bindByAnchor"></a>  href="#!homepagebestseller" -->
 			<div class='carouselArrowContainer floatRight sprite'></div>
         </div>
-<!--		
-		<div class='Carousel'>
+        <div class='Carousel'>
         	<a class="carouselButtonDkBlue bestCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
 			<a class="carouselButtonDkBlue bestCarouselNext carouselButtonDkBlueNext" href="#">next</a>
         <!--non filtered search: <ul id='homeProdSearchBestSellers' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"term":{"tags":"IS_BESTSELLER"}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul> -->
-<!--		<ul data-tlc="bind $var '.$app-site_home-page-best-sellers.@products'; store_prodlist#productlist  --hideSummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchBestSellers"></ul>
+			<ul data-tlc="bind $var '.$app-site_home-page-best-sellers.@products'; store_prodlist#productlist  --hideSummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchBestSellers"></ul>
 		</div>																																																	
---> 	<div class='standardCarouselPagenation bestCarPagenation'></div>
+        <div class='standardCarouselPagenation bestCarPagenation'></div>
     </div>
 	
     <div class='categoryDescriptionContainer'>
