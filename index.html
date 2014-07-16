@@ -151,7 +151,7 @@ $(document).ready(function(){
 	var paramStr = window.location.href.replace(window.location.hash, '').split('?')[1];
 	if(!paramStr || paramStr.indexOf('_escaped_fragment_') < 0){
 		window.myApp = new initApp({	<!-- versionhere -->
-			"release":"201404.20140716105400",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+			"release":"201404.20140716111300",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 			"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 			"baseURL":baseURL, //used in non-local mode.
 			"checkoutAuthMode" : "active",//can be passive, active or required
@@ -351,13 +351,13 @@ ANIMATION TESTING
 			<h6 class='displayNone'>Click for Detailed <span>Return Policy</span></h6>
         </a>
        
-<!--DROPDOWN PRODUCT SELECTION CLASS HERE! <div class="hoverproduct-PDADDC1"></div> -->
+<!--DROPDOWN PRODUCT SELECTION CLASS HERE! <div class="hoverproduct-PDADDC1"></div> 
         <div class='dropdownsContainer floatLeft'>
 
             <div id='mainDropdown'>
 
                 <!-- <div class='dropdownsContainer'> -->
-					<div class='singleDropdown floatLeft sprite' onMouseOver="myApp.ext.beachmart_dropdown.a.showDropdown($(this),535);" onMouseOut="myApp.ext.beachmart_dropdown.a.hideDropdown($(this));">
+<!--					<div class='singleDropdown floatLeft sprite' onMouseOver="myApp.ext.beachmart_dropdown.a.showDropdown($(this),535);" onMouseOut="myApp.ext.beachmart_dropdown.a.hideDropdown($(this));">
                     	<div class='dropdownBorderContainer'>
 							<div class='dropdownBorderMaker'>
 								<a href='#!beach-chairs/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent());">BEACH CHAIRS</a>
@@ -366,17 +366,17 @@ ANIMATION TESTING
 						<div class='beachChairsDD dropdown floatLeft'> 
 							<div class='defaultDDImage'>
 								<a class='stockImageContainer' href='#!beach-chairs/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"><img src="images/canopy_beach_chair_401a.jpg" width='210' height='210' alt='beach chairs' data-apptimize="embed" /></a>  <!-- https://www.beachmall.com/media/img/beachmart/W210-H210-Bffffff/copa/2009_chairs_web/canopy_beach_chair_401a -->
-								<div class="dropdownBGRight"></div>
+<!--								<div class="dropdownBGRight"></div>
 							</div>
                             <ul class='listStyleNone floatLeft dropoutUL'>
 							
                                <!-- <li class='noArrow'>BEACH CHAIRS</li>   -->
-								<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'> <!--data-hoverproduct="PDADDC1"-->
-									<a href='#!adirondack/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+<!--								<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'> <!--data-hoverproduct="PDADDC1"-->
+<!--									<a href='#!adirondack/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Adirondack
 									</a>
-<!-- links in the ul for each item are built with beachmart_dropdown.u.makedropdownlinks() using template dropdownAnchorListTemplate. Add the category to link to in data-dropdown-link. For second tier dropouts also add data-second-tier="1"  -->
-									<ul data-dropdown-link=".beach-chair.adirondack-furniture" class='hoverProductContainer hoverout listStyleNone'></ul>	
+	<!-- links in the ul for each item are built with beachmart_dropdown.u.makedropdownlinks() using template dropdownAnchorListTemplate. Add the category to link to in data-dropdown-link. For second tier dropouts also add data-second-tier="1"  -->
+<!--									<ul data-dropdown-link=".beach-chair.adirondack-furniture" class='hoverProductContainer hoverout listStyleNone'></ul>	
 								</li>
 								<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'>
 									<a href='#!backpack-chairs/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
@@ -484,7 +484,7 @@ ANIMATION TESTING
 						<div class='beachAccessoriesDD dropdown floatLeft'>
 							<div class='defaultDDImage'>
 								<a class='stockImageContainer' href='#!beach-accessories/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"><img src='images/ls_504_42_991.jpg' width='210' height='210' alt='beach accessories' data-apptimize="embed" /></a>  <!-- https://www.beachmall.com/media/img/beachmart/W210-H210-Bffffff/picnic_time/2010_lifestyle/ls_504_42_991 -->
-								<div class="dropdownBGRight"></div>
+<!--								<div class="dropdownBGRight"></div>
 							</div>
                             <ul class='listStyleNone floatLeft dropoutUL'>
                             	<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'>
@@ -530,7 +530,7 @@ ANIMATION TESTING
 						<div class='recreationDD dropdown floatLeft'>
 							<div class='defaultDDImage'>
 								<a class='stockImageContainer' href='#!recreation/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"><img src='images/wcpb707_no_logo.jpg' width='210' height='210' alt='recreation' data-apptimize="embed" /></a> <!-- https://www.beachmall.com/media/img/beachmart/W210-H210-Bffffff/copa/2012_bodyboard/wcpb707_no_logo -->
-								<div class="dropdownBGRight"></div>
+<!--								<div class="dropdownBGRight"></div>
 							</div>
                             <ul class='listStyleNone floatLeft dropoutUL'>
 								<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'>
@@ -564,11 +564,11 @@ ANIMATION TESTING
 						<div class='beachWearDD dropdown floatLeft'>
 							<div class='defaultDDImage'>
 								<a class='stockImageContainer' href='#!beach-wear/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"><img src='images/2760.jpg' width='210' height='210' alt='beachwear' data-apptimize="embed" /></a> <!-- https://www.beachmall.com/media/img/beachmart/W210-H210-Bffffff/snapper/2760 -->
-								<div class="dropdownBGRight"></div>
+<!--								<div class="dropdownBGRight"></div>
 							</div>
                             <ul class='listStyleNone floatLeft dropoutUL'>
 								<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'> <!--data-hoverproduct="PDADDC1"-->
-									<a href='#!baby-hats/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+<!--									<a href='#!baby-hats/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Baby Hats
 									</a>
 									<ul data-dropdown-link=".beachwear.beach-hat.baby-hats" class='hoverProductContainer hoverout listStyleNone'></ul>	
@@ -670,16 +670,16 @@ ANIMATION TESTING
 						<div class='umbrellasDD dropdown floatLeft'>
 							<div class='defaultDDImage'>
 								<a class='stockImageContainer' href='#!umbrellas-shelters/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"><img src='images/beach_umbrella_wtw760b.jpg' width='210' height='210' alt='umbrellas' data-apptimize="embed" /></a> <!-- https://www.beachmall.com/media/img/beachmart/W210-H210-Bffffff/twt/beach_umbrella_wtw760b -->
-								<div class="dropdownBGRight"></div>
+<!--								<div class="dropdownBGRight"></div>
 							</div>
                             <ul class='listStyleNone floatLeft dropoutUL'>
 								<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'> <!--data-hoverproduct="PDADDC1" onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent());" -->
-									<a href='#!beach-umbrellas/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+<!--									<a href='#!beach-umbrellas/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Beach Umbrellas
 									</a>
 									<ul data-dropdown-link=".beach-umbrellas-shelter.beach-umbrella" class='hoverProductContainer hoverout listStyleNone'></ul>	
 										<!-- LIST USAGE NOT IMPLIMENTED <button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('category',{'navcat':'.beach-umbrellas-shelter.beach-umbrella', 'templateID':'categoryTemplateWithSpecialList'});">Best Selling Items</button>-->
-								</li>
+<!--								</li>
                                 <li class='noArrow' onMouseOver="myApp.ext.beachmart_dropdown.a.showDropout($(this), $(this).parent().parent(), $(this).parent(), 480)" 
 									onMouseOut="myApp.ext.beachmart_dropdown.a.hideDropout($(this), $(this).parent().parent(), $(this).parent())">
 									<a href='#!market-patio-umbrellas/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
@@ -738,11 +738,11 @@ ANIMATION TESTING
 						<div class='shelterDD dropdown floatLeft'>
 							<div class='defaultDDImage'>
 								<a class='stockImageContainer' href='#!umbrellas-shelters/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"><img src='images/beach_umbrella_wtw760b.jpg' width='210' height='210' alt='shelters' data-apptimize="embed" /></a> <!-- https://www.beachmall.com/media/img/beachmart/W210-H210-Bffffff/twt/beach_umbrella_wtw760b -->
-								<div class="dropdownBGRight"></div>
+<!--								<div class="dropdownBGRight"></div>
 							</div>
                             <ul class='listStyleNone floatLeft dropoutUL'>
 								<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'> <!--data-hoverproduct="PDADDC1"-->
-									<a href='#!beach-cabanas/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+<!--									<a href='#!beach-cabanas/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Beach Cabanas
 									</a>
 									<ul data-dropdown-link=".beach-umbrellas-shelter.beach-cabana" class='hoverProductContainer hoverout listStyleNone'></ul>	
@@ -758,9 +758,9 @@ ANIMATION TESTING
                         </div>
                     </div>
                 <!-- </div> SECOND DROPDOWN CONTAINER? -->
-			</div>
+<!--			</div>
     	</div>
-    </div>
+-->    </div>
 
 </header>
 
