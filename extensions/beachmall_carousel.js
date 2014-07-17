@@ -50,9 +50,11 @@ var beachmall_carousel = function(_app) {
 			onSuccess : function() {
 			
 				_app.templates.homepageTemplate.on('complete.beachmall_carousel',function(event,$ele,P) {
-			//		_app.ext.beachmall_carousel.u.runHomeSmallCarousel($ele);
-			//		_app.ext.beachmall_carousel.u.runHomeFeaturedCarousel($ele);
-			//		_app.ext.beachmall_carousel.u.runHomeBestCarousel($ele);
+					//carousels are initially started w/ loadProductsAsList in beachmall_store, 
+					//but are run here again to trigger play if page is returned to and has already been rendered
+		//			_app.ext.beachmall_carousel.u.runHomeSmallCarousel($ele);
+		//			_app.ext.beachmall_carousel.u.runHomeFeaturedCarousel($ele);
+		//			_app.ext.beachmall_carousel.u.runHomeBestCarousel($ele);
 				});
 				
 				_app.templates.productTemplate.on('complete.beachmall_store',function(event,$ele,P) {
@@ -114,7 +116,7 @@ var beachmall_carousel = function(_app) {
 				
 				//HOMEPAGE NEW ARRIVAL CAROUSEL	
 				var $target = $('.homeProdSearchNewArrivals2',$context);
-				if($target.data('isCarousel'))	{} //only make it a carousel once.
+				if($target.data('isCarousel'))	{$target.trigger('play');} //only make it a carousel once, but make sure it always scrolls
 				else {
 					$target.data('isCarousel',true);
 					//for whatever reason, caroufredsel needs to be executed after a moment.
@@ -140,7 +142,7 @@ var beachmall_carousel = function(_app) {
 			runHomeFeaturedCarousel : function($context) {		
 				//HOMEPAGE FEATURED PRODUCTS CAROUSEL
 				var $target = $('.homeProdSearchFeatured',$context);
-				if($target.data('isCarousel'))	{} //only make it a carousel once.
+				if($target.data('isCarousel'))	{$target.trigger('play');} //only make it a carousel once, but make sure it always scrolls
 				else {
 					$target.data('isCarousel',true);
 					//for whatever reason, caroufredsel needs to be executed after a moment.
@@ -171,7 +173,7 @@ var beachmall_carousel = function(_app) {
 			runHomeBestCarousel : function($context) {
 				//HOMEPAGE BESTSELLERS PRODCUTS CAROUSEL
 				var $target = $('.homeProdSearchBestSellers');
-				if($target.data('isCarousel'))	{} //only make it a carousel once.
+				if($target.data('isCarousel'))	{$target.trigger('play');} //only make it a carousel once, but make sure it always scrolls
 				else	{
 					$target.data('isCarousel',true);
 					//for whatever reason, caroufredsel needs to be executed after a moment.
