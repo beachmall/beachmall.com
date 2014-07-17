@@ -57,11 +57,9 @@ var beachmall_store = function(_app) {
 			
 				_app.templates.homepageTemplate.on('complete.beachmall_store',function(event,$ele,P) {
 					$('.floatingBar',$ele).show(); //shows floating bar upon return to hompage if it's been closed.
-					setTimeout(function() {
-						_app.ext.beachmall_store.u.loadProductsAsList($ele,$('.newArrivalUL'));
-						_app.ext.beachmall_store.u.loadProductsAsList($ele,$('.featuredUL'));
-						_app.ext.beachmall_store.u.loadProductsAsList($ele,$('.bestUL'));
-					},1000);
+					_app.ext.beachmall_store.u.loadProductsAsList($ele,$('.newArrivalUL'));
+					_app.ext.beachmall_store.u.loadProductsAsList($ele,$('.featuredUL'));
+					_app.ext.beachmall_store.u.loadProductsAsList($ele,$('.bestUL'));
 				});
 				
 				_app.templates.categoryTemplate.on('complete.beachmall_store',function(event,$ele,P) {
@@ -184,8 +182,10 @@ var beachmall_store = function(_app) {
 			onSuccess : function(rd) {
 				dump('renderProductsAsList datapointer:'); _app.u.dump(_app.data[rd.datapointer]);
 				rd.container.tlc({templateid:rd.template,"datapointer":rd.datapointer,verb:"transmogrify"});
+				setTimeout(function(){
 				_app.ext.beachmall_carousel.u.pickCarousel(rd.carousel, rd.context);
 				rd.container.parent().removeClass('loadingBG');
+				},1000);
 			},
 			onError : function(responseData) {
 				_app.u.dump('Error in extension: store_bmo_ renderProductsAsList');
