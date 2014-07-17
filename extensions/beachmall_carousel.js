@@ -50,9 +50,9 @@ var beachmall_carousel = function(_app) {
 			onSuccess : function() {
 			
 				_app.templates.homepageTemplate.on('complete.beachmall_carousel',function(event,$ele,P) {
-					_app.ext.beachmall_carousel.u.runHomeSmallCarousel($ele);
-					_app.ext.beachmall_carousel.u.runHomeFeaturedCarousel($ele);
-					_app.ext.beachmall_carousel.u.runHomeBestCarousel($ele);
+			//		_app.ext.beachmall_carousel.u.runHomeSmallCarousel($ele);
+			//		_app.ext.beachmall_carousel.u.runHomeFeaturedCarousel($ele);
+			//		_app.ext.beachmall_carousel.u.runHomeBestCarousel($ele);
 				});
 				
 				_app.templates.productTemplate.on('complete.beachmall_store',function(event,$ele,P) {
@@ -67,7 +67,7 @@ var beachmall_carousel = function(_app) {
 				_app.u.dump('START beachmall_carousel.callbacks.startExtension.onError');
 			}
 		}
-		
+				
 		}, //callbacks
 
 
@@ -93,6 +93,21 @@ var beachmall_carousel = function(_app) {
 //utilities are typically functions that are exected by an event or action.
 //any functions that are recycled should be here.
 		u : {
+		
+			pickCarousel : function(carousel, $context) {
+				dump('START pickCarousel');
+				switch(carousel) {
+					case "runHomeSmallCarousel" :
+						_app.ext.beachmall_carousel.u.runHomeSmallCarousel($context);
+						break;
+					case "runHomeFeaturedCarousel" :	
+						_app.ext.beachmall_carousel.u.runHomeFeaturedCarousel($context);
+						break;
+					case "runHomeBestCarousel" :
+						_app.ext.beachmall_carousel.u.runHomeBestCarousel($context);
+						break;
+				}
+			},
 		
 			runHomeSmallCarousel : function($context) {
 				_app.u.dump('----Running homepage carousels');

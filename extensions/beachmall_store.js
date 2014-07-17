@@ -57,6 +57,7 @@ var beachmall_store = function(_app) {
 			
 				_app.templates.homepageTemplate.on('complete.beachmall_store',function(event,$ele,P) {
 					$('.floatingBar',$ele).show(); //shows floating bar upon return to hompage if it's been closed.
+					_app.ext.beachmall_store.u.loadProductsAsList($ele,$('.newArrivalUL'));
 				});
 				
 				_app.templates.categoryTemplate.on('complete.beachmall_store',function(event,$ele,P) {
@@ -174,6 +175,19 @@ var beachmall_store = function(_app) {
 				_app.u.dump('Error in extension: store_filter.callbacks.renderRedirectProduct, response data follows: '); dump(responseData);
 			}
 		},
+		
+		renderProductsAsList : {
+			onSuccess : function(rd) {
+				dump('renderProductsAsList datapointer:'); _app.u.dump(_app.data[rd.datapointer]);
+				rd.container.tlc({templateid:rd.template,"datapointer":rd.datapointer,verb:"transmogrify"});
+				_app.ext.beachmall_carousel.u.pickCarousel(rd.carousel, rd.context);
+				//_app.ext.store_bmo.u.runHomeCarouselTab4($('.homeTemplate'));
+			},
+			onError : function(responseData) {
+				_app.u.dump('Error in extension: store_bmo_ renderProductsAsList');
+				_app.u.dump(responseData);
+			}
+		}
 			
 	}, //callbacks
 
@@ -942,6 +956,32 @@ var beachmall_store = function(_app) {
 					}
 				},500);
 			},
+
+/**HOMEPAGE PAGE UTILS */
+			//loads product in hompage carousels. Carousel & Template are loaded in callback according to what is passed in the data-attrib. 	
+			//context and loading container are also passed in data-attribs. 
+			loadProductsAsList :function($context, $container) {
+				if(!$container.attr('data-beach-rendered')) {
+					var path = $container.attr('data-list'); dump('list name:'); dump(path); 
+					var carousel = $container.attr('data-carousel'); dump('carousel name:'); dump(carousel); 
+					var template = $container.attr('data-templateid'); dump('template name:'); dump(template); 
+					$container.attr('data-beach-rendered',true); 
+					_app.u.dump('data added?'); _app.u.dump($container.attr('data-beach-rendered'));
+			//TODO: set up hide/show/placeholder for carousel elements until loaded		
+					var _tag = {
+						"callback":"renderProductsAsList",
+						"extension":"beachmall_store",
+						"carousel":	carousel,
+						"template":	template,
+						"container":$($container, $context),
+						"context":$context
+					}
+					
+					_app.calls.appNavcatDetail.init({"path":path,"detail":"more"},_tag,"immutable");
+					_app.model.dispatchThis('immutable');
+				}
+				else { /* already rendered, don't do it again */ } //TODO: ADD RESTART FOR CAROUSEL (THEY SEEMT TO STOP AUTO SCROLLING WHEN THE PAGES IS RETURNED TO)
+			}, //loadProductsAsList
 			
 /**PRODUCT PAGE UTILS */
 				//checks for product youtube video and adds tab for it to main prod image
