@@ -41,11 +41,11 @@ var beachmart_dropdown = function(_app) {
 //				_app.u.dump('BEGIN _app.ext.store_navcats.init.onSuccess ');
 				
 				//get the json that lists which dropdown search buttons have results and save to var for access later.
-				$.getJSON("_dropdownsearches.json?_v="+(new Date()).getTime(), function(json) {
+				$.getJSON("_dropdownsearches-min.json?_v="+(new Date()).getTime(), function(json) {
 					_app.ext.beachmart_dropdown.vars.dropdownsearches = json.dropdownsearches
 					_app.ext.beachmart_dropdown.u.makedropdownlinks();
 					//dump('----dropdown search exclusion list:'); dump(_app.ext.beachmart_dropdown.vars.dropdownsearches);
-				}).fail(function(){_app.u.throwMessage("DROPDOWN SEARCH LIST FAILED TO LOAD - there is a bug in _dropdownsearches.json")});
+				}).fail(function(){_app.u.throwMessage("DROPDOWN SEARCH LIST FAILED TO LOAD - there is a bug in _dropdownsearches-min.json")});
 			
 				var r = true; //return false if extension won't load for some reason (account config, dependencies, etc).
 				return r;
@@ -281,7 +281,7 @@ var beachmart_dropdown = function(_app) {
 				return true;
 			},
 			
-			//checks the var copied from _dropdownsearches.json for search buttons that have to results and removes them to prevent empty search pages from being made.
+			//checks the var copied from _dropdownsearches-min.json for search buttons that have to results and removes them to prevent empty search pages from being made.
 			hideifexlcuded : function(data, thisTLC) {
 				//var args = thisTLC.args2obj(data.command.args, data.globals);
 				//dump('---hideifexlcuded args:'); dump(data.value);

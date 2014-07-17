@@ -35,7 +35,7 @@ var beachmart_dropdown_image = function(_app) {
 			onSuccess : function()	{
 				var r = false; //return false if extension won't load for some reason (account config, dependencies, etc).
 //				app.u.dump("fetching JSON");
-				$.getJSON("_dropdownimages.json?_v="+(new Date()).getTime(), function(json) {
+				$.getJSON("_dropdownimages-min.json?_v="+(new Date()).getTime(), function(json) {
 					_app.ext.beachmart_dropdown_image.vars.dropdownImages = json.dropdownImages
 					//_app.ext.beachmart_dropdown_image.u.showDropdownImages();
 				}).fail(function(){_app.u.throwMessage("DROPDOWN IMAGES FAILED TO LOAD - there is a bug in _dropdown-image.json")});
