@@ -57,9 +57,11 @@ var beachmall_store = function(_app) {
 			
 				_app.templates.homepageTemplate.on('complete.beachmall_store',function(event,$ele,P) {
 					$('.floatingBar',$ele).show(); //shows floating bar upon return to hompage if it's been closed.
-					_app.ext.beachmall_store.u.loadProductsAsList($ele,$('.newArrivalUL'));
-					_app.ext.beachmall_store.u.loadProductsAsList($ele,$('.featuredUL'));
-					_app.ext.beachmall_store.u.loadProductsAsList($ele,$('.bestUL'));
+					setTimeout(function() {
+						_app.ext.beachmall_store.u.loadProductsAsList($ele,$('.newArrivalUL'));
+						_app.ext.beachmall_store.u.loadProductsAsList($ele,$('.featuredUL'));
+						_app.ext.beachmall_store.u.loadProductsAsList($ele,$('.bestUL'));
+					},1000);
 				});
 				
 				_app.templates.categoryTemplate.on('complete.beachmall_store',function(event,$ele,P) {
