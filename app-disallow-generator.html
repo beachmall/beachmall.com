@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Disallow Generator</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	<script type="text/javascript">
+		function clearTextAreas() {
+			$('textarea').each(function(){
+				$(this).val('');
+			});
+		}
+	
+		window.onload = clearTextAreas;
+	
+		function genDisallow(input) {
+			var process = input.split('|');
+			var output = '';
+			var L = process.length;
+			for(i = 0; i < L; i++) {
+				output += "Disallow: /p/"+process[i]+".html\n";
+			}
+			$("#output").val(output);
+		};
+	</script>
+	
+	<style>
+	body {width:80%; margin:0 auto;}
+	textarea {width:50%; height:400px;}
+	code {border: 1px solid #000000; display:block;  margin:20px 0 0; padding:10px; width:50%;}
+	</style>
+</head>
+<body>
+	<p>
+		Enter a list of products seperated by a | (pipe) and hit the button to generate a disallow for each.
+	</p>
+	<div id="Form">
+		<div>
+			<textarea required="required" name="productList"></textarea>
+		</div>
+		<button onClick="genDisallow($('textarea[name=productList]',$(this).parent()).val()); return false;">Generazizate</input>
+	</div>
+	<textarea id="output" name="output"></textarea>
+</body>
+</html>
