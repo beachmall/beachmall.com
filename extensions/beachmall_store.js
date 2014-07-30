@@ -188,7 +188,8 @@ var beachmall_store = function(_app) {
 			onSuccess : function(rd) {
 				dump('renderProductsAsList datapointer:'); _app.u.dump(_app.data[rd.datapointer]);
 				dump(rd.container);
-				rd.container.tlc({templateid:rd.template,"datapointer":rd.datapointer,verb:"transmogrify"});
+				dump(rd.template);
+				rd.container.tlc({"templateid":rd.template,"dataset":_app.data[rd.datapointer],verb:"transmogrify"});
 				setTimeout(function(){
 				_app.ext.beachmall_carousel.u.pickCarousel(rd.carousel, rd.context);
 				rd.container.parent().removeClass('loadingBG');
