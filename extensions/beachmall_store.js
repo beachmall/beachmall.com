@@ -187,6 +187,7 @@ var beachmall_store = function(_app) {
 		renderProductsAsList : {
 			onSuccess : function(rd) {
 				dump('renderProductsAsList datapointer:'); _app.u.dump(_app.data[rd.datapointer]);
+				dump(rd.container);
 				rd.container.tlc({templateid:rd.template,"datapointer":rd.datapointer,verb:"transmogrify"});
 				setTimeout(function(){
 				_app.ext.beachmall_carousel.u.pickCarousel(rd.carousel, rd.context);
