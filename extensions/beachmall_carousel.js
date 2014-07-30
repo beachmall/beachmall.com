@@ -97,7 +97,7 @@ var beachmall_carousel = function(_app) {
 		u : {
 		
 			pickCarousel : function(carousel, $context) {
-				dump('START pickCarousel');
+//				dump('START pickCarousel');
 				switch(carousel) {
 					case "runHomeSmallCarousel" :
 						_app.ext.beachmall_carousel.u.runHomeSmallCarousel($context);
@@ -112,7 +112,7 @@ var beachmall_carousel = function(_app) {
 			},
 		
 			runHomeSmallCarousel : function($context) {
-				_app.u.dump('----Running homepage carousels');
+//				_app.u.dump('----Running homepage carousels');
 				
 				//HOMEPAGE NEW ARRIVAL CAROUSEL	
 				var $target = $('.homeProdSearchNewArrivals2',$context);
@@ -196,7 +196,7 @@ var beachmall_carousel = function(_app) {
 						});
 					},2000);
 				}			
-			_app.u.dump('----Done running homepage carousels');
+//			_app.u.dump('----Done running homepage carousels');
 			},
 			
 /** PRODUCT PAGE */			

@@ -104,7 +104,7 @@ var powerreviews_reviews = function(_app) {
 
 			startExtension : {
 				onSuccess : function(){
-					_app.u.dump("BEGIN powerreviews_reviews.callbacks.startExtension");
+//					_app.u.dump("BEGIN powerreviews_reviews.callbacks.startExtension");
 					if(document.location.protocol != "https:") {
 						//	power reviews doesn't work over secure
 						var pr_style_sheet="http://cdn.powerreviews.com/aux/11024/8347/css/express.css";

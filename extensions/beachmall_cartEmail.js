@@ -40,7 +40,7 @@ var beachmall_cartemail = function(_app) {
 		init : {
 			onSuccess : function()	{
 				var r = false; //return false if extension won't load for some reason (account config, dependencies, etc).
-				dump('------Start beachmall_cartemail.js...');
+//				dump('------Start beachmall_cartemail.js...');
 				//_app.u.dump('--> Extension beachmall_cartemail started');
 				
 				//if there is any functionality required for this extension to load, put it here. such as a check for async google, the FB object, etc. return false if dependencies are not present. don't check for other extensions.

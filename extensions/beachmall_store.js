@@ -186,9 +186,7 @@ var beachmall_store = function(_app) {
 		
 		renderProductsAsList : {
 			onSuccess : function(rd) {
-				dump('renderProductsAsList datapointer:'); _app.u.dump(_app.data[rd.datapointer]);
-				dump(rd.container);
-				dump(rd.template);
+//				dump('renderProductsAsList datapointer:'); _app.u.dump(_app.data[rd.datapointer]); dump(rd.container); dump(rd.template);
 				rd.container.tlc({"templateid":rd.template,"dataset":_app.data[rd.datapointer],verb:"transmogrify"});
 				setTimeout(function(){
 				_app.ext.beachmall_carousel.u.pickCarousel(rd.carousel, rd.context);
@@ -909,7 +907,8 @@ var beachmall_store = function(_app) {
 
 /**GENERAL UTILS */	
 			//added as a alternate to css hover. Technically does the same thing differently.
-			addHover : function() { dump('---START beachmall_store addHover');
+			addHover : function() { 
+//				dump('---START beachmall_store addHover');
 				setTimeout(function() {
 				//	$('[data-beachmall-hoverClass]').css('border','5px solid green');
 					$('body').on('touchstart', '[data-beachmall-hoverClass]', function(e){
@@ -1013,12 +1012,12 @@ var beachmall_store = function(_app) {
 			//loads product lists in hompage carousels. Carousel & Template are loaded in callback according to what is passed in the data-attrib. 	
 			//context and loading container are also passed in data-attribs. 
 			loadProductsAsList :function($context, $container) {
-				var carousel = $container.attr('data-carousel'); dump('carousel name:'); dump(carousel); 
+				var carousel = $container.attr('data-carousel'); //dump('carousel name:'); dump(carousel); 
 				if(!$container.attr('data-beach-rendered')) {
-					var path = $container.attr('data-list'); dump('list name:'); dump(path); 
-					var template = $container.attr('data-templateid'); dump('template name:'); dump(template); 
+					var path = $container.attr('data-list'); //dump('list name:'); dump(path); 
+					var template = $container.attr('data-templateid'); //dump('template name:'); dump(template); 
 					$container.attr('data-beach-rendered',true); 
-					_app.u.dump('data added?'); _app.u.dump($container.attr('data-beach-rendered'));
+//					_app.u.dump('data added?'); _app.u.dump($container.attr('data-beach-rendered'));
 			//TODO: set up hide/show/placeholder for carousel elements until loaded		
 					var _tag = {
 						"callback":"renderProductsAsList",

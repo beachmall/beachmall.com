@@ -95,7 +95,8 @@ var store_seo = function(_app) {
 						//empty and add break to use default title.
 						//seo title and desc have been hardcoded to homepage for now because pages.json isn't being populated for "."
 					case "category" :
-					case "product" :dump('------generateMeta:product');
+					case "product" :
+//						dump('------generateMeta:product');
 						//Grab from the titles and descriptions on the page
 						var baseTitle = $('[data-seo-title]', $context).attr('data-seo-title');
 						desc = $('[data-seo-desc]', $context).attr('data-seo-desc');

@@ -83,7 +83,7 @@ var partner_addthis = function(_app) {
 			
 			startExtension : {
 				onSuccess : function(){
-					dump("BEGIN _app.ext.partner_addthis.callbacks.startExtension.onSuccess");
+//					dump("BEGIN _app.ext.partner_addthis.callbacks.startExtension.onSuccess");
 					var scriptPath = (document.location.protocol == 'https:' ? 'https:' : 'http:')+'//s7.addthis.com/js/250/addthis_widget.js';
 					if(_app.ext.partner_addthis.vars.addthis_config.username && _app.ext.partner_addthis.vars.addthis_config.username !== ""){
 						scriptPath+= '#username='+_app.ext.partner_addthis.vars.addthis_config.username+'&domready';
