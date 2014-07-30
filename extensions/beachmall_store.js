@@ -1023,7 +1023,7 @@ var beachmall_store = function(_app) {
 						"extension":"beachmall_store",
 						"carousel":	carousel,
 						"template":	template,
-						"container":$($container, $context),
+						"container":$container,
 						"context":$context
 					}
 					
