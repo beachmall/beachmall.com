@@ -2295,8 +2295,8 @@ elasticsearch.size = 50;
 				infoObj.trigger = '';
 				infoObj.state = 'init'; //needed for handleTemplateEvents.
 				
-				infoObj.cartid = _app.model.fetchCartID();
 //only create instance once.
+				infoObj.cartid = _app.model.fetchCartID();
 				var $cart = $('#mainContentArea_cart');
 				if($cart.length && $cart.data('cartid') == infoObj.cartid)	{
 					_app.renderFunctions.handleTemplateEvents($cart,infoObj);
@@ -3106,14 +3106,10 @@ else	{
 
 			productAdd2Cart : function($ele,p)	{
 				p.preventDefault();
-				//the buildCartItemAppendObj needs a _cartid param in the form.
-				if($("input[name='_cartid']",$ele).length)	{}
-				else	{
-					$ele.append("<input type='hidden' name='_cartid' value='"+_app.model.fetchCartID()+"' \/>");
-					}
-
+				
 				var cartObj = _app.ext.store_product.u.buildCartItemAppendObj($ele);
 				if(cartObj)	{
+					cartObj["_cartid"] = _app.model.fetchCartID();
 					_app.ext.cco.calls.cartItemAppend.init(cartObj,{},'immutable');
 					_app.model.destroy('cartDetail|'+cartObj._cartid);
 					_app.calls.cartDetail.init(cartObj._cartid,{'callback':function(rd){

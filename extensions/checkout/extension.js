@@ -210,6 +210,8 @@ _app.ext.order_create.u.handlePanel($context,'chkoutMethodsPay',['empty','transl
 						$(document.body).showLoading({'message':'Order '+_app.data[_rtag.datapointer].orderid+' Created. Verifying payment...'});
 						}
 					
+					/*
+					Handled in the callback for checkout, after the order has been processed
 					if(_rtag.attempt === 1)	{
 						if(_app.data[_rtag.datapointer]['previous-cartid'])	{
 							dump(" -> removing the cartID from the session.");
@@ -217,6 +219,7 @@ _app.ext.order_create.u.handlePanel($context,'chkoutMethodsPay',['empty','transl
 							//_app.model.removeCartFromSession(_app.data[_rtag.datapointer]['previous-cartid']);
 							}
 						}
+					*/	
 //Continue polling till order is finished.
 					setTimeout(function(){
 						var cartid = _app.data[_rtag.datapointer]['status-cartid'];
