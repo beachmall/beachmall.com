@@ -243,7 +243,7 @@ var beachmall_cart = function(_app) {
 						pid = _app.u.makeSafeHTMLId(stid);
 					}
 					$tag.text(o); 
-					$tag.attr('href','#!product/'+pid+'/')
+					$tag.attr('href',_app.ext.store_routing.u.productAnchor(pid, o));
 				}
 			}, //showContentSTID
 			
