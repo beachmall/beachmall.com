@@ -59,7 +59,9 @@ var beachmall_store = function(_app) {
 			
 				_app.ext.beachmall_store.u.hardImgSrc();
 				_app.ext.beachmall_store.u.addHover();
-				//_app.ext.beachmall_store.u.makeDisallow();
+				_app.ext.store_search.vars.universalFilters.push({"has_child":{"type":"sku","query":{"range":{"available":{"gte":1}}}}});
+				_app.ext.store_search.vars.universalFilters.push({"not":{"term":{"tags":"IS_DISCONTINUED"}}});
+				//_app.ext.beachmall_store.u.makeDisallow(); //uncomment to use, then close it back up. This shouldn't be left running in production.
 			
 				_app.templates.homepageTemplate.on('complete.beachmall_store',function(event,$ele,P) {
 					$('.floatingBar',$ele).show(); //shows floating bar upon return to hompage if it's been closed.
