@@ -342,7 +342,7 @@ _app.router.appendHash({'type':'match','route':'modal/product/{{pid}}*','callbac
 			},
 		attachEventHandlers : {
 			onSuccess : function(){
-				dump('START store_routing.callbacks.attachEventHandlers.onSuccess');
+//				dump('START store_routing.callbacks.attachEventHandlers.onSuccess');
 				$.merge(_app.ext.seo_robots.vars.pages,[
 					"#!company/about/",
 					"#!company/contact/",

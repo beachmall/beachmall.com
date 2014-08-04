@@ -151,7 +151,7 @@ $(document).ready(function(){
 	var paramStr = window.location.href.replace(window.location.hash, '').split('?')[1];
 	if(!paramStr || paramStr.indexOf('_escaped_fragment_') < 0){
 		window.myApp = new initApp({	<!-- versionhere -->
-			"release":"201404.20140702111300",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+			"release":"201404.20140804111900",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 			"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 			"baseURL":baseURL, //used in non-local mode.
 			"checkoutAuthMode" : "active",//can be passive, active or required
@@ -1012,10 +1012,13 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 -->
 				</div>
 			
-			<div class='newArrivalsCarouselRight floatLeft'>
-				<a class="carouselButton new2CarouselPrev carouselButtonPrev" href="#">prev</a>
-				<a class="carouselButton new2CarouselNext carouselButtonNext" href="#">next</a>
-				<ul data-tlc="bind $var '.$app-site_home-page-new-item.@products'; store_prodlist#productlist  --hideSummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplateCustom'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchNewArrivals2"></ul>
+			<div class='newArrivalsCarouselRight floatLeft loadingBG'>
+				<a class="carouselButton new2CarouselPrev carouselButtonPrev displayNone" href="#">prev</a>
+				<a class="carouselButton new2CarouselNext carouselButtonNext displayNone" href="#">next</a>
+				<div class="newArrivalUL" data-list='$app-site_home-page-new-item' data-carousel='runHomeSmallCarousel' data-templateid='miniHomeCarousel'>
+					<!-- this element filled by ext.beachmall_store.u.loadProductsAsList() using the above data attribs. -->
+				</div>
+<!-- old way:	<ul data-tlc="bind $var '.$app-site_home-page-new-item.@products'; store_prodlist#productlist  --hideSummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplateCustom'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchNewArrivals2"></ul> -->
 			</div>
 		</div>
     
@@ -1064,11 +1067,14 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 			<!-- <a onclick="return showContent('category',{'navcat':'.beach-umbrellas-shelter.beach-umbrella', 'templateID':'categoryTemplateHomepageFeatured'});" class='carouselLinkContainer floatRight featWidth pointer'>View All Featured Products</a> -->
             <div class='carouselArrowContainer floatRight sprite'></div>
         </div>
-        <div class='Carousel'>
+        <div class='Carousel loadingBG'>
         	<a class="carouselButtonDkBlue featCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
 			<a class="carouselButtonDkBlue featCarouselNext carouselButtonDkBlueNext" href="#">next</a>
-        	<!--non filtered search: <ul id='homeProdSearchFeatured' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"or":{"filters":[{"term":{"tags":"IS_USER4"}},{"term":{"tags":"IS_COLORFUL"}},{"term":{"tags":"IS_USER5"}},{"term":{"user:prod_promo":"IS_USER4"}}]}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul> -->
-			<ul data-tlc="bind $var '.$app-site_home-page-featured.@products'; store_prodlist#productlist  --hideSummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchFeatured"></ul>
+			<div class="featuredUL" data-list='$app-site_home-page-featured' data-carousel='runHomeFeaturedCarousel' data-templateid='featuredHomeCarousel'>
+				<!-- this element filled by ext.beachmall_store.u.loadProductsAsList() using the above data attribs. -->
+			</div>
+        	<!--non filtered search: <ul id='homeProdSearchFeatured' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"or":{"filters":[{"term":{"tags":"IS_USER4"}},{"term":{"tags":"IS_COLORFUL"}},{"term":{"tags":"IS_USER5"}},{"term":{"user:prod_promo":"IS_USER4"}}]}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul> 
+	old way:<ul data-tlc="bind $var '.$app-site_home-page-featured.@products'; store_prodlist#productlist  --hideSummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchFeatured"></ul> -->
 		</div>
         <div class='standardCarouselPagenation featCarPagenation'></div>
     </div>
@@ -1080,11 +1086,14 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 			<!-- <a onclick="return showContent('category',{'navcat':'.beach-umbrellas-shelter.beach-umbrella', 'templateID':'categoryTemplateHomepageBestSeller'});" class="bindByAnchor"></a>  href="#!homepagebestseller" -->
 			<div class='carouselArrowContainer floatRight sprite'></div>
         </div>
-        <div class='Carousel'>
+        <div class='Carousel loadingBG'>
         	<a class="carouselButtonDkBlue bestCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
 			<a class="carouselButtonDkBlue bestCarouselNext carouselButtonDkBlueNext" href="#">next</a>
-        <!--non filtered search: <ul id='homeProdSearchBestSellers' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"term":{"tags":"IS_BESTSELLER"}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul> -->
-			<ul data-tlc="bind $var '.$app-site_home-page-best-sellers.@products'; store_prodlist#productlist  --hideSummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchBestSellers"></ul>
+			<div class="bestUL" data-list='$app-site_home-page-best-sellers' data-carousel='runHomeBestCarousel' data-templateid='bestHomeCarousel'>
+				<!-- this element filled by ext.beachmall_store.u.loadProductsAsList() using the above data attribs. -->
+			</div>
+			<!--non filtered search: <ul id='homeProdSearchBestSellers' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"term":{"tags":"IS_BESTSELLER"}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul> 
+	old way:<ul data-tlc="bind $var '.$app-site_home-page-best-sellers.@products'; store_prodlist#productlist  --hideSummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchBestSellers"></ul> -->
 		</div>																																																	
         <div class='standardCarouselPagenation bestCarPagenation'></div>
     </div>
@@ -2290,12 +2299,30 @@ MARK -->
 	<div class="zlink">More Details</div>
 </div>
 	</li>
+	
+
 
 
 </ul>
 
+<div id="miniHomeCarousel">
+	<!-- <ul data-bind="var: category(@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: productListTemplate; hide_summary:1;" class='listStyleNone fluidList clearfix noPadOrMargin productList4'></ul> -->
+	<ul data-tlc="bind $var '.@products'; store_prodlist#productlist  --hideSummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplateCustom'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchNewArrivals2"></ul>
+</div>
 
+<div id="featuredHomeCarousel">
+	<!-- <ul data-tlc="bind $var '.$app-site_home-page-featured.@products'; store_prodlist#productlist  --hideSummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchFeatured"></ul> -->
+	<ul data-tlc="bind $var '.@products'; store_prodlist#productlist  --hideSummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchFeatured"></ul>
+</div>
 
+<div id="bestHomeCarousel">
+	<!-- <ul data-tlc="bind $var '.$app-site_home-page-best-sellers.@products'; store_prodlist#productlist  --hideSummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchBestSellers"></ul> -->
+	<ul data-tlc="bind $var '.@products'; store_prodlist#productlist  --hideSummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchBestSellers"></ul>
+</div>
+
+<!--
+<div id="standardHomeCarousel">
+-->
 
 
 

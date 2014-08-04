@@ -2245,13 +2245,28 @@ effects the display of the nav buttons only. should be run just after the handle
 				else if (infoObj.KEYWORDS) {
 					_app.ext.quickstart.u.updateDOMTitle("Search - keywords: "+infoObj.KEYWORDS);
 					elasticsearch = _app.ext.store_search.u.buildElasticRaw({
-					   "filter":{
-						  "and" : [
-							 {"query":{"query_string":{"query":decodeURIComponent(infoObj.KEYWORDS), "fields":["prod_name^5","pid","prod_desc"]}}},
-							 {"has_child":{"type":"sku","query": {"range":{"available":{"gte":1}}}}}, //only return item w/ inventory
-/*beachmall*/				 {"not" : {"term" : {"tags":"IS_DISCONTINUED"}}} //don't show discontinued items
-							 ]
-						  }});
+				//	   "filter":{
+				//		  "and" : [
+				//			 {"query":{"query_string":{"query":decodeURIComponent(infoObj.KEYWORDS), "fields":["prod_name^5","pid","prod_desc"]}}},
+				//			 {"has_child":{"type":"sku","query": {"range":{"available":{"gte":1}}}}}, //only return item w/ inventory
+/*beachmall*/	//			 {"not" : {"term" : {"tags":"IS_DISCONTINUED"}}} //don't show discontinued items
+				//			 ]
+				//		  }});
+						"query":{
+							"function_score" : {										
+								"query" : {
+									"query_string":{"query":infoObj.KEYWORDS}	
+									},
+								"functions" : [
+									{
+										"filter" : {"query" : {"query_string":{"query":'"'+infoObj.KEYWORDS+'"'}}},
+										"script_score" : {"script":"10"}
+										}
+									],
+								"boost_mode" : "sum",
+								}
+							}
+/*this line ends new content*/						});
 					}
 				else	{
 					_app.ext.quickstart.u.updateDOMTitle("Search - error!");
@@ -2296,8 +2311,9 @@ elasticsearch.size = 50;
 				infoObj.state = 'init'; //needed for handleTemplateEvents.
 				
 //only create instance once.
+				infoObj.cartid = _app.model.fetchCartID();
 				var $cart = $('#mainContentArea_cart');
-				if($cart.length)	{
+				if($cart.length && $cart.data('cartid') == infoObj.cartid)	{
 					_app.renderFunctions.handleTemplateEvents($cart,infoObj);
 					//the cart has already been rendered.
 					infoObj.trigger = 'refresh';
@@ -2305,7 +2321,6 @@ elasticsearch.size = 50;
 					}
 				else	{
 					infoObj.trigger = 'fetch';
-					infoObj.cartid = _app.model.fetchCartID();
 					$cart = _app.ext.cco.a.getCartAsJqObj(infoObj);
 					_app.renderFunctions.handleTemplateEvents($cart,infoObj);
 					$cart.hide().on('complete',function(){
@@ -3106,14 +3121,10 @@ else	{
 
 			productAdd2Cart : function($ele,p)	{
 				p.preventDefault();
-				//the buildCartItemAppendObj needs a _cartid param in the form.
-				if($("input[name='_cartid']",$ele).length)	{}
-				else	{
-					$ele.append("<input type='hidden' name='_cartid' value='"+_app.model.fetchCartID()+"' \/>");
-					}
-
+				
 				var cartObj = _app.ext.store_product.u.buildCartItemAppendObj($ele);
 				if(cartObj)	{
+					cartObj["_cartid"] = _app.model.fetchCartID();
 					_app.ext.cco.calls.cartItemAppend.init(cartObj,{},'immutable');
 					_app.model.destroy('cartDetail|'+cartObj._cartid);
 					_app.calls.cartDetail.init(cartObj._cartid,{'callback':function(rd){

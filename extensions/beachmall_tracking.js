@@ -49,7 +49,7 @@ var beachmall_tracking = function(_app) {
 			
 			startExtension : {
 				onSuccess : function(){
-					dump("START beachmall_tracking.callbacks.startExtension.onSuccess");
+//					dump("START beachmall_tracking.callbacks.startExtension.onSuccess");
 
 					_app.ext.order_create.checkoutCompletes.push(function(infoObj){
 						dump("START beachmall_tracking code pushed on order_create.checkoutCompletes");

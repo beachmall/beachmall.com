@@ -410,7 +410,7 @@ var vertCarouselOptions = {
 			//returns: areacode, city, country, region, region_name, zip (among other data i didn't think was relevant)
 			whereAmI : {
 				init : function(_tag,Q)	{
-					dump('----START whereAmI'); dump(_tag); 
+//					dump('----START whereAmI'); dump(_tag); 
 			//		var r = 0;
 					_tag = $.isEmptyObject(_tag) ? {} : _tag; 
 					_tag.datapointer = "whereAmI"
@@ -425,7 +425,7 @@ var vertCarouselOptions = {
 					return r;
 					},
 				dispatch : function(_tag,Q)	{
-					dump('got into whereAmI dispatch');
+//					dump('got into whereAmI dispatch');
 					_app.model.addDispatchToQ({"_cmd":"whereAmI","_tag" : _tag},Q || 'mutable');
 					} 
 				},//whereAmI
