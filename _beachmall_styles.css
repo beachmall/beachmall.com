@@ -1428,6 +1428,7 @@ background: #b7deed; /* Old browsers */
 .rightProdColumn	{float:right; width:249px; position:relative;}
 
 .priceContainer .basePrice	{float:left;}
+.priceContainer .basePrice.floatNone	{float:none;}
 .priceContainer .savings	{padding-left:10px;}
 .priceContainer .retailPrice	{display:inline; margin:0 0 0 12px;}
 

@@ -852,15 +852,42 @@ RenderFormats
 				if(price > .01)	{
 					if(priceModifier < 1) {
 						o += "<div class='basePrice'><span class='prompt pricePrompt'>Our Price: <\/span><span class='value' itemprop='price'>";
+						o += "<span itemprop='priceCurrency' content='USD'>$"+_app.u.formatMoney(pData['zoovy:base_price'],'$',2,true).substring(1)+"</span>";
+						o += "<\/span><\/div>";
 					}
 					else {
-						o += "<div class='basePrice'><span class='prompt pricePrompt'>Our Price From: <\/span><span class='value' itemprop='price'>";
+						//wants to have a range of baseprice to baseprice + largest price modifiers displayed for price when using price modifiers. 
+						dump('priceretailsavings product:'); //dump(_app.data['appProductGet|'+data.value]['@variations']);
+						var maxAddition = 0; //holds the final tally of highest modifiers
+						var variations = _app.data['appProductGet|'+data.value]['@variations'];
+						for(index in variations) {
+							if(variations[index]['type'] == 'imgselect') {	//check for imgselect (will/may have modifiers)
+								dump(variations[index]);
+								var workingMod = 0;	//will store the current highest price modifier
+								var options = variations[index]['@options']
+								for(mark in options) {
+									dump(options[mark]);
+									if(options[mark]['p'] && options[mark]['p'] != "" && options[mark]['p'] != "undefined") {
+										var thisPriceMod = Number(options[mark]['p'].substring(1));
+										if(thisPriceMod > workingMod) { workingMod = thisPriceMod } //check each option and if it's higher than the last, record it.
+									}
+								}
+								maxAddition += workingMod; dump('maxAddition = '+maxAddition);	//after all options have been checked, store the highest one.
+							}
+						}
+						var maxPrice = Number(pData['zoovy:base_price']) + maxAddition;
+						// ORIG CALL BELOW, NEW CALL HAS $ SEPARATED AND GIVEN A SPAN W/ SCHEMA	ATTRIB. 
+						//	o += _app.u.formatMoney(pData['zoovy:base_price'],'$',2,true);
+						o += "<div class='basePrice floatNone'><span class='prompt pricePrompt'>Our Price From: <\/span><span class='value' itemprop='price'>";
+						o += "<span itemprop='priceCurrency' content='USD'>$"+_app.u.formatMoney(pData['zoovy:base_price'],'$',2,true).substring(1)+"</span>";
+						if(maxAddition > 0) { //if there was a price modifier recorded we should be ok to show it, otherwise show only "from 'basePrice'" as a failsafe. 
+							o += "<\/span>";
+							o += "<span class='value'> - "+_app.u.formatMoney(maxPrice,'$',2,true)+"<\/span><\/div>";
+						} else {
+							o += "<\/span><\/div>";
+						}
 					}
-				// ORIG CALL BELOW, NEW CALL HAS $ SEPARATED AND GIVEN A SPAN W/ SCHEMA	ATTRIB. 
-				//	o += _app.u.formatMoney(pData['zoovy:base_price'],'$',2,true);
-					o += "<span itemprop='priceCurrency' content='USD'>$"+_app.u.formatMoney(pData['zoovy:base_price'],'$',2,true).substring(1)+"</span>";
-					_app.u.formatMoney(pData['zoovy:base_price'],'$',2,true)
-					o += "<\/span><\/div>";
+
 	//only show the msrp if it is greater than the price.
 					if(msrp > price)	{
 	//don't bother with savings of less than a buck.
