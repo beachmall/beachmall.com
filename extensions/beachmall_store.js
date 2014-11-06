@@ -1281,7 +1281,8 @@ var beachmall_store = function(_app) {
 //				_app.u.dump('POG -> '); _app.u.dump(pog);
 				
 				var $parent = $('<div class="optionsParent" />');
-				var $select = $("<select class='optionsSelect' name="+pog.id+" />");
+				var $select = $("<select class='optionsSelect floatLeft' name="+pog.id+" />");
+				var $modContainer = $("<div class='modContainer floatLeft fontRed'></div>"); //holds price modifier next to select list
 				var $hint = $('<div class="zhint">mouse over thumbnail to see larger swatches</div>');
 				var $hint = $('<div class="zhint">mouse over thumbnail to see larger swatches</div>');
 				$parent.append($hint);
@@ -1297,12 +1298,12 @@ var beachmall_store = function(_app) {
 				for (var index in pog['@options']) {
 					var option = pog['@options'][index];
 //					_app.u.dump('IMG: '); _app.u.dump(option.img);
-					$option = $("<option value="+option.v+">"+option.prompt+"</option>");
+					$option = $("<option data-price-modifier='"+option.p+"' value="+option.v+">"+option.prompt+"</option>");
 					$select.append($option);
 					var thumbImg = _app.u.makeImage({"w":pog.width,"h":pog.height,"name":option.img,"b":"FFFFFF","tag":false,"lib":_app.username});
 					var bigImg = _app.u.makeImage({"w":400,"h":400,"name":option.img,"b":"FFFFFF","tag":false,"lib":_app.username});																									//need to try moving these to be appended
 					
-					var $imgContainer = $('<div class="floatLeft optionImagesCont" data-pogval="'+option.v+'" />');
+					var $imgContainer = $('<div class="floatLeft optionImagesCont" data-price-modifier="'+option.p+'" data-pogval="'+option.v+'" />');
 					/*var $mzpLink = $('<a id="imgGridHref_'+pog.id+'_'+option.v+'" alt="'+option.prompt+'" class="MagicZoom" title="'+option.prompt+'" rel="hint:false; show-title:top; title-source=#id;" href="'+mzBigImg+'" />');
 					
 					$mzpLink.click(function(){
@@ -1338,6 +1339,12 @@ var beachmall_store = function(_app) {
 								}	//add selected indicator to clicked image
 							if($(this).attr('data-pogval') == pogval){ 
 								$(this).addClass('selected'); 
+								$modContainer.empty();
+								//if there is a price modifier, display it next to the select list of options
+								if($(this).attr("data-price-modifier") != "" && $(this).attr("data-price-modifier") != "undefined") {
+									var thisPriceMod = $(this).attr("data-price-modifier").substring(1); //get rid of the "+" symbol 
+									$modContainer.empty().text("+ $"+thisPriceMod); 
+									}
 								}
 							});	
 						});
@@ -1370,11 +1377,18 @@ var beachmall_store = function(_app) {
 						}	//add it back to the value of select list option if one matches
 						if($(this).attr('data-pogval') == selected){ 
 							$(this).addClass('selected'); 
+							$modContainer.empty(); //remove old value in case there is no new one.
+							//if there is a price modifier, display it next to the select list of options
+							if($(this).attr("data-price-modifier") != "" && $(this).attr("data-price-modifier") != "undefined") {
+								var thisPriceMod = $(this).attr("data-price-modifier").substring(1); //get rid of the "+" symbol 
+								$modContainer.empty().text("+ $"+thisPriceMod); 
+							}
 						}
 					});
 				});
 
 				$parent.append($select);
+				$parent.append($modContainer); //add the price modifier
 				return $parent;
 			}, // END renderOptionCUSTOMIMGSELECT
 			

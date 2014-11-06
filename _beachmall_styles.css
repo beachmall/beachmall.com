@@ -1380,6 +1380,7 @@ h1.prodName	{font-size:21px; font-weight:normal; text-rendering:optimizelegibili
 
 .optionImagesCont {border: 1px solid #cccccc; margin: 0 6px 6px 0; padding:4px 5px 0 4px;}
 .optionImagesCont.selected { border: 1px solid red;}
+.modContainer {margin:0 0 0 5px; font-weight:bold;}
 .variation {clear:both; float:right;}
 .variation.pogType_imgselect, .variation.variation_imgselect {float:left;}
 .optionsSelect {clear:both; display:block;}
