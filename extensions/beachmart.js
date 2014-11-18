@@ -420,6 +420,7 @@ var store_filter = function(_app) {
 					
 				//selector for reset button to reload page
 				$('.resetButton', $context).click(function(){
+				dump('beachmart needs showContent fix in startFilterSearch reset button function')
 					$context.empty().remove();
 					showContent('category',{'navcat':infoObj.navcat});
 				});

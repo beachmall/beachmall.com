@@ -10,7 +10,7 @@ _app.u.loadScript(configURI,function(){
 	_app.vars.domain = zGlobals.appSettings.sdomain; //passed in ajax requests.
 	_app.vars.jqurl = (document.location.protocol === 'file:') ? _app.vars.testURL+'jsonapi/' : '/jsonapi/';
 	
-	var startupRequires = ['quickstart'];
+	var startupRequires = ['quickstart','store_filter','beachmart_dropdown','store_prodlist','beachmall_store'];
 	
 	_app.require(startupRequires, function(){
 		setTimeout(function(){$('#appView').removeClass('initFooter');}, 1200);
@@ -403,6 +403,157 @@ _app.u.bindTemplateEvent(function(){return true;}, 'depart.scrollrestore', funct
 	var scroll = $('html').scrollTop()
 	$context.data('scroll-restore',scroll);
 	});
+	
+
+_app.extend({
+	"namespace":"beachmall_store",
+	"filename":"extensions/beachmall_store.js"
+});
+
+_app.extend({
+	"namespace":"store_filter",
+	"filename":"extensions/beachmart.js"
+});
+
+_app.extend({
+	"namespace":"beachmart_dropdown",
+	"filename":"extensions/beachmart_dropdown.js"
+});
+
+// beachmall custom alias
+_app.router.addAlias('customCatName',	function(routeObj) { dump('does this even run?'); _app.ext.quickstart.a.showContent(routeObj.route, $.extend({'pageType':'category','navcat':routeObj.navcat})); } ); 
+				_app.router.addAlias('bestsellers', function(routeObj){showContent('search',	{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':routeObj.params.navcat}},{'not':{'term':{'tags':'IS_DISCONTINUED'}}}]}}});});
+				_app.router.addAlias('featured',	function(routeObj){showContent('search',	{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}},{'term':{'prod_promo':'IS_USER4'}}]},{'term':{'app_category':routeObj.params.navcat}},{'not':{'term':{'tags':'IS_DISCONTINUED'}}}]}}});});
+				//_app.router.addAlias('clearance',	function(routeObj){showContent('search',	{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beach-chair.adirondack-furniture'}},{'not':{'term':{'tags':'IS_DISCONTINUED'}}}]}}});});
+				_app.router.addAlias('homepagefeatured',	function(routeObj){showContent('search',	{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER4'}},{'term':{'tags':'IS_COLORFUL'}},{'term':{'tags':'IS_USER5'}},{'term':{'user:prod_promo':'IS_USER4'}}]},{'not':{'term':{'tags':'IS_DISCONTINUED'}}}]}}});});
+				_app.router.addAlias('homepagebestseller',	function(routeObj){showContent('search',	{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'not':{'term':{'tags':'IS_DISCONTINUED'}}}]}}});});
+				_app.router.addAlias('homepagefeaturedviewall',	function(routeObj){showContent('category',{'navcat':'.', 'templateID':'categoryTemplateHomepageFeatured'});});
+				_app.router.addAlias('homepagebestsellerviewall',	function(routeObj){showContent('category',{'navcat':'.', 'templateID':'categoryTemplateHomepageBestseller'});});	
+// beachmall custom append
+				_app.router.appendHash({'type':'match','route':'/{{seo}}/c/{{navcat}}','callback':'category'});
+				_app.router.appendHash({'type':'match','route':'/{{seo}}/p/{{pid}}.html','callback':'product'});
+				_app.router.appendHash({'type':'match','route':'/redirect/p/pid={{pid}}','callback':'product'});
+				_app.router.appendHash({'type':'match','route':'/{{seo}}/bestsellers/c/{{navcat}}*','callback':'bestsellers'});
+				_app.router.appendHash({'type':'match','route':'/{{seo}}/featured/c/{{navcat}}*','callback':'featured'});
+				_app.router.appendHash({'type':'match','route':'/{{seo}}/clearance/c/{{navcat}}*','callback':'clearance'});
+				_app.router.appendHash({'type':'match','route':'/homepagefeatured','callback':'homepagefeatured'});
+				_app.router.appendHash({'type':'match','route':'/homepagebestseller','callback':'homepagebestseller'});
+				_app.router.appendHash({'type':'exact','route':'/viewallfeatured/','callback':'homepagefeaturedviewall'});
+				_app.router.appendHash({'type':'exact','route':'/viewallbestseller/','callback':'homepagebestsellerviewall'});
+				
+				_app.router.appendHash({'type':'match','route':'/beach-accessories/','navcat':'.beach-accessories','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/beach-bags-totes/','navcat':'.beach-accessories.beach-bags-totes','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/beach-towels-blankets/','navcat':'.beach-accessories.beach-blanket','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/beach-carts/','navcat':'.beach-accessories.beach-cart','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/picnic-backpacks/','navcat':'.beach-accessories.picnic-backpack','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/picnic-baskets/','navcat':'.beach-accessories.picnic-baskets','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/coolers/','navcat':'.beach-accessories.picnic-cooler','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/tailgating/','navcat':'.beach-accessories.tailgating','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/beach-chairs/','navcat':'.beach-chair','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/adirondack/','navcat':'.beach-chair.adirondack-furniture','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/backpack-chairs/','navcat':'.beach-chair.backpack-chair','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/cup-holder-chairs/','navcat':'.beach-chair.beach-chairs','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/beach-chaises/','navcat':'.beach-chair.beach-chaise','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/beach-pool-lounges/','navcat':'.beach-chair.beach-lounges','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/beach-lounges/','navcat':'.beach-chair.beach-lounges.beach-recliner','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/pool-lounges/','navcat':'.beach-chair.beach-lounges.pool-floats','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/canopy-beach-chairs/','navcat':'.beach-chair.canopy-beach-chair','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/padded-beach-chairs/','navcat':'.beach-chair.folding-beach-chairs','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/high-back-beach-chairs/','navcat':'.beach-chair.heavy-beach-chairs','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/large-beach-chairs/','navcat':'.beach-chair.heavy-duty-beach-chairs','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/high-seat-beach-chairs/','navcat':'.beach-chair.high-beach-chair','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/folding-beach-chairs/','navcat':'.beach-chair.lafuma-recliner.lafuma-chairs','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/premium-chairs/','navcat':'.beach-chair.lafuma-recliner','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/low-seat-beach-chairs/','navcat':'.beach-chair.sand-chair','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/lay-flat-beach-chairs/','navcat':'.beach-chair.sand-chairs','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/wooden-beach-chairs/','navcat':'.beach-chair.wooden-beach-chairs','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/shop-by-brand/','navcat':'.beach-chairs.beach-gear','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/copa-sports/','navcat':'.beach-chairs.beach-gear.beach-products','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/blueridge-chair/','navcat':'.beach-chairs.beach-gear.blueridge-lawn-chair','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/shadezilla-umbrellas/','navcat':'.beach-chairs.beach-gear.california-umbrellas','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/ergo-lounger/','navcat':'.beach-chairs.beach-gear.ergo-lounger-chaise','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/fiberbuilt/','navcat':'.beach-chairs.beach-gear.fiberbuilt-umbrellas','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/frankford-umbrellas/','navcat':'.beach-chairs.beach-gear.frankford-umbrellas','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/galtech/','navcat':'.beach-chairs.beach-gear.galtech-umbrellas','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/gift-baskets/','navcat':'.beach-chairs.beach-gear.gift_baskets','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/green-corner/','navcat':'.beach-chairs.beach-gear.green-corner-umbrellas','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/snapper-rock/','navcat':'.beach-chairs.beach-gear.kids-beachwear','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/lafuma/','navcat':'.beach-chairs.beach-gear.lafuma-chair-recliner','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/ostrich-chairs/','navcat':'.beach-chairs.beach-gear.ostrich-beach-chair-chaise','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/picnic-ascot/','navcat':'.beach-chairs.beach-gear.picnic-ascot-accessories','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/picnic-beyond/','navcat':'.beach-chairs.beach-gear.picnic-basket-beyond','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/picnic-plus/','navcat':'.beach-chairs.beach-gear.picnic-plus-baskets','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/picnic-time/','navcat':'.beach-chairs.beach-gear.picnic-time-backpacks','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/platypus/','navcat':'.beach-chairs.beach-gear.platypus','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/polywood-furniture/','navcat':'.beach-chairs.beach-gear.polywood-adirondack-chairs','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/rio-brand/','navcat':'.beach-chairs.beach-gear.rio-beach-chair-umbrellas','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/shadezilla/','navcat':'.beach-chairs.beach-gear.shadebrella-umbrellas','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/abo gear/','navcat':'.beach-chairs.beach-gear.sun-tent','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/abo gear/','navcat':'.beach-chairs.beach-gear.sutherland-baskets','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/solarguard/','navcat':'.beach-chairs.beach-gear.sutherland-baskets','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/wonder-wheeler/','navcat':'.beach-chairs.beach-gear.swimwear-bathing-suits','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/telescope-casual/','navcat':'.beach-chairs.beach-gear.telescope-beach-chairs','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/wearever-chairs/','navcat':'.beach-chairs.beach-gear.wearever-chairs','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/wheeleez/','navcat':'.beach-chairs.beach-gear.wheeleez-beach-carts','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/recreation/','navcat':'.beach-sports','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/bodyboards/','navcat':'.beach-sports.bodyboards','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/inflatables/','navcat':'.beach-sports.inflatables','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/pool-floats/','navcat':'.beach-sports.pool-floats','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/skimboards/','navcat':'.beach-sports.skimboards','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/umbrellas-shelters/','navcat':'.beach-umbrellas-shelter','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/beach-cabanas/','navcat':'.beach-umbrellas-shelter.beach-cabana','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/beach-tents-shelters/','navcat':'.beach-umbrellas-shelter.beach-tent-shelters','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/beach-umbrellas/','navcat':'.beach-umbrellas-shelter.beach-umbrella','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/market-patio-umbrellas/','navcat':'.beach-umbrellas-shelter.patio-umbrella','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/6-foot-wide-umbrellas/','navcat':'.beach-umbrellas-shelter.patio-umbrella.6-foot-patio-umbrellas','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/7-foot-wide-umbrellas/','navcat':'.beach-umbrellas-shelter.patio-umbrella.7-foot-patio-umbrellas','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/9-foot-wide-umbrellas-/','navcat':'.beach-umbrellas-shelter.patio-umbrella.offset-umbrellas','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/11-foot-wide-umbrellas-/','navcat':'.beach-umbrellas-shelter.patio-umbrella.market-umbrellas','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/umbrella-accessories/','navcat':'.beach-umbrellas-shelter.umbrella-stand-stands-base','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/beach-wear/','navcat':'.beachwear','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/summer-hats/','navcat':'.beachwear.beach-hat','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/baby-hats/','navcat':'.beachwear.beach-hat.baby-hats','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/kids-sun-hats/','navcat':'.beachwear.beach-hat.kids-hats','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/beach-pool-apparels/','navcat':'.beachwear.beach-swimwear','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/babies-swim-wear/','navcat':'.beachwear.beach-swimwear.babies-swimsuit','callback':'customCatName'});
+				//beach-wear used as pretty name twice, prepended swim to the pretty name in seo anchor function to differentiate.
+				_app.router.appendHash({'type':'match','route':'/swim-beach-wear/','navcat':'.beachwear.beach-swimwear.beach-wear','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/boys-beach-wear/','navcat':'.beachwear.beach-swimwear.beach-wear.boys-swimwear','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/girls-beach-wear/','navcat':'.beachwear.beach-swimwear.beach-wear.girls-swimwear','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/board-shorts/','navcat':'.beachwear.beach-swimwear.board-shorts','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/boy-board-shorts/','navcat':'.beachwear.beach-swimwear.board-shorts.boys-boardshorts','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/girls-board-shorts/','navcat':'.beachwear.beach-swimwear.board-shorts.girls-board-shorts','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/kids-board-shorts/','navcat':'.beachwear.beach-swimwear.board-shorts.kids','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/kids-swim-wear/','navcat':'.beachwear.beach-swimwear.kids-swimsuit','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/rash-guards/','navcat':'.beachwear.beach-swimwear.rashguard','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/girls-rash-guards/','navcat':'.beachwear.beach-swimwear.rashguard.girls-rash-guard','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/kids-baby-rash-guards/','navcat':'.beachwear.beach-swimwear.rashguard.kids-rash-guard','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/boys-rash-guards/','navcat':'.beachwear.beach-swimwear.rashguard.rashguards','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/love-swimwear/','navcat':'.beach-chairs.beach-gear.women-swimwear-bikinis','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/buyer-guides/','navcat':'.buyer_guides','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/adirondack-chairs-buyer-guide/','navcat':'.buyer_guides.adirondack-chairs','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/backpack-beach-chairs-buyer-guide/','navcat':'.buyer_guides.backpack-beach-chairs','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/beach-bags-buyer-guide/','navcat':'.buyer_guides.beach-bags-beach-totes','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/beach-cabanas-buyer-guide/','navcat':'.buyer_guides.beach-cabanas','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/beach-carts-buyer-guide/','navcat':'.buyer_guides.beach-carts','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/beach-chairs-buyer-guide/','navcat':'.buyer_guides.beach-chairs','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/beach-tents-buyer-guide/','navcat':'.buyer_guides.beach-tents','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/beach-umbrellas-buyer-guide/','navcat':'.buyer_guides.beach-umbrellas','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/beach-wear-buyer-guide/','navcat':'.buyer_guides.beach-wear','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/bodyboards-buyer-guide/','navcat':'.buyer_guides.bodyboards-body-board','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/hammocks-buyer-guide/','navcat':'.buyer_guides.hammocks','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/lafuma-chairs-buyer-guide/','navcat':'.buyer_guides.lafuma-chairs-recliners','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/market-umbrellas-buyer-guide/','navcat':'.buyer_guides.market-umbrellas','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/patio-umbrellas-buyer-guide/','navcat':'.buyer_guides.outdoor-umbrellas','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/picnic-backpacks-buyer-guide/','navcat':'.buyer_guides.picnic-backpacks','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/picnic-baskets-buyer-guide/','navcat':'.buyer_guides.picnic-baskets','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/picnic-blankets-buyer-guide/','navcat':'.buyer_guides.picnic-blankets','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/picnic-coolers-buyer-guide/','navcat':'.buyer_guides.picnic-cooler-beach-coolers','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/skimboards-buyer-guide/','navcat':'.buyer_guides.skimboards-skim-board','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/umbrella-stands-buyer-guide/','navcat':'.buyer_guides.umbrella-stands-bases','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/sitemap/','navcat':'.sitemap','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/affiliates/','navcat':'.affiliates','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/directory/','navcat':'.directory','callback':'customCatName'});
 
 // _app.u.bindTemplateEvent('productTemplate', 'complete.invcheck',function(event, $context, infoObj){
 	// if(!$context.attr('data-invcheck')){
@@ -618,7 +769,6 @@ _app.u.appInitComplete = function()	{
 			.addClass('chat_post')
 			.append("<span class='from'>"+message.FROM+"<\/span> has sent over a "+(message.vars.pageType || "")+" link for you within this store. <span class='lookLikeLink'>Click here<\/span> to view.")
 			.on('click',function(){
-			dump('showContent fix needed in app-quickstart');
 				showContent(_app.ext.quickstart.u.whatAmIFor(message.vars),message.vars);
 				});
 		$history.append($P);
@@ -675,7 +825,6 @@ _app.router.appendInit({
 			_app.router.handleURIChange("/", document.location.search, document.location.hash, true);
 			}
 		else if (g.uriParams.marketplace){
-	dump('showContent fix needed in app-quickstart');
 			showContent("product",{"pid":g.uriParams.product});
 			window[_app.vars.analyticsPointer]('send','event','Arrival','Syndication','product '+g.uriParams.product);
 			}

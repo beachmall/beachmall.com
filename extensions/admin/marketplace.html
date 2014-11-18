@@ -14,7 +14,7 @@
 	</div>
 
 
-	<div class='pointer market' data-mkt="EBF" data-app-event="admin_marketplace|showDSTDetail"><!--  onClick="navigateTo('#!ebay');" -->
+	<div class='pointer market' data-mkt="EBF" data-app-event="admin_marketplace|showDSTDetail"><!--  onClick="navigateTo('/ebay');" -->
 	<img height="40" width="150"  src="app-admin/images/marketplaces/ebay.png" />
 	</div>
 
@@ -312,10 +312,11 @@
 	<label class='showForZoovyOnly'>
 		<span>Link Syntax</span>
 		<select name='linkstyle' data-bind="var: mkt(linkstyle); format:popVal;">
+			<option value=''>Not Specified</option>
 			<option value='vstore'>Vstore</option>
-			<option value='app' selected='selected'>App</option>
+			<option value='app'>App</option>
 		</select>
-		<span class='toolTip' title='This will determine how the links back to your store appear. Vstore is /product/PID/... and app is #! syntax.'>?</span>
+		<span class='toolTip' title='This will determine how the links back to your store appear. Vstore is /product/PID/... and app is / syntax.'>?</span>
 	</label>
 
 </div>
@@ -374,10 +375,11 @@
 	<label class='showForZoovyOnly'>
 		<span>Link Syntax</span>
 		<select name='linkstyle' data-bind="var: mkt(linkstyle); format:popVal;">
+			<option value=''>Not Specified</option>
 			<option value='vstore'>Vstore</option>
-			<option value='app' selected='selected'>App</option>
+			<option value='app'>App</option>
 		</select>
-		<span class='toolTip' title='This will determine how the links back to your store appear. Vstore is /product/PID/... and app is #! syntax.'>?</span>
+		<span class='toolTip' title='This will determine how the links back to your store appear. Vstore is /product/PID/... and app is / syntax.'>?</span>
 	</label>
 
 </fieldset>
@@ -981,7 +983,6 @@ HINT: The username, password, etc. are provided by Amazon Product Ads. These set
 
 <fieldset>
 	<legend>MWS Token</legend>
-ASDF
 	<label>
 		<span>Pricing Schedule</span>
 		<select name='SCHEDULE' data-bind="var: mkt(schedule); format:wholesaleScheduleSelect; extension:admin; forceRender:1;">

@@ -91,7 +91,7 @@ var beachmart_catsearch = function() {
 						}
 					}
 				};
-				
+				dump('beachmart_catsearch needs showContent fix in catSearch');
 				return showContent('search',{'elasticsearch':elasticsearch});
 			},
 			

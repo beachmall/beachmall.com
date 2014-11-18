@@ -99,6 +99,7 @@ var seo_robots = function(_app) {
 							}
 						else if(typeof page == 'object'){ 
 							$('#globalMessaging').intervaledEmpty();
+				dump('seo_robots needs showContent fix in _robots.next');
 							showContent('',page);
 							}
 						else{

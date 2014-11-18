@@ -38,14 +38,18 @@ var beachmart_dropdown = function(_app) {
 		init : {
 			onSuccess : function()	{
 				
-//				_app.u.dump('BEGIN _app.ext.store_navcats.init.onSuccess ');
-				
+//				_app.u.dump('BEGIN _app.ext.beachmart_dropdown.init.onSuccess ');	
 				//get the json that lists which dropdown search buttons have results and save to var for access later.
 				$.getJSON("_dropdownsearches-min.json?_v="+(new Date()).getTime(), function(json) {
 					_app.ext.beachmart_dropdown.vars.dropdownsearches = json.dropdownsearches
-					_app.ext.beachmart_dropdown.u.makedropdownlinks();
+					setTimeout(function() {_app.ext.beachmart_dropdown.u.makedropdownlinks();},1000); //timeout here to allow data to populate
 					//dump('----dropdown search exclusion list:'); dump(_app.ext.beachmart_dropdown.vars.dropdownsearches);
 				}).fail(function(){_app.u.throwMessage("DROPDOWN SEARCH LIST FAILED TO LOAD - there is a bug in _dropdownsearches-min.json")});
+				
+				$.getJSON("_dropdownimages-min.json?_v="+(new Date()).getTime(), function(json) {
+					_app.ext.beachmart_dropdown.vars.dropdownImages = json.dropdownImages
+					//_app.ext.beachmart_dropdown.u.showDropdownImages();
+				}).fail(function(){_app.u.throwMessage("DROPDOWN IMAGES FAILED TO LOAD - there is a bug in _dropdown-image.json")});
 			
 				var r = true; //return false if extension won't load for some reason (account config, dependencies, etc).
 				return r;
@@ -316,7 +320,7 @@ var beachmart_dropdown = function(_app) {
 						var stockL = navcat.split('.').length;
 						var stockNavcat = "."+navcat.split('.')[stockL-1];
 						//$('[data-stock-image]',$(this)).attr('data-navcat',stockNavcat);
-						$('.stockImageContainer',$this).removeClass('loadingBG').append(_app.ext.beachmart_dropdown_image.u.makeDropdownImage(_app.ext.beachmart_dropdown_image.vars.dropdownImages[stockNavcat],210,210,"ffffff"));
+						$('.stockImageContainer',$this).removeClass('loadingBG').append(_app.ext.beachmart_dropdown.u.makeDropdownImage(_app.ext.beachmart_dropdown.vars.dropdownImages[stockNavcat],210,210,"ffffff"));
 						$this.append("<div class='dropdownBGRight'></div>");
 					},
 					"$tag":$(this)
@@ -345,6 +349,15 @@ var beachmart_dropdown = function(_app) {
 //					dump('----Link to this dropdown category'); dump($(this).attr('data-dropdown-link'));
 				});
 	*/		},
+	
+	
+			categorySearchAnchor : function(path,seo,type) {
+				if(seo) {
+					seo = _app.ext.beachmall_store.u.removeUnwantedChars(seo);
+					return "/"+encodeURIComponent(seo).replace(/%20/g, "-")+"/"+type+"/c/"+path; 
+				}
+				else return "/category/"+type+"/"+path;
+			},
 		
 			loadHoverProducts : function(){
 				//obtain product list
@@ -393,6 +406,44 @@ var beachmart_dropdown = function(_app) {
 				
 				_app.model.dispatchThis('mutable');
 				
+			},
+			
+			showDropdownImages : function() {
+//				_app.u.dump('showing Dropdown Images');
+				$(".stockImageContainer[data-navcat]").each(function(){
+					var navcat = $(this).attr('data-navcat');
+//					_app.u.dump(navcat);
+					$(this).removeClass('loadingBG').append(_app.ext.beachmart_dropdown.u.makeDropdownImage(_app.ext.beachmart_dropdown.vars.dropdownImages[navcat],210,210,"ffffff"));
+				})
+			},
+			
+			makeDropdownImage : function(JSON, w, h, b) {
+//				_app.u.dump(JSON);
+				var $img = $(_app.u.makeImage({
+					tag : true,
+					w   	: w,
+					h		: h,
+					b		: b,
+					name	: JSON.src,
+					alt		: JSON.alt,
+					title	: JSON.title
+				}));
+	//			can be used to add links later if desired
+	//			if(bannerJSON.prodLink) {
+	//				$img.addClass('pointer').data('pid', bannerJSON.prodLink).click(function() {
+	//
+	//			showContent('product',{'pid':$(this).data('pid')});
+	//				});
+	//			}
+	//			else if(bannerJSON.catLink) {
+	//				$img.addClass('pointer').data('navcat', bannerJSON.catLink).click(function() {
+	//					showContent('category',{'navcat':$(this).data('navcat')});
+	//				});
+	//			}
+	//			else {
+	//				//just a banner!
+	//			}
+				return $img;
 			}
 			
 //pass in form as object.  This function will verify that each fieldset has the appropriate attributes.

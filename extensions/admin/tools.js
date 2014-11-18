@@ -31,7 +31,7 @@ var admin_tools = function(_app) {
 		init : {
 			onSuccess : function()	{
 				var r = false; //return false if extension won't load for some reason (account config, dependencies, etc).
-				_app.model.fetchNLoadTemplates(_app.vars.baseURL+'extensions/admin/tools.html',theseTemplates);
+				// _app.model.fetchNLoadTemplates(_app.vars.baseURL+'extensions/admin/tools.html',theseTemplates);
 
 				_app.formatRules.validateJSON = function($input,$err){
 					var valid = true;
@@ -711,7 +711,7 @@ var admin_tools = function(_app) {
 						}
 					else	{
 						keys.push($(this).data('id'));
-						json.push(_app.u.getWhitelistedObject($(this).data(),['id','title','index','type','options']));
+						json.push(_app.u.getWhitelistedObject($(this).data(),['id','title','index','cart','type','options']));
 						}
 					})
 				_app.model.addDispatchToQ({

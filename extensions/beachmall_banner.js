@@ -126,6 +126,7 @@ var beachmall_banner = function(_app) {
 				}
 				else if(bannerJSON.catLink) {
 					$img.addClass('pointer').data('navcat', bannerJSON.catLink).click(function() {
+					dump('beachmall_banner needs showContent fix in makeBanner');
 						showContent('category',{'navcat':$(this).data('navcat')});
 					});
 				}

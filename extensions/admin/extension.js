@@ -544,8 +544,8 @@ var admin = function(_app) {
 				var r = true; //return false if extension can't load. (no permissions, wrong type of session, etc)
 //_app.u.dump("DEBUG - template url is changed for local testing. add: ");
 $('title').append(" - release: "+_app.vars.release).prepend(document.domain+' - ');
-_app.model.fetchNLoadTemplates(_app.vars.baseURL+'extensions/admin/templates.html',theseTemplates);
-_app.model.fetchNLoadTemplates(_app.vars.baseURL+'extensions/admin/downloads.html',['downloadsPageTemplate']);
+// _app.model.fetchNLoadTemplates(_app.vars.baseURL+'extensions/admin/templates.html',theseTemplates);
+// _app.model.fetchNLoadTemplates(_app.vars.baseURL+'extensions/admin/downloads.html',['downloadsPageTemplate']);
 
 
 //SANITY - loading this file async causes a slight pop. but loading it inline caused the text to not show up till the file was done.
@@ -662,6 +662,7 @@ _app.rq.push(['script',0,_app.vars.baseURL+'app-admin/resources/jHtmlArea-0.8/jH
 					}
 				else if(uriParams.show == 'acreate')	{
 					_app.u.handleAppEvents($('#createAccountContainer'));
+					_app.u.addEventDelegation($('#createAccountContainer'));
 					$('#appPreView').css('position','relative').animate({right:($('body').width() + $("#appPreView").width() + 100)},'slow','',function(){
 						$("#appPreView").hide();
 						$('#createAccountContainer').css({'left':'1000px','position':'relative'}).removeClass('displayNone').animate({'left':'0'},'slow');
@@ -669,10 +670,23 @@ _app.rq.push(['script',0,_app.vars.baseURL+'app-admin/resources/jHtmlArea-0.8/jH
 					}
 				else	{
 					_app.u.handleAppEvents($('#appLogin'));
+					_app.u.addEventDelegation($('#appLogin'));
 					$('#appPreView').css('position','relative').animate({right:($('body').width() + $("#appPreView").width() + 100)},'slow','',function(){
 						$("#appPreView").hide();
 						$('#appLogin').css({'left':'1000px','position':'relative'}).removeClass('displayNone').animate({'left':'0'},'slow');
 						});
+						
+					if (_app.u.getParameterByName('apidomain')) {
+						$("#appLogin").find('input[name="apidomain"]').val( _app.u.getParameterByName('apidomain') );
+						}
+					if (document.location.protocol == 'file:') {
+						// automatically show the advanced login container
+						// Temporarily disabled
+						// $('#loginAdvancedContainer').removeClass('displayNone').show().animate({'left':'0'},'slow');
+						}
+					
+					
+
 					}
 				if(!$.support['localStorage'])	{
 					$("#globalMessaging").anymessage({"message":"It appears you have localStorage disabled or are using a browser that does not support the feature. Please enable the feature or upgrade your browser","errtype":"youerr","persistent":true});
@@ -854,7 +868,7 @@ SANITY -> jqObj should always be the data-app-role="dualModeContainer"
 				if(_app.data[_rtag.datapointer] && _app.data[_rtag.datapointer].domain)	{
 //					_app.u.dump(" -> response contained a domain. use it to set the domain.");
 					_app.ext.admin.a.changeDomain(_app.data[_rtag.datapointer].domain);
-					navigateTo('#!dashboard');
+					navigateTo('/dashboard');
 					}
 				_app.ext.admin.u.showHeader();
 				},
@@ -885,7 +899,7 @@ SANITY -> jqObj should always be the data-app-role="dualModeContainer"
 						$ul = $("<ul \/>").attr('id','domainList').addClass('listStyleNone marginRight');
 						$ul.off('click.domain').on('click.domain','li',function(e){
 							_app.ext.admin.a.changeDomain($(e.target).data('DOMAINNAME'),$(e.target).data('PRT'));
-							navigateTo(_app.ext.admin.u.whatPageToShow('#!dashboard'));
+							navigateTo(_app.ext.admin.u.whatPageToShow('/dashboard'));
 							$target.dialog('close');
 							});
 						}
@@ -910,7 +924,7 @@ SANITY -> jqObj should always be the data-app-role="dualModeContainer"
 				else	{
 					$("<p>It appears you have no domains configured. <span class='lookLikeLink'>Click here<\/span> to go configure one.<\p>").on('click',function(){
 						$target.dialog('close');
-						navigateTo("#!ext/admin_sites/showDomainConfig");
+						navigateTo("/ext/admin_sites/showDomainConfig");
 						}).appendTo($target);
 					}
 				
@@ -1357,30 +1371,32 @@ function getIndexByObjValue(arr,key,value)	{
 				$('.ui-tooltip',_app.u.jqSelector('#',_app.ext.admin.vars.tab+"Content")).intervaledEmpty();
 //sometimes you need to refresh the page you're on. if the hash doesn't change, the onHashChange code doesn't get run so this is a solution to that.
 				if(path == document.location.hash)	{
-					adminApp.router.handleHashChange();
+					adminApp.router.handleURIChange();
 					}
 				else	{
-					if(path.indexOf('#!') == 0)	{newHash = path;}
+					if(path.indexOf('/') == 0)	{newHash = path;}
 	//if/when vstore compat is gone, the next two if/else won't be necessary.
 					else if(path.indexOf('/biz/') == 0)	{
-						newHash = "#!"+path;
+						newHash = "/"+path;
 						}
 					else if(path.indexOf('#/biz/') == 0)	{
-						newHash = "#!"+path.substring(1);
+						newHash = "/"+path.substring(1);
 						}
 					else	{
 	
 						}
 					if(newHash)	{
 						dump(" -> new hash: "+newHash);
+						var search = '';
 						if($.isEmptyObject(opts))	{}
 						else	{
-							newHash += "?"+$.param(opts)
+							search = "?"+$.param(opts);
 							}
-						document.location.hash = newHash; //update hash on URI.
+						// document.location.hash = newHash; //update hash on URI.
+						_app.router.handleURIChange(newHash, search); //update hash on URI.
 						}
 					else	{
-						$('#globalMessaging').anymessage({'message':'In navigateTo, the path provided ['+path+'] does not start w/ a #! or is not an acceptable legacy compatibility mode link.','gMessage':true});
+						$('#globalMessaging').anymessage({'message':'In navigateTo, the path provided ['+path+'] does not start w/ a / or is not an acceptable legacy compatibility mode link.','gMessage':true});
 						}
 					}
 				return false; //return false so that a href='#' onclick='return navigateTo... works properly (hash doesn't update to #);
@@ -2037,14 +2053,14 @@ vars.findertype is required. acceptable values are:
 				if(linkFrom)	{
 					_app.u.dump("INCOMING! looks like we've just returned from a partner page");
 					if(linkFrom == 'amazon-token')	{
-						_app.ext.admin.a.navigateTo('#!syndication');
+						_app.ext.admin.a.navigateTo('/syndication');
 						_app.ext.admin.a.showAmzRegisterModal();
 						}
 					else	{
 						_app.u.dump(" -> execute navigateTo for linkFrom being set");
 						if(!document.location.hash)	{
 							//if a hash is present, the router will load that page. But if there's no hash, we load the default page.
-							_app.ext.admin.a.navigateTo('#!dashboard');
+							_app.ext.admin.a.navigateTo('/dashboard');
 							}
 						}
 					}
@@ -2056,7 +2072,7 @@ vars.findertype is required. acceptable values are:
 					_app.u.dump(" -> execute navigateTo cuz no linkFrom being present.");
 					if(!document.location.hash)	{
 						//if a hash is present, the router will load that page. But if there's no hash, we load the default page.
-						_app.ext.admin.a.navigateTo('#!dashboard');
+						_app.ext.admin.a.navigateTo('/dashboard');
 						}
 					}
 
@@ -2181,7 +2197,7 @@ Changing the domain in the chooser will set three vars in localStorage so they'l
 //				_app.u.dump("BEGIN admin.u.whatPageToShow");
 				var page = window.location.hash || defaultPage;
 				if(page)	{
-					if(page.substring(0,2) == '#!' || page.substring(0,2) == '#:')	{}  //app hashes. leave them alone cuz navigateTo wants #.
+					if(page.substring(0,2) == '/' || page.substring(0,2) == '#:')	{}  //app hashes. leave them alone cuz navigateTo wants #.
 					else	{
 						page = page.replace(/^#/, ''); //strip preceding # from hash.
 						}
@@ -2354,7 +2370,7 @@ Changing the domain in the chooser will set three vars in localStorage so they'l
 				_app.ext.admin.u.uiHandleNavTabs({}); //make sure previous navtabs not show up.
 
 				if(!$target)	{_app.u.dump("TARGET NOT SPECIFIED")}
-//handle the default tabs specified as #! instead of #:
+//handle the default tabs specified as / instead of #:
 				else if(_app.ext.admin.u.showTabLandingPage(path,$(_app.u.jqSelector('#',path.substring(2)+'Content')),opts))	{
 					//the showTabLandingPage will handle the display. It returns t/f
 					}
@@ -2432,7 +2448,7 @@ Changing the domain in the chooser will set three vars in localStorage so they'l
 				return $target;
 				},
 
-//path should be passed in as  #!orders
+//path should be passed in as  /orders
 			showTabLandingPage : function(tab,$target,opts)	{
 				var r = true;
 				this.bringTabIntoFocus(tab);
@@ -2705,9 +2721,9 @@ Changing the domain in the chooser will set three vars in localStorage so they'l
 					// _app.u.dump($a);
 					}
 
-				if (href.substring(0,5) == "/biz/" || href.substring(0,2) == '#!')	{
+				if (href.substring(0,5) == "/biz/" || href.substring(0,2) == '/')	{
 					var newHref = _app.vars.baseURL;
-					newHref += href.substring(0,2) == '#!' ? href :'#'+href; //for #! (native apps) links, don't add another hash.
+					newHref += href.substring(0,2) == '/' ? href :'/'+href; //for / (native apps) links, don't add another hash.
 					$a.attr({'title':href,'href':newHref});
 					$a.click(function(event){
 						event.preventDefault();
@@ -3927,12 +3943,45 @@ dataAttribs -> an object that will be set as data- on the panel.
 
 /* login and create account */
 
-			accountLogin : function($btn)	{
-				$btn.button();
-				$btn.off('click.accountLogin').on('click.accountLogin',function(event){
-					event.preventDefault();
-					_app.ext.admin.a.login($btn.closest('form'));
-					});
+			// accountLogin : function($btn)	{
+				// $btn.button();
+				// $btn.off('click.accountLogin').on('click.accountLogin',function(event){
+				
+					// if ($btn.closest('form').find('input[name="apidomain"]').val() != '') {
+						// //window.adminApp.vars.jqurl = "https://"+jqurl+":9000/jsonapi/";
+						// _app.vars.jqurl = "https://"+$btn.closest('form').find('input[name="apidomain"]').val()+":9000/jsonapi/";
+						// }
+					// else if (document.location.protocol == 'file:') {
+						// alert("use advanced login options when running as file://");
+						// }
+						
+	
+					// event.preventDefault();
+					// _app.ext.admin.a.login($btn.closest('form'));
+					// });
+				// },
+			
+			accountLogin : function($form, p)	{
+				p.preventDefault();
+				if ($form.find('input[name="apidomain"]').val() != '') {
+					//window.adminApp.vars.jqurl = "https://"+jqurl+":9000/jsonapi/";
+					
+					_app.vars.jqurl = "http://"+$form.find('input[name="apidomain"]').val()+"/jsonapi/";
+					_app.model.addDispatchToQ({
+						"_cmd" : "appConfig",
+						"_tag" : {
+							"datapointer" : "appConfig",
+							"callback" : function(rd){
+								_app.vars.jqurl = _app.data[rd.datapointer].appSettings.admin_api_url;
+								_app.ext.admin.a.login($form);
+								}
+							}
+						},'immutable');
+					_app.model.dispatchThis('immutable');
+					}
+				else {
+					_app.ext.admin.a.login($form);
+					}
 				},
 			
 			showCreateAccount : function($btn)	{
@@ -3959,6 +4008,22 @@ dataAttribs -> an object that will be set as data- on the panel.
 					})
 				},
 
+			// showLoginAdvanced : function($btn)	{
+				// $btn.off('click.showLoginAdvanced').on('click.showLoginAdvanced',function(event){
+					// $('#loginAdvancedContainer').removeClass('displayNone').show().animate({'left':'0'},'slow');
+					// });
+				// },
+			showLoginAdvanced : function($ele, p)	{
+				p.preventDefault();
+				$('#loginFormContainer .advancedLoginShow').removeClass('displayNone').show();
+				$('#loginFormContainer .advancedLoginHide').hide();
+				},
+			showLoginSimple : function($ele, p)	{
+				p.preventDefault();
+				$('#loginFormContainer .advancedLoginShow').hide();
+				$('#loginFormContainer .advancedLoginHide').show();
+				},
+				
 			execPasswordRecover : function($btn)	{
 				$btn.button();
 				$btn.off('click.execPasswordRecover').on('click.execPasswordRecover',function(event){

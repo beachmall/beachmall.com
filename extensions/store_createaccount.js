@@ -111,6 +111,7 @@ var store_createaccount = function(_app) {
 		u : {
 		
 			handleAppLoginCreate : function($form)	{
+		dump('store_accountcreate needs showContent fix in handleAppLoginCreate');
 				if($form)	{
 					var formObj = $form.serializeJSON();
 					
@@ -151,6 +152,7 @@ var store_createaccount = function(_app) {
 		
 			//showContent at end was necessary to show login success container on second login form, all else is same as form in quickstart.
 			accountLoginSubmit : function($ele,p)	{
+	dump('store_accountcreate needs showContent fix in accountLoginSubmit');
 				p.preventDefault();
 				if(_app.u.validateForm($ele))	{
 					var sfo = $ele.serializeJSON();
