@@ -10,11 +10,16 @@ _app.u.loadScript(configURI,function(){
 	_app.vars.domain = zGlobals.appSettings.sdomain; //passed in ajax requests.
 	_app.vars.jqurl = (document.location.protocol === 'file:') ? _app.vars.testURL+'jsonapi/' : '/jsonapi/';
 	
-	var startupRequires = ['quickstart','store_filter','beachmart_dropdown','store_prodlist','beachmall_store'];
+	var startupRequires = ['quickstart','store_filter','beachmall_begin','store_prodlist','beachmall_store'];
 	
 	_app.require(startupRequires, function(){
 		setTimeout(function(){$('#appView').removeClass('initFooter');}, 1200);
 		_app.ext.quickstart.callbacks.startMyProgram.onSuccess();
+		
+		_app.ext.beachmall_begin.calls.whereAmI.init({'callback':'handleWhereAmI','extension':'beachmall_begin'},'passive');
+		_app.ext.beachmall_begin.u.getDropdownJSON();
+		//_app.ext.beachmall_store.u.makeDisallow(); //uncomment to use, then close it back up. This shouldn't be left running in production.
+		
 		});
 	}); //The config.js is dynamically generated.
 	
@@ -416,8 +421,8 @@ _app.extend({
 });
 
 _app.extend({
-	"namespace":"beachmart_dropdown",
-	"filename":"extensions/beachmart_dropdown.js"
+	"namespace":"beachmall_begin",
+	"filename":"extensions/_beachmall_begin.js"
 });
 
 // beachmall custom alias

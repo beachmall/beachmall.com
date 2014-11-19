@@ -352,7 +352,7 @@ optional params:
 			productAnchor : function(pid, seo){
 				//return "#!product/"+pid+"/"+(seo ? encodeURIComponent(seo) : '');
 				if(seo) {
-/*beachmall*/		seo = _app.ext.beachmall_store.u.removeUnwantedChars(seo);
+/*beachmall*/		seo = _app.ext.beachmall_begin.u.removeUnwantedChars(seo);
 					return "#!"+encodeURIComponent(seo).replace(/%20/g, "-")+"/p/"+pid+".html";
 				}
 				else return "#!product/"+pid;
@@ -361,7 +361,7 @@ optional params:
 				//return "#!category/"+path+((seo) ? "/"+encodeURI(seo) : '');
 				
 				if(seo) {
-/*beachmall*/		seo = _app.ext.beachmall_store.u.removeUnwantedChars(seo);
+/*beachmall*/		seo = _app.ext.beachmall_begin.u.removeUnwantedChars(seo);
 					//return "#!"+encodeURIComponent(seo).replace(/%20/g, "-")+"/c/"+path;
 					return "/"+encodeURIComponent(seo).replace(/%20/g, "-")+"/";
 				}
@@ -370,7 +370,7 @@ optional params:
 /*beachmall*/
 			categorySearchAnchor : function(path,seo,type) {
 				if(seo) {
-					seo = _app.ext.beachmall_store.u.removeUnwantedChars(seo);
+					seo = _app.ext.beachmall_begin.u.removeUnwantedChars(seo);
 					return "#!"+encodeURIComponent(seo).replace(/%20/g, "-")+"/"+type+"/c/"+path; 
 				}
 				else return "#!category/"+type+"/"+path;

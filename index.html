@@ -206,20 +206,20 @@ ANIMATION TESTING
 <div class='headerContainer'>
 				<!--	<div class='test' onClick="return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'tags':'.beach-chair.lafuma-recliner'}}]}}});"></div> -->
 <header class='clearfix topNav tanGradient'>
-	<div class='localizedBox fontBlack fontSize12 floatLeft' onmouseover="myApp.ext.beachmart_dropdown.a.showGeoDropdown($(this),220);">
-	<!-- <div class='localizedBox fontBlack fontSize12 floatLeft' onmouseenter="myApp.ext.beachmart_dropdown.a.showGeoDropdown($(this),220);"> -->
-        <span class='oswaldFontBold  fontSize14'>LOCALIZED FOR &nbsp;</span><span class='oswaldFontBold fontTeal fontSize18 shipPostal' onClick="myApp.ext.beachmart_dropdown.a.showDropdown($(this).parent(),220);"></span><br>
-        <span class='openSansFont shipCity'> </span> <span class='shipRegion'></span><span class='openSansFontBold pointer' onClick="myApp.ext.beachmart_dropdown.a.showDropdown($(this).parent(),220);">&nbsp; (Change)</span>
+	<div class='localizedBox fontBlack fontSize12 floatLeft' onmouseover="myApp.ext.beachmall_begin.a.showGeoDropdown($(this),220);">
+	<!-- <div class='localizedBox fontBlack fontSize12 floatLeft' onmouseenter="myApp.ext.beachmall_begin.a.showGeoDropdown($(this),220);"> -->
+        <span class='oswaldFontBold  fontSize14'>LOCALIZED FOR &nbsp;</span><span class='oswaldFontBold fontTeal fontSize18 shipPostal' onClick="myApp.ext.beachmall_begin.a.showDropdown($(this).parent(),220);"></span><br>
+        <span class='openSansFont shipCity'> </span> <span class='shipRegion'></span><span class='openSansFontBold pointer' onClick="myApp.ext.beachmall_begin.a.showDropdown($(this).parent(),220);">&nbsp; (Change)</span>
     	<div class='arrowContainer'></div>
 		<div class='geoDropdown dropdown'>
-			<button class='localizedClose sprite' onClick="myApp.ext.beachmart_dropdown.a.hideGeoDropdown($(this).parent().parent());"></button>
+			<button class='localizedClose sprite' onClick="myApp.ext.beachmall_begin.a.hideGeoDropdown($(this).parent().parent());"></button>
 			<h1>WE JUST NEED YOUR ZIP CODE !</h1>
             By providing your delivery ZIP code, you'll allow us to:<br>
             <span>Show you special pricing</span> that may only be available in select areas.<br>
             <span>See estimated delivery dates</span> without having to checkout.           
-            <form onSubmit="myApp.ext.beachmart.a.updateShipPostal($(this)); return false;">
+            <form onSubmit="myApp.ext.beachmall_begin.a.updateShipPostal($(this)); return false;">
                 <input name='ship/postal' value="" placeholder=' Enter your ZIP / Postal Code' class="geoZipInput handleDefault" type="number">
-                <input class="search searchButton oswaldFontBold" id="headerSearchSubmit" value="SEE DETAILS IN MY AREA" type="submit" onClick="myApp.ext.beachmart_dropdown.a.hideDropdown($(this).parent().parent().parent());">
+                <input class="search searchButton oswaldFontBold" id="headerSearchSubmit" value="SEE DETAILS IN MY AREA" type="submit" onClick="myApp.ext.beachmall_begin.a.hideDropdown($(this).parent().parent().parent());">
             </form>
             <h2>BeachMall.com respects your privacy and will not share this information with anyone.</h2>
         </div>    
@@ -243,30 +243,30 @@ ANIMATION TESTING
 		<div class='phoneIcon sprite floatRight'></div>
     </div>
 	<nav class='floatRight'>
-        <!-- <div class='cartIcon sprite pointer' onClick="return showContent('cart',{});"><span class='cartItemCount'>0</span></div> this will go to inline cart -->
-        <div class='cartIcon sprite pointer' onClick="myApp.ext.quickstart.u.showCartInModal({'templateID':'cartTemplate'});"><span class='cartItemCount'>0</span></div>
+        <a href="/cart/" class='cartIcon sprite '><span class='cartItemCount'>0</span></a>
+        <!-- <div class='cartIcon sprite pointer' onClick="myApp.ext.quickstart.u.showCartInModal({'templateID':'cartTemplate'});"><span class='cartItemCount'>0</span></div> this will go to modal cart -->
 	</nav>
-    <nav class='topNavLinks floatRight openSansFontBold fontSize12' onMouseOver="myApp.ext.beachmart_dropdown.a.showDropdown($(this),100);" onMouseOut="myApp.ext.beachmart_dropdown.a.hideDropdown($(this));">
-        <a href="#!customer/myaccount/">My Account</a> 
+    <nav class='topNavLinks floatRight openSansFontBold fontSize12' onMouseOver="myApp.ext.beachmall_begin.a.showDropdown($(this),100);" onMouseOut="myApp.ext.beachmall_begin.a.hideDropdown($(this));">
+        <a href="/my_account/" rel="nofollow">My Account</a> 
 		<div class='arrowContainer'></div>
     	<div class='dropdown myAcctDropdown'>
         	<ul class='listStyleNone'>
             	<li><span onclick="myApp.ext.quickstart.u.showLoginModal();" class='headerSignIn'>Sign In</span><span class='headerSignedIn'>Sign In</span> / <a href="#!customer/logout/" class='headerSignOut'>Sign Out</a><span class='headerSignedOut'>Sign Out</span></li>
                 <li><a href="#!customer/createaccount/">Create An Account</a></li>
-                <li><a href="#!customer/orders/">Track Your Order</a></li>
+                <li><a href="/my_order_history/">Track Your Order</a></li>
             </ul>
         </div>
     </nav> 
-    <nav class='topNavLinks floatRight openSansFont fontSize12' onMouseOver="myApp.ext.beachmart_dropdown.a.showDropdown($(this),150);" onMouseOut="myApp.ext.beachmart_dropdown.a.hideDropdown($(this));">
-		<a href="#!company/contact/">Customer Care</a> |
+    <nav class='topNavLinks floatRight openSansFont fontSize12' onMouseOver="myApp.ext.beachmall_begin.a.showDropdown($(this),150);" onMouseOut="myApp.ext.beachmall_begin.a.hideDropdown($(this));">
+		<a href="/contact_us/">Customer Care</a> |
         <div class='arrowContainer2'></div>
 		<div class='dropdown custCareDropdown'>
         	<ul class='listStyleNone'>
-            	<li><a href="#!customer/orders/">Ordering & Cancelations</a></li>
-                <li><a href="#!company/shipping/">Shipping</a></li>
-                <li><a href="#!company/return/">Returns</a></li>
-                <li><a href="#!company/privacy/">Security & Privacy</a></li>
-                <li><a href="#!company/contact/" onClick="myApp.ext.beachmall_store.a.resetContactPID();">Contact Us</a></li>
+            	<li><a href="/my_order_history/">Ordering & Cancelations</a></li>
+                <li><a href="/shipping_policy/">Shipping</a></li>
+                <li><a href="/return_policy/">Returns</a></li>
+                <li><a href="/privacy_policy/">Security & Privacy</a></li>
+                <li><a href="/contact_us/" onClick="myApp.ext.beachmall_store.a.resetContactPID();">Contact Us</a></li>
             </ul>
         </div>
 	</nav>
@@ -290,7 +290,7 @@ ANIMATION TESTING
             </form>
         </div>
         
-        <a class='bannerContainer hideSmall floatLeft' href="#!company/return/">
+        <a class='bannerContainer hideSmall floatLeft' href="/return_policy/">
             <span class='banner sprite hideMed'></span>
 			<h6 class='displayNone'>Click for Detailed <span>Return Policy</span></h6>
         </a>
@@ -301,64 +301,64 @@ ANIMATION TESTING
             <div id='mainDropdown'>
 
                 <!-- <div class='dropdownsContainer'> -->
-					<div class='singleDropdown floatLeft sprite' onMouseOver="myApp.ext.beachmart_dropdown.a.showDropdown($(this),535);" onMouseOut="myApp.ext.beachmart_dropdown.a.hideDropdown($(this));">
+					<div class='singleDropdown floatLeft sprite' onMouseOver="myApp.ext.beachmall_begin.a.showDropdown($(this),535);" onMouseOut="myApp.ext.beachmall_begin.a.hideDropdown($(this));">
                     	<div class='dropdownBorderContainer'>
 							<div class='dropdownBorderMaker'>
-								<a href='/beach-chairs/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent());">BEACH CHAIRS</a>
+								<a href='/beach-chairs/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent());">BEACH CHAIRS</a>
 							</div>
 						</div>
 						<div class='beachChairsDD dropdown floatLeft'> 
 							<div class='defaultDDImage'>
-								<a class='stockImageContainer' href='/beach-chairs/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"><img src="images/canopy_beach_chair_401a.jpg" width='210' height='210' alt='beach chairs' data-apptimize="embed" /></a>  <!-- https://www.beachmall.com/media/img/beachmart/W210-H210-Bffffff/copa/2009_chairs_web/canopy_beach_chair_401a -->
+								<a class='stockImageContainer' href='/beach-chairs/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent().parent());"><img src="images/canopy_beach_chair_401a.jpg" width='210' height='210' alt='beach chairs' data-apptimize="embed" /></a>  <!-- https://www.beachmall.com/media/img/beachmart/W210-H210-Bffffff/copa/2009_chairs_web/canopy_beach_chair_401a -->
 								<div class="dropdownBGRight"></div>
 							</div>
                             <ul class='listStyleNone floatLeft dropoutUL'>
 							
                                <!-- <li class='noArrow'>BEACH CHAIRS</li>   -->
-								<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'> <!--data-hoverproduct="PDADDC1"-->
-									<a href='/adirondack/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+								<li onMouseOver='myApp.ext.beachmall_begin.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmall_begin.a.hideHoverout($(this));'> <!--data-hoverproduct="PDADDC1"-->
+									<a href='/adirondack/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Adirondack
 									</a>
 <!-- links in the ul for each item are built with beachmart_dropdown.u.makedropdownlinks() using template dropdownAnchorListTemplate. Add the category to link to in data-dropdown-link. For second tier dropouts also add data-second-tier="1"  -->
 									<ul data-dropdown-link=".beach-chair.adirondack-furniture" class='hoverProductContainer hoverout listStyleNone'></ul>	
 								</li>
-								<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'>
-									<a href='/backpack-chairs/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+								<li onMouseOver='myApp.ext.beachmall_begin.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmall_begin.a.hideHoverout($(this));'>
+									<a href='/backpack-chairs/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Backpack Chairs
 									</a>
 									<ul data-dropdown-link=".beach-chair.backpack-chair" class='hoverProductContainer hoverout listStyleNone dropout2'></ul>
 								</li>
-                                <li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'>
-									<a href='/cup-holder-chairs/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+                                <li onMouseOver='myApp.ext.beachmall_begin.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmall_begin.a.hideHoverout($(this));'>
+									<a href='/cup-holder-chairs/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Cup Holder Chairs
 									</a>
 									<ul data-dropdown-link=".beach-chair.beach-chairs" class='hoverProductContainer hoverout listStyleNone dropout3'></ul>
 								</li>
-                                <li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'>
-									<a href='/beach-chaises/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+                                <li onMouseOver='myApp.ext.beachmall_begin.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmall_begin.a.hideHoverout($(this));'>
+									<a href='/beach-chaises/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Beach Chaises
 									</a>
 									<ul data-dropdown-link=".beach-chair.beach-chaise" class='hoverProductContainer hoverout listStyleNone dropout4'></ul>
 								</li>
-                                <li class='noArrow' onMouseOver="myApp.ext.beachmart_dropdown.a.showDropout($(this), $(this).parent().parent(), $(this).parent(), 480)" 
-									onMouseOut="myApp.ext.beachmart_dropdown.a.hideDropout($(this), $(this).parent().parent(), $(this).parent())">
-									<a href='/beach-pool-lounges/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+                                <li class='noArrow' onMouseOver="myApp.ext.beachmall_begin.a.showDropout($(this), $(this).parent().parent(), $(this).parent(), 480)" 
+									onMouseOut="myApp.ext.beachmall_begin.a.hideDropout($(this), $(this).parent().parent(), $(this).parent())">
+									<a href='/beach-pool-lounges/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Beach &#38; Pool Lounges
 									</a>
 									<div class='dropout out dropout5'>
                                     	<ul>
 											<li class='defaultDOImage'>
-												<a class='stockImageContainer' href='/beach-pool-lounges/' data-navcat='.beach-chair.beach-lounges' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());"></a> 
+												<a class='stockImageContainer' href='/beach-pool-lounges/' data-navcat='.beach-chair.beach-lounges' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());"></a> 
 												<div class='dropdownBGRight'></div>
 											</li>
-                                        	<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout2($(this), $(this).parent().parent());'>
-												<a href='/beach-lounges/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
+                                        	<li onMouseOver='myApp.ext.beachmall_begin.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmall_begin.a.hideHoverout2($(this), $(this).parent().parent());'>
+												<a href='/beach-lounges/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
 													Beach Lounges
 												</a>
 												<ul data-dropdown-link=".beach-chair.beach-lounges.beach-recliner" data-second-tier="1" class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout1'></ul>
 											</li>
-                                            <li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout2($(this), $(this).parent().parent());'>
-												<a href='/pool-lounges/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
+                                            <li onMouseOver='myApp.ext.beachmall_begin.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmall_begin.a.hideHoverout2($(this), $(this).parent().parent());'>
+												<a href='/pool-lounges/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
 													Pool Lounges
 												</a>
 												<ul data-dropdown-link=".beach-chair.beach-lounges.pool-floats" data-second-tier="1" class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout2'></ul>
@@ -367,50 +367,50 @@ ANIMATION TESTING
                                         </ul>
                                     </div>
 								</li>
-                                <li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this), $(this).parent().parent());'>
-									<a href='/canopy-beach-chairs/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+                                <li onMouseOver='myApp.ext.beachmall_begin.a.showHoverout($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmall_begin.a.hideHoverout($(this), $(this).parent().parent());'>
+									<a href='/canopy-beach-chairs/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Canopy Beach Chairs
 									</a>
 									<ul data-dropdown-link=".beach-chair.canopy-beach-chair" class='hoverProductContainer hoverout listStyleNone dropout6'></ul>
 								</li>
-                                <li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this), $(this).parent().parent());'>
-									<a href='/padded-beach-chairs/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+                                <li onMouseOver='myApp.ext.beachmall_begin.a.showHoverout($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmall_begin.a.hideHoverout($(this), $(this).parent().parent());'>
+									<a href='/padded-beach-chairs/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Padded Beach Chairs
 									</a>
 									<ul data-dropdown-link=".beach-chair.folding-beach-chairs" class='hoverProductContainer hoverout listStyleNone dropout7'></ul>
 								</li>
-                                <li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this), $(this).parent().parent());'>
-									<a href='/high-back-beach-chairs/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+                                <li onMouseOver='myApp.ext.beachmall_begin.a.showHoverout($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmall_begin.a.hideHoverout($(this), $(this).parent().parent());'>
+									<a href='/high-back-beach-chairs/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent());">
 										High&#45;back Beach Chairs
 									</a>
 									<ul data-dropdown-link=".beach-chair.heavy-beach-chairs" class='hoverProductContainer hoverout listStyleNone dropout8'></ul>
 								</li>
-                                <li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this), $(this).parent().parent());'>
-									<a href='/large-beach-chairs/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+                                <li onMouseOver='myApp.ext.beachmall_begin.a.showHoverout($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmall_begin.a.hideHoverout($(this), $(this).parent().parent());'>
+									<a href='/large-beach-chairs/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Large Beach Chairs
 									</a>
 									<ul data-dropdown-link=".beach-chair.heavy-duty-beach-chairs" class='hoverProductContainer hoverout listStyleNone dropout9'></ul>
 								</li>
-                                <li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this), $(this).parent().parent());'>
-									<a href='/high-seat-beach-chairs/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+                                <li onMouseOver='myApp.ext.beachmall_begin.a.showHoverout($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmall_begin.a.hideHoverout($(this), $(this).parent().parent());'>
+									<a href='/high-seat-beach-chairs/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent());">
 										High Seat Beach Chairs
 									</a>
 									<ul data-dropdown-link=".beach-chair.high-beach-chair" class='hoverProductContainer hoverout listStyleNone dropout10'></ul>
 								</li>
-                                <li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this), $(this).parent().parent());'>
-									<a href='/low-seat-beach-chairs/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+                                <li onMouseOver='myApp.ext.beachmall_begin.a.showHoverout($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmall_begin.a.hideHoverout($(this), $(this).parent().parent());'>
+									<a href='/low-seat-beach-chairs/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Low Seat Beach Chairs
 									</a>
 									<ul data-dropdown-link=".beach-chair.sand-chair" class='hoverProductContainer hoverout listStyleNone dropout11'></ul>
 								</li>
-                                <li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this), $(this).parent().parent());'>
-									<a href='/lay-flat-beach-chairs/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+                                <li onMouseOver='myApp.ext.beachmall_begin.a.showHoverout($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmall_begin.a.hideHoverout($(this), $(this).parent().parent());'>
+									<a href='/lay-flat-beach-chairs/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Lay Flat Beach Chairs
 									</a>
 									<ul data-dropdown-link=".beach-chair.sand-chairs" class='hoverProductContainer hoverout listStyleNone dropout12'></ul>
 								</li>
-                                <li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this), $(this).parent().parent());'>
-									<a href='/wooden-beach-chairs/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+                                <li onMouseOver='myApp.ext.beachmall_begin.a.showHoverout($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmall_begin.a.hideHoverout($(this), $(this).parent().parent());'>
+									<a href='/wooden-beach-chairs/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Wooden Beach Chairs
 									</a>
 									<ul data-dropdown-link=".beach-chair.wooden-beach-chairs" class='hoverProductContainer hoverout listStyleNone dropout13'></ul>
@@ -419,44 +419,44 @@ ANIMATION TESTING
 							</ul>
                         </div>
                     </div>
-					<div class='singleDropdown floatLeft sprite' onMouseOver="myApp.ext.beachmart_dropdown.a.showDropdown($(this),535);" onMouseOut="myApp.ext.beachmart_dropdown.a.hideDropdown($(this));">
+					<div class='singleDropdown floatLeft sprite' onMouseOver="myApp.ext.beachmall_begin.a.showDropdown($(this),535);" onMouseOut="myApp.ext.beachmall_begin.a.hideDropdown($(this));">
 						<div class='dropdownBorderContainer'>	
 							<div class='dropdownBorderMaker'>
-								<a href='/beach-accessories/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent());">ACCESSORIES</a> 
+								<a href='/beach-accessories/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent());">ACCESSORIES</a> 
 							</div>
 						</div>
 						<div class='beachAccessoriesDD dropdown floatLeft'>
 							<div class='defaultDDImage'>
-								<a class='stockImageContainer' href='/beach-accessories/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"><img src='images/ls_504_42_991.jpg' width='210' height='210' alt='beach accessories' data-apptimize="embed" /></a>  <!-- https://www.beachmall.com/media/img/beachmart/W210-H210-Bffffff/picnic_time/2010_lifestyle/ls_504_42_991 -->
+								<a class='stockImageContainer' href='/beach-accessories/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent().parent());"><img src='images/ls_504_42_991.jpg' width='210' height='210' alt='beach accessories' data-apptimize="embed" /></a>  <!-- https://www.beachmall.com/media/img/beachmart/W210-H210-Bffffff/picnic_time/2010_lifestyle/ls_504_42_991 -->
 								<div class="dropdownBGRight"></div>
 							</div>
                             <ul class='listStyleNone floatLeft dropoutUL'>
-                            	<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'>
-									<a href='/beach-bags-totes/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+                            	<li onMouseOver='myApp.ext.beachmall_begin.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmall_begin.a.hideHoverout($(this));'>
+									<a href='/beach-bags-totes/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Beach Bags &#38; Totes
 									</a>
 									<ul data-dropdown-link=".beach-accessories.beach-bags-totes" class='hoverProductContainer hoverout listStyleNone'></ul>
 								</li>
-                           		<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'>
-									<a href='/beach-carts/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+                           		<li onMouseOver='myApp.ext.beachmall_begin.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmall_begin.a.hideHoverout($(this));'>
+									<a href='/beach-carts/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Beach Carts
 									</a>
 									<ul data-dropdown-link=".beach-accessories.beach-cart" class='hoverProductContainer hoverout listStyleNone dropout2'></ul>
 								</li>
-								<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'>
-									<a href='/picnic-backpacks/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+								<li onMouseOver='myApp.ext.beachmall_begin.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmall_begin.a.hideHoverout($(this));'>
+									<a href='/picnic-backpacks/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Picnic Backpacks
 									</a>
 									<ul data-dropdown-link=".beach-accessories.picnic-backpack" class='hoverProductContainer hoverout listStyleNone dropout3'></ul>
 								</li>
-								<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'>
-									<a href='/picnic-baskets/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+								<li onMouseOver='myApp.ext.beachmall_begin.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmall_begin.a.hideHoverout($(this));'>
+									<a href='/picnic-baskets/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Picnic Baskets
 									</a>
 									<ul data-dropdown-link=".beach-accessories.picnic-baskets" class='hoverProductContainer hoverout listStyleNone dropout4'></ul>
 								</li>
-                                <li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'>
-									<a href='/coolers/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+                                <li onMouseOver='myApp.ext.beachmall_begin.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmall_begin.a.hideHoverout($(this));'>
+									<a href='/coolers/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Coolers
 									</a>
 									<ul data-dropdown-link=".beach-accessories.picnic-cooler" class='hoverProductContainer hoverout listStyleNone dropout5'></ul>
@@ -465,32 +465,32 @@ ANIMATION TESTING
                             </ul>
 						</div>
                     </div>
-                    <div class='singleDropdown floatLeft sprite' onMouseOver="myApp.ext.beachmart_dropdown.a.showDropdown($(this),535);" onMouseOut="myApp.ext.beachmart_dropdown.a.hideDropdown($(this));">
+                    <div class='singleDropdown floatLeft sprite' onMouseOver="myApp.ext.beachmall_begin.a.showDropdown($(this),535);" onMouseOut="myApp.ext.beachmall_begin.a.hideDropdown($(this));">
 						<div class='dropdownBorderContainer'>
 							<div class='dropdownBorderMaker'>
-								<a href='/recreation/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent());">RECREATION</a>
+								<a href='/recreation/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent());">RECREATION</a>
 							</div>
 						</div>
 						<div class='recreationDD dropdown floatLeft'>
 							<div class='defaultDDImage'>
-								<a class='stockImageContainer' href='/recreation/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"><img src='images/wcpb707_no_logo.jpg' width='210' height='210' alt='recreation' data-apptimize="embed" /></a> <!-- https://www.beachmall.com/media/img/beachmart/W210-H210-Bffffff/copa/2012_bodyboard/wcpb707_no_logo -->
+								<a class='stockImageContainer' href='/recreation/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent().parent());"><img src='images/wcpb707_no_logo.jpg' width='210' height='210' alt='recreation' data-apptimize="embed" /></a> <!-- https://www.beachmall.com/media/img/beachmart/W210-H210-Bffffff/copa/2012_bodyboard/wcpb707_no_logo -->
 								<div class="dropdownBGRight"></div>
 							</div>
                             <ul class='listStyleNone floatLeft dropoutUL'>
-								<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'>
-									<a href='/bodyboards/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+								<li onMouseOver='myApp.ext.beachmall_begin.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmall_begin.a.hideHoverout($(this));'>
+									<a href='/bodyboards/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Body Boards
 									</a>
 									<ul data-dropdown-link=".beach-sports.bodyboards" class='hoverProductContainer hoverout listStyleNone'></ul>
 								</li>
-								<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'>
-									<a href='/pool-floats/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+								<li onMouseOver='myApp.ext.beachmall_begin.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmall_begin.a.hideHoverout($(this));'>
+									<a href='/pool-floats/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Pool Floats
 									</a>
 									<ul data-dropdown-link=".beach-sports.pool-floats" class='hoverProductContainer hoverout listStyleNone dropout2'></ul>
 								</li>
-								<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'>
-									<a href='/skimboards/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+								<li onMouseOver='myApp.ext.beachmall_begin.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmall_begin.a.hideHoverout($(this));'>
+									<a href='/skimboards/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Skimboards
 									</a>
 									<ul data-dropdown-link=".beach-sports.skimboards" class='hoverProductContainer hoverout listStyleNone dropout3'></ul>
@@ -499,73 +499,73 @@ ANIMATION TESTING
                             </ul>
                         </div>
                     </div>
-                    <div class='singleDropdown floatLeft sprite' onMouseOver="myApp.ext.beachmart_dropdown.a.showDropdown($(this),535);" onMouseOut="myApp.ext.beachmart_dropdown.a.hideDropdown($(this));">
+                    <div class='singleDropdown floatLeft sprite' onMouseOver="myApp.ext.beachmall_begin.a.showDropdown($(this),535);" onMouseOut="myApp.ext.beachmall_begin.a.hideDropdown($(this));">
                     	<div class='dropdownBorderContainer'>
 							<div class='dropdownBorderMaker'>
-								<a href='/beach-wear/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent());">BEACH WEAR</a>
+								<a href='/beach-wear/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent());">BEACH WEAR</a>
 							</div>
 						</div>
 						<div class='beachWearDD dropdown floatLeft'>
 							<div class='defaultDDImage'>
-								<a class='stockImageContainer' href='/beach-wear/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"><img src='images/2760.jpg' width='210' height='210' alt='beachwear' data-apptimize="embed" /></a> <!-- https://www.beachmall.com/media/img/beachmart/W210-H210-Bffffff/snapper/2760 -->
+								<a class='stockImageContainer' href='/beach-wear/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent().parent());"><img src='images/2760.jpg' width='210' height='210' alt='beachwear' data-apptimize="embed" /></a> <!-- https://www.beachmall.com/media/img/beachmart/W210-H210-Bffffff/snapper/2760 -->
 								<div class="dropdownBGRight"></div>
 							</div>
                             <ul class='listStyleNone floatLeft dropoutUL'>
-								<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'> <!--data-hoverproduct="PDADDC1"-->
-									<a href='/baby-hats/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+								<li onMouseOver='myApp.ext.beachmall_begin.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmall_begin.a.hideHoverout($(this));'> <!--data-hoverproduct="PDADDC1"-->
+									<a href='/baby-hats/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Baby Hats
 									</a>
 									<ul data-dropdown-link=".beachwear.beach-hat.baby-hats" class='hoverProductContainer hoverout listStyleNone'></ul>	
 								</li>
-								<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'>
-									<a href='/kids-sun-hats/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+								<li onMouseOver='myApp.ext.beachmall_begin.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmall_begin.a.hideHoverout($(this));'>
+									<a href='/kids-sun-hats/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Kid&#39;s Hats
 									</a>
 									<ul data-dropdown-link=".beachwear.beach-hat.kids-hats" class='hoverProductContainer hoverout listStyleNone dropout2'></ul>
 								</li>
-								<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'>
-									<a href='/babies-swim-wear/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+								<li onMouseOver='myApp.ext.beachmall_begin.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmall_begin.a.hideHoverout($(this));'>
+									<a href='/babies-swim-wear/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Babie&#39;s Swimwear
 									</a>
 									<ul data-dropdown-link=".beachwear.beach-swimwear.babies-swimsuit" class='hoverProductContainer hoverout listStyleNone dropout3'></ul>
 								</li>
-								<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'>
-									<a href='/boys-beach-wear/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+								<li onMouseOver='myApp.ext.beachmall_begin.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmall_begin.a.hideHoverout($(this));'>
+									<a href='/boys-beach-wear/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Boy&#39;s Swimwear
 									</a>
 									<ul data-dropdown-link=".beachwear.beach-swimwear.beach-wear.boys-swimwear" class='hoverProductContainer hoverout listStyleNone dropout4'></ul>
 								</li>
-								<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'>
-									<a href='/girls-beach-wear/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+								<li onMouseOver='myApp.ext.beachmall_begin.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmall_begin.a.hideHoverout($(this));'>
+									<a href='/girls-beach-wear/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Girl&#39;s Swimwear
 									</a>
 									<ul data-dropdown-link=".beachwear.beach-swimwear.beach-wear.girls-swimwear" class='hoverProductContainer hoverout listStyleNone dropout5'></ul>
 								</li>
-								<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'>
-									<a href='/kids-swim-wear/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+								<li onMouseOver='myApp.ext.beachmall_begin.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmall_begin.a.hideHoverout($(this));'>
+									<a href='/kids-swim-wear/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Kid&#39;s Swimwear
 									</a>
 									<ul data-dropdown-link=".beachwear.beach-swimwear.kids-swimsuit" class='hoverProductContainer hoverout listStyleNone dropout6'></ul>
 								</li>
-								<li class='noArrow' onMouseOver="myApp.ext.beachmart_dropdown.a.showDropout($(this), $(this).parent().parent(), $(this).parent(), 480)" 
-									onMouseOut="myApp.ext.beachmart_dropdown.a.hideDropout($(this), $(this).parent().parent(), $(this).parent())">
-									<a href='/board-shorts/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+								<li class='noArrow' onMouseOver="myApp.ext.beachmall_begin.a.showDropout($(this), $(this).parent().parent(), $(this).parent(), 480)" 
+									onMouseOut="myApp.ext.beachmall_begin.a.hideDropout($(this), $(this).parent().parent(), $(this).parent())">
+									<a href='/board-shorts/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Board Shorts
 									</a>
 									<div class='dropout out dropout7'>
                                     	<ul>
 											<li class='defaultDOImage'>
-												<a class='stockImageContainer' href='/board-shorts/' data-navcat='.beachwear.beach-swimwear.board-shorts' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());">Board Shorts</a> 
+												<a class='stockImageContainer' href='/board-shorts/' data-navcat='.beachwear.beach-swimwear.board-shorts' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());">Board Shorts</a> 
 												<div class='dropdownBGRight'></div>
 											</li>
-											<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout2($(this), $(this).parent().parent());'>
-												<a href='/boy-board-shorts/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
+											<li onMouseOver='myApp.ext.beachmall_begin.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmall_begin.a.hideHoverout2($(this), $(this).parent().parent());'>
+												<a href='/boy-board-shorts/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
 													Boy&#39;s Board Shorts
 												</a>
 												<ul data-dropdown-link=".beachwear.beach-swimwear.board-shorts.boys-boardshorts" data-second-tier="1" class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout1'></ul>
 											</li>
-											<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout2($(this), $(this).parent().parent());'>
-												<a href='/girls-board-shorts/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
+											<li onMouseOver='myApp.ext.beachmall_begin.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmall_begin.a.hideHoverout2($(this), $(this).parent().parent());'>
+												<a href='/girls-board-shorts/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
 													Girl&#39;s Board Shorts
 												</a>
 												<ul data-dropdown-link=".beachwear.beach-swimwear.board-shorts.girls-board-shorts" data-second-tier="1" class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout2'></ul>
@@ -574,25 +574,25 @@ ANIMATION TESTING
 										</ul>
 									</div>
 								</li>
-								<li class='noArrow' onMouseOver="myApp.ext.beachmart_dropdown.a.showDropout($(this), $(this).parent().parent(), $(this).parent(), 480)" 
-									onMouseOut="myApp.ext.beachmart_dropdown.a.hideDropout($(this), $(this).parent().parent(), $(this).parent())">
-									<a href='/rash-guards/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+								<li class='noArrow' onMouseOver="myApp.ext.beachmall_begin.a.showDropout($(this), $(this).parent().parent(), $(this).parent(), 480)" 
+									onMouseOut="myApp.ext.beachmall_begin.a.hideDropout($(this), $(this).parent().parent(), $(this).parent())">
+									<a href='/rash-guards/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Rashguard
 									</a>
 									<div class='dropout out dropout8'>
                                     	<ul>
 											<li class='defaultDOImage'>
-												<a class='stockImageContainer' href='/rash-guards/' data-navcat='.beachwear.beach-swimwear.rashguard' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());">Rashguard</a> 
+												<a class='stockImageContainer' href='/rash-guards/' data-navcat='.beachwear.beach-swimwear.rashguard' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());">Rashguard</a> 
 												<div class='dropdownBGRight'></div>
 											</li>
-											<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout2($(this), $(this).parent().parent());'>
-												<a href='/girls-rash-guards/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
+											<li onMouseOver='myApp.ext.beachmall_begin.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmall_begin.a.hideHoverout2($(this), $(this).parent().parent());'>
+												<a href='/girls-rash-guards/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
 													Girl&#39;s Rash Guards
 												</a>
 												<ul data-dropdown-link=".beachwear.beach-swimwear.rashguard.girls-rash-guard" data-second-tier="1" class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout1'></ul>
 											</li>
-											<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout2($(this), $(this).parent().parent());'>
-												<a href='/kids-baby-rash-guards/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
+											<li onMouseOver='myApp.ext.beachmall_begin.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmall_begin.a.hideHoverout2($(this), $(this).parent().parent());'>
+												<a href='/kids-baby-rash-guards/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
 													Kid&#39;s / Baby Rash Guards
 												</a>
 												<ul data-dropdown-link=".beachwear.beach-swimwear.rashguard.kids-rash-guard" data-second-tier="1" class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout2'></ul>
@@ -605,56 +605,56 @@ ANIMATION TESTING
                             </ul>
                         </div>
                     </div>
-					<div class='singleDropdown floatLeft sprite' onMouseOver="myApp.ext.beachmart_dropdown.a.showDropdown($(this),535);" onMouseOut="myApp.ext.beachmart_dropdown.a.hideDropdown($(this));">
+					<div class='singleDropdown floatLeft sprite' onMouseOver="myApp.ext.beachmall_begin.a.showDropdown($(this),535);" onMouseOut="myApp.ext.beachmall_begin.a.hideDropdown($(this));">
                     	<div class='dropdownBorderContainer'>
 							<div class='dropdownBorderMaker'>
-								<a href='/umbrellas-shelters/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent());">UMBRELLAS</a>
+								<a href='/umbrellas-shelters/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent());">UMBRELLAS</a>
 							</div>
 						</div>
 						<div class='umbrellasDD dropdown floatLeft'>
 							<div class='defaultDDImage'>
-								<a class='stockImageContainer' href='/umbrellas-shelters/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"><img src='images/beach_umbrella_wtw760b.jpg' width='210' height='210' alt='umbrellas' data-apptimize="embed" /></a> <!-- https://www.beachmall.com/media/img/beachmart/W210-H210-Bffffff/twt/beach_umbrella_wtw760b -->
+								<a class='stockImageContainer' href='/umbrellas-shelters/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent().parent());"><img src='images/beach_umbrella_wtw760b.jpg' width='210' height='210' alt='umbrellas' data-apptimize="embed" /></a> <!-- https://www.beachmall.com/media/img/beachmart/W210-H210-Bffffff/twt/beach_umbrella_wtw760b -->
 								<div class="dropdownBGRight"></div>
 							</div>
                             <ul class='listStyleNone floatLeft dropoutUL'>
-								<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'> <!--data-hoverproduct="PDADDC1" onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent());" -->
-									<a href='/beach-umbrellas/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+								<li onMouseOver='myApp.ext.beachmall_begin.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmall_begin.a.hideHoverout($(this));'> <!--data-hoverproduct="PDADDC1" onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent());" -->
+									<a href='/beach-umbrellas/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Beach Umbrellas
 									</a>
 									<ul data-dropdown-link=".beach-umbrellas-shelter.beach-umbrella" class='hoverProductContainer hoverout listStyleNone'></ul>	
-										<!-- LIST USAGE NOT IMPLIMENTED <button class='catSearchHomeDropdown' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('category',{'navcat':'.beach-umbrellas-shelter.beach-umbrella', 'templateID':'categoryTemplateWithSpecialList'});">Best Selling Items</button>-->
+										<!-- LIST USAGE NOT IMPLIMENTED <button class='catSearchHomeDropdown' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent().parent()); return showContent('category',{'navcat':'.beach-umbrellas-shelter.beach-umbrella', 'templateID':'categoryTemplateWithSpecialList'});">Best Selling Items</button>-->
 								</li>
-                                <li class='noArrow' onMouseOver="myApp.ext.beachmart_dropdown.a.showDropout($(this), $(this).parent().parent(), $(this).parent(), 480)" 
-									onMouseOut="myApp.ext.beachmart_dropdown.a.hideDropout($(this), $(this).parent().parent(), $(this).parent())">
-									<a href='/market-patio-umbrellas/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+                                <li class='noArrow' onMouseOver="myApp.ext.beachmall_begin.a.showDropout($(this), $(this).parent().parent(), $(this).parent(), 480)" 
+									onMouseOut="myApp.ext.beachmall_begin.a.hideDropout($(this), $(this).parent().parent(), $(this).parent())">
+									<a href='/market-patio-umbrellas/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Market &#38; Patio Umbrellas
 									</a>
 									<div class='dropout out dropout2'>
                                         <ul>
 											<li class='defaultDOImage'>
-												<a class='stockImageContainer' href='/market-patio-umbrellas/' data-navcat='.beach-umbrellas-shelter.patio-umbrella' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());"></a> 
+												<a class='stockImageContainer' href='/market-patio-umbrellas/' data-navcat='.beach-umbrellas-shelter.patio-umbrella' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());"></a> 
 												<div class='dropdownBGRight'></div>
 											</li>
-											<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout2($(this), $(this).parent().parent());'>
-												<a href='/6-foot-wide-umbrellas/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
+											<li onMouseOver='myApp.ext.beachmall_begin.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmall_begin.a.hideHoverout2($(this), $(this).parent().parent());'>
+												<a href='/6-foot-wide-umbrellas/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
 													6 Foot Umbrellas
 												</a>
 												<ul data-dropdown-link=".beach-umbrellas-shelter.patio-umbrella.6-foot-patio-umbrellas" data-second-tier="1" class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout1'></ul>
 											</li>
-											<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout2($(this), $(this).parent().parent());'>
-												<a href='/7-foot-wide-umbrellas/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
+											<li onMouseOver='myApp.ext.beachmall_begin.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmall_begin.a.hideHoverout2($(this), $(this).parent().parent());'>
+												<a href='/7-foot-wide-umbrellas/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
 													7 Foot Umbrellas
 												</a>
 												<ul data-dropdown-link=".beach-umbrellas-shelter.patio-umbrella.7-foot-patio-umbrellas" data-second-tier="1" class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout2'></ul>
 											</li>
-											<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout2($(this), $(this).parent().parent());'>
-												<a href='/9-foot-wide-umbrellas-/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
+											<li onMouseOver='myApp.ext.beachmall_begin.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmall_begin.a.hideHoverout2($(this), $(this).parent().parent());'>
+												<a href='/9-foot-wide-umbrellas-/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
 													9 Foot Umbrellas
 												</a>
 												<ul data-dropdown-link=".beach-umbrellas-shelter.patio-umbrella.offset-umbrellas" data-second-tier="1" class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout3'></ul>
 											</li>
-											<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout2($(this), $(this).parent().parent());'>
-												<a href='/11-foot-wide-umbrellas-/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
+											<li onMouseOver='myApp.ext.beachmall_begin.a.showHoverout2($(this), $(this).parent().parent());' onMouseOut='myApp.ext.beachmall_begin.a.hideHoverout2($(this), $(this).parent().parent());'>
+												<a href='/11-foot-wide-umbrellas-/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent());">
 													11 Foot Umbrellas
 												</a>
 												<ul data-dropdown-link=".beach-umbrellas-shelter.patio-umbrella.market-umbrellas" data-second-tier="1" class='hoverProductContainer innerHovProdCont hoverout listStyleNone dropout4'></ul>
@@ -663,8 +663,8 @@ ANIMATION TESTING
                                         </ul>
                                 	</div>
 								</li>
-								<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'>
-									<a href='/umbrella-accessories/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+								<li onMouseOver='myApp.ext.beachmall_begin.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmall_begin.a.hideHoverout($(this));'>
+									<a href='/umbrella-accessories/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Umbrella Accessories
 									</a>
 									<ul data-dropdown-link=".beach-umbrellas-shelter.umbrella-stand-stands-base" class='hoverProductContainer hoverout listStyleNone dropout3'></ul>
@@ -673,26 +673,26 @@ ANIMATION TESTING
                             </ul>
                         </div>
                     </div>
-					<div class='singleDropdown floatLeft sprite' onMouseOver="myApp.ext.beachmart_dropdown.a.showDropdown($(this),535);" onMouseOut="myApp.ext.beachmart_dropdown.a.hideDropdown($(this));">
+					<div class='singleDropdown floatLeft sprite' onMouseOver="myApp.ext.beachmall_begin.a.showDropdown($(this),535);" onMouseOut="myApp.ext.beachmall_begin.a.hideDropdown($(this));">
                     	<div class='dropdownBorderContainer'>
 							<div class='dropdownBorderMaker'>
-								<a href='/umbrellas-shelters/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent());">SHELTERS</a>
+								<a href='/umbrellas-shelters/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent());">SHELTERS</a>
 							</div>
 						</div>
 						<div class='shelterDD dropdown floatLeft'>
 							<div class='defaultDDImage'>
-								<a class='stockImageContainer' href='/umbrellas-shelters/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());"><img src='images/beach_umbrella_wtw760b.jpg' width='210' height='210' alt='shelters' data-apptimize="embed" /></a> <!-- https://www.beachmall.com/media/img/beachmart/W210-H210-Bffffff/twt/beach_umbrella_wtw760b -->
+								<a class='stockImageContainer' href='/umbrellas-shelters/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent().parent());"><img src='images/beach_umbrella_wtw760b.jpg' width='210' height='210' alt='shelters' data-apptimize="embed" /></a> <!-- https://www.beachmall.com/media/img/beachmart/W210-H210-Bffffff/twt/beach_umbrella_wtw760b -->
 								<div class="dropdownBGRight"></div>
 							</div>
                             <ul class='listStyleNone floatLeft dropoutUL'>
-								<li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'> <!--data-hoverproduct="PDADDC1"-->
-									<a href='/beach-cabanas/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+								<li onMouseOver='myApp.ext.beachmall_begin.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmall_begin.a.hideHoverout($(this));'> <!--data-hoverproduct="PDADDC1"-->
+									<a href='/beach-cabanas/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Beach Cabanas
 									</a>
 									<ul data-dropdown-link=".beach-umbrellas-shelter.beach-cabana" class='hoverProductContainer hoverout listStyleNone'></ul>	
 								</li>
-                                <li onMouseOver='myApp.ext.beachmart_dropdown.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmart_dropdown.a.hideHoverout($(this));'>
-									<a href='/beach-tents-shelters/' onClick="myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent());">
+                                <li onMouseOver='myApp.ext.beachmall_begin.a.showHoverout($(this));' onMouseOut='myApp.ext.beachmall_begin.a.hideHoverout($(this));'>
+									<a href='/beach-tents-shelters/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent().parent());">
 										Beach Tents
 									</a>
 									<ul data-dropdown-link=".beach-umbrellas-shelter.beach-tent-shelters" class='hoverProductContainer hoverout listStyleNone dropout2'></ul>
@@ -732,52 +732,50 @@ ANIMATION TESTING
         </div>
         <div class='footerNewsletter'>
         	<h3 class='floatLeft marginRight'>STAY UPDATED<br><span>SIGN UP FOR OUR NEWSLETTER</span></h3>
-			<a href="#!customer/createaccount/" class="joinButton submit floatRight">SIGN-UP</a>
-	<!-- Newsletter sign-up tied to account creation now. 
-			<form action='#' id='subscribeFrmFooter' name='subscribeFrm' class='newsletterSubscriptionForm floatLeft' method="get">
+			<form data-app-submit="beachmall_begin|newsletterSignup" name='subscribeFrm' class='newsletterSubscriptionForm floatLeft'>
                 <fieldset >
                     <input type='hidden' name='newsletter-1' value='1' />
                     <input type="submit" class="joinButton submit floatRight " value="SIGN-UP" />
-                    <input required='required' type='email' placeholder='E-mail Address' class='emailField floatRight newsSubscribeInput textbox email handleDefault'  maxlength='50' size='25' name='login' id='subscribeLoginFooter' />                 
-                	<input required='required' type='text'  placeholder='Full Name' class='nameField floatRight newsSubscribeInput textbox fullname handleDefault' maxlength='50' size='25' name='fullname' id='subscribeFullnameFooter' />
+                    <input required='required' type='email' placeholder='E-mail Address' class='emailField floatRight newsSubscribeInput textbox email handleDefault'  maxlength='50' size='25' name='email' />                 
+                	<input required='required' type='text'  placeholder='Full Name' class='nameField floatRight newsSubscribeInput textbox fullname handleDefault' maxlength='50' size='25' name='fullname' />
                 </fieldset>
 			</form>
-    -->    
 		</div>
     </section>
 
 	<section class='footerLinksContainer'>
     	<ul>
         	<li>CATEGORIES</li>
-            <li><a href='#!beach-accessories/'>Beach Accesories</a></li>
-            <li><a href='#!beach-chairs/'>Beach Chairs</a></li>
-            <li><a href='#!recreation/'>Recreation</a></li>
-            <li><a href='#!umbrellas-shelters/'>Umbrellas &#38; Shelter</a></li>
-            <li><a href='#!beach-wear/'>Beach Wear</a></li>
+            <li><a href='/beach-accessories/'>Beach Accesories</a></li>
+            <li><a href='/beach-chairs/'>Beach Chairs</a></li>
+            <li><a href='/recreation/'>Recreation</a></li>
+            <li><a href='/umbrellas-shelters/'>Umbrellas &#38; Shelter</a></li>
+            <li><a href='/beach-wear/'>Beach Wear</a></li>
         </ul>
         <ul>
         	<li>ACCOUNT SERVICES</li>
             <li><a href='#!customer/createaccount/'>Log&#45;in or Create Account</a></li>
             <li><a href="#!customer/logout/">Log out</a></li>
-            <li><span onclick="myApp.ext.quickstart.u.showCartInModal({'templateID':'cartTemplate'});">View Shopping Cart</span></li>
-            <li><a href='#!customer/orders/'>Order Status</a></li>
+            <!-- <li><span onclick="myApp.ext.quickstart.u.showCartInModal({'templateID':'cartTemplate'});">View Shopping Cart</span></li> modal cart-->
+            <li><a href="/cart/">View Shopping Cart</span></li>
+            <li><a href="/my_order_history/">Order Status</a></li>
         </ul>
         <ul>
        	  <li>NAVIGATE</li>
-            <li><a href='#!/'>Home</a></li>
-            <li><a href="#!company/about/">About Us</a></li>
-            <li><a href="#!company/contact/" onClick="myApp.ext.beachmall_store.a.resetContactPID();">Contact Us</a></li>
-            <li><a href="#!company/faq/">FAQ</a></li>
+            <li><a href='/'>Home</a></li>
+            <li><a href="/about_us/">About Us</a></li>
+            <li><a href="/contact_us/" onClick="myApp.ext.beachmall_store.a.resetContactPID();">Contact Us</a></li>
+            <li><a href="/frequently_asked_questions/">FAQ</a></li>
             <li><a href='#!sitemap/'>Site Map</a></li>
 			<!--<li><a href="http://reviews.app.beachmall.com <http://reviews.app.beachmall.com/>">Product Reviews</a></li>-->
 			<!--<li><a href="http://reviews.beachmall.com <http://reviews.beachmall.com/>">Product Reviews</a></li>-->
-            <li><a href="#!company/return/">Returns &#38; Exchanges</a></li>
-            <li><a href="#!company/privacy/">Privacy Policy</a></li>
+            <li><a href="/return_policy/">Returns &#38; Exchanges</a></li>
+            <li><a href="/privacy_policy/">Privacy Policy</a></li>
         </ul>
         <ul>
         	<li>ADDITIONAL LINKS</li>
             <li><a href='#!buyer-guides/'>Buying Guides</a></li>
-            <li><a href="#!company/contact/" onClick="myApp.ext.beachmall_store.a.resetContactPID();">Wholesale</a></li>
+            <li><a href="/contact_us/" onClick="myApp.ext.beachmall_store.a.resetContactPID();">Wholesale</a></li>
             <li><a href="#!affiliates/">Affiliates</a></li>
             <li><a href="https://www.facebook.com/BeachMall" target="_blank">Facebook</a></li>
             <li><a href="https://twitter.com/Beachmall" target="_blank">Twitter</a></li>

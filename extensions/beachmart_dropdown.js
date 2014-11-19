@@ -38,18 +38,7 @@ var beachmart_dropdown = function(_app) {
 		init : {
 			onSuccess : function()	{
 				
-//				_app.u.dump('BEGIN _app.ext.beachmart_dropdown.init.onSuccess ');	
-				//get the json that lists which dropdown search buttons have results and save to var for access later.
-				$.getJSON("_dropdownsearches-min.json?_v="+(new Date()).getTime(), function(json) {
-					_app.ext.beachmart_dropdown.vars.dropdownsearches = json.dropdownsearches
-					setTimeout(function() {_app.ext.beachmart_dropdown.u.makedropdownlinks();},1000); //timeout here to allow data to populate
-					//dump('----dropdown search exclusion list:'); dump(_app.ext.beachmart_dropdown.vars.dropdownsearches);
-				}).fail(function(){_app.u.throwMessage("DROPDOWN SEARCH LIST FAILED TO LOAD - there is a bug in _dropdownsearches-min.json")});
-				
-				$.getJSON("_dropdownimages-min.json?_v="+(new Date()).getTime(), function(json) {
-					_app.ext.beachmart_dropdown.vars.dropdownImages = json.dropdownImages
-					//_app.ext.beachmart_dropdown.u.showDropdownImages();
-				}).fail(function(){_app.u.throwMessage("DROPDOWN IMAGES FAILED TO LOAD - there is a bug in _dropdown-image.json")});
+
 			
 				var r = true; //return false if extension won't load for some reason (account config, dependencies, etc).
 				return r;
@@ -62,7 +51,7 @@ var beachmart_dropdown = function(_app) {
 			startExtension : {
 				onSuccess : function() {
 					if(_app.ext.powerReviews_reviews && _app.ext.store_filter){
-		//				_app.u.dump("beachmart dropdown Extension Started");
+						_app.u.dump("------------> beachmart dropdown Extension Started");
 						_app.ext.beachmart_dropdown.u.loadHoverProducts(); //load function
 						//_app.ext.beachmart_dropdown.u.renderTagsElastic();
 						
@@ -104,118 +93,7 @@ var beachmart_dropdown = function(_app) {
 
 		a : {
 			
-			//SHOW MAIN CATEGORY DROPDOWN MENU
-			showDropdown : function ($tag, ht) {
-				var $dropdown = $(".dropdown", $tag);
-				var height = ht;
-				$dropdown.children().each(function(){
-					$(this).outerHeight(true);
-				});
-				$dropdown.stop().animate({"height":height+"px"}, 500);
-			},
-            
-			//ANIMATE RETRACTION OF MAIN CATEGORY DROPDOWN MENU
-			hideDropdown : function ($tag) {
-				$(".dropdown", $tag).stop().animate({"height":"0px"}, 500);
-			},
 			
-			//IMEDIATE RETRACTION OF MAIN CATEGORY DROPDOWN MENU WHEN HEADER IS CLICKED
-			clickDropdown : function ($tag) {
-				$(".dropdown", $tag).stop().animate({"height":"0px"}, 0);
-			},
-			
-			//SHOW MAIN CATEGORY 2ND LEVEL DROPOUT MENU
-			showDropout : function ($tag, $parentparent, $parent, wd) {
-				var $dropout = $(".dropout", $tag);
-				var width = wd;
-				$dropout.children().each(function(){
-					$(this).outerWidth(true);
-				});
-				$('.defaultDDImage',$parentparent).css({"right":"-300px"});	//hide default image so sub-cat image can display
-				$parentparent.css({"width":720+"px"},1000);
-				$parent.stop().animate({"width":700+"px"},0);
-				$dropout.stop().animate({"width":width+"px"});
-			},
-			
-			//ANIMATE RETRACTION OF MAIN CATEGORY 2ND LEVEL DROPOUT MENU
-			hideDropout : function ($tag, $parentparent, $parent) {
-				$(".dropout", $tag).stop().animate({"width":"0px"}, 1000);
-				$parent.stop().animate({"width":460+"px"}, 1000);
-				$parentparent.css({"width":480+"px"}, 1000);
-				$('.defaultDDImage',$parentparent).css({"right":"-4px"});
-			},
-			
-			//IMEDIATE RETRACTION OF MAIN CATEGORY DROPDOWN MENU WHEN 2ND LEVEL LINK IS CLICKED
-			clickDropdown : function ($tag) {
-				$(".dropdown", $tag).stop().animate({"height":"0px"}, 0);
-			},
-			
-			//SHOW HOVERPRODUCT DROPOUT MENU
-			showHoverout : function ($tag) {
-				var $hoverout = $(".hoverout", $tag);
-				var width = 240;
-				$hoverout.children().each(function(){
-					$(this).outerWidth(true);
-				});
-				$('.defaultDDImage',$tag.parent().parent().parent()).animate({"opacity":"0"},0);
-				$hoverout.stop().animate({"width":width+"px",opacity:1}, 0);
-			},
-			
-			//ANIMATE RETRACTION OF HOVERPRODUCT DROPOUT MENU
-			hideHoverout : function ($tag) {
-				$(".hoverout", $tag).stop().animate({"width":"0px",opacity:0}, 0);
-				$('.defaultDDImage',$tag.parent().parent().parent()).animate({"opacity":"1"},0);
-			},
-			
-			//SHOW HOVERPRODUCT DROPOUT MENU
-			showHoverout2 : function ($tag, $parent) {
-				var $hoverout = $(".hoverout", $tag);
-				var width = 240;
-				$hoverout.children().each(function(){
-					$(this).outerWidth(true);
-				});
-				$('.defaultDOImage',$tag.parent()).animate({"opacity":"0"},0);
-				$hoverout.stop().animate({"width":width+"px",opacity:1},0);
-				//$parent.css({"width":680+"px"}, 000);
-			},
-			
-			//ANIMATE RETRACTION OF HOVERPRODUCT DROPOUT MENU
-			hideHoverout2 : function ($tag, $parent) {
-				$(".hoverout", $tag).stop().animate({"width":"0px",opacity:0},0);
-			//	$parent.css({"width":485+"px"}, 000);
-				$('.defaultDOImage',$tag.parent()).animate({"opacity":"1"},0);
-			},
-			
-			//SHOW GEO DROPDOWN MENU WITH CHECK FOR A TIMEOUT TO PREVENT RE-HOVER AFTER CLOSE BUTTON CLICK FROM KEEPING IT OPEN
-			showGeoDropdown : function ($tag, ht) {
-				//dump('-----showdropdown data:'); dump($(".dropdown", $tag).data('timeout'));
-				if(!$(".dropdown", $tag).data('timeout') || $(".dropdown", $tag).data('timeout') === 'false') {
-					var $dropdown = $(".dropdown", $tag);
-					var height = ht || 0;
-			//		$dropdown.children().each(function(){ THIS WAS IN PLACE OF IF/ELSE BELOW WHEN ONLY USED A PASSED ARGUMENT FOR HEIGHT.
-			//			$(this).outerHeight(true);
-			//		});
-					if(height != 0){
-						$dropdown.children().each(function(){
-							$(this).outerHeight(true);
-						});
-					} else{
-						$dropdown.children().each(function(){
-								height += $(this).outerHeight();
-								$(this).outerHeight(true);
-						});
-					}
-					$dropdown.stop().animate({"height":height+"px"}, 500);
-				}
-			},
-            
-			//ANIMATE RETRACTION OF HEADER GEO DROPDOWN MENU WITH TIMEOUT TO PREVENT ACCIDENTAL RE-HOVER FROM KEEPING IT OPEN
-			hideGeoDropdown : function ($tag) {
-				$(".dropdown", $tag).data('timeout','true');
-				$(".dropdown", $tag).stop().animate({"height":"0px"}, 500);
-				setTimeout(function(){$(".dropdown", $tag).data('timeout','false')}, 505);
-				//dump('----hidedropdown data:'); dump($(".dropdown", $tag).data('timeout'));
-			},
 			
 			
 			
@@ -279,26 +157,9 @@ var beachmart_dropdown = function(_app) {
 			
 		tlcFormats : {
 			
-			dropdownseoanchor : function(data, thisTLC) {
-				var args = thisTLC.args2obj(data.command.args, data.globals);
-				data.globals.binds[data.globals.focusBind] = _app.ext.store_routing.u.categorySearchAnchor(data.value.path, (args.seo ? data.value.pretty : ''),args.searchtype);
-				return true;
-			},
 			
-			//checks the var copied from _dropdownsearches-min.json for search buttons that have to results and removes them to prevent empty search pages from being made.
-			hideifexlcuded : function(data, thisTLC) {
-				//var args = thisTLC.args2obj(data.command.args, data.globals);
-				//dump('---hideifexlcuded args:'); dump(data.value);
-				//dump('---hideifexlcuded data-:'); dump(data.globals.tags[data.globals.focusTag].attr('data-exclude'));
-				var rootCat = "."+data.value.split('.')[1]; //dump('---root Cat'); dump(rootCat);
-				var searchType = data.globals.tags[data.globals.focusTag].attr('data-exclude');
-				var navCat = data.value; //dump(navCat);
-				var searchValue = _app.ext.beachmart_dropdown.vars.dropdownsearches[rootCat][navCat][searchType];
-
-				if(searchValue && searchValue == 0) { data.globals.tags[data.globals.focusTag].remove(); } 
-				else { /*this element is shown to return a result in beachmart_dropdown.vars.dropdownsearches*/ }
-					//dump('---dropdown var:'); dump(_app.ext.beachmart_dropdown.vars.dropdownsearches[navCat][searchType]); 
-			}
+			
+			
 			
 		},
 			
@@ -306,54 +167,12 @@ var beachmart_dropdown = function(_app) {
 		
 		u : {
 		
-			//checks ul's in header for an assigned category name, then builds the image and search links that belong in each list item.
-			//TODO: support for hiding links that have no results.
-			makedropdownlinks : function() {
-//				dump('START beachmall_store.u.makedropdownlinks');
-				$('[data-dropdown-link]','.dropdownsContainer').each(function(){
-				var navcat = $(this).attr('data-dropdown-link');
-				var $this = $(this);
-				var _tag = { 
-					"callback": function(rd){
-						//rd.$tag.tlc({'datapointer':rd.datapointer, verb:"translate"}); //this way doesn't use a template
-						rd.$tag.tlc({'datapointer':rd.datapointer, verb:"transmogrify", templateid:"dropdownAnchorListTemplate"});
-						var stockL = navcat.split('.').length;
-						var stockNavcat = "."+navcat.split('.')[stockL-1];
-						//$('[data-stock-image]',$(this)).attr('data-navcat',stockNavcat);
-						$('.stockImageContainer',$this).removeClass('loadingBG').append(_app.ext.beachmart_dropdown.u.makeDropdownImage(_app.ext.beachmart_dropdown.vars.dropdownImages[stockNavcat],210,210,"ffffff"));
-						$this.append("<div class='dropdownBGRight'></div>");
-					},
-					"$tag":$(this)
-				}
-				_app.calls.appNavcatDetail.init({"path":navcat,"deatil":"fast"},_tag);
-				});
-				_app.model.dispatchThis();
-			//?seorequest=1&pageType=product&pid=
-				
-	/*				var $this = $(this);
-					var navcat = $this.attr('data-dropdown-link');
-					var stockL = navcat.split('.').length;
-					var stockNavcat = "."+navcat.split('.')[stockL-1];
-					if($this.attr('data-second-tier')) { var thisClick =  "onClick='myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent().parent().parent().parent());'"}
-					else { var thisClick = "onClick='myApp.ext.beachmart_dropdown.a.clickDropdown($(this).parent().parent().parent().parent().parent());'" }
-					
-					$this.append(
-							"<a href='#!category/"+navcat+"' class='stockImageContainer' data-navcat='"+stockNavcat+"' "+thisClick+"></a>"
-						+	"<a href='#!bestsellers/"+navcat+"' class='catSearchHomeDropdown' "+thisClick+">Best Selling Items</a>"	
-						+	"<a href='#!featured/"+navcat+"' class='catSearchHomeDropdown' "+thisClick+">Featured Items</a>"
-						+	"<a href='#!clearance/"+navcat+"' class='catSearchHomeDropdown' "+thisClick+">Clearance Items</a>"
-						+	"<a href='#!category/"+navcat+"' class='catSearchHomeDropdown' "+thisClick+">See All Items</a>"
-						+	"<div class='dropdownBGRight'></div>"
-					);
-					
-//					dump('----Link to this dropdown category'); dump($(this).attr('data-dropdown-link'));
-				});
-	*/		},
+			
 	
 	
 			categorySearchAnchor : function(path,seo,type) {
 				if(seo) {
-					seo = _app.ext.beachmall_store.u.removeUnwantedChars(seo);
+					seo = _app.ext.beachmall_begin.u.removeUnwantedChars(seo);
 					return "/"+encodeURIComponent(seo).replace(/%20/g, "-")+"/"+type+"/c/"+path; 
 				}
 				else return "/category/"+type+"/"+path;
@@ -417,34 +236,7 @@ var beachmart_dropdown = function(_app) {
 				})
 			},
 			
-			makeDropdownImage : function(JSON, w, h, b) {
-//				_app.u.dump(JSON);
-				var $img = $(_app.u.makeImage({
-					tag : true,
-					w   	: w,
-					h		: h,
-					b		: b,
-					name	: JSON.src,
-					alt		: JSON.alt,
-					title	: JSON.title
-				}));
-	//			can be used to add links later if desired
-	//			if(bannerJSON.prodLink) {
-	//				$img.addClass('pointer').data('pid', bannerJSON.prodLink).click(function() {
-	//
-	//			showContent('product',{'pid':$(this).data('pid')});
-	//				});
-	//			}
-	//			else if(bannerJSON.catLink) {
-	//				$img.addClass('pointer').data('navcat', bannerJSON.catLink).click(function() {
-	//					showContent('category',{'navcat':$(this).data('navcat')});
-	//				});
-	//			}
-	//			else {
-	//				//just a banner!
-	//			}
-				return $img;
-			}
+			
 			
 //pass in form as object.  This function will verify that each fieldset has the appropriate attributes.
 //will also verify that each filterType has a getElasticFilter function.
