@@ -148,7 +148,7 @@ _app.router.appendHash({'type':'exact','route':'/','callback':'homepage'});
 _app.router.addAlias('category',	function(routeObj){_app.ext.quickstart.a.showContent(routeObj.value,	$.extend({'pageType':'category'}, routeObj.params));});
 _app.router.appendHash({'type':'match','route':'/category/{{navcat}}*','callback':'category'});
 
-_app.router.addAlias('search',		function(routeObj){_app.ext.quickstart.a.showContent(routeObj.value,	$.extend({'pageType':'search'}, routeObj.params));});
+_app.router.addAlias('search',		function(routeObj){ dump('-----> search pagetype'); dump(routeObj); _app.ext.quickstart.a.showContent(routeObj.value,	$.extend({'pageType':'search'}, routeObj.params));});
 _app.router.appendHash({'type':'match','route':'/search/tag/{{tag}}*','callback':'search'});
 _app.router.appendHash({'type':'match','route':'/search/keywords/{{KEYWORDS}}*','callback':'search'});
 
@@ -439,25 +439,39 @@ _app.extend({
 });
 	
 
-
-
 // beachmall custom alias
-_app.router.addAlias('customCatName',	function(routeObj) { dump('does this even run?'); _app.ext.quickstart.a.showContent(routeObj.route, $.extend({'pageType':'category','navcat':routeObj.navcat})); } ); 
-				_app.router.addAlias('bestsellers', function(routeObj){showContent('search',	{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':routeObj.params.navcat}},{'not':{'term':{'tags':'IS_DISCONTINUED'}}}]}}});});
-				_app.router.addAlias('featured',	function(routeObj){showContent('search',	{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}},{'term':{'prod_promo':'IS_USER4'}}]},{'term':{'app_category':routeObj.params.navcat}},{'not':{'term':{'tags':'IS_DISCONTINUED'}}}]}}});});
-				_app.router.addAlias('clearance',	function(routeObj){showContent('search',	{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beach-chair.adirondack-furniture'}},{'not':{'term':{'tags':'IS_DISCONTINUED'}}}]}}});});
-				_app.router.addAlias('homepagefeatured',	function(routeObj){showContent('search',	{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER4'}},{'term':{'tags':'IS_COLORFUL'}},{'term':{'tags':'IS_USER5'}},{'term':{'user:prod_promo':'IS_USER4'}}]},{'not':{'term':{'tags':'IS_DISCONTINUED'}}}]}}});});
-				_app.router.addAlias('homepagebestseller',	function(routeObj){showContent('search',	{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'not':{'term':{'tags':'IS_DISCONTINUED'}}}]}}});});
+				_app.router.addAlias('customCatName',	function(routeObj) {_app.ext.quickstart.a.showContent(routeObj.route, $.extend({'pageType':'category','navcat':routeObj.navcat})); } ); 
+				//the two below were for when the best seller and featured carousels on the homepage were populated w/ search. It may come back into style.
+				//_app.router.addAlias('homepagefeatured',	function(routeObj){showContent('search',	{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER4'}},{'term':{'tags':'IS_COLORFUL'}},{'term':{'tags':'IS_USER5'}},{'term':{'user:prod_promo':'IS_USER4'}}]},{'not':{'term':{'tags':'IS_DISCONTINUED'}}}]}}});});
+				//_app.router.addAlias('homepagebestseller',	function(routeObj){showContent('search',	{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'not':{'term':{'tags':'IS_DISCONTINUED'}}}]}}});});
 				
 // beachmall custom append
 				_app.router.appendHash({'type':'match','route':'/{{seo}}/c/{{navcat}}','callback':'category'});
 				_app.router.appendHash({'type':'match','route':'/{{seo}}/p/{{pid}}.html','callback':'product'});
 				_app.router.appendHash({'type':'match','route':'/redirect/p/pid={{pid}}','callback':'product'});
-				_app.router.appendHash({'type':'match','route':'/{{seo}}/bestsellers/c/{{navcat}}*','callback':'bestsellers'});
-				_app.router.appendHash({'type':'match','route':'/{{seo}}/featured/c/{{navcat}}*','callback':'featured'});
-				_app.router.appendHash({'type':'match','route':'/{{seo}}/clearance/c/{{navcat}}*','callback':'clearance'});
 				_app.router.appendHash({'type':'match','route':'/homepagefeatured','callback':'homepagefeatured'});
 				_app.router.appendHash({'type':'match','route':'/homepagebestseller','callback':'homepagebestseller'});
+				_app.router.appendHash({'type':'match','route':'/{{seo}}/bestsellers/c/{{navcat}}*','callback':function(routeObj){
+					$.extend(routeObj.params,{
+						'pageType':'search',
+						'elasticsearch' : {'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':routeObj.params.navcat}},{'not':{'term':{'tags':'IS_DISCONTINUED'}}}]}}
+					});
+					_app.ext.quickstart.a.showContent(routeObj.value, routeObj.params);
+				}});
+				_app.router.appendHash({'type':'match','route':'/{{seo}}/featured/c/{{navcat}}*','callback':function(routeObj){
+					$.extend(routeObj.params,{
+						'pageType':'search',
+						'elasticsearch' : {'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}},{'term':{'prod_promo':'IS_USER4'}}]},{'term':{'app_category':routeObj.params.navcat}},{'not':{'term':{'tags':'IS_DISCONTINUED'}}}]}}
+					});
+					_app.ext.quickstart.a.showContent(routeObj.value, routeObj.params);
+				}});
+				_app.router.appendHash({'type':'match','route':'/{{seo}}/clearance/c/{{navcat}}*','callback':function(routeObj){
+					$.extend(routeObj.params,{
+						'pageType':'search',
+						'elasticsearch' : {'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beach-chair.adirondack-furniture'}},{'not':{'term':{'tags':'IS_DISCONTINUED'}}}]}}
+					});
+					_app.ext.quickstart.a.showContent(routeObj.value, routeObj.params);
+				}});
 				_app.router.appendHash({'type':'exact','route':'/viewallfeatured/','callback':function(routeObj){
 					$.extend(routeObj.params,{
 						'pageType':'static',
@@ -477,8 +491,7 @@ _app.router.addAlias('customCatName',	function(routeObj) { dump('does this even 
 					_app.ext.quickstart.a.showContent(routeObj.value,routeObj.params);
 				}});
 				
-				
-				
+
 				_app.router.appendHash({'type':'match','route':'/beach-accessories/','navcat':'.beach-accessories','callback':'customCatName'});
 				_app.router.appendHash({'type':'match','route':'/beach-bags-totes/','navcat':'.beach-accessories.beach-bags-totes','callback':'customCatName'});
 				_app.router.appendHash({'type':'match','route':'/beach-towels-blankets/','navcat':'.beach-accessories.beach-blanket','callback':'customCatName'});
@@ -554,7 +567,7 @@ _app.router.addAlias('customCatName',	function(routeObj) { dump('does this even 
 				_app.router.appendHash({'type':'match','route':'/kids-sun-hats/','navcat':'.beachwear.beach-hat.kids-hats','callback':'customCatName'});
 				_app.router.appendHash({'type':'match','route':'/beach-pool-apparels/','navcat':'.beachwear.beach-swimwear','callback':'customCatName'});
 				_app.router.appendHash({'type':'match','route':'/babies-swim-wear/','navcat':'.beachwear.beach-swimwear.babies-swimsuit','callback':'customCatName'});
-				//beach-wear used as pretty name twice, prepended swim to the pretty name in seo anchor function to differentiate.
+			//beach-wear used as pretty name twice, prepended swim to the pretty name in seo anchor function to differentiate.
 				_app.router.appendHash({'type':'match','route':'/swim-beach-wear/','navcat':'.beachwear.beach-swimwear.beach-wear','callback':'customCatName'});
 				_app.router.appendHash({'type':'match','route':'/boys-beach-wear/','navcat':'.beachwear.beach-swimwear.beach-wear.boys-swimwear','callback':'customCatName'});
 				_app.router.appendHash({'type':'match','route':'/girls-beach-wear/','navcat':'.beachwear.beach-swimwear.beach-wear.girls-swimwear','callback':'customCatName'});
