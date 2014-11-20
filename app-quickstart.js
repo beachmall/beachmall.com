@@ -951,7 +951,7 @@ fallback is to just output the value.
 				
 			showContent : function(uri,infoObj)	{
 				_app.ext.quickstart.vars.showContentFinished = false;
-				
+	dump(infoObj);
 				dump("BEGIN showContent ["+infoObj.pageType+"]."); dump(infoObj);
 				
 				infoObj = infoObj || {}; //could be empty for a cart or checkout

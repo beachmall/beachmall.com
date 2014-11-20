@@ -10,7 +10,7 @@ _app.u.loadScript(configURI,function(){
 	_app.vars.domain = zGlobals.appSettings.sdomain; //passed in ajax requests.
 	_app.vars.jqurl = (document.location.protocol === 'file:') ? _app.vars.testURL+'jsonapi/' : '/jsonapi/';
 	
-	var startupRequires = ['quickstart','store_filter','beachmall_begin','store_prodlist','beachmall_store'];
+	var startupRequires = ['quickstart','beachmall_begin','store_prodlist'];
 	
 	_app.require(startupRequires, function(){
 		setTimeout(function(){$('#appView').removeClass('initFooter');}, 1200);
@@ -31,12 +31,13 @@ _app.extend({
 _app.couple('quickstart','addPageHandler',{
 	"pageType" : "static",
 	"require" : [],
-	"handler" : function($container, infoObj){
+	"handler" : function($container, infoObj){   dump('static coupler infoObj'); dump(infoObj); 
 		var deferred = $.Deferred();
 		infoObj.defPipeline.addDeferred(deferred);
 		if(infoObj.deferred){
 			infoObj.defPipeline.addDeferred(infoObj.deferred);
 			}
+//_app.ext.quickstart.a.showContent(routeObj.route, {'pageType':'static','templateID':routeObj.templateID});});	
 		//We use infoObj.require here because the router handlers may have put something in there.
 		//By nature, the static page handler requires nothing, but the templates it renders may require all kinds of stuff
 		infoObj.require = infoObj.require || [];
@@ -44,6 +45,7 @@ _app.couple('quickstart','addPageHandler',{
 			infoObj.verb = 'translate';
 			infoObj.templateid = infoObj.templateID;
 			var $page = new tlc().runTLC(infoObj);
+	dump($page);
 			//$page.tlc(infoObj);
 			$page.data('templateid',infoObj.templateid);
 			$page.data('pageid',infoObj.id);
@@ -409,31 +411,44 @@ _app.u.bindTemplateEvent(function(){return true;}, 'depart.scrollrestore', funct
 	$context.data('scroll-restore',scroll);
 	});
 	
-
-_app.extend({
-	"namespace":"beachmall_store",
-	"filename":"extensions/beachmall_store.js"
-});
-
-_app.extend({
-	"namespace":"store_filter",
-	"filename":"extensions/beachmart.js"
-});
-
 _app.extend({
 	"namespace":"beachmall_begin",
 	"filename":"extensions/_beachmall_begin.js"
 });
 
+_app.u.bindTemplateEvent('homepageTemplate', 'complete.beachmall_homepage',function(event,$context,infoObj) {
+	_app.ext.beachmall_homepage.u.getMainBanner();
+	_app.ext.beachmall_homepage.u.loadProductsAsList($context,$('.newArrivalUL', $context));
+	_app.ext.beachmall_homepage.u.loadProductsAsList($context,$('.bestUL', $context));
+	_app.ext.beachmall_homepage.u.loadProductsAsList($context,$('.featuredUL', $context));
+	$('.floatingBar',$context).is(":visible") ? "" : $('.floatingBar',$context).show(); //shows floating bar upon return to hompage if it's been closed.
+});
+_app.extend({
+	"namespace":"beachmall_homepage",
+	"filename":"extensions/_beachmall_homepage.js"
+});
+
+_app.extend({
+	"namespace":"beachmall_store",
+	"filename":"extensions/_beachmall_store.js"
+});
+
+_app.extend({
+	"namespace":"powerreviews_reviews",
+	"filename":"extensions/partner_powerreviews_reviews.js"
+});
+	
+
+
+
 // beachmall custom alias
 _app.router.addAlias('customCatName',	function(routeObj) { dump('does this even run?'); _app.ext.quickstart.a.showContent(routeObj.route, $.extend({'pageType':'category','navcat':routeObj.navcat})); } ); 
 				_app.router.addAlias('bestsellers', function(routeObj){showContent('search',	{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'app_category':routeObj.params.navcat}},{'not':{'term':{'tags':'IS_DISCONTINUED'}}}]}}});});
 				_app.router.addAlias('featured',	function(routeObj){showContent('search',	{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER6'}},{'term':{'tags':'IS_USER2'}},{'term':{'tags':'IS_USER3'}},{'term':{'prod_promo':'IS_USER4'}}]},{'term':{'app_category':routeObj.params.navcat}},{'not':{'term':{'tags':'IS_DISCONTINUED'}}}]}}});});
-				//_app.router.addAlias('clearance',	function(routeObj){showContent('search',	{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beach-chair.adirondack-furniture'}},{'not':{'term':{'tags':'IS_DISCONTINUED'}}}]}}});});
+				_app.router.addAlias('clearance',	function(routeObj){showContent('search',	{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_CLEARANCE'}},{'term':{'app_category':'.beach-chair.adirondack-furniture'}},{'not':{'term':{'tags':'IS_DISCONTINUED'}}}]}}});});
 				_app.router.addAlias('homepagefeatured',	function(routeObj){showContent('search',	{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER4'}},{'term':{'tags':'IS_COLORFUL'}},{'term':{'tags':'IS_USER5'}},{'term':{'user:prod_promo':'IS_USER4'}}]},{'not':{'term':{'tags':'IS_DISCONTINUED'}}}]}}});});
 				_app.router.addAlias('homepagebestseller',	function(routeObj){showContent('search',	{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'not':{'term':{'tags':'IS_DISCONTINUED'}}}]}}});});
-				_app.router.addAlias('homepagefeaturedviewall',	function(routeObj){showContent('category',{'navcat':'.', 'templateID':'categoryTemplateHomepageFeatured'});});
-				_app.router.addAlias('homepagebestsellerviewall',	function(routeObj){showContent('category',{'navcat':'.', 'templateID':'categoryTemplateHomepageBestseller'});});	
+				
 // beachmall custom append
 				_app.router.appendHash({'type':'match','route':'/{{seo}}/c/{{navcat}}','callback':'category'});
 				_app.router.appendHash({'type':'match','route':'/{{seo}}/p/{{pid}}.html','callback':'product'});
@@ -443,8 +458,26 @@ _app.router.addAlias('customCatName',	function(routeObj) { dump('does this even 
 				_app.router.appendHash({'type':'match','route':'/{{seo}}/clearance/c/{{navcat}}*','callback':'clearance'});
 				_app.router.appendHash({'type':'match','route':'/homepagefeatured','callback':'homepagefeatured'});
 				_app.router.appendHash({'type':'match','route':'/homepagebestseller','callback':'homepagebestseller'});
-				_app.router.appendHash({'type':'exact','route':'/viewallfeatured/','callback':'homepagefeaturedviewall'});
-				_app.router.appendHash({'type':'exact','route':'/viewallbestseller/','callback':'homepagebestsellerviewall'});
+				_app.router.appendHash({'type':'exact','route':'/viewallfeatured/','callback':function(routeObj){
+					$.extend(routeObj.params,{
+						'pageType':'static',
+						'templateID':'categoryTemplateHomepageFeatured',
+						'require':['templates.html','prodlist_infinite'],
+						'dataset':_app.data["appNavcatDetail|$app-site_home-page-featured"]
+					});
+					_app.ext.quickstart.a.showContent(routeObj.value,routeObj.params);
+				}});
+				_app.router.appendHash({'type':'exact','route':'/viewallbestseller/','callback':function(routeObj){
+					$.extend(routeObj.params,{
+						'pageType':'static',
+						'templateID':'categoryTemplateHomepageBestseller',
+						'require':['templates.html','prodlist_infinite'],
+						'dataset':_app.data["appNavcatDetail|$app-site_home-page-best-sellers"]
+					});
+					_app.ext.quickstart.a.showContent(routeObj.value,routeObj.params);
+				}});
+				
+				
 				
 				_app.router.appendHash({'type':'match','route':'/beach-accessories/','navcat':'.beach-accessories','callback':'customCatName'});
 				_app.router.appendHash({'type':'match','route':'/beach-bags-totes/','navcat':'.beach-accessories.beach-bags-totes','callback':'customCatName'});
@@ -597,7 +630,7 @@ _app.extend({
 	
 _app.couple('quickstart','addPageHandler',{
 	"pageType" : "homepage",
-	"require" : ['store_navcats','templates.html','store_routing'],
+	"require" : ['store_navcats','templates.html','store_routing','beachmall_homepage','store_product','beachmall_store','powerreviews_reviews'],
 	"handler" : function($container, infoObj, require){
 		infoObj.deferred = $.Deferred();
 		infoObj.defPipeline.addDeferred(infoObj.deferred);
@@ -724,6 +757,7 @@ _app.extend({
 	// });
 	
 _app.rq.push(['script',0,'lightbox/js/lightbox-2.6.min.js']);
+_app.rq.push(['script',0,'http://cdn.powerreviews.com/repos/11024/pr/pwr/engine/js/full.js']);
 
 _app.model.getGrammar("pegjs");
 

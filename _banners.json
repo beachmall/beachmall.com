@@ -1,12 +1,12 @@
 {
 	"homepageBanners" : {
 		"main" : {
-			"src"		: "banners/2012_end_summer_1.jpg",
+			"src"			: "banners/2012_end_summer_1.jpg",
 			"width"		: "573",
 			"height"	: "269",
-			"alt"		: "New Arrivals",
+			"alt"			: "New Arrivals",
 			"title"		: "New Arrivals",
-			"href"		: "#!beach-chairs/"
+			"href"		: "/beach-chairs/"
 		}
 	}
 }

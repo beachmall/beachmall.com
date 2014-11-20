@@ -41,8 +41,6 @@ var beachmall_store = function(_app) {
 				var r = false; //return false if extension won't load for some reason (account config, dependencies, etc).
 
 				//if there is any functionality required for this extension to load, put it here. such as a check for async google, the FB object, etc. return false if dependencies are not present. don't check for other extensions.
-				_app.ext.store_filter.u.bindOnclick();
-				
 				r = true;
 
 				return r;
@@ -50,7 +48,7 @@ var beachmall_store = function(_app) {
 			onError : function()	{
 //errors will get reported for this callback as part of the extensions loading.  This is here for extra error handling purposes.
 //you may or may not need it.
-				_app.u.dump('BEGIN admin_orders.callbacks.init.onError');
+				_app.u.dump('BEGIN beachmall_store.callbacks.init.onError');
 				}
 			},
 			
@@ -58,10 +56,9 @@ var beachmall_store = function(_app) {
 			onSuccess : function() {
 
 				_app.templates.homepageTemplate.on('complete.beachmall_store',function(event,$ele,P) {
-					$('.floatingBar',$ele).show(); //shows floating bar upon return to hompage if it's been closed.
-					_app.ext.beachmall_store.u.loadProductsAsList($ele,$('.newArrivalUL', $ele));
-					_app.ext.beachmall_store.u.loadProductsAsList($ele,$('.featuredUL', $ele));
-					_app.ext.beachmall_store.u.loadProductsAsList($ele,$('.bestUL', $ele));
+					
+					
+					
 				});
 				
 				_app.templates.categoryTemplate.on('complete.beachmall_store',function(event,$ele,P) {
@@ -177,21 +174,6 @@ var beachmall_store = function(_app) {
 			},
 			onError:function(responseData){	
 				_app.u.dump('Error in extension: store_filter.callbacks.renderRedirectProduct, response data follows: '); dump(responseData);
-			}
-		},
-		
-		renderProductsAsList : {
-			onSuccess : function(rd) {
-//				dump('renderProductsAsList datapointer:'); _app.u.dump(_app.data[rd.datapointer]); dump(rd.container); dump(rd.template);
-				rd.container.tlc({"templateid":rd.template,"dataset":_app.data[rd.datapointer],verb:"transmogrify"});
-				setTimeout(function(){
-				_app.ext.beachmall_carousel.u.pickCarousel(rd.carousel, rd.context);
-				rd.container.parent().removeClass('loadingBG');
-				},1000);
-			},
-			onError : function(responseData) {
-				_app.u.dump('Error in extension: store_bmo_ renderProductsAsList');
-				_app.u.dump(responseData);
 			}
 		},
 		
@@ -454,7 +436,7 @@ var beachmall_store = function(_app) {
 							var zoovyIsPreOrder = prod['%attribs']['zoovy:prod_is_tags'];
 							var zoovyPreOrder = prod['%attribs']['is:preorder'];
 							var zoovyIsUser1 = prod['%attribs']['is:user1'];
-						} else {_app.u.dump('Problem w/ data.value in beachmall_store.js: renderformats.showShipLatency. Data follows:'); _app.u.dump(data.value);}
+						} else {_app.u.dump('Problem w/ data.value in _beachmall_store.js: renderformats.showShipLatency. Data follows:'); _app.u.dump(data.value);}
 						
 						if(data.value.product) {
 							var prod = _app.data['appProductGet|'+_app.u.makeSafeHTMLId(data.value.product)];
@@ -1004,32 +986,7 @@ var beachmall_store = function(_app) {
 				},500);
 			},
 
-/**HOMEPAGE PAGE UTILS */
-			//loads product lists in hompage carousels. Carousel & Template are loaded in callback according to what is passed in the data-attrib. 	
-			//context and loading container are also passed in data-attribs. 
-			loadProductsAsList :function($context, $container) {
-				var carousel = $container.attr('data-carousel'); //dump('carousel name:'); dump(carousel); 
-				if(!$container.attr('data-beach-rendered')) {
-					var path = $container.attr('data-list'); //dump('list name:'); dump(path); 
-					var template = $container.attr('data-templateid'); //dump('template name:'); dump(template); 
-					$container.attr('data-beach-rendered',true); 
-//					_app.u.dump('data added?'); _app.u.dump($container.attr('data-beach-rendered'));
-			//TODO: set up hide/show/placeholder for carousel elements until loaded		
-					var _tag = {
-						"callback":"renderProductsAsList",
-						"extension":"beachmall_store",
-						"carousel":	carousel,
-						"template":	template,
-						"container":$container,
-						"context":$context
-					}
-					
-					_app.calls.appNavcatDetail.init({"path":path,"detail":"more"},_tag,"immutable");
-					_app.model.dispatchThis('immutable');
-				}
-				else { /* already rendered, don't render again.*/ _app.ext.beachmall_carousel.u.pickCarousel(carousel, $context); }
-			}, //loadProductsAsList
-			
+		
 /**PRODUCT PAGE UTILS */
 				//checks for product youtube video and adds tab for it to main prod image
 			videotabify : function($context, infoObj) {
