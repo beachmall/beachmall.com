@@ -18,6 +18,7 @@ _app.u.loadScript(configURI,function(){
 		
 		_app.ext.beachmall_begin.calls.whereAmI.init({'callback':'handleWhereAmI','extension':'beachmall_begin'},'passive');
 		_app.ext.beachmall_begin.u.getDropdownJSON();
+		_app.ext.beachmall_begin.u.startTooltip();
 		//_app.ext.beachmall_store.u.makeDisallow(); //uncomment to use, then close it back up. This shouldn't be left running in production.
 		
 		});
@@ -423,6 +424,12 @@ _app.u.bindTemplateEvent('homepageTemplate', 'complete.beachmall_homepage',funct
 	_app.ext.beachmall_homepage.u.loadProductsAsList($context,$('.featuredUL', $context));
 	$('.floatingBar',$context).is(":visible") ? "" : $('.floatingBar',$context).show(); //shows floating bar upon return to hompage if it's been closed.
 });
+
+_app.u.bindTemplateEvent('categoryTemplate', 'complete.store_filter',function(event,$context,infoObj) {
+	$.extend(handlePogs.prototype,_app.ext.store_filter.variations);
+	_app.ext.store_filter.u.startFilterSearch($context,infoObj);
+});
+
 _app.extend({
 	"namespace":"beachmall_homepage",
 	"filename":"extensions/_beachmall_homepage.js"
@@ -436,6 +443,16 @@ _app.extend({
 _app.extend({
 	"namespace":"powerreviews_reviews",
 	"filename":"extensions/partner_powerreviews_reviews.js"
+});
+
+_app.extend({
+	"namespace":"store_filter",
+	"filename":"extensions/_store_filter.js"
+});
+
+_app.extend({
+	"namespace":"beachmall_lists",
+	"filename":"extensions/_beachmall_lists.js"
 });
 	
 
@@ -643,7 +660,7 @@ _app.extend({
 	
 _app.couple('quickstart','addPageHandler',{
 	"pageType" : "homepage",
-	"require" : ['store_navcats','templates.html','store_routing','beachmall_homepage','store_product','beachmall_store','powerreviews_reviews'],
+	"require" : ['store_navcats','templates.html','store_routing','beachmall_homepage','store_product','powerreviews_reviews','beachmall_lists'],
 	"handler" : function($container, infoObj, require){
 		infoObj.deferred = $.Deferred();
 		infoObj.defPipeline.addDeferred(infoObj.deferred);
@@ -658,7 +675,7 @@ _app.couple('quickstart','addPageHandler',{
 	
 _app.couple('quickstart','addPageHandler',{
 	"pageType" : "category",
-	"require" : ['store_navcats','store_prodlist','prodlist_infinite','templates.html','store_routing'],
+	"require" : ['store_navcats','store_prodlist','store_product','prodlist_infinite','templates.html','store_routing','store_filter','store_search','powerreviews_reviews'],
 	"handler" : function($container, infoObj, require){
 		infoObj.deferred = $.Deferred();
 		infoObj.defPipeline.addDeferred(infoObj.deferred);

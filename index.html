@@ -923,6 +923,496 @@ ANIMATION TESTING
 
 
 
+<div id='appFilters' class='displayNone'>
+
+<!-- UMBRELLA FILTERS -->
+    <form action='#' name='UmbrellasForm' id='UmbrellasForm' class='layeredSearch'>
+    
+        <fieldset data-elastic-key="base_price" data-filtertype="slider">
+            <legend>Price</legend>
+            <input type="text"  class='sliderValue' />
+            <div class="slider-range"></div>
+        </fieldset>
+<!--        
+		<fieldset class='displayNone' data-elastic-key="pogs" data-filtertype="hiddenOr">
+            <input type='hidden' name="h-picnicbasket" value="EH00" />
+            <input type='hidden' name="h-picnicbackpack" value="EH01" />
+            <input type='hidden' name="h-winebaskets" value="EH02" />
+            <input type='hidden' name="h-totebags" value="EH03" />
+            <input type='hidden' name="h-lunEHbags" value="EH04" />
+            <input type='hidden' name="h-coolers" value="EH05" />
+            <input type='hidden' name="h-coffeeteasets" value="EH06" />
+            <input type='hidden' name="h-picnicblankets" value="EH07" />
+            <input type='hidden' name="h-tailgating" value="EH08" />
+            <input type='hidden' name="h-accessories" value="EH09" />
+		</fieldset>  
+-->        
+		<button class='resetButton floatRight'>RESET OPTIONS</button>
+		
+   <!-- <fieldset data-elastic-key="pogs" data-filtertype="checkboxes">
+            <legend>options test</legend>
+            <label class='break'><input class="" type='checkbox' value='AU00' />au00</label>
+
+        </fieldset> -->
+		
+        <fieldset data-elastic-key="pogs" data-filtertype="checkboxes">
+            <legend>Canopy Size</legend>
+            <label class='break'><input class="" type='checkbox' value='AF00' /> 6.0 Feet</label>
+            <label class='break'><input type='checkbox' value='AF01' /> 6.5 Feet</label>
+            <label class='break'><input type='checkbox' value='AF02' /> 7.0 &#45; 7.5 Feet</label>
+            <label class='break'><input type='checkbox' value='AF03' /> 8.0 Feet &#38; up</label>   
+        </fieldset>
+        
+        <fieldset class="umbrellaStyle" data-elastic-key="pogs" data-filtertype="checkboxes">
+            <legend>Style</legend>
+            <label class='break'><input type='checkbox' value='AU00' /> Vented</label>
+            <label class='break'><input type='checkbox' value='AU01' /> Tiling</label>
+            <label class='break'><input type='checkbox' value='AU02' /> No Vent</label>
+        </fieldset>
+        
+        <fieldset class="umbrellaOptions" data-elastic-key="pogs" data-filtertype="checkboxes">
+            <legend>Options</legend>
+            <label class='break'><input type='checkbox' value='B500' /> Fiberglass Ribs</label>
+            <label class='break'><input type='checkbox' value='B501' /> Steel Ribs</label>
+            <label class='break'><input type='checkbox' value='B502' /> Commercial Grade</label>
+        </fieldset>
+        
+        <fieldset class="umbrellaUvProtection" data-elastic-key="pogs" data-filtertype="checkboxes">
+            <legend>UV Protection</legend>
+            <label class='break'><input type='checkbox' value='AV00' /> 35 UPF</label>
+            <label class='break'><input type='checkbox' value='AV01' /> 50 UPF</label>
+            <label class='break'><input type='checkbox' value='AV02' /> 100 + upf</label>
+        </fieldset>
+        
+        <fieldset class="umbrellaPoleMaterial" data-elastic-key="pogs" data-filtertype="checkboxes">
+            <legend>Pole Material</legend>
+            <label class='break'><input type='checkbox' value='B600' /> Wood</label>
+            <label class='break'><input type='checkbox' value='B601' /> Aluminum</label>
+            <label class='break'><input type='checkbox' value='B602' /> Steel</label>
+        </fieldset>
+        
+        <fieldset class="umbrellaFabric" data-elastic-key="pogs" data-filtertype="checkboxes">
+            <legend>Fabric</legend>
+            <label class='break'><input type='checkbox' value='CP00' /> Polyester</label>
+            <label class='break'><input type='checkbox' value='CP01' /> Acrylic</label>
+            <label class='break'><input type='checkbox' value='CP02' /> PolyCotton</label>
+            <label class='break'><input type='checkbox' value='CP03' /> Nylon</label>
+            <label class='break'><input type='checkbox' value='CP04' /> Vinyl</label>    
+            <label class='break'><input type='checkbox' value='CP05' /> Sunbrella</label>
+        </fieldset>
+
+    </form> <!-- //UMBRELLA FILTERS -->
+	
+	
+	<form action='#' name='AccessoriesForm' id='AccessoriesForm' class='layeredSearch'>
+    
+        <fieldset data-elastic-key="base_price" data-filtertype="slider">
+            <legend>Price</legend>
+            <input type="text"  class='sliderValue' />
+            <div class="slider-range"></div>
+        </fieldset>
+		
+		<fieldset class='displayNone' data-elastic-key="pogs" data-filtertype="hiddenOr">
+            <input type='hidden' name="h-picnicbasket" value="CH00" />
+            <input type='hidden' name="h-picnicbackpack" value="CH01" />
+            <input type='hidden' name="h-winebaskets" value="CH02" />
+            <input type='hidden' name="h-totebags" value="CH03" />
+            <input type='hidden' name="h-lunchbags" value="CH04" />
+            <input type='hidden' name="h-coolers" value="CH05" />
+            <input type='hidden' name="h-coffeeteasets" value="CH06" />
+            <input type='hidden' name="h-picnicblankets" value="CH07" />
+            <input type='hidden' name="h-tailgating" value="CH08" />
+            <input type='hidden' name="h-accessories" value="CH09" />
+		</fieldset>  
+        
+		<button class='resetButton floatRight'>RESET OPTIONS</button>
+		
+        <fieldset data-elastic-key="pogs" data-filtertype="checkboxes">
+            <legend>Product Type</legend>
+            <label class='break'><input class="" type='checkbox' value='CH00' /> Picnic Baskets</label>
+            <label class='break'><input class="" type='checkbox' value='CH01' /> Picnic Backpack</label>
+            <label class='break'><input class="" type='checkbox' value='CH02' /> Wine Baskets</label>
+            <label class='break'><input class="" type='checkbox' value='CH03' /> Tote Bags</label>
+            <label class='break'><input class="" type='checkbox' value='CH04' /> Lunch Bags</label>
+            <label class='break'><input class="" type='checkbox' value='CH05' /> Coolers</label>
+            <label class='break'><input class="" type='checkbox' value='CH06' /> Coffee Tea Sets</label>
+            <label class='break'><input class="" type='checkbox' value='CH07' /> Picnic Blankets</label>
+            <label class='break'><input class="" type='checkbox' value='CH08' /> Tailgaiting</label>
+            <label class='break'><input class="" type='checkbox' value='CH09' /> Accessories</label>
+        </fieldset>
+        
+        <fieldset class="umbrellaStyle" data-elastic-key="pogs" data-filtertype="checkboxes">
+            <legend>Service for</legend>
+            <label class='break'><input type='checkbox' value='CI00' /> 2 Persons</label>
+            <label class='break'><input type='checkbox' value='CI01' /> 4 Persons</label>
+            <label class='break'><input type='checkbox' value='CI02' /> 6 Persons</label>
+        </fieldset>
+        
+        <fieldset class="umbrellaOptions" data-elastic-key="pogs" data-filtertype="checkboxes">
+            <legend>Special Features</legend>
+            <label class='break'><input type='checkbox' value='CL00' /> Insulated</label>
+            <label class='break'><input type='checkbox' value='CL01' /> Silverware Storage</label>
+            <label class='break'><input type='checkbox' value='CL02' /> Waterproof Liner</label>
+            <label class='break'><input type='checkbox' value='CL03' /> Adjustable Straps</label>
+            <label class='break'><input type='checkbox' value='CL04' /> Removable Wine Duffel</label>
+        </fieldset>
+        
+        <fieldset class="umbrellaUvProtection" data-elastic-key="pogs" data-filtertype="checkboxes">
+            <legend>Included</legend>
+            <label class='break'><input type='checkbox' value='CM00' /> Corkscrew &#47; Bottle Opener</label>
+            <label class='break'><input type='checkbox' value='CM01' /> Napkins</label>
+            <label class='break'><input type='checkbox' value='CM02' /> Wine Glasses</label>
+            <label class='break'><input type='checkbox' value='CM03' /> Silverware</label>
+            <label class='break'><input type='checkbox' value='CM04' /> Cutting Board &#47; Cheese Knife</label>
+            <label class='break'><input type='checkbox' value='CM05' /> Salt &#39; Pepper Shakers </label>
+            <label class='break'><input type='checkbox' value='CM06' /> Table Cloth</label>
+            <label class='break'><input type='checkbox' value='CM07' /> Wine Stoppers</label>
+            <label class='break'><input type='checkbox' value='CM08' /> Tumblers</label>
+            <label class='break'><input type='checkbox' value='CM09' /> Coffe Mugs &#47; Thermos</label>
+            <label class='break'><input type='checkbox' value='CM0A' /> Plastic Food Containers</label>
+            <label class='break'><input type='checkbox' value='CM0B' /> Plates</label>
+        </fieldset>
+        
+        <fieldset class="umbrellaPoleMaterial" data-elastic-key="pogs" data-filtertype="checkboxes">
+            <legend>Material</legend>
+            <label class='break'><input type='checkbox' value='CN00' /> Polyester</label>
+            <label class='break'><input type='checkbox' value='CN01' /> Nylon</label>
+            <label class='break'><input type='checkbox' value='CN02' /> Leather</label>
+            <label class='break'><input type='checkbox' value='CN03' /> Cotton Canvas</label>
+            <label class='break'><input type='checkbox' value='CN04' /> Willow</label>
+            <label class='break'><input type='checkbox' value='CN05' /> Rattan</label>
+            <label class='break'><input type='checkbox' value='CN06' /> Other</label>
+        </fieldset>
+        
+        <fieldset class="umbrellaFabric" data-elastic-key="pogs" data-filtertype="checkboxes">
+            <legend>Color</legend>
+            <label class='break'><input type='checkbox' value='CJ00' /> Green</label>
+            <label class='break'><input type='checkbox' value='CJ01' /> Blue</label>
+            <label class='break'><input type='checkbox' value='CJ02' /> Black</label>
+            <label class='break'><input type='checkbox' value='CJ03' /> Red</label>
+            <label class='break'><input type='checkbox' value='CJ04' /> Brown</label>
+            <label class='break'><input type='checkbox' value='CJ05' /> Violet</label>
+            <label class='break'><input type='checkbox' value='CJ06' /> White</label>
+            <label class='break'><input type='checkbox' value='CJ07' /> Yellow</label>
+            <label class='break'><input type='checkbox' value='CJ08' /> Others</label>
+        </fieldset>
+
+    </form> <!-- //ACCESSORIES FILTERS -->
+	
+	<form action='#' name='BeachChairsForm' id='BeachChairsForm' class='layeredSearch'>
+    
+        <fieldset data-elastic-key="base_price" data-filtertype="slider">
+            <legend>Price</legend>
+            <input type="text"  class='sliderValue' />
+            <div class="slider-range"></div>
+        </fieldset>
+		
+		<fieldset class='displayNone' data-elastic-key="pogs" data-filtertype="hiddenOr">
+            <input type='hidden' name="h-highseat" value="CV00" />
+            <input type='hidden' name="h-lowseat" value="CV01" />
+            <input type='hidden' name="h-layflat" value="CV02" />
+            <input type='hidden' name="h-backpack" value="CV03" />
+            <input type='hidden' name="h-heavyduty" value="CV04" />
+            <input type='hidden' name="h-loungerchaise" value="CV05" />
+            <input type='hidden' name="h-canopy" value="CV06" />
+            <input type='hidden' name="h-padded" value="CV07" />
+            <input type='hidden' name="h-tallwide" value="CV08" />
+            <input type='hidden' name="h-zerogravity" value="CV09" />
+		</fieldset> 
+        
+		<button class='resetButton floatRight'>RESET OPTIONS</button>
+		
+        <fieldset data-elastic-key="pogs" data-filtertype="checkboxes">
+            <legend>Shipping</legend>
+            <label class='break'><input class="" type='checkbox' value='CQ00' /> Today Before Noon</label>
+            <label class='break'><input class="" type='checkbox' value='CQ01' /> Next Business Day</label>
+            <label class='break'><input class="" type='checkbox' value='CQ02' /> 1 &#45; 2 Days</label>
+            <label class='break'><input class="" type='checkbox' value='CQ03' /> 1 &#45; 7 Days</label>
+        </fieldset>
+        
+        <fieldset class="umbrellaStyle" data-elastic-key="pogs" data-filtertype="checkboxes">
+            <legend>Store Specials</legend>
+            <label class='break'><input type='checkbox' value='CU00' /> Super Value Packs</label>
+            <label class='break'><input type='checkbox' value='CU01' /> Hot Deals</label>
+            <label class='break'><input type='checkbox' value='CU02' /> Free Shipping</label>
+        </fieldset>
+        
+        <fieldset class="umbrellaOptions" data-elastic-key="pogs" data-filtertype="checkboxes">
+            <legend>Type</legend>
+            <label class='break'><input type='checkbox' value='CV00' /> High Seat</label>
+            <label class='break'><input type='checkbox' value='CV01' /> Low Seat</label>
+            <label class='break'><input type='checkbox' value='CV02' /> Lay Flat</label>
+            <label class='break'><input type='checkbox' value='CV03' /> Back Pack</label>
+            <label class='break'><input type='checkbox' value='CV04' /> Heavy Duty</label>
+            <label class='break'><input type='checkbox' value='CV05' /> Lounger &#47; Chaise</label>
+            <label class='break'><input type='checkbox' value='CV06' /> Canopy</label>
+            <label class='break'><input type='checkbox' value='CV07' /> Padded</label>
+            <label class='break'><input type='checkbox' value='CV08' /> Tall &#38; Wide</label>
+            <label class='break'><input type='checkbox' value='CV09' /> Zero Gravity</label>
+        </fieldset>
+        
+        <fieldset class="umbrellaUvProtection" data-elastic-key="pogs" data-filtertype="checkboxes">
+            <legend>Weight Capacity</legend>
+            <label class='break'><input type='checkbox' value='CW00' /> 250 &#45; 275 lbs</label>
+            <label class='break'><input type='checkbox' value='CW01' /> 300 &#45; 350 lbs</label>
+            <label class='break'><input type='checkbox' value='CW02' /> 400 lbs and up</label>
+            <label class='break'><input type='checkbox' value='CW03' /> 200 &#45; 249 lbs</label>
+        </fieldset>
+        
+        <fieldset class="umbrellaPoleMaterial" data-elastic-key="pogs" data-filtertype="checkboxes">
+            <legend>Seat Height</legend>
+            <label class='break'><input type='checkbox' value='CX00' /> Less than 9 inches</label>
+            <label class='break'><input type='checkbox' value='CX01' /> 10 &#45; 15 inches</label>
+            <label class='break'><input type='checkbox' value='CX02' /> Over 16 inches</label>
+        </fieldset>
+        
+        <fieldset class="umbrellaFabric" data-elastic-key="pogs" data-filtertype="checkboxes">
+            <legend>Features</legend>
+            <label class='break'><input type='checkbox' value='D000' /> Back Pack</label>
+            <label class='break'><input type='checkbox' value='D001' /> Canopy</label>
+            <label class='break'><input type='checkbox' value='D003' /> Headrest Pillow</label>
+            <label class='break'><input type='checkbox' value='D004' /> Storage Pouch</label>
+            <label class='break'><input type='checkbox' value='D005' /> Shoulder Straps</label>
+            <label class='break'><input type='checkbox' value='D006' /> Drink Holder</label>
+            <label class='break'><input type='checkbox' value='D007' /> IPOD &#47; Cell Holder</label>
+            <label class='break'><input type='checkbox' value='D002' /> Wheels</label>
+        </fieldset>
+		
+		<fieldset class="umbrellaFabric" data-elastic-key="pogs" data-filtertype="checkboxes">
+            <legend>Recline</legend>
+            <label class='break'><input type='checkbox' value='CZ00' /> 3 Position</label>
+            <label class='break'><input type='checkbox' value='CZ01' /> 4 Position</label>
+            <label class='break'><input type='checkbox' value='CZ02' /> Non-Reclining</label>
+            <label class='break'><input type='checkbox' value='CZ03' /> Fully Reclining</label>
+        </fieldset>
+		
+		<fieldset class="umbrellaFabric" data-elastic-key="pogs" data-filtertype="checkboxes">
+            <legend>Frame Material</legend>
+            <label class='break'><input type='checkbox' value='CY00' /> Aluminum</label>
+            <label class='break'><input type='checkbox' value='CY01' /> Steel</label>
+            <label class='break'><input type='checkbox' value='CY02' /> Wood</label>
+        </fieldset>
+		
+		<fieldset class="umbrellaFabric" data-elastic-key="pogs" data-filtertype="checkboxes">
+            <legend>Color</legend>
+            <label class='break'><input type='checkbox' value='D100' /> Blue</label>
+            <label class='break'><input type='checkbox' value='D101' /> Turquoise</label>
+            <label class='break'><input type='checkbox' value='D102' /> Burgundy</label>
+            <label class='break'><input type='checkbox' value='D103' /> Striped</label>
+            <label class='break'><input type='checkbox' value='D104' /> Patterned</label>
+            <label class='break'><input type='checkbox' value='D105' /> Ocean</label>
+            <label class='break'><input type='checkbox' value='D106' /> Forest</label>
+            <label class='break'><input type='checkbox' value='D107' /> Other Colors</label>
+        </fieldset>
+
+    </form> <!-- //Womens Cover Ups Form -->
+	
+		<form action='#' name='WomensCoverUpsForm' id='WomensCoverUpsForm' class='layeredSearch'>
+    
+        <fieldset data-elastic-key="base_price" data-filtertype="slider">
+            <legend>Price</legend>
+            <input type="text"  class='sliderValue' />
+            <div class="slider-range"></div>
+        </fieldset>
+	<!--	
+		<fieldset class='displayNone' data-elastic-key="pogs" data-filtertype="hiddenOr">
+            <input type='hidden' name="h-tunics" value="EO00" />
+            <input type='hidden' name="h-kaftans" value="EO07" />
+            <input type='hidden' name="h-dresses" value="EO01" />
+            <input type='hidden' name="h-rompers" value="EO02" />
+            <input type='hidden' name="h-shorts" value="EO03" />
+            <input type='hidden' name="h-pants" value="EO04" />
+            <input type='hidden' name="h-skirts" value="EO05" />
+            <input type='hidden' name="h-pareoswraps" value="EO08" />
+            <input type='hidden' name="h-crocket" value="EO06" />
+		</fieldset> 
+    -->    
+		<button class='resetButton floatRight'>RESET OPTIONS</button>
+		
+        <fieldset data-elastic-key="pogs" data-filtertype="checkboxes">
+            <legend>Cover-Up Style</legend>
+            <label class='break'><input class="" type='checkbox' value='EO00' /> Tunics</label>
+            <label class='break'><input class="" type='checkbox' value='EO07' /> Kaftans</label>
+            <label class='break'><input class="" type='checkbox' value='EO01' /> Dresses</label>
+            <label class='break'><input class="" type='checkbox' value='EO02' /> Rompers</label>
+            <label class='break'><input class="" type='checkbox' value='EO03' /> Shorts</label>
+            <label class='break'><input class="" type='checkbox' value='EO04' /> Pants</label>
+            <label class='break'><input class="" type='checkbox' value='EO05' /> Skirts</label>
+            <label class='break'><input class="" type='checkbox' value='EO08' /> Pareos &#47; Wraps</label>
+            <label class='break'><input class="" type='checkbox' value='EO06' /> Crocket</label>
+        </fieldset>
+        
+        <fieldset class="umbrellaStyle" data-elastic-key="pogs" data-filtertype="checkboxes">
+            <legend>Top Style</legend>
+            <label class='break'><input type='checkbox' value='EJ00' /> Push Up</label>
+            <label class='break'><input type='checkbox' value='EJ01' /> Triangle</label>
+            <label class='break'><input type='checkbox' value='EJ02' /> Halter</label>
+            <label class='break'><input type='checkbox' value='EJ03' /> Bandeau</label>
+            <label class='break'><input type='checkbox' value='EJ04' /> Underwire</label>
+            <label class='break'><input type='checkbox' value='EJ05' /> Tankini</label>
+            <label class='break'><input type='checkbox' value='EJ06' /> Big Bust</label>
+            <label class='break'><input type='checkbox' value='EJ07' /> Sport</label>
+        </fieldset>
+        
+        <fieldset class="umbrellaOptions" data-elastic-key="pogs" data-filtertype="checkboxes">
+            <legend>Bottom Style</legend>
+            <label class='break'><input type='checkbox' value='EK00' /> String</label>
+            <label class='break'><input type='checkbox' value='EK01' /> Brazilian</label>
+            <label class='break'><input type='checkbox' value='EK02' /> Thongs</label>
+            <label class='break'><input type='checkbox' value='EK03' /> Skirted</label>
+            <label class='break'><input type='checkbox' value='EK04' /> Low Rise</label>
+            <label class='break'><input type='checkbox' value='EK05' /> High Waisted</label>
+            <label class='break'><input type='checkbox' value='EK06' /> Tie Side</label>
+            <label class='break'><input type='checkbox' value='EK07' /> Shorts</label>
+            <label class='break'><input type='checkbox' value='EK08' /> Moderate Coverage</label>
+            <label class='break'><input type='checkbox' value='EK09' /> Full Coverage</label>
+            <label class='break'><input type='checkbox' value='EK0A' /> Minimal Coverage</label>
+        </fieldset>
+        
+        <fieldset class="umbrellaUvProtection" data-elastic-key="pogs" data-filtertype="checkboxes">
+            <legend>Fit Solution</legend>
+            <label class='break'><input type='checkbox' value='EL00' /> Tummy Control</label>
+            <label class='break'><input type='checkbox' value='EL01' /> Enhance Bust</label>
+            <label class='break'><input type='checkbox' value='EL02' /> Hide Hips</label>
+            <label class='break'><input type='checkbox' value='EL03' /> Body Slimming</label>
+        </fieldset>
+        
+        <fieldset class="umbrellaPoleMaterial" data-elastic-key="pogs" data-filtertype="checkboxes">
+            <legend>Print &#47; Color</legend>
+            <label class='break'><input type='checkbox' value='EM00' /> Solids</label>
+            <label class='break'><input type='checkbox' value='EM01' /> Tropical</label>
+            <label class='break'><input type='checkbox' value='EM02' /> Dots</label>
+            <label class='break'><input type='checkbox' value='EM03' /> Geometric</label>
+            <label class='break'><input type='checkbox' value='EM04' /> Animal Skins</label>
+            <label class='break'><input type='checkbox' value='EM05' /> Metallics</label>
+            <label class='break'><input type='checkbox' value='EM07' /> Crochet</label>
+            <label class='break'><input type='checkbox' value='EM06' /> Novelty</label>
+        </fieldset>
+        
+        <fieldset class="umbrellaFabric" data-elastic-key="pogs" data-filtertype="checkboxes">
+            <legend>Sizes</legend>
+            <label class='break'><input type='checkbox' value='EI00' /> Petite</label>
+            <label class='break'><input type='checkbox' value='EI01' /> Regular</label>
+            <label class='break'><input type='checkbox' value='EI02' /> Plus Size</label>
+            <label class='break'><input type='checkbox' value='EI03' /> D-DD-DDD Cup</label>
+            <label class='break'><input type='checkbox' value='EI04' /> Maternity</label>
+        </fieldset>
+		
+		<fieldset class="umbrellaFabric" data-elastic-key="pogs" data-filtertype="checkboxes">
+            <legend>Brand</legend>
+            <label class='break'><input type='checkbox' value='EG00' /> Ujena</label>
+            <label class='break'><input type='checkbox' value='EG01' /> Sunsets</label>
+            <label class='break'><input type='checkbox' value='EG02' /> Swim Systems</label>
+            <label class='break'><input type='checkbox' value='EG03' /> Bswim</label>
+            <label class='break'><input type='checkbox' value='EG04' /> Aerin Rose</label>
+            <label class='break'><input type='checkbox' value='EG05' /> Love True Love</label>
+            <label class='break'><input type='checkbox' value='EG06' /> Berrydog</label>
+        </fieldset>
+
+    </form> <!-- //Womens Cover Ups Form -->
+	
+	<form action='#' name='WomensSwimwearForm' id='WomensSwimwearForm' class='layeredSearch'>
+    
+        <fieldset data-elastic-key="base_price" data-filtertype="slider">
+            <legend>Price</legend>
+            <input type="text"  class='sliderValue' />
+            <div class="slider-range"></div>
+        </fieldset>
+		
+		<fieldset class='displayNone' data-elastic-key="pogs" data-filtertype="hiddenOr">
+            <input type='hidden' name="h-bikinis" value="EH00" />
+            <input type='hidden' name="h-tankinis" value="EH01" />
+            <input type='hidden' name="h-monokinis" value="EH02" />
+            <input type='hidden' name="h-onepieces" value="EH03" />
+            <input type='hidden' name="h-coverups" value="EH04" />
+            <input type='hidden' name="h-sexybikinis" value="EH05" />
+		</fieldset>  
+        
+		<button class='resetButton floatRight'>RESET OPTIONS</button>
+		
+        <fieldset data-elastic-key="pogs" data-filtertype="checkboxes">
+            <legend>Category</legend>
+            <label class='break'><input class="" type='checkbox' value='EH00' /> Bikinis</label>
+            <label class='break'><input class="" type='checkbox' value='EH01' /> Tankinis</label>
+            <label class='break'><input class="" type='checkbox' value='EH02' /> Monokinis</label>
+            <label class='break'><input class="" type='checkbox' value='EH03' /> One Pieces</label>
+            <label class='break'><input class="" type='checkbox' value='EH04' /> Cover Ups</label>
+            <label class='break'><input class="" type='checkbox' value='EH05' /> Sexy Bikinis</label>
+        </fieldset>
+        
+        <fieldset class="umbrellaStyle" data-elastic-key="pogs" data-filtertype="checkboxes">
+            <legend>Top Style</legend>
+            <label class='break'><input type='checkbox' value='EJ00' /> Push Up</label>
+            <label class='break'><input type='checkbox' value='EJ01' /> Triangle</label>
+            <label class='break'><input type='checkbox' value='EJ02' /> Halter</label>
+            <label class='break'><input type='checkbox' value='EJ03' /> Bandeau</label>
+            <label class='break'><input type='checkbox' value='EJ04' /> Underwire</label>
+            <label class='break'><input type='checkbox' value='EJ05' /> Tankini</label>
+            <label class='break'><input type='checkbox' value='EJ06' /> Big Bust</label>
+            <label class='break'><input type='checkbox' value='EJ07' /> Sport</label>
+        </fieldset>
+        
+        <fieldset class="umbrellaOptions" data-elastic-key="pogs" data-filtertype="checkboxes">
+            <legend>Bottom Style</legend>
+            <label class='break'><input type='checkbox' value='EK00' /> String</label>
+            <label class='break'><input type='checkbox' value='EK01' /> Brazilian</label>
+            <label class='break'><input type='checkbox' value='EK02' /> Thongs</label>
+            <label class='break'><input type='checkbox' value='EK03' /> Skirted</label>
+            <label class='break'><input type='checkbox' value='EK04' /> Low Rise</label>
+            <label class='break'><input type='checkbox' value='EK05' /> High Waisted</label>
+            <label class='break'><input type='checkbox' value='EK06' /> Tie Side</label>
+            <label class='break'><input type='checkbox' value='EK07' /> Shorts</label>
+            <label class='break'><input type='checkbox' value='EK08' /> Moderate Coverage</label>
+            <label class='break'><input type='checkbox' value='EK09' /> Full Coverage</label>
+            <label class='break'><input type='checkbox' value='EK0A' /> Minimal Coverage</label>
+        </fieldset>
+        
+        <fieldset class="umbrellaUvProtection" data-elastic-key="pogs" data-filtertype="checkboxes">
+            <legend>Fit Solution</legend>
+            <label class='break'><input type='checkbox' value='EL00' /> Tummy Control</label>
+            <label class='break'><input type='checkbox' value='EL01' /> Enhance Bust</label>
+            <label class='break'><input type='checkbox' value='EL02' /> Hide Hips</label>
+            <label class='break'><input type='checkbox' value='EL03' /> Body Slimming</label>
+        </fieldset>
+        
+        <fieldset class="umbrellaPoleMaterial" data-elastic-key="pogs" data-filtertype="checkboxes">
+            <legend>Print &#47; Color</legend>
+            <label class='break'><input type='checkbox' value='EM00' /> Solids</label>
+            <label class='break'><input type='checkbox' value='EM01' /> Tropical</label>
+            <label class='break'><input type='checkbox' value='EM02' /> Dots</label>
+            <label class='break'><input type='checkbox' value='EM03' /> Geometric</label>
+            <label class='break'><input type='checkbox' value='EM04' /> Animal Skins</label>
+            <label class='break'><input type='checkbox' value='EM05' /> Metallics</label>
+            <label class='break'><input type='checkbox' value='EM07' /> Crochet</label>
+            <label class='break'><input type='checkbox' value='EM06' /> Novelty</label>
+        </fieldset>
+        
+        <fieldset class="umbrellaFabric" data-elastic-key="pogs" data-filtertype="checkboxes">
+            <legend>Sizes</legend>
+            <label class='break'><input type='checkbox' value='EI00' /> Petite</label>
+            <label class='break'><input type='checkbox' value='EI01' /> Regular</label>
+            <label class='break'><input type='checkbox' value='EI02' /> Plus Size</label>
+            <label class='break'><input type='checkbox' value='EI03' /> D-DD-DDD Cup</label>
+            <label class='break'><input type='checkbox' value='EI04' /> Maternity</label>
+        </fieldset>
+		
+		<fieldset class="umbrellaFabric" data-elastic-key="pogs" data-filtertype="checkboxes">
+            <legend>Brand</legend>
+            <label class='break'><input type='checkbox' value='EG00' /> Ujena</label>
+            <label class='break'><input type='checkbox' value='EG01' /> Sunsets</label>
+            <label class='break'><input type='checkbox' value='EG02' /> Swim Systems</label>
+            <label class='break'><input type='checkbox' value='EG03' /> Bswim</label>
+            <label class='break'><input type='checkbox' value='EG04' /> Aerin Rose</label>
+            <label class='break'><input type='checkbox' value='EG05' /> Love True Love</label>
+            <label class='break'><input type='checkbox' value='EG06' /> Berrydog</label>
+        </fieldset>
+
+    </form> <!-- //Womens Swimwear Form -->
+
+</div>
+
+
+
 <div class='debug displayNone seoStrip'>
 <table>
 <tr>

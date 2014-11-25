@@ -456,7 +456,78 @@ var beachmall_begin = function(_app) {
 				seo = seo.replace('   ',' '); //kill three consecutive spaces
 				seo = seo.toLowerCase();
 				return seo;
-			}
+			},
+			
+			//adds jquery tool tip to show product sibling/variation thumbnails and pop up messages
+			startTooltip : function() {
+				$( document ).tooltip({
+					items : "img[data-big-img], [data-toolTipThumb], [data-cartToolTipThumb], [data-toolTipQuickview], [data-grid-img]",
+					position : {
+						my : "bottom-5",
+						at : "top"
+					},
+					//track : true,
+					content : function(){
+						var element = $(this);
+						//thumbnail zoom for option image select thumbnails
+						if (element.is("img[data-big-img]")) {
+							var pid = $(this).closest('[data-pid]').attr('data-pid');
+							var product = _app.data['appProductGet|'+pid];
+						//	_app.u.dump('>>>>> '); _app.u.dump(pid);
+							
+							//_app.u.dump('>>>>> '); _app.u.dump(product['@variations']['1']['options']['0'].prompt);
+							return '<div class="toolTipWrapper"><span class="optionsZoom">'+$(this).attr('data-tooltip-title')+'</span><img src="'+$(this).attr('data-big-img')+'" width="400" height="400" /></div>';
+							}
+						//thumbnail zoom for option grid image thumbnails
+						if (element.is("[data-grid-img]")) {
+							var pid = $(this).closest('[data-pid]').attr('data-pid');
+							var product = _app.data['appProductGet|'+pid];
+						//	_app.u.dump('>>>>> '); _app.u.dump(product);
+							
+							//_app.u.dump('>>>>> '); _app.u.dump(product['@variations']['1']['options']['0'].prompt);
+							return '<div class="toolTipWrapper"><span class="optionsZoom">'+$(this).attr('data-tooltip-title')+'</span><img src="'+$(this).attr('data-grid-img')+'" width="400" height="400" /></div>';
+							}
+						//thumbnail zoom for sibling thumbnails
+						if (element.is("[data-toolTipThumb]")) {
+							//_app.u.dump($(this).closest('[data-pid]').attr('data-pid'));
+							var pid = $(this).closest('[data-pid]').attr('data-pid');
+							var product = _app.data['appProductGet|'+pid];
+							if(product && product['%attribs'] && product['%attribs']['zoovy:prod_name']) {
+								var prodName = product['%attribs']['zoovy:prod_name'];
+								var productImg = _app.u.makeImage({"w":400,"h":400,"b":"ffffff",tag:0,"name":product['%attribs']['zoovy:prod_image1']});
+								return '<div class="toolTipWrapper"><span class="siblingZoom">'+prodName+'</span><img src="'+productImg+'" width="400" height="400" /></div>';
+							}
+						}
+						//thumbnail zoom for accessory in cart line items
+						if (element.is("[data-cartToolTipThumb]")) {
+							//_app.u.dump($(this).closest('[data-pid]').attr('data-pid'));
+							var pid = $(this).closest('[data-pid]').attr('data-pid');
+							var product = _app.data['appProductGet|'+pid];
+							if(product && product['%attribs']) {
+								var prodName = product['%attribs']['zoovy:prod_name'] ? product['%attribs']['zoovy:prod_name'] : "";
+								var prodPrice = product['%attribs']['zoovy:base_price'] ? product['%attribs']['zoovy:base_price'] : "";
+								prodPrice = _app.u.formatMoney(prodPrice,'$',2,true);
+								var productImg = _app.u.makeImage({"w":200,"h":200,"b":"ffffff",tag:0,"name":product['%attribs']['zoovy:prod_image1']});
+								return '<div class="cartToolTipWrapper"><span class="cartAccZoom">'+prodName+'</span><span class="cartAccZoom cartAccZoomPrice">'+prodPrice+'</span><img src="'+productImg+'" width="200" height="200" /></div>';
+							}
+						}
+						//thumbnail zoom for thumbs under main prod images in quickview
+						if (element.is("[data-toolTipQuickview]")) {
+							//_app.u.dump('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&'); _app.u.dump($(this).closest('[data-toolTipName]').attr('data-toolTipName'));
+							var pid = $(this).closest('[data-pid]').attr('data-pid');
+							var product = _app.data['appProductGet|'+pid];
+							var prodName = product['%attribs']['zoovy:prod_name'];
+							var imgName = $(this).closest('[data-toolTipName]').attr('data-toolTipName');
+							var productImg = _app.u.makeImage({"w":400,"h":400,"b":"ffffff",tag:0,"name":imgName});
+							return '<div class="toolTipWrapper"><span class="quickviewZoom">'+prodName+'</span><img src="'+productImg+'" width="400" height="400" /></div>';
+							}
+						},
+					//	tooltipClass : "toolTipBG",
+					//	open : function(event,ui){
+					//		_app.u.dump('----It opened');
+					//	}
+					});
+				} //startTooltip
 		
 		}, //u
 

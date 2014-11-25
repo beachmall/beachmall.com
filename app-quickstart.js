@@ -951,7 +951,7 @@ fallback is to just output the value.
 				
 			showContent : function(uri,infoObj)	{
 				_app.ext.quickstart.vars.showContentFinished = false;
-	dump(infoObj);
+
 				dump("BEGIN showContent ["+infoObj.pageType+"]."); dump(infoObj);
 				
 				infoObj = infoObj || {}; //could be empty for a cart or checkout
@@ -967,7 +967,9 @@ fallback is to just output the value.
 				
 				//Don't navigate if we're already on the page
 				if($old.attr('data-app-uri') == uri){
+	dump('Not navigating');
 					if(infoObj.retrigger){
+	dump('there is a retrigger');
 						var triggerComplete = function(){
 							infoObj.state = 'complete'
 							_app.renderFunctions.handleTemplateEvents($('> [data-templateid]',$old), infoObj);
