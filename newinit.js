@@ -467,8 +467,12 @@ _app.extend({
 	
 
 // beachmall custom alias
-				_app.router.addAlias('customCatName',	function(routeObj) {_app.ext.quickstart.a.showContent(routeObj.route, $.extend({'pageType':'category','navcat':routeObj.navcat,'templateID':'categoryTemplate'})); } ); 
-				_app.router.addAlias('brandCatName',	function(routeObj) {_app.ext.quickstart.a.showContent(routeObj.route, $.extend({'pageType':'category','navcat':routeObj.navcat,'templateID':'categoryTemplateBrands'})); } ); 
+				_app.router.addAlias('customCatName',	function(routeObj) {
+					_app.ext.quickstart.a.showContent(routeObj.route, {'pageType':'category','navcat':routeObj.navcat,'templateID':'categoryTemplate'}); 
+					}); 
+				_app.router.addAlias('brandCatName',	function(routeObj) {
+					_app.ext.quickstart.a.showContent(routeObj.route, {'pageType':'category','navcat':routeObj.navcat,'templateID':'categoryTemplateBrands'});
+					}); 
 				//the two below were for when the best seller and featured carousels on the homepage were populated w/ search. It may come back into style.
 				//_app.router.addAlias('homepagefeatured',	function(routeObj){showContent('search',	{'elasticsearch':{'filter':{'and':[{'or':[{'term':{'tags':'IS_USER4'}},{'term':{'tags':'IS_COLORFUL'}},{'term':{'tags':'IS_USER5'}},{'term':{'user:prod_promo':'IS_USER4'}}]},{'not':{'term':{'tags':'IS_DISCONTINUED'}}}]}}});});
 				//_app.router.addAlias('homepagebestseller',	function(routeObj){showContent('search',	{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'not':{'term':{'tags':'IS_DISCONTINUED'}}}]}}});});
