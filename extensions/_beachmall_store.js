@@ -66,10 +66,7 @@ var beachmall_store = function(_app) {
 				});
 				
 				_app.templates.categoryTemplateBrands.on('complete.beachmall_store',function(event,$ele,P) {
-					_app.ext.beachmall_store.u.tabify($ele,".brandsTabs");
-					_app.ext.beachmall_store.u.countBrandsItems($ele,"#viewAllProductsTab");
-					_app.ext.beachmall_store.u.countBrandsItems($ele,"#featuredProdsTab");
-					_app.ext.beachmall_store.u.countBrandsItems($ele,"#bestSellersTab");
+
 				});
 				
 				_app.templates.searchTemplate.on('complete.beachmall_store',function(event,$ele,P) {
@@ -136,56 +133,8 @@ var beachmall_store = function(_app) {
 //actions are functions triggered by a user interaction, such as a click/tap.
 //these are going the way of the do do, in favor of app events. new extensions should have few (if any) actions.
 		a : {
-/**CATEGORY FUNCTIONS */
-				//add a class (first arg) to an element (third arg) and toggles the text on the 
-				//calling element (second arg) between the last two args. 
-			toggleMyClass : function(arg,$tag,$tagParent,primary,secondary) {
-				var which = $tag.text();
-				switch(which) {
-					case 'OFF':
-						$tagParent.addClass(arg);
-						$tag.text(secondary);
-						break;
-					case 'ON':
-						$tagParent.removeClass(arg);
-						$tag.text(primary);
-						break;
-				}
-			},
-			
+
 /**PRODUCT LIST FUNCTIONS */
-			//will change a class on the parent container of the brands product list tab to switch view to show all/featured/bestselling items. 
-			//works in conjunction with beachmall_store.renderFormats.brandslistfilter & countBrandsItems
-			brandTabSwitch : function($tag) {
-//				dump('brandTabSwitch attribute: '); dump($('a',$tag).attr('href'));
-				var $context = $('#categoryTemplateBrands_'+_app.u.makeSafeHTMLId($tag.parent().attr('data-brand-path')));
-				var thisHref = $('a',$tag).attr('href');
-				switch (thisHref) {
-					case "#viewAllProductsTab" :
-						$tag.parent().parent().removeClass('brandTabsF');
-						$tag.parent().parent().removeClass('brandTabsB');
-						$tag.parent().parent().addClass('brandTabsA');
-			//			_app.ext.beachmall_store.u.countBrandsItems($context,thisHref);
-						break;
-					case "#featuredProdsTab" :
-						$tag.parent().parent().removeClass('brandTabsA');
-						$tag.parent().parent().removeClass('brandTabsB');
-						$tag.parent().parent().addClass('brandTabsF');
-			//			_app.ext.beachmall_store.u.countBrandsItems($context,thisHref);
-						break;
-					case "#bestSellersTab" :
-						$tag.parent().parent().removeClass('brandTabsA');
-						$tag.parent().parent().removeClass('brandTabsF');
-						$tag.parent().parent().addClass('brandTabsB');
-			//			_app.ext.beachmall_store.u.countBrandsItems($context,thisHref);
-						break;
-					default :
-						//if we got here, something isn't right... there are only three tabs.
-						$tag.parent().parent().removeClass('brandTabsA');
-						$tag.parent().parent().removeClass('brandTabsF');
-						$tag.parent().parent().removeClass('brandTabsB');
-				}
-			},
 
 				//sets prod image frame and view detail button to hover red on mouseenter of the other
 			resultsredmousein : function($this) {
@@ -562,26 +511,6 @@ var beachmall_store = function(_app) {
 				},2000);
 			}, //addHover
 
-				//will add tabs to the selector in the context passed
-			tabify : function($context,selector) {
-				var $tabContainer = $(selector,$context);
-				if($tabContainer.length)	{
-					if($tabContainer.data("widget") == 'anytabs'){} //tabs have already been instantiated. no need to be redundant.
-					else	{
-						$tabContainer.anytabs(); //_app.u.dump($("ul li",$tabContainer));
-	//TO DO: ADD THIS HOVER TO VIDEO TABS TOO
-						$("[data-app-role='hoverTab']",$tabContainer).each(function() {
-							$(this).mouseenter(function() {
-								$(this).trigger('click');
-							});
-						});
-					}
-				}
-				else	{
-					_app.u.dump("WARNING! could not find selector "+selector+" for tab items");
-				} //couldn't find the tab to tabificate.
-			},
-			
 				//adds static button w/ scrollTop function to page 
 			backToTop : function($context) {
 				$($context).append('<div class="appBackToTop pointer" onClick="myApp.ext.beachmall_store.u.scrollToTop()"><span class="sprite"></span>Back to Top</div>')
@@ -613,38 +542,7 @@ var beachmall_store = function(_app) {
 				$("#mainContentArea").append($textArea);
 				_app.model.dispatchThis('immutable');
 			},
-			
-/**PRODUCT LIST UTILS*/
-			//takes a count of items with the class that corresponds to the tab passed in the brands category template ($context) and shows a message if count is zero.
-			countBrandsItems : function($context, listType) {
-				var count = 0;
-				setTimeout(function(){
-					$('.products',$context).each(function(){
-//						dump('In .each function');
-						if(listType == "#viewAllProductsTab") { count++;	}
-						else if(listType == "#featuredProdsTab") {
-//							dump('In featured tab condition');
-							if($(this).hasClass('brandFeatured')) { count++; }
-						}
-						else if(listType == "#bestSellersTab") {
-							if($(this).hasClass('brandBestSeller')) { count++; }
-						}
-					});
-					//if something was counted, there must be an item to show for this list type, 
-					//otherwise let the user know there isn't anything to see
-//					dump('COUNT AND LIST TYPE'); dump(listType); dump(count);
-					if (listType == "#viewAllProductsTab" && count > 0) { $('.noBrandsItems',$context).hide(); }
-					if (listType == "#viewAllProductsTab" && count == 0) { $('.noBrandsItems',$context).show(); }
-					if (listType == "#featuredProdsTab" && count > 0) {
-						$('.tabFeatured',$context).show();
-					}
-					if (listType == "#bestSellersTab" && count > 0) {
-						$('.tabBest',$context).show();
-					}
-				},500);
-			},
 
-		
 /**PRODUCT PAGE UTILS */
 				//checks for product youtube video and adds tab for it to main prod image
 			videotabify : function($context, infoObj) {

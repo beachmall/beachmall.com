@@ -55,8 +55,24 @@ var beachmall_lists = function(_app) {
 //actions are functions triggered by a user interaction, such as a click/tap.
 //these are going the way of the do do, in favor of app events. new extensions should have few (if any) actions.
 		a : {
-
-			}, //Actions
+			
+			//add a class (first arg) to an element (third arg) and toggles the text on the 
+			//calling element (second arg) between the last two args. 
+			toggleMyClass : function(arg,$tag,$tagParent,primary,secondary) {
+				var which = $tag.text();
+				switch(which) {
+					case primary:
+						$tagParent.addClass(arg);
+						$tag.text(secondary);
+						break;
+					case secondary:
+						$tagParent.removeClass(arg);
+						$tag.text(primary);
+						break;
+				}
+			}
+			
+		}, //Actions
 
 ////////////////////////////////////   RENDERFORMATS    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
@@ -390,7 +406,37 @@ var beachmall_lists = function(_app) {
 //utilities are typically functions that are exected by an event or action.
 //any functions that are recycled should be here.
 		u : {
-			}, //u [utilities]
+		
+			//takes a count of items with the class that corresponds to the tab passed in the brands category template ($context) and shows a message if count is zero.
+			countBrandsItems : function($context, listType) {
+				var count = 0;
+				setTimeout(function(){
+					$('.products',$context).each(function(){
+//						dump('In .each function');
+						if(listType == "#viewAllProductsTab") { count++;	}
+						else if(listType == "#featuredProdsTab") {
+//							dump('In featured tab condition');
+							if($(this).hasClass('brandFeatured')) { count++; }
+						}
+						else if(listType == "#bestSellersTab") {
+							if($(this).hasClass('brandBestSeller')) { count++; }
+						}
+					});
+					//if something was counted, there must be an item to show for this list type, 
+					//otherwise let the user know there isn't anything to see
+//					dump('COUNT AND LIST TYPE'); dump(listType); dump(count);
+					if (listType == "#viewAllProductsTab" && count > 0) { $('.noBrandsItems',$context).hide(); }
+					if (listType == "#viewAllProductsTab" && count == 0) { $('.noBrandsItems',$context).show(); }
+					if (listType == "#featuredProdsTab" && count > 0) {
+						$('.tabFeatured',$context).show();
+					}
+					if (listType == "#bestSellersTab" && count > 0) {
+						$('.tabBest',$context).show();
+					}
+				},500);
+			},
+		
+		}, //u [utilities]
 
 //app-events are added to an element through data-app-event="extensionName|functionName"
 //right now, these are not fully supported, but they will be going forward. 
@@ -398,7 +444,44 @@ var beachmall_lists = function(_app) {
 //while no naming convention is stricly forced, 
 //when adding an event, be sure to do off('click.appEventName') and then on('click.appEventName') to ensure the same event is not double-added if app events were to get run again over the same template.
 		e : {
-			} //e [app Events]
-		} //r object.
+		
+			//will change a class on the parent container of the brands product list tab to switch view to show all/featured/bestselling items. 
+			//works in conjunction with beachmall_lists.tlcFormats.brandslistfilter & countBrandsItems
+			brandTabSwitch : function($ele,p) {
+				p.preventDefault();
+//				dump('brandTabSwitch attribute: '); dump($('a',$ele).attr('href'));
+				//var $context = $('#categoryTemplateBrands_'+_app.u.makeSafeHTMLId($ele.parent().attr('data-brand-path')));
+				var $context = $("#mainContentArea :visible:first");
+				var thisHref = $('a',$ele).attr('href');
+				switch (thisHref) {
+					case "#viewAllProductsTab" :
+						$ele.parent().parent().removeClass('brandTabsF');
+						$ele.parent().parent().removeClass('brandTabsB');
+						$ele.parent().parent().addClass('brandTabsA');
+			//			_app.ext.beachmall_store.u.countBrandsItems($context,thisHref);
+						break;
+					case "#featuredProdsTab" :
+						$ele.parent().parent().removeClass('brandTabsA');
+						$ele.parent().parent().removeClass('brandTabsB');
+						$ele.parent().parent().addClass('brandTabsF');
+			//			_app.ext.beachmall_store.u.countBrandsItems($context,thisHref);
+						break;
+					case "#bestSellersTab" :
+						$ele.parent().parent().removeClass('brandTabsA');
+						$ele.parent().parent().removeClass('brandTabsF');
+						$ele.parent().parent().addClass('brandTabsB');
+			//			_app.ext.beachmall_store.u.countBrandsItems($context,thisHref);
+						break;
+					default :
+						//if we got here, something isn't right... there are only three tabs.
+						$ele.parent().parent().removeClass('brandTabsA');
+						$ele.parent().parent().removeClass('brandTabsF');
+						$ele.parent().parent().removeClass('brandTabsB');
+				}
+				return false;
+			},
+		
+		} //e [app Events]
+	} //r object.
 	return r;
-	}
+}

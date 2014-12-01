@@ -266,7 +266,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 							<a class="buyerGuides floatLeft pointer" href="/buyer-guides/"><h4>VIEW BUYER GUIDES</h4><span>Learn how to shop for these items</span></a>
 							<div class="photosOnly">
 								<span>Photos Only:</span>
-								<button onclick="myApp.ext.beachmall_store.a.toggleMyClass('photophy',$(this),$(this).parent().parent().parent(),'OFF','ON');">OFF</button>
+								<button onclick="myApp.ext.beachmall_lists.a.toggleMyClass('photophy',$(this),$(this).parent().parent().parent(),'OFF','ON');">OFF</button>
 							</div>
 						</li>
 					</ul><!-- outputs the product list -->
@@ -279,6 +279,75 @@ don't modify the 'data-templateid' unless you are changing template names and up
 		</tr></tbody>
 	</table>
 </div>
+
+
+<div id='categoryTemplateBrands' class='categoryTemplate' data-app-role='categoryPage'>
+	<span class="displayNone" data-tlc="store_routing#seoanchor --seo='1' apply --attrib='data-routing-hash';"></span>
+	<span class="displayNone" data-tlc="bind $var '.%page.head_title'; if(is $var --null;){{bind $var '.page_title';}}; if(is $var --blank;){{bind $var '.pretty';}}; apply --attrib='data-seo-title';"></span>
+	<span class="displayNone" data-tlc="bind $var '.%page.meta_description'; if(is $var --null;){{bind $var '.%page.description';}}; if(is $var --null;){{set $var '';}}; apply --attrib='data-seo-desc';"></span>
+ 
+	<div data-tlc="bind $var '.%page.coupon_code'; if(is $var --notnull;) {{ apply --show; }}; if(is $var --blank;) {{apply --hide;}};" class="brandsPromoBanner floatLeft displayNone">
+		<div>SPECIAL OFFER!</div>
+		<div><span>TAKE AN EXTRA</span><br>10% OFF ALL <span data-tlc="bind $var '.%page.mfg'; if (is $var --notblank;) {{apply --append;}};"></span> GEAR</div>
+		<div>PROMO CODE: <h3 data-tlc="bind $var '.%page.coupon_code'; if (is $var --notblank;) {{apply --append;}};"></h3> <span>See Details</span></div>
+	</div>
+	
+	<ul data-tlc="bind $var '.id'; store_navcats#breadcrumb  --templateid='breadcrumbTemplate'  --legacy;" class="breadcrumb clearfix noPadOrMargin fluidList"></ul>
+		
+		
+	<div data-tlc="bind $var '.path'; if(is $var --eq='.beach-chairs.beach-gear';) {{ apply --hide; }}; ">
+		<div class='brandsCatContainer'> 
+			
+			<ul>
+				<li class="brandsHeader listStyleNone">
+					<img data-tlc="bind $var '.%page.banner1'; if(is $var --notblank;) {{apply --img --media=$var --height='250' --width='500' --bgcolor=#ffffff --replace;}};" src="images/blank.gif" alt="" height='250' width='500' data-apptimize="embed">
+					<ul>
+				   <!-- <p data-bind="var: category(%page.description2); format:wiki; wikiFormats:myRIA; editor: textarea;"></p> -->
+						<li><span data-tlc="bind $var '.%page.header'; if (is $var --notblank;) {{apply --append;}};"></span>
+						<br><div data-tlc="bind $var '.%page.description2'; if (is $var --notblank;) {{render --wiki='undefined'; apply --append;}};"></div>
+						</li>
+						<!--<li><img data-bind="var: category(%page.mfg_logo); format: banner; editor: banner; height:250; width:750; extension: myRIA;" /><BR><BR><BR>AUTHORIZED DEALER</li>-->
+						<li><img data-tlc="bind $var '.%meta.CAT_THUMB'; if (is $var --notblank;) {{ apply --img --media=$var --width=140 --height=90 --bgcolor='#ffffff' --replace;}};" src="images/blank.gif" alt="" height="90" width="140" data-apptimize="embed">AUTHORIZED DEALER</li>
+					</ul>
+				</li>
+			</ul>
+			
+			<div class='brandsTabs'>
+				<ul class='tabs' data-tlc="bind $var '.path'; if(is $var --notblank;){{apply --attrib='data-brand-path'}};">
+					<!-- The brandsTabs will add/remove classes to change which products appear in the list (via href attrib). Standard anytabs functionality isn't used here (although the styling it affords is) -->
+					<li class='tabViewAll' data-app-click="beachmall_lists|brandTabSwitch"><a href="#viewAllProductsTab">View All</a></li>
+					<li class='tabFeatured displayNone' data-app-click="beachmall_lists|brandTabSwitch"><a href="#featuredProdsTab">Featured</a></li>
+					<li class='tabBest displayNone' data-app-click="beachmall_lists|brandTabSwitch"><a href="#bestSellersTab">Best Sellers</a></li>
+				</ul>
+	
+				<div class='viewAllProductsTabContainer'>
+					<div class='CarouselContainer bestSellersCarouselContainer'>
+						<div class='carouselTitles'>
+							<!-- <div class='pointer' onClick="showContent('category',{'navcat':$(this).closest('[data-catsafeid]').data('catsafeid'),'templateID':'categoryTemplateBrandsViewAll'});">
+								<div class='brandCarouselLinkContainer viewAllProductsTab floatRight' >View All</div>
+								<div class='carouselArrowContainer floatRight sprite'></div>
+							</div>no longer in a carousel view, may not need this any longer -->
+						</div>
+						<div class='Carousel'>
+							<!-- <a class="carouselButtonDkBlue bestCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
+							<a class="carouselButtonDkBlue bestCarouselNext carouselButtonDkBlueNext" href="#">next</a> -->
+							<ul data-tlc="bind $var '.@products'; prodlist_infinite#infiniteproductlist  --withreviews='1' --withInventory='1' --withVariations='1' --itemsperpage='4' --hideSummary='true' --templateid='productListTemplate'  --legacy;" data-app-role="productList" data-brand-filter="1" class="listStyleNone fluidList clearfix prodMargin brandsProductList"></ul>
+							<div class="displayNone noBrandsItems" style='padding:20px;text-align:center;'>Sorry, there are no Items to show at this time. Check back later!</div>
+						</div>
+						<!-- <div class='standardCarouselPagenation'></div> -->
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	
+	<div class='brandsTopCatContainer'>
+		<ul data-tlc="bind $var '.@subcategoryDetail'; store_navcats#categorylist  --detail='max' --templateid='brandsCategoryListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin categoryList"></ul><!-- outputs a list of subcategories -->
+		<!-- <ul data-bind="var: category(@subcategoryDetail); format: categoryList; extension: store_navcats; loadsTemplate: categoryListTemplate; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin categoryList'></ul> outputs a list of subcategories -->
+	</div>
+
+</div> <!-- //categoryTemplateBrands -->
 
 
 <div id='categoryTemplateHomepageFeatured' class='categoryTemplate'>
@@ -312,6 +381,14 @@ don't modify the 'data-templateid' unless you are changing template names and up
 			<div class="thumbContainer"><img data-tlc="bind $var '.%meta.CAT_THUMB'; if (is $var --notblank){{apply --img --media=$var --width=210 --height=210 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class="catThumb" alt="" height="210" width="210" data-apptimize="embed"></div>
 			<div class='moreDetailsSmall catDetails'>SHOP NOW</div>
 		</div>
+	</a>
+</li>
+
+
+<li id="brandsCategoryListTemplate" class="catListBrand">
+	<a data-tlc="bind $var '.'; store_routing#seoanchor --type='category' --seo; apply --attrib='href';" class="catTemplateContainer pointer">
+        <div class="brandThumbContainer"><img data-tlc="bind $var '.%meta.CAT_THUMB'; if (is $var --notblank;) {{ apply --img --media=$var --width=152 --height=152 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class="brandCatThumb" alt="" height="152" width="152" data-apptimize="embed"></div>
+		<div class="brandsCatName white2LGray"><span data-tlc="bind $var '.pretty'; quickstart#cattext  --legacy;"></span></div>
 	</a>
 </li>
 

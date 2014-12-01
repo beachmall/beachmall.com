@@ -527,7 +527,27 @@ var beachmall_begin = function(_app) {
 					//		_app.u.dump('----It opened');
 					//	}
 					});
-				} //startTooltip
+			}, //startTooltip
+				
+			//will add tabs to the selector in the context passed
+			tabify : function($context,selector) {
+				var $tabContainer = $(selector,$context);
+				if($tabContainer.length)	{
+					if($tabContainer.data("widget") == 'anytabs'){} //tabs have already been instantiated. no need to be redundant.
+					else	{
+						$tabContainer.anytabs(); //_app.u.dump($("ul li",$tabContainer));
+	//TO DO: ADD THIS HOVER TO VIDEO TABS TOO
+						$("[data-app-role='hoverTab']",$tabContainer).each(function() {
+							$(this).mouseenter(function() {
+								$(this).trigger('click');
+							});
+						});
+					}
+				}
+				else	{
+					_app.u.dump("WARNING! could not find selector "+selector+" for tab items");
+				} //couldn't find the tab to tabificate.
+			},
 		
 		}, //u
 
