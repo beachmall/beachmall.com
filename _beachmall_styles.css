@@ -1607,7 +1607,7 @@ QUICKVIEW TEMPLATE
 .quickviewThumbnailsContainer {height:180px; width:240px; position:relative; margin-bottom:20px; overflow:hidden; left:0px;}
 .quickviewThumbnailsContainer .quickviewThumbnails li {margin:5px;}
 
-.prodTemplateQuickView .ztable_row_small {margin-top:70px; font-weight:normal;}
+.prodTemplateQuickView .ztable_row_small {font-weight:normal;}
 .prodTemplateQuickView .priceContainer .basePrice {float:none;}
 .prodTemplateQuickView .shipTime.latency {margin:0;}
 
@@ -1617,7 +1617,8 @@ QUICKVIEW TEMPLATE
 .quickViewColorSib li {float:left; margin:5px 5px 5px 0;}
 a.quickViewButton {height:35px; width: 100px; background-color:#3bb3c3; color:#ffffff; margin:10px auto; text-align:center; line-height:35px; display:block;}
 
-.prodTemplateQuickView .quickViewProdDesc {font-family:"Open Sans";}
+.prodTemplateQuickView .reviewsStarsCount {width:160px;}
+.prodTemplateQuickView .quickViewProdDesc {margin:10px 0 0 0; font-family:"Open Sans";}
 
 .prodTemplateQuickView .variation {height:91px; width:280px; overflow:auto;}
 .prodTemplateQuickView .optionsSelect {display:none;}

@@ -388,6 +388,38 @@ var beachmall_product = function(_app) {
 					}
 				},1000);	
 			},
+			
+//QUICKVIEW FORMATS
+			//grabs additional product images and sets them under the main in the quickview template
+			productimages : function(data,thisTLC)	{
+				var prod = data.globals.binds.var;
+				var $tag = data.globals.tags[data.globals.focusTag];
+//				app.u.dump("BEGIN beachmall_product.tlcFormats.productImages ["+prod+"]");
+				var imgs = ''; //all the html for all the images. appended to $tag after loop.
+				var imgName; //recycled in loop.
+				for(i = 1; i < 30; i += 1)	{
+					imgName = prod['%attribs']['zoovy:prod_image'+i];
+//					app.u.dump(" -> "+i+": "+imgName);
+					if(_app.u.isSet(imgName)) {
+						imgs += "<li><a data-pid="+prod.pid+" data-toolTipQuickview='data-toolTipQuickview' data-toolTipName='"+imgName+"'class='MagicThumb-swap' rel='zoom-id: prodBigImage_href_"+data.value+"; hint: false;' rev='"+_app.u.makeImage({'tag':0,'w':380,'h':380,'name':imgName,'b':'ffffff'})+"' href='"+_app.u.makeImage({'tag':0,'w':'','h':'','name':imgName,'b':'ffffff'})+"'><img src='"+_app.u.makeImage({'tag':0,'w':50,'h':50,'name':imgName,'b':'ffffff'})+"' \/><\/a><\/li>";
+						}
+					}
+				$tag.append(imgs);
+			}, //productImages
+
+			//changes price description based on tag
+			pricefrom : function(data,thisTLC) {
+				var prod = data.globals.binds.var;
+				var $tag = data.globals.tags[data.globals.focusTag];
+				var priceModifier = prod['%attribs']['user:prod_has_price_modifiers'];
+				//app.u.dump('*** '+priceModifier);
+				
+				if(priceModifier < 1) {
+					$tag.append('Our Price: ');
+				} else {
+					$tag.append('Our Price From: ');
+				}
+			},			
 
 		}, //tlcFormats
 			

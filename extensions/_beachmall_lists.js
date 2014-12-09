@@ -526,6 +526,17 @@ var beachmall_lists = function(_app) {
 				}
 				return false;
 			},
+			
+			//sets a require for the beachmall_product extension where some functions used in the template are, then calls quickstart.
+			quickview : function($ele,p) {
+				p.preventDefault();
+				var pid = $ele.attr('data-pid');
+				var require = ['beachmall_product','powerreviews_reviews'];
+				_app.require(require,function(){
+					_app.ext.quickstart.a.quickView('product',{'templateID':'productTemplateQuickView','pid':pid});
+				});
+				return false;
+			}
 		
 		} //e [app Events]
 	} //r object.
