@@ -18,9 +18,9 @@
 
 
 
-//    !!! ->   TODO: replace 'username' in the line below with the merchants username.     <- !!!
 
-var beachmart_dates = function(_app) {
+
+var beachmall_dates = function(_app) {
 	var theseTemplates = new Array('');
 	var r = {
 
@@ -97,8 +97,26 @@ var beachmart_dates = function(_app) {
 				return r;
 			}, //yyyymmdd2Pretty 
 			
+			yyyymmddNoSeconds2Pretty : function(str)	{
+				var r = false;
+				if(Number(str))	{
+					var year = str.substr(0,4)
+					var month = Number(str.substr(4,2));
+					var day = str.substr(6,2);
+					var d = new Date();
+					d.setFullYear(year, (month - 1), day)
+//					_app.u.dump(" date obj: "); _app.u.dump(d);
+//					_app.u.dump(" -> YYYYMMDD2Pretty ["+str+"]: Y["+year+"]  Y["+month+"]  Y["+day+"] ");
+					r = this.getDOWFromDay(d.getDay())+" "+month+"/"+day
+				}
+				else	{
+					_app.u.dump("WARNING! the parameter passed into YYYYMMDD2Pretty is not a numder ["+str+"]");
+				}
+				return r;
+			}, //yyyymmdd2Pretty 
 			
-				//returns text format of day of the week based on date object value passed in
+			
+			//returns text format of day of the week based on date object value passed in
 			getDOWFromDay : function(X)	{
 				var weekdays = new Array('Sun','Mon','Tue','Wed','Thu','Fri','Sat');
 				return weekdays[X];
@@ -164,15 +182,15 @@ var beachmart_dates = function(_app) {
 				//returns the sum of two YYYYMMDD dates (a date in the future)
 			getFutureDate : function(A, B) {
 //				_app.u.dump('---> getFutureDate'); _app.u.dump(A); _app.u.dump(B);
-				var backorderDate = _app.ext.beachmart_dates.u.yyyymmddToMilliseconds(A);
-				var presentShipDate = _app.ext.beachmart_dates.u.yyyymmddToMilliseconds(B);
+				var backorderDate = _app.ext.beachmall_dates.u.yyyymmddToMilliseconds(A);
+				var presentShipDate = _app.ext.beachmall_dates.u.yyyymmddToMilliseconds(B);
 				var today = new Date().getTime();
 				var futureShipDate = (presentShipDate - today) + backorderDate;
 				
 //				_app.u.dump(backorderDate); _app.u.dump(presentShipDate); 
-//				_app.u.dump(_app.ext.beachmart_dates.u.millisecondsToYYYYMMDD(new Date(futureShipDate)));
-				futureShipDate = _app.ext.beachmart_dates.u.noWeekends(futureShipDate);
-				return _app.ext.beachmart_dates.u.millisecondsToYYYYMMDD(new Date(futureShipDate));
+//				_app.u.dump(_app.ext.beachmall_dates.u.millisecondsToYYYYMMDD(new Date(futureShipDate)));
+				futureShipDate = _app.ext.beachmall_dates.u.noWeekends(futureShipDate);
+				return _app.ext.beachmall_dates.u.millisecondsToYYYYMMDD(new Date(futureShipDate));
  			},
 			
 			
@@ -196,8 +214,8 @@ var beachmart_dates = function(_app) {
 			dateAfterToday : function(compare) {
 				//dump('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!compare startes out as:'); dump(compare);
 				var r = true; //what gets returned, false if compare date has already passed
-				var today = new Date().getTime(); //dump('today is:'); dump(today); dump(_app.ext.beachmart_dates.u.millisecondsToYYYYMMDD(new Date(today)));
-				compare = _app.ext.beachmart_dates.u.yyyymmddToMilliseconds(compare); //dump('the date to compare is:'); dump(compare); dump(_app.ext.beachmart_dates.u.millisecondsToYYYYMMDD(new Date(compare)));
+				var today = new Date().getTime(); //dump('today is:'); dump(today); dump(_app.ext.beachmall_dates.u.millisecondsToYYYYMMDD(new Date(today)));
+				compare = _app.ext.beachmall_dates.u.yyyymmddToMilliseconds(compare); //dump('the date to compare is:'); dump(compare); dump(_app.ext.beachmall_dates.u.millisecondsToYYYYMMDD(new Date(compare)));
 				r = compare < today ? false : true; //dump(r);
 				return r;
 			}

@@ -58,10 +58,7 @@ var beachmall_carousel = function(_app) {
 				});
 				
 				_app.templates.productTemplate.on('complete.beachmall_store',function(event,$ele,P) {
-					_app.ext.beachmall_carousel.u.runProductCarousel($ele);
-					_app.ext.beachmall_carousel.u.runProductVerticalCarousel($ele);
-					_app.ext.beachmall_carousel.u.runProductVerticalCarousel2($ele);
-					_app.ext.beachmall_carousel.u.runProductRecentCarousel($ele);
+					
 				});
 				
 			},
@@ -99,145 +96,7 @@ var beachmall_carousel = function(_app) {
 /** PRODUCT PAGE */			
 			
 			//PRODUCT CAROUSELS
-			runProductCarousel : function($context) {
-				//CAROUSEL UNDER MAIN PRODUCT IMAGE
-				var $target = $('.prodPageCarousel', $context);
-				if($target.data('isCarousel'))	{} //only make it a carousel once.
-				else {
-					$target.data('isCarousel',true);
-			//for whatever reason, caroufredsel needs to be executed after a moment.
-					setTimeout(function(){
-						$target.carouFredSel({
-							auto: {
-								pauseOnHover: "immediate"
-							},
-							minimum: 1,
-							prev: '.prodPageCarPrev',
-							next: '.prodPageCarNext',
-							height: 70,
-							width: 300,
-							//items: 4,
-							//pagination: '#bestCarPagenation',
-							scroll: 4,
-					//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
-							swipe: {
-								onMouse: true,
-								onTouch: true
-							}
-						});
-					},2000); 
-				}
-			}, //runProductCarousel
-				
-			//YOU MAY LIKE THIS VERTICAL CAROUSEL
-			runProductVerticalCarousel : function($context) {
-				var $target = $('.testUL', $context);
-				if($target.data('isCarousel'))	{} //only make it a carousel once.
-				else	{
-					$target.data('isCarousel',true);
-					//for whatever reason, caroufredsel needs to be executed after a moment.
-					setTimeout(function(){
-						$target.carouFredSel({
-							circular: true,
-							auto: {
-								delay : -1,
-								pauseOnHover: "immediate"
-							},
-							direction: 'down',
-							prev: '.testPrev',
-							next: '.testNext',
-							items:{
-								height: 468,
-								width: 240
-							},
-							minimum: 1,
-							height: 490,
-							width: 250,
-							align: 'false',
-							scroll:	{
-								items: 1,
-								duration: 500
-							},
-					//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
-							swipe: {
-								onMouse: true,
-								onTouch: true
-							}
-						});
-					},2000); 
-				}
-			}, //runProductVerticalCarousel
 			
-			//ACCESSORIES VERTICAL CAROUSEL
-			runProductVerticalCarousel2 : function($context) {
-				var $target = $('.testUL2', $context);
-				if($target.data('isCarousel'))	{} //only make it a carousel once.
-				else {
-					$target.data('isCarousel',true);
-					//for whatever reason, caroufredsel needs to be executed after a moment.
-					setTimeout(function(){
-						$target.carouFredSel({
-							circular: true,
-							auto: {
-								delay :-1,
-								pauseOnHover: "immediate"
-							},
-							direction: 'down',
-							prev: '.testPrev2',
-							next: '.testNext2',
-							items:{
-								height: 468,
-								width: 240
-							},
-							minimum: 1,
-							height: 490,
-							width: 250,
-							align: 'false',
-							scroll: {
-								items: 1,
-								duration: 500
-							},
-					//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
-							swipe: {
-								onMouse: true,
-								onTouch: true
-							}
-						});
-					},2000); 
-				}
-			}, //runProductVerticalCarousel2
-			
-			runProductRecentCarousel : function($context) {
-				var $target = $('.productPreviousViewed', $context);
-				if($target.data('isCarousel'))	{} //only make it a carousel once.
-				else {
-					$target.data('isCarousel',true);
-					//for whatever reason, caroufredsel needs to be executed after a moment.
-					setTimeout(function(){
-						$target.carouFredSel({
-				//			circular: true,
-							auto: false,
-							align: false,
-							prev: '.productPreviousViewedPrev',
-							next: '.productPreviousViewedNext',
-							items:{
-								height: 500,
-								width: 240
-							},
-							height: 500,
-							width: 960,
-							//items: 4,
-							pagination: '.productPreviousViewedPagenation',
-							scroll: 4,
-					//		mousewheel: true, //this is mobile, so mousewheel isn't necessary (plugin is not loaded)
-							swipe: {
-								onMouse: true,
-								onTouch: true
-							}
-						});
-					},2000); 
-				}
-			}, //runProductRecentCarousel
 			
 		}, //u [utilities]
 

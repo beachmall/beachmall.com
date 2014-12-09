@@ -75,8 +75,6 @@ var beachmall_store = function(_app) {
 				
 				_app.templates.productTemplate.on('complete.beachmall_store',function(event,$ele,P) {
 					_app.ext.beachmall_store.u.backToTop($ele);
-					_app.ext.beachmall_store.u.tabify($ele,"[data-app-role='xsellTabContainer']");
-					_app.ext.beachmall_store.u.tabify($ele,".tabbedProductContent");
 					_app.ext.beachmall_store.u.handleToolTip();
 				});
 				
@@ -88,21 +86,11 @@ var beachmall_store = function(_app) {
 					_app.ext.beachmall_store.u.backToTop($ele);
 				});
 				
-				$.extend(handlePogs.prototype,_app.ext.beachmall_store.variations);				
+							
 
 			},
 			onError : function() {
 				_app.u.dump('START beachmall_store.callbacks.startExtension.onError');
-			}
-		},
-		
-		//renders redirect product on the product page
-		renderRedirectProduct : {
-			onSuccess:function(responseData){
-				responseData.$container.tlc({'datapointer':responseData.datapointer,verb:"transmogrify",templateid:responseData.loadsTemplate}); 
-			},
-			onError:function(responseData){	
-				_app.u.dump('Error in extension: store_filter.callbacks.renderRedirectProduct, response data follows: '); dump(responseData);
 			}
 		},
 		
@@ -149,22 +137,7 @@ var beachmall_store = function(_app) {
 			},
 			
 /**PRODUCT PAGE FUNCTIONS */			
-			scrollToRevealTab : function(pid, href) {
-				var $context = $(_app.u.jqSelector("#","productTemplate_"+pid));
-				var $prodSizing = $(".tabbedProductContent",$context);
-				setTimeout(function(){
-					$("a[href="+href+"]",$context).mouseenter();
-					$('html, body').animate({
-						scrollTop: $prodSizing.offset().top
-					}, 2000);
-				},500);
-			},
 			
-				//Q&A link on product page will populate the order/prod id field on contact form w/ pid
-			showContactPID : function (pid) {
-				//app.u.dump('the pid is: '); app.u.dump(pid);
-				setTimeout(function(){$('#contactFormOID','#mainContentArea_company').val('SKU: '+pid)},1000);
-			},
 
 /**CUSTOMER ARTICLE FUNCTIONS */
 				//clears the order/prod id field in contact form to be sure it doesn't still 
@@ -237,69 +210,6 @@ var beachmall_store = function(_app) {
 			
 /**PRODUCT PAGE FORMATS */	
 
-			//appends an anchor tag with a keyword search for data.value to the calling tag
-			searchlink : function($tag,data) {
-//				dump('START beachmall_store searchlink'); dump(data.value);
-				//check if schema attrib is needed and add if so.
-				if($tag.attr('data-schema') == 1) {
-					$tag.append("<a href=#!search/keywords/"+data.value+" itemprop='manufacturer' class='underline'>"+data.value+"</a>");
-				}
-				else {
-					$tag.append("<a href=#!search/keywords/"+data.value+" class='underline'>"+data.value+"</a>");
-				}
-			},
-			
-			//get product inventory and display in tag
-			showinv :function($tag, data) {
-				var pid = _app.u.makeSafeHTMLId(data.value.pid);
-				dump('DATA.VALUE:********************************************************************'); dump(data.value);
-				if(data.value['@inventory'] && data.value['@inventory'][pid] && data.value['@inventory'][pid].AVAILABLE) {
-					dump(data.value['@inventory'][pid].AVAILABLE);
-					$tag.text("(" + data.value['@inventory'][pid].AVAILABLE+ ") In Stock");
-				}
-			}, //showInv
-			
-			//hides geo location/time in transit and add to cart button if product is discontinued or not purchasable
-			hidegeoelements : function($tag, data) {
-				//_app.u.dump('*********************'); _app.u.dump(data.value.pid); 
-				if(data.value['%attribs']['zoovy:prod_is_tags']
-					&& data.value['%attribs']['zoovy:prod_is_tags'].indexOf('IS_DISCONTINUED') > 0) {
-					$tag.hide();
-					if($('.addToCartButton',$tag.parent())) {
-						$('.addToCartButton',$tag.parent()).hide();
-					}
-				}
-				else if (!_app.ext.store_product.u.productIsPurchaseable(data.value.pid)){
-					$tag.hide();	
-					if($('.addToCartButton',$tag.parent())) {
-						$('.addToCartButton',$tag.parent()).hide();
-					}
-				}
-			},
-			
-			//if a product is discontinued, will add minimal info about the replacement and provide a link to it.
-			addredirectproduct : function($tag, data) {
-//				dump('REPLACEMENT PRODUCT: '); dump(data.value);
-				if(data.value) {
-					var obj = {
-						pid : _app.u.makeSafeHTMLId(data.value),
-						"withVariations":1,
-						"withInventory":1
-					};
-					
-					var _tag = {								
-						"callback":"renderRedirectProduct",		
-						"extension":"beachmall_store",			
-						"$container" : $tag,
-						"loadsTemplate" : data.bindData.templateid
-					};
-					_app.calls.appProductGet.init(obj, _tag, 'immutable');
-				
-					//execute calls
-					_app.model.dispatchThis('immutable');
-				}
-			},
-			
 			//Will add a message that current product is discontinued, and provide a link to a replacement
 			addRedirectURL : function($tag, data) {
 				//app.u.dump('Replacement Product: '); app.u.dump(data.value['%attribs']['user:replacement_product']);
@@ -309,26 +219,6 @@ var beachmall_store = function(_app) {
 					$tag.append('THIS PRODUCT IS DISCONTINUED,<br><a class="pointer" title="new product" href="#!/product/'+data.value['%attribs']['user:replacement_product']+'">CLICK HERE TO SEE</a><BR>THE NEW VERSION!');
 				}																						 //onClick="return showContent('product',{'pid':'wridt'});"
 			},
-			
-			//hides time in transit/geo location section if item is a drop-shipped item
-			//time in transit code checks this attrib also, and doesn't run if it's set.
-			hideifdropship : function($tag, data) {
-				if(data.value) {
-					$tag.before('<div>Expedited shipping not available for this item</div>');
-					$tag.hide().css('display','none');
-				}
-			},
-			
-			//hides ships on/in message on product page if product isn't purchaseable
-			hideshiplatency : function($tag, data) {
-				var pid = data.value.pid;
-//					app.u.dump('***PID'); app.u.dump(pid);
-				if(!_app.ext.store_product.u.productIsPurchaseable(pid)) {
-					$tag.addClass('displayNone');
-				}
-			},
-			
-			//showshiplatency listed in LIST FORMATS SECTION
 			
 			//opens e-mail in default mail provider (new window if web-based)
 			//if info is available will populate subject and body w/ prod name, mfg, & price
@@ -376,74 +266,7 @@ var beachmall_store = function(_app) {
 					});
 				}
 			}, //bindMailto
-			
-			//shows container w/ accessories/similar tabbed content if one of them has values set
-			showtabsifset : function($tag, data) {
-				setTimeout(function(){ //timeout here to allow time for data to get added to dom before this is run
-					var attribs = data.value['%attribs'] ? data.value['%attribs'] : false; 
-					if(!attribs) return; //if no attribs, run for it Marty!
-					var relatedProds = attribs['zoovy:related_products'] ? attribs['zoovy:related_products'] : false;
-					var accessoryProds = attribs['zoovy:accessory_products'] ? attribs['zoovy:accessory_products'] : false;
-					var L, relatedIsDiscontinued, accessoryIsDiscontinued; //used for length of attrib lists and to hold whether list is discontinued or not
-					var listList = [];
-					listList.push(relatedProds,accessoryProds);
-				//	_app.u.dump('--> List of lists'); _app.u.dump(listList); 
-					
-					for(j=0;j<listList.length;j++) {
-						if(listList[j]) {
-							var count = 0; //used to compare # discontinued items to list lengths
-							prodAttribList = listList[j].split(',');
-							L = prodAttribList.length;
-						
-								//check for any empty strings in array. Remove and adjust length if found
-							var p = L;
-							for(k=0;k<p;k++) {
-								if(prodAttribList[k] == "" || prodAttribList[k] == " ") {
-									L -= 1;
-									prodAttribList.splice(k,1);
-								}
-							}
 
-								//check for discontinued and adjust count if found
-							var tempProd; //used in loop
-				//			_app.u.dump('--> prodAttribList'+j+'---'); _app.u.dump(prodAttribList);
-							for(i=0;i<L;i++) {
-								tempProd = _app.data['appProductGet|'+_app.u.makeSafeHTMLId(prodAttribList[i])];
-								if(tempProd && tempProd['%attribs'] && tempProd['%attribs']['zoovy:prod_is_tags']) {
-									tempProd['%attribs']['zoovy:prod_is_tags'].indexOf('IS_DISCONTINUED') == -1 ? count = count : count += 1;
-								}
-							}
-							L == count ? listList[j] = false : listList[j] = true; //if length is same as count, all prods in list are not show-able
-						}
-					}
-						//check the findings for each list and set discontinued accordingly
-					listList[0] == true ? relatedIsDiscontinued = false : relatedIsDiscontinued = true;
-					listList[1] == true ? accessoryIsDiscontinued = false : accessoryIsDiscontinued = true;
-					 
-		//			_app.u.dump('--> Lots to look at'); _app.u.dump(relatedProds); _app.u.dump(relatedIsDiscontinued); _app.u.dump(accessoryProds); _app.u.dump(accessoryIsDiscontinued);
-				
-					if( (relatedProds && !relatedIsDiscontinued) || (accessoryProds && !accessoryIsDiscontinued) ) {
-						$tag.show();
-					}
-					
-					if( (accessoryProds && !accessoryIsDiscontinued) && ( (!relatedProds) || (relatedProds && relatedIsDiscontinued) ) ) {
-						$('.accTab',$tag).addClass('ui-state-active').addClass('ui-tabs-active');
-						setTimeout(function(){
-							$('.accAnch','.accTab',$tag).mouseenter();},500);
-		//				_app.u.dump('got past trigger');
-					}
-				},1000);	
-			},
-			
-			//will hide the add to cart button on product page if item has IS_DISCONTINUED tag
-			discontinuedatc : function($tag,data) {
-				dump('START hideatc'); dump(data.value);
-				if(data.value.indexOf('IS_DISCONTINUED') != -1) {
-					$tag.before("<div>Sorry! This item is not available for purchase.</div>");
-					$tag.addClass('displayNone');
-				} 
-			},
-			
 		/*	TO DO: SET UP WAY TO SELECT TAB AND HIDE IF NOT RESULTS, AND, MAKE SEQUENTIAL SO THAT ALL TABS ARE CHECKED ON AFTER THE OTHER TO PREVENT NO CONTENT SHOWING.
 			brandstabhider : function($tag, data) { 
 				setTimeout(function(){
@@ -559,17 +382,7 @@ var beachmall_store = function(_app) {
 					app.u.dump("Issue w/ the product data. can't reach attribs.");
 				}
 			}, //videotabify
-			
-			//shows tool tip on product page. Uses fade out to allow for click on link in tool tip pop up
-			handleToolTip : function()	{
-			_app.u.dump("BEGIN beachmart.u.handleToolTip.");
-				$('.tipify',$('#appView')).each(function(){
-					var $this = $(this);
-					$this.parent().css('position','relative'); //this is what makes the tooltip appear next to the link instead of off in space.
-					$this.mouseover(function(){	$('.toolTip',$this.parent()).show();}).mouseout(function(){	$('.toolTip',$this.parent()).fadeOut(3000);});
-				});
-			},
-		
+
 		}, //u [utilities]
 
 //app-events are added to an element through data-app-event="extensionName|functionName"
@@ -587,293 +400,7 @@ var beachmall_store = function(_app) {
 			
 		}, //e [app Events]
 			
-			
-////////////////////////////////////   VARIATIONS    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\			
-			
-		variations : {
-				//adds similar functionality as custom image select render option to image grid options
-			renderOptionCUSTOMIMGGRID : function(pog) {
-				var pogid = pog.id;
-//				dump('-----renderOptionCUSTOMIMGGRID pog.id'); dump(pog.id); dump(pog);
-				var $parentDiv = $("<div class='imgGridVariationWrapper floatLeft' \/>");
-				var skus = _app.data['appProductGet|'+pog.pid]['%SKU']; dump('-----SKUs?'); dump(skus[0][1]); dump(skus[0][1].length);
-				var skuLevel = false; //set to true if sku level image is found, will lead to sku render otherwise will lead to image render
-				var $radioInput; //used to create the radio button element.
-				var radioLabel; //used to create the radio button label.
-				var $optionDiv; //holds the individual radio/label/img pack for each sku
-				var $imgDiv; //holds the group of images for each iteration/variation
-				var thumbnail; //holds nails shaped like thumbs
-				var thumbnailTag; //tag created manually to add jquery tool tip attribs
-				
-				for(var index in skus[0][1]) {
-					if(index.indexOf('zoovy:prod_image') > -1) {
-					dump('0------There was an image!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-					skuLevel = true;
-					}
-				}
-				
-				//render sku level image group if zoovy:prod_image was found in %SKU
-				if(skuLevel) {
-					dump('0------in skuLevel if');
-					if(pog['ghint']) {$parentDiv.append(pogs.showHintIcon(pogid,pog['ghint']))}
-					
-					var j = 0;
-					
-					//var skus = _app.data['appProductGet|PLY39AWTEST2']['%SKU'];
-					//var skus = _app.data['appProductGet|PL4S31']['%SKU'];
-					var skuLen = skus.length;
-					var options = pog['@options'];
-					var optLen = pog['@options'].length;
-	//				dump('The lengths, o then s'); dump(optLen); dump(skuLen);
-					
-					for (var i=0; i < optLen; i++) {
-						$optionDiv = $("<div class='imgGridOptionWrapper'></div>");
-						$imgDiv = $("<div class='imgGridImgWrapper' data-pogval="+pog['@options'][i]['v']+"></div>");
-						$radioInput = $('<input>').attr({type: "radio", name: pogid, value: pog['@options'][i]['v'],"data-pogval":pog['@options'][i]['v']});
-						radioLabel = "<label>"+pog['@options'][i]['prompt']+"<\/label>";
-						$optionDiv.append($radioInput).append(radioLabel);
-						while (j < skuLen) {
-	//						dump('----while i is '+i+' option value is: '+pog.id+options[i].v+', while j is '+j+' sku id is '+skus[j][0]);
-							if(skus[j][0].indexOf(pog.id+options[i].v) > -1) {
-								var images = skus[j][1];
-								for (var index in images) {
-	//								dump('---image attrib = '+index+' and image path = '+images[index]);
-									if(index.indexOf('zoovy:prod_image') > -1 && images[index].length > 0) {
-	//									dump('---image attrib = '+index+' and image path = '+images[index]);
-										thumbnail = _app.u.makeImage({"w":400,"h":400,"name":images[index],"b":"FFFFFF","lib":_app.username});
-										thumbnailTag = "<img src='"+thumbnail+"' width='40' height='40' name='"+pog['@options'][i]['img']+"' data-grid-img='"+thumbnail+"' data-tooltip-title='"+pog['@options'][i]['prompt']+"'>";
-										$imgDiv.append(thumbnailTag);
-									}
-								}
-								j++
-	//							dump('----Meanwhile...'); dump(images); 
-								break;
-							} //k for
-							else {j++}
-						} //while
-						
-						//make clicking one of the images check the radio button and add a red border to further indicate selection
-						$imgDiv.click(function(){
-							var pogval = $(this).attr('data-pogval');	//value of image clicked
-	//						dump('you clicked');
-							$('.imgGridImgWrapper',$(this).parent().parent()).each(function(){
-								if($(this).hasClass('selected')){ 
-									$(this).removeClass('selected'); 
-								}	//add selected indicator to clicked image
-								if($(this).attr('data-pogval') == pogval){ 
-									$(this).addClass('selected'); 
-								}
-							});
-							$('input[type=radio]',$(this).parent().parent()).prop('checked',false);
-							$('input[type=radio]',$(this).parent().parent()).each(function() {
-								if($(this).attr('data-pogval') == pogval) {
-									$(this).prop('checked',true);
-								}
-							});
-						}); 
-						
-						//make clicking the radio change the border like clicking the image does above
-						$radioInput.change(function() {
-							var selected = $(this).val();	//the option selected in select list
-						dump('---the radio'); dump(selected); 
-								//remove selected indicator from all images
-							$('.imgGridImgWrapper',$(this).parent().parent()).each(function(){
-								if($(this).hasClass('selected')){ 
-									$(this).removeClass('selected'); 
-								}	//add it back to the value of select list option if one matches
-								if($(this).attr('data-pogval') == selected){ 
-									$(this).addClass('selected'); 
-								}
-							});
-						});
-						
-						$optionDiv.append($imgDiv);
-						$parentDiv.append($optionDiv);
-					} //i for
-				} //sku level render
-				
-				//do the regular custom thing w/out the sku level images
-				else {
-					var i = 0;
-					var len = pog['@options'].length;
-					while (i < len) {
-						$optionDiv = $("<div class='imgGridOptionWrapper'></div>");
-						$imgDiv = $("<div class='imgGridImgWrapper' data-pogval="+pog['@options'][i]['v']+"></div>");
-						$radioInput = $('<input>').attr({type: "radio", name: pogid, value: pog['@options'][i]['v'],"data-pogval":pog['@options'][i]['v']});
-						radioLabel = "<label>"+pog['@options'][i]['prompt']+"<\/label>";
-						thumbnail = _app.u.makeImage({"w":400,"h":400,"name":pog['@options'][i]['img'],"b":"FFFFFF","lib":_app.username});
-						thumbnailTag = "<img src='"+thumbnail+"' width='"+40+"' height='"+40+"' name='"+pog['@options'][i]['img']+"' data-grid-img='"+thumbnail+"' data-tooltip-title='"+pog['@options'][i]['prompt']+"'>";
-						$imgDiv.append(thumbnailTag);
-						$optionDiv.append($radioInput).append(radioLabel).append($imgDiv);
-						$parentDiv.append($optionDiv);
-						i++
-						
-						//make clicking one of the images check the radio button and add a red border to further indicate selection
-						$imgDiv.click(function(){
-							var pogval = $(this).attr('data-pogval');	//value of image clicked
-	//						dump('you clicked');
-							$('.imgGridImgWrapper',$(this).parent().parent()).each(function(){
-								if($(this).hasClass('selected')){ 
-									$(this).removeClass('selected'); 
-								}	//add selected indicator to clicked image
-								if($(this).attr('data-pogval') == pogval){ 
-									$(this).addClass('selected'); 
-								}
-							});
-							$('input[type=radio]',$(this).parent().parent()).prop('checked',false);
-							$('input[type=radio]',$(this).parent().parent()).each(function() {
-								if($(this).attr('data-pogval') == pogval) {
-									$(this).prop('checked',true);
-								}
-							});
-						}); 
-						
-						//make clicking the radio change the border like clicking the image does above
-						$radioInput.change(function() {
-							var selected = $(this).val();	//the option selected in select list
-						dump('---the radio'); dump(selected); 
-								//remove selected indicator from all images
-							$('.imgGridImgWrapper',$(this).parent().parent()).each(function(){
-								if($(this).hasClass('selected')){ 
-									$(this).removeClass('selected'); 
-								}	//add it back to the value of select list option if one matches
-								if($(this).attr('data-pogval') == selected){ 
-									$(this).addClass('selected'); 
-								}
-							});
-						});
-					}
 
-				} //regular custom render
-				return $parentDiv;
-			},
-			
-			//puts color options on product page as image selectable select list. Also adds jquery tool tip pop up of image for zoom
-			renderOptionCUSTOMIMGSELECT: function(pog) {
-
-//				_app.u.dump('POG -> '); _app.u.dump(pog);
-				
-				var $parent = $('<div class="optionsParent" />');
-				var $select = $("<select class='optionsSelect floatLeft' name="+pog.id+" />");
-				var $modContainer = $("<div class='modContainer floatLeft fontRed'></div>"); //holds price modifier next to select list
-				var $hint = $('<div class="zhint">mouse over thumbnail to see larger swatches</div>');
-				var $hint = $('<div class="zhint">mouse over thumbnail to see larger swatches</div>');
-				$parent.append($hint);
-
-				var len = pog['@options'].length;				
-				if(len > 0) {
-					optionTxt = (pog['optional'] == 1) ? "" : "Please choose (required)";
-					selOption = "<option value='' disabled='disabled' selected='selected'>"+optionTxt+"<\/option>";
-					$select.append(selOption);
-				}
-				
-				var $option;
-				for (var index in pog['@options']) {
-					var option = pog['@options'][index];
-//					_app.u.dump('IMG: '); _app.u.dump(option.img);
-					$option = $("<option data-price-modifier='"+option.p+"' value="+option.v+">"+option.prompt+"</option>");
-					$select.append($option);
-					var thumbImg = _app.u.makeImage({"w":pog.width,"h":pog.height,"name":option.img,"b":"FFFFFF","tag":false,"lib":_app.username});
-					var bigImg = _app.u.makeImage({"w":400,"h":400,"name":option.img,"b":"FFFFFF","tag":false,"lib":_app.username});																									//need to try moving these to be appended
-					
-					var $imgContainer = $('<div class="floatLeft optionImagesCont" data-price-modifier="'+option.p+'" data-pogval="'+option.v+'" />');
-					/*var $mzpLink = $('<a id="imgGridHref_'+pog.id+'_'+option.v+'" alt="'+option.prompt+'" class="MagicZoom" title="'+option.prompt+'" rel="hint:false; show-title:top; title-source=#id;" href="'+mzBigImg+'" />');
-					
-					$mzpLink.click(function(){
-						var pogval = $(this).parent().attr('data-pogval');
-						
-						$select.val(pogval);
-						app.u.dump(pogval);
-						app.u.dump(pogval);
-						app.u.dump(pogval);
-						app.u.dump(pogval);
-						$('.optionImagesCont', $parent).each(function(){
-							if($(this).hasClass('selected')){ 
-								$(this).removeClass('selected'); 
-								}
-							if($(this).attr('data-pogval') == pogval){ 
-								$(this).addClass('selected'); 
-								}
-							});	
-						});
-						
-					$mzpLink.append($('<img src='+thumbImg+' title="'+pog.prompt+'" data-pogval="'+option.v+'"/>'));
-					$imgContainer.append($mzpLink);*/
-
-						//add selected indicator to image, and change select list option to match
-					$imgContainer.click(function(){
-						var pogval = $(this).attr('data-pogval');	//value of image clicked
-						
-						$select.val(pogval); 	//change select list to clicked image value
-							//remove the selected indicator from all images
-						$('.optionImagesCont', $parent).each(function(){
-							if($(this).hasClass('selected')){ 
-								$(this).removeClass('selected'); 
-								}	//add selected indicator to clicked image
-							if($(this).attr('data-pogval') == pogval){ 
-								$(this).addClass('selected'); 
-								$modContainer.empty();
-								//if there is a price modifier, display it next to the select list of options
-								if($(this).attr("data-price-modifier") != "" && $(this).attr("data-price-modifier") != "undefined") {
-									var thisPriceMod = $(this).attr("data-price-modifier").substring(1); //get rid of the "+" symbol 
-									$modContainer.empty().text("+ $"+thisPriceMod); 
-									}
-								}
-							});	
-						});
-					
-					$img = $('<img src="'+thumbImg+'" data-big-img="'+bigImg+'" data-tooltip-title="'+option.prompt+'"/>')
-					
-					//Tooltip called in init
-					
-					$imgContainer.append($img);
-					$parent.append($imgContainer);
-					
-	//				to add description info to label for
-	//				$mzpLink.mouseover(function() {
-	//					$('.optionImagesCont', $parent).each(function(){
-	//						$('label[value="Fabric"]').empty().text('Fabric: '+option.prompt+'');
-	//						app.u.dump(option.prompt);
-	//					});		
-	//				});
-	
-				} // END for
-				
-					//add selected indicator on image when variation is selected w/ select list
-				$select.change(function() {
-					var selected = $(this).val();	//the option selected in select list
-				
-						//remove selected indicator from all images
-					$('.optionImagesCont', $parent).each(function(){
-						if($(this).hasClass('selected')){ 
-							$(this).removeClass('selected'); 
-						}	//add it back to the value of select list option if one matches
-						if($(this).attr('data-pogval') == selected){ 
-							$(this).addClass('selected'); 
-							$modContainer.empty(); //remove old value in case there is no new one.
-							//if there is a price modifier, display it next to the select list of options
-							if($(this).attr("data-price-modifier") != "" && $(this).attr("data-price-modifier") != "undefined") {
-								var thisPriceMod = $(this).attr("data-price-modifier").substring(1); //get rid of the "+" symbol 
-								$modContainer.empty().text("+ $"+thisPriceMod); 
-							}
-						}
-					});
-				});
-
-				$parent.append($select);
-				$parent.append($modContainer); //add the price modifier
-				return $parent;
-			}, // END renderOptionCUSTOMIMGSELECT
-			
-			xinit : function(){
-				this.addHandler("type","imggrid","renderOptionCUSTOMIMGGRID");
-				this.addHandler("type","imgselect","renderOptionCUSTOMIMGSELECT");
-				_app.u.dump("--- RUNNING XINIT");
-			}
-			
-		} //variations
-			
-			
 	} //r object.
 	return r;
 }

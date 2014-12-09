@@ -37,6 +37,7 @@ input[type=checkbox] {
 	-webkit-appearance:normal;
 	-webkit-appearance:checkbox;
 }
+.bMallBlueButton {background:#3bb3c3; border:none; color:#ffffff;}
 
 #appView {background:white; margin: 0px auto; height:auto; width: 1020px;}
 #appPreView {height:100%; width:100%; max-width:100%; position:absolute; z-index:9999;} /*rgba(59,179,195,.5) background-image:url(images/preview-bkgrnd_250x189.png); background-repeat:no-repeat; background-size:100% 100%;*/
@@ -1082,8 +1083,8 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 .disRedirect .pr-snippet-wrapper {background:none; border:none; padding:0;}
 .disRedirect .pr-snippet-stars {border:none;}
 .disRedirect .pr-snippet-read-write,.disRedirect .pr-snippet-social-bar {display:none;}
-.disRedirect a {color:#3bb3c3; font-weight:bold; text-decoration:underline;}
-.disRedirect a:hover {color:#E63738;}
+.disRedirect a, .pr-snippet-read-write .pr-snippet-link {color:#0072bc; font-weight:bold; text-decoration:underline; cursor:pointer;}
+.disRedirect a:hover, .pr-snippet-read-write .pr-snippet-link:hover {color:#E63738;}
 
 .prodPageSiblings.fluidList li {display:none;}
 
@@ -1112,6 +1113,9 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 
 .qafCont {height:109px; width:180px; margin:26px 0 0 0; background:#ffffff url(images/bm12_p_toprtcol-180x89.jpg) no-repeat left top;}
 .qafQA, .qafEmail, .qafPrint {height:89px; width:60px; float:left; cursor:pointer;}
+.ui-dialog .ui-dialog-content#emailAFriendTemplate {background:none repeat scroll 0 0 #f5f1de;}
+.ui-widget #emailAFriendTemplate input[type=email] {width:25%; padding:0.2em; border:1px solid #333333;}
+.qafMailButton {padding:0.2em; margin:0 0 0 10px;}
 .guarenteeTipCont {height:0;}
 .guarenteeTipCont .toolTip a {color:#e0463a;}
 .rightColumn {height:auto; width:258px; margin:0 0 15px 20px;}
@@ -1896,18 +1900,9 @@ COMPANY ARTICLES
 ******************************************************************************/
 
 
-#mainContentArea_company .recentEmpty {margin:50px 0 100px 0; text-align:center;}
-#mainContentArea_company .mainColumn {margin:0 auto;}
+.recentlyViewedItemsContainer .recentEmpty {margin:50px 0 100px 0; text-align:center;}
 
 /******************************************************************************/
-
-<div class='articleHeader'>
-	<div>BEACHMALL.COM Contact Information</div>
-	<div>11555 Central Parkway, Ste 1101<br>Jacksonville, FL. 32224<br>US</div>
-	<div>Phone: 1-888-975-6555<br>cs@beachmall.com</div>
-</div>
-
-
 
 
 .imageSelect_images {background-color: green; width:10px; height:10px;}

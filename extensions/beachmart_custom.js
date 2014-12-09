@@ -53,7 +53,7 @@ var beachmart = function(_app) {
 					
 					// get the estimate arrival code running. works passively.
 					_app.templates.productTemplate.on('complete.beachmall_store',function(event,$ele,P) {
-						_app.ext.beachmart.u.initEstArrival(P);
+						
 					});
 /*
 					if(_app.u.isSet(SKU))	{
@@ -97,52 +97,6 @@ var beachmart = function(_app) {
 				
 				}, //checkForOrGetShipZip
 
-
-
-
-			showTransitTimes : {
-				
-				onSuccess : function(tagObj){
-					_app.u.dump("BEGIN beachmart.callbacks.showTransitTimes");
-					_app.u.dump(tagObj);
-					//use cutoff from response, not product.
-					var $container = $('#productTemplate_'+_app.u.makeSafeHTMLId(SKU));
-//					_app.u.dump(" -> $container.length: "+$container.length);
-//					dump(_app.data[tagObj.datapointer]);
-					var data = _app.data[tagObj.datapointer]; //shortcut.
-					if(!$.isEmptyObject(data['@Services']))	{
-						_app.u.dump(" -> @Services is not empty");
-						var index = _app.ext.beachmart.u.getShipMethodByID(data['@Services'],'UGND');
-						if(!index) {
-							index = _app.ext.beachmart.u.getFastestShipMethod(data['@Services']);
-						}
-//						_app.u.dump(" -> index: "+index);
-//index could be false if no methods were available. or could be int starting w/ 0
-						if(index >= 0)	{
-							$('.transitContainer',$container).empty().append(_app.ext.beachmart.u.getTransitInfo(SKU,data,index)); //empty first so when reset by zip change, no duplicate info is displayed.
-							}
-						
-						}
-					else {
-						var $tryAgain = $("<span class='pointer'>Transit times could not be retrieved at the moment (Try again)</span>");
-						$('.transitContainer',$container).empty().append($tryAgain).click(function(){_app.ext.beachmart.a.showZipDialog()}); }
-					$('.shippingInformation .loadingBG',$container).removeClass('loadingBG');
-					$('.loadingText',$container).hide();	
-					},
-				onError : function(responseData,uuid)	{
-					var $container = $('#productTemplate_'+_app.u.makeSafeHTMLId(SKU));
-//					alert("got here");
-//error handling is a case where the response is delivered (unlike success where datapointers are used for recycling purposes)
-					//_app.u.handleErrors(responseData,uuid); //a default error handling function that will try to put error message in correct spot or into a globalMessaging element, if set. Failing that, goes to modal.
-					$('.transitContainer',$container).empty().anymessage(_app.u.youErrObject(""+responseData,uuid));
-					}
-				
-				
-				}, //showTransitTimes
-
-
-
-				
 			testCallback : {
 				onSuccess : function(tagObj){
 					dump('----testCallback'); dump(tagObj); dump(_app.data[tagObj.datapointer]);
@@ -276,32 +230,8 @@ var vertCarouselOptions = {
 
 		calls : {
 			
-			appShippingTransitEstimate : {
-				init : function(cmdObj,tagObj,Q)	{
-					//_app.u.dump("BEGIN beachmart.calls.appShippingTransitEstimate.  [Q: "+Q+"]"); dump(tagObj);
-					tagObj = $.isEmptyObject(tagObj) ? {} : tagObj; 
-					tagObj.datapointer = "appShippingTransitEstimate";
-					this.dispatch(cmdObj,tagObj,Q);
-					return true;
-					},
-				dispatch : function(cmdObj,tagObj,Q)	{
-					cmdObj['_tag'] = tagObj;
-					cmdObj["_cmd"] = "appShippingTransitEstimate"
-					_app.model.addDispatchToQ(cmdObj,Q);	
-					}
-				},//appShippingTransitEstimate
-			time : {
-				init : function(tagObj,Q)	{
-//					_app.u.dump("BEGIN beachmart.calls.appShippingTransitEstimate.  [Q: "+Q+"]");
-					tagObj = $.isEmptyObject(tagObj) ? {} : tagObj; 
-					tagObj.datapointer = "time";
-					this.dispatch(tagObj,Q);
-					return true;
-					},
-				dispatch : function(tagObj,Q)	{
-					_app.model.addDispatchToQ({"_cmd":"time","_tag":tagObj},Q);	
-					}
-				}, //appShippingTransitEstimate
+			
+			
 							
 			}, //calls
 
@@ -498,61 +428,7 @@ Action
 					}
 				}, //showProdAttInDialog
 				
-			showZipDialog : function()	{
-				
-				var $dialog = $('#zipEntryDialog');
-				if($dialog.length)	{}//dialog already exists. no mods necessary, just open it.
-				else	{
-					_app.u.dump("create and show zip dialog");
-					$dialog = $("<div>").attr("title","Change Zip for Shipping").dialog({
-						modal:true,
-						autoOpen:false,
-						close: function(event, ui)	{
-								$(this).dialog('destroy').empty().remove()
-							}
-						});
-					$dialog.append("<div id='shipDialogMessaging' />");
-					$dialog.append("<input type='text' name='data.ship_zip' id='shipDialogZip' required='required' size='10' />");
-					var $button = $("<button />").html('Update Zip Code').click(function(){
-						var zip = $('#shipDialogZip').val();
-						_app.u.dump("BEGIN showZipDialog .click event. zip: '"+zip+"'");
-
-						if(zip && zip.length >= 5 && !isNaN(zip))	{
-					_app.model.addDispatchToQ({"_cmd":"whereAmI", 'zip':zip, "_tag" : {'callback':'handleWhereAmI','extension':'beachmart', 'datapointer':'whereAmI'}},'mutable');
-					_app.model.dispatchThis('mutable');
-							//_app.u.dump('----CART ID:'); _app.u.dump(_app.model.fetchCartID());
-							
-			/*				var varsCart = _app.model.fetchCartID();
-//reset these vars so getShipQuotes doesn't use them.
-							if(_app.data["cartDetail|"+varsCart].ship)	{
-								_app.data["cartDetail|"+varsCart].ship.city = ""; 
-								_app.data["cartDetail|"+varsCart].ship.postal = zip; 
-								_app.data["cartDetail|"+varsCart].ship.region = "";
-								}
-							_app.ext.cco.calls.cartSet.init({"ship/postal":zip,"ship/city":"","ship/region":"","_cartid":_app.model.fetchCartID()},{},'passive');
-//if you destroy the cartDetail call, you'll break time in transit.
-
-							var $container = $("#productTemplate_"+_app.u.makeSafeHTMLId(SKU)); //using $container as second param in $ below targets better (lighter and leaves door open for multiple instances later)
-							_app.ext.beachmart.u.getShipQuotes(zip);
-							$('.timeInTransitMessaging').empty(); //intentionally has no context. once a zip is entered, remove this anywhere it was displayed.
-							$('.shipPostal').text(zip);
-							//reset all the spans
-							$('.putLoadingHere',$container).addClass('loadingBG').show();
-							$('.loadingText',$container).show();
-							$('.shipMessage, .estimatedArrivalDate, .deliveryLocation, .deliveryMethod',$container).empty()
-			*/				$dialog.dialog('close');
-							}
-						else	{
-							$('#shipDialogMessaging').empty().anymessage({"message":"Please enter a valid US zip code"});
-							}
-						});
-					$dialog.append($button)
-					}
-
-				
-				$dialog.dialog('open');
-				
-				}
+			
 
 				
 		
@@ -654,113 +530,6 @@ RenderFormats
 					}
 				}, //priceRetailSavings	
 
-
-
-//pass in the sku for the bindata.value so that the original data object can be referenced for additional fields.
-// will show price, then if the msrp is MORE than the price, it'll show that and the savings/percentage.
-			priceretailsavings : function($tag,data)	{
-//				_app.u.dump("BEGIN beachmart.s.priceRetailsSavings ["+data.value+"]");
-				var o = ''; //output generated.
-				var pData = _app.data['appProductGet|'+data.value]['%attribs'];
-	//use original pdata vars for display of price/msrp. use parseInts for savings computation only.
-				var price = Number(pData['zoovy:base_price']);
-				var msrp = Number(pData['zoovy:prod_msrp']);
-				var priceModifier = Number(pData['user:prod_has_price_modifiers']);
-//				_app.u.dump(" ->: priceMod: "+priceModifier);
-//				_app.u.dump(" -> price: "+price);
-//				_app.u.dump(" -> msrp: "+msrp);
-				if(price > .01)	{
-					if(priceModifier < 1) {
-						o += "<div class='basePrice'><span class='prompt pricePrompt'>Our Price: <\/span><span class='value' itemprop='price'>";
-						o += "<span itemprop='priceCurrency' content='USD'>$"+_app.u.formatMoney(pData['zoovy:base_price'],'$',2,true).substring(1)+"</span>";
-						o += "<\/span><\/div>";
-					}
-					else {
-						//wants to have a range of baseprice to baseprice + largest price modifiers displayed for price when using price modifiers. 
-						dump('priceretailsavings product:'); //dump(_app.data['appProductGet|'+data.value]['@variations']);
-						var maxAddition = 0; //holds the final tally of highest modifiers
-						var variations = _app.data['appProductGet|'+data.value]['@variations'];
-						for(index in variations) {
-							if(variations[index]['type'] == 'imgselect') {	//check for imgselect (will/may have modifiers)
-								dump(variations[index]);
-								var workingMod = 0;	//will store the current highest price modifier
-								var options = variations[index]['@options']
-								for(mark in options) {
-									dump(options[mark]);
-									if(options[mark]['p'] && options[mark]['p'] != "" && options[mark]['p'] != "undefined") {
-										var thisPriceMod = Number(options[mark]['p'].substring(1));
-										if(thisPriceMod > workingMod) { workingMod = thisPriceMod } //check each option and if it's higher than the last, record it.
-									}
-								}
-								maxAddition += workingMod; dump('maxAddition = '+maxAddition);	//after all options have been checked, store the highest one.
-							}
-						}
-						var maxPrice = Number(pData['zoovy:base_price']) + maxAddition;
-						// ORIG CALL BELOW, NEW CALL HAS $ SEPARATED AND GIVEN A SPAN W/ SCHEMA	ATTRIB. 
-						//	o += _app.u.formatMoney(pData['zoovy:base_price'],'$',2,true);
-						o += "<div class='basePrice floatNone'><span class='prompt pricePrompt'>Our Price From: <\/span><span class='value' itemprop='price'>";
-						o += "<span itemprop='priceCurrency' content='USD'>$"+_app.u.formatMoney(pData['zoovy:base_price'],'$',2,true).substring(1)+"</span>";
-						if(maxAddition > 0) { //if there was a price modifier recorded we should be ok to show it, otherwise show only "from 'basePrice'" as a failsafe. 
-							o += "<\/span>";
-							o += "<span class='value'> - "+_app.u.formatMoney(maxPrice,'$',2,true)+"<\/span><\/div>";
-						} else {
-							o += "<\/span><\/div>";
-						}
-					}
-
-	//only show the msrp if it is greater than the price.
-					if(msrp > price)	{
-	//don't bother with savings of less than a buck.
-						if(msrp-price > 1)	{
-							o += " <span class='savings'>(";
-	//						o += _app.u.formatMoney(msrp-price,'$',2,true)
-							var savings = (( msrp - price ) / msrp) * 100;
-							o += savings.toFixed(0);
-							o += "% savings)<\/span>";
-							}
-					
-						o += "<div class='retailPrice'><span class='prompt retailPricePrompt'>List Price: <\/span><span class='value'>";
-						o += _app.u.formatMoney(pData['zoovy:prod_msrp'],'$',2,true);
-						o += "<\/span><\/div>";
-						}
-					}
-				$tag.append(o);
-				}, //priceRetailSavings
-
-
-//will remove the add to cart button if the item is not purchaseable.
-			addtocartbutton : function($tag,data)	{
-//				_app.u.dump("BEGIN store_product.renderFunctions.addToCartButton");
-//				_app.u.dump(" -> ID before any manipulation: "+$tag.attr('id'));
-				var pid = data.value;
-// add _pid to end of atc button to make sure it has a unique id.
-// add a success message div to be output before the button so that messaging can be added to it.
-// atcButton class is added as well, so that the addToCart call can disable and re-enable the buttons.
-				$tag.attr('id',$tag.attr('id')+'_'+pid).before("<div class='atcSuccessMessage' id='atcMessaging_"+pid+"'><\/div>");
-				var pData = _app.data['appProductGet|'+data.value]
-				var hasPreOrderPassed = pData['%attribs']['zoovy:prod_salesrank'] ? _app.ext.beachmart_dates.u.afterToday(pData['%attribs']['zoovy:prod_salesrank']) : true;
-				
-				if(pData && pData['%attribs'] && pData['%attribs']['is:user1']){
-					$tag.val("Back-Order Now").text("Back-Order Now").addClass('addToCartButton backorderButton');
-					}
-				else if(pData && pData['%attribs'] && pData['%attribs']['is:preorder'] && hasPreOrderPassed){
-					$tag.addClass('preorderButton');
-					}
-				else	{
-					$tag.addClass('atcButton')
-					}
-				
-				if(_app.ext.store_product.u.productIsPurchaseable(pid))	{
-//product is purchaseable. make sure button is visible and enabled.
-					$tag.show().removeClass('displayNone').removeAttr('disabled');
-					}
-				else	{
-					$tag.hide().addClass('displayNone').before("<span class='notAvailableForPurchase'>This item is not available for purchase<\/span>"); //hide button, item is not purchaseable.
-					}
-
-//				_app.u.dump(" -> ID at end: "+$tag.attr('id'));
-				}, //addToCartButton
-		
 			}, //renderFormats
 
 
@@ -869,39 +638,6 @@ uities
 
 		u: {
 
-			
-			initEstArrival : function(infoObj,attempts){
-				_app.u.dump("BEGIN beachmart.u.initEstArrival");
-				attempts = Number(attempts) || 0;
-				dump(attempts);
-				window.SKU = infoObj.pid; _app.u.dump("GLOBAL SKU IS A TEMPORARY SOLUTION!!!",'warn'); //was originally written in a hybrid store. need to get this more app friendly.
-				var zip;
-				var thisCartDetail = _app.data["cartDetail|"+_app.model.fetchCartID()];
-				if(thisCartDetail && thisCartDetail.ship && thisCartDetail.ship.postal)	{
-					zip = thisCartDetail.ship.postal;
-					}
-				/*
-				navigator.geolocation is crappily supported. appears there's no 'if user hits no' support to execute an alternative. at least in FF.
-				look at a pre-20120815 copy of this lib for geocoding
-				*/
-
-				if(zip)	{
-					_app.u.dump(" -> zip code is cart ["+zip+"]. Use it");
-					_app.ext.beachmart.u.getShipQuotes(zip); //function also gets city/state from googleapi
-					}
-				//whereAmI may still be loading if page was loaded to product directly
-				else if(attempts < 35) {
-					setTimeout(function(){ _app.ext.beachmart.u.initEstArrival(infoObj,attempts + 1 ); },200);
-				}
-				else	{
-					_app.u.dump(" -> no zip code entered. request via whereAmI");
-					_app.ext.beachmart.calls.whereAmI.init({'callback':'handleWhereAmI','extension':'beachmart'},'mutable');
-					_app.model.dispatchThis('mutable');
-					}
-
-				},
-
-
 //obj is going to be the container around the img. probably a div.
 //the internal img tag gets nuked in favor of an ordered list.
 			addPicSlider2UL : function(){
@@ -940,66 +676,6 @@ uities
 					window.slider = new imgSlider($('ul',$obj))
 					}
 				},	
-				
-
-
-			getShipQuotes : function(zip)	{
-//				_app.u.dump("BEGin beachmart.u.getShipQuotes");
-				var $context = $(_app.u.jqSelector('#','productTemplate_'+SKU));
-
-					//if item has user:is_dropship set to one, transit/geo location will be hidden, don't bother going further
-				if(_app.data['appProductGet|'+SKU] && _app.data['appProductGet|'+SKU]['%attribs']['user:is_dropship']) {
-					if(_app.data['appProductGet|'+SKU]['%attribs']['user:is_dropship'] == 1) {
-						return;
-					}
-				}
-
-				//here, inventory check is done instead of isProductPurchaseable, because is used specifically to determine whether or not to show shipping.
-				// the purchaseable function takes into account considerations which have no relevance here (is parent, price, etc).
-				if(_app.ext.store_product.u.getProductInventory(_app.data['appProductGet|'+SKU]) <= 0){
-					//no inventory. Item not purchaseable. Don't get shipping info
-					$('.shippingInformation .putLoadingHere',$context).removeClass('loadingBG').hide();
-					$('.timeInTransitMessaging',$context).append("Inventory not available.");
-					}
-				else if(_app.data['appProductGet|'+SKU] && _app.data['appProductGet|'+SKU]['%attribs']['is:preorder'])	{
-					this.handlePreorderShipDate();
-					}
-				else if(zip)	{
-				//	_app.u.dump(" -> zip: "+zip);
-				//if the city or the state is already available, don't waste a call to get additional info.
-				//this block is also executed for zip update, so allow reset.
-	//whereAmI should be autosetting city, region, & zip so removed this until solution is worked up.
-	//				var thisCartDetail = _app.data["cartDetail|"+_app.model.fetchCartID()];
-	//				if(thisCartDetail && thisCartDetail.ship && (!thisCartDetail.ship.city && !thisCartDetail.ship.region))	{
-	//					_app.ext.beachmart.u.fetchLocationInfoByZip(zip);
-	//					}
-					var prodArray = new Array();
-					prodArray.push(SKU);
-					dump('SKU -->'); dump(SKU);
-			//removed this, at this point there should already be a zip in the cartDetail...
-			//		if(thisCartDetail.ship)	{
-			//			//thisCartDetail.ship.postal = zip; //update local object so no request for full cart needs to be made for showTransitTimes to work right.
-			//			}
-			//		else	{
-			//			thisCartDetail.ship = {'postal' : zip};
-			//			}
-			//		_app.ext.cco.calls.cartSet.init({"ship/postal":zip},{},'passive');
-
-					_app.ext.beachmart.calls.time.init({},'mutable');
-					dump('-0--ProdArray & zip:'); dump(prodArray); dump(zip);
-					_app.ext.beachmart.calls.appShippingTransitEstimate.init({"@products":prodArray,"ship_postal":zip,"ship_country":"US"},{'callback':'showTransitTimes','extension':'beachmart'},'mutable');
-				//	_app.data.cartDetail['data.ship_zip'] = _app.data[tagObj.datapointer].zip; //need this local for getShipQuotes's callback.
-
-					_app.model.dispatchThis('mutable'); //potentially a slow request that should interfere with the rest of the load.
-
-					//go get the shipping rates.
-					}
-				else	{
-					_app.u.dump("WARNING! no zip passed into getShipQuotes");
-					}
-				
-				}, //getShipQuotes
-
 
 			instantiateGeoCoder : function(){
 			//	geocoder = new google.maps.Geocoder();
@@ -1138,27 +814,6 @@ uities
 					}
 				return r;
 				},
-
-
-			handlePreorderShipDate : function(){
-				_app.u.dump("BEGIN beachmart.u.handlePreorderShipDate");
-				_app.u.dump("SANITY! this item is (or was) a preorder.");
-				var message;
-				var product = _app.data['appProductGet|'+SKU];
-//if no date is set in salesrank, don't show any shipping info.
-				if(product['%attribs']['zoovy:prod_salesrank']) {
-					if(_app.ext.beachmart_dates.u.dateAfterToday(product['%attribs']['zoovy:prod_salesrank']))
-						message = "Will ship on "+this.yyyymmdd2Pretty(_app.data['appProductGet|'+SKU]['%attribs']['zoovy:prod_salesrank'])
-					}
-					else { message = "" }
-				//var $container = $("#productContainer")
-				var $container = $("#productTemplate_"+product.pid)
-				
-				$('.putLoadingHere',$container).removeClass('loadingBG');
-				$('.loadingText',$container).hide();
-				$('.transitContainer',$container).text(message);
-				},
-
 
 			handleProdlistMagicThumb : function($obj) {
 				$('.mtClickToZoom').hide();
@@ -1473,93 +1128,7 @@ return r;
 
 				}, //handleAddToCart
 
-//this function should handle all the display logic for Time in Transit. everything that gets enabled or disabled.
-// //if(prodAttribs['user:prod_shipping_msg'] == 'Ships Today by 12 Noon EST')
 
-			getTransitInfo : function(pid,data,index)	{
-//			_app.u.dump("BEGIN beachmart.u.getTransitInfo");
-
-var prodAttribs = _app.data['appProductGet|'+pid]['%attribs'];
-
-var $r = $("<div class='shipSummaryContainer' \/>"); //what is returned. jquery object of shipping info.
-$r.append("<span class='shipMessage'></span>" 
-			+	"<span class='estimatedArrivalDate'></span>"
-			+	"<span title='Click to change destination zip code' class='deliveryLocation zlink pointer'></span>"
-			+	"<div class='deliveryMethod'></div>"
-			+	"<div class='expShipMessage'></div>"
-		);
-
-var hour = Number(data.cutoff_hhmm.substring(0,2)) + 3; //add 3 to convert to EST.
-var minutes = data.cutoff_hhmm.substring(2);
-	
-	//used to indicate backorder rule should be used (all noexpedite, ground, future arrival date)
-	//0=not backorder, 1=backorder w/ salerank ship date, 3=backorder w/ no salerank ship date
-var backorder = 0;
-
-	//if item is backorder item, indicate w/ attr data-backorderdate on container for estimate date
-if(prodAttribs['is:user1'] == 1 || prodAttribs['is:preorder'] == 1 || prodAttribs['zoovy:prod_is_tags'].indexOf('IS_DISCONTINUED') != -1) {
-	if(_app.ext.beachmart_dates.u.appTimeNow()) { //set backorderdate value according to whether or not salesrank date can be determined
-		//appTimeNow function broken because no _app.data.time.unix if( (prodAttribs['zoovy:prod_salesrank'] != undefined || prodAttribs['zoovy:prod_salesrank'] > -1)  && prodAttribs['zoovy:prod_salesrank'] > _app.ext.beachmart_dates.u.millisecondsToYYYYMMDD(_app.ext.beachmart_dates.u.appTimeNow())) {
-		if( (prodAttribs['zoovy:prod_salesrank'] != undefined || prodAttribs['zoovy:prod_salesrank'] > -1)  && prodAttribs['zoovy:prod_salesrank'] > _app.ext.beachmart_dates.u.millisecondsToYYYYMMDD(new Date(new Date().getTime()))) {
-			$('.shipMessage',$r).append("Order today for arrival on ");
-			backorder = 1; //if date, then = 1
-		} else {
-			backorder = 2; //if not date, then = 2
-		}
-	} else { backorder = 2; } //if app date cannot be determined, then = 2
-}
-else if(prodAttribs['user:prod_shipping_msg'] == "Ships Today by 12 Noon EST"){
-	if(_app.data.time && _app.data.time.unix)	{
-		var date = new Date(_app.data.time.unix*1000);
-		var hours = date.getHours();
-		}
-	$('.shipMessage',$r).append("Order "+(hours < 9 ? 'today' : 'tomorrow')+" before "+hour+":"+minutes+"EST for arrival on ");
-	}
-else	{
-	$('.shipMessage',$r).append("Order today for arrival on ");
-	}
-
-	
-if(prodAttribs['user:prod_ship_expavail'] && prodAttribs['user:prod_ship_expavail'] == 1 && backorder == 0)	{
-//if expedited shipping is not available, no other methods show up (will ship ground)
-	$('.deliveryMethod',$r).append(data['@Services'][index]['method'])
-// MARK wants only available shipping methods for product to show, but they aren't listed in the product record, will need another call to grab this info.
-//	$('.deliveryMethod',$r).append(" <span class='zlink'>(Need it faster?)</span>").addClass('pointer').click(function(){
-//		_app.ext.beachmart.a.showShipGridInModal('appShippingTransitEstimate');
-		//_app.ext.beachmart.a.showShipGridInModal('cartShippingMethods');
-//		});
-	}
-else	{
-	_app.u.dump(" -> prodAttribs['user:prod_ship_expavail']: "+prodAttribs['user:prod_ship_expavail']);
-	$('.expShipMessage',$r).append("<span class='zhint inconspicuouseZhint'>Expedited shipping not available for this item</span>");
-	}
-
-	//check backorder status to determine which date to use for arrival date
-if(backorder == 1) {
-	var futureShipDate = _app.ext.beachmart_dates.u.getFutureDate(prodAttribs['zoovy:prod_salesrank'], data['@Services'][index]['arrival_yyyymmdd'].slice(0,8));
-	$('.estimatedArrivalDate',$r).append(_app.ext.beachmart.u.yyyymmdd2Pretty(futureShipDate)+" to");
-} else if (backorder == 2) {
-	_app.u.dump('The shipping time could not be determined due to a problem obtaining the date or salesrank value')
-} else {
-	$('.estimatedArrivalDate',$r).append(_app.ext.beachmart.u.yyyymmdd2Pretty(data['@Services'][index]['arrival_yyyymmdd'])+" to");
-}
-
-var varsCart = _app.data["cartDetail|"+_app.model.fetchCartID()];
-if(varsCart && varsCart.ship.city && backorder != 2)	{
-	$('.deliveryLocation',$r).append(" "+varsCart.ship.city);
-	}
-if(varsCart && varsCart.ship.region && backorder != 2)	{
-	$('.deliveryLocation',$r).append(" "+varsCart.ship.region);
-	}
-if	(varsCart && varsCart.ship.postal && backorder != 2)	{
-	$('.deliveryLocation',$r).append(" "+varsCart.ship.postal+" (change)");
-	}
-else if (backorder != 2){
-	$('.deliveryLocation',$r).append(" (enter zip) ");
-	}
-$('.deliveryLocation',$r).click(function(){_app.ext.beachmart.a.showZipDialog()});
-			return $r;
-			}, //getTransitInfo
 			
 			handleToolTip : function()	{
 		//		_app.u.dump("BEGIN beachmart.u.handleToolTip.");
@@ -1569,84 +1138,8 @@ $('.deliveryLocation',$r).click(function(){_app.ext.beachmart.a.showZipDialog()}
 					$this.mouseover(function(){	$('.toolTip',$this.parent()).show();}).mouseout(function(){	$('.toolTip',$this.parent()).hide();});
 					});
 				},
-			
 
-//pass in the @services object in a appShippingTransitEstimate and the index in that object of the fastest shipping method will be returned.
-			getShipMethodByID : function(servicesObj,ID)        {
-				var r = false; //what is returned. will be index of data object
-				if(typeof servicesObj == 'object')        {
-					var L = servicesObj.length;
-					for(var i = 0; i < L; i += 1)        {
-						if(servicesObj[i].id == ID)        {
-							r = i;
-							break; //no need to continue in loop.
-							}	
-						}
-					}
-				else {
-					_app.u.dump("WARNING! servicesObj passed into getFastestShipMethod is empty or not an object. servicesObj:");
-					_app.u.dump(servicesObj);
-					}
-//              _app.u.dump(" -> fastest index: "+r);
-				return r;
-				}, //getShipMethodByID
 				
-				getSlowestShipMethod : function(servicesObj) {
-					var r = false; //what is returned, index of ground shipping service, or false
-					if(typeof servicesObj == 'object')	{
-						var L = servicesObj.length;
-						for(var i = 0; i < L; i += 1)	{
-							if(servicesObj[i].method == 'UPS Ground')	{
-								r = i;
-								break; //no need to continue in loop.
-							}
-						}
-					}
-					return r;
-				},
-
-//pass in the @services object in a appShippingTransitEstimate and the index in that object of the fastest shipping method will be returned.
-			getFastestShipMethod : function(servicesObj)	{
-				var r = false; //what is returned. will be index of data object
-				if(typeof servicesObj == 'object')	{
-					var L = servicesObj.length;
-					for(var i = 0; i < L; i += 1)	{
-						if(servicesObj[i]['is_fastest'])	{
-							r = i;
-							break; //no need to continue in loop.
-							}
-						}
-					}
-				else	{
-					_app.u.dump("WARNING! servicesObj passed into getFastestShipMethod is empty or not an object. servicesObj:");
-					_app.u.dump(servicesObj);
-					}
-//				_app.u.dump(" -> fastest index: "+r);
-				return r;
-				},
-			getDOWFromDay : function(X)	{
-//				_app.u.dump("BEGIN beachmart.u.getDOWFromDay ["+X+"]");
-				var weekdays = new Array('Sun','Mon','Tue','Wed','Thu','Fri','Sat');
-				return weekdays[X];
-				},
-			yyyymmdd2Pretty : function(str)	{
-				var r = false;
-				if(Number(str))	{
-					var year = str.substr(0,4)
-					var month = Number(str.substr(4,2));
-					var day = str.substr(6,2);
-					var d = new Date();
-					d.setFullYear(year, (month - 1), day)
-//					_app.u.dump(" date obj: "); _app.u.dump(d);
-//					_app.u.dump(" -> YYYYMMDD2Pretty ["+str+"]: Y["+year+"]  Y["+month+"]  Y["+day+"] ");
-					r = this.getDOWFromDay(d.getDay())+" "+month+"/"+day
-					}
-				else	{
-					_app.u.dump("WARNING! the parameter passed into YYYYMMDD2Pretty is not a numder ["+str+"]");
-					}
-				return r;
-				} //yyyymmdd2Pretty 
-		
 			} //u
 
 		} //r object.

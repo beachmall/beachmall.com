@@ -18,7 +18,9 @@ _app.u.loadScript(configURI,function(){
 		
 		_app.ext.beachmall_begin.calls.whereAmI.init({'callback':'handleWhereAmI','extension':'beachmall_begin'},'passive');
 		_app.ext.beachmall_begin.u.getDropdownJSON();
+		$.extend(handlePogs.prototype,_app.ext.beachmall_begin.variations);
 		_app.ext.beachmall_begin.u.startTooltip();
+		//TODO : TRANSFER MAKE DISALLOW FUNCTION FROM BEACHMALL_STORE TO BEACHMALL_BEGIN.
 		//_app.ext.beachmall_store.u.makeDisallow(); //uncomment to use, then close it back up. This shouldn't be left running in production.
 		
 		});
@@ -236,6 +238,14 @@ _app.router.appendHash({'type':'exact','route':'/shipping_policy/','callback':fu
 		});
 	_app.ext.quickstart.a.showContent(routeObj.value,routeObj.params);
 	}});
+_app.router.appendHash({'type':'exact','route':'/recently_veiwed/','callback':function(routeObj){
+	$.extend(routeObj.params,{
+		'pageType':'static',
+		'templateID':'recentTemplate',
+		'require':['templates.html','beachmall_lists'],
+		});
+	_app.ext.quickstart.a.showContent(routeObj.value,routeObj.params);
+	}});
 	
 _app.router.appendHash({'type':'exact','route':'/my_account/','callback':function(routeObj){
 	$.extend(routeObj.params,{
@@ -424,6 +434,11 @@ _app.u.bindTemplateEvent('homepageTemplate', 'complete.beachmall_homepage',funct
 	_app.ext.beachmall_homepage.u.loadProductsAsList($context,$('.featuredUL', $context));
 	$('.floatingBar',$context).is(":visible") ? "" : $('.floatingBar',$context).show(); //shows floating bar upon return to hompage if it's been closed.
 });
+_app.u.bindTemplateEvent('homepageTemplate', 'depart.beachmall_homepage',function(event,$context,infoObj) {
+	$('.newArrivalUL', $context).trigger('destroy');
+	$('.bestUL', $context).trigger('destroy');
+	$('.featuredUL', $context).trigger('destroy');
+});
 
 _app.u.bindTemplateEvent('categoryTemplate', 'complete.store_filter',function(event,$context,infoObj) {
 	$.extend(handlePogs.prototype,_app.ext.store_filter.variations);
@@ -438,6 +453,33 @@ _app.u.bindTemplateEvent('categoryTemplateBrands', 'complete.beachmall_lists',fu
 	_app.ext.beachmall_lists.u.countBrandsItems($context,"#viewAllProductsTab");
 	_app.ext.beachmall_lists.u.countBrandsItems($context,"#featuredProdsTab");
 	_app.ext.beachmall_lists.u.countBrandsItems($context,"#bestSellersTab");
+});
+
+_app.u.bindTemplateEvent('productTemplate', 'complete.beachmall_product',function(event,$context,infoObj) {
+	_app.ext.beachmall_product.u.initEstArrival(infoObj);
+	_app.ext.beachmall_product.u.doMagicStuff();
+	_app.ext.beachmall_product.u.replaceReadReviewLink($context,infoObj.pid);
+	_app.ext.beachmall_product.u.replaceWriteReviewLink($context,infoObj.pid,"snippet-write-review","pr-snippet-link");
+	_app.ext.beachmall_product.u.replaceWriteReviewLink($context,infoObj.pid,"snapshot-write-review","pr-write-review-link");
+	_app.ext.beachmall_begin.u.tabify($context,"[data-app-role='xsellTabContainer']");
+	_app.ext.beachmall_begin.u.tabify($context,".tabbedProductContent");
+	_app.ext.beachmall_product.u.runProductCarousel($context);
+	_app.ext.beachmall_product.u.runProductVerticalCarousel($context);
+	_app.ext.beachmall_product.u.runProductVerticalCarousel2($context);
+	_app.ext.beachmall_product.u.runProductRecentCarousel($context);
+	_app.ext.beachmall_product.u.handleProdPageToolTip();
+});
+
+_app.u.bindTemplateEvent('productTemplate', 'complete.beachmall_lists',function(event,$context,infoObj) {
+	_app.ext.beachmall_lists.u.showRecentlyViewedItems($context,false);
+});
+
+_app.u.bindTemplateEvent('productTemplate', 'complete.beachmall_lists',function(event,$context,infoObj) {
+	_app.ext.beachmall_lists.u.addRecentlyViewedItems($context, infoObj.pid);
+});
+
+_app.u.bindTemplateEvent('recentTemplate', 'complete.beachmall_lists',function(event,$context,infoObj) {
+	_app.ext.beachmall_lists.u.showRecentlyViewedItems($context,true);
 });
 
 _app.extend({
@@ -456,6 +498,11 @@ _app.extend({
 });
 
 _app.extend({
+	"namespace":"magictoolbox_mzp",
+	"filename":"extensions/partner_magictoolbox_mzp.js"
+});
+
+_app.extend({
 	"namespace":"store_filter",
 	"filename":"extensions/_store_filter.js"
 });
@@ -463,6 +510,16 @@ _app.extend({
 _app.extend({
 	"namespace":"beachmall_lists",
 	"filename":"extensions/_beachmall_lists.js"
+});
+
+_app.extend({
+	"namespace":"beachmall_product",
+	"filename":"extensions/_beachmall_product.js"
+});
+
+_app.extend({
+	"namespace":"beachmall_dates",
+	"filename":"extensions/_beachmall_dates.js"
 });
 	
 
@@ -748,16 +805,16 @@ _app.extend({
 
 _app.couple('quickstart','addPageHandler',{
 	"pageType" : "product",
-	"require" : ['store_product','store_navcats', 'store_routing', 'store_search', 'store_crm', 'templates.html'],
+	"require" : ['store_product','store_navcats', 'store_routing', 'beachmall_begin', 'beachmall_product', 'beachmall_dates', 'powerreviews_reviews', 'beachmall_lists', 'store_search', 'store_crm', 'templates.html', 'magictoolbox_mzp'],
 	"handler" : function($container, infoObj, require){
 		infoObj.deferred = $.Deferred();
 		infoObj.defPipeline.addDeferred(infoObj.deferred);
-		if($.inArray(infoObj.pid,_app.ext.quickstart.vars.session.recentlyViewedItems) < 0)	{
-			_app.ext.quickstart.vars.session.recentlyViewedItems.unshift(infoObj.pid);
-			}
-		else	{
-			_app.ext.quickstart.vars.session.recentlyViewedItems.splice(0, 0, _app.ext.quickstart.vars.session.recentlyViewedItems.splice($.inArray(infoObj.pid, _app.ext.quickstart.vars.session.recentlyViewedItems), 1)[0]);
-			}
+//		if($.inArray(infoObj.pid,_app.ext.quickstart.vars.session.recentlyViewedItems) < 0)	{
+//			_app.ext.quickstart.vars.session.recentlyViewedItems.unshift(infoObj.pid);
+//			}
+//		else	{
+//			_app.ext.quickstart.vars.session.recentlyViewedItems.splice(0, 0, _app.ext.quickstart.vars.session.recentlyViewedItems.splice($.inArray(infoObj.pid, _app.ext.quickstart.vars.session.recentlyViewedItems), 1)[0]);
+//			}
 		//IMPORTANT: requiring every extension needed in order to render the page, including TLC formats in the template
 		_app.require(require, function(){
 			infoObj.templateID = 'productTemplate';
@@ -805,6 +862,7 @@ _app.extend({
 	
 _app.rq.push(['script',0,'lightbox/js/lightbox-2.6.min.js']);
 _app.rq.push(['script',0,'http://cdn.powerreviews.com/repos/11024/pr/pwr/engine/js/full.js']);
+
 
 _app.model.getGrammar("pegjs");
 

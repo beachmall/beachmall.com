@@ -35,6 +35,11 @@ var beachmall_begin = function(_app) {
 		init : {
 			onSuccess : function()	{
 				var r = true; //return false if extension won't load for some reason (account config, dependencies, etc).
+				
+				_app.u.loadResourceFile(['script',0,'magiczoomplus-commercial/magiczoomplus/magiczoomplus.js',function(){
+					MagicZoomPlus.start();
+				}]);
+					
 				return r;
 			},
 			onError : function()	{
@@ -115,11 +120,11 @@ var beachmall_begin = function(_app) {
 						$('.putLoadingHere',$container).addClass('loadingBG').show();
 						$('.loadingText',$container).show();
 						$('.shipMessage, .estimatedArrivalDate, .deliveryLocation, .deliveryMethod',$container).empty()				
-						_app.ext.beachmart.u.getShipQuotes(data.zip);
+						_app.ext.beachmall_product.u.getShipQuotes(data.zip);
 					}
 					else if (_app.ext.quickstart.vars.hotw && _app.ext.quickstart.vars.hotw[0] && _app.ext.quickstart.vars.hotw[0].pageType == 'product' && !data.zip) {
 						var $tryAgain = $("<span class='pointer'>Transit times could not be retrieved at the moment (Try again)</span>");
-						$('.transitContainer',$container).empty().append($tryAgain).click(function(){_app.ext.beachmart.a.showZipDialog()});
+						$('.transitContainer',$container).empty().append($tryAgain).click(function(){_app.ext.beachmall_begin.a.showZipDialog()});
 						$('.shippingInformation .loadingBG',$container).removeClass('loadingBG');
 						$('.loadingText',$container).hide()
 					}
@@ -184,6 +189,34 @@ var beachmall_begin = function(_app) {
 				return 1;
 			}
 		}, //cartSet
+		
+		time : {
+			init : function(tagObj,Q)	{
+//				_app.u.dump("BEGIN beachmall_begin.calls.time.init  [Q: "+Q+"]");
+				tagObj = $.isEmptyObject(tagObj) ? {} : tagObj; 
+				tagObj.datapointer = "time";
+				this.dispatch(tagObj,Q);
+				return true;
+			},
+			dispatch : function(tagObj,Q)	{
+				_app.model.addDispatchToQ({"_cmd":"time","_tag":tagObj},Q);	
+			}
+		}, //time
+		
+		appShippingTransitEstimate : {
+			init : function(cmdObj,tagObj,Q)	{
+				//_app.u.dump("BEGIN beachmall.calls.appShippingTransitEstimate.init  [Q: "+Q+"]"); dump(tagObj);
+				tagObj = $.isEmptyObject(tagObj) ? {} : tagObj; 
+				tagObj.datapointer = "appShippingTransitEstimate";
+				this.dispatch(cmdObj,tagObj,Q);
+				return true;
+			},
+			dispatch : function(cmdObj,tagObj,Q)	{
+				cmdObj['_tag'] = tagObj;
+				cmdObj["_cmd"] = "appShippingTransitEstimate"
+				_app.model.addDispatchToQ(cmdObj,Q);	
+			}
+		},//appShippingTransitEstimate
 	
 	},
 
@@ -321,6 +354,38 @@ var beachmall_begin = function(_app) {
 					$('#globalMessaging').anymessage({'message':'In beachmall_begin.u.updateShipPostal, no postal code passed.','gMessage':true})
 				}
 			},
+//TIME IN TRANSIT ACTIONS
+			showZipDialog : function()	{
+				
+				var $dialog = $('#zipEntryDialog');
+				if($dialog.length)	{}//dialog already exists. no mods necessary, just open it.
+				else	{
+					_app.u.dump("create and show zip dialog");
+					$dialog = $("<div>").attr("title","Change Zip for Shipping").dialog({
+						modal:true,
+						autoOpen:false,
+						close: function(event, ui)	{
+								$(this).dialog('destroy').empty().remove()
+						}
+					});
+					$dialog.append("<div id='shipDialogMessaging' />");
+					$dialog.append("<input type='text' name='data.ship_zip' id='shipDialogZip' required='required' size='10' />");
+					var $button = $("<button />").html('Update Zip Code').click(function(){
+						var zip = $('#shipDialogZip').val();
+						_app.u.dump("BEGIN showZipDialog .click event. zip: '"+zip+"'");
+
+						if(zip && zip.length >= 5 && !isNaN(zip))	{
+							_app.model.addDispatchToQ({"_cmd":"whereAmI", 'zip':zip, "_tag" : {'callback':'handleWhereAmI','extension':'beachmall_begin', 'datapointer':'whereAmI'}},'mutable');
+							_app.model.dispatchThis('mutable');
+							//_app.u.dump('----CART ID:'); _app.u.dump(_app.model.fetchCartID());
+							$dialog.dialog('close');
+						}
+						else	{ $('#shipDialogMessaging').empty().anymessage({"message":"Please enter a valid US zip code"}); }
+					});
+					$dialog.append($button)
+				}
+				$dialog.dialog('open');
+			}
 	
 		}, //actions
 		
@@ -548,6 +613,39 @@ var beachmall_begin = function(_app) {
 					_app.u.dump("WARNING! could not find selector "+selector+" for tab items");
 				} //couldn't find the tab to tabificate.
 			},
+//TIME IN TRANSIT UTILS
+			getSlowestShipMethod : function(servicesObj) {
+				var r = false; //what is returned, index of ground shipping service, or false
+				if(typeof servicesObj == 'object')	{
+					var L = servicesObj.length;
+					for(var i = 0; i < L; i += 1)	{
+						if(servicesObj[i].method == 'UPS Ground')	{
+							r = i;	break; //no need to continue in loop.
+						}
+					}
+				}
+				return r;
+			},
+
+			//pass in the @services object in a appShippingTransitEstimate and the index in that object of the fastest shipping method will be returned.
+			getFastestShipMethod : function(servicesObj)	{
+				dump('START beachmall_begin.u.getFastestShipMethod');
+				var r = false; //what is returned. will be index of data object
+				if(typeof servicesObj == 'object')	{
+					var L = servicesObj.length;
+					for(var i = 0; i < L; i += 1)	{
+						if(servicesObj[i]['is_fastest'])	{
+							r = i;	break; //no need to continue in loop.
+						}
+					}
+				}
+				else	{
+					_app.u.dump("WARNING! servicesObj passed into getFastestShipMethod is empty or not an object. servicesObj:");
+					_app.u.dump(servicesObj);
+				}
+//				_app.u.dump(" -> fastest index: "+r);
+				return r;
+			},
 		
 		}, //u
 
@@ -580,7 +678,294 @@ var beachmall_begin = function(_app) {
 				_app.model.dispatchThis('immutable');
 			},
 		
-		} //e [app Events]
+		}, //e [app Events]
+		
+		
+		////////////////////////////////////   VARIATIONS    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\			
+			
+		variations : {
+				//adds similar functionality as custom image select render option to image grid options
+			renderOptionCUSTOMIMGGRID : function(pog) {
+				var pogid = pog.id;
+//				dump('-----renderOptionCUSTOMIMGGRID pog.id'); dump(pog.id); dump(pog);
+				var $parentDiv = $("<div class='imgGridVariationWrapper floatLeft' \/>");
+				var skus = _app.data['appProductGet|'+pog.pid]['%SKU']; dump('-----SKUs?'); dump(skus[0][1]); dump(skus[0][1].length);
+				var skuLevel = false; //set to true if sku level image is found, will lead to sku render otherwise will lead to image render
+				var $radioInput; //used to create the radio button element.
+				var radioLabel; //used to create the radio button label.
+				var $optionDiv; //holds the individual radio/label/img pack for each sku
+				var $imgDiv; //holds the group of images for each iteration/variation
+				var thumbnail; //holds nails shaped like thumbs
+				var thumbnailTag; //tag created manually to add jquery tool tip attribs
+				
+				for(var index in skus[0][1]) {
+					if(index.indexOf('zoovy:prod_image') > -1) {
+					dump('0------There was an image!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+					skuLevel = true;
+					}
+				}
+				
+				//render sku level image group if zoovy:prod_image was found in %SKU
+				if(skuLevel) {
+					dump('0------in skuLevel if');
+					if(pog['ghint']) {$parentDiv.append(pogs.showHintIcon(pogid,pog['ghint']))}
+					
+					var j = 0;
+					
+					//var skus = _app.data['appProductGet|PLY39AWTEST2']['%SKU'];
+					//var skus = _app.data['appProductGet|PL4S31']['%SKU'];
+					var skuLen = skus.length;
+					var options = pog['@options'];
+					var optLen = pog['@options'].length;
+	//				dump('The lengths, o then s'); dump(optLen); dump(skuLen);
+					
+					for (var i=0; i < optLen; i++) {
+						$optionDiv = $("<div class='imgGridOptionWrapper'></div>");
+						$imgDiv = $("<div class='imgGridImgWrapper' data-pogval="+pog['@options'][i]['v']+"></div>");
+						$radioInput = $('<input>').attr({type: "radio", name: pogid, value: pog['@options'][i]['v'],"data-pogval":pog['@options'][i]['v']});
+						radioLabel = "<label>"+pog['@options'][i]['prompt']+"<\/label>";
+						$optionDiv.append($radioInput).append(radioLabel);
+						while (j < skuLen) {
+	//						dump('----while i is '+i+' option value is: '+pog.id+options[i].v+', while j is '+j+' sku id is '+skus[j][0]);
+							if(skus[j][0].indexOf(pog.id+options[i].v) > -1) {
+								var images = skus[j][1];
+								for (var index in images) {
+	//								dump('---image attrib = '+index+' and image path = '+images[index]);
+									if(index.indexOf('zoovy:prod_image') > -1 && images[index].length > 0) {
+	//									dump('---image attrib = '+index+' and image path = '+images[index]);
+										thumbnail = _app.u.makeImage({"w":400,"h":400,"name":images[index],"b":"FFFFFF","lib":_app.username});
+										thumbnailTag = "<img src='"+thumbnail+"' width='40' height='40' name='"+pog['@options'][i]['img']+"' data-grid-img='"+thumbnail+"' data-tooltip-title='"+pog['@options'][i]['prompt']+"'>";
+										$imgDiv.append(thumbnailTag);
+									}
+								}
+								j++
+	//							dump('----Meanwhile...'); dump(images); 
+								break;
+							} //k for
+							else {j++}
+						} //while
+						
+						//make clicking one of the images check the radio button and add a red border to further indicate selection
+						$imgDiv.click(function(){
+							var pogval = $(this).attr('data-pogval');	//value of image clicked
+	//						dump('you clicked');
+							$('.imgGridImgWrapper',$(this).parent().parent()).each(function(){
+								if($(this).hasClass('selected')){ 
+									$(this).removeClass('selected'); 
+								}	//add selected indicator to clicked image
+								if($(this).attr('data-pogval') == pogval){ 
+									$(this).addClass('selected'); 
+								}
+							});
+							$('input[type=radio]',$(this).parent().parent()).prop('checked',false);
+							$('input[type=radio]',$(this).parent().parent()).each(function() {
+								if($(this).attr('data-pogval') == pogval) {
+									$(this).prop('checked',true);
+								}
+							});
+						}); 
+						
+						//make clicking the radio change the border like clicking the image does above
+						$radioInput.change(function() {
+							var selected = $(this).val();	//the option selected in select list
+						dump('---the radio'); dump(selected); 
+								//remove selected indicator from all images
+							$('.imgGridImgWrapper',$(this).parent().parent()).each(function(){
+								if($(this).hasClass('selected')){ 
+									$(this).removeClass('selected'); 
+								}	//add it back to the value of select list option if one matches
+								if($(this).attr('data-pogval') == selected){ 
+									$(this).addClass('selected'); 
+								}
+							});
+						});
+						
+						$optionDiv.append($imgDiv);
+						$parentDiv.append($optionDiv);
+					} //i for
+				} //sku level render
+				
+				//do the regular custom thing w/out the sku level images
+				else {
+					var i = 0;
+					var len = pog['@options'].length;
+					while (i < len) {
+						$optionDiv = $("<div class='imgGridOptionWrapper'></div>");
+						$imgDiv = $("<div class='imgGridImgWrapper' data-pogval="+pog['@options'][i]['v']+"></div>");
+						$radioInput = $('<input>').attr({type: "radio", name: pogid, value: pog['@options'][i]['v'],"data-pogval":pog['@options'][i]['v']});
+						radioLabel = "<label>"+pog['@options'][i]['prompt']+"<\/label>";
+						thumbnail = _app.u.makeImage({"w":400,"h":400,"name":pog['@options'][i]['img'],"b":"FFFFFF","lib":_app.username});
+						thumbnailTag = "<img src='"+thumbnail+"' width='"+40+"' height='"+40+"' name='"+pog['@options'][i]['img']+"' data-grid-img='"+thumbnail+"' data-tooltip-title='"+pog['@options'][i]['prompt']+"'>";
+						$imgDiv.append(thumbnailTag);
+						$optionDiv.append($radioInput).append(radioLabel).append($imgDiv);
+						$parentDiv.append($optionDiv);
+						i++
+						
+						//make clicking one of the images check the radio button and add a red border to further indicate selection
+						$imgDiv.click(function(){
+							var pogval = $(this).attr('data-pogval');	//value of image clicked
+	//						dump('you clicked');
+							$('.imgGridImgWrapper',$(this).parent().parent()).each(function(){
+								if($(this).hasClass('selected')){ 
+									$(this).removeClass('selected'); 
+								}	//add selected indicator to clicked image
+								if($(this).attr('data-pogval') == pogval){ 
+									$(this).addClass('selected'); 
+								}
+							});
+							$('input[type=radio]',$(this).parent().parent()).prop('checked',false);
+							$('input[type=radio]',$(this).parent().parent()).each(function() {
+								if($(this).attr('data-pogval') == pogval) {
+									$(this).prop('checked',true);
+								}
+							});
+						}); 
+						
+						//make clicking the radio change the border like clicking the image does above
+						$radioInput.change(function() {
+							var selected = $(this).val();	//the option selected in select list
+						dump('---the radio'); dump(selected); 
+								//remove selected indicator from all images
+							$('.imgGridImgWrapper',$(this).parent().parent()).each(function(){
+								if($(this).hasClass('selected')){ 
+									$(this).removeClass('selected'); 
+								}	//add it back to the value of select list option if one matches
+								if($(this).attr('data-pogval') == selected){ 
+									$(this).addClass('selected'); 
+								}
+							});
+						});
+					}
+
+				} //regular custom render
+				return $parentDiv;
+			},
+			
+			//puts color options on product page as image selectable select list. Also adds jquery tool tip pop up of image for zoom
+			renderOptionCUSTOMIMGSELECT: function(pog) {
+
+//				_app.u.dump('POG -> '); _app.u.dump(pog);
+				
+				var $parent = $('<div class="optionsParent" />');
+				var $select = $("<select class='optionsSelect floatLeft' name="+pog.id+" />");
+				var $modContainer = $("<div class='modContainer floatLeft fontRed'></div>"); //holds price modifier next to select list
+				var $hint = $('<div class="zhint">mouse over thumbnail to see larger swatches</div>');
+				var $hint = $('<div class="zhint">mouse over thumbnail to see larger swatches</div>');
+				$parent.append($hint);
+
+				var len = pog['@options'].length;				
+				if(len > 0) {
+					optionTxt = (pog['optional'] == 1) ? "" : "Please choose (required)";
+					selOption = "<option value='' disabled='disabled' selected='selected'>"+optionTxt+"<\/option>";
+					$select.append(selOption);
+				}
+				
+				var $option;
+				for (var index in pog['@options']) {
+					var option = pog['@options'][index];
+//					_app.u.dump('IMG: '); _app.u.dump(option.img);
+					$option = $("<option data-price-modifier='"+option.p+"' value="+option.v+">"+option.prompt+"</option>");
+					$select.append($option);
+					var thumbImg = _app.u.makeImage({"w":pog.width,"h":pog.height,"name":option.img,"b":"FFFFFF","tag":false,"lib":_app.username});
+					var bigImg = _app.u.makeImage({"w":400,"h":400,"name":option.img,"b":"FFFFFF","tag":false,"lib":_app.username});																									//need to try moving these to be appended
+					
+					var $imgContainer = $('<div class="floatLeft optionImagesCont" data-price-modifier="'+option.p+'" data-pogval="'+option.v+'" />');
+					/*var $mzpLink = $('<a id="imgGridHref_'+pog.id+'_'+option.v+'" alt="'+option.prompt+'" class="MagicZoom" title="'+option.prompt+'" rel="hint:false; show-title:top; title-source=#id;" href="'+mzBigImg+'" />');
+					
+					$mzpLink.click(function(){
+						var pogval = $(this).parent().attr('data-pogval');
+						
+						$select.val(pogval);
+						app.u.dump(pogval);
+						app.u.dump(pogval);
+						app.u.dump(pogval);
+						app.u.dump(pogval);
+						$('.optionImagesCont', $parent).each(function(){
+							if($(this).hasClass('selected')){ 
+								$(this).removeClass('selected'); 
+								}
+							if($(this).attr('data-pogval') == pogval){ 
+								$(this).addClass('selected'); 
+								}
+							});	
+						});
+						
+					$mzpLink.append($('<img src='+thumbImg+' title="'+pog.prompt+'" data-pogval="'+option.v+'"/>'));
+					$imgContainer.append($mzpLink);*/
+
+						//add selected indicator to image, and change select list option to match
+					$imgContainer.click(function(){
+						var pogval = $(this).attr('data-pogval');	//value of image clicked
+						
+						$select.val(pogval); 	//change select list to clicked image value
+							//remove the selected indicator from all images
+						$('.optionImagesCont', $parent).each(function(){
+							if($(this).hasClass('selected')){ 
+								$(this).removeClass('selected'); 
+								}	//add selected indicator to clicked image
+							if($(this).attr('data-pogval') == pogval){ 
+								$(this).addClass('selected'); 
+								$modContainer.empty();
+								//if there is a price modifier, display it next to the select list of options
+								if($(this).attr("data-price-modifier") != "" && $(this).attr("data-price-modifier") != "undefined") {
+									var thisPriceMod = $(this).attr("data-price-modifier").substring(1); //get rid of the "+" symbol 
+									$modContainer.empty().text("+ $"+thisPriceMod); 
+									}
+								}
+							});	
+						});
+					
+					$img = $('<img src="'+thumbImg+'" data-big-img="'+bigImg+'" data-tooltip-title="'+option.prompt+'"/>')
+					
+					//Tooltip called in init
+					
+					$imgContainer.append($img);
+					$parent.append($imgContainer);
+					
+	//				to add description info to label for
+	//				$mzpLink.mouseover(function() {
+	//					$('.optionImagesCont', $parent).each(function(){
+	//						$('label[value="Fabric"]').empty().text('Fabric: '+option.prompt+'');
+	//						app.u.dump(option.prompt);
+	//					});		
+	//				});
+	
+				} // END for
+				
+					//add selected indicator on image when variation is selected w/ select list
+				$select.change(function() {
+					var selected = $(this).val();	//the option selected in select list
+				
+						//remove selected indicator from all images
+					$('.optionImagesCont', $parent).each(function(){
+						if($(this).hasClass('selected')){ 
+							$(this).removeClass('selected'); 
+						}	//add it back to the value of select list option if one matches
+						if($(this).attr('data-pogval') == selected){ 
+							$(this).addClass('selected'); 
+							$modContainer.empty(); //remove old value in case there is no new one.
+							//if there is a price modifier, display it next to the select list of options
+							if($(this).attr("data-price-modifier") != "" && $(this).attr("data-price-modifier") != "undefined") {
+								var thisPriceMod = $(this).attr("data-price-modifier").substring(1); //get rid of the "+" symbol 
+								$modContainer.empty().text("+ $"+thisPriceMod); 
+							}
+						}
+					});
+				});
+
+				$parent.append($select);
+				$parent.append($modContainer); //add the price modifier
+				return $parent;
+			}, // END renderOptionCUSTOMIMGSELECT
+			
+			xinit : function(){
+				this.addHandler("type","imggrid","renderOptionCUSTOMIMGGRID");
+				this.addHandler("type","imgselect","renderOptionCUSTOMIMGSELECT");
+				_app.u.dump("--- RUNNING XINIT");
+			}
+			
+		} //variations
+		
 		
 	} //r object.
 	

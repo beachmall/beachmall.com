@@ -396,7 +396,12 @@ var beachmall_lists = function(_app) {
 					_tag.tag = 0;
 					$tag.attr('src',_app.u.makeImage(_tag));
 				}
-			} //appThumb
+			}, //appThumb
+			
+			test : function(data, thisTLC) {
+				dump('-------------> test var:');
+				dump(data.globals.binds.var);
+			}
 
 		}, //tlcFormats
 			
@@ -435,6 +440,47 @@ var beachmall_lists = function(_app) {
 					}
 				},500);
 			},
+			
+			//called on depart from prod page to add item to recently viewed items list
+			//changed this from newinit's addition at page load to prevent items from showing in list on first page visit
+			addRecentlyViewedItems : function($context, pid) {
+					//pid is infoObj.pid passed from onDeparts
+				if($.inArray(pid,_app.ext.quickstart.vars.session.recentlyViewedItems) < 0) {
+					_app.ext.quickstart.vars.session.recentlyViewedItems.unshift(pid);
+					$('.numRecentlyViewed','#appView').text(_app.ext.quickstart.vars.session.recentlyViewedItems.length);
+				}
+				else {
+					//the item is already in the list. move it to the front.
+					_app.ext.quickstart.vars.session.recentlyViewedItems.splice(0, 0, _app.ext.quickstart.vars.session.recentlyViewedItems.splice(_app.ext.quickstart.vars.session.recentlyViewedItems.indexOf(pid), 1)[0]);
+				}
+			}, //addRecentlyViewedItems
+			
+			//populates carousel if items in recently viewed list, shows place holder text if list empty
+			//show = true will show container w/ place holder text if empty. show = false will hide container until not empty
+			//used on product page and for recently viewed items product list page
+			showRecentlyViewedItems : function($context,show) {
+				var $container = $('.recentlyViewedItemsContainer', $context);
+				
+					//if no recently viewed items && show is set, tell them the sky is blue
+				if(_app.ext.quickstart.vars.session.recentlyViewedItems.length == 0 && show) {
+					$container.show();
+					$('.recentEmpty',$container).show(); //contains place holder text
+					//_app.u.dump('There aint nuthin in there ma!');
+					$context.removeClass('loadingBG');
+				}
+					//if no recent items && show is not set, container is already hidden do nada
+				else if (_app.ext.quickstart.vars.session.recentlyViewedItems.length == 0 && !show) {}
+					//otherwise, show them what they've seen
+				else {
+					$container.show();
+					$('.recentEmpty',$container).hide();
+					$('ul',$container).empty(); //empty product list;
+//					_app.u.dump('recently viewed call to qs.vars.session');	_app.u.dump(_app.ext.quickstart.vars.session.recentlyViewedItems);
+					$container.tlc({dataset:_app.ext.quickstart.vars.session.recentlyViewedItems,verb:"translate"}); //build product list
+					_app.u.dump('SESSION VAR:'); _app.u.dump(_app.ext.quickstart.vars.session.recentlyViewedItems);
+					$context.removeClass('loadingBG');
+				}
+			},//showRecentlyViewedItems
 		
 		}, //u [utilities]
 
