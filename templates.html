@@ -758,7 +758,7 @@ this will likely become more flexible in the future. ###
 		<ul data-tlc="bind $var '.%attribs.user:grp_siblings'; store_prodlist#productlist  --hidemultipage='true' --before='<b>Available Colors:</b> <span class=&quot;zhint&quot;>(click image to select)</span>' --hideSummary='1' --hidePagination='1' --withInventory='1' --withVariations='1' --templateid='productListTemplateToolTipThumb'  --legacy;" class="listStyleNone noPadOrMargin fluidList clearfix prodPageSiblings"></ul> <!-- id='prodlistSiblings' -->
 	</div>
 
-	<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy; apply --append;" class="prodViewerAddToCartForm clearfix" action="#" data-app-submit="quickstart|productAdd2Cart" data-show="modal">
+	<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy; apply --append;" class="prodViewerAddToCartForm clearfix" action="#" data-app-submit="quickstart|productAdd2Cart" data-show="inline">
 		<div data-tlc="bind $var '.pid'; apply --attrib='data-pid'; ">
 			<fieldset data-tlc="bind $var '.pid'; store_product#atcvariations  --legacy; apply --append;" data-hide-discontinued=1 class="borderNone"></fieldset>
 		</div>
@@ -1731,113 +1731,222 @@ Cart template
 This is the template used both within a dialog and inline, unless implicitly overridden in showContent params.
 -->
 
-<div id="cartTemplate" class="clearfix"><!-- template role gets added by the myApp. don't add it yourself -->
+<div id="cartTemplate" class="clearfix inLineCart ui-widget-content"><!-- template role gets added by the myApp. don't add it yourself -->
 
-<form action="#" onsubmit="return false">
-
-<div class="cartStuffContainer">
-	<ul data-tlc="bind $var '.@ITEMS'; controller#loop --templateid='productListTemplateCart'; if (is $var --notblank;) {{apply --append;}};" class="listStyleNone fluidList clearfix noPadOrMargin productList lineItemProdlist"></ul>
-</div>
-
-<div class="cartSummaryTotalsContainer">
-	<div class="ui-widget ui-corner-all">
-		<div class='ui-widget-header ui-corner-top ui-header smallPadding smallButton'>
-			<button class='applyButton cartRefreshButton' data-text='false' data-icon-primary='ui-icon-refresh' data-app-click="cco|cartFetchExec">Refresh Cart</button>
-			<h2>Cart Totals</h2>
+	<div class='checkoutButtonsContainer stdMargin clearfix'>
+		<div class='cartButtonsContainer clearfix'>
+			<div class='cartBar'>
+				<span title="proceed to secure checkout"><a class="ui-state-default checkoutButton" href='/checkout/'>Begin Checkout</a></span> <!-- applyButton -->
+				<!-- <button class='floatRight ui-state-default continueShoppingButton' onClick="$('#modalCart').dialog('close');">Continue Shopping</button> -->
+				<a href="/" class='floatRight ui-state-default continueShoppingButton'>Continue Shopping</a>
+				<button class='floatRight scrollToEmail' data-app-click="beachmall_cart|scrolltoemailcart	">E-mail Cart</button>
+			</div>
 		</div>
-		<div class="cartSummaryContainer stdPadding ui-widget-content clearfix">
-
-<section class="cartSummary marginBottom">
-
-	<div data-tlc="bind $var '.sum.items_total'; if (is $var --notblank;) {{format --currency='USD'; format --prepend='Subtotal: '; apply --add --class='orderSubtotal'; apply --append;}};"></div>
-
-	<div data-tlc="bind $var '.sum.tax_total'; if (is $var --notblank;) {{format --currency='USD'; format --prepend='Tax: '; apply --add --class='orderTax'; apply --append;}};"></div>
-
-	<div data-tlc="cco#shipinfobyid  --legacy;" class="orderShipping" data-bind="useParentData:true; format:shipinfobyid; extension:cco;"></div>
-
-	<div data-tlc="bind $var '.sum.order_total'; if (is $var --notblank;) {{format --currency='USD'; format --prepend='Order Total: '; apply --add --class='orderTotal'; apply --append;}};"></div>
-
-	<div data-tlc="bind $var '.sum.gfc_total'; if (is $var --notblank;) {{format --currency='USD'; format --prepend='Giftcard(s): '; apply --add --class='orderGiftcardTotal'; apply --append;}};"></div>
-	<div data-tlc="bind $var '.sum.pnt_total'; if (is $var --notblank;) {{format --currency='USD'; format --prepend='Reward Points: '; apply --add --class='rewardPointsTotal'; apply --append;}};"></div>
-	<div data-tlc="bind $var '.sum.rmc_total'; if (is $var --notblank;) {{format --currency='USD'; format --prepend='Returns Credit: '; apply --add --class='returnsCreditTotal'; apply --append;}};"></div>
-
-	<div data-tlc="bind $var '.sum.balance_due_total'; cco#orderbalance  --classname='orderBalanceDue' --hidezero='false' --currencysign='$' --legacy;"></div>
-
-</section>
-
-<section data-app-role="cartTemplateShippingContainer" class="marginBottom cartTemplateShippingContainer">
-	<h3>Shipping:</h3>
-
-	<div class="cartZipCodeContainer marginBottom">
-		<label>Zip/Postal Code:
-		<input data-tlc="bind $var '.ship.postal'; if(is $var --blank) {{bind $var '.bill.postal'; }}; apply --select=$var; " size="6" name="ship/postal" value="" maxlength="10" data-app-keypress="quickstart|triggerBlurOnEnter" data-app-blur="cco|cartZipUpdateExec" type="text"></label>
 	</div>
 
-	<ul data-tlc="order_create#shipmethodsasradiobuttons  --legacy;" class="noPadOrMargin listStyleNone" data-bind="useParentData:true; format:shipmethodsasradiobuttons; extension: order_create;" data-app-role="shipMethodsUL"></ul>
-</section>
-
-<section class="marginBottom">
-
+	<form action="#" onsubmit="return false">
 	
-
-</section>
-
+		<div class="cartStuffContainer cartContainer">
+			<div class='cartHeader'>
+				<div class='floatLeft cartImg'>Product Image</div>
+				<div class='floatLeft cartDesc'>Product Information</div>
+				<div class='floatLeft cartPQT'>
+					<div class='cartPQT floatLeft'>Qty</div>
+					<div class='cartPQT floatLeft'>Item Price</div>
+					<div class='cartPQT floatLeft'>Total</div>
+				</div>
+			</div>
+			<ul data-tlc="bind $var '.@ITEMS'; controller#loop --templateid='productListTemplateCart'; if (is $var --notblank;) {{apply --append;}};" class="listStyleNone fluidList clearfix noPadOrMargin productList lineItemProdlist"></ul>
 		</div>
-		<div class="ui-state-default cartButtons stdPadding clearfix">
-			<!-- spans are set around the buttons so each element has one consitent tag type around it -->
-			<span class="continueShoppingSpan thisButton"><button class="applyButton continueShoppingButton" data-app-click="myRIA|dialogCloseExec">Continue Shopping</button></span>
-	
-			<span id="inStoreCheckoutButton" class='thisButton' title="proceed to secure checkout">
-				<a class="applyButton ui-state-highlight checkoutButton" href='/checkout/'>Store Checkout</a>
-			</span>
-	
-			<span data-tlc="bind $var '.cart.cartid'; cco#paypalecbutton  --legacy;" id="paypalecbutton" class="thisButton"></span>
-	
+		
+		<div class="cartSummaryTotalsContainer">
+			<div class="ui-widget ui-widget-content">
+				<div class='smallPadding smallButton'>
+					<button class='applyButton cartRefreshButton' data-text='false' data-icon-primary='ui-icon-refresh' data-app-click="cco|cartFetchExec">Refresh Cart</button>
+					<h2>Cart Totals</h2>
+				</div>
+				<div class="cartSummaryContainer stdPadding ui-widget-content clearfix">
+
+					<section class="cartSummary marginBottom">
+						<div data-tlc="bind $var '.sum.items_total'; if (is $var --notblank;) {{format --currency='USD'; format --prepend='<h6>Subtotal: </h6>'; apply --add --class='orderSubtotal'; apply --append;}};"></div>
+						<div data-tlc="bind $var '.sum.tax_total'; format --currency='USD'; format --prepend='<h6>Tax: </h6>'; apply --add --class='orderTax'; apply --append;"></div>
+						<div data-tlc="cco#shipinfobyid  --legacy;" class="orderShipping displayNone" data-bind="useParentData:true; format:shipinfobyid; extension:cco;"></div>
+						<div data-tlc="bind $var '.sum.order_total'; if (is $var --notblank;) {{format --currency='USD'; format --prepend='<h6>Order Total: </h6>'; apply --add --class='orderTotal'; apply --append;}};"></div>
+						<div data-tlc="bind $var '.sum.gfc_total'; beachmall_cart#beachmoney --classname='orderGiftcardTotal' --hidezero='true' --currencysign='$' --prepend='<h6>Giftcard(s): </h6>' --legacy;"></div>
+						<div data-tlc="bind $var '.sum.pnt_total'; beachmall_cart#beachmoney --classname='rewardPointsTotal' --hidezero='true' --currencysign='$' --prepend='<h6>Reward Points: </h6>' --legacy;"></div>
+						<div data-tlc="bind $var '.sum.rmc_total'; beachmall_cart#beachmoney --classname='returnsCreditTotal' --hidezero='true' --currencysign='$' --prepend='<h6>Returns Credit: </h6>' --legacy;"></div>
+						<div data-tlc="bind $var '.sum.balance_due_total'; cco#orderbalance  --classname='orderBalanceDue' --hidezero='false' --currencysign='$' --prepend='<h6>Estimated Total: </h6>' --legacy;" class="orderBalanceDue"></div>
+
+						<div class='couponEntryContainer' data-app-role='couponContainer'>
+							<fieldset>
+								<label for='coupon'>Promotional Code:</label>
+								<div class='cartCouponHint tipifyCart'>What's this?</div>
+								<div class='toolTip couponToolTip'>We strive to bring you the best products at everyday low prices. 
+									Occasionally we offer a special promotion. 
+									If you have a promotional code, simply enter this code and the discount will be 
+									applied to your order total
+								</div>
+								<input type='text' name='coupon' id="coupon" size='8'>
+								<button class='cartCouponButton' data-app-click="beachmall_cart|execCouponAdd">Update Total</button>
+							</fieldset>
+						</div>
+					</section>
+
+					<section data-app-role="cartTemplateShippingContainer" class="marginBottom cartTemplateShippingContainer">
+						<h3 data-tlc="bind $var '.ship.postal'; if(is $var --notblank;) {{set $var 'Shipping:'; apply --append;}} else {{set $var 'Delivery:'; apply --append;}};"></h3>
+						<div class='cartShipOptions'>
+							<label for="ship/postal">Zip/Postal Code:</label>
+							<input data-tlc="bind $var '.ship.postal'; if(is $var --blank) {{bind $var '.bill.postal';}}; apply --select=$var; " size="6" name="ship/postal" value="" maxlength="10" onchange="myApp.ext.beachmall_begin.a.updateShipPostal($(this).parent()); " data-app-blur="cco|cartZipUpdateExec" type="text">
+							<div><span class='shipCity'></span><span class='shipRegion'></span></div>
+							<input class='cartLineButton ui-state-default updateButton zipButton pointer' type='button' value='Update Location'>
+
+							<ul data-tlc="order_create#shipmethodsasradiobuttons  --legacy;" class="noPadOrMargin listStyleNone cartShipMethods" data-bind="useParentData:true; format:shipmethodsasradiobuttons; extension: order_create;" data-app-role="shipMethodsUL"></ul>
+						</div>
+						<span class='floatLeft clearfix' data-tlc="bind $var'.cartdetail.@ITEMS'; beachmall_cart#expshipmessage --legacy;"></span>
+						<div class='clearfix'>
+							<a href='#' class='floatLeft tipifyCart surchargeText' data-tlc="bind $var '.cart.@ITEMS'; beachmall_cart#shipsurmessage --legacy;"></a>
+							<div class='toolTip surchargeHint'>
+								If the calculated shipping cost is not zero, then shipping surcharge is applied for 
+								items and destinations applicable. More details of this charge is stated on the 
+								shipping tab of the product page
+							</div>
+						</div>
+						<div class='clearfix'>
+							<div class='tipifyCart interNatText floatLeft'>
+								Shipping Outside the Contiguous US?
+							</div>
+							<div class='toolTip interNatHint'>
+								At this time, we can only ship orders to destinations in the 48 contiguous US States by 
+								UPS and FedEx only. We don't ship any orders to Hawaii, Alaska, or Puerto Rico, DPO, APO 
+								and FPO addresses, Canada or other International Destinations.
+							</div>
+						</div>	
+					</section>
+
+					<section class="marginBottom">
+					</section>
+				</div>
+				<div class="checkoutButtonsContainer stdMargin clearfix">
+					<div class='cartButtonsContainer clearfix'>	
+						<div class='cartBar'>
+							<span title="proceed to secure checkout">
+								<a class="ui-state-default checkoutButton" href='/checkout/'>Begin Checkout</a> <!-- applyButton -->
+							</span>
+							<!-- <button class='floatRight ui-state-default continueShoppingButton' onClick="$('#modalCart').dialog('close');">Continue Shopping</button> -->
+							<a href="/" class='floatRight ui-state-default continueShoppingButton'>Continue Shopping</a>
+							<div class='mailCartCont floatRight'>
+								<div class="mailCartForm" data-mail-cart="parent">
+									<div class='cartEmailMessaging'></div>
+									<span data-app-click="beachmall_cart|hidecartemail" data-mail-cart="hide" class='sprite pointer'></span>
+									<h2 data-app-click="beachmall_cart|showcartemail" data-mail-cart="show">E-mail Cart</h2>
+									<input type='text' name='fullname' placeholder='Full Name'>
+									<input type='email' name='login' placeholder='E-mail Address'>
+									<button data-app-click="beachmall_cart|emailcart" class='pointer'>Send Cart</button>
+									<div>
+										<input type='checkbox' checked='checked' name='newsletter' id='newsletter'>
+										<label for='newsletter'>Keep me informed about Beachmall.com special offers, exclusive products, and new product information.</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class='cartAltButtonsContainer'>
+						<div class='orUse'>OR USE...</div>
+						<span data-tlc="bind $var '.cart.cartid'; cco#paypalecbutton  --legacy;" id="paypalecbutton" class="thisButton"></span>
+					</div>
+				</div>
+			</div>
 		</div>
-
-	</div>
-</div>
-</form>
-</div>
-
-
-
-<!-- /cartTemplate -->
-
-
-
-
-
-
+		<div class='cartFooter'>
+			<div class='floatLeft'><h3>Satisfaction Guaranteed</h3><h5>We promise you unbeaten selection, service, easy returns, and total shopping satisfaction</h5></div>
+			
+			<div class='phoneChatLive phone floatLeft'>
+				<div class='phoneIcon sprite floatLeft'></div>
+				(888) 975-6555 <h6 class='openSansFont'>OR</h6>
+				<div class='liveHelp pointer'>
+					<!-- BEGIN ProvideSupport.com Text Chat Link Code -->
+					<div id="cinuRJ" style="z-index:100;position:absolute"></div>
+					<div id="scnuRJ" style="display:inline"></div>
+					<div id="sdnuRJ" style="display:none"></div>
+					<script type="text/javascript">var senuRJ=document.createElement("script");senuRJ.type="text/javascript";var senuRJs=(location.protocol.indexOf("https")==0?"https":"http")+"://image.providesupport.com/js/1qaxuqjnvcj4w1csevb7u0l3tc/safe-textlink.js?ps_h=nuRJ&ps_t="+new Date().getTime()+"&online-link-html=Live%20Chat%20Online&offline-link-html=Live%20Chat%20Offline";setTimeout("senuRJ.src=senuRJs;document.getElementById('sdnuRJ').appendChild(senuRJ)",1)</script>
+					<noscript>
+						<div style="display:inline">
+							<a href="http://www.providesupport.com?messenger=1qaxuqjnvcj4w1csevb7u0l3tc">Customer Support Chat</a>
+						</div>
+					</noscript>
+					<!-- END ProvideSupport.com Text Chat Link Code -->
+				</div>	
+			</div>
+			<!-- START SCANALERT CODE -->
+			<a class='mcAfee floatRight' target="_blank" href="https://www.mcafeesecure.com/RatingVerify?ref=www.beachmall.com"><img width="115" height="30" src="https://images.scanalert.com/meter/www.beachmall.com/32.gif" alt="McAfee Secure sites help keep you safe from identity theft, credit card fraud, spyware, spam, viruses and online scams" oncontextmenu="alert('Copying Prohibited by Law - McAfee Secure is a Trademark of McAfee, Inc.'); return false;" data-apptimize="embed"></a>
+			<!-- END SCANALERT CODE -->
+		</div>
+	</form>
+</div> <!-- /cartTemplate -->
 
 
 <!-- cart line-item template -->
 <ul>
-	<li id="productListTemplateCart" class="padMargBorderBottom clearfix">
+	<li id="productListTemplateCart" class="padMargBorderBottom clearfix productListTemplateCart">
 
-		<button data-tlc="cco#cartitemremovebutton  --legacy;" class="floatRight removeButton" data-bind="format:cartitemremovebutton; extension:cco; useParentData:true;" data-app-click="cco|cartItemRemove">Remove Item From Cart</button>
-		<button data-tlc="quickstart#movetowishlistbutton  --legacy;" class="floatRight moveToWishlist marginRight" data-bind="format:moveToWishlistButton; extension:quickstart; useParentData:true;">Move to Wishlist</button>
-
-
-		<div class="floatLeft"><img data-tlc="bind $var '.%attribs.zoovy:prod_thumb'; if(is $var --blank;){{bind $var '.%attribs.zoovy:prod_image1';}}; if(is $var --notblank;){{apply --img --media=$var --width=75 --height=75 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class="prodThumb" alt="" height="75" width="75"></div>
-
-		<h4 data-tlc="bind $var '.prod_name'; if (is $var --notblank;) {{apply --append;}};"></h4>
-
-		<div data-tlc="bind $var '.sku'; format --prepend='Sku: '; if (is $var --notblank;) {{apply --append;}};" class="ztable_row_small stid"></div>
-
-		<div>
-		qty: <input data-tlc="cco#cartitemqty  --legacy;" class="qtyInput numberInput" data-app-change="cco|cartItemUpdateExec" data-bind="format:cartItemQty;extension:cco;useParentData:true;" name="quantity" type="number">
-		<button class="displayNone">update</button><!-- here to stop 'enter' in input above from closing modal -->
-		<span data-tlc="bind $var '.price'; if (is $var --notblank;) {{ format --currency='USD'; format --prepend=' x '; apply --append;}};"></span>
-		<span data-tlc="bind $var '.extended'; if (is $var --notblank;) {{format --currency='USD';  format --prepend='= '; apply --append;}};"></span>
-
+		<div data-tlc="bind $var '.stid'; if(is $var --notblank;) {{apply --attrib='data-geoSTID';}};" class="cartItemWrapper">
+			
+			<div class='floatLeft cartImg'>
+				<img data-tlc="bind $var '.%attribs.zoovy:prod_thumb'; if(is $var --blank;){{bind $var '.%attribs.zoovy:prod_image1';}}; if(is $var --notblank;){{apply --img --media=$var --width=150 --height=150 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class="prodThumb" alt="" height="150" width="150" data-apptimize="embed">
+				<div data-tlc="bind $var '.sku'; format --prepend='SKU: '; if (is $var --notblank) {{apply --append;}};" class='ztable_row_small stid floatLeft'></div>
+			</div>
+			<div class='floatLeft cartDesc'>
+				<a href="" data-tlc="bind $var '.'; beachmall_cart#cartprodname --legacy;" class="carProdLink"></a>
+				<div data-tlc="bind $var '.%options'; controller#selectedoptionsdisplay --legacy;  if (is $var --notblank;) {{apply --append;}};" class="ztable_row_small prodOptions"></div>
+				<div data-cart='1' data-tlc="bind $var '.'; beachmall_lists#showshiplatency;" class='cartLatency floatRight'>
+					<div class='shipTime'></div>
+				</div>
+				<div data-tlc="bind $var '.'; beachmall_cart#hideifasm --legacy" data-included='0'  class='cartShippingInformation clearfix'>
+					<div class='cartTimeInTransitMessaging'></div>
+					<div class='cartPutLoadingHere loadingBG'>
+						<div class='transitContainer'></div>
+					</div>
+				</div>
+				<div>
+					<button data-app-click="beachmall_cart|showcartacc" data-acc="show" class='floatRight cartShowAccButton displayNone'>View Recommended Accessories</button>
+					<button data-app-click="beachmall_cart|hidecartacc" data-acc="hide" class='floatRight cartHideAccButton displayNone'>Hide Recommended Accesories</button>
+					<ul data-tlc="bind $var '.'; beachmall_cart#accessoryproductlist --legacy;" data-acc="list" class='cartAccList floatRight' data-loadsTemplate='cartAccListTemplateToolTipThumb' data-withInventory=1 data-withVariations=1 data-hide_pagination='true'></ul> <!-- withInventory:1; withVariations:1;" -->
+				</div>
+			</div>
+			<div class='floatLeft cartPQT'>
+				<div class='cartQtyInput cartPQT floatLeft'>
+					<input data-tlc="cco#cartitemqty  --legacy;" class="qtyInput numberInput" data-app-change="cco|cartItemUpdateExec" data-bind="format:cartItemQty;extension:cco;useParentData:true;" name="quantity" type="number">
+					<button data-tlc="bind $var '.'; beachmall_cart#hideifasm --legacy" data-included='1' class='updateButton cartLineButton ui-state-default'>Update</button><!-- here to stop 'enter' in input above from closing modal -->
+					<button data-tlc="quickstart#movetowishlistbutton  --legacy;" class="moveToWishlist cartLineButton" data-bind="format:moveToWishlistButton; extension:quickstart; useParentData:true;">Wishlist</button>
+					<button data-tlc="cco#cartitemremovebutton  --legacy;" class="cartLineButton removeButton" data-bind="format:cartitemremovebutton; extension:cco; useParentData:true;" data-app-click="cco|cartItemRemove">Remove</button>
+				</div>
+				<div data-tlc="bind $var '.sku'; beachmall_cart#redmoney --legacy;" class='cartItemPrice cartPQT floatLeft'>
+					<span data-tlc="bind $var '.price'; format --currency='USD'; if (is $var --notblank;) {{apply --append;}};"></span>
+				</div>
+				<div data-tlc="bind $var '.sku'; beachmall_cart#redmoney --legacy;" class='cartItemTotal cartPQT floatLeft'>
+					<span data-tlc="bind $var '.extended'; format --currency='USD'; if (is $var --notblank;) {{apply --append;}};"></span>
+				</div>	
+			</div>
 		</div>
-
-		<div data-tlc="bind $var '.%options'; controller#selectedoptionsdisplay --legacy;  if (is $var --notblank;) {{apply --append;}};" class="ztable_row_small prodOptions"></div>
 	</li>
 </ul>
 
+<!-- used for a list of accessory products on items in the cart list -->
+<ul>
+	<li id='cartAccListTemplateToolTipThumb' class='loadingBG' data-tlc="bind $var '.pid'; beachmall_lists#hideifnotpurchaseable;">
+		<a data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';" data-cartToolTipThumb="data-cartToolTipThumb" class='prodThumbContainer pointer targetElement'>
+			<img data-tlc="bind $var'.%attribs.zoovy:prod_image1'; apply --img --media=$var --width=30 --height=30 --bgcolor='#ffffff' --replace;" data-bind='var: product(zoovy:prod_image1); format:imageURL;' class='prodThumb' alt="" src='blank.gif' width='30' height='30' />
+		</a>
+	</li>
+</ul>
 
+<table>
+	<tbody><tr id="shipGridTemplate">
+		<!-- <td><span data-tlc="bind $var '.carrier'; if(is $var - -notblank;) {{apply - -class='carrier'; apply - -append;}};"></span></td> redundant? -->
+		<td><span data-tlc="bind $var '.method'; if(is $var --notblank) {{apply --append;}};"></span></td>
+		<td><span data-tlc="bind $var '.arrival_yyyymmdd'; beachmall_dates#ymdtopretty;"></span></td>
+	</tr></tbody>
+</table>
 
 
 

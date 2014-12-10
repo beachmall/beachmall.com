@@ -342,7 +342,7 @@ var beachmall_begin = function(_app) {
 			
 /* GEOLOCATION ACTIONS */
 			updateShipPostal : function($form)	{
-				_app.u.dump("BEGIN beachmall.a.updateShipPostal.");
+				_app.u.dump("BEGIN beachmall_begin.a.updateShipPostal.");
 				var postal = $("[name='ship/postal']",$form).val();
 				if(postal)	{
 					_app.u.dump(" -> postal set: "+postal);
@@ -394,6 +394,12 @@ var beachmall_begin = function(_app) {
 //much like a renderFormat but uses tlc... ;p
 
 		tlcFormats : {
+		
+			dump : function(data,thisTLC) {
+				var prod = data.globals.binds.var;
+				var $tag = data.globals.tags[data.globals.focusTag];
+				dump('=======================dump data: '); dump(prod); 
+			},
 		
 /* DROPDOWN TLC */		
 			//checks the var copied from _dropdownsearches-min.json for search buttons that have to results and removes them to prevent empty search pages from being made.

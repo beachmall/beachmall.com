@@ -20,6 +20,12 @@ _app.u.loadScript(configURI,function(){
 		_app.ext.beachmall_begin.u.getDropdownJSON();
 		$.extend(handlePogs.prototype,_app.ext.beachmall_begin.variations);
 		_app.ext.beachmall_begin.u.startTooltip();
+		
+		//make sure minicart stays up to date. 
+		_app.ext.beachmall_cart.vars.mcSetInterval = setInterval(function(){
+			_app.ext.quickstart.u.handleMinicartUpdate({'datapointer':'cartDetail|'+_app.model.fetchCartID()});
+		},4000);
+		
 		//TODO : TRANSFER MAKE DISALLOW FUNCTION FROM BEACHMALL_STORE TO BEACHMALL_BEGIN.
 		//_app.ext.beachmall_store.u.makeDisallow(); //uncomment to use, then close it back up. This shouldn't be left running in production.
 		
@@ -90,7 +96,7 @@ _app.extend({
 
 _app.couple('quickstart','addPageHandler',{
 	"pageType" : "cart",
-	"require" : ['cco','order_create','templates.html'],
+	"require" : ['cco','order_create','templates.html','beachmall_begin','beachmall_lists','beachmall_cart','beachmall_dates','store_routing','store_product'],
 	"handler" : function($container, infoObj, require){
 		infoObj.deferred = $.Deferred();
 		infoObj.defPipeline.addDeferred(infoObj.deferred);
@@ -482,6 +488,10 @@ _app.u.bindTemplateEvent('recentTemplate', 'complete.beachmall_lists',function(e
 	_app.ext.beachmall_lists.u.showRecentlyViewedItems($context,true);
 });
 
+_app.u.bindTemplateEvent('cartTemplate', 'complete.beachmall_cart',function(event,$context,infoObj) {
+	_app.ext.beachmall_cart.u.handleCartToolTip($context);
+});
+
 _app.extend({
 	"namespace":"beachmall_homepage",
 	"filename":"extensions/_beachmall_homepage.js"
@@ -520,6 +530,11 @@ _app.extend({
 _app.extend({
 	"namespace":"beachmall_dates",
 	"filename":"extensions/_beachmall_dates.js"
+});
+
+_app.extend({
+	"namespace":"beachmall_cart",
+	"filename":"extensions/_beachmall_cart.js"
 });
 	
 

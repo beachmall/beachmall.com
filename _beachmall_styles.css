@@ -1629,67 +1629,68 @@ a.quickViewButton {height:35px; width: 100px; background-color:#3bb3c3; color:#f
 CART TEMPLATE
 ****************************************************************************/
 
-#modalCart .cartSummaryTotalsContainer, #modalCart .cartStuffContainer {width:100%; padding:0; font-size:1.0em; margin:0;}
-#modalCart .cartSummaryTotalsContainer h2.ui-widget-header {display:none;}
-#modalCart .cartSummaryTotalsContainer div.ui-widget:first-child {margin:1.6% 0 0 0; background:#ffffff;}
-#modalCart .cartSummaryTotalsContainer .cartSummaryContainer {padding: 0px; margin:0; border:none; background:#F5F1DE;}
-#modalCart .couponEntryContainer {font-weight:bold;}
-#modalCart .couponEntryContainer fieldset {border:none;}
-#modalCart .couponEntryContainer label {display:block; text-align:left;}
-#modalCart .cartCouponHint {height:auto; width:70px; text-decoration:underline; font-size:10px; font-weight:normal; text-align:left; margin:0 0 5px 0;}
-#modalCart .cartCouponHint:hover {color:#e0463a;}
-#modalCart .couponEntryContainer .couponToolTip {top:-120px; left:-120px;}
-#modalCart .couponEntryContainer input {float:left; margin:0 10px 0 0;}
-#modalCart .couponEntryContainer button {display:block; border:none; background:#3bb3c3; color:#ffffff; padding:1px;}
-#modalCart .cartSummaryContainer section {height:50%; width:33.3%; float:right; margin:1.6% 0;}
-#modalCart .cartSummary {border-top:1px solid #dddddd; border-left:1px solid #DDDDDD; background:#ffffff;}
-#modalCart .cartSummaryContainer section.cartTemplateShippingContainer {border:1px solid #dddddd; padding:1%; background:#ffffff;}
-#modalCart .cartSummary > div {padding:2% 4.6% 2% 2%; text-align:right; border-bottom:1px solid #dddddd;}
-#modalCart .cartSummary > div > h6 {font-weight:bold; font-size:1.0em; display:inline; float:left;}
-#modalCart .cartSummary > div .orderShipMethod {font-weight:bold; font-size:1.0em; display:inline; float:left;}
-#modalCart .cartSummary > div .orderShipMethod .surcharge {color:#e0463a;}
-#modalCart .cartSummary > div .orderShipAmount {font-weight:bold; font-size:1.0em; display:inline; float:right;}
-#modalCart .cartShipOptions {height:auto; width:100%; float:left; margin:0; font-family:"Open Sans";}
-#modalCart .toolTip {top:44px; left:-90px;}
-#modalCart .toolTip2 {top:-120px; left:-100px;}
-#modalCart .cartFree {font-weight:bold; color:#E0463A;}
-#modalCart .cartZipCodeContainer {height:auto; width:60%; float:left; margin:0; border:none;}
-#modalCart .updateButton.zipButton.cartLineButton {width:auto; margin:2% 0 6% 0; padding:1px;}
-#modalCart .interNatText {font-size:10px; margin:10px 0 0 0; clear:both;}
-#modalCart .interNatHint {top:-130px; left:-70px}
-#modalCart .surchargeText {margin:10px 0 0 0; clear:both;}
-#modalCart .surchargeHint {top:-110px; left:-100px}
-#modalCart .checkoutButtonsContainer span {float:right; margin:0 0 0 12px;}
-#modalCart .cartButtonsContainer {margin:0 0 1% 0; border:none;}
-#modalCart .cartButtonsContainer .cartBar {width:100%; height:auto; float:left; background:none repeat scroll 0 0 #ffffff; color:#ffffff;}
-#modalCart .cartButtonsContainer .cartBar {width:100%; height:auto; float:left; background:none repeat scroll 0 0 #3bb3c3; color:#3bb3c3;}
-#modalCart .checkoutButtonsContainer {margin:0; background:none repeat scroll 0 0 #F5F1DE;}
-#modalCart .cartButtonsContainer span a.ui-state-default {height:auto; width:auto; padding:6px; margin:0; color:#ffffff; background:#E0463A; border:none; border-radius:0; display:block;}
-#modalCart .cartButtonsContainer span a.ui-state-default:hover {color:#E0463A; background:#ffffff;}
-#modalCart .cartButtonsContainer button.ui-state-default {padding:5px; color:#ffffff; background:#F8C301; border:none; border-radius:0; margin:0 0 0 12px;}
-#modalCart .cartButtonsContainer button.ui-state-default:hover {color:#F8C301; background:#ffffff;}
-#modalCart .cartAltButtonsContainer {margin:0 0 3% 0; border:none;}
-#modalCart .cartAltButtonsContainer .orUse {margin:10px 20px 10px 0; text-align:right;}
-#modalCart .cartRegion {color:black;}
+.inLineCart .cartSummaryTotalsContainer, .inLineCart .cartStuffContainer {width:100%; padding:0; font-size:1.0em; margin:0;}
+.inLineCart .cartSummaryTotalsContainer h2.ui-widget-header {display:none;}
+.inLineCart .cartSummaryTotalsContainer div.ui-widget:first-child {margin:1.6% 0 0 0; background:#ffffff;}
+.inLineCart .cartSummaryTotalsContainer .cartSummaryContainer {padding: 0px; margin:0; border:none; background:#F5F1DE;}
+.inLineCart .couponEntryContainer {font-weight:bold;}
+.inLineCart .couponEntryContainer fieldset {border:none;}
+.inLineCart .couponEntryContainer label {display:block; text-align:left;}
+.inLineCart .cartCouponHint {height:auto; width:70px; text-decoration:underline; font-size:10px; font-weight:normal; text-align:left; margin:0 0 5px 0;}
+.inLineCart .cartCouponHint:hover {color:#e0463a;}
+.inLineCart .couponEntryContainer .couponToolTip {top:-170px; left:-120px;}
+.inLineCart .couponEntryContainer input {float:left; margin:0 10px 0 0;}
+.inLineCart .couponEntryContainer button {display:block; border:none; background:#3bb3c3; color:#ffffff; padding:1px;}
+.inLineCart .cartSummaryContainer section {height:50%; width:33.3%; float:right; margin:1.6% 0;}
+.inLineCart .cartSummary {border-top:1px solid #dddddd; border-left:1px solid #DDDDDD; background:#ffffff;}
+.inLineCart .cartSummaryContainer section.cartTemplateShippingContainer {border:1px solid #dddddd; padding:1%; background:#ffffff;}
+.inLineCart .cartSummary > div {padding:2% 4.6% 2% 2%; text-align:right; border-bottom:1px solid #dddddd;}
+.inLineCart .cartSummary > div > h6 {font-weight:bold; font-size:1.0em; display:inline; float:left;}
+.inLineCart .cartSummary > div .orderShipMethod {font-weight:bold; font-size:1.0em; display:inline; float:left;}
+.inLineCart .cartSummary > div .orderShipMethod .surcharge {color:#e0463a;}
+.inLineCart .cartSummary > div .orderShipAmount {font-weight:bold; font-size:1.0em; display:inline; float:right;}
+.inLineCart .cartShipOptions {height:auto; width:100%; float:left; margin:0; font-family:"Open Sans";}
+.inLineCart .toolTip {top:44px; left:-90px;}
+.inLineCart .toolTip2 {top:-120px; left:-100px;}
+.inLineCart .cartFree {font-weight:bold; color:#E0463A;}
+.inLineCart .cartZipCodeContainer {height:auto; width:60%; float:left; margin:0; border:none;}
+.inLineCart .updateButton.zipButton.cartLineButton {width:auto; margin:2% 0 6% 0; padding:1px;}
+.inLineCart .interNatText {font-size:10px; margin:10px 0 0 0; clear:both;}
+.inLineCart .interNatHint {top:-210px; left:-70px}
+.inLineCart .surchargeText {margin:10px 0 0 0; clear:both;}
+.inLineCart .surchargeHint {top:-110px; left:-100px}
+.inLineCart .checkoutButtonsContainer span {float:right; margin:0 0 0 12px;}
+.inLineCart .cartButtonsContainer {margin:0 0 1% 0; border:none;}
+.inLineCart .cartButtonsContainer .cartBar {width:100%; height:auto; float:left; background:none repeat scroll 0 0 #ffffff; color:#ffffff;}
+.inLineCart .cartButtonsContainer .cartBar {width:100%; height:auto; float:left; background:none repeat scroll 0 0 #3bb3c3; color:#3bb3c3;}
+.inLineCart .checkoutButtonsContainer {margin:0; background:none repeat scroll 0 0 #F5F1DE;}
+.inLineCart .cartButtonsContainer span a.ui-state-default {height:auto; width:auto; padding:6px; margin:0; color:#ffffff; background:#E0463A; border:none; border-radius:0; display:block;}
+.inLineCart .cartButtonsContainer span a.ui-state-default:hover {color:#E0463A; background:#ffffff;}
+.inLineCart .cartButtonsContainer .scrollToEmail, .inLineCart .cartButtonsContainer a {padding:6px; color:#ffffff; background:#F8C301; border:none; border-radius:0; margin:0 0 0 12px; font-family:Trebuchet MS,Tahoma,Verdana,Arial,sans-serif; font-size:1.1em;}
+.inLineCart .cartButtonsContainer .scrollToEmail {padding:5px;}
+.inLineCart .cartButtonsContainer .scrollToEmail:hover, .inLineCart .cartButtonsContainer a:hover {color:#F8C301; background:#ffffff;}
+.inLineCart .cartAltButtonsContainer {margin:0 0 3% 0; border:none;}
+.inLineCart .cartAltButtonsContainer .orUse {margin:10px 20px 10px 0; text-align:right;}
+.inLineCart .cartRegion {color:black;}
 
-#modalCart .mailCartCont {position:relative; font-weight:normal;}
-#modalCart .mailCartCont span {height:20px; width:20px; background-position:-1px -96px; margin:5px -5px 0 0; display:none;}
-#modalCart .mailCartCont .mailCartForm {height:21px; width:80px; background:#f8c301; color:#000000; position:absolute; right:0; bottom:-31px; padding:0 10px 10px 10px; z-index:1; overflow:hidden;}
-#modalCart .mailCartCont .mailCartForm:hover {background:#ffffff;}
-#modalCart .mailCartCont .mailCartForm.noHover:hover {background:#f8c301;}
-#modalCart .mailCartCont .mailCartForm h2 {text-align:center; font-size:1em; margin:3px 0 0 0; color:#ffffff; padding:2px 0; cursor:pointer;}
-#modalCart .mailCartCont .mailCartForm:hover h2 {color:#f8c301;}
-#modalCart .mailCartCont .mailCartForm.noHover h2 {color:#000000;}
-#modalCart .mailCartCont input, #modalCart .mailCartCont button {margin:5px auto; display:block;}
-#modalCart .mailCartCont button {background:#3bb3c3; border:none; padding:1px 5px; color:#ffffff; font-family:Oswald;}
-#modalCart .mailCartCont input[type="checkbox"] {margin:0;  display:inline; -webkit-appearance:checkbox;}
-#modalCart .mailCartCont label {height:auto; width:200px; display:block; float:right; font-size:9px; line-height:10px; margin:5px 0 0 0;}
+.inLineCart .mailCartCont {position:relative; font-weight:normal;}
+.inLineCart .mailCartCont span {height:20px; width:20px; background-position:-1px -96px; margin:5px -5px 0 0; display:none;}
+.inLineCart .mailCartCont .mailCartForm {height:27px; width:110px; background:#f8c301; color:#000000; position:absolute; right:0; bottom:-37px; padding:0 10px 10px 10px; z-index:1; overflow:hidden;}
+.inLineCart .mailCartCont .mailCartForm:hover {background:#ffffff;}
+.inLineCart .mailCartCont .mailCartForm.noHover:hover {background:#f8c301;}
+.inLineCart .mailCartCont .mailCartForm h2 {text-align:center; font-size:1em; margin:3px 0 0 0; color:#ffffff; padding:2px 0; cursor:pointer;}
+.inLineCart .mailCartCont .mailCartForm:hover h2 {color:#f8c301;}
+.inLineCart .mailCartCont .mailCartForm.noHover h2 {color:#000000;}
+.inLineCart .mailCartCont input, .inLineCart .mailCartCont button {margin:7px auto; display:block;}
+.inLineCart .mailCartCont button {background:#3bb3c3; border:none; padding:1px 5px; color:#ffffff; font-family:Oswald;}
+.inLineCart .mailCartCont input[type="checkbox"] {margin:0;  display:inline; -webkit-appearance:checkbox;}
+.inLineCart .mailCartCont label {height:auto; width:200px; display:block; float:right; font-size:9px; line-height:10px; margin:5px 0 0 0;}
 
 
 
 
 .cartAccessories {height:500px; width: 40%; background-color:#e58;}
-#modalCart	{min-width:750px; background:#F5F1DE;}
+.inLineCart	{min-width:750px; background:#F5F1DE; padding:10px; font-size:1.1em;}
 .cartStuffListContainer	{height: 300px; overflow:auto;}
 
 .upsellContainer	{height:500px; overflow:auto;}
@@ -1701,15 +1702,15 @@ CART TEMPLATE
 */
 .radioShipTime {margin: 0 0 0 10px;}
 
-.cartFooter {height:30px; width:auto; margin:10px 0 15px 0; padding:6px 10px 10px 10px; background:#e0463a; color:#ffffff; text-align:center; clear:both;}
+.cartFooter {height:40px; width:auto; margin:10px 0 15px 0; padding:6px 10px 10px 10px; background:#e0463a; color:#ffffff; text-align:center; clear:both;}
 .cartFooter h3 {font-weight:bold; font-style:italic;}
 .cartFooter h5 {font-size:10px; font-weight:bold;}
-.cartFooter .phoneChatLive {height:auto; width:163px; line-height:17px; text-align:center; font-size:15px; margin:0 0 0 4%;}
+.cartFooter .phoneChatLive {height:auto; width:163px; line-height:17px; text-align:center; font-size:15px; margin:4px 0 0 4%;}
 .cartFooter .phoneIcon {height:30px; background-position:0 -318px;}
 .cartFooter .phoneChatLive h6 {display:inline; font-size:10px;}
 .cartFooter .phoneChatLive span {color:#ffffff;}
 .cartFooter .phoneChatLive span:hover {color:#333333;}
-.cartFooter .mcAfee{margin:2px 0 0 0; border:0;}
+.cartFooter .mcAfee{margin:6px 0 0 0; border:0;}
 
 /***************************************************************************
 END CART TEMPLATE
@@ -1719,46 +1720,46 @@ END CART TEMPLATE
 /***************************************************************************
 PRODUCTLISTTEMPLATECART
 ****************************************************************************/
-#modalCart .lineItemProdlist li	{height:auto; width:100%; font-family:"Open Sans"; padding:0;} /* padding:0 0 1.5% 0; margin:0 0 1.5% 0; border-bottom:1px dashed #FFCC66;*/
+.inLineCart .lineItemProdlist li	{height:auto; width:100%; font-family:"Open Sans"; padding:0;} /* padding:0 0 1.5% 0; margin:0 0 1.5% 0; border-bottom:1px dashed #FFCC66;*/
 
-#modalCart .cartItemWrapper {height:200px; width:100%; padding:1.6% 0; background-color:#f5f1de; border-left:1px solid #999999; border-right:1px solid #999999; border-bottom:1px solid #999999; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; box-sizing:border-box;}
+.inLineCart .cartItemWrapper {height:200px; width:100%; padding:1.6% 0; background-color:#f5f1de; border-left:1px solid #999999; border-right:1px solid #999999; border-bottom:1px solid #999999; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; box-sizing:border-box;}
 
-#modalCart .cartHeader {height:30px; width:100%; background:#3bb3c3; color:#ffffff; padding:0; text-align:center; line-height:30px; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; box-sizing:border-box;}
-#modalCart .cartHeader .cartDesc {border:none;}
+.inLineCart .cartHeader {height:30px; width:100%; background:#3bb3c3; color:#ffffff; padding:0; text-align:center; line-height:30px; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; box-sizing:border-box;}
+.inLineCart .cartHeader .cartDesc {border:none;}
 
-#modalCart .cartImg {height:100%; width:21%;}
-#modalCart .cartImg img {max-width:100%; margin:0 auto; display:block;}
-#modalCart .cartImg .stid {height:15px; width:100%; text-align:center; margin:3px 0 0 0; font-size:12px;}
-#modalCart .cartDesc {height:100%; width:45%; border-left:1px solid #999999;}
-#modalCart .cartDesc h4 {font-size:12px; margin:0 0 2% 0; padding:0 1.5%;}
-#modalCart .cartDesc a {font-size:12px; margin:0 0 2% 0; padding:0 1.5%; text-decoration:underline; font-weight:bold; display:block;}
-#modalCart .cartDesc a:hover {color:#e0463a;}
-#modalCart .cartDesc .ztable_row_small, #modalCart .cartDesc .ztable_row_small.stid .cartSku {font-size:1.2em; margin:0 0 2% 0; padding:0 0 0 1.5%;}
-#modalCart .cartDesc .ztable_row_small.stid {font-size:12px;}
-#modalCart .cartDesc .cartLatency, #modalCart .cartDesc .transitContainer, #modalCart .cartDesc .cartPutLoadingHere {margin:0 0 2% 0; padding:0 1.5%;}
-#modalCart .cartDesc .loadingBG {min-height:40px; background-size:10% auto;}
-#modalCart .cartShippingInformation .zlink, .mainProdColumn .deliveryMethod .zlink  {color:#E0463A; font-style:italic; font-weight:normal;}
-#modalCart .shipCity, #modalCart .shipRegion, #modalCart .shipPostal, #modalCart .deliveryMethod {margin:0 0 0 5px;} 
-#modalCart .cartShowAccButton, #modalCart .cartHideAccButton {padding:2px 5px; border:none; background:#f8c301; border-radius:0; color:#ffffff; font-family:"Open Sans"; font-weight:bold; margin:0 5px 0 0;}
-#modalCart .cartAccList {height:0; max-height:40px; max-width:260px; overflow:hidden; clear:both;}
-#modalCart .mpControlContainer {display:none;}
-#modalCart .cartAccList li {height:30px; width:30px; border:2px solid #3bb3c3; margin:5px 5px 5px 13px;}
-#modalCart .cartAccList li > div {width:auto;}
+.inLineCart .cartImg {height:100%; width:21%;}
+.inLineCart .cartImg img {max-width:100%; margin:0 auto; display:block;}
+.inLineCart .cartImg .stid {height:15px; width:100%; text-align:center; margin:3px 0 0 0; font-size:12px;}
+.inLineCart .cartDesc {height:100%; width:45%; border-left:1px solid #999999;}
+.inLineCart .cartDesc h4 {font-size:12px; margin:0 0 2% 0; padding:0 1.5%;}
+.inLineCart .cartDesc a {font-size:12px; margin:0 0 2% 0; padding:0 1.5%; text-decoration:underline; font-weight:bold; display:block;}
+.inLineCart .cartDesc a:hover {color:#e0463a;}
+.inLineCart .cartDesc .ztable_row_small, .inLineCart .cartDesc .ztable_row_small.stid .cartSku {font-size:1.2em; margin:0 0 2% 0; padding:0 0 0 1.5%;}
+.inLineCart .cartDesc .ztable_row_small.stid {font-size:12px;}
+.inLineCart .cartDesc .cartLatency, .inLineCart .cartDesc .transitContainer, .inLineCart .cartDesc .cartPutLoadingHere {margin:0 0 2% 0; padding:0 1.5%;}
+.inLineCart .cartDesc .loadingBG {min-height:40px; background-size:10% auto;}
+.inLineCart .cartShippingInformation .zlink, .mainProdColumn .deliveryMethod .zlink  {color:#E0463A; font-style:italic; font-weight:normal;}
+.inLineCart .shipCity, .inLineCart .shipRegion, .inLineCart .shipPostal, .inLineCart .deliveryMethod {margin:0 0 0 5px;} 
+.inLineCart .cartShowAccButton, .inLineCart .cartHideAccButton {padding:2px 5px; border:none; background:#f8c301; border-radius:0; color:#ffffff; font-family:"Open Sans"; font-weight:bold; margin:0 5px 0 0;}
+.inLineCart .cartAccList {height:0; max-height:40px; max-width:260px; overflow:hidden; clear:both;}
+.inLineCart .mpControlContainer {display:none;}
+.inLineCart .cartAccList li {height:30px; width:30px; border:2px solid #3bb3c3; margin:5px 5px 5px 13px;}
+.inLineCart .cartAccList li > div {width:auto;}
 .cartToolTipWrapper {width:200px; background:#777777; border:none; border-radius:0; padding:4px;}
 .ui-tooltip  span.cartAccZoom {width:200px; padding:2px 0; text-align:center; background:#777777; color:#ffffff; display:block; font-family:"Open Sans"; font-size:10px;}
 .ui-tooltip  span.cartAccZoomPrice {font-weight:bold;}
 
-#modalCart .cartPQT {height:100%; width:33%; text-align:center; font-family:"Open Sans"; font-size:12px; font-weight:bold;}
-#modalCart .cartQtyInput {border-left:1px solid #999999;}
-#modalCart .cartQtyInput input{height:9%; width:60%; text-align:center; margin:5% auto;}
-#modalCart .cartLineButton.ui-state-default {height:auto; width:60%; margin:6% auto; padding:2px 0; font-weight:normal; color:#ffffff; border:none; border-radius:0;}
-#modalCart .cartLineButton.ui-state-default span:first-child {display:none;}
-#modalCart .cartLineButton.ui-state-default span.ui-button-text {text-indent:0; padding:0;}
-#modalCart .updateButton  {background:#3bb3c3;}
-#modalCart .moveToWishlist {background:#f8c301;}
-#modalCart .removeButton.cartLineButton {background:#FFE680; color:#e0463a;}
-#modalCart .cartItemPrice {border-left:1px solid #999999; padding:2% 0 0 0;}
-#modalCart .cartItemTotal {border-left:1px solid #999999; padding:2% 0 0 0;}
+.inLineCart .cartPQT {height:100%; width:33%; text-align:center; font-family:"Open Sans"; font-size:12px; font-weight:bold;}
+.inLineCart .cartQtyInput {border-left:1px solid #999999;}
+.inLineCart .cartQtyInput input{height:9%; width:60%; text-align:center; margin:5% auto;}
+.inLineCart .cartLineButton.ui-state-default {height:auto; width:60%; margin:6% auto; padding:2px 0; font-weight:normal; color:#ffffff; border:none; border-radius:0;}
+.inLineCart .cartLineButton.ui-state-default span:first-child {display:none;}
+.inLineCart .cartLineButton.ui-state-default span.ui-button-text {text-indent:0; padding:0;}
+.inLineCart .updateButton  {background:#3bb3c3;}
+.inLineCart .moveToWishlist {background:#f8c301;}
+.inLineCart .removeButton.cartLineButton {background:#FFE680; color:#e0463a;}
+.inLineCart .cartItemPrice {border-left:1px solid #999999; padding:2% 0 0 0;}
+.inLineCart .cartItemTotal {border-left:1px solid #999999; padding:2% 0 0 0;}
 
 
 

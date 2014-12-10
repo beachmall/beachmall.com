@@ -64,68 +64,9 @@ var beachmall_cartemail = function(_app) {
 //these are going the way of the do do, in favor of app events. new extensions should have few (if any) actions.
 		a : {
 		
-				//processes cart e-mail form and calls appMashUpRedis for it
-			emailcart : function($form) {
-//			dump('-----start email cart...');
-				var uName = $('input[type="text"]',$form).val();
-				var eAddress = $('input[type="email"]',$form).val();
-				var newsletter = $('input[type="checkbox"]',$form).is(':checked');
-				var params = {
-					'_cartid' 	: _app.model.fetchCartID(),
-					'platform' 	: 'appMashUpRedis-EMAILCART.json',
-					'%vars' 	: {
-								  'email':eAddress,
-								  'fullname':uName
-					},
-					'_cmd'		: 'appMashUpRedis',
-					'_tag'		: {
-						'callback':function(rd){
-							if(_app.model.responseHasErrors(rd)) {
-								$form.anymessage({'message':rd});
-							}
-							else {
-								$form.anymessage(_app.u.successMsgObject('Your message has been sent.'));
-								setTimeout(function(){_app.ext.beachmall_cartemail.a.hideCartEmail($('span',$form),$form);},10000);
-//								_gaq.push(['_trackEvent','Cart','User Event','Cart e-mailed']);
-								window[_app.vars.analyticsPointer]('send', 'event','Checkout','User Event','Cart e-mailed');
-							}
-						}
-					}
-				};
-
-				_app.model.addDispatchToQ(params,'immutable');
-				_app.model.dispatchThis('immutable');
-
-			}, //emailcart
-		
-				//animates cart e-mail form into view, shows close button in form
-			showCartEmail : function($this, $form) {
-				$form.animate({'height':'150px','width':'220px'},500).addClass('noHover');
-				$this.css({'cursor':'auto'});
-				$('span',$form).css('display','inline');
-			}, //showCartEmail
 			
-				//animates cart e-mail form out of view, hides close button in form
-			hideCartEmail : function($this, $form) {
-				$form.animate({'height':'21px','width':'80px'},500);
-				setTimeout(function() {
-					$form.removeClass('noHover');
-					$this.css('display','none');
-					$('h2',$form).css({'cursor':'pointer'});
-				},550);
-			}, //hideCartEmail
-			
-				//animates scroll from top e-mail cart button to lower e-mail cart form, and opens form. 
-			scrolltoemailcart : function() {
-				var $context = $(".cartSummaryTotalsContainer","#modalCart");
-				var $emailCart = $(".cartBar",$context);
-				setTimeout(function(){
-					$('#modalCart').animate({scrollTop: $emailCart.offset().top}, 2000);
-				},500);
-				setTimeout(function(){$("h2",$context).click();},1000);
-			},
 
-		}, //Actions
+			}, //Actions
 
 ////////////////////////////////////   RENDERFORMATS    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 

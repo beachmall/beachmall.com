@@ -54,10 +54,25 @@ var beachmall_dates = function(_app) {
 
 //actions are functions triggered by a user interaction, such as a click/tap.
 //these are going the way of the do do, in favor of app events. new extensions should have few (if any) actions.
-		a : {
+		a : { }, //Actions
 
-			}, //Actions
+////////////////////////////////////   TLCFORMATS    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
+//tlcFormats are what is used to actually output data.
+//on a data-tlc, format#extension - format: is equal to a renderformat. extension: tells the rendering engine where to look for the renderFormat.
+//that way, two render formats named the same (but in different extensions) don't overwrite each other.
+		tlcFormats : {
+
+			ymdtopretty : function(data,thisTLC) {
+				var servicesArrival = data.globals.binds.var;
+				var $tag = data.globals.tags[data.globals.focusTag];
+				dump('----------------------> ymdtopretty'); dump(servicesArrival);
+				$tag.append(_app.ext.beachmall_dates.u.yyyymmddNoSeconds2Pretty(servicesArrival));
+			},
+		
+		}, //tlcFormats
+			
+			
 ////////////////////////////////////   RENDERFORMATS    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 //renderFormats are what is used to actually output data.
@@ -113,7 +128,7 @@ var beachmall_dates = function(_app) {
 					_app.u.dump("WARNING! the parameter passed into YYYYMMDD2Pretty is not a numder ["+str+"]");
 				}
 				return r;
-			}, //yyyymmdd2Pretty 
+			}, //yyyymmddNoSeconds2Pretty 
 			
 			
 			//returns text format of day of the week based on date object value passed in

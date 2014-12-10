@@ -250,61 +250,7 @@ Action
 
 		a: {
 			
-//Data must already be in memory to execute this action.
-//added as a .click to the shipping method
-			showShipGridInModal : function(datapointer, cart){
-	_app.u.dump('----> showShipGridInModal datapointer'); _app.u.dump(datapointer);
-				var $parent = $('#modalShipGrid').empty();
-//the modal opens as quick as possible so users know something is happening.
-//open if it's been opened before so old data is not displayed. placeholder content (including a loading graphic, if set) will be populated pretty quick.
-				if($parent.length == 0)	{
-					$parent = $("<div \/>").attr({"id":"modalShipGrid","title":"Estimated Shipping Times and Methods"}).appendTo('body');
-					$parent.dialog({modal: true,width:600,height:300,autoOpen:false});  //browser doesn't like percentage for height
-					}
-//empty the existing cart and add a loadingBG so that the user sees something is happening.
-				$parent.dialog('open').addClass('loadingBG');
-					
-				if(datapointer && !$.isEmptyObject(_app.data[datapointer]))	{
-					var $table = $("<table />").addClass('center');
-					$table.append("<tr class='ztable_row_head'><td></td><td>Method</td><td>Est. Arrival</td></tr>");
-					var services = _app.data[datapointer]['@Services']
-					var L = services.length;
-					_app.u.dump(" -> @Services.length: "+L);
-//MARK TO DO: FIND OUT IF EACH PRODUCT'S SHIPPING METHODS CAN BE ATTAINED HERE TO BE SURE NO PRODUCT SPECIFIC UNAVAILABLE METHODS ARE SHOWN
-					for(var i = 0; i < L; i += 1)	{
-						if(cart) { //if this is in the cart, only show methods that match what is available in the cart shipping area
-//							_app.u.dump('-->'); _app.u.dump($('.cartShipMethods').text()); _app.u.dump(services[i].method);
-							var shipMethods = $('.cartShipMethods').text();
-						dump(shipMethods); _app.u.dump(services[i].method);
-							if(shipMethods.indexOf(services[i].method) != -1 && services[i].method != 'UPS Next Day Air') {
-								$table.append(_app.renderFunctions.transmogrify({'id':'service_'+services[i].id},"shipGridTemplate",services[i]));
-							}
-						}
-						else {
-//							_app.u.dump(" S -> "+i+") id: "+services[i].id);
-							//var methods = _app.data[datapointer]['@methods']; MARK: THIS MAY STILL WORK, WON'T KNOW TILL CART OPERATES...
-							var methods = _app.data[datapointer]['@Services'][i].method;
-							var methL = methods.length;
-							//_app.u.dump(" S -> "+i+") id: "+services[i].method);
-							//if(methods[i]) _app.u.dump(" M -> "+i+") id: "+methods);
-							for(var j=0; j < methL; j +=1) {
-								if(services[i].method == methods[j].method) {
-									$table.append(_app.renderFunctions.transmogrify({'id':'service_'+services[i].id},"shipGridTemplate",services[i]));
-								}
-							}
-					//------$table.append(_app.renderFunctions.transmogrify({'id':'method_'+methods[i].id},"shipGridTemplate",methods[i]));
-						}
-					}
-					$parent.removeClass('loadingBG').append($table);
 
-					}
-				else	{
-					_app.u.dump("WARNING! showShipGridInModal either had no datapointer passed ["+datapointer+"] or data.datapointer is empty");
-					//uh oh. how'd this happen.
-					$parent.removeClass('loadingBG').append(_app.u.formatMessage("Uh oh! It seems something went wrong. We apologize for the inconveniece but the data can not be retrieved right now."));
-					}
-//				_app.u.dump($content);
-				}, //showShipGridInModal
 				
 			//checks if a product page is open, and updates time in transit for that page created to be used as a callback to cartSet w/ zip from fetchLocationInfoByZip when called from updateShipPostal
 			updateTimeInTransit : function(rd) {
@@ -457,12 +403,7 @@ RenderFormats
 				$tag.append(r);
 				},
 
-			
-			ymd2Pretty : function($tag,data)	{
-				$tag.append(_app.ext.beachmart.u.yyyymmdd2Pretty(data.value));
-				},
-
-			setHrefToImageUrl : function($tag,data){
+				setHrefToImageUrl : function($tag,data){
 				var imgSrc = _app.u.makeImage({'tag':0,'w':'','h':'','name':data.value,'b':'ffffff'});
 				var pid = $tag.closest('[data-pid]').attr('data-pid');
 //				_app.u.dump('IMGSRC => '+imgSrc);

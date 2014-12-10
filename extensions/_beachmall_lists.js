@@ -232,7 +232,7 @@ var beachmall_lists = function(_app) {
 							return; //if this is an assembly product in the cart, skip the time in trans altogether
 						}
 						else if(prod.product) {
-							var cartProd = _app.data['appProductGet|'+_app.u.makeSafeHTMLId(data.value.product)];
+							var cartProd = _app.data['appProductGet|'+_app.u.makeSafeHTMLId(prod.product)];
 							//possible for this user:prod_shipping_msg to be present but not set, make it a blank string to prevent undefined. 
 							var userProdShipMsg = cartProd['%attribs']['user:prod_shipping_msg'] ? cartProd['%attribs']['user:prod_shipping_msg'] : "" ;
 							var us1ts = cartProd['%attribs']['us1:ts'];
@@ -243,14 +243,14 @@ var beachmall_lists = function(_app) {
 						} else {_app.u.dump('Problem w/ data.value in _beachmall_store.js: renderformats.showShipLatency. Data follows:'); _app.u.dump(data.value);}
 						
 						if(prod.product) {
-							var cartProd = _app.data['appProductGet|'+_app.u.makeSafeHTMLId(data.value.product)];
+							var cartProd = _app.data['appProductGet|'+_app.u.makeSafeHTMLId(prod.product)];
 							if(cartProd['%attribs'] && cartProd['%attribs']['user:is_dropship'] && cartProd['%attribs']['user:is_dropship'] == 1) {
 									//don't start time in transit, hide loadingBG and insert message
 								$('.cartPutLoadingHere',$tag.parent()).removeClass('loadingBG').text('Expedited shipping not available for this item');
 							} else {
 									//pass stid so each item can be found in cart later when time in transit info gets added
 								var stid = _app.u.makeSafeHTMLId($tag.parent().parent().parent().attr('data-stid'));
-								_app.ext.beachmall_cartestarrival.u.initEstArrival(cartProd, stid);
+								_app.ext.beachmall_cart.u.initEstArrival(cartProd, stid);
 							}
 						} else {_app.u.dump('Problem w/ data.value in _beachmall_store.js: renderformats.showShipLatency. Data follows:'); _app.u.dump(data.value);}
 					}
@@ -275,7 +275,7 @@ var beachmall_lists = function(_app) {
 					if ((zoovyPreOrder || zoovyIsUser1 || zoovyIsPreOrder || zoovyIsPreOrder.indexOf('IS_PREORDER') > -1) && ([zoovyProdSalesRank > -1 || zoovyProdSalesRank != undefined] && zoovyProdSalesRank > date) ) {
 						//var outputDate =  zoovyProdSalesRank.substring(5,6) + '/' + zoovyProdSalesRank.substring(7,8) + '/' + zoovyProdSalesRank.substring(0,4);
 						//_app.u.dump('*** '+outputDate);
-						$tag.empty().append('Backorder: Will ship on '+_app.ext.beachmart.u.yyyymmdd2Pretty(zoovyProdSalesRank));
+						$tag.empty().append('Backorder: Will ship on '+_app.ext.beachmall_lists.u.yyyymmdd2Pretty(zoovyProdSalesRank));
 						$tag.attr('data-cart') ? $tag.css('color','#e0463a') : $tag.css('color','blue');
 /*should be for cart only?*/$tag.parent().parent().attr('data-backorder',zoovyProdSalesRank); //used to mod time in transit arrival date for backorder items 
 							//set groundonall to indicate for all cart shipping items to be ground in beachmall_cartEstArrival showTransitTimes.
