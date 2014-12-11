@@ -439,11 +439,12 @@ _app.u.bindTemplateEvent('homepageTemplate', 'complete.beachmall_homepage',funct
 	_app.ext.beachmall_homepage.u.loadProductsAsList($context,$('.bestUL', $context));
 	_app.ext.beachmall_homepage.u.loadProductsAsList($context,$('.featuredUL', $context));
 	$('.floatingBar',$context).is(":visible") ? "" : $('.floatingBar',$context).show(); //shows floating bar upon return to hompage if it's been closed.
+	_app.ext.beachmall_homepage.u.moveNorton($context);
 });
 _app.u.bindTemplateEvent('homepageTemplate', 'depart.beachmall_homepage',function(event,$context,infoObj) {
-	$('.newArrivalUL', $context).trigger('destroy');
-	$('.bestUL', $context).trigger('destroy');
-	$('.featuredUL', $context).trigger('destroy');
+	$('.homeProdSearchNewArrivals2', $context).trigger('destroy').data('isCarousel',false);
+	$('.homeProdSearchBestSellers', $context).trigger('destroy').data('isCarousel',false);
+	$('.homeProdSearchFeatured', $context).trigger('destroy').data('isCarousel',false);
 });
 
 _app.u.bindTemplateEvent('categoryTemplate', 'complete.store_filter',function(event,$context,infoObj) {
@@ -490,6 +491,13 @@ _app.u.bindTemplateEvent('recentTemplate', 'complete.beachmall_lists',function(e
 
 _app.u.bindTemplateEvent('cartTemplate', 'complete.beachmall_cart',function(event,$context,infoObj) {
 	_app.ext.beachmall_cart.u.handleCartToolTip($context);
+});
+
+_app.u.bindTemplateEvent(function(templateID){ return true; },'complete.scrolltop',function(event, $context, infoObj){
+	var homepage = $context.closest('[data-app-uri]').attr('data-app-uri');
+	if(homepage !== "/"){
+		_app.ext.beachmall_begin.u.backToTop($context);
+	}
 });
 
 _app.extend({

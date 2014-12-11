@@ -54,8 +54,8 @@ var beachmall_homepage = function(_app) {
 //				dump('renderProductsAsList datapointer:'); _app.u.dump(_app.data[rd.datapointer]); dump(rd.container); dump(rd.template);
 				rd.container.tlc({"templateid":rd.template,"dataset":_app.data[rd.datapointer],verb:"transmogrify"});
 				setTimeout(function(){
-				_app.ext.beachmall_homepage.u.pickCarousel(rd.carousel, rd.context);
-				rd.container.parent().removeClass('loadingBG');
+					_app.ext.beachmall_homepage.u.pickCarousel(rd.carousel, rd.context);
+					rd.container.parent().removeClass('loadingBG');
 				},1000);
 			},
 			onError : function(responseData) {
@@ -274,6 +274,24 @@ var beachmall_homepage = function(_app) {
 					},2000); 
 				} //HOMEPAGE FEATURED PRODUCTS CAROUSEL
 			},
+			
+			//Norton kept appending the seal that goes in the floating bar to the body instead. 
+			//This will locate both, figure out which belongs in the floating bar, and move it there. 
+			moveNorton : function($context) {
+				var counter = 0; //used to make sure both seals are loaded so they can be differentiated.
+				var $norton; //will hold the correct norton seal anchor.
+				$("a[href='javascript:vrsn_splash()']").each(function(){ counter++ });
+				//if more than one was counted, we have both (since there are only two at present).
+				if(counter > 1) {
+					$("a[href='javascript:vrsn_splash()']").each(function(){
+						if($(this).parent().attr('data-noton') === "nomove") { /*this one is the other seal we don't want to mess with.*/ }
+						else { $norton = $(this); }
+					});
+				$norton.css('margin','0 0 0 3px'); //some css to make it look prettier
+				$norton.insertAfter($("[data-noton='ins']",$context)); //add it where we want it.
+				}	
+				else { setTimeout(function(){app.ext.beachmall_homepage.u.moveNorton($context)},250); } //if two werent found, wait and try again.
+			}
 		
 		}, //u [utilities]
 			

@@ -62,7 +62,7 @@ var beachmall_store = function(_app) {
 				});
 				
 				_app.templates.categoryTemplate.on('complete.beachmall_store',function(event,$ele,P) {
-					_app.ext.beachmall_store.u.backToTop($ele);
+					
 				});
 				
 				_app.templates.categoryTemplateBrands.on('complete.beachmall_store',function(event,$ele,P) {
@@ -70,20 +70,19 @@ var beachmall_store = function(_app) {
 				});
 				
 				_app.templates.searchTemplate.on('complete.beachmall_store',function(event,$ele,P) {
-					_app.ext.beachmall_store.u.backToTop($ele);
+				
 				});
 				
 				_app.templates.productTemplate.on('complete.beachmall_store',function(event,$ele,P) {
-					_app.ext.beachmall_store.u.backToTop($ele);
-					_app.ext.beachmall_store.u.handleToolTip();
+					
 				});
 				
 				_app.templates.companyTemplate.on('complete.beachmall_store',function(event,$ele,P) {
-					_app.ext.beachmall_store.u.backToTop($ele);
+					
 				});
 				
 				_app.templates.checkoutTemplate.on('complete.beachmall_store',function(event,$ele,P) {
-					_app.ext.beachmall_store.u.backToTop($ele);
+					
 				});
 				
 							
@@ -140,13 +139,7 @@ var beachmall_store = function(_app) {
 			
 
 /**CUSTOMER ARTICLE FUNCTIONS */
-				//clears the order/prod id field in contact form to be sure it doesn't still 
-				//have showContactPID value still displayed (if form did not get submitted). 
-			resetContactPID : function() {
-				var $field = $('#contactFormOID','#mainContentArea_company');
-				$field.val('');
-				//$field.attr('placeholder', 'Order Number (if applicable)');
-			},
+				
 			
 		}, //Actions
 
@@ -310,16 +303,6 @@ var beachmall_store = function(_app) {
 				},2000);
 			}, //addHover
 
-				//adds static button w/ scrollTop function to page 
-			backToTop : function($context) {
-				$($context).append('<div class="appBackToTop pointer" onClick="myApp.ext.beachmall_store.u.scrollToTop()"><span class="sprite"></span>Back to Top</div>')
-			},
-			
-				//returns view to top of page
-			scrollToTop : function() {
-				$('html,body').animate({ scrollTop: 0 }, 'slow');
-			},
-			
 			makeDisallow : function() {
 				var list = _app.ext.beachmall_store.vars.disallowList;
 				var L = list.length;

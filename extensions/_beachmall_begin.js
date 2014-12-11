@@ -652,7 +652,13 @@ var beachmall_begin = function(_app) {
 //				_app.u.dump(" -> fastest index: "+r);
 				return r;
 			},
-		
+			
+			//adds static button w/ scrollTop event to page 
+			backToTop : function($context) {
+				$context.append('<div class="appBackToTop pointer" data-app-click="beachmall_begin|scrollToTop"><span class="sprite"></span>Back to Top</div>')
+			}
+			
+
 		}, //u
 
 ////////////////////////////////////   EVENTS    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -682,6 +688,22 @@ var beachmall_begin = function(_app) {
 				}
 				_app.model.addDispatchToQ(sfo, 'immutable');
 				_app.model.dispatchThis('immutable');
+			},
+			
+			//clears the order/prod id field in contact form to be sure it doesn't still 
+			//have showContactPID value still displayed (if form did not get submitted). 
+			//does not preventDefault or return false because is used on anchors.
+			resetcontactpid : function($ele, p) {
+				var $field = $('input[name="OID"]','.contactForm');
+				$field.val('');
+				//$field.attr('placeholder', 'Order Number (if applicable)');
+			},
+			
+			//returns view to top of page
+			scrollToTop : function($ele, p) {
+				p.preventDefault();
+				$('html,body').animate({ scrollTop: 0 }, 'slow');
+				return false;
 			},
 		
 		}, //e [app Events]
