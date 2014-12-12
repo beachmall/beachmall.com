@@ -351,11 +351,32 @@ _app.extend({
 	"namespace" : "store_tracking",
 	"filename" : "extensions/store_tracking.js"
 	});
+_app.extend({
+	"namespace" : "beachmall_tracking",
+	"filename" : "extensions/_beachmall_tracking.js"
+});
 _app.couple('order_create','addOrderCompleteHandler',{
 	'handler':function(P){
-		_app.require('store_tracking',function(){
+		_app.require('store_tracking','beachmall_tracking',function(){
 			if(P && P.datapointer && _app.data[P.datapointer] && _app.data[P.datapointer].order){
 				var order = _app.data[P.datapointer].order;
+				var $context = $('.checkoutSuccess');
+				var orderTotal = order.sum.order_total;
+				var orderID = infoObj.orderID;
+				dump('BEACHMALL_TRACKING: infoObj, datapointer, _app.data datapointer, and order exist');
+				dump("TRACKING EXTENSION VARS: orderTotal, orderID, order:"); dump(orderTotal); dump(orderID); dump(order);
+				
+				_app.ext.beachmall_tracking.u.addAdwords(orderTotal);
+				_app.ext.beachmall_tracking.u.addBing($context,{'bing_domain_id':'248869','bing_cp':'5050'});
+				_app.ext.beachmall_tracking.u.addShopping('448218', orderID, orderTotal);
+				_app.ext.beachmall_tracking.u.addShopzilla('182786', orderID, orderTotal);
+				_app.ext.beachmall_tracking.u.addPronto('104759', orderID, orderTotal);
+				_app.ext.beachmall_tracking.u.addNextag('3865748', orderID, orderTotal);
+				_app.ext.beachmall_tracking.u.addPriceGrabber($context,'10090');
+				_app.ext.beachmall_tracking.u.addBecome('EC32A6A4ED7F110E', orderID, orderTotal);
+				_app.ext.beachmall_tracking.u.addAddThis($context);
+				_app.ext.beachmall_tracking.u.addFacebook('6009135221658');
+				
 				var plugins = zGlobals.plugins;
 				// note: order is an object that references the raw (public) cart
 				// order.our.xxxx  order[@ITEMS], etc.

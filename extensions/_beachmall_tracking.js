@@ -51,31 +51,6 @@ var beachmall_tracking = function(_app) {
 				onSuccess : function(){
 //					dump("START beachmall_tracking.callbacks.startExtension.onSuccess");
 
-					_app.ext.order_create.checkoutCompletes.push(function(infoObj){
-						dump("START beachmall_tracking code pushed on order_create.checkoutCompletes");
-						if(infoObj && infoObj.datapointer && _app.data[infoObj.datapointer] && _app.data[infoObj.datapointer].order)	{
-							//var $context = $(_app.u.jqSelector('#'+infoObj.parentID));
-							var $context = $('.checkoutSuccess');
-							dump('BEACHMALL_TRACKING: infoObj, datapointer, _app.data datapointer, and order exist');
-							
-							var order = _app.data[infoObj.datapointer].order;
-							var orderTotal = order.sum.order_total;
-							var orderID = infoObj.orderID;
-//							dump("TRACKING EXTENSION VARS: orderTotal, orderID, order:"); dump(orderTotal); dump(orderID); dump(order);
-							
-							_app.ext.beachmall_tracking.u.addBing($context,{'bing_domain_id':'248869','bing_cp':'5050'});
-							_app.ext.beachmall_tracking.u.addShopping('448218', orderID, orderTotal);
-							_app.ext.beachmall_tracking.u.addShopzilla('182786', orderID, orderTotal);
-							_app.ext.beachmall_tracking.u.addPronto('104759', orderID, orderTotal);
-							_app.ext.beachmall_tracking.u.addNextag('3865748', orderID, orderTotal);
-							_app.ext.beachmall_tracking.u.addPriceGrabber($context,'10090');
-							_app.ext.beachmall_tracking.u.addBecome('EC32A6A4ED7F110E', orderID, orderTotal);
-							_app.ext.beachmall_tracking.u.addAddThis($context);
-							_app.ext.beachmall_tracking.u.addFacebook('6009135221658');
-							_app.ext.beachmall_tracking.u.addAdwords();
-						}
-						else { dump('AHHHH! Problem w/ infoObj, infoObj.datapointer, _app.data[infoObj.datapointer], or _app.data[infoObj.datapointer].order!'); }
-					});
 	
 	// FOR TESTING SCRIPT ADDITION
 	//				_app.templates.categoryTemplate.on('complete.beachmall_tracking',function(event,$ele,P) {
@@ -352,35 +327,29 @@ var beachmall_tracking = function(_app) {
 				},250);
 			},
 			
-			addAdwords : function() {
+			addAdwords : function(sumOrderTotal) {
 				dump('START addAdwords TRACKING');
 				
-				var path = "https://www.googleadservices.com/pagead/conversion/1056650724/?label=0dneCJ6-wwEQ5Ovs9wM";
+				var frame = document.createElement("iframe");
+				$(frame).addClass("displayNone");
+				$("body").append(frame);
 				
-				var img = new Image(1,1);
-				img.src = path;
-				// var frame = document.createElement("iframe");
-				// $(frame).addClass("displayNone");
-				// $("body").append(frame);
-				
-				// setTimeout(function() {
-					// var paramScript = frame.contentWindow.document.createElement("script");
-					// paramScript.type = 	"text/javascript";
-					// paramScript.text = 	'var google_conversion_id = 1056650724;'
-								// +	'var google_conversion_language = "en";'
-								// +	'var google_conversion_format = "2";'
-								// +	'var google_conversion_color = "ffffff";'
-								// +	'var google_conversion_label = "0dneCJ6-wwEQ5Ovs9wM";'
-								// +	'var google_conversion_value = 1.000000;'
-								// +	'var google_remarketing_only = false;'
-					
-					// var script = frame.contentWindow.document.createElement("script");
-					// script.type = "text/javascript";
-					// script.src = "//www.googleadservices.com/pagead/conversion.js"
-					
-					// frame.contentWindow.document.body.appendChild(paramScript);
-					// frame.contentWindow.document.body.appendChild(script);
-				// },250);
+				setTimeout(function() {
+					var paramScript = '<script type="text/javascript">'
+						+ 'var google_conversion_id = 1056650724;'
+						+	'var google_conversion_language = "en";'
+						+	'var google_conversion_format = "2";'
+						+	'var google_conversion_color = "ffffff";'
+						+	'var google_conversion_label = "0dneCJ6-wwEQ5Ovs9wM";'
+						+	'var google_conversion_value = '+sumOrderTotal+';'
+					//	+	'var google_conversion_value = 1.000000;'
+						+	'var google_remarketing_only = false;'
+						+ '</script>';
+					var script = '<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"></script>';
+					frame.contentWindow.document.open();
+					frame.contentWindow.document.write('<html><head>'+paramScript+''+script+'</head><body></body></html>');
+					frame.contentWindow.document.close();
+				},250);
 			}
 				
 		}, //u [utilities]
