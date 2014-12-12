@@ -537,7 +537,7 @@ label.break	{display:block; margin:0 0 4px 6px;}
 .youMayLikeAccessories .quickView {top:25px; right:15px;}
 .quickViewContainer:hover .quickView {z-index:1001;}
 
-.searchResultsProduct.products.product {height:380px; margin:20px 16.75px 7.5px;}
+.searchResultsProduct.products.product {height:405px; margin:20px 16.75px 7.5px;}
 .minimalMode .searchResultsProduct.products.product {height:222px; width:222px;}
 .searchResultsPage.clearfix.minimalMode button {margin:0 5px; padding:0 5px;}
 .prodViewerContainer .imageContainer {height:auto; width:260px;}

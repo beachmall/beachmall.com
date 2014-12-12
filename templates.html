@@ -587,18 +587,50 @@ remember to NOT put the button inside the 'href' container or two events will oc
 
 SANITY -> if you change the height and width of this image, change the .minimalMode .searchResultsProduct in qs_styles.css to match
 -->
-<li id="productListTemplateResults" class="loadingBG searchResultsProduct ">
-	<div data-app-click="quickstart|inlineProductPreviewShow" class="pointer">
-		<div class="prodThumbContainer">
-		<img data-tlc="bind $var '.images.0'; apply --img --media=$var --width=120 --height=120 --bgcolor='#ffffff' --replace;" src="blank.gif" class="prodThumb" alt="" height="120" width="120">
-		</div>
-
-		<h5 data-tlc="bind $var '.prod_name'; if (is $var --notblank;) {{apply --append;}};" class="hideInMinimalMode"></h5>
-
-		<h6 data-tlc="bind $var '.base_price';  if (is $var --notblank;) {{math --div='100'; format --currency='USD'; format --prepend='Our Price: ';  apply --append;}};" class="hideInMinimalMode"></h6>
-		
+<li id="productListTemplateResults" class="loadingBG searchResultsProduct products product floatLeft productListTemplateResults">
+	<div class="prodHoverContainer">
+		<a data-tlc="bind $seoname '.prod_name'; bind $var '.'; store_routing#seoanchor --type='product' --seo --seoname=$seoname; apply --attrib='href';" class="productListSmall">
+			<div class='prodHoverContainer prodShadowFix'>
+				<!-- CORNER SHADOW DIVS -->
+				<div class='topLeftCorner'></div><div class='leftTopCorner'></div><div class='topRightCorner'></div><div class='rightTopCorner'></div>
+				<div class='bottomLeftCorner'></div><div class='leftBottomCorner'></div><div class='bottomRightCorner'></div><div class='rightBottomCorner'></div> 
+				<!-- END CORNER SHADOWS -->
+				<div class="prodThumbContainer myProdThumbSmall">
+					<img data-tlc="bind $var '.'; beachmall_lists#appthumb --iselastic='1';" src="blank.gif" class="prodThumb imgBorder" alt="" height="208" width="208" data-apptimize="embed">
+				</div>
+			</div>
+			<div class="hideInMinimalMode pointer moreDetailsSmall floatRight">VIEW DETAILS</div>
+		</a>
 	</div>
-	<a class="hideInMinimalMode pointer moreDetails" data-tlc="bind $seoname '.prod_name'; bind $var '.'; store_routing#seoanchor --type='product' --seo --seoname=$seoname; apply --attrib='href';">more details</a>
+	<div class='prodTextContainerSmall'>
+		<h6 data-tlc="bind $var '.base_price';  if (is $var --notblank;) {{math --div='100'; format --currency='USD'; apply --append;}};" class="hideInMinimalMode floatLeft prodPriceSmall price"></h6>
+		<span data-tlc="bind $var '.'; beachmall_lists#prodpricedesc --isElastic;" class='prodPriceDesc'></span>
+		<a data-tlc="bind $seoname '.prod_name'; bind $var '.'; store_routing#seoanchor --type='product' --seo --seoname=$seoname; apply --attrib='href';">
+			<h5 data-tlc="bind $var '.prod_name'; if (is $var --notblank;) {{apply --append;}};" data-beachmall-hoverClass="jsHover" class="hideInMinimalMode clearfix prodDescSmall"></h5>
+		</a>
+		<div data-tlc="bind $var '.%attribs.zoovy:prod_msrp'; if(is $var --notblank;) {{ apply --show; }}; " class="regularPriceContainer floatLeft displayNone">
+			<div data-tlc="bind $var '.%attribs.zoovy:prod_msrp'; if (is $var --notblank;) {{format --currency='USD'; apply --append;}};" class="regularPrice"> </div>
+			<div class="regularPriceDesc">Regular Price</div>
+		</div>
+		<div class="shipContainer floatLeft"> 
+		<div data-tlc="bind $var '.'; beachmall_lists#showfreeshippingtag  --iselastic='1';" class="shipCost sprite displayNone"></div>
+<!--Bug#6		<div data-bind='var: product(user:prod_shipping_msg); format:showIfSet;'>
+					<div class='shipTime latency' data-bind='var: product(user:prod_shipping_msg); format:text; isElastic:1;'></div>
+				</div>
+END BUG6-->			
+<!--!!--></div>
+		<div class="searchReviewSiblingsCont">
+		
+			<div data-tlc="bind $var '.pid'; powerreviews_reviews#reviewsnippet  --minreview='1' --legacy;" class="reviewsStarsCount"></div>
+			
+			<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy; apply --append;" class="prodViewerAddToCartForm clearfix" action="#" onsubmit="return false" data-app-submit="quickstart|productAdd2Cart" data-show="modal">
+				<input name="qty" value="1" type="hidden">
+				<button data-tlc="quickstart#addtocartbutton  --iselastic='1' --legacy; apply --append;" class="prodViewerAddToCartButton applyButton" role="button" aria-disabled="false">VIEW DETAILS</button>
+			</form>
+		</div>
+		<div data-tlc="bind $var '.pid'; if (is $var --notblank;) {{format --prepend='ITEM &nbsp; #: &nbsp; '; apply --append;}};" class="prodNum stid clearfix"></div>
+	</div>
+	<div class='productSeperationBar'></div>
 </li>
 
 <li id="productListTemplateResultsNoPreview" class="loadingBG products product floatLeft productListTemplateResultsNoPreview">
@@ -622,7 +654,7 @@ SANITY -> if you change the height and width of this image, change the .minimalM
 		
 	<div class='prodTextContainerSmall'>
 		<h6 data-tlc="bind $var '.base_price';  if (is $var --notblank;) {{math --div='100'; format --currency='USD'; apply --append;}};" class="hideInMinimalMode floatLeft prodPriceSmall price"></h6>
-<!--Bug#3   <span class='prodPriceDesc' data-bind='format:prodPriceDesc; extension:store_filter; useParentData:true; isElastic:1;'></span>-->		
+		<span data-tlc="bind $var '.'; beachmall_lists#prodpricedesc --isElastic;" class='prodPriceDesc'></span>
 		<a data-tlc="bind $seoname '.prod_name'; bind $var '.'; store_routing#seoanchor --type='product' --seo --seoname=$seoname; apply --attrib='href';">
 			<h5 data-tlc="bind $var '.prod_name'; if (is $var --notblank;) {{apply --append;}};" data-beachmall-hoverClass="jsHover" class="hideInMinimalMode clearfix prodDescSmall"></h5>
 		</a>
@@ -631,7 +663,7 @@ SANITY -> if you change the height and width of this image, change the .minimalM
 			<div class="regularPriceDesc">Regular Price</div>
 		</div>
 		<div class="shipContainer floatLeft"> 
-<!--Bug#5-->	<div data-tlc="bind $var '.'; beachmall_lists#showfreeshippingtag  --iselastic='1';" class="shipCost sprite displayNone"></div>
+		<div data-tlc="bind $var '.'; beachmall_lists#showfreeshippingtag  --iselastic='1';" class="shipCost sprite displayNone"></div>
 <!--Bug#6		<div data-bind='var: product(user:prod_shipping_msg); format:showIfSet;'>
 					<div class='shipTime latency' data-bind='var: product(user:prod_shipping_msg); format:text; isElastic:1;'></div>
 				</div>
@@ -645,7 +677,6 @@ END BUG6-->
 				<input name="qty" value="1" type="hidden">
 				<button data-tlc="quickstart#addtocartbutton  --iselastic='1' --legacy; apply --append;" class="prodViewerAddToCartButton applyButton" role="button" aria-disabled="false">VIEW DETAILS</button>
 			</form>
-			<!-- <div class='clearfix searchProdSiblings displayNone' data-bind='var:product(options); format:optionsCount; extension:store_filter;'></div> -->
 		</div>
 		<div data-tlc="bind $var '.pid'; if (is $var --notblank;) {{format --prepend='ITEM &nbsp; #: &nbsp; '; apply --append;}};" class="prodNum stid clearfix"></div>
 	</div>

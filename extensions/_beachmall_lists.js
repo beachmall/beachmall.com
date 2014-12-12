@@ -183,27 +183,18 @@ var beachmall_lists = function(_app) {
 			
 			//sets a description on the price of a product (usually in a product list)
 			prodpricedesc : function(data, thisTLC) {
+				var search = thisTLC.args2obj(data.command.args,data.globals); //this creates an object of the args
 				var prod = data.globals.binds.var;
 				var $tag = data.globals.tags[data.globals.focusTag];
-				//var priceFrom = (data.bindData.isElastic) ? data.value.tags : data.value['%attribs']['zoovy:prod_is_tags'];
-				var priceFrom = prod['%attribs']['user:prod_has_price_modifiers'];
-				//var sale = (data.bindData.isElastic) ? data.value.tags : data.value['%attribs']['zoovy:prod_is_tags'];
-				var sale = prod['%attribs']['is:sale'];
-				//var zoovyIsTags = (data.bindData.isElastic) ? data.value.tags : data.value['%attribs']['zoovy:prod_is_tags'];
-				var zoovyIsTags = prod['%attribs']['zoovy:prod_is_tags'];
+				var priceFrom = (search.isElastic) ? 0 : prod['%attribs']['user:prod_has_price_modifiers'];
+				var sale = (search.isElastic) ? 0 : prod['%attribs']['is:sale'];
+				var zoovyIsTags = (search.isElastic) ? data.value.tags : prod['%attribs']['zoovy:prod_is_tags'];
 				
-				//app.u.dump('*** zoovyIsTags = '+zoovyIsTags);	//app.u.dump('***Price Modifier = '+priceFrom);
-				if (zoovyIsTags.indexOf('IS_USER3') >= 0) {
-					$tag.append('Clearance Price!');
-				} else if (zoovyIsTags.indexOf('IS_SALE') >= 0) {
-					$tag.append('Sale Price!');
-				} else if (sale != 0) {
-					$tag.append('Sale Price!');
-				} else if(priceFrom == 1) {
-					$tag.append('From');
-				} else {
-					$tag.append('Our Price');
-				}
+				if (zoovyIsTags.indexOf('IS_USER3') >= 0) { $tag.append('Clearance Price!'); } 
+				else if (zoovyIsTags.indexOf('IS_SALE') >= 0) { $tag.append('Sale Price!'); } 
+				else if (sale != 0) { $tag.append('Sale Price!'); } //sale and priceFrom are not returned in elastic so they are set to zero if list is elastic
+				else if (priceFrom == 1) { $tag.append('From'); } 
+				else { $tag.append('Our Price'); }
 			}, //End prodPriceDesc
 			
 			//shows free shipping statement in product list if value is set

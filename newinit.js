@@ -22,7 +22,7 @@ _app.u.loadScript(configURI,function(){
 		_app.ext.beachmall_begin.u.startTooltip();
 		
 		//make sure minicart stays up to date. 
-		_app.ext.beachmall_cart.vars.mcSetInterval = setInterval(function(){
+		_app.ext.beachmall_begin.vars.mcSetInterval = setInterval(function(){
 			_app.ext.quickstart.u.handleMinicartUpdate({'datapointer':'cartDetail|'+_app.model.fetchCartID()});
 		},4000);
 		
@@ -157,7 +157,7 @@ _app.router.appendHash({'type':'exact','route':'/','callback':'homepage'});
 _app.router.addAlias('category',	function(routeObj){_app.ext.quickstart.a.showContent(routeObj.value,	$.extend({'pageType':'category'}, routeObj.params));});
 _app.router.appendHash({'type':'match','route':'/category/{{navcat}}*','callback':'category'});
 
-_app.router.addAlias('search',		function(routeObj){ dump('-----> search pagetype'); dump(routeObj); _app.ext.quickstart.a.showContent(routeObj.value,	$.extend({'pageType':'search'}, routeObj.params));});
+_app.router.addAlias('search',		function(routeObj){ dump('-----> search pagetype'); dump(routeObj); _app.ext.quickstart.a.showContent(routeObj.value,	$.extend({'pageType':'search','require':['beachmall_lists','powerreviews_reviews','store_product']}, routeObj.params));});
 _app.router.appendHash({'type':'match','route':'/search/tag/{{tag}}*','callback':'search'});
 _app.router.appendHash({'type':'match','route':'/search/keywords/{{KEYWORDS}}*','callback':'search'});
 
