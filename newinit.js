@@ -257,7 +257,7 @@ _app.router.appendHash({'type':'exact','route':'/site-map/','callback':function(
 	$.extend(routeObj.params,{
 		'pageType':'static',
 		'templateID':'siteMapTemplate',
-		'require':['templates.html','beachmall_begin']
+		'require':['templates.html','beachmall_begin','store_routing']
 		});
 	_app.ext.quickstart.a.showContent(routeObj.value,routeObj.params);
 }});
