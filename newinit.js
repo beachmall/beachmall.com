@@ -248,10 +248,19 @@ _app.router.appendHash({'type':'exact','route':'/recently_veiwed/','callback':fu
 	$.extend(routeObj.params,{
 		'pageType':'static',
 		'templateID':'recentTemplate',
-		'require':['templates.html','beachmall_lists'],
+		'require':['templates.html','beachmall_lists']
 		});
 	_app.ext.quickstart.a.showContent(routeObj.value,routeObj.params);
 	}});
+	
+_app.router.appendHash({'type':'exact','route':'/site-map/','callback':function(routeObj){
+	$.extend(routeObj.params,{
+		'pageType':'static',
+		'templateID':'siteMapTemplate',
+		'require':['templates.html','beachmall_begin']
+		});
+	_app.ext.quickstart.a.showContent(routeObj.value,routeObj.params);
+}});
 	
 _app.router.appendHash({'type':'exact','route':'/my_account/','callback':function(routeObj){
 	$.extend(routeObj.params,{
