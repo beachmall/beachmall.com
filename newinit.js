@@ -419,9 +419,9 @@ _app.couple('order_create','addOrderCompleteHandler',{
 
 //Generate meta information
 _app.u.bindTemplateEvent(function(){return true;}, 'complete.metainformation',function(event, $context, infoObj){
-	var defaultTitle = "Chicago Cubs Apparel & Merchandise";
+	var defaultTitle = "Beach Chairs | Beach Chair Umbrella | Beach Cart | Cabanas & Gear";
 	var titlePrefix = "";
-	var titlePostfix = " | SportsWorldChicago.com";
+	var titlePostfix = " | Beachmall.com";
 	
 	var baseTitle = $('[data-seo-title]', $context).attr('data-seo-title') || defaultTitle;
 	var desc = $('[data-seo-desc]', $context).attr('data-seo-desc') || '';

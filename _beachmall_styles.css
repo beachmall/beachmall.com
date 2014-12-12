@@ -507,7 +507,7 @@ PRODUCT LIST
 .filterBox {height:auto; width:auto; background-color:#3BB3C3; margin-top:10px; font-family:"Open Sans";}
 .productColumn {width:auto;}
 .catTitle {height:35px; width:auto; margin: 0 10px; color:#3BB3C3; font-family:"Open Sans"; font-size:24px; font-weight:bold; line-height:32px; position:absolute; top:215px; left:530px; background:none;}
-.productList li.buyerGuideCont {float:none; height:auto; position:absolute; right:136px; top:3px; width:auto;}
+.productList li.buyerGuideCont {float:none; height:auto; position:absolute; right:136px; top:-10px; width:auto;}
 .productList li > div.photosOnly, .photosOnly {height:25px; width:120px; background:none; font-weight:normal; position:absolute; top:220px; right:275px; color:#666666;}
 .photosOnly button {height:20px; width:40px; border:none; background:#F8C301; text-align:center; font-weight:bold; font-size:}
 .productList.photophy .photosOnly button {background:#e0463a; color:#ffffff;}
