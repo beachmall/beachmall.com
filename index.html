@@ -254,8 +254,8 @@ ANIMATION TESTING
 		<div class='arrowContainer'></div>
     	<div class='dropdown myAcctDropdown'>
         	<ul class='listStyleNone'>
-            	<li><span onclick="myApp.ext.quickstart.u.showLoginModal();" class='headerSignIn'>Sign In</span><span class='headerSignedIn'>Sign In</span> / <a href="#!customer/logout/" class='headerSignOut'>Sign Out</a><span class='headerSignedOut'>Sign Out</span></li>
-                <li><a href="#!customer/createaccount/">Create An Account</a></li>
+            	<li><span onclick="myApp.ext.quickstart.u.showLoginModal();" class='headerSignIn'>Sign In</span><span class='headerSignedIn'>Sign In</span> / <div data-app-click="beachmall_begin|logBuyerOut" class='headerSignOut'>Sign Out</div><span class='headerSignedOut'>Sign Out</span></li>
+                <li><a href="/create-account/">Create An Account</a></li>
                 <li><a href="/my_order_history/">Track Your Order</a></li>
             </ul>
         </div>
@@ -757,8 +757,8 @@ ANIMATION TESTING
         </ul>
         <ul>
         	<li>ACCOUNT SERVICES</li>
-            <li><a href='#!customer/createaccount/'>Log&#45;in or Create Account</a></li>
-            <li><a href="#!customer/logout/">Log out</a></li>
+            <li><a href='/create-account/'>Log&#45;in or Create Account</a></li>
+            <li><div data-app-click="beachmall_begin|logBuyerOut" class="fauxLink">Log out</div></li>
             <!-- <li><span onclick="myApp.ext.quickstart.u.showCartInModal({'templateID':'cartTemplate'});">View Shopping Cart</span></li> modal cart-->
             <li><a href="/cart/">View Shopping Cart</span></li>
             <li><a href="/my_order_history/">Order Status</a></li>
@@ -869,52 +869,44 @@ ANIMATION TESTING
 </div>
 
 <div id='loginFormForModal' class='loginOption displayNone seoStrip' title='Please log in'>
-
 <!-- the contents of this div/id are toggled on/off when login/logout occurs. don't change the ID -->
+	<p class='marginBottom appMessaging loginMessaging'></p>
 
-
-	<p id='loginMessaging' class='marginBottom appMessaging'></p>
-
-	<div id='loginFormContainer'>
-		<form action='#' data-app-submit='quickstart|accountLoginSubmit' class='marginBottom alignedForm'>
-		<input type='hidden' name='method' value='unsecure' />
-		<input type='hidden' name='loginCallback' id='loginCallback' value='' /><!-- used to save a callback action in -->
-			<fieldset>
-			<legend>Account Login</legend>
-			<label>
-				<span class='prompt'>Login/Email</span>
-				<input type='email' class='alignInput' required='required'  name='login' value='' size='25'  />
-			</label>
-			<label>
-				<span class='prompt'>Password</span>
-				<input type='password' class='alignInput' required='required'  name='password' value='' size='25'  />	
-			</label>
-			<div class='alignRight'>
-			<input type='submit' value='log in' class='applyButton ' />
-			</div>
-			</fieldset>
-		</form>
-
-		<div id='recoverPasswordContainer' class='marginBottom'>
-			<div id='recoverPasswordMessaging' class='appMessaging'></div>
-			<form action='#' data-app-submit='quickstart|accountPasswordRecoverSubmit' class='alignedForm'>
-			<fieldset>
-			<legend>Recover Password</legend>
-			<label>
-				<span class='prompt'>Login/Email</span>
-				<input type='text' name='login' required='required' size='25' class='alignInput' />
-			</label>
-			<div class='alignRight'><input type='submit' class='applyButton' value='Email Password to Me' /></div>
-			</fieldset>
+	<div class='loginFormContainer'>
+		<div class='createAccount'>
+			<h1>First Time With Us?</h1>
+			<p>If you have never made a purchase at this web site and have never subscribed to this store's mailing list,
+				please choose this option.</p>
+			<a href="/create-account/" class='modalCreateButton button borderRound'>Create an Account</a>
+		</div>
+		<div class="gotAccount">
+			<h1>Welcome Back</h1>
+			<form action='#' data-app-submit='quickstart|accountLoginSubmit' class='marginBottom'>
+				<input type='hidden' name='method' value='unsecure'>
+				<input type='hidden' name='loginCallback' value=''><!-- used to save a callback action in -->
+				<input type='email' class='zform_textbox zform_email' required='required'  name='login' value='' size='25' placeholder='E-mail address'>
+				<input type='password' class='zform_textbox zform_password' required='required'  name='password' value='' size='25' placeholder='Password'>	
+				<input type='submit' value='Log In' class='applyButton pointer'>
 			</form>
-		</div><!-- /recoverPasswordContainer -->
-
-		<div>
-		<!-- !!!!! NOT YET IMPLEMENTED -->
-		<a class='applyButton' href='#!customer/newsletter'>Create Account</a>
+			<div class='marginBottom recoverPasswordContainer'>
+				<div class='appMessaging recoverPasswordMessaging'></div>
+				<form action='#' data-app-submit='quickstart|accountPasswordRecoverSubmit'>
+					<fieldset>
+						<legend data-app-click="beachmall_begin|togglerecover">Recover Password</legend>
+						<div data-slide='toggle'>
+							<div class='marginBottom'>
+								<label>
+									<span>Enter your e-mail address:</span>
+									<input type='text' name='login' required='required' size='25'>
+								</label>
+							</div>
+							<div><input type='submit' class='applyButton' value='Email Password to Me'></div>
+						</div>
+					</fieldset>
+				</form>
+			</div><!-- /recoverPasswordContainer -->
 		</div>
 	</div>
-
 <!-- this div will appear after a successful login. if you bind a new action to the button, best to empty the div and re-add the button, so the actions don't statck. -->
 	<div id='loginSuccessContainer' class='center displayNone'>
 		<button class='applyButton' id='modalLoginContinueButton' data-app-click="quickstart|dialogCloseExec">Continue</button>

@@ -705,6 +705,25 @@ var beachmall_begin = function(_app) {
 				$('html,body').animate({ scrollTop: 0 }, 'slow');
 				return false;
 			},
+			
+//Account login/create/recover events
+			togglerecover : function($ele, p) {
+				p.preventDefault();
+				dump('START togglerecover');
+				$("[data-slide='toggle']",$ele.parent()).slideToggle();
+				return false;
+			},
+			
+			//will call logBuyerOut, show homepage so my account isn't accessable any longer, 
+			//scroll to top (in case already on homepage), and remove logged in class
+			logBuyerOut : function($ele,p) {
+				p.preventDefault();
+				_app.u.logBuyerOut();
+				_app.router.handleURIChange("/");
+				_app.ext.beachmall_begin.e.scrollToTop($ele,p);
+				$('body').removeClass('buyerLoggedIn'); 
+				return false;
+			}			
 		
 		}, //e [app Events]
 		

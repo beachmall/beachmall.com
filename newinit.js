@@ -261,7 +261,7 @@ _app.router.appendHash({'type':'exact','route':'/site-map/','callback':function(
 		});
 	_app.ext.quickstart.a.showContent(routeObj.value,routeObj.params);
 }});
-	
+
 _app.router.appendHash({'type':'exact','route':'/my_account/','callback':function(routeObj){
 	$.extend(routeObj.params,{
 		'pageType':'static',
@@ -523,11 +523,29 @@ _app.u.bindTemplateEvent('cartTemplate', 'complete.beachmall_cart',function(even
 	_app.ext.beachmall_cart.u.handleCartToolTip($context);
 });
 
+_app.u.bindTemplateEvent('createAccountTemplate', 'complete.beachmall_acctcreate',function(event,$context,infoObj) {
+	$(".loginMessaging",$context).empty(); //be sure old success (or other) messages are not shown.
+});
+
 _app.u.bindTemplateEvent(function(templateID){ return true; },'complete.scrolltop',function(event, $context, infoObj){
 	var homepage = $context.closest('[data-app-uri]').attr('data-app-uri');
 	if(homepage !== "/"){
 		_app.ext.beachmall_begin.u.backToTop($context);
 	}
+});
+
+_app.router.appendHash({'type':'exact','route':'/create-account/','callback':function(routeObj){
+	$.extend(routeObj.params,{
+		'pageType':'static',
+		'templateID':'createAccountTemplate',
+		'require':['templates.html','beachmall_begin','store_routing','beachmall_acctcreate']
+		});
+	_app.ext.quickstart.a.showContent(routeObj.value,routeObj.params);
+}});
+
+_app.extend({
+	"namespace":"beachmall_acctcreate",
+	"filename":"extensions/_beachmall_acctcreate.js"
 });
 
 _app.extend({

@@ -20,7 +20,7 @@
 
 
 
-var store_createaccount = function(_app) {
+var beachmall_acctcreate = function(_app) {
 	var theseTemplates = new Array('');
 	var r = {
 	
@@ -38,7 +38,7 @@ var store_createaccount = function(_app) {
 				obj._cmd = "appBuyerCreate";
 				_app.model.addDispatchToQ(obj,'immutable');
 			}
-		}, //appBuyerCreate
+		} //appBuyerCreate
 		
 	}, //calls
 
@@ -76,7 +76,7 @@ var store_createaccount = function(_app) {
 				onError : function() {
 					_app.u.dump('START store_accountcreate.callbacks.startExtension.onError');
 				}
-			},
+			}
 
 		}, //callbacks
 
@@ -86,32 +86,33 @@ var store_createaccount = function(_app) {
 
 //actions are functions triggered by a user interaction, such as a click/tap.
 //these are going the way of the do do, in favor of app events. new extensions should have few (if any) actions.
-		a : {
-		
-			togglerecover : function($tag) {dump('your feet');
-				$("[data-slide='toggle']",$tag.parent()).slideToggle();
-			}
-		
-			}, //Actions
+		a : { }, //Actions
 
 ////////////////////////////////////   RENDERFORMATS    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 //renderFormats are what is used to actually output data.
 //on a data-bind, format: is equal to a renderformat. extension: tells the rendering engine where to look for the renderFormat.
 //that way, two render formats named the same (but in different extensions) don't overwrite each other.
-		renderFormats : {
-		
-			
-
-		}, //renderFormats
+		renderFormats : { }, //renderFormats
 ////////////////////////////////////   UTIL [u]   \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 //utilities are typically functions that are exected by an event or action.
 //any functions that are recycled should be here.
-		u : {
+		u : { }, //u [utilities]
+
+//app-events are added to an element through data-app-event="extensionName|functionName"
+//right now, these are not fully supported, but they will be going forward. 
+//they're used heavily in the admin.html file.
+//while no naming convention is stricly forced, 
+//when adding an event, be sure to do off('click.appEventName') and then on('click.appEventName') to ensure the same event is not double-added if app events were to get run again over the same template.
+		e : {
+
+			//there used to be a copy of quickstart.e.accountLoginSubmit here with a showContent at the end to allow my account to be shown
+			//after loggin in. It was removed for the default function which no longer redirects to my account.
 		
-			handleAppLoginCreate : function($form)	{
-		dump('store_accountcreate needs showContent fix in handleAppLoginCreate');
+			handleapplogincreate : function($form,p)	{
+				p.preventDefault();
+				dump('store_accountcreate needs showContent fix in handleAppLoginCreate');
 				if($form)	{
 					var formObj = $form.serializeJSON();
 					
@@ -126,47 +127,21 @@ var store_createaccount = function(_app) {
 								$form.anymessage({'message':rd});
 							}
 							else {
-								showContent('customer',{'show':'myaccount'});
+								_app.router.handleURIChange("/");
 								_app.u.throwMessage(_app.u.successMsgObject("Your account has been created!"));
 							}
 						}
 					}
 					
 					formObj._vendor = "beachmall";
-					_app.ext.store_createaccount.calls.appBuyerCreate.init(formObj,tagObj,'immutable');
+					_app.ext.beachmall_acctcreate.calls.appBuyerCreate.init(formObj,tagObj,'immutable');
 					_app.model.dispatchThis('immutable');
 				}
 				else {
-					$('#globalMessaging').anymessage({'message':'$form not passed into store_createAccount.u.handleBuyerAccountCreate','gMessage':true});
+					$('#globalMessaging').anymessage({'message':'$form not passed into beachmall_acctcreate.e.handleapplogincreate','gMessage':true});
 				}
-			}, //handleAppLoginCreate
-		
-		}, //u [utilities]
-
-//app-events are added to an element through data-app-event="extensionName|functionName"
-//right now, these are not fully supported, but they will be going forward. 
-//they're used heavily in the admin.html file.
-//while no naming convention is stricly forced, 
-//when adding an event, be sure to do off('click.appEventName') and then on('click.appEventName') to ensure the same event is not double-added if app events were to get run again over the same template.
-		e : {
-		
-			//showContent at end was necessary to show login success container on second login form, all else is same as form in quickstart.
-			accountLoginSubmit : function($ele,p)	{
-	dump('store_accountcreate needs showContent fix in accountLoginSubmit');
-				p.preventDefault();
-				if(_app.u.validateForm($ele))	{
-					var sfo = $ele.serializeJSON();
-					_app.ext.cco.calls.cartSet.init({"bill/email":sfo.login,"_cartid":_app.model.fetchCartID()}) //whether the login succeeds or not, set bill/email in the cart.
-					sfo._cmd = "appBuyerLogin";
-					sfo.method = 'unsecure';
-					sfo._tag = {"datapointer":"appBuyerLogin",'callback':'authenticateBuyer','extension':'quickstart'}
-					_app.model.addDispatchToQ(sfo,"immutable");
-					_app.calls.refreshCart.init({},'immutable'); //cart needs to be updated as part of authentication process.
-					_app.model.dispatchThis('immutable');
-					showContent('customer',{'show':'myaccount'})
-				}
-				else	{} //validateForm will handle the error display.
-			},
+				return false;
+			} //handleAppLoginCreate
 		
 		} //e [app Events]
 		} //r object.
