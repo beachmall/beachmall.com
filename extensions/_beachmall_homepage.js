@@ -290,7 +290,7 @@ var beachmall_homepage = function(_app) {
 				$norton.css('margin','0 0 0 3px'); //some css to make it look prettier
 				$norton.insertAfter($("[data-noton='ins']",$context)); //add it where we want it.
 				}	
-				else { setTimeout(function(){app.ext.beachmall_homepage.u.moveNorton($context)},250); } //if two werent found, wait and try again.
+				else { setTimeout(function(){ _app.ext.beachmall_homepage.u.moveNorton($context)},250); } //if two werent found, wait and try again.
 			}
 		
 		}, //u [utilities]
