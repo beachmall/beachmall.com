@@ -655,8 +655,8 @@ var beachmall_product = function(_app) {
 				
 				//if no date is set in salesrank, don't show any shipping info.
 				if(product['%attribs']['zoovy:prod_salesrank']) {
-					if(_app.ext.beachmart_dates.u.dateAfterToday(product['%attribs']['zoovy:prod_salesrank']))
-						message = "Will ship on "+_app.ext.beachmart_dates.u.yyyymmddNoSeconds2Pretty(_app.data['appProductGet|'+SKU]['%attribs']['zoovy:prod_salesrank'])
+					if(_app.ext.beachmall_dates.u.dateAfterToday(product['%attribs']['zoovy:prod_salesrank']))
+						message = "Will ship on "+_app.ext.beachmall_dates.u.yyyymmddNoSeconds2Pretty(_app.data['appProductGet|'+SKU]['%attribs']['zoovy:prod_salesrank'])
 				}
 					else { message = "" }
 				var $container = $("#mainContentArea :visible:first");
@@ -710,9 +710,9 @@ var beachmall_product = function(_app) {
 //
 				//if item is backorder item, indicate w/ attr data-backorderdate on container for estimate date
 				if(prodAttribs['is:user1'] == 1 || prodAttribs['is:preorder'] == 1 || prodAttribs['zoovy:prod_is_tags'].indexOf('IS_DISCONTINUED') != -1) {
-					if(_app.ext.beachmart_dates.u.appTimeNow()) { //set backorderdate value according to whether or not salesrank date can be determined
-						//appTimeNow function broken because no _app.data.time.unix if( (prodAttribs['zoovy:prod_salesrank'] != undefined || prodAttribs['zoovy:prod_salesrank'] > -1)  && prodAttribs['zoovy:prod_salesrank'] > _app.ext.beachmart_dates.u.millisecondsToYYYYMMDD(_app.ext.beachmart_dates.u.appTimeNow())) {
-						if( (prodAttribs['zoovy:prod_salesrank'] != undefined || prodAttribs['zoovy:prod_salesrank'] > -1)  && prodAttribs['zoovy:prod_salesrank'] > _app.ext.beachmart_dates.u.millisecondsToYYYYMMDD(new Date(new Date().getTime()))) {
+					if(_app.ext.beachmall_dates.u.appTimeNow()) { //set backorderdate value according to whether or not salesrank date can be determined
+						//appTimeNow function broken because no _app.data.time.unix if( (prodAttribs['zoovy:prod_salesrank'] != undefined || prodAttribs['zoovy:prod_salesrank'] > -1)  && prodAttribs['zoovy:prod_salesrank'] > _app.ext.beachmall_dates.u.millisecondsToYYYYMMDD(_app.ext.beachmall_dates.u.appTimeNow())) {
+						if( (prodAttribs['zoovy:prod_salesrank'] != undefined || prodAttribs['zoovy:prod_salesrank'] > -1)  && prodAttribs['zoovy:prod_salesrank'] > _app.ext.beachmall_dates.u.millisecondsToYYYYMMDD(new Date(new Date().getTime()))) {
 							$('.shipMessage',$r).append("Order today for arrival on ");
 							backorder = 1; //if date, then = 1
 						} 

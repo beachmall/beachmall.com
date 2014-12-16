@@ -680,7 +680,7 @@ var beachmall_cart = function(_app) {
 					}
 
 					if(tagObj.backorder) {
-						var futureShipDate = _app.ext.beachmart_dates.u.getFutureDate(tagObj.backorder, data['@Services'][index]['arrival_yyyymmdd'].slice(0,8));
+						var futureShipDate = _app.ext.beachmall_dates.u.getFutureDate(tagObj.backorder, data['@Services'][index]['arrival_yyyymmdd'].slice(0,8));
 						$('.estimatedArrivalDate',$r).append(_app.ext.beachmall_dates.u.yyyymmddNoSeconds2Pretty(futureShipDate)+" to");
 					} else {
 						$('.estimatedArrivalDate',$r).append(_app.ext.beachmall_dates.u.yyyymmddNoSeconds2Pretty(data['@Services'][index]['arrival_yyyymmdd'])+" to");
