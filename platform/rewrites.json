@@ -10,6 +10,11 @@
 { "type":"path", "if":"/returns\\.cgis", "then#redirect":"/return_policy/" },
 { "type":"path", "if":"/privacy\\.cgis", "then#redirect":"/privacy_policy/" },
 
+// if a file is explicitly requested, send it.
+{ "type":"path", "if":"/(.*\\.html)", "then#sendfile":"/$1", "apptimize":true },
+{ "type":"path", "if":"/(.*\\.css)", "then#sendfile":"/$1", "apptimize":true },
+{ "type":"path", "if":"/(.*)", "then#sendfile":"/$1" },
+
 // check rendered files.
 { "type":"path", "if":"/product/([a-zA-Z0-9\\-\\_]+)/.*", "then#sendfile":"/product/$1.html" },
 { "type":"path", "if":"/product/[a-zA-Z0-9\\-\\_]+(/.*)?", "then#sendfile":"/index.html", "apptimize":false },
