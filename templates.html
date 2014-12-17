@@ -3,8 +3,8 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 -->
 <div id='homepageTemplate' class='homeTemplate'>
 <!-- hardcoded for the time being. pages.json not getting homepage content for undetermined reason. 	
-	<span class="displayNone" data-tlc="bind $var '.%page.head_title'; if(is $var --null;){{bind $var '.page_title';}}; if(is $var --blank;){{bind $var '.pretty';}}; apply --attrib='data-seo-title';"></span>
-	<span class="displayNone" data-tlc="bind $var '.%page.meta_description'; if(is $var --null;){{bind $var '.%page.description';}}; if(is $var --null;){{set $var '';}}; apply --attrib='data-seo-desc';"></span>
+	<span class="displayNone" data-tlc="bind $var '.%page.head_title'; if(is $var - -null;){{bind $var '.page_title';}}; if(is $var - -blank;){{bind $var '.pretty';}}; apply - -attrib='data-seo-title';"></span>
+	<span class="displayNone" data-tlc="bind $var '.%page.meta_description'; if(is $var - -null;){{bind $var '.%page.description';}}; if(is $var - -null;){{set $var '';}}; apply - -attrib='data-seo-desc';"></span>
 -->
 	<span class="displayNone" data-seo-title="Beach Chairs | Beach Chair Umbrella | Beach Cart | Cabanas & Gear"></span>
 	<span class="displayNone" data-seo-desc="Beach Chairs - Free Shipping & Easy Returns from our largest selection of folding beach chairs, beach cart, beach umbrella, patio umbrellas, beach gear & umbrella shelter accessories."></span>
@@ -47,7 +47,7 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 				<div class="newArrivalUL" data-list='$app-site_home-page-new-item' data-carousel='runHomeSmallCarousel' data-templateid='miniHomeCarousel'>
 					<!-- this element filled by ext.beachmall_store.u.loadProductsAsList() using the above data attribs. -->
 				</div>
-<!-- old way:	<ul data-tlc="bind $var '.$app-site_home-page-new-item.@products'; store_prodlist#productlist  --hideSummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplateCustom'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchNewArrivals2"></ul> -->
+<!-- old way:	<ul data-tlc="bind $var '.$app-site_home-page-new-item.@products'; store_prodlist#productlist  - -hideSummary='1' - -withReviews='1' - -withVariations='1' - -withInventory='1' - -templateid='productListTemplateCustom'  - -legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchNewArrivals2"></ul> -->
 			</div>
 		</div>
     
@@ -103,7 +103,7 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 				<!-- this element filled by ext.beachmall_store.u.loadProductsAsList() using the above data attribs. -->
 			</div>
         	<!--non filtered search: <ul id='homeProdSearchFeatured' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"or":{"filters":[{"term":{"tags":"IS_USER4"}},{"term":{"tags":"IS_COLORFUL"}},{"term":{"tags":"IS_USER5"}},{"term":{"user:prod_promo":"IS_USER4"}}]}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul> 
-	old way:<ul data-tlc="bind $var '.$app-site_home-page-featured.@products'; store_prodlist#productlist  --hideSummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchFeatured"></ul> -->
+	old way:<ul data-tlc="bind $var '.$app-site_home-page-featured.@products'; store_prodlist#productlist  - -hideSummary='1' - -withReviews='1' - -withVariations='1' - -withInventory='1' - -templateid='productListTemplate'  - -legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchFeatured"></ul> -->
 		</div>
         <div class='standardCarouselPagenation featCarPagenation'></div>
     </div>
@@ -122,7 +122,7 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 				<!-- this element filled by ext.beachmall_store.u.loadProductsAsList() using the above data attribs. -->
 			</div>
 			<!--non filtered search: <ul id='homeProdSearchBestSellers' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"term":{"tags":"IS_BESTSELLER"}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul> 
-	old way:<ul data-tlc="bind $var '.$app-site_home-page-best-sellers.@products'; store_prodlist#productlist  --hideSummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchBestSellers"></ul> -->
+	old way:<ul data-tlc="bind $var '.$app-site_home-page-best-sellers.@products'; store_prodlist#productlist  - -hideSummary='1' - -withReviews='1' - -withVariations='1' - -withInventory='1' - -templateid='productListTemplate'  - -legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchBestSellers"></ul> -->
 		</div>																																																	
         <div class='standardCarouselPagenation bestCarPagenation'></div>
     </div>
@@ -198,12 +198,12 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 </div>
 
 <div id="bestHomeCarousel">
-	<!-- <ul data-tlc="bind $var '.$app-site_home-page-best-sellers.@products'; store_prodlist#productlist  --hideSummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchBestSellers"></ul> -->
+	<!-- <ul data-tlc="bind $var '.$app-site_home-page-best-sellers.@products'; store_prodlist#productlist  - -hideSummary='1' - -withReviews='1' - -withVariations='1' - -withInventory='1' - -templateid='productListTemplate'  - -legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchBestSellers"></ul> -->
 	<ul data-tlc="bind $var '.@products'; store_prodlist#productlist  --hideSummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchBestSellers"></ul>
 </div>
 
 <div id="featuredHomeCarousel">
-	<!-- <ul data-tlc="bind $var '.$app-site_home-page-featured.@products'; store_prodlist#productlist  --hideSummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchFeatured"></ul> -->
+	<!-- <ul data-tlc="bind $var '.$app-site_home-page-featured.@products'; store_prodlist#productlist  - -hideSummary='1' - -withReviews='1' - -withVariations='1' - -withInventory='1' - -templateid='productListTemplate'  - -legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchFeatured"></ul> -->
 	<ul data-tlc="bind $var '.@products'; store_prodlist#productlist  --hideSummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchFeatured"></ul>
 </div>
 
@@ -351,7 +351,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 
 
 <div id='categoryTemplateHomepageFeatured' class='categoryTemplate'>
-	<!-- <span class="displayNone" data-tlc="store_routing#seoanchor --seo='1' apply --attrib='data-routing-hash';"></span> -->
+	<!-- <span class="displayNone" data-tlc="store_routing#seoanchor - -seo='1' apply - -attrib='data-routing-hash';"></span> -->
 	<span class="displayNone" data-routing-hash="/viewallfeatured/"></span>
 	<span class="displayNone" data-tlc="bind $var '.%page.head_title'; if(is $var --null;){{bind $var '.page_title';}}; if(is $var --blank;){{bind $var '.pretty';}}; apply --attrib='data-seo-title';"></span>
 	<span class="displayNone" data-tlc="bind $var '.%page.meta_description'; if(is $var --null;){{bind $var '.%page.description';}}; if(is $var --null;){{set $var '';}}; apply --attrib='data-seo-desc';"></span>
@@ -359,7 +359,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 </div>
 
 <div id='categoryTemplateHomepageBestseller' class='categoryTemplate'>
-	<!-- <span class="displayNone" data-tlc="store_routing#seoanchor --seo='1' apply --attrib='data-routing-hash';"></span> -->
+	<!-- <span class="displayNone" data-tlc="store_routing#seoanchor - -seo='1' apply - -attrib='data-routing-hash';"></span> -->
 	<span class="displayNone" data-routing-hash="/viewallbestseller/"></span>
 	<span class="displayNone" data-tlc="bind $var '.%page.head_title'; if(is $var --null;){{bind $var '.page_title';}}; if(is $var --blank;){{bind $var '.pretty';}}; apply --attrib='data-seo-title';"></span>
 	<span class="displayNone" data-tlc="bind $var '.%page.meta_description'; if(is $var --null;){{bind $var '.%page.description';}}; if(is $var --null;){{set $var '';}}; apply --attrib='data-seo-desc';"></span>
@@ -1347,7 +1347,7 @@ this will likely become more flexible in the future. ###
 		
 			<div data-tlc="bind $var'.%attribs.zoovy:prod_mfg'; if (is $var --notblank;) {{apply --show}};" class="prodPageMfgForward">
 				&#187; View All 
-				<a itemprop='manufacturer' href='#' data-tlc="bind $var '.%attribs.zoovy:prod_mfg'; if(is $var --notblank;) {{apply --append; format --prepend='/search/keywords/'; apply --attrib='href';}};" class='underline'></a>
+				<a href='#' data-tlc="bind $var '.%attribs.zoovy:prod_mfg'; if(is $var --notblank;) {{apply --append; format --prepend='/search/keywords/'; apply --attrib='href';}};" class='underline'></a>
 				 Product
 			</div>
 		</div>
@@ -2265,7 +2265,7 @@ This is the template used both within a dialog and inline, unless implicitly ove
 					<section data-app-role="cartTemplateShippingContainer" class="marginBottom cartTemplateShippingContainer">
 						<h3 data-tlc="bind $var '.ship.postal'; if(is $var --notblank;) {{set $var 'Shipping:'; apply --append;}} else {{set $var 'Delivery:'; apply --append;}};"></h3>
 						<div class='cartShipOptions'>
-							<label for="ship/postal">Zip/Postal Code:</label>
+							<label>Zip/Postal Code:</label>
 							<input data-tlc="bind $var '.ship.postal'; if(is $var --blank) {{bind $var '.bill.postal';}}; apply --select=$var; " size="6" name="ship/postal" value="" maxlength="10" onchange="myApp.ext.beachmall_begin.a.updateShipPostal($(this).parent()); " data-app-blur="cco|cartZipUpdateExec" type="text">
 							<div><span class='shipCity'></span><span class='shipRegion'></span></div>
 							<input class='cartLineButton ui-state-default updateButton zipButton pointer' type='button' value='Update Location'>
