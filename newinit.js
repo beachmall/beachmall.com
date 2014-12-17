@@ -46,7 +46,6 @@ _app.couple('quickstart','addPageHandler',{
 		if(infoObj.deferred){
 			infoObj.defPipeline.addDeferred(infoObj.deferred);
 			}
-//_app.ext.quickstart.a.showContent(routeObj.route, {'pageType':'static','templateID':routeObj.templateID});});	
 		//We use infoObj.require here because the router handlers may have put something in there.
 		//By nature, the static page handler requires nothing, but the templates it renders may require all kinds of stuff
 		infoObj.require = infoObj.require || [];
@@ -54,7 +53,6 @@ _app.couple('quickstart','addPageHandler',{
 			infoObj.verb = 'translate';
 			infoObj.templateid = infoObj.templateID;
 			var $page = new tlc().runTLC(infoObj);
-	dump($page);
 			//$page.tlc(infoObj);
 			$page.data('templateid',infoObj.templateid);
 			$page.data('pageid',infoObj.id);
@@ -157,7 +155,7 @@ _app.router.appendHash({'type':'exact','route':'/','callback':'homepage'});
 _app.router.addAlias('category',	function(routeObj){_app.ext.quickstart.a.showContent(routeObj.value,	$.extend({'pageType':'category'}, routeObj.params));});
 _app.router.appendHash({'type':'match','route':'/category/{{navcat}}*','callback':'category'});
 
-_app.router.addAlias('search',		function(routeObj){ dump('-----> search pagetype'); dump(routeObj); _app.ext.quickstart.a.showContent(routeObj.value,	$.extend({'pageType':'search','require':['beachmall_lists','powerreviews_reviews','store_product']}, routeObj.params));});
+_app.router.addAlias('search',		function(routeObj){_app.ext.quickstart.a.showContent(routeObj.value,	$.extend({'pageType':'search'}, routeObj.params));});
 _app.router.appendHash({'type':'match','route':'/search/tag/{{tag}}*','callback':'search'});
 _app.router.appendHash({'type':'match','route':'/search/keywords/{{KEYWORDS}}*','callback':'search'});
 
@@ -276,20 +274,24 @@ _app.u.bindTemplateEvent('myAccountTemplate','complete.customer',function(event,
 	_app.model.addDispatchToQ({"_cmd":"buyerAddressList","_tag":{'callback':'tlc','jqObj':$('.mainColumn',$context),'verb':'translate','datapointer':'buyerAddressList'}},'mutable');
 	_app.model.dispatchThis();							
 	});
-_app.router.appendHash({'type':'exact','route':'/change_password/','callback':function(routeObj){
-	$.extend(routeObj.params,{
-		'pageType':'static',
-		'login' : true,
-		'templateID':'changePasswordTemplate',
-		'require':['templates.html']
-		});
-	_app.ext.quickstart.a.showContent(routeObj.value,routeObj.params);
-	}});
 _app.router.appendHash({'type':'exact','route':'/my_order_history/','callback':function(routeObj){
 	$.extend(routeObj.params,{
 		'pageType':'static',
 		'login' : true,
 		'templateID':'orderHistoryTemplate',
+		'require':['templates.html']
+		});
+	_app.ext.quickstart.a.showContent(routeObj.value,routeObj.params);
+	}});
+_app.u.bindTemplateEvent('orderHistoryTemplate','complete.customer',function(event, $context, infoObj){
+	_app.model.addDispatchToQ({"_cmd":"buyerPurchaseHistory","_tag":{'callback':'tlc','jqObj':$('.mainColumn',$context),'verb':'translate','datapointer':'buyerPurchaseHistory'}},'mutable');
+	_app.model.dispatchThis();							
+	});
+_app.router.appendHash({'type':'exact','route':'/change_password/','callback':function(routeObj){
+	$.extend(routeObj.params,{
+		'pageType':'static',
+		'login' : true,
+		'templateID':'changePasswordTemplate',
 		'require':['templates.html']
 		});
 	_app.ext.quickstart.a.showContent(routeObj.value,routeObj.params);
@@ -829,11 +831,9 @@ _app.couple('quickstart','addPageHandler',{
 			_app.ext.quickstart.vars.session.recentCategories.unshift(infoObj.navcat);
 			}
 		_app.require(require,function(){
-dump('---> category coupler'); dump(infoObj.templateID);
 			if(infoObj.templateID){}
 			else{infoObj.templateID = 'categoryTemplate';}
-		//	if(infoObj.templateID = 'categoryTemplate'){
-			if(infoObj.templateID){
+			if(infoObj.templateID = 'categoryTemplate'){
 				infoObj.prodRenderedDeferred = $.Deferred();
 				infoObj.defPipeline.addDeferred(infoObj.prodRenderedDeferred);
 				}
@@ -1024,7 +1024,8 @@ _app.router.appendInit({
 					}
 				}
 			//handleURIChange here will not change the page, but it will execute appropriate events
-			_app.router.handleURIString($existingPage.attr('data-app-uri'), true, {"retrigger" : true});
+			//that's why we pass false for the windowHistoryAction- no pushstate
+			_app.router.handleURIString($existingPage.attr('data-app-uri'), false, {"retrigger" : true});
 			}
 		else if (document.location.hash.indexOf("#!") == 0){
 			var pathStr = document.location.hash.substr(2);
@@ -1034,21 +1035,21 @@ _app.router.appendInit({
 				pathStr = arr[0];
 				search = arr[1];
 				}
-			_app.router.handleURIChange("/"+pathStr, search, false, true);
+			_app.router.handleURIChange("/"+pathStr, search, false, 'replace');
 			}
 		else if(document.location.protocol == "file:"){
-			_app.router.handleURIChange("/", document.location.search, document.location.hash, true);
+			_app.router.handleURIChange("/", document.location.search, document.location.hash, 'replace');
 			}
 		else if (g.uriParams.marketplace){
-			showContent("product",{"pid":g.uriParams.product});
+			_app.router.handleURIString('/product/'+g.uriParams.product+'/', 'replace');
 			window[_app.vars.analyticsPointer]('send','event','Arrival','Syndication','product '+g.uriParams.product);
 			}
 		else if(document.location.pathname)	{	
 			_app.u.dump('triggering handleHash');
-			_app.router.handleURIChange(document.location.pathname, document.location.search, document.location.hash, true);
+			_app.router.handleURIChange(document.location.pathname, document.location.search, document.location.hash, 'replace');
 			}
 		else	{
-			_app.router.handleURIChange("/", document.location.search, document.location.hash, true);
+			_app.router.handleURIChange("/", document.location.search, document.location.hash, 'replace');
 			_app.u.throwMessage(_app.u.successMsgObject("We're sorry, the page you requested could not be found!"));
 			window[_app.vars.analyticsPointer]('send', 'event','init','404 event',document.location.href);
 			}
