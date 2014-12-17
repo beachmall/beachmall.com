@@ -914,7 +914,7 @@ remember to NOT put the button inside the href or two events will occur onclick.
 				  <!-- 	<span data-bind='var: reviews(reviews.total); format:text; pretext: from ;posttext: reviews; className:numReviews;'></span> -->
 				</div> 
 			</div>  
-		<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy; apply --append;" class="prodViewerAddToCartForm floatRight hideMe" action="#" onsubmit="return false" data-app-submit="quickstart|productAdd2Cart" data-show="modal">
+		<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy; apply --append;" class="prodViewerAddToCartForm floatRight hideMe" action="#" onsubmit="return false" data-app-submit="quickstart|productAdd2Cart" data-show="inline">
 			<input name="qty" value="1" type="hidden">
 			<button data-tlc="quickstart#addtocartbutton  --legacy; apply --append;" data-bind="format:addtocartbutton; extension:quickstart; useParentData:true;" class="prodViewerAddToCartButton applyButton" role="button" aria-disabled="false">MORE DETAILS</button>
 		</form>
@@ -955,7 +955,7 @@ container ul should have lineItemProdlist class on it instead of productList
 
 		<span data-tlc="bind $var '.reviews.average'; if(is $var --notblank) {{format --prepend='review_'; apply --add --class=$var; }};" class="reviewSprite"></span>
 	
-		<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy; apply --append;" class="prodViewerAddToCartForm clearfix" action="#" data-app-submit="quickstart|productAdd2Cart" data-show="modal">
+		<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy; apply --append;" class="prodViewerAddToCartForm clearfix" action="#" data-app-submit="quickstart|productAdd2Cart" data-show="inline">
 	
 			<fieldset data-tlc="bind $var '.pid'; store_product#atcvariations  --legacy; apply --append;" class="borderNone"></fieldset>
 			<fieldset data-tlc="bind $var '.'; store_product#atcquantityinput  --defaultvalue='0' --legacy;" class="borderNone"></fieldset>
@@ -1061,7 +1061,7 @@ END BUG6-->
 		
 			<div data-tlc="bind $var '.pid'; powerreviews_reviews#reviewsnippet  --minreview='1' --legacy;" class="reviewsStarsCount"></div>
 			
-			<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy; apply --append;" class="prodViewerAddToCartForm clearfix" action="#" onsubmit="return false" data-app-submit="quickstart|productAdd2Cart" data-show="modal">
+			<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy; apply --append;" class="prodViewerAddToCartForm clearfix" action="#" onsubmit="return false" data-app-submit="quickstart|productAdd2Cart" data-show="inline">
 				<input name="qty" value="1" type="hidden">
 				<button data-tlc="quickstart#addtocartbutton  --iselastic='1' --legacy; apply --append;" class="prodViewerAddToCartButton applyButton" role="button" aria-disabled="false">VIEW DETAILS</button>
 			</form>
@@ -1111,7 +1111,7 @@ END BUG6-->
 			
 			<div data-tlc="bind $var '.pid'; powerreviews_reviews#reviewsnippet  --minreview='1' --legacy;" class="reviewsStarsCount"></div>
 			
-			<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy; apply --append;" class="prodViewerAddToCartForm clearfix" action="#" onsubmit="return false" data-app-submit="quickstart|productAdd2Cart" data-show="modal">
+			<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy; apply --append;" class="prodViewerAddToCartForm clearfix" action="#" onsubmit="return false" data-app-submit="quickstart|productAdd2Cart" data-show="inline">
 				<input name="qty" value="1" type="hidden">
 				<button data-tlc="quickstart#addtocartbutton  --iselastic='1' --legacy; apply --append;" class="prodViewerAddToCartButton applyButton" role="button" aria-disabled="false">VIEW DETAILS</button>
 			</form>
@@ -2429,7 +2429,7 @@ used on a product layout. Some product have 'children' which may represent the s
 	<td><img data-tlc="bind $var '.%attribs.zoovy:prod_image1'; apply --img --media=$var --width=45 --height=45 --bgcolor='#ffffff' --replace;" src="blank.gif" class="prodThumb" alt="" height="45" width="45"></td>
 	<td data-tlc="bind $var '.%attribs.amz:grp_varvalue'; if(is $var --blank) {{bind $var 'product(zoovy:prod_name)';}}; if (is $var --notblank;) {{apply --append;}};"></td>
 	<td>
-	<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy; apply --append;" class="prodViewerAddToCartForm clearfix" action="#" data-app-submit="quickstart|productAdd2Cart" data-show="modal">
+	<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy; apply --append;" class="prodViewerAddToCartForm clearfix" action="#" data-app-submit="quickstart|productAdd2Cart" data-show="inline">
 
 		<fieldset data-tlc="bind $var '.pid'; store_product#atcvariations  --legacy; apply --append;" class="borderNone"></fieldset>
 		<fieldset data-tlc="bind $var '.'; store_product#atcquantityinput  --defaultvalue='0' --legacy;" class="borderNone"></fieldset>
