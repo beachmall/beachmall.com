@@ -338,7 +338,7 @@ addToCart : function (pid,$form){
 			detailedinvdisplay : function($tag,data)	{
 				var pid = data.value.pid;
 				if(pid && data.value['@inventory'] && data.value['@inventory'][pid])	{
-					$tag.append("<div>Available Inventory: "+data.value['@inventory'][pid].inv+"<\/div>");
+					$tag.append("<div>Available Inventory: "+data.value['@inventory'][pid].AVAILABLE+"<\/div>");
 					}
 				else if(pid && data.value['@inventory'])	{
 					var inventory = data.value['@inventory'],
@@ -618,6 +618,8 @@ it has no inventory AND inventory matters to merchant
 					else	{
 						for(var index in prodData['@inventory']) {
 							inv += Number(prodData['@inventory'][index].AVAILABLE)
+							}
+	//					_app.u.dump(" -> item HAS variations. inv = "+inv);
 							}
 	//					_app.u.dump(" -> item HAS variations. inv = "+inv);
 						}

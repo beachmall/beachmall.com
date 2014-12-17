@@ -2,7 +2,7 @@
 
 <div id='productPowerToolTemplate'>
 
-<form action='#' onSubmit="return false" class='labelsAsBreaks' id='productPowerToolForm' novalidate>
+<form action='#' onSubmit="return false" class='labelsAsBreaks' name='productPowerToolForm' novalidate>
 <input type="hidden" value="0" name="JOBID" />
 
 
@@ -318,7 +318,7 @@ has to be within the fieldset to for data-table to work right.
 	<th></th>
 </tr>
 </thead>
-<tbody id='powerToolActionListTbody' data-bind="var: batch(@ACTIONS); format:processList; loadsTemplate:powerToolActionsRowTemplate;" ></tbody>
+<tbody name='powerToolActionListTbody' data-bind="var: batch(@ACTIONS); format:processList; loadsTemplate:powerToolActionsRowTemplate;" ></tbody>
 </table>
 </div>
 

@@ -1282,14 +1282,13 @@ in a reorder, that data needs to be converted to the variations format required 
 					var amount = data.value;
 //if the total is less than 0, just show 0 instead of a negative amount. zero is handled here too, just to avoid a formatMoney call.
 //if the first character is a dash, it's a negative amount.  JS didn't like amount *1 (returned NAN)
-				
-				if(amount * 1 <= 0){
+					if(amount * 1 <= 0){
 					o += data.bindData.currencysign ? data.bindData.currencysign : '$';
-					o += '0.00';
-					}
-				else	{
+						o += '0.00';
+						}
+					else	{
 /*beachmall*/		o += _app.u.formatMoney(amount,data.bindData.currencysign,'',data.bindData.hidezero); //*was still using camel case
-					}
+						}
 				
 /*beachmall*/	//$tag.append("Balance due: "+o);  //update DOM. 
 /*beachmall*/	$tag.append("<h6>Estimated Total: </h6>"+o);  //update DOM. *needed to change output text
@@ -1309,7 +1308,7 @@ in a reorder, that data needs to be converted to the variations format required 
 						if(shipMethods[i].id == data.value.want.shipping_id)	{
 							//sometimes pretty isn't set. also, ie didn't like .pretty, but worked fine once ['pretty'] was used.
 							o = "<span class='orderShipMethod'>"+(shipMethods[i]['pretty'] ? shipMethods[i]['pretty'] : shipMethods[i]['name'])+": <\/span>";
-	//only show amount if not blank. 
+	//only show amount if not blank.
 							if(shipMethods[i].amount || shipMethods[i].amount == 0)	{
 /*beachmall*/					if (shipMethods[i].amount == 0) {
 /*beachmall*/						o += "<span class='orderShipAmount cartFree'>FREE<\/span>";
@@ -1324,11 +1323,11 @@ in a reorder, that data needs to be converted to the variations format required 
 /*beachmall*/						else {
 /*beachmall*/							 o += "<span class='orderShipAmount'>"+r+"<\/span>";
 /*beachmall*/							}
-									}
+								}
 							break; //once we hit a match, no need to continue. at this time, only one ship method/price is available.
-								}	
 							}
 						}
+					}
 					}
 				else	{
 					//shipMethods is empty. this may be perfectly normal (admin UI -> new order -> no product in cart yet. store -> no zip or state.)

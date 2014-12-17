@@ -131,7 +131,7 @@ obj.PATH = .cat.safe.id
 
 		getRootCatsData : {
 			onSuccess : function(tagObj)	{
-				_app.u.dump("BEGIN _app.ext.store_navcats.callbacks.handleProduct.onSuccess");
+//				_app.u.dump("BEGIN _app.ext.store_navcats.callbacks.handleProduct.onSuccess");
 				_app.ext.store_navcats.u.getRootCatsData(tagObj);
 				}
 			},
@@ -393,7 +393,7 @@ note - there is NO error checking in here to make sure the subcats aren't alread
 //				_app.u.dump("BEGIN _app.ext.store_navcats.u.getChildDataOf ("+path+")");
 //				_app.u.dump(_app.data['appNavcatDetail|'+path])
 //if . is passed as path, then tier1 cats are desired. The list needs to be generated.
-				var catsArray = this.getListOfSubcats(path);
+				var catsArray = this.getListOfSubcats(path)
 				var newParentID;
 				var tier = (path.split('.').length) - 1; //root cat split to 2, so subtract 1.
 				

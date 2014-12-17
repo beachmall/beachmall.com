@@ -251,7 +251,7 @@ also uncomment the line executing handleManagementCategoryFilters() in u.handleN
 
 <div id='ProductCreateNewTemplate'>
 
-	<div id='prodCreateMessaging'></div>
+	<!-- <div id='prodCreateMessaging'></div> -->
 	
 	<form name="createNewProductForm" action="#" method="POST" onSubmit="return false;">
 		
@@ -419,6 +419,15 @@ also uncomment the line executing handleManagementCategoryFilters() in u.handleN
 				
 				<div class='threeColumn floatLeft labelsAsBreaks'>
 					<h4>Export Declaration [SED]</h4>
+					<label><span>Country of origin [ISO Code]:</span><input type='text' name='zoovy:ship_nmfccode' value='' data-bind="var: product(zoovy:ship_nmfccode); format:popVal;" size='6' /></label>
+					<label><span>ATS/harmonized code:</span><input type='text' name='zoovy:ship_harmoncode' value='' data-bind="var: product(zoovy:ship_harmoncode); format:popVal;" size='6' /></label>
+	
+					<h4>Freight Options</h4>
+					
+					<label><span>NMFC commodity code:</span><input type='text' name='zoovy:ship_mfgcountry' value='' data-bind="var: product(zoovy:ship_mfgcountry); format:popVal;" size='6' /></label>
+					<label><span>Sorting class:</span><input type='text' name='zoovy:ship_sortclass' value='' data-bind="var: product(zoovy:ship_sortclass); format:popVal;" size='6' /></label>
+				</div>
+			</div>
 					<label><span>Country of origin [ISO Code]:</span><input type='text' name='zoovy:ship_nmfccode' value='' data-bind="var: product(zoovy:ship_nmfccode); format:popVal;" size='6' /></label>
 					<label><span>ATS/harmonized code:</span><input type='text' name='zoovy:ship_harmoncode' value='' data-bind="var: product(zoovy:ship_harmoncode); format:popVal;" size='6' /></label>
 	
@@ -668,6 +677,14 @@ Once an inventory-able option is enabled for a product, qty pricing is NO LONGER
 		</div>
 	
 	</div>
+			<thead>
+			<tr>
+				<th>Schedule</th>
+				<th>Price</th>
+			</tr>
+			</thead>
+			</table>
+		</div>
 	
 	<div class='marginBottom' data-app-role='flexeditContainer'></div><!-- content is loaded when tab is clicked -->
 	
@@ -677,11 +694,18 @@ Once an inventory-able option is enabled for a product, qty pricing is NO LONGER
 	</form>
 	</section><!-- /attributes tab content -->
 	
+	<div class='buttonset marginBottom ui-widget-content smallPadding ui-corner-all clearfix'>
+		<button class='applyButton floatRight' data-app-role='saveButton' disabled='disabled' data-app-click="admin_prodedit|adminProductMacroSaveHandlersExec" data-save-handlers="flex,schedule">Save <span class='numChanges'></span> Changes</button>
+	</div>
+	</form>
+	</section><!-- /attributes tab content -->
 	
 	
 	<section data-anytab-content='inventory' class='clearfix'>
 	<form action='#' onSubmit='return false'>
 	
+	<section data-anytab-content='inventory' class='clearfix'>
+	<form action='#' onSubmit='return false'>
 	
 	<div data-app-role='inventoryContainer'></div>
 	
@@ -691,7 +715,11 @@ Once an inventory-able option is enabled for a product, qty pricing is NO LONGER
 	</div>
 	</form>
 	</section><!-- /inventory tab content -->
-
+		
+		<button class='floatRight applyButton' data-app-role='saveButton' disabled='disabled' data-app-click="admin_prodedit|adminProductMacroSaveHandlersExec" data-save-handlers="inventory">Save <span class='numChanges'></span> Changes</button>
+	</div>
+	</form>
+	</section><!-- /inventory tab content -->
 
 
 	<section data-anytab-content='categorization' class='clearfix'>
@@ -704,6 +732,14 @@ Once an inventory-able option is enabled for a product, qty pricing is NO LONGER
 	</form>
 	</section><!-- /categorization tab content -->
 
+	<form action='#' onSubmit='return false'>
+		<div data-app-role='categoryListContainer'></div><!-- gets it's own container within tab because eventually this tab will have more content -->
+		<div class='buttonset marginBottom ui-widget-content smallPadding ui-corner-all clearfix'>
+			<button class='applyButton' data-app-click="admin_prodedit|adminProductMacroNavcatClearallExec">Remove from All</button>
+			<button class='applyButton floatRight' data-app-role='saveButton' disabled='disabled' data-app-click="admin_prodedit|adminProductMacroSaveHandlersExec" data-save-handlers="navigation">Save <span class='numChanges'></span> Changes</button>
+		</div>
+	</form>
+	</section><!-- /categorization tab content -->
 	
 	
 	<section data-anytab-content='variations' class='clearfix' data-app-role='variationContainer'>
@@ -752,6 +788,8 @@ Once an inventory-able option is enabled for a product, qty pricing is NO LONGER
 					<th>Weight</th>
 				</tr>
 				</thead>
+				<tbody data-bind='var: users(@skus); format:processList; sku:1; loadsTemplate:skuTableRowTemplate;' data-app-role='prodEditSkuAttribsTbody' data-skufinder-role='target'></tbody>
+				</table>
 				<tbody data-bind='var: users(@skus); format:processList; sku:1; loadsTemplate:skuTableRowTemplate;' data-app-role='prodEditSkuAttribsTbody' data-skufinder-role='target'></tbody>
 				</table>
 			</div>
@@ -1047,6 +1085,14 @@ Once an inventory-able option is enabled for a product, qty pricing is NO LONGER
 			&#187; Auction functionality is not compatible with variations<br />
 			&#187; Variation level pricing and inventory available will be transmitted to eBay.<br />
 		</div>
+			</div>
+			<div class='clearfix marginBottom'>
+				<label>
+					<span>eBay subtitle</span>
+					<input type="text" value="" size="80" maxlength="80" name="ebay:subtitle" data-bind="var:product(ebay:subtitle); format:popVal;">
+				</label>
+			</div>
+		</fieldset>
 
 		<fieldset class='labelsAsBreaks clearfix marginBottom alignedLabels' data-app-role='showProductWithoutVariations'>
 			<legend>Auction Configuration</legend>
@@ -1071,6 +1117,17 @@ Once an inventory-able option is enabled for a product, qty pricing is NO LONGER
 						</label>
 			
 						<label>
+							<span>eBay gallery</span>
+							<select name="ebay:use_gallery" data-bind="var:product(ebay:use_gallery); format:popVal;">
+								<option value="">-- use profile --</option>
+								<option value="0">never</option>
+								<option value="1">auctions only</option>
+								<option value="2">fixed price only</option>
+								<option value="3">auction + fixed price</option>
+								<option value="8">store only</option>
+								<option value="11">any type</option>
+							</select>	
+						</label>
 							<span>eBay gallery</span>
 							<select name="ebay:use_gallery" data-bind="var:product(ebay:use_gallery); format:popVal;">
 								<option value="">-- use profile --</option>
@@ -1166,6 +1223,55 @@ Once an inventory-able option is enabled for a product, qty pricing is NO LONGER
 				<div class="hint">NOTE: Please allow 15 minutes for syndicated listings to automatically update after saving changes.</div>
 			</div>
 
+			<div class="hint marginBottom" data-bind="var: product(ebay:ts); format:showIfSet;">
+			NOTE: Automatic syndication is ENABLED on the Marketplaces tab. 
+			Listing Duration and Quantity is automatically managed. 
+			</div>
+		
+			<label data-bind="var: product(ebay:ts); format:hideIfSet;">
+				<span>Duration</span>
+				<select name="ebay:fixed_duration" data-bind="var:product(ebay:fixed_duration); format:popVal;" data-validation-rules='skipIfHidden'>
+					<option value="">-- not set --</option>
+					<option value="3">3 Day</option>
+					<option value="5">5 Day</option>
+					<option value="7">7 Day</option>
+					<option value="10">10 Day</option>
+					<option value="-1">Good till cancelled</option>
+				</select>
+			</label>
+
+			<div data-bind="var: product(ebay:ts); format:showIfSet;" class='buttonset marginTop marginBottom'>
+				<button class='applyButton' data-app-click="admin_template|adminEBAYProfilePreviewShow" >Preview Syndication</button>
+				<button class='applyButton' data-app-click="admin_prodedit|adminProductMacroExec" data-macro-cmd="EBAY-TEST-SYNDICATION">Test Syndication</button>
+				<button class='applyButton' data-app-click="admin_prodedit|adminProductMacroExec" data-macro-cmd="EBAY-CREATE-SYNDICATION">Create Syndication</button>
+				<div class="hint">NOTE: Please allow 15 minutes for syndicated listings to automatically update after saving changes.</div>
+			</div>
+
+		<fieldset>
+			<div class='ebayMacroUpdateMessaging'></div><!-- used when a macro is run. -->
+			<div data-app-role='ebayStatusDetails'>
+			<table class='fullWidth gridTable applyAnytable'>
+			<thead>
+			<tr>
+				<th>SKU</th>
+				<th>eBay Item #</th>
+				<th>Is GTC</th>
+				<th>Class</th>
+				<th>Category</th>
+				<th>Created</th>
+				<th>Launched</th>
+				<th>DispatchID</th>
+				<th>Profile</th>
+				<th>Start Qty</th>
+				<th>Remaining</th>
+				<th>BIN Price</th>
+				<th data-anytable-nosort='true'></th>
+			</tr>
+			</thead>
+			<tbody data-bind="var: ebay(@LISTINGS); format:processList; loadsTemplate:ebayDetailRowTemplate;" data-app-role='ebayStatusTbody'></tbody>
+			</table>
+			</div>
+		</fieldset>
 	
 			<div class='buttonset' data-bind="var: product(ebay:ts); format:hideIfSet;">
 				<button data-app-click="admin_template|adminEBAYProfilePreviewShow" class='applyButton' >Preview Fixed</button>
@@ -1502,6 +1608,7 @@ AMZ_SYNC -> NOTNEEDED, ERROR, TODO, UNKNOWN, WAIT, DONE
 	<button class='applyButton' data-app-click='admin_prodedit|productTaskPidToggle' data-app-role='productTaskListButton' data-bind="var: detail(PID); format:assignAttribute; attribute:data-pid;" data-icon-primary='ui-icon-circle-plus' data-text='false'>Add as Product Task</button>
 	</td>
 </tr>
+
 
 
 

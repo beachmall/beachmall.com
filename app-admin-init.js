@@ -208,7 +208,7 @@ _app.router.appendInit({
 		return {'some':'value'} //returning anything but false triggers a match.
 		},
 	'callback':function(f){
-		_app.router.handleURIChange(document.location.pathname, document.location.search, document.location.hash, true);
+		//no need to do anything
 		}
 	});
 
@@ -223,7 +223,7 @@ var startupRequires = [
 	"store_product",
 
 	"cco",
-	"order_create",
+	"order_create", "extensions/checkout/"+_app.vars.checkoutAuthMode+".html",
 	"cart_message",
 
 	"admin_support", "extensions/admin/support.html",
