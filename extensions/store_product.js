@@ -623,7 +623,6 @@ it has no inventory AND inventory matters to merchant
 							}
 	//					_app.u.dump(" -> item HAS variations. inv = "+inv);
 						}
-					}
 				else	{} //cant get inventory without a product record.
 				return inv;
 				}, //getProductInventory
