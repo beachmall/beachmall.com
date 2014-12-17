@@ -65,7 +65,8 @@ function controller(_app)	{
 		_app.vars.fbUser = {};
 
 //used in conjunction with support/admin login. nukes entire local cache.
-		if(_app.u.getParameterByName('flush') == 1)	{
+		if(_app.u.getParameterByName('flush') == 1 || 
+			(_app.vars.thisSessionIsAdmin && document.location.protocol == "file:"))	{
 			_app.u.dump(" !!! Flush is enabled. session and local storage get nuked !!!");
 			if($.support.sessionStorage)	{
 				window.sessionStorage.clear();
@@ -75,7 +76,6 @@ function controller(_app)	{
 				}
 			}
 		if(_app.u.getParameterByName('quiet') == 1){
-			_app.u.dump = function(){};
 			_app.u.dump = function(){};
 			}
 		
@@ -686,46 +686,6 @@ _app.u.throwMessage(responseData); is the default error handler.
 						}
 					if(_rtag.handleFormConditionalDelegation)	{
 						_app.ext.admin.u.handleFormConditionalDelegation($('form',$target)); //enables some form conditional logic 'presets' (ex: data-panel show/hide feature)
-					}
-//allows for the callback to perform a lot of the common handling, but to append a little extra functionality at the end of a success.
-					if(typeof _rtag.onComplete == 'function')	{
-						_rtag.onComplete(_rtag);
-						}
-					}
-				else	{
-					$('#globalMessaging').anymessage({'message':'In admin.callbacks.anycontent, jqOjb not set or not an object ['+typeof _rtag.jqObj+'].','gMessage':true});
-					}
-				
-				},
-			onSuccess : function(_rtag)	{
-				_app.u.dump("BEGIN callbacks.anycontent"); // _app.u.dump(_rtag);
-				if(_rtag && _rtag.jqObj && typeof _rtag.jqObj == 'object')	{
-					
-					var $target = _rtag.jqObj; //shortcut
-					
-//anycontent will disable hideLoading and loadingBG classes.
-//to maintain flexibility, pass all anycontent params in thru _tag
-					$target.anycontent(_rtag);
-
-					_app.u.handleCommonPlugins($target);
-					_app.u.handleButtons($target);
-					
-					
-// use either delegated events OR app events, not both.
-//avoid using this. ### FUTURE -> get rid of these. the delegation should occur in the function that calls this. more control that way and things like dialogs being appendedTo a parent can be handled more easily.
-					if(_rtag.addEventDelegation)	{
-						_app.u.addEventDelegation($target);
-						}
-					else if(_rtag.skipAppEvents)	{}
-					else	{
-						_app.u.handleAppEvents($target);
-						}
-
-					if(_rtag.applyEditTrackingToInputs)	{
-						_app.ext.admin.u.applyEditTrackingToInputs($target); //applies 'edited' class when a field is updated. unlocks 'save' button.
-						}
-					if(_rtag.handleFormConditionalDelegation)	{
-						_app.ext.admin.u.handleFormConditionalDelegation($('form',$target)); //enables some form conditional logic 'presets' (ex: data-panel show/hide feature)
 						}
 //allows for the callback to perform a lot of the common handling, but to append a little extra functionality at the end of a success.
 					if(typeof _rtag.onComplete == 'function')	{
@@ -1069,15 +1029,24 @@ ex: whoAmI call executed during app init. Don't want "we have no idea who you ar
 						event.currentTarget.target = "_blank";
 						}
 					});
-				
+				var defaultPopState = window.onpopstate;
 				window.onpopstate = function(event){
-					_app.router.handleURIChange(event.state);
+					if(_app.router.handleURIChange(event.state)){
+						//handled, we're all good
+						}
+					else {
+						defaultPopState(event);
+						}
 					}
 				
 				}
 			},
 		
-		handleURIChange : function(uri, search, hash, skipPush, forcedParams){
+		handleURIChange : function(uri, search, hash, windowHistoryAction, forcedParams){
+			//default to pushstate
+			if(typeof windowHistoryAction == 'undefined'){
+				windowHistoryAction = 'push';
+				}
 			console.log('handleURIChange');
 			var routeObj = _app.router._getRouteObj(uri, 'hash');
 			if(routeObj) {
@@ -1095,12 +1064,23 @@ ex: whoAmI call executed during app init. Don't want "we have no idea who you ar
 				routeObj.search = search;
 				routeObj.hash = hash;
 				routeObj.value = uri +""+ (search || "") +""+ (hash || "");
-				if(!skipPush){
-					try{
-						window.history.pushState(routeObj.value, "", routeObj.value);
+				try{
+					if(windowHistoryAction == 'push'){
+						window.history.pushState(routeObj.value,"",routeObj.value);
 						}
-					catch(e){
-						//dump(e);
+					else if (windowHistoryAction == 'replace'){
+						window.history.replaceState(routeObj.value,"",routeObj.value);
+						}
+					else if (windowHistoryAction == 'hash'){
+						window.history.pushState(routeObj.value, "", window.location.pathname+"#!"+routeObj.value);
+						}
+					else {
+						//skip
+						}
+					}
+				catch(e){
+					if(windowHistoryAction == 'hash'){
+						window.location.hash = "#!"+routeObj.value;
 						}
 					}
 				_app.router._executeCallback(routeObj);
@@ -1110,26 +1090,6 @@ ex: whoAmI call executed during app init. Don't want "we have no idea who you ar
 				dump('no route found for '+uri, 'error');
 				}
 			return false;
-			},
-		handleURIString : function(uriStr, skipPush, forcedParams){
-			var a = document.createElement('a');
-			a.href = "http://www.domain.com"+uriStr;
-			var path = a.pathname;
-			var search = a.search;
-			var hash = a.hash;
-			console.log(path);
-			console.log(search);
-			console.log(hash);
-			this.handleURIChange(path,search,hash,skipPush,forcedParams);
-			}
-		},
-
-
-
-
-
-
-
 			},
 		handleURIString : function(uriStr, windowHistoryAction, forcedParams){
 			var a = document.createElement('a');
@@ -1356,40 +1316,6 @@ will load everything in the RQ will a pass <= [pass]. so pass of 10 loads everyt
 		//	_app.u.dump("numIncludes: "+numIncludes);
 //			app.u.initMVC(0);
 			return numIncludes;
-			},
-
-//Run at initComplete. loads all pass zero files and executes their callbacks (if any). then loads resources set for pass > 0
-		loadResources : function()	{
-			var rObj = {
-				'passZeroResourcesLength' : _app.u.handleRQ(0),
-				'passZeroResourcesLoaded' : 0,
-				'passZeroTimeout' : null
-				}; //what is returned.
-			function resourcesAreLoaded(){
-				rObj.passZeroResourcesLoaded = _app.u.numberOfLoadedResourcesFromPass(0); //this should NOT be in the else or it won't get updated once the resources are done.
-				if(_app.u.numberOfLoadedResourcesFromPass(0) == _app.vars.rq.length)	{
-					_app.vars.rq = null; //this is the tmp array used by handleRQ and numberOfResourcesFromPass. Should be cleared for next pass.
-					_app.model.addExtensions(_app.vars.extensions);
-					_app.u.handleRQ(1); //this will empty the RQ.
-					_app.rq.push = _app.u.loadResourceFile; //reassign push function to auto-add the resource.
-					}
-				else	{
-//					_app.u.dump(" -> _app.u.numberOfLoadedResourcesFromPass(0,0): "+_app.u.numberOfLoadedResourcesFromPass(0,0));
-					rObj.passZeroTimeout = setTimeout(function(){resourcesAreLoaded();},250);
-					}
-				}
-			resourcesAreLoaded();
-			return rObj;
-			},
-
-		numberOfLoadedResourcesFromPass : function(pass,debug)	{
-			var L = _app.vars.rq.length;
-			var r = (L === 0) ? false : 0; //what is returned. total # of scripts that have finished loading. false if rq is empty.
-			for(var i = 0; i < L; i++)	{
-				r += _app.vars.rq[i][_app.vars.rq[i].length - 1]
-				if(debug)	{_app.u.dump(" -> "+i+": "+_app.vars.rq[i][2]+": "+_app.vars.rq[i][_app.vars.rq[i].length -1]);}
-				}
-			return r;
 			},
 
 //Run at initComplete. loads all pass zero files and executes their callbacks (if any). then loads resources set for pass > 0
@@ -1714,14 +1640,6 @@ window.frames["printContainerIframe"].focus();
 window.frames["printContainerIframe"].print();
 
 
-	}
-var $iframe = $("<iframe \/>").attr({'id':'printContainerIframe','name':'printContainerIframe'}).appendTo($pc);
-$iframe.contents().find('body').append($ele.html());
-$iframe.contents().find('head').append('<style>@media print{.pageBreak {page-break-after:always} .hide4Print {display:none;}}</style>');
-window.frames["printContainerIframe"].focus();
-window.frames["printContainerIframe"].print();
-
-
 					}
 				else	{
 					$('#globalMessaging').anymessage({'message':'In _app.u.printBySelector, $ele not passed or not on DOM','gMessage':true});
@@ -1811,9 +1729,9 @@ window.frames["printContainerIframe"].print();
 	//				_app.u.dump(" -> msg: "); _app.u.dump(msg);
 					if(msg._rtag && msg._rtag.jqObj)	{$target = msg._rtag.jqObj}
 					else if(msg.parentID){$target = $(_app.u.jqSelector('#',msg.parentID));}
+					else if(msg.jqObj){$target = msg.jqObj;}
 					else if(msg._rtag && (msg._rtag.parentID || msg._rtag.targetID || msg._rtag.selector))	{
 						if(msg._rtag.parentID)	{$target = $(_app.u.jqSelector('#',msg._rtag.parentID))}
-						else if(msg._rtag.targetID)	{$target = $(_app.u.jqSelector('#',msg._rtag.targetID))}
 						else if(msg._rtag.targetID)	{$target = $(_app.u.jqSelector('#',msg._rtag.targetID))}
 						else	{
 							$target = $(_app.u.jqSelector(msg['_rtag'].selector.charAt(0),msg['_rtag'].selector));
@@ -2770,18 +2688,14 @@ name Mod 10 or Modulus 10. */
 					if(window.sessionStorage.getItem('test') == 'test')	{
 						jQuery.support.sessionStorage = true;
 						}
-						}
+					}
 				catch(e){jQuery.support.sessionStorage = false;}
-				catch(e){jQuery.support.sessionStorage = false;}
-//update jQuery.support with whether or not placeholder is supported.
-				jQuery.support.placeholder = false;
-				var test = document.createElement('input')
-				if('placeholder' in test) {jQuery.support.placeholder = true};
 
 //update jQuery.support with whether or not placeholder is supported.
 				jQuery.support.placeholder = false;
 				var test = document.createElement('input')
 				if('placeholder' in test) {jQuery.support.placeholder = true};
+
 				}
 			},
 		bindTemplateEvent : function(filterFunc, event, handler){
