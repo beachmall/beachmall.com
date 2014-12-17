@@ -1,0 +1,3210 @@
+<!--
+the homepageTemplate template is loaded into mainContentArea by default when the application loads
+-->
+<<<<<<< HEAD
+<div id='homepageTemplate' class='homeTemplate'>
+<!-- hardcoded for the time being. pages.json not getting homepage content for undetermined reason. 	
+	<span class="displayNone" data-tlc="bind $var '.%page.head_title'; if(is $var --null;){{bind $var '.page_title';}}; if(is $var --blank;){{bind $var '.pretty';}}; apply --attrib='data-seo-title';"></span>
+	<span class="displayNone" data-tlc="bind $var '.%page.meta_description'; if(is $var --null;){{bind $var '.%page.description';}}; if(is $var --null;){{set $var '';}}; apply --attrib='data-seo-desc';"></span>
+-->
+	<span class="displayNone" data-seo-title="Beach Chairs | Beach Chair Umbrella | Beach Cart | Cabanas & Gear"></span>
+	<span class="displayNone" data-seo-desc="Beach Chairs - Free Shipping & Easy Returns from our largest selection of folding beach chairs, beach cart, beach umbrella, patio umbrellas, beach gear & umbrella shelter accessories."></span>
+
+	<div class='floatingBar'>
+    	<div class="backToTop pointer" data-app-click="beachmall_begin|scrollToTop">&#187; BACK TO TOP</div>
+        <a class='recentlyViewed pointer' href="/recently_veiwed/"><span>Recently Viewed Item(s)&nbsp; </span><span class='numRecentlyViewed displayNone'>0</span><!--<span class='fontWhite recentCarat'> &#187 </span><span class='fontYellow recentViewItems'><a class='bindByAnchor' href='#!company?show=recent'> VIEW ITEM(S)</a></span>--></a>
+        <!-- <div class='cartIcon sprite pointer' onclick="myApp.ext.quickstart.u.showCartInModal({'templateID':'cartTemplate'});"><span class='cartItemCount'>0</span><p><span class='fontWhite'>&#187; </span><span class='fontYellow'>SHOPPING CART</span></p></div> modal cart -->
+        <a class='cartIcon sprite pointer' href="/cart/"><span class='cartItemCount'>0</span><span class="pSpan"><span class='fontWhite'>&#187; </span><span class='fontYellow'>SHOPPING CART</span></span></a>
+		<table class="nortonSecure" data-noton="move" title="Click to Verify - This site chose Symantec SSL for secure e-commerce and confidential communications.">
+			<tr>
+				<td data-noton="ins">
+					<script type="text/javascript" src="https://seal.verisign.com/getseal?host_name=www.beachmall.com&amp;size=XS&amp;use_flash=NO&amp;use_transparent=YES&amp;lang=en"></script><br />
+					<a href="http://www.symantec.com/verisign/ssl-certificates" target="_blank"  style="color:#000000; text-decoration:none; font:bold 7px verdana,sans-serif; letter-spacing:.5px; text-align:center; margin:0px; padding:0px; position:absolute; top:40px;">ABOUT SSL CERTIFICATES</a>
+				</td>
+			</tr>
+		</table>
+		<a class='checkoutButton' href="/checkout/">CHECK OUT</a>
+        <button class='floatingBarClose sprite' onclick="$('.floatingBar').hide(); return false;"></button>
+    </div>
+
+	<div class='overhang'>
+        <button class='overhangClose sprite' onclick="$('.overhang').hide(); return false;"></button>
+        <span>SUMMER IS HERE!</span>
+        <p>Insert small paragraph or snippet regarding a summer special 
+            or other featured deals or products for this overhanging ad.
+        </p>
+        <button class='overhangSpecialOfferButton'>VIEW SPECIAL OFFER</button>
+    </div>	
+
+	<div class='featuredCatWrapper'>
+		<div class='featuredContainer'>
+			<div class='bannerContainer floatLeft'>
+				<div class='main loadingBG'></div>
+			</div>
+			
+			<div class='newArrivalsCarouselRight floatLeft loadingBG'>
+				<a class="carouselButton new2CarouselPrev carouselButtonPrev displayNone" href="#">prev</a>
+				<a class="carouselButton new2CarouselNext carouselButtonNext displayNone" href="#">next</a>
+				<div class="newArrivalUL" data-list='$app-site_home-page-new-item' data-carousel='runHomeSmallCarousel' data-templateid='miniHomeCarousel'>
+					<!-- this element filled by ext.beachmall_store.u.loadProductsAsList() using the above data attribs. -->
+				</div>
+<!-- old way:	<ul data-tlc="bind $var '.$app-site_home-page-new-item.@products'; store_prodlist#productlist  --hideSummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplateCustom'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchNewArrivals2"></ul> -->
+			</div>
+		</div>
+    
+		<div class='homepageCategories'>
+			<div class='additionalHompageCatsContainer'>
+				<a href="/beach-carts/" class="additionalHompageCats floatLeft pointer">
+					<div class='addCatArrow sprite floatRight'></div>
+					<span>SHOP</span>
+					<span>BEACH CARTS</span>
+				</a>
+				<a href="/beach-tents-shelters/" class="additionalHompageCats floatLeft pointer">
+					<div class='addCatArrow sprite floatRight'></div>
+					<span>SHOP</span>
+					<span>BEACH TENTS</span>
+				</a>
+				<a href="/beach-bags-totes/" class="additionalHompageCats floatLeft pointer">
+					<div class='addCatArrow sprite floatRight'></div>
+					<span>SHOP</span>
+					<span>BEACH BAGS</span>
+				</a>
+				<a href="/shop-by-brand/" class="additionalHompageCats floatLeft pointer"> 
+				<!-- <a href="#!category/.test" class="additionalHompageCats floatLeft pointer"> 
+				<div class='additionalHompageCats floatLeft pointer' onClick="return showContent('category',{'navcat':'.beach-chairs.beach-gear'});">  -->
+					<div class='addCatArrow sprite floatRight'></div>
+					<span>SHOP</span>
+					<span>BY BRAND</span>
+				</a>
+			</div>
+<!-- THESE WILL NEED AN ALT IF EVER USED			
+<div class='tempCatImages'>
+	<img class='floatLeft' src='images/shop_beach-accessories_160x105.jpg' />
+	<img class='floatLeft' src='images/shop-beach-chairs_160x105.jpg' />
+	<img class='floatLeft' src='images/shop-recreation_160x105.jpg' />
+	<img class='floatLeft' src='images/shop-umbrellas_160x105.jpg' />
+	<img class='floatLeft' src='images/shop_beachwear_160x105.jpg' />
+</div>
+-->
+		<ul data-tlc="bind $var '.@subcategoryDetail'; store_navcats#categorylist  --detail='max' --templateid='categoryListHomeTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin"></ul>
+		</div>
+	</div>
+    
+    <div class='CarouselContainer featuredProductsCarouselContainer'>
+    	<div class='carouselTitles yellowBkgrd'>
+        	<div class='carouselTitleTextContainer floatLeft'>FEATURED PRODUCTS</div>
+			 <a href="/viewallfeatured/" class='carouselLinkContainer floatRight featWidth pointer'>View All Featured Products</a> 
+			<!-- <a onclick="return showContent('category',{'navcat':'.beach-umbrellas-shelter.beach-umbrella', 'templateID':'categoryTemplateHomepageFeatured'});" class='carouselLinkContainer floatRight featWidth pointer'>View All Featured Products</a> -->
+            <div class='carouselArrowContainer floatRight sprite'></div>
+        </div>
+        <div class='Carousel loadingBG'>
+        	<a class="carouselButtonDkBlue featCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
+			<a class="carouselButtonDkBlue featCarouselNext carouselButtonDkBlueNext" href="#">next</a>
+			<div class="featuredUL" data-list='$app-site_home-page-featured' data-carousel='runHomeFeaturedCarousel' data-templateid='featuredHomeCarousel'>
+				<!-- this element filled by ext.beachmall_store.u.loadProductsAsList() using the above data attribs. -->
+			</div>
+        	<!--non filtered search: <ul id='homeProdSearchFeatured' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"or":{"filters":[{"term":{"tags":"IS_USER4"}},{"term":{"tags":"IS_COLORFUL"}},{"term":{"tags":"IS_USER5"}},{"term":{"user:prod_promo":"IS_USER4"}}]}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul> 
+	old way:<ul data-tlc="bind $var '.$app-site_home-page-featured.@products'; store_prodlist#productlist  --hideSummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchFeatured"></ul> -->
+		</div>
+        <div class='standardCarouselPagenation featCarPagenation'></div>
+    </div>
+    
+    <div class='CarouselContainer bestSellersCarouselContainer'>
+    	<div class='carouselTitles'>
+			<div class='carouselTitleTextContainer floatLeft'>BEST SELLERS</div>
+			<a href="/viewallbestseller/" class='carouselLinkContainer floatRight featWidth pointer'>View Best Sellers</a>
+			<!-- <a onclick="return showContent('category',{'navcat':'.beach-umbrellas-shelter.beach-umbrella', 'templateID':'categoryTemplateHomepageBestSeller'});" class="bindByAnchor"></a>  href="#!homepagebestseller" -->
+			<div class='carouselArrowContainer floatRight sprite'></div>
+        </div>
+        <div class='Carousel loadingBG'>
+        	<a class="carouselButtonDkBlue bestCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
+			<a class="carouselButtonDkBlue bestCarouselNext carouselButtonDkBlueNext" href="#">next</a>
+			<div class="bestUL" data-list='$app-site_home-page-best-sellers' data-carousel='runHomeBestCarousel' data-templateid='bestHomeCarousel'>
+				<!-- this element filled by ext.beachmall_store.u.loadProductsAsList() using the above data attribs. -->
+			</div>
+			<!--non filtered search: <ul id='homeProdSearchBestSellers' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"term":{"tags":"IS_BESTSELLER"}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul> 
+	old way:<ul data-tlc="bind $var '.$app-site_home-page-best-sellers.@products'; store_prodlist#productlist  --hideSummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchBestSellers"></ul> -->
+		</div>																																																	
+        <div class='standardCarouselPagenation bestCarPagenation'></div>
+    </div>
+	
+    <div class='categoryDescriptionContainer'>
+    	<div class='catDescStd catDescStd1 floatLeft'>
+        	<h1>Beach Gear</h1>
+            <span>
+            	We offer every kind of beach gear you need for fun in the sun at the beach this summer. 
+                Browse our beach products by category or by brand, if you are looking for a specific item or 
+                brand name. We offer products in categories such as 
+				<a href='/beach-chairs/' title="beach chair">beach chair</a>, 
+				<a href="/beach-accessories/" title="beach accessories">beach accessories</a>, 
+				outdoor umbrellas, toys and recreation, 
+				<a href="/beach-umbrellas/" class='pointer' title="beach umbrellas">beach umbrellas</a> and 
+				<a href="/beach-tents-shelters/" class='pointer' title="beach shelters">beach shelters</a>. 
+				Our inventory is so extensive, you are sure to find the perfect items for your summer of fun and 
+				relaxation with your family in the shade. Many items are multipurpose designed like the 
+				<a href="/beach-cabanas/" class='pointer' title="beach cabana">beach cabana</a>
+				or beach tent can be used for camping and beach chaise for the pool. 
+            </span>
+        </div>
+        <div class='catDescStd catDescStd2 floatLeft'>
+        	<h1>Beach Umbrellas</h1>
+            <span>
+            	What trip to the beach would be the same without your favorite beach accessories? We have a 
+                large selection of picnic baskets, beach bags and totes to take along your favorite foods. 
+                Enjoy fun in the water with a new 
+				<a href="/bodyboards/" class='pointer' title="skimboard">skimboard</a> or 
+				<a href="/skimboards/" class='pointer' title="bodyboard">bodyboard</a>. 
+				Carry all that gear to the beach in a new 
+				<a href="/beach-carts/" class='pointer' title="beach cart">beach cart</a>. 
+				We have several styles, including the popular Wonder wheeler beach cart and Wheeleez Beach Carts 
+				at great prices. Beach Umbrella with high UPF is recommended. 
+            </span>
+        </div>
+         <div class='catDescStd catDescStd3 floatLeft'>
+        	<h1>Beach Carts</h1>
+            <span>
+            	You will like our products and our prices. We offer the lowest prices of any online retailer. 
+                If you find the same product within 14 days at a lower price in stock with another internet 
+                retailer, we will match the price. We accept credit card payments, Google Checkout and PayPal 
+                for your order. We use Secure Sockets Layer (SSL) software to encrypt your personal and credit 
+                card information, so you can shop in confidence with Beach Mall. 
+            </span>
+         </div>
+         <div class='catDescStd catDescStd4 floatLeft'>
+        	<h1>Beach Chairs</h1>
+            <span>
+            	We carry all the popular beach chairs brands, including the Rio Beach Chairs, 
+				<a href="/lafuma/" class='pointer' title="Lafuma Chairs">Lafuma Chairs</a>, 
+                Wearever and Galtech. Whether you are looking for 
+				<a href="/backpack-chairs/" class='pointer' title="beach chairs">backpack chair</a> 
+				<a href="/low-seat-beach-chairs/" class='pointer' title="backpack chair">beach chairs</a>, 
+				beach lounge chairs, canopy chair or beach hammock to relax and nap in the sun, you will find them here.
+            </span>
+         </div>
+         <div class='catDescStd catDescNonStd floatLeft'>
+        	<h1>Beach Products & Accessories Supplies</h1>
+            <span>
+            	We have the largest selection of beach products in the largest variety of categories on the 
+                web for fun in the sun at the beach this summer by offering the most compelling combination 
+                of selection, value, service and convenience. 
+            </span>
+        </div>        
+    </div>
+</div> <!-- END HOMEPAGE TEMPLATE -->	
+
+
+<div id="miniHomeCarousel">
+	<!-- <ul data-bind="var: category(@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: productListTemplate; hide_summary:1;" class='listStyleNone fluidList clearfix noPadOrMargin productList4'></ul> -->
+	<ul data-tlc="bind $var '.@products'; store_prodlist#productlist  --hideSummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplateCustom'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchNewArrivals2"></ul>
+</div>
+
+<div id="bestHomeCarousel">
+	<!-- <ul data-tlc="bind $var '.$app-site_home-page-best-sellers.@products'; store_prodlist#productlist  --hideSummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchBestSellers"></ul> -->
+	<ul data-tlc="bind $var '.@products'; store_prodlist#productlist  --hideSummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchBestSellers"></ul>
+</div>
+
+<div id="featuredHomeCarousel">
+	<!-- <ul data-tlc="bind $var '.$app-site_home-page-featured.@products'; store_prodlist#productlist  --hideSummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchFeatured"></ul> -->
+	<ul data-tlc="bind $var '.@products'; store_prodlist#productlist  --hideSummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchFeatured"></ul>
+</div>
+
+
+<ul>
+	<li id="dropdownAnchorListTemplate">
+		<a data-tlc="bind $seo '.pretty'; bind $var '.'; store_routing#seoanchor --type='category' --seo='$seo'; apply --attrib='href';" class='stockImageContainer'></a>
+		<div data-tlc="bind $var '.path'; beachmall_begin#hideifexlcuded;" data-exclude='bestseller'>
+			<a data-tlc="bind $seo '.pretty'; bind $var '.'; beachmall_begin#dropdownseoanchor --type='searchcategory' --searchtype='bestsellers' --seo='$seo'; apply --attrib='href';" class='catSearchHomeDropdown'>Best Selling Items</a>
+		</div>
+		<div data-tlc="bind $var '.path'; beachmall_begin#hideifexlcuded;" data-exclude='featured'>
+			<a data-tlc="bind $seo '.pretty'; bind $var '.'; beachmall_begin#dropdownseoanchor --type='searchcategory' --searchtype='featured' --seo='$seo'; apply --attrib='href';" class='catSearchHomeDropdown'>Featured Items</a>
+		</div>
+		<div data-tlc="bind $var '.path'; beachmall_begin#hideifexlcuded;" data-exclude='clearance'>
+			<a data-tlc="bind $seo '.pretty'; bind $var '.'; beachmall_begin#dropdownseoanchor --type='searchcategory' --searchtype='clearance' --seo='$seo'; apply --attrib='href';" class='catSearchHomeDropdown'>Clearance Items</a>
+		</div>
+		<a data-tlc="bind $seo '.pretty'; bind $var '.'; store_routing#seoanchor --type='category' --seo='$seo'; apply --attrib='href';" class='catSearchHomeDropdown'>See All Items</a>									
+	</li>
+</ul>
+=======
+<div id="homepageTemplate" class="homeTemplate">
+	
+	<ul data-tlc="bind $var '.@subcategoryDetail'; store_navcats#categorylist  --detail='max' --templateid='categoryListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin categoryList"></ul>
+
+	<ul data-tlc="bind $var '.@products'; store_prodlist#productlist  --hideSummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin productList"></ul>
+
+	<p data-tlc="bind $var '.%page.description'; if (is $var --notblank;) {{ render --wiki='quickstart'; apply --append;}};"></p>
+
+	<ul data-tlc="quickstart#searchbytag --tag='IS_BESTSELLER' --title='Best Sellers' --size='8' --templateid='productListTemplateResultsNoPreview';" class='listStyleNone fluidList clearfix noPadOrMargin productList'></ul>
+
+	<!--
+	<ul data-tlc="bind $var '.$listName.@products'; store_prodlist#productlist  --hideSummary='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin productList"></ul>
+	-->
+</div>
+
+
+
+>>>>>>> upstream/201411
+
+
+
+
+
+
+
+<!--
+used to organize content when a category is clicked.
+each of the 'sections' are used to load another template. don't change the id.
+don't modify the 'data-templateid' unless you are changing template names and updating everywhere appropriate.
+-->
+<<<<<<< HEAD
+	
+<div id="categoryTemplate" class="categoryTemplate">
+	<span class="displayNone" data-tlc="bind $title '.%page.page_title'; if(is $title --null;){{bind $title '.page_title';}}; if(is $title --blank;){{bind $title '.pretty';}}; bind $parent '.'; store_routing#seoanchor  --seo=$title; apply --attrib='data-canonical';"></span>
+	<span class="displayNone" data-tlc="bind $var '.%page.head_title'; if(is $var --null;){{bind $var '.page_title';}}; if(is $var --blank;){{bind $var '.pretty';}}; apply --attrib='data-seo-title';"></span>
+	<span class="displayNone" data-tlc="bind $var '.%page.meta_description'; if(is $var --null;){{bind $var '.%page.description';}}; if(is $var --null;){{bind $var '.%page.description2';}}; if(is $var --null;){{set $var '';}}; apply --attrib='data-seo-desc';"></span>
+
+	<ul data-tlc="bind $var '.path'; store_navcats#breadcrumb  --templateid='breadcrumbTemplate'  --legacy;" class="breadcrumb clearfix noPadOrMargin fluidList"></ul>
+
+	<h2 data-tlc="bind $var '.%page.header'; if (is $var --notblank;) {{apply --append;}};" class="blah5"></h2>
+	
+	<div class="catContainer">
+		<ul data-tlc="bind $var '.@subcategoryDetail'; store_navcats#categorylist  --detail='max' --templateid='categoryListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin categoryList"></ul><!-- outputs a list of subcategories -->
+	</div>
+ 
+	<table>
+		<tbody><tr>
+			<td class="filterset">  
+				<div class="filterBox floatLeft">
+					<div class="filterContainer clearfix"></div>   
+					<div class="clear"></div>
+				</div>
+			</td>
+			<td class="productColumn">
+				<div class="countableProdList">
+<!-- original product list<ul data-app-role='productList' data-bind="var: category(@products); format: productList; editor: finder; extension: store_prodlist; loadsTemplate: productListTemplate; withReviews:1; items_per_page: 24;" class='listStyleNone fluidList clearfix noPadOrMargin prodMargin productList'>-->
+					<ul data-tlc="bind $var '.@products'; prodlist_infinite#infiniteproductlist  --withreviews='1' --withInventory='1' --withVariations='1' --itemsperpage='12' --templateid='productListTemplate'  --legacy;" data-app-role="productList" class="listStyleNone fluidList clearfix noPadOrMargin prodMargin productList">
+						<li class="buyerGuideCont">
+							<!-- Removed until better placement can be acheived in future deploy <div class='catTitle floatLeft' data-bind='var: category(pretty); format:catText; extension: myRIA;'></div> -->
+							<a class="buyerGuides floatLeft pointer" href="/buyer-guides/"><h4>VIEW BUYER GUIDES</h4><span>Learn how to shop for these items</span></a>
+							<div class="photosOnly">
+								<span>Photos Only:</span>
+								<button onclick="myApp.ext.beachmall_lists.a.toggleMyClass('photophy',$(this),$(this).parent().parent().parent(),'OFF','ON');">OFF</button>
+							</div>
+						</li>
+					</ul><!-- outputs the product list -->
+				</div>
+				<div class="catDescription">
+					<p data-tlc="bind $var '.%page.description'; if (is $var --notblank;) {{render --wiki='quickstart'; apply --append;}};"></p>
+				</div>
+				<p data-tlc="bind $var '.%page.description2'; if (is $var --notblank;) {{render --wiki='quickstart'; apply --append;}};"></p>
+			</td>
+		</tr></tbody>
+	</table>
+</div>
+
+
+<div id='categoryTemplateBrands' class='categoryTemplate' data-app-role='categoryPage'>
+	<span class="displayNone" data-tlc="store_routing#seoanchor --seo='1' apply --attrib='data-routing-hash';"></span>
+	<span class="displayNone" data-tlc="bind $var '.%page.head_title'; if(is $var --null;){{bind $var '.page_title';}}; if(is $var --blank;){{bind $var '.pretty';}}; apply --attrib='data-seo-title';"></span>
+	<span class="displayNone" data-tlc="bind $var '.%page.meta_description'; if(is $var --null;){{bind $var '.%page.description';}}; if(is $var --null;){{set $var '';}}; apply --attrib='data-seo-desc';"></span>
+ 
+	<div data-tlc="bind $var '.%page.coupon_code'; if(is $var --notnull;) {{ apply --show; }}; if(is $var --blank;) {{apply --hide;}};" class="brandsPromoBanner floatLeft displayNone">
+		<div>SPECIAL OFFER!</div>
+		<div><span>TAKE AN EXTRA</span><br>10% OFF ALL <span data-tlc="bind $var '.%page.mfg'; if (is $var --notblank;) {{apply --append;}};"></span> GEAR</div>
+		<div>PROMO CODE: <h3 data-tlc="bind $var '.%page.coupon_code'; if (is $var --notblank;) {{apply --append;}};"></h3> <span>See Details</span></div>
+	</div>
+	
+	<ul data-tlc="bind $var '.id'; store_navcats#breadcrumb  --templateid='breadcrumbTemplate'  --legacy;" class="breadcrumb clearfix noPadOrMargin fluidList"></ul>
+		
+		
+	<div data-tlc="bind $var '.path'; if(is $var --eq='.beach-chairs.beach-gear';) {{ apply --hide; }}; ">
+		<div class='brandsCatContainer'> 
+			
+			<ul>
+				<li class="brandsHeader listStyleNone">
+					<img data-tlc="bind $var '.%page.banner1'; if(is $var --notblank;) {{apply --img --media=$var --height='250' --width='500' --bgcolor=#ffffff --replace;}};" src="images/blank.gif" alt="" height='250' width='500' data-apptimize="embed">
+					<ul>
+				   <!-- <p data-bind="var: category(%page.description2); format:wiki; wikiFormats:myRIA; editor: textarea;"></p> -->
+						<li><span data-tlc="bind $var '.%page.header'; if (is $var --notblank;) {{apply --append;}};"></span>
+						<br><div data-tlc="bind $var '.%page.description2'; if (is $var --notblank;) {{render --wiki='undefined'; apply --append;}};"></div>
+						</li>
+						<!--<li><img data-bind="var: category(%page.mfg_logo); format: banner; editor: banner; height:250; width:750; extension: myRIA;" /><BR><BR><BR>AUTHORIZED DEALER</li>-->
+						<li><img data-tlc="bind $var '.%meta.CAT_THUMB'; if (is $var --notblank;) {{ apply --img --media=$var --width=140 --height=90 --bgcolor='#ffffff' --replace;}};" src="images/blank.gif" alt="" height="90" width="140" data-apptimize="embed">AUTHORIZED DEALER</li>
+					</ul>
+				</li>
+			</ul>
+			
+			<div class='brandsTabs'>
+				<ul class='tabs' data-tlc="bind $var '.path'; if(is $var --notblank;){{apply --attrib='data-brand-path'}};">
+					<!-- The brandsTabs will add/remove classes to change which products appear in the list (via href attrib). Standard anytabs functionality isn't used here (although the styling it affords is) -->
+					<li class='tabViewAll' data-app-click="beachmall_lists|brandTabSwitch"><a href="#viewAllProductsTab">View All</a></li>
+					<li class='tabFeatured displayNone' data-app-click="beachmall_lists|brandTabSwitch"><a href="#featuredProdsTab">Featured</a></li>
+					<li class='tabBest displayNone' data-app-click="beachmall_lists|brandTabSwitch"><a href="#bestSellersTab">Best Sellers</a></li>
+				</ul>
+	
+				<div class='viewAllProductsTabContainer'>
+					<div class='CarouselContainer bestSellersCarouselContainer'>
+						<div class='carouselTitles'>
+							<!-- <div class='pointer' onClick="showContent('category',{'navcat':$(this).closest('[data-catsafeid]').data('catsafeid'),'templateID':'categoryTemplateBrandsViewAll'});">
+								<div class='brandCarouselLinkContainer viewAllProductsTab floatRight' >View All</div>
+								<div class='carouselArrowContainer floatRight sprite'></div>
+							</div>no longer in a carousel view, may not need this any longer -->
+						</div>
+						<div class='Carousel'>
+							<!-- <a class="carouselButtonDkBlue bestCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
+							<a class="carouselButtonDkBlue bestCarouselNext carouselButtonDkBlueNext" href="#">next</a> -->
+							<ul data-tlc="bind $var '.@products'; prodlist_infinite#infiniteproductlist  --withreviews='1' --withInventory='1' --withVariations='1' --itemsperpage='4' --hideSummary='true' --templateid='productListTemplate'  --legacy;" data-app-role="productList" data-brand-filter="1" class="listStyleNone fluidList clearfix prodMargin brandsProductList"></ul>
+							<div class="displayNone noBrandsItems" style='padding:20px;text-align:center;'>Sorry, there are no Items to show at this time. Check back later!</div>
+						</div>
+						<!-- <div class='standardCarouselPagenation'></div> -->
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	
+	<div class='brandsTopCatContainer'>
+		<ul data-tlc="bind $var '.@subcategoryDetail'; store_navcats#categorylist  --detail='max' --templateid='brandsCategoryListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin categoryList"></ul><!-- outputs a list of subcategories -->
+		<!-- <ul data-bind="var: category(@subcategoryDetail); format: categoryList; extension: store_navcats; loadsTemplate: categoryListTemplate; detail:max;" class='listStyleNone fluidList clearfix noPadOrMargin categoryList'></ul> outputs a list of subcategories -->
+	</div>
+
+</div> <!-- //categoryTemplateBrands -->
+
+
+<div id='categoryTemplateHomepageFeatured' class='categoryTemplate'>
+	<!-- <span class="displayNone" data-tlc="store_routing#seoanchor --seo='1' apply --attrib='data-routing-hash';"></span> -->
+	<span class="displayNone" data-routing-hash="/viewallfeatured/"></span>
+	<span class="displayNone" data-tlc="bind $var '.%page.head_title'; if(is $var --null;){{bind $var '.page_title';}}; if(is $var --blank;){{bind $var '.pretty';}}; apply --attrib='data-seo-title';"></span>
+	<span class="displayNone" data-tlc="bind $var '.%page.meta_description'; if(is $var --null;){{bind $var '.%page.description';}}; if(is $var --null;){{set $var '';}}; apply --attrib='data-seo-desc';"></span>
+	<ul data-tlc="bind $var '.@products'; prodlist_infinite#infiniteproductlist  --withreviews='1' --withInventory='1' --withVariations='1' --itemsperpage='12' --templateid='productListTemplate'  --legacy;" data-app-role="productList" class="listStyleNone fluidList clearfix noPadOrMargin prodMargin productList"></ul>
+</div>
+
+<div id='categoryTemplateHomepageBestseller' class='categoryTemplate'>
+	<!-- <span class="displayNone" data-tlc="store_routing#seoanchor --seo='1' apply --attrib='data-routing-hash';"></span> -->
+	<span class="displayNone" data-routing-hash="/viewallbestseller/"></span>
+	<span class="displayNone" data-tlc="bind $var '.%page.head_title'; if(is $var --null;){{bind $var '.page_title';}}; if(is $var --blank;){{bind $var '.pretty';}}; apply --attrib='data-seo-title';"></span>
+	<span class="displayNone" data-tlc="bind $var '.%page.meta_description'; if(is $var --null;){{bind $var '.%page.description';}}; if(is $var --null;){{set $var '';}}; apply --attrib='data-seo-desc';"></span>
+	<ul data-tlc="bind $var '.@products'; prodlist_infinite#infiniteproductlist  --withreviews='1' --withInventory='1' --withVariations='1' --itemsperpage='12' --templateid='productListTemplate'  --legacy;" data-app-role="productList" class="listStyleNone fluidList clearfix noPadOrMargin prodMargin productList"></ul>
+</div>
+
+
+<div id='siteMapTemplate' class='categoryTemplate'>
+	<span class="displayNone" data-routing-hash="/site-map/"></span>
+	<span class="displayNone" data-seo-title="Site Map "></span>
+	<span class="displayNone" data-seo-desc="BeachMall.com supplies the largest selection of beach products and accessories. Visit our sitemap for quick browsing through our website."></span>
+
+	<table class="categoryTemplateSiteMapTable"> 
+		<tr> 
+			<td colspan="4"> </td> 
+		</tr> 
+		<tr> 
+			<td class="siteMapThree"> </td> 
+			<td colspan="3"><a href="/"><strong>Home</strong></a></td> 
+		</tr> 
+		<tr> 
+			<td> </td> 
+			<td class="siteMapFour"> </td> 
+			<td colspan="2"><a href="/about_us/">About Us </a></td> 
+		</tr> 
+		<tr> 
+			<td> </td> 
+			<td> </td> 
+			<td colspan="2"><a href="/contact_us/" data-app-click="beachmall_begin|resetcontactpid">Contact Us </a></td> 
+		</tr> 
+		<tr> 
+			<td> </td> 
+			<td> </td> 
+			<td colspan="2"><a href="/frequently_asked_questions/">FAQ</a></td> 
+		</tr> 
+		<tr> 
+			<td> </td> 
+			<td> </td> 
+			<td colspan="2"><a href="/contact_us/" data-app-click="beachmall_begin|resetcontactpid">Wholesale </a></td> 
+		</tr> 
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td>
+			<td colspan="2"><a href="/affiliates/">Affiliates </a></td> 
+		</tr> 
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td> 
+			<td colspan="2"><a href="/payment_policy/">Payment Policy</a></td> 
+		</tr> 
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td> 
+			<td colspan="2"><a href="/privacy_policy/">Privacy Policy</a></td> 
+		</tr> 
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td> 
+			<td colspan="2"><a href="/return_policy/">Return Policy</a></td> 
+		</tr> 
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td> 
+			<td colspan="2"><a href="/shipping_policy/">Shipping Policy</a></td> 
+		</tr> 
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td> 
+			<td colspan="2"><a href="/cart/">Shopping Cart</a></td> 
+		</tr> 
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td> 
+			<td colspan="2"><a href="/beach-chairs/"><strong>Beach Chairs</strong></a></td> 
+		</tr> 
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td> 
+			<td class="siteMapSix"> </td>
+			<td class="siteMapEightySeven"><a href="/adirondack/">Adirondack</a></td> 
+		</tr> 
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td> 
+			<td class="siteMapSix"> </td> 
+			<td class="siteMapEightySeven"><a href="/backpack-chairs/">BackPack Beach Chairs</a></td> 
+		</tr> 
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="/beach-chaises/">Beach Chaises</a></td> 
+		</tr>
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="/beach-pool-lounges/">Beach And Pool Lounges</a></td> 
+		</tr> 
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="/canopy-beach-chairs/">Canopy Beach Chairs</a></td> 
+		</tr> 
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="/cup-holder-chairs/">Cup Holder Beach Chairs</a></td> 
+		</tr> 
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="/high-seat-beach-chairs/">High Seat Beach Chairs</a></td> 
+		</tr> 
+		<!--MARK THIS CAT NOT IN NAVIGATION
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="/Cup-Holder-Chairs/c/.beach-chair.beach-chairs">Kids Chairs</a></td> 
+		</tr> 
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="/low-seat-beach-chairs">Sand Chairs</a></td> 
+		</tr> 
+		-->
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="/low-seat-beach-chairs/">Low Seat Beach Chairs</a></td> 
+		</tr> 
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="padded-beach-chairs">Folding Beach Chairs</a></td> 
+		</tr> 
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="/lafuma/">Premium Chairs</a></td> 
+		</tr> 
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="/wooden-beach-chairs/">Wooden Beach Chairs</a></td> 
+		</tr> 
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td> 
+			<td colspan="2"><a href="/beach-accessories/"><strong>Beach Accessories</strong></a></td> 
+		</tr> 
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="/beach-bags-totes/">Beach Bags Totes</a></td> 
+		</tr> 
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="/beach-carts/">Beach Carts</a></td> 
+		</tr>
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="/beach-towels-blankets/">Beach Towels</a></td> 
+		</tr>
+		<tr>
+			<td class="siteMapHight"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="/coolers/">Coolers</a></td> 
+		</tr>
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="/tailgating/">Tailgating</a></td> 
+		</tr>
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="/picnic-baskets/">Picnic Baskets</a></td> 
+		</tr> 
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td> 
+			<td colspan="2"><a href="/beach-wear/"><strong>BeachWear</strong></a></td> 
+		</tr>
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="/summer-hats/">Beach Hats</a></td> 
+		</tr> 
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="/beach-pool-apparels/">Beach Swimwear</a></td> 
+		</tr>
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="/rash-guards/">Rashguards</a></td> 
+		</tr> 
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="/girls-beach-wear/">Girls Beachwear</a></td> 
+		</tr> 
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="/kids-swim-wear/">Kids Swimwear</a></td> 
+		</tr> 
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="/babies-swim-wear/">Babies Swimwear</a></td> 
+		</tr> 
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="/board-shorts/">Board Shorts</a></td> 
+		</tr> 
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td> 
+			<td colspan="2"><a href="/recreation/"><strong>Beach Recreation</strong></a></td>
+		</tr> 
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td> 
+			<td> </td>
+			<td><a href="/bodyboards/">BodyBoards </a></td> 
+		</tr>
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="/pool-floats/">Pool Floats </a></td> 
+		</tr> 
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td>
+			<td> </td> 
+			<td><a href="/skimboards/">SkimBoards</a></td> 
+		</tr> 
+		<!--MARK THIS CAT NOT IN NAVIGATION
+		<tr>
+			<td class="siteMapHight"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="/category?navcat=.beach-sports.inflatables">Pool Inflatables</a></td> 
+		</tr> 
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="/category?navcat=.beach-sports.water-towables">Water Towables</a></td> 
+		</tr> 
+		-->
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td> 
+			<td colspan="2"><a href="/umbrellas-shelters/"><strong>Beach Umbrellas And Beach Shelters</strong></a></td> 
+		</tr> 
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="/beach-umbrellas/">Beach Umbrellas</a></td> 
+		</tr> 
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td>
+			<td> </td> 
+			<td><a href="/umbrella-accessories/">Umbrella Stands and Bases</a></td> 
+		</tr> 
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="/market-patio-umbrellas/">Outdoor Umbrellas</a></td> 
+		</tr> 
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td>
+			<td> </td> 
+			<td><a href="/beach-tents-shelters/">Beach Tents </a></td> 
+		</tr> 
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td> 
+			<td> </td> 
+			<td><a href="/beach-cabanas/">Beach Cabanas</a></td> 
+		</tr> 
+		<tr> 
+			<td class="siteMapHight"> </td> 
+			<td> </td> 
+			<td colspan="2"><a href="/directory/"><strong>External Directory</strong></a></td> 
+		</tr>
+	</table>
+</div>
+
+
+<div id='createAccountTemplate' class="textContentArea">
+	<p class='marginBottom appMessaging'></p>
+	<div class="creatAccount">
+		<div class="gotAccountInline"> 
+			<h1>WELCOME BACK</h1>
+			<!-- Third parameter is id of message destination -->
+			<form action='#' data-app-submit='quickstart|accountLoginSubmit'> 
+				<p class='marginBottom loginMessaging'></p>
+				<input type='hidden' name='method' value='unsecure'>
+				<input type='hidden' name='loginCallbackinline' value=''><!-- used to save a callback action in -->
+				<fieldset>
+					<input type='email' class='zform_textbox zform_email' required='required' name='login' value='' size='39' placeholder='E-mail address'>
+					<input type='password' class='zform_textbox zform_password' required='required' name='password' value='' size='39' placeholder='Password'>
+					<input type='submit' value='SIGN IN' class='applyButton'>
+				</fieldset>
+			</form>
+			<div class='marginBottom recoverPasswordContainer'>
+				<div class='appMessaging recoverPasswordMessaging'></div>
+				<form action='#' data-app-submit='quickstart|accountPasswordRecoverSubmit'>
+					<fieldset>
+						<legend data-app-click="beachmall_begin|togglerecover">Recover Password</legend>
+						<div data-slide='toggle'>
+							<div class='marginBottom'>
+								<label>
+									<span>Enter your e-mail address:</span>
+									<input type='text' name='login' required='required' size='25'>
+								</label>
+							</div>
+							<div><input type='submit' class='applyButton' value='Email Password to Me'></div>
+						</div>
+					</fieldset>
+				</form>
+			</div><!-- /recoverPasswordContainer -->
+		</div>
+		<div class="Account">
+			<form action='#' class='inputsAsBreaks'  data-app-submit="beachmall_acctcreate|handleapplogincreate">
+			<!-- <form action='#' submit="return false;" class='inputsAsBreaks'> For testing form to prevent reload-->
+				<input type="hidden" name="_script" value="beachmall"/>
+				<h1>First Time With Us?</h1><input type='hidden' name='form' value='wholesale' />
+				<div class="fieldM"><span class="field">First Name</span> <input name='firstname' type='text' size='30' class='textfname' placeholder='First Name' required='required' />
+				<b>Last Name</b> <input name='lastname' type='text' size='30' placeholder='Last Name' required='required' class='textflast'/></div>
+				<!--<div class="passwordInput"><b>Password</b><input name="password" size="30" placeholder="Password" required /></div>-->
+				<div class="fieldM"><span class="field">Address</span> <input name='address1' type='text' size='30' placeholder='Address' class='textfadd' required='required' /> 
+				<input name='address2' type='text' size='30' placeholder='Address (Line 2)' class='textfadd1'/></div>
+				<div class="fieldM stateFix"><span class="field">City</span> <input name='city' type='text' size='30' placeholder='City' required='required' class='textfcity'/> 	
+					<b>State</b> 
+					<div class='selectWrapperS'>
+						<select name='region' class='textfstate sprite'>
+							<option value='AL'>AL</option>
+							<option value='AK'>AK</option>
+							<option value='AZ'>AZ</option>
+							<option value='AR'>AR</option>
+							<option value='CA'>CA</option>
+							<option value='CO'>CO</option>
+							<option value='CT'>CT</option>
+							<option value='DE'>DE</option>
+							<option value='DC'>DC</option>
+							<option value='FL'>FL</option>
+							<option value='GA'>GA</option>
+							<option value='HI'>HI</option>
+							<option value='ID'>ID</option>
+							<option value='IL'>IL</option>
+							<option value='IN'>IN</option>
+							<option value='IA'>IA</option>
+							<option value='KS'>KS</option>
+							<option value='KY'>KY</option>
+							<option value='LA'>LA</option>
+							<option value='ME'>ME</option>
+							<option value='MD'>MD</option>
+							<option value='MA'>MA</option>
+							<option value='MI'>MI</option>
+							<option value='MN'>MN</option>
+							<option value='MS'>MS</option>
+							<option value='MO'>MO</option>
+							<option value='MT'>MT</option>
+							<option value='NE'>NE</option>
+							<option value='NV'>NV</option>
+							<option value='NH'>NH</option>
+							<option value='NJ'>NJ</option>
+							<option value='NM'>NM</option>
+							<option value='NY'>NY</option>
+							<option value='NC'>NC</option>
+							<option value='ND'>ND</option>
+							<option value='OH'>OH</option>
+							<option value='OK'>OK</option>
+							<option value='OR'>OR</option>
+							<option value='PA'>PA</option>
+							<option value='RI'>RI</option>
+							<option value='SC'>SC</option>
+							<option value='SD'>SD</option>
+							<option value='TN'>TN</option>
+							<option value='TX'>TX</option>
+							<option value='UT'>UT</option>
+							<option value='VT'>VT</option>
+							<option value='VA'>VA</option>
+							<option value='WA'>WA</option>
+							<option value='WV'>WV</option>
+							<option value='WI'>WI</option>
+							<option value='WY'>WY</option>
+						</select>
+					</div>
+					<b>Zip</b> <input name='postal' type='text' size='10' placeholder='00000-0000' class='textfzip'/>
+				</div>
+				<div class="fieldM">
+					<div class="field selectField">Country</div> 
+					<div class='selectWrapperC'>
+						<select name="country" class="textfcountry sprite">
+							<option value='US'>United States of America</option>
+						</select>
+					</div>
+				</div>
+				<div class="fieldM"><span class="field">E-mail</span> <input name='email' type='email' size='30' class='textfmail' placeholder='E-mail Address' required='required' /> <b>Phone Number</b> <input name='phone' type='tel' size='12' placeholder='Phone Number' class='textfphone' required='required'/> </div>
+				<div class="fieldM"><span class="field">Password</span> <input name='pass' type='password' size='30' class='textfpass' placeholder='7-18 Characters' required='required' /> <b>Confirm Password</b> <input name='pass2' type='password' size='12' placeholder='Must be a match' class='textfphone' required='required'/> </div>
+				<input type="submit" value="Create an Account" class="createButton ui-button">
+				<!-- <button onclick="myApp.ext.beachmall_acctcreate.e.handleAppLoginCreate($(this).parent());" class="createButton ui-button">Create an Account</button> For testing form to prevent reload-->
+			</form>
+		</div>
+	</div>
+</div>
+=======
+<div id="categoryTemplate" class=" categoryTemplate">
+	<span class="displayNone" data-tlc="bind $title '.%page.page_title'; if(is $title --null;){{bind $title '.pretty';}}; if(is $title --blank;){{bind $title '.pretty';}}; bind $parent '.'; store_routing#seoanchor  --seo=$title; apply --attrib='data-canonical';"></span>
+	<span class="displayNone" data-tlc="bind $var '.%page.page_title'; if(is $var --null;){{bind $var '.pretty';}}; if(is $var --blank;){{bind $var '.pretty';}}; apply --attrib='data-seo-title';"></span>
+	<span class="displayNone" data-tlc="bind $var '.%page.meta_description'; if(is $var --null;){{bind $var '.%page.description2';}}; if(is $var --null;){{set $var '';}}; apply --attrib='data-seo-desc';"></span>
+	
+	<ul data-tlc="bind $var '.path'; store_navcats#breadcrumb  --templateid='breadcrumbTemplate'  --legacy;" class="breadcrumb clearfix noPadOrMargin fluidList"></ul>
+
+	<img data-tlc="bind $var '.%page.banner1'; quickstart#banner  --height='250' --width='750' --legacy;" src="images/blank.gif" alt="">
+
+	<h2 data-tlc="bind $var '.%page.header'; if (is $var --notblank;) {{apply --append;}};"></h2>
+
+	<p data-tlc="bind $var '.%page.description'; if (is $var --notblank;) {{ render --wiki='quickstart'; apply --append;}};"></p>
+
+	<ul data-tlc="bind $var '.@subcategoryDetail'; store_navcats#categorylist  --detail='max' --templateid='categoryListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin categoryList"></ul><!-- outputs a list of subcategories -->
+
+	<ul data-tlc="bind $var '.@products'; store_prodlist#productlist  --withReviews='1' --withInventory='1' --withVariations='1' --itemsperpage='25' --templateid='productListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin productList"></ul><!-- outputs the product list -->
+
+	<p data-tlc="bind $var '.%page.description2'; if (is $var --notblank;) {{ render --wiki='quickstart'; apply --append;}};"></p>
+
+
+</div>
+
+
+
+
+
+>>>>>>> upstream/201411
+
+
+<!-- used to display a category within a 'list', usually in the body of a category or the homepage. -->
+<ul>
+<<<<<<< HEAD
+<li id="categoryListTemplate" class='catListTemp'>
+=======
+<li id="categoryListTemplate">
+>>>>>>> upstream/201411
+	<a data-tlc="bind $title '.%page.page_title'; 
+					if(is $title --null;){{bind $title '.pretty';}};
+					if(is $title --blank;){{bind $title '.pretty';}}; 
+					bind $parent '.'; store_routing#seoanchor  --seo=$title; apply --attrib='href';" >
+<<<<<<< HEAD
+		<div class='prodHoverContainer'>
+			<div class='catBorderContainer'>
+				<div class="catName white2LGray"><span data-tlc="bind $var '.pretty'; quickstart#cattext  --legacy;"></span></div>
+			</div>
+			<div class="thumbContainer"><img data-tlc="bind $var '.%meta.CAT_THUMB'; if (is $var --notblank){{apply --img --media=$var --width=210 --height=210 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class="catThumb" alt="" height="210" width="210" data-apptimize="embed"></div>
+			<div class='moreDetailsSmall catDetails'>SHOP NOW</div>
+		</div>
+	</a>
+</li>
+
+
+<li id="brandsCategoryListTemplate" class="catListBrand">
+	<a data-tlc="bind $var '.'; store_routing#seoanchor --type='category' --seo; apply --attrib='href';" class="catTemplateContainer pointer">
+        <div class="brandThumbContainer"><img data-tlc="bind $var '.%meta.CAT_THUMB'; if (is $var --notblank;) {{ apply --img --media=$var --width=152 --height=152 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class="brandCatThumb" alt="" height="152" width="152" data-apptimize="embed"></div>
+		<div class="brandsCatName white2LGray"><span data-tlc="bind $var '.pretty'; quickstart#cattext  --legacy;"></span></div>
+=======
+		<div class="thumbContainer"><img data-tlc="bind $var '.%meta.CAT_THUMB'; if (is $var --notblank){{apply --img --media=$var --width=120 --height=120 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class="catThumb" alt="" height="120" width="120"></div>
+		<div class="catName white2LGray"><span data-tlc="bind $var '.pretty'; quickstart#cattext  --legacy;"></span></div>
+>>>>>>> upstream/201411
+	</a>
+</li>
+
+
+<li id="categoryListTemplateRootCats">
+	<a data-tlc="bind $var '.'; store_routing#seoanchor --type='category' --seo; apply --attrib='href';">
+		<div class="thumbContainer"><img data-tlc="bind $var '.%meta.CAT_THUMB'; if (is $var --notblank){{apply --img --media=$var --width=35 --height=35 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class="catThumb" alt="" height="35" width="35"></div>
+		<div class="catName"><span data-tlc="bind $var '.pretty'; quickstart#cattext  --legacy; apply --append;"></span></div>
+	</a>
+</li>
+
+</ul>
+
+
+
+<ul>
+<!--
+Used for the product in a product list (prodlist), usually in the body of a category or the homepage.
+the loadingBG class is removed (must be that classname) when the template is translated.
+remember to NOT put the button inside the href or two events will occur onclick.
+-->
+<<<<<<< HEAD
+<li id="productListTemplate" data-tlc="bind $var '.'; beachmall_lists#inventoryhide;" data-legacy-useparentdata="true" class="loadingBG  products product floatLeft quickViewContainer"> <!-- onmouseover="$('.quickView',$(this)).show();" onmouseout="$('.quickView').hide();"> -->
+	
+	<!-- <button class="floatRight pointer quickView" onclick="quickView('product',{'templateID':'productTemplateQuickView','pid':$(this).closest('[data-pid]').attr('data-pid')});">Quickview</button> -->
+	<button data-tlc="bind $var '.pid'; apply --attrib='data-pid';" data-app-click="beachmall_lists|quickview" class="floatRight pointer quickView">Quickview</button>
+	<div data-tlc="bind $var '.'; beachmall_lists#brandslistfilter;"></div>	
+    <div data-tlc="bind $var '.pid'; apply --attrib='data-pid';" class="productListSmall">
+		<a data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';">
+			<div class="prodHoverContainer prodShadowFix" data-beachmall-hoverClass="jsHover">
+				<div data-tlc="bind $var '.'; beachmall_lists#showprodmodifier;" class="prodModifierContainer sprite displayNone"></div> 
+				<div data-tlc="bind $var '.%attribs.user:prod_promo'; if(is $var --notblank;) {{ apply --show; }}; " class="starBurst sprite displayNone">
+					<div class="starBurstTextOuter">
+						<div data-tlc="bind $var '.%attribs.user:prod_promo'; if (is $var --notblank;) {{apply --append;}};" class="starBurstTextInner"></div>
+					</div>
+				</div>
+				<!-- CORNER SHADOW DIVS -->
+				<div class="topLeftCorner"></div><div class="leftTopCorner"></div><div class="topRightCorner"></div><div class="rightTopCorner"></div>
+				<div class="bottomLeftCorner"></div><div class="leftBottomCorner"></div><div class="bottomRightCorner"></div><div class="rightBottomCorner"></div> 
+				<!-- END CORNER SHADOWS -->
+				<div data-tlc="bind $var '.pid'; quickstart#addpicslider  --legacy;" class="prodThumbContainer myProdThumbSmall">
+					<img data-tlc="bind $var '.%attribs.zoovy:prod_image1'; if (is $var --notblank;) {{ apply --img --media=$var --width=210 --height=210 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class="prodThumb" alt="" height="210" width="210" data-apptimize="embed">
+				</div> 
+
+				<div class="floatRight pointer moreDetailsSmall">VIEW DETAILS</div>
+			</div>
+		</a>
+			<div class="prodTextContainerSmall">
+				<div class="productPriceContainer">
+					<h6 data-tlc="bind $var '.%attribs.zoovy:base_price'; if (is $var --notblank;) {{format --currency='USD'; apply --add --class='price'; apply --append;}};" class="floatLeft prodPriceSmall"></h6>
+					<span data-tlc="bind $var '.'; beachmall_lists#prodpricedesc;" class="prodPriceDesc hideMe"></span>
+				</div>
+				<a data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';">
+					<h5 data-tlc="bind $var '.%attribs.zoovy:prod_name'; if (is $var --notblank;) {{apply --append;}};" class="clearfix prodDescSmall"></h5>
+				</a>
+				<span data-tlc="bind $var '.reviews.average'; if(is $var --notblank;) {{ apply --class='review_'; }}; if (is $var --notblank;) {{apply --add --class='review_'; apply --append;}};" class="reviewSprite"></span>
+				<!-- Need Color Options here, will work w/ form to show product, or colors pop up -->
+				<div class="hideMe">
+					<div data-tlc="bind $var '.%attribs.zoovy:prod_msrp'; if(is $var --notblank;) {{ apply --show; }}; " class="regularPriceContainer floatLeft displayNone">
+						<div data-tlc="bind $var '.%attribs.zoovy:prod_msrp'; if (is $var --notblank;) {{format --currency='USD'; apply --append;}};" class="regularPrice"> </div>
+						<div class="regularPriceDesc">Regular Price</div>
+					</div>
+					<div class="shipContainer floatLeft">
+						<div data-tlc="bind $var '.'; beachmall_lists#showfreeshippingtag;" class="shipCost sprite displayNone"></div>
+						<div data-tlc="bind $var '.'; beachmall_lists#showshiplatency;" class="shipTime latency">
+							<div class="shipTime latency displayNone"></div>
+						</div>
+						<!--<div data-bind='var: product(user:prod_shipping_msg); format:showIfSet;'>
+							<div class='shipTime latency' data-bind='var: product(user:prod_shipping_msg); format:text;'></div>
+						</div>
+						-->
+					</div>
+					
+					<!-- <div class='prodListMiniThumb' data-bind='var: product(pid); format: productListThumbnails; extension: store_filter;'></div> --> 
+					<!-- <div class='prodListMiniVariation' data-bind='var: product(pid); format:atcVariations; extension:store_product;'></div> -->
+					<div data-tlc="bind $var '.%attribs.user:grp_siblings'; if(is $var --notblank;) {{ apply --show; }}; " class="displayNone">
+						<div data-tlc="bind $var '.pid'; apply --attrib='data-pid'; " class="clearfix prodListSibs">
+							<ul data-tlc="bind $var '.%attribs.user:grp_siblings'; beachmall_lists#siblingproductlist --before='<b>Available Colors:</b> <span class=&quot;zhint&quot;>(click image to select)</span>' --hideSummary='true' --withInventory='1' --withVariations='1' --loadsTemplate='productListTemplateToolTipThumb';" class="listStyleNone noPadOrMargin fluidList"></ul>
+						</div>
+					</div>
+
+					<div data-tlc="bind $var '.pid'; powerreviews_reviews#reviewsnippet  --minreview='1' --legacy;" class="reviewsStarsCount"></div>
+					
+					<div data-tlc="bind $var '.pid'; if (is $var --notblank;) {{format --prepend='ITEM#:<br> '; apply --append;}};" class="prodNum stid floatLeft clearfix"></div>
+
+				  <!-- 	<span data-bind='var: reviews(reviews.total); format:text; pretext: from ;posttext: reviews; className:numReviews;'></span> -->
+				</div> 
+			</div>  
+		<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy; apply --append;" class="prodViewerAddToCartForm floatRight hideMe" action="#" onsubmit="return false" data-app-submit="quickstart|productAdd2Cart" data-show="modal">
+			<input name="qty" value="1" type="hidden">
+			<button data-tlc="quickstart#addtocartbutton  --legacy; apply --append;" data-bind="format:addtocartbutton; extension:quickstart; useParentData:true;" class="prodViewerAddToCartButton applyButton" role="button" aria-disabled="false">MORE DETAILS</button>
+		</form>
+	</div>
+	<div class="productSeperationBar"></div>
+</li>
+
+
+<!-- used on homepage for small carousel to the right of the main banner (there is also a productListTemplateResultsCustom for user w/ elastic results in this location) -->
+<li id='productListTemplateCustom' class='loadingBG searchResultsProduct ' >
+	<a data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';">
+		<div class='prodThumbContainer myProdThumb' data-beachmall-hoverClass="jsHover">
+			<img data-tlc="bind $var '.%attribs.zoovy:prod_image1'; if (is $var --notblank;) {{ apply --img --media=$var --width=210 --height=210 --bgcolor='#ffffff' --replace;}};" src="blank.gif"  class="prodThumb push" alt="" width="210" height="210" data-apptimize="embed">            
+			<div class='prodTextContainer'>   
+				<h6 data-tlc="bind $var '.%attribs.zoovy:base_price'; if (is $var --notblank;) {{format --currency='USD'; apply --append;}};" class="price hideInMinimalMode floatLeft prodPrice"></h6>
+				<div class='hideInMinimalMode floatRight pointer moreDetails'>VIEW DETAILS</div> 
+				<h5 data-tlc="bind $var '.%attribs.zoovy:prod_name'; if (is $var --notblank;) {{apply --append;}};" class="clearfix prodDesc"></h5>
+            </div>
+        </div>
+    </a>  
+=======
+<li id="productListTemplate" class="loadingBG  " onmouseover="$('.quickView',$(this)).show();" onmouseout="$('.quickView').hide();">
+
+	<button class="floatRight pointer quickView displayNone" data-app-click="quickstart|quickviewShow" data-loadstemplate="productTemplateQuickView">Quickview</button>
+	
+	<a data-tlc="bind $pid '.pid'; bind $seo '.%attribs.zoovy:prod_name'; bind $href ''; store_routing#productlink --pid=$pid --seo=$seo; apply --attrib='href';" class="blockLink">
+		<div data-tlc="bind $var '.pid'; quickstart#addpicslider  --legacy; apply --append;" class="prodThumbContainer">
+		<img data-tlc="bind $var '.%attribs.zoovy:prod_thumb'; if(is $var --blank;){{bind $var '.%attribs.zoovy:prod_image1';}}; if(is $var --notblank;){{apply --img --media=$var --width=120 --height=120 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class="prodThumb" alt="" height="120" width="120">
+		</div>
+
+		<h5 data-tlc="bind $var '.%attribs.zoovy:prod_name'; if (is $var --notblank;) {{apply --append;}};"></h5>
+
+		<h6 data-tlc="bind $var '.%attribs.zoovy:base_price'; if (is $var --notblank;) {{ format --currency='USD';  format --prepend='Our Price: '; apply --append;}};"></h6>
+		
+		<span data-tlc="bind $var '.reviews.average'; if(is $var --notblank) {{format --prepend='review_'; apply --add --class=$var; }};" class="reviewSprite"></span>
+<!-- 	<span data-bind='var: reviews(reviews.total); format:text; pretext: from ;posttext: reviews; className:numReviews;'></span> -->
+	</a>
+	
+	<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy; apply --append;" class="prodViewerAddToCartForm clearfix" action="#" onsubmit="return false" data-app-submit="quickstart|productAdd2Cart" data-show="modal">
+		<input name="qty" value="1" type="hidden">
+		<button data-tlc="quickstart#addtocartbutton  --legacy; apply --append;" data-bind="format:addtocartbutton; extension:quickstart; useParentData:true;" class='applyButton'>more details</button>
+	</form>
+
+>>>>>>> upstream/201411
+</li>
+
+
+<!--
+for product lists with addToCart feature (accessories, for example)
+container ul should have lineItemProdlist class on it instead of productList
+-->
+<li id="productListTemplateATC" class="loadingBG  ">
+	<div data-tlc="bind $var '.pid'; apply --attrib='data-pid';">
+
+		<div class="prodThumbContainer floatLeft">
+		<img data-tlc="bind $var '.%attribs.zoovy:prod_image1'; apply --img --media=$var --width=120 --height=120 --bgcolor='#ffffff' --replace;" src="blank.gif" class="prodThumb" alt="" height="120" width="120">
+		</div>
+
+		<h5 data-tlc="bind $var '.%attribs.zoovy:prod_name'; if (is $var --notblank;) {{apply --append;}};"></h5>
+
+		<h6 data-tlc="bind $var '.%attribs.zoovy:base_price';  if (is $var --notblank;) {{format --currency='USD'; format --prepend='Our Price: ';  apply --append;}};"></h6>
+
+		<span data-tlc="bind $var '.reviews.average'; if(is $var --notblank) {{format --prepend='review_'; apply --add --class=$var; }};" class="reviewSprite"></span>
+	
+		<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy; apply --append;" class="prodViewerAddToCartForm clearfix" action="#" data-app-submit="quickstart|productAdd2Cart" data-show="modal">
+	
+			<fieldset data-tlc="bind $var '.pid'; store_product#atcvariations  --legacy; apply --append;" class="borderNone"></fieldset>
+			<fieldset data-tlc="bind $var '.'; store_product#atcquantityinput  --defaultvalue='0' --legacy;" class="borderNone"></fieldset>
+	
+			<input data-tlc="bind $var '.pid'; store_product#addtocartbutton  --legacy; apply --append;" value="Add to Cart" class="applyButton addtocartbutton displayNone" type="submit">
+		</form>
+
+	</div>
+</li>
+
+
+<li id="productListTemplateBuyerList" class="loadingBG floatLeft marginRight marginBottom">
+	<div data-tlc="bind $var '.pid'; apply --attrib='data-pid';">
+
+		<div class="prodThumbContainer marginBottom">
+			<div class="ui-widget ui-widget-content ui-corner-all">
+				<img data-tlc="bind $var '.%attribs.zoovy:prod_thumb'; if(is $var --blank;){{bind $var '.%attribs.zoovy:prod_image1';}}; if(is $var --notblank;){{apply --img --media=$var --width=120 --height=120 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class="prodThumb" alt="" height="120" width="120">
+				<div class="smallButtonList ui-widget ui-widget-header ui-corner-all alignCenter">
+
+<a data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';" class='applyButton' data-text='false' data-icon-primary='ui-icon-cart'>Add To Cart</a>
+<a href='#' data-app-click="quickstart|quickviewShow" class='applyButton' data-text='false' data-icon-primary='ui-icon-info' data-loadstemplate='productTemplate'>Details</a>
+<a href='#' data-app-click="store_crm|productReviewShow" class='applyButton' data-text='false' data-icon-primary='ui-icon-star'>Write Review</a>
+<a href='#' data-app-click="store_crm|productBuyerListRemoveExec" class='applyButton' data-text='false' data-icon-primary='ui-icon-trash'>Remove From List</a>
+
+				</div>
+			</div>
+		</div>
+		
+		<span data-tlc="bind $var '.reviews.average'; if(is $var --notblank) {{format --prepend='review_'; apply --add --class=$var; }};" class="reviewSprite floatRight"></span>
+
+		<h5 data-tlc="bind $var '.%attribs.zoovy:prod_name'; if (is $var --notblank;) {{apply --append;}};"></h5>
+
+		<h6 data-tlc="bind $var '.%attribs.zoovy:base_price';  if (is $var --notblank;) {{format --currency='USD'; format --prepend='Our Price: ';  apply --append;}};"></h6>
+
+
+	</div>
+</li>
+
+
+<<<<<<< HEAD
+<li id='productListTemplateThumb' class='loadingBG' >
+	<a class='prodThumbContainer pointer' data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';" data-toolTipThumb="data-toolTipThumb">
+		<img data-tlc="bind $var '.%attribs.zoovy:prod_image1'; if (is $var --notblank;) {{ apply --img --media=$var --width=55 --height=55 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class='prodThumb' alt="" width='55' height='55' data-apptimize="embed" />
+	</a>
+</li>
+
+
+<li id="productListTemplateToolTipThumb" data-tlc="bind $var '.pid'; beachmall_lists#hideifnotpurchaseable;" class="loadingBG">
+	<div data-tlc="bind $var '.pid'; apply --attrib='data-pid'; " class="prodThumbContainer pointer targetElement" data-tooltipthumb="data-toolTipThumb">
+		<a data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';">
+			<img data-tlc="bind $var '.%attribs.zoovy:prod_image1'; if (is $var --notblank;) {{ apply --img --media=$var --width=30 --height=30 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class="prodThumb" alt="" height="30" width="30" data-apptimize="embed">
+		</a>
+	</div>
+</li>
+
+
+=======
+>>>>>>> upstream/201411
+</ul>
+
+
+
+
+
+<ul>
+<!--
+Used for the product in a product list (prodlist), usually in the body of a category or the homepage.
+the loadingBG class is removed (must be that classname) when the template is translated.
+remember to NOT put the button inside the 'href' container or two events will occur onclick.
+
+SANITY -> if you change the height and width of this image, change the .minimalMode .searchResultsProduct in qs_styles.css to match
+-->
+<<<<<<< HEAD
+<li id="productListTemplateResults" class="loadingBG searchResultsProduct products product floatLeft productListTemplateResults">
+	<div class="prodHoverContainer">
+		<a data-tlc="bind $seoname '.prod_name'; bind $var '.'; store_routing#seoanchor --type='product' --seo --seoname=$seoname; apply --attrib='href';" class="productListSmall">
+			<div class='prodHoverContainer prodShadowFix'>
+				<!-- CORNER SHADOW DIVS -->
+				<div class='topLeftCorner'></div><div class='leftTopCorner'></div><div class='topRightCorner'></div><div class='rightTopCorner'></div>
+				<div class='bottomLeftCorner'></div><div class='leftBottomCorner'></div><div class='bottomRightCorner'></div><div class='rightBottomCorner'></div> 
+				<!-- END CORNER SHADOWS -->
+				<div class="prodThumbContainer myProdThumbSmall">
+					<img data-tlc="bind $var '.'; beachmall_lists#appthumb --iselastic='1';" src="blank.gif" class="prodThumb imgBorder" alt="" height="208" width="208" data-apptimize="embed">
+				</div>
+			</div>
+			<div class="hideInMinimalMode pointer moreDetailsSmall floatRight">VIEW DETAILS</div>
+		</a>
+	</div>
+	<div class='prodTextContainerSmall'>
+		<h6 data-tlc="bind $var '.base_price';  if (is $var --notblank;) {{math --div='100'; format --currency='USD'; apply --append;}};" class="hideInMinimalMode floatLeft prodPriceSmall price"></h6>
+		<span data-tlc="bind $var '.'; beachmall_lists#prodpricedesc --isElastic;" class='prodPriceDesc'></span>
+		<a data-tlc="bind $seoname '.prod_name'; bind $var '.'; store_routing#seoanchor --type='product' --seo --seoname=$seoname; apply --attrib='href';">
+			<h5 data-tlc="bind $var '.prod_name'; if (is $var --notblank;) {{apply --append;}};" data-beachmall-hoverClass="jsHover" class="hideInMinimalMode clearfix prodDescSmall"></h5>
+		</a>
+		<div data-tlc="bind $var '.%attribs.zoovy:prod_msrp'; if(is $var --notblank;) {{ apply --show; }}; " class="regularPriceContainer floatLeft displayNone">
+			<div data-tlc="bind $var '.%attribs.zoovy:prod_msrp'; if (is $var --notblank;) {{format --currency='USD'; apply --append;}};" class="regularPrice"> </div>
+			<div class="regularPriceDesc">Regular Price</div>
+		</div>
+		<div class="shipContainer floatLeft"> 
+		<div data-tlc="bind $var '.'; beachmall_lists#showfreeshippingtag  --iselastic='1';" class="shipCost sprite displayNone"></div>
+<!--Bug#6		<div data-bind='var: product(user:prod_shipping_msg); format:showIfSet;'>
+					<div class='shipTime latency' data-bind='var: product(user:prod_shipping_msg); format:text; isElastic:1;'></div>
+				</div>
+END BUG6-->			
+<!--!!--></div>
+		<div class="searchReviewSiblingsCont">
+		
+			<div data-tlc="bind $var '.pid'; powerreviews_reviews#reviewsnippet  --minreview='1' --legacy;" class="reviewsStarsCount"></div>
+			
+			<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy; apply --append;" class="prodViewerAddToCartForm clearfix" action="#" onsubmit="return false" data-app-submit="quickstart|productAdd2Cart" data-show="modal">
+				<input name="qty" value="1" type="hidden">
+				<button data-tlc="quickstart#addtocartbutton  --iselastic='1' --legacy; apply --append;" class="prodViewerAddToCartButton applyButton" role="button" aria-disabled="false">VIEW DETAILS</button>
+			</form>
+		</div>
+		<div data-tlc="bind $var '.pid'; if (is $var --notblank;) {{format --prepend='ITEM &nbsp; #: &nbsp; '; apply --append;}};" class="prodNum stid clearfix"></div>
+	</div>
+	<div class='productSeperationBar'></div>
+</li>
+
+<li id="productListTemplateResultsNoPreview" class="loadingBG products product floatLeft productListTemplateResultsNoPreview">
+	<a data-tlc="bind $seoname '.prod_name'; bind $var '.'; store_routing#seoanchor --type='product' --seo --seoname=$seoname; apply --attrib='href';" class="pointer productListSmall">
+		<div class='prodHoverContainer prodShadowFix' data-beachmall-hoverClass="jsHover">
+			<!-- CORNER SHADOW DIVS -->
+			<div class='topLeftCorner'></div><div class='leftTopCorner'></div><div class='topRightCorner'></div><div class='rightTopCorner'></div>
+			<div class='bottomLeftCorner'></div><div class='leftBottomCorner'></div><div class='bottomRightCorner'></div><div class='rightBottomCorner'></div> 
+			<!-- END CORNER SHADOWS -->
+			<div class="prodThumbContainer myProdThumbSmall">
+				<img data-tlc="bind $var '.'; beachmall_lists#appthumb  --iselastic='1';" src="blank.gif" class="prodThumb imgBorder" alt="" height="208" width="208"  data-apptimize="embed">
+			</div>
+			<div data-tlc="bind $var '.%attribs.user:prod_promo'; if(is $var --notblank;) {{ apply --show; }}; " class="starBurst sprite displayNone">
+            	<div class="starBurstTextOuter">
+                	<div data-tlc="bind $var '.%attribs.user:prod_promo'; if (is $var --notblank;) {{apply --append;}};" class="starBurstTextInner"></div>
+                </div>
+            </div>
+			<div class="hideInMinimalMode pointer moreDetailsSmall floatRight" data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';">VIEW DETAILS</div>
+		</div>
+	</a>
+		
+	<div class='prodTextContainerSmall'>
+		<h6 data-tlc="bind $var '.base_price';  if (is $var --notblank;) {{math --div='100'; format --currency='USD'; apply --append;}};" class="hideInMinimalMode floatLeft prodPriceSmall price"></h6>
+		<span data-tlc="bind $var '.'; beachmall_lists#prodpricedesc --isElastic;" class='prodPriceDesc'></span>
+		<a data-tlc="bind $seoname '.prod_name'; bind $var '.'; store_routing#seoanchor --type='product' --seo --seoname=$seoname; apply --attrib='href';">
+			<h5 data-tlc="bind $var '.prod_name'; if (is $var --notblank;) {{apply --append;}};" data-beachmall-hoverClass="jsHover" class="hideInMinimalMode clearfix prodDescSmall"></h5>
+		</a>
+		<div data-tlc="bind $var '.%attribs.zoovy:prod_msrp'; if(is $var --notblank;) {{ apply --show; }}; " class="regularPriceContainer floatLeft displayNone">
+			<div data-tlc="bind $var '.%attribs.zoovy:prod_msrp'; if (is $var --notblank;) {{format --currency='USD'; apply --append;}};" class="regularPrice"> </div>
+			<div class="regularPriceDesc">Regular Price</div>
+		</div>
+		<div class="shipContainer floatLeft"> 
+		<div data-tlc="bind $var '.'; beachmall_lists#showfreeshippingtag  --iselastic='1';" class="shipCost sprite displayNone"></div>
+<!--Bug#6		<div data-bind='var: product(user:prod_shipping_msg); format:showIfSet;'>
+					<div class='shipTime latency' data-bind='var: product(user:prod_shipping_msg); format:text; isElastic:1;'></div>
+				</div>
+END BUG6-->			
+<!--!!--></div>
+		<div class="searchReviewSiblingsCont">
+			
+			<div data-tlc="bind $var '.pid'; powerreviews_reviews#reviewsnippet  --minreview='1' --legacy;" class="reviewsStarsCount"></div>
+			
+			<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy; apply --append;" class="prodViewerAddToCartForm clearfix" action="#" onsubmit="return false" data-app-submit="quickstart|productAdd2Cart" data-show="modal">
+				<input name="qty" value="1" type="hidden">
+				<button data-tlc="quickstart#addtocartbutton  --iselastic='1' --legacy; apply --append;" class="prodViewerAddToCartButton applyButton" role="button" aria-disabled="false">VIEW DETAILS</button>
+			</form>
+		</div>
+		<div data-tlc="bind $var '.pid'; if (is $var --notblank;) {{format --prepend='ITEM &nbsp; #: &nbsp; '; apply --append;}};" class="prodNum stid clearfix"></div>
+	</div>
+	<div class='productSeperationBar'></div>
+=======
+<li id="productListTemplateResults" class="loadingBG searchResultsProduct ">
+	<div data-app-click="quickstart|inlineProductPreviewShow" class="pointer">
+		<div class="prodThumbContainer">
+		<img data-tlc="bind $var '.images.0'; apply --img --media=$var --width=120 --height=120 --bgcolor='#ffffff' --replace;" src="blank.gif" class="prodThumb" alt="" height="120" width="120">
+		</div>
+
+		<h5 data-tlc="bind $var '.prod_name'; if (is $var --notblank;) {{apply --append;}};" class="hideInMinimalMode"></h5>
+
+		<h6 data-tlc="bind $var '.base_price';  if (is $var --notblank;) {{math --div='100'; format --currency='USD'; format --prepend='Our Price: ';  apply --append;}};" class="hideInMinimalMode"></h6>
+		
+	</div>
+	<a class="hideInMinimalMode pointer moreDetails" data-tlc="bind $seoname '.prod_name'; bind $var '.'; store_routing#seoanchor --type='product' --seo --seoname=$seoname; apply --attrib='href';">more details</a>
+</li>
+
+<li id="productListTemplateResultsNoPreview" class="loadingBG searchResultsProduct ">
+	<a data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';" class="pointer">
+		<div class="prodThumbContainer">
+		<img data-tlc="bind $var '.images.0'; if (is $var --notblank;) {{apply --img --media=$var --width=120 --height=120 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class="prodThumb" alt="" height="120" width="120">
+		</div>
+
+		<h5 data-tlc="bind $var '.prod_name'; if (is $var --notblank;) {{apply --append;}};" class="hideInMinimalMode"></h5>
+
+		<h6 data-tlc="bind $var '.base_price';  if (is $var --notblank;) {{format --currency='USD'; format --prepend='Our Price: ';  apply --append;}};" class="hideInMinimalMode"></h6>
+	</a>
+	<a class="hideInMinimalMode pointer moreDetails" data-tlc="bind $seoname '.prod_name'; bind $var '.'; store_routing#seoanchor --type='product' --seo --seoname=$seoname; apply --attrib='href';">more details</a>
+>>>>>>> upstream/201411
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+<!--
+form - the form id gets modified to be unique in case multiple viewers are open at the same time. _pid is appended to it.
+NOTE - currently, variations.js supports only 1 viewer at a time. this will change.
+2 fieldsets are present:
+ -> One is for variations/options and really ought to be present.
+ -> The other is for a quantity input and is optional
+
+the submit button does not need to be within the form (a button could be used elsewhere if needed.
+ -> use the button to submit the form, not execute the call or utility separately. That way if additional
+ actions are added to the submit, they only have to be managed in one place.
+
+Additionally, the cross selling features also have hard coded id's, though they're specified within this extension in the xsell callback.
+
+this will likely become more flexible in the future. ###
+-->
+
+
+<<<<<<< HEAD
+<div data-tlc="bind $var '.pid'; apply --attrib='data-pid';" id="productTemplate" class="productTemplate productPage">
+
+	<ul data-tlc="bind $var '.recentCategories.0'; store_navcats#breadcrumb  --templateid='breadcrumbTemplate'  --legacy; apply --append;" class="clearfix noPadOrMargin fluidList breadcrumb"></ul>
+	<span class="displayNone" data-tlc="store_routing#seoanchor --seo='1' apply --attrib='data-routing-hash';"></span>
+	<span class="displayNone" data-tlc="bind $var '.%attribs.zoovy:prod_seo_title'; if(is $var --blank;){{bind $var '.%attribs.zoovy:prod_name';}}; apply --attrib='data-seo-title';"></span>
+	<span class="displayNone" data-tlc="bind $var '.%attribs.zoovy:meta_desc'; if(is $var --blank;){{bind $var '.%attribs.zoovy:prod_desc';}}; apply --attrib='data-seo-desc';"></span>
+
+<table class="fullWidth floatLeft" itemscope itemtype="http://schema.org/Product">
+<tbody><tr>
+	<td>
+
+<div class="imageContainer">
+	<div class="prodTabs tabbedProductContent ui-tabs ui-widget ui-widget-content ui-corner-all">
+
+		<ul class="imageAndVideoTabs">
+			<li data-tlc="bind $var '.%attribs.zoovy:prod_image1'; if(is $var --notblank;) {{ apply --show; }};" data-app-role="hoverTab" class="displayNone"><a href="#prodImages" class="ui-button-text-icon-primary imageTab"><span><img src="images/bm12_cameraicon-25x21.png" alt="" height="21" width="25" data-apptimize="embed"></span>Images</a></li>
+			<li data-tlc="bind $var '.%attribs.youtube:videoid'; if(is $var --notblank;) {{ apply --show; }};" data-app-role="hoverTab" class="displayNone"><a href="#prodVideo" class="videoTab"><span><img src="images/bm12_videoicon-24x24.png" alt="" height="24" width="24" data-apptimize="embed"></span>Video</a></li>
+
+			<li class="prodPageImages" data-anytab-content="prodImages">
+				<!--<img src='blank.gif' class='prodBigImage' rel='rel="selectors-change: mouseover' name='prodBigImage' data-bind='var: product(zoovy:prod_image1); format: magicZoomPlus; extension: magicToolBox_mzp;' width='310' height='310' />-->
+				<img data-tlc="bind $var '.'; magictoolbox_mzp#magiczoomplus  --legacy;" data-legacy-useparentdata="true" src="blank.gif" class="prodBigImage" alt="" rel="selectors-change: mouseover" height="310" width="310" data-apptimize="embed" itemprop="image">
+				<div class="zhint">Mouse over main image to zoom in</div>
+				<div class="productPageCarouselContainer">
+					<div>
+						<ul data-tlc="bind $var '.pid'; magictoolbox_mzp#productimages  --legacy;" class="prodPageCarousel"></ul>    
+					</div>
+					<a href="#" class="prodPageCarPrev sprite displayNone"><span>prev</span></a>
+					<a href="#" class="prodPageCarNext sprite displayNone"><span>next</span></a>
+				</div>
+			</li> <!-- END prodPageImages -->
+		
+			<li data-anytab-content="prodVideo">
+				<div data-tlc="bind $var '.%attribs.youtube:videoid'; controller#youtubevideo --width=310 --height=310 --legacy;"></div> 
+			</li>
+		</ul>
+
+	</div> <!-- END prodTabs -->
+</div><!-- END imageContainer -->
+
+	</td><!-- /pic and video col -->
+	<td>
+
+<div data-tlc="bind $var '.pid'; apply --attrib='data-pid'; " class="mainProdColumn marginBottom">
+
+	<h1 data-tlc="bind $var '.%attribs.zoovy:prod_name'; if (is $var --notblank;) {{apply --append;}};" itemprop="name" class="prodName"></h1>
+	<div class="prodStidAndMfg clearfix">
+		<span data-tlc="bind $var '.pid'; if (is $var --notblank;) {{format --prepend='Item No: '; apply --append;}};" itemprop="sku"></span>
+		<span>
+			Manufacturer: <a itemprop='manufacturer' href='#' data-tlc="bind $var '.%attribs.zoovy:prod_mfg'; if(is $var --notblank;) {{apply --append; format --prepend='/search/keywords/'; apply --attrib='href';}};" class='underline'></a>
+		</span>
+	</div>
+	<div data-tlc="bind $var '.'; beachmall_product#priceretailsavings;" class="priceContainer clearfix" itemscope itemprop="offers" itemtype="http://schema.org/Offer"></div>
+	
+	<div data-tlc="bind $var '.%attribs.user:replacement_product'; beachmall_product#addredirectproduct  --templateid='redirectProductTemplate';" class="disRedirect"></div> <!-- test with WOS481 -->
+	
+	<div data-tlc="bind $var '.'; beachmall_product#hidegeoelements;" class="topBottomBorder marginBottom clearfix shippingInformation">
+		<div class="floatLeft">
+			<div data-tlc="bind $var '.%attribs.is:shipfree'; if(is $var --notblank;) {{ apply --show; }}; " class="sprite shipfree"></div>
+			<div data-tlc="bind $var '.%attribs.is:shipfree'; if(is $var --notblank;) {{ apply --show; }}; " class="displayNone">
+				<div data-tlc="bind $var '.%attribs.user:prod_shipping'; if(is $var --notblank;) {{ apply --show; }}; " class="displayNone">
+					<a href="#" class="tipify">Offer Details</a>
+					<div data-tlc="bind $var '.%attribs.user:prod_shipping'; if (is $var --notblank;) {{render --wiki='quickstart'; apply --append;}};" class="toolTip"></div>
+				</div>
+			</div>
+		</div>
+		<div data-tlc="bind $var '.%attribs.user:is_dropship'; beachmall_product#hideifdropship;" class="floatLeft">
+		<div class="timeInTransitMessaging clearfix"></div>
+			<div class="putLoadingHere loadingBG">
+				<span class="loadingText">Acquiring Shipping Estimates</span>
+				<div class="transitContainer"></div>
+			</div>
+		</div>
+	</div><!-- /shipping information -->
+		
+	<img data-tlc="bind $var '.%attribs.zoovy:prod_image99'; magictoolbox_mzp#magicthumb  --legacy;" src="blank.gif" alt="" height="85" width="300" data-apptimize="embed">
+
+	<div id="prodSiblings" class="clearfix">
+		<ul data-tlc="bind $var '.%attribs.user:grp_siblings'; store_prodlist#productlist  --hidemultipage='true' --before='<b>Available Colors:</b> <span class=&quot;zhint&quot;>(click image to select)</span>' --hideSummary='1' --hidePagination='1' --withInventory='1' --withVariations='1' --templateid='productListTemplateToolTipThumb'  --legacy;" class="listStyleNone noPadOrMargin fluidList clearfix prodPageSiblings"></ul> <!-- id='prodlistSiblings' -->
+	</div>
+
+	<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy; apply --append;" class="prodViewerAddToCartForm clearfix" action="#" data-app-submit="quickstart|productAdd2Cart" data-show="inline">
+		<div data-tlc="bind $var '.pid'; apply --attrib='data-pid'; ">
+			<fieldset data-tlc="bind $var '.pid'; store_product#atcvariations  --legacy; apply --append;" data-hide-discontinued=1 class="borderNone"></fieldset>
+		</div>
+		<!--<fieldset data-bind='var: product(pid); format:atcCustomVariations; extension:store_filter;' class='borderNone'></fieldset>-->
+		<fieldset data-tlc="bind $var '.'; store_product#atcquantityinput  --defaultvalue='1' --legacy;" data-hide-discontinued=1 class="borderNone floatRight"></fieldset>
+	<!--	<fieldset data-bind='var: product(pid); format:atcQuantityInput; defaultValue:1; extension:store_product; pretext:Quantity: ;' class='borderNone'></fieldset>-->
+		<div data-tlc="bind $var '.%attribs.zoovy:prod_is_tags'; beachmall_product#discontinuedatc;">
+			<input data-tlc="bind $var '.'; beachmall_product#addtocartbutton;" value="Add to Cart" class="floatRight ui-button ui-button-text ui-corner-all ui-state-default displayNone addToCartButton" type="submit">
+			<div data-tlc="bind $var '.pid'; beachmall_product#hideshiplatency;">
+				<div data-tlc="bind $var '.'; beachmall_lists#showshiplatency;" class="shipTime latency floatLeft">
+					<div data-tlc="bind $var '.%attribs.user:prod_shipping_msg'; if (is $var --notblank;) {{apply --append;}};" class="shipTime latency displayNone"></div>
+				</div>
+			</div>
+		</div>
+		<!--<span class='floatRight sizingChartLink displayNone clearfix' data-bind='var:product(user:prod_sizing_txt); format:showIfSet;'><a href='#tabbedProductContentTD'>Sizing Chart</a></span>-->
+		
+		<a data-tlc="bind $var '.%attribs.user:prod_sizing_txt'; if(is $var --notblank;) {{ apply --show; }};" data-app-click="beachmall_product|scrollToRevealTab" href="#prodSizing" class="floatRight sizingChartLink displayNone clearfix">Sizing Chart</a>
+		
+	<!--	<div class='displayNone zsmall alignRight' data-bind='var: product(user:prod_shipping); format:showIfSet;'><a href='#' onClick="app.ext.beachmart.a.showProdAttInDialog($(this).attr('data-pid'),'user:prod_shipping'); return false;" data-bind='var:product(pid);format:assignAttribute; attribute:data-pid;'>Shipping Surcharge May Apply</a></div> -->
+		
+		<div data-tlc="bind $var '.%attribs.user:prod_shipping'; if(is $var --notblank;) {{ apply --show; }}; " class="displayNone zsmall alignRight">
+			<a href="#" class="tipify">Shipping Surcharge May Apply</a>
+			<div data-tlc="bind $var '.%attribs.user:prod_shipping'; if (is $var --notblank;) {{render --wiki='quickstart'; apply --append;}};" class="toolTip"></div>
+		</div>
+	</form>
+
+	<!--<div class='clearfix'><br /></div>-->
+	<div class="socialLinks">
+
+	</div>
+
+</div> <!-- END mainProdColumn -->
+
+	
+
+</td>
+</tr>
+<tr>
+	<td colspan="2" class="mainProdTabs">
+
+
+<div class="prodTabViewContainer clearfix marginRight">
+	<div class="prodViewerTable floatLeft">
+		<div class="prodTabs tabbedProductContent">
+
+			<ul class="tabs">
+				<li data-app-role="hoverTab"><a href="#prodDesc">Description</a></li>
+				<li data-tlc="bind $var '.%attribs.zoovy:prod_detail'; if(is $var --notblank;) {{ apply --show; }};" data-app-role="hoverTab" class="displayNone" ><a href="#prodDetail">Specs</a></li>
+				<li data-tlc="bind $var '.%attribs.user:prod_guarantee'; if(is $var --notblank;) {{ apply --show; }};" data-app-role="hoverTab" class="displayNone"><a href="#prodGuarantee">Guarantee &amp; Returns</a></li>
+				<li data-tlc="bind $var '.%attribs.user:prod_shipping'; if(is $var --notblank;) {{ apply --show; }};" data-app-role="hoverTab" class="displayNone"><a href="#prodShipping">Shipping</a></li>
+				<li data-tlc="bind $var '.%attribs.user:prod_sizing_txt'; if(is $var --blank;) {{bind $var '.%attribs.user:prod_sizing_img'; }}; if(is $var --notblank;) {{ apply --show; }};" data-app-role="hoverTab" class="displayNone"><a href="#prodSizing">Sizing</a></li>
+				<li data-tlc="bind $var '.%attribs.zoovy:asm_bundle_products'; if(is $var --notblank;) {{ apply --show; }};" data-app-role="hoverTab" class="displayNone"><a href="#prodBundle">Savings Bundle</a></li>
+				<li data-tlc="bind $var '.%attribs.user:prod_colors'; if(is $var --notblank;) {{ apply --show; }};" data-app-role="hoverTab" class="displayNone"><a href="#prodColors">Colors</a></li>
+				<li data-app-role="hoverTab"><a href="#prodReviews">Reviews</a></li>
+			</ul>
+					
+			<!-- tab content -->
+			<div data-tlc="bind $var '.%attribs.zoovy:prod_desc'; if (is $var --notblank;) {{render --wiki='quickstart'; apply --append;}};" itemprop="description" class="tabBody" data-anytab-content="prodDesc"></div>
+			
+			<div data-tlc="bind $var '.%attribs.zoovy:prod_detail'; if (is $var --notblank;) {{render --wiki='quickstart'; apply --append;}};" class="tabBody" data-anytab-content="prodDetail"></div>
+			
+			<div data-tlc="bind $var '.%attribs.user:prod_guarantee'; if (is $var --notblank;) {{render --wiki='quickstart'; apply --append;}};" class="tabBody" data-anytab-content="prodGuarantee"></div>
+			
+			<div class="tabBody" data-anytab-content="prodShipping">
+				<div data-tlc="bind $var '.%attribs.user:prod_shipping_msg'; if (is $var --notblank;) {{apply --append;}};"></div>
+				<div data-tlc="bind $var '.%attribs.user:prod_shipping'; if (is $var --notblank;) {{render --wiki='quickstart'; apply --append;}};"></div>
+			</div>
+			
+			<div class="tabBody" data-anytab-content="prodSizing">
+				<img data-tlc="bind $var '.%attribs.user:prod_sizing_img'; magictoolbox_mzp#magicthumb  --legacy;" src="blank.gif" alt="" height="250" width="250" data-apptimize="embed">
+				<div data-tlc="bind $var '.%attribs.user:prod_sizing_txt'; if (is $var --notblank;) {{render --wiki='quickstart'; apply --append;}};"></div>
+			</div>
+			
+			<div class="tabBody" data-anytab-content="prodBundle">
+				<ul data-tlc="bind $var '.%attribs.zoovy:asm_bundle_products'; store_prodlist#productlist  --hideSummary='1' --hidePagination='1' --withInventory='1' --withVariations='1' --templateid='productListTemplateBundle'  --legacy;" class="productList listStyleNone noPadOrMargin fluidList clearfix bundleProdlist"></ul>
+			</div>
+			
+			<div class="tabBody" data-anytab-content="prodColors">
+				<ul data-tlc="bind $var '.%attribs.user:prod_colors'; store_prodlist#productlist  --hideSummary='1' --hidePagination='1' --templateid='productListTemplateBundle'  --legacy;" class="productList listStyleNone noPadOrMargin fluidList clearfix bundleProdlist"></ul>
+			</div>
+			
+			<div data-anytab-content="prodReviews" class="tabbedProductList tabbedPowerReview tabBody">
+				<div data-tlc="bind $var '.pid'; powerreviews_reviews#reviewengine  --legacy;" class="productList listStyleNone noPadOrMargin fluidList clearfix bundleProdlist"></div>
+			</div>
+			
+		</div><!-- /tabbedProductContent -->
+
+		<!-- <div data-bind='var: product(zoovy:prod_desc2); format:wiki; wikiFormats:myRIA;'></div> Repeats info found in tabs-->
+
+	</div><!-- /prodViewerTable -->
+</div> <!-- END prodTabViewContainer -->
+
+
+	</td><!-- /tabbed info -->
+
+
+</tr>
+</tbody></table>
+
+<table>
+<tbody><tr>
+
+	<td>
+		<div class="floatRight marginBottom marginRight qafCont">
+			<a data-tlc="bind $var '.pid'; apply --attrib='data-pid';" class="qafQA pointer" href="/contact_us/" data-app-click="beachmall_product|showContactPID"></a>
+			<div data-tlc="bind $var '.pid'; apply --attrib='data-pid';" data-app-click="beachmall_product|showemailfriend" class="qafEmail"></div>
+			<div class="qafPrint" onclick="javascript:window.print()"></div>
+			<div data-tlc="bind $var '.%attribs.user:prod_guarantee'; if(is $var --notblank;) {{ apply --show; }}; " class="displayNone guarenteeTipCont">
+				<a href="#" class="tipify tipifyGuarantee">Guarantee &amp; Returns</a>
+				<div data-tlc="bind $var '.%attribs.user:prod_guarantee'; if (is $var --notblank;) {{render --wiki='quickstart'; apply --append;}};" class="toolTip"></div>
+			</div>
+		</div>
+	
+		<div class="rightColumn floatRight clearfix">
+		
+			<div data-tlc="bind $var '.pid'; powerreviews_reviews#reviewsnippet  --legacy;" class=""></div>
+		
+			<div data-tlc="bind $var'.%attribs.zoovy:prod_mfg'; if (is $var --notblank;) {{apply --show}};" class="prodPageMfgForward">
+				&#187; View All 
+				<a itemprop='manufacturer' href='#' data-tlc="bind $var '.%attribs.zoovy:prod_mfg'; if(is $var --notblank;) {{apply --append; format --prepend='/search/keywords/'; apply --attrib='href';}};" class='underline'></a>
+				 Product
+			</div>
+		</div>
+	</td>	
+</tr>
+<tr>
+	<td data-tlc="bind $var '.'; beachmall_product#showtabsifset;" class="youMayLikeAccessories displayNone">
+
+		
+	
+		<div class="tabbedProductListsTD marginLeft clearfix">
+			<div class="tabbedProductLists" data-app-role="xsellTabContainer">
+
+				<ul class="tabs">
+					<li data-tlc="bind $var '.%attribs.zoovy:related_products'; if(is $var --notblank;) {{ apply --show; }};" data-app-role="hoverTab" class="displayNone"><a href="#prodlistRelated">You may like</a></li>
+					<li data-tlc="bind $var '.%attribs.zoovy:accessory_products'; if(is $var --notblank;) {{ apply --show; }};" data-app-role="hoverTab" class="displayNone accTab"><a class="accAnch" href="#prodlistAccessories">Accessories</a></li>
+				</ul>
+			
+				<div data-tlc="bind $var '.%attribs.zoovy:related_products'; if(is $var --notblank;) {{ apply --show; }}; " class="displayNone">
+					<div class="testCarCont" data-anytab-content="prodlistRelated">
+						<div class="testCar">
+							<ul data-tlc="bind $var '.%attribs.zoovy:related_products'; store_prodlist#productlist  --hideSummary='1' --hidePagination='1'  --withInventory='1' --withVariations='1' --templateid='productListTemplate'  --legacy;" class="testUL listStyleNone"></ul>
+						</div>
+						<div class="testPrev pointer displayNone">PREVIOUS</div>
+						<div class="testNext pointer displayNone">NEXT</div>
+					</div>
+				</div>
+
+				<div data-tlc="bind $var '.%attribs.zoovy:accessory_products'; if(is $var --notblank;) {{ apply --show; }}; " class="displayNone">
+					<div class="testCarCont2 displayNone" data-anytab-content="prodlistAccessories">
+						<div class="testCar2">
+							<ul data-tlc="bind $var '.%attribs.zoovy:accessory_products'; store_prodlist#productlist  --hideSummary='1' --hidePagination='1'  --withInventory='1' --withVariations='1' --templateid='productListTemplate'  --legacy;" class="testUL2 listStyleNone"></ul>
+						</div>	
+						<div class="testPrev2 pointer displayNone">PREVIOUS</div>
+						<div class="testNext2 pointer displayNone">NEXT</div>
+					</div>
+				</div>
+				
+			</div> <!-- END tabbedProductLists -->
+
+		</div> <!-- END tabbedProductListsTD -->
+
+	</td><!-- //you may like / accessories tabs -->
+	
+</tr>
+
+
+</tbody></table>
+
+	<div class="recentlyViewedItemsContainer CarouselContainer previousViewedCarouselContainer clearfix displayNone">
+			<div class="carouselTitles">
+				<div class="carouselTitleTextContainer floatLeft">PREVIOUSLY VIEWED PRODUCTS</div>
+				<a href="/recently_veiwed/" rel="nofollow" class="carouselLinkContainer brandCatsPrevViewedWidth floatRight pointer">View All Previously Viewed Products</a>
+				<div class="carouselArrowContainer floatRight sprite"></div>
+			</div>
+			<div class="Carousel">
+				<a class="carouselButtonDkBlue productPreviousViewedPrev carouselButtonDkBluePrev" href="#">prev</a>
+				<a class="carouselButtonDkBlue productPreviousViewedNext carouselButtonDkBlueNext" href="#">next</a>
+				<!-- <ul data-bind="var: session(session.recentlyViewedItems); format: productList; extension: store_prodlist; loadsTemplate: productListTemplate; hide_summary:1; hide_pagination:1; withReviews:1;  withVariations:1; withInventory:1;" class='listStyleNone fluidList clearfix noPadOrMargin productList productPreviousViewed'></ul> -->
+				<ul data-tlc="store_prodlist#productlist  --hideSummary='1' --hidePagination='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin productList productPreviousViewed"></ul> 
+			</div>
+		<div class="standardCarouselPagenation productPreviousViewedPagenation"></div>
+	</div>
+
+</div><!-- productTemplate -->
+
+
+<div id='redirectProductTemplate'>
+	<h2>There is a newer model of this item:</h2>
+	<a data-tlc="bind $pid '.pid'; bind $seo '.%attribs.zoovy:prod_name'; bind $href ''; store_routing#productlink --pid=$pid --seo=$seo; apply --attrib='href';">
+		<div class='imaginarium floatLeft'>
+			<img data-tlc="bind $var '.%attribs.zoovy:prod_image1'; if(is $var --notblank){{apply --img --media=$var --width=120 --height=120 --bgcolor='#ffffff' --replace;}};" src="blank.gif" alt="" height="120" width="120">
+		</div>
+		<h3 class='floatLeft' data-tlc="bind $var '.%attribs.zoovy:prod_name'; if (is $var --notblank;) {{apply --append;}};"></h3>
+	</a>
+	<h4 class='floatLeft' data-tlc="bind $var '.%attribs.zoovy:base_price'; if (is $var --notblank;) {{ format --currency='USD';  format --prepend='Our Price: '; apply --append;}};"></h4>
+	<div class='reviewtorium floatLeft'  data-tlc="bind $var '.pid'; powerreviews_reviews#reviewsnippet  --minreview='1' --legacy;"></div>
+	<div class='floatLeft' data-tlc="bind $var '.'; beachmall_product#showinv;"></div>
+</div>
+=======
+<div data-tlc="bind $var '.pid'; apply --attrib='data-pid';" id="productTemplate" class="productPage">
+	<span class="displayNone" data-tlc="bind $pid '.pid'; bind $seo '.%attribs.zoovy:prod_name'; bind $href ''; store_routing#productlink --pid=$pid --seo=$seo; apply --attrib='data-routing-hash';"></span>
+	
+	<span class="displayNone" data-tlc="bind $var '.%attribs.zoovy:prod_seo_title'; if(is $var --blank;){{bind $var '.%attribs.zoovy:prod_name';}}; apply --attrib='data-seo-title';"></span>
+	<span class="displayNone" data-tlc="bind $var '.%attribs.zoovy:prod_desc'; apply --attrib='data-seo-desc';"></span>
+	
+	<ul data-tlc="bind $var '.recentCategories.0'; store_navcats#breadcrumb  --templateid='breadcrumbTemplate'  --legacy; apply --append;" class="clearfix noPadOrMargin fluidList breadcrumb"></ul>
+	
+	<table class="prodViewerContainer">
+	<tbody><tr>
+		<td class="imageContainer">
+	
+	<div data-app-click="quickstart|productPicsInModalShow" class="pointer clearfix">
+	
+		<div data-tlc="bind $var '.%attribs.zoovy:prod_is_tags'; quickstart#tags --legacy;" class="tagsContainer"></div>
+		<img data-tlc="bind $var '.%attribs.zoovy:prod_image1'; if(is $var --notblank){{apply --img --media=$var --width=340 --height=340 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class="prodBigImage" alt="" height="340" width="340">
+	
+	</div>
+	
+		<div data-tlc="bind $var '.pid'; apply --attrib='data-pid';" class="prodThumbs">
+	
+	<div onclick="myApp.ext.store_product.u.showPicsInModal({'pid':$(this).parent().attr('data-pid'),'int':'2'});" class="pointer"><img data-tlc="bind $var '.%attribs.zoovy:prod_image2';  if(is $var --notblank){{apply --img --media=$var --width=100 --height=100 --bgcolor='#ffffff' --replace;}};" src="blank.gif" alt="" height="100" width="100"></div>
+	
+	<div onclick="myApp.ext.store_product.u.showPicsInModal({'pid':$(this).parent().attr('data-pid'),'int':'3'});" class="pointer"><img data-tlc="bind $var '.%attribs.zoovy:prod_image3'; if(is $var --notblank){{apply --img --media=$var --width=100 --height=100 --bgcolor='#ffffff' --replace;}};" src="blank.gif" alt="" height="100" width="100"></div>
+	
+	<div onclick="myApp.ext.store_product.u.showPicsInModal({'pid':$(this).parent().attr('data-pid'),'int':'4'});" class="pointer"><img data-tlc="bind $var '.%attribs.zoovy:prod_image4'; if(is $var --notblank){{apply --img --media=$var --width=100 --height=100 --bgcolor='#ffffff' --replace;}};" src="blank.gif" alt="" height="100" width="100"></div>
+	
+		</div>
+	
+		</td>
+	
+		<td class="prodSummaryContainer marginBottom no_underline">
+		<h1 data-tlc="bind $var '.%attribs.zoovy:prod_name'; apply --append;"></h1>
+
+		<div class="marginBottom">
+			<h5 data-tlc="bind $var '.pid'; if (is $var --notblank;) {{format --prepend='Sku: '; apply --append;}};" class="stid"></h5>
+			<h5><a href='#' data-tlc="bind $var '.%attribs.zoovy:prod_mfg'; if(is $var --notblank;) {{apply --append; format --prepend='/search/keywords/'; apply --attrib='href';}};"></a></h5>
+			<h5 data-tlc="bind $var '.%attribs.zoovy:prod_mfgid';  if (is $var --notblank;) {{format --prepend='Mfg ID: '; apply --append;}};"></h5>
+		</div>
+
+		<div class="priceContainer marginBottom">
+			<h4 data-tlc="bind $var '.%attribs.zoovy:base_price'; if (is $var --notblank;) {{format --currency='USD'; format --prepend='Our Price: '; apply --append;}};" class="basePrice"></h4>
+			<h5 data-tlc="bind $var '.%attribs.zoovy:prod_msrp';  if (is $var --notblank;) {{format --currency='USD'; format --prepend='MSRP: ';  apply --append;}};" class="prodMSRP"></h5>
+			<span class="savings">
+				<span data-useparentdata='1' data-tlc="quickstart#priceretailsavingsdifference  --legacy; apply --append;" class="savingsDifference"></span>
+				<span data-useparentdata='1' data-tlc="quickstart#priceretailsavingspercentage  --legacy; apply --append;" class="savingsPercentage"></span>
+			</span>
+		</div>
+		<div class="socialLinks"></div>
+	
+	
+		<table class="marginBottom fullWidth gridTable" data-app-role="childrenSiblingsContainer">
+			<tbody data-tlc="bind $var '.%attribs.zoovy:grp_children'; store_prodlist#productlist  --hideSummary='true' --withInventory='1' --withVariations='1' --templateid='productListTemplateChildren'  --legacy; apply --append;"></tbody>
+		</table>
+	
+	
+		<div data-tlc="bind $var '.%attribs.zoovy:ship_latency'; if (is $var --notblank;) {{ format --prepend='Normally ships in '; format --append=' day(s)'; apply --append;}};" class="latency marginBottom"></div>
+		<div data-app-role="timeInTransit" class="displayNone"></div>
+	
+		<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy; apply --append;" class="prodViewerAddToCartForm clearfix marginBottom" action="#" data-app-submit="quickstart|productAdd2Cart" data-show="inline">
+	
+			<fieldset data-tlc="bind $var '.pid'; store_product#atcvariations  --legacy; apply --append;" class="borderNone"></fieldset>
+			<fieldset data-tlc="bind $var '.'; store_product#atcquantityinput  --defaultvalue='1' --legacy;" class="borderNone"></fieldset>
+	
+			<div class='marginBottom'><input data-tlc="bind $var '.pid'; store_product#addtocartbutton  --legacy;" value="Add to Cart" class="applyButton addtocartbutton displayNone" type="submit"></div>
+		</form>
+	
+		<div data-tlc="bind $var '.%attribs.zoovy:prod_cpsiawarning'; if(is $var --notblank) {{apply --add --class='marginBottom'}}; quickstart#cpsiawarning  --legacy;"></div>
+		<div data-tlc="bind $var '.%attribs.zoovy:qty_price'; if(is $var --notblank) {{apply --add --class='marginBottom'}}; store_product#quantitydiscounts  --legacy;"></div>
+	
+		<section class="marginBottom clearfix">
+			<span data-tlc="bind $var '.reviews.average'; if(is $var --notblank) {{format --prepend='review_'; apply --add --class=$var; }};" class="reviewSprite floatLeft marginRight"></span>
+			<span data-tlc="bind $var '.reviews.total'; if (is $var --notblank;) {{format --prepend=' from ' --append=' reviews'; apply --append;}};" class='floatLeft'></span>
+		</section>
+	
+		<menu data-tlc="bind $var '.pid'; apply --attrib='data-pid';" class="CRMButtonMenu">
+	
+		<a href="#" data-app-click="store_crm|productReviewShow">Write Review</a>	|
+	
+		<a href="#" data-app-click="quickstart|productAdd2List" data-listid="wishlist">Add to Wishlist</a>
+	
+		</menu>
+	
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2" class="tabbedProductContentTD">
+	<!--
+	the tabs are built in an onComplete.  ID's are added based on sku AND index, so the index (order) of the tabs MUST match the order of the tabContent divs
+	or the tab clicked won't open the right content.
+	It's done this way because ID's hard coded into template are bad mojo (templates are recycled) and because using data-binds to add id's caused some serious issues
+	-->
+	
+	<div data-tlc="bind $var '.pid'; apply --attrib='data-pid';" class="prodTabs tabbedProductContent applyAnytabs">
+		<ul class="tabs">
+			<li class="prodDescTab"><a href="#prodDesc">Description</a></li>
+			<li data-tlc="bind $var '.%attribs.zoovy:prod_detail'; if(is $var --notblank) {{apply --show; }};" class="prodDetailTab displayNone"><a href="#prodSpecs">Specs</a></li>
+			<li data-tlc="bind $var '.%attribs.zoovy:prod_features'; if(is $var --notblank) {{ apply --show; }};" class="prodFeaturesTab displayNone"><a href="#prodFeatures">Features</a></li>
+			<li class="prodReviewsTab"><a href="#prodReviews">Reviews</a></li>
+			<li data-tlc="bind $var '.%attribs.youtube:videoid'; if(is $var --notblank) {{ apply --show; }};" class="prodVideoTab displayNone"><a href="#prodVideo">Video</a></li>
+			<li data-tlc="bind $var '.%attribs.zoovy:accessory_products'; if(is $var --notblank) {{ apply --show; }};" class="prodAccessoriesTab displayNone"><a href="#prodAccessories">Accessories</a></li>
+		</ul>
+	
+		<div class="tabContent" data-anytab-content="prodDesc">
+			<div data-tlc="bind $var '.%attribs.zoovy:prod_desc'; if (is $var --notblank;) {{render --wiki='quickstart'; apply --append;}};"></div>
+		</div>
+	
+		<div class="tabContent" data-anytab-content="prodSpecs">
+			<div data-tlc="bind $var '.%attribs.zoovy:prod_detail'; if (is $var --notblank;) {{render --wiki='quickstart'; apply --append;}};"></div>
+		</div>
+	
+		<div class="tabContent" data-anytab-content="prodFeatures">
+			<div data-tlc="bind $var '.%attribs.zoovy:prod_features'; if (is $var --notblank;) {{render --wiki='quickstart'; apply --append;}};"></div>
+		</div>
+	
+	
+		<div class="tabContent" data-anytab-content="prodReviews">
+	
+			<div data-tlc="bind $var '.pid'; apply --attrib='data-pid';" class="clearfix alignRight">
+				<button class="applyButton" data-app-click="store_crm|productReviewShow">Write Review</button>
+			</div>
+
+			<ul data-tlc="bind $var '.reviews.@reviews'; controller#loop --templateid='productReviewsTemplateDetail'; if (is $var --notblank;) {{apply --append;}};" class="listStyleNone clearfix productReviewsList"></ul>
+		</div>
+	
+		<div class="tabContent" data-anytab-content="prodVideo">
+			<div data-tlc="bind $var '.%attribs.youtube:videoid'; controller#youtubevideo --legacy;"></div>
+		</div>
+
+		<div class="tabContent" data-anytab-content="prodAccessories">
+			<ul data-tlc="bind $var '.%attribs.zoovy:accessory_products'; store_prodlist#productlist  --hidePagination='true' --hideSummary='true' --withReviews='1' --withInventory='1' --withVariations='1' --templateid='productListTemplateATC'  --legacy; apply --append;" class="listStyleNone fluidList clearfix noPadOrMargin lineItemProdlist"></ul>
+		</div>
+
+	</div>
+	
+		</td>
+	</tr>
+	</tbody></table>
+	<div class="prodlistRelatedContainer">
+		<ul data-tlc="bind $var '.%attribs.zoovy:related_products'; store_prodlist#productlist  --hidePagination='true' --hideSummary='true' --prepend='<h2>Similar Items</h2>' --withReviews='1' --templateid='productListTemplate'  --legacy; apply --append;" class="listStyleNone fluidList clearfix noPadOrMargin productList"></ul>
+	</div>
+
+
+</div><!-- productTemplate -->
+>>>>>>> upstream/201411
+
+
+
+
+<!-- a template used for a quickview link off of a category page -->
+<<<<<<< HEAD
+<div id="productTemplateQuickView"  class="prodTemplateQuickView">
+=======
+<div id="productTemplateQuickView">
+>>>>>>> upstream/201411
+
+<table class="prodViewerContainer">
+<tbody><tr>
+	<td class="imageContainer">
+<<<<<<< HEAD
+		<div>
+			<div data-tlc="bind $var '.%attribs.zoovy:prod_is_tags'; quickstart#tags --legacy; if (is $var --notblank;) {{apply --append;}};" class="tagsContainer"></div>
+			<a data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';" data-toolTipThumb="data-toolTipThumb">
+				<div data-tlc="bind $var '.pid'; quickstart#addpicslider  --legacy; apply --append;"><img data-tlc="bind $var '.%attribs.zoovy:prod_image1'; apply --img --media=$var --width=240 --height=240 --bgcolor='#ffffff' --replace;" src="blank.gif" class="prodBigImage" alt="" height="240" width="240" data-apptimize="embed"></div>
+			</a>
+			<div class="quickviewThumbnailsContainer prodPageCarousel">
+				<ul data-tlc="bind $var '.'; beachmall_product#productimages;" class="quickviewThumbnails"></ul>    
+			</div>
+		</div>
+	</td>
+
+	<td class="prodSummaryContainer marginBottom no_underline">
+		<h6 data-tlc="bind $var '.pid'; if (is $var --notblank;) {{ format --prepend='Sku#: ';apply --append;}};" class="ztable_row_small stid"></h6>
+
+		<div class="priceContainer  clearfix floatLeft">
+			<span data-tlc="bind $var '.'; beachmall_product#pricefrom;" class="basePrice"></span>
+			<span data-tlc="bind $var '.%attribs.zoovy:base_price';  if (is $var --notblank;) {{format --currency='USD'; apply --append;}};" class="basePrice"></span>
+			<h5 data-tlc="bind $var '.%attribs.zoovy:prod_msrp';  if (is $var --notblank;) {{format --currency='USD'; format --prepend='MSRP: ';  apply --append;}};" class="prodMSRP"></h5>
+			<span class="savings floatLeft">
+				<span data-tlc="bind $var '.%attribs.zoovy:prod_msrp'; if(is $var --notblank;) {{apply --show;}};">You save: </span><span data-tlc="bind $var '.pid'; quickstart#priceretailsavingsdifference  --legacy; apply --append;" class="savingsDifference"></span>
+				<span data-tlc="bind $var '.%attribs.zoovy:prod_msrp'; if(is $var --notblank;) {{apply --show;}};">(</span><span data-tlc="bind $var '.pid'; quickstart#priceretailsavingspercentage  --legacy; apply --append;" class="savingsPercentage"></span><span data-tlc="bind $var '.%attribs.zoovy:prod_msrp'; if(is $var --notblank;) {{apply --show;}};" class='displayNone'>)</span>
+			</span>
+		</div>
+		
+		<div data-tlc="bind $var '.'; beachmall_lists#showshiplatency;" class="shipTime latency floatLeft">
+			<div data-tlc="bind $var '.%attribs.user:prod_shipping_msg'; if (is $var --notblank;) {{apply --append;}};" class="shipTime latency displayNone"></div>
+		</div>
+		
+		<div class="floatLeft marginBottom">
+			<div data-tlc="bind $var '.%attribs.user:grp_siblings'; if(is $var --notblank;) {{ apply --show; }}; " class="displayNone">
+				<span class="moreColors">More Colors Available:</span>
+				<div data-tlc="bind $var '.%attribs.user:grp_siblings'; store_prodlist#productlist  --hidePagination='true' --hideSummary='true' --withInventory='1' --withVariations='1' --templateid='productListTemplateThumb'  --legacy; apply --append" data-app-role="productList" class="quickViewColorSib listStyleNone"></div>
+			</div>
+				<div data-tlc="bind $var '.pid'; store_product#atcvariations  --legacy; apply --append;" class="marginLeft borderNone"></div>
+		</div>
+
+		<div data-tlc="bind $var '.pid'; powerreviews_reviews#reviewsnippet --minreview='1' --legacy;" class="reviewsStarsCount"></div>
+
+		<div data-tlc="bind $var '.%attribs.zoovy:prod_desc'; if (is $var --notblank;) {{render --wiki='quickstart'; apply --append;}};" class="clearfix quickViewProdDesc"></div>
+		<a data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';" class='quickViewButton pointer'>VIEW DETAILS</a>
+=======
+<div>
+
+	<div data-tlc="bind $var '.%attribs.zoovy:prod_is_tags'; quickstart#tags --legacy; if (is $var --notblank;) {{apply --append;}};" class="tagsContainer"></div>
+	<div data-tlc="bind $var '.pid'; quickstart#addpicslider  --legacy; apply --append;"><img data-tlc="bind $var '.%attribs.zoovy:prod_image1'; apply --img --media=$var --width=240 --height=240 --bgcolor='#ffffff' --replace;" src="blank.gif" class="prodBigImage" alt="" height="240" width="240"></div>
+
+</div>
+
+	</td>
+
+	<td class="prodSummaryContainer marginBottom no_underline">
+	<h1 data-tlc="bind $var '.%attribs.zoovy:prod_name'; if (is $var --notblank;) {{apply --append;}};"></h1>
+	<h6 data-tlc="bind $var '.pid'; if (is $var --notblank;) {{ format --prepend='Sku#: ';apply --append;}};" class="ztable_row_small stid"></h6>
+
+
+	<div class="priceContainer">
+		<h4 data-tlc="bind $var '.%attribs.zoovy:base_price';  if (is $var --notblank;) {{format --currency='USD'; format --prepend='Our Price: ';  apply --append;}};" class="basePrice"></h4>
+		<h5 data-tlc="bind $var '.%attribs.zoovy:prod_msrp';  if (is $var --notblank;) {{format --currency='USD'; format --prepend='MSRP: ';  apply --append;}};" class="prodMSRP"></h5>
+		<span class="savings">
+			<span data-tlc="bind $var '.pid'; format --prepend='You save: '; quickstart#priceretailsavingsdifference  --legacy; apply --append;" class="savingsDifference"></span>
+			<span data-tlc="bind $var '.pid'; format --prepend='('; format --append=')'; quickstart#priceretailsavingspercentage  --legacy; apply --append;" class="savingsPercentage"></span>
+		</span>
+	</div>
+
+	<div data-tlc="bind $var '.%attribs.zoovy:ship_latency'; format --prepend='Normally ships in '; format --append=' day(s)'; if (is $var --notblank;) {{apply --append;}};" class="latency"></div>
+
+	<section class="marginBottom">
+		<span data-tlc="bind $var '.reviews.average'; if(is $var --notblank) {{format --prepend='review_'; apply --add --class=$var; }};" class="reviewSprite"></span>
+		<span data-tlc="bind $var '.reviews.total';  if (is $var --notblank;) {{format --prepend=' from ' --append=' reviews' ;apply --append;}};"></span>
+	</section>
+
+	<div data-tlc="bind $var '.%attribs.zoovy:prod_desc'; if (is $var --notblank;) {{render --wiki='quickstart'; apply --append;}};"></div>
+
+	</td>
+</tr>
+<tr>
+	<td colspan="2">
+
+	<ul data-tlc="bind $var '.reviews.@reviews'; controller#loop --templateid='productReviewsTemplateDetail'; if (is $var --notblank;) {{apply --append;}};" class="listStyleNone clearfix productReviewsList"></ul>
+
+>>>>>>> upstream/201411
+	</td>
+</tr>
+</tbody></table>
+
+
+</div><!-- productTemplateQuickView -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 404 page -->
+<div id="pageNotFoundTemplate">
+
+	<h1>Unable to find page...</h1>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+
+############################
+
+MOST OFTEN YOU WANT TO LEAVE THESE TEMPLATES ALONE
+if modified, be careful about changing id's or classes.
+adding classes is not likely to have any bad effects.
+if you change these, you should move them above this comment so that when you (or the next person) does an upgrade, you know what isn't default
+
+############################
+
+-->
+
+
+
+
+
+<!--  used in breadcrumb -->
+<ul>
+	<li id="breadcrumbTemplate">
+	<a data-tlc="bind $var '.'; store_routing#seoanchor --type='category'; apply --attrib='href'; bind $pretty '.pretty'; quickstart#cattext  --legacy; apply --append;"></a>
+	</li>
+</ul>
+
+
+<ul id="companySidelineTemplate" class="contentBG listStyleNone noPadOrMargin">
+<<<<<<< HEAD
+	<li><a href="/about_us/">About Beachmall.com</a></li>
+	<li><a href="/contact_us/">Contact Us</a></li>
+=======
+	<li><a href="/about_us/">About Us</a></li>
+	<li><a href="/contact_us/">Contact Information</a></li>
+>>>>>>> upstream/201411
+	<li><a href="/frequently_asked_questions/">Frequently Asked Questions</a></li>
+	<li><a href="/payment_policy/">Payment Policy</a></li>
+	<li><a href="/privacy_policy/">Privacy Policy</a></li>
+	<li><a href="/return_policy/">Return Policy</a></li>
+<<<<<<< HEAD
+	<li><a href="/shipping_policy/">Shipping Policy</a></li>
+=======
+	<li><a href="/shipping_policy/">Shipping Information</a></li>
+>>>>>>> upstream/201411
+</ul>
+
+<div id="aboutUsTemplate">
+	<div class="sideline" data-tlc="transmogrify --templateid='companySidelineTemplate'; apply --append;"></div>
+	<div class="mainColumn">
+<<<<<<< HEAD
+		<div class="textContentArea article custArticle">
+			<span class="displayNone" data-seo-title-about="About | Beachmall.com"></span>
+			<span class="displayNone" data-seo-desc-about="We have the largest selection of beach products in the largest variety of categories on the web 
+				for fun in the sun at the beach this summer by offering the most compelling combination of selection, 
+				value, service and convenience."></span>
+			<h4>Beach Chair &#124; Gear &#124; Patio Market Umbrellas &#124; Picnic Baskets at Super Low Prices</h4>
+			<h1>About Beachmall.com</h1>
+			<p>We have the largest selection of beach products in the largest variety of categories on the web 
+				for fun in the sun at the beach this summer by offering the most compelling combination of selection, 
+				value, service and convenience. We offer everything from folding beach chairs, beach accessories, 
+				beach umbrellas and footwear including market and patio umbrellas for outdoor sunshade. Our inventory is 
+				so extensive, you are sure to find the perfect items for your summer of fun and relaxation 
+				<br>If you like being comfortable outdoors, then you've come to the right place. 
+				<br>The company is built around its customers, who play a vital role in determining every aspect of the 
+					products offered, from design to quality and pricing. 
+				<br>Low Prices &#45; We comb the web to make sure our prices are the lowest anywhere. If you see an item 
+					for less, email us. We can get you a better deal almost every time and are proud to help you save 
+					money on the products you want.</p>
+		</div>
+	</div>
+=======
+		<div class="textContentArea article">
+			<h1 class="">About Us</h1>
+			<div>
+				<!-- ::: add your about us information here -->
+			</div>
+		</div>
+	</div>
+
+>>>>>>> upstream/201411
+</div>
+
+<div id="contactUsTemplate">
+	<div class="sideline" data-tlc="transmogrify --templateid='companySidelineTemplate'; apply --append;"></div>
+	<div class="mainColumn">
+<<<<<<< HEAD
+		<div class="textContentArea custArticle">
+			<span class="displayNone" data-seo-title-contact="Contact Us | Beachmall.com"></span>
+			<span class="displayNone" data-seo-desc-contact="Contact Us for Cheap Beach Products & Picnic Accessories."></span>
+		
+			<h1 class='displayNone'>Contact Us</h1>
+			<h4>Contact Us for Cheap Beach Products & Picnic Accessories</h4>
+=======
+		<div class="textContentArea">
+			<h1>Contact Information</h1>
+>>>>>>> upstream/201411
+			<div class="companyAddress">
+			<!-- ::: add your contact information here ::: -->
+			</div>
+
+<<<<<<< HEAD
+			<form action="#" data-app-submit="store_crm|contactFormSubmit" name="contactForm" class='contactForm'>
+=======
+			<form action="#" data-app-submit="store_crm|contactFormSubmit" name="contactForm" class='alignedForm'>
+>>>>>>> upstream/201411
+			<input name="msgtype" value="feedback" type="hidden">
+			<fieldset>
+				<legend>Contact Us</legend>
+				<div id="contactFormMessaging"></div>
+<<<<<<< HEAD
+				<div><label><span class="prompt">Email Address</span><input name="sender" required type="email"></label></div>
+				<div><label><span class="prompt">Subject</span><input name="subject" required type="text"></label></div>
+				<div><label><span class="prompt">Order ID</span><input name="OID" type="text"></label></div>
+				<div><label><span class="prompt">Message</span><textarea name="body" required></textarea></label></div>
+				<div class="alignRight"><input class="applyButton ui-button ui-widget ui-state-default ui-corner-all" value="Send Message" type="submit">
+				</div>
+=======
+				<label><span class="prompt">Email Address</span><input name="sender" required type="email" class='alignInput'></label>
+				<label><span class="prompt">Subject</span><input name="subject" required type="text" class='alignInput'></label>
+				<label><span class="prompt">Order ID</span><input name="OID" type="text" class='alignInput'></label>
+				<label><span class="prompt">Message</span><textarea name="body" required rows='6' class='alignInput'></textarea></label>
+				<div class="alignRight"><input class="applyButton" value="Send Message" type="submit"></div>
+>>>>>>> upstream/201411
+			</fieldset>
+			</form>
+		</div>
+
+	</div>
+</div>
+
+<div id="faqTemplate">
+	<div class="sideline" data-tlc="transmogrify --templateid='companySidelineTemplate'; apply --append;"></div>
+	<div class="mainColumn">
+<<<<<<< HEAD
+		<div class="textContentArea custArticle">
+=======
+		<div class="textContentArea">
+>>>>>>> upstream/201411
+			<h1>Frequently Asked Questions</h1>
+			<div class="faqContent ui-accordion ui-widget ui-helper-reset ui-accordion-icons appAccordianesque"></div>
+		</div>
+	</div>
+</div>
+
+<div id="paymentTemplate">
+	<div class="sideline" data-tlc="transmogrify --templateid='companySidelineTemplate'; apply --append;"></div>
+	<div class="mainColumn">
+<<<<<<< HEAD
+		<div class="textContentArea custArticle">
+			<div class='articleHeader'>
+				<div>BEACHMALL.COM Contact Information</div>
+				<div class='floatLeft'>11555 Central Parkway, Ste 1101<br>Jacksonville, FL. 32224<br>US</div>
+				<div class='floatRight'>Phone: 1-888-975-6555<br><a href='mailto:cs@beachmall.com'>cs@beachmall.com</a></div>
+			</div>
+			<h1>Payment Policy</h1>
+			<p>Ordering online at BeachMall.com is safe and easy 100&#37; guaranteed&#33; Our secure servers will protect your 
+				information using the most advanced encryption and firewall technology throughout the ordering process. 
+				Our Web site protects the security of personal information transmitted to us by using Secure Sockets Layer 
+				&#40;SSL&#41; software, which encrypts the information you input during the transmission to us using a unique 
+				session key. These layers of privacy protection ensure that information cannot be viewed even if 
+				intercepted by unauthorized parties. Our website has passed intensive, daily security scan by McAfee 
+				which help to protect you from identity theft, viruses, spyware, and other online threats. McAfee use 
+				powerful and advanced scanning engine technology and are used by over 80,000 websites. 
+				<br>In the event of unauthorized use of your credit card, you must notify your credit card provider in 
+				accordance with its reporting rules and procedures. No matter what method you choose, we guarantee that 
+				every transaction you make on our site will be 100&#37; secure. All prices are listed in U.S. dollars. We are 
+				pleased to accept payment through&#58;
+			</p>
+			<p><span>PAYPAL</span> The trusted leader in online payments. PayPal enables buyers and businesses to send 
+				and receive money online, safely and privately, and with no fee. PayPal provides industry-leading security 
+				and fraud prevention systems. When you use PayPal, your financial information is never shared with the merchant.
+			</p>
+			<p><span>CREDIT / DEBIT CARDS&#58;</span> We currently accept Visa, MasterCard, American Express and Discover cards.
+				You can safely enter your entire credit card number via our secure server, which encrypts all submitted 
+				information.
+			</p>
+			<h4>Promotion Discount Codes</h4>
+			<ul>
+				<li>Take discount specified on the AD off your total order with use of discount code, excluding shipping charges and taxes.</li>
+				<li>Discount will be taken during the checkout process.</li>
+				<li>Offer not valid on prior purchases, prior orders or with any other discounts, certificates or promotions.</li>
+				<li>This coupon may only be redeemed once during the promotion period.</li>
+				<li>Offer applies to merchandise purchases only.</li>
+			</ul>
+=======
+		<div class="textContentArea">
+			<h1>Payment Policy</h1>
+			<div>
+			<!-- ::: add your payment policy here ::: -->
+			</div>
+>>>>>>> upstream/201411
+		</div>
+	</div>
+</div>
+
+<div id="privacyTemplate">
+	<div class="sideline" data-tlc="transmogrify --templateid='companySidelineTemplate'; apply --append;"></div>
+	<div class="mainColumn">
+<<<<<<< HEAD
+		<div class="textContentArea custArticle">
+			<h1 class='displayNone'>Privacy Policy</h1>
+			<h4>Privacy Policy - Beach Products & Accessories from Beachmall.com</h4>
+			<h2>Site Security:</h2>
+				Ordering online at Beachmall.com is safe and easy &#38; guaranteed&#33; secure servers will protect your 
+				information using the most advanced encryption and firewall technology throughout the ordering process. 
+				Our Web site protects the security of personal information transmitted to us by using Secure Sockets Layer 
+				(SSL) software, which encrypts the information you input during the transmission to us using a unique 
+				session key. These layers of privacy protection ensure that information cannot be viewed even if 
+				intercepted by unauthorized parties. 
+			<br>Please note that email is not encrypted and is not a safe and secure way to transmit credit numbers or 
+				other confidential information. If for any reason you prefer to order by phone, please call 1 888&#45;975&#45;6555 
+				and we will be happy to assist you. 
+			<h2>Fair Credit Billing Act&#58;</h2>
+				If you're ever a victim of credit card fraud, the Fair Credit Act specifies that your credit card company 
+				cannot hold you liable for more than &#36;50 in fraudulent charges to your account. With Beachmall.com, 
+				you'll be reimbursed for any amount up to &#36;50 billed to you by your credit card company for unauthorized 
+				charges to your account if those charges result from an order you've placed on our secure server. For this 
+				protection, you must promptly notify your credit card company of any fraudulent charges and follow the 
+				procedures for doing so as outlined in your credit card agreement. 
+			<h2>Use of Information&#58;</h2>
+				At Beachmall.com we collect, we know that your online privacy is as important to you as the products, prices, 
+				and customer service we provide. We posted this privacy notice in an effort to answer your privacy-related 
+				questions, and to demonstrate our adherence to the privacy practices commonly found at the most reputable and 
+				consumer credited online companies. 
+			<br>While shopping on the Beachmall.com site, we ask you to provide information using online forms. We use this 
+				information to process your order, contact you regarding your order, or to answer any questions/concerns 
+				you might have expressed. We will not sell, or share any of your personal information to any outside parties, 
+				except as outlined in this policy. 
+			<br>When you purchase something from us we send your credit card information, name, billing address and the 
+				order dollar amount to your credit card company for authorization and approval. Your name, telephone number 
+				and shipping information must be provided to third party shippers such as UPS to deliver your package. 
+			<br>Some of the products that we sell require us to provide your name, address, phone number and product serial 
+				number to the manufacturer or third party service provider that requires this information to activate the 
+				service. These third party service providers have their own privacy policies which are not controlled by 
+				Beachmall.com. 
+			<br>We reserve the right to release personally identifiable information if required by law or to comply with a 
+				judicial proceeding, court order, or legal process, and when we believe it is necessary for fraud protection 
+				or credit risk reduction. 
+			<h2>Use of Cookies:</h2>
+				We customize and personalize certain Web page content based upon your browser type and other information 
+				provided by a &#34;cookie&#34;. A cookie remembers information about a visitor from one page to the next and 
+				from one visit to the next. A cookie does not contain any of your personal information, and is only a 
+				&#34;trigger&#34; that retrieves information when you visit our site. 
+			<br>As an example, cookies enable us to provide better service to you by maintaining your shopping cart between 
+				visits so that you are not required to enter each of the items again. On most Internet browsers, the cookie 
+				function can be turned off, and software is available from third parties which will allow you to visit our 
+				Web site without providing this information. You are welcomed at our website if you use this software but 
+				you will be unable to use our shopping cart to purchase items online. 
+			<ul>
+				<li>Third party vendors, including Google, use cookies to serve the badge and ads based on a user's prior visits 
+					to your website.
+				</li>
+				<li>Users may opt out of Google's use of cookies by visiting the Google advertising opt-out page. 
+					&#40;Alternatively you can point users to opt out of a third party vendor's use of cookies by visiting the 
+					Network Advertising Initiative opt out page.&#41;
+				</li>
+			</ul>
+			<h2>Aggregate Information&#58;</h2>
+				When a visitor comes to our website we collect information about the visitor's computer such as its IP address, 
+				operating system and browser software, click-stream information such as the address (URL) of the web site that 
+				directed you to our site, which pages and the order in which they were visited on our site for the purpose of 
+				assessing our site traffic and the effectiveness of the content. This data allows us to improve the quality of 
+				your visit by streamlining your ability to navigate the site and to develop featured programs and content that 
+				will be of interest to all our visitors. 
+			<h2>Use of External Links&#58;</h2>
+				Our web site may contain helpful links to other websites, such as the manufacturer or product review websites. 
+				We are not responsible or liable for the privacy practices or content found on these websites. 
+			<h2>Special Promotion Emails&#58;</h2>
+				You may choose to receive special promotion emails during the order checkout process on our website, or by 
+				providing your email address in the &#34;Newsletter Sign Up&#34; box found on the bottom &#45; left side of our home 
+				page. If you no longer wish to receive our promotional emails, you may opt out by logging into your 
+				Beachmall.com account. Please recognize that by unsubscribing, you'll miss our exclusive offers and notices 
+				on special savings. 
+			<h2>Children's Online Policy&#58;</h2>
+				Beachmall.com sells merchandise intended for purchase by adults. In accordance with the Children's Online 
+				Privacy Protection Act, Beachmall.com will not knowingly collect personal information on the internet from 
+				children under the age of thirteen. When placing an order on the Beachmall.com website, you are affirming that 
+				you are an adult. Users under the age of thirteen must ask a parent or guardian for assistance while placing an 
+				order online. 
+			<br>Beachmall.com will always remain committed to protecting your privacy online. We may change our Privacy 
+				Policy at any time. When such a change is made, we will post the revised Privacy policy on our website. 
+			<h2>Copyright and Trademarks&#58;</h2>
+				This site is owned and operated by NetStores USA LLC. Unless otherwise specified, all materials appearing on 
+				this site, including, but not limited to text, site design, logos, graphics, icons, images, audio, video 
+				clips, software, and accessories used on the site as well as the selection, assembly and arrangement thereof, 
+				are the sole property of Beachmall.com. You may use the content of this site only for the purpose of shopping 
+				on this site or placing an order, and for no other purpose. No materials from this site may be copied, 
+				reproduced, modified, republished, uploaded, posted, transmitted, or distributed in any form or by any means 
+				without prior written permission from Beachmall.com. All rights not expressly granted herein are reserved. 
+				Any unauthorized use of the materials appearing on this site may violate copyright, trademark and other 
+				applicable laws and could result in criminal or civil penalties. 
+			<br>The trademarks, logos, custom graphics, and service marks displayed on this site are registered trademarks 
+				of Beachmall.com. All other trademarks or service marks are property of their respective owners. The use of any 
+				Beachmall.com trademark or service mark without our express written consent is strictly prohibited. 
+			<h2 class='privacyDisclaimer'>DISCLAIMERS&#58;</h2>
+
+			<h2>Website Disclaimer&#58;</h2>
+				This website and the information provided herein are provided on an &#34;as is&#34; basis. Neither Beachmall.com 
+				nor its parent company, affiliates, nor each of their respective officers, directors, employees, and agents, 
+				warrant that the use of the Beachmall.com site will not be interrupted or error&#45;free, nor do we warranty the 
+				accuracy, validity, completeness or reliability of the content provided on the site. 
+			<h2>Warranty Disclaimer&#58;</h2>
+				We make no representation or warranty of any kind, whether expressed or implied, including but not limited to, 
+				implied warranties of merchantability, non&#45;infringement, or fitness for a particular purpose. All items 
+				purchased from our store are accompanied by a manufacturer warranty, unless indicated otherwise. You 
+				acknowledge that any warranty in connection with all products or services offered on our site is solely 
+				provided by the manufacturer or supplier of that product or service. For warranty information and/or 
+				assistance, please check the documentation supplied with the product or contact the manufacturer.
+			<h2>Shipping Disclaimer&#58;</h2>
+				We will make every effort and use every good measure to deliver your order on time. Beachmall.com will not be 
+				responsible for any delay of the shipment during transit, for reasons including but not limited to, 
+				negligence by the shipping carrier, employee strikes, and weather. 
+			<h2>Limitation of Liability&#58;</h2>
+				Under no circumstances, shall Beachmall.com or its associates be liable for any direct, indirect, incidental 
+				or consequential damages, that result from your use of or inability to use the Beachmall.com site, or from 
+				products or services offered on the site, including but not limited to your reliance on any information 
+				obtained from the site or the use of products or services offered on the site, that results in mistakes, 
+				interruptions, deletion or corruption of files, viruses, delays in operation or transmission, or any failure 
+				of performance, damage to equipment, and&#47;or personal injury or death. Some states do not allow the exclusion 
+				or limitation of incidental or consequential damages, so the above limitation or exclusion may not apply to you.
+	<!-- !!! load amendments here -->
+=======
+		<div class="textContentArea">
+			<h1>Privacy Statement</h1>
+			<h4>About this Privacy Policy:</h4>
+			<p>The entire site, or at least specific portions of this site are assisted by Zoovy technology. Zoovy has created this privacy policy as a template for customers who are using Zoovy technology with their websites. Zoovy in no way takes responsibility for the accuracy or enforcement of this policy. For a copy of Zoovy's privacy policy (which does not necessarily apply to the customers of its customers) visit http://www.zoovy.com/legal</p>
+
+			<p>Zoovy, Inc. has created this privacy statement for this Company in order to demonstrate our joint commitment to privacy. The following discloses the information gathering and dissemination practices for this website:</p>
+
+			<h5>Zoovy.com tracks IP Addresses</h5>
+			<p>Your IP address is used to help diagnose problems with our server, and to administer the Web site, in addition your IP address is used to help identify you and your shopping cart (in conjunction with a cookie.) We also use cookies to deliver content specific to your interests and to save your password so you don't have to re-enter it each time you visit our site.</p>
+
+
+			<h3>This site may contains links to other sites.</h3>
+			<p>This Company is not responsible for the privacy practices or the content of such Web sites, unless otherwise specified below your information is never shared with other companies, even those who are also using Zoovy technology. In the future Zoovy may provide you the ability to share your information across multiple websites which all utilize Zoovy technology however this will only be done at your explicit request.</p>
+
+			<h3>This site requires Unique Identifiers.</h3>
+			<p>This site uses an order form for customers to request information, products, and services, it also collects visitor's contact information (like their email address), in some circumstances their unique identifiers (like their pets name, or mothers maiden name), and financial information (like their account or credit card numbers). Contact information from the order form is used to send orders and information about our company to customers. The customer's contact information is also used to get in touch with the visitor when necessary. Users may opt-out of receiving future informational mailings; see the choice/opt-out section below, users may NOT opt out of receiving order notifications, or other contacts which are deemed essential by this Company.</p>
+
+			<h3>This site requires Financial Information.</h3>
+			<p>Financial information that is collected is used to bill the customer for products and services. Unique identifiers (such as pets name, and mothers maiden name) are collected from Web site visitors to verify the user's identity.</p>
+
+			<h3>This site may have Surveys and/or Contests.</h3>
+			<p>Our online surveys ask visitors for contact information (like their email address). We use contact data from our surveys to send the user information about our company. The customer's contact information is also used to contact the visitor when necessary. Users may opt-out of receiving future mailings; see the choice/opt-out section below. This site may also run contests in which case we may ask visitors for contact information (like their email address). Generally this information is used to verify eligibility, however we may also use contact data from our contests to send users information about this Company. The customer's contact information is also used to contact the visitor when necessary (for example winners). Users may opt-out of receiving future mailings; see the choice/opt-out section below. Financial information that is collected from our users is used to check the users' qualifications for registration and bill the user for products and services.</p>
+
+
+			<h3>Third Party Cookies</h3>
+			<p>Third party vendors, including Google, use cookies to serve the badge on the website and to serve ads based on a user's prior visits to the website.  Users may opt out of Google's use of cookies by visiting the Google advertising opt-out page.</p>
+
+			<h3>This site may contain Public Forums</h3>
+			<p>This site may include chat rooms, forums, message boards, and/or news groups available to its users. Please remember that any information that is disclosed in these areas becomes public information and you should exercise caution when deciding to disclose your personal information.</p>
+
+			<h3>About our System Security</h3>
+			<p>This site has security measures in place to protect the loss, misuse and alteration of the information under our control. Information is stored behind a firewall, against a password protected database system. Whenever sensitive information is accessed it is transmitted using strong SSL encryption. this Company may keep a copy of your information on its own system using Zoovy's WebAPI system, this system may have its own security measures in place.</p>
+
+			<h3>This site provides the choice to Opt In or Out</h3>
+			<p>Our site provides users the opportunity to opt-out of receiving communications from us at the point where we request information about the visitor. This site gives users the following options for removing their information from our database to not receive future communications or to no longer receive our service. Each time an information email is distributed, you have the option to use unique unsubscribe url which is attached to each outgoing email. Customers may unsubscribe at any time by simply logging into their accounts.</p>
+
+			<h3>We provide the ability to Correct/Update YOUR information.</h3>
+			<p>This site gives users the following options for changing and modifying information previously provided. Simply visit the customer login area of this website.</p>
+			<!-- !!! load amendments here -->
+>>>>>>> upstream/201411
+		</div>
+	</div>
+</div>
+
+<div id="returnTemplate">
+	<div class="sideline" data-tlc="transmogrify --templateid='companySidelineTemplate'; apply --append;"></div>
+	<div class="mainColumn">
+<<<<<<< HEAD
+		<div class="textContentArea custArticle">
+			<div class='articleHeader'>
+				<div>BEACHMALL.COM Contact Information</div>
+				<div class='floatLeft'>11555 Central Parkway, Ste 1101<br>Jacksonville, FL. 32224<br>US</div>
+				<div class='floatRight'>Phone: 1-888-975-6555<br><a href='mailto:cs@beachmall.com'>cs@beachmall.com</a></div>
+			</div>
+			<h1><a name='linkToReturns'>Return Policy</a></h1>
+			<!-- <h5>Purchases made between Dec. 1st 2012, and Dec. 31, 2012, may be returned through January 31, 2013.</h5> -->
+				If for any reason you're not completely satisfied with your purchase, you may return it within 30 days of the 
+				original purchase date for a full refund (you meet the below eligibility criteria) less any shipping costs. 
+				The items must be in new and resalable condition (with no cut, scratches or contact with water/sand), 
+				original intact packaging with all tags and accessories.
+			<ul>
+				<li>RESTOCK Fee will be WAIVED subject to meeting of all eligibility criteria stated herein.</li>
+				<li>In the unlikely event that your order is incorrect, missing parts, damaged or defective, please call us 
+					within 5 days of receipt and we will send you the correct product, replacement product, or replacement 
+					parts at no cost to you.
+				</li>
+				<li>All returns require an RMA (Return Merchandise Authorization) number, which can be obtained by 
+					contacting our Customer Care Center by email to cs@beachmall.com
+				</li>
+				<li>Refund Time: You should receive your refund in 5-10 business days to your original payment method after 
+					the return is received.
+				</li>
+				<li>The customer to pay for cost of return shipping (not reimbursable / we do not issue prepaid return 
+					labels) to return the item back to us for the reason for return is not a result of our error.
+				</li>
+				<li>Any item that is not in its original condition, is damaged, or is missing parts for reasons not due to 
+					our error: Deduct 20% of item's price, outbound shipping cost and you pay directly to shipper to return. 
+					(not reimbursable / we do not issue prepaid return labels)
+				</li>
+				<li>Refund policy does not cover products damaged due to neglect, improper usage, or Acts of Nature.</li>
+				<li>If you return a product that has free shipping our actual outbound shipping costs (including shipping 
+					surcharge mentioned on product page, if any) will be deducted from your refund.
+				</li>
+				<li>Some made-to-order (items not advertised as ships same / next day / 1-3 days) and items manufactured by 
+					Galtech cannot be returned or exchanged. This does not apply for reasons due to our error.
+				</li>
+				<li>If the package is returned without our issuing of an RMA or without the RMA # on it, a restocking fee 
+					of 15% will be applied.
+				</li>
+				<li>If the item is damaged in transit or damaged on arrival: an exchange will be made at no cost to you.</li>
+				<li>CLOTHING: Can be returned for an exchange only (any item from same manufacturer). Any non-coverage 
+					bottoms (G-strings, thongs, tonga,etc) can not be returned due to sanitation reasons. No refunds allowed 
+					and you are responsible for the round trip shipping costs for exchange.
+				</li>
+				<li>Clothing that is soiled, worn, laundered or tags removed can not be returned/exchanged.</li>
+			</ul>
+			<h2>WARRANTY:</h2>
+			<span>All products come with <a href='#linkToReturns'>90 day limited warranty</a> unless specified on the product page.</span>
+			<ul>
+				<li>Damage or warranty claim of any nature will not be honored when a non-commercial purpose product is 
+					used in commercial settings.
+				</li>
+				<li>Valid Warranty Replacements will be shipped to customer at our own cost.</li>
+				<li>Policy does not cover products damaged due to neglect, improper usage, or Acts of Nature.</li>
+			</ul>
+			
+			<h2>LOW PRICE GUARANTEE:</h2>
+				If within 30 days of the purchase date, you see the exact same product advertised on our website at a lower 
+				published retail price (including shipping, handling and taxes if applicable), we shall refund you the 
+				difference. It's that simple!
+			<ul>	
+				<li>We guarantee you won't find any of our unique deals anywhere for less. If you do, we'll match that 
+					price guaranteed before the order is placed. Eligibility criteria below:
+				</li>
+				<li>The product must be an exact match (incl. color, size, quantity, brand, etc) to the one carried on 
+					Beachmall.com, be in-stock, same ship out period (eg. ship same day), and immediate available for 
+					purchase at the other website.
+				</li>
+				<li>Does not apply to items on other sites where item is listed as limited-quantity offers, closeouts, 
+					discontinued, clearances, special, sale, or limited-time discounts, bulk quantity items, or 
+					typographical errors.
+				</li>
+				<li>Cannot be combined with a coupon or other discount.</li>
+				<li>The competitor must be online retailer and not be an auction site.</li>
+				<li>You get <a title='buySAFE 3-in-1 Guarantee' href='http://www.buysafe.com/buyer_benefits/overview.html' target='_blank'>buySAFE 3-in-1 Guarantee</a> at NO cost to you. Review <a title='buySAFE' href='http://www.buysafe.com/buyer_benefits/guarantee_terms.html#price' target='_blank'>BuySafe</a> for more details.</li>
+			</ul>
+				To place your order or inquire regarding a price Guarantee, please call us toll free at (888) 975-6555 or use 
+				our Live Chat. Before contacting us, please make sure you have the complete URL (address) of the competitor's 
+				web site, along with your name, phone number, and the details of the price difference so that we can help you 
+				as quickly as possible. 
+				
+			<h2>EXCHANGES:</h2>
+				You can exchange an item within 30 days of original purchase date for a different variation--e.g., size, color, 
+				buyer remorse AND you meet the eligibility criteria:
+			<ul>
+				<li>The return is not due to our error (e.g., damaged before receipt, defective, etc.)</li>
+				<li>The item must be in new and resalable condition (with no cut, scratches or contact with water/sand) 
+					with original packaging, tags and accessories.
+				</li>
+				<li>Restocking Fee will be waived for exchange item but shipping costs will be deducted. If you return a 
+					product that has free shipping, our actual outbound shipping cost (including shipping surcharge 
+					mentioned on product page, if any) will be deducted from your refund.
+				</li>
+				<li>Place new order for new item and credit will appear on your original payment method within 10 Business 
+					days after return is received by us.
+				</li>
+				<li>Clothing exchanges: Read above under 'return policy'</li>
+			</ul>
+			
+			<h2>CANCELLATION / REFUSED SHIPMENT:</h2>
+			<ul>
+				<li>In the event that you refuse a shipment for any reason other than visible damage (such as box crushed, 
+					torn) you will be responsible for round trip shipping cost (also for free shipping item) and 15% 
+					restocking fee. In case of visible damage, notify our Customer Care Center immediately by email to 
+					cs@beachmall.com
+				</li>
+				<li>Once you place your order, we begin processing it immediately. Many of our products ship out on the same 
+					day an order is placed. Cancellation or change to your order, please call 1-888-975-6555 and also immediately 
+					email to cs@beachmall.com
+				</li>
+				<li>If the item you want to cancel has already entered the shipping process, it can't be cancelled by you or by our Customer Care Center. However, you may return the item subject to our return policy.
+			</ul>
+			
+			<h2>Product Descriptions/Images</h2>
+				Product descriptions and images displayed on our site are for quick reference only. Beachmall.com is not 
+				responsible for changes or variations in product specifications and/or physical appearance. Although we do 
+				our best to ensure that all product information is up-to-date and accurate, there are circumstances which 
+				can cause the information on our website to be listed incorrectly or become outdated without our immediate 
+				knowledge. This includes but is not limited to preliminary specification supplied by the manufacturer in 
+				error, new versions or revisions, color deviations, retail package alterations and other variations that 
+				may be considered inconsequential by the manufacturer. Beachmall.com relies on the manufacturer to 
+				communicate these differences. Presently we have no way of alerting customers prior to purchase in the 
+				event the manufacturer fails to do so. Consequently, BeachMall.com is not responsible for misleading 
+				information displayed on our site. If you discovered an error; please contact us and we will correct on 
+				the website
+=======
+		<div class="textContentArea">
+			<h1>Return Policy</h1>
+			<div>
+			<!-- ::: add your return policy here ::: -->
+			</div>
+>>>>>>> upstream/201411
+		</div>
+	</div>
+</div>
+
+<div id="shippingTemplate">
+	<div class="sideline" data-tlc="transmogrify --templateid='companySidelineTemplate'; apply --append;"></div>
+	<div class="mainColumn">
+<<<<<<< HEAD
+		<div class="textContentArea custArticle">
+			<div class='articleHeader'>
+				<div>BEACHMALL.COM Contact Information</div>
+				<div class='floatLeft'>11555 Central Parkway, Ste 1101<br>Jacksonville, FL. 32224<br>US</div>
+				<div class='floatRight'>Phone: 1-888-975-6555<br><a href='mailto:cs@beachmall.com'>cs@beachmall.com</a></div>
+			</div>
+			<h1>Shipping Policy</h1>
+				At this time, we can only ship orders to destinations in the 48 contiguous US States by UPS or FedEx only. 
+				We don't ship any orders to Hawaii, Alaska, or Puerto Rico, DPO, APO and FPO addresses, Canada or other 
+				International Destinations.
+			<ul>
+				<li>Orders placed on Saturday or Sunday will be processed on next business day.</li>
+				<li>If the item is damaged in transit or DOA an exchange will be made or full refund issued.</li>
+				<li>We don't deliver to P.O. boxes at this time.</li>
+				<li>Risk of loss and title for items purchased from this Web Site pass to you upon delivery of the items to 
+					the carrier.
+				</li>
+				<li>All approved returns must be sent freight prepaid by the customer, insured and RMA (Return Merchandise 
+					Authorization) number marked on package.
+				</li>
+				<li>There will be a $15 Surcharge to reroute any package to another address in same state for any reason. 
+					(Additional charges for different state)
+				</li>
+				<li>All orders destined to Florida addresses will be charged sales tax as required by applicable Florida law.</li>
+				<li>Occasionally packages are returned to us as undeliverable. When the carrier returns an undeliverable 
+					package to us, we issue a full refund less round trip charges (incl. free shipping item). Reasons for 
+					undeliverable: Failed Delivery Attempts, Refused by Recipient, Incorrect Address.
+				</li>
+			</ul>
+			<h2>International Shipping:</h2>
+				We can only ship orders to destinations in the 48 contiguous US States by UPS or FedEx only. We don't ship 
+				any orders to APOs and FPOs, Hawaii, Alaska, Puerto Rico, Canada or other International Destinations.
+			<br><br>2954
+=======
+		<div class="textContentArea">
+			<h1>Shipping Information</h1>
+			<div>
+			<!-- ::: add your shipping information here ::: -->
+			</div>
+>>>>>>> upstream/201411
+		</div>
+	</div>
+</div>
+
+<<<<<<< HEAD
+<div id="recentTemplate">
+	<h1>Recently Viewed Items</h1>
+	<div class='recentlyViewedItemsContainer'>
+		<div class='recentEmpty'>There are no recently viewed items to show. Do some browsing and we'll add to the list for you!</div>
+		<ul data-tlc="store_prodlist#productlist  --hideSummary='1' --hidePagination='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin productList prodMargin productPreviousViewed"></ul> 
+	</div>
+</div>
+
+=======
+>>>>>>> upstream/201411
+<nav id="customerSidelineTemplate">
+	<ul class="listStyleNone noPadOrMargin">
+		<li><a href="/my_account/" rel="nofollow">My Account</a></li>
+		<li><a href="/change_password/" rel="nofollow">Change Password</a></li>
+		<li><a href="/my_order_history/" rel="nofollow">Order History</a></li>
+		<li><a href="/my_wishlist/" rel="nofollow">Manage Lists</a></li>
+<<<<<<< HEAD
+		<li class="hideIfLoggedOut"><div data-app-click="beachmall_begin|logBuyerOut" class="sidelineLogout">Log Out</div></li>
+=======
+>>>>>>> upstream/201411
+		<!-- <li class="hideIfLoggedOut"><a href="customer/logout" rel="nofollow">Log Out</a></li> -->
+	</ul>
+</nav>
+
+<div id="myAccountTemplate" class="clearfix smallButton">
+	<div class="sideline" data-tlc="transmogrify --templateid='customerSidelineTemplate'; apply --append;"></div>
+	<div class="mainColumn">
+		<div class="textContentArea">
+			<h1>My Account</h1>
+			<section>
+				<div class="billAddressContainer" data-app-role="addressContainer" data-app-addresstype="bill">
+					<div class="marginBottom">
+						<button class="floatRight applyButton" data-icon-primary="ui-icon-plus" data-app-click="quickstart|showBuyerAddressAdd">New Billing Address</button>
+						<h2>Billing Address(es)</h2>
+					</div>
+					<div data-tlc="bind $var '.@bill'; controller#loop --templateid='billAddressTemplate'; if (is $var --notblank;) {{apply --empty; apply --append;}};" class="billAddresses"></div>
+				</div>
+				<div class="shipAddressContainer" data-app-role="addressContainer" data-app-addresstype="ship">
+					<div class="marginBottom">
+						<button class="floatRight applyButton" data-icon-primary="ui-icon-plus" data-app-click="quickstart|showBuyerAddressAdd">New Shipping Address</button>
+						<h2>Shipping Address(es)</h2>
+					</div>
+					<div data-tlc="bind $var '.@ship'; controller#loop --templateid='shipAddressTemplate'; if (is $var --notblank;) {{apply --empty; apply --append;}};" class="billAddresses"></div>
+				</div>
+			</section>
+		</div>
+	</div>
+</div>
+
+<div id="orderHistoryTemplate" class="clearfix smallButton">
+	<div class="sideline" data-tlc="transmogrify --templateid='customerSidelineTemplate'; apply --append;"></div>
+	<div class="mainColumn">
+		<div class="textContentArea">
+			<h1>Order History</h1>
+			<div data-tlc="bind $var '.@orders'; controller#loop --templateid='orderLineItemTemplate'; if (is $var --notblank;) {{apply --append;}};" data-app-role="orderList" class="ui-accordion ui-widget ui-helper-reset ui-accordion-icons "></div>
+		</div>
+	</div>
+</div>
+
+<div id="subscribeTemplate" class="clearfix smallButton">
+	<div class="sideline" data-tlc="transmogrify --templateid='customerSidelineTemplate'; apply --append;"></div>
+	<div class="mainColumn">
+		<div class="textContentArea">
+			<h1>Manage your Subscriptions</h1>
+			<form action="#" name="subscribeFrm">
+				<fieldset data-tlc="bind $var '.@lists'; store_crm#subscribecheckboxes  --legacy; apply --append;" class="borderNone subscriberLists"></fieldset>
+			</form>
+		</div>
+	</div>
+</div>
+
+<div id="newsletterTemplate" class="clearfix smallButton">
+	<div class="sideline" data-tlc="transmogrify --templateid='customerSidelineTemplate'; apply --append;"></div>
+	<div class="mainColumn">
+		<div class="textContentArea">
+			<h1>Subscribe to our Newsletter and Save!</h1>
+			<div data-tlc="bind $var '.'; transmogrify --dataset=$var --templateid='subscribeFormTemplate'; apply --append;"></div>
+		</div>
+	</div>
+</div>
+
+<div id="customerInvoiceTemplate" class="clearfix smallButton">
+	<div class="sideline" data-tlc="transmogrify --templateid='customerSidelineTemplate'; apply --append;"></div>
+	<div class="mainColumn">
+		<div class="textContentArea">
+			<div data-tlc="bind $var '.'; transmogrify --dataset=$var --templateid='invoiceTemplate'; apply --append;" data-bind="format:loadsTemplate; loadsTemplate: invoiceTemplate; useParentData:true;"></div>
+		</div>
+	</div>
+</div>
+
+<div id="changePasswordTemplate" class="clearfix smallButton">
+	<div class="sideline" data-tlc="transmogrify --templateid='customerSidelineTemplate'; apply --append;"></div>
+	<div class="mainColumn">
+		<div class="textContentArea">
+			<h1>Change Password</h1>
+			<form action="#" name="changePasswordForm" data-app-submit="quickstart|passwordChangeSubmit" class='alignedForm'>
+			<fieldset class="borderNone">
+			<p>For passwords, we recommend using mixed case, at least one number and one special character.</p>
+			<div class="messaging"></div>
+			<label><span class="prompt">Password</span><input name="password" size="35" required type="password" data-minlength='8'></label>
+			<label><span class="prompt">Confirm Password</span><input name="password2" required size="35" type="password" data-minlength='8'></label>
+			<div class='alignCenter'><input value="Change Password" class="loadingButton applyButton" type="submit"></div>
+			</fieldset>
+			</form>
+		</div>
+	</div>
+</div>
+
+<div id="customerListsTemplate" class="clearfix smallButton">
+	<div class="sideline" data-tlc="transmogrify --templateid='customerSidelineTemplate'; apply --append;"></div>
+	<div class="mainColumn">
+		<div class="textContentArea">
+			<h1>List Manager</h1>
+
+			<div class='applyAccordion' data-tlc="apply --empty; bind $var '.@lists'; controller#loop --templateid='buyerListTemplate'; apply --append; bind $content '.@lists'; controller#loop --templateid='buyerListProdlistContainerTemplate'; apply --append;"></div>
+
+		</div>
+	</div>
+</div>
+
+<div id="customerForgetMeTemplate" class="clearfix smallButton">
+	<div class="sideline" data-tlc="transmogrify --templateid='customerSidelineTemplate'; apply --append;"></div>
+	<div class="mainColumn">
+		<div class="textContentArea">
+			<h1>Your 'Forget Me' list</h1>
+			<p>Items on this list will not show up anywhere on the site. Use it for items you never want to see again. If you add an item to the list by mistake, use this page to remove it from the list and it will start re-appearing during your shopping experience.</p>
+			<ul id="forgetmeContainer" class="prodlist ">
+			</ul>
+		</div>
+	</div>
+</div>
+
+<ul>
+
+<li id='subscriberListItemTemplate'>
+	<label data-tlc="bind $var '.EXEC_SUMMARY'; apply --attrib='title';" >
+	<input type='checkbox'  data-tlc="bind $id '.ID'; format --prepend='USER#SUB'; apply --attrib='name'; set $checked ''; store_crm#buyersubscribe --id=$id; if(is $checked --notblank;) {{ apply --attrib='checked';}};" />
+	<span data-tlc="bind $var '.NAME'; apply --append;"></span>
+	</label>
+</li>
+
+</ul>
+
+<h2 id='buyerListTemplate' data-tlc="bind $id '.id'; apply --append; bind $items '.items'; if (is $items --notblank;) {{format --prepend=' (' --append=')'; apply --append;}};"></h2>
+
+
+
+<div id='buyerListProdlistContainerTemplate' class='buyerList' data-tlc="bind $id '.id'; apply --attrib='data-buyerlistid';">
+	<!--
+	the UL is generated automatically because the tlc bind is specific to the list id. trying to use tlc to generate tlc would probably get me committed.
+	the div is NOT added dynamically so the accordion can be generated.
+	-->
+</div>
+
+
+
+<div id="searchTemplate" class="searchResultsPage clearfix">
+
+	<!-- the div is use to show a detailed view of a product. should be hidden by default. -->
+	<div class="previewProductDetail displayNone"></div>
+
+	<div class="previewListContainer">
+		<!-- productListTemplateResults gets loaded into here -->
+		<ul data-app-role="resultsContainer" class="listStyleNone fluidList noPadOrMargin productList"></ul>
+	</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+<!--
+a template for multipage controls
+after this is generated, actions for going to last and next page will be added by the extension.
+to any element with a class of paging and a data-role of either 'next' or 'previous'
+onclicks are recursive, so only add it to the parent element.
+.mpControlsPagination is used to 'hide' the pagination portion of the header if pagination is disabled.
+-->
+
+<div id="mpControlSpec" class="mpControlContainer">
+	<div class="mpControls ui-widget ui-state-default ui-corner-top">
+
+<span class="mpControlsPagination ui-state-active ui-corner-all floatRight paging pointer" data-role="next" title="next page">
+	<span class="ui-icon ui-icon-circle-triangle-e"></span>
+</span>
+
+<div class="floatRight ddUlMenu mpControlsPagination">
+<ul>
+	<li>
+
+	<a href="#" onclick="return false;">
+		<span data-tlc="bind $var '.page_in_focus'; format --prepend='page '; if (is $var --notblank;) {{apply --append;}};"></span>
+		<span data-tlc="bind $var '.total_page_count'; format --prepend='of '; if (is $var --notblank;) {{apply --append;}};"></span>
+	</a>
+	<ul data-tlc="bind $var '.total_page_count'; store_prodlist#mppagesaslistitems  --legacy; apply --append;" class="ui-widget-content ui-corner-bottom"></ul>
+	</li>
+</ul>
+</div>
+
+<span class="mpControlsPagination ui-state-active ui-corner-all floatRight paging pointer" data-role="previous" title="previous page">
+	<span class="ui-icon ui-icon-circle-triangle-w"></span>
+</span>
+
+
+<span data-tlc="bind $var '.page_start_point'; format --prepend='items '; if (is $var --notblank;) {{apply --append;}};"></span>
+<span data-tlc="bind $var '.page_end_point'; format --prepend='- '; if (is $var --notblank;) {{apply --append;}};"></span>
+<span data-tlc="bind $var '.total_product_count'; format --prepend='of '; if (is $var --notblank;) {{apply --append;}};"></span>
+
+	</div><!-- /.mpControls -->
+</div><!-- /#mpControlSpec -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+Cart template
+This is the template used both within a dialog and inline, unless implicitly overridden in showContent params.
+-->
+
+<<<<<<< HEAD
+<div id="cartTemplate" class="clearfix inLineCart ui-widget-content"><!-- template role gets added by the myApp. don't add it yourself -->
+
+	<div class='checkoutButtonsContainer stdMargin clearfix'>
+		<div class='cartButtonsContainer clearfix'>
+			<div class='cartBar'>
+				<span title="proceed to secure checkout"><a class="ui-state-default checkoutButton" href='/checkout/'>Begin Checkout</a></span> <!-- applyButton -->
+				<!-- <button class='floatRight ui-state-default continueShoppingButton' onClick="$('#modalCart').dialog('close');">Continue Shopping</button> -->
+				<a href="/" class='floatRight ui-state-default continueShoppingButton'>Continue Shopping</a>
+				<button class='floatRight scrollToEmail' data-app-click="beachmall_cart|scrolltoemailcart	">E-mail Cart</button>
+			</div>
+		</div>
+	</div>
+
+	<form action="#" onsubmit="return false">
+	
+		<div class="cartStuffContainer cartContainer">
+			<div class='cartHeader'>
+				<div class='floatLeft cartImg'>Product Image</div>
+				<div class='floatLeft cartDesc'>Product Information</div>
+				<div class='floatLeft cartPQT'>
+					<div class='cartPQT floatLeft'>Qty</div>
+					<div class='cartPQT floatLeft'>Item Price</div>
+					<div class='cartPQT floatLeft'>Total</div>
+				</div>
+			</div>
+			<ul data-tlc="bind $var '.@ITEMS'; controller#loop --templateid='productListTemplateCart'; if (is $var --notblank;) {{apply --append;}};" class="listStyleNone fluidList clearfix noPadOrMargin productList lineItemProdlist"></ul>
+		</div>
+		
+		<div class="cartSummaryTotalsContainer">
+			<div class="ui-widget ui-widget-content">
+				<div class='smallPadding smallButton'>
+					<button class='applyButton cartRefreshButton' data-text='false' data-icon-primary='ui-icon-refresh' data-app-click="cco|cartFetchExec">Refresh Cart</button>
+					<h2>Cart Totals</h2>
+				</div>
+				<div class="cartSummaryContainer stdPadding ui-widget-content clearfix">
+
+					<section class="cartSummary marginBottom">
+						<div data-tlc="bind $var '.sum.items_total'; if (is $var --notblank;) {{format --currency='USD'; format --prepend='<h6>Subtotal: </h6>'; apply --add --class='orderSubtotal'; apply --append;}};"></div>
+						<div data-tlc="bind $var '.sum.tax_total'; format --currency='USD'; format --prepend='<h6>Tax: </h6>'; apply --add --class='orderTax'; apply --append;"></div>
+						<div data-tlc="cco#shipinfobyid  --legacy;" class="orderShipping displayNone" data-bind="useParentData:true; format:shipinfobyid; extension:cco;"></div>
+						<div data-tlc="bind $var '.sum.order_total'; if (is $var --notblank;) {{format --currency='USD'; format --prepend='<h6>Order Total: </h6>'; apply --add --class='orderTotal'; apply --append;}};"></div>
+						<div data-tlc="bind $var '.sum.gfc_total'; beachmall_cart#beachmoney --classname='orderGiftcardTotal' --hidezero='true' --currencysign='$' --prepend='<h6>Giftcard(s): </h6>' --legacy;"></div>
+						<div data-tlc="bind $var '.sum.pnt_total'; beachmall_cart#beachmoney --classname='rewardPointsTotal' --hidezero='true' --currencysign='$' --prepend='<h6>Reward Points: </h6>' --legacy;"></div>
+						<div data-tlc="bind $var '.sum.rmc_total'; beachmall_cart#beachmoney --classname='returnsCreditTotal' --hidezero='true' --currencysign='$' --prepend='<h6>Returns Credit: </h6>' --legacy;"></div>
+						<div data-tlc="bind $var '.sum.balance_due_total'; cco#orderbalance  --classname='orderBalanceDue' --hidezero='false' --currencysign='$' --prepend='<h6>Estimated Total: </h6>' --legacy;" class="orderBalanceDue"></div>
+
+						<div class='couponEntryContainer' data-app-role='couponContainer'>
+							<fieldset>
+								<label for='coupon'>Promotional Code:</label>
+								<div class='cartCouponHint tipifyCart'>What's this?</div>
+								<div class='toolTip couponToolTip'>We strive to bring you the best products at everyday low prices. 
+									Occasionally we offer a special promotion. 
+									If you have a promotional code, simply enter this code and the discount will be 
+									applied to your order total
+								</div>
+								<input type='text' name='coupon' id="coupon" size='8'>
+								<button class='cartCouponButton' data-app-click="beachmall_cart|execCouponAdd">Update Total</button>
+							</fieldset>
+						</div>
+					</section>
+
+					<section data-app-role="cartTemplateShippingContainer" class="marginBottom cartTemplateShippingContainer">
+						<h3 data-tlc="bind $var '.ship.postal'; if(is $var --notblank;) {{set $var 'Shipping:'; apply --append;}} else {{set $var 'Delivery:'; apply --append;}};"></h3>
+						<div class='cartShipOptions'>
+							<label for="ship/postal">Zip/Postal Code:</label>
+							<input data-tlc="bind $var '.ship.postal'; if(is $var --blank) {{bind $var '.bill.postal';}}; apply --select=$var; " size="6" name="ship/postal" value="" maxlength="10" onchange="myApp.ext.beachmall_begin.a.updateShipPostal($(this).parent()); " data-app-blur="cco|cartZipUpdateExec" type="text">
+							<div><span class='shipCity'></span><span class='shipRegion'></span></div>
+							<input class='cartLineButton ui-state-default updateButton zipButton pointer' type='button' value='Update Location'>
+
+							<ul data-tlc="order_create#shipmethodsasradiobuttons  --legacy;" class="noPadOrMargin listStyleNone cartShipMethods" data-bind="useParentData:true; format:shipmethodsasradiobuttons; extension: order_create;" data-app-role="shipMethodsUL"></ul>
+						</div>
+						<span class='floatLeft clearfix' data-tlc="bind $var'.cartdetail.@ITEMS'; beachmall_cart#expshipmessage --legacy;"></span>
+						<div class='clearfix'>
+							<a href='#' class='floatLeft tipifyCart surchargeText' data-tlc="bind $var '.cart.@ITEMS'; beachmall_cart#shipsurmessage --legacy;"></a>
+							<div class='toolTip surchargeHint'>
+								If the calculated shipping cost is not zero, then shipping surcharge is applied for 
+								items and destinations applicable. More details of this charge is stated on the 
+								shipping tab of the product page
+							</div>
+						</div>
+						<div class='clearfix'>
+							<div class='tipifyCart interNatText floatLeft'>
+								Shipping Outside the Contiguous US?
+							</div>
+							<div class='toolTip interNatHint'>
+								At this time, we can only ship orders to destinations in the 48 contiguous US States by 
+								UPS and FedEx only. We don't ship any orders to Hawaii, Alaska, or Puerto Rico, DPO, APO 
+								and FPO addresses, Canada or other International Destinations.
+							</div>
+						</div>	
+					</section>
+
+					<section class="marginBottom">
+					</section>
+				</div>
+				<div class="checkoutButtonsContainer stdMargin clearfix">
+					<div class='cartButtonsContainer clearfix'>	
+						<div class='cartBar'>
+							<span title="proceed to secure checkout">
+								<a class="ui-state-default checkoutButton" href='/checkout/'>Begin Checkout</a> <!-- applyButton -->
+							</span>
+							<!-- <button class='floatRight ui-state-default continueShoppingButton' onClick="$('#modalCart').dialog('close');">Continue Shopping</button> -->
+							<a href="/" class='floatRight ui-state-default continueShoppingButton'>Continue Shopping</a>
+							<div class='mailCartCont floatRight'>
+								<div class="mailCartForm" data-mail-cart="parent">
+									<div class='cartEmailMessaging'></div>
+									<span data-app-click="beachmall_cart|hidecartemail" data-mail-cart="hide" class='sprite pointer'></span>
+									<h2 data-app-click="beachmall_cart|showcartemail" data-mail-cart="show">E-mail Cart</h2>
+									<input type='text' name='fullname' placeholder='Full Name'>
+									<input type='email' name='login' placeholder='E-mail Address'>
+									<button data-app-click="beachmall_cart|emailcart" class='pointer'>Send Cart</button>
+									<div>
+										<input type='checkbox' checked='checked' name='newsletter' id='newsletter'>
+										<label for='newsletter'>Keep me informed about Beachmall.com special offers, exclusive products, and new product information.</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class='cartAltButtonsContainer'>
+						<div class='orUse'>OR USE...</div>
+						<span data-tlc="bind $var '.cart.cartid'; cco#paypalecbutton  --legacy;" id="paypalecbutton" class="thisButton"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class='cartFooter'>
+			<div class='floatLeft'><h3>Satisfaction Guaranteed</h3><h5>We promise you unbeaten selection, service, easy returns, and total shopping satisfaction</h5></div>
+			
+			<div class='phoneChatLive phone floatLeft'>
+				<div class='phoneIcon sprite floatLeft'></div>
+				(888) 975-6555 <h6 class='openSansFont'>OR</h6>
+				<div class='liveHelp pointer'>
+					<!-- BEGIN ProvideSupport.com Text Chat Link Code -->
+					<div id="cinuRJ" style="z-index:100;position:absolute"></div>
+					<div id="scnuRJ" style="display:inline"></div>
+					<div id="sdnuRJ" style="display:none"></div>
+					<script type="text/javascript">var senuRJ=document.createElement("script");senuRJ.type="text/javascript";var senuRJs=(location.protocol.indexOf("https")==0?"https":"http")+"://image.providesupport.com/js/1qaxuqjnvcj4w1csevb7u0l3tc/safe-textlink.js?ps_h=nuRJ&ps_t="+new Date().getTime()+"&online-link-html=Live%20Chat%20Online&offline-link-html=Live%20Chat%20Offline";setTimeout("senuRJ.src=senuRJs;document.getElementById('sdnuRJ').appendChild(senuRJ)",1)</script>
+					<noscript>
+						<div style="display:inline">
+							<a href="http://www.providesupport.com?messenger=1qaxuqjnvcj4w1csevb7u0l3tc">Customer Support Chat</a>
+						</div>
+					</noscript>
+					<!-- END ProvideSupport.com Text Chat Link Code -->
+				</div>	
+			</div>
+			<!-- START SCANALERT CODE -->
+			<a class='mcAfee floatRight' target="_blank" href="https://www.mcafeesecure.com/RatingVerify?ref=www.beachmall.com"><img width="115" height="30" src="https://images.scanalert.com/meter/www.beachmall.com/32.gif" alt="McAfee Secure sites help keep you safe from identity theft, credit card fraud, spyware, spam, viruses and online scams" oncontextmenu="alert('Copying Prohibited by Law - McAfee Secure is a Trademark of McAfee, Inc.'); return false;" data-apptimize="embed"></a>
+			<!-- END SCANALERT CODE -->
+		</div>
+	</form>
+</div> <!-- /cartTemplate -->
+=======
+<div id="cartTemplate" class="clearfix"><!-- template role gets added by the myApp. don't add it yourself -->
+
+<form action="#" onsubmit="return false">
+
+<div class="cartStuffContainer">
+	<ul data-tlc="bind $var '.@ITEMS'; controller#loop --templateid='productListTemplateCart'; if (is $var --notblank;) {{apply --append;}};" class="listStyleNone fluidList clearfix noPadOrMargin productList lineItemProdlist"></ul>
+</div>
+
+<div class="cartSummaryTotalsContainer">
+	<div class="ui-widget ui-corner-all">
+		<div class='ui-widget-header ui-corner-top ui-header smallPadding smallButton'>
+			<button class='applyButton cartRefreshButton' data-text='false' data-icon-primary='ui-icon-refresh' data-app-click="cco|cartFetchExec">Refresh Cart</button>
+			<h2>Cart Totals</h2>
+		</div>
+		<div class="cartSummaryContainer stdPadding ui-widget-content clearfix">
+
+<section class="cartSummary marginBottom">
+
+	<div data-tlc="bind $var '.sum.items_total'; if (is $var --notblank;) {{format --currency='USD'; format --prepend='Subtotal: '; apply --add --class='orderSubtotal'; apply --append;}};"></div>
+
+	<div data-tlc="bind $var '.sum.tax_total'; if (is $var --notblank;) {{format --currency='USD'; format --prepend='Tax: '; apply --add --class='orderTax'; apply --append;}};"></div>
+
+	<div data-tlc="cco#shipinfobyid  --legacy;" class="orderShipping" data-bind="useParentData:true; format:shipinfobyid; extension:cco;"></div>
+
+	<div data-tlc="bind $var '.sum.order_total'; if (is $var --notblank;) {{format --currency='USD'; format --prepend='Order Total: '; apply --add --class='orderTotal'; apply --append;}};"></div>
+
+	<div data-tlc="bind $var '.sum.gfc_total'; if (is $var --notblank;) {{format --currency='USD'; format --prepend='Giftcard(s): '; apply --add --class='orderGiftcardTotal'; apply --append;}};"></div>
+	<div data-tlc="bind $var '.sum.pnt_total'; if (is $var --notblank;) {{format --currency='USD'; format --prepend='Reward Points: '; apply --add --class='rewardPointsTotal'; apply --append;}};"></div>
+	<div data-tlc="bind $var '.sum.rmc_total'; if (is $var --notblank;) {{format --currency='USD'; format --prepend='Returns Credit: '; apply --add --class='returnsCreditTotal'; apply --append;}};"></div>
+
+	<div data-tlc="bind $var '.sum.balance_due_total'; cco#orderbalance  --classname='orderBalanceDue' --hidezero='false' --currencysign='$' --legacy;"></div>
+
+</section>
+
+<section data-app-role="cartTemplateShippingContainer" class="marginBottom cartTemplateShippingContainer">
+	<h3>Shipping:</h3>
+
+	<div class="cartZipCodeContainer marginBottom">
+		<label>Zip/Postal Code:
+		<input data-tlc="bind $var '.ship.postal'; if(is $var --blank) {{bind $var '.bill.postal'; }}; apply --select=$var; " size="6" name="ship/postal" value="" maxlength="10" data-app-keypress="quickstart|triggerBlurOnEnter" data-app-blur="cco|cartZipUpdateExec" type="text"></label>
+	</div>
+
+	<ul data-tlc="order_create#shipmethodsasradiobuttons  --legacy;" class="noPadOrMargin listStyleNone" data-bind="useParentData:true; format:shipmethodsasradiobuttons; extension: order_create;" data-app-role="shipMethodsUL"></ul>
+</section>
+
+<section class="marginBottom">
+
+	
+
+</section>
+
+		</div>
+		<div class="ui-state-default cartButtons stdPadding clearfix">
+			<!-- spans are set around the buttons so each element has one consitent tag type around it -->
+			<span class="continueShoppingSpan thisButton"><button class="applyButton continueShoppingButton" data-app-click="myRIA|dialogCloseExec">Continue Shopping</button></span>
+	
+			<span id="inStoreCheckoutButton" class='thisButton' title="proceed to secure checkout">
+				<a class="applyButton ui-state-highlight checkoutButton" href='/checkout/'>Store Checkout</a>
+			</span>
+	
+			<span data-tlc="bind $var '.cart.cartid'; cco#paypalecbutton  --legacy;" id="paypalecbutton" class="thisButton"></span>
+	
+		</div>
+
+	</div>
+</div>
+</form>
+</div>
+
+
+
+<!-- /cartTemplate -->
+
+
+
+
+
+
+>>>>>>> upstream/201411
+
+
+<!-- cart line-item template -->
+<ul>
+<<<<<<< HEAD
+	<li id="productListTemplateCart" class="padMargBorderBottom clearfix productListTemplateCart">
+
+		<div data-tlc="bind $var '.stid'; if(is $var --notblank;) {{apply --attrib='data-geoSTID';}};" class="cartItemWrapper">
+			
+			<div class='floatLeft cartImg'>
+				<img data-tlc="bind $var '.%attribs.zoovy:prod_thumb'; if(is $var --blank;){{bind $var '.%attribs.zoovy:prod_image1';}}; if(is $var --notblank;){{apply --img --media=$var --width=150 --height=150 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class="prodThumb" alt="" height="150" width="150" data-apptimize="embed">
+				<div data-tlc="bind $var '.sku'; format --prepend='SKU: '; if (is $var --notblank) {{apply --append;}};" class='ztable_row_small stid floatLeft'></div>
+			</div>
+			<div class='floatLeft cartDesc'>
+				<a href="" data-tlc="bind $var '.'; beachmall_cart#cartprodname --legacy;" class="carProdLink"></a>
+				<div data-tlc="bind $var '.%options'; controller#selectedoptionsdisplay --legacy;  if (is $var --notblank;) {{apply --append;}};" class="ztable_row_small prodOptions"></div>
+				<div data-cart='1' data-tlc="bind $var '.'; beachmall_lists#showshiplatency;" class='cartLatency floatRight'>
+					<div class='shipTime'></div>
+				</div>
+				<div data-tlc="bind $var '.'; beachmall_cart#hideifasm --legacy" data-included='0'  class='cartShippingInformation clearfix'>
+					<div class='cartTimeInTransitMessaging'></div>
+					<div class='cartPutLoadingHere loadingBG'>
+						<div class='transitContainer'></div>
+					</div>
+				</div>
+				<div>
+					<button data-app-click="beachmall_cart|showcartacc" data-acc="show" class='floatRight cartShowAccButton displayNone'>View Recommended Accessories</button>
+					<button data-app-click="beachmall_cart|hidecartacc" data-acc="hide" class='floatRight cartHideAccButton displayNone'>Hide Recommended Accesories</button>
+					<ul data-tlc="bind $var '.'; beachmall_cart#accessoryproductlist --legacy;" data-acc="list" class='cartAccList floatRight' data-loadsTemplate='cartAccListTemplateToolTipThumb' data-withInventory=1 data-withVariations=1 data-hide_pagination='true'></ul> <!-- withInventory:1; withVariations:1;" -->
+				</div>
+			</div>
+			<div class='floatLeft cartPQT'>
+				<div class='cartQtyInput cartPQT floatLeft'>
+					<input data-tlc="cco#cartitemqty  --legacy;" class="qtyInput numberInput" data-app-change="cco|cartItemUpdateExec" data-bind="format:cartItemQty;extension:cco;useParentData:true;" name="quantity" type="number">
+					<button data-tlc="bind $var '.'; beachmall_cart#hideifasm --legacy" data-included='1' class='updateButton cartLineButton ui-state-default'>Update</button><!-- here to stop 'enter' in input above from closing modal -->
+					<button data-tlc="quickstart#movetowishlistbutton  --legacy;" class="moveToWishlist cartLineButton" data-bind="format:moveToWishlistButton; extension:quickstart; useParentData:true;">Wishlist</button>
+					<button data-tlc="cco#cartitemremovebutton  --legacy;" class="cartLineButton removeButton" data-bind="format:cartitemremovebutton; extension:cco; useParentData:true;" data-app-click="cco|cartItemRemove">Remove</button>
+				</div>
+				<div data-tlc="bind $var '.sku'; beachmall_cart#redmoney --legacy;" class='cartItemPrice cartPQT floatLeft'>
+					<span data-tlc="bind $var '.price'; format --currency='USD'; if (is $var --notblank;) {{apply --append;}};"></span>
+				</div>
+				<div data-tlc="bind $var '.sku'; beachmall_cart#redmoney --legacy;" class='cartItemTotal cartPQT floatLeft'>
+					<span data-tlc="bind $var '.extended'; format --currency='USD'; if (is $var --notblank;) {{apply --append;}};"></span>
+				</div>	
+			</div>
+		</div>
+	</li>
+</ul>
+
+<!-- used for a list of accessory products on items in the cart list -->
+<ul>
+	<li id='cartAccListTemplateToolTipThumb' class='loadingBG' data-tlc="bind $var '.pid'; beachmall_lists#hideifnotpurchaseable;">
+		<a data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';" data-cartToolTipThumb="data-cartToolTipThumb" class='prodThumbContainer pointer targetElement'>
+			<img data-tlc="bind $var'.%attribs.zoovy:prod_image1'; apply --img --media=$var --width=30 --height=30 --bgcolor='#ffffff' --replace;" data-bind='var: product(zoovy:prod_image1); format:imageURL;' class='prodThumb' alt="" src='blank.gif' width='30' height='30' />
+		</a>
+	</li>
+</ul>
+
+<table>
+	<tbody><tr id="shipGridTemplate">
+		<!-- <td><span data-tlc="bind $var '.carrier'; if(is $var - -notblank;) {{apply - -class='carrier'; apply - -append;}};"></span></td> redundant? -->
+		<td><span data-tlc="bind $var '.method'; if(is $var --notblank) {{apply --append;}};"></span></td>
+		<td><span data-tlc="bind $var '.arrival_yyyymmdd'; beachmall_dates#ymdtopretty;"></span></td>
+	</tr></tbody>
+</table>
+=======
+	<li id="productListTemplateCart" class="padMargBorderBottom clearfix">
+
+		<button data-tlc="cco#cartitemremovebutton  --legacy;" class="floatRight removeButton" data-bind="format:cartitemremovebutton; extension:cco; useParentData:true;" data-app-click="cco|cartItemRemove">Remove Item From Cart</button>
+		<button data-tlc="quickstart#movetowishlistbutton  --legacy;" class="floatRight moveToWishlist marginRight" data-bind="format:moveToWishlistButton; extension:quickstart; useParentData:true;">Move to Wishlist</button>
+
+
+		<div class="floatLeft"><img data-tlc="bind $var '.%attribs.zoovy:prod_thumb'; if(is $var --blank;){{bind $var '.%attribs.zoovy:prod_image1';}}; if(is $var --notblank;){{apply --img --media=$var --width=75 --height=75 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class="prodThumb" alt="" height="75" width="75"></div>
+
+		<h4 data-tlc="bind $var '.prod_name'; if (is $var --notblank;) {{apply --append;}};"></h4>
+
+		<div data-tlc="bind $var '.sku'; format --prepend='Sku: '; if (is $var --notblank;) {{apply --append;}};" class="ztable_row_small stid"></div>
+
+		<div>
+		qty: <input data-tlc="cco#cartitemqty  --legacy;" class="qtyInput numberInput" data-app-change="cco|cartItemUpdateExec" data-bind="format:cartItemQty;extension:cco;useParentData:true;" name="quantity" type="number">
+		<button class="displayNone">update</button><!-- here to stop 'enter' in input above from closing modal -->
+		<span data-tlc="bind $var '.price'; if (is $var --notblank;) {{ format --currency='USD'; format --prepend=' x '; apply --append;}};"></span>
+		<span data-tlc="bind $var '.extended'; if (is $var --notblank;) {{format --currency='USD';  format --prepend='= '; apply --append;}};"></span>
+
+		</div>
+
+		<div data-tlc="bind $var '.%options'; controller#selectedoptionsdisplay --legacy;  if (is $var --notblank;) {{apply --append;}};" class="ztable_row_small prodOptions"></div>
+	</li>
+</ul>
+
+
+>>>>>>> upstream/201411
+
+
+
+<!--
+used on a product layout. Some product have 'children' which may represent the same item in a different color (variations are commonly used for sizing)
+-->
+
+<table>
+<tbody><tr id="productListTemplateChildren">
+	<td><img data-tlc="bind $var '.%attribs.zoovy:prod_image1'; apply --img --media=$var --width=45 --height=45 --bgcolor='#ffffff' --replace;" src="blank.gif" class="prodThumb" alt="" height="45" width="45"></td>
+	<td data-tlc="bind $var '.%attribs.amz:grp_varvalue'; if(is $var --blank) {{bind $var 'product(zoovy:prod_name)';}}; if (is $var --notblank;) {{apply --append;}};"></td>
+	<td>
+	<form data-tlc="bind $var '.pid'; store_product#atcform  --legacy; apply --append;" class="prodViewerAddToCartForm clearfix" action="#" data-app-submit="quickstart|productAdd2Cart" data-show="modal">
+
+		<fieldset data-tlc="bind $var '.pid'; store_product#atcvariations  --legacy; apply --append;" class="borderNone"></fieldset>
+		<fieldset data-tlc="bind $var '.'; store_product#atcquantityinput  --defaultvalue='0' --legacy;" class="borderNone"></fieldset>
+
+		<input data-tlc="bind $var '.pid'; store_product#addtocartbutton  --legacy; apply --append;" value="Add to Cart" class="applyButton addtocartbutton displayNone" type="submit">
+	</form>
+	</td>
+</tr>
+</tbody></table>
+
+
+
+
+
+<!-- individual review template -->
+<ul>
+	<li id="productReviewsTemplateDetail" class="reviewLineItem clearfix">
+	<ul class="prodReviewInfo">
+		<li data-tlc="bind $var '.RATING'; if(is $var --notblank) {{format --prepend='review_'; apply --add --class=$var; }};" class="reviewSprite"></li>
+		<li data-tlc="bind $var '.CUSTOMER_NAME'; if (is $var --notblank;) {{apply --append;}};"></li>
+		<li data-tlc="bind $var '.LOCATION'; format --prepend='of '; if (is $var --notblank;) {{apply --append;}};"></li>
+		<li data-tlc="bind $var '.CREATED_GMT'; if (is $var --notblank;) {{datetime --out='mdy'; format --prepend='on '; apply --append;}};"></li>
+
+	</ul>
+	<blockquote>
+		<h2 data-tlc="bind $var '.SUBJECT'; if (is $var --notblank;) {{apply --append;}};"></h2>
+		<p data-tlc="bind $var '.MESSAGE'; if (is $var --notblank;) {{apply --append;}};"></p>
+	</blockquote>
+	</li>
+</ul>
+
+
+
+
+<!-- image viewer template -->
+<div id="imageViewerTemplate">
+
+<table>
+<tbody><tr>
+	<td><img data-tlc="bind $var '.%attribs.zoovy:prod_image1'; apply --img --media=$var --width=500 --height=500 --bgcolor='#ffffff' --replace;" src="blank.gif" class="prodBigImage" alt="" height="500" width="500"></td>
+	<td>
+	<img data-tlc="bind $var '.%attribs.zoovy:prod_image2'; apply --img --media=$var --width=100 --height=100 --bgcolor='#ffffff' --replace;" src="blank.gif" class="prodThumb" alt="" height="100" width="100">
+	<img data-tlc="bind $var '.%attribs.zoovy:prod_image3'; apply --img --media=$var --width=100 --height=100 --bgcolor='#ffffff' --replace;" src="blank.gif" class="prodThumb" alt="" height="100" width="100">
+	<img data-tlc="bind $var '.%attribs.zoovy:prod_image4'; apply --img --media=$var --width=100 --height=100 --bgcolor='#ffffff' --replace;" src="blank.gif" class="prodThumb" alt="" height="100" width="100">
+	<img data-tlc="bind $var '.%attribs.zoovy:prod_image5'; apply --img --media=$var --width=100 --height=100 --bgcolor='#ffffff' --replace;" src="blank.gif" class="prodThumb" alt="" height="100" width="100">
+	<img data-tlc="bind $var '.%attribs.zoovy:prod_image6'; apply --img --media=$var --width=100 --height=100 --bgcolor='#ffffff' --replace;" src="blank.gif" class="prodThumb" alt="" height="100" width="100">
+	</td>
+</tr>
+</tbody></table>
+</div>
+
+
+
+
+
+
+
+
+<!--
+used for store_crm.js
+-->
+
+<div id="reviewFrmTemplate" class='alignedForm'>
+
+<form name="reviewFrm" action="#" data-app-submit="store_crm|productReviewSubmit">
+<input data-tlc="bind $var '.pid'; apply --select=$var; if (is $var --notblank;) {{apply --append;}};" name="pid" id="reviewsPid" value="" type="hidden">
+
+
+<label><span class="prompt">Your Name</span><input name="CUSTOMER_NAME" value="" maxlength="30" required type="text" class='alignInput'></label>
+
+<label><span class="prompt">Location</span><input maxlength="30" name="LOCATION" value="" type="text" class='alignInput'></label>
+
+<label><span class="prompt">Subject</span><input maxlength="60" name="SUBJECT" type="text" class='alignInput'></label>
+
+<label><span class="prompt">Review</span><textarea required name="MESSAGE" class='alignInput'></textarea></label>
+
+<label>
+	<span class="prompt">Score</span>
+	<select name="RATING" id="reviewsRating">
+		<option value="10">5</option>
+		<option value="9">4.5</option>
+		<option value="8">4</option>
+		<option value="7">3.5</option>
+		<option value="6">3</option>
+		<option value="5">2.5</option>
+		<option value="4">2</option>
+		<option value="3">1.5</option>
+		<option value="2">1</option>
+		<option value="1">.5</option>
+	</select>
+</label>
+
+<button class="applyButton floatRight marginTop">Submit Review</button>
+
+</form>
+</div>
+
+
+
+
+
+<!-- used in the /customer section for order view -->
+
+<section data-tlc="bind $var '.ORDERID'; apply --attrib='data-orderid';" id="orderLineItemTemplate" class="appAccordianesque" data-app-role="orderLineitemContainer">
+
+	<div data-app-role="orderHeader" data-app-click="quickstart|orderDetailShow" class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-top ui-corner-bottom">
+	<span class="ui-icon ui-icon-triangle-1-e floatLeft marginRight"></span>
+	<span data-tlc="bind $var '.ORDERID'; if (is $var --notblank;) {{ format --prepend='Order ID: ';apply --append;}};"></span>
+	<span data-tlc="bind $var '.MODIFIED_GMT'; if (is $var --notblank;) {{datetime --out='mdy'; format --prepend='Placed on '; apply --append;}};"></span>
+	</div>
+
+	<div data-app-role="orderContents" class="ui-accordion-content ui-helper-reset displayNone ui-widget-content "></div>
+
+</section>
+
+
+
+
+
+
+
+
+<section id="faqTopicTemplate">
+
+	<div class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-top ui-corner-bottom" data-app-click="quickstart|faqDetailShow">
+	<span class="ui-icon ui-icon-triangle-1-e floatLeft marginRight"></span>
+	<span data-tlc="bind $var '.TOPIC_TITLE'; if (is $var --notblank;) {{apply --append;}};"></span>
+	</div>
+
+	<div data-tlc="bind $var '.TOPIC_ID'; format --prepend='faqDetails4Topic_'; apply --attrib='id';" class="ui-accordion-content ui-helper-reset ui-widget-content displayNone"></div>
+
+</section>
+
+
+<div id="faqQnATemplate">
+	<div data-tlc="bind $var '.QUESTION'; if (is $var --notblank;) {{apply --append;}};" class="faqQuestion"></div>
+	<div data-tlc="bind $var '.ANSWER'; if (is $var --notblank;) {{apply --append;}};" class="faqAnswer"></div>
+</div>
+
+
+
+<!--
+
+The following classes used in the bill and ship address templates are used in the quickstart.js file: buyerAddressContainer, buttonMenu, offMenu, onMenu, editable
+The 'data-action' attribute is used to assign an onclick.
+
+-->
+
+<address id="billAddressTemplate" class="ui-widget ui-widget-content ui-corner-all marginBottom ">
+	<button data-app-click="quickstart|showBuyerAddressUpdate" class="floatRight applyButton">edit</button>
+	<button data-app-click="quickstart|showBuyerAddressRemove" class="floatRight applyButton">remove</button>
+	<div class="addressFullname">
+		<span data-tlc="bind $var '.bill/firstname'; if (is $var --notblank;) {{apply --append;}};" title="first name"></span>
+		<span data-tlc="bind $var '.bill/lastname'; if (is $var --notblank;) {{apply --append;}};" title="last name"></span>
+	</div>
+	<div class="address">
+		<div data-tlc="bind $var '.bill/address1'; if (is $var --notblank;) {{apply --append;}};" title="address"></div>
+		<div data-tlc="bind $var '.bill/address2'; if (is $var --notblank;) {{apply --append;}};" title="address 2"></div>
+
+		<span data-tlc="bind $var '.bill/city'; if (is $var --notblank;) {{format --append=', '; apply --append;}};" title="city"></span>
+		<span data-tlc="bind $var '.bill/region'; if (is $var --notblank;) {{format --append='. '; apply --append;}};" title="state"></span>
+		<span data-tlc="bind $var '.bill/postal'; if (is $var --notblank;) {{apply --append;}};" title="zip"></span>
+		<div data-tlc="bind $var '.bill/countrycode'; if (is $var --notblank;) {{apply --append;}};" title="country"></div>
+	</div>
+
+</address>
+
+
+<!-- used in the my account area -->
+<address id="shipAddressTemplate" class="ui-widget ui-widget-content ui-corner-all marginBottom ">
+	<button data-app-click="quickstart|showBuyerAddressUpdate" class="floatRight applyButton">edit</button>
+	<button data-app-click="quickstart|showBuyerAddressRemove" class="floatRight applyButton">remove</button>
+	<div class="addressFullname">
+		<span data-tlc="bind $var '.ship/firstname'; if (is $var --notblank;) {{apply --append;}};" title="first name"></span>
+		<span data-tlc="bind $var '.ship/lastname'; if (is $var --notblank;) {{apply --append;}};" title="last name"></span>
+	</div>
+	<div class="address">
+		<div data-tlc="bind $var '.ship/address1'; if (is $var --notblank;) {{apply --append;}};" title="address"></div>
+		<div data-tlc="bind $var '.ship/address2'; if (is $var --notblank;) {{apply --append;}};" title="address 2"></div>
+
+		<span data-tlc="bind $var '.ship/city'; if (is $var --notblank;) {{format --append=', '; apply --append;}};" title="city"></span>
+		<span data-tlc="bind $var '.ship/region'; if (is $var --notblank;) {{format --append='. '; apply --append;}};" title="state"></span>
+		<span data-tlc="bind $var '.ship/postal'; if (is $var --notblank;) {{apply --append;}};" title="zip"></span>
+		<div data-tlc="bind $var '.ship/countrycode'; if (is $var --notblank;) {{apply --append;}};" title="country"></div>
+
+	</div>
+
+</address>
+
+
+
+
+<div class="orderContentsTable" data-app-role="invoiceContainer" id="invoiceTemplate">
+
+	<div class="clearfix marginBottom">
+		<div class="floatRight">
+		<button data-app-click="quickstart|execOrder2Cart" class="applyButton" data-text="false" data-icon-primary="ui-icon-arrowrefresh-1-w">Re-order</button>
+		<button data-app-click="order_create|execInvoicePrint" class="applyButton" data-text="false" data-icon-primary="ui-icon-print">Print Invoice</button>
+		</div>
+		<h2 data-tlc="bind $var '.order.our.orderid'; if (is $var --notblank;) {{apply --append;}};"></h2>
+		<h3 data-tlc="bind $var '.order.flow.pool'; format --prepend='Order Status: '; if (is $var --notblank;) {{apply --append;}};"></h3>
+		<h5 data-tlc="bind $var '.order.sum.order_total'; format --prepend='Order Total: '; format --currency='USD'; if (is $var --notblank;) {{apply --append;}};" class="orderTotal"></h5>
+		<h5 data-tlc="bind $var '.order.sum.balance_due_total'; format --prepend='Balance Due: '; format --currency='USD'; if (is $var --notblank;) {{apply --append;}};" class="balanceDue"></h5>
+
+	</div>
+
+	<section class="clearfix invoiceAddressContainer marginBottom">
+
+		<address class="billAddress">
+		<b>
+			<span data-tlc="bind $var '.order.bill.firstname'; format --prepend='Bill To: '; if (is $var --notblank;) {{apply --append;}};"></span>
+			<span data-tlc="bind $var '.order.bill.lastname'; if (is $var --notblank;) {{apply --append;}};"></span>
+		</b>
+		<div data-tlc="bind $var '.order.bill.address1'; if (is $var --notblank;) {{apply --append;}};"></div>
+		<div data-tlc="bind $var '.order.bill.address2'; if (is $var --notblank;) {{apply --append;}};"></div>
+		<div>
+			<span data-tlc="bind $var '.order.bill.city'; format --append=', '; if (is $var --notblank;) {{apply --append;}};"></span>
+			<span data-tlc="bind $var '.order.bill.region'; format --append='. '; if (is $var --notblank;) {{apply --append;}};"></span>
+			<span data-tlc="bind $var '.order.bill.postal'; if(is $var --blank) {{bind $var 'order(order.data.bill_int_zip)';}}; if (is $var --notblank;) {{apply --append;}};"></span>
+		</div>
+		<div data-tlc="bind $var '.order.bill.countrycode'; if (is $var --notblank;) {{apply --append;}};"></div>
+		</address>
+
+		<address class="shipAddress">
+		<b>
+			<span data-tlc="bind $var '.order.ship.firstname'; format --prepend='Ship To: '; if (is $var --notblank;) {{apply --append;}};"></span>
+			<span data-tlc="bind $var '.order.ship.lastname'; if (is $var --notblank;) {{apply --append;}};"></span>
+		</b>
+		<div data-tlc="bind $var '.order.ship.address1'; if (is $var --notblank;) {{apply --append;}};"></div>
+		<div data-tlc="bind $var '.order.ship.address2'; if (is $var --notblank;) {{apply --append;}};"></div>
+		<div>
+			<span data-tlc="bind $var '.order.ship.city'; format --append=', '; if (is $var --notblank;) {{apply --append;}};"></span>
+			<span data-tlc="bind $var '.order.ship.region'; format --append='. '; if (is $var --notblank;) {{apply --append;}};"></span>
+			<span data-tlc="bind $var '.order.ship.postal'; if (is $var --notblank;) {{apply --append;}};"></span>
+		</div>
+		<div data-tlc="bind $var '.order.ship.countrycode'; if (is $var --notblank;) {{apply --append;}};"></div>
+		</address>
+
+	</section>
+
+	<section class="orderContentsProdlistContainer">
+	<ul data-tlc="bind $var '.order.tracking'; store_crm#ordertrackinglinks  --legacy; apply --append;" class="displayNone noListStyle marginBottom"></ul>
+	<table class="listStyleNone lineItemProdlist">
+		<tbody data-tlc="bind $var '.order.@ITEMS'; controller#loop --templateid='chkoutInvoiceItemTemplate'; if (is $var --notblank;) {{apply --append;}};"></tbody>
+	</table>
+	</section>
+
+
+</div>
