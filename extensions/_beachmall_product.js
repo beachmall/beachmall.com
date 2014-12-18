@@ -831,7 +831,10 @@ var beachmall_product = function(_app) {
 			//shows modal which contains form to e-mail current page to someone (see emailfriend)
 			showemailfriend : function($ele,p) {
 				p.preventDefault();
-				var $parent = $('#emailAFriendTemplate');
+				//find element in index and stick template in it to create dialog from (so template doesn't have to reside in index).
+				var $parent = $("[data-email='friend']");
+				$parent.empty().tlc({verb:"transmogrify", templateid:"emailAFriendTemplate"});
+				
 				var pid = $ele.attr('data-pid');
 //				dump('--start showemailfriend'); dump(pid); dump($parent);
 				$parent.dialog({

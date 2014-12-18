@@ -1116,8 +1116,8 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 
 .qafCont {height:109px; width:180px; margin:26px 0 0 0; background:#ffffff url(images/bm12_p_toprtcol-180x89.jpg) no-repeat left top;}
 .qafQA, .qafEmail, .qafPrint {height:89px; width:60px; float:left; cursor:pointer;}
-.ui-dialog .ui-dialog-content#emailAFriendTemplate {background:none repeat scroll 0 0 #f5f1de;}
-.ui-widget #emailAFriendTemplate input[type=email] {width:25%; padding:0.2em; border:1px solid #333333;}
+.ui-dialog [data-email='friend'].ui-dialog-content {background:none repeat scroll 0 0 #f5f1de;}
+.ui-widget [data-email='friend'] input[type=email] {width:25%; padding:0.2em; border:1px solid #333333;}
 .qafMailButton {padding:0.2em; margin:0 0 0 10px;}
 .guarenteeTipCont {height:0;}
 .guarenteeTipCont .toolTip a {color:#e0463a;}
