@@ -58,12 +58,12 @@
 all css includes need to be after the js that changes the base url.
 css files should be included before any .js file to ensure they are downloaded in parallel
 -->
-<link data-apptimize="embed" rel="stylesheet" type="text/css" href="app-quickstart.css" />
-<link data-apptimize="embed" rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/themes/ui-lightness/jquery-ui.css" />
-<link data-apptimize="embed" rel="stylesheet" type="text/css" href="googleapis-libs-jqueryiu-1.10.2-theme-uilightnes-jqueryui.css" />
-<link data-apptimize="embed" rel="stylesheet" type="text/css" href="_beachmall_styles.css" />
+<link rel="stylesheet" type="text/css" href="app-quickstart.css" /> <!-- data-apptimize="embed" -->
+<link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/themes/ui-lightness/jquery-ui.css" />  <!-- data-apptimize="embed" -->
+<link rel="stylesheet" type="text/css" href="googleapis-libs-jqueryiu-1.10.2-theme-uilightnes-jqueryui.css" />  <!-- data-apptimize="embed" -->
+<link rel="stylesheet" type="text/css" href="_beachmall_styles.css" /> <!-- data-apptimize="embed" -->
 
-<link data-apptimize="download;embed" href='https://fonts.googleapis.com/css?family=Open+Sans%7COswald%7CMontserrat' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans%7COswald%7CMontserrat' rel='stylesheet' type='text/css'> <!-- data-apptimize="download;embed" -->
 
 <link rel="SHORTCUT ICON" href="images/favicon.ico" />
 <link rel="ICON" href="images/favicon.ico" />
@@ -71,27 +71,27 @@ css files should be included before any .js file to ensure they are downloaded i
 <!-- jquery and jquery ui are pivotal to the functionality of the app. load them early -->
 <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script> -->
-<script data-apptimize="embed" type="text/javascript" src="jquery.1.10.2.min.js"></script>
-<script data-apptimize="embed" type="text/javascript" src="jquery.ui.1.10.2.min.js"></script>
-<script data-apptimize="embed" type="text/javascript" src="controller.js"></script>
-<script data-apptimize="embed" type="text/javascript" src="model.js"></script>
+<script type="text/javascript" src="jquery.1.10.2.min.js"></script> <!-- data-apptimize="embed" -->
+<script type="text/javascript" src="jquery.ui.1.10.2.min.js"></script> <!-- data-apptimize="embed" -->
+<script type="text/javascript" src="controller.js"></script> <!-- data-apptimize="embed" -->
+<script type="text/javascript" src="model.js"></script> <!-- data-apptimize="embed" -->
 
 <!-- SCRIPTS -->
-<script data-apptimize="embed" type="text/javascript" src="resources/jquery.showloading-v1.0.jt.js"></script>
-<script data-apptimize="embed" type="text/javascript" src="resources/jsonpath.0.8.0.js"></script>
-<script data-apptimize="embed" type="text/javascript" src="resources/tlc.js"></script>
-<script data-apptimize="embed" type="text/javascript" src="resources/peg-0.8.0.js"></script>
+<script type="text/javascript" src="resources/jquery.showloading-v1.0.jt.js"></script> <!-- data-apptimize="embed" -->
+<script type="text/javascript" src="resources/jsonpath.0.8.0.js"></script> <!-- data-apptimize="embed" -->
+<script type="text/javascript" src="resources/tlc.js"></script> <!-- data-apptimize="embed" -->
+<script type="text/javascript" src="resources/peg-0.8.0.js"></script> <!-- data-apptimize="embed" -->
 
-<script data-apptimize="embed" type="text/javascript" src="resources/jquery.touchSwipe-1.3.3.min.js"></script>
-<script data-apptimize="embed" type="text/javascript" src="resources/jquery.carouFredSel-6.2.0.min.js"></script>
+<script type="text/javascript" src="resources/jquery.touchSwipe-1.3.3.min.js"></script> <!-- data-apptimize="embed" -->
+<script type="text/javascript" src="resources/jquery.carouFredSel-6.2.0.min.js"></script> <!-- data-apptimize="embed" -->
 
-<script data-apptimize="embed" type="text/javascript" src="resources/jquery.ui.anyplugins.js"></script>
-<script data-apptimize="embed" type="text/javascript" src="includes.js"></script><!-- contains some polyfills and should be loaded early -->
+<script type="text/javascript" src="resources/jquery.ui.anyplugins.js"></script> <!-- data-apptimize="embed" -->
+<script type="text/javascript" src="includes.js"></script><!-- contains some polyfills and should be loaded early -->  <!-- data-apptimize="embed" -->
 
-<link data-apptimize="embed" rel="stylesheet" type="text/css" href="magiczoomplus-commercial/magiczoomplus/magiczoomplus.css"/>
-<link data-apptimize="embed" rel="stylesheet" type="text/css" href="resources/anyplugins.css"/>
-<link data-apptimize="embed" rel="stylesheet" type="text/css" href="extensions/checkout/styles.css"/>
-<link data-apptimize="embed" rel="stylesheet" type="text/css" href="extensions/cart_message/styles.css"/>
+<link rel="stylesheet" type="text/css" href="magiczoomplus-commercial/magiczoomplus/magiczoomplus.css"/> <!-- data-apptimize="embed" -->
+<link rel="stylesheet" type="text/css" href="resources/anyplugins.css"/> <!-- data-apptimize="embed" -->
+<link rel="stylesheet" type="text/css" href="extensions/checkout/styles.css"/> <!-- data-apptimize="embed" -->
+<link rel="stylesheet" type="text/css" href="extensions/cart_message/styles.css"/> <!-- data-apptimize="embed" -->
 
 <script data-apptimize="minify" type="text/javascript">
 $.PromisePipeline = function(){
@@ -129,7 +129,7 @@ $(document).ready(function(){
 		}
 		if(notIE8) {
 			window.myApp = new initApp({	<!-- versionhere -->
-				"release":"201410.20141218130100",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+				"release":"201410.20141218133200",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 				"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 				"baseURL":baseURL, //used in non-local mode.
 				"checkoutAuthMode" : "active",//can be passive, active or required
