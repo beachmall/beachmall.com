@@ -278,7 +278,7 @@ the padding is to compensate for the spacing between the main nav.
 FOOTER
 *********************************************************************************/
 
-.footerContainer {height:685px; width:100%; background-image:url(images/footer-background-1020x685.jpg);}
+.footerContainer {height:685px; width:100%; background:url(images/footer-background-1020x375.jpg) no-repeat top center;}
 .footerInteractContainer {height:115px; width:100%; position:relative; top:229px; left:0px;}
 .footerSocialIcons {height:32px; width:250px; position:absolute; top:0px; right:148px;}
 .footerSocialIconContainers {height:32px; width:32px; float:left; padding:0px 9px 0px 9px;}
@@ -295,7 +295,7 @@ FOOTER
 .footerNewsletter h3 {font-family:Oswald; font-size:18px; font-weight:bold; line-height:16px; margin-top:6px; text-align:right;}
 .footerNewsletter span {font-family:"Open Sans"; font-size:12px;}
 
-.footerLinksContainer {height:315px; width:100%; margin-top:230px;}
+.footerLinksContainer {height:345px; width:100%; background:url(images/sand-background_36x36.jpg) repeat; margin-top:230px;}
 .footerLinksContainer ul {height:auto; width:17%; padding:0% 0% 0% 6.7%; float:left; list-style:none; color:#3bb3c3;}
 .footerLinksContainer li:first-child {color:#666; font-family:Oswald; font-weight:bold; font-size:18px; line-height:50px; cursor:text;}
 .footerLinksContainer li {color:#3bb3c3; font-family:"Open Sans"; font-size:14px; line-height:27px; cursor:pointer;}
@@ -926,7 +926,7 @@ HOMEPAGE
 
 .prodlistTitle	{margin:0; padding:0; color:#79ccc8; font-size:1.4em; line-height:1.2em;}
 
-.featuredCatWrapper {height:auto; width:100%; background-image:url(images/header-background_1070x235.jpg);}
+.featuredCatWrapper {height:auto; width:100%; background-image:url(images/sand-background_36x36.jpg); background-repeat:repeat;}
 
 .featuredContainer {height:300px; width:960px; margin:auto; padding-top:20px;}
 .featuredCarousel {height:300px; width:630px; margin-left: 5px; overflow:hidden; position:relative;}
@@ -959,7 +959,7 @@ HOMEPAGE
 .moreDetailsSmall.catHomeDetails.prodDetails {bottom:-75px;}
 .moreDetailsSmall.catHomeDetails {position:relative; bottom:20px; right:-87px; z-index:2; width:80px;}
 
-.CarouselContainer {height:568px; width:1020px; background:url(images/carousel-background_1020x370.jpg); margin-bottom:10px; border-bottom:5px solid #f8c301;}
+.CarouselContainer {height:568px; width:1020px; background:url(images/sand-background_36x36.jpg) repeat; margin-bottom:10px; border-bottom:5px solid #f8c301;}
 .carouselTitles {
 	height:35px; width:100%; color:#3bb3c3; 
 	background: #ffec9a; /* Old browsers */
@@ -1918,12 +1918,12 @@ COMPANY ARTICLES
 LOGIN MODAL / INLINE LOGIN
 ******************************************************************************/
 
-#loginFormForModal.loginOption.displayNone {	background:url("images/carousel-background_1020x370.jpg") repeat scroll 0 0 #FFFFFF; border: none;}
+#loginFormForModal.loginOption.displayNone {	background:url("images/sand-background_36x36.jpg") repeat scroll 0 0 #FFFFFF; border: none;}
 .createAccount {height:270px; width:300px; float:left; font-family:"Open Sans"; font-size:14px; text-align:center; padding: 0;}
 .createAccount h1 {color: #e0463a; font-family: Oswald; font-size: 35px; margin: 33px 0 8px; text-align: center;}
 .modalCreateButton.button {padding: 5px; margin: 10px; width: auto; border:none; background:#e0463a; color:#ffffff; font-size:16px; display:inline-block;}
 .gotAccount, .gotAccountInline { width: 300px;	float: right; margin: 0 0 10px 0; text-align: center; box-shadow: 1px 1px 2px 2px #cccccc;} /*height: 270px;*/
-.gotAccountInline {padding: 10px; float: left; background:url("images/carousel-background_1020x370.jpg") repeat scroll 0 0 #FFFFFF;}
+.gotAccountInline {padding: 10px; float: left; background:url("images/sand-background_36x36.jpg") repeat scroll 0 0 #FFFFFF;}
 .gotAccount h1, .gotAccountInline h1 {margin: 29px 0 0 0;	font-family: Oswald; font-size: 35px; font-weight: normal; color:#3bb3c3;}
 .gotAccount fieldset, .gotAccountInline fieldset {padding: 0; border: none;}
 .gotAccount input, .gotAccountInline input {height: auto; width: 200px; display: block;	margin: 10px auto; padding: 5px 0 5px 5px;}
