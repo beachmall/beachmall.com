@@ -392,13 +392,20 @@ var store_filter = function(_app) {
 				if(_app.ext.store_filter.filterMap[infoObj.navcat])	{
 					_app.u.dump(" -> safe id DOES have a filter.");
 dump(infoObj);
+
+					//check if the filter form exists in the container, if yes move along, re-render if not. was done this way 
+					//because all forms but the one on a page were getting nuked when the page was left, leaving only one form in the container. 
+					var $formContainer = $("[data-filter-forms='search']");
+					if($("[name='"+_app.ext.store_filter.filterMap[infoObj.navcat].filter+"']",$formContainer).length) {}
+					else { $formContainer.empty().tlc({verb:"transmogrify", templateid:"appFiltersTemplate"}); }
+
 		//			var $page = $(_app.u.jqSelector('#',infoObj.parentID));
 					_app.u.dump(" -> $context.length: "+$context.length);
 					if($context.data('filterAdded'))	{_app.u.dump("filter exists skipping form add");} //filter is already added, don't add again.
 					else {
-						$context.data('filterAdded',true)
+						$context.attr('data-filterAdded',true)
 		// TODO : GET FILTERS OUT OF INDEX.HTML AND INTO TEMPLATES.HTML
-						var $form = $("[name='"+_app.ext.store_filter.filterMap[infoObj.navcat].filter+"']",'#appFilters').clone().appendTo($('.filterContainer',$context));
+						var $form = $("[name='"+_app.ext.store_filter.filterMap[infoObj.navcat].filter+"']",'.appFilters').clone().appendTo($('.filterContainer',$context));
 						$form.on('submit.filterSearch',function(event){
 							event.preventDefault()
 							_app.u.dump(" -> Filter form submitted.");
