@@ -17,7 +17,9 @@ _app.u.loadScript(configURI,function(){
 		_app.ext.quickstart.callbacks.startMyProgram.onSuccess();
 		
 		_app.ext.beachmall_begin.calls.whereAmI.init({'callback':'handleWhereAmI','extension':'beachmall_begin'},'passive');
-		_app.ext.beachmall_begin.u.renderHeaderDropdown();
+		
+		setTimeout(function(){ _app.ext.beachmall_begin.u.renderHeaderDropdown(); },0);
+		
 		$.extend(handlePogs.prototype,_app.ext.beachmall_begin.variations);
 		_app.ext.beachmall_begin.u.startTooltip();
 		
@@ -467,11 +469,13 @@ _app.extend({
 
 _app.u.bindTemplateEvent('homepageTemplate', 'complete.beachmall_homepage',function(event,$context,infoObj) {
 	_app.ext.beachmall_homepage.u.getMainBanner();
-	_app.ext.beachmall_homepage.u.loadProductsAsList($context,$('.newArrivalUL', $context));
-	_app.ext.beachmall_homepage.u.loadProductsAsList($context,$('.bestUL', $context));
-	_app.ext.beachmall_homepage.u.loadProductsAsList($context,$('.featuredUL', $context));
-	$('.floatingBar',$context).is(":visible") ? "" : $('.floatingBar',$context).show(); //shows floating bar upon return to hompage if it's been closed.
-	_app.ext.beachmall_homepage.u.moveNorton($context);
+	setTimeout(function(){
+		_app.ext.beachmall_homepage.u.loadProductsAsList($context,$('.newArrivalUL', $context));
+		_app.ext.beachmall_homepage.u.loadProductsAsList($context,$('.bestUL', $context));
+		_app.ext.beachmall_homepage.u.loadProductsAsList($context,$('.featuredUL', $context));
+		$('.floatingBar',$context).is(":visible") ? "" : $('.floatingBar',$context).show(); //shows floating bar upon return to hompage if it's been closed.
+		_app.ext.beachmall_homepage.u.moveNorton($context);
+	},0);
 });
 _app.u.bindTemplateEvent('homepageTemplate', 'depart.beachmall_homepage',function(event,$context,infoObj) {
 	$('.homeProdSearchNewArrivals2', $context).trigger('destroy').data('isCarousel',false);
