@@ -87,7 +87,7 @@ css files should be included before any .js file to ensure they are downloaded i
 <script type="text/javascript" src="resources/jquery.ui.anyplugins.js"></script> <!-- data-apptimize="embed" -->
 <script type="text/javascript" src="includes.js"></script><!-- contains some polyfills and should be loaded early -->  <!-- data-apptimize="embed" -->
 
-<link rel="stylesheet" type="text/css" href="magiczoomplus-commercial/magiczoomplus/magiczoomplus.css"/> <!-- data-apptimize="embed" -->
+
 <link rel="stylesheet" type="text/css" href="resources/anyplugins.css"/> <!-- data-apptimize="embed" -->
 <link rel="stylesheet" type="text/css" href="extensions/checkout/styles.css"/> <!-- data-apptimize="embed" -->
 <link rel="stylesheet" type="text/css" href="extensions/cart_message/styles.css"/> <!-- data-apptimize="embed" -->
@@ -128,7 +128,7 @@ $(document).ready(function(){
 		}
 		if(notIE8) {
 			window.myApp = new initApp({	<!-- versionhere -->
-				"release":"201410.20141218144400",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+				"release":"201410.20141218145800",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 				"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 				"baseURL":baseURL, //used in non-local mode.
 				"checkoutAuthMode" : "active",//can be passive, active or required
@@ -729,5 +729,20 @@ lb
 
 </script>
 
+<!--<link rel="stylesheet" type="text/css" href="magiczoomplus-commercial/magiczoomplus/magiczoomplus.css"/>  data-apptimize="embed" -->
+<script type="text/javascript">
+	function downloadJSAtOnload() {
+		var element = document.createElement("link");
+		element.href = "magiczoomplus-commercial/magiczoomplus/magiczoomplus.css";
+		element.type ="text/css";
+		element.rel = "stylesheet"
+		document.body.appendChild(element);
+	}
+	if (window.addEventListener)
+	window.addEventListener("load", downloadJSAtOnload, false);
+	else if (window.attachEvent)
+	window.attachEvent("onload", downloadJSAtOnload);
+	else window.onload = downloadJSAtOnload;
+</script>
 </body>
 </html>
