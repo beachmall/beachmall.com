@@ -300,14 +300,14 @@ don't modify the 'data-templateid' unless you are changing template names and up
 			
 			<ul>
 				<li class="brandsHeader listStyleNone">
-					<img data-tlc="bind $var '.%page.banner1'; if(is $var --notblank;) {{apply --img --media=$var --height='250' --width='500' --bgcolor=#ffffff --replace;}};" src="images/blank.gif" alt="" height='250' width='500' data-apptimize="embed">
+					<img data-tlc="bind $var '.%page.banner1'; if(is $var --notblank;) {{apply --img --media=$var --height='250' --width='500' --bgcolor=#ffffff --replace;}};" src="images/blank.gif" alt="" height='250' width='500'>  <!-- data-apptimize="embed" -->
 					<ul>
 				   <!-- <p data-bind="var: category(%page.description2); format:wiki; wikiFormats:myRIA; editor: textarea;"></p> -->
 						<li><span data-tlc="bind $var '.%page.header'; if (is $var --notblank;) {{apply --append;}};"></span>
 						<br><div data-tlc="bind $var '.%page.description2'; if (is $var --notblank;) {{render --wiki='undefined'; apply --append;}};"></div>
 						</li>
 						<!--<li><img data-bind="var: category(%page.mfg_logo); format: banner; editor: banner; height:250; width:750; extension: myRIA;" /><BR><BR><BR>AUTHORIZED DEALER</li>-->
-						<li><img data-tlc="bind $var '.%meta.CAT_THUMB'; if (is $var --notblank;) {{ apply --img --media=$var --width=140 --height=90 --bgcolor='#ffffff' --replace;}};" src="images/blank.gif" alt="" height="90" width="140" data-apptimize="embed">AUTHORIZED DEALER</li>
+						<li><img data-tlc="bind $var '.%meta.CAT_THUMB'; if (is $var --notblank;) {{ apply --img --media=$var --width=140 --height=90 --bgcolor='#ffffff' --replace;}};" src="images/blank.gif" alt="" height="90" width="140">AUTHORIZED DEALER</li> <!-- data-apptimize="embed" -->
 					</ul>
 				</li>
 			</ul>
@@ -816,7 +816,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 			<div class='catBorderContainer'>
 				<div class="catName white2LGray"><span data-tlc="bind $var '.pretty'; quickstart#cattext  --legacy;"></span></div>
 			</div>
-			<div class="thumbContainer"><img data-tlc="bind $var '.%meta.CAT_THUMB'; if (is $var --notblank){{apply --img --media=$var --width=210 --height=210 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class="catThumb" alt="" height="210" width="210" data-apptimize="embed"></div>
+			<div class="thumbContainer"><img data-tlc="bind $var '.%meta.CAT_THUMB'; if (is $var --notblank){{apply --img --media=$var --width=210 --height=210 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class="catThumb" alt="" height="210" width="210"></div> <!-- data-apptimize="embed" -->
 			<div class='moreDetailsSmall catDetails'>SHOP NOW</div>
 		</div>
 	</a>
@@ -825,7 +825,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 
 <li id="brandsCategoryListTemplate" class="catListBrand">
 	<a data-tlc="bind $var '.'; store_routing#seoanchor --type='category' --seo; apply --attrib='href';" class="catTemplateContainer pointer">
-        <div class="brandThumbContainer"><img data-tlc="bind $var '.%meta.CAT_THUMB'; if (is $var --notblank;) {{ apply --img --media=$var --width=152 --height=152 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class="brandCatThumb" alt="" height="152" width="152" data-apptimize="embed"></div>
+        <div class="brandThumbContainer"><img data-tlc="bind $var '.%meta.CAT_THUMB'; if (is $var --notblank;) {{ apply --img --media=$var --width=152 --height=152 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class="brandCatThumb" alt="" height="152" width="152"></div> <!-- data-apptimize="embed" -->
 		<div class="brandsCatName white2LGray"><span data-tlc="bind $var '.pretty'; quickstart#cattext  --legacy;"></span></div>
 	</a>
 </li>
@@ -867,7 +867,7 @@ remember to NOT put the button inside the href or two events will occur onclick.
 				<div class="bottomLeftCorner"></div><div class="leftBottomCorner"></div><div class="bottomRightCorner"></div><div class="rightBottomCorner"></div> 
 				<!-- END CORNER SHADOWS -->
 				<div data-tlc="bind $var '.pid'; quickstart#addpicslider  --legacy;" class="prodThumbContainer myProdThumbSmall">
-					<img data-tlc="bind $var '.%attribs.zoovy:prod_image1'; if (is $var --notblank;) {{ apply --img --media=$var --width=210 --height=210 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class="prodThumb" alt="" height="210" width="210" data-apptimize="embed">
+					<img data-tlc="bind $var '.%attribs.zoovy:prod_image1'; if (is $var --notblank;) {{ apply --img --media=$var --width=210 --height=210 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class="prodThumb" alt="" height="210" width="210"> <!-- data-apptimize="embed" -->
 				</div> 
 
 				<div class="floatRight pointer moreDetailsSmall">VIEW DETAILS</div>
@@ -927,7 +927,7 @@ remember to NOT put the button inside the href or two events will occur onclick.
 <li id='productListTemplateCustom' class='loadingBG searchResultsProduct ' >
 	<a data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';">
 		<div class='prodThumbContainer myProdThumb' data-beachmall-hoverClass="jsHover">
-			<img data-tlc="bind $var '.%attribs.zoovy:prod_image1'; if (is $var --notblank;) {{ apply --img --media=$var --width=210 --height=210 --bgcolor='#ffffff' --replace;}};" src="blank.gif"  class="prodThumb push" alt="" width="210" height="210" data-apptimize="embed">            
+			<img data-tlc="bind $var '.%attribs.zoovy:prod_image1'; if (is $var --notblank;) {{ apply --img --media=$var --width=210 --height=210 --bgcolor='#ffffff' --replace;}};" src="blank.gif"  class="prodThumb push" alt="" width="210" height="210"> <!-- data-apptimize="embed" -->
 			<div class='prodTextContainer'>   
 				<h6 data-tlc="bind $var '.%attribs.zoovy:base_price'; if (is $var --notblank;) {{format --currency='USD'; apply --append;}};" class="price hideInMinimalMode floatLeft prodPrice"></h6>
 				<div class='hideInMinimalMode floatRight pointer moreDetails'>VIEW DETAILS</div> 
@@ -997,7 +997,7 @@ container ul should have lineItemProdlist class on it instead of productList
 
 <li id='productListTemplateThumb' class='loadingBG' >
 	<a class='prodThumbContainer pointer' data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';" data-toolTipThumb="data-toolTipThumb">
-		<img data-tlc="bind $var '.%attribs.zoovy:prod_image1'; if (is $var --notblank;) {{ apply --img --media=$var --width=55 --height=55 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class='prodThumb' alt="" width='55' height='55' data-apptimize="embed" />
+		<img data-tlc="bind $var '.%attribs.zoovy:prod_image1'; if (is $var --notblank;) {{ apply --img --media=$var --width=55 --height=55 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class='prodThumb' alt="" width='55' height='55' /> <!-- data-apptimize="embed" -->
 	</a>
 </li>
 
@@ -1005,7 +1005,7 @@ container ul should have lineItemProdlist class on it instead of productList
 <li id="productListTemplateToolTipThumb" data-tlc="bind $var '.pid'; beachmall_lists#hideifnotpurchaseable;" class="loadingBG">
 	<div data-tlc="bind $var '.pid'; apply --attrib='data-pid'; " class="prodThumbContainer pointer targetElement" data-tooltipthumb="data-toolTipThumb">
 		<a data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';">
-			<img data-tlc="bind $var '.%attribs.zoovy:prod_image1'; if (is $var --notblank;) {{ apply --img --media=$var --width=30 --height=30 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class="prodThumb" alt="" height="30" width="30" data-apptimize="embed">
+			<img data-tlc="bind $var '.%attribs.zoovy:prod_image1'; if (is $var --notblank;) {{ apply --img --media=$var --width=30 --height=30 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class="prodThumb" alt="" height="30" width="30"> <!-- data-apptimize="embed" -->
 		</a>
 	</div>
 </li>
@@ -1034,7 +1034,7 @@ SANITY -> if you change the height and width of this image, change the .minimalM
 				<div class='bottomLeftCorner'></div><div class='leftBottomCorner'></div><div class='bottomRightCorner'></div><div class='rightBottomCorner'></div> 
 				<!-- END CORNER SHADOWS -->
 				<div class="prodThumbContainer myProdThumbSmall">
-					<img data-tlc="bind $var '.'; beachmall_lists#appthumb --iselastic='1';" src="blank.gif" class="prodThumb imgBorder" alt="" height="208" width="208" data-apptimize="embed">
+					<img data-tlc="bind $var '.'; beachmall_lists#appthumb --iselastic='1';" src="blank.gif" class="prodThumb imgBorder" alt="" height="208" width="208"> <!-- data-apptimize="embed" -->
 				</div>
 			</div>
 			<div class="hideInMinimalMode pointer moreDetailsSmall floatRight">VIEW DETAILS</div>
@@ -1079,7 +1079,7 @@ END BUG6-->
 			<div class='bottomLeftCorner'></div><div class='leftBottomCorner'></div><div class='bottomRightCorner'></div><div class='rightBottomCorner'></div> 
 			<!-- END CORNER SHADOWS -->
 			<div class="prodThumbContainer myProdThumbSmall">
-				<img data-tlc="bind $var '.'; beachmall_lists#appthumb  --iselastic='1';" src="blank.gif" class="prodThumb imgBorder" alt="" height="208" width="208"  data-apptimize="embed">
+				<img data-tlc="bind $var '.'; beachmall_lists#appthumb  --iselastic='1';" src="blank.gif" class="prodThumb imgBorder" alt="" height="208" width="208"> <!-- data-apptimize="embed" -->
 			</div>
 			<div data-tlc="bind $var '.%attribs.user:prod_promo'; if(is $var --notblank;) {{ apply --show; }}; " class="starBurst sprite displayNone">
             	<div class="starBurstTextOuter">
@@ -1162,12 +1162,12 @@ this will likely become more flexible in the future. ###
 	<div class="prodTabs tabbedProductContent ui-tabs ui-widget ui-widget-content ui-corner-all">
 
 		<ul class="imageAndVideoTabs">
-			<li data-tlc="bind $var '.%attribs.zoovy:prod_image1'; if(is $var --notblank;) {{ apply --show; }};" data-app-role="hoverTab" class="displayNone"><a href="#prodImages" class="ui-button-text-icon-primary imageTab"><span><img src="images/bm12_cameraicon-25x21.png" alt="" height="21" width="25" data-apptimize="embed"></span>Images</a></li>
-			<li data-tlc="bind $var '.%attribs.youtube:videoid'; if(is $var --notblank;) {{ apply --show; }};" data-app-role="hoverTab" class="displayNone"><a href="#prodVideo" class="videoTab"><span><img src="images/bm12_videoicon-24x24.png" alt="" height="24" width="24" data-apptimize="embed"></span>Video</a></li>
+			<li data-tlc="bind $var '.%attribs.zoovy:prod_image1'; if(is $var --notblank;) {{ apply --show; }};" data-app-role="hoverTab" class="displayNone"><a href="#prodImages" class="ui-button-text-icon-primary imageTab"><span><img src="images/bm12_cameraicon-25x21.png" alt="" height="21" width="25"></span>Images</a></li> <!-- data-apptimize="embed" -->
+			<li data-tlc="bind $var '.%attribs.youtube:videoid'; if(is $var --notblank;) {{ apply --show; }};" data-app-role="hoverTab" class="displayNone"><a href="#prodVideo" class="videoTab"><span><img src="images/bm12_videoicon-24x24.png" alt="" height="24" width="24"></span>Video</a></li> <!-- data-apptimize="embed" -->
 
 			<li class="prodPageImages" data-anytab-content="prodImages">
 				<!--<img src='blank.gif' class='prodBigImage' rel='rel="selectors-change: mouseover' name='prodBigImage' data-bind='var: product(zoovy:prod_image1); format: magicZoomPlus; extension: magicToolBox_mzp;' width='310' height='310' />-->
-				<img data-tlc="bind $var '.'; magictoolbox_mzp#magiczoomplus  --legacy;" data-legacy-useparentdata="true" src="blank.gif" class="prodBigImage" alt="" rel="selectors-change: mouseover" height="310" width="310" data-apptimize="embed" itemprop="image">
+				<img data-tlc="bind $var '.'; magictoolbox_mzp#magiczoomplus  --legacy;" data-legacy-useparentdata="true" src="blank.gif" class="prodBigImage" alt="" rel="selectors-change: mouseover" height="310" width="310" itemprop="image"> <!-- data-apptimize="embed" -->
 				<div class="zhint">Mouse over main image to zoom in</div>
 				<div class="productPageCarouselContainer">
 					<div>
@@ -1221,7 +1221,7 @@ this will likely become more flexible in the future. ###
 		</div>
 	</div><!-- /shipping information -->
 		
-	<img data-tlc="bind $var '.%attribs.zoovy:prod_image99'; magictoolbox_mzp#magicthumb  --legacy;" src="blank.gif" alt="" height="85" width="300" data-apptimize="embed">
+	<img data-tlc="bind $var '.%attribs.zoovy:prod_image99'; magictoolbox_mzp#magicthumb  --legacy;" src="blank.gif" alt="" height="85" width="300"> <!-- data-apptimize="embed" -->
 
 	<div id="prodSiblings" class="clearfix">
 		<ul data-tlc="bind $var '.%attribs.user:grp_siblings'; store_prodlist#productlist  --hidemultipage='true' --before='<b>Available Colors:</b> <span class=&quot;zhint&quot;>(click image to select)</span>' --hideSummary='1' --hidePagination='1' --withInventory='1' --withVariations='1' --templateid='productListTemplateToolTipThumb'  --legacy;" class="listStyleNone noPadOrMargin fluidList clearfix prodPageSiblings"></ul> <!-- id='prodlistSiblings' -->
@@ -1297,7 +1297,7 @@ this will likely become more flexible in the future. ###
 			</div>
 			
 			<div class="tabBody" data-anytab-content="prodSizing">
-				<img data-tlc="bind $var '.%attribs.user:prod_sizing_img'; magictoolbox_mzp#magicthumb  --legacy;" src="blank.gif" alt="" height="250" width="250" data-apptimize="embed">
+				<img data-tlc="bind $var '.%attribs.user:prod_sizing_img'; magictoolbox_mzp#magicthumb  --legacy;" src="blank.gif" alt="" height="250" width="250"> <!-- data-apptimize="embed" -->
 				<div data-tlc="bind $var '.%attribs.user:prod_sizing_txt'; if (is $var --notblank;) {{render --wiki='quickstart'; apply --append;}};"></div>
 			</div>
 			
@@ -1440,7 +1440,7 @@ this will likely become more flexible in the future. ###
 		<div>
 			<div data-tlc="bind $var '.%attribs.zoovy:prod_is_tags'; quickstart#tags --legacy; if (is $var --notblank;) {{apply --append;}};" class="tagsContainer"></div>
 			<a data-tlc="bind $var '.'; store_routing#seoanchor --type='product' --seo; apply --attrib='href';" data-toolTipThumb="data-toolTipThumb">
-				<div data-tlc="bind $var '.pid'; quickstart#addpicslider  --legacy; apply --append;"><img data-tlc="bind $var '.%attribs.zoovy:prod_image1'; apply --img --media=$var --width=240 --height=240 --bgcolor='#ffffff' --replace;" src="blank.gif" class="prodBigImage" alt="" height="240" width="240" data-apptimize="embed"></div>
+				<div data-tlc="bind $var '.pid'; quickstart#addpicslider  --legacy; apply --append;"><img data-tlc="bind $var '.%attribs.zoovy:prod_image1'; apply --img --media=$var --width=240 --height=240 --bgcolor='#ffffff' --replace;" src="blank.gif" class="prodBigImage" alt="" height="240" width="240"></div> <!-- data-apptimize="embed" -->
 			</a>
 			<div class="quickviewThumbnailsContainer prodPageCarousel">
 				<ul data-tlc="bind $var '.'; beachmall_product#productimages;" class="quickviewThumbnails"></ul>    
@@ -2847,7 +2847,7 @@ This is the template used both within a dialog and inline, unless implicitly ove
 				</div>	
 			</div>
 			<!-- START SCANALERT CODE -->
-			<a class='mcAfee floatRight' target="_blank" href="https://www.mcafeesecure.com/RatingVerify?ref=www.beachmall.com"><img width="115" height="30" src="https://images.scanalert.com/meter/www.beachmall.com/32.gif" alt="McAfee Secure sites help keep you safe from identity theft, credit card fraud, spyware, spam, viruses and online scams" oncontextmenu="alert('Copying Prohibited by Law - McAfee Secure is a Trademark of McAfee, Inc.'); return false;" data-apptimize="embed"></a>
+			<a class='mcAfee floatRight' target="_blank" href="https://www.mcafeesecure.com/RatingVerify?ref=www.beachmall.com"><img width="115" height="30" src="https://images.scanalert.com/meter/www.beachmall.com/32.gif" alt="McAfee Secure sites help keep you safe from identity theft, credit card fraud, spyware, spam, viruses and online scams" oncontextmenu="alert('Copying Prohibited by Law - McAfee Secure is a Trademark of McAfee, Inc.'); return false;"></a> <!-- data-apptimize="embed" -->
 			<!-- END SCANALERT CODE -->
 		</div>
 	</form>
@@ -2861,7 +2861,7 @@ This is the template used both within a dialog and inline, unless implicitly ove
 		<div data-tlc="bind $var '.stid'; if(is $var --notblank;) {{apply --attrib='data-geoSTID';}};" class="cartItemWrapper">
 			
 			<div class='floatLeft cartImg'>
-				<img data-tlc="bind $var '.%attribs.zoovy:prod_thumb'; if(is $var --blank;){{bind $var '.%attribs.zoovy:prod_image1';}}; if(is $var --notblank;){{apply --img --media=$var --width=150 --height=150 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class="prodThumb" alt="" height="150" width="150" data-apptimize="embed">
+				<img data-tlc="bind $var '.%attribs.zoovy:prod_thumb'; if(is $var --blank;){{bind $var '.%attribs.zoovy:prod_image1';}}; if(is $var --notblank;){{apply --img --media=$var --width=150 --height=150 --bgcolor='#ffffff' --replace;}};" src="blank.gif" class="prodThumb" alt="" height="150" width="150"> <!-- data-apptimize="embed" -->
 				<div data-tlc="bind $var '.sku'; format --prepend='SKU: '; if (is $var --notblank) {{apply --append;}};" class='ztable_row_small stid floatLeft'></div>
 			</div>
 			<div class='floatLeft cartDesc'>
