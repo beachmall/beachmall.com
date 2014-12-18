@@ -901,8 +901,7 @@ fallback is to just output the value.
 // will show price, then if the msrp is MORE than the price, it'll show that and the savings/percentage.
 			priceretailsavingsdifference : function($tag,data)	{
 				var o; //output generated.
-/*beachmall*/	var pData = _app.data['appProductGet|'+data.value]['%attribs'];
-				//var pData = data.value;
+				var pData = data.value;
 	//use original pdata vars for display of price/msrp. use parseInts for savings computation only.
 				var price = Number(pData['zoovy:base_price']);
 				var msrp = Number(pData['zoovy:prod_msrp']);
@@ -919,9 +918,8 @@ fallback is to just output the value.
 //pass in the sku for the bindata.value so that the original data object can be referenced for additional fields.
 // will show price, then if the msrp is MORE than the price, it'll show that and the savings/percentage.
 			priceretailsavingspercentage : function($tag,data)	{
-				var o; //output generated.
-/*beachmall*/	var pData = _app.data['appProductGet|'+data.value]['%attribs'];				
-				//var pData = data.value;
+				var o; //output generated.			
+				var pData = data.value;
 	//use original pdata vars for display of price/msrp. use parseInts for savings computation only.
 				var price = Number(pData['zoovy:base_price']);
 				var msrp = Number(pData['zoovy:prod_msrp']);
@@ -1208,7 +1206,6 @@ the ui also helps the buyer show the merchant what they're looking at and, optio
 				$liContainer = $('.previewListContainer',$parent), //div around UL with search results.
 				$detail = $('.previewProductDetail',$parent); //target for content.
 				
-/*beachmall*/	window.scrollTo(0,200);
 //##### SANITY -> 	there are a few checks to see if data.pid is already = to the pid passed in.  
 //					This is to prevent double-click on a button or clicking on a product that is already in focus.
 

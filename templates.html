@@ -1456,8 +1456,8 @@ this will likely become more flexible in the future. ###
 			<span data-tlc="bind $var '.%attribs.zoovy:base_price';  if (is $var --notblank;) {{format --currency='USD'; apply --append;}};" class="basePrice"></span>
 			<h5 data-tlc="bind $var '.%attribs.zoovy:prod_msrp';  if (is $var --notblank;) {{format --currency='USD'; format --prepend='MSRP: ';  apply --append;}};" class="prodMSRP"></h5>
 			<span class="savings floatLeft">
-				<span data-tlc="bind $var '.%attribs.zoovy:prod_msrp'; if(is $var --notblank;) {{apply --show;}};">You save: </span><span data-tlc="bind $var '.pid'; quickstart#priceretailsavingsdifference  --legacy; apply --append;" class="savingsDifference"></span>
-				<span data-tlc="bind $var '.%attribs.zoovy:prod_msrp'; if(is $var --notblank;) {{apply --show;}};">(</span><span data-tlc="bind $var '.pid'; quickstart#priceretailsavingspercentage  --legacy; apply --append;" class="savingsPercentage"></span><span data-tlc="bind $var '.%attribs.zoovy:prod_msrp'; if(is $var --notblank;) {{apply --show;}};" class='displayNone'>)</span>
+				<span data-tlc="bind $var '.%attribs.zoovy:prod_msrp'; if(is $var --notblank;) {{apply --show;}};">You save: </span><span data-tlc="bind $var '.%attribs'; quickstart#priceretailsavingsdifference  --legacy; apply --append;" class="savingsDifference"></span>
+				<span data-tlc="bind $var '.%attribs.zoovy:prod_msrp'; if(is $var --notblank;) {{apply --show;}};">(</span><span data-tlc="bind $var '.%attribs'; quickstart#priceretailsavingspercentage  --legacy; apply --append;" class="savingsPercentage"></span><span data-tlc="bind $var '.%attribs.zoovy:prod_msrp'; if(is $var --notblank;) {{apply --show;}};" class='displayNone'>)</span>
 			</span>
 		</div>
 		
