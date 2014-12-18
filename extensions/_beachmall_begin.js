@@ -442,7 +442,19 @@ var beachmall_begin = function(_app) {
 		
 		u : {
 
-/* DROPDOWN UTILS */		
+/* DROPDOWN UTILS */	
+			
+			renderHeaderDropdown : function(counter) {
+				counter = counter || 0;
+				var $container = $("[data-header='dropdown']");
+				if($container) {
+					$container.empty().tlc({verb:"transmogrify", templateid:"dropdownTemplate"});
+					_app.ext.beachmall_begin.u.getDropdownJSON();
+				}
+				else if (counter < 50) { _app.ext.beachmall_begin.u.renderHeaderDropdown(counter+1); } 
+				else { dump("HEADER DROPDOWN CONTAINER NOT FOUND. Tried "+counter+" times."); }
+			},
+	
 			getDropdownJSON : function() {
 //				dump('BEGIN _app.ext.beachmall_begin.u.getDropdownJSON');	
 				//get the json that lists which dropdown search buttons have results and save to var for access later.
