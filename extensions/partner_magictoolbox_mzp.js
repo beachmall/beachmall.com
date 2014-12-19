@@ -52,36 +52,23 @@ var magictoolbox_mzp = function(_app) {
 			
 			init : {
 				onSuccess : function()	{
-	//				_app.u.dump('BEGIN _app.ext.store_crm.init.onSuccess ');
-					return true;  //currently, no system or config requirements to use this extension
-	//				_app.u.dump('END _app.ext.store_crm.init.onSuccess');
-					},
+					var r = false; //return false if extension won't load for some reason (account config, dependencies, etc).
+					_app.u.dump('BEGIN _app.ext.magictoolbox_mzp.init.onSuccess ');
+
+					//moved to to beachmall_begin to be sure gets loaded before product page is reached. 
+			//		_app.u.loadResourceFile(['script',0,'magiczoomplus-commercial/magiczoomplus/magiczoomplus.js',function(){
+			//			MagicZoomPlus.start();
+			//		}]);
+					
+					r = true;
+					
+					return r;  //currently, no system or config requirements to use this extension
+				},
 				onError : function(d)	{
 					_app.u.dump('BEGIN magicToolBox_mzp.callbacks.init.onError');
 					}
 				},
-			startExtension : {
-				onSuccess : function(){
-//					_app.u.dump("BEGIN magictoolbox.callbacks.startExtension");
-					//this loaded in index w/ apptimize now: examples/magictoolbox/magiczoomplus.css
-					//_app.u.loadResourceFile(['css',0,'examples/magictoolbox/magiczoomplus.css','mzpStylesheet']);
-					_app.u.loadResourceFile(['script',0,'examples/magictoolbox/magiczoomplus.js',function(){
-						MagicZoomPlus.start();
-					}]);
-/*BEACHMALL*/						
-MagicZoomPlus.options = {
-	'hint' : 'false'
-	}
-
-						_app.templates.productTemplate.on('complete.beachmall_store',function(event,$ele,P) {
-							_app.u.dump("Refreshing MZP."); setTimeout(function(){MagicZoomPlus.refresh();},2000);
-						});
-	
-//						_app.rq.push(['templateFunction','productTemplate','onCompletes',function(P) {_app.u.dump("Refreshing MZP."); MagicZoomPlus.refresh();}]);
-					
-					},
-				onError : function(d){}
-				}
+			
 			}, //callbacks
 
 

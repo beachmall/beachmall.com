@@ -49,7 +49,7 @@ or instead of P.filter, you may have
 P.query = { 'and':{ 'filters':[ {'term':{'profile':'E31'}},{'term':{'tags':'IS_SALE'}}  ] } };
 */
 		appPublicProductSearch : {
-			init : function(P,tagObj,Q)	{
+			init : function(obj,tagObj,Q)	{
 //				_app.u.dump("BEGIN _app.ext.store_search.calls.appPublicSearch");
 				var universalFilters = $.extend(true, [], _app.ext.store_search.vars.universalFilters);
 				if(universalFilters.length){
@@ -75,15 +75,15 @@ P.query = { 'and':{ 'filters':[ {'term':{'profile':'E31'}},{'term':{'tags':'IS_S
 						//This is not going to end well, but let's let Elastic tell you that.
 						}
 					}
-				this.dispatch(P,tagObj,Q)
+				this.dispatch(obj,tagObj,Q)
 				return 1;
 				},
-			dispatch : function(P,tagObj,Q)	{
-				P['_cmd'] = "appPublicSearch";
-				P.type = 'product';
-				P['_tag'] = tagObj;
-//				_app.u.dump(P);
-				_app.model.addDispatchToQ(P,Q);
+			dispatch : function(obj,tagObj,Q)	{
+				obj['_cmd'] = "appPublicSearch";
+				obj.type = 'product';
+				obj['_tag'] = tagObj;
+//				_app.u.dump(obj);
+				_app.model.addDispatchToQ(obj,Q);
 				}
 			}, //appPublicSearch
 
@@ -144,14 +144,14 @@ P.query = { 'and':{ 'filters':[ {'term':{'profile':'E31'}},{'term':{'tags':'IS_S
 //the callback is auto-executed as part of the extensions loading process.
 		init : {
 			onSuccess : function()	{
-//				_app.u.dump('BEGIN _app.ext.store_navcats.init.onSuccess ');
+//				_app.u.dump('BEGIN _app.ext.store_search.init.onSuccess ');
 				var r = true; //return false if extension won't load for some reason (account config, dependencies, etc).
 				return r;
 				},
 			onError : function()	{
 //errors will get reported for this callback as part of the extensions loading.  This is here for extra error handling purposes.
 //you may or may not need it.
-				_app.u.dump('BEGIN _app.ext.store_navcats.callbacks.init.onError');
+				_app.u.dump('BEGIN _app.ext.store_search.callbacks.init.onError');
 				}
 			},
 
@@ -223,6 +223,7 @@ P.query = { 'and':{ 'filters':[ {'term':{'profile':'E31'}},{'term':{'tags':'IS_S
 							//no error gets thrown here. it is an acceptable use case to display search results w/ no multipage functionality.
 							}
 						}
+						if(_rtag.deferred){_rtag.deferred.resolve();}
 					}
 				else	{
 					$('#globalMessaging').anymessage({'message':'In store_search.callbacks.handleElasticResults, $list ['+typeof _rtag.list+'] was not defined, not a jquery object ['+(_rtag.list instanceof jQuery)+'] or does not exist ['+_rtag.list.length+'].',gMessage:true});
@@ -242,7 +243,73 @@ P.query = { 'and':{ 'filters':[ {'term':{'profile':'E31'}},{'term':{'tags':'IS_S
 
 
 		u : {
-		
+			showSearch : function($container, infoObj){
+				infoObj.templateID = 'searchTemplate';
+				
+				var $page = new tlc().getTemplateInstance(infoObj.templateID);
+				$container.append($page);
+				
+				infoObj.state = 'init';
+				_app.renderFunctions.handleTemplateEvents($page,infoObj);
+				
+				var elasticsearch = {};
+
+//add item to recently viewed list IF it is not already in the list.
+				if($.inArray(infoObj.KEYWORDS,_app.ext.quickstart.vars.session.recentSearches) < 0)	{
+					_app.ext.quickstart.vars.session.recentSearches.unshift(infoObj.KEYWORDS);
+					}
+					
+//If raw elastic has been provided, use that.  Otherwise build a query.
+				if(infoObj.elasticsearch){
+					elasticsearch = _app.ext.store_search.u.buildElasticRaw(infoObj.elasticsearch);
+					}
+				else if(infoObj.tag)	{
+					elasticsearch = _app.ext.store_search.u.buildElasticRaw({
+					   "filter":{
+						  "and" : [
+							 {"term":{"tags":infoObj.tag}},
+							 ]
+						  }});
+					}
+				else if (infoObj.KEYWORDS) {
+					elasticsearch = _app.ext.store_search.u.buildElasticRaw({
+						"query":{
+							"function_score" : {										
+								"query" : {
+									"query_string":{"query":infoObj.KEYWORDS}	
+									},
+								"functions" : [
+									{
+										"filter" : {"query" : {"query_string":{"query":'"'+infoObj.KEYWORDS+'"'}}},
+										"script_score" : {
+											"script":"constant",
+											"params":{"constant":10}
+											},
+										}
+									],
+								"boost_mode" : "sum",
+								}
+							}
+						});
+					}
+				else	{
+					//404
+					}
+
+				elasticsearch.size = 50;
+
+				
+				//Used to build relative path
+				infoObj.elasticsearch = $.extend(true, {}, elasticsearch);
+				
+				var $list = $('[data-app-role="resultsContainer"]', $page);
+				_app.ext.store_search.u.updateDataOnListElement($list,elasticsearch,1);
+				_app.ext.store_search.calls.appPublicSearch.init(elasticsearch,$.extend(true,{},infoObj,{'callback':'handleInfiniteElasticResults', 'emptyList':true,'datapointer':"appPublicSearch|"+JSON.stringify(elasticsearch),'extension':'prodlist_infinite','templateID':'productListTemplateResults','list':$list}));
+				_app.model.dispatchThis();
+				infoObj.state = 'complete'; //needed for handleTemplateEvents.
+				_app.renderFunctions.handleTemplateEvents($page,infoObj);
+				},
+				
 //!!! The header and pagination handling all relies on a query->query_string->query type object.  With more complex elastic searches we must add handling
 
 
@@ -500,7 +567,7 @@ P.parentID - The parent ID is used as the pointer in the multipage controls obje
 			getElasticResultsAsJQObject : function(P)	{
 //				_app.u.dump("BEGIN store_search.u.getElasticResultsAsJQObject ["+P.datapointer+"]")
 				var pid;//recycled shortcut to product id.
-				var L = _app.data[P.datapointer]['_count'];
+				var L = _app.data[P.datapointer]['_count'] || _app.data[P.datapointer].hits.hits.length;
 				var $r = $("<ul />"); //when this was a blank jquery object, it didn't work. so instead, we append all content to this imaginary list, then just return the children.
 //				_app.u.dump(" -> parentID: "+P.parentID); //resultsProductListContainer
 //				_app.u.dump(" -> L: "+L);
@@ -522,7 +589,7 @@ P.parentID - The parent ID is used as the pointer in the multipage controls obje
 				es.type = 'product';
 				es.mode = 'elastic-search';
 				es.size = 250;
-
+				
 				return es;
 				},
 			
@@ -533,18 +600,8 @@ P.parentID - The parent ID is used as the pointer in the multipage controls obje
 					query.type = 'product';
 					query.mode = 'elastic-search';
 					query.size = 250;
-					query.query = { //{"query_string" : obj};
-/*BEACHMALL*/			"filtered": {
-							"query" : {"query_string" : obj},
-							"filter" : {
-								"and" : [
-									{"has_child":{"type":"sku","query": {"range":{"available":{"gte":1}}}}}, //only return item w/ inventory
-									{"not" : {"term" : {"tags":"IS_DISCONTINUED"}}}
-								]
-							}
-						}
-					};
-				}
+					query.query =  {"query_string" : obj};
+					}
 				else	{
 					$('#globalMessaging').anymessage({'message':'In store_search.u.buildElasticSimpleQuery, obj.query was empty. ',gMessage:true});
 					query = false;
@@ -562,9 +619,15 @@ P.parentID - The parent ID is used as the pointer in the multipage controls obje
 				return r;
 				}
 				
-			} //util
+			}, //util
 
-
+		couplers : {
+			addUniversalFilter : function(args){
+				if(args.filter){
+					_app.ext.store_search.vars.universalFilters.push(args.filter);
+					}
+				}
+			}
 		
 		} //r object.
 	return r;
