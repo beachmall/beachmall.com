@@ -2000,9 +2000,48 @@ this will likely become more flexible in the future. ###
 
 
 <!-- 404 page -->
-<div id="pageNotFoundTemplate">
+<div id="pageNotFoundTemplate" class="notFoundTemplate">
 
 	<h1>Unable to find page...</h1>
+	<div class="wrapper marginTop marginBottom">
+		<div class="notFoundRight marginBottom marginLeft floatRight">	
+			<p data-tlc="bind $var '.errmsg'; if(is $var --blank;) {{bind $route '.route'; if(is $route --notblank;) {{apply --show --tag;}};}};" class="displayNone">
+				We could not find the page you were looking for &#40; <span data-tlc="bind $var '.route'; apply --append;"></span> &#41;
+			</p>
+			
+			<p data-tlc="bind $var '.pid'; if(is $var --notblank;) {{apply --show;}};" class="displayNone">
+				The item you are searching for &#40;<span data-tlc="bind $var '.pid'; if(is $var --notblank;) {{apply --append;}};"></span>&#41; no longer exists.
+				<br>Please check your spelling and try your search again. 
+				<br>If you are still having problems you can call our Customer Service department at 1&#45;888&#45;975&#45;6555, Monday through Friday.
+			</p>
+			
+			<!-- <p data-tlc="bind $var '.errmsg'; if(is $var --notblank;) {{apply --show --tag; apply --append;}};" class="displayNone"></p> -->
+			<h2>You might also try:</h2>
+				<a href="/" class="notFoundLink">Home</a>
+			<h2>Shop by category:</h2>
+			<a href="/beach-chairs/" class="notFoundLink">Beach Chairs</a>
+			<a href="/beach-accessories/" class="notFoundLink">Accessories</a>
+			<a href="/recreation/" class="notFoundLink">Recreation</a>
+			<a href="/beach-wear/" class="notFoundLink">Beach Wear</a>
+			<a href="/umbrellas-shelters/" class="notFoundLink">Umbrellas</a>
+			<a href="/umbrellas-shelters/" class="notFoundLink">Shelters</a>
+			<h2>Or Search:</h2>
+			<div class="searchContainer">
+				<form data-app-submit="quickstart|searchFormSubmit" method="get" class="productSearchForm" action="#" name="pageNotFoundSearchFrm">
+					<input type="search" class="productSearchKeyword handleDefault" placeholder=" Find it here..." value="" name="KEYWORDS">
+					<div class="sprite floatRight"></div>
+					<button class="search searchButton oswaldFontBold bMallBlueButton">SEARCH</button>
+					<!-- <input class="search searchButton oswaldFontBold" id="headerSearchSubmit" value="SEARCH" type="submit"> -->
+				</form>
+			</div>
+			<p class="marginTop">
+				If you feel you have reached this page in error, <br>please feel free to <a href="/contact_us/" class="notFoundLink exception">Contact Us</a> &#33;
+			</p>
+		</div>
+		<div class="notFoundImg marginBottom floatLeft">
+			<img src="images/item-not-found_397x245.jpg">
+		</div>
+	</div>
 
 </div>
 
