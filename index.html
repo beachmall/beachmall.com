@@ -80,6 +80,7 @@ css files should be included before any .js file to ensure they are downloaded i
 
 <script type="text/javascript" src="resources/jquery.touchSwipe-1.3.3.min.js"></script> <!-- data-apptimize="embed" -->
 <script type="text/javascript" src="resources/jquery.carouFredSel-6.2.0.min.js"></script> <!-- data-apptimize="embed" -->
+<script type="text/javascript" src="magiczoomplus-commercial/magiczoomplus/magiczoomplus.js"></script> <!-- data-apptimize="embed" -->
 
 <script type="text/javascript" src="resources/jquery.ui.anyplugins.js"></script> <!-- data-apptimize="embed" -->
 <script type="text/javascript" src="includes.js"></script><!-- contains some polyfills and should be loaded early -->  <!-- data-apptimize="embed" -->
@@ -125,7 +126,7 @@ $(document).ready(function(){
 		}
 		if(notIE8) {
 			window.myApp = new initApp({	<!-- versionhere -->
-				"release":"201410.20141222143600",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+				"release":"201410.20141222150300",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 				"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 				"baseURL":baseURL, //used in non-local mode.
 				"checkoutAuthMode" : "active",//can be passive, active or required

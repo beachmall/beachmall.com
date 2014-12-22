@@ -36,10 +36,6 @@ var beachmall_begin = function(_app) {
 			onSuccess : function()	{
 				var r = true; //return false if extension won't load for some reason (account config, dependencies, etc).
 				
-				_app.u.loadResourceFile(['script',0,'magiczoomplus-commercial/magiczoomplus/magiczoomplus.js',function(){
-					MagicZoomPlus.start();
-				}]);
-					
 				return r;
 			},
 			onError : function()	{
