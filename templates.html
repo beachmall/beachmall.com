@@ -210,17 +210,17 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 
 <ul>
 	<li id="dropdownAnchorListTemplate">
-		<a data-tlc="bind $seo '.pretty'; bind $var '.'; store_routing#seoanchor --type='category' --seo='$seo'; apply --attrib='href';" class='stockImageContainer'></a>
+		<a data-tlc="bind $seo '.pretty'; bind $var '.'; store_routing#seoanchor --type='category' --seo='$seo'; apply --attrib='href';" data-app-click="beachmall_begin|clickdropdown" class='stockImageContainer'></a>
 		<div data-tlc="bind $var '.path'; beachmall_begin#hideifexlcuded;" data-exclude='bestseller'>
-			<a data-tlc="bind $seo '.pretty'; bind $var '.'; beachmall_begin#dropdownseoanchor --type='searchcategory' --searchtype='bestsellers' --seo='$seo'; apply --attrib='href';" class='catSearchHomeDropdown'>Best Selling Items</a>
+			<a data-tlc="bind $seo '.pretty'; bind $var '.'; beachmall_begin#dropdownseoanchor --type='searchcategory' --searchtype='bestsellers' --seo='$seo'; apply --attrib='href';" data-app-click="beachmall_begin|clickdropdown" class='catSearchHomeDropdown'>Best Selling Items</a>
 		</div>
 		<div data-tlc="bind $var '.path'; beachmall_begin#hideifexlcuded;" data-exclude='featured'>
-			<a data-tlc="bind $seo '.pretty'; bind $var '.'; beachmall_begin#dropdownseoanchor --type='searchcategory' --searchtype='featured' --seo='$seo'; apply --attrib='href';" class='catSearchHomeDropdown'>Featured Items</a>
+			<a data-tlc="bind $seo '.pretty'; bind $var '.'; beachmall_begin#dropdownseoanchor --type='searchcategory' --searchtype='featured' --seo='$seo'; apply --attrib='href';" data-app-click="beachmall_begin|clickdropdown" class='catSearchHomeDropdown'>Featured Items</a>
 		</div>
 		<div data-tlc="bind $var '.path'; beachmall_begin#hideifexlcuded;" data-exclude='clearance'>
-			<a data-tlc="bind $seo '.pretty'; bind $var '.'; beachmall_begin#dropdownseoanchor --type='searchcategory' --searchtype='clearance' --seo='$seo'; apply --attrib='href';" class='catSearchHomeDropdown'>Clearance Items</a>
+			<a data-tlc="bind $seo '.pretty'; bind $var '.'; beachmall_begin#dropdownseoanchor --type='searchcategory' --searchtype='clearance' --seo='$seo'; apply --attrib='href';" data-app-click="beachmall_begin|clickdropdown" class='catSearchHomeDropdown'>Clearance Items</a>
 		</div>
-		<a data-tlc="bind $seo '.pretty'; bind $var '.'; store_routing#seoanchor --type='category' --seo='$seo'; apply --attrib='href';" class='catSearchHomeDropdown'>See All Items</a>									
+		<a data-tlc="bind $seo '.pretty'; bind $var '.'; store_routing#seoanchor --type='category' --seo='$seo'; apply --attrib='href';" data-app-click="beachmall_begin|clickdropdown" class='catSearchHomeDropdown'>See All Items</a>									
 	</li>
 </ul>
 

@@ -1496,7 +1496,7 @@ will load everything in the RQ will a pass <= [pass]. so pass of 10 loads everyt
 //What was the plugin was split into two pieces, the app-event based delegation is here.  The form based is in anyForm
 			addEventDelegation : function($t,vars)	{
 				vars = vars || {};
-				var supportedEvents = new Array("click","change","focus","blur","submit","keyup","keypress");
+				var supportedEvents = new Array("click","change","focus","blur","submit","keyup","keypress","mouseenter","mouseleave");
 
 				function destroyEvents($ele)	{
 					for(var i = 0; i < supportedEvents.length; i += 1)	{
