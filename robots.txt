@@ -5,8 +5,9 @@ User-agent: aranhabot
 Disallow: /media/
 
 User-agent: *
-Sitemap: /sitemap.xml
+Sitemap: http://www.beachmall.com/sitemap.xml
 Allow: /
+Disallow: /search/*
 Disallow: /viewallfeatured/
 Disallow: /viewallbestseller/
 Disallow: /tailgating/
