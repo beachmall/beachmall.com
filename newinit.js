@@ -431,7 +431,7 @@ _app.couple('order_create','addOrderCompleteHandler',{
 _app.u.bindTemplateEvent(function(){return true;}, 'complete.metainformation',function(event, $context, infoObj){
 	var defaultTitle = "Beach Chairs | Beach Chair Umbrella | Beach Cart | Cabanas & Gear";
 	var titlePrefix = "";
-	var titlePostfix = " | Beachmall.com";
+	var titlePostfix = "";
 	
 	var baseTitle = $('[data-seo-title]', $context).attr('data-seo-title') || defaultTitle;
 	var desc = $('[data-seo-desc]', $context).attr('data-seo-desc') || '';
