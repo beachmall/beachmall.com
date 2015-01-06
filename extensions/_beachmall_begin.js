@@ -404,25 +404,6 @@ var beachmall_begin = function(_app) {
 				return $img;
 			},
 
-/* HASH UTIL */			
-			//takes the seo name and removes certain characters/spaces/patterns and returns the seo name
-			removeUnwantedChars : function(seo) {
-				seo = seo.replace('"','-inches'); //doesn't want any " (signifying "inches") in seo hash
-				seo = seo.replace('_',' '); //doesn't want any "_" in seo hash
-				seo = seo.replace(' / ',' '); //doesn't want any " / " in seo hash
-				seo = seo.replace('/',' '); //doesn't want any "/" in seo hash
-				seo = seo.replace('+',' '); //doesn't want any "+" in seo hash
-				seo = seo.replace(' & ',' '); //doesn't want any " & " in seo hash
-				seo = seo.replace('&',' '); //doesn't want any "/" in seo hash
-				seo = seo.replace(' - ',' '); //wants all " " converted to "-", but " - " comes out as "---", no bueno.
-				seo = seo.replace('--',' '); //just in case, some prod_names have two consecutive "-"
-				seo = seo.replace('---',' '); //just in case, some prod_names have three consecutive "-"
-				seo = seo.replace('  ',' '); //kill two consecutive spaces
-				seo = seo.replace('   ',' '); //kill three consecutive spaces
-				seo = seo.toLowerCase();
-				return seo;
-			},
-			
 			//adds jquery tool tip to show product sibling/variation thumbnails and pop up messages
 			startTooltip : function() {
 				$( document ).tooltip({

@@ -132,6 +132,8 @@ optional params:
 			cleanURIComponent : function(str){
 				//trims whitespace
 				var component = str.replace(/^\s+|\s+$/g, '');
+				component = str.replace('--','-'); //just in case, some prod_names have two consecutive "-"
+				component = str.replace('---','-'); //just in case, some prod_names have three consecutive "-"
 				//replaces all non alphanumerics with dashes
 				component = component.replace(/[^a-zA-Z0-9]+/g, '-');
 				return component;
@@ -139,31 +141,35 @@ optional params:
 			productAnchor : function(pid, seo){
 				//return "/product/"+pid+"/"+(seo ? _app.ext.store_routing.u.cleanURIComponent(seo) : '');
 				if(seo) {
-/*beachmall*/		seo = _app.ext.beachmall_begin.u.removeUnwantedChars(seo);
-					return "/"+encodeURIComponent(seo).replace(/%20/g, "-")+"/p/"+pid+".html";
+/*beachmall*/return "/"+_app.ext.store_routing.u.cleanURIComponent(seo)+"/p/"+pid+".html";
 				}
 				else { return "/product/"+pid; }
 				},
 			categoryAnchor : function(path,seo)	{
-		//		if(path.charAt(0) == '.'){
-		//			path = path.substr(1);
-		//			}
-		//		return "/category/"+path+"/"+((seo) ? _app.ext.store_routing.u.cleanURIComponent(seo) : '');
-/*beachmall*/				
-				if(seo) {
-					seo = _app.ext.beachmall_begin.u.removeUnwantedChars(seo);
-					//return "/"+encodeURIComponent(seo).replace(/%20/g, "-")+"/c/"+path;
-					return "/"+encodeURIComponent(seo).replace(/%20/g, "-")+"/";
-				}
-				else { return "/category/"+path+"/"; }
-				},
 /*beachmall*/
+				if(seo) {
+					//return "/"+encodeURIComponent(seo).replace(/%20/g, "-")+"/c/"+path;
+					return "/"+_app.ext.store_routing.u.cleanURIComponent(seo)+"/";
+				}
+				else { 
+					if(path.charAt(0) == '.'){
+						path = path.substr(1);
+						}
+					return "/category/"+path+"/"; 
+				}
+/*beachmall*/
+		//		return "/category/"+path+"/"+((seo) ? _app.ext.store_routing.u.cleanURIComponent(seo) : '');
+				},
 			categorySearchAnchor : function(path,seo,type) {
 				if(seo) {
-					seo = _app.ext.beachmall_begin.u.removeUnwantedChars(seo);
-					return "/"+encodeURIComponent(seo).replace(/%20/g, "-")+"/"+type+"/c/"+path; 
+					return "/"+_app.ext.store_routing.u.cleanURIComponent(seo)+"/"+type+"/c/"+path; 
 				}
-				else { return "/category/"+type+"/"+path; }
+				else {
+					if(path.charAt(0) == '.'){
+						path = path.substr(1);
+						}
+					return "/category/"+type+"/"+path; 
+				}
 /*beachmall*/	},
 			searchAnchor : function(type,value)	{
 				var r;

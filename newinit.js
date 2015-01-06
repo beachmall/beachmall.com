@@ -26,8 +26,7 @@ _app.u.loadScript(configURI,function(){
 			_app.ext.quickstart.u.handleMinicartUpdate({'datapointer':'cartDetail|'+_app.model.fetchCartID()});
 		},4000);
 		
-		//TODO : TRANSFER MAKE DISALLOW FUNCTION FROM BEACHMALL_STORE TO BEACHMALL_BEGIN.
-		//_app.ext.beachmall_store.u.makeDisallow(); //uncomment to use, then close it back up. This shouldn't be left running in production.
+		//makeDisallow() moved into productTemplate Event. Uncomment and load prod page to generate disallow list. edit list in beachmall_product extension.
 		
 		});
 	}); //The config.js is dynamically generated.
@@ -495,6 +494,7 @@ _app.u.bindTemplateEvent('categoryTemplateBrands', 'complete.beachmall_lists',fu
 });
 
 _app.u.bindTemplateEvent('productTemplate', 'complete.beachmall_product',function(event,$context,infoObj) {
+	//_app.ext.beachmall_product.u.makeDisallow(); //uncomment to use, then close it back up. This shouldn't be left running in production.
 	_app.ext.beachmall_product.u.initEstArrival(infoObj);
 	_app.ext.beachmall_product.u.doMagicStuff();
 	_app.ext.beachmall_product.u.replaceReadReviewLink($context,infoObj.pid);
