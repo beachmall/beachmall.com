@@ -136,6 +136,7 @@ optional params:
 				component = str.replace('---','-'); //just in case, some prod_names have three consecutive "-"
 				//replaces all non alphanumerics with dashes
 				component = component.replace(/[^a-zA-Z0-9]+/g, '-');
+				component = component.toLowerCase();
 				return component;
 				},
 			productAnchor : function(pid, seo){
