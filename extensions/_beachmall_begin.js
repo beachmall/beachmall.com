@@ -221,121 +221,7 @@ var beachmall_begin = function(_app) {
 ////////////////////////////////////   Actions    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 		a : {
-		
-/* DROPDOWN ACTIONS */		
-			//SHOW MAIN CATEGORY DROPDOWN MENU
-			showDropdown : function ($tag, ht) {
-				var $dropdown = $(".dropdown", $tag);
-				var height = ht;
-				$dropdown.children().each(function(){
-					$(this).outerHeight(true);
-				});
-				$dropdown.stop().animate({"height":height+"px"}, 500);
-			},
-            
-			//ANIMATE RETRACTION OF MAIN CATEGORY DROPDOWN MENU
-			hideDropdown : function ($tag) {
-				$(".dropdown", $tag).stop().animate({"height":"0px"}, 500);
-			},
-			
-			//IMEDIATE RETRACTION OF MAIN CATEGORY DROPDOWN MENU WHEN HEADER IS CLICKED
-			clickDropdown : function ($tag) {
-				$(".dropdown", $tag).stop().animate({"height":"0px"}, 0);
-			},
-			
-			//SHOW MAIN CATEGORY 2ND LEVEL DROPOUT MENU
-			showDropout : function ($tag, $parentparent, $parent, wd) {
-				var $dropout = $(".dropout", $tag);
-				var width = wd;
-				$dropout.children().each(function(){
-					$(this).outerWidth(true);
-				});
-				$('.defaultDDImage',$parentparent).css({"right":"-300px"});	//hide default image so sub-cat image can display
-				$parentparent.css({"width":720+"px"},1000);
-				$parent.stop().animate({"width":700+"px"},0);
-				$dropout.stop().animate({"width":width+"px"});
-			},
-			
-			//ANIMATE RETRACTION OF MAIN CATEGORY 2ND LEVEL DROPOUT MENU
-			hideDropout : function ($tag, $parentparent, $parent) {
-				$(".dropout", $tag).stop().animate({"width":"0px"}, 1000);
-				$parent.stop().animate({"width":460+"px"}, 1000);
-				$parentparent.css({"width":480+"px"}, 1000);
-				$('.defaultDDImage',$parentparent).css({"right":"-4px"});
-			},
-			
-			//IMEDIATE RETRACTION OF MAIN CATEGORY DROPDOWN MENU WHEN 2ND LEVEL LINK IS CLICKED
-			clickDropdown : function ($tag) {
-				$(".dropdown", $tag).stop().animate({"height":"0px"}, 0);
-			},
-			
-			//SHOW HOVERPRODUCT DROPOUT MENU
-			showHoverout : function ($tag) {
-				var $hoverout = $(".hoverout", $tag);
-				var width = 240;
-				$hoverout.children().each(function(){
-					$(this).outerWidth(true);
-				});
-				$('.defaultDDImage',$tag.parent().parent().parent()).animate({"opacity":"0"},0);
-				$hoverout.stop().animate({"width":width+"px",opacity:1}, 0);
-			},
-			
-			//ANIMATE RETRACTION OF HOVERPRODUCT DROPOUT MENU
-			hideHoverout : function ($tag) {
-				$(".hoverout", $tag).stop().animate({"width":"0px",opacity:0}, 0);
-				$('.defaultDDImage',$tag.parent().parent().parent()).animate({"opacity":"1"},0);
-			},
-			
-			//SHOW HOVERPRODUCT DROPOUT MENU
-			showHoverout2 : function ($tag, $parent) {
-				var $hoverout = $(".hoverout", $tag);
-				var width = 240;
-				$hoverout.children().each(function(){
-					$(this).outerWidth(true);
-				});
-				$('.defaultDOImage',$tag.parent()).animate({"opacity":"0"},0);
-				$hoverout.stop().animate({"width":width+"px",opacity:1},0);
-				//$parent.css({"width":680+"px"}, 000);
-			},
-			
-			//ANIMATE RETRACTION OF HOVERPRODUCT DROPOUT MENU
-			hideHoverout2 : function ($tag, $parent) {
-				$(".hoverout", $tag).stop().animate({"width":"0px",opacity:0},0);
-			//	$parent.css({"width":485+"px"}, 000);
-				$('.defaultDOImage',$tag.parent()).animate({"opacity":"1"},0);
-			},
-			
-			//SHOW GEO DROPDOWN MENU WITH CHECK FOR A TIMEOUT TO PREVENT RE-HOVER AFTER CLOSE BUTTON CLICK FROM KEEPING IT OPEN
-			showGeoDropdown : function ($tag, ht) {
-				//dump('-----showdropdown data:'); dump($(".dropdown", $tag).data('timeout'));
-				if(!$(".dropdown", $tag).data('timeout') || $(".dropdown", $tag).data('timeout') === 'false') {
-					var $dropdown = $(".dropdown", $tag);
-					var height = ht || 0;
-			//		$dropdown.children().each(function(){ THIS WAS IN PLACE OF IF/ELSE BELOW WHEN ONLY USED A PASSED ARGUMENT FOR HEIGHT.
-			//			$(this).outerHeight(true);
-			//		});
-					if(height != 0){
-						$dropdown.children().each(function(){
-							$(this).outerHeight(true);
-						});
-					} else{
-						$dropdown.children().each(function(){
-								height += $(this).outerHeight();
-								$(this).outerHeight(true);
-						});
-					}
-					$dropdown.stop().animate({"height":height+"px"}, 500);
-				}
-			},
-            
-			//ANIMATE RETRACTION OF HEADER GEO DROPDOWN MENU WITH TIMEOUT TO PREVENT ACCIDENTAL RE-HOVER FROM KEEPING IT OPEN
-			hideGeoDropdown : function ($tag) {
-				$(".dropdown", $tag).data('timeout','true');
-				$(".dropdown", $tag).stop().animate({"height":"0px"}, 500);
-				setTimeout(function(){$(".dropdown", $tag).data('timeout','false')}, 505);
-				//dump('----hidedropdown data:'); dump($(".dropdown", $tag).data('timeout'));
-			},
-			
+
 /* GEOLOCATION ACTIONS */
 			updateShipPostal : function($form)	{
 				_app.u.dump("BEGIN beachmall_begin.a.updateShipPostal.");
@@ -518,25 +404,6 @@ var beachmall_begin = function(_app) {
 				return $img;
 			},
 
-/* HASH UTIL */			
-			//takes the seo name and removes certain characters/spaces/patterns and returns the seo name
-			removeUnwantedChars : function(seo) {
-				seo = seo.replace('"','-inches'); //doesn't want any " (signifying "inches") in seo hash
-				seo = seo.replace('_',' '); //doesn't want any "_" in seo hash
-				seo = seo.replace(' / ',' '); //doesn't want any " / " in seo hash
-				seo = seo.replace('/',' '); //doesn't want any "/" in seo hash
-				seo = seo.replace('+',' '); //doesn't want any "+" in seo hash
-				seo = seo.replace(' & ',' '); //doesn't want any " & " in seo hash
-				seo = seo.replace('&',' '); //doesn't want any "/" in seo hash
-				seo = seo.replace(' - ',' '); //wants all " " converted to "-", but " - " comes out as "---", no bueno.
-				seo = seo.replace('--',' '); //just in case, some prod_names have two consecutive "-"
-				seo = seo.replace('---',' '); //just in case, some prod_names have three consecutive "-"
-				seo = seo.replace('  ',' '); //kill two consecutive spaces
-				seo = seo.replace('   ',' '); //kill three consecutive spaces
-				seo = seo.toLowerCase();
-				return seo;
-			},
-			
 			//adds jquery tool tip to show product sibling/variation thumbnails and pop up messages
 			startTooltip : function() {
 				$( document ).tooltip({
@@ -731,7 +598,140 @@ var beachmall_begin = function(_app) {
 				_app.ext.beachmall_begin.e.scrollToTop($ele,p);
 				$('body').removeClass('buyerLoggedIn'); 
 				return false;
-			}			
+			},
+			
+//DROPDOWN EVENTS			
+			//SHOW MAIN CATEGORY DROPDOWN MENU
+			showdropdown : function ($ele,p) {
+				p.preventDefault();
+				var $dropdown = $(".dropdown", $ele);
+				var height = $ele.attr("data-ht");
+				$dropdown.children().each(function(){
+					$(this).outerHeight(true);
+				});
+				$dropdown.stop().animate({"height":height+"px"}, 500);
+				return false;
+			},
+            
+			//ANIMATE RETRACTION OF MAIN CATEGORY DROPDOWN MENU
+			hidedropdown : function ($ele,p) {
+				p.preventDefault();
+				$(".dropdown", $ele).stop().animate({"height":"0px"}, 500);
+				return false;
+			},
+			
+			//IMEDIATE RETRACTION OF MAIN CATEGORY DROPDOWN MENU WHEN 2ND LEVEL LINK IS CLICKED
+			clickdropdown : function ($ele,p) {
+				$(".dropdown", $ele.closest("[data-dropdown-parent]")).stop().animate({"height":"0px"}, 0);
+				return false;
+			},
+			
+			//SHOW GEO DROPDOWN MENU WITH CHECK FOR A TIMEOUT TO PREVENT RE-HOVER AFTER CLOSE BUTTON CLICK FROM KEEPING IT OPEN
+			showgeodropdown : function ($ele, p) {
+				p.preventDefault();
+//				dump('-----showdropdown data:'); dump($(".dropdown", $ele).data('timeout'));
+				if(!$(".dropdown", $ele).data('timeout') || $(".dropdown", $ele).data('timeout') === 'false') {
+					var $dropdown = $(".dropdown", $ele);
+					var height = $ele.attr("data-ht") || 0;
+			//		$dropdown.children().each(function(){ THIS WAS IN PLACE OF IF/ELSE BELOW WHEN ONLY USED A PASSED ARGUMENT FOR HEIGHT.
+			//			$(this).outerHeight(true);
+			//		});
+					if(height != 0){
+						$dropdown.children().each(function(){
+							$(this).outerHeight(true);
+						});
+					} else{
+						$dropdown.children().each(function(){
+								height += $(this).outerHeight();
+								$(this).outerHeight(true);
+						});
+					}
+					$dropdown.stop().animate({"height":height+"px"}, 500);
+				}
+			},
+            
+			//ANIMATE RETRACTION OF HEADER GEO DROPDOWN MENU WITH TIMEOUT TO PREVENT ACCIDENTAL RE-HOVER FROM KEEPING IT OPEN
+			hidegeodropdown : function ($ele,p) {
+				var $parent = $ele.closest("[data-dropdown-parent]");
+				$(".dropdown", $parent).data('timeout','true');
+				$(".dropdown", $parent).stop().animate({"height":"0px"}, 500);
+				setTimeout(function(){$(".dropdown", $parent).data('timeout','false')}, 505);
+				//dump('----hidedropdown data:'); dump($(".dropdown", $parent).data('timeout'));
+			},
+			
+			//SHOW MAIN CATEGORY 2ND LEVEL DROPOUT MENU
+			showdropout : function ($ele, p) {
+				p.preventDefault();
+				var $parentparent = $ele.closest("[data-dropout-parent=2]");
+				var $parent = $ele.closest("[data-dropout-parent=1]");
+				var $dropout = $(".dropout", $ele);
+				var width = $ele.attr("data-dropout-width");
+				$dropout.children().each(function(){
+					$(this).outerWidth(true);
+				});
+				$('.defaultDDImage',$parentparent).css({"right":"-300px"});	//hide default image so sub-cat image can display
+				$parentparent.css({"width":720+"px"},1000);
+				$parent.stop().animate({"width":700+"px"},0);
+				$dropout.stop().animate({"width":width+"px"});
+				return false;
+			},
+			
+			//ANIMATE RETRACTION OF MAIN CATEGORY 2ND LEVEL DROPOUT MENU
+			hidedropout : function ($ele, p) {
+				p.preventDefault();
+				var $parentparent = $ele.closest("[data-dropout-parent=2]");
+				var $parent = $ele.closest("[data-dropout-parent=1]");
+				$(".dropout", $ele).stop().animate({"width":"0px"}, 1000);
+				$parent.stop().animate({"width":460+"px"}, 1000);
+				$parentparent.css({"width":480+"px"}, 1000);
+				$('.defaultDDImage',$parentparent).css({"right":"-4px"});
+				return false;
+			},
+			
+			//SHOW HOVERPRODUCT DROPOUT MENU
+			showhoverout : function ($ele,p) {
+				p.preventDefault();
+				var $hoverout = $(".hoverout", $ele);
+				var width = 240;
+				$hoverout.children().each(function(){
+					$(this).outerWidth(true);
+				});
+				$('.defaultDDImage',$ele.parent().parent().parent()).animate({"opacity":"0"},0);
+				$hoverout.stop().animate({"width":width+"px",opacity:1}, 0);
+				return false;
+			},
+			
+			//ANIMATE RETRACTION OF HOVERPRODUCT DROPOUT MENU
+			hidehoverout : function ($ele,p) {
+				p.preventDefault();
+				$(".hoverout", $ele).stop().animate({"width":"0px",opacity:0}, 0);
+				$('.defaultDDImage',$ele.parent().parent().parent()).animate({"opacity":"1"},0);
+				return false;
+			},
+			
+			//SHOW HOVERPRODUCT DROPOUT MENU
+			showhoverout2 : function ($ele, p) {
+				p.preventDefault();
+	//			var $parent = $ele.closest("[data-hoverout2-parent]");
+				var $hoverout = $(".hoverout", $ele);
+				var width = 240;
+				$hoverout.children().each(function(){
+					$(this).outerWidth(true);
+				});
+				$('.defaultDOImage',$ele.parent()).animate({"opacity":"0"},0);
+				$hoverout.stop().animate({"width":width+"px",opacity:1},0);
+				//$parent.css({"width":680+"px"}, 000);
+				return false;
+			},
+			
+			//ANIMATE RETRACTION OF HOVERPRODUCT DROPOUT MENU
+			hidehoverout2 : function ($ele, p) {
+				p.preventDefault();
+				$(".hoverout", $ele).stop().animate({"width":"0px",opacity:0},0);
+			//	$parent.css({"width":485+"px"}, 000);
+				$('.defaultDOImage',$ele.parent()).animate({"opacity":"1"},0);
+				return false;
+			},
 		
 		}, //e [app Events]
 		

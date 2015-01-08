@@ -127,7 +127,7 @@ $(document).ready(function(){
 		}
 		if(notIE8) {
 			window.myApp = new initApp({	<!-- versionhere -->
-				"release":"201410.20141222184500",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+				"release":"201411.20150106125100",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 				"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 				"baseURL":baseURL, //used in non-local mode.
 				"checkoutAuthMode" : "active",//can be passive, active or required
@@ -153,20 +153,20 @@ $(document).ready(function(){
 <div class='headerContainer'>
 				<!--	<div class='test' onClick="return showContent('search',{'elasticsearch':{'filter':{'and':[{'term':{'tags':'IS_BESTSELLER'}},{'term':{'tags':'.beach-chair.lafuma-recliner'}}]}}});"></div> -->
 <header class='clearfix topNav tanGradient'>
-	<div class='localizedBox fontBlack fontSize12 floatLeft' onmouseover="myApp.ext.beachmall_begin.a.showGeoDropdown($(this),220);">
+	<div class='localizedBox fontBlack fontSize12 floatLeft' data-dropdown-parent=1 data-app-mouseenter="beachmall_begin|showgeodropdown" data-ht=220 >
 	<!-- <div class='localizedBox fontBlack fontSize12 floatLeft' onmouseenter="myApp.ext.beachmall_begin.a.showGeoDropdown($(this),220);"> -->
-        <span class='oswaldFontBold  fontSize14'>LOCALIZED FOR &nbsp;</span><span class='oswaldFontBold fontTeal fontSize18 shipPostal' onClick="myApp.ext.beachmall_begin.a.showDropdown($(this).parent(),220);"></span><br>
-        <span class='openSansFont shipCity'> </span> <span class='shipRegion'></span><span class='openSansFontBold pointer' onClick="myApp.ext.beachmall_begin.a.showDropdown($(this).parent(),220);">&nbsp; (Change)</span>
+        <span class='oswaldFontBold  fontSize14'>LOCALIZED FOR &nbsp;</span><span class='oswaldFontBold fontTeal fontSize18 shipPostal'></span><br>
+        <span class='openSansFont shipCity'> </span> <span class='shipRegion'></span><span class='openSansFontBold'>&nbsp; (Change)</span>
     	<div class='arrowContainer'></div>
 		<div class='geoDropdown dropdown'>
-			<button class='localizedClose sprite' onClick="myApp.ext.beachmall_begin.a.hideGeoDropdown($(this).parent().parent());"></button>
+			<button class='localizedClose sprite' data-app-click="beachmall_begin|hidegeodropdown"></button>
 			<h1>WE JUST NEED YOUR ZIP CODE !</h1>
             By providing your delivery ZIP code, you'll allow us to:<br>
             <span>Show you special pricing</span> that may only be available in select areas.<br>
             <span>See estimated delivery dates</span> without having to checkout.           
             <form onSubmit="myApp.ext.beachmall_begin.a.updateShipPostal($(this)); return false;">
                 <input name='ship/postal' value="" placeholder=' Enter your ZIP / Postal Code' class="geoZipInput handleDefault" type="number">
-                <input class="search searchButton oswaldFontBold" id="headerSearchSubmit" value="SEE DETAILS IN MY AREA" type="submit" onClick="myApp.ext.beachmall_begin.a.hideDropdown($(this).parent().parent().parent());">
+                <input class="search searchButton oswaldFontBold" id="headerSearchSubmit" value="SEE DETAILS IN MY AREA" type="submit" data-app-click="beachmall_begin|hidegeodropdown">
             </form>
             <h2>BeachMall.com respects your privacy and will not share this information with anyone.</h2>
         </div>    
@@ -193,7 +193,7 @@ $(document).ready(function(){
         <a href="/cart/" class='cartIcon sprite '><span class='cartItemCount'>0</span></a>
         <!-- <div class='cartIcon sprite pointer' onClick="myApp.ext.quickstart.u.showCartInModal({'templateID':'cartTemplate'});"><span class='cartItemCount'>0</span></div> this will go to modal cart -->
 	</nav>
-    <nav class='topNavLinks floatRight openSansFontBold fontSize12' onMouseOver="myApp.ext.beachmall_begin.a.showDropdown($(this),100);" onMouseOut="myApp.ext.beachmall_begin.a.hideDropdown($(this));">
+    <nav class='topNavLinks floatRight openSansFontBold fontSize12' data-ht=100 data-app-mouseenter="beachmall_begin|showdropdown" data-app-mouseleave="beachmall_begin|hidedropdown">
         <a href="/my_account/" rel="nofollow">My Account</a> 
 		<div class='arrowContainer'></div>
     	<div class='dropdown myAcctDropdown'>
@@ -204,7 +204,7 @@ $(document).ready(function(){
             </ul>
         </div>
     </nav> 
-    <nav class='topNavLinks floatRight openSansFont fontSize12' onMouseOver="myApp.ext.beachmall_begin.a.showDropdown($(this),150);" onMouseOut="myApp.ext.beachmall_begin.a.hideDropdown($(this));">
+    <nav class='topNavLinks floatRight openSansFont fontSize12' data-ht=150 data-app-mouseenter="beachmall_begin|showdropdown" data-app-mouseleave="beachmall_begin|hidedropdown">
 		<a href="/contact_us/">Customer Care</a> |
         <div class='arrowContainer2'></div>
 		<div class='dropdown custCareDropdown'>
@@ -240,45 +240,45 @@ $(document).ready(function(){
        
         <div data-header="dropdown" class='dropdownsContainer floatLeft'>
             <div id='mainDropdown'>
-				<div class='singleDropdown floatLeft sprite' onMouseOver="myApp.ext.beachmall_begin.a.showDropdown($(this),535);" onMouseOut="myApp.ext.beachmall_begin.a.hideDropdown($(this));">
+				<div class='singleDropdown floatLeft sprite'>
 					<div class='dropdownBorderContainer'>
 						<div class='dropdownBorderMaker'>
-							<a href='/beach-chairs/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent());">BEACH CHAIRS</a>
+							<a href='/beach-chairs/'>BEACH CHAIRS</a>
 						</div>
 					</div>
 				</div>
-				<div class='singleDropdown floatLeft sprite' onMouseOver="myApp.ext.beachmall_begin.a.showDropdown($(this),535);" onMouseOut="myApp.ext.beachmall_begin.a.hideDropdown($(this));">
+				<div class='singleDropdown floatLeft sprite'>
 					<div class='dropdownBorderContainer'>	
 						<div class='dropdownBorderMaker'>
-							<a href='/beach-accessories/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent());">ACCESSORIES</a> 
+							<a href='/beach-accessories/'>ACCESSORIES</a> 
 						</div>
 					</div>
 				</div>
-				<div class='singleDropdown floatLeft sprite' onMouseOver="myApp.ext.beachmall_begin.a.showDropdown($(this),535);" onMouseOut="myApp.ext.beachmall_begin.a.hideDropdown($(this));">
+				<div class='singleDropdown floatLeft sprite'>
 					<div class='dropdownBorderContainer'>
 						<div class='dropdownBorderMaker'>
-							<a href='/recreation/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent());">RECREATION</a>
+							<a href='/recreation/'>RECREATION</a>
 						</div>
 					</div>
 				</div>
-				<div class='singleDropdown floatLeft sprite' onMouseOver="myApp.ext.beachmall_begin.a.showDropdown($(this),535);" onMouseOut="myApp.ext.beachmall_begin.a.hideDropdown($(this));">
+				<div class='singleDropdown floatLeft sprite'>
 					<div class='dropdownBorderContainer'>
 						<div class='dropdownBorderMaker'>
-							<a href='/beach-wear/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent());">BEACH WEAR</a>
+							<a href='/beach-wear/'>BEACH WEAR</a>
 						</div>
 					</div>
 				</div>
-				<div class='singleDropdown floatLeft sprite' onMouseOver="myApp.ext.beachmall_begin.a.showDropdown($(this),535);" onMouseOut="myApp.ext.beachmall_begin.a.hideDropdown($(this));">
+				<div class='singleDropdown floatLeft sprite'>
 					<div class='dropdownBorderContainer'>
 						<div class='dropdownBorderMaker'>
-							<a href='/umbrellas-shelters/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent());">UMBRELLAS</a>
+							<a href='/umbrellas-shelters/'>UMBRELLAS</a>
 						</div>
 					</div>
 				</div>
-				<div class='singleDropdown floatLeft sprite' onMouseOver="myApp.ext.beachmall_begin.a.showDropdown($(this),535);" onMouseOut="myApp.ext.beachmall_begin.a.hideDropdown($(this));">
+				<div class='singleDropdown floatLeft sprite'>
 					<div class='dropdownBorderContainer'>
 						<div class='dropdownBorderMaker'>
-							<a href='/umbrellas-shelters/' onClick="myApp.ext.beachmall_begin.a.clickDropdown($(this).parent().parent().parent());">SHELTERS</a>
+							<a href='/umbrellas-shelters/'>SHELTERS</a>
 						</div>
 					</div>
 				</div>
