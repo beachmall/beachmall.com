@@ -323,6 +323,17 @@ var beachmall_begin = function(_app) {
 //will also verify that each filterType has a getElasticFilter function.
 		
 		u : {
+		
+			addChat : function(code,$context) {
+				dump("START addChat =========================================");
+				var script = "<script type='text/javascript'>"
+					+	"var se"+code+"=document.createElement('script');"
+					+	"se"+code+".type='text/javascript';"
+					+	"var se"+code+"s=(location.protocol.indexOf('https')==0?'https':'http')+'://image.providesupport.com/js/1qaxuqjnvcj4w1csevb7u0l3tc/safe-textlink.js?ps_h="+code+"&ps_t='+new Date().getTime()+'&online-link-html=Live%20Chat%20Online&offline-link-html=Live%20Chat%20Offline';"
+					+	'setTimeout("se'+code+'.src=se'+code+'s;document.getElementById(\'sd'+code+'\').appendChild(se'+code+')",1)'
+					+ "</script>";
+				postscribe($context,script);
+			},
 
 /* DROPDOWN UTILS */	
 			

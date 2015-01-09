@@ -16,6 +16,8 @@ _app.u.loadScript(configURI,function(){
 		setTimeout(function(){$('#appView').removeClass('initFooter');}, 1200);
 		_app.ext.quickstart.callbacks.startMyProgram.onSuccess();
 		
+		_app.ext.beachmall_begin.u.addChat("41TM",$("[data-chat='header']","#appView"));
+		_app.ext.beachmall_begin.u.addChat("yXFh",$("[data-chat='footer']","#appView"));
 		_app.ext.beachmall_begin.calls.whereAmI.init({'callback':'handleWhereAmI','extension':'beachmall_begin'},'passive');
 		_app.ext.beachmall_begin.u.renderHeaderDropdown();
 		$.extend(handlePogs.prototype,_app.ext.beachmall_begin.variations);

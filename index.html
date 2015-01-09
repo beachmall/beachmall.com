@@ -82,6 +82,8 @@ css files should be included before any .js file to ensure they are downloaded i
 <script type="text/javascript" src="resources/jquery.touchSwipe-1.3.3.min.js"></script> <!-- data-apptimize="embed" -->
 <script type="text/javascript" src="resources/jquery.carouFredSel-6.2.0.min.js"></script> <!-- data-apptimize="embed" -->
 <script type="text/javascript" src="magiczoomplus-commercial/magiczoomplus/magiczoomplus.js"></script> <!-- data-apptimize="embed" -->
+<script type="text/javascript" src="postscribe-master/htmlParser/htmlParser.js"></script>
+<script type="text/javascript" src="postscribe-master/postscribe.js"></script>
 
 <script type="text/javascript" src="resources/jquery.ui.anyplugins.js"></script> <!-- data-apptimize="embed" -->
 <script type="text/javascript" src="includes.js"></script><!-- contains some polyfills and should be loaded early -->  <!-- data-apptimize="embed" -->
@@ -127,7 +129,7 @@ $(document).ready(function(){
 		}
 		if(notIE8) {
 			window.myApp = new initApp({	<!-- versionhere -->
-				"release":"201411.20150109110800",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+				"release":"201411.20150109141200",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 				"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 				"baseURL":baseURL, //used in non-local mode.
 				"checkoutAuthMode" : "active",//can be passive, active or required
@@ -173,18 +175,18 @@ $(document).ready(function(){
     </div>
     <div class='phoneChatLive phone floatLeft'>
     	
-    	<div class='floatRight liveHelp marginRight hideMed'>
-    		<!-- BEGIN ProvideSupport.com Text Chat Link Code -->
+    	<div class='floatRight liveHelp marginRight hideMed' data-chat="header">
+   		<!-- BEGIN ProvideSupport.com Text Chat Link Code -->
 			<div id="ci41TM" style="z-index:100;position:absolute" data-beachmall-hoverClass="jsHover"></div>
 			<div id="sc41TM" style="display:inline" data-beachmall-hoverClass="jsHover"></div>
 			<div id="sd41TM" style="display:none" data-beachmall-hoverClass="jsHover"></div>
-			<script type="text/javascript">var se41TM=document.createElement("script");se41TM.type="text/javascript";var se41TMs=(location.protocol.indexOf("https")==0?"https":"http")+"://image.providesupport.com/js/1qaxuqjnvcj4w1csevb7u0l3tc/safe-textlink.js?ps_h=41TM&ps_t="+new Date().getTime()+"&online-link-html=Live%20Chat%20Online&offline-link-html=Live%20Chat%20Offline";setTimeout("se41TM.src=se41TMs;document.getElementById('sd41TM').appendChild(se41TM)",1)</script>
+			<!-- script added dynamically in beachmall_begin.u.addChat -->
 			<noscript>
 				<div style="display:inline">
 					<a href="http://www.providesupport.com?messenger=1qaxuqjnvcj4w1csevb7u0l3tc">Customer Support Chat</a>
 				</div>
 			</noscript>
-			<!-- END ProvideSupport.com Text Chat Link Code -->	
+		<!-- END ProvideSupport.com Text Chat Link Code -->	
         </div>	
     	<span class='floatRight'>(888) 975-6555 <span class='orspan openSansFont fontSize10'>OR</span></span>
 		<div class='phoneIcon sprite floatRight'></div>
@@ -362,12 +364,12 @@ $(document).ready(function(){
             </a>
             <div class='googleTrustedBadge'></div>
             <div class='footerPhoneChat'>
-            	<div class='floatRight liveHelp marginRight hideMed'>
+            	<div class='floatRight liveHelp marginRight hideMed' data-chat="footer">
                 <!-- BEGIN ProvideSupport.com Text Chat Link Code -->
                     <div id="ciyXFh" style="z-index:100;position:absolute"></div>
                     <div id="scyXFh" style="display:inline"></div>
                     <div id="sdyXFh" style="display:none"></div>
-                    <script type="text/javascript">var seyXFh=document.createElement("script");seyXFh.type="text/javascript";var seyXFhs=(location.protocol.indexOf("https")==0?"https":"http")+"://image.providesupport.com/js/1qaxuqjnvcj4w1csevb7u0l3tc/safe-textlink.js?ps_h=yXFh&ps_t="+new Date().getTime()+"&online-link-html=Live%20Chat%20Online&offline-link-html=Live%20Chat%20Offline";setTimeout("seyXFh.src=seyXFhs;document.getElementById('sdyXFh').appendChild(seyXFh)",1)</script>
+                    <!-- script added dynamically in beachmall_begin.u.addChat -->
                     <noscript><div style="display:inline"><a href="http://www.providesupport.com?messenger=1qaxuqjnvcj4w1csevb7u0l3tc">CHAT LIVE!</a></div></noscript>
                 <!-- END ProvideSupport.com Text Chat Link Code -->	
         		</div>
