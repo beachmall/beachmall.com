@@ -378,8 +378,31 @@ _app.couple('order_create','addOrderCompleteHandler',{
 				dump('BEACHMALL_TRACKING: infoObj, datapointer, _app.data datapointer, and order exist');
 				dump("TRACKING EXTENSION VARS: orderTotal, orderID, order:"); dump(orderTotal); dump(orderID); dump(order);
 				
-				_app.ext.beachmall_tracking.u.addAdwords(orderTotal);
-				_app.ext.beachmall_tracking.u.addBing($context,{'bing_domain_id':'248869','bing_cp':'5050'});
+			//	_app.ext.beachmall_tracking.u.addAdwords(orderTotal);
+				//creates the pixel image from the adwords no-script portion of the code and adds to conversion page.
+				var gc_id = 1056650724;
+				var gc_language = "en";
+				var gc_format = "2";
+				var gc_color = "ffffff";
+				var gc_label = "0dneCJ6-wwEQ5Ovs9wM";
+				var gc_value = orderTotal;
+				var gc_currency = "USD";
+				var g_remarketing_only = false;
+				var guid = "ON";
+				var url = "https://www.googleadservices.com/pagead/conversion/"+gc_id
+					+"/?value="+gc_value
+					+"&amp;currency_code="+gc_currency
+					+"&amp;label="+gc_label
+					+"&amp;guid="+guid
+					+"&amp;script=0";
+				$("body").append("<img src='"+url+"' height='1' width='1' style='border-style:none;' alt='' class='adwpix'/>");
+			
+				//_app.ext.beachmall_tracking.u.addBing($context,{'bing_domain_id':'248869','bing_cp':'5050'});
+				var $bingAds = $('[data-bingads]',$context);
+				var url = "https://"params.bing_domain_id".r.msn.com/?type=1&cp=1"
+				$bingAds.append("<img src='"+url+"' width=1 height=1 />");
+				
+				
 				_app.ext.beachmall_tracking.u.addShopping('448218', orderID, orderTotal);
 				_app.ext.beachmall_tracking.u.addShopzilla('182786', orderID, orderTotal);
 				_app.ext.beachmall_tracking.u.addPronto('104759', orderID, orderTotal);
