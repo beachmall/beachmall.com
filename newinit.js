@@ -399,7 +399,7 @@ _app.couple('order_create','addOrderCompleteHandler',{
 			
 				//_app.ext.beachmall_tracking.u.addBing($context,{'bing_domain_id':'248869','bing_cp':'5050'});
 				var $bingAds = $('[data-bingads]',$context);
-				var url = "https://"params.bing_domain_id".r.msn.com/?type=1&cp=1"
+				var url = "https://"+params.bing_domain_id+".r.msn.com/?type=1&cp=1";
 				$bingAds.append("<img src='"+url+"' width=1 height=1 />");
 				
 				
