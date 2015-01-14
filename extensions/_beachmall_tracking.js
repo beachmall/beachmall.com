@@ -92,23 +92,24 @@ var beachmall_tracking = function(_app) {
 			//loads Bing tracking info to checkoutTemplate
 			addBing : function($context,params) {
 				dump('START addBing TRACKING');
-				var $bingAds = $('[data-bingads]',$context);
+				var url = "https://"params.bing_domain_id".r.msn.com/?type=1&cp=1"
+				$("body").append("<img src='"+url+"' width=1 height=1 />");
 				
-				var frame = document.createElement("iframe");
-				$(frame).addClass("displayNone");
-				$("body").append(frame);
-				
+	//			var $bingAds = $('[data-bingads]',$context);
+	//			var frame = document.createElement("iframe");
+	//			$(frame).addClass("displayNone");
+	//			$("body").append(frame);
 				//frame.contentWindow.microsoft_adcenterconversion_domainid = params.bing_domain_id;
 				//frame.contentWindow.microsoft_adcenterconversion_cp = params.bing_cp;
 				
-				setTimeout(function() {
-					var paramScript = frame.contentWindow.document.createElement("script");
-					paramScript.type = "text/javascript";
-					paramScript.text = "microsoft_adcenterconversion_domainid = "+params.bing_domain_id+"; microsoft_adcenterconversion_cp = "+params.bing_cp+";";
+	//			setTimeout(function() {
+	//				var paramScript = frame.contentWindow.document.createElement("script");
+	//				paramScript.type = "text/javascript";
+	//				paramScript.text = "microsoft_adcenterconversion_domainid = "+params.bing_domain_id+"; microsoft_adcenterconversion_cp = "+params.bing_cp+";";
 //					dump(paramScript.text);
-					var script = frame.contentWindow.document.createElement("script");
-					script.type = "text/javascript"
-					script.src = "https://0.r.msn.com/scripts/microsoft_adcenterconversion.js";
+	//				var script = frame.contentWindow.document.createElement("script");
+	//				script.type = "text/javascript"
+	//				script.src = "https://0.r.msn.com/scripts/microsoft_adcenterconversion.js";
 					
 					//Removed "noscript" content, app runs on js so if it's not enabled nothing works...
 					//var noscript = document.createElement("noscript");
@@ -118,23 +119,23 @@ var beachmall_tracking = function(_app) {
 					//anchor is in checkoutSuccess container and will be shown if script is found to load
 					//var $anchor = $("<a href='http://advertising.msn.com/MSNadCenter/LearningCenter/adtracker.asp' target='_blank'>::adCenter::</a>");
 					
-					frame.contentWindow.document.body.appendChild(paramScript);
-					frame.contentWindow.document.body.appendChild(script);
+	//				frame.contentWindow.document.body.appendChild(paramScript);
+	//				frame.contentWindow.document.body.appendChild(script);
 					//frame.contentWindow.document.body.appendChild(noscript);
 					
 					//check if script loads and show adcenter/bingads anchor if so
-					if (script.readyState){  //IE
-						script.onreadystatechange = function(){
-							if (script.readyState == "loaded" || script.readyState == "complete"){
-								script.onreadystatechange = null;
-								$bingAds.removeClass('displayNone');
-							}
-						};
-					}
-					else {
-						script.onload = function(){ $bingAds.removeClass('displayNone'); }
-					}
-				},250);
+	//				if (script.readyState){  //IE
+	//					script.onreadystatechange = function(){
+	//						if (script.readyState == "loaded" || script.readyState == "complete"){
+	//							script.onreadystatechange = null;
+	//							$bingAds.removeClass('displayNone');
+	//						}
+	//					};
+	//				}
+	//				else {
+	//					script.onload = function(){ $bingAds.removeClass('displayNone'); }
+	//				}
+	//			},250);
 			},
 			
 			
