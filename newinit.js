@@ -793,6 +793,8 @@ _app.router.appendHash({'type':'match','route':'/wheeleez/','navcat':'.beach-cha
 				_app.router.appendHash({'type':'match','route':'/sitemap/','navcat':'.sitemap','callback':'customCatName'});
 				_app.router.appendHash({'type':'match','route':'/affiliates/','navcat':'.affiliates','callback':'customCatName'});
 				_app.router.appendHash({'type':'match','route':'/directory/','navcat':'.directory','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/low-price-guarantee/','navcat':'.help.low_price_guarantee','callback':'customCatName'});
+				_app.router.appendHash({'type':'match','route':'/surcharge-explanation/','navcat':'.help.surcharge-explanation','callback':'customCatName'});
 
 // _app.u.bindTemplateEvent('productTemplate', 'complete.invcheck',function(event, $context, infoObj){
 	// if(!$context.attr('data-invcheck')){
