@@ -374,7 +374,7 @@ _app.couple('order_create','addOrderCompleteHandler',{
 				var order = _app.data[P.datapointer].order;
 				var $context = $('.checkoutSuccess');
 				var orderTotal = order.sum.order_total;
-				var orderID = order.orderID;
+				var orderID = order.our.orderid;
 				dump('BEACHMALL_TRACKING: infoObj, datapointer, _app.data datapointer, and order exist');
 				dump("TRACKING EXTENSION VARS: orderTotal, orderID, order:"); dump(orderTotal); dump(orderID); dump(order);
 				
@@ -401,7 +401,7 @@ _app.couple('order_create','addOrderCompleteHandler',{
 				//var $bingAds = $('[data-bingads]',$context);
 				var bingID =	248869;
 				var bingurl = "https://"+bingID+".r.msn.com/?type=1&cp=1";
-				$(body).append("<img src='"+bingurl+"' width=1 height=1 />");
+				$("body").append("<img src='"+bingurl+"' width=1 height=1 />");
 				
 				
 		//		_app.ext.beachmall_tracking.u.addShopping('448218', orderID, orderTotal);
