@@ -152,8 +152,8 @@
 { "type":"path", "if":"/umbrella-stands-buyer-guide/", "then#sendfile":"/index.html", "apptimize":"false" },
 { "type":"path", "if":"/site-map/", "then#sendfile":"/index.html", "apptimize":"false" },
 { "type":"path", "if":"/affiliates/", "then#sendfile":"/index.html", "apptimize":"false" },
-{ "type":"path", "if":"/directory/", "then#sendfile":"/index.html", "apptimize":"false" }
-{ "type":"path", "if":"/low-price-guarantee/", "then#sendfile":"/index.html", "apptimize":"false" }
+{ "type":"path", "if":"/directory/", "then#sendfile":"/index.html", "apptimize":"false" },
+{ "type":"path", "if":"/low-price-guarantee/", "then#sendfile":"/index.html", "apptimize":"false" },
 { "type":"path", "if":"/surcharge-explanation/", "then#sendfile":"/index.html", "apptimize":"false" }
 
 ]
