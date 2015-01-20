@@ -5,6 +5,7 @@
 			"xml-writer",
 			"xmlhttprequest",
 			"nomnom",
+			"underscore",
 			"dateformat"
 			]
 }

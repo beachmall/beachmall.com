@@ -57,13 +57,77 @@ if(opts['customurls']){
 //
 // now load all products and categories
 //
+
+var CommerceEngine = require('./commerce-engine.js');
+var ce = new CommerceEngine(DOMAIN, {'pipelineSize':500});
+
 var request = new XMLHttpRequest();
-request.open('GET','http://'+DOMAIN+'/jsonapi/call/v201411/appSEOFetch',false);
+request.open('GET','http://'+DOMAIN+'/jsonapi/call/v201411/appSEOFetch',false);	
 request.send(null);
 
 var urls = JSON.parse(request.responseText);
-// console.log(urls['@OBJECTS']);
+//console.log(urls['@OBJECTS']);
 
+
+function cleanURIComponent(str){
+	//trims whitespace
+	var component = str.replace(/^\s+|\s+$/g, '');
+	component = str.replace('--','-'); //just in case, some prod_names have two consecutive "-"
+	component = str.replace('---','-'); //just in case, some prod_names have three consecutive "-"
+	//replaces all non alphanumerics with dashes
+	component = component.replace(/[^a-zA-Z0-9]+/g, '-');
+	component = component.toLowerCase();
+	return component;
+}
+var someArray = [];
+function getOtherAttribs(thisObj,num) {
+ce.enqueue({
+			"pid": thisObj.id,
+			"_cmd": "appProductGet"
+		}, 
+		function(response){
+			if(response['%attribs']['zoovy:prod_name'] != "undefined") {
+				thisObj.nameURL = cleanURIComponent(response['%attribs']['zoovy:prod_name']);
+				someArray.push(thisObj);
+				pooCount++
+				console.log(thisObj.id);
+			}
+		});
+		
+}
+
+var count = 0;
+var pooCount = 0;
+//	for(var a in urls['@OBJECTS']) {
+//		var ctArray = urls['@OBJECTS'][a];
+//		if(!ctArray['noindex'] && ctArray.type === "pid") { 
+//			count++; //console.log(count); 
+//		}
+//	}
+
+for(var j in urls['@OBJECTS']) {
+//for(var j = 0; j < 151; j++) {
+	var blah = urls['@OBJECTS'][j];
+	//if(blah.type === "pid") {
+	if(!blah['noindex'] && blah.type === "pid") {
+		count++;
+		//console.log(count);
+		getOtherAttribs(blah,count);
+		ce.dispatch(function(data) {
+		//	console.log(pooCount);
+			//console.log(count);
+		//	if(pooCount > 190) console.log(someArray);
+		//	if(someArray.length == count) {
+		//		console.log('DONE');
+		//	}
+		});
+	}
+}
+
+//while(count < 759) { setTimeout(function(){},500); console.log(count); }
+//console.log(someArray);
+
+/*
 var today = new Date();
 var datestr = dateFormat(now,"yyyy-mm-dd");
 
@@ -74,8 +138,8 @@ for( var i in urls['@OBJECTS'] ) {
 				var url = '';
 				switch (res.type) {
 						case 'pid':
-								//this needs updating to use seo:custom_prod_url or zoovy:prod_name to build path as: ATTRIB/p/PID.html
-								url = '/product/' + res.id + '/';
+								//url = '/product/' + res.id + '/';
+								url = JSON.stringify(res);
 								break;
 						case 'navcat':
 								//All categories for beachmall handled with custom urls since pretty names are used as path.
@@ -93,10 +157,12 @@ for( var i in urls['@OBJECTS'] ) {
 						}
 				}
 		else {
-			console.log('Following object was skipped due to inclusion of seo:noindex attribute:');
-			console.dir(res);
+			//console.log('Following object was skipped due to inclusion of seo:noindex attribute:');
+			//console.dir(res);
 				}
         }
+		//console.log('URLS:');
+		//console.log(URLS);
 
 
 //
@@ -159,3 +225,4 @@ while (CHUNKS.length>0) {
 console.log('writing '+PATH+'sitemap.xml');
 fs.writeFileSync(PATH + 'sitemap.xml', si.toString());
 console.log('done');
+*/
