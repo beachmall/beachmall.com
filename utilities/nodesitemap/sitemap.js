@@ -70,14 +70,16 @@ var datestr = dateFormat(now,"yyyy-mm-dd");
 for( var i in urls['@OBJECTS'] ) {
         // { id: '.mlb.boston_red_sox.z_david_ortiz', type: 'navcat' }
         var res = urls['@OBJECTS'][i];
-		if(!res['seo:noindex']){
+		if(!res['noindex']){ //changed from "seo:noindex" because was only being returned as "noindex", which was failing the test.
 				var url = '';
 				switch (res.type) {
 						case 'pid':
+								//this needs updating to use seo:custom_prod_url or zoovy:prod_name to build path as: ATTRIB/p/PID.html
 								url = '/product/' + res.id + '/';
 								break;
 						case 'navcat':
-								url = '/category/' + res.id.substr(1) +'/';  // strip leading . in category name
+								//All categories for beachmall handled with custom urls since pretty names are used as path.
+								//url = '/category/' + res.id.substr(1) +'/';  // strip leading . in category name
 								break;
 						case 'list' :
 								// we don't index these.
