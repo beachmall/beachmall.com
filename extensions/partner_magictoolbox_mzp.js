@@ -55,11 +55,11 @@ var magictoolbox_mzp = function(_app) {
 					var r = false; //return false if extension won't load for some reason (account config, dependencies, etc).
 					_app.u.dump('BEGIN _app.ext.magictoolbox_mzp.init.onSuccess ');
 
-					//moved to to beachmall_begin to be sure gets loaded before product page is reached. 
 			//		_app.u.loadResourceFile(['script',0,'magiczoomplus-commercial/magiczoomplus/magiczoomplus.js',function(){
 			//			MagicZoomPlus.start();
 			//		}]);
-					
+					_app.ext.beachmall_begin.u.scribeScript($('head'),"magiczoomplus-commercial/magiczoomplus/magiczoomplus.js","js"); 
+					_app.ext.beachmall_begin.u.scribeScript($('head'),"magiczoomplus-commercial/magiczoomplus/magiczoomplus.css","css"); 
 					r = true;
 					
 					return r;  //currently, no system or config requirements to use this extension
@@ -80,20 +80,26 @@ var magictoolbox_mzp = function(_app) {
 		renderFormats : {
 			
 			magiczoomplus : function($tag,data)	{
-				_app.u.dump('BEGIN quickstart.renderFormats.magicZoomPlus');
-				var bgcolor = data.bindData.bgcolor ? data.bindData.bgcolor : 'ffffff'
-/*BEACHMALL*/	var fileName = data.value['%attribs']['zoovy:prod_image1'];
-/*BEACHMALL*/	var pid = data.value.pid;
-				if(fileName)	{
-					var imgSrc = _app.u.makeImage({'tag':0,'w':$tag.attr('width'),'h':$tag.attr('height'),'name':fileName,'b':bgcolor});
-					//_app.u.dump('ID => '); app.u.dump(data.value);
-					$tag.attr('src',imgSrc);
-					/*$tag.wrap("<a href='"+_app.u.makeImage({'tag':0,'name':data.value,'b':bgcolor})+"' class='MagicZoomPlus' id='"+$tag.attr('id')+"_href' />")*/
-/*BEACHMALL*/		$tag.wrap("<a href='"+_app.u.makeImage({'tag':0,'name':fileName,'b':bgcolor})+"' class='MagicZoomPlus' id='prodBigImage_href_"+pid+"' rel='selectors-change: mouseover; zoom-width:450; zoom-height:450; hint: false;' />")
-					}
-				else	{
-					$tag.css('display','none'); //if there is no image, hide the src.  !!! added 1/26/2012. this a good idea?
-					}
+//				_app.u.dump('BEGIN quickstart.renderFormats.magicZoomPlus');
+/*BEACH*/if(typeof MagicZoomPlus !== 'undefined') {  //timing in loading w/ postscribe was throwing this off and var was coming back undefined. 	
+//					dump("MagicZoomPlus was found");
+					var bgcolor = data.bindData.bgcolor ? data.bindData.bgcolor : 'ffffff'
+/*BEACH*/	var fileName = data.value['%attribs']['zoovy:prod_image1'];
+/*BEACH*/	var pid = data.value.pid;
+					if(fileName)	{
+						var imgSrc = _app.u.makeImage({'tag':0,'w':$tag.attr('width'),'h':$tag.attr('height'),'name':fileName,'b':bgcolor});
+						//_app.u.dump('ID => '); app.u.dump(data.value);
+						$tag.attr('src',imgSrc);
+						/*$tag.wrap("<a href='"+_app.u.makeImage({'tag':0,'name':data.value,'b':bgcolor})+"' class='MagicZoomPlus' id='"+$tag.attr('id')+"_href' />")*/
+/*BEACH*/		$tag.wrap("<a href='"+_app.u.makeImage({'tag':0,'name':fileName,'b':bgcolor})+"' class='MagicZoomPlus' id='prodBigImage_href_"+pid+"' rel='selectors-change: mouseover; zoom-width:450; zoom-height:450; hint: false;' />")
+						}
+					else	{
+						$tag.css('display','none'); //if there is no image, hide the src.  !!! added 1/26/2012. this a good idea?
+						}
+/*BEACH*/}
+/*BEACH*/else {
+/*BEACH*/	setTimeout(function() { _app.ext.magictoolbox_mzp.renderFormats.magiczoomplus($tag,data);},250);
+/*BEACH*/}
 				},
 
 			magicthumb : function($tag,data)	{

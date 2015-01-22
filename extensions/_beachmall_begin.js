@@ -325,9 +325,16 @@ var beachmall_begin = function(_app) {
 		u : {
 			
 			
-			scribeScript($context,script) {
+			scribeScript($context,script,type) {
 				dump("START beachmall_begin.u.scribeScript");
-				script = "<script type='text/javascript' src='"+script+"'></script>"
+				switch(type) {
+					case "js" :
+						script = "<script type='text/javascript' src='"+script+"'></script>"
+						break;
+					case "css" :
+						script = "<link rel='stylesheet' type='text/css' href='"+script+"'/>";
+						break;
+				}
 				postscribe($context,script);
 			},
 		

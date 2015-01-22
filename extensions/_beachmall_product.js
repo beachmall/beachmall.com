@@ -598,9 +598,18 @@ var beachmall_product = function(_app) {
 
 //MAGICZOOM UTILS
 			doMagicStuff : function() {
-				_app.u.dump("Refreshing MZP."); 
-				setTimeout(function(){MagicZoomPlus.refresh();},2000);
-				MagicZoomPlus.options = { 'hint' : 'false' }
+//				_app.u.dump("Refreshing MZP."); 
+				if(typeof MagicZoomPlus !== 'undefined') { //timing in loading w/ postscribe was throwing this off and var was coming back undefined. 
+//					dump('DOING MAGIC STUFF');
+					setTimeout(function(){MagicZoomPlus.refresh();},2000);
+					MagicZoomPlus.options = { 'hint' : 'false' }
+				}
+				else { 
+					setTimeout(function() {
+//						dump('DEFERRING MAGIC STUFF'); 
+						_app.ext.beachmall_product.u.doMagicStuff();
+					},250);
+				}
 			},
 			
 //TIME IN TRANSIT UTILS
