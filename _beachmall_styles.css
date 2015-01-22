@@ -64,11 +64,11 @@ body {
 .fauxLink {color:#3bb3c3; cursor:pointer;}
 .fauxLink:hover {color:#e0463a;}
 	
-.openSansFont {font-family: "Open Sans"; font-weight:normal;}
-.openSansFontBold {font-family: "Open Sans"; font-weight: bold;}
+.openSansFont {font-family: "Open Sans", Verdana, sans-serif; font-weight:normal;}
+.openSansFontBold {font-family: "Open Sans", Verdana, sans-serif; font-weight: bold;}
 
-.oswaldFont {font-family: Oswald; font-weight:normal;}
-.oswaldFontBold {font-family: Oswald; font-weight: bold;}
+.oswaldFont {font-family: Oswald, Verdana, sans-serif; font-weight:normal;}
+.oswaldFontBold {font-family: Oswald,  Verdana, sans-serif; font-weight: bold;}
 
 .fontWhite {color:#ffffff;}
 .fontBlack {color:#000000;}
@@ -201,7 +201,7 @@ the padding is to compensate for the spacing between the main nav.
 #mastHead .singleDropdown:hover {background-position:-248px -34px;}
 #mastHead .dropdownsContainer .dropdownBorderMaker {height:30px; width:130px; background-color:#3bb3c3; border:2px solid #ffffff;}
 #mastHead .singleDropdown .dropdownBorderContainer:hover {background-position:-248px -36px; background-color:#e0463a;}
-#mastHead .singleDropdown .dropdownBorderContainer {height:35px; width:135px; background-position:-47px 99px; background-color: #3bb3c3; font-family:Montserrat; font-weight:normal; font-size: 16px; color:#ffffff; text-align:center; line-height: 30px; padding:5px;}
+#mastHead .singleDropdown .dropdownBorderContainer {height:35px; width:135px; background-position:-47px 99px; background-color: #3bb3c3; font-family:Montserrat, Verdana, sans-serif; font-weight:normal; font-size: 16px; color:#ffffff; text-align:center; line-height: 30px; padding:5px;}
 #mastHead .singleDropdown .dropdownBorderMaker:hover {background-color:#e0463a;}
 #mastHead .dropdown {height:0px; width:486px; margin:0px 0px 0px 20px; position:relative; top:11px; overflow:hidden; z-index:5; background-color:transparent;} /*#e0463a;*/
 #mastHead .dropdown.beachAccessoriesDD {left: -26px;}
