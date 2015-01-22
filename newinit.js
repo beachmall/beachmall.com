@@ -16,6 +16,7 @@ _app.u.loadScript(configURI,function(){
 		setTimeout(function(){$('#appView').removeClass('initFooter');}, 1200);
 		_app.ext.quickstart.callbacks.startMyProgram.onSuccess();
 		
+		//_app.ext.beachmall_begin.u.scribeScript($('head'),"http://cdn.powerreviews.com/repos/11024/pr/pwr/engine/js/full.js");
 		_app.ext.beachmall_begin.u.addChat("41TM",$("[data-chat='header']","#appView"));
 		_app.ext.beachmall_begin.u.addChat("yXFh",$("[data-chat='footer']","#appView"));
 		_app.ext.beachmall_begin.calls.whereAmI.init({'callback':'handleWhereAmI','extension':'beachmall_begin'},'passive');
@@ -960,9 +961,9 @@ _app.extend({
 	// });
 	
 //_app.rq.push(['script',0,'lightbox/js/lightbox-2.6.min.js']);
-setTimeout(function(){
-_app.rq.push(['script',0,'http://cdn.powerreviews.com/repos/11024/pr/pwr/engine/js/full.js']);
-},0);
+//setTimeout(function(){
+//_app.rq.push(['script',0,'http://cdn.powerreviews.com/repos/11024/pr/pwr/engine/js/full.js']);
+//},0);
 
 _app.model.getGrammar("pegjs");
 

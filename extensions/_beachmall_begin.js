@@ -323,6 +323,13 @@ var beachmall_begin = function(_app) {
 //will also verify that each filterType has a getElasticFilter function.
 		
 		u : {
+			
+			
+			scribeScript($context,script) {
+				dump("START beachmall_begin.u.scribeScript");
+				script = "<script type='text/javascript' src='"+script+"'></script>"
+				postscribe($context,script);
+			},
 		
 			addChat : function(code,$context) {
 				dump("START addChat =========================================");
