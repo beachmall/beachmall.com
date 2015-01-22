@@ -82,6 +82,8 @@ var powerreviews_reviews = function(_app) {
 //					_app.u.dump('BEGIN _app.ext.store_crm.init.onSuccess ');
 					var r;
 					if(_app.ext.powerreviews_reviews.vars.merchantID && _app.ext.powerreviews_reviews.vars.groupID)	{
+						//this will add the powerreviews js to the head when this extension is loaded.
+						_app.ext.beachmall_begin.u.scribeScript($('head'),"http://cdn.powerreviews.com/repos/11024/pr/pwr/engine/js/full.js");
 						r = true;
 						}
 					else	{
