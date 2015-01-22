@@ -22,6 +22,8 @@ _app.u.loadScript(configURI,function(){
 		_app.ext.beachmall_begin.u.renderHeaderDropdown();
 		$.extend(handlePogs.prototype,_app.ext.beachmall_begin.variations);
 		_app.ext.beachmall_begin.u.startTooltip();
+		_app.ext.beachmall_begin.u.scribeScript($('head'),"resources/jquery.carouFredSel-6.2.0.min.js","js"); 
+		_app.ext.beachmall_begin.u.scribeScript($('head'),"resources/jquery.touchSwipe-1.3.3.min.js","js"); 
 		
 		//make sure minicart stays up to date. 
 		_app.ext.beachmall_begin.vars.mcSetInterval = setInterval(function(){
