@@ -86,18 +86,25 @@ ce.enqueue({
 			"_cmd": "appProductGet"
 		}, 
 		function(response){
-			if(response['%attribs']['zoovy:prod_name'] != "undefined") {
+			if(response['%attribs']['seo:custom_prod_url'] != undefined) {
+				thisObj.nameURL = cleanURIComponent(response['%attribs']['zoovy:prod_name']);
+				someArray.push(thisObj);
+				seoURLcount++;
+				//console.log(thisObj.nameURL);
+			}
+			else if(response['%attribs']['zoovy:prod_name'] != undefined) {
 				thisObj.nameURL = cleanURIComponent(response['%attribs']['zoovy:prod_name']);
 				someArray.push(thisObj);
 				pooCount++
-				console.log(thisObj.id);
+				//console.log(thisObj.id);
 			}
 		});
 		
 }
 
-var count = 0;
+var seoURLcount = 0;
 var pooCount = 0;
+var count = 0;
 //	for(var a in urls['@OBJECTS']) {
 //		var ctArray = urls['@OBJECTS'][a];
 //		if(!ctArray['noindex'] && ctArray.type === "pid") { 
@@ -113,33 +120,42 @@ for(var j in urls['@OBJECTS']) {
 		count++;
 		//console.log(count);
 		getOtherAttribs(blah,count);
+	}
+}
 		ce.dispatch(function(data) {
-		//	console.log(pooCount);
+			var totalCount = pooCount + seoURLcount;
+			console.log(totalCount + " \" indexable products found.");
+			console.log(pooCount + " of them used the product name for the url, and");
+			console.log(seoURLcount + " of them had custom product urls");
+			//console.log(someArray);
+			processSomeArray(someArray);
 			//console.log(count);
 		//	if(pooCount > 190) console.log(someArray);
 		//	if(someArray.length == count) {
 		//		console.log('DONE');
 		//	}
 		});
-	}
-}
 
 //while(count < 759) { setTimeout(function(){},500); console.log(count); }
 //console.log(someArray);
 
-/*
+
+function processSomeArray(urls) {
 var today = new Date();
 var datestr = dateFormat(now,"yyyy-mm-dd");
 
-for( var i in urls['@OBJECTS'] ) {
+//for( var i in urls['@OBJECTS'] ) {
+for( var i in urls ) {
         // { id: '.mlb.boston_red_sox.z_david_ortiz', type: 'navcat' }
-        var res = urls['@OBJECTS'][i];
+        //var res = urls['@OBJECTS'][i];
+        var res = urls[i];
 		if(!res['noindex']){ //changed from "seo:noindex" because was only being returned as "noindex", which was failing the test.
 				var url = '';
 				switch (res.type) {
 						case 'pid':
 								//url = '/product/' + res.id + '/';
-								url = JSON.stringify(res);
+								//url = JSON.stringify(res);
+								url = '/' + res.nameURL + '/p/' + res.id + '.html';
 								break;
 						case 'navcat':
 								//All categories for beachmall handled with custom urls since pretty names are used as path.
@@ -225,4 +241,4 @@ while (CHUNKS.length>0) {
 console.log('writing '+PATH+'sitemap.xml');
 fs.writeFileSync(PATH + 'sitemap.xml', si.toString());
 console.log('done');
-*/
+}
