@@ -55,7 +55,7 @@ if(opts['customurls']){
 	}
 
 //
-// now load all products and categories
+// Step 2. Get product attributes
 //
 
 var CommerceEngine = require('./commerce-engine.js');
@@ -68,7 +68,48 @@ request.send(null);
 var urls = JSON.parse(request.responseText);
 //console.log(urls['@OBJECTS']);
 
+var initArray = [];		//used to hold appSEOFetch and appProductGet data when combined
+var seoURLcount = 0;	//holds a count of how many urls were made w/ custom seo attrib
+var nameURLcount = 0;			//holds a count of how many urls were made w/ prod_name
 
+//itterate through the products in the response from appSEOFetch and send for appProductGet if indexable
+for(var j in urls['@OBJECTS']) {
+	var thisURLs = urls['@OBJECTS'][j];
+	if(!thisURLs['noindex'] && thisURLs.type === "pid") {
+		getOtherAttribs(thisURLs);
+	}
+}
+
+//once all of the products are processed, dispatch the appProductGet and call function to process it.
+ce.dispatch(function(data) {
+	var totalCount = nameURLcount + seoURLcount;
+	console.log(totalCount + " \" indexable products found.");
+	console.log(nameURLcount + " of them used the product name for the url, and");
+	console.log(seoURLcount + " of them had custom product urls");
+	processinitArray(initArray);
+});
+
+
+function getOtherAttribs(thisObj) {
+ce.enqueue({
+		"pid": thisObj.id,
+		"_cmd": "appProductGet"
+	}, 
+	function(response){
+		if(response['%attribs']['seo:custom_prod_url'] != undefined) {
+			thisObj.nameURL = cleanURIComponent(response['%attribs']['seo:custom_prod_url']);
+			initArray.push(thisObj);
+			seoURLcount++;
+			//console.log(thisObj.nameURL);
+		}
+		else if(response['%attribs']['zoovy:prod_name'] != undefined) {
+			thisObj.nameURL = cleanURIComponent(response['%attribs']['zoovy:prod_name']);
+			initArray.push(thisObj);
+			nameURLcount++
+			//console.log(thisObj.id);
+		}
+	});	
+}
 function cleanURIComponent(str){
 	//trims whitespace
 	var component = str.replace(/^\s+|\s+$/g, '');
@@ -79,68 +120,12 @@ function cleanURIComponent(str){
 	component = component.toLowerCase();
 	return component;
 }
-var someArray = [];
-function getOtherAttribs(thisObj,num) {
-ce.enqueue({
-			"pid": thisObj.id,
-			"_cmd": "appProductGet"
-		}, 
-		function(response){
-			if(response['%attribs']['seo:custom_prod_url'] != undefined) {
-				thisObj.nameURL = cleanURIComponent(response['%attribs']['zoovy:prod_name']);
-				someArray.push(thisObj);
-				seoURLcount++;
-				//console.log(thisObj.nameURL);
-			}
-			else if(response['%attribs']['zoovy:prod_name'] != undefined) {
-				thisObj.nameURL = cleanURIComponent(response['%attribs']['zoovy:prod_name']);
-				someArray.push(thisObj);
-				pooCount++
-				//console.log(thisObj.id);
-			}
-		});
-		
-}
 
-var seoURLcount = 0;
-var pooCount = 0;
-var count = 0;
-//	for(var a in urls['@OBJECTS']) {
-//		var ctArray = urls['@OBJECTS'][a];
-//		if(!ctArray['noindex'] && ctArray.type === "pid") { 
-//			count++; //console.log(count); 
-//		}
-//	}
+//
+// Step 3. Now load all products and categories
+//
 
-for(var j in urls['@OBJECTS']) {
-//for(var j = 0; j < 151; j++) {
-	var blah = urls['@OBJECTS'][j];
-	//if(blah.type === "pid") {
-	if(!blah['noindex'] && blah.type === "pid") {
-		count++;
-		//console.log(count);
-		getOtherAttribs(blah,count);
-	}
-}
-		ce.dispatch(function(data) {
-			var totalCount = pooCount + seoURLcount;
-			console.log(totalCount + " \" indexable products found.");
-			console.log(pooCount + " of them used the product name for the url, and");
-			console.log(seoURLcount + " of them had custom product urls");
-			//console.log(someArray);
-			processSomeArray(someArray);
-			//console.log(count);
-		//	if(pooCount > 190) console.log(someArray);
-		//	if(someArray.length == count) {
-		//		console.log('DONE');
-		//	}
-		});
-
-//while(count < 759) { setTimeout(function(){},500); console.log(count); }
-//console.log(someArray);
-
-
-function processSomeArray(urls) {
+function processinitArray(urls) {
 var today = new Date();
 var datestr = dateFormat(now,"yyyy-mm-dd");
 
@@ -173,12 +158,10 @@ for( var i in urls ) {
 						}
 				}
 		else {
-			//console.log('Following object was skipped due to inclusion of seo:noindex attribute:');
-			//console.dir(res);
+			console.log('Following object was skipped due to inclusion of seo:noindex attribute:');
+			console.dir(res);
 				}
         }
-		//console.log('URLS:');
-		//console.log(URLS);
 
 
 //
