@@ -74,6 +74,7 @@ css files should be included before any .js file to ensure they are downloaded i
 <script type="text/javascript" src="model.js"></script> <!-- data-apptimize="embed" -->
 
 <!-- SCRIPTS -->
+<script data-apptimize="embed" type="text/javascript" src="extensions/_beachmall_begin.js"></script>
 <script type="text/javascript" src="resources/jquery.showloading-v1.0.jt.js"></script> <!-- data-apptimize="embed" -->
 <script type="text/javascript" src="resources/jsonpath.0.8.0.js"></script> <!-- data-apptimize="embed" -->
 <script type="text/javascript" src="resources/tlc.js"></script> <!-- data-apptimize="embed" -->
@@ -129,7 +130,7 @@ $(document).ready(function(){
 		}
 		if(notIE8) {
 			window.myApp = new initApp({	<!-- versionhere -->
-				"release":"201411.20150123105900",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+				"release":"201411.20150123112300",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 				"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 				"baseURL":baseURL, //used in non-local mode.
 				"checkoutAuthMode" : "active",//can be passive, active or required
