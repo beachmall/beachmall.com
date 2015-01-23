@@ -325,7 +325,7 @@ var beachmall_begin = function(_app) {
 		u : {
 			
 			
-			scribeScript($context,script,type) {
+			scribeScript : function($context,script,type) {
 				dump("START beachmall_begin.u.scribeScript");
 				switch(type) {
 					case "js" :
