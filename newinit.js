@@ -23,11 +23,13 @@ _app.u.loadScript(configURI,function(){
 		$.extend(handlePogs.prototype,_app.ext.beachmall_begin.variations);
 		_app.ext.beachmall_begin.u.startTooltip();
 		
-		_app.ext.beachmall_begin.u.scribeScript($('head'),"googleapis-libs-jqueryiu-1.10.2-theme-uilightnes-jqueryui.css","css"); 
-		_app.ext.beachmall_begin.u.scribeScript($('head'),"https://fonts.googleapis.com/css?family=Open+Sans%7COswald%7CMontserrat","css"); 
 		_app.ext.beachmall_begin.u.scribeScript($('head'),"resources/jquery.carouFredSel-6.2.0.min.js","js"); 
 		_app.ext.beachmall_begin.u.scribeScript($('head'),"resources/jquery.touchSwipe-1.3.3.min.js","js"); 
-		_app.ext.beachmall_begin.u.scribeScript($('head'),"resources/anyplugins.css","css"); 
+		setTimeout(function() { //0 timeout here to allow execution to continue past this calls
+			_app.ext.beachmall_begin.u.scribeScript($('head'),"googleapis-libs-jqueryiu-1.10.2-theme-uilightnes-jqueryui.css","css"); 
+			_app.ext.beachmall_begin.u.scribeScript($('head'),"https://fonts.googleapis.com/css?family=Open+Sans%7COswald%7CMontserrat","css"); 
+			_app.ext.beachmall_begin.u.scribeScript($('head'),"resources/anyplugins.css","css"); 
+		},0);
 		//_app.ext.beachmall_begin.u.scribeScript($('head'),"extensions/cart_message/styles.css","css"); //commented to reduce loading until cart message is fixed.
 		
 		//make sure minicart stays up to date. 
