@@ -1758,7 +1758,7 @@ PRODUCTLISTTEMPLATECART
 .inLineCart .cartLineButton.ui-state-default {height:auto; width:60%; margin:6% auto; padding:2px 0; font-weight:normal; color:#ffffff; border:none; border-radius:0;}
 .inLineCart .cartLineButton.ui-state-default span:first-child {display:none;}
 .inLineCart .cartLineButton.ui-state-default span.ui-button-text {text-indent:0; padding:0;}
-.inLineCart .updateButton  {background:#3bb3c3;}
+.inLineCart .updateButton.ui-state-default  {background:#3bb3c3;}
 .inLineCart .moveToWishlist {background:#f8c301;}
 .inLineCart .removeButton.cartLineButton {background:#FFE680; color:#e0463a;}
 .inLineCart .cartItemPrice {border-left:1px solid #999999; padding:2% 0 0 0;}
