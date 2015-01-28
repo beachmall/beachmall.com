@@ -28,8 +28,7 @@ _app.u.loadScript(configURI,function(){
 		_app.ext.beachmall_begin.u.scribeScript($('head'),"resources/jquery.carouFredSel-6.2.0.min.js","js"); 
 		_app.ext.beachmall_begin.u.scribeScript($('head'),"resources/jquery.touchSwipe-1.3.3.min.js","js"); 
 		_app.ext.beachmall_begin.u.scribeScript($('head'),"resources/anyplugins.css","css"); 
-		_app.ext.beachmall_begin.u.scribeScript($('head'),"extensions/checkout/styles.css","css"); 
-		_app.ext.beachmall_begin.u.scribeScript($('head'),"extensions/cart_message/styles.css","css"); 
+		//_app.ext.beachmall_begin.u.scribeScript($('head'),"extensions/cart_message/styles.css","css"); //commented to reduce loading until cart message is fixed.
 		
 		//make sure minicart stays up to date. 
 		_app.ext.beachmall_begin.vars.mcSetInterval = setInterval(function(){

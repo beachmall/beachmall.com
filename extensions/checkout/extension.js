@@ -56,7 +56,9 @@ var order_create = function(_app) {
 			onSuccess : function()	{
 //				_app.u.dump('BEGIN _app.ext.order_create.init.onSuccess');
 
-				_app.u.loadCSSFile(_app.vars.baseURL+"extensions/checkout/styles.css","checkoutCSS");
+/*beach*/	//_app.u.loadCSSFile(_app.vars.baseURL+"extensions/checkout/styles.css","checkoutCSS"); //possibly depreciated?
+/*beach*/	//Loading css w/ scribeScript allows for it to be loaded here w/ no blocking at app load
+/*beach*/	_app.ext.beachmall_begin.u.scribeScript($('head'),"extensions/checkout/styles.css","css"); 
 				if(_app.vars._clientid == '1pc')	{
 					_app.u.loadCSSFile(_app.vars.baseURL+"extensions/checkout/opc_styles.css","opcCheckoutCSS"); //loaded after checkoutCSS so that overrides can be set, if need be.
 					}
