@@ -505,7 +505,11 @@ _app.u.bindTemplateEvent('homepageTemplate', 'complete.beachmall_homepage',funct
 	_app.ext.beachmall_homepage.u.loadProductsAsList($context,$('.featuredUL', $context));
 	$('.floatingBar',$context).is(":visible") ? "" : $('.floatingBar',$context).show(); //shows floating bar upon return to hompage if it's been closed.
 	//_app.ext.beachmall_homepage.u.moveNorton($context); //TODO : post scribe was able to place this where it needed to be, kill it and the function if it stays that way.
-	_app.ext.beachmall_begin.u.scribeScript($('[data-noton="ins"]'),"https://seal.verisign.com/getseal?host_name=www.beachmall.com&amp;size=XS&amp;use_flash=NO&amp;use_transparent=YES&amp;lang=en","js"); 
+	
+	if(!$("[data-noton='ins']").data("noton-rendered")) {
+		_app.ext.beachmall_begin.u.scribeScript($('[data-noton="ins"]'),"https://seal.verisign.com/getseal?host_name=www.beachmall.com&amp;size=XS&amp;use_flash=NO&amp;use_transparent=YES&amp;lang=en","js"); 
+		$("[data-noton='ins']").attr("data-noton-rendered",true);
+	}
 });
 _app.u.bindTemplateEvent('homepageTemplate', 'depart.beachmall_homepage',function(event,$context,infoObj) {
 	$('.homeProdSearchNewArrivals2', $context).trigger('destroy').data('isCarousel',false);
