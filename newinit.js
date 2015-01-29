@@ -27,6 +27,9 @@ _app.u.loadScript(configURI,function(){
 		_app.ext.beachmall_begin.u.scribeScript($('head'),"resources/jquery.touchSwipe-1.3.3.min.js","js");
 		_app.ext.beachmall_begin.u.scribeScript($('[data-noton="nomove"]'),"https://seal.verisign.com/getseal?host_name=www.beachmall.com&amp;size=S&amp;use_flash=NO&amp;use_transparent=NO&amp;lang=en","js"); 
 		//_app.ext.beachmall_begin.u.scribeScript($('head'),"extensions/cart_message/styles.css","css"); //commented to reduce loading until cart message is fixed.
+		_app.ext.beachmall_begin.u.scribeScript($('head'),"googleapis-libs-jqueryiu-1.10.2-theme-uilightnes-jqueryui.css","css");
+		_app.ext.beachmall_begin.u.scribeScript($('head'),"https://fonts.googleapis.com/css?family=Open+Sans%7COswald%7CMontserrat","css");
+		_app.ext.beachmall_begin.u.scribeScript($('head'),"resources/anyplugins.css","css");
 		
 		//make sure minicart stays up to date. 
 		_app.ext.beachmall_begin.vars.mcSetInterval = setInterval(function(){
@@ -493,15 +496,6 @@ _app.u.bindTemplateEvent(function(){return true;}, 'depart.scrollrestore', funct
 _app.extend({
 	"namespace":"beachmall_begin",
 	"filename":"extensions/_beachmall_begin.js"
-});
-
-_app.u.bindTemplateEvent(function(){return true;}, 'complete.scrollrestore',function(event, $context, infoObj){
-	if($("body").data("lightnesscss")) { /*this script already loaded, don't do it again*/ }
-	else { _app.ext.beachmall_begin.u.scribeScript($('head'),"googleapis-libs-jqueryiu-1.10.2-theme-uilightnes-jqueryui.css","css"); $("body").data("lightnesscss",true); }
-	if($("body").data("googfontscss")) { /*this script already loaded, don't do it again*/ }
-	else { _app.ext.beachmall_begin.u.scribeScript($('head'),"https://fonts.googleapis.com/css?family=Open+Sans%7COswald%7CMontserrat","css"); $("body").data("googfontscss",true); }
-	if($("body").data("anyplugcss")) { /*this script already loaded, don't do it again*/ }
-	else { _app.ext.beachmall_begin.u.scribeScript($('head'),"resources/anyplugins.css","css"); $("body").data("anyplugcss",true); }
 });
 
 _app.u.bindTemplateEvent('homepageTemplate', 'complete.beachmall_homepage',function(event,$context,infoObj) {
