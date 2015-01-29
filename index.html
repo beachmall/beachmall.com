@@ -83,7 +83,7 @@ css files should be included before any .js file to ensure they are downloaded i
 <!-- <script type="text/javascript" src="resources/jquery.carouFredSel-6.2.0.min.js"></script>  data-apptimize="embed" -->
 <!--<script type="text/javascript" src="magiczoomplus-commercial/magiczoomplus/magiczoomplus.js"></script>  data-apptimize="embed" -->
 <script type="text/javascript" src="postscribe-master/htmlParser/htmlParser.min.js"></script> <!-- min version of this did not come w/ postscribe (had to make it). -->
-<script type="text/javascript" src="postscribe-master/dist/postscribe.min.js"></script>
+<script type="text/javascript" src="postscribe-master/postscribe.min.js"></script> <!-- same w/ this (sort of) -->
 
 <script type="text/javascript" src="resources/jquery.ui.anyplugins.js"></script> <!-- data-apptimize="embed" -->
 <script type="text/javascript" src="includes.js"></script><!-- contains some polyfills and should be loaded early -->  <!-- data-apptimize="embed" -->
@@ -129,7 +129,7 @@ $(document).ready(function(){
 		}
 		if(notIE8) {
 			window.myApp = new initApp({	<!-- versionhere -->
-				"release":"201411.20150128180200",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+				"release":"201411.20150128194800",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 				"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 				"baseURL":baseURL, //used in non-local mode.
 				"checkoutAuthMode" : "active",//can be passive, active or required
