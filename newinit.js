@@ -552,7 +552,7 @@ _app.u.bindTemplateEvent('productTemplate', 'complete.beachmall_lists',function(
 	_app.ext.beachmall_lists.u.showRecentlyViewedItems($context,false);
 });
 
-_app.u.bindTemplateEvent('productTemplate', 'complete.beachmall_lists',function(event,$context,infoObj) {
+_app.u.bindTemplateEvent('productTemplate', 'depart.beachmall_lists',function(event,$context,infoObj) {
 	_app.ext.beachmall_lists.u.addRecentlyViewedItems($context, infoObj.pid);
 });
 

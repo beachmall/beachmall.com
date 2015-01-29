@@ -74,6 +74,19 @@ var beachmall_homepage = function(_app) {
 //these are going the way of the do do, in favor of app events. new extensions should have few (if any) actions.
 		a : { }, //Actions
 
+////////////////////////////////////   TLCFORMATS    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+//tlcFormats are what is used to actually output data.
+//on a data-tlc: extension#format, format: is equal to a tlcformat. extension: tells the rendering engine where to look for the tlcFormat.
+//that way, two tlcformats named the same (but in different extensions) don't overwrite each other.
+		tlcFormats : { 
+			updaterecent : function(data,thisTLC) {
+				var $tag = data.globals.tags[data.globals.focusTag];
+				$tag.empty().text(_app.ext.quickstart.vars.session.recentlyViewedItems.length);
+				dump('tlfFormat recent-----------------------'); dump(_app.ext.quickstart.vars.session.recentlyViewedItems.length);
+			}
+		}, //tlcFormats
+
 ////////////////////////////////////   RENDERFORMATS    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 //renderFormats are what is used to actually output data.
