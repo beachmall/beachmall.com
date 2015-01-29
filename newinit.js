@@ -31,6 +31,7 @@ _app.u.loadScript(configURI,function(){
 			_app.ext.beachmall_begin.u.scribeScript($('head'),"resources/anyplugins.css","css"); 
 		},0);
 		//_app.ext.beachmall_begin.u.scribeScript($('head'),"extensions/cart_message/styles.css","css"); //commented to reduce loading until cart message is fixed.
+		_app.ext.beachmall_begin.u.scribeScript($('[data-noton="nomove"]'),"https://seal.verisign.com/getseal?host_name=www.beachmall.com&amp;size=S&amp;use_flash=NO&amp;use_transparent=NO&amp;lang=en","js"); 
 		
 		//make sure minicart stays up to date. 
 		_app.ext.beachmall_begin.vars.mcSetInterval = setInterval(function(){
@@ -505,7 +506,8 @@ _app.u.bindTemplateEvent('homepageTemplate', 'complete.beachmall_homepage',funct
 	_app.ext.beachmall_homepage.u.loadProductsAsList($context,$('.bestUL', $context));
 	_app.ext.beachmall_homepage.u.loadProductsAsList($context,$('.featuredUL', $context));
 	$('.floatingBar',$context).is(":visible") ? "" : $('.floatingBar',$context).show(); //shows floating bar upon return to hompage if it's been closed.
-	_app.ext.beachmall_homepage.u.moveNorton($context);
+	//_app.ext.beachmall_homepage.u.moveNorton($context); //TODO : post scribe was able to place this where it needed to be, kill it and the function if it stays that way.
+	_app.ext.beachmall_begin.u.scribeScript($('[data-noton="ins"]'),"https://seal.verisign.com/getseal?host_name=www.beachmall.com&amp;size=XS&amp;use_flash=NO&amp;use_transparent=YES&amp;lang=en","js"); 
 });
 _app.u.bindTemplateEvent('homepageTemplate', 'depart.beachmall_homepage',function(event,$context,infoObj) {
 	$('.homeProdSearchNewArrivals2', $context).trigger('destroy').data('isCarousel',false);

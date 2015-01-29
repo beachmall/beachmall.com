@@ -129,7 +129,7 @@ $(document).ready(function(){
 		}
 		if(notIE8) {
 			window.myApp = new initApp({	<!-- versionhere -->
-				"release":"201411.20150128134700",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+				"release":"201411.20150128161800",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 				"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 				"baseURL":baseURL, //used in non-local mode.
 				"checkoutAuthMode" : "active",//can be passive, active or required
@@ -380,8 +380,10 @@ $(document).ready(function(){
 <div class='copyright'>
 	<table class="nortonSecure" title="Click to Verify - This site chose Symantec SSL for secure e-commerce and confidential communications.">
 		<tr>
-			<td data-noton="nomove">
-				<script type="text/javascript" src="https://seal.verisign.com/getseal?host_name=www.beachmall.com&amp;size=S&amp;use_flash=NO&amp;use_transparent=NO&amp;lang=en"></script><br />
+			<td data-noton="nomove"></td>
+		</tr>
+		<tr>
+			<td>
 				<a href="http://www.symantec.com/verisign/ssl-certificates" target="_blank"  style="position:absolute; left:0; width:100%; color:#000000; text-decoration:none; font:bold 7px verdana,sans-serif; letter-spacing:.5px; text-align:center; margin:0px; padding:0px;">ABOUT SSL CERTIFICATES</a>
 			</td>
 		</tr>
