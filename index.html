@@ -165,7 +165,7 @@ $(document).ready(function(){
             By providing your delivery ZIP code, you'll allow us to:<br>
             <span>Show you special pricing</span> that may only be available in select areas.<br>
             <span>See estimated delivery dates</span> without having to checkout.           
-            <form onSubmit="myApp.ext.beachmall_begin.a.updateShipPostal($(this)); return false;">
+            <form data-app-submit="beachmall_begin|updateShipPostal" data-ele="form" data-ga-label="localized-for">
                 <input name='ship/postal' value="" placeholder=' Enter your ZIP / Postal Code' class="geoZipInput handleDefault" type="number">
                 <input class="search searchButton oswaldFontBold" id="headerSearchSubmit" value="SEE DETAILS IN MY AREA" type="submit" data-app-click="beachmall_begin|hidegeodropdown">
             </form>

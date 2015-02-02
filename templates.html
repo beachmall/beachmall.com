@@ -2799,7 +2799,7 @@ This is the template used both within a dialog and inline, unless implicitly ove
 						<h3 data-tlc="bind $var '.ship.postal'; if(is $var --notblank;) {{set $var 'Shipping:'; apply --append;}} else {{set $var 'Delivery:'; apply --append;}};"></h3>
 						<div class='cartShipOptions'>
 							<label>Zip/Postal Code:</label>
-							<input data-tlc="bind $var '.ship.postal'; if(is $var --blank) {{bind $var '.bill.postal';}}; apply --select=$var; " size="6" name="ship/postal" value="" maxlength="10" onchange="myApp.ext.beachmall_begin.a.updateShipPostal($(this).parent()); " data-app-blur="cco|cartZipUpdateExec" type="text">
+							<input data-tlc="bind $var '.ship.postal'; if(is $var --blank) {{bind $var '.bill.postal';}}; apply --select=$var; " size="6" name="ship/postal" value="" maxlength="10" data-app-change="beachmall_begin|updateShipPostal" data-ga-label="cart" data-app-blur="cco|cartZipUpdateExec" data-ele="this" type="text">
 							<div><span class='shipCity'></span><span class='shipRegion'></span></div>
 							<input class='cartLineButton ui-state-default updateButton zipButton pointer' type='button' value='Update Location'>
 

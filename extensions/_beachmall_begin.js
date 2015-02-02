@@ -222,20 +222,6 @@ var beachmall_begin = function(_app) {
 
 		a : {
 
-/* GEOLOCATION ACTIONS */
-			updateShipPostal : function($form)	{
-				_app.u.dump("BEGIN beachmall_begin.a.updateShipPostal.");
-				var postal = $("[name='ship/postal']",$form).val();
-				if(postal)	{
-					_app.u.dump(" -> postal set: "+postal);
-					//local cart object will be updated in fetchLocationInfoByZip, cartSet is also run there so that city, region, and zip are all updated
-					_app.model.addDispatchToQ({"_cmd":"whereAmI", 'zip':postal, "_tag" : {'callback':'handleWhereAmI','extension':'beachmall_begin', 'datapointer':'whereAmI'}},'mutable');
-					_app.model.dispatchThis('mutable');
-				}
-				else	{
-					$('#globalMessaging').anymessage({'message':'In beachmall_begin.u.updateShipPostal, no postal code passed.','gMessage':true})
-				}
-			},
 //TIME IN TRANSIT ACTIONS
 			showZipDialog : function()	{
 				
@@ -761,6 +747,28 @@ var beachmall_begin = function(_app) {
 				$('.defaultDOImage',$ele.parent()).animate({"opacity":"1"},0);
 				return false;
 			},
+			
+/* GEOLOCATION ACTIONS */
+			updateShipPostal : function($ele,p)	{
+				p.preventDefault();
+				_app.u.dump("BEGIN beachmall_begin.e.updateShipPostal.");
+				//in header the form has a submit, in cart the text field has a change so the val is in different places in relation to the call each time.
+				var postal = $ele.attr("data-ele") === "this" ? $ele.val() : $("[name='ship/postal']",$ele).val();
+				if(postal)	{
+					_app.u.dump(" -> postal set: "+postal);
+					//if run from the header and the cart page is showing, update the zip field in the cart so there aren't two different zips showing in the header and the cart (prevent confusion).
+					if ($ele.attr("data-ele") === "form" && ( $("#mainContentArea :visible:first").attr("data-app-uri") === "/cart/" || $("#mainContentArea :visible:first").attr("data-app-uri") === "/cart" )) {
+						$("input",".cartTemplateShippingContainer").val(postal);
+					}
+					//local cart object will be updated in fetchLocationInfoByZip, cartSet is also run there so that city, region, and zip are all updated
+					_app.model.addDispatchToQ({"_cmd":"whereAmI", 'zip':postal, "_tag" : {'callback':'handleWhereAmI','extension':'beachmall_begin', 'datapointer':'whereAmI'}},'mutable');
+					_app.model.dispatchThis('mutable');
+				}
+				else	{
+					$('#globalMessaging').anymessage({'message':'In beachmall_begin.u.updateShipPostal, no postal code passed.','gMessage':true})
+				}
+				return false;
+			}
 		
 		}, //e [app Events]
 		
