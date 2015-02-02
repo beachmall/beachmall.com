@@ -21,7 +21,7 @@
 { "type":"path", "if":"/[a-zA-Z0-9\\-\\_]+/p(/.*)?", "then#sendfile":"/index.html", "apptimize":false },
 { "type":"path", "if":"/category/([a-zA-Z0-9\\.\\_\\-]+)/.*", "then#sendfile":"/category/$1.html" },
 { "type":"path", "if":"/category/[a-zA-Z0-9\\.\\_\\-]+(/.*)?", "then#sendfile":"/index.html", "apptimize":false },
-{ "type":"path", "if":"/[a-zA-Z0-9\\.\\_\\-]/", "then#sendfile":"/index.html", "apptimize":false },
+//{ "type":"path", "if":"/[a-zA-Z0-9\\.\\_\\-]/", "then#sendfile":"/index.html", "apptimize":false },
 { "type":"path", "if":"/search/.*?/.*", "then#sendfile":"/index.html", "apptimize":false },
 
 //redirect old product formats
