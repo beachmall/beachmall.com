@@ -21,12 +21,12 @@
 { "type":"path", "if":"/[a-zA-Z0-9\\-\\_]+/p(/.*)?", "then#sendfile":"/index.html", "apptimize":false },
 { "type":"path", "if":"/category/([a-zA-Z0-9\\.\\_\\-]+)/.*", "then#sendfile":"/category/$1.html" },
 { "type":"path", "if":"/category/[a-zA-Z0-9\\.\\_\\-]+(/.*)?", "then#sendfile":"/index.html", "apptimize":false },
-//{ "type":"path", "if":"/[a-zA-Z0-9\\.\\_\\-]/", "then#sendfile":"/index.html", "apptimize":false },
+{ "type":"path", "if":"/[a-zA-Z0-9\\.\\_\\-]/", "then#sendfile":"/index.html", "apptimize":false },
 { "type":"path", "if":"/search/.*?/.*", "then#sendfile":"/index.html", "apptimize":false },
 
 //redirect old product formats
 { "type":"path", "if":"/product/([a-zA-Z0-9\\-\\_]+)/(.*)", "then#redirect":"/$2/p/$1.html" },
-{ "type":"path", "if":"/product/([a-zA-Z0-9\\-\\_])+(/.*)?", "then#redirect":"/$2/p/$1.html" },
+{ "type":"path", "if":"/product/([a-zA-Z0-9\\-\\_]+)/", "then#redirect":"/-/p/$1.html" },
 
 // sendfile known urls
 { "type":"path", "if":"/about_us/", "then#sendfile":"/index.html", "apptimize":"false" },
