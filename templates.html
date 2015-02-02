@@ -1283,7 +1283,7 @@ this will likely become more flexible in the future. ###
 				<li data-tlc="bind $var '.%attribs.user:prod_sizing_txt'; if(is $var --blank;) {{bind $var '.%attribs.user:prod_sizing_img'; }}; if(is $var --notblank;) {{ apply --show; }};" data-app-role="hoverTab" class="displayNone"><a href="#prodSizing">Sizing</a></li>
 				<li data-tlc="bind $var '.%attribs.zoovy:asm_bundle_products'; if(is $var --notblank;) {{ apply --show; }};" data-app-role="hoverTab" class="displayNone"><a href="#prodBundle">Savings Bundle</a></li>
 				<li data-tlc="bind $var '.%attribs.user:prod_colors'; if(is $var --notblank;) {{ apply --show; }};" data-app-role="hoverTab" class="displayNone"><a href="#prodColors">Colors</a></li>
-				<li data-app-role="hoverTab"><a href="#prodReviews">Reviews</a></li>
+				<li data-app-role="hoverTab" data-app-mouseenter="beachmall_product|reviewshown"><a href="#prodReviews">Reviews</a></li>
 			</ul>
 					
 			<!-- tab content -->

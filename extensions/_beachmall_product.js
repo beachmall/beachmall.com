@@ -956,6 +956,12 @@ var beachmall_product = function(_app) {
 				dump('the pid is: '); (pid);
 				setTimeout(function(){$('input[name="OID"]','.contactForm').val('SKU: '+pid)},1000);
 			},
+			
+			reviewshown : function($ele,p) {
+				p.preventDefault();
+				//runs when the review tab is shown on prod page to send a ga event for read power reveiw
+				return false;
+			}
 
 			
 		}, //e [app Events]
