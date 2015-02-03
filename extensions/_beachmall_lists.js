@@ -322,7 +322,7 @@ var beachmall_lists = function(_app) {
 						//if we made it here and schemaAvailability still false, then no other conditions were met and the item must be available.
 						if(!schemaAvailability) { schemaAvailability = "In Stock"; schemaHREF = "InStock"; } 
 						//update the link tag on prod page w/ correct text and href
-						$("[data-schema='"+prod.pid+"']",$tag.closest("[data-app-uri]")).text(schemaAvailability).attr("href","http://schema.org/"+schemaHREF+"");
+						$("[data-schema='"+prod.pid+"']",$tag.closest("[data-app-uri]")).attr("href","http://schema.org/"+schemaHREF+"");
 					}
 				},1000); //setTimeout
 			}, //showShipLatency

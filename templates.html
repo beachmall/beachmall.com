@@ -1202,8 +1202,8 @@ this will likely become more flexible in the future. ###
 	</div>
 	<div itemscope itemprop="offers" itemtype="http://schema.org/Offer">
 		<div data-tlc="bind $var '.'; beachmall_product#priceretailsavings;" class="priceContainer clearfix"></div>
-		<link data-tlc="bind $pid '.pid'; apply --attrib='data-schema';" href="" itemprop="availability"></link>
-		<link href="http://schema.org/NewCondition" itemprop="itemCondition">This item is New</link>
+		<link data-tlc="bind $pid '.pid'; apply --attrib='data-schema';" href="" itemprop="availability"> <!-- schema availability added in showShipLatency function -->
+		<link href="http://schema.org/NewCondition" itemprop="itemCondition">
 	</div>
 	
 	<div data-tlc="bind $var '.%attribs.user:replacement_product'; beachmall_product#addredirectproduct  --templateid='redirectProductTemplate';" class="disRedirect"></div> <!-- test with WOS481 -->
