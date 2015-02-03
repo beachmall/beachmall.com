@@ -291,15 +291,10 @@ var beachmall_lists = function(_app) {
 						$tag.children('.shipTime').empty().text(userProdShipMsg).show();
 						var n = d.getDay();
 						var t = d.getUTCHours();
-						if(date < 20141102) {
-							t = t - 4;
-						}
-						else if (date > '20141101' && date < '20140308') {
-							t = t - 5;
-						}
-						else {
-							// posibly need further years calculated here
-						}
+						//adjust for daylight savings
+						var dst = _app.ext.beachmall_lists.u.getDST(d) ? 5 : 4;
+						t  = t - dst;
+						
 						if(userProdShipMsg) { //dump('USER PRODUCT SHIPPING MESSAGE IS:'); dump(userProdShipMsg); dump(prod);
 							if(userProdShipMsg.indexOf('Ships Today by 12 Noon EST') > -1){ //4th of July, Labor Day, Christmas, New Year Eve/Day, Memorial Day, 4th of July. 
 								if ( (t >= 12 && (n > 0 && n < 5)) || date == 20140704 || date == 20140901 || date == 20141225 || date == 20141231 || date == 20150101 || date == 20150526 || date == 20150704) {
@@ -490,6 +485,16 @@ var beachmall_lists = function(_app) {
 					$context.removeClass('loadingBG');
 				}
 			},//showRecentlyViewedItems
+			
+			//pass in a date object (usually for the current day) and will return true if in daylight savings, false if not. 
+			getDST : function(today) {
+//				dump("START beachmall_lists.u.getDST");
+				var year = new Date().getFullYear();
+				var jan = new Date(year, 0,1);
+				var jul = new Date(year, 6,1);
+				var dst = Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset());
+				return today.getTimezoneOffset() < dst;
+			}
 		
 		}, //u [utilities]
 
