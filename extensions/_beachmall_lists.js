@@ -215,6 +215,7 @@ var beachmall_lists = function(_app) {
 			showshiplatency : function (data, thisTLC) {
 				var prod = data.globals.binds.var;
 				var $tag = data.globals.tags[data.globals.focusTag];
+				var addSchema = false; //used to check if this is a prod page (no schema in cart)
 				//_app.u.dump('***TEST '); _app.u.dump(prod);
 				setTimeout(function(){
 						//set the vars needed to determine message
@@ -253,6 +254,15 @@ var beachmall_lists = function(_app) {
 						var zoovyIsPreOrder = prod['%attribs']['zoovy:prod_is_tags'];
 						var zoovyPreOrder = prod['%attribs']['is:preorder'];
 						var zoovyIsUser1 = prod['%attribs']['is:user1'];
+						var schemaAvailability = false; schemaHREF = ""; //holds values to test/add for schema
+						addSchema = true; //setting true here will run shcema conditions for prod page
+					}
+					//if this is a product page check for discontinued or out of stock and set schema var if found.
+					if(addSchema) {
+						if(zoovyIsPreOrder.indexOf("IS_DISCONTINUED") > 0) { schemaAvailability = "Discontinued"; schemaHREF = "InStock"; schemaHREF = "Discontinued"; }
+						if(prod["@inventory"] && prod["@inventory"][prod.pid] && prod["@inventory"][prod.pid].AVAILABLE) {
+							if(prod["@inventory"][prod.pid].AVAILABLE < 1 && !schemaAvailability) { schemaAvailability = "Out of Stock"; schemaHREF = "OutOfStock"; }
+						}
 					}
 					var d = new Date();
 					var month = d.getMonth()+1;
@@ -272,6 +282,8 @@ var beachmall_lists = function(_app) {
 							//set groundonall to indicate for all cart shipping items to be ground in beachmall_cartEstArrival showTransitTimes.
 							//will also ensure expedited shipping not available message will be shown for this item. 
 /*should be for cart only?*/$('#cartTemplateShippingContainer').attr('groundonall',1); 
+						//item found to be preorder, adjust schema to reflect
+						if(addSchema && !schemaAvailability) { schemaAvailability = "Pre-order"; schemaHREF = "PreOrder"; } //if this is a product page, set the schema attrib to preorder (because that's what this is)
 					}
 					//Not a pre-order, show present-day ship info.
 					else if (zoovyProdSalesRank == undefined || zoovyProdSalesRank <= date) {
@@ -310,6 +322,12 @@ var beachmall_lists = function(_app) {
 					}
 					else { 
 						//do nada*/
+					}
+					if(addSchema) {
+						//if we made it here and schemaAvailability still false, then no other conditions were met and the item must be available.
+						if(!schemaAvailability) { schemaAvailability = "In Stock"; schemaHREF = "InStock"; } 
+						//update the link tag on prod page w/ correct text and href
+						$("[data-schema='"+prod.pid+"']",$tag.closest("[data-app-uri]")).text(schemaAvailability).attr("href","http://schema.org/"+schemaHREF+"");
 					}
 				},1000); //setTimeout
 			}, //showShipLatency

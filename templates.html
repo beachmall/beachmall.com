@@ -1200,7 +1200,10 @@ this will likely become more flexible in the future. ###
 			Manufacturer: <a itemprop='manufacturer' href='#' data-tlc="bind $var '.%attribs.zoovy:prod_mfg'; if(is $var --notblank;) {{apply --append; format --prepend='/search/keywords/'; apply --attrib='href';}};" class='underline'></a>
 		</span>
 	</div>
-	<div data-tlc="bind $var '.'; beachmall_product#priceretailsavings;" class="priceContainer clearfix" itemscope itemprop="offers" itemtype="http://schema.org/Offer"></div>
+	<div itemscope itemprop="offers" itemtype="http://schema.org/Offer">
+		<div data-tlc="bind $var '.'; beachmall_product#priceretailsavings;" class="priceContainer clearfix"></div>
+		<link data-tlc="bind $pid '.pid'; apply --attrib='data-schema';" href=""></link>
+	</div>
 	
 	<div data-tlc="bind $var '.%attribs.user:replacement_product'; beachmall_product#addredirectproduct  --templateid='redirectProductTemplate';" class="disRedirect"></div> <!-- test with WOS481 -->
 	
