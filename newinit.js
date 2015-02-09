@@ -10,7 +10,7 @@ _app.u.loadScript(configURI,function(){
 	_app.vars.domain = zGlobals.appSettings.sdomain; //passed in ajax requests.
 	_app.vars.jqurl = (document.location.protocol === 'file:') ? _app.vars.testURL+'jsonapi/' : '/jsonapi/';
 	
-	var startupRequires = ['quickstart','beachmall_begin','store_prodlist','dropdown-template.html'];
+	var startupRequires = ['quickstart','beachmall_begin','dropdown-template.html'];
 	
 	_app.require(startupRequires, function(){
 		setTimeout(function(){$('#appView').removeClass('initFooter');}, 1200);
@@ -500,9 +500,9 @@ _app.extend({
 
 _app.u.bindTemplateEvent('homepageTemplate', 'complete.beachmall_homepage',function(event,$context,infoObj) {
 	_app.ext.beachmall_homepage.u.getMainBanner();
-	_app.ext.beachmall_homepage.u.loadProductsAsList($context,$('.newArrivalUL', $context));
-	_app.ext.beachmall_homepage.u.loadProductsAsList($context,$('.bestUL', $context));
-	_app.ext.beachmall_homepage.u.loadProductsAsList($context,$('.featuredUL', $context));
+//	_app.ext.beachmall_homepage.u.loadProductsAsList($context,$('.newArrivalUL', $context));
+//	_app.ext.beachmall_homepage.u.loadProductsAsList($context,$('.bestUL', $context));
+//	_app.ext.beachmall_homepage.u.loadProductsAsList($context,$('.featuredUL', $context));
 	$('.floatingBar',$context).is(":visible") ? "" : $('.floatingBar',$context).show(); //shows floating bar upon return to hompage if it's been closed.
 	//_app.ext.beachmall_homepage.u.moveNorton($context); //TODO : post scribe was able to place this where it needed to be, kill it and the function if it stays that way.
 	
@@ -846,7 +846,7 @@ _app.extend({
 	
 _app.couple('quickstart','addPageHandler',{
 	"pageType" : "homepage",
-	"require" : ['store_navcats','templates.html','store_routing','beachmall_homepage','store_product','powerreviews_reviews','beachmall_lists'],
+	"require" : ['store_navcats','templates.html','store_routing','beachmall_homepage'],
 	"handler" : function($container, infoObj, require){
 		infoObj.deferred = $.Deferred();
 		infoObj.defPipeline.addDeferred(infoObj.deferred);

@@ -90,45 +90,7 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 		<ul data-tlc="bind $var '.@subcategoryDetail'; store_navcats#categorylist  --detail='max' --templateid='categoryListHomeTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin"></ul>
 		</div>
 	</div>
-    
-    <div class='CarouselContainer featuredProductsCarouselContainer'>
-    	<div class='carouselTitles yellowBkgrd'>
-        	<div class='carouselTitleTextContainer floatLeft'>FEATURED PRODUCTS</div>
-			 <a href="/viewallfeatured/" class='carouselLinkContainer floatRight featWidth pointer'>View All Featured Products</a> 
-			<!-- <a onclick="return showContent('category',{'navcat':'.beach-umbrellas-shelter.beach-umbrella', 'templateID':'categoryTemplateHomepageFeatured'});" class='carouselLinkContainer floatRight featWidth pointer'>View All Featured Products</a> -->
-            <div class='carouselArrowContainer floatRight sprite'></div>
-        </div>
-        <div class='Carousel loadingBG'>
-        	<a class="carouselButtonDkBlue featCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
-			<a class="carouselButtonDkBlue featCarouselNext carouselButtonDkBlueNext" href="#">next</a>
-			<div class="featuredUL" data-list='$app-site_home-page-featured' data-carousel='runHomeFeaturedCarousel' data-templateid='featuredHomeCarousel'>
-				<!-- this element filled by ext.beachmall_store.u.loadProductsAsList() using the above data attribs. -->
-			</div>
-        	<!--non filtered search: <ul id='homeProdSearchFeatured' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"or":{"filters":[{"term":{"tags":"IS_USER4"}},{"term":{"tags":"IS_COLORFUL"}},{"term":{"tags":"IS_USER5"}},{"term":{"user:prod_promo":"IS_USER4"}}]}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul> 
-	old way:<ul data-tlc="bind $var '.$app-site_home-page-featured.@products'; store_prodlist#productlist  - -hideSummary='1' - -withReviews='1' - -withVariations='1' - -withInventory='1' - -templateid='productListTemplate'  - -legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchFeatured"></ul> -->
-		</div>
-        <div class='standardCarouselPagenation featCarPagenation'></div>
-    </div>
-    
-    <div class='CarouselContainer bestSellersCarouselContainer'>
-    	<div class='carouselTitles'>
-			<div class='carouselTitleTextContainer floatLeft'>BEST SELLERS</div>
-			<a href="/viewallbestseller/" class='carouselLinkContainer floatRight featWidth pointer'>View Best Sellers</a>
-			<!-- <a onclick="return showContent('category',{'navcat':'.beach-umbrellas-shelter.beach-umbrella', 'templateID':'categoryTemplateHomepageBestSeller'});" class="bindByAnchor"></a>  href="#!homepagebestseller" -->
-			<div class='carouselArrowContainer floatRight sprite'></div>
-        </div>
-        <div class='Carousel loadingBG'>
-        	<a class="carouselButtonDkBlue bestCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
-			<a class="carouselButtonDkBlue bestCarouselNext carouselButtonDkBlueNext" href="#">next</a>
-			<div class="bestUL" data-list='$app-site_home-page-best-sellers' data-carousel='runHomeBestCarousel' data-templateid='bestHomeCarousel'>
-				<!-- this element filled by ext.beachmall_store.u.loadProductsAsList() using the above data attribs. -->
-			</div>
-			<!--non filtered search: <ul id='homeProdSearchBestSellers' data-bind='var: elastic-native({"size":"100","mode":"elastic-native","filter":{"term":{"tags":"IS_BESTSELLER"}}}); format: productSearch; extension: myRIA; loadsTemplate: productListTemplateResultsCustomSmaller;' class='listStyleNone fluidList clearfix noPadOrMargin homepageResults productList productListSmall'></ul> 
-	old way:<ul data-tlc="bind $var '.$app-site_home-page-best-sellers.@products'; store_prodlist#productlist  - -hideSummary='1' - -withReviews='1' - -withVariations='1' - -withInventory='1' - -templateid='productListTemplate'  - -legacy;" class="listStyleNone fluidList clearfix noPadOrMargin homepageResults productList homeProdSearchBestSellers"></ul> -->
-		</div>																																																	
-        <div class='standardCarouselPagenation bestCarPagenation'></div>
-    </div>
-	
+    	
     <div class='categoryDescriptionContainer'>
     	<div class='catDescStd catDescStd1 floatLeft'>
         	<h1>Beach Gear</h1>
