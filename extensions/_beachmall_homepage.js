@@ -190,7 +190,7 @@ var beachmall_homepage = function(_app) {
 				dump('START pickCarousel');
 				switch(carousel) {
 					case "runHomeSmallCarousel" :
-						_app.ext.beachmall_homepage.u.runHomeSmallCarousel($context);
+	//					_app.ext.beachmall_homepage.u.runHomeSmallCarousel($context);
 						break;
 					case "runHomeBestCarousel" :
 						_app.ext.beachmall_homepage.u.runHomeBestCarousel($context);
