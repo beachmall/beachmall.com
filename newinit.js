@@ -24,7 +24,7 @@ _app.u.loadScript(configURI,function(){
 		_app.ext.beachmall_begin.u.startTooltip();
 		
 		_app.ext.beachmall_begin.u.timeoutFunction(_app.ext.beachmall_begin.u.scribeScript($('head'),"resources/jquery.carouFredSel-6.2.0.min.js","js")); 
-		_app.ext.beachmall_begin.u.timeoutFunction(_app.ext.beachmall_begin.u.scribeScript($('head'),"resources/jquery.touchSwipe-1.3.3.min.js","js"));
+//		_app.ext.beachmall_begin.u.scribeScript($('head'),"resources/jquery.touchSwipe-1.3.3.min.js","js");
 //		_app.ext.beachmall_begin.u.scribeScript($('[data-noton="nomove"]'),"https://seal.verisign.com/getseal?host_name=www.beachmall.com&amp;size=S&amp;use_flash=NO&amp;use_transparent=NO&amp;lang=en","js"); 
 		//_app.ext.beachmall_begin.u.scribeScript($('head'),"extensions/cart_message/styles.css","css"); //commented to reduce loading until cart message is fixed.
 //		_app.ext.beachmall_begin.u.scribeScript($('head'),"googleapis-libs-jqueryiu-1.10.2-theme-uilightnes-jqueryui.css","css");
