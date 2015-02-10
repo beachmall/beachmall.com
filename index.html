@@ -68,25 +68,25 @@ css files should be included before any .js file to ensure they are downloaded i
 <!-- jquery and jquery ui are pivotal to the functionality of the app. load them early -->
 <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script> -->
-<script type="text/javascript" src="jquery.1.10.2.min.js"></script> <!-- data-apptimize="embed" -->
-<script type="text/javascript" src="jquery.ui.1.10.2.min.js"></script> <!-- data-apptimize="embed" -->
-<script type="text/javascript" src="controller.js"></script> <!-- data-apptimize="embed" -->
-<script type="text/javascript" src="model.js"></script> <!-- data-apptimize="embed" -->
+<script data-apptimize="embed" type="text/javascript" src="jquery.1.10.2.min.js"></script>
+<script data-apptimize="embed" type="text/javascript" src="jquery.ui.1.10.2.min.js"></script>
+<script data-apptimize="embed" type="text/javascript" src="controller.js"></script>
+<script data-apptimize="embed" type="text/javascript" src="model.js"></script>
 
 <!-- SCRIPTS -->
-<script type="text/javascript" src="resources/jquery.showloading-v1.0.jt.js"></script> <!-- data-apptimize="embed" -->
-<script type="text/javascript" src="resources/jsonpath.0.8.0.js"></script> <!-- data-apptimize="embed" -->
-<script type="text/javascript" src="resources/tlc.js"></script> <!-- data-apptimize="embed" -->
-<script type="text/javascript" src="resources/peg-0.8.0.js"></script> <!-- data-apptimize="embed" -->
+<script data-apptimize="embed" type="text/javascript" src="resources/jquery.showloading-v1.0.jt.js"></script>
+<script data-apptimize="embed" type="text/javascript" src="resources/jsonpath.0.8.0.js"></script> 
+<script data-apptimize="embed" type="text/javascript" src="resources/tlc.js"></script>
+<script data-apptimize="embed" type="text/javascript" src="resources/peg-0.8.0.js"></script>
 
 <!-- <script type="text/javascript" src="resources/jquery.touchSwipe-1.3.3.min.js"></script>  data-apptimize="embed" -->
 <!-- <script type="text/javascript" src="resources/jquery.carouFredSel-6.2.0.min.js"></script>  data-apptimize="embed" -->
 <!--<script type="text/javascript" src="magiczoomplus-commercial/magiczoomplus/magiczoomplus.js"></script>  data-apptimize="embed" -->
-<script type="text/javascript" src="postscribe-master/htmlParser/htmlParser.min.js"></script> <!-- min version of this did not come w/ postscribe (had to make it). -->
-<script type="text/javascript" src="postscribe-master/postscribe.min.js"></script> <!-- same w/ this (sort of) -->
+<script data-apptimize="embed" type="text/javascript" src="postscribe-master/htmlParser/htmlParser.min.js"></script> <!-- min version of this did not come w/ postscribe (had to make it). -->
+<script data-apptimize="embed" type="text/javascript" src="postscribe-master/postscribe.min.js"></script> <!-- same w/ this (sort of) -->
 
-<script type="text/javascript" src="resources/jquery.ui.anyplugins.js"></script> <!-- data-apptimize="embed" -->
-<script type="text/javascript" src="includes.js"></script><!-- contains some polyfills and should be loaded early -->  <!-- data-apptimize="embed" -->
+<script data-apptimize="embed" type="text/javascript" src="resources/jquery.ui.anyplugins.js"></script>
+<script data-apptimize="embed" type="text/javascript" src="includes.js"></script><!-- contains some polyfills and should be loaded early -->
 
 <!--<link rel="stylesheet" type="text/css" href="magiczoomplus-commercial/magiczoomplus/magiczoomplus.css"/>  data-apptimize="embed" -->
 <!-- <link rel="stylesheet" type="text/css" href="resources/anyplugins.css"/>  data-apptimize="embed" -->
@@ -129,7 +129,7 @@ $(document).ready(function(){
 		}
 		if(notIE8) {
 			window.myApp = new initApp({	<!-- versionhere -->
-				"release":"201411.20150203130600",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
+				"release":"201411.20150210103800",  //increment this with each change. should solve caching issues. format: YYYYMMDDHHMMSS
 				"_clientid":"zmvc", //zmvc for store app, 1pc for one page checkout.
 				"baseURL":baseURL, //used in non-local mode.
 				"checkoutAuthMode" : "active",//can be passive, active or required
