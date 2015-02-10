@@ -343,13 +343,16 @@ var beachmall_begin = function(_app) {
 			
 			renderHeaderDropdown : function(counter) {
 				counter = counter || 0;
-				var $container = $("[data-header='dropdown']");
-				if($container) {
-					$container.empty().tlc({verb:"transmogrify", templateid:"dropdownTemplate"});
-					_app.ext.beachmall_begin.u.getDropdownJSON();
+				if(document.readyState === "complete") {
+					var $container = $("[data-header='dropdown']");
+					if($container) {
+						$container.empty().tlc({verb:"transmogrify", templateid:"dropdownTemplate"});
+						_app.ext.beachmall_begin.u.getDropdownJSON();
+					}
+					else if (counter < 50) { setTimeout(function() { _app.ext.beachmall_begin.u.renderHeaderDropdown(counter+1); },500); }
+					else { dump("HEADER DROPDOWN CONTAINER NOT FOUND. Tried "+counter+" times."); }
 				}
-				else if (counter < 50) { _app.ext.beachmall_begin.u.renderHeaderDropdown(counter+1); } 
-				else { dump("HEADER DROPDOWN CONTAINER NOT FOUND. Tried "+counter+" times."); }
+				else { setTimeout(function() { _app.ext.beachmall_begin.u.renderHeaderDropdown(); },500); }
 			},
 	
 			getDropdownJSON : function() {
