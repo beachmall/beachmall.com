@@ -549,6 +549,12 @@ var beachmall_begin = function(_app) {
 			//adds static button w/ scrollTop event to page 
 			backToTop : function($context) {
 				$context.append('<div class="appBackToTop pointer" data-app-click="beachmall_begin|scrollToTop"><span class="sprite"></span>Back to Top</div>')
+			},
+			
+			//will check for document.readyState complete and run the function passed once found. 
+			timeoutFunction : function(thisFunction) {
+				if(document.readyState === "complete") { thisFunction; }
+				else { setTimeout(function(){ _app.ext.beachmall_begin.u.timeoutFunction(thisFunction) },500); }
 			}
 			
 
