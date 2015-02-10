@@ -500,7 +500,7 @@ _app.extend({
 
 _app.u.bindTemplateEvent('homepageTemplate', 'complete.beachmall_homepage',function(event,$context,infoObj) {
 	_app.ext.beachmall_homepage.u.getMainBanner();
-	_app.ext.beachmall_homepage.u.loadProductsAsList($context,$('.newArrivalUL', $context));
+//	_app.ext.beachmall_homepage.u.loadProductsAsList($context,$('.newArrivalUL', $context));
 //	_app.ext.beachmall_homepage.u.loadProductsAsList($context,$('.bestUL', $context));
 //	_app.ext.beachmall_homepage.u.loadProductsAsList($context,$('.featuredUL', $context));
 	$('.floatingBar',$context).is(":visible") ? "" : $('.floatingBar',$context).show(); //shows floating bar upon return to hompage if it's been closed.
@@ -846,7 +846,7 @@ _app.extend({
 	
 _app.couple('quickstart','addPageHandler',{
 	"pageType" : "homepage",
-	"require" : ['store_navcats','templates.html','store_routing','beachmall_homepage','store_prodlist'],
+	"require" : ['store_navcats','templates.html','store_routing','beachmall_homepage'],
 	"handler" : function($container, infoObj, require){
 		infoObj.deferred = $.Deferred();
 		infoObj.defPipeline.addDeferred(infoObj.deferred);
