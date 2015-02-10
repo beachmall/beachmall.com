@@ -3,17 +3,10 @@
 @viewport, @-o-viewport, @-moz-viewport, @-webkit-viewport {
     width: device-width;
 	}
-
-	.test {height: 20px; width:20px; background:#000000;}
 	
-html {
-	height: 100%;
-}	
+html {height:100%;}	
 
-* {
-	margin:0;
-	padding:0;
-	}
+* {margin:0; padding:0;}
 	
 /*WEBKIT SCROLLBARS*/
 ::-webkit-scrollbar {width:10px;}
