@@ -986,7 +986,7 @@ HOMEPAGE
 .bestSellersCarouselTitles {background-color:#3bb3c3;}
 
 .carouselButton	{
-	background:url(images/carousel_buttons-66x60.png) no-repeat;
+	background-position:-133px -322px;
 	width:35px;
 	height:60px;
 	text-indent:-10000em;
@@ -1000,21 +1000,21 @@ HOMEPAGE
 }
 .carouselButtonNext {
 	right:1px;
-	background-position:-35px 0;
+	background-position:-168px -322px;
 }
 
 .carouselButtonDkBlue {
-	background:url(images/carousel_buttons_dkblue-66x60.png) no-repeat;
+	background-position:-252px -322px;
 	width:35px;
 	height:60px;
 	text-indent:-10000em;
 	position:absolute;
 	top:30%; 
+	left:11px;
 	z-index:1;
 }
 
-.carouselButtonDkBluePrev {left:11px; background-position:-37px 0;}
-.carouselButtonDkBlueNext {right:5px; background-position:0px 0;}
+.carouselButtonDkBlueNext {left:auto; right:5px; background-position:-214px -322px;}
 
 .reviewsStarsCount.homeCars {margin:0 auto;}
 .reviewsStarsCount.homeCars p {position:relative; top:0px; left:10px; text-align:left; width:160px;} 
@@ -1061,6 +1061,8 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 .imageContainer .prodTabs.tabbedProductContent .imageAndVideoTabs .ui-state-default {height:35px; background:#444444; border-radius:0px; border:1px solid #444444;}
 .imageContainer .prodTabs.tabbedProductContent .imageAndVideoTabs .ui-state-active {background:#f5f1de; border-radius:0px; border-bottom:1px solid #f5f1de;}
 .imageContainer .prodTabs.tabbedProductContent .imageAndVideoTabs .ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited {color:#3bb3c3; font-weight:normal;}
+.tabIcon {background-position: 23px 296px; float: left; height: 22px; width: 24px;}
+.tabIcon.tabIconV {background-position: 24px 266px;}
 .imageContainer .prodTabs.tabbedProductContent .imageAndVideoTabs .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {color:#777; font-weight:normal;}
 .imageContainer .prodTabs.tabbedProductContent .prodPageImages {width:310px; padding:0px; border:1px solid #444444; background:#F5F1DE;} /*box-shadow:0 1px 3px 2px #777;*/
 .imageContainer .prodTabs.tabbedProductContent .ui-tabs-panel {padding:0;}
@@ -1098,7 +1100,8 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 	width:170px;
 	margin:6px 0;
 	text-indent:-10000px;
-	background:url(images/add-to-cart_170x50.gif) no-repeat; padding:0; border:0;
+	padding:0; border:0;
+	background-position:-289px -322px;
 	clear:both;
 	}
 
@@ -1108,7 +1111,9 @@ a.prodPageCarPrev span, a.prodPageCarNext span {display:none;}
 	width:159px;
 	margin:6px 0;
 	text-indent:-10000px;
-	background:url(images/bm10_preorder-159x33.png) no-repeat; padding:0; border:0;
+	background-position:-338px -378px;
+	background-color:#ffffff;l
+	padding:0; border:0;
 	}
 	
 .fullWidth .zsmall {padding-top:10px; clear:both; font-size:10px; font-weight:normal;}
@@ -1321,10 +1326,6 @@ global app styles
 .productListItem .zlink	{color:#FC410E;}
 .pogType_attribs, .variation_attribs {display:none;}
 
-
-.productListItem .colorful	{background:url(bmo9_btn_colors-67x11.png) no-repeat; width:67px; height:11px; float:left; margin-right:8px;}
-.productListItem .sizeable	{background:url(bmo9_btn_sizes-56x7.png) no-repeat center center; width:56px; height:11px; float:left; margin-right:8px;}
-.productListItem .shipfree	{background:url(bm09_freeshipping-63x19.gif) no-repeat; width:63px; height:19px; float:left; margin-right:8px;}
 
 /* # of reviews is hidden in smaller prodlists */
 #prodlistRecentlyViewed .pr-snippet-review-count  {display:none;} 
@@ -1570,28 +1571,6 @@ lower tab sets (text fields and product lists)
 
 #modalShipGrid table td	{padding:0 10px;}
 
-
-/* Carousel Styles */
-
-.carouselNav	{background:url(carousel_buttons-100x100.png) no-repeat; cursor:pointer;}
-.carouselNavSmW	{background-position:0 -74px; width:9px; height:17px;}
-.carouselNavSmE	{background-position:-9px -74px; width:9px; height:17px;}
-.carouselNavSmN	{background-position:-22px -75px; width:17px; height:8px;}
-.carouselNavSmS	{background-position:-22px -83px; width:17px; height:8px;}
-
-
-.carouselNavMdW	{background-position:0 -37px; width:11px; height:24px;}
-.carouselNavMdE	{background-position:-12px -37px; width:11px; height:24px;}
-.carouselNavMdN	{background-position:-27px -37px; width:23px; height:11px;}
-.carouselNavMdS	{background-position:-27px -50px; width:23px; height:11px;}
-
-.carouselNavLgW	{background-position:0 0px; width:17px; height:35px;}
-.carouselNavLgE	{background-position:-18px 0px; width:17px; height:35px;}
-.carouselNavLgN	{background-position:-39px 0px; width:35px; height:17px;}
-.carouselNavLgS	{background-position:-39px -18px; width:35px; height:17px;}
-
-
-/*
 
 PRODUCT VIEWER / MODAL
 

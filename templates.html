@@ -44,8 +44,8 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 			</div>
 			
 			<div class='newArrivalsCarouselRight floatLeft loadingBG'>
-				<a class="carouselButton new2CarouselPrev carouselButtonPrev displayNone" href="#">prev</a>
-				<a class="carouselButton new2CarouselNext carouselButtonNext displayNone" href="#">next</a>
+				<a class="carouselButton sprite new2CarouselPrev carouselButtonPrev displayNone" href="#">prev</a>
+				<a class="carouselButton sprite new2CarouselNext carouselButtonNext displayNone" href="#">next</a>
 				<div class="newArrivalUL" data-list='$app-site_home-page-new-item' data-carousel='runHomeSmallCarousel' data-templateid='miniHomeCarousel'>
 					<!-- this element filled by ext.beachmall_store.u.loadProductsAsList() using the above data attribs. -->
 				</div>
@@ -99,8 +99,8 @@ the homepageTemplate template is loaded into mainContentArea by default when the
             <div class='carouselArrowContainer floatRight sprite'></div>
         </div>
         <div class='Carousel loadingBG'>
-        	<a class="carouselButtonDkBlue featCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
-			<a class="carouselButtonDkBlue featCarouselNext carouselButtonDkBlueNext" href="#">next</a>
+        	<a class="carouselButtonDkBlue sprite featCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
+			<a class="carouselButtonDkBlue sprite featCarouselNext carouselButtonDkBlueNext" href="#">next</a>
 			<div class="featuredUL" data-list='$app-site_home-page-featured' data-carousel='runHomeFeaturedCarousel' data-templateid='featuredHomeCarousel'>
 				<!-- this element filled by ext.beachmall_store.u.loadProductsAsList() using the above data attribs. -->
 			</div>
@@ -118,8 +118,8 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 			<div class='carouselArrowContainer floatRight sprite'></div>
         </div>
         <div class='Carousel loadingBG'>
-        	<a class="carouselButtonDkBlue bestCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
-			<a class="carouselButtonDkBlue bestCarouselNext carouselButtonDkBlueNext" href="#">next</a>
+        	<a class="carouselButtonDkBlue sprite bestCarouselPrev carouselButtonDkBluePrev" href="#">prev</a>
+			<a class="carouselButtonDkBlue sprite bestCarouselNext carouselButtonDkBlueNext" href="#">next</a>
 			<div class="bestUL" data-list='$app-site_home-page-best-sellers' data-carousel='runHomeBestCarousel' data-templateid='bestHomeCarousel'>
 				<!-- this element filled by ext.beachmall_store.u.loadProductsAsList() using the above data attribs. -->
 			</div>
@@ -1164,8 +1164,8 @@ this will likely become more flexible in the future. ###
 	<div class="prodTabs tabbedProductContent ui-tabs ui-widget ui-widget-content ui-corner-all">
 
 		<ul class="imageAndVideoTabs">
-			<li data-tlc="bind $var '.%attribs.zoovy:prod_image1'; if(is $var --notblank;) {{ apply --show; }};" data-app-role="hoverTab" class="displayNone"><a href="#prodImages" class="ui-button-text-icon-primary imageTab"><span><img src="images/bm12_cameraicon-25x21.png" alt="" height="21" width="25"></span>Images</a></li> <!-- data-apptimize="embed" -->
-			<li data-tlc="bind $var '.%attribs.youtube:videoid'; if(is $var --notblank;) {{ apply --show; }};" data-app-role="hoverTab" class="displayNone"><a href="#prodVideo" class="videoTab"><span><img src="images/bm12_videoicon-24x24.png" alt="" height="24" width="24"></span>Video</a></li> <!-- data-apptimize="embed" -->
+			<li data-tlc="bind $var '.%attribs.zoovy:prod_image1'; if(is $var --notblank;) {{ apply --show; }};" data-app-role="hoverTab" class="displayNone"><a href="#prodImages" class="ui-button-text-icon-primary imageTab"><div class="sprite tabIcon"></div>Images</a></li> <!-- data-apptimize="embed" -->
+			<li data-tlc="bind $var '.%attribs.youtube:videoid'; if(is $var --notblank;) {{ apply --show; }};" data-app-role="hoverTab" class="displayNone"><a href="#prodVideo" class="videoTab"><div class="sprite tabIcon tabIconV"></div>Video</a></li> <!-- data-apptimize="embed" -->
 
 			<li class="prodPageImages" data-anytab-content="prodImages">
 				<!--<img src='blank.gif' class='prodBigImage' rel='rel="selectors-change: mouseover' name='prodBigImage' data-bind='var: product(zoovy:prod_image1); format: magicZoomPlus; extension: magicToolBox_mzp;' width='310' height='310' />-->
@@ -1241,7 +1241,7 @@ this will likely become more flexible in the future. ###
 		<fieldset data-tlc="bind $var '.'; store_product#atcquantityinput  --defaultvalue='1' --legacy;" data-hide-discontinued=1 class="borderNone floatRight"></fieldset>
 	<!--	<fieldset data-bind='var: product(pid); format:atcQuantityInput; defaultValue:1; extension:store_product; pretext:Quantity: ;' class='borderNone'></fieldset>-->
 		<div data-tlc="bind $var '.%attribs.zoovy:prod_is_tags'; beachmall_product#discontinuedatc;">
-			<input data-tlc="bind $var '.'; beachmall_product#addtocartbutton;" value="Add to Cart" class="floatRight ui-button ui-button-text ui-corner-all ui-state-default displayNone addToCartButton" type="submit">
+			<input data-tlc="bind $var '.'; beachmall_product#addtocartbutton;" value="Add to Cart" class="floatRight ui-button ui-button-text ui-corner-all displayNone addToCartButton sprite" type="submit"> <!-- ui-state-default -->
 			<div data-tlc="bind $var '.pid'; beachmall_product#hideshiplatency;">
 				<div data-tlc="bind $var '.'; beachmall_lists#showshiplatency;" class="shipTime latency floatLeft">
 					<div data-tlc="bind $var '.%attribs.user:prod_shipping_msg'; if (is $var --notblank;) {{apply --append;}};" class="shipTime latency displayNone"></div>
@@ -1410,8 +1410,8 @@ this will likely become more flexible in the future. ###
 				<div class="carouselArrowContainer floatRight sprite"></div>
 			</div>
 			<div class="Carousel">
-				<a class="carouselButtonDkBlue productPreviousViewedPrev carouselButtonDkBluePrev" href="#">prev</a>
-				<a class="carouselButtonDkBlue productPreviousViewedNext carouselButtonDkBlueNext" href="#">next</a>
+				<a class="carouselButtonDkBlue sprite productPreviousViewedPrev carouselButtonDkBluePrev" href="#">prev</a>
+				<a class="carouselButtonDkBlue sprite productPreviousViewedNext carouselButtonDkBlueNext" href="#">next</a>
 				<!-- <ul data-bind="var: session(session.recentlyViewedItems); format: productList; extension: store_prodlist; loadsTemplate: productListTemplate; hide_summary:1; hide_pagination:1; withReviews:1;  withVariations:1; withInventory:1;" class='listStyleNone fluidList clearfix noPadOrMargin productList productPreviousViewed'></ul> -->
 				<ul data-tlc="store_prodlist#productlist  --hideSummary='1' --hidePagination='1' --withReviews='1' --withVariations='1' --withInventory='1' --templateid='productListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin productList productPreviousViewed"></ul> 
 			</div>
