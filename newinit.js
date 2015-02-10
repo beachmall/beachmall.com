@@ -19,7 +19,7 @@ _app.u.loadScript(configURI,function(){
 //		_app.ext.beachmall_begin.u.addChat("41TM",$("[data-chat='header']","#appView"));
 //		_app.ext.beachmall_begin.u.addChat("yXFh",$("[data-chat='footer']","#appView"));
 		_app.ext.beachmall_begin.calls.whereAmI.init({'callback':'handleWhereAmI','extension':'beachmall_begin'},'passive');
-		_app.ext.beachmall_begin.u.renderHeaderDropdown();
+//		_app.ext.beachmall_begin.u.renderHeaderDropdown();
 		$.extend(handlePogs.prototype,_app.ext.beachmall_begin.variations);
 		_app.ext.beachmall_begin.u.startTooltip();
 		
