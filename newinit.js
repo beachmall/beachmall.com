@@ -16,20 +16,20 @@ _app.u.loadScript(configURI,function(){
 		setTimeout(function(){$('#appView').removeClass('initFooter');}, 1200);
 		_app.ext.quickstart.callbacks.startMyProgram.onSuccess();
 		
-//		_app.ext.beachmall_begin.u.addChat("41TM",$("[data-chat='header']","#appView"));
-//		_app.ext.beachmall_begin.u.addChat("yXFh",$("[data-chat='footer']","#appView"));
+		_app.ext.beachmall_begin.u.addChat("41TM",$("[data-chat='header']","#appView"));
+		_app.ext.beachmall_begin.u.addChat("yXFh",$("[data-chat='footer']","#appView"));
 		_app.ext.beachmall_begin.calls.whereAmI.init({'callback':'handleWhereAmI','extension':'beachmall_begin'},'passive');
 		_app.ext.beachmall_begin.u.renderHeaderDropdown();
 		$.extend(handlePogs.prototype,_app.ext.beachmall_begin.variations);
 		_app.ext.beachmall_begin.u.startTooltip();
 		
-//		_app.ext.beachmall_begin.u.scribeScript($('head'),"resources/jquery.carouFredSel-6.2.0.min.js","js"); 
-//		_app.ext.beachmall_begin.u.scribeScript($('head'),"resources/jquery.touchSwipe-1.3.3.min.js","js");
-//		_app.ext.beachmall_begin.u.scribeScript($('[data-noton="nomove"]'),"https://seal.verisign.com/getseal?host_name=www.beachmall.com&amp;size=S&amp;use_flash=NO&amp;use_transparent=NO&amp;lang=en","js"); 
+		_app.ext.beachmall_begin.u.scribeScript($('head'),"resources/jquery.carouFredSel-6.2.0.min.js","js"); 
+		_app.ext.beachmall_begin.u.scribeScript($('head'),"resources/jquery.touchSwipe-1.3.3.min.js","js");
+		_app.ext.beachmall_begin.u.scribeScript($('[data-noton="nomove"]'),"https://seal.verisign.com/getseal?host_name=www.beachmall.com&amp;size=S&amp;use_flash=NO&amp;use_transparent=NO&amp;lang=en","js"); 
 		//_app.ext.beachmall_begin.u.scribeScript($('head'),"extensions/cart_message/styles.css","css"); //commented to reduce loading until cart message is fixed.
-//		_app.ext.beachmall_begin.u.scribeScript($('head'),"googleapis-libs-jqueryiu-1.10.2-theme-uilightnes-jqueryui.css","css");
-//		_app.ext.beachmall_begin.u.scribeScript($('head'),"https://fonts.googleapis.com/css?family=Open+Sans%7COswald%7CMontserrat","css");
-//		_app.ext.beachmall_begin.u.scribeScript($('head'),"resources/anyplugins.css","css");
+		_app.ext.beachmall_begin.u.scribeScript($('head'),"googleapis-libs-jqueryiu-1.10.2-theme-uilightnes-jqueryui.css","css");
+		_app.ext.beachmall_begin.u.scribeScript($('head'),"https://fonts.googleapis.com/css?family=Open+Sans%7COswald%7CMontserrat","css");
+		_app.ext.beachmall_begin.u.scribeScript($('head'),"resources/anyplugins.css","css");
 		
 		//make sure minicart stays up to date. 
 		_app.ext.beachmall_begin.vars.mcSetInterval = setInterval(function(){
@@ -507,7 +507,7 @@ _app.u.bindTemplateEvent('homepageTemplate', 'complete.beachmall_homepage',funct
 	//_app.ext.beachmall_homepage.u.moveNorton($context); //TODO : post scribe was able to place this where it needed to be, kill it and the function if it stays that way.
 	
 	if(!$("[data-noton='ins']").data("noton-rendered")) {
-//		_app.ext.beachmall_begin.u.scribeScript($('[data-noton="ins"]'),"https://seal.verisign.com/getseal?host_name=www.beachmall.com&amp;size=XS&amp;use_flash=NO&amp;use_transparent=YES&amp;lang=en","js"); 
+		_app.ext.beachmall_begin.u.scribeScript($('[data-noton="ins"]'),"https://seal.verisign.com/getseal?host_name=www.beachmall.com&amp;size=XS&amp;use_flash=NO&amp;use_transparent=YES&amp;lang=en","js"); 
 		$("[data-noton='ins']").attr("data-noton-rendered",true);
 	}
 });
