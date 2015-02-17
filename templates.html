@@ -78,15 +78,6 @@ the homepageTemplate template is loaded into mainContentArea by default when the
 					<span>BY BRAND</span>
 				</a>
 			</div>
-<!-- THESE WILL NEED AN ALT IF EVER USED			
-<div class='tempCatImages'>
-	<img class='floatLeft' src='images/shop_beach-accessories_160x105.jpg' />
-	<img class='floatLeft' src='images/shop-beach-chairs_160x105.jpg' />
-	<img class='floatLeft' src='images/shop-recreation_160x105.jpg' />
-	<img class='floatLeft' src='images/shop-umbrellas_160x105.jpg' />
-	<img class='floatLeft' src='images/shop_beachwear_160x105.jpg' />
-</div>
--->
 		<ul data-tlc="bind $var '.@subcategoryDetail'; store_navcats#categorylist  --detail='max' --templateid='categoryListHomeTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin"></ul>
 		</div>
 	</div>
@@ -245,7 +236,7 @@ don't modify the 'data-templateid' unless you are changing template names and up
 
 	<ul data-tlc="bind $var '.path'; store_navcats#breadcrumb  --templateid='breadcrumbTemplate'  --legacy;" class="breadcrumb clearfix noPadOrMargin fluidList"></ul>
 
-	<h2 data-tlc="bind $var '.%page.header'; if (is $var --notblank;) {{apply --append;}};" class="blah5"></h2>
+	<h2 data-tlc="bind $var '.%page.header'; if (is $var --notblank;) {{apply --append;}};"></h2>
 	
 	<div class="catContainer">
 		<ul data-tlc="bind $var '.@subcategoryDetail'; store_navcats#categorylist  --detail='max' --templateid='categoryListTemplate'  --legacy;" class="listStyleNone fluidList clearfix noPadOrMargin categoryList"></ul><!-- outputs a list of subcategories -->
