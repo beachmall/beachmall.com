@@ -277,6 +277,7 @@ _app.router.appendHash({'type':'exact','route':'/my_account/','callback':functio
 		'templateID':'myAccountTemplate',
 		'require':['cco','templates.html']
 		});
+	$("[data-modal='login']").empty().tlc({verb:"transmogrify", templateid:"loginTemplate"});
 	_app.ext.quickstart.a.showContent(routeObj.value,routeObj.params);
 	}});
 _app.u.bindTemplateEvent('myAccountTemplate','complete.customer',function(event, $context, infoObj){
@@ -291,6 +292,7 @@ _app.router.appendHash({'type':'exact','route':'/my_order_history/','callback':f
 		'templateID':'orderHistoryTemplate',
 		'require':['templates.html']
 		});
+	$("[data-modal='login']").empty().tlc({verb:"transmogrify", templateid:"loginTemplate"});
 	_app.ext.quickstart.a.showContent(routeObj.value,routeObj.params);
 	}});
 _app.u.bindTemplateEvent('orderHistoryTemplate','complete.customer',function(event, $context, infoObj){
@@ -322,6 +324,7 @@ _app.router.appendHash({'type':'exact','route':'/my_wishlist/','callback':functi
 		'templateID':'customerListsTemplate',
 		'require':['templates.html']
 		});
+	$("[data-modal='login']").empty().tlc({verb:"transmogrify", templateid:"loginTemplate"});
 	_app.ext.quickstart.a.showContent(routeObj.value,routeObj.params);
 	}});
 _app.u.bindTemplateEvent('customerListsTemplate','complete.customer',function(event, $context, infoObj){

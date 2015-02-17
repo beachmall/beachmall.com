@@ -199,7 +199,7 @@ $(document).ready(function(){
 		<div class='arrowContainer'></div>
     	<div class='dropdown myAcctDropdown'>
         	<ul class='listStyleNone'>
-            	<li><span onclick="myApp.ext.quickstart.u.showLoginModal();" class='headerSignIn'>Sign In</span><span class='headerSignedIn'>Sign In</span> / <div data-app-click="beachmall_begin|logBuyerOut" class='headerSignOut'>Sign Out</div><span class='headerSignedOut'>Sign Out</span></li>
+            	<li><span data-app-click="beachmall_begin|showloginmodal" class='pointer headerSignIn'>Sign In</span><span class='headerSignedIn'>Sign In</span> / <div data-app-click="beachmall_begin|logBuyerOut" class='headerSignOut'>Sign Out</div><span class='headerSignedOut'>Sign Out</span></li>
                 <li><a href="/create-account/">Create An Account</a></li>
                 <li><a href="/my_order_history/">Track Your Order</a></li>
             </ul>
@@ -400,14 +400,10 @@ $(document).ready(function(){
 </div>
 
 <!--
-*************************************************************************************************************
-**
-**
-**										C A R T   M E S S A G E   U I      S T A R T S      H E R E
-**
+*******************************************************************************************************
+**				C A R T   M E S S A G E   U I      S T A R T S      H E R E
 ** A mechanism where buyers and merchants can communicate in real time.
-**
-*************************************************************************************************************
+*******************************************************************************************************
 -->
 <div id='cartMessenger' class='displayNone seoStrip' data-app-role='cartMessenger' title="help">
 	<form novalidate='novalidate' onSubmit="return false">
@@ -426,49 +422,8 @@ $(document).ready(function(){
 	</form>
 </div>
 
-<div id='loginFormForModal' class='loginOption displayNone seoStrip' title='Please log in'>
-<!-- the contents of this div/id are toggled on/off when login/logout occurs. don't change the ID -->
-	<p class='marginBottom appMessaging loginMessaging'></p>
-	<div class='loginFormContainer'>
-		<div class='createAccount'>
-			<h1>First Time With Us?</h1>
-			<p>If you have never made a purchase at this web site and have never subscribed to this store's mailing list,
-				please choose this option.</p>
-			<a href="/create-account/" class='modalCreateButton button borderRound'>Create an Account</a>
-		</div>
-		<div class="gotAccount">
-			<h1>Welcome Back</h1>
-			<form action='#' data-app-submit='quickstart|accountLoginSubmit' class='marginBottom'>
-				<input type='hidden' name='method' value='unsecure'>
-				<input type='hidden' name='loginCallback' value=''><!-- used to save a callback action in -->
-				<input type='email' class='zform_textbox zform_email' required='required'  name='login' value='' size='25' placeholder='E-mail address'>
-				<input type='password' class='zform_textbox zform_password' required='required'  name='password' value='' size='25' placeholder='Password'>	
-				<input type='submit' value='Log In' class='applyButton pointer'>
-			</form>
-			<div class='marginBottom recoverPasswordContainer'>
-				<div class='appMessaging recoverPasswordMessaging'></div>
-				<form action='#' data-app-submit='quickstart|accountPasswordRecoverSubmit'>
-					<fieldset>
-						<legend data-app-click="beachmall_begin|togglerecover">Recover Password</legend>
-						<div data-slide='toggle'>
-							<div class='marginBottom'>
-								<label>
-									<span>Enter your e-mail address:</span>
-									<input type='text' name='login' required='required' size='25'>
-								</label>
-							</div>
-							<div><input type='submit' class='applyButton' value='Email Password to Me'></div>
-						</div>
-					</fieldset>
-				</form>
-			</div><!-- /recoverPasswordContainer -->
-		</div>
-	</div>
-<!-- this div will appear after a successful login. if you bind a new action to the button, best to empty the div and re-add the button, so the actions don't statck. -->
-	<div id='loginSuccessContainer' class='center displayNone'>
-		<button class='applyButton' id='modalLoginContinueButton' data-app-click="quickstart|dialogCloseExec">Continue</button>
-	</div>
-</div>
+<!-- loginTemplate gets added here -->
+<div data-modal="login" class="displayNone"></div>
 
 <!-- emailAFriendTemplate gets added here -->
 <div data-email="friend" class="displayNone"></div>

@@ -768,6 +768,14 @@ var beachmall_begin = function(_app) {
 					$('#globalMessaging').anymessage({'message':'In beachmall_begin.u.updateShipPostal, no postal code passed.','gMessage':true})
 				}
 				return false;
+			},
+			
+			showloginmodal : function($ele,p) {
+				p.preventDefault();
+				//find element in index and stick template in it to create dialog from (so template doesn't have to reside in index).
+				$("[data-modal='login']").empty().tlc({verb:"transmogrify", templateid:"loginTemplate"});
+				_app.ext.quickstart.u.showLoginModal();
+				return false;
 			}
 		
 		}, //e [app Events]
