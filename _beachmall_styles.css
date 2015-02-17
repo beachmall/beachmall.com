@@ -103,8 +103,6 @@ the padding is to compensate for the spacing between the main nav.
 .topNav .liveHelp #sd41TM:hover a, .topNav .liveHelp #sc41TM:hover a, .topNav .liveHelp #ci41TM:hover a {color:#e0463a;}
 .topNav .topNavLinks:hover .arrowContainer {height:11px; width:27px; background-image:url(images/dropdown-arrow-27x11.png); position:absolute; top:39px; right:145px;}
 .topNav .topNavLinks:hover .arrowContainer2 {height:11px; width:27px; background-image:url(images/dropdown-arrow-27x11.png); position:absolute; top:39px; right:231px;}
-.custCareDropdown {height:0px; width:220px; background-color:#f8c301; position:relative; top:2px; right:65px; z-index:5; overflow:hidden;}
-.myAcctDropdown {height:0px; width:220px; background-color:#f8c301; position:relative; top:2px; right:75px; z-index:5; overflow:hidden;}
 .headerSignIn:hover, .headerSignOut:hover {cursor:pointer; color:#e0463a;}
 .headerSignedIn, .headerSignOut {display:none;}
 .headerSignedIn, .headerSignedOut {color:#666666;}
@@ -196,7 +194,7 @@ the padding is to compensate for the spacing between the main nav.
 
 
 /*********************************************************************************
-FOOTER (all footer styles in _begin.css
+FOOTER (footer styles in _begin.css)
 *********************************************************************************/
 
 

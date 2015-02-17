@@ -31,6 +31,8 @@ a:hover	{color:#e0463a;}
 .topNav .phoneChatLive .orspan {display:inline; padding:0 4px 0 0; font-size:14px;}
 .topNav .liveHelp a {text-decoration:none; font-family:Oswald; font-weight:bold; font-size:18px;color:#000000;}
 .topNav .topNavLinks a {text-decoration:none; color: #000000;}
+.custCareDropdown, .myAcctDropdown {height:0px; width:220px; background-color:#f8c301; position:relative; top:2px; right:65px; z-index:5; overflow:hidden;}
+.myAcctDropdown {right:75px;}
 .topNav .cartIcon {height:30px; width:57px; display:block; background-position:4px -40px; margin:0px 40px 0px 0px; padding: 15px 0px 0px 0px;}
 .topNav .cartIcon .cartItemCount {height:17px; width:21px; text-align:center; display:inline-block; color:#ffffff;}
 .topNav .topNavLinks {height:50px; width:97px; line-height:48px; text-align:left;}
