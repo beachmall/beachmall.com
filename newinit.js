@@ -30,6 +30,7 @@ _app.u.loadScript(configURI,function(){
 		_app.ext.beachmall_begin.u.scribeScript($('head'),"googleapis-libs-jqueryiu-1.10.2-theme-uilightnes-jqueryui-min.css","css");
 		_app.ext.beachmall_begin.u.scribeScript($('head'),"https://fonts.googleapis.com/css?family=Open+Sans%7COswald%7CMontserrat","css");
 		_app.ext.beachmall_begin.u.scribeScript($('head'),"resources/anyplugins-min.css","css");
+		_app.ext.beachmall_begin.u.scribeScript($('head'),"_beachmall_styles-min.css","css");
 		
 		//make sure minicart stays up to date. 
 		_app.ext.beachmall_begin.vars.mcSetInterval = setInterval(function(){
