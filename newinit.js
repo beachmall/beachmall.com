@@ -10,7 +10,7 @@ _app.u.loadScript(configURI,function(){
 	_app.vars.domain = zGlobals.appSettings.sdomain; //passed in ajax requests.
 	_app.vars.jqurl = (document.location.protocol === 'file:') ? _app.vars.testURL+'jsonapi/' : '/jsonapi/';
 	
-	var startupRequires = ['quickstart','beachmall_begin','store_prodlist','dropdown-template.html'];
+	var startupRequires = ['quickstart','beachmall_begin','store_prodlist','dropdown-template-min.html'];
 	
 	_app.require(startupRequires, function(){
 		setTimeout(function(){$('#appView').removeClass('initFooter');}, 1200);
