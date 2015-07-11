@@ -77,10 +77,10 @@ var beachmall_product = function(_app) {
 						if(!index) {
 							index = _app.ext.beachmall_begin.u.getFastestShipMethod(data['@Services']);
 						}
-//						_app.u.dump(" -> index: "+index);
+						_app.u.dump(" -> index: "+index);
 						//index could be false if no methods were available. or could be int starting w/ 0
 						if(index >= 0)	{
-							$('.transitContainer',$container).empty().append(_app.ext.beachmall_product.u.getTransitInfo(SKU,data,index)); //empty first so when reset by zip change, no duplicate info is displayed.
+							$('.transitContainer',$container).empty().append(_app.ext.beachmall_product.u.getTransitInfo(tagObj.SKU,data,index,tagObj.zip)); //empty first so when reset by zip change, no duplicate info is displayed.
 						}
 					}
 					else {
@@ -612,6 +612,10 @@ var beachmall_product = function(_app) {
 				}
 			},
 			
+			setProductZip : function($container, zip){
+				//
+				},
+			
 //TIME IN TRANSIT UTILS
 			initEstArrival : function(infoObj,attempts){
 				_app.u.dump("BEGIN beachmall_product.u.initEstArrival");
@@ -634,7 +638,7 @@ var beachmall_product = function(_app) {
 				}
 				else	{
 					_app.u.dump(" -> no zip code entered. request via whereAmI");
-					_app.ext.beachmall_begin.calls.whereAmI.init({'callback':'handleWhereAmI','extension':'beachmart'},'mutable');
+					_app.ext.beachmall_begin.calls.whereAmI.init({'callback':'handleWhereAmI','extension':'beachmall_begin'},'mutable');
 					_app.model.dispatchThis('mutable');
 				}
 			},
@@ -642,7 +646,7 @@ var beachmall_product = function(_app) {
 			getShipQuotes : function(zip)	{
 //				_app.u.dump("BEGin beachmall_product.u.getShipQuotes");
 				var $context = $("#mainContentArea :visible:first");
-
+				var SKU = $('[data-pid]',$context).attr('data-pid');
 				//if item has user:is_dropship set to one, transit/geo location will be hidden, don't bother going further
 				if(_app.data['appProductGet|'+SKU] && _app.data['appProductGet|'+SKU]['%attribs']['user:is_dropship']) {
 					if(_app.data['appProductGet|'+SKU]['%attribs']['user:is_dropship'] == 1) {
@@ -668,7 +672,7 @@ var beachmall_product = function(_app) {
 
 					_app.ext.beachmall_begin.calls.time.init({},'mutable');
 					dump('-0--ProdArray & zip:'); dump(prodArray); dump(zip);
-					_app.ext.beachmall_begin.calls.appShippingTransitEstimate.init({"@products":prodArray,"ship_postal":zip,"ship_country":"US"},{'callback':'showTransitTimes','extension':'beachmall_product'},'mutable');
+					_app.ext.beachmall_begin.calls.appShippingTransitEstimate.init({"@products":prodArray,"ship_postal":zip,"ship_country":"US"},{'zip':zip,'SKU':SKU,'callback':'showTransitTimes','extension':'beachmall_product'},'mutable');
 				//	_app.data.cartDetail['data.ship_zip'] = _app.data[tagObj.datapointer].zip; //need this local for getShipQuotes's callback.
 
 					_app.model.dispatchThis('mutable'); //potentially a slow request that should interfere with the rest of the load.
@@ -716,13 +720,13 @@ var beachmall_product = function(_app) {
 					_app.u.dump("WARNING! servicesObj passed into getFastestShipMethod is empty or not an object. servicesObj:");
 					_app.u.dump(servicesObj);
 				}
-//              _app.u.dump(" -> fastest index: "+r);
+              _app.u.dump(" -> fastest index: "+r);
 				return r;
 			}, //getShipMethodByID
 				
 			//this function should handle all the display logic for Time in Transit. everything that gets enabled or disabled.
 			//if(prodAttribs['user:prod_shipping_msg'] == 'Ships Today by 12 Noon EST')
-			getTransitInfo : function(pid,data,index)	{
+			getTransitInfo : function(pid,data,index, zip)	{
 //			_app.u.dump("BEGIN beachmart.u.getTransitInfo");
 
 				var prodAttribs = _app.data['appProductGet|'+pid]['%attribs'];
@@ -787,21 +791,26 @@ var beachmall_product = function(_app) {
 				} else {
 					$('.estimatedArrivalDate',$r).append(_app.ext.beachmall_dates.u.yyyymmddNoSeconds2Pretty(data['@Services'][index]['arrival_yyyymmdd'])+" to");
 				}
-
-				var varsCart = _app.data["cartDetail|"+_app.model.fetchCartID()];
-				if(varsCart && varsCart.ship.city && backorder != 2)	{
-					$('.deliveryLocation',$r).append(" "+varsCart.ship.city);
-				}
-				if(varsCart && varsCart.ship.region && backorder != 2)	{
-					$('.deliveryLocation',$r).append(" "+varsCart.ship.region);
-				}
-				if	(varsCart && varsCart.ship.postal && backorder != 2)	{
-					$('.deliveryLocation',$r).append(" "+varsCart.ship.postal+" (change)");
-				}
-				else if (backorder != 2){
-					$('.deliveryLocation',$r).append(" (enter zip) ");
-				}
-				$('.deliveryLocation',$r).click(function(){_app.ext.beachmall_begin.a.showZipDialog()});
+				
+				if(zip){
+					$('.deliveryLocation',$r).append(" "+zip);
+					}
+				else{
+					var varsCart = _app.data["cartDetail|"+_app.model.fetchCartID()];
+					if(varsCart && varsCart.ship.city && backorder != 2)	{
+						$('.deliveryLocation',$r).append(" "+varsCart.ship.city);
+					}
+					if(varsCart && varsCart.ship.region && backorder != 2)	{
+						$('.deliveryLocation',$r).append(" "+varsCart.ship.region);
+					}
+					if	(varsCart && varsCart.ship.postal && backorder != 2)	{
+						$('.deliveryLocation',$r).append(" "+varsCart.ship.postal+" (change)");
+					}
+					else if (backorder != 2){
+						$('.deliveryLocation',$r).append(" (enter zip) ");
+					}
+					$('.deliveryLocation',$r).click(function(){_app.ext.beachmall_begin.a.showZipDialog()});
+					}
 				
 				return $r;
 			}, //getTransitInfo
@@ -883,7 +892,16 @@ var beachmall_product = function(_app) {
 //while no naming convention is stricly forced, 
 //when adding an event, be sure to do off('click.appEventName') and then on('click.appEventName') to ensure the same event is not double-added if app events were to get run again over the same template.
 		e : {
-		
+			getestshipping : function($ele, p){
+				$ele.hide();
+				var $container = $ele.parent();
+				var zip = $('input[name=zip]',$ele).val();
+				$('.timeInTransitMessaging').empty(); //intentionally has no context. once a zip is entered, remove this anywhere it was displayed.
+				$('.putLoadingHere',$container).addClass('loadingBG').show();
+				$('.loadingText',$container).show();
+				$('.shipMessage, .estimatedArrivalDate, .deliveryLocation, .deliveryMethod',$container).empty()				
+				_app.ext.beachmall_product.u.getShipQuotes(zip);
+				},
 			//shows modal which contains form to e-mail current page to someone (see emailfriend)
 			showemailfriend : function($ele,p) {
 				p.preventDefault();

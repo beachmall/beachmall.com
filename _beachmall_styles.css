@@ -95,6 +95,10 @@ input[type=checkbox] {-webkit-appearance:normal; -webkit-appearance:checkbox;}
 .geoDropdown .searchButton {background-color:#e0463a; border:none; text-align:center; font-size: 14px; color:#ffffff; width:170px; height:40px; cursor:pointer; float:Left; box-shadow:-2px 2px 2px #000000;}
 .geoDropdown h2 {font-size:10px}
 
+.zipform {margin-top: 3px;}
+.zipform .searchButton {background-color:#e0463a; border:none; text-align:center; font-size: 11px; color:#ffffff; width:145px; height:30px; cursor:pointer; float:Left; box-shadow:-2px 2px 2px #000000;}
+.zipform .zipInput{border:none; background:#ffffff; text-indent:.4em; height:30px; width:190px;  box-shadow:-2px 2px 2px #000000; float:Left; position:relative;}
+
 .topNav .phoneChatLive, .cartFooter .phoneChatLive {height:50px; width:353px; margin:0px 0px 0px 351px; font-family:Oswald; font-weight:bold; font-size: 18px; line-height: 51px;}
 .topNav .phoneIcon, .cartFooter .phoneIcon {height:50px; width:35px; background-position:0 10px;}
 .topNav .phoneChatLive .orspan {display:inline; padding:0 4px 0 0; font-size:14px;}

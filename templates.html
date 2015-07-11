@@ -1209,9 +1209,13 @@ this will likely become more flexible in the future. ###
 				</div>
 			</div>
 		</div>
-		<div data-tlc="bind $var '.%attribs.user:is_dropship'; beachmall_product#hideifdropship;" class="floatLeft">
-		<div class="timeInTransitMessaging clearfix"></div>
-			<div class="putLoadingHere loadingBG">
+		<div data-tlc="bind $var '.%attribs.user:is_dropship'; beachmall_product#hideifdropship;" class="floatLeft clear">
+			<div class="timeInTransitMessaging clearfix"></div>
+			<form class="zipform" onsubmit="return false;" data-app-submit="beachmall_product|getestshipping">
+				<input type="text" name="zip" class="zipInput" placeholder="Enter your ZIP / Postal Code"/>
+				<input type="submit" class="searchButton oswaldFontBold" value="GET SHIPPING ESTIMATE!"></input>
+			</form>
+			<div class="putLoadingHere loadingBG displayNone">
 				<span class="loadingText">Acquiring Shipping Estimates</span>
 				<div class="transitContainer"></div>
 			</div>

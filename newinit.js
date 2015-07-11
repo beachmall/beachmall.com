@@ -538,7 +538,7 @@ _app.u.bindTemplateEvent('categoryTemplateBrands', 'complete.beachmall_lists',fu
 
 _app.u.bindTemplateEvent('productTemplate', 'complete.beachmall_product',function(event,$context,infoObj) {
 	//_app.ext.beachmall_product.u.makeDisallow(); //uncomment to use, then close it back up. This shouldn't be left running in production.
-	_app.ext.beachmall_product.u.initEstArrival(infoObj);
+	//_app.ext.beachmall_product.u.initEstArrival(infoObj);
 	_app.ext.beachmall_product.u.doMagicStuff();
 	_app.ext.beachmall_product.u.replaceReadReviewLink($context,infoObj.pid);
 	_app.ext.beachmall_product.u.replaceWriteReviewLink($context,infoObj.pid,"snippet-write-review","pr-snippet-link");
